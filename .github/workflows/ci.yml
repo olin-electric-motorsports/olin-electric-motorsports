@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Hello World
+
+# Controls when the workflow will run
+on:
+  # Triggers on pull requests to main
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  say_hi:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Runs a single command using the runners shell
+      - name: Say hi!
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Things we still need to setup
+        run: |
+          echo TODO list for GitHub Actions
+          echo * Compile all boards from a GitHub action
+          echo * Setup a NUC or other Linux computer we own as a GitHub Action Runner
+          echo * Flash code from a GitHub action
+          echo * Run HitL tests from a GitHub action
+          echo * Output and save a test report from a GitHub Action
