@@ -14,11 +14,10 @@ Libraries will each have their own subdirectory like so:
 ```
 libs/
 └── example_library
-    ├── src_arm/         -> Source files for the ARM library
-    ├── src_avr/         -> Source files for the AVR library
-    ├── include/api.h    -> Common public header
-    ├── test/            -> Unit tests for the library
-    └── BUILD            -> Bazel BUILD file
+    ├── src/                       -> Source C files
+    ├── include/example_library.h  -> Common public header
+    ├── test/                      -> Unit tests for the library
+    └── BUILD                      -> Bazel BUILD file
 ```
 
 ## To Do
