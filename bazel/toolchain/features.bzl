@@ -1,9 +1,9 @@
 load(
     "@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
     "feature",
-    "flag_set",
     "flag_group",
-    "tool_path"
+    "flag_set",
+    "tool_path",
 )
 load("@bazel_tools//tools/build_defs/cc:action_names.bzl", "ACTION_NAMES")
 
@@ -71,15 +71,15 @@ _OPT_FEATURE = feature(
             flag_groups = [
                 flag_group(
                     flags = ["-Os", "-finline-small-functions", "-flto"],
-                )
-            ]
+                ),
+            ],
         ),
         flag_set(
             actions = _LD_ALL_ACTIONS,
             flag_groups = [
                 flag_group(flags = ["-flto"]),
-            ]
-        )
+            ],
+        ),
     ],
     provides = ["compilation_mode"],
 )
@@ -91,10 +91,10 @@ _DEFAULT_FEATURE = feature(
         flag_set(
             actions = _C_ALL_COMPILE_ACTIONS,
             flag_groups = [
-                flag_group(flags = ["-fno-jump-tables", "-ffunction-sections", "-std=c99"])
-            ]
-        )
-    ]
+                flag_group(flags = ["-fno-jump-tables", "-ffunction-sections", "-std=c99"]),
+            ],
+        ),
+    ],
 )
 
 def AvrDeviceFeature(name, frequency):

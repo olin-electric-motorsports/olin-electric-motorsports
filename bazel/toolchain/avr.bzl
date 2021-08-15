@@ -1,14 +1,15 @@
 load(
     "@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
     "feature",
-    "flag_set",
     "flag_group",
-    "tool_path"
+    "flag_set",
+    "tool_path",
 )
 load("@bazel_tools//tools/build_defs/cc:action_names.bzl", "ACTION_NAMES")
 load("@rules_cc//cc:defs.bzl", "cc_toolchain")
-load("//bazel/toolchain:features.bzl",
-     "AvrGetCommonFeatures",
+load(
+    "//bazel/toolchain:features.bzl",
+    "AvrGetCommonFeatures",
 )
 
 _path = "/usr/bin/"
@@ -61,10 +62,10 @@ def _impl(ctx):
     ft = AvrGetCommonFeatures(ctx.attr.device, ctx.attr.frequency)
 
     return cc_common.create_cc_toolchain_config_info(
-        ctx=ctx,
-        toolchain_identifier=ctx.attr.toolchain_identifier,
-        host_system_name="local",
-        target_system_name="avr",
+        ctx = ctx,
+        toolchain_identifier = ctx.attr.toolchain_identifier,
+        host_system_name = "local",
+        target_system_name = "avr",
         target_cpu = "avr",
         target_libc = "unknown",
         compiler = "avr-gcc",
@@ -74,15 +75,15 @@ def _impl(ctx):
         cxx_builtin_include_directories = [
             "/usr/lib/avr/include",
             "/usr/lib/gcc/avr/5.4.0/include",
-            "/usr/lib/gcc/avr/5.4.0/include-fixed"
+            "/usr/lib/gcc/avr/5.4.0/include-fixed",
         ],
         features = [
             ft.all_warnings,
             ft.all_warnings_as_errors,
             ft.dbg,
             ft.opt,
-            ft.device
-        ]
+            ft.device,
+        ],
     )
 
 # Rule to create a toolchain config
@@ -102,7 +103,7 @@ avr_toolchain_config = rule(
             mandatory = True,
             doc = "CPU frequency for device",
         ),
-    }
+    },
 )
 
 # Creates a toolchain for a specific device
@@ -117,13 +118,13 @@ def create_avr_toolchain(device, frequency):
     )
 
     native.cc_toolchain(
-        name= "_" + device + "_toolchain",
-        all_files= device + "_files",
-        compiler_files= device + "_files",
-        dwp_files= device + "_files",
-        objcopy_files =  device + "_files",
-        strip_files =  device + "_files",
-        linker_files =  device + "_files",
+        name = "_" + device + "_toolchain",
+        all_files = device + "_files",
+        compiler_files = device + "_files",
+        dwp_files = device + "_files",
+        objcopy_files = device + "_files",
+        strip_files = device + "_files",
+        linker_files = device + "_files",
         toolchain_config = ":" + device + "-toolchain-config",
         toolchain_identifier = "avr-toolchain",
         supports_param_files = 1,
