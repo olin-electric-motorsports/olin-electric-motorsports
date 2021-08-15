@@ -1,4 +1,5 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 
 def _eep_file_impl(ctx):
     # ctx.file contains a single File or None for dependency attributes whose
@@ -167,26 +168,38 @@ def cc_firmware(
 ):
     # Generates .elf file
     native.cc_binary(
-        name=name,
+        name="{}.elf".format(name),
         **kwargs,
     )
 
     # Generates .bin file
     _bin_file(
         name = "{}.bin".format(name),
-        elf = ":{}".format(name),
+        elf = ":{}.elf".format(name),
     )
 
     # Generates .hex file
     _hex_file(
         name = "{}.hex".format(name),
-        elf = ":{}".format(name),
+        elf = ":{}.elf".format(name),
     )
 
     # Generates .eep file
     _eep_file(
         name = "{}.eep".format(name),
-        elf = ":{}".format(name),
+        elf = ":{}.elf".format(name),
+    )
+
+    # Generates tarball file with all
+    pkg_tar(
+        name = name,
+        extension = "tgz",
+        srcs = [
+            ":{}.elf".format(name),
+            ":{}.hex".format(name),
+            ":{}.bin".format(name),
+            ":{}.eep".format(name),
+        ],
     )
 
     # Generates flash script
