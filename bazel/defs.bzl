@@ -16,8 +16,8 @@ def _eep_file_impl(ctx):
     args = ctx.actions.args()
     args.add(input_file)
     args.add(output_file)
-    args.add("-O", "ihex") # Output a binary
-    args.add("-j", ".eeprom") # Don't include .eeprom
+    args.add("-O", "ihex")  # Output a binary
+    args.add("-j", ".eeprom")  # Don't include .eeprom
     args.add("--change-section-lma", ".eeprom=0")
     args.add("--set-section-flags=.eeprom=alloc,load")
 
@@ -31,7 +31,7 @@ def _eep_file_impl(ctx):
 
     return [
         DefaultInfo(
-            files = depset([output_file])
+            files = depset([output_file]),
         ),
     ]
 
@@ -43,7 +43,7 @@ _eep_file = rule(
             allow_single_file = True,
         ),
         "_cc_toolchain": attr.label(
-            default = Label("@bazel_tools//tools/cpp:current_cc_toolchain")
+            default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
         ),
     },
     executable = False,
@@ -69,8 +69,8 @@ def _hex_file_impl(ctx):
     args = ctx.actions.args()
     args.add(input_file)
     args.add(output_file)
-    args.add("-O", "ihex") # Output a binary
-    args.add("-R", ".eeprom") # Don't include .eeprom
+    args.add("-O", "ihex")  # Output a binary
+    args.add("-R", ".eeprom")  # Don't include .eeprom
 
     ctx.actions.run(
         mnemonic = "GenerateHex",
@@ -82,7 +82,7 @@ def _hex_file_impl(ctx):
 
     return [
         DefaultInfo(
-            files = depset([output_file])
+            files = depset([output_file]),
         ),
     ]
 
@@ -94,7 +94,7 @@ _hex_file = rule(
             allow_single_file = True,
         ),
         "_cc_toolchain": attr.label(
-            default = Label("@bazel_tools//tools/cpp:current_cc_toolchain")
+            default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
         ),
     },
     executable = False,
@@ -120,8 +120,8 @@ def _bin_file_impl(ctx):
     args = ctx.actions.args()
     args.add(input_file)
     args.add(output_file)
-    args.add("-O", "binary") # Output a binary
-    args.add("-R", ".eeprom") # Don't include .eeprom
+    args.add("-O", "binary")  # Output a binary
+    args.add("-R", ".eeprom")  # Don't include .eeprom
 
     ctx.actions.run(
         mnemonic = "GenerateBinary",
@@ -133,7 +133,7 @@ def _bin_file_impl(ctx):
 
     return [
         DefaultInfo(
-            files = depset([output_file])
+            files = depset([output_file]),
         ),
     ]
 
@@ -145,7 +145,7 @@ _bin_file = rule(
             allow_single_file = True,
         ),
         "_cc_toolchain": attr.label(
-            default = Label("@bazel_tools//tools/cpp:current_cc_toolchain")
+            default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
         ),
 
         # TODO: (@jack-greenberg) Integrate btldr
@@ -161,15 +161,85 @@ _bin_file = rule(
     fragments = ["cpp"],
 )
 
+def _flash_impl(ctx):
+    template = """#!/bin/bash
+
+if [ -z $(SET_FUSES+x) ]; then
+FUSE_OP = w
+else
+FUSE_OP = v
+fi
+
+_LFUSE=$(LFUSE:=0x65)
+_HFUSE=$(HFUSE:=0xD8)
+_EFUSE=$(EFUSE:=0xFE)
+
+if [ -z $(DEBUG+x) ]; then
+printf "FUSE_OP: $(FUSE_OP)\\n"
+printf "  LFUSE: $(_LFUSE)\\n"
+printf "  HFUSE: $(_HFUSE)\\n"
+printf "  EFUSE: $(_EFUSE)\\n"
+
+avrdude -v -P usb -p {part} \\
+        -U lfuse:$(FUSE_OP):$(_LFUSE):m \\
+        -U hfuse:$(FUSE_OP):$(_HFUSE):m \\
+        -U efuse:$(FUSE_OP):$(_EFUSE):m \\
+        -U flash:w:{binary}:r \\
+        $@
+"""
+
+    input_file = ctx.file.binary
+
+    script = ctx.actions.declare_file("{}.sh".format(ctx.label.name))
+
+    script_body = template.format(
+        part = ctx.attr.part,
+        binary = input_file.short_path,
+    )
+
+    ctx.actions.write(
+        output = script,
+        content = script_body,
+        is_executable = True,
+    )
+
+    return [
+        DefaultInfo(executable = script),
+    ]
+
+_flash = rule(
+    implementation = _flash_impl,
+    attrs = {
+        # "pkg": attr.label(
+        #     doc = "tgz file for flashing",
+        #     mandatory = True,
+        #     allow_single_file = True,
+        # ),
+        "binary": attr.label(
+            doc = "Binary file for flashing",
+            mandatory = True,
+            allow_single_file = True,
+        ),
+        "method": attr.string(
+            doc = "Flashing tool",
+            mandatory = True,
+        ),
+        "part": attr.string(
+            doc = "Part name for avrdude",
+            mandatory = True,
+        ),
+    },
+    executable = True,
+)
+
 # Macro to generate all the proper files
 def cc_firmware(
-    name,
-    **kwargs
-):
+        name,
+        **kwargs):
     # Generates .elf file
     native.cc_binary(
-        name="{}.elf".format(name),
-        **kwargs,
+        name = "{}.elf".format(name),
+        **kwargs
     )
 
     # Generates .bin file
@@ -192,7 +262,7 @@ def cc_firmware(
 
     # Generates tarball file with all
     pkg_tar(
-        name = name,
+        name = "{}.tgz".format(name),
         extension = "tgz",
         srcs = [
             ":{}.elf".format(name),
@@ -203,3 +273,15 @@ def cc_firmware(
     )
 
     # Generates flash script
+    # Invoke with `bazel build --config=16m1 //path/to:target -- -c usbasp`
+    _flash(
+        name = name,
+        binary = "{}.bin".format(name),
+        method = select({
+            "//bazel/constraints:avr": "avrdude",
+        }),
+        part = select({
+            "//bazel/constraints:atmega16m1": "m16",
+            "//bazel/constraints:atmega328p": "m328p",
+        }),
+    )
