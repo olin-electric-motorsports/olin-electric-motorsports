@@ -239,6 +239,14 @@ def cc_firmware(
     # Generates .elf file
     native.cc_binary(
         name = "{}.elf".format(name),
+        linkopts = select({
+            "//bazel/constraints:atmega16m1": ["-T $(location //scripts/ldscripts:atmega16m1.ld)"],
+            # Add more ldscripts here
+        }),
+        deps = [
+            "//scripts/ldscripts:atmega16m1.ld",
+            # Add the ldscripts here too
+        ],
         **kwargs
     )
 
