@@ -52,12 +52,6 @@ _DEBUG_FEATURE = feature(
                 flag_group(flags = ["-O0", "-g3"]),
             ],
         ),
-        flag_set(
-            actions = _LD_ALL_ACTIONS,
-            flag_groups = [
-                flag_group(flags = ["-Wl", "--gdb-index"]),
-            ],
-        ),
     ],
     provides = ["compilation_mode"],
 )
