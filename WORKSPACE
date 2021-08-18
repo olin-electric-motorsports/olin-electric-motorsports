@@ -1,6 +1,7 @@
 workspace(name = "formula")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
 
 register_execution_platforms("@local_config_platform//:host", "//bazel/platforms:all")
 
@@ -52,4 +53,25 @@ http_archive(
     name = "com_github_bazelbuild_buildtools",
     strip_prefix = "buildtools-master",
     url = "https://github.com/bazelbuild/buildtools/archive/master.zip",
+)
+
+http_archive(
+   name = "rules_foreign_cc",
+   strip_prefix = "rules_foreign_cc-0.5.1",
+   url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.5.1.zip",
+)
+
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+
+rules_foreign_cc_dependencies([])
+
+# CMocka
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "cmocka",
+    strip_prefix = "cmocka-1.1.5",
+    urls = ["https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz"],
+    sha256 = "f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6",
+    build_file = "@//third_party/cmocka:BUILD",
 )
