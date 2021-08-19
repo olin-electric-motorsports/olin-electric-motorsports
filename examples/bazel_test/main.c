@@ -1,5 +1,5 @@
 #include <avr/io.h>
-#include "library.h"
+#include "examples/bazel_test/library.h"
 
 int main(void) {
     // Setup

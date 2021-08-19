@@ -20,11 +20,11 @@ cc_test(
     srcs = [
         "test_main.c",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":example_library",
         "@cmocka",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_firmware(
@@ -32,5 +32,8 @@ cc_firmware(
     srcs = ["main.c"],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
+    ],
+    deps = [
+        ":example_library",
     ],
 )

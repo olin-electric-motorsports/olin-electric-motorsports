@@ -8,7 +8,11 @@ filegroup(
 
 cmake(
     name = "cmocka",
-    visibility = ["//visibility:public"],
     lib_source = ":all_srcs",
     out_shared_libs = ["libcmocka.so.0"],
+    tags = ["manual"],
+    target_compatible_with = [
+        "@platforms//os:linux",
+    ],
+    visibility = ["//visibility:public"],
 )
