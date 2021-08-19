@@ -16,8 +16,8 @@ jobs:
       run: sudo rm -f /var/lib/man-db/auto-update
 
     - name: Build all host
-      run: bazelisk build //:all
+      run: bazelisk build //...
     - name: Build all ATMega16m1
-      run: bazelisk build --config=m16m1-avr //:all
+      run: bazelisk build --config=m16m1-avr //...
     - name: Build all ATMega328p
-      run: bazelisk build --config=m328p-avr //:all
+      run: bazelisk build --config=m328p-avr //...
