@@ -1,6 +1,11 @@
 name: lint
 
-on: [pull_request]
+on:
+  pull_request:
+    paths: |
+      **/BUILD*
+      WORKSPACE
+      **/*.bzl
 
 jobs:
   buildifier:
