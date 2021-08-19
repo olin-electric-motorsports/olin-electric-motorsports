@@ -9,7 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    steps:
     - name: Cache bazel
       uses: actions/cache@v2
       env:
@@ -39,6 +38,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
 
+    steps:
     - uses: actions/checkout@v2
 
     # Speed things up a bit
