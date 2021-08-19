@@ -1,0 +1,13 @@
+name: lint
+
+on: [pull_request]
+
+jobs:
+  buildifier:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run buildifier
+      run: bazelisk run //:buildifier_check
