@@ -15,6 +15,10 @@ jobs:
     - name: Disable man-db update
       run: sudo rm -f /var/lib/man-db/auto-update
 
+    # Install avr-gcc
+    - name: Install xmllint
+      run: sudo apt install gcc-avr
+
     - name: Build all host
       run: bazelisk build //...
     - name: Build all ATMega16m1
