@@ -2,10 +2,10 @@ name: lint
 
 on:
   pull_request:
-    paths: |
-      **/BUILD*
-      WORKSPACE
-      **/*.bzl
+    paths:
+    - **/BUILD*
+    - WORKSPACE
+    - **/*.bzl
 
 jobs:
   buildifier:
