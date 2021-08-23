@@ -5,24 +5,12 @@ cc_library(
     ],
     hdrs = [
         "api.h",
+        "mob.h",
     ],
-    deps = select({
-        "//bazel/constraints:atmega16m1": [
-            ":can_drv",
-        ],
-        "//conditions:default": [],
-    }),
-    visibility = ["//visibility:public"],
-)
-
-cc_library(
-    name = "can_drv",
-    srcs = ["can_drv.c"],
-    hdrs = ["can_drv.h"],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 # cc_library(

@@ -14,6 +14,7 @@ typedef struct {
     uint16_t id;
     uint8_t dlc;
     uint8_t* data;
+    uint8_t mob;
 } can_frame_t;
 
 typedef struct {
@@ -21,16 +22,26 @@ typedef struct {
     uint16_t mask;
 } can_filter_t;
 
+#define MAX_DLC (8)
+
+/*
+ * Each function that uses a specific Message Object (MOb) is responsible for
+ * setting the MOb number in the CANPAGE function
+ */
+
 /*
  * Initializes CAN peripheral
  *
  * @param[in] baud - Baud rate
- * @param[in] enable_isr - Enables interrupt handling. If used, user should also
- *                         define ISR(CAN_INT_vect)
  *
  * @returns Nothing
  */
-void can_init(baud_rate_t baud, bool enable_isr);
+void can_init(baud_rate_t baud);
+
+/*
+ * Enables interrupts for the given MOb
+ */
+void can_enable_interrupt(uint8_t mob);
 
 /*
  * Sends a CAN message
@@ -48,11 +59,14 @@ int can_send(can_frame_t* frame);
  *
  * @param[out] frame - CAN frame struct
  * @param[in] filter - CAN filter struct
- * @param[in] is_blocking - If true function will block until message received
- *                          If false, function will return immediately
  *
- * @todo We could implement blocking as an int where a positive value is the
- * timeout, zero means the function will return immediately, and a negative
- * number means the function will block until a message is received.
+ * @note Should be used with can_poll_receive to determine when msg is received
+ *
+ * @see can_poll_receive
  */
-int can_receive(can_frame_t* frame, can_filter_t filter, bool is_blocking);
+int can_receive(can_frame_t* frame, can_filter_t filter);
+
+/*
+ * Polls for a CAN message
+ */
+int can_poll_complete(can_frame_t* frame);

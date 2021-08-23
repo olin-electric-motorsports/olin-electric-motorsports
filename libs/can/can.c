@@ -2,27 +2,12 @@
  * Copyright 2021 Olin Electric Motorsports
  */
 #include "libs/can/api.h"
+#include "libs/can/mob.h"
 #include <avr/io.h>
 
-typedef enum {
-    CAN_MBOX0,
-    CAN_MBOX1,
-    CAN_MBOX2,
-    CAN_MBOX3,
-    CAN_MBOX4,
-    CAN_MBOX5,
-
-    // Must be last!
-    CAN_NUM_MBOX,
-} can_mailbox_t;
-
-// static int get_free_mailbox(void) {
-//     return 0;
-// }
-
-void can_init(baud_rate_t baud, bool enable_isr) {
+void can_init(baud_rate_t baud) {
     // Reset
-    CANGCON = 1 << SWRES;
+    can_reset();
 
     // Set baudrate
     // Values taken from data sheet table 20-2 based on 4MHz fclk_io
@@ -41,25 +26,59 @@ void can_init(baud_rate_t baud, bool enable_isr) {
     };
 
     // Clear all message objects
-    for (uint8_t mob = 0; mob < CAN_NUM_MBOX; mob++) {
-        CANPAGE = (mob << 4);
-        CANSTMOB = 0x00;
-        CANCDMOB = 0x00;
-    }
-
-    if (enable_isr) {
-        // Enables receive interrupts
-        CANGIE |= _BV(ENRX);
+    for (uint8_t mob = 0; mob < CAN_NUM_MOB; mob++) {
+        select_mob(mob);
+        mob_reset();
     }
 
     // Enable CAN
-    CANGCON = 1 << ENASTB;
+    can_enable();
+}
+
+void can_enable_interrupt(uint8_t mob) {
+    // General RX interrupt enable
+    CANGIE |= _BV(ENRX);
+
+    // Enable interrupt for the message object
+    mob_enable_interrupt(mob);
 }
 
 int can_send(can_frame_t* frame) {
+    select_mob(frame->mob);
+    mob_reset();
+
+    mob_configure(frame->id, 0, frame->dlc);
+
+    for (uint8_t i = 0; i < frame->dlc; i++) {
+        mob_write_data(frame->data[i]);
+    }
+
+    mob_enable_tx();
+
     return 0;
 }
 
-int can_receive(can_frame_t* frame, can_filter_t filter, bool is_blocking) {
+int can_receive(can_frame_t* frame, can_filter_t filter) {
+    select_mob(frame->mob);
+    mob_reset();
+
+    mob_configure(filter.id, filter.mask, MAX_DLC);
+
+    mob_enable_rx();
     return 0;
+}
+
+int can_poll_receive(can_frame_t* frame) {
+    uint8_t canstmob = CANSTMOB;
+
+    if (canstmob & (1 << RXOK)) {
+        return 0;
+    } else if (canstmob & ((1 << BERR) 
+                         | (1 << SERR)
+                         | (1 << CERR)
+                         | (1 << FERR))) {
+        return 1;
+    } else {
+        return -1;
+    }
 }
