@@ -13,15 +13,14 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
-# cc_library(
-#     name = "can_legacy",
-#     srcs = [
-#         "legacy/can.c",
-#     ],
-#     hdrs = [
-#         "legacy/can.h",
-#     ],
-#     visibility = ["//visibility:public"],
-#     deprecation = """This library is deprecated in favor of //libs/can:can and
-# should be transitioned.""",
-# )
+cc_library(
+    name = "can_legacy",
+    srcs = [
+        "legacy/can_api.c",
+    ],
+    hdrs = [
+        "legacy/can_api.h",
+    ],
+    visibility = ["//visibility:public"],
+    deprecation = "Please transition to the new library: //libs/can",
+)
