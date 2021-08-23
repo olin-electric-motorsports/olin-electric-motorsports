@@ -1,0 +1,25 @@
+package(default_visibility = ["//visibility:public"])
+
+platform(
+    name = "avr_common",
+    constraint_values = [
+        "//bazel/constraints:avr",
+        "@platforms//os:none",
+    ],
+)
+
+platform(
+    name = "atmega16m1_avr",
+    constraint_values = [
+        "//bazel/constraints:atmega16m1",
+    ],
+    parents = [":avr_common"],
+)
+
+platform(
+    name = "atmega328p_avr",
+    constraint_values = [
+        "//bazel/constraints:atmega328p",
+    ],
+    parents = [":avr_common"],
+)

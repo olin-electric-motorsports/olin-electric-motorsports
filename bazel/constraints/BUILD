@@ -1,0 +1,20 @@
+package(default_visibility = ["//visibility:public"])
+
+# CPUs
+constraint_value(
+    name = "avr",
+    constraint_setting = "@platforms//cpu",
+)
+
+# Microcontrollers
+constraint_setting(name = "mcu")
+
+constraint_value(
+    name = "atmega16m1",
+    constraint_setting = ":mcu",
+)
+
+constraint_value(
+    name = "atmega328p",
+    constraint_setting = ":mcu",
+)
