@@ -1,18 +1,28 @@
 name: lint
 
-on:
-  pull_request:
-    paths:
-    - '**/BUILD*'
-    - 'WORKSPACE'
-    - '**/*.bzl'
+on: [pull_request]
 
 jobs:
-  buildifier:
+  check_format:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
+    - name: Install buildifier
+      run: go get github.com/bazelbuild/buildtools/buildifier
+
     - name: Run buildifier
-      run: bazelisk run //:buildifier_check
+      run: buildifier --mode=check -r .
+
+    # Speed things up a bit
+    - name: Disable initramfs update
+      run: sudo sed -i 's/yes/no/g' /etc/initramfs-tools/update-initramfs.conf
+    - name: Disable man-db update
+      run: sudo rm -f /var/lib/man-db/auto-update
+
+    - name: Install clang-format
+      run: sudo apt install clang-format
+
+    - name: Run clang-format
+      run: ./scripts/clang-format.sh
