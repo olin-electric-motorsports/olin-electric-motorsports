@@ -50,7 +50,6 @@ void can_enable_interrupt(uint8_t mob);
  *
  * @returns
  *   0: No error
- *   1: Failed to send CAN message
  */
 int can_send(can_frame_t* frame);
 
@@ -63,10 +62,18 @@ int can_send(can_frame_t* frame);
  * @note Should be used with can_poll_receive to determine when msg is received
  *
  * @see can_poll_receive
+ *
+ * @returns
+ *   0: No error
  */
 int can_receive(can_frame_t* frame, can_filter_t filter);
 
 /*
  * Polls for a CAN message
+ *
+ * @returns
+ *   0: Message ready
+ *  -1: Message not ready
+ *   1: Message error
  */
 int can_poll_complete(can_frame_t* frame);
