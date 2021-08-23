@@ -15,8 +15,8 @@ then
         exit 0
     fi
 else
-    out=$(git-clang-format -f --diff --style file -q ./**/*)
-    if [ "$out" != "" ]
+    out=$(git-clang-format -f --diff --style file ./**/* -q)
+    if [ "$out" != "no modified files to format" ]
     then
         echo "Formatting errors"
         exit 1
