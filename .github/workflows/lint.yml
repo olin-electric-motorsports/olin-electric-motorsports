@@ -8,10 +8,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-go@v2
 
     - name: Install buildifier
-      run: go get github.com/bazelbuild/buildtools/buildifier
+      run: | 
+        curl -f -L -o /usr/bin/buildifier \
+          "https://github.com/bazelbuild/buildtools/releases/download/4.0.1/buildifier" \
+        && chmod +x /usr/bin/buildifier
 
     - name: Run buildifier
       run: buildifier --mode=check -r .
