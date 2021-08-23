@@ -11,12 +11,12 @@ jobs:
 
     - name: Install buildifier
       run: | 
-        curl -f -L -o /usr/bin/buildifier \
+        curl -f -L -o ./buildifier \
           "https://github.com/bazelbuild/buildtools/releases/download/4.0.1/buildifier" \
-        && chmod +x /usr/bin/buildifier
+        && chmod +x ./buildifier
 
     - name: Run buildifier
-      run: buildifier --mode=check -r .
+      run: ./buildifier --mode=check -r .
 
     # Speed things up a bit
     - name: Disable initramfs update
