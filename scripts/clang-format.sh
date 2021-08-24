@@ -15,7 +15,7 @@ fi
 
 if [ "$1" = "check" ]
 then
-    commit_id=$(git show-ref ${GITHUB_BASE_REF:-origin/main})
+    commit_id=$(git show-ref ${GITHUB_BASE_REF:-origin/main} | awk '{print $1}')
     out=$(git-clang-format -f --diff --commit $commit_id --style=file -q)
 
     if [ "$out" != "no modified files to format" ] && [ "$out" != "" ]
