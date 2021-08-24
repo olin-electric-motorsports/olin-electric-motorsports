@@ -28,4 +28,4 @@ jobs:
       run: sudo apt install clang-format
 
     - name: Run clang-format
-      run: ./scripts/clang-format.sh check
+      run: git fetch origin main && ./scripts/clang-format.sh check
