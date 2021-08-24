@@ -1,6 +1,6 @@
 name: lint
 
-on: [push,pull_request]
+on: [pull_request]
 
 jobs:
   check_format:
@@ -28,4 +28,4 @@ jobs:
       run: sudo apt install clang-format
 
     - name: Run clang-format
-      run: ./scripts/clang-format.sh
+      run: ./scripts/clang-format.sh check

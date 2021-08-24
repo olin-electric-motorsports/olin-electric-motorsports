@@ -7,18 +7,28 @@ then
     exit 1
 fi
 
-exec 2>&1
+if [ -z "$1" ]
+then
+    echo "No command specified. Use either \"reformat\" or \"check\""
+    exit 1
+fi
 
-if [ "$1" = "run" ]
+if [ "$1" = "check" ]
+then
+    commit_id=$(git show-ref ${GITHUB_BASE_REF:-origin/main})
+    out=$(git-clang-format -f --diff --commit $commit_id --style=file -q)
+
+    if [ "$out" != "no modified files to format" ] && [ "$out" != "" ]
+    then
+        echo "Formatting errors, run ./scripts/clang_format.sh reformat"
+        exit 1
+    fi
+
+    exit 0
+elif [ "$1" = "reformat" ]
 then
     git-clang-format -f --style=file --commit origin/main
 else
-    out=$(git-clang-format -f --diff --commit origin/main --style=file -q)
-    if [ "$out" != "no modified files to format" ]
-    then
-        echo "Formatting errors"
-        exit 1
-    fi
+    echo "Command not recognized. Use either \"reformat\" or \"check\""
+    exit 1
 fi
-
-exit 0
