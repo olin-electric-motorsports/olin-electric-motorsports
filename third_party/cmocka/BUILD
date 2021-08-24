@@ -1,16 +1,16 @@
-load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
-
-filegroup(
-    name = "all_srcs",
-    srcs = glob(["**"]),
-    visibility = ["//visibility:public"],
-)
-
-cmake(
+cc_library(
     name = "cmocka",
-    lib_source = ":all_srcs",
-    out_shared_libs = ["libcmocka.so.0"],
-    tags = ["manual"],
+    srcs = [
+        "src/cmocka.c",
+        "include/cmocka_private.h",
+    ],
+    hdrs = ["include/cmocka.h"],
+    includes = ["include"],
+    defines = [
+        "HAVE_SIGNAL_H",
+        "HAVE_STRINGS_H",
+    ],
+    strip_include_prefix = "include",
     target_compatible_with = [
         "@platforms//os:linux",
     ],
