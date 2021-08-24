@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 2
+Sheet 2 3
 Title ""
 Date ""
 Rev ""
@@ -1611,4 +1611,91 @@ Text Label 9800 1650 0    50   ~ 0
 ADC4
 Wire Wire Line
 	9800 1650 10250 1650
+Text Notes 8150 4050 0    50   ~ 0
+1/5
+Text Notes 8050 5500 0    50   ~ 0
+1/5
+Text Notes 10500 5550 0    50   ~ 0
+1/5
+Text Notes 10500 4100 0    50   ~ 0
+1/5
+$Comp
+L formula:D_Zener_2V D?
+U 1 1 61689171
+P 5500 5250
+F 0 "D?" V 5454 5329 50  0000 L CNN
+F 1 "D_Zener_2V" V 5545 5329 50  0000 L CNN
+F 2 "footprints:SOD-323" H 5400 5250 50  0001 C CNN
+F 3 "https://www.vishay.com/docs/83334/gdzg.pdf" H 5500 5350 50  0001 C CNN
+F 4 "Vishay" H 5700 5550 60  0001 C CNN "MFN"
+F 5 "GDZ2V0B-G3-08" H 5600 5450 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/vishay-general-semiconductor-diodes-division/GDZ2V0B-G3-08/4831605" H 5600 5450 60  0001 C CNN "PurchasingLink"
+	1    5500 5250
+	0    1    1    0   
+$EndComp
+$Comp
+L formula:R_10K R?
+U 1 1 6168A7D4
+P 5500 4850
+F 0 "R?" H 5570 4896 50  0000 L CNN
+F 1 "R_10K" H 5570 4805 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 5430 4850 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 5580 4850 50  0001 C CNN
+F 4 "DK" H 5500 4850 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 5500 4850 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 5500 4850 60  0001 C CNN "PurchasingLink"
+	1    5500 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:R_10K R?
+U 1 1 6168A9F3
+P 5500 4450
+F 0 "R?" H 5570 4496 50  0000 L CNN
+F 1 "R_10K" H 5570 4405 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 5430 4450 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 5580 4450 50  0001 C CNN
+F 4 "DK" H 5500 4450 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 5500 4450 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 5500 4450 60  0001 C CNN "PurchasingLink"
+	1    5500 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6168DE0E
+P 5500 5450
+F 0 "#PWR?" H 5500 5200 50  0001 C CNN
+F 1 "GND" H 5505 5277 50  0000 C CNN
+F 2 "" H 5500 5450 50  0001 C CNN
+F 3 "" H 5500 5450 50  0001 C CNN
+	1    5500 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5500 5450 5500 5400
+Wire Wire Line
+	5500 4700 5500 4650
+$Comp
+L power:VBUS #PWR?
+U 1 1 616966DB
+P 5500 4300
+F 0 "#PWR?" H 5500 4150 50  0001 C CNN
+F 1 "VBUS" H 5515 4473 50  0000 C CNN
+F 2 "" H 5500 4300 50  0001 C CNN
+F 3 "" H 5500 4300 50  0001 C CNN
+	1    5500 4300
+	1    0    0    -1  
+$EndComp
+Text Label 6400 4650 2    50   ~ 0
+Analog-MUX8
+Wire Wire Line
+	5500 5000 5500 5100
+Wire Wire Line
+	6400 4650 5500 4650
+Connection ~ 5500 4650
+Wire Wire Line
+	5500 4650 5500 4600
+Text Notes 4250 4750 0    50   ~ 0
+Vo = VBus - (Vbus - 2V)/2\n|Vbus = 3.3V -> Vo ~~2.65V\n|Vbus = 5V   -> Vo ~~3.5V
 $EndSCHEMATC
