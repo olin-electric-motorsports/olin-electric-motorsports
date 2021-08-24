@@ -1,9 +1,9 @@
+#include "examples/bazel_test/library.h"
+#include <cmocka.h>
+#include <setjmp.h>
 #include <stdarg.h>
 #include <stddef.h>
-#include <setjmp.h>
 #include <stdint.h>
-#include <cmocka.h>
-#include "examples/bazel_test/library.h"
 
 static void test_sum(void** state) {
     assert_int_equal(sum(1, 2), 3);
