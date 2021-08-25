@@ -12,7 +12,7 @@ typedef enum {
     CAN_NUM_MOB,
 } can_mob_t;
 
-#define can_reset() (CANGCON = 1 << SWRES)
+#define can_reset()  (CANGCON = 1 << SWRES)
 #define can_enable() (CANGCON = 1 << ENASTB)
 
 /*
@@ -25,21 +25,23 @@ typedef enum {
 /*
  * Clears MOb status and control register
  */
-#define mob_reset() do {\
-    CANSTMOB = 0x00; \
-    CANCDMOB = 0x00; } while (0);
+#define mob_reset()      \
+    do {                 \
+        CANSTMOB = 0x00; \
+        CANCDMOB = 0x00; \
+    } while (0);
 
 #define mob_configure(id, mask, dlc) \
-    do { \
-        CANIDT1 = id >> 3; \
-        CANIDT2 = id << 5; \
-        CANIDT3 = 0; \
-        CANIDT4 = 0; \
-        CANIDM1 = mask >> 3; \
-        CANIDM2 = mask << 5; \
-        CANIDM3 = 0; \
-        CANIDM4 = 0; \
-        CANCDMOB |= dlc << DLC0; \
+    do {                             \
+        CANIDT1 = id >> 3;           \
+        CANIDT2 = id << 5;           \
+        CANIDT3 = 0;                 \
+        CANIDT4 = 0;                 \
+        CANIDM1 = mask >> 3;         \
+        CANIDM2 = mask << 5;         \
+        CANIDM3 = 0;                 \
+        CANIDM4 = 0;                 \
+        CANCDMOB |= dlc << DLC0;     \
     } while (0);
 
 #define mob_write_data(data) (CANPAGE = data)

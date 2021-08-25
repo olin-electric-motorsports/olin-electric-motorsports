@@ -73,10 +73,8 @@ int can_poll_receive(can_frame_t* frame) {
 
     if (canstmob & (1 << RXOK)) {
         return 0;
-    } else if (canstmob & ((1 << BERR) 
-                         | (1 << SERR)
-                         | (1 << CERR)
-                         | (1 << FERR))) {
+    } else if (canstmob
+               & ((1 << BERR) | (1 << SERR) | (1 << CERR) | (1 << FERR))) {
         return 1;
     } else {
         return -1;

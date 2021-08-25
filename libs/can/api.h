@@ -2,8 +2,8 @@
  * Copyright 2021 Olin Electric Motorsports
  */
 #pragma once
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 typedef enum {
     BAUD_250KBPS,
@@ -14,7 +14,7 @@ typedef struct {
     uint16_t id;
     uint8_t dlc;
     uint8_t* data;
-    uint8_t mob;
+    uint8_t mob; // This can be unused for non AVR? or remove?
 } can_frame_t;
 
 typedef struct {

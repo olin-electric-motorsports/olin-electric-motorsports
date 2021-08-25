@@ -23,10 +23,22 @@ cc_library(
     ],
 )
 
+cc_test(
+    name = "utest",
+    srcs = ["test/utest.c"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":mock",
+    ],
+)
+
 cc_library(
     name = "mock",
     srcs = [
         "mock/can.c",
+    ],
+    hdrs = [
+        "mock/mock.h",
     ],
     target_compatible_with = [
         "@platforms//os:linux",
@@ -47,5 +59,8 @@ cc_library(
         "legacy/can_api.h",
     ],
     deprecation = "Please transition to the new library: //libs/can",
+    target_compatible_with = [
+        "//bazel/constraints:atmega16m1",
+    ],
     visibility = ["//visibility:public"],
 )
