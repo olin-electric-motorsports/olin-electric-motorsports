@@ -142,6 +142,27 @@ X P3 3 -250 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# formula_CONN_01x02
+#
+DEF formula_CONN_01x02 J 0 40 Y N 1 F N
+F0 "J" 0 100 50 H V C CNN
+F1 "formula_CONN_01x02" 0 -200 50 H V C CNN
+F2 "footprints:PinHeader_1x02_P2.54mm_Vertical" -100 0 50 H I C CNN
+F3 "" 0 100 50 H I C CNN
+F4 "DK" 100 200 50 H I C CNN "MFN"
+F5 "732-5315-ND" 200 300 50 H I C CNN "MPN"
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+S -50 -95 0 -105 1 1 6 N
+S -50 5 0 -5 1 1 6 N
+S -50 50 50 -150 1 1 10 f
+X Pin_1 1 -200 0 150 R 50 50 1 1 P
+X Pin_2 2 -200 -100 150 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # formula_C_0.1uF
 #
 DEF formula_C_0.1uF C 0 10 N Y 1 F N
@@ -152,6 +173,31 @@ F3 "http://datasheets.avx.com/X7RDielectric.pdf" 25 100 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
 F5 "478-3352-1-ND" 0 0 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" 0 0 60 H I C CNN "PurchasingLink"
+$FPLIST
+ C?
+ C_????_*
+ C_????
+ SMD*_c
+ Capacitor*
+$ENDFPLIST
+DRAW
+P 2 0 1 20 -80 -30 80 -30 N
+P 2 0 1 20 -80 30 80 30 N
+X ~ 1 0 150 110 D 50 50 1 1 P
+X ~ 2 0 -150 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_C_1000nF
+#
+DEF formula_C_1000nF C 0 10 N Y 1 F N
+F0 "C" 25 100 50 H V L CNN
+F1 "formula_C_1000nF" 25 -100 50 H V L CNN
+F2 "footprints:C_0603_1608Metric" 38 -150 50 H I C CNN
+F3 "http://www.samsungsem.com/kr/support/product-search/mlcc/CL10A475KQ8NNNC.jsp" 25 100 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "1276-1946-1-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10B105KP8NNNC/1276-1946-1-ND/3890032" 0 0 60 H I C CNN "PurchasingLink"
 $FPLIST
  C?
  C_????_*
@@ -460,6 +506,27 @@ X MISO 9 1700 650 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+# formula_F_500mA_16V
+#
+DEF formula_F_500mA_16V F 0 0 N Y 1 F N
+F0 "F" 80 0 50 V V C CNN
+F1 "formula_F_500mA_16V" -75 0 50 V V C CNN
+F2 "footprints:Fuse_1210" -70 0 50 V I C CNN
+F3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" 80 0 50 V I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "507-1786-1-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" 0 0 60 H I C CNN "PurchasingLink"
+$FPLIST
+ *Fuse*
+$ENDFPLIST
+DRAW
+S -30 -100 30 100 0 1 10 N
+P 2 0 1 0 0 100 0 -100 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # formula_LED_0805
 #
 DEF formula_LED_0805 D 0 40 N N 1 F N
@@ -714,6 +781,27 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# formula_R_0_2512
+#
+DEF formula_R_0_2512 R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_0_2512" -100 0 50 V V C CNN
+F2 "footprints:R_2512_OEM" -70 0 50 H I C CNN
+F3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "A121322CT-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" 0 0 60 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # formula_R_1.91K
 #
 DEF formula_R_1.91K R 0 0 N Y 1 F N
@@ -879,6 +967,48 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# formula_R_33.2k
+#
+DEF formula_R_33.2k R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_33.2k" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 500 50 H I C CNN
+F3 "" 80 0 50 H I C CNN
+F4 "TE" 0 600 50 H I C CNN "MFN"
+F5 "5-2176093-2" 0 500 50 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/5-2176093-2/4034157" 0 500 50 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_330
+#
+DEF formula_R_330 R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_330" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
+F3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "RMCF0805FT330RCT-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT330R/RMCF0805FT330RCT-ND/1942351" 0 0 60 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # formula_R_39K
 #
 DEF formula_R_39K R 0 0 N Y 1 F N
@@ -892,6 +1022,62 @@ F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/C
 $FPLIST
  R_*
  R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_49.90k
+#
+DEF formula_R_49.90k R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_49.90k" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 500 50 H I C CNN
+F3 "" 80 0 50 H I C CNN
+F4 "Panasonic" 0 600 50 H I C CNN "MFN"
+F5 "ERA-6AEB4992V" 0 500 50 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERA-6AEB4992V/2025816" 0 500 50 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_500
+#
+DEF formula_R_500 U 0 40 Y Y 1 F N
+F0 "U" 0 200 50 H V C CNN
+F1 "formula_R_500" 0 100 50 H V C CNN
+F2 "footprints:R_0805_OEM" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S 100 -40 -100 40 1 1 10 N
+X ~ 1 -150 0 50 R 50 50 1 1 P
+X ~ 2 150 0 50 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_8.06k
+#
+DEF formula_R_8.06k R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_8.06k" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 500 50 H I C CNN
+F3 "" 80 0 50 H I C CNN
+F4 "TE" 0 600 50 H I C CNN "MFN"
+F5 "RQ73C2A8K06BTD" 0 500 50 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/RQ73C2A8K06BTD/9480725" 0 500 50 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
 $ENDFPLIST
 DRAW
 S -40 -100 40 100 0 1 10 N
