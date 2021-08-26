@@ -1,3 +1,6 @@
+# This file is unused. It may be used in the future, but for now it is kept as a
+# reference.
+
 load(
     "@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
     "feature",
@@ -101,7 +104,7 @@ def create_linux_toolchain():
 
     linux_toolchain_config(
         name = "linux-toolchain-config",
-        toolchain_identifier = "linux-toolchain"
+        toolchain_identifier = "linux-toolchain",
     )
 
     native.cc_toolchain(
