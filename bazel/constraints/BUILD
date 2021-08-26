@@ -18,3 +18,26 @@ constraint_value(
     name = "atmega328p",
     constraint_setting = ":mcu",
 )
+
+# Runtime environment
+constraint_setting(name = "environment")
+
+constraint_value(
+    name = "test_sim",
+    constraint_setting = ":environment",
+)
+
+constraint_value(
+    name = "hitl",
+    constraint_setting = ":environment",
+)
+
+constraint_value(
+    name = "mkv",
+    constraint_setting = ":environment",
+)
+
+constraint_value(
+    name = "mkvi",
+    constraint_setting = ":environment",
+)

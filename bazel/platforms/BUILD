@@ -23,3 +23,10 @@ platform(
     ],
     parents = [":avr_common"],
 )
+
+platform(
+    name = "avr_test_sim",
+    constraint_values = [
+        "//bazel/constraints:test_sim",
+    ],
+)
