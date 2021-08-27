@@ -23,3 +23,20 @@ platform(
     ],
     parents = [":avr_common"],
 )
+
+platform(
+    name = "avr_test_sim",
+    constraint_values = [
+        "//bazel/constraints:test_sim",
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+    ],
+)
+
+platform(
+    name = "linux-x86_64",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+    ],
+)

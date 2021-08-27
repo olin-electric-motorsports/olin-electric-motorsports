@@ -1,6 +1,7 @@
 try-import %workspace%/user.bazelrc
 
 build --incompatible_enable_cc_toolchain_resolution
+build --incompatible_use_cc_configure_from_rules_cc
 
 # AVR target
 build:m16m1-avr --platforms=//bazel/platforms:atmega16m1_avr
@@ -8,3 +9,9 @@ build:16m1 --config=m16m1-avr
 
 build:m328p-avr --platforms=//bazel/platforms:atmega328p_avr
 build:328p --config=m328p-avr
+
+# Test target
+build:avr-test-sim --platforms=//bazel/platforms:avr_test_sim
+
+# Host target
+build:linux-x86_64 --platforms=//bazel/platforms:linux-x86_64

@@ -132,3 +132,12 @@ def AvrGetCommonFeatures(device_name, device_frequency):
         device = AvrDeviceFeature(device_name, device_frequency),
         type_name = "cc_all_common_feature_info",
     )
+
+def LinuxGetCommonFeatures():
+    return CcAllCommonFeaturesInfo(
+        all_warnings = _ALL_WARNINGS_FEATURE,
+        all_warnings_as_errors = _ALL_WARNINGS_AS_ERRORS_FEATURE,
+        dbg = _DEBUG_FEATURE,
+        opt = _OPT_FEATURE,
+        type_name = "cc_all_common_feature_info",
+    )
