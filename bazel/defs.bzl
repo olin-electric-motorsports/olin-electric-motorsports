@@ -236,6 +236,8 @@ _flash = rule(
 def cc_firmware(
         name,
         **kwargs):
+    inherited_deps = kwargs.pop("deps")
+
     # Generates .elf file
     native.cc_binary(
         name = "{}.elf".format(name),
@@ -247,7 +249,7 @@ def cc_firmware(
         deps = [
             "//scripts/ldscripts:atmega16m1.ld",
             # Add the ldscripts here too
-        ],
+        ] + inherited_deps,
         **kwargs
     )
 
