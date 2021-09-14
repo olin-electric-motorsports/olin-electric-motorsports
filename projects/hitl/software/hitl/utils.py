@@ -9,14 +9,12 @@ from typing import Tuple, Optional
 
 
 # Constant definitions
-root_path = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), os.pardir)
-)  # to software
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))  # to software
 artifacts_path = os.path.join(root_path, "artifacts")
 
 
 def get_logging_config() -> None:
-    """Get the logging config options from config.ini, and apply them
+    """Get the logging config options from ``config.ini``, and apply them.
 
     Look for ``artifacts/config.ini`` and check the logging section for config options. If they are found, apply them.
     If interpolation is required, interpolate. For example, if the line::
@@ -36,9 +34,7 @@ def get_logging_config() -> None:
         log_path = None
 
     if log_path:
-        log_path = log_path.replace(
-            "$DATETIME", datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-        )
+        log_path = log_path.replace("$DATETIME", datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"))
         log_path = log_path.replace("$LOGS", os.path.join(artifacts_path, "logs"))
 
     logging.basicConfig(
@@ -53,7 +49,14 @@ def get_logging_config() -> None:
 
 
 def find_arduino() -> Tuple[Optional[str], Optional[str]]:
-    """Use ``pyusb`` to find an arduino, if it is plugged in.
+    """DEPRECATED.
+
+    We no longer use this function in our setup script, but if you want, you can
+    un-comment the ``create_udev_rule()`` line in the setup script, which relies
+    on this function, to create a symbolic link at ``/dev/arduino`` that will
+    always redirect to an arduino that is plugged in.
+
+    Use ``pyusb`` to find an arduino, if it is plugged in.
 
     :rtype: Tuple[Optional[str], Optional[str]]
     :returns: (idProduct, idVendor). If no arduino found, return ``(None, None)``

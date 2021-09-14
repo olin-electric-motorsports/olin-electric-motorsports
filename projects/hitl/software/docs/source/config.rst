@@ -1,7 +1,7 @@
 Configuration
 =============
 
-After the repository is installed and setup, a ``config.ini`` file should exist with a default configuration. That said, you may want/need to configure this your own preferences/needs. The ``config.ini`` file has 3 sections, detailed below.
+After the repository is installed and setup, a ``config.ini`` file should exist with a default configuration. That said, you may want/need to configure this to your own preferences/needs. The ``config.ini`` file has 3 sections, detailed below.
 
 LOGGING
 ^^^^^^^
@@ -33,7 +33,7 @@ PATHS
 This section should be pretty self explanatory; these are the paths the project uses to look for files and devices. These paths should be consumed by the top-level testing object (for example, a ``RoadkillHarness``), and passed from there to the objects that need them (for example, an ``IOController``).
 
 pin_config:
-    The path the pin config file (relative to the ``artifacts`` directory). This file is documented in more detail on the ``IOController`` page. For example, if your pin config file is at ``artifacts/pin_info.csv``, use ``pin_info.csv`` (NOT ``~/AdvancedResearch/hardware_in_the_loop/software/artifacts/pin_info.csv``)
+    The path the pin config file (relative to the ``artifacts`` directory). This file is documented in more detail on the ``IOController`` page. For example, if your pin config file is at ``artifacts/pin_info.csv``, use ``pin_info.csv`` (NOT ``olin-electric-motorsporstsoftware/artifacts/pin_info.csv``)
 
 dbc_path
     The path your ``.dbc`` file. Like ``pin_config``, this is relative to the ``artifacts`` directory.

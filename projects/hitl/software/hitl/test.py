@@ -9,9 +9,7 @@ class Tester:
     def __init__(self):
         global kill_threads
         kill_threads = False
-        thread = threading.Thread(
-            target=self.thread, kwargs={"callback": self.callback}
-        )
+        thread = threading.Thread(target=self.thread, kwargs={"callback": self.callback})
         thread.start()
         time.sleep(5)
         kill_threads = True
