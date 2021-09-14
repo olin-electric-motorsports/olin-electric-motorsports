@@ -23,7 +23,7 @@ Welcome to the OlinHITL documentation!
 Introduction
 ============
 
-Welcome to the OlinHITL homepage! This project was built to enable Olin's Formula SAE team to perform hardware-in-the-loop testing on their car. It isn't quite a python library, and isn't quite a full-fledged application; it lives somewhere in between. If you plan on using this project to write tests, we recommend developing tests inside this projects' ``tests`` directory, but you by no means have to. As long as you follow the setup instructions on the setup page, you should be good to develop tests wherever.
+Welcome to the OlinHITL homepage! This project was built to enable Olin's Formula SAE team to perform hardware-in-the-loop testing on their car. It isn't quite a python library, and isn't quite a full-fledged application; it lives somewhere in between. If you plan on using this project to write tests, we recommend developing tests inside this projects' ``tests`` directory.
 
 Indices and tables
 ==================

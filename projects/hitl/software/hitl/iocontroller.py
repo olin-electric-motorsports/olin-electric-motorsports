@@ -90,10 +90,7 @@ class IOController:
         address = self.pin_info[name]["address"]
 
         if self.pin_info[name]["type"] == "ANALOG":
-            byte1 = (
-                DAC_COMMANDS["output_now"]
-                & DAC_CHANNEL_TO_ADD_BITS[self.pin_info[name]["pin"]]
-            )
+            byte1 = DAC_COMMANDS["output_now"] & DAC_CHANNEL_TO_ADD_BITS[self.pin_info[name]["pin"]]
             byte2, byte3 = self._map_to_machine(
                 value=value,
                 low=self.pin_info[name]["min"],
@@ -101,10 +98,7 @@ class IOController:
             )
             data = bytes([byte1, byte2, byte3])
         else:
-            byte1 = (
-                GPIO_COMMANDS["single port"]
-                & GPIO_CHANNEL_TO_ADD_BITS[self.pin.pin_info[name]["pin"]]
-            )
+            byte1 = GPIO_COMMANDS["single port"] & GPIO_CHANNEL_TO_ADD_BITS[self.pin.pin_info[name]["pin"]]
             byte2 = 1 if value else 0
             data = bytes([byte1, byte2])
 
@@ -165,15 +159,10 @@ class IOController:
             # Wait for response
             response = self.dev.i2cMaster_Read(address, ADC_RETURN_SIZE_BYTES)
             self.log.debug(f"Received {response}")
-            out = self._map_to_human(
-                response, self.pin_info[name]["min"], self.pin_info[name]["max"]
-            )
+            out = self._map_to_human(response, self.pin_info[name]["min"], self.pin_info[name]["max"])
         else:
             # Request data
-            data = (
-                GPIO_COMMANDS["single port"]
-                & GPIO_CHANNEL_TO_ADD_BITS[self.pin.pin_info[name]["pin"]]
-            )
+            data = GPIO_COMMANDS["single port"] & GPIO_CHANNEL_TO_ADD_BITS[self.pin.pin_info[name]["pin"]]
             self.dev.i2cMaster_Write(address, data)
 
             # Wait for response
@@ -189,7 +178,7 @@ class IOController:
 
         Args:
             path (str): The path to the .csv file containing pin information (see
-            `software readme <https://github.com/olin-electric-motorsports/AdvancedResearch/tree/main/hardware_in_the_loop/software>`_
+            `software readme <https://github.com/olin-electric-motorsports/olin-electric-motorsports/tree/main/projects/hitl/software>`_
 
         Returns:
             dict: A dictionary of (str: dict) pairs
@@ -212,13 +201,9 @@ class IOController:
 
                 # Check for typos
                 if int(address) > 127 or int(address) < 0:
-                    raise Exception(
-                        f"I2C address of {address} for signal {name} is invalid!"
-                    )
+                    raise Exception(f"I2C address of {address} for signal {name} is invalid!")
                 if type not in ["ANALOG", "DIGITAL"]:
-                    raise Exception(
-                        f"Type {type} of signal {name} is invalid! Please use ANALOG or DIGITAL"
-                    )
+                    raise Exception(f"Type {type} of signal {name} is invalid! Please use ANALOG or DIGITAL")
                 if read_write not in ["READ", "WRITE", "BOTH"]:
                     raise Exception(
                         f"Read/write value {read_write} of signal {name} is invalid! Please use READ, WRITE, or BOTH"
@@ -254,9 +239,7 @@ class IOController:
             Tuple[int, int]: the two int values (0-255) that represent the scaled value
         """
         if not (low < value < high):
-            raise Exception(
-                f"Value {value} not in range [{low}-{high}]! Cannot set value."
-            )
+            raise Exception(f"Value {value} not in range [{low}-{high}]! Cannot set value.")
         mapped = int((value - low) * (0xFFFF - 0x0000) / (high - low))
         byte0 = mapped >> 8
         byte1 = mapped & 0x00FF
@@ -279,9 +262,7 @@ class IOController:
         mapped = (response - 0x0000) * (high - low) / (0xFFFF - 0x0000) + low
 
         if not (low < mapped < high):
-            raise Exception(
-                f"Value {mapped} not in range [{low}-{high}]! Invalid response received."
-            )
+            raise Exception(f"Value {mapped} not in range [{low}-{high}]! Invalid response received.")
         if (value[0] & 0b10000000 == 0) and low > 0:
             raise Exception(
                 f"Return value from ADC of {value} indicates the voltage was negative. See https://www.analog.com/media/en/technical-documentation/data-sheets/2489fb.pdf for details."

@@ -14,11 +14,11 @@ from hitl.utils import find_arduino
 
 # Create udev rule
 def create_udev_rule():
-    """Create udev rules to create symbolic links to hardware
+    """DEPRECATED
+
+    Create udev rules to create symbolic links to hardware
 
     For now, only creates a single rule, for an arduino
-
-    TODO this will need to be updated when we build a HITL interface board
     """
     print("Creating udev rule...")
 
@@ -60,6 +60,5 @@ if __name__ == "__main__":
         raise Exception(
             "This script only works on Linux! For help with setup on another os, contact awenstrup@olin.edu"
         )
-
-    create_udev_rule()
+    # create_udev_rule()
     install_kernel_hitl()
