@@ -12,13 +12,13 @@ typedef enum {
     CAN_NUM_MOB,
 } can_mob_t;
 
-#define can_reset()  (CANGCON = 1 << SWRES)
-#define can_enable() (CANGCON = 1 << ENASTB)
+#define can_reset()  (CANGCON = (1 << SWRES))
+#define can_enable() (CANGCON |= (1 << ENASTB))
 
 /*
  * Sets the current MOb in the CANPAGE register
  */
-#define select_mob(mob) (CANPAGE = 1 << (uint8_t)mob)
+#define select_mob(mob) (CANPAGE = (mob << 4))
 
 #define mob_enable_interrupt(mob) (CANIE2 |= 1 << (uint8_t)mob)
 
@@ -44,7 +44,7 @@ typedef enum {
         CANCDMOB |= dlc << DLC0;     \
     } while (0);
 
-#define mob_write_data(data) (CANPAGE = data)
+#define mob_write_data(data) (CANMSG = data)
 
-#define mob_enable_tx() (CANCDMOB |= 0x02 << CONMOB0)
-#define mob_enable_rx() (CANCDMOB |= 0x01 << CONMOB0)
+#define mob_enable_tx() (CANCDMOB |= 0x01 << CONMOB0)
+#define mob_enable_rx() (CANCDMOB |= 0x02 << CONMOB0)

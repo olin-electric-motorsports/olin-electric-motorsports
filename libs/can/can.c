@@ -6,11 +6,9 @@
 #include <avr/io.h>
 
 void can_init(baud_rate_t baud) {
-    // Reset
     can_reset();
 
-    // Set baudrate
-    // Values taken from data sheet table 20-2 based on 4MHz fclk_io
+    // Baud rate settings taken from data sheet table 20-2 based on 4MHz fclk_io
     switch (baud) {
         case BAUD_250KBPS: {
             CANBT1 = 0x00;
@@ -31,7 +29,6 @@ void can_init(baud_rate_t baud) {
         mob_reset();
     }
 
-    // Enable CAN
     can_enable();
 }
 
@@ -49,6 +46,7 @@ int can_send(can_frame_t* frame) {
 
     mob_configure(frame->id, 0, frame->dlc);
 
+    // Set the message
     for (uint8_t i = 0; i < frame->dlc; i++) {
         mob_write_data(frame->data[i]);
     }

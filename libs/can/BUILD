@@ -1,3 +1,6 @@
+load("//bazel:defs.bzl", "cc_firmware")
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
 cc_library(
     name = "hdrs",
     hdrs = [
@@ -59,6 +62,18 @@ cc_library(
         "legacy/can_api.h",
     ],
     deprecation = "Please transition to the new library: //libs/can",
+    target_compatible_with = [
+        "//bazel/constraints:atmega16m1",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_firmware(
+    name = "app_test",
+    srcs = ["test/test_app.c"],
+    deps = [
+        "//libs/can",
+    ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
