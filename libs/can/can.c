@@ -61,20 +61,35 @@ int can_receive(can_frame_t* frame, can_filter_t filter) {
     mob_reset();
 
     mob_configure(filter.id, filter.mask, MAX_DLC);
+    CANIDM4 = (_BV(RTRMSK) | _BV(IDEMSK));
 
     mob_enable_rx();
     return 0;
 }
 
 int can_poll_receive(can_frame_t* frame) {
+    select_mob(frame->mob);
+
     uint8_t canstmob = CANSTMOB;
+    uint8_t cancdmob = CANCDMOB;
 
     if (canstmob & (1 << RXOK)) {
+        uint8_t dlc = 0xF & cancdmob;
+
+        for (uint8_t i = 0; i < dlc; i++) {
+            frame->data[i] = CANMSG;
+        }
+
+        frame->id = (CANIDT1 << 3) | (CANIDT2 >> 5);
+        frame->dlc = dlc;
+
         return 0;
     } else if (canstmob
                & ((1 << BERR) | (1 << SERR) | (1 << CERR) | (1 << FERR))) {
+        // TODO: Do we want more fine grain error handling?
         return 1;
     } else {
+        // Not ready
         return -1;
     }
 }

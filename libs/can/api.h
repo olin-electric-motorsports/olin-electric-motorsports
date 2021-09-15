@@ -76,4 +76,4 @@ int can_receive(can_frame_t* frame, can_filter_t filter);
  *  -1: Message not ready
  *   1: Message error
  */
-int can_poll_complete(can_frame_t* frame);
+int can_poll_receive(can_frame_t* frame);
