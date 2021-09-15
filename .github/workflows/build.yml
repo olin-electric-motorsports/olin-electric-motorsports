@@ -8,7 +8,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Cache bazel
       uses: actions/cache@v2
       env:
@@ -27,11 +26,11 @@ jobs:
       run: sudo apt install gcc-avr avr-libc binutils-avr
 
     - name: Build all host
-      run: bazelisk build //...
+      run: bazelisk build -c opt //...
     - name: Build all ATMega16m1
-      run: bazelisk build --config=m16m1-avr //...
+      run: bazelisk build --config=m16m1-avr -c opt //...
     - name: Build all ATMega328p
-      run: bazelisk build --config=m328p-avr //...
+      run: bazelisk build --config=m328p-avr -c opt //...
 
   test:
     needs: build

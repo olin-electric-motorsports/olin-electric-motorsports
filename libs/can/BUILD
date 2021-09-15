@@ -71,11 +71,11 @@ cc_library(
 cc_firmware(
     name = "app_test",
     srcs = ["test/test_app.c"],
-    deps = [
-        "//libs/can",
-    ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
     visibility = ["//visibility:public"],
+    deps = [
+        "//libs/can",
+    ],
 )
