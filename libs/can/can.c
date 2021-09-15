@@ -61,7 +61,6 @@ int can_receive(can_frame_t* frame, can_filter_t filter) {
     mob_reset();
 
     mob_configure(filter.id, filter.mask, MAX_DLC);
-    CANIDM4 = (_BV(RTRMSK) | _BV(IDEMSK));
 
     mob_enable_rx();
     return 0;
