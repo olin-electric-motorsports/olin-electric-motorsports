@@ -1,5 +1,6 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+load("@rules_cc//cc:defs.bzl", "cc_binary")
 
 def _eep_file_impl(ctx):
     # ctx.file contains a single File or None for dependency attributes whose
@@ -22,7 +23,7 @@ def _eep_file_impl(ctx):
     args.add("--set-section-flags=.eeprom=alloc,load")
 
     ctx.actions.run(
-        mnemonic = "GenerateHex",
+        mnemonic = "GenerateEEP",
         executable = cc_toolchain.objcopy_executable,
         arguments = [args],
         inputs = depset([input_file]),
@@ -147,7 +148,6 @@ _bin_file = rule(
         "_cc_toolchain": attr.label(
             default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
         ),
-
         # TODO: (@jack-greenberg) Integrate btldr
         # "_patch_header": attr.label(
         #     default = Label("//tools:patch_image_header"),
@@ -164,26 +164,28 @@ _bin_file = rule(
 def _flash_impl(ctx):
     template = """#!/bin/bash
 
-if [ -z $(SET_FUSES+x) ]; then
-FUSE_OP = w
+if [ ! -z ${{SET_FUSES+x}} ]; then
+    FUSE_OP=w
 else
-FUSE_OP = v
+    FUSE_OP=v
 fi
 
-_LFUSE=$(LFUSE:=0x65)
-_HFUSE=$(HFUSE:=0xD8)
-_EFUSE=$(EFUSE:=0xFE)
+_LFUSE=${{LFUSE:=0x65}}
+_HFUSE=${{HFUSE:=0xD8}}
+_EFUSE=${{EFUSE:=0xFE}}
 
-if [ -z $(DEBUG+x) ]; then
-printf "FUSE_OP: $(FUSE_OP)\\n"
-printf "  LFUSE: $(_LFUSE)\\n"
-printf "  HFUSE: $(_HFUSE)\\n"
-printf "  EFUSE: $(_EFUSE)\\n"
+if [ ! -z ${{DEBUG+x}} ]; then
+    printf "FUSE_OP: ${{FUSE_OP}}\\n"
+    printf "  LFUSE: ${{_LFUSE}}\\n"
+    printf "  HFUSE: ${{_HFUSE}}\\n"
+    printf "  EFUSE: ${{_EFUSE}}\\n"
 
-avrdude -v -P usb -p {part} \\
-        -U lfuse:$(FUSE_OP):$(_LFUSE):m \\
-        -U hfuse:$(FUSE_OP):$(_HFUSE):m \\
-        -U efuse:$(FUSE_OP):$(_EFUSE):m \\
+fi
+
+avrdude -v -P usb -p {part} -F \\
+        -U lfuse:${{FUSE_OP}}:${{_LFUSE}}:m \\
+        -U hfuse:${{FUSE_OP}}:${{_HFUSE}}:m \\
+        -U efuse:${{FUSE_OP}}:${{_EFUSE}}:m \\
         -U flash:w:{binary}:r \\
         $@
 """
@@ -204,7 +206,10 @@ avrdude -v -P usb -p {part} \\
     )
 
     return [
-        DefaultInfo(executable = script),
+        DefaultInfo(
+            executable = script,
+            runfiles = ctx.runfiles(files = [ctx.file.binary]),
+        ),
     ]
 
 _flash = rule(
@@ -233,23 +238,18 @@ _flash = rule(
 )
 
 # Macro to generate all the proper files
-def cc_firmware(
-        name,
-        **kwargs):
-    inherited_deps = kwargs.pop("deps")
-
+def cc_firmware(name, **kwargs):
     # Generates .elf file
-    native.cc_binary(
+    cc_binary(
         name = "{}.elf".format(name),
         linkopts = select({
             "//bazel/constraints:atmega16m1": ["-T $(location //scripts/ldscripts:atmega16m1.ld)"],
             # Add more ldscripts here
             "//conditions:default": [],
         }),
-        deps = [
+        additional_linker_inputs = [
             "//scripts/ldscripts:atmega16m1.ld",
-            # Add the ldscripts here too
-        ] + inherited_deps,
+        ],
         **kwargs
     )
 
@@ -293,7 +293,7 @@ def cc_firmware(
             "//conditions:default": "",
         }),
         part = select({
-            "//bazel/constraints:atmega16m1": "m16",
+            "//bazel/constraints:atmega16m1": "16m1",
             "//bazel/constraints:atmega328p": "m328p",
             "//conditions:default": "",
         }),

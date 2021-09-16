@@ -35,5 +35,6 @@ cc_firmware(
     ],
     deps = [
         ":example_library",
+        "//libs/can",
     ],
 )
