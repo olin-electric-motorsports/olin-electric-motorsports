@@ -1,0 +1,1458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/vscheyer/Desktop/Formula/MKV-Boards/Boards/BMS_Data_Acquisition/DA_Board_1/DA_Board_1.sch</source>
+    <date>Mon 11 Nov 2019 08:43:34 PM EST</date>
+    <tool>Eeschema 5.0.2-bee76a0~70~ubuntu16.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>BMS Sensing</title>
+        <company>Olin Electric Motorsports</company>
+        <rev/>
+        <date>2019-09-18</date>
+        <source>DA_Board_1.sch</source>
+        <comment number="1" value="Vienna Scheyer"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="F16">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F68FA8B</tstamp>
+    </comp>
+    <comp ref="RT133">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F696EB9</tstamp>
+    </comp>
+    <comp ref="RT132">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F696F77</tstamp>
+    </comp>
+    <comp ref="RT131">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F6973BA</tstamp>
+    </comp>
+    <comp ref="RT93">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F69749A</tstamp>
+    </comp>
+    <comp ref="RT92">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F69750E</tstamp>
+    </comp>
+    <comp ref="RT91">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F697580</tstamp>
+    </comp>
+    <comp ref="RT53">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F697FB1</tstamp>
+    </comp>
+    <comp ref="RT52">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D830BA4</tstamp>
+    </comp>
+    <comp ref="RT51">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D830C22</tstamp>
+    </comp>
+    <comp ref="RT13">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D830CA2</tstamp>
+    </comp>
+    <comp ref="RT12">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D83159E</tstamp>
+    </comp>
+    <comp ref="RT11">
+      <value>Thermistor</value>
+      <footprint>footprints:Thermistor</footprint>
+      <libsource lib="formula" part="Thermistor" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D83177F</tstamp>
+    </comp>
+    <comp ref="D16">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DB8765E</tstamp>
+    </comp>
+    <comp ref="R46">
+      <value>R_475</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_475" description="Resistor, 475, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DB87668</tstamp>
+    </comp>
+    <comp ref="Q16">
+      <value>BSS308PE</value>
+      <footprint>footprints:SOT-23-3_OEM</footprint>
+      <datasheet>https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <libsource lib="formula" part="BSS308PE" description="MOSFET, P-channel, 30V, 2A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DB876CE</tstamp>
+    </comp>
+    <comp ref="R16">
+      <value>R_3.3_25W_TO163</value>
+      <footprint>footprints:PWR163</footprint>
+      <datasheet>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_3.3_25W_TO163" description="RES SMD 3.3 OHM 1% 25W DPAK"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DB876ED</tstamp>
+    </comp>
+    <comp ref="D14">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBA4B5D</tstamp>
+    </comp>
+    <comp ref="R44">
+      <value>R_475</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_475" description="Resistor, 475, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBA4B67</tstamp>
+    </comp>
+    <comp ref="Q14">
+      <value>BSS308PE</value>
+      <footprint>footprints:SOT-23-3_OEM</footprint>
+      <datasheet>https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <libsource lib="formula" part="BSS308PE" description="MOSFET, P-channel, 30V, 2A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBA4B79</tstamp>
+    </comp>
+    <comp ref="R14">
+      <value>R_3.3_25W_TO163</value>
+      <footprint>footprints:PWR163</footprint>
+      <datasheet>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_3.3_25W_TO163" description="RES SMD 3.3 OHM 1% 25W DPAK"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBA4B84</tstamp>
+    </comp>
+    <comp ref="D12">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBA986D</tstamp>
+    </comp>
+    <comp ref="R42">
+      <value>R_475</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_475" description="Resistor, 475, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBA9877</tstamp>
+    </comp>
+    <comp ref="Q12">
+      <value>BSS308PE</value>
+      <footprint>footprints:SOT-23-3_OEM</footprint>
+      <datasheet>https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <libsource lib="formula" part="BSS308PE" description="MOSFET, P-channel, 30V, 2A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBA9889</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>R_3.3_25W_TO163</value>
+      <footprint>footprints:PWR163</footprint>
+      <datasheet>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_3.3_25W_TO163" description="RES SMD 3.3 OHM 1% 25W DPAK"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBA9894</tstamp>
+    </comp>
+    <comp ref="D10">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBB62B5</tstamp>
+    </comp>
+    <comp ref="R40">
+      <value>R_475</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_475" description="Resistor, 475, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBB62BF</tstamp>
+    </comp>
+    <comp ref="Q10">
+      <value>BSS308PE</value>
+      <footprint>footprints:SOT-23-3_OEM</footprint>
+      <datasheet>https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <libsource lib="formula" part="BSS308PE" description="MOSFET, P-channel, 30V, 2A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBB62D1</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>R_3.3_25W_TO163</value>
+      <footprint>footprints:PWR163</footprint>
+      <datasheet>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_3.3_25W_TO163" description="RES SMD 3.3 OHM 1% 25W DPAK"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBB62DC</tstamp>
+    </comp>
+    <comp ref="D8">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC775A</tstamp>
+    </comp>
+    <comp ref="R38">
+      <value>R_475</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_475" description="Resistor, 475, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC7764</tstamp>
+    </comp>
+    <comp ref="Q8">
+      <value>BSS308PE</value>
+      <footprint>footprints:SOT-23-3_OEM</footprint>
+      <datasheet>https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <libsource lib="formula" part="BSS308PE" description="MOSFET, P-channel, 30V, 2A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC7776</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>R_3.3_25W_TO163</value>
+      <footprint>footprints:PWR163</footprint>
+      <datasheet>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_3.3_25W_TO163" description="RES SMD 3.3 OHM 1% 25W DPAK"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC7781</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBDD431</tstamp>
+    </comp>
+    <comp ref="R36">
+      <value>R_475</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_475" description="Resistor, 475, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBDD43B</tstamp>
+    </comp>
+    <comp ref="Q6">
+      <value>BSS308PE</value>
+      <footprint>footprints:SOT-23-3_OEM</footprint>
+      <datasheet>https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <libsource lib="formula" part="BSS308PE" description="MOSFET, P-channel, 30V, 2A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBDD44D</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>R_3.3_25W_TO163</value>
+      <footprint>footprints:PWR163</footprint>
+      <datasheet>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_3.3_25W_TO163" description="RES SMD 3.3 OHM 1% 25W DPAK"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBDD458</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBF85E1</tstamp>
+    </comp>
+    <comp ref="R34">
+      <value>R_475</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_475" description="Resistor, 475, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBF85EB</tstamp>
+    </comp>
+    <comp ref="Q4">
+      <value>BSS308PE</value>
+      <footprint>footprints:SOT-23-3_OEM</footprint>
+      <datasheet>https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <libsource lib="formula" part="BSS308PE" description="MOSFET, P-channel, 30V, 2A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBF85FD</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>R_3.3_25W_TO163</value>
+      <footprint>footprints:PWR163</footprint>
+      <datasheet>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_3.3_25W_TO163" description="RES SMD 3.3 OHM 1% 25W DPAK"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBF8608</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC19E8A</tstamp>
+    </comp>
+    <comp ref="R32">
+      <value>R_475</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_475" description="Resistor, 475, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC19E94</tstamp>
+    </comp>
+    <comp ref="Q2">
+      <value>BSS308PE</value>
+      <footprint>footprints:SOT-23-3_OEM</footprint>
+      <datasheet>https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <libsource lib="formula" part="BSS308PE" description="MOSFET, P-channel, 30V, 2A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC19EA6</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>R_3.3_25W_TO163</value>
+      <footprint>footprints:PWR163</footprint>
+      <datasheet>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_3.3_25W_TO163" description="RES SMD 3.3 OHM 1% 25W DPAK"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC19EB1</tstamp>
+    </comp>
+    <comp ref="F14">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DFEDE3B</tstamp>
+    </comp>
+    <comp ref="F12">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E0144DB</tstamp>
+    </comp>
+    <comp ref="F10">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E03B065</tstamp>
+    </comp>
+    <comp ref="F8">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E062DFE</tstamp>
+    </comp>
+    <comp ref="F6">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E08B789</tstamp>
+    </comp>
+    <comp ref="F4">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E0B5E27</tstamp>
+    </comp>
+    <comp ref="F2">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E0DEF99</tstamp>
+    </comp>
+    <comp ref="F0">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E109BA2</tstamp>
+    </comp>
+    <comp ref="J3">
+      <value>MM_M_VT_12</value>
+      <footprint>footprints:micromatch_female_vert_12</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-2</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-2</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-2.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_12" description="Micro-MaTch connector 12 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E20BE7C</tstamp>
+    </comp>
+    <comp ref="J4">
+      <value>MM_M_VT_12</value>
+      <footprint>footprints:micromatch_female_vert_12</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-2</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-2</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-2.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_12" description="Micro-MaTch connector 12 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E20FB90</tstamp>
+    </comp>
+    <comp ref="J5">
+      <value>MM_M_VT_16</value>
+      <footprint>footprints:micromatch_female_vert_16</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-6</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-6</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-6.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_16" description="Micro-MaTch connector 16 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E21125C</tstamp>
+    </comp>
+    <comp ref="F+2">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E449070</tstamp>
+    </comp>
+    <comp ref="F-1">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E46FFB5</tstamp>
+    </comp>
+    <comp ref="F-2">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E4858A2</tstamp>
+    </comp>
+    <comp ref="F+1">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <libsource lib="formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E512653</tstamp>
+    </comp>
+    <comp ref="T16">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC215F</tstamp>
+    </comp>
+    <comp ref="T14">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC2478</tstamp>
+    </comp>
+    <comp ref="T12">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC293E</tstamp>
+    </comp>
+    <comp ref="T10">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC30ED</tstamp>
+    </comp>
+    <comp ref="T8">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC3413</tstamp>
+    </comp>
+    <comp ref="T6">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC38FD</tstamp>
+    </comp>
+    <comp ref="T4">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC3E1D</tstamp>
+    </comp>
+    <comp ref="T0">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC50F8</tstamp>
+    </comp>
+    <comp ref="T2">
+      <value>Tab_Connect_BMS</value>
+      <footprint>footprints:Tab_connect_BMS</footprint>
+      <libsource lib="formula" part="Tab_Connect_BMS" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBC56FE</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>MM_M_VT_12</value>
+      <footprint>footprints:micromatch_female_vert_12</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-2</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-2</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-2.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_12" description="Micro-MaTch connector 12 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBE8177</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>MM_M_VT_10</value>
+      <footprint>footprints:micromatch_female_vert_10</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-0</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-0</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-0.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_10" description="Micro-MaTch connector 10 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBE78A1</tstamp>
+    </comp>
+    <comp ref="J8">
+      <value>MM_M_VT_12</value>
+      <footprint>footprints:micromatch_female_vert_12</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-2</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-2</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-2.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_12" description="Micro-MaTch connector 12 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC0F961</tstamp>
+    </comp>
+    <comp ref="J7">
+      <value>MM_M_VT_12</value>
+      <footprint>footprints:micromatch_female_vert_12</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-2</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-2</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-2.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_12" description="Micro-MaTch connector 12 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC0F96B</tstamp>
+    </comp>
+    <comp ref="J6">
+      <value>MM_M_VT_10</value>
+      <footprint>footprints:micromatch_female_vert_10</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-0</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-0</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-0.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_10" description="Micro-MaTch connector 10 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC0F975</tstamp>
+    </comp>
+    <comp ref="J9">
+      <value>MM_M_VT_12</value>
+      <footprint>footprints:micromatch_female_vert_12</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-2</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-2</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-2.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_M_VT_12" description="Micro-MaTch connector 12 pin male vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC0F9AC</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="formula" part="200mA_Fuse">
+      <description>200mA Fuse</description>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">200mA_Fuse</field>
+        <field name="Footprint">footprints:Fuse_1812</field>
+        <field name="Datasheet">https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</field>
+        <field name="MPN">507-1767-1-ND </field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157</field>
+        <field name="MFN">DK</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="input"/>
+        <pin num="2" name="2" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="BSS308PE">
+      <description>MOSFET, P-channel, 30V, 2A</description>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BSS308PE</field>
+        <field name="Footprint">footprints:SOT-23-3_OEM</field>
+        <field name="Datasheet">https://www.infineon.com/dgdl/BSS308PE_Rev2.03.pdf?folderId=db3a304314dca38901154a72e3951a65&amp;fileId=db3a304330f686060131099c80400073</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">BSS308PEH6327XTSA1CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en/discrete-semiconductor-products/transistors-fets-mosfets-single/278?k=bss308pe&amp;k=&amp;pkeyword=bss308pe&amp;pv7=2&amp;pv1989=0&amp;sf=0&amp;quantity=&amp;ColumnSort=0&amp;page=1&amp;stock=1&amp;datasheet=1&amp;pageSize=25</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="LED_0805">
+      <description>LED, Green, 2.2V, 20mA, 0805</description>
+      <footprints>
+        <fp>LED*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED_0805</field>
+        <field name="Footprint">footprints:LED_0805_OEM</field>
+        <field name="Datasheet">http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MM_M_VT_10">
+      <description>Micro-MaTch connector 10 pin male vertical</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MM_M_VT_10</field>
+        <field name="Datasheet">http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-0</field>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-0</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-0.html</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MM_M_VT_12">
+      <description>Micro-MaTch connector 12 pin male vertical</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MM_M_VT_12</field>
+        <field name="Datasheet">http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-2</field>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-2</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-2.html</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MM_M_VT_16">
+      <description>Micro-MaTch connector 16 pin male vertical</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MM_M_VT_16</field>
+        <field name="Datasheet">http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-1-215464-6</field>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-215464-6</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-215464-6.html</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+        <pin num="13" name="13" type="BiDi"/>
+        <pin num="14" name="14" type="BiDi"/>
+        <pin num="15" name="15" type="BiDi"/>
+        <pin num="16" name="16" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_3.3_25W_TO163">
+      <description>RES SMD 3.3 OHM 1% 25W DPAK</description>
+      <docs>https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</docs>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_3.3_25W_TO163</field>
+        <field name="Footprint">footprints:PWR163</field>
+        <field name="Datasheet">https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">PWR163S-25-3R30F-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=PWR163S-25-3R30F-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="input"/>
+        <pin num="EP" name="~" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_475">
+      <description>Resistor, 475, 0.125W, 1%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_475</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-475CRCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=311-475CRCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="Tab_Connect_BMS">
+      <fields>
+        <field name="Reference">T</field>
+        <field name="Value">Tab_Connect_BMS</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="Thermistor">
+      <fields>
+        <field name="Reference">RT</field>
+        <field name="Value">Thermistor</field>
+        <field name="Footprint">Thermistor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="input"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="formula">
+      <uri>/home/vscheyer/Desktop/Formula/OEM_Preferred_Parts/schematic/formula.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/C7_T3">
+      <node ref="J7" pin="5"/>
+      <node ref="J4" pin="12"/>
+    </net>
+    <net code="2" name="/C13_T1">
+      <node ref="J3" pin="4"/>
+      <node ref="RT131" pin="1"/>
+    </net>
+    <net code="3" name="/C13">
+      <node ref="J3" pin="5"/>
+      <node ref="J8" pin="11"/>
+    </net>
+    <net code="4" name="/C11">
+      <node ref="J8" pin="7"/>
+      <node ref="J3" pin="6"/>
+    </net>
+    <net code="5" name="/C9_T3">
+      <node ref="RT93" pin="1"/>
+      <node ref="J3" pin="7"/>
+    </net>
+    <net code="6" name="/C9_T2">
+      <node ref="J3" pin="8"/>
+      <node ref="RT92" pin="1"/>
+    </net>
+    <net code="7" name="/C9_T1">
+      <node ref="RT91" pin="1"/>
+      <node ref="J3" pin="9"/>
+    </net>
+    <net code="8" name="/C15_T3">
+      <node ref="J4" pin="1"/>
+      <node ref="J6" pin="3"/>
+    </net>
+    <net code="9" name="/C12">
+      <node ref="J4" pin="10"/>
+      <node ref="F12" pin="2"/>
+    </net>
+    <net code="10" name="/C10">
+      <node ref="J4" pin="11"/>
+      <node ref="F10" pin="2"/>
+    </net>
+    <net code="11" name="/C13_T2">
+      <node ref="J3" pin="3"/>
+      <node ref="RT132" pin="1"/>
+    </net>
+    <net code="12" name="/C15_T2">
+      <node ref="J6" pin="4"/>
+      <node ref="J4" pin="2"/>
+    </net>
+    <net code="13" name="/C15_T1">
+      <node ref="J4" pin="3"/>
+      <node ref="J6" pin="5"/>
+    </net>
+    <net code="14" name="/C16">
+      <node ref="J4" pin="4"/>
+      <node ref="F16" pin="2"/>
+    </net>
+    <net code="15" name="/V+1">
+      <node ref="F+1" pin="2"/>
+      <node ref="J4" pin="5"/>
+    </net>
+    <net code="16" name="/C14">
+      <node ref="J4" pin="6"/>
+      <node ref="F14" pin="2"/>
+    </net>
+    <net code="17" name="/C11_T3">
+      <node ref="J8" pin="4"/>
+      <node ref="J4" pin="7"/>
+    </net>
+    <net code="18" name="/C11_T2">
+      <node ref="J4" pin="8"/>
+      <node ref="J8" pin="5"/>
+    </net>
+    <net code="19" name="/C11_T1">
+      <node ref="J4" pin="9"/>
+      <node ref="J8" pin="6"/>
+    </net>
+    <net code="20" name="/Q16">
+      <node ref="Q16" pin="1"/>
+      <node ref="J5" pin="1"/>
+    </net>
+    <net code="21" name="/C15">
+      <node ref="J3" pin="1"/>
+      <node ref="J6" pin="8"/>
+    </net>
+    <net code="22" name="/C9">
+      <node ref="J7" pin="12"/>
+      <node ref="J3" pin="10"/>
+    </net>
+    <net code="23" name="/C7">
+      <node ref="J3" pin="11"/>
+      <node ref="J7" pin="8"/>
+    </net>
+    <net code="24" name="/C5_T3">
+      <node ref="RT53" pin="1"/>
+      <node ref="J3" pin="12"/>
+    </net>
+    <net code="25" name="/C13_T3">
+      <node ref="RT133" pin="1"/>
+      <node ref="J3" pin="2"/>
+    </net>
+    <net code="26" name="/Q13">
+      <node ref="J5" pin="4"/>
+      <node ref="J6" pin="1"/>
+    </net>
+    <net code="27" name="/Q7">
+      <node ref="J5" pin="10"/>
+      <node ref="J7" pin="10"/>
+    </net>
+    <net code="28" name="/Q6">
+      <node ref="J5" pin="11"/>
+      <node ref="Q6" pin="1"/>
+    </net>
+    <net code="29" name="/Q5">
+      <node ref="J5" pin="12"/>
+      <node ref="J7" pin="3"/>
+    </net>
+    <net code="30" name="/Q4">
+      <node ref="Q4" pin="1"/>
+      <node ref="J5" pin="13"/>
+    </net>
+    <net code="31" name="/Q3">
+      <node ref="J9" pin="10"/>
+      <node ref="J5" pin="14"/>
+    </net>
+    <net code="32" name="/Q2">
+      <node ref="Q2" pin="1"/>
+      <node ref="J5" pin="15"/>
+    </net>
+    <net code="33" name="/Q1">
+      <node ref="J9" pin="3"/>
+      <node ref="J5" pin="16"/>
+    </net>
+    <net code="34" name="/Q15">
+      <node ref="J5" pin="2"/>
+      <node ref="J6" pin="9"/>
+    </net>
+    <net code="35" name="/Q14">
+      <node ref="J5" pin="3"/>
+      <node ref="Q14" pin="1"/>
+    </net>
+    <net code="36" name="/Q12">
+      <node ref="J5" pin="5"/>
+      <node ref="Q12" pin="1"/>
+    </net>
+    <net code="37" name="/Q11">
+      <node ref="J8" pin="9"/>
+      <node ref="J5" pin="6"/>
+    </net>
+    <net code="38" name="/Q10">
+      <node ref="Q10" pin="1"/>
+      <node ref="J5" pin="7"/>
+    </net>
+    <net code="39" name="/Q9">
+      <node ref="J5" pin="8"/>
+      <node ref="J8" pin="2"/>
+    </net>
+    <net code="40" name="/Q8">
+      <node ref="J5" pin="9"/>
+      <node ref="Q8" pin="1"/>
+    </net>
+    <net code="41" name="/PWR15">
+      <node ref="J6" pin="10"/>
+      <node ref="Q14" pin="2"/>
+      <node ref="T14" pin="1"/>
+      <node ref="F14" pin="1"/>
+    </net>
+    <net code="42" name="/PWR5">
+      <node ref="Q4" pin="2"/>
+      <node ref="T4" pin="1"/>
+      <node ref="F4" pin="1"/>
+      <node ref="J7" pin="2"/>
+    </net>
+    <net code="43" name="/PWR6">
+      <node ref="J7" pin="4"/>
+      <node ref="R6" pin="2"/>
+      <node ref="R36" pin="2"/>
+    </net>
+    <net code="44" name="/PWR7">
+      <node ref="F6" pin="1"/>
+      <node ref="T6" pin="1"/>
+      <node ref="Q6" pin="2"/>
+      <node ref="J7" pin="9"/>
+    </net>
+    <net code="45" name="/PWR14">
+      <node ref="R14" pin="2"/>
+      <node ref="R44" pin="2"/>
+      <node ref="J6" pin="2"/>
+    </net>
+    <net code="46" name="/PWR16">
+      <node ref="R16" pin="2"/>
+      <node ref="R46" pin="2"/>
+      <node ref="J6" pin="7"/>
+    </net>
+    <net code="47" name="/PWR4">
+      <node ref="R4" pin="2"/>
+      <node ref="R34" pin="2"/>
+      <node ref="J9" pin="11"/>
+    </net>
+    <net code="48" name="Net-(J7-Pad1)">
+      <node ref="J7" pin="1"/>
+    </net>
+    <net code="49" name="/C1_T1">
+      <node ref="J1" pin="7"/>
+      <node ref="RT11" pin="1"/>
+    </net>
+    <net code="50" name="/C1">
+      <node ref="J1" pin="8"/>
+      <node ref="J9" pin="1"/>
+    </net>
+    <net code="51" name="/C0">
+      <node ref="J1" pin="9"/>
+      <node ref="F0" pin="2"/>
+    </net>
+    <net code="52" name="/PWR9">
+      <node ref="J8" pin="1"/>
+      <node ref="F8" pin="1"/>
+      <node ref="F+1" pin="1"/>
+      <node ref="F-2" pin="1"/>
+      <node ref="T8" pin="1"/>
+      <node ref="Q8" pin="2"/>
+    </net>
+    <net code="53" name="/PWR12">
+      <node ref="R12" pin="2"/>
+      <node ref="R42" pin="2"/>
+      <node ref="J8" pin="10"/>
+    </net>
+    <net code="54" name="/PWR13">
+      <node ref="Q12" pin="2"/>
+      <node ref="F12" pin="1"/>
+      <node ref="T12" pin="1"/>
+      <node ref="J8" pin="12"/>
+    </net>
+    <net code="55" name="/PWR10">
+      <node ref="R40" pin="2"/>
+      <node ref="J8" pin="3"/>
+      <node ref="R10" pin="2"/>
+    </net>
+    <net code="56" name="/C1_T2">
+      <node ref="J1" pin="6"/>
+      <node ref="RT12" pin="1"/>
+    </net>
+    <net code="57" name="/PWR11">
+      <node ref="F10" pin="1"/>
+      <node ref="Q10" pin="2"/>
+      <node ref="T10" pin="1"/>
+      <node ref="J8" pin="8"/>
+    </net>
+    <net code="58" name="/PWR8">
+      <node ref="J7" pin="11"/>
+      <node ref="R8" pin="2"/>
+      <node ref="R38" pin="2"/>
+    </net>
+    <net code="59" name="/C3_T3">
+      <node ref="J2" pin="7"/>
+      <node ref="J9" pin="5"/>
+    </net>
+    <net code="60" name="/C7_T2">
+      <node ref="J7" pin="6"/>
+      <node ref="J2" pin="1"/>
+    </net>
+    <net code="61" name="/C4">
+      <node ref="F4" pin="2"/>
+      <node ref="J2" pin="10"/>
+    </net>
+    <net code="62" name="/C2">
+      <node ref="F2" pin="2"/>
+      <node ref="J2" pin="11"/>
+    </net>
+    <net code="63" name="/GND1">
+      <node ref="RT133" pin="2"/>
+      <node ref="RT53" pin="2"/>
+      <node ref="RT91" pin="2"/>
+      <node ref="RT92" pin="2"/>
+      <node ref="RT93" pin="2"/>
+      <node ref="RT131" pin="2"/>
+      <node ref="RT132" pin="2"/>
+      <node ref="RT13" pin="2"/>
+      <node ref="RT11" pin="2"/>
+      <node ref="RT52" pin="2"/>
+      <node ref="RT12" pin="2"/>
+      <node ref="RT51" pin="2"/>
+      <node ref="J2" pin="12"/>
+      <node ref="J6" pin="6"/>
+    </net>
+    <net code="64" name="/C7_T1">
+      <node ref="J2" pin="2"/>
+      <node ref="J7" pin="7"/>
+    </net>
+    <net code="65" name="/C8">
+      <node ref="J2" pin="3"/>
+      <node ref="F8" pin="2"/>
+    </net>
+    <net code="66" name="/V-1">
+      <node ref="J2" pin="4"/>
+      <node ref="F-1" pin="2"/>
+    </net>
+    <net code="67" name="/V+2">
+      <node ref="J2" pin="5"/>
+      <node ref="F+2" pin="2"/>
+    </net>
+    <net code="68" name="/C6">
+      <node ref="J2" pin="6"/>
+      <node ref="F6" pin="2"/>
+    </net>
+    <net code="69" name="/PWR1">
+      <node ref="F-1" pin="1"/>
+      <node ref="T0" pin="1"/>
+      <node ref="J9" pin="2"/>
+      <node ref="F0" pin="1"/>
+    </net>
+    <net code="70" name="/C3_T2">
+      <node ref="J9" pin="6"/>
+      <node ref="J2" pin="8"/>
+    </net>
+    <net code="71" name="/C3_T1">
+      <node ref="J2" pin="9"/>
+      <node ref="J9" pin="7"/>
+    </net>
+    <net code="72" name="/C5_T2">
+      <node ref="J1" pin="1"/>
+      <node ref="RT52" pin="1"/>
+    </net>
+    <net code="73" name="/V-2">
+      <node ref="F-2" pin="2"/>
+      <node ref="J1" pin="10"/>
+    </net>
+    <net code="74" name="/C5_T1">
+      <node ref="RT51" pin="1"/>
+      <node ref="J1" pin="2"/>
+    </net>
+    <net code="75" name="/C5">
+      <node ref="J1" pin="3"/>
+      <node ref="J9" pin="12"/>
+    </net>
+    <net code="76" name="/C3">
+      <node ref="J1" pin="4"/>
+      <node ref="J9" pin="8"/>
+    </net>
+    <net code="77" name="/C1_T3">
+      <node ref="RT13" pin="1"/>
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="78" name="Net-(D16-Pad2)">
+      <node ref="D16" pin="2"/>
+      <node ref="Q16" pin="3"/>
+      <node ref="R16" pin="1"/>
+    </net>
+    <net code="79" name="Net-(R16-PadEP)">
+      <node ref="R16" pin="EP"/>
+    </net>
+    <net code="80" name="Net-(R14-PadEP)">
+      <node ref="R14" pin="EP"/>
+    </net>
+    <net code="81" name="Net-(D14-Pad2)">
+      <node ref="D14" pin="2"/>
+      <node ref="Q14" pin="3"/>
+      <node ref="R14" pin="1"/>
+    </net>
+    <net code="82" name="Net-(D14-Pad1)">
+      <node ref="D14" pin="1"/>
+      <node ref="R44" pin="1"/>
+    </net>
+    <net code="83" name="Net-(D16-Pad1)">
+      <node ref="D16" pin="1"/>
+      <node ref="R46" pin="1"/>
+    </net>
+    <net code="84" name="Net-(F+2-Pad1)">
+      <node ref="Q16" pin="2"/>
+      <node ref="F+2" pin="1"/>
+      <node ref="F16" pin="1"/>
+      <node ref="T16" pin="1"/>
+    </net>
+    <net code="85" name="Net-(D12-Pad2)">
+      <node ref="D12" pin="2"/>
+      <node ref="R12" pin="1"/>
+      <node ref="Q12" pin="3"/>
+    </net>
+    <net code="86" name="Net-(R12-PadEP)">
+      <node ref="R12" pin="EP"/>
+    </net>
+    <net code="87" name="Net-(R10-PadEP)">
+      <node ref="R10" pin="EP"/>
+    </net>
+    <net code="88" name="Net-(D10-Pad1)">
+      <node ref="D10" pin="1"/>
+      <node ref="R40" pin="1"/>
+    </net>
+    <net code="89" name="Net-(D12-Pad1)">
+      <node ref="R42" pin="1"/>
+      <node ref="D12" pin="1"/>
+    </net>
+    <net code="90" name="Net-(D2-Pad2)">
+      <node ref="D2" pin="2"/>
+      <node ref="Q2" pin="3"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="91" name="/PWR3">
+      <node ref="Q2" pin="2"/>
+      <node ref="F2" pin="1"/>
+      <node ref="J9" pin="9"/>
+      <node ref="T2" pin="1"/>
+    </net>
+    <net code="92" name="/PWR2">
+      <node ref="R2" pin="2"/>
+      <node ref="R32" pin="2"/>
+      <node ref="J9" pin="4"/>
+    </net>
+    <net code="93" name="Net-(R2-PadEP)">
+      <node ref="R2" pin="EP"/>
+    </net>
+    <net code="94" name="Net-(D2-Pad1)">
+      <node ref="D2" pin="1"/>
+      <node ref="R32" pin="1"/>
+    </net>
+    <net code="95" name="Net-(D4-Pad2)">
+      <node ref="R4" pin="1"/>
+      <node ref="D4" pin="2"/>
+      <node ref="Q4" pin="3"/>
+    </net>
+    <net code="96" name="Net-(R4-PadEP)">
+      <node ref="R4" pin="EP"/>
+    </net>
+    <net code="97" name="Net-(D8-Pad1)">
+      <node ref="D8" pin="1"/>
+      <node ref="R38" pin="1"/>
+    </net>
+    <net code="98" name="Net-(D8-Pad2)">
+      <node ref="D8" pin="2"/>
+      <node ref="Q8" pin="3"/>
+      <node ref="R8" pin="1"/>
+    </net>
+    <net code="99" name="Net-(R8-PadEP)">
+      <node ref="R8" pin="EP"/>
+    </net>
+    <net code="100" name="Net-(D10-Pad2)">
+      <node ref="D10" pin="2"/>
+      <node ref="Q10" pin="3"/>
+      <node ref="R10" pin="1"/>
+    </net>
+    <net code="101" name="Net-(D4-Pad1)">
+      <node ref="R34" pin="1"/>
+      <node ref="D4" pin="1"/>
+    </net>
+    <net code="102" name="Net-(D6-Pad1)">
+      <node ref="R36" pin="1"/>
+      <node ref="D6" pin="1"/>
+    </net>
+    <net code="103" name="Net-(R6-PadEP)">
+      <node ref="R6" pin="EP"/>
+    </net>
+    <net code="104" name="Net-(D6-Pad2)">
+      <node ref="D6" pin="2"/>
+      <node ref="Q6" pin="3"/>
+      <node ref="R6" pin="1"/>
+    </net>
+  </nets>
+</export>

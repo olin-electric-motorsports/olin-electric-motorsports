@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/coreycl/Desktop/Formula/MKV-Boards/Boards/Accumulator_Interface/Internal/Internal_Acc_Interface.sch</source>
+    <date>Thu 23 Jan 2020 07:12:57 PM EST</date>
+    <tool>Eeschema 5.1.5-52549c5~84~ubuntu18.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>Internal_Acc_Interface.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J2">
+      <value>SS-126-G-2</value>
+      <footprint>footprints:26pos_screwsocket_.1in</footprint>
+      <datasheet>http://suddendocs.samtec.com/catalog_english/ss.pdf</datasheet>
+      <fields>
+        <field name="MFN">SAMTEC</field>
+        <field name="MPN">SS-126-G-2</field>
+        <field name="PurchasingLink">https://www.samtec.com/products/ss-126-g-2</field>
+      </fields>
+      <libsource lib="formula" part="SS-126-G-2" description=".1&quot; Single Row Socket Strip"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DEA511A</tstamp>
+    </comp>
+    <comp ref="J3">
+      <value>BBS-126-G-A</value>
+      <footprint>footprints:26pos_screwsocket_.1in</footprint>
+      <datasheet>http://suddendocs.samtec.com/catalog_english/bbs.pdf</datasheet>
+      <fields>
+        <field name="MFN">SAMTEC</field>
+        <field name="MPN">BBS-126-G-A</field>
+        <field name="PurchasingLink">https://www.samtec.com/products/bbs-126-g-a</field>
+      </fields>
+      <libsource lib="formula" part="BBS-126-G-A" description=".1&quot; Single Row Terminal Strip"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DEA59DD</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>MM_F_VT_14</value>
+      <footprint>footprints:micromatch_female_vert_14</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-338068-4</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-338068-4</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-338068-4.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_F_VT_14" description="Micro-MaTch connector 14 pin female vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1EB3D3</tstamp>
+    </comp>
+    <comp ref="J4">
+      <value>MM_F_VT_16</value>
+      <footprint>footprints:micromatch_female_vert_16</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-338068-6</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-338068-6</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-338068-6.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_F_VT_16" description="Micro-MaTch connector 16 pin female vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1F7DD3</tstamp>
+    </comp>
+    <comp ref="J5">
+      <value>MicroFit_VT_4</value>
+      <footprint>footprints:MicroFit_VT_4</footprint>
+      <libsource lib="formula" part="MicroFit_VT_4" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1FD8B5</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>MicroFit_VT_6</value>
+      <footprint>footprints:MicroFit_VT_6</footprint>
+      <libsource lib="formula" part="MicroFit_VT_6" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E1FDFE4</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="formula" part="BBS-126-G-A">
+      <description>.1" Single Row Terminal Strip</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">BBS-126-G-A</field>
+        <field name="Datasheet">http://suddendocs.samtec.com/catalog_english/bbs.pdf</field>
+        <field name="MFN">SAMTEC</field>
+        <field name="MPN">BBS-126-G-A</field>
+        <field name="PurchasingLink">https://www.samtec.com/products/bbs-126-g-a</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+        <pin num="13" name="13" type="BiDi"/>
+        <pin num="14" name="14" type="BiDi"/>
+        <pin num="15" name="15" type="BiDi"/>
+        <pin num="16" name="16" type="BiDi"/>
+        <pin num="17" name="17" type="BiDi"/>
+        <pin num="18" name="18" type="BiDi"/>
+        <pin num="19" name="19" type="BiDi"/>
+        <pin num="20" name="20" type="BiDi"/>
+        <pin num="21" name="21" type="BiDi"/>
+        <pin num="22" name="22" type="BiDi"/>
+        <pin num="23" name="23" type="BiDi"/>
+        <pin num="24" name="24" type="BiDi"/>
+        <pin num="25" name="25" type="BiDi"/>
+        <pin num="26" name="26" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MM_F_VT_14">
+      <description>Micro-MaTch connector 14 pin female vertical</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MM_F_VT_14</field>
+        <field name="Footprint">footprints:micromatch_female_vert_14</field>
+        <field name="Datasheet">http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-338068-4</field>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-338068-4</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-338068-4.html</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+        <pin num="13" name="13" type="BiDi"/>
+        <pin num="14" name="14" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MM_F_VT_16">
+      <description>Micro-MaTch connector 16 pin female vertical</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MM_F_VT_16</field>
+        <field name="Footprint">footprints:micromatch_female_vert_16</field>
+        <field name="Datasheet">http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Customer+Drawing%7F338068%7FF1%7Fpdf%7FEnglish%7FENG_CD_338068_F1.pdf%7F1-338068-6</field>
+        <field name="MFN">TE</field>
+        <field name="MPN">1-338068-6</field>
+        <field name="PurchasingLink">http://www.te.com/global-en/product-1-338068-6.html</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+        <pin num="13" name="13" type="BiDi"/>
+        <pin num="14" name="14" type="BiDi"/>
+        <pin num="15" name="15" type="BiDi"/>
+        <pin num="16" name="16" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MicroFit_VT_4">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MicroFit_VT_4</field>
+        <field name="Footprint">footprints:MicroFit_VT_4</field>
+        <field name="MPN">430450414</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="input"/>
+        <pin num="3" name="~" type="input"/>
+        <pin num="4" name="~" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MicroFit_VT_6">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MicroFit_VT_6</field>
+        <field name="Footprint">footprints:MicroFit_VT_6</field>
+        <field name="MPN">0430450614</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/molex/0430450614/WM1797-ND/252510</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="input"/>
+        <pin num="3" name="~" type="input"/>
+        <pin num="4" name="~" type="input"/>
+        <pin num="5" name="~" type="input"/>
+        <pin num="6" name="~" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="SS-126-G-2">
+      <description>.1" Single Row Socket Strip</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">SS-126-G-2</field>
+        <field name="Datasheet">http://suddendocs.samtec.com/catalog_english/ss.pdf</field>
+        <field name="MFN">SAMTEC</field>
+        <field name="MPN">SS-126-G-2</field>
+        <field name="PurchasingLink">https://www.samtec.com/products/ss-126-g-2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+        <pin num="13" name="13" type="BiDi"/>
+        <pin num="14" name="14" type="BiDi"/>
+        <pin num="15" name="15" type="BiDi"/>
+        <pin num="16" name="16" type="BiDi"/>
+        <pin num="17" name="17" type="BiDi"/>
+        <pin num="18" name="18" type="BiDi"/>
+        <pin num="19" name="19" type="BiDi"/>
+        <pin num="20" name="20" type="BiDi"/>
+        <pin num="21" name="21" type="BiDi"/>
+        <pin num="22" name="22" type="BiDi"/>
+        <pin num="23" name="23" type="BiDi"/>
+        <pin num="24" name="24" type="BiDi"/>
+        <pin num="25" name="25" type="BiDi"/>
+        <pin num="26" name="26" type="BiDi"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="formula">
+      <uri>/home/coreycl/Desktop/Formula/OEM_Preferred_Parts/schematic/formula.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/5V_AIRC">
+      <node ref="J4" pin="10"/>
+      <node ref="J3" pin="8"/>
+    </net>
+    <net code="2" name="/MISO_AIRC">
+      <node ref="J4" pin="11"/>
+      <node ref="J3" pin="9"/>
+    </net>
+    <net code="3" name="/MOSI_AIRC">
+      <node ref="J3" pin="10"/>
+      <node ref="J4" pin="12"/>
+    </net>
+    <net code="4" name="/SCK_AIRC">
+      <node ref="J4" pin="13"/>
+      <node ref="J3" pin="11"/>
+    </net>
+    <net code="5" name="/RESET_AIRC">
+      <node ref="J4" pin="14"/>
+      <node ref="J3" pin="12"/>
+    </net>
+    <net code="6" name="/LED_O_AIRC">
+      <node ref="J3" pin="13"/>
+      <node ref="J4" pin="15"/>
+    </net>
+    <net code="7" name="/LED_G_AIRC">
+      <node ref="J4" pin="16"/>
+      <node ref="J3" pin="14"/>
+    </net>
+    <net code="8" name="/BSDP-Current-Sense">
+      <node ref="J1" pin="14"/>
+      <node ref="J2" pin="12"/>
+    </net>
+    <net code="9" name="/ChargeEnable1">
+      <node ref="J1" pin="11"/>
+      <node ref="J2" pin="7"/>
+    </net>
+    <net code="10" name="/FAN-PWM">
+      <node ref="J1" pin="12"/>
+      <node ref="J2" pin="8"/>
+    </net>
+    <net code="11" name="/ChargeEnable2">
+      <node ref="J1" pin="13"/>
+      <node ref="J2" pin="10"/>
+    </net>
+    <net code="12" name="/5V_BMS">
+      <node ref="J3" pin="1"/>
+      <node ref="J4" pin="3"/>
+    </net>
+    <net code="13" name="/TSAL-Red-Pos">
+      <node ref="J2" pin="3"/>
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="14" name="/TSAL-Green-Pos">
+      <node ref="J1" pin="7"/>
+      <node ref="J2" pin="4"/>
+      <node ref="J1" pin="6"/>
+    </net>
+    <net code="15" name="/TSAL-Red-Neg">
+      <node ref="J1" pin="8"/>
+      <node ref="J2" pin="5"/>
+    </net>
+    <net code="16" name="/TSAL-Green-Neg">
+      <node ref="J2" pin="6"/>
+      <node ref="J1" pin="10"/>
+      <node ref="J1" pin="9"/>
+    </net>
+    <net code="17" name="/CAN-H">
+      <node ref="J5" pin="3"/>
+      <node ref="J1" pin="3"/>
+      <node ref="J2" pin="1"/>
+    </net>
+    <net code="18" name="/MISO_BMS">
+      <node ref="J4" pin="4"/>
+      <node ref="J3" pin="2"/>
+    </net>
+    <net code="19" name="/MOSI_BMS">
+      <node ref="J3" pin="3"/>
+      <node ref="J4" pin="5"/>
+    </net>
+    <net code="20" name="/SCK_BMS">
+      <node ref="J4" pin="6"/>
+      <node ref="J3" pin="4"/>
+    </net>
+    <net code="21" name="/RESET_BMS">
+      <node ref="J4" pin="7"/>
+      <node ref="J3" pin="5"/>
+    </net>
+    <net code="22" name="/LED_O_BMS">
+      <node ref="J4" pin="8"/>
+      <node ref="J3" pin="6"/>
+    </net>
+    <net code="23" name="/LED_G_BMS">
+      <node ref="J3" pin="7"/>
+      <node ref="J4" pin="9"/>
+    </net>
+    <net code="24" name="/12V">
+      <node ref="J2" pin="21"/>
+      <node ref="J1" pin="2"/>
+      <node ref="U1" pin="2"/>
+      <node ref="J5" pin="2"/>
+    </net>
+    <net code="25" name="/CAN-L">
+      <node ref="J2" pin="2"/>
+      <node ref="J1" pin="4"/>
+      <node ref="J5" pin="4"/>
+    </net>
+    <net code="26" name="/HVD-&gt;HVD-Connector">
+      <node ref="U1" pin="3"/>
+      <node ref="J2" pin="13"/>
+    </net>
+    <net code="27" name="/TSMS-&gt;FinalShutdown">
+      <node ref="J2" pin="11"/>
+      <node ref="U1" pin="4"/>
+    </net>
+    <net code="28" name="/IMD-&gt;TSMS">
+      <node ref="U1" pin="5"/>
+      <node ref="J2" pin="9"/>
+    </net>
+    <net code="29" name="Net-(U1-Pad6)">
+      <node ref="U1" pin="6"/>
+    </net>
+    <net code="30" name="/GND">
+      <node ref="J3" pin="19"/>
+      <node ref="J3" pin="20"/>
+      <node ref="J3" pin="18"/>
+      <node ref="J3" pin="17"/>
+      <node ref="J3" pin="16"/>
+      <node ref="J1" pin="1"/>
+      <node ref="J5" pin="1"/>
+      <node ref="U1" pin="1"/>
+      <node ref="J4" pin="2"/>
+      <node ref="J4" pin="1"/>
+      <node ref="J3" pin="15"/>
+      <node ref="J2" pin="20"/>
+      <node ref="J2" pin="19"/>
+      <node ref="J2" pin="18"/>
+      <node ref="J2" pin="17"/>
+      <node ref="J2" pin="14"/>
+      <node ref="J2" pin="15"/>
+      <node ref="J2" pin="16"/>
+    </net>
+    <net code="31" name="Net-(J3-Pad21)">
+      <node ref="J3" pin="21"/>
+    </net>
+    <net code="32" name="Net-(J3-Pad22)">
+      <node ref="J3" pin="22"/>
+    </net>
+    <net code="33" name="Net-(J3-Pad23)">
+      <node ref="J3" pin="23"/>
+    </net>
+    <net code="34" name="Net-(J3-Pad24)">
+      <node ref="J3" pin="24"/>
+    </net>
+    <net code="35" name="Net-(J3-Pad25)">
+      <node ref="J3" pin="25"/>
+    </net>
+    <net code="36" name="Net-(J2-Pad22)">
+      <node ref="J2" pin="22"/>
+    </net>
+    <net code="37" name="Net-(J2-Pad23)">
+      <node ref="J2" pin="23"/>
+    </net>
+    <net code="38" name="Net-(J2-Pad24)">
+      <node ref="J2" pin="24"/>
+    </net>
+    <net code="39" name="Net-(J2-Pad25)">
+      <node ref="J2" pin="25"/>
+    </net>
+    <net code="40" name="Net-(J2-Pad26)">
+      <node ref="J2" pin="26"/>
+    </net>
+    <net code="41" name="Net-(J3-Pad26)">
+      <node ref="J3" pin="26"/>
+    </net>
+  </nets>
+</export>

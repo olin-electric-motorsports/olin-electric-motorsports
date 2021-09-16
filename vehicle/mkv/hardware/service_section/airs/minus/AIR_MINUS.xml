@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/isabella/Documents/Formula/MKV-Boards/Boards/AIR_Mount/AIR_MINUS/AIR_MINUS.sch</source>
+    <date>Thu 23 Jan 2020 07:12:58 PM EST</date>
+    <tool>Eeschema 5.1.4-e60b266~84~ubuntu18.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>AIR_MINUS.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="K1">
+      <value>LI12-1A85(NO)</value>
+      <footprint>footprints:Meder-LI12</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Meder%20PDFs/LI12-1A85_Spec.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">374-1110-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/LI12-1A85/374-1110-ND/655844</field>
+      </fields>
+      <libsource lib="Formula" part="LI12-1A85(NO)" description="Relay, SPST-NO, Switch 10A/30V, Coil 40mA/5V"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DAE5E76</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>SS110LW</value>
+      <footprint>footprints:D_SOD-123W_OEM</footprint>
+      <datasheet>http://www.taiwansemi.com/products/datasheet/SS14LW%20SERIES_A1511.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">SS110LWRVGCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/taiwan-semiconductor-corporation/SS110LW-RVG/SS110LWRVGCT-ND/7359346</field>
+      </fields>
+      <libsource lib="Formula" part="SS110LW" description="DIODE SCHOTTKY 100V 1A SOD123W"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DAE7FAE</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>R_3K_HS</value>
+      <footprint>footprints:R_3k_HS_TO247</footprint>
+      <datasheet>http://dpk3n3gg92jwt.cloudfront.net/domains/ohmite/pdf/acl_ap101.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">AP1013KJ-ND</field>
+        <field name="MPN2">345-1223-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/ohmite/AP101-3K-J/AP101-3K-J-ND/5878525</field>
+        <field name="PurchasingLink2">https://www.digikey.com/product-detail/en/wakefield-vette/657-15ABPEN/345-1223-ND/3945700</field>
+      </fields>
+      <libsource lib="Formula" part="R_3K_HS" description="Resistor, 3K, 100W with heat sink, 5%, TO-247-2"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DAEBB45</tstamp>
+    </comp>
+    <comp ref="F1">
+      <value>200mA_Fuse</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">507-1767-1-ND </field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157</field>
+      </fields>
+      <libsource lib="Formula" part="200mA_Fuse" description="200mA Fuse"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DAFEE05</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>UF_4_VT</value>
+      <footprint>footprints:Ultrafit_4</footprint>
+      <datasheet>http://www.literature.molex.com/SQLImages/kelmscott/Molex/PDF_Images/987651-1008.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">WM11574-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=WM11574-ND</field>
+      </fields>
+      <libsource lib="Formula" part="UF_4_VT" description="Ultra-Fit connector 4 pin vertical"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DB02E97</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="Formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DC4D26F</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>MicroFit_RA_06</value>
+      <footprint>footprints:MicroFit_RA_06</footprint>
+      <datasheet>https://www.molex.com/pdm_docs/sd/430450601_sd.pdf</datasheet>
+      <fields>
+        <field name="MFN">Molex</field>
+        <field name="MPN">WM4037-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/molex/0430450601/WM4037-ND/2421555</field>
+      </fields>
+      <libsource lib="Formula" part="MicroFit_RA_06" description="Micro-MaTch connector 6 pin female right angle"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DB019DF</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>MicroFit_VT_6</value>
+      <footprint>footprints:MicroFit_VT_6</footprint>
+      <libsource lib="Formula" part="MicroFit_VT_6" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DF2D88E</tstamp>
+    </comp>
+    <comp ref="J3">
+      <value>MicroFit_RA_4</value>
+      <footprint>footprints:MicroFit_RA_4</footprint>
+      <libsource lib="Formula" part="MicroFit_RA_4" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DF102AC</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>HO_60_250-p0100</value>
+      <footprint>footprints:HO_60_250-p0100</footprint>
+      <libsource lib="Formula" part="HO_60_250-p0100" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E139A02</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Formula" part="200mA_Fuse">
+      <description>200mA Fuse</description>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">200mA_Fuse</field>
+        <field name="Footprint">footprints:Fuse_1812</field>
+        <field name="Datasheet">https://www.belfuse.com/resources/CircuitProtection/datasheets/0ZCG%20Nov2016.pdf</field>
+        <field name="MPN">507-1767-1-ND </field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157</field>
+        <field name="MFN">DK</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="input"/>
+        <pin num="2" name="2" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="HO_60_250-p0100">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">HO_60_250-p0100</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="LI12-1A85(NO)">
+      <description>Relay, SPST-NO, Switch 10A/30V, Coil 40mA/5V</description>
+      <footprints>
+        <fp>Relay?SPDT?OMRON?G5Q*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">K</field>
+        <field name="Value">LI12-1A85(NO)</field>
+        <field name="Footprint">footprints:Meder-LI12</field>
+        <field name="Datasheet">https://media.digikey.com/pdf/Data%20Sheets/Meder%20PDFs/LI12-1A85_Spec.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">374-1110-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/LI12-1A85/374-1110-ND/655844</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+        <pin num="4" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="MicroFit_RA_06">
+      <description>Micro-MaTch connector 6 pin female right angle</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MicroFit_RA_06</field>
+        <field name="Footprint">footprints:MicroFit_RA_6</field>
+        <field name="Datasheet">https://www.molex.com/pdm_docs/sd/430450601_sd.pdf</field>
+        <field name="MFN">Molex</field>
+        <field name="MPN">WM4037-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/molex/0430450601/WM4037-ND/2421555</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="MicroFit_RA_4">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MicroFit_RA_4</field>
+        <field name="Footprint">footprints:MicroFit_RA_4</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="input"/>
+        <pin num="3" name="~" type="input"/>
+        <pin num="4" name="~" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="MicroFit_VT_6">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MicroFit_VT_6</field>
+        <field name="Footprint">footprints:MicroFit_VT_6</field>
+        <field name="MPN">0430450614</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/molex/0430450614/WM1797-ND/252510</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="input"/>
+        <pin num="3" name="~" type="input"/>
+        <pin num="4" name="~" type="input"/>
+        <pin num="5" name="~" type="input"/>
+        <pin num="6" name="~" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="R_10K">
+      <description>Resistor, 10K, 0.25W, 1%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_10K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">http://www.bourns.com/data/global/pdfs/CRS.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="R_3K_HS">
+      <description>Resistor, 3K, 100W with heat sink, 5%, TO-247-2</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_3K_HS</field>
+        <field name="Footprint">footprints:R_3k_HS_TO247</field>
+        <field name="Datasheet">http://dpk3n3gg92jwt.cloudfront.net/domains/ohmite/pdf/acl_ap101.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">AP1013KJ-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/ohmite/AP101-3K-J/AP101-3K-J-ND/5878525</field>
+        <field name="MPN2">345-1223-ND</field>
+        <field name="PurchasingLink2">https://www.digikey.com/product-detail/en/wakefield-vette/657-15ABPEN/345-1223-ND/3945700</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="SS110LW">
+      <description>DIODE SCHOTTKY 100V 1A SOD123W</description>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*SingleDiode</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">SS110LW</field>
+        <field name="Footprint">footprints:D_SOD-123W_OEM</field>
+        <field name="Datasheet">http://www.taiwansemi.com/products/datasheet/SS14LW%20SERIES_A1511.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">SS110LWRVGCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/taiwan-semiconductor-corporation/SS110LW-RVG/SS110LWRVGCT-ND/7359346</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Formula" part="UF_4_VT">
+      <description>Ultra-Fit connector 4 pin vertical</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">UF_4_VT</field>
+        <field name="Footprint">footprints:Ultrafit_4</field>
+        <field name="Datasheet">http://www.literature.molex.com/SQLImages/kelmscott/Molex/PDF_Images/987651-1008.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">WM11574-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=WM11574-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Formula">
+      <uri>/home/isabella/Documents/Formula/OEM_Preferred_Parts/schematic/formula.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/GND">
+      <node ref="U1" pin="2"/>
+      <node ref="J2" pin="1"/>
+      <node ref="U2" pin="2"/>
+    </net>
+    <net code="2" name="/TSMP-">
+      <node ref="J3" pin="3"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="3" name="/TS_Fused-">
+      <node ref="F1" pin="2"/>
+      <node ref="J3" pin="1"/>
+      <node ref="J3" pin="2"/>
+      <node ref="J3" pin="4"/>
+    </net>
+    <net code="4" name="Net-(U1-Pad6)">
+      <node ref="U1" pin="6"/>
+    </net>
+    <net code="5" name="/OCD">
+      <node ref="U1" pin="5"/>
+      <node ref="U2" pin="5"/>
+    </net>
+    <net code="6" name="/Vref">
+      <node ref="U1" pin="4"/>
+      <node ref="U2" pin="4"/>
+    </net>
+    <net code="7" name="/Vout">
+      <node ref="U1" pin="3"/>
+      <node ref="U2" pin="3"/>
+    </net>
+    <net code="8" name="/UC+">
+      <node ref="U1" pin="1"/>
+      <node ref="U2" pin="1"/>
+    </net>
+    <net code="9" name="Net-(J2-Pad6)">
+      <node ref="J2" pin="6"/>
+    </net>
+    <net code="10" name="Net-(U2-Pad8)">
+      <node ref="U2" pin="8"/>
+    </net>
+    <net code="11" name="Net-(U2-Pad12)">
+      <node ref="U2" pin="12"/>
+    </net>
+    <net code="12" name="Net-(U2-Pad11)">
+      <node ref="U2" pin="11"/>
+    </net>
+    <net code="13" name="Net-(U2-Pad7)">
+      <node ref="U2" pin="7"/>
+    </net>
+    <net code="14" name="/Precharge-">
+      <node ref="D1" pin="2"/>
+      <node ref="K1" pin="3"/>
+    </net>
+    <net code="15" name="/TS-">
+      <node ref="F1" pin="1"/>
+      <node ref="R2" pin="2"/>
+      <node ref="K1" pin="1"/>
+    </net>
+    <net code="16" name="Net-(K1-Pad2)">
+      <node ref="R1" pin="2"/>
+      <node ref="K1" pin="2"/>
+    </net>
+    <net code="17" name="Net-(R1-Pad1)">
+      <node ref="R1" pin="1"/>
+    </net>
+    <net code="18" name="/Precharge+">
+      <node ref="D1" pin="1"/>
+      <node ref="K1" pin="4"/>
+    </net>
+    <net code="19" name="/AUX-">
+      <node ref="J2" pin="4"/>
+      <node ref="J1" pin="2"/>
+    </net>
+    <net code="20" name="/AUX+">
+      <node ref="J1" pin="1"/>
+      <node ref="J2" pin="3"/>
+    </net>
+    <net code="21" name="/Coil+">
+      <node ref="J1" pin="3"/>
+      <node ref="J2" pin="2"/>
+    </net>
+    <net code="22" name="/Coil-">
+      <node ref="J2" pin="5"/>
+      <node ref="J1" pin="4"/>
+    </net>
+  </nets>
+</export>

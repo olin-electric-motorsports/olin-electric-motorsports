@@ -1,0 +1,2634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/lmitton/Documents/Formula/MKV-Boards/Boards/Cooling_Sense/Cooling_Sense/Cooling_Sense.sch</source>
+    <date>Thu 13 Feb 2020 09:08:57 PM EST</date>
+    <tool>Eeschema 5.1.5-52549c5~84~ubuntu18.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Cooling Pressure and Temperature Sensing Board</title>
+        <company>Olin Electric Motorsports</company>
+        <rev>2</rev>
+        <date>2019-11-18</date>
+        <source>Cooling_Sense.sch</source>
+        <comment number="1" value="Laurel Rodriguez Mitton"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/Logic_Sheet/" tstamps="/5DD7ADE7/">
+      <title_block>
+        <title>Cooling Pressure and Temperature Sensing Board</title>
+        <company>Olin Electric Motorsports</company>
+        <rev>2</rev>
+        <date>2019-11-18</date>
+        <source>Logic_Sheet.sch</source>
+        <comment number="1" value="Laurel Rodriguez Mitton"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C102">
+      <value>C_2.2uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://www.yageo.com/documents/recent/UPY-GPHC_X5R_4V-to-50V_25.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-1451-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/yageo/CC0603KRX5R6BB225/311-1451-1-ND/2833757</field>
+      </fields>
+      <libsource lib="formula" part="C_2.2uF" description="Capacitor, 2.2uF, 10V, 10%, 0603"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEE2647</tstamp>
+    </comp>
+    <comp ref="C101">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEE2923</tstamp>
+    </comp>
+    <comp ref="R103">
+      <value>R_100K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">P100KCCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551</field>
+      </fields>
+      <libsource lib="formula" part="R_100K" description="Resistor, 100K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEE2A52</tstamp>
+    </comp>
+    <comp ref="C103">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEE239B</tstamp>
+    </comp>
+    <comp ref="COUT101">
+      <value>C_22uF</value>
+      <footprint>footprints:C_1206_OEM</footprint>
+      <datasheet>https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">445-11693-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/tdk-corporation/C3216JB1C226M160AB/445-11693-1-ND/3953359</field>
+      </fields>
+      <libsource lib="formula" part="C_22uF" description="Capacitor, 22uF, 16V, 20%, 1206"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C061BB4</tstamp>
+    </comp>
+    <comp ref="COUT103">
+      <value>C_47uF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/22/CL21A476MQYNNNG.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-6467-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A476MQYNNNG/1276-6467-1-ND/5958095</field>
+      </fields>
+      <libsource lib="formula" part="C_47uF" description="Capacitor, 47uF, 6.3V, 20%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C062E7A</tstamp>
+    </comp>
+    <comp ref="COUT102">
+      <value>C_33uF</value>
+      <footprint>footprints:Fuse_1812</footprint>
+      <datasheet>https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf</datasheet>
+      <fields>
+        <field name="MFN">C4532X7R1C336M250KC</field>
+        <field name="MPN">445-3924-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250KC/445-3924-1-ND/1923431</field>
+      </fields>
+      <libsource lib="formula" part="C_33uF" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C08921B</tstamp>
+    </comp>
+    <comp ref="R102">
+      <value>R_25K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&amp;DocNm=1773200-1&amp;DocType=DS&amp;DocLang=English</datasheet>
+      <fields>
+        <field name="Digi-key Part Number">CPF-A-0805B25KE</field>
+        <field name="MFN">A124124CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/te-connectivity-passive-product/CPF-A-0805B25KE/A124124CT-ND/5970044</field>
+      </fields>
+      <libsource lib="formula" part="R_25K" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C0B315C</tstamp>
+    </comp>
+    <comp ref="F101">
+      <value>F_500mA_16V</value>
+      <footprint>footprints:Fuse_1210</footprint>
+      <datasheet>https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">507-1786-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209</field>
+      </fields>
+      <libsource lib="formula" part="F_500mA_16V" description="Fuse, PTC, 500mA, 16V, 1210"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C0BFA29</tstamp>
+    </comp>
+    <comp ref="R104">
+      <value>R_0_2512</value>
+      <footprint>footprints:R_2512_OEM</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&amp;DocNm=9-1773463-7&amp;DocType=DS&amp;DocLang=English</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">A121322CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=A121322CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_0_2512" description="Resistor, 0 ohm jumper, 3W, 2512"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C0C29A9</tstamp>
+    </comp>
+    <comp ref="D103">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C0C344A</tstamp>
+    </comp>
+    <comp ref="R105">
+      <value>R_200</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_200" description="Resistor, 200, 0.125W, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C0C44F9</tstamp>
+    </comp>
+    <comp ref="D101">
+      <value>D_Zener_18V</value>
+      <footprint>footprints:DO-214AA</footprint>
+      <datasheet>http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">SMBJ5355B-TPMSCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="D_Zener_18V" description="Diode, Zener, 18V, 5W, 5%"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C623D49</tstamp>
+    </comp>
+    <comp ref="D102">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C754D7D</tstamp>
+    </comp>
+    <comp ref="R101">
+      <value>R_200</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_200" description="Resistor, 200, 0.125W, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C754D87</tstamp>
+    </comp>
+    <comp ref="L101">
+      <value>L_100uH</value>
+      <footprint>footprints:L_100uH</footprint>
+      <datasheet>https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_decoupling_nlfv32-ef_en.pdf</datasheet>
+      <fields>
+        <field name="Link">https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/445-15759-1-ND/4328055</field>
+        <field name="MFN">Digikey</field>
+        <field name="MPN">445-15759-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="L_100uH" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEE27A2</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>R_100</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D58E16F</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>C_100pF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>https://katalog.we-online.de/pbs/datasheet/885012007057.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">732-7852-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/wurth-electronics-inc/885012007057/732-7852-1-ND/5454479</field>
+      </fields>
+      <libsource lib="formula" part="C_100pF" description="Capacitor, 100pF, 50V, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D58E505</tstamp>
+    </comp>
+    <comp ref="Y1">
+      <value>Crystal_SMD</value>
+      <footprint>footprints:Crystal_SMD_FA238</footprint>
+      <datasheet>http://www.txccorp.com/download/products/quartz_crystals/2015TXC_7M_17.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">887-1125-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/txc-corporation/7M-16.000MAAJ-T/887-1125-1-ND/2119014</field>
+      </fields>
+      <libsource lib="formula" part="Crystal_SMD" description="CRYSTAL 16.0000MHZ 18PF SMD"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D5EB332</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>C_30pF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1130-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216</field>
+      </fields>
+      <libsource lib="formula" part="C_30pF" description="Capacitor, 30pF, 50V, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D5EB5B2</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>C_30pF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1130-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216</field>
+      </fields>
+      <libsource lib="formula" part="C_30pF" description="Capacitor, 30pF, 50V, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D5EB694</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D5EB7F3</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>MCP2561-E_SN</value>
+      <footprint>footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM</footprint>
+      <datasheet>http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en561044</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP2561-E/SN-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn</field>
+      </fields>
+      <libsource lib="formula" part="MCP2561-E_SN" description="High speed CAN transceiver, 1Mb/s"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D5FAEDE</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D5FB603</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>CONN_02X03</value>
+      <footprint>footprints:Pin_Header_Straight_2x03</footprint>
+      <datasheet>http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">609-3234-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491</field>
+      </fields>
+      <libsource lib="formula" part="CONN_02X03" description="Connector header through hole 2x3 0.100&quot; (2.54mm)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D628C9D</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D58E34B</tstamp>
+    </comp>
+    <comp ref="U101">
+      <value>TPS560430YF</value>
+      <footprint>footprints:SOT-23-6_OEM</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/tps560430.pdf</datasheet>
+      <fields>
+        <field name="MFN">TPS560430YFDBVR-ND</field>
+        <field name="MPN">TPS560430YFDBVR</field>
+        <field name="Purchasing Link">https://www.digikey.com/product-detail/en/texas-instruments/TPS560430XDBVR/296-50420-6-ND/9685813</field>
+      </fields>
+      <libsource lib="formula" part="TPS560430YF" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C75D405</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>MM_F_RA_20</value>
+      <footprint>footprints:micromatch_female_ra_20</footprint>
+      <datasheet>http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&amp;DocNm=338070&amp;DocType=Customer+Drawing&amp;DocLang=English&amp;DocFormat=pdf&amp;PartCntxt=2-338070-0</datasheet>
+      <fields>
+        <field name="MFN">TE</field>
+        <field name="MPN">2-338070-0</field>
+        <field name="PurchasingLink">http://www.te.com/usa-en/product-2-338070-0.html</field>
+      </fields>
+      <libsource lib="formula" part="MM_F_RA_20" description="Micro-MaTch connector 20 pin female right angle"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DB7F701</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBF4B0C</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DBF4365</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>R_200</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_200" description="Resistor, 200, 0.125W, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DCAEC1D</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>R_200</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_200" description="Resistor, 200, 0.125W, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DCB5996</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>R_200</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_200" description="Resistor, 200, 0.125W, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DCE9EE6</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DCEA5AD</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>R_200</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_200" description="Resistor, 200, 0.125W, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DCEADF0</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>R_200</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_200" description="Resistor, 200, 0.125W, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DCEB597</tstamp>
+    </comp>
+    <comp ref="D5">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DCEBB62</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <datasheet>http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="LED_0805" description="LED, Green, 2.2V, 20mA, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DCEC269</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>SSM3K333R</value>
+      <footprint>footprints:SOT-23F</footprint>
+      <datasheet>https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">SSM3K333RLFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391</field>
+      </fields>
+      <libsource lib="formula" part="SSM3K333R" description="MOSFET, N-channel, 30V, 6A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E0A4B82</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E0A4B94</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>LED</value>
+      <datasheet>~</datasheet>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E0A4B9A</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>R_200</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_200" description="Resistor, 200, 0.125W, 5%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E0A4BA9</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>R_120_DNP</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">667-ERJ-6ENF1200V</field>
+        <field name="PurchasingLink">https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d</field>
+      </fields>
+      <libsource lib="formula" part="R_120_DNP" description="Resistor, 120, 0.125W, 1%, 0805"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5DE61D36</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>ATMEGA16M1</value>
+      <footprint>footprints:TQFP-32_7x7mm_Pitch0.8mm</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8209-8-bit%20AVR%20ATmega16M1-32M1-64M1_Datasheet.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">ATMEGA16M1-AU-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208</field>
+      </fields>
+      <libsource lib="formula" part="ATMEGA16M1" description="Microcontroller, 8-bit, 1KB RAM, 16KB Flash"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D58A7A6</tstamp>
+    </comp>
+    <comp ref="TP1">
+      <value>Test_Point_SMD</value>
+      <footprint>footprints:Test_Point_SMD</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E429057</tstamp>
+    </comp>
+    <comp ref="TP3">
+      <value>Test_Point_SMD</value>
+      <footprint>footprints:Test_Point_SMD</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E42FEC6</tstamp>
+    </comp>
+    <comp ref="TP2">
+      <value>Test_Point_SMD</value>
+      <footprint>footprints:Test_Point_SMD</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5E441894</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>R_1K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_1K" description="Resistor, 1K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE391AC</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE39FEA</tstamp>
+    </comp>
+    <comp ref="R14">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE3AC79</tstamp>
+    </comp>
+    <comp ref="R13">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE4292E</tstamp>
+    </comp>
+    <comp ref="R15">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE433C6</tstamp>
+    </comp>
+    <comp ref="R16">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE4A7D0</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE37ECE</tstamp>
+    </comp>
+    <comp ref="U4">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE4CA16</tstamp>
+    </comp>
+    <comp ref="R17">
+      <value>R_22K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT22K0CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_22K" description="Resistor, 22K, 0.125W, 5%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE5E70B</tstamp>
+    </comp>
+    <comp ref="R18">
+      <value>R_1K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_1K" description="Resistor, 1K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AA7D</tstamp>
+    </comp>
+    <comp ref="R21">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AA8A</tstamp>
+    </comp>
+    <comp ref="R27">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AA97</tstamp>
+    </comp>
+    <comp ref="R22">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AAB0</tstamp>
+    </comp>
+    <comp ref="R30">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AABD</tstamp>
+    </comp>
+    <comp ref="R33">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AADE</tstamp>
+    </comp>
+    <comp ref="U5">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AAEB</tstamp>
+    </comp>
+    <comp ref="U8">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AAF8</tstamp>
+    </comp>
+    <comp ref="R36">
+      <value>R_22K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT22K0CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_22K" description="Resistor, 22K, 0.125W, 5%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DE9AB05</tstamp>
+    </comp>
+    <comp ref="R19">
+      <value>R_1K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_1K" description="Resistor, 1K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9A8A</tstamp>
+    </comp>
+    <comp ref="R23">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9A97</tstamp>
+    </comp>
+    <comp ref="R28">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9AA4</tstamp>
+    </comp>
+    <comp ref="R24">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9ABD</tstamp>
+    </comp>
+    <comp ref="R31">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9ACA</tstamp>
+    </comp>
+    <comp ref="R34">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9AEB</tstamp>
+    </comp>
+    <comp ref="U6">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9AF8</tstamp>
+    </comp>
+    <comp ref="U9">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9B05</tstamp>
+    </comp>
+    <comp ref="R37">
+      <value>R_22K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT22K0CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_22K" description="Resistor, 22K, 0.125W, 5%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9B12</tstamp>
+    </comp>
+    <comp ref="R20">
+      <value>R_1K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_1K" description="Resistor, 1K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9B5D</tstamp>
+    </comp>
+    <comp ref="R25">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9B6A</tstamp>
+    </comp>
+    <comp ref="R29">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9B77</tstamp>
+    </comp>
+    <comp ref="R26">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9B90</tstamp>
+    </comp>
+    <comp ref="R32">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9B9D</tstamp>
+    </comp>
+    <comp ref="R35">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9BBE</tstamp>
+    </comp>
+    <comp ref="U7">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9BCB</tstamp>
+    </comp>
+    <comp ref="U10">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9BD8</tstamp>
+    </comp>
+    <comp ref="R38">
+      <value>R_22K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT22K0CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_22K" description="Resistor, 22K, 0.125W, 5%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEB9BE5</tstamp>
+    </comp>
+    <comp ref="R39">
+      <value>R_1K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_1K" description="Resistor, 1K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8076</tstamp>
+    </comp>
+    <comp ref="R42">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8083</tstamp>
+    </comp>
+    <comp ref="R48">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8090</tstamp>
+    </comp>
+    <comp ref="R43">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE80A9</tstamp>
+    </comp>
+    <comp ref="R51">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE80B6</tstamp>
+    </comp>
+    <comp ref="R54">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE80D7</tstamp>
+    </comp>
+    <comp ref="U11">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE80E4</tstamp>
+    </comp>
+    <comp ref="U14">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE80F1</tstamp>
+    </comp>
+    <comp ref="R57">
+      <value>R_22K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT22K0CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_22K" description="Resistor, 22K, 0.125W, 5%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE80FE</tstamp>
+    </comp>
+    <comp ref="R40">
+      <value>R_1K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_1K" description="Resistor, 1K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8149</tstamp>
+    </comp>
+    <comp ref="R44">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8156</tstamp>
+    </comp>
+    <comp ref="R49">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8163</tstamp>
+    </comp>
+    <comp ref="R45">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE817C</tstamp>
+    </comp>
+    <comp ref="R52">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8189</tstamp>
+    </comp>
+    <comp ref="R55">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE81AA</tstamp>
+    </comp>
+    <comp ref="U12">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE81B7</tstamp>
+    </comp>
+    <comp ref="U15">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE81C4</tstamp>
+    </comp>
+    <comp ref="R58">
+      <value>R_22K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT22K0CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_22K" description="Resistor, 22K, 0.125W, 5%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE81D1</tstamp>
+    </comp>
+    <comp ref="R41">
+      <value>R_1K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_1K" description="Resistor, 1K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE821C</tstamp>
+    </comp>
+    <comp ref="R46">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8229</tstamp>
+    </comp>
+    <comp ref="R50">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8236</tstamp>
+    </comp>
+    <comp ref="R47">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE824F</tstamp>
+    </comp>
+    <comp ref="R53">
+      <value>R_3K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <libsource lib="formula" part="R_3K" description="Resistor, 3K, 0.125W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE825C</tstamp>
+    </comp>
+    <comp ref="R56">
+      <value>R_10K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE827D</tstamp>
+    </comp>
+    <comp ref="U13">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE828A</tstamp>
+    </comp>
+    <comp ref="U16">
+      <value>MCP6001T-I-LT</value>
+      <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <libsource lib="formula" part="MCP6001T-I-LT" description="Single op-amp, general purpose, -40-+85 C, SC-70-5"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE8297</tstamp>
+    </comp>
+    <comp ref="R59">
+      <value>R_22K</value>
+      <footprint>footprints:R_0805_OEM</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT22K0CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_22K" description="Resistor, 22K, 0.125W, 5%, 0805"/>
+      <sheetpath names="/Logic_Sheet/" tstamps="/5DD7ADE7/"/>
+      <tstamp>5DEE82A4</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="ATMEGA16M1">
+      <description>Microcontroller, 8-bit, 1KB RAM, 16KB Flash</description>
+      <footprints>
+        <fp>TQFP*32*7x7mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ATMEGA16M1</field>
+        <field name="Footprint">footprints:TQFP-32_7x7mm_Pitch0.8mm</field>
+        <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8209-8-bit%20AVR%20ATmega16M1-32M1-64M1_Datasheet.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">ATMEGA16M1-AU-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208</field>
+      </fields>
+      <pins>
+        <pin num="1" name="(PCINT18/PSCIN2/OC1A/MISO_A)PD2" type="BiDi"/>
+        <pin num="2" name="(PCINT19/TXD/TXLIN/OC0A/~SS~/MOSI_A)PD3" type="BiDi"/>
+        <pin num="3" name="(PCINT9/PSCIN1/OC1B/~SS_A~)PC1" type="BiDi"/>
+        <pin num="4" name="VCC" type="power_in"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="6" name="(PCINT10/T0/TXCAN)PC2" type="BiDi"/>
+        <pin num="7" name="(PCINT11/T1/ICP1B/RXCAN)PC3" type="BiDi"/>
+        <pin num="8" name="(PCINT0/MISO/PSCOUT2A)PB0" type="BiDi"/>
+        <pin num="9" name="(PCINT1/MOSI/PSCOUT2B)PB1" type="BiDi"/>
+        <pin num="10" name="(PCINT25/OC0B/XTAL1)PE1" type="BiDi"/>
+        <pin num="11" name="(PCINT26/ADC0/XTAL2)PE2" type="BiDi"/>
+        <pin num="12" name="(PCINT20/ADC1/RXD/RXLIN/ICP1A/SCK_A)PD4" type="BiDi"/>
+        <pin num="13" name="(PCINT21/ADC2/ACMP2)PD5" type="BiDi"/>
+        <pin num="14" name="(PCINT22/ADC3/INT0/ACMPN2)PD6" type="BiDi"/>
+        <pin num="15" name="(PCINT23/ACMP0)PD7" type="BiDi"/>
+        <pin num="16" name="(PCINT2/ADC5/INT1/ACMPN0)PB2" type="BiDi"/>
+        <pin num="17" name="(PCINT12/ADC8/ACMPN3/AMP1-)PC4" type="BiDi"/>
+        <pin num="18" name="(PCINT13/ADC9/ACMP3/AMP1+)PC5" type="BiDi"/>
+        <pin num="19" name="AVCC" type="power_in"/>
+        <pin num="20" name="AGND" type="power_in"/>
+        <pin num="21" name="AREF(ISRC)" type="power_in"/>
+        <pin num="22" name="(PCINT14/ADC10/ACMP1)PC6" type="BiDi"/>
+        <pin num="23" name="(PCINT3/AMP0-)PB3" type="BiDi"/>
+        <pin num="24" name="(PCINT4/AMP0+)PB4" type="BiDi"/>
+        <pin num="25" name="(PCINT15/D2A/AMP2+)PC7" type="BiDi"/>
+        <pin num="26" name="(PCINT5/ADC6/INT2/ACMPN1/AMP2-)PB5" type="BiDi"/>
+        <pin num="27" name="(PCINT6/ADC7/PSCOUT1B)PB6" type="BiDi"/>
+        <pin num="28" name="(PCINT7/ADC4/SCK/PSCOUT0B)PB7" type="BiDi"/>
+        <pin num="29" name="(PCINT16/PSCOUT0A)PD0" type="BiDi"/>
+        <pin num="30" name="(PCINT8/INT3/PSCOUT1A)PC0" type="BiDi"/>
+        <pin num="31" name="(PCINT24/OCD/~RESET~)PE0" type="BiDi"/>
+        <pin num="32" name="(PCINT17/CLKO/PSCIN0)PD1" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="CONN_02X03">
+      <description>Connector header through hole 2x3 0.100" (2.54mm)</description>
+      <footprints>
+        <fp>Pin_Header_Straight_2X03</fp>
+        <fp>Pin_Header_Angled_2X03</fp>
+        <fp>Socket_Strip_Straight_2X03</fp>
+        <fp>Socket_Strip_Angled_2X03</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">CONN_02X03</field>
+        <field name="Footprint">footprints:Pin_Header_Straight_2x03</field>
+        <field name="Datasheet">http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">609-3234-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+        <pin num="6" name="P6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_0.1uF">
+      <description>Capacitor, 0.1uF, 50V, 5%, 0805</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_0.1uF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">http://datasheets.avx.com/X7RDielectric.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_100pF">
+      <description>Capacitor, 100pF, 50V, 5%, 0805</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_100pF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">https://katalog.we-online.de/pbs/datasheet/885012007057.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">732-7852-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/wurth-electronics-inc/885012007057/732-7852-1-ND/5454479</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_2.2uF">
+      <description>Capacitor, 2.2uF, 10V, 10%, 0603</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_2.2uF</field>
+        <field name="Footprint">footprints:C_0603_1608Metric</field>
+        <field name="Datasheet">http://www.yageo.com/documents/recent/UPY-GPHC_X5R_4V-to-50V_25.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">311-1451-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/yageo/CC0603KRX5R6BB225/311-1451-1-ND/2833757</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_22uF">
+      <description>Capacitor, 22uF, 16V, 20%, 1206</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_22uF</field>
+        <field name="Footprint">footprints:C_1206_OEM</field>
+        <field name="Datasheet">https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">445-11693-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/tdk-corporation/C3216JB1C226M160AB/445-11693-1-ND/3953359</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_30pF">
+      <description>Capacitor, 30pF, 50V, 5%, 0805</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_30pF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1130-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_33uF">
+      <docs>https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf</docs>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_33uF</field>
+        <field name="Footprint">footprints:Fuse_1812</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">445-3924-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250KC/445-3924-1-ND/1923431</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_47uF">
+      <description>Capacitor, 47uF, 6.3V, 20%, 0805</description>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_47uF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/22/CL21A476MQYNNNG.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-6467-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A476MQYNNNG/1276-6467-1-ND/5958095</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="Crystal_SMD">
+      <description>CRYSTAL 16.0000MHZ 18PF SMD</description>
+      <footprints>
+        <fp>Crystal*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal_SMD</field>
+        <field name="Footprint">footprints:Crystal_SMD_FA238</field>
+        <field name="Datasheet">http://www.txccorp.com/download/products/quartz_crystals/2015TXC_7M_17.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">887-1125-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/txc-corporation/7M-16.000MAAJ-T/887-1125-1-ND/2119014</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="D_Zener_18V">
+      <description>Diode, Zener, 18V, 5W, 5%</description>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*SingleDiode</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Zener_18V</field>
+        <field name="Footprint">footprints:DO-214AA</field>
+        <field name="Datasheet">http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">SMBJ5355B-TPMSCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="F_500mA_16V">
+      <description>Fuse, PTC, 500mA, 16V, 1210</description>
+      <footprints>
+        <fp>*Fuse*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">F_500mA_16V</field>
+        <field name="Footprint">footprints:Fuse_1210</field>
+        <field name="Datasheet">https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">507-1786-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="LED_0805">
+      <description>LED, Green, 2.2V, 20mA, 0805</description>
+      <footprints>
+        <fp>LED*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED_0805</field>
+        <field name="Footprint">footprints:LED_0805_OEM</field>
+        <field name="Datasheet">http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">475-1410-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=475-1410-1-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="L_100uH">
+      <docs>https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_decoupling_nlfv32-ef_en.pdf</docs>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L_100uH</field>
+        <field name="Footprint">footprints:L_100uH_OEM</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">445-15759-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/445-15759-1-ND/4328055</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MCP2561-E_SN">
+      <description>High speed CAN transceiver, 1Mb/s</description>
+      <footprints>
+        <fp>SOIC*Pitch1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP2561-E_SN</field>
+        <field name="Footprint">footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM</field>
+        <field name="Datasheet">http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en561044</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP2561-E/SN-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TXD" type="input"/>
+        <pin num="2" name="VSS" type="power_in"/>
+        <pin num="3" name="VDD" type="power_in"/>
+        <pin num="4" name="RXD" type="output"/>
+        <pin num="5" name="SPLIT" type="passive"/>
+        <pin num="6" name="CANL" type="BiDi"/>
+        <pin num="7" name="CANH" type="BiDi"/>
+        <pin num="8" name="STBY" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MCP6001T-I-LT">
+      <description>Single op-amp, general purpose, -40-+85 C, SC-70-5</description>
+      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP6001T-I-LT</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-353_SC-70-5</field>
+        <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP6001T-I/LTCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-LT/MCP6001T-I-LTCT-ND/669499</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="output"/>
+        <pin num="2" name="V-" type="power_in"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="-" type="input"/>
+        <pin num="5" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MM_F_RA_20">
+      <description>Micro-MaTch connector 20 pin female right angle</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MM_F_RA_20</field>
+        <field name="Footprint">footprints:micromatch_female_ra_20</field>
+        <field name="Datasheet">http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&amp;DocNm=338070&amp;DocType=Customer+Drawing&amp;DocLang=English&amp;DocFormat=pdf&amp;PartCntxt=2-338070-0</field>
+        <field name="MFN">TE</field>
+        <field name="MPN">2-338070-0</field>
+        <field name="PurchasingLink">http://www.te.com/usa-en/product-2-338070-0.html</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="BiDi"/>
+        <pin num="2" name="2" type="BiDi"/>
+        <pin num="3" name="3" type="BiDi"/>
+        <pin num="4" name="4" type="BiDi"/>
+        <pin num="5" name="5" type="BiDi"/>
+        <pin num="6" name="6" type="BiDi"/>
+        <pin num="7" name="7" type="BiDi"/>
+        <pin num="8" name="8" type="BiDi"/>
+        <pin num="9" name="9" type="BiDi"/>
+        <pin num="10" name="10" type="BiDi"/>
+        <pin num="11" name="11" type="BiDi"/>
+        <pin num="12" name="12" type="BiDi"/>
+        <pin num="13" name="13" type="BiDi"/>
+        <pin num="14" name="14" type="BiDi"/>
+        <pin num="15" name="15" type="BiDi"/>
+        <pin num="16" name="16" type="BiDi"/>
+        <pin num="17" name="17" type="BiDi"/>
+        <pin num="18" name="18" type="BiDi"/>
+        <pin num="19" name="19" type="BiDi"/>
+        <pin num="20" name="20" type="BiDi"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_0_2512">
+      <description>Resistor, 0 ohm jumper, 3W, 2512</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_0_2512</field>
+        <field name="Footprint">footprints:R_2512_OEM</field>
+        <field name="Datasheet">http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&amp;DocNm=9-1773463-7&amp;DocType=DS&amp;DocLang=English</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">A121322CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=A121322CT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_100">
+      <description>Resistor, 100, 0.25W, 1%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_100</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/Catalog/SEI-rncp.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_100K">
+      <description>Resistor, 100K, 0.125W, 1%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_100K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">P100KCCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_10K">
+      <description>Resistor, 10K, 0.25W, 1%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_10K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">http://www.bourns.com/data/global/pdfs/CRS.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_120_DNP">
+      <description>Resistor, 120, 0.125W, 1%, 0805</description>
+      <docs>https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf</docs>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_120_DNP</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">667-ERJ-6ENF1200V</field>
+        <field name="PurchasingLink">https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_1K">
+      <description>Resistor, 1K, 0.25W, 1%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_1K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/Catalog/SEI-rncp.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_200">
+      <description>Resistor, 200, 0.125W, 5%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_200</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT200RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_22K">
+      <description>Resistor, 22K, 0.125W, 5%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_22K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT22K0CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_25K">
+      <docs>https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&amp;DocNm=1773200-1&amp;DocType=DS&amp;DocLang=English</docs>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_25K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">A124124CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/te-connectivity-passive-product/CPF-A-0805B25KE/A124124CT-ND/5970044</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_3K">
+      <description>Resistor, 3K, 0.125W, 1%, 0805</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_3K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805FT3K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="SSM3K333R">
+      <description>MOSFET, N-channel, 30V, 6A</description>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">SSM3K333R</field>
+        <field name="Footprint">footprints:SOT-23F</field>
+        <field name="Datasheet">https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">SSM3K333RLFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="TPS560430YF">
+      <docs>http://www.ti.com/lit/ds/symlink/tps560430.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TPS560430YF</field>
+        <field name="Footprint">footprints:SOT-23-6_OEM</field>
+        <field name="MPN">TPS560430YFDBVR-ND</field>
+        <field name="MFN">DK</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/texas-instruments/TPS560430XDBVR/296-50420-6-ND/9685813</field>
+      </fields>
+      <pins>
+        <pin num="1" name="CB" type="BiDi"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="FB" type="input"/>
+        <pin num="4" name="EN" type="input"/>
+        <pin num="5" name="VIN" type="power_in"/>
+        <pin num="6" name="SW" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="Test_Point_SMD">
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">Test_Point_SMD</field>
+        <field name="Footprint">footprints:Test_Point_SMD</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Device">
+      <uri>/usr/share/kicad/library/Device.lib</uri>
+    </library>
+    <library logical="formula">
+      <uri>/home/lmitton/Documents/Formula/OEM_Preferred_Parts/schematic/formula.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(D103-Pad2)">
+      <node ref="D103" pin="2"/>
+      <node ref="R105" pin="2"/>
+    </net>
+    <net code="2" name="Net-(C3-Pad1)">
+      <node ref="U2" pin="19"/>
+      <node ref="C3" pin="1"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="3" name="Net-(U2-Pad15)">
+      <node ref="U2" pin="15"/>
+    </net>
+    <net code="4" name="Net-(U2-Pad25)">
+      <node ref="U2" pin="25"/>
+    </net>
+    <net code="5" name="Net-(U2-Pad3)">
+      <node ref="U2" pin="3"/>
+    </net>
+    <net code="6" name="Net-(D6-Pad2)">
+      <node ref="R9" pin="2"/>
+      <node ref="D6" pin="2"/>
+    </net>
+    <net code="7" name="Net-(D5-Pad2)">
+      <node ref="R8" pin="2"/>
+      <node ref="D5" pin="2"/>
+    </net>
+    <net code="8" name="/Logic_Sheet/SENSE_6+">
+      <node ref="R45" pin="2"/>
+      <node ref="J2" pin="16"/>
+    </net>
+    <net code="9" name="/Logic_Sheet/SENSE_2-">
+      <node ref="R18" pin="1"/>
+      <node ref="R21" pin="2"/>
+      <node ref="J2" pin="9"/>
+    </net>
+    <net code="10" name="/Logic_Sheet/SENSE_2+">
+      <node ref="J2" pin="8"/>
+      <node ref="R22" pin="2"/>
+    </net>
+    <net code="11" name="/Logic_Sheet/SENSE_1-">
+      <node ref="R11" pin="1"/>
+      <node ref="R12" pin="2"/>
+      <node ref="J2" pin="7"/>
+    </net>
+    <net code="12" name="/Logic_Sheet/SENSE_1+">
+      <node ref="J2" pin="6"/>
+      <node ref="R13" pin="2"/>
+    </net>
+    <net code="13" name="/PUMP_RELAY_READ">
+      <node ref="J2" pin="5"/>
+      <node ref="U2" pin="18"/>
+      <node ref="Q1" pin="3"/>
+    </net>
+    <net code="14" name="/CAN_LO">
+      <node ref="U1" pin="6"/>
+      <node ref="J2" pin="4"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="15" name="/CAN_HI">
+      <node ref="R2" pin="1"/>
+      <node ref="U1" pin="7"/>
+      <node ref="J2" pin="3"/>
+    </net>
+    <net code="16" name="/12V">
+      <node ref="D101" pin="1"/>
+      <node ref="TP1" pin="1"/>
+      <node ref="J2" pin="2"/>
+      <node ref="F101" pin="2"/>
+    </net>
+    <net code="17" name="/Logic_Sheet/SENSE_7-">
+      <node ref="R46" pin="2"/>
+      <node ref="R41" pin="1"/>
+      <node ref="J2" pin="19"/>
+    </net>
+    <net code="18" name="/Logic_Sheet/SENSE_7+">
+      <node ref="R47" pin="2"/>
+      <node ref="J2" pin="18"/>
+    </net>
+    <net code="19" name="/Logic_Sheet/SENSE_6-">
+      <node ref="R44" pin="2"/>
+      <node ref="J2" pin="17"/>
+      <node ref="R40" pin="1"/>
+    </net>
+    <net code="20" name="/Logic_Sheet/SENSE_5-">
+      <node ref="R42" pin="2"/>
+      <node ref="R39" pin="1"/>
+      <node ref="J2" pin="15"/>
+    </net>
+    <net code="21" name="/Logic_Sheet/SENSE_5+">
+      <node ref="R43" pin="2"/>
+      <node ref="J2" pin="14"/>
+    </net>
+    <net code="22" name="/Logic_Sheet/SENSE_4-">
+      <node ref="R20" pin="1"/>
+      <node ref="R25" pin="2"/>
+      <node ref="J2" pin="13"/>
+    </net>
+    <net code="23" name="/Logic_Sheet/SENSE_4+">
+      <node ref="R26" pin="2"/>
+      <node ref="J2" pin="12"/>
+    </net>
+    <net code="24" name="/Logic_Sheet/SENSE_3-">
+      <node ref="R23" pin="2"/>
+      <node ref="J2" pin="11"/>
+      <node ref="R19" pin="1"/>
+    </net>
+    <net code="25" name="/Logic_Sheet/SENSE_3+">
+      <node ref="R24" pin="2"/>
+      <node ref="J2" pin="10"/>
+    </net>
+    <net code="26" name="GND">
+      <node ref="D103" pin="1"/>
+      <node ref="U101" pin="2"/>
+      <node ref="U8" pin="3"/>
+      <node ref="U16" pin="3"/>
+      <node ref="U8" pin="2"/>
+      <node ref="U5" pin="2"/>
+      <node ref="U3" pin="2"/>
+      <node ref="C102" pin="2"/>
+      <node ref="R48" pin="1"/>
+      <node ref="C101" pin="2"/>
+      <node ref="D101" pin="2"/>
+      <node ref="D102" pin="1"/>
+      <node ref="R14" pin="1"/>
+      <node ref="R11" pin="2"/>
+      <node ref="U11" pin="2"/>
+      <node ref="R39" pin="2"/>
+      <node ref="R50" pin="1"/>
+      <node ref="U14" pin="3"/>
+      <node ref="U14" pin="2"/>
+      <node ref="R41" pin="2"/>
+      <node ref="U15" pin="3"/>
+      <node ref="U15" pin="2"/>
+      <node ref="U12" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="R18" pin="2"/>
+      <node ref="R27" pin="1"/>
+      <node ref="U13" pin="2"/>
+      <node ref="R49" pin="1"/>
+      <node ref="J1" pin="6"/>
+      <node ref="R40" pin="2"/>
+      <node ref="U16" pin="2"/>
+      <node ref="TP3" pin="1"/>
+      <node ref="U2" pin="5"/>
+      <node ref="R28" pin="1"/>
+      <node ref="R19" pin="2"/>
+      <node ref="U9" pin="3"/>
+      <node ref="U2" pin="20"/>
+      <node ref="D2" pin="1"/>
+      <node ref="R29" pin="1"/>
+      <node ref="D3" pin="1"/>
+      <node ref="U7" pin="2"/>
+      <node ref="U10" pin="2"/>
+      <node ref="Q1" pin="2"/>
+      <node ref="D6" pin="1"/>
+      <node ref="COUT101" pin="2"/>
+      <node ref="J2" pin="20"/>
+      <node ref="J2" pin="1"/>
+      <node ref="U6" pin="2"/>
+      <node ref="U10" pin="3"/>
+      <node ref="U9" pin="2"/>
+      <node ref="D5" pin="1"/>
+      <node ref="D4" pin="1"/>
+      <node ref="R10" pin="1"/>
+      <node ref="D1" pin="1"/>
+      <node ref="C3" pin="2"/>
+      <node ref="Y1" pin="4"/>
+      <node ref="Y1" pin="2"/>
+      <node ref="U1" pin="2"/>
+      <node ref="R20" pin="2"/>
+      <node ref="U1" pin="8"/>
+      <node ref="C1" pin="2"/>
+      <node ref="C5" pin="2"/>
+      <node ref="COUT102" pin="2"/>
+      <node ref="COUT103" pin="2"/>
+      <node ref="R102" pin="2"/>
+      <node ref="U4" pin="3"/>
+      <node ref="U4" pin="2"/>
+      <node ref="C4" pin="2"/>
+    </net>
+    <net code="27" name="/RESET">
+      <node ref="R3" pin="2"/>
+      <node ref="U2" pin="31"/>
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="28" name="/LED_2">
+      <node ref="U2" pin="32"/>
+      <node ref="R8" pin="1"/>
+    </net>
+    <net code="29" name="Net-(D4-Pad2)">
+      <node ref="D4" pin="2"/>
+      <node ref="R7" pin="2"/>
+    </net>
+    <net code="30" name="/LED_1">
+      <node ref="U2" pin="29"/>
+      <node ref="R7" pin="1"/>
+    </net>
+    <net code="31" name="Net-(D2-Pad2)">
+      <node ref="R5" pin="2"/>
+      <node ref="D2" pin="2"/>
+    </net>
+    <net code="32" name="/TEMP_GOOD_LED">
+      <node ref="U2" pin="30"/>
+      <node ref="R5" pin="1"/>
+    </net>
+    <net code="33" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+      <node ref="R4" pin="2"/>
+    </net>
+    <net code="34" name="/COOLING_ACTIVE_LED">
+      <node ref="U2" pin="24"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="35" name="Net-(C5-Pad1)">
+      <node ref="U2" pin="10"/>
+      <node ref="Y1" pin="3"/>
+      <node ref="C5" pin="1"/>
+    </net>
+    <net code="36" name="Net-(U2-Pad21)">
+      <node ref="U2" pin="21"/>
+    </net>
+    <net code="37" name="/MOSI">
+      <node ref="U2" pin="2"/>
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="38" name="/READ_4">
+      <node ref="R38" pin="1"/>
+      <node ref="U2" pin="17"/>
+      <node ref="U10" pin="1"/>
+    </net>
+    <net code="39" name="/READ_5">
+      <node ref="U14" pin="1"/>
+      <node ref="U2" pin="16"/>
+      <node ref="R57" pin="1"/>
+    </net>
+    <net code="40" name="/READ_6">
+      <node ref="U15" pin="1"/>
+      <node ref="U2" pin="14"/>
+      <node ref="R58" pin="1"/>
+    </net>
+    <net code="41" name="/READ_7">
+      <node ref="R59" pin="1"/>
+      <node ref="U16" pin="1"/>
+      <node ref="U2" pin="13"/>
+    </net>
+    <net code="42" name="/SCK">
+      <node ref="J1" pin="3"/>
+      <node ref="U2" pin="12"/>
+    </net>
+    <net code="43" name="Net-(C4-Pad1)">
+      <node ref="U2" pin="11"/>
+      <node ref="C4" pin="1"/>
+      <node ref="Y1" pin="1"/>
+    </net>
+    <net code="44" name="/LED_3">
+      <node ref="R9" pin="1"/>
+      <node ref="U2" pin="23"/>
+    </net>
+    <net code="45" name="/MISO">
+      <node ref="U2" pin="1"/>
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="46" name="/CAN_RX">
+      <node ref="U2" pin="7"/>
+      <node ref="U1" pin="4"/>
+    </net>
+    <net code="47" name="VCC">
+      <node ref="U3" pin="5"/>
+      <node ref="U16" pin="5"/>
+      <node ref="U7" pin="5"/>
+      <node ref="U5" pin="5"/>
+      <node ref="U8" pin="5"/>
+      <node ref="U4" pin="5"/>
+      <node ref="U10" pin="5"/>
+      <node ref="U9" pin="5"/>
+      <node ref="U15" pin="5"/>
+      <node ref="U12" pin="5"/>
+      <node ref="U6" pin="5"/>
+      <node ref="U13" pin="5"/>
+      <node ref="C2" pin="1"/>
+      <node ref="R105" pin="1"/>
+      <node ref="U14" pin="5"/>
+      <node ref="U11" pin="5"/>
+      <node ref="U1" pin="3"/>
+      <node ref="J1" pin="2"/>
+      <node ref="R104" pin="2"/>
+      <node ref="C1" pin="1"/>
+      <node ref="TP2" pin="1"/>
+      <node ref="U2" pin="4"/>
+      <node ref="R3" pin="1"/>
+      <node ref="R1" pin="1"/>
+    </net>
+    <net code="48" name="Net-(U2-Pad9)">
+      <node ref="U2" pin="9"/>
+    </net>
+    <net code="49" name="Net-(U2-Pad8)">
+      <node ref="U2" pin="8"/>
+    </net>
+    <net code="50" name="/CAN_TX">
+      <node ref="U2" pin="6"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="51" name="/READ_1">
+      <node ref="U2" pin="28"/>
+      <node ref="U4" pin="1"/>
+      <node ref="R17" pin="1"/>
+    </net>
+    <net code="52" name="/READ_2">
+      <node ref="R36" pin="1"/>
+      <node ref="U2" pin="27"/>
+      <node ref="U8" pin="1"/>
+    </net>
+    <net code="53" name="/READ_3">
+      <node ref="R37" pin="1"/>
+      <node ref="U9" pin="1"/>
+      <node ref="U2" pin="26"/>
+    </net>
+    <net code="54" name="/PUMP_CONTROL">
+      <node ref="U2" pin="22"/>
+      <node ref="R10" pin="2"/>
+      <node ref="Q1" pin="1"/>
+      <node ref="R6" pin="2"/>
+    </net>
+    <net code="55" name="Net-(D3-Pad2)">
+      <node ref="D3" pin="2"/>
+      <node ref="R6" pin="1"/>
+    </net>
+    <net code="56" name="Net-(U1-Pad5)">
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="57" name="Net-(R102-Pad1)">
+      <node ref="R102" pin="1"/>
+      <node ref="R103" pin="2"/>
+      <node ref="U101" pin="3"/>
+    </net>
+    <net code="58" name="Net-(C103-Pad1)">
+      <node ref="C103" pin="1"/>
+      <node ref="U101" pin="1"/>
+    </net>
+    <net code="59" name="Net-(D102-Pad2)">
+      <node ref="R101" pin="2"/>
+      <node ref="D102" pin="2"/>
+    </net>
+    <net code="60" name="Net-(COUT101-Pad1)">
+      <node ref="COUT102" pin="1"/>
+      <node ref="COUT103" pin="1"/>
+      <node ref="COUT101" pin="1"/>
+      <node ref="R104" pin="1"/>
+      <node ref="R103" pin="1"/>
+      <node ref="L101" pin="2"/>
+    </net>
+    <net code="61" name="Net-(C103-Pad2)">
+      <node ref="C103" pin="2"/>
+      <node ref="U101" pin="6"/>
+      <node ref="L101" pin="1"/>
+    </net>
+    <net code="62" name="Net-(C101-Pad1)">
+      <node ref="C101" pin="1"/>
+      <node ref="C102" pin="1"/>
+      <node ref="U101" pin="4"/>
+      <node ref="U101" pin="5"/>
+      <node ref="R101" pin="1"/>
+      <node ref="F101" pin="1"/>
+    </net>
+    <net code="63" name="Net-(R54-Pad1)">
+      <node ref="R54" pin="1"/>
+      <node ref="R57" pin="2"/>
+      <node ref="U14" pin="4"/>
+    </net>
+    <net code="64" name="Net-(R51-Pad1)">
+      <node ref="U11" pin="1"/>
+      <node ref="R51" pin="1"/>
+      <node ref="R54" pin="2"/>
+    </net>
+    <net code="65" name="Net-(R43-Pad1)">
+      <node ref="U11" pin="4"/>
+      <node ref="R51" pin="2"/>
+      <node ref="R43" pin="1"/>
+    </net>
+    <net code="66" name="Net-(R42-Pad1)">
+      <node ref="U11" pin="3"/>
+      <node ref="R48" pin="2"/>
+      <node ref="R42" pin="1"/>
+    </net>
+    <net code="67" name="Net-(R35-Pad1)">
+      <node ref="U10" pin="4"/>
+      <node ref="R38" pin="2"/>
+      <node ref="R35" pin="1"/>
+    </net>
+    <net code="68" name="Net-(R32-Pad1)">
+      <node ref="R35" pin="2"/>
+      <node ref="R32" pin="1"/>
+      <node ref="U7" pin="1"/>
+    </net>
+    <net code="69" name="Net-(R26-Pad1)">
+      <node ref="U7" pin="4"/>
+      <node ref="R32" pin="2"/>
+      <node ref="R26" pin="1"/>
+    </net>
+    <net code="70" name="Net-(R25-Pad1)">
+      <node ref="R25" pin="1"/>
+      <node ref="R29" pin="2"/>
+      <node ref="U7" pin="3"/>
+    </net>
+    <net code="71" name="Net-(R56-Pad1)">
+      <node ref="R56" pin="1"/>
+      <node ref="U16" pin="4"/>
+      <node ref="R59" pin="2"/>
+    </net>
+    <net code="72" name="Net-(R53-Pad1)">
+      <node ref="R53" pin="1"/>
+      <node ref="U13" pin="1"/>
+      <node ref="R56" pin="2"/>
+    </net>
+    <net code="73" name="Net-(R47-Pad1)">
+      <node ref="R47" pin="1"/>
+      <node ref="R53" pin="2"/>
+      <node ref="U13" pin="4"/>
+    </net>
+    <net code="74" name="Net-(R46-Pad1)">
+      <node ref="R50" pin="2"/>
+      <node ref="R46" pin="1"/>
+      <node ref="U13" pin="3"/>
+    </net>
+    <net code="75" name="Net-(R44-Pad1)">
+      <node ref="U12" pin="3"/>
+      <node ref="R44" pin="1"/>
+      <node ref="R49" pin="2"/>
+    </net>
+    <net code="76" name="Net-(R52-Pad1)">
+      <node ref="U12" pin="1"/>
+      <node ref="R55" pin="2"/>
+      <node ref="R52" pin="1"/>
+    </net>
+    <net code="77" name="Net-(R55-Pad1)">
+      <node ref="R55" pin="1"/>
+      <node ref="U15" pin="4"/>
+      <node ref="R58" pin="2"/>
+    </net>
+    <net code="78" name="Net-(R45-Pad1)">
+      <node ref="U12" pin="4"/>
+      <node ref="R45" pin="1"/>
+      <node ref="R52" pin="2"/>
+    </net>
+    <net code="79" name="Net-(R22-Pad1)">
+      <node ref="U5" pin="4"/>
+      <node ref="R22" pin="1"/>
+      <node ref="R30" pin="2"/>
+    </net>
+    <net code="80" name="Net-(R12-Pad1)">
+      <node ref="R14" pin="2"/>
+      <node ref="R12" pin="1"/>
+      <node ref="U3" pin="3"/>
+    </net>
+    <net code="81" name="Net-(R30-Pad1)">
+      <node ref="R33" pin="2"/>
+      <node ref="U5" pin="1"/>
+      <node ref="R30" pin="1"/>
+    </net>
+    <net code="82" name="Net-(R33-Pad1)">
+      <node ref="R33" pin="1"/>
+      <node ref="U8" pin="4"/>
+      <node ref="R36" pin="2"/>
+    </net>
+    <net code="83" name="Net-(R21-Pad1)">
+      <node ref="U5" pin="3"/>
+      <node ref="R27" pin="2"/>
+      <node ref="R21" pin="1"/>
+    </net>
+    <net code="84" name="Net-(R16-Pad1)">
+      <node ref="R17" pin="2"/>
+      <node ref="U4" pin="4"/>
+      <node ref="R16" pin="1"/>
+    </net>
+    <net code="85" name="Net-(R15-Pad1)">
+      <node ref="U3" pin="1"/>
+      <node ref="R16" pin="2"/>
+      <node ref="R15" pin="1"/>
+    </net>
+    <net code="86" name="Net-(R13-Pad1)">
+      <node ref="R13" pin="1"/>
+      <node ref="U3" pin="4"/>
+      <node ref="R15" pin="2"/>
+    </net>
+    <net code="87" name="Net-(R24-Pad1)">
+      <node ref="R31" pin="2"/>
+      <node ref="U6" pin="4"/>
+      <node ref="R24" pin="1"/>
+    </net>
+    <net code="88" name="Net-(R23-Pad1)">
+      <node ref="R23" pin="1"/>
+      <node ref="U6" pin="3"/>
+      <node ref="R28" pin="2"/>
+    </net>
+    <net code="89" name="Net-(R34-Pad1)">
+      <node ref="R34" pin="1"/>
+      <node ref="R37" pin="2"/>
+      <node ref="U9" pin="4"/>
+    </net>
+    <net code="90" name="Net-(R31-Pad1)">
+      <node ref="R31" pin="1"/>
+      <node ref="R34" pin="2"/>
+      <node ref="U6" pin="1"/>
+    </net>
+  </nets>
+</export>
