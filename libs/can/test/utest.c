@@ -30,10 +30,10 @@ static void test_receive_exact(void** state) {
     (void)can_receive(&frame, filter);
 
     can_mock_receive_message(0x11, NULL, 0);
-    assert_int_equal(can_poll_complete(&frame), -1);
+    assert_int_equal(can_poll_receive(&frame), -1);
 
     can_mock_receive_message(0x12, NULL, 0);
-    assert_int_equal(can_poll_complete(&frame), 0);
+    assert_int_equal(can_poll_receive(&frame), 0);
 }
 
 static void test_receive_range(void** state) {
@@ -51,16 +51,16 @@ static void test_receive_range(void** state) {
     (void)can_receive(&frame, filter);
 
     can_mock_receive_message(0x18, NULL, 0);
-    assert_int_equal(can_poll_complete(&frame), -1);
+    assert_int_equal(can_poll_receive(&frame), -1);
 
     can_mock_receive_message(0x12, NULL, 0);
-    assert_int_equal(can_poll_complete(&frame), 0);
+    assert_int_equal(can_poll_receive(&frame), 0);
 
     will_return(can_receive, 0);
     (void)can_receive(&frame, filter);
 
     can_mock_receive_message(0x17, NULL, 0);
-    assert_int_equal(can_poll_complete(&frame), 0);
+    assert_int_equal(can_poll_receive(&frame), 0);
 }
 
 int main(void) {

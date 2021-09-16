@@ -72,7 +72,7 @@ int can_receive(can_frame_t* frame, can_filter_t filter) {
     return mock();
 }
 
-int can_poll_complete(can_frame_t* frame) {
+int can_poll_receive(can_frame_t* frame) {
     struct can_mob mob = mob_list[frame->mob];
 
     if (mob.status == MOB_STATUS_WAITING) {
