@@ -3,8 +3,11 @@
 
 /*
  * Initializes UART peripheral with the specified baudrate
+ *
+ * If use_interrupt is true, UART receive interrupts will be enabled and the ISR
+ * will be available using:
  */
-void uart_init(uint32_t baudrate);
+void uart_init(uint16_t baudrate);
 
 /*
  * Returns a single character from the UART peripheral

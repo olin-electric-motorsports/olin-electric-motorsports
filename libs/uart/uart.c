@@ -5,7 +5,7 @@
 #include "libs/uart/api.h"
 #include <avr/io.h>
 
-void uart_init(uint32_t baudrate) {
+void uart_init(uint16_t baudrate) {
     // pg 179, 191
     LINCR |= (1 << LENA) | 0x7; // Enable UART
 
