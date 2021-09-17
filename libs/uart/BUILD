@@ -13,11 +13,11 @@ cc_library(
     srcs = [
         "uart.c",
     ],
-    deps = [
-        ":hdrs",
-    ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
     visibility = ["//visibility:public"],
+    deps = [
+        ":hdrs",
+    ],
 )
