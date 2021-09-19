@@ -2,6 +2,8 @@ load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 
+### cc_firmware
+
 def _eep_file_impl(ctx):
     # ctx.file contains a single File or None for dependency attributes whose
     # specs set allow_single_file=True
@@ -297,4 +299,121 @@ def cc_firmware(name, **kwargs):
             "//bazel/constraints:atmega328p": "m328p",
             "//conditions:default": "",
         }),
+    )
+
+### kicad
+
+"""
+kicad_hardware(
+    name = "bspd-brakelight",
+    project_file = "bspd-brakelight.pro",
+    schematic_files = [
+        "bspd-brakelight.sch",
+        "buck.sch",
+    ],
+    pcb_file = "bspd-brakelight.kicad_pcb",
+)
+"""
+
+def _pcb_svg_impl(ctx):
+    pcb_file = ctx.file.pcb_file
+    cfg_file = ctx.file._config_file
+
+    output = ctx.actions.declare_file("{}.svg".format(ctx.attr.name))
+
+    ctx.actions.run_shell(
+        outputs = [output],
+        inputs = [pcb_file, cfg_file],
+        command = "kibot -b {} -v -c {}".format(pcb_file.short_path, cfg_file.short_path),
+    )
+
+    return [
+        DefaultInfo(files = depset([output]))
+    ]
+
+pcb_svg = rule(
+    implementation = _pcb_svg_impl,
+    attrs = {
+        "pcb_file": attr.label(
+            doc = "*.kicad-pcb file with layout",
+            allow_single_file = True,
+            mandatory = True,
+        ),
+        "_config_file": attr.label(
+            doc = "KiBot config file",
+            allow_single_file = True,
+            default = Label("//scripts/kibot:pcb_svg.kibot.yaml"),
+        )
+    },
+)
+
+def _bom_impl(ctx):
+    sch = ctx.files.schematic_files
+    cfg_file = ctx.file._config_file
+
+    output = ctx.actions.declare_file("{}.bom".format(ctx.attr.name))
+
+    print(sch[0])
+
+    ctx.actions.run_shell(
+        outputs = [output],
+        inputs = [cfg_file] + sch,
+        command = "kibot -e {} -v -c {}".format(sch[0].short_path, cfg_file.short_path),
+    )
+
+    return [
+        DefaultInfo(files = depset([output]))
+    ]
+    pass
+
+bom = rule(
+    implementation = _bom_impl,
+    attrs = {
+        "schematic_files": attr.label_list(
+            doc = "Schematic files",
+            allow_files = True,
+            allow_empty = False,
+            mandatory = True,
+        ),
+        "_config_file": attr.label(
+            doc = "KiBot config file",
+            allow_single_file = True,
+            default = Label("//scripts/kibot:bom.kibot.yaml"),
+        )
+    }
+)
+
+# pcb_svg
+# sch_pdf
+# bom
+# gerbers
+# dxfs
+# step
+
+def kicad_hardware(
+        name,
+        project_file = "",
+        schematic_files = [],
+        pcb_file = ""):
+    """
+    TODO: Write docstring!
+    """
+
+    if not project_file:
+        project_file = ":{}.pro".format(name)
+
+    if not schematic_files:
+        schematic_files = [":{}.sch".format(name)]
+
+    if not pcb_file:
+        pcb_file = ":{}.kicad_pcb".format(name)
+
+    pcb_svg(
+        name = "{}.pcb".format(name),
+        pcb_file = pcb_file,
+    )
+
+    bom(
+        name = "{}_bom".format(name),
+        schematic_files = schematic_files,
     )
