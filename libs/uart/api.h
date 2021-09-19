@@ -33,4 +33,4 @@ void uart_puts(char* s);
  * Receives a new-line terminated string from UART and converts the new-line
  * '\n' to a null-terminater '\0'
  */
-void uart_gets(char* s);
+void uart_gets(char* s, int size);

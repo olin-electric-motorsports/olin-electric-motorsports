@@ -11,8 +11,9 @@ void uart_init(uint16_t baudrate, bool use_interrupt) {
 }
 
 char uart_getchar(void) {
-    // Unimplemented!
-    return '\0';
+    loop_until_bit_is_clear(LINSIR, LBUSY);
+    char c = LINDAT;
+    return c;
 }
 
 void uart_putchar(char c) {
@@ -27,6 +28,16 @@ void uart_puts(char* s) {
     }
 }
 
-void uart_gets(char* s) {
+void uart_gets(char* s, int size) {
     // Unimplemented!
+    char c;
+    for (int i = 0; i < size; i++) {
+        loop_until_bit_is_clear(LINSIR, LBUSY);
+        c = LINDAT;
+        if (c == '\n') {
+            s[i] = '\0';
+            break;
+        }
+        s[i] = c;
+    }
 }
