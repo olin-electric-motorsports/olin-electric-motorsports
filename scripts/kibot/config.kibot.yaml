@@ -1,0 +1,15 @@
+kibot:
+  version: 1
+
+outputs:
+  - name: 'gerbers'
+    comment: "GERBERs for board fabrication"
+    type: gerber
+    dir: gerbers
+    layers: 'all'
+
+  - name: 'bom'
+    type: bom 
+
+  - name: 'schematic'
+    type: pdf_sch_print
