@@ -64,7 +64,7 @@ _OPT_FEATURE = feature(
             actions = _C_ALL_COMPILE_ACTIONS,
             flag_groups = [
                 flag_group(
-                    flags = ["-Os", "-finline-small-functions", "-flto"],
+                    flags = ["-Os", "-finline-small-functions"],
                 ),
             ],
         ),

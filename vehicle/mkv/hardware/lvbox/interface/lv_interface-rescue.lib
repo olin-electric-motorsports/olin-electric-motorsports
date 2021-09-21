@@ -1,0 +1,33 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# RJ45_VT-formula
+#
+DEF RJ45_VT-formula U 0 40 Y Y 1 F N
+F0 "U" 0 -590 60 H V C CNN
+F1 "RJ45_VT-formula" 10 660 60 H V C CNN
+F2 "footprints:RJ45-Vertical" -100 -690 60 H I C CNN
+F3 "https://www.amphenolcanada.com/ProductSearch/drawings/AC/MRJ548XX1.pdf" 0 -590 60 H I C CNN
+F4 "DK" 300 -290 60 H V C CNN "MFN"
+F5 "MRJ-5481-01-ND" 200 -390 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/products/en?keywords=MRJ-5481-01" 400 -190 60 H I C CNN "PurchasingLink"
+DRAW
+S -280 570 650 -190 0 1 0 N
+X CANL 1 -480 430 200 R 50 50 1 1 B
+X LED_1 10 -70 -390 200 U 50 50 1 1 B
+X GND 11 100 -390 200 U 50 50 1 1 B
+X LED_2 12 210 -390 200 U 50 50 1 1 B
+X GND 13 400 -390 200 U 50 50 1 1 B
+X GND 14 510 -390 200 U 50 50 1 1 B
+X CANH 2 -480 330 200 R 50 50 1 1 B
+X RESET 3 -480 230 200 R 50 50 1 1 B
+X SCK 4 -480 130 200 R 50 50 1 1 B
+X MISO 5 850 430 200 L 50 50 1 1 B
+X MOSI 6 850 330 200 L 50 50 1 1 B
+X 5V 7 850 230 200 L 50 50 1 1 B
+X GND 8 850 130 200 L 50 50 1 1 B
+X GND 9 -180 -390 200 U 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
+#End Library
