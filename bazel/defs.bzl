@@ -303,28 +303,18 @@ def cc_firmware(name, **kwargs):
 
 ### kicad
 
-"""
-kicad_hardware(
-    name = "bspd-brakelight",
-    project_file = "bspd-brakelight.pro",
-    schematic_files = [
-        "bspd-brakelight.sch",
-        "buck.sch",
-    ],
-    pcb_file = "bspd-brakelight.kicad_pcb",
-)
-"""
-
 def _pcb_svg_impl(ctx):
     pcb_file = ctx.file.pcb_file
     cfg_file = ctx.file._config_file
 
     output = ctx.actions.declare_file("{}.svg".format(ctx.attr.name))
 
+    print(output)
+
     ctx.actions.run_shell(
         outputs = [output],
         inputs = [pcb_file, cfg_file],
-        command = "kibot -b {} -v -c {}".format(pcb_file.short_path, cfg_file.short_path),
+        command = "kibot -b {} -c {} -d {}".format(pcb_file.short_path, cfg_file.short_path, output.dirname),
     )
 
     return [
@@ -351,20 +341,18 @@ def _bom_impl(ctx):
     sch = ctx.files.schematic_files
     cfg_file = ctx.file._config_file
 
-    output = ctx.actions.declare_file("{}.bom".format(ctx.attr.name))
-
-    print(sch[0])
+    output = ctx.actions.declare_file("{}.csv".format(ctx.attr.name))
 
     ctx.actions.run_shell(
+        mnemonic = "kibot",
         outputs = [output],
         inputs = [cfg_file] + sch,
-        command = "kibot -e {} -v -c {}".format(sch[0].short_path, cfg_file.short_path),
+        command = "kibot -e {} -c {} -d {}".format(sch[0].short_path, cfg_file.short_path, output.dirname),
     )
 
     return [
         DefaultInfo(files = depset([output]))
     ]
-    pass
 
 bom = rule(
     implementation = _bom_impl,
