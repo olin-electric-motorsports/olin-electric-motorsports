@@ -1,0 +1,25 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# MP9488-formula
+#
+DEF MP9488-formula U 0 40 Y Y 1 F N
+F0 "U" 0 750 50 H V C CNN
+F1 "MP9488-formula" 50 850 50 H V C CNN
+F2 "footprints:Converter_DCDC_MPS_MP9488" 50 950 50 H I C CNN
+F3 "" 0 750 50 H I C CNN
+F4 "https://www.monolithicpower.com/en/mp9488.html" 50 1050 50 H I C CNN "Purchasing Link"
+DRAW
+S -150 200 400 -350 0 1 0 f
+X VCC 1 100 300 100 D 50 50 1 1 B
+X FB 2 500 -50 100 L 50 50 1 1 B
+X SW 3 250 -450 100 U 50 50 1 1 B
+X SW 4 100 -450 100 U 50 50 1 1 B
+X NC 5 -250 50 100 R 50 50 1 1 B
+X NC 6 -250 -50 100 R 50 50 1 1 B
+X VIN 7 -250 -150 100 R 50 50 1 1 B
+X NC 8 -250 -250 100 R 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
+#End Library
