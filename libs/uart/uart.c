@@ -29,15 +29,26 @@ void uart_puts(char* s) {
 }
 
 void uart_gets(char* s, int size) {
-    // Unimplemented!
-    char c;
+    char c = 0;
+
     for (int i = 0; i < size; i++) {
+        while (!(LINSIR & 0x1)) {
+            // wait
+        }
+
         loop_until_bit_is_clear(LINSIR, LBUSY);
         c = LINDAT;
+
+        s[i] = c;
+
+        loop_until_bit_is_clear(LINSIR, LBUSY);
+        uart_putchar(c);
+
         if (c == '\n') {
             s[i] = '\0';
             break;
         }
-        s[i] = c;
     }
+
+    s[size - 1] = '\0';
 }
