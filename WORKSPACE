@@ -3,11 +3,11 @@ workspace(name = "formula")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
 
-http_archive(
-    name = "rules_python",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.4.0/rules_python-0.4.0.tar.gz",
-    sha256 = "954aa89b491be4a083304a2cb838019c8b8c3720a7abb9c4cb81ac7a24230cea",
-)
+# http_archive(
+#     name = "rules_python",
+#     url = "https://github.com/bazelbuild/rules_python/releases/download/0.4.0/rules_python-0.4.0.tar.gz",
+#     sha256 = "954aa89b491be4a083304a2cb838019c8b8c3720a7abb9c4cb81ac7a24230cea",
+# )
 
 register_execution_platforms("@local_config_platform//:host", "//bazel/platforms:all")
 
@@ -71,9 +71,19 @@ http_archive(
     urls = ["https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz"],
 )
 
-load("@rules_python//python:pip.bzl", "pip_install")
+# load("@rules_python//python:pip.bzl", "pip_install")
+# 
+# pip_install(
+#    name = "kibot",
+#    requirements = "//third_party/pcbnew:requirements.txt",
+# )
 
-pip_install(
-   name = "kibot",
-   requirements = "//third_party/pcbnew:requirements.txt",
+http_archive(
+    name = "bazel_toolchains",
+    sha256 = "1adf5db506a7e3c465a26988514cfc3971af6d5b3c2218925cd6e71ee443fc3f",
+    strip_prefix = "bazel-toolchains-4.0.0",
+    urls = [
+        "https://github.com/bazelbuild/bazel-toolchains/releases/download/4.0.0/bazel-toolchains-4.0.0.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-toolchains/releases/download/4.0.0/bazel-toolchains-4.0.0.tar.gz",
+    ],
 )

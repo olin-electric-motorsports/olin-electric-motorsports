@@ -15,3 +15,11 @@ build:avr-test-sim --platforms=//bazel/platforms:avr_test_sim
 
 # Host target
 build:linux-x86_64 --platforms=//bazel/platforms:linux-x86_64
+
+# Host docker KiBot
+build:docker-kicad --spawn_strategy=docker --strategy=kibot=docker
+build:docker-kicad --define=EXECUTOR=remote
+build:docker-kicad --experimental_docker_verbose
+build:docker-kicad --experimental_enable_docker_sandbox
+build:docker-kicad --incompatible_strict_action_env=true
+build:docker-kicad --experimental_docker_image=setsoft/kicad_auto

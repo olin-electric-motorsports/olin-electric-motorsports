@@ -3,7 +3,6 @@ kibot:
 
 outputs:
   - name: "pcb_svg"
-    type: svg
-    layers: 'all'
-    # options:
-      # output: "%f.pcb.%x"
+    type: pcbdraw
+    options:
+      output: "%f.pcb.svg"
