@@ -337,6 +337,40 @@ pcb_svg = rule(
     },
 )
 
+def _sch_pdf_impl(ctx):
+    sch = ctx.files.schematic_files
+    cfg_file = ctx.file._config_file
+
+    output = ctx.actions.declare_file("{}_sch.pdf".format(ctx.attr.name))
+
+    ctx.actions.run_shell(
+        mnemonic = "kibot",
+        outputs = [output],
+        inputs = [cfg_file] + sch,
+        command = "kibot -e {} -c {} -d {}".format(sch[0].short_path, cfg_file.short_path, output.dirname),
+    )
+
+    return [
+        DefaultInfo(files = depset([output]))
+    ]
+
+sch_pdf = rule(
+    implementation = _sch_pdf_impl,
+    attrs = {
+        "schematic_files": attr.label_list(
+            doc = "Schematic files",
+            allow_files = True,
+            allow_empty = False,
+            mandatory = True,
+        ),
+        "_config_file": attr.label(
+            doc = "KiBot config file",
+            allow_single_file = True,
+            default = Label("//scripts/kibot:sch_pdf.kibot.yaml"),
+        )
+    }
+)
+
 def _bom_impl(ctx):
     sch = ctx.files.schematic_files
     cfg_file = ctx.file._config_file
@@ -399,6 +433,11 @@ def kicad_hardware(
     pcb_svg(
         name = "{}.pcb".format(name),
         pcb_file = pcb_file,
+    )
+
+    sch_pdf(
+        name = "{}.pdf".format(name),
+        schematic_files = schematic_files,
     )
 
     bom(

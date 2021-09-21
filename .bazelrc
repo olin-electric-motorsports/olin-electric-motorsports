@@ -22,5 +22,4 @@ build:docker-kicad --define=EXECUTOR=remote
 build:docker-kicad --experimental_docker_verbose
 build:docker-kicad --experimental_enable_docker_sandbox
 build:docker-kicad --incompatible_strict_action_env=true
-# build:docker-kicad --crosstool_top=@rbe_default//cc:toolchain
 build:docker-kicad --experimental_docker_image=setsoft/kicad_auto
