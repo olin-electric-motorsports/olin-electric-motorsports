@@ -406,26 +406,32 @@ bom = rule(
     }
 )
 
-def _gerbers_impl(ctx):
+def _kibot_impl(ctx):
+    cfg_file = ctx.file.config_file
     sch = ctx.files.schematic_files
     pcb = ctx.file.pcb_file
-    cfg_file = ctx.file._config_file
 
-    output = ctx.actions.declare_file("{}.zip".format(ctx.attr.name))
+    output = ctx.actions.declare_file("{}".format(ctx.attr.name))
 
     ctx.actions.run_shell(
         mnemonic = "kibot",
         outputs = [output],
-        inputs = [cfg_file, pcb] + sch, command = "kibot -e {} -b {} -c {} -d {}".format(sch[0].short_path, pcb.short_path, cfg_file.short_path, output.dirname),
+        inputs = [cfg_file, pcb] + sch,
+        command = "kibot -e {} -b {} -c {} -d {}".format(sch[0].short_path, pcb.short_path, cfg_file.short_path, output.dirname),
     )
 
     return [
         DefaultInfo(files = depset([output]))
     ]
 
-gerbers = rule(
-    implementation = _gerbers_impl,
+kibot = rule(
+    implementation = _kibot_impl,
     attrs = {
+        "config_file": attr.label(
+            doc = "Path to config file",
+            allow_single_file = True,
+            mandatory = True,
+        ),
         "schematic_files": attr.label_list(
             doc = "Schematic files",
             allow_files = True,
@@ -437,14 +443,10 @@ gerbers = rule(
             allow_single_file = True,
             mandatory = True,
         ),
-        "_config_file": attr.label(
-            doc = "KiBot config file",
-            allow_single_file = True,
-            default = Label("//scripts/kibot:gerbers.kibot.yaml"),
-        )
     }
 )
 
+# gerbers
 # pcb_svg
 # sch_pdf
 # bom
@@ -476,40 +478,36 @@ def kicad_hardware(
             ":{}.svg".format(name),
             ":{}.pdf".format(name),
             ":{}.csv".format(name),
+            ":{}.gerbers.zip".format(name),
         ],
         extension = "tgz",
         mode = "0755",
     )
 
-    pcb_svg(
+    kibot(
         name = "{}.svg".format(name),
+        config_file = "//scripts/kibot:pcb_svg.kibot.yaml",
         pcb_file = pcb_file,
+        schematic_files = schematic_files,
     )
 
-    sch_pdf(
+    kibot(
         name = "{}.pdf".format(name),
-        schematic_files = schematic_files,
-    )
-
-    bom(
-        name = "{}.csv".format(name),
-        schematic_files = schematic_files,
-    )
-
-    gerbers(
-        name = "{}.gerbers".format(name),
+        config_file = "//scripts/kibot:sch_pdf.kibot.yaml",
         pcb_file = pcb_file,
         schematic_files = schematic_files,
     )
 
-#     dxfs(
-#         name = "{}.dxf"
-#         pcb_file = pcb_file,
-#         schematic_files = schematic_files,
-#     )
+    kibot(
+        name = "{}.csv".format(name),
+        config_file = "//scripts/kibot:bom.kibot.yaml",
+        pcb_file = pcb_file,
+        schematic_files = schematic_files,
+    )
 
-#     step(
-#         name = "{}.stp"
-#         pcb_file = pcb_file,
-#         schematic_files = schematic_files,
-#     )
+    kibot(
+        name = "{}.gerbers.zip".format(name),
+        config_file = "//scripts/kibot:gerbers.kibot.yaml",
+        pcb_file = pcb_file,
+        schematic_files = schematic_files,
+    )
