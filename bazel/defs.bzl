@@ -411,3 +411,10 @@ def kicad_hardware(
         pcb_file = pcb_file,
         schematic_files = schematic_files,
     )
+
+    kibot(
+        name = "{}.step".format(name),
+        config_file = "//scripts/kibot:step.kibot.yaml",
+        pcb_file = pcb_file,
+        schematic_files = schematic_files,
+    )
