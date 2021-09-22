@@ -303,109 +303,6 @@ def cc_firmware(name, **kwargs):
 
 ### kicad
 
-def _pcb_svg_impl(ctx):
-    pcb_file = ctx.file.pcb_file
-    cfg_file = ctx.file._config_file
-
-    output = ctx.actions.declare_file("{}".format(ctx.attr.name))
-
-    print(output)
-
-    ctx.actions.run_shell(
-        mnemonic = "kibot",
-        outputs = [output],
-        inputs = [pcb_file, cfg_file],
-        command = "kibot -b {} -c {} -d {}".format(pcb_file.short_path, cfg_file.short_path, output.dirname),
-    )
-
-    return [
-        DefaultInfo(files = depset([output]))
-    ]
-
-pcb_svg = rule(
-    implementation = _pcb_svg_impl,
-    attrs = {
-        "pcb_file": attr.label(
-            doc = "*.kicad-pcb file with layout",
-            allow_single_file = True,
-            mandatory = True,
-        ),
-        "_config_file": attr.label(
-            doc = "KiBot config file",
-            allow_single_file = True,
-            default = Label("//scripts/kibot:pcb_svg.kibot.yaml"),
-        )
-    },
-)
-
-def _sch_pdf_impl(ctx):
-    sch = ctx.files.schematic_files
-    cfg_file = ctx.file._config_file
-
-    output = ctx.actions.declare_file("{}".format(ctx.attr.name))
-
-    ctx.actions.run_shell(
-        mnemonic = "kibot",
-        outputs = [output],
-        inputs = [cfg_file] + sch,
-        command = "kibot -e {} -c {} -d {}".format(sch[0].short_path, cfg_file.short_path, output.dirname),
-    )
-
-    return [
-        DefaultInfo(files = depset([output]))
-    ]
-
-sch_pdf = rule(
-    implementation = _sch_pdf_impl,
-    attrs = {
-        "schematic_files": attr.label_list(
-            doc = "Schematic files",
-            allow_files = True,
-            allow_empty = False,
-            mandatory = True,
-        ),
-        "_config_file": attr.label(
-            doc = "KiBot config file",
-            allow_single_file = True,
-            default = Label("//scripts/kibot:sch_pdf.kibot.yaml"),
-        )
-    }
-)
-
-def _bom_impl(ctx):
-    sch = ctx.files.schematic_files
-    cfg_file = ctx.file._config_file
-
-    output = ctx.actions.declare_file("{}".format(ctx.attr.name))
-
-    ctx.actions.run_shell(
-        mnemonic = "kibot",
-        outputs = [output],
-        inputs = [cfg_file] + sch,
-        command = "kibot -e {} -c {} -d {}".format(sch[0].short_path, cfg_file.short_path, output.dirname),
-    )
-
-    return [
-        DefaultInfo(files = depset([output]))
-    ]
-
-bom = rule(
-    implementation = _bom_impl,
-    attrs = {
-        "schematic_files": attr.label_list(
-            doc = "Schematic files",
-            allow_files = True,
-            allow_empty = False,
-            mandatory = True,
-        ),
-        "_config_file": attr.label(
-            doc = "KiBot config file",
-            allow_single_file = True,
-            default = Label("//scripts/kibot:bom.kibot.yaml"),
-        )
-    }
-)
-
 def _kibot_impl(ctx):
     cfg_file = ctx.file.config_file
     sch = ctx.files.schematic_files
@@ -446,11 +343,6 @@ kibot = rule(
     }
 )
 
-# gerbers
-# pcb_svg
-# sch_pdf
-# bom
-# gerbers
 # dxfs
 # step
 
@@ -479,6 +371,7 @@ def kicad_hardware(
             ":{}.pdf".format(name),
             ":{}.csv".format(name),
             ":{}.gerbers.zip".format(name),
+            ":{}.dxf".format(name),
         ],
         extension = "tgz",
         mode = "0755",
@@ -508,6 +401,13 @@ def kicad_hardware(
     kibot(
         name = "{}.gerbers.zip".format(name),
         config_file = "//scripts/kibot:gerbers.kibot.yaml",
+        pcb_file = pcb_file,
+        schematic_files = schematic_files,
+    )
+
+    kibot(
+        name = "{}.dxf".format(name),
+        config_file = "//scripts/kibot:dxfs.kibot.yaml",
         pcb_file = pcb_file,
         schematic_files = schematic_files,
     )
