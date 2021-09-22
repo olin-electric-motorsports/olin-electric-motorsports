@@ -307,11 +307,12 @@ def _pcb_svg_impl(ctx):
     pcb_file = ctx.file.pcb_file
     cfg_file = ctx.file._config_file
 
-    output = ctx.actions.declare_file("{}.svg".format(ctx.attr.name))
+    output = ctx.actions.declare_file("{}".format(ctx.attr.name))
 
     print(output)
 
     ctx.actions.run_shell(
+        mnemonic = "kibot",
         outputs = [output],
         inputs = [pcb_file, cfg_file],
         command = "kibot -b {} -c {} -d {}".format(pcb_file.short_path, cfg_file.short_path, output.dirname),
@@ -341,7 +342,7 @@ def _sch_pdf_impl(ctx):
     sch = ctx.files.schematic_files
     cfg_file = ctx.file._config_file
 
-    output = ctx.actions.declare_file("{}_sch.pdf".format(ctx.attr.name))
+    output = ctx.actions.declare_file("{}".format(ctx.attr.name))
 
     ctx.actions.run_shell(
         mnemonic = "kibot",
@@ -375,7 +376,7 @@ def _bom_impl(ctx):
     sch = ctx.files.schematic_files
     cfg_file = ctx.file._config_file
 
-    output = ctx.actions.declare_file("{}.csv".format(ctx.attr.name))
+    output = ctx.actions.declare_file("{}".format(ctx.attr.name))
 
     ctx.actions.run_shell(
         mnemonic = "kibot",
@@ -405,6 +406,44 @@ bom = rule(
     }
 )
 
+def _rulechecker_impl(ctx):
+    sch = ctx.files.schematic_files
+    pcb = ctx.file.pcb_file
+    cfg_file = ctx.file._config_file
+
+    ctx.actions.run_shell(
+        mnemonic = "kibot",
+        outputs = [],
+        inputs = [cfg_file, pcb] + sch,
+        command = "kibot -e {} -b {} -c {}".format(sch[0].short_path, pcb.short_path, cfg_file.short_path),
+    )
+
+    return [
+        DefaultInfo()
+    ]
+
+rulechecker = rule(
+    implementation = _rulechecker_impl,
+    attrs = {
+        "schematic_files": attr.label_list(
+            doc = "Schematic files",
+            allow_files = True,
+            allow_empty = False,
+            mandatory = True,
+        ),
+        "pcb_file": attr.label(
+            doc = "*.kicad-pcb file with layout",
+            allow_single_file = True,
+            mandatory = True,
+        ),
+        "_config_file": attr.label(
+            doc = "KiBot config file",
+            allow_single_file = True,
+            default = Label("//scripts/kibot:bom.kibot.yaml"),
+        )
+    },
+)
+
 # pcb_svg
 # sch_pdf
 # bom
@@ -430,8 +469,19 @@ def kicad_hardware(
     if not pcb_file:
         pcb_file = ":{}.kicad_pcb".format(name)
 
+    pkg_tar(
+        name = "{}".format(name),
+        srcs = [
+            ":{}.svg".format(name),
+            ":{}.pdf".format(name),
+            ":{}.csv".format(name),
+        ],
+        extension = "tgz",
+        mode = "0755",
+    )
+
     pcb_svg(
-        name = "{}.pcb".format(name),
+        name = "{}.svg".format(name),
         pcb_file = pcb_file,
     )
 
@@ -441,6 +491,6 @@ def kicad_hardware(
     )
 
     bom(
-        name = "{}_bom".format(name),
+        name = "{}.csv".format(name),
         schematic_files = schematic_files,
     )
