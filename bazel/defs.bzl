@@ -406,24 +406,25 @@ bom = rule(
     }
 )
 
-def _rulechecker_impl(ctx):
+def _gerbers_impl(ctx):
     sch = ctx.files.schematic_files
     pcb = ctx.file.pcb_file
     cfg_file = ctx.file._config_file
 
+    output = ctx.actions.declare_file("{}.zip".format(ctx.attr.name))
+
     ctx.actions.run_shell(
         mnemonic = "kibot",
-        outputs = [],
-        inputs = [cfg_file, pcb] + sch,
-        command = "kibot -e {} -b {} -c {}".format(sch[0].short_path, pcb.short_path, cfg_file.short_path),
+        outputs = [output],
+        inputs = [cfg_file, pcb] + sch, command = "kibot -e {} -b {} -c {} -d {}".format(sch[0].short_path, pcb.short_path, cfg_file.short_path, output.dirname),
     )
 
     return [
-        DefaultInfo()
+        DefaultInfo(files = depset([output]))
     ]
 
-rulechecker = rule(
-    implementation = _rulechecker_impl,
+gerbers = rule(
+    implementation = _gerbers_impl,
     attrs = {
         "schematic_files": attr.label_list(
             doc = "Schematic files",
@@ -439,9 +440,9 @@ rulechecker = rule(
         "_config_file": attr.label(
             doc = "KiBot config file",
             allow_single_file = True,
-            default = Label("//scripts/kibot:bom.kibot.yaml"),
+            default = Label("//scripts/kibot:gerbers.kibot.yaml"),
         )
-    },
+    }
 )
 
 # pcb_svg
@@ -494,3 +495,21 @@ def kicad_hardware(
         name = "{}.csv".format(name),
         schematic_files = schematic_files,
     )
+
+    gerbers(
+        name = "{}.gerbers".format(name),
+        pcb_file = pcb_file,
+        schematic_files = schematic_files,
+    )
+
+#     dxfs(
+#         name = "{}.dxf"
+#         pcb_file = pcb_file,
+#         schematic_files = schematic_files,
+#     )
+
+#     step(
+#         name = "{}.stp"
+#         pcb_file = pcb_file,
+#         schematic_files = schematic_files,
+#     )

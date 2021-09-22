@@ -1,0 +1,36 @@
+kibot:
+  version: 1
+
+outputs:
+  - name: gerbers
+    type: gerber
+    layers:
+      - 'copper'
+      - 'Edge.Cuts'
+      - 'F.Paste'
+      - 'B.Paste'
+      - 'F.SilkS'
+      - 'B.SilkS'
+      - 'F.Mask'
+      - 'B.Mask'
+    options:
+      use_protel_extensions: true
+
+  - name: drill
+    type: excellon
+    options:
+      metric_units: false
+      zeros_format: 'SUPPRESS_LEADING'
+      map:
+        output: '%f-%i%v.%x'
+        type: 'ps'
+      minimal_header: true
+
+  - name: zip
+    type: compress
+    options:
+      format: 'ZIP'
+      files:
+      - from_output: 'gerbers'
+      - from_output: 'drill'
+      output: '%f.gerbers.%x'
