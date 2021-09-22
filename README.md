@@ -1,6 +1,8 @@
-# Olin Electric Motorsports
-
-![Olin Electric Motorsports electric vehicle](https://nyc3.digitaloceanspaces.com/oem-outline/logo-smaller.png)
+<h1 align="center">
+	<img
+		alt="Olin Electric Motorsports"
+		src="https://nyc3.digitaloceanspaces.com/oem-outline/logo-smaller.png">
+</h1>
 
 Welcome to the OEM Monorepo! This is the home for all of the electrical,
 firmware, and software work our team does.
