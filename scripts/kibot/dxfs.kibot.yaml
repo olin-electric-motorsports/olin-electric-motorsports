@@ -1,0 +1,10 @@
+kibot:
+  version: 1
+
+outputs:
+  - name: dxf
+    type: dxf
+    layers:
+    - 'Edge.Cuts'
+    options:
+      output: '%f.%x'
