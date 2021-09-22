@@ -1,5 +1,7 @@
 # Olin Electric Motorsports
 
+![Olin Electric Motorsports electric vehicle](https://nyc3.digitaloceanspaces.com/oem-outline/logo-smaller.png)
+
 Welcome to the OEM Monorepo! This is the home for all of the electrical,
 firmware, and software work our team does.
 
@@ -59,41 +61,29 @@ command:
 $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight
 ```
 
-## Repository Structure
+### KiCad Setup
 
 ```
-.
-├── bazel/
-├── .bazelrc
-├── examples/
-│   └── blinky/
-├── .git/
-├── .gitattributes
-├── .github/
-│   └── workflows/
-├── .gitignore
-├── libs/
-│   └── example_library/
-├── parts/
-├── projects/
-│   └── example_project/
-│       ├── BUILD
-│       ├── libs/
-│       │   └── project_specific_library/
-│       │       └── BUILD
-│       └── src/
-├── README.md
-├── scripts/
-│   └── ci/
-├── tutorial/
-│   └── example_tutorial/
-├── vehicle/
-│   ├── mkv/
-│   │   ├── boards/
-│   │   │   └── example_board/
-│   │   ├── BUILD
-│   │   └── software/
-│   │       └── example_code/
-│   └── mkvi/
-└── WORKSPACE
+TODO
 ```
+
+## Contributing
+
+If you are working on a new project, the first step is to make sure you have the
+latest code:
+
+```shell
+$ git pull origin main
+```
+
+Next, create your feature branch:
+
+```shell
+$ git switch -c your-username/feature-name origin/main
+```
+
+Now, you can start working on code, committing on your branch, and eventually
+opening up a pull request to `main`.
+
+If you are working on a KiCad project, see the KiCad project documentation
+[here]() `TODO`.
