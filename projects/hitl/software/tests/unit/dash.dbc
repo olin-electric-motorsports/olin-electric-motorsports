@@ -1,0 +1,68 @@
+VERSION "created by canmatrix"
+
+
+NS_ :
+
+BS_:
+
+BU_: air_ctrl bms_core brakelight_bspd throttle dashboard 
+
+
+BO_ 0 Panic: 1 air_ctrl
+ SG_ Panic : 7|2@0+ (1,1) [0|1] "" air_ctrl,bms_core,throttle,brakelight_bspd
+
+BO_ 14 AirControl: 8 air_ctrl
+ SG_ TSMS_Sense : 7|8@0+ (1,0) [0|1] "" x
+ SG_ IMD_Sense : 15|8@0+ (1,0) [0|1] "" x
+ SG_ Main_Pack_Sense : 23|8@0+ (1,0) [0|1] "" x
+ SG_ HVD_Connector_Sense : 31|8@0+ (1,0) [0|1] "" x
+ SG_ HVD_Sense : 39|8@0+ (1,0) [0|1] "" x
+ SG_ BMS_Sense : 47|8@0+ (1,0) [0|1] "" x
+ SG_ IMD_Status : 55|8@0+ (1,0) [0|1] "" x
+ SG_ BMS_Status : 63|8@0+ (1,0) [0|1] "" x
+
+BO_ 16 BMSCore: 8 bms_core
+ SG_ ErrorCode : 7|8@0+ (1,0) [0|1] "" x
+ SG_ RelayStatus : 15|8@0+ (1,0) [0|1] "" x
+ SG_ Temperature : 23|8@0+ (1,0) [0|1] "" x
+ SG_ SocEstimate : 31|8@0+ (1,0) [0|1] "" x
+ SG_ BMS_Ok : 39|8@0+ (1,0) [0|1] "" x
+ SG_ RegenEnabled : 47|8@0+ (1,0) [0|1] "" x
+ SG_ CurrentLimitingEnabled : 55|8@0+ (1,0) [0|1] "" x
+ SG_ CellBalancingStatus : 63|8@0+ (1,0) [0|1] "" x
+
+BO_ 11 BrakelightBSPD: 5 brakelight_bspd
+ SG_ ErrorCode : 7|8@0+ (1,0) [0|1] "" x
+ SG_ BrakeAnalogVoltageMSB : 15|8@0+ (1,0) [0|1] "" x
+ SG_ BrakeAnalogVoltageLsb : 23|8@0+ (1,0) [0|1] "" x
+ SG_ BrakeGate : 31|8@0+ (1,0) [0|1] "" x
+ SG_ BSPDSense : 39|8@0+ (1,0) [0|1] "" x
+
+BO_ 12 Throttle: 5 throttle
+ SG_ ErrorCode : 7|8@0+ (1,0) [0|1] "" x
+ SG_ ThrottlePos : 15|8@0+ (1,0) [0|1] "" x
+ SG_ BotsSense : 23|8@0+ (1,0) [0|1] "" x
+ SG_ InertiaSwitchSense : 31|8@0+ (1,0) [0|1] "" x
+ SG_ DriverEStopSense : 39|8@0+ (1,0) [0|1] "" x
+
+BO_ 15 Dashboard: 4 dashboard
+ SG_ ErrorCode : 7|8@0+ (1,0) [0|1] "" x
+ SG_ Ready2Drive : 15|8@0+ (1,0) [0|1] "" x
+ SG_ SteeringPos : 23|8@0+ (1,0) [0|1] "" x
+ SG_ StartButton : 31|8@0+ (1,0) [0|1] "" x
+
+
+BO_TX_BU_ 0 : air_ctrl,bms_core,throttle,brakelight_bspd;
+CM_ BO_ 0  "This is bad. Liek really bad";
+
+
+CM_ BU_ air_ctrl "potato";
+CM_ BU_ bms_core "potato";
+CM_ BU_ brakelight_bspd "potato";
+CM_ BU_ throttle "potato";
+CM_ BU_ dashboard "potato";
+
+
+
+
+
