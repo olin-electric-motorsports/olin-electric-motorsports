@@ -324,7 +324,7 @@ def _kibot_impl(ctx):
     )
 
     return [
-        DefaultInfo(files = depset([output]))
+        DefaultInfo(files = depset([output])),
     ]
 
 kibot = rule(
@@ -338,7 +338,7 @@ kibot = rule(
         "output_name": attr.string_list(
             doc = "KiBot output name in script, default is `all`",
             allow_empty = False,
-            default = ['all'],
+            default = ["all"],
         ),
         "schematic_files": attr.label_list(
             doc = "Schematic files",
@@ -351,7 +351,7 @@ kibot = rule(
             allow_single_file = True,
             mandatory = True,
         ),
-    }
+    },
 )
 
 # dxfs
