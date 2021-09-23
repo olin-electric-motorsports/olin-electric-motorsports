@@ -15,12 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: INTI-CMNB/KiBot@v1
-      with:
-        config: scripts/kibot/build.kibot.yaml
-        dir: output
-        schema: '*.sch'
-        board: '*.pcb'
+    - name: build
+      run: bazel build --config=docker-kicad --build_tag_filters=kicad //...
     - name: upload
       # if: ${{ github.event_name == 'push' }}
       uses: actions/upload-artifact@v2
