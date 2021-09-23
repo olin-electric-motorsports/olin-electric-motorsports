@@ -1,14 +1,14 @@
 name: kicad-build
 
 on:
-  push:
+  # push:
+    # paths:
+    # - '**.sch'
+    # - '**.kicad_pcb'
+  pull_request:
     paths:
     - '**.sch'
     - '**.kicad_pcb'
-    pull_request:
-      paths:
-      - '**.sch'
-      - '**.kicad_pcb'
 
 jobs:
   build:
