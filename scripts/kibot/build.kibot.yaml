@@ -2,6 +2,24 @@ kibot:
   version: 1
 
 outputs:
+  - name: "sch_pdf"
+    type: pdf_sch_print
+    options:
+      output: "%f.pdf"
+
+  - name: "pcb_svg"
+    type: pcbdraw
+    options:
+      output: "%f.svg"
+
+  - name: step
+    type: step
+
+  - name: "bom"
+    type: bom
+    options:
+      output: "%f.csv"
+
   - name: gerbers
     type: gerber
     layers:
@@ -26,7 +44,7 @@ outputs:
         type: 'ps'
       minimal_header: true
 
-  - name: zip
+  - name: gerb_zip
     type: compress
     options:
       format: 'ZIP'
