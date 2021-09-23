@@ -3064,4 +3064,6 @@ Text Notes 4580 1670 0    50   ~ 0
 V_cap = .5V because that is the \nvalue we compare to using the\nop amp (U2).
 Text Notes 2770 1400 0    79   ~ 0
 Timer Calculations
+Text Notes 1110 3230 0    50   ~ 0
+Test comment
 $EndSCHEMATC
