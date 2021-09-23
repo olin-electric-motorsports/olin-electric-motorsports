@@ -382,6 +382,7 @@ def kicad_hardware(
             ":{}.pdf".format(name),
             ":{}.csv".format(name),
             ":{}.gerbers.zip".format(name),
+            # ":{}.step".format(name),
         ],
         extension = "tgz",
         mode = "0755",
@@ -424,11 +425,11 @@ def kicad_hardware(
         tags = ["kicad"],
     )
 
-    kibot(
-        name = "{}.step".format(name),
-        config_file = "//scripts/kibot:build.kibot.yaml",
-        output_name = ["step"],
-        pcb_file = pcb_file,
-        schematic_files = schematic_files,
-        tags = ["kicad"],
-    )
+    # kibot(
+    #     name = "{}.step".format(name),
+    #     config_file = "//scripts/kibot:build.kibot.yaml",
+    #     output_name = ["step"],
+    #     pcb_file = pcb_file,
+    #     schematic_files = schematic_files,
+    #     tags = ["kicad"],
+    # )
