@@ -314,7 +314,13 @@ def _kibot_impl(ctx):
         mnemonic = "kibot",
         outputs = [output],
         inputs = [cfg_file, pcb] + sch,
-        command = "kibot -e {} -b {} -c {} -d {}".format(sch[0].short_path, pcb.short_path, cfg_file.short_path, output.dirname),
+        command = "kibot -e {} -b {} -c {} -d {} {}".format(
+            sch[0].short_path,
+            pcb.short_path,
+            cfg_file.short_path,
+            output.dirname,
+            " ".join(ctx.attr.output_name),
+        ),
     )
 
     return [
@@ -328,6 +334,11 @@ kibot = rule(
             doc = "Path to config file",
             allow_single_file = True,
             mandatory = True,
+        ),
+        "output_name": attr.string_list(
+            doc = "KiBot output name in script, default is `all`",
+            allow_empty = False,
+            default = ['all'],
         ),
         "schematic_files": attr.label_list(
             doc = "Schematic files",
@@ -371,43 +382,53 @@ def kicad_hardware(
             ":{}.pdf".format(name),
             ":{}.csv".format(name),
             ":{}.gerbers.zip".format(name),
-            ":{}.dxf".format(name),
         ],
         extension = "tgz",
         mode = "0755",
+        tags = ["kicad"],
     )
 
     kibot(
         name = "{}.svg".format(name),
-        config_file = "//scripts/kibot:pcb_svg.kibot.yaml",
+        config_file = "//scripts/kibot:build.kibot.yaml",
+        output_name = ["pcb_svg"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        tags = ["kicad"],
     )
 
     kibot(
         name = "{}.pdf".format(name),
-        config_file = "//scripts/kibot:sch_pdf.kibot.yaml",
+        config_file = "//scripts/kibot:build.kibot.yaml",
+        output_name = ["sch_pdf"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        tags = ["kicad"],
     )
 
     kibot(
         name = "{}.csv".format(name),
-        config_file = "//scripts/kibot:bom.kibot.yaml",
+        config_file = "//scripts/kibot:build.kibot.yaml",
+        output_name = ["bom"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        tags = ["kicad"],
     )
 
     kibot(
         name = "{}.gerbers.zip".format(name),
-        config_file = "//scripts/kibot:gerbers.kibot.yaml",
+        config_file = "//scripts/kibot:build.kibot.yaml",
+        output_name = ["gerbers", "drill", "gerb_zip"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        tags = ["kicad"],
     )
 
     kibot(
         name = "{}.step".format(name),
-        config_file = "//scripts/kibot:step.kibot.yaml",
+        config_file = "//scripts/kibot:build.kibot.yaml",
+        output_name = ["step"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        tags = ["kicad"],
     )
