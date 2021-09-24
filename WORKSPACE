@@ -43,7 +43,6 @@ http_archive(
     name = "com_google_protobuf",
     strip_prefix = "protobuf-master",
     urls = ["https://github.com/protocolbuffers/protobuf/archive/master.zip"],
-    sha256 = "2c70c6ff58bee3b9824c46480013fb42854efde1ad58f8e726a20b40704b7895",
 )
 
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
