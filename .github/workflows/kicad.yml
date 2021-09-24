@@ -34,7 +34,7 @@ jobs:
         space_name: ${{ secrets.DO_SPACE_NAME }}
         space_region: ${{ secrets.DO_SPACE_REGION }}
         source: build
-        out_dir: /kicad-artifacts
+        out_dir: kicad-artifacts
         versioning: false
 
 # - name: update_outline
