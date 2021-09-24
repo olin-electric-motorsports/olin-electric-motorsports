@@ -21,23 +21,21 @@ jobs:
       env:
         GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
 
-    # - name: upload
-    #   uses: actions/upload@v2
-    - uses: actions/upload-artifact@v2
-      with:
-        name: kicad-build
-        path: build/
-
-    # - name: upload
-    #   uses: BetaHuhn/do-spaces-action@v2
+    # - uses: actions/upload-artifact@v2
     #   with:
-    #     access_key: ${{ secrets.DO_ACCESS_KEY }}
-    #     secret_key: ${{ secrets.DO_SECRET_KEY }}
-    #     space_name: ${{ secrets.DO_SPACE_NAME }}
-    #     space_region: ${{ secrets.DO_SPACE_REGION }}
-    #     source: build
-    #     out_dir: /kicad-artifacts
-    #     versioning: false
+    #     name: kicad-build
+    #     path: build/
+
+    - name: upload
+      uses: BetaHuhn/do-spaces-action@v2
+      with:
+        access_key: ${{ secrets.DO_ACCESS_KEY }}
+        secret_key: ${{ secrets.DO_SECRET_KEY }}
+        space_name: ${{ secrets.DO_SPACE_NAME }}
+        space_region: ${{ secrets.DO_SPACE_REGION }}
+        source: build
+        out_dir: /kicad-artifacts
+        versioning: false
 
 # - name: update_outline
 #   if ${{ github.event_name == 'push' }}
