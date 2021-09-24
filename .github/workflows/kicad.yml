@@ -16,10 +16,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: build
-      run: bazel build --config=docker-kicad --build_tag_filters=kicad //...
+      run: ./.github/git-bazel-kicad.sh
     - name: upload
-      # if: ${{ github.event_name == 'push' }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: output
-        path: output
+      # if: ${{ github.event_name == 'push' }} # TODO Comment in
+      - uses: BetaHuhn/do-spaces-action@v2
+        with:
+          access_key: ${{ secrets.ACCESS_KEY}}
+          secret_key: ${{ secrets.SECRET_KEY }}
+          space_name: ${{ secrets.SPACE_NAME }}
+          space_region: ${{ secrets.SPACE_REGION }}
+          source: build
+          out_dir: /kicad-artifacts
+          versioning: false
+    #
+    # - name: update_outline
+    #   if ${{ github.event_name == 'push' }}
+    #   run: ./.github/update_kicad_outline.py
+    #   env:
+    #     url: 
