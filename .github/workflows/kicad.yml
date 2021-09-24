@@ -15,22 +15,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: build
       run: ./.github/git-bazel-kicad.sh
-    - name: upload
-      # if: ${{ github.event_name == 'push' }} # TODO Comment in
-      - uses: BetaHuhn/do-spaces-action@v2
-        with:
-          access_key: ${{ secrets.ACCESS_KEY}}
-          secret_key: ${{ secrets.SECRET_KEY }}
-          space_name: ${{ secrets.SPACE_NAME }}
-          space_region: ${{ secrets.SPACE_REGION }}
-          source: build
-          out_dir: /kicad-artifacts
-          versioning: false
-    #
-    # - name: update_outline
-    #   if ${{ github.event_name == 'push' }}
-    #   run: ./.github/update_kicad_outline.py
-    #   env:
-    #     url: 
+      env:
+        GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
+
+    # - name: upload
+    #   uses: actions/upload@v2
+    - uses: actions/upload-artifact@v2
+      with:
+        name: kicad-build
+        path: build/
+
+    # - name: upload
+    #   uses: BetaHuhn/do-spaces-action@v2
+    #   with:
+    #     access_key: ${{ secrets.DO_ACCESS_KEY }}
+    #     secret_key: ${{ secrets.DO_SECRET_KEY }}
+    #     space_name: ${{ secrets.DO_SPACE_NAME }}
+    #     space_region: ${{ secrets.DO_SPACE_REGION }}
+    #     source: build
+    #     out_dir: /kicad-artifacts
+    #     versioning: false
+
+# - name: update_outline
+#   if ${{ github.event_name == 'push' }}
+#   run: ./.github/update_kicad_outline.py
+#   env:
+#     url: 
+#
+# if: ${{ github.event_name == 'push' }} # TODO Comment in
