@@ -66,9 +66,9 @@ F 4 "7461057" H 4475 1300 50  0001 C CNN "MPN"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3425 1400 4325 1400
+	3425 1400 4225 1400
 Wire Wire Line
-	1675 1400 2175 1400
+	1675 1400 1800 1400
 $Comp
 L formula:R_10K R4
 U 1 1 6140D893
@@ -122,15 +122,13 @@ F 6 "https://www.digikey.com/product-detail/en/on-semiconductor/MMBF170/MMBF170C
 	1    2800 2325
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2600 2325 2350 2325
 $Comp
 L formula:Test_Point_SMD TP1
 U 1 1 6141BE4B
 P 2200 2325
 F 0 "TP1" V 2400 2450 50  0000 C CNN
 F 1 "Test_Point_SMD" V 2325 2225 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 2200 2175 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 2200 2175 50  0001 C CNN
 F 3 "" H 2200 2325 50  0001 C CNN
 	1    2200 2325
 	0    -1   -1   0   
@@ -194,7 +192,7 @@ U 1 1 6144F96F
 P 2950 2575
 F 0 "TP5" V 3150 2575 50  0000 L CNN
 F 1 "Test_Point_SMD" V 3075 2575 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 2950 2425 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 2950 2425 50  0001 C CNN
 F 3 "" H 2950 2575 50  0001 C CNN
 	1    2950 2575
 	0    1    1    0   
@@ -208,23 +206,6 @@ Text Notes 575  775  0    71   ~ 0
 Bidirectional Discrete High-Side\nDual-PMOS Load switch
 Text Notes 3400 2375 0    50   ~ 0
 Low side driven NMOS FET \nto open and close load switch
-$Comp
-L formula:R_100K R1
-U 1 1 6147C900
-P 2350 2475
-F 0 "R1" H 2175 2525 50  0000 L CNN
-F 1 "R_100K" H 2000 2425 50  0000 L CNN
-F 2 "formula:R_0805_OEM" H 2280 2475 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 2430 2475 50  0001 C CNN
-F 4 "DK" H 2350 2475 60  0001 C CNN "MFN"
-F 5 "P100KCCT-ND" H 2350 2475 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" H 2830 2875 60  0001 C CNN "PurchasingLink"
-	1    2350 2475
-	1    0    0    -1  
-$EndComp
-Connection ~ 2350 2325
-Wire Wire Line
-	2350 2325 2250 2325
 Wire Wire Line
 	2350 2625 2900 2625
 Connection ~ 2900 2575
@@ -252,4 +233,51 @@ Text Notes 625  3050 0    47   ~ 0
 LAYOUT NOTE: \nUse at least a 30mm wide external 1.6 oz/ft^2 Cu trace \nor a 80mm wide internal 1.6 oz/ft^2 Cu trace for a temp\nrise of 10C with Tambient=25C & 50mm trace length\nStack both internal & external layers & lay down\nstitching via pattern to be extra safe
 Text Notes 825  4800 0    63   ~ 0
 README: \nThis board's objective is to test high current path on the new LV BMS boards. \nSpecifically we will be testing the thermals (heat dissipation) from\nthe onboard power MOSFETs along with the load switch circuit\nbehavior. We have already completed LT Spice simulations but would\nlike to verify circuit behavior IRL before spinning up the LV BMS\nboards. \n\nThe battery can both be charged (load side will see +16.8V and pack\nside will be between 11-16.8V), discharged (pack side will see 16.8V &\nload side will see a small load resistor tied to GND), or in an idle state\n(pack side sees 11-16.8V and load side is disconnected). \n\nNMOS gate will be driven by Atemga GPIO on LV BMS board. \n\nSee the LV BMS board in MKV-Boards for more info. 
+Wire Wire Line
+	2250 2325 2350 2325
+$Comp
+L formula:R_10K R1
+U 1 1 614A6065
+P 2350 2475
+F 0 "R1" H 2420 2521 50  0000 L CNN
+F 1 "R_10K" H 2420 2430 50  0000 L CNN
+F 2 "formula:R_0805_OEM" H 2280 2475 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 2430 2475 50  0001 C CNN
+F 4 "DK" H 2350 2475 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 2350 2475 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 2830 2875 60  0001 C CNN "PurchasingLink"
+	1    2350 2475
+	1    0    0    -1  
+$EndComp
+Connection ~ 2350 2325
+Wire Wire Line
+	2350 2325 2600 2325
+$Comp
+L formula:Test_Point_SMD TP6
+U 1 1 614A84EE
+P 1800 1450
+F 0 "TP6" H 1750 1650 50  0000 L CNN
+F 1 "Test_Point_SMD" H 1550 1775 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 1800 1300 50  0001 C CNN
+F 3 "" H 1800 1450 50  0001 C CNN
+	1    1800 1450
+	-1   0    0    1   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP7
+U 1 1 614A9C4C
+P 4225 1450
+F 0 "TP7" H 4175 1650 50  0000 L CNN
+F 1 "Test_Point_SMD" H 3750 1750 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 4225 1300 50  0001 C CNN
+F 3 "" H 4225 1450 50  0001 C CNN
+	1    4225 1450
+	-1   0    0    1   
+$EndComp
+Connection ~ 4225 1400
+Wire Wire Line
+	4225 1400 4325 1400
+Connection ~ 1800 1400
+Wire Wire Line
+	1800 1400 2175 1400
 $EndSCHEMATC
