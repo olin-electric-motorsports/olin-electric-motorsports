@@ -40,9 +40,9 @@ jobs:
         path: build/comment.md
 
 # - name: update_outline
+#   if: ${{ github.event_name == 'push' }} # TODO Comment in
 #   if ${{ github.event_name == 'push' }}
 #   run: ./.github/update_kicad_outline.py
 #   env:
 #     url: 
 #
-# if: ${{ github.event_name == 'push' }} # TODO Comment in

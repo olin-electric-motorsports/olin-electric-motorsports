@@ -36,6 +36,8 @@ IFS=$'|'; echo "::set-output name=all::${basenames[*]}"
 echo "# KiCad Artifacts" >> build/comment.md
 echo "" >> build/comment.md
 
+echo "<center>" >> build/comment.md
 for file in $(ls build/*.svg); do
-    echo "![Layout SVG](https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file))" >> build/comment.md
+    echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" />"
 done
+echo "</center>" >> build/comment.md
