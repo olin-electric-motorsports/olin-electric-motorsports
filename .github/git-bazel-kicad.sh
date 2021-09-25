@@ -37,8 +37,6 @@ if [[ ! -z $buildables ]]; then
         cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
     done
 
-    rm -rf build/comment.md
-
     echo "Creating GH comment"
     echo "# KiCad Artifacts" >> build/comment.md
 

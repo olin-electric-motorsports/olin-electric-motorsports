@@ -360,9 +360,6 @@ kibot = rule(
     },
 )
 
-# dxfs
-# step
-
 def kicad_hardware(
         name,
         project_file = "",
@@ -370,7 +367,33 @@ def kicad_hardware(
         lib_cache = "",
         pcb_file = ""):
     """
-    TODO: Write docstring!
+    Generates KiCad file artifacts using KiBot.
+
+    Currently, `name` __must__ be the same name as your `.pro` file that KiCad
+    generates due to a limitation of the software. This may be resolved in a
+    future commit.
+
+    Example:
+
+    ```
+    # vehicle/mkv/hardware/lvbox/bspd/BUILD
+
+    kicad_hardware(
+        name = "bspd_brakelight",
+    )
+    ```
+
+    This can then be built using:
+
+    ```
+    $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd # builds all targets
+    $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight.csv # builds BoM CSV
+    $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight.pdf # builds schematic PDF
+    $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight_sch.svg # builds schematic SVG
+    $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight_a_top_pcb.svg # builds top of PCB as SVG
+    $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight_a_bottom_pcb.svg # builds bottom of PCB as SVG
+    $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight.gerbers.zip # builds zip file with GERBERs and drill file
+    ```
     """
 
     if not project_file:
@@ -461,6 +484,7 @@ def kicad_hardware(
         tags = ["kicad"],
     )
 
+    # Once 3D modles are sorted out, this will be uncommented
     # kibot(
     #     name = "{}.step".format(name),
     #     config_file = "//scripts/kibot:build.kibot.yaml",
