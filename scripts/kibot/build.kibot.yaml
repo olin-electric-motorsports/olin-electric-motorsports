@@ -7,10 +7,21 @@ outputs:
     options:
       output: "%f.pdf"
 
-  - name: "pcb_svg"
+  - name: "pcb_svg_top"
     type: pcbdraw
     options:
-      output: "%f.svg"
+      output: "%f_a_top_pcb.svg"
+
+  - name: "pcb_svg_bottom"
+    type: pcbdraw
+    options:
+      output: "%f_b_bottom_pcb.svg"
+      bottom: true
+
+  - name: "sch_svg"
+    type: svg_sch_print
+    options:
+      output: "%f_sch.svg"
 
   - name: step
     type: step

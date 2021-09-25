@@ -33,9 +33,24 @@ done
 
 IFS=$'|'; echo "::set-output name=all::${basenames[*]}"
 
-echo "# KiCad Artifacts" >> build/comment.md
-echo "" >> build/comment.md
+rm -rf build/comment.md
 
-for file in $(ls build/*.svg); do
-    echo "![Layout SVG](https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file))" >> build/comment.md
+echo "# KiCad Artifacts" >> build/comment.md
+
+echo "<details><summary>File links</summary><ul>" >> build/comment.md
+for file in build/*; do
+    if [[ ! $file == "build/comment.md" ]]; then
+        url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)"
+        echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
+    fi
+done
+
+echo "</ul></details>" >> build/comment.md
+
+for file in $(ls build/*_sch.svg); do
+    echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\" style=\"background-color: white\"/></p>" >> build/comment.md
+done
+
+for file in $(ls build/*_pcb.svg); do
+    echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" style=\"background-color: white\"/></p>" >> build/comment.md
 done
