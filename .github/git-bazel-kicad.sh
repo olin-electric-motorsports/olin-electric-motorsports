@@ -60,12 +60,12 @@ if [[ ! -z $buildables ]]; then
     done
 
     for file in build/*_sch.svg; do
-        echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\"/></p>" >> build/comment.md
+        echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)?\" width=\"100%\"/></p>" >> build/comment.md
     done
 
     for file in build/*_pcb.svg; do
         echo "<p align=\"center\">" >> build/comment.md
-        echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\"/>" >> build/comment.md
+        echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)?\" width=\"60%\"/>" >> build/comment.md
         echo "</p>" >> build/comment.md
     done
 else
