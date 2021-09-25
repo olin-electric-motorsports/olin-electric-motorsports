@@ -46,7 +46,7 @@ if [[ ! -z $buildables ]]; then
     for file in $(find build -type f); do
         chmod 777 $file
         if [[ ! $file == "build/comment.md" ]]; then
-            url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$file"
+            url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}"
             echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
         fi
     done
@@ -56,18 +56,17 @@ if [[ ! -z $buildables ]]; then
     echo "Converting SVGs to use white backgrounds"
     for file in $(find build -name '*.svg' -type f); do
         cp ${file} ${file}_old
-        # chmod 777 ${file} ${file}_old
         rsvg-convert -b white -f svg ${file}_old > ${file}
         rm -rf ${file}_old
     done
 
     for file in $(find build -name "*_sch.svg" -type f); do
-        echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file}?ref=${GITHUB_SHA}\" width=\"100%\"/></p>" >> build/comment.md
+        echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"100%\"/></p>" >> build/comment.md
     done
 
     for file in $(find build -name "*_pcb.svg" -type f); do
         echo "<p align=\"center\">" >> build/comment.md
-        echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
+        echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
         echo "</p>" >> build/comment.md
     done
 else
