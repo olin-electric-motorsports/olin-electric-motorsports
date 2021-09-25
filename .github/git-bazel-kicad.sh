@@ -34,14 +34,18 @@ done
 IFS=$'|'; echo "::set-output name=all::${basenames[*]}"
 
 echo "# KiCad Artifacts" >> build/comment.md
-echo "" >> build/comment.md
 
-echo "<center>" >> build/comment.md
+echo "<details><summary>File links</summary>" >> build/comment.md
+for file in $(ls build/); do
+    url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)"
+    echo "* [$url]($url)" >> build/comment.md
+done
+echo "</details>" >> build/comment.md
+
 for file in $(ls build/*_sch.svg); do
-    echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\" />" > build/comment.md
+    echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\" /></p>" >> build/comment.md
 done
 
 for file in $(ls build/*_pcb.svg); do
-    echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" />" > build/comment.md
+    echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" /></p>" >> build/comment.md
 done
-echo "</center>" >> build/comment.md
