@@ -37,7 +37,11 @@ echo "# KiCad Artifacts" >> build/comment.md
 echo "" >> build/comment.md
 
 echo "<center>" >> build/comment.md
-for file in $(ls build/*.svg); do
+for file in $(ls build/*_sch.svg); do
+    echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\" />"
+done
+
+for file in $(ls build/*_pcb.svg); do
     echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" />"
 done
 echo "</center>" >> build/comment.md
