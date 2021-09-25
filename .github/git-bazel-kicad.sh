@@ -31,8 +31,6 @@ for file in $buildables; do
     basenames+=($(basename $file))
 done
 
-IFS=$'|'; echo "::set-output name=all::${basenames[*]}"
-
 rm -rf build/comment.md
 
 echo "# KiCad Artifacts" >> build/comment.md
@@ -49,7 +47,7 @@ echo "</ul></details>" >> build/comment.md
 
 for file in build/*_sch.svg; do
     mv ${file} ${file}_old
-    rsvg-convert "${file}_old" -f svg -b white -o ${file}
+    rsvg-convert -b white -f svg ${file}_old > ${file}
     rm -rf ${file}_old
 
     echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\"/></p>" >> build/comment.md
@@ -57,7 +55,7 @@ done
 
 for file in build/*_pcb.svg; do
     mv ${file} ${file}_old
-    rsvg-convert "${file}_old" -f svg -b white -o ${file}
+    rsvg-convert -b white -f svg ${file}_old > ${file}
     rm -rf ${file}_old
 
     echo "<p align=\"center\">" >> build/comment.md
