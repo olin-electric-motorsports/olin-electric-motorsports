@@ -48,9 +48,9 @@ done
 echo "</ul></details>" >> build/comment.md
 
 for file in $(ls build/*_sch.svg); do
-    echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\" /></p>" >> build/comment.md
+    echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\" style=\"background-color: white\"/></p>" >> build/comment.md
 done
 
 for file in $(ls build/*_pcb.svg); do
-    echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" /></p>" >> build/comment.md
+    echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" style=\"background-color: white\"/></p>" >> build/comment.md
 done

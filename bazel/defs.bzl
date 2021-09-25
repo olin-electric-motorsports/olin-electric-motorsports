@@ -378,7 +378,8 @@ def kicad_hardware(
     pkg_tar(
         name = "{}".format(name),
         srcs = [
-            ":{}_pcb.svg".format(name),
+            ":{}_a_top_pcb.svg".format(name),
+            ":{}_b_bottom_pcb.svg".format(name),
             ":{}_sch.svg".format(name),
             ":{}.pdf".format(name),
             ":{}.csv".format(name),
@@ -391,9 +392,18 @@ def kicad_hardware(
     )
 
     kibot(
-        name = "{}_pcb.svg".format(name),
+        name = "{}_a_top_pcb.svg".format(name),
         config_file = "//scripts/kibot:build.kibot.yaml",
-        output_name = ["pcb_svg"],
+        output_name = ["pcb_svg_top"],
+        pcb_file = pcb_file,
+        schematic_files = schematic_files,
+        tags = ["kicad"],
+    )
+
+    kibot(
+        name = "{}_b_bottom_pcb.svg".format(name),
+        config_file = "//scripts/kibot:build.kibot.yaml",
+        output_name = ["pcb_svg_bottom"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
         tags = ["kicad"],
