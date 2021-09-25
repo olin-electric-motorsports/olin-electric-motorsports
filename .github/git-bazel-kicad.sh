@@ -33,13 +33,18 @@ done
 
 IFS=$'|'; echo "::set-output name=all::${basenames[*]}"
 
+rm -rf build/comment.md
+
 echo "# KiCad Artifacts" >> build/comment.md
 
 echo "<details><summary>File links</summary>" >> build/comment.md
-for file in $(ls build/); do
-    url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)"
-    echo "* [$url]($url)" >> build/comment.md
+for file in build/*; do
+    if [[ ! $file == "build/comment.md" ]]; then
+        url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)"
+        echo "- [$(basename $file)]($url)" >> build/comment.md
+    fi
 done
+
 echo "</details>" >> build/comment.md
 
 for file in $(ls build/*_sch.svg); do
