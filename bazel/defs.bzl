@@ -307,13 +307,14 @@ def _kibot_impl(ctx):
     cfg_file = ctx.file.config_file
     sch = ctx.files.schematic_files
     pcb = ctx.file.pcb_file
+    lib_cache = ctx.file.lib_cache
 
     output = ctx.actions.declare_file("{}".format(ctx.attr.name))
 
     ctx.actions.run_shell(
         mnemonic = "kibot",
         outputs = [output],
-        inputs = [cfg_file, pcb] + sch,
+        inputs = [cfg_file, pcb, lib_cache] + sch,
         command = "kibot -e {} -b {} -c {} -d {} {}".format(
             sch[0].short_path,
             pcb.short_path,
@@ -351,6 +352,11 @@ kibot = rule(
             allow_single_file = True,
             mandatory = True,
         ),
+        "lib_cache": attr.label(
+            doc = "*-cache.lib file with the library cache",
+            allow_single_file = True,
+            mandatory = True,
+        ),
     },
 )
 
@@ -361,6 +367,7 @@ def kicad_hardware(
         name,
         project_file = "",
         schematic_files = [],
+        lib_cache = "",
         pcb_file = ""):
     """
     TODO: Write docstring!
@@ -374,6 +381,9 @@ def kicad_hardware(
 
     if not pcb_file:
         pcb_file = ":{}.kicad_pcb".format(name)
+
+    if not lib_cache:
+        lib_cache = ":{}-cache.lib".format(name)
 
     pkg_tar(
         name = "{}".format(name),
@@ -397,6 +407,7 @@ def kicad_hardware(
         output_name = ["pcb_svg_top"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -406,6 +417,7 @@ def kicad_hardware(
         output_name = ["pcb_svg_bottom"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -415,6 +427,7 @@ def kicad_hardware(
         output_name = ["sch_svg"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -424,6 +437,7 @@ def kicad_hardware(
         output_name = ["sch_pdf"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -433,6 +447,7 @@ def kicad_hardware(
         output_name = ["bom"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -442,6 +457,7 @@ def kicad_hardware(
         output_name = ["gerbers", "drill", "gerb_zip"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
+        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -451,5 +467,6 @@ def kicad_hardware(
     #     output_name = ["step"],
     #     pcb_file = pcb_file,
     #     schematic_files = schematic_files,
+    #     lib_cache = lib_cache,
     #     tags = ["kicad"],
     # )
