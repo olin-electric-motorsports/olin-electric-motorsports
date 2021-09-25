@@ -41,8 +41,6 @@ F 6 "https://www.samtec.com/products/bbs-126-g-a" H 8900 6100 60  0001 C CNN "Pu
 	1    8900 4800
 	1    0    0    -1  
 $EndComp
-Text Label 9050 2650 0    50   ~ 0
-GND
 Text Label 9050 2750 0    50   ~ 0
 12V
 Text Label 9050 750  0    50   ~ 0
@@ -257,7 +255,7 @@ Text Notes 5800 2150 0    118  ~ 0
 To Emeter
 Text Notes 9500 3000 0    118  ~ 0
 To External
-Text Label 9050 2850 0    50   ~ 0
+Text Label 9050 2650 0    50   ~ 0
 12V
 Text Notes 3950 900  0    157  ~ 0
 Accumulator Interface -- Internal
