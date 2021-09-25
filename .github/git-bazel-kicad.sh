@@ -38,10 +38,10 @@ echo "" >> build/comment.md
 
 echo "<center>" >> build/comment.md
 for file in $(ls build/*_sch.svg); do
-    echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\" />"
+    echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"100%\" />" > build/comment.md
 done
 
 for file in $(ls build/*_pcb.svg); do
-    echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" />"
+    echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/$(basename $file)\" width=\"60%\" />" > build/comment.md
 done
 echo "</center>" >> build/comment.md
