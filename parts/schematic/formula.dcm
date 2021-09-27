@@ -1,11 +1,5 @@
 EESchema-DOCLIB  Version 2.0
 #
-$CMP 0.1in_Female_Socket_01x16
-D Generic female socket strip connector, single row, 01x16
-K connector, header
-F https://media.digikey.com/pdf/Data%20Sheets/Sullins%20PDFs/Female_Headers.100_DS.pdf
-$ENDCMP
-#
 $CMP 1.5A_Fuse
 D 1.5A Fuse LitteFuse
 F https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf
@@ -21,66 +15,12 @@ D IC EEPROM 1K I2C 400KHZ 8DIP
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21711J.pdf
 $ENDCMP
 #
-$CMP 3P4T_rotary_switch
-D 3 pole 4 terminal rotary switch
-$ENDCMP
-#
-$CMP ACPL-C87B-000E
-D Precision Optically Isolated Op Amp, Stretched SO-8 (SSO-8)
-F https://docs.broadcom.com/doc/AV02-3563EN
-$ENDCMP
-#
 $CMP AD623
 D Op-amp, dual supply
 $ENDCMP
 #
-$CMP ADG732BSUZ
-D Multiplexer
-F https://www.analog.com/media/en/technical-documentation/data-sheets/ADG726_732.pdf
-$ENDCMP
-#
-$CMP ADXL335
-D Accelerometer, 3g
-$ENDCMP
-#
-$CMP ADXL345
-D Acceleromter, 2/4/6/8/16g, SPI/I2C
-$ENDCMP
-#
-$CMP AMC1602AR-B-Y6WFDY-I2C
-D LCD 16x2 Alphanumeric 16pin Blue/Yellow/Green Backlight, 8bit parallel, 5V VDD
-K display LCD 7-segment
-F http://www.icbank.com/data/ICBShop/board/HY1602E.pdf
-$ENDCMP
-#
-$CMP AOZ1280
-F http://aosmd.com/res/data_sheets/AOZ1280CI.pdf
-$ENDCMP
-#
 $CMP ATMEGA16M1
 D Microcontroller, 8-bit, 1KB RAM, 16KB Flash
-$ENDCMP
-#
-$CMP ATmega16U2-AU
-D 16MHz, 16kB Flash, 512B SRAM, 512B EEPROM, TQFP-32
-K AVR 8bit Microcontroller MegaAVR
-F http://ww1.microchip.com/downloads/en/DeviceDoc/doc7799.pdf
-$ENDCMP
-#
-$CMP ATmega328P-AU
-F http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
-$ENDCMP
-#
-$CMP ATmega32U2-AU
-D 16MHz, 32kB Flash, 1kB SRAM, 1kB EEPROM, TQFP-32
-K AVR 8bit Microcontroller MegaAVR
-F http://ww1.microchip.com/downloads/en/DeviceDoc/doc7799.pdf
-$ENDCMP
-#
-$CMP ATmega8U2-AU
-D 16MHz, 8kB Flash, 512B SRAM, 512B EEPROM, TQFP-32
-K AVR 8bit Microcontroller MegaAVR
-F http://ww1.microchip.com/downloads/en/DeviceDoc/doc7799.pdf
 $ENDCMP
 #
 $CMP Ampseal_08_RA
@@ -137,10 +77,6 @@ $CMP BBS-126-G-A
 D .1" Single Row Terminal Strip
 $ENDCMP
 #
-$CMP BQ79606A-Q1
-F http://www.ti.com/lit/ds/symlink/bq79606a-q1.pdf
-$ENDCMP
-#
 $CMP BSS308PE
 D MOSFET, P-channel, 30V, 2A
 $ENDCMP
@@ -149,26 +85,8 @@ $CMP BU4S11G2-TR
 D Single channel positive logic NAND gate
 $ENDCMP
 #
-$CMP BU4S81G2-TR
-D Single channel positive logic AND gate
-$ENDCMP
-#
 $CMP Barrel_jack
 D Barrel jack, 2.1x5.5mm, right angle, through hole
-$ENDCMP
-#
-$CMP Buck_Converter_450V_300mA
-D MPS_MP9488, 450V, 300mA
-F https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP9488/document_id/3748/
-$ENDCMP
-#
-$CMP CD4043BPWR
-D Quad NOR R/S latch
-$ENDCMP
-#
-$CMP CDBA140-G
-D DIODE SCHOTTKY 40V 1A
-F https://media.digikey.com/pdf/Data%20Sheets/Comchip%20PDFs/CDBA120-G~CDBA1100-G.pdf
 $ENDCMP
 #
 $CMP CONN_01X03
@@ -189,10 +107,6 @@ $CMP CONN_02X03
 D Connector header through hole 2x3 0.100" (2.54mm)
 $ENDCMP
 #
-$CMP CP2120
-D SPI TO I2C BRIDGE, GPIO EXPANDER
-$ENDCMP
-#
 $CMP CPC1025NTR
 D DC Optocoupler, Vce 80V, CTR 50-200%, DIP4
 K NPN DC Optocoupler
@@ -206,18 +120,6 @@ $ENDCMP
 #
 $CMP C_0.1uF
 D Capacitor, 0.1uF, 50V, 5%, 0805
-$ENDCMP
-#
-$CMP C_0.1uF_0603
-D CAP CER 0.1UF 16V X7R 0603
-$ENDCMP
-#
-$CMP C_0.33uF
-D Capacitor, 0.33uF, 16V, 5%, 0805
-$ENDCMP
-#
-$CMP C_1000nF
-D Capacitor, 1uF, 10V, 10%, 0603
 $ENDCMP
 #
 $CMP C_100nF
@@ -235,10 +137,6 @@ $ENDCMP
 $CMP C_100uF+
 D Aluminum Electrolytic Capacitor, 100uF, 50V, 20%
 F https://www.nichicon.co.jp/english/products/pdfs/e-uuq.pdf
-$ENDCMP
-#
-$CMP C_100uF_35V
-F https://www.nichicon.co.jp/english/products/pdfs/e-urs.pdf
 $ENDCMP
 #
 $CMP C_10nF
@@ -264,10 +162,6 @@ $ENDCMP
 $CMP C_10uF_450V
 D Capacitor, 10uF, 450V, 20%, 0805
 F https://industrial.panasonic.com/cdbs/www-data/pdf/RDE0000/ABA0000C1202.pdf
-$ENDCMP
-#
-$CMP C_18pF
-D Capacitor, 18pF, 10V, 1%, 0603
 $ENDCMP
 #
 $CMP C_1uF
@@ -308,14 +202,6 @@ $ENDCMP
 #
 $CMP C_47uF
 D Capacitor, 47uF, 6.3V, 20%, 0805
-$ENDCMP
-#
-$CMP C_9pF
-D CAP CER 9PF 50V C0G/NP0 0603
-$ENDCMP
-#
-$CMP Crystal_32kHz768
-D CRYSTAL 32.7680KHZ 9PF SMD
 $ENDCMP
 #
 $CMP Crystal_8MHz
@@ -365,15 +251,6 @@ $CMP F_21mA_420V
 D Fuse, PTC, 21mA, 420V, Radial
 $ENDCMP
 #
-$CMP F_2A_500V
-D Fuse
-F https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_885_datasheet.pdf.pdf
-$ENDCMP
-#
-$CMP F_3.15A_300V
-D Fuse, Slow blow, 3.15A, 300V, Radial
-$ENDCMP
-#
 $CMP F_500mA_16V
 D Fuse, PTC, 500mA, 16V, 1210
 $ENDCMP
@@ -400,25 +277,10 @@ D Flyback Transformer, 2.5uH Primary, 1:10 Turn Ratio
 F https://www.coilcraft.com/getmedia/eb987d97-6bee-4e60-8a64-a66d4e6e447b/ga3459.pdf
 $ENDCMP
 #
-$CMP GNDPWR
-D Power symbol creates a global label with name "GNDPWR" , power ground
-K power-flag
-$ENDCMP
-#
 $CMP INA260
 D Current/power/voltage monitor with Integrated 2mΩ Shunt Resistor, 2.7V - 5.5V, I2C, TSSOP-16
 K Current/power/voltage monitor
 F http://www.ti.com/lit/ds/symlink/ina260.pdf
-$ENDCMP
-#
-$CMP JST_GH_F_VT_06
-D Micro-MaTch connector 6 pin female vertical
-F http://www.jst-mfg.com/product/pdf/eng/eGH.pdf
-$ENDCMP
-#
-$CMP L693D1
-D Linear regulator, 2-14V input, adj 1.2-5V output, 2A
-K LDO
 $ENDCMP
 #
 $CMP LED_0805
@@ -439,25 +301,6 @@ $ENDCMP
 #
 $CMP LIS3DHTR
 F https://www.st.com/content/ccc/resource/technical/document/datasheet/3c/ae/50/85/d6/b1/46/fe/CD00274221.pdf/files/CD00274221.pdf/jcr:content/translations/en.CD00274221.pdf
-$ENDCMP
-#
-$CMP LM324DT
-D Op-amp, 4-channel
-$ENDCMP
-#
-$CMP LM3480
-D Linear regulator, 30V max input, 3.3V output, 100mA
-K LDO
-F http://www.ti.com/lit/ds/symlink/lm3480.pdf
-$ENDCMP
-#
-$CMP LM78L05ACZ
-D Linear regulator, 35V max input, 5V output, 100mA
-K LDO
-$ENDCMP
-#
-$CMP LMV341
-D Op-amp, general purpose
 $ENDCMP
 #
 $CMP LR8K4-G
@@ -502,18 +345,8 @@ K inductor, coil, l
 F https://product.tdk.com/info/en/documents/catalog/inductor_commercial_decoupling_nlcv32-pf_en.pdf?ref_disty=digikey
 $ENDCMP
 #
-$CMP L_2.2uH
-D Inductor, 2.2uH, 1.6A, 78mOhm, 20%, 1210
-F https://ds.yuden.co.jp/TYCOMPAS/ut/detail?pn=BRL3225T2R2M%20%20&u=M
-$ENDCMP
-#
 $CMP L_4.7uH
 D Inductor, 4.7uH, 4.4A, 25mOhm, 20%
-$ENDCMP
-#
-$CMP L_6.8uH
-D Inductor, 6.8uH
-K inductor, coil, l
 $ENDCMP
 #
 $CMP MCP2561-E_SN
@@ -537,32 +370,13 @@ K opamp, single, op, amp,
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf
 $ENDCMP
 #
-$CMP MCP603
-D Op-amp, general purpose
-$ENDCMP
-#
 $CMP MCP73871T-2CCI_ML
 D Battery Charge Controller
 F https://ww1.microchip.com/downloads/en/DeviceDoc/MCP73871-Data-Sheet-20002090E.pdf
 $ENDCMP
 #
-$CMP MHSS1105
-D Slider Switch
-$ENDCMP
-#
-$CMP MLX90621ESF-BAB-000-TU
-D I2C Tire Temperature Sensor
-K I2C Temperature Sensor
-F https://www.melexis.com/-/media/files/documents/datasheets/mlx90621-datasheet-melexis.pdf
-$ENDCMP
-#
 $CMP MMBF170
 D MOSFET, N-channel, 60V, 500mA
-$ENDCMP
-#
-$CMP MMUN2133LT1G
-D Pre-Biased Bipolar Transistor (BJT) PNP - Pre-Biased Surface Mount SOT-23-3 (TO-236)
-F https://www.onsemi.com/pub/Collateral/DTA143Z-D.PDF
 $ENDCMP
 #
 $CMP MM_F_RA_04
@@ -712,15 +526,6 @@ $CMP MicroFit_RA_V_2_SMD
 F https://www.molex.com/pdm_docs/sd/436500213_sd.pdf
 $ENDCMP
 #
-$CMP NCP1117ST50T3G
-D Linear regulator, 20V input, 5V output, 1A
-F https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF
-$ENDCMP
-#
-$CMP NCP785AH150T1G
-D Linear regulator, 25-450V input, 15V output, 10mA
-$ENDCMP
-#
 $CMP NSS1C201MZ4
 D 100V, 2.0A, Low VCE NPN Transistor
 F http://www.onsemi.com/pub/Collateral/NSS1C201MZ4-D.PDF
@@ -735,23 +540,9 @@ $CMP NanoFit_RA_TH_02
 D Nano-Fit connector 2 pin right angle
 $ENDCMP
 #
-$CMP POT_TRIM_20k
-D TRIMMER 20KOHM 0.125W J LEAD TOP
-$ENDCMP
-#
-$CMP PWR163S-25-27R0F
-D RES SMD 27 OHM 1% 25W DPAK
-K power resistor, balancing, BMS
-F https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf
-$ENDCMP
-#
 $CMP RFN5TF8S
 D Fast Recovery Diode, TO220NFM
 F https://fscdn.rohm.com/en/products/databook/datasheet/discrete/diode/fast_recovery/rfn5tf8s.pdf
-$ENDCMP
-#
-$CMP RJ45_RA
-D RJ45 ethernet connector right angle
 $ENDCMP
 #
 $CMP RJ45_VT
@@ -766,18 +557,8 @@ $CMP R_0_2512
 D Resistor, 0 ohm jumper, 3W, 2512
 $ENDCMP
 #
-$CMP R_1.07K
-D Resistor, 1.07K, 0.125W, 0.1%, 0805
-$ENDCMP
-#
 $CMP R_1.13K
 D Resistor, 1.13K, 0.125W, 0.1%, 0805
-$ENDCMP
-#
-$CMP R_1.3_25W_TO163
-D RES SMD 1.5 OHM 1% 25W DPAK
-K power resistor, balancing, BMS, Bourns, PWR163
-F https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf
 $ENDCMP
 #
 $CMP R_1.43K
@@ -790,10 +571,6 @@ $ENDCMP
 #
 $CMP R_1.87M
 D Resistor, 1.87M, 0805
-$ENDCMP
-#
-$CMP R_1.8K
-D Resistor, 178K, 0.125W, 0.1%, 0805
 $ENDCMP
 #
 $CMP R_1.91K
@@ -830,38 +607,12 @@ D Resistor, 120, 0.125W, 1%, 0805
 F https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf
 $ENDCMP
 #
-$CMP R_13_2W_2512_0
-D Resistor, 13 ohm 1%, 2W, 2512
-K power resistor, resistor, chip,
-F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-5&DocType=DS&DocLang=English
-$ENDCMP
-#
-$CMP R_17.4K_0.1
-D Resistor, 17.4K, 0.125W, 0.1%, 0805
-K Resistor
-F https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf
-$ENDCMP
-#
 $CMP R_17.8K
 D Resistor, 17.8K, 0.125W, 0.1%, 0805
 $ENDCMP
 #
-$CMP R_178K
-D Resistor, 178K, 0.125W, 0.1%, 0805
-$ENDCMP
-#
 $CMP R_1K
 D Resistor, 1K, 0.25W, 1%, 0805
-$ENDCMP
-#
-$CMP R_1K_0.1
-D Resistor, 1K, 0.125W, 0.1%, 0805
-K Resistor
-F https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf
-$ENDCMP
-#
-$CMP R_1K_HS
-D Resistor, 1K, 100W with heat sink, 1%, TO-247-2
 $ENDCMP
 #
 $CMP R_1M
@@ -870,10 +621,6 @@ $ENDCMP
 #
 $CMP R_2.2K
 D Resistor, 2.2K, 0.125W, 1%, 0805
-$ENDCMP
-#
-$CMP R_2.94M
-D Resistor, 2.94M, 0.125W, 1%, 0805
 $ENDCMP
 #
 $CMP R_200
@@ -886,10 +633,6 @@ $ENDCMP
 #
 $CMP R_22K
 D Resistor, 22K, 0.125W, 5%, 0805
-$ENDCMP
-#
-$CMP R_22M
-D Resistor, 22M, 0.2W, 5%, 0805
 $ENDCMP
 #
 $CMP R_25K
@@ -908,12 +651,6 @@ $CMP R_3.3_25W_TO163
 D RES SMD 3.3 OHM 1% 25W DPAK
 K power resistor, balancing, BMS, Bourns, PWR163
 F https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf
-$ENDCMP
-#
-$CMP R_3.6_5W_SMD
-D RES SMD 3.6 OHM 5% 5W 5329
-K power resistor, resistor, chip,
-F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773242&DocType=DS&DocLang=English
 $ENDCMP
 #
 $CMP R_300K
@@ -944,10 +681,6 @@ $CMP R_4.99K
 D 4.99k resistor
 K resistor
 F https://www.digikey.com/product-detail/en/yageo/RC0402FR-074K99L/311-4.99KLRTR-ND/2827568
-$ENDCMP
-#
-$CMP R_402K
-D Resistor, 402K, 0.125W, 1%, 0805
 $ENDCMP
 #
 $CMP R_43k
@@ -986,15 +719,6 @@ D Resistor, 6.04K, 0.125W, 1%, 0805
 F https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf
 $ENDCMP
 #
-$CMP R_6.2K
-D Resistor, 6.2K, 0.125W, 1%, 0805
-$ENDCMP
-#
-$CMP R_6.2M
-D Resistor, 6.2M, 0.125W, 0.1%, 0805
-F https://www.vishay.com/docs/20035/dcrcwe3.pdf
-$ENDCMP
-#
 $CMP R_60.4
 D Resistor, 60.4, 0.1%, 0.125W, 0805
 K resistor, 60.4
@@ -1005,34 +729,8 @@ $CMP R_604K
 D Resistor, 604K, 0.125W, 1%, 0805
 $ENDCMP
 #
-$CMP R_63.4
-D Resistor, 63.4, 0.1%, 0.125W, 0805
-K resistor, 63.4
-F https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf
-$ENDCMP
-#
-$CMP R_7.5M
-D Resistor, 7.5M, 0.125W, 0.1%, 0805
-F https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_11.pdf
-$ENDCMP
-#
 $CMP R_75k
 D Resistor, 75K, 0.25W, 1%, 0805
-$ENDCMP
-#
-$CMP R_9.53K
-D Resistor, 9.53K, 0.125W, 0.1%, 0805
-F https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf
-$ENDCMP
-#
-$CMP R_Strain_Gauge
-D Strain gauge, 2-element 90° biaxial tee rosette
-$ENDCMP
-#
-$CMP Raspberry_Pi_Zero
-D Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)
-K connector
-F ~
 $ENDCMP
 #
 $CMP SD_socket
@@ -1087,18 +785,6 @@ K Optocoupler, Phototransistor Output, 5300 VRMS, VCEO 70V, CTR% 160-320
 F http://www.vishay.com/docs/83740/sfh617a.pdf
 $ENDCMP
 #
-$CMP SN74LVC1G02DBVR
-D Single channel positive logic NOR gate
-$ENDCMP
-#
-$CMP SN74LVC1G08DBVR
-D Single channel positive logic AND gate
-$ENDCMP
-#
-$CMP SN74LVC1G123
-D Single monostable multivibrator
-$ENDCMP
-#
 $CMP SN74LVC1G17
 D Single schmitt-trigger buffer
 $ENDCMP
@@ -1120,48 +806,8 @@ $CMP SSM3K333R
 D MOSFET, N-channel, 30V, 6A
 $ENDCMP
 #
-$CMP STM32F439BI
-D Microcontroller, 32-bit, 256KB RAM, 2MB Flash
-$ENDCMP
-#
-$CMP STM32F439ZIT6
-D IC MCU 32BIT 2MB FLASH 144LQFP
-$ENDCMP
-#
 $CMP SW_Push_SPST_NO
 D SWITCH TACTILE SPST-NO 0.05A 12V
-$ENDCMP
-#
-$CMP Samtec
-D Micro-MaTch connector 20 pin male vertical
-$ENDCMP
-#
-$CMP Si7051-A20
-D I2C Temperature Sensor, ±0.1ºC, DFN-6
-K I2C Temperature Sensor
-F https://www.silabs.com/documents/public/data-sheets/Si7050-1-3-4-5-A20.pdf
-$ENDCMP
-#
-$CMP Si7053-A20
-D I2C Temperature Sensor, ±0.3ºC, DFN-6
-K I2C Temperature Sensor
-F https://www.silabs.com/documents/public/data-sheets/Si7050-1-3-4-5-A20.pdf
-$ENDCMP
-#
-$CMP Si7054-A20
-D I2C Temperature Sensor, ±0.4ºC, DFN-6
-K I2C Temperature Sensor
-F https://www.silabs.com/documents/public/data-sheets/Si7050-1-3-4-5-A20.pdf
-$ENDCMP
-#
-$CMP Si7055-A20
-D I2C Temperature Sensor, ±0.5ºC, DFN-6
-K I2C Temperature Sensor
-F https://www.silabs.com/documents/public/data-sheets/Si7050-1-3-4-5-A20.pdf
-$ENDCMP
-#
-$CMP TLP175A_OEM
-D Solid State Relay SPST-NO
 $ENDCMP
 #
 $CMP TLV3701QDBVRG4Q1
@@ -1176,31 +822,9 @@ $CMP TPS560430YF
 F http://www.ti.com/lit/ds/symlink/tps560430.pdf
 $ENDCMP
 #
-$CMP TPS561201
-D Buck converter, 4.5-17V input, adj 0.76-7V output, 1A, 580kHz
-$ENDCMP
-#
 $CMP TPS61090RSAR
 D Synchronous Boost Converter
 F https://www.ti.com/lit/ds/symlink/tps61090.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe&ts=1601340035977
-$ENDCMP
-#
-$CMP TS507IYLT
-D Op-amp, general purpose
-$ENDCMP
-#
-$CMP TSX631AIYLT
-D Op-amp, general purpose
-$ENDCMP
-#
-$CMP TXB0104
-D Voltage level translator, 4-channel, bidirectional, TSSOP-14
-$ENDCMP
-#
-$CMP TXB0108
-D Voltage level translator, 8-channel, bidirectional, TSSOP-20
-K level shifter,
-F https://www.ti.com/lit/ds/symlink/txb0108.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe&ts=1605211774233
 $ENDCMP
 #
 $CMP T_LAN_7490100111A
@@ -1239,21 +863,6 @@ $ENDCMP
 #
 $CMP USB3343-CP
 D IC TXRX USB HS ENG ULPI 24VQFN
-$ENDCMP
-#
-$CMP USB_A
-D USB Type A connector
-K connector USB
-F  ~
-$ENDCMP
-#
-$CMP VBATT
-D Power symbol creates a global label with name "VBATT"
-K power-flag battery
-$ENDCMP
-#
-$CMP ZXRE160
-D Adjustable shunt voltage reference, 18V max output, 15mA
 $ENDCMP
 #
 $CMP isoSPI-Cutout
