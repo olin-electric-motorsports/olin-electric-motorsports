@@ -6,7 +6,7 @@
  * Bootflags
  */
 #define UPDATE_REQUESTED (uint32_t)(1 << 0x000U)
-#define IMAGE_IS_VALID (uint32_t)(1 << 0x001U)
+#define IMAGE_IS_VALID   (uint32_t)(1 << 0x001U)
 
 union updater_version {
     const uint8_t full;
