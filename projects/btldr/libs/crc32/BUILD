@@ -6,7 +6,7 @@ cc_library(
         "crc32.c",
     ],
     hdrs = [
-        "crc32.h",
+        "api.h",
     ],
     visibility = ["//visibility:public"],
 )
