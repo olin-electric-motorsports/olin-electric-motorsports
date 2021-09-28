@@ -5,7 +5,7 @@
 #include <avr/pgmspace.h>
 #include <inttypes.h>
 
-void flash_write(uint8_t *data, uint8_t length, uint16_t *current_addr) {
+void flash_write(uint8_t* data, uint8_t length, uint16_t* current_addr) {
     static uint16_t buf_address = 0;
     uint8_t sreg = SREG;
 
@@ -42,7 +42,7 @@ void flash_write(uint8_t *data, uint8_t length, uint16_t *current_addr) {
     SREG = sreg;
 }
 
-void flash_read(uint16_t address, uint8_t *data, uint8_t size) {
+void flash_read(uint16_t address, uint8_t* data, uint8_t size) {
     for (uint8_t i = 0; i < size; i++) {
         *data = pgm_read_byte(address + i);
         data++;

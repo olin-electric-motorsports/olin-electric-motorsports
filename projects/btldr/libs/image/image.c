@@ -9,12 +9,12 @@ extern int __image_hdr;
 
 static image_hdr_t prv_hdr;
 
-const image_hdr_t *image_get_header(void) {
-    memcpy_P(&prv_hdr, (void *)__image_hdr, sizeof(image_hdr_t));
+const image_hdr_t* image_get_header(void) {
+    memcpy_P(&prv_hdr, (void*)__image_hdr, sizeof(image_hdr_t));
     return &prv_hdr;
 }
 
-uint8_t image_validate(const image_hdr_t *hdr) {
+uint8_t image_validate(const image_hdr_t* hdr) {
     uint16_t image_addr = sizeof(image_hdr_t);
     uint16_t image_size = hdr->image_size;
 
@@ -38,11 +38,11 @@ uint8_t image_validate(const image_hdr_t *hdr) {
 }
 
 uint64_t get_image_timestamp(void) {
-    const image_hdr_t *img = image_get_header();
+    const image_hdr_t* img = image_get_header();
     return (uint64_t)img->flash_timestamp;
 }
 
 uint16_t get_image_size(void) {
-    const image_hdr_t *img = image_get_header();
+    const image_hdr_t* img = image_get_header();
     return (uint16_t)img->image_size;
 }
