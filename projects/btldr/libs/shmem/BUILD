@@ -8,5 +8,8 @@ cc_library(
     hdrs = [
         "api.h",
     ],
+    target_compatible_with = [
+        "//bazel/constraints:avr",
+    ],
     visibility = ["//visibility:public"],
 )
