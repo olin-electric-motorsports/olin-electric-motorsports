@@ -6,7 +6,10 @@ cc_library(
         "flash.c",
     ],
     hdrs = [
-        "flash.h",
+        "api.h",
+    ],
+    target_compatible_with = [
+        "//bazel/constraints:avr",
     ],
     visibility = ["//visibility:public"],
 )
