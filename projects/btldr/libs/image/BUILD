@@ -6,13 +6,13 @@ cc_library(
         "image.c",
     ],
     hdrs = [
-        "api.h"
-    ],
-    deps = [
-        "//projects/btldr/libs/crc32",
+        "api.h",
     ],
     target_compatible_with = [
         "//bazel/constraints:avr",
     ],
     visibility = ["//visibility:public"],
+    deps = [
+        "//projects/btldr/libs/crc32",
+    ],
 )
