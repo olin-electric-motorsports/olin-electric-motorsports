@@ -121,3 +121,12 @@ http_archive(
 load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
 
 hedron_compile_commands_setup()
+
+# Log (C logging library)
+
+http_archive(
+    name = "log",
+    build_file = "@//third_party/log:BUILD",
+    strip_prefix = "log.c-master",
+    url = "https://github.com/rxi/log.c/archive/refs/heads/master.zip",
+)
