@@ -4,17 +4,19 @@
 		src="https://nyc3.digitaloceanspaces.com/oem-outline/logo-smaller.png">
 </h1>
 
-Welcome to the OEM Monorepo! This is the home for all of the electrical,
-firmware, and software work our team does.
+Welcome to the Olin Electric Motorsports monorepo. This is the home for all of
+the electrical, firmware, and software work our team does.
 
 This document will help you get started contributing and walk you through
 important steps for collaborating with teammates.
 
 ## Getting Started
 
-Begin by cloning this repository
+Begin by cloning this repository into a folder of your choice (many people
+choose to put it in `~/Documents`.
 
 ```shell
+$ cd ~/Documents
 $ git clone git@github.com:olin-electric-motorsports/olin-electric-motorsports.git
 ```
 
@@ -34,7 +36,9 @@ sudo apt install gcc-avr avrdude
 
 ### Installing Bazel
 
-Next, install Bazelisk. [This link](https://github.com/bazelbuild/bazelisk/releases/download/v1.10.1/bazelisk-linux-amd64) will download for Ubuntu on x86\_64 machines. Once downloaded, run the
+Next, install Bazelisk. [This
+link](https://github.com/bazelbuild/bazelisk/releases/download/v1.10.1/bazelisk-linux-amd64)
+will download for Ubuntu on x86\_64 machines. Once downloaded, run the
 following to install:
 
 ```shell
@@ -65,9 +69,28 @@ $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brake
 
 ### KiCad Setup
 
+To install KiCad on Ubuntu, run the following:
+
+```shell
+$ sudo add-apt-repository --yes ppa:kicad/kicad-5.1-releases
+$ sudo apt update
+$ sudo apt install --install-recommends kicad
 ```
-TODO
-```
+
+Next, take note of the path to your monorepo. If you put it in your
+`~/Documents` folder, your path will be `~/Downloads/olin-electric-motorsports`.
+
+Open KiCad. From the top bar, open up _Preferences > Configure Paths..._. Add a
+new row to the table:
+
+Name | Path
+-----|-----
+OEM\_MONOREPO|`/home/your-username/olin-electric-motorsports`
+
+where `your-username` is the username on your computer.
+
+Visit [this page](https://www.kicad.org/download/) to find instructions for
+downloading KiCad for other operating systems.
 
 ## Contributing
 
@@ -87,5 +110,6 @@ $ git switch -c your-username/feature-name origin/main
 Now, you can start working on code, committing on your branch, and eventually
 opening up a pull request to `main`.
 
-If you are working on a KiCad project, see the KiCad project documentation
-[here]() `TODO`.
+New projects should be placed into a folder within the `//projects` directory
+(for instance, `//projects/hitl/`. Hardware and firmware that run on MKV or MKVI
+should go in the proper subfolder within `//vehicle`.
