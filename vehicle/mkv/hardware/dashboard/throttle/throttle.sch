@@ -323,10 +323,6 @@ Wire Wire Line
 	14600 950  14900 950 
 Wire Wire Line
 	14600 1300 14900 1300
-Text Label 15400 950  0    50   ~ 0
-LED1
-Text Label 15400 1300 0    50   ~ 0
-LED2
 Wire Wire Line
 	15200 950  15400 950 
 Wire Wire Line
@@ -614,11 +610,11 @@ NoConn ~ 14600 2200
 Text Notes 12900 900  0    118  ~ 0
 ATMega16M1\n
 Wire Notes Line
-	11650 4800 15700 4800
+	11650 4800 15950 4800
 Wire Notes Line
-	15700 4800 15700 700 
+	15950 4800 15950 700 
 Wire Notes Line
-	15700 700  11650 700 
+	15950 700  11650 700 
 $Bitmap
 Pos 1600 750 
 Scale 1.000000
@@ -1066,30 +1062,30 @@ $EndComp
 $Comp
 L throttle-rescue:R_0_2512-formula-throttle-rescue R?
 U 1 1 5CACCAB0
-P 12850 5900
+P 13300 5900
 AR Path="/5CAC90A2/5CACCAB0" Ref="R?"  Part="1" 
 AR Path="/5CACCAB0" Ref="R104"  Part="1" 
-F 0 "R104" V 12650 5900 50  0000 C CNN
-F 1 "R_0_2512" V 12750 5900 50  0000 C CNN
-F 2 "footprints:R_2512_OEM" H 12780 5900 50  0001 C CNN
-F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 12930 5900 50  0001 C CNN
-F 4 "DK" H 12850 5900 60  0001 C CNN "MFN"
-F 5 "A121322CT-ND" H 12850 5900 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" H 13330 6300 60  0001 C CNN "PurchasingLink"
-	1    12850 5900
+F 0 "R104" V 13100 5900 50  0000 C CNN
+F 1 "R_0_2512" V 13200 5900 50  0000 C CNN
+F 2 "footprints:R_2512_OEM" H 13230 5900 50  0001 C CNN
+F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 13380 5900 50  0001 C CNN
+F 4 "DK" H 13300 5900 60  0001 C CNN "MFN"
+F 5 "A121322CT-ND" H 13300 5900 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" H 13780 6300 60  0001 C CNN "PurchasingLink"
+	1    13300 5900
 	0    -1   -1   0   
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5CACCACB
-P 13250 7100
+P 12800 7200
 AR Path="/5CAC90A2/5CACCACB" Ref="#PWR?"  Part="1" 
 AR Path="/5CACCACB" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 13250 6850 50  0001 C CNN
-F 1 "GND" H 13255 6927 50  0000 C CNN
-F 2 "" H 13250 7100 50  0001 C CNN
-F 3 "" H 13250 7100 50  0001 C CNN
-	1    13250 7100
+F 0 "#PWR?" H 12800 6950 50  0001 C CNN
+F 1 "GND" H 12805 7027 50  0000 C CNN
+F 2 "" H 12800 7200 50  0001 C CNN
+F 3 "" H 12800 7200 50  0001 C CNN
+	1    12800 7200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1146,28 +1142,28 @@ F 3 "" H 12050 6200 50  0001 C CNN
 	1    12050 6200
 	1    0    0    -1  
 $EndComp
-Text Notes 12650 5800 0    50   ~ 0
+Text Notes 13100 5800 0    50   ~ 0
 VCC Jumper\n
 $Comp
 L power:VCC #PWR?
 U 1 1 5CACCB2E
-P 13250 5700
+P 13700 5700
 AR Path="/5CAC90A2/5CACCB2E" Ref="#PWR?"  Part="1" 
 AR Path="/5CACCB2E" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 13250 5550 50  0001 C CNN
-F 1 "VCC" H 13267 5873 50  0000 C CNN
-F 2 "" H 13250 5700 50  0001 C CNN
-F 3 "" H 13250 5700 50  0001 C CNN
-	1    13250 5700
+F 0 "#PWR?" H 13700 5550 50  0001 C CNN
+F 1 "VCC" H 13717 5873 50  0000 C CNN
+F 2 "" H 13700 5700 50  0001 C CNN
+F 3 "" H 13700 5700 50  0001 C CNN
+	1    13700 5700
 	1    0    0    -1  
 $EndComp
-Text Notes 13400 5550 0    50   ~ 0
+Text Notes 13850 5550 0    50   ~ 0
 5V
 Wire Wire Line
-	13250 6250 13250 6500
+	12800 6350 12800 6600
 Wire Wire Line
-	13250 6800 13250 7100
-Text Notes 13100 6800 1    50   ~ 0
+	12800 6900 12800 7200
+Text Notes 12650 6900 1    50   ~ 0
 5V Indicator
 Connection ~ 12050 5900
 Wire Wire Line
@@ -1182,15 +1178,9 @@ Wire Wire Line
 Wire Wire Line
 	12450 6550 11500 6550
 Wire Wire Line
-	12450 5900 12700 5900
-Connection ~ 12450 5900
+	13450 5900 13700 5900
 Wire Wire Line
-	13000 5900 13250 5900
-Wire Wire Line
-	13250 5700 13250 5900
-Connection ~ 13250 5900
-Wire Wire Line
-	13250 5900 13250 5950
+	13700 5700 13700 5900
 Wire Wire Line
 	11000 6550 11100 6550
 Wire Wire Line
@@ -1538,30 +1528,17 @@ F 7 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 4280 60
 	1    3800 5650
 	1    0    0    -1  
 $EndComp
-Text Label 6050 5400 0    59   ~ 0
+Text Label 5800 5350 0    59   ~ 0
 DRIVE_MODE_SENSE
-Wire Wire Line
-	5750 5400 5750 5800
 $Comp
 L power:GND #PWR?
 U 1 1 5BFE2950
-P 6050 6100
-F 0 "#PWR?" H 6050 5850 50  0001 C CNN
-F 1 "GND" H 6055 5927 50  0000 C CNN
-F 2 "" H 6050 6100 50  0001 C CNN
-F 3 "" H 6050 6100 50  0001 C CNN
-	1    6050 6100
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5BFE2AC4
-P 5750 6100
-F 0 "#PWR?" H 5750 5850 50  0001 C CNN
-F 1 "GND" H 5755 5927 50  0000 C CNN
-F 2 "" H 5750 6100 50  0001 C CNN
-F 3 "" H 5750 6100 50  0001 C CNN
-	1    5750 6100
+P 5800 6050
+F 0 "#PWR?" H 5800 5800 50  0001 C CNN
+F 1 "GND" H 5805 5877 50  0000 C CNN
+F 2 "" H 5800 6050 50  0001 C CNN
+F 3 "" H 5800 6050 50  0001 C CNN
+	1    5800 6050
 	1    0    0    -1  
 $EndComp
 Text Notes 5300 5150 0    63   ~ 0
@@ -1575,19 +1552,19 @@ Wire Notes Line
 $Comp
 L throttle-rescue:R_22K-formula-throttle-rescue R13
 U 1 1 5BFC3846
-P 6050 5950
-F 0 "R13" H 6120 5996 50  0000 L CNN
-F 1 "R_22K" H 6120 5905 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 5980 5950 50  0001 C CNN
-F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 6130 5950 50  0001 C CNN
-F 4 "DK" H 6050 5950 60  0001 C CNN "MFN"
-F 5 "RMCF0805JT22K0CT-ND" H 6050 5950 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND" H 6530 6350 60  0001 C CNN "PurchasingLink"
-	1    6050 5950
+P 5800 5900
+F 0 "R13" H 5870 5946 50  0000 L CNN
+F 1 "R_22K" H 5870 5855 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 5730 5900 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 5880 5900 50  0001 C CNN
+F 4 "DK" H 5800 5900 60  0001 C CNN "MFN"
+F 5 "RMCF0805JT22K0CT-ND" H 5800 5900 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND" H 6280 6300 60  0001 C CNN "PurchasingLink"
+	1    5800 5900
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6050 5400 6050 5800
+	5800 5350 5800 5750
 Wire Notes Line
 	6950 6400 6950 4950
 Wire Notes Line
@@ -1883,8 +1860,6 @@ F 7 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 983
 	1    0    0    -1  
 $EndComp
 NoConn ~ 450  4050
-Text Label 5750 5400 2    59   ~ 0
-GND_DRIVEMODE
 Text Label 1800 4450 0    59   ~ 0
 GND_THROTTLE1
 $Comp
@@ -1914,20 +1889,6 @@ F 5 "P0.0GCT-ND" H 1950 4250 60  0001 C CNN "MPN"
 F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEY0R00V/P0.0GCT-ND/134711" H 2430 4650 60  0001 C CNN "PurchasingLink"
 	1    1950 4250
 	0    -1   -1   0   
-$EndComp
-$Comp
-L throttle-rescue:R_22K-formula-throttle-rescue R12
-U 1 1 5BFC36CE
-P 5750 5950
-F 0 "R12" H 5900 5900 50  0000 R CNN
-F 1 "R_22K" H 6050 6000 50  0000 R CNN
-F 2 "footprints:R_0805_OEM" H 5680 5950 50  0001 C CNN
-F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 5830 5950 50  0001 C CNN
-F 4 "DK" H 5750 5950 60  0001 C CNN "MFN"
-F 5 "RMCF0805JT22K0CT-ND" H 5750 5950 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT22K0CT-ND" H 6230 6350 60  0001 C CNN "PurchasingLink"
-	1    5750 5950
-	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	12400 1500 12200 1500
@@ -2115,12 +2076,12 @@ Connection ~ 4750 1500
 $Comp
 L power:GND #PWR?
 U 1 1 5DD47EFD
-P 5050 1500
-F 0 "#PWR?" H 5050 1250 50  0001 C CNN
-F 1 "GND" H 5050 1350 50  0000 C CNN
-F 2 "" H 5050 1500 50  0001 C CNN
-F 3 "" H 5050 1500 50  0001 C CNN
-	1    5050 1500
+P 5100 1550
+F 0 "#PWR?" H 5100 1300 50  0001 C CNN
+F 1 "GND" H 5100 1400 50  0000 C CNN
+F 2 "" H 5100 1550 50  0001 C CNN
+F 3 "" H 5100 1550 50  0001 C CNN
+	1    5100 1550
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -2345,7 +2306,6 @@ Wire Notes Line
 	1500 3000 5900 3000
 Wire Notes Line
 	600  1050 5900 1050
-NoConn ~ 15000 7300
 Connection ~ 15000 6800
 Wire Wire Line
 	15000 6800 15000 6850
@@ -2447,33 +2407,33 @@ $EndComp
 $Comp
 L throttle-rescue:LED_0805-formula-throttle-rescue D?
 U 1 1 5CACCABA
-P 13250 6650
+P 12800 6750
 AR Path="/5CAC90A2/5CACCABA" Ref="D?"  Part="1" 
 AR Path="/5CACCABA" Ref="D103"  Part="1" 
-F 0 "D103" V 13288 6533 50  0000 R CNN
-F 1 "LED_0805" V 13197 6533 50  0000 R CNN
-F 2 "footprints:LED_0805_OEM" H 13150 6650 50  0001 C CNN
-F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 13250 6750 50  0001 C CNN
-F 4 "DK" H 13250 6650 60  0001 C CNN "MFN"
-F 5 "475-1410-1-ND" H 13250 6650 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 13650 7150 60  0001 C CNN "PurchasingLink"
-	1    13250 6650
+F 0 "D103" V 12838 6633 50  0000 R CNN
+F 1 "LED_0805" V 12747 6633 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 12700 6750 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 12800 6850 50  0001 C CNN
+F 4 "DK" H 12800 6750 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 12800 6750 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 13200 7250 60  0001 C CNN "PurchasingLink"
+	1    12800 6750
 	0    -1   -1   0   
 $EndComp
 $Comp
 L throttle-rescue:R_200-formula-throttle-rescue R?
 U 1 1 5CACCAC4
-P 13250 6100
+P 12800 6200
 AR Path="/5CAC90A2/5CACCAC4" Ref="R?"  Part="1" 
 AR Path="/5CACCAC4" Ref="R105"  Part="1" 
-F 0 "R105" H 13320 6146 50  0000 L CNN
-F 1 "R_200" H 13320 6055 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 13180 6100 50  0001 C CNN
-F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 13330 6100 50  0001 C CNN
-F 4 "DK" H 13250 6100 60  0001 C CNN "MFN"
-F 5 "RMCF0805JT200RCT-ND" H 13250 6100 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 13730 6500 60  0001 C CNN "PurchasingLink"
-	1    13250 6100
+F 0 "R105" H 12870 6246 50  0000 L CNN
+F 1 "R_200" H 12870 6155 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 12730 6200 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 12880 6200 50  0001 C CNN
+F 4 "DK" H 12800 6200 60  0001 C CNN "MFN"
+F 5 "RMCF0805JT200RCT-ND" H 12800 6200 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 13280 6600 60  0001 C CNN "PurchasingLink"
+	1    12800 6200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -2607,12 +2567,12 @@ $EndComp
 $Comp
 L power:VCC #PWR?
 U 1 1 5EADC782
-P 1950 6200
-F 0 "#PWR?" H 1950 6050 50  0001 C CNN
-F 1 "VCC" H 1950 6350 50  0000 C CNN
-F 2 "" H 1950 6200 50  0001 C CNN
-F 3 "" H 1950 6200 50  0001 C CNN
-	1    1950 6200
+P 1950 6160
+F 0 "#PWR?" H 1950 6010 50  0001 C CNN
+F 1 "VCC" H 1950 6310 50  0000 C CNN
+F 2 "" H 1950 6160 50  0001 C CNN
+F 3 "" H 1950 6160 50  0001 C CNN
+	1    1950 6160
 	1    0    0    -1  
 $EndComp
 Text Notes 8300 1150 0    118  ~ 0
@@ -7056,7 +7016,7 @@ U 1 1 5EC1C444
 P 1700 7100
 F 0 "TP5" V 1700 7128 50  0000 L CNN
 F 1 "TP" V 1745 7128 50  0001 L CNN
-F 2 "footprints:Test_Point_SMD" H 1600 7000 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 1600 7000 50  0001 C CNN
 F 3 "http://www.keyelco.com/product-pdf.cfm?p=1314" H 1700 7100 50  0001 C CNN
 F 4 "DK" H 1800 7200 50  0001 C CNN "MFN"
 F 5 "36-5006-ND" H 1900 7300 50  0001 C CNN "MPN"
@@ -7070,7 +7030,7 @@ U 1 1 5EC162EC
 P 1700 6950
 F 0 "TP4" V 1700 6978 50  0000 L CNN
 F 1 "TP" V 1745 6978 50  0001 L CNN
-F 2 "footprints:Test_Point_SMD" H 1600 6850 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 1600 6850 50  0001 C CNN
 F 3 "http://www.keyelco.com/product-pdf.cfm?p=1314" H 1700 6950 50  0001 C CNN
 F 4 "DK" H 1800 7050 50  0001 C CNN "MFN"
 F 5 "36-5006-ND" H 1900 7150 50  0001 C CNN "MPN"
@@ -7155,4 +7115,22 @@ Text Label 1900 6650 0    59   ~ 0
 12V
 Text Label 1900 6800 0    59   ~ 0
 5V
+Wire Wire Line
+	1950 6200 1950 6160
+Text Label 15400 950  0    59   ~ 0
+RJ45_LEDO
+Text Label 15400 1300 0    59   ~ 0
+RJ45_LEDG
+Wire Wire Line
+	5100 1550 5100 1500
+Wire Wire Line
+	5100 1500 5050 1500
+Wire Wire Line
+	12450 5900 12800 5900
+Connection ~ 12450 5900
+Wire Wire Line
+	12800 6050 12800 5900
+Connection ~ 12800 5900
+Wire Wire Line
+	12800 5900 13150 5900
 $EndSCHEMATC
