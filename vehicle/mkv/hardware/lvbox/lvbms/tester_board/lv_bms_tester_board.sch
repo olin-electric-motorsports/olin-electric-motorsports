@@ -128,7 +128,7 @@ U 1 1 6141BE4B
 P 2200 2325
 F 0 "TP1" V 2400 2450 50  0000 C CNN
 F 1 "Test_Point_SMD" V 2325 2225 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 2200 2175 50  0001 C CNN
+F 2 "footprints:Test_Point_SMD" H 2200 2175 50  0001 C CNN
 F 3 "" H 2200 2325 50  0001 C CNN
 	1    2200 2325
 	0    -1   -1   0   
@@ -192,7 +192,7 @@ U 1 1 6144F96F
 P 2950 2575
 F 0 "TP5" V 3150 2575 50  0000 L CNN
 F 1 "Test_Point_SMD" V 3075 2575 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_2.0x2.0mm" H 2950 2425 50  0001 C CNN
+F 2 "footprints:Test_Point_SMD" H 2950 2425 50  0001 C CNN
 F 3 "" H 2950 2575 50  0001 C CNN
 	1    2950 2575
 	0    1    1    0   
@@ -258,7 +258,7 @@ U 1 1 614A84EE
 P 1800 1450
 F 0 "TP6" H 1750 1650 50  0000 L CNN
 F 1 "Test_Point_SMD" H 1550 1775 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 1800 1300 50  0001 C CNN
+F 2 "footprints:Test_Point_SMD" H 1800 1300 50  0001 C CNN
 F 3 "" H 1800 1450 50  0001 C CNN
 	1    1800 1450
 	-1   0    0    1   
@@ -269,7 +269,7 @@ U 1 1 614A9C4C
 P 4225 1450
 F 0 "TP7" H 4175 1650 50  0000 L CNN
 F 1 "Test_Point_SMD" H 3750 1750 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 4225 1300 50  0001 C CNN
+F 2 "footprints:Test_Point_SMD" H 4225 1300 50  0001 C CNN
 F 3 "" H 4225 1450 50  0001 C CNN
 	1    4225 1450
 	-1   0    0    1   
