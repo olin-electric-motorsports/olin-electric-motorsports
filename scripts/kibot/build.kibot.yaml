@@ -1,0 +1,65 @@
+kibot:
+  version: 1
+
+outputs:
+  - name: "sch_pdf"
+    type: pdf_sch_print
+    options:
+      output: "%f.pdf"
+
+  - name: "pcb_svg_top"
+    type: pcbdraw
+    options:
+      output: "%f_a_top_pcb.svg"
+
+  - name: "pcb_svg_bottom"
+    type: pcbdraw
+    options:
+      output: "%f_b_bottom_pcb.svg"
+      bottom: true
+
+  - name: "sch_svg"
+    type: svg_sch_print
+    options:
+      output: "%f_sch.svg"
+
+  - name: step
+    type: step
+
+  - name: "bom"
+    type: bom
+    options:
+      output: "%f.csv"
+
+  - name: gerbers
+    type: gerber
+    layers:
+      - 'copper'
+      - 'Edge.Cuts'
+      - 'F.Paste'
+      - 'B.Paste'
+      - 'F.SilkS'
+      - 'B.SilkS'
+      - 'F.Mask'
+      - 'B.Mask'
+    options:
+      use_protel_extensions: true
+
+  - name: drill
+    type: excellon
+    options:
+      metric_units: false
+      zeros_format: 'SUPPRESS_LEADING'
+      map:
+        output: '%f-%i%v.%x'
+        type: 'ps'
+      minimal_header: true
+
+  - name: gerb_zip
+    type: compress
+    options:
+      format: 'ZIP'
+      files:
+      - from_output: 'gerbers'
+      - from_output: 'drill'
+      output: '%f.gerbers.%x'
