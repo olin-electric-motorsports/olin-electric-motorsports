@@ -1,18 +1,21 @@
-#include "libs/uart/api.h"
-#include <avr/io.h>
 #include <util/delay.h>
+#include <avr/io.h>
+#include "libs/gpio/api.h"
+#include "libs/uart/api.h"
+#include "config.h"
 
-#define LED0 (PD6)
+gpio_t LED0 = {
+    .num = PB0,
+    .ddr = DDRB,
+    .port = PORTB,
+    .pin = PINB,
+};
 
 int main(void) {
-    DDRD |= _BV(LED0);
-    uart_init(9600);
+    gpio_set_mode(LED0, OUTPUT);
 
     for (;;) {
-        PORTD ^= _BV(LED0);
-
-        uart_puts("This is a string\n");
-
+        gpio_toggle_pin(LED0);
         _delay_ms(250);
     }
 }
