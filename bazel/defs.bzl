@@ -416,7 +416,6 @@ def kicad_hardware(
             ":{}_sch.svg".format(name),
             ":{}.pdf".format(name),
             ":{}.csv".format(name),
-            ":{}.gerbers.zip".format(name),
             # ":{}.step".format(name),
         ],
         extension = "tgz",
@@ -468,16 +467,6 @@ def kicad_hardware(
         name = "{}.csv".format(name),
         config_file = "//scripts/kibot:build.kibot.yaml",
         output_name = ["bom"],
-        pcb_file = pcb_file,
-        schematic_files = schematic_files,
-        lib_cache = lib_cache,
-        tags = ["kicad"],
-    )
-
-    kibot(
-        name = "{}.gerbers.zip".format(name),
-        config_file = "//scripts/kibot:build.kibot.yaml",
-        output_name = ["gerbers", "drill", "gerb_zip"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
         lib_cache = lib_cache,
