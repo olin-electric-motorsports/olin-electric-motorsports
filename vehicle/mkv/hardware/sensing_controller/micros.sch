@@ -13,12 +13,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 3640 3150 0    50   ~ 0
-PM_MISO
-Text Label 3640 3250 0    50   ~ 0
-PM_MOSI
-Text Label 3640 3350 0    50   ~ 0
-PM_SCK
 Text Label 4700 3850 0    50   ~ 0
 PM_RESET
 $Comp
@@ -399,13 +393,13 @@ F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-323
 	1    4550 7250
 	1    0    0    -1  
 $EndComp
-Text Label 4240 7150 2    50   ~ 0
+Text Label 3500 7150 2    50   ~ 0
 PM_MISO
 Text Label 4240 7250 2    50   ~ 0
 PM_SCK
 Text Label 4240 7350 2    50   ~ 0
 PM_RESET
-Text Label 4890 7270 0    50   ~ 0
+Text Label 5250 7250 0    50   ~ 0
 PM_MOSI
 $Comp
 L power:GND #PWR?
@@ -420,7 +414,7 @@ F 3 "" H 4800 7350 50  0001 C CNN
 	1    4800 7350
 	1    0    0    -1  
 $EndComp
-Text Notes 3550 6900 0    89   ~ 0
+Text Notes 3900 6775 0    89   ~ 0
 16M1 PROGRAMMING HEADER\n
 Wire Wire Line
 	1060 6450 1060 6600
@@ -452,44 +446,9 @@ Wire Wire Line
 	2050 6900 2250 6900
 Wire Wire Line
 	2050 7200 2250 7200
-$Comp
-L sensing_controller-rescue:CONN_02X03-formula J?
-U 1 1 60A83F39
-P 4620 6300
-AR Path="/60A3DB76/60A83F39" Ref="J?"  Part="1" 
-AR Path="/60A3D93E/60A83F39" Ref="J301"  Part="1" 
-F 0 "J301" H 4620 6510 50  0000 C CNN
-F 1 "CONN_02X03" H 4510 6100 50  0000 C CNN
-F 2 "footprints:Pin_Header_Straight_2x03" H 4620 5100 50  0001 C CNN
-F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 4620 5100 50  0001 C CNN
-F 4 "DK" H 4620 6300 60  0001 C CNN "MFN"
-F 5 "609-3234-ND" H 4620 6300 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 5020 6900 60  0001 C CNN "PurchasingLink"
-	1    4620 6300
-	1    0    0    -1  
-$EndComp
-Text Label 4320 6200 2    50   ~ 0
-SM_MISO
-Text Label 4320 6300 2    50   ~ 0
-SM_SCK
-Text Label 4320 6400 2    50   ~ 0
-SM_RESET
-Text Label 4930 6320 0    50   ~ 0
+Text Label 5500 6300 0    50   ~ 0
 SM_MOSI
-$Comp
-L power:GND #PWR?
-U 1 1 60A83F43
-P 4870 6400
-AR Path="/60A3DB76/60A83F43" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D93E/60A83F43" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 4870 6150 50  0001 C CNN
-F 1 "GND" H 4875 6227 50  0000 C CNN
-F 2 "" H 4870 6400 50  0001 C CNN
-F 3 "" H 4870 6400 50  0001 C CNN
-	1    4870 6400
-	1    0    0    -1  
-$EndComp
-Text Notes 3590 5930 0    89   ~ 0
+Text Notes 3600 5550 0    89   ~ 0
 328P PROGRAMMING HEADER\n
 Connection ~ 2250 6900
 Wire Wire Line
@@ -542,20 +501,8 @@ Wire Wire Line
 	3950 1250 3600 1250
 Text GLabel 750  1000 1    50   Input ~ 0
 5V
-Text GLabel 4600 3350 0    50   Input ~ 0
-5V
-Text GLabel 4920 6200 2    50   Input ~ 0
-3.3V
-Wire Wire Line
-	4870 6300 4880 6300
-Wire Wire Line
-	4880 6300 4880 6320
 Text GLabel 4880 7150 2    50   Input ~ 0
 5V
-Wire Wire Line
-	4800 7250 4810 7250
-Wire Wire Line
-	4810 7250 4810 7270
 Text GLabel 1350 6250 0    50   Input ~ 0
 5V
 Text GLabel 3640 1350 2    50   Input ~ 0
@@ -635,43 +582,19 @@ Wire Wire Line
 Wire Wire Line
 	3600 2950 3640 2950
 Wire Wire Line
-	3600 3150 3640 3150
-Wire Wire Line
-	3600 3250 3640 3250
-Wire Wire Line
-	3600 3350 3640 3350
-Wire Wire Line
 	3600 3450 3640 3450
 Wire Wire Line
 	3600 3550 3640 3550
 Wire Wire Line
-	4880 6320 4930 6320
-Wire Wire Line
-	4870 6200 4920 6200
-Wire Wire Line
-	4320 6200 4370 6200
-Wire Wire Line
-	4320 6300 4370 6300
-Wire Wire Line
-	4320 6400 4370 6400
-Wire Wire Line
-	4240 7150 4300 7150
-Wire Wire Line
 	4240 7250 4300 7250
 Wire Wire Line
 	4240 7350 4300 7350
-Wire Wire Line
-	4810 7270 4890 7270
 Wire Wire Line
 	4800 7150 4880 7150
 Wire Wire Line
 	900  6850 950  6850
 Wire Wire Line
 	900  6950 950  6950
-Wire Wire Line
-	4600 3350 4650 3350
-Wire Wire Line
-	4650 3350 4650 3450
 Wire Wire Line
 	4650 3750 4650 3850
 Connection ~ 4650 3850
@@ -1091,10 +1014,6 @@ Text Label 7950 5200 2    50   ~ 0
 PM_MISO
 Text Label 7950 5300 2    50   ~ 0
 PM_MOSI
-Text Label 7950 5400 2    50   ~ 0
-PM_CS
-Wire Wire Line
-	7950 5400 8000 5400
 Wire Wire Line
 	8000 5300 7950 5300
 Wire Wire Line
@@ -1105,39 +1024,15 @@ Wire Wire Line
 	7500 5000 8000 5000
 Wire Wire Line
 	7500 5600 8000 5600
-$Comp
-L sensing_controller-rescue:R_10K-formula R?
-U 1 1 617CADB7
-P 9250 5600
-AR Path="/60A3DA8B/617CADB7" Ref="R?"  Part="1" 
-AR Path="/60A3D93E/617CADB7" Ref="R308"  Part="1" 
-F 0 "R308" V 9136 5578 50  0000 C CNN
-F 1 "R_10K" V 9054 5578 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 9180 5600 50  0001 C CNN
-F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 9330 5600 50  0001 C CNN
-F 4 "DK" H 9250 5600 60  0001 C CNN "MFN"
-F 5 "CRS0805-FX-1002ELFCT-ND" H 9250 5600 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 9730 6000 60  0001 C CNN "PurchasingLink"
-	1    9250 5600
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9100 5600 8900 5600
-Wire Wire Line
-	9400 5600 9650 5600
-Text GLabel 9700 5400 2    50   Input ~ 0
+Text GLabel 9325 5975 2    50   Input ~ 0
 5V
-Wire Wire Line
-	9700 5400 9650 5400
-Wire Wire Line
-	9650 5400 9650 5600
 Text Label 8950 5100 0    50   ~ 0
 SM_SCK
 Text Label 8950 5200 0    50   ~ 0
 SM_MISO
 Text Label 8950 5300 0    50   ~ 0
 SM_MOSI
-Text Label 8950 5400 0    50   ~ 0
+Text Label 9750 5400 0    50   ~ 0
 SM_CS
 Wire Wire Line
 	8950 5100 8900 5100
@@ -1145,8 +1040,6 @@ Wire Wire Line
 	8900 5200 8950 5200
 Wire Wire Line
 	8950 5300 8900 5300
-Wire Wire Line
-	8900 5400 8950 5400
 Text GLabel 9550 4700 2    50   Input ~ 0
 3.3V
 Wire Wire Line
@@ -1156,39 +1049,37 @@ Wire Wire Line
 $Comp
 L sensing_controller-rescue:C_0.1uF-formula C?
 U 1 1 61815587
-P 9400 5000
+P 9400 4950
 AR Path="/60A3DA8B/61815587" Ref="C?"  Part="1" 
 AR Path="/60A3D93E/61815587" Ref="C308"  Part="1" 
-F 0 "C308" H 9060 5050 50  0000 L CNN
-F 1 "C_0.1uF" H 8990 4958 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 9438 4850 50  0001 C CNN
-F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 9425 5100 50  0001 C CNN
-F 4 "DK" H 9400 5000 60  0001 C CNN "MFN"
-F 5 "478-3352-1-ND" H 9400 5000 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 9825 5500 60  0001 C CNN "PurchasingLink"
-	1    9400 5000
+F 0 "C308" H 9060 5000 50  0000 L CNN
+F 1 "C_0.1uF" H 8990 4908 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 9438 4800 50  0001 C CNN
+F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 9425 5050 50  0001 C CNN
+F 4 "DK" H 9400 4950 60  0001 C CNN "MFN"
+F 5 "478-3352-1-ND" H 9400 4950 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 9825 5450 60  0001 C CNN "PurchasingLink"
+	1    9400 4950
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	9400 4850 9400 4700
 Connection ~ 9400 4700
 Wire Wire Line
 	9400 4700 9000 4700
 $Comp
 L power:GND #PWR?
 U 1 1 61827B16
-P 9400 5300
+P 9400 5150
 AR Path="/60A3DA8B/61827B16" Ref="#PWR?"  Part="1" 
 AR Path="/60A3D93E/61827B16" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 9400 5050 50  0001 C CNN
-F 1 "GND" H 9405 5127 50  0000 C CNN
-F 2 "" H 9400 5300 50  0001 C CNN
-F 3 "" H 9400 5300 50  0001 C CNN
-	1    9400 5300
+F 0 "#PWR?" H 9400 4900 50  0001 C CNN
+F 1 "GND" H 9405 4977 50  0000 C CNN
+F 2 "" H 9400 5150 50  0001 C CNN
+F 3 "" H 9400 5150 50  0001 C CNN
+	1    9400 5150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9400 5150 9400 5300
+	9400 5100 9400 5150
 Wire Wire Line
 	9400 4700 9550 4700
 Text Notes 7950 4550 0    89   ~ 0
@@ -1212,4 +1103,214 @@ Wire Wire Line
 Wire Wire Line
 	4850 1050 4650 1050
 Connection ~ 4850 1250
+Wire Wire Line
+	4650 3350 4650 3450
+Text GLabel 4600 3350 0    50   Input ~ 0
+5V
+Wire Wire Line
+	4600 3350 4650 3350
+Wire Wire Line
+	3600 3250 3640 3250
+Wire Wire Line
+	3600 3350 3640 3350
+Wire Wire Line
+	3600 3150 3640 3150
+Text Label 3640 3350 0    50   ~ 0
+PM_SCK
+Text Label 3640 3250 0    50   ~ 0
+PM_MOSI
+Text Label 3640 3150 0    50   ~ 0
+PM_MISO
+$Comp
+L sensing_controller-rescue:Test_Point_SMD-formula TP?
+U 1 1 617528FF
+P 5350 6150
+AR Path="/617528FF" Ref="TP?"  Part="1" 
+AR Path="/60A3D93E/617528FF" Ref="TP?"  Part="1" 
+F 0 "TP?" H 5428 6238 50  0000 L CNN
+F 1 "Test_Point_SMD" H 5428 6147 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 5350 6000 50  0001 C CNN
+F 3 "" H 5350 6150 50  0001 C CNN
+	1    5350 6150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 6200 5350 6300
+Wire Wire Line
+	5350 6300 5500 6300
+Text Label 3880 6200 2    50   ~ 0
+SM_MISO
+Text Label 4350 6300 2    50   ~ 0
+SM_SCK
+Text Label 4350 6400 2    50   ~ 0
+SM_RESET
+Text GLabel 4920 6200 2    50   Input ~ 0
+3.3V
+Wire Wire Line
+	4870 6200 4900 6200
+$Comp
+L sensing_controller-rescue:Test_Point_SMD-formula TP?
+U 1 1 617BA56F
+P 4130 5950
+AR Path="/617BA56F" Ref="TP?"  Part="1" 
+AR Path="/60A3D93E/617BA56F" Ref="TP?"  Part="1" 
+F 0 "TP?" H 4208 6038 50  0000 L CNN
+F 1 "Test_Point_SMD" H 4208 5947 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 4130 5800 50  0001 C CNN
+F 3 "" H 4130 5950 50  0001 C CNN
+	1    4130 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3880 6200 4130 6200
+Wire Wire Line
+	4130 6000 4130 6200
+Connection ~ 4130 6200
+$Comp
+L power:GND #PWR?
+U 1 1 617BA578
+P 4900 6400
+AR Path="/60A3DB76/617BA578" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D93E/617BA578" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4900 6150 50  0001 C CNN
+F 1 "GND" H 4905 6227 50  0000 C CNN
+F 2 "" H 4900 6400 50  0001 C CNN
+F 3 "" H 4900 6400 50  0001 C CNN
+	1    4900 6400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 6400 4400 6400
+Wire Wire Line
+	4350 6300 4400 6300
+Wire Wire Line
+	4130 6200 4400 6200
+$Comp
+L sensing_controller-rescue:CONN_02X03-formula J?
+U 1 1 617BA584
+P 4650 6300
+AR Path="/60A3DB76/617BA584" Ref="J?"  Part="1" 
+AR Path="/60A3D93E/617BA584" Ref="J?"  Part="1" 
+F 0 "J?" H 4650 6510 50  0000 C CNN
+F 1 "CONN_02X03" H 4540 6100 50  0000 C CNN
+F 2 "footprints:Pin_Header_Straight_2x03" H 4650 5100 50  0001 C CNN
+F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 4650 5100 50  0001 C CNN
+F 4 "DK" H 4650 6300 60  0001 C CNN "MFN"
+F 5 "609-3234-ND" H 4650 6300 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 5050 6900 60  0001 C CNN "PurchasingLink"
+	1    4650 6300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 6300 5350 6300
+Connection ~ 5350 6300
+Connection ~ 4900 6200
+Wire Wire Line
+	4900 6200 4920 6200
+Wire Wire Line
+	4800 7250 5150 7250
+$Comp
+L sensing_controller-rescue:Test_Point_SMD-formula TP?
+U 1 1 6180CE50
+P 5150 7075
+AR Path="/6180CE50" Ref="TP?"  Part="1" 
+AR Path="/60A3D93E/6180CE50" Ref="TP?"  Part="1" 
+F 0 "TP?" H 5228 7163 50  0000 L CNN
+F 1 "Test_Point_SMD" H 5228 7072 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 5150 6925 50  0001 C CNN
+F 3 "" H 5150 7075 50  0001 C CNN
+	1    5150 7075
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 7125 5150 7250
+Connection ~ 5150 7250
+Wire Wire Line
+	5150 7250 5250 7250
+$Comp
+L sensing_controller-rescue:Test_Point_SMD-formula TP?
+U 1 1 6181E1E5
+P 3600 6925
+AR Path="/6181E1E5" Ref="TP?"  Part="1" 
+AR Path="/60A3D93E/6181E1E5" Ref="TP?"  Part="1" 
+F 0 "TP?" H 3678 7013 50  0000 L CNN
+F 1 "Test_Point_SMD" H 3678 6922 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 3600 6775 50  0001 C CNN
+F 3 "" H 3600 6925 50  0001 C CNN
+	1    3600 6925
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 7150 3600 6975
+Wire Wire Line
+	3600 7150 4300 7150
+Wire Wire Line
+	3500 7150 3600 7150
+Connection ~ 3600 7150
+$Comp
+L sensing_controller-rescue:Test_Point_SMD-formula TP?
+U 1 1 6184BE1E
+P 7825 5525
+AR Path="/6184BE1E" Ref="TP?"  Part="1" 
+AR Path="/60A3D93E/6184BE1E" Ref="TP?"  Part="1" 
+F 0 "TP?" V 7550 5450 50  0000 L CNN
+F 1 "Test_Point_SMD" V 7650 5200 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 7825 5375 50  0001 C CNN
+F 3 "" H 7825 5525 50  0001 C CNN
+	1    7825 5525
+	0    -1   -1   0   
+$EndComp
+Text Label 7775 5400 2    50   ~ 0
+PM_CS
+Wire Wire Line
+	7775 5400 7875 5400
+Wire Wire Line
+	7875 5525 7875 5400
+Connection ~ 7875 5400
+Wire Wire Line
+	7875 5400 8000 5400
+$Comp
+L sensing_controller-rescue:Test_Point_SMD-formula TP?
+U 1 1 61886314
+P 9650 5525
+AR Path="/61886314" Ref="TP?"  Part="1" 
+AR Path="/60A3D93E/61886314" Ref="TP?"  Part="1" 
+F 0 "TP?" H 9225 5600 50  0000 L CNN
+F 1 "Test_Point_SMD" H 8950 5500 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 9650 5375 50  0001 C CNN
+F 3 "" H 9650 5525 50  0001 C CNN
+	1    9650 5525
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9400 4800 9400 4700
+Wire Wire Line
+	8900 5400 9650 5400
+Wire Wire Line
+	9650 5475 9650 5400
+Connection ~ 9650 5400
+Wire Wire Line
+	9650 5400 9750 5400
+$Comp
+L sensing_controller-rescue:R_10K-formula R?
+U 1 1 617CADB7
+P 9125 5600
+AR Path="/60A3DA8B/617CADB7" Ref="R?"  Part="1" 
+AR Path="/60A3D93E/617CADB7" Ref="R308"  Part="1" 
+F 0 "R308" V 9011 5578 50  0000 C CNN
+F 1 "R_10K" V 8929 5578 50  0000 C CNN
+F 2 "footprints:R_0805_OEM" H 9055 5600 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 9205 5600 50  0001 C CNN
+F 4 "DK" H 9125 5600 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 9125 5600 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 9605 6000 60  0001 C CNN "PurchasingLink"
+	1    9125 5600
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8975 5600 8900 5600
+Wire Wire Line
+	9275 5600 9275 5975
+Wire Wire Line
+	9275 5975 9325 5975
 $EndSCHEMATC
