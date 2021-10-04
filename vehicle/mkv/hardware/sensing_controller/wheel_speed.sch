@@ -49,8 +49,6 @@ Wire Wire Line
 Wire Wire Line
 	5550 3130 5550 2880
 Connection ~ 5550 2880
-Wire Wire Line
-	5550 2880 5400 2880
 $Comp
 L sensing_controller-rescue:R_10K-formula R2005
 U 1 1 616A553C
@@ -83,8 +81,6 @@ $EndComp
 Wire Wire Line
 	5550 4480 5550 4230
 Connection ~ 5550 4230
-Wire Wire Line
-	5550 4230 5400 4230
 Text Notes 5550 2550 0    89   ~ 0
 CONFIG
 Wire Wire Line
@@ -210,9 +206,9 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 6930 36
 $EndComp
 Text GLabel 6550 2780 1    50   Input ~ 0
 5V
-Text GLabel 5400 2880 0    50   Input ~ 0
+Text GLabel 4815 2880 0    50   Input ~ 0
 FRONT_SENSE
-Text GLabel 5400 4230 0    50   Input ~ 0
+Text GLabel 5025 4230 0    50   Input ~ 0
 LEFT_SENSE
 $Comp
 L sensing_controller-rescue:R_0-formula R2001
@@ -251,4 +247,44 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 	0    1    1    0   
 $EndComp
 Connection ~ 5850 4230
+$Comp
+L sensing_controller-rescue:Test_Point_SMD-formula TP?
+U 1 1 6194549B
+P 5250 4000
+AR Path="/6194549B" Ref="TP?"  Part="1" 
+AR Path="/60A3D93E/6194549B" Ref="TP?"  Part="1" 
+F 0 "TP?" H 5328 4088 50  0000 L CNN
+F 1 "Test_Point_SMD" H 5328 3997 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 5250 3850 50  0001 C CNN
+F 3 "" H 5250 4000 50  0001 C CNN
+	1    5250 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L sensing_controller-rescue:Test_Point_SMD-formula TP?
+U 1 1 61948807
+P 5175 2725
+AR Path="/61948807" Ref="TP?"  Part="1" 
+AR Path="/60A3D93E/61948807" Ref="TP?"  Part="1" 
+F 0 "TP?" H 5253 2813 50  0000 L CNN
+F 1 "Test_Point_SMD" H 5253 2722 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 5175 2575 50  0001 C CNN
+F 3 "" H 5175 2725 50  0001 C CNN
+	1    5175 2725
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5175 2880 5175 2775
+Wire Wire Line
+	5175 2880 5550 2880
+Wire Wire Line
+	4815 2880 5175 2880
+Connection ~ 5175 2880
+Wire Wire Line
+	5025 4230 5250 4230
+Wire Wire Line
+	5250 4050 5250 4230
+Connection ~ 5250 4230
+Wire Wire Line
+	5250 4230 5550 4230
 $EndSCHEMATC

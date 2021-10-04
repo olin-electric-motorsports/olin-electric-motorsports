@@ -1126,8 +1126,8 @@ L sensing_controller-rescue:Test_Point_SMD-formula TP?
 U 1 1 617528FF
 P 5350 6150
 AR Path="/617528FF" Ref="TP?"  Part="1" 
-AR Path="/60A3D93E/617528FF" Ref="TP?"  Part="1" 
-F 0 "TP?" H 5428 6238 50  0000 L CNN
+AR Path="/60A3D93E/617528FF" Ref="TP4"  Part="1" 
+F 0 "TP4" H 5428 6238 50  0000 L CNN
 F 1 "Test_Point_SMD" H 5428 6147 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 5350 6000 50  0001 C CNN
 F 3 "" H 5350 6150 50  0001 C CNN
@@ -1153,8 +1153,8 @@ L sensing_controller-rescue:Test_Point_SMD-formula TP?
 U 1 1 617BA56F
 P 4130 5950
 AR Path="/617BA56F" Ref="TP?"  Part="1" 
-AR Path="/60A3D93E/617BA56F" Ref="TP?"  Part="1" 
-F 0 "TP?" H 4208 6038 50  0000 L CNN
+AR Path="/60A3D93E/617BA56F" Ref="TP2"  Part="1" 
+F 0 "TP2" H 4208 6038 50  0000 L CNN
 F 1 "Test_Point_SMD" H 4208 5947 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 4130 5800 50  0001 C CNN
 F 3 "" H 4130 5950 50  0001 C CNN
@@ -1190,8 +1190,8 @@ L sensing_controller-rescue:CONN_02X03-formula J?
 U 1 1 617BA584
 P 4650 6300
 AR Path="/60A3DB76/617BA584" Ref="J?"  Part="1" 
-AR Path="/60A3D93E/617BA584" Ref="J?"  Part="1" 
-F 0 "J?" H 4650 6510 50  0000 C CNN
+AR Path="/60A3D93E/617BA584" Ref="J1"  Part="1" 
+F 0 "J1" H 4650 6510 50  0000 C CNN
 F 1 "CONN_02X03" H 4540 6100 50  0000 C CNN
 F 2 "footprints:Pin_Header_Straight_2x03" H 4650 5100 50  0001 C CNN
 F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 4650 5100 50  0001 C CNN
@@ -1214,8 +1214,8 @@ L sensing_controller-rescue:Test_Point_SMD-formula TP?
 U 1 1 6180CE50
 P 5150 7075
 AR Path="/6180CE50" Ref="TP?"  Part="1" 
-AR Path="/60A3D93E/6180CE50" Ref="TP?"  Part="1" 
-F 0 "TP?" H 5228 7163 50  0000 L CNN
+AR Path="/60A3D93E/6180CE50" Ref="TP3"  Part="1" 
+F 0 "TP3" H 5228 7163 50  0000 L CNN
 F 1 "Test_Point_SMD" H 5228 7072 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 5150 6925 50  0001 C CNN
 F 3 "" H 5150 7075 50  0001 C CNN
@@ -1232,8 +1232,8 @@ L sensing_controller-rescue:Test_Point_SMD-formula TP?
 U 1 1 6181E1E5
 P 3600 6925
 AR Path="/6181E1E5" Ref="TP?"  Part="1" 
-AR Path="/60A3D93E/6181E1E5" Ref="TP?"  Part="1" 
-F 0 "TP?" H 3678 7013 50  0000 L CNN
+AR Path="/60A3D93E/6181E1E5" Ref="TP1"  Part="1" 
+F 0 "TP1" H 3678 7013 50  0000 L CNN
 F 1 "Test_Point_SMD" H 3678 6922 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 3600 6775 50  0001 C CNN
 F 3 "" H 3600 6925 50  0001 C CNN
@@ -1252,8 +1252,8 @@ L sensing_controller-rescue:Test_Point_SMD-formula TP?
 U 1 1 6184BE1E
 P 7825 5525
 AR Path="/6184BE1E" Ref="TP?"  Part="1" 
-AR Path="/60A3D93E/6184BE1E" Ref="TP?"  Part="1" 
-F 0 "TP?" V 7550 5450 50  0000 L CNN
+AR Path="/60A3D93E/6184BE1E" Ref="TP5"  Part="1" 
+F 0 "TP5" V 7550 5450 50  0000 L CNN
 F 1 "Test_Point_SMD" V 7650 5200 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 7825 5375 50  0001 C CNN
 F 3 "" H 7825 5525 50  0001 C CNN
@@ -1274,8 +1274,8 @@ L sensing_controller-rescue:Test_Point_SMD-formula TP?
 U 1 1 61886314
 P 9650 5525
 AR Path="/61886314" Ref="TP?"  Part="1" 
-AR Path="/60A3D93E/61886314" Ref="TP?"  Part="1" 
-F 0 "TP?" H 9225 5600 50  0000 L CNN
+AR Path="/60A3D93E/61886314" Ref="TP6"  Part="1" 
+F 0 "TP6" H 9225 5600 50  0000 L CNN
 F 1 "Test_Point_SMD" H 8950 5500 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 9650 5375 50  0001 C CNN
 F 3 "" H 9650 5525 50  0001 C CNN
