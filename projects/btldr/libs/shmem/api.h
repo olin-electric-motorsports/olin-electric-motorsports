@@ -17,15 +17,11 @@ union updater_version {
 };
 
 /*
- * bootflag_set
- *
  * Used to set the bootflag to 1 in EEPROM
  */
 void bootflag_set(uint8_t flag);
 
 /*
- * bootflag_clear
- *
  * Used to set the bootflag to 0 in EEPROM
  */
 void bootflag_clear(uint8_t flag);
@@ -35,9 +31,7 @@ void bootflag_clear(uint8_t flag);
  */
 bool bootflag_get(uint32_t flag);
 
-uint32_t get_bootflags(void);
-
 /*
  * Used to get the 1-byte updater version from EEPROM
  */
-uint8_t updater_get_version(void);
+uint8_t shmem_get_version(void);
