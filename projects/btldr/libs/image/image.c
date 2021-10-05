@@ -5,9 +5,8 @@
 
 #include "projects/btldr/libs/crc32/api.h"
 
-// Address of image header
+// Address of image header. To use, cast as void *
 extern int __image_hdr;
-static void* image_hdr = (void*)__image_hdr;
 
 // Static variable to store image header in memory
 static image_hdr_t prv_hdr;
