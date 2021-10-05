@@ -3,7 +3,6 @@
 #include <avr/boot.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
-#include <inttypes.h>
 
 void flash_write(uint8_t* data, uint8_t length, uint16_t* current_addr) {
     static uint16_t buf_address = 0;
