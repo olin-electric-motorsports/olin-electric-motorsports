@@ -7,6 +7,9 @@ cc_library (
 
 cc_library(
     name = "gpio",
+    hdrs = [
+        "pin_defs.h",
+    ],
     deps = [
         ":hdrs",
     ],
