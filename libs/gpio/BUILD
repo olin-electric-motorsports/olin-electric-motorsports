@@ -1,4 +1,4 @@
-cc_library (
+cc_library(
     name = "hdrs",
     hdrs = [
         "api.h",
@@ -10,10 +10,10 @@ cc_library(
     hdrs = [
         "pin_defs.h",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":hdrs",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_library(

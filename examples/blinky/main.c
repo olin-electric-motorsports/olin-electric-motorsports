@@ -1,9 +1,9 @@
-#include <util/delay.h>
-#include <avr/io.h>
+#include "config.h"
 #include "libs/gpio/api.h"
 #include "libs/uart/api.h"
 #include "libs/gpio/pin_defs.h"
-#include "config.h"
+#include <avr/io.h>
+#include <util/delay.h>
 
 gpio_t LED0 = PB2;
 

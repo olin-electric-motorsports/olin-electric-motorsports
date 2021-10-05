@@ -1,7 +1,6 @@
-// Example pin definition
-// gpio_t brakelight_lsd = PB0;
+#include <stdint.h>
 
-#define INPUT (0)
+#define INPUT  (0)
 #define OUTPUT (1)
 
 typedef struct {
@@ -11,18 +10,21 @@ typedef struct {
     uint8_t pin;
 } gpio_t;
 
-#define gpio_set_mode(gpio_pin, mode) \
-    do { \
-        if (mode == OUTPUT) { \
-            _SFR_IO8(gpio_pin.ddr) |= (1 << gpio_pin.num); \
-        } else { \
+#define gpio_set_mode(gpio_pin, mode)                       \
+    do {                                                    \
+        if (mode == OUTPUT) {                               \
+            _SFR_IO8(gpio_pin.ddr) |= (1 << gpio_pin.num);  \
+        } else {                                            \
             _SFR_IO8(gpio_pin.ddr) &= ~(1 << gpio_pin.num); \
-        } \
+        }                                                   \
     } while (0)
 
-#define gpio_set_pin(gpio_pin)    (_SFR_IO8(gpio_pin.ddr) |= (1 << gpio_pin.num))
-#define gpio_clear_pin(gpio_pin)  (_SFR_IO8(gpio_pin.port) &= ~(1 << gpio_pin.num))
-#define gpio_toggle_pin(gpio_pin) (_SFR_IO8(gpio_pin.port) ^= (1 << gpio_pin.num))
-#define gpio_get_pin(gpio_pin)    (!(!(_SFR_IO8(gpio_pin.port) & (1 << gpio_pin.num))))
+#define gpio_set_pin(gpio_pin) (_SFR_IO8(gpio_pin.ddr) |= (1 << gpio_pin.num))
+#define gpio_clear_pin(gpio_pin) \
+    (_SFR_IO8(gpio_pin.port) &= ~(1 << gpio_pin.num))
+#define gpio_toggle_pin(gpio_pin) \
+    (_SFR_IO8(gpio_pin.port) ^= (1 << gpio_pin.num))
+#define gpio_get_pin(gpio_pin) \
+    (!(!(_SFR_IO8(gpio_pin.port) & (1 << gpio_pin.num))))
 
 // TODO interrupts
