@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr B 17000 11000
 encoding utf-8
-Sheet 6 20
+Sheet 15 20
 Title "Strain Gauge Circuit"
 Date "2021-05-22"
 Rev "1"
@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L sensing_controller-rescue:R_120-formula R603
+L formula:R_120 R603
 U 1 1 60AD0DF7
 P 5800 4950
 AR Path="/60A3D9FD/60AD06C7/60AD0DF7" Ref="R603"  Part="1" 
@@ -29,7 +29,7 @@ AR Path="/60A3D9FD/60AB9FB3/60AD0DF7" Ref="R1403"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60AD0DF7" Ref="R1503"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60AD0DF7" Ref="R1603"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60AD0DF7" Ref="R1703"  Part="1" 
-F 0 "R1703" H 5730 4904 50  0000 R CNN
+F 0 "R1503" H 5730 4904 50  0000 R CNN
 F 1 "R_120" H 5730 4995 50  0000 R CNN
 F 2 "footprints:R_0805_OEM" H 4600 5100 50  0001 L CNN
 F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 4600 5400 50  0001 L CNN
@@ -40,7 +40,7 @@ F 6 "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1
 	-1   0    0    1   
 $EndComp
 $Comp
-L sensing_controller-rescue:R_120-formula R605
+L formula:R_120 R605
 U 1 1 60AD1909
 P 5800 5450
 AR Path="/60A3D9FD/60AD06C7/60AD1909" Ref="R605"  Part="1" 
@@ -55,7 +55,7 @@ AR Path="/60A3D9FD/60AB9FB3/60AD1909" Ref="R1405"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60AD1909" Ref="R1505"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60AD1909" Ref="R1605"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60AD1909" Ref="R1705"  Part="1" 
-F 0 "R1705" H 5730 5404 50  0000 R CNN
+F 0 "R1505" H 5730 5404 50  0000 R CNN
 F 1 "R_120" H 5730 5495 50  0000 R CNN
 F 2 "footprints:R_0805_OEM" H 4600 5600 50  0001 L CNN
 F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 4600 5900 50  0001 L CNN
@@ -66,7 +66,7 @@ F 6 "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1
 	-1   0    0    1   
 $EndComp
 $Comp
-L sensing_controller-rescue:R_120-formula R604
+L formula:R_120 R604
 U 1 1 60AD1D1E
 P 6650 4950
 AR Path="/60A3D9FD/60AD06C7/60AD1D1E" Ref="R604"  Part="1" 
@@ -81,7 +81,7 @@ AR Path="/60A3D9FD/60AB9FB3/60AD1D1E" Ref="R1404"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60AD1D1E" Ref="R1504"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60AD1D1E" Ref="R1604"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60AD1D1E" Ref="R1704"  Part="1" 
-F 0 "R1704" H 6580 4904 50  0000 R CNN
+F 0 "R1504" H 6580 4904 50  0000 R CNN
 F 1 "R_120" H 6580 4995 50  0000 R CNN
 F 2 "footprints:R_0805_OEM" H 5450 5100 50  0001 L CNN
 F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 5450 5400 50  0001 L CNN
@@ -184,7 +184,7 @@ Wheatstone Bridge
 Text Notes 8550 4100 0    50   ~ 0
 Amplification
 $Comp
-L sensing_controller-rescue:MCP6001T-I-LT-formula U601
+L formula:MCP6001T-I-LT U601
 U 1 1 60A9D27A
 P 9700 5050
 AR Path="/60A3D9FD/60AD06C7/60A9D27A" Ref="U601"  Part="1" 
@@ -199,7 +199,7 @@ AR Path="/60A3D9FD/60AB9FB3/60A9D27A" Ref="U1401"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60A9D27A" Ref="U1501"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60A9D27A" Ref="U1601"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60A9D27A" Ref="U1701"  Part="1" 
-F 0 "U1701" H 9800 4900 50  0000 L CNN
+F 0 "U1501" H 9800 4900 50  0000 L CNN
 F 1 "MCP6001T-I-LT" H 9800 5150 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 9600 5150 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf" H 9700 5250 50  0001 C CNN
@@ -235,7 +235,7 @@ $EndComp
 Wire Wire Line
 	9600 4500 9600 4600
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C601
+L formula:C_0.1uF C601
 U 1 1 60A9EBA8
 P 9900 4600
 AR Path="/60A3D9FD/60AD06C7/60A9EBA8" Ref="C601"  Part="1" 
@@ -250,7 +250,7 @@ AR Path="/60A3D9FD/60AB9FB3/60A9EBA8" Ref="C1401"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60A9EBA8" Ref="C1501"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60A9EBA8" Ref="C1601"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60A9EBA8" Ref="C1701"  Part="1" 
-F 0 "C1701" V 9648 4600 50  0000 C CNN
+F 0 "C1501" V 9648 4600 50  0000 C CNN
 F 1 "C_0.1uF" V 9739 4600 50  0000 C CNN
 F 2 "footprints:C_0805_OEM" H 9938 4450 50  0001 C CNN
 F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 9925 4700 50  0001 C CNN
@@ -301,7 +301,7 @@ WHEATSTONE_OUT_+
 Text Label 8450 5700 2    50   ~ 0
 WHEATSTONE_OUT_-
 $Comp
-L sensing_controller-rescue:R_120-formula R601
+L formula:R_120 R601
 U 1 1 60AA43F4
 P 8650 4450
 AR Path="/60A3D9FD/60AD06C7/60AA43F4" Ref="R601"  Part="1" 
@@ -316,7 +316,7 @@ AR Path="/60A3D9FD/60AB9FB3/60AA43F4" Ref="R1401"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60AA43F4" Ref="R1501"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60AA43F4" Ref="R1601"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60AA43F4" Ref="R1701"  Part="1" 
-F 0 "R1701" V 8443 4450 50  0000 C CNN
+F 0 "R1501" V 8443 4450 50  0000 C CNN
 F 1 "R_120" V 8534 4450 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 7450 4600 50  0001 L CNN
 F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 7450 4900 50  0001 L CNN
@@ -327,7 +327,7 @@ F 6 "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1
 	0    1    1    0   
 $EndComp
 $Comp
-L sensing_controller-rescue:R_120-formula R606
+L formula:R_120 R606
 U 1 1 60AA4A94
 P 8650 5700
 AR Path="/60A3D9FD/60AD06C7/60AA4A94" Ref="R606"  Part="1" 
@@ -342,7 +342,7 @@ AR Path="/60A3D9FD/60AB9FB3/60AA4A94" Ref="R1406"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60AA4A94" Ref="R1506"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60AA4A94" Ref="R1606"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60AA4A94" Ref="R1706"  Part="1" 
-F 0 "R1706" V 8550 5700 50  0000 C CNN
+F 0 "R1506" V 8550 5700 50  0000 C CNN
 F 1 "R_120" V 8450 5700 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 7450 5850 50  0001 L CNN
 F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 7450 6150 50  0001 L CNN
@@ -384,7 +384,7 @@ F 3 "" H 9600 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:R_4.99K-formula R607
+L formula:R_4.99K R607
 U 1 1 60AA8E34
 P 9450 5700
 AR Path="/60A3D9FD/60AD06C7/60AA8E34" Ref="R607"  Part="1" 
@@ -399,7 +399,7 @@ AR Path="/60A3D9FD/60AB9FB3/60AA8E34" Ref="R1407"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60AA8E34" Ref="R1507"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60AA8E34" Ref="R1607"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60AA8E34" Ref="R1707"  Part="1" 
-F 0 "R1707" V 9350 5700 50  0000 C CNN
+F 0 "R1507" V 9350 5700 50  0000 C CNN
 F 1 "R_4.99K" V 9250 5700 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 9250 5650 50  0001 C CNN
 F 3 "" H 9350 5750 50  0001 C CNN
@@ -432,7 +432,7 @@ Wire Wire Line
 Wire Wire Line
 	9300 4450 9300 4950
 $Comp
-L sensing_controller-rescue:R_4.99K-formula R602
+L formula:R_4.99K R602
 U 1 1 60AAF6BB
 P 8900 4700
 AR Path="/60A3D9FD/60AD06C7/60AAF6BB" Ref="R602"  Part="1" 
@@ -447,7 +447,7 @@ AR Path="/60A3D9FD/60AB9FB3/60AAF6BB" Ref="R1402"  Part="1"
 AR Path="/60A3D9FD/60ABA183/60AAF6BB" Ref="R1502"  Part="1" 
 AR Path="/60A3D9FD/60ABA307/60AAF6BB" Ref="R1602"  Part="1" 
 AR Path="/60A3D9FD/60ABA487/60AAF6BB" Ref="R1702"  Part="1" 
-F 0 "R1702" H 8830 4654 50  0000 R CNN
+F 0 "R1502" H 8830 4654 50  0000 R CNN
 F 1 "R_4.99K" H 8830 4745 50  0000 R CNN
 F 2 "footprints:R_0805_OEM" H 8700 4650 50  0001 C CNN
 F 3 "" H 8800 4750 50  0001 C CNN

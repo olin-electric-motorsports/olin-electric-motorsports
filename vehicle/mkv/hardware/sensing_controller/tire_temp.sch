@@ -16,7 +16,7 @@ $EndDescr
 Text Notes 5350 3050 0    89   ~ 0
 TEMPERATURE SENSOR\n
 $Comp
-L sensing_controller-rescue:MLX90621ESF-BAB-000-TU-formula U1901
+L formula:MLX90621ESF-BAB-000-TU U1901
 U 1 1 61C8EA56
 P 5900 4050
 F 0 "U1901" H 6050 3650 50  0000 L CNN
@@ -34,7 +34,7 @@ SM_SCL
 Text GLabel 5000 4050 0    50   Input ~ 0
 SM_SDA
 $Comp
-L sensing_controller-rescue:R_4.7K-formula R1901
+L formula:R_4.7K R1901
 U 1 1 61C90517
 P 5150 3650
 F 0 "R1901" H 5220 3696 50  0000 L CNN
@@ -48,7 +48,7 @@ F 6 "https://www.digikey.com/product-detail/en/yageo/RC0805JR-074K7L/311-4.7KARC
 	-1   0    0    1   
 $EndComp
 $Comp
-L sensing_controller-rescue:R_4.7K-formula R1902
+L formula:R_4.7K R1902
 U 1 1 61C90EE4
 P 5250 3650
 F 0 "R1902" H 5320 3696 50  0000 L CNN
@@ -100,7 +100,7 @@ $EndComp
 Wire Wire Line
 	5900 4450 5900 4400
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C1901
+L formula:C_0.1uF C1901
 U 1 1 61C937A0
 P 6500 4100
 F 0 "C1901" H 6690 4080 50  0000 L CNN

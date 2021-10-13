@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L sensing_controller-rescue:R_1K_0.1-formula R1801
+L formula:R_1K_0.1 R1801
 U 1 1 60A40AD2
 P 5500 3700
 F 0 "R1801" H 5570 3746 50  0000 L CNN
@@ -28,7 +28,7 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:C_22uF-formula C1801
+L formula:C_22uF C1801
 U 1 1 60A40ADB
 P 5500 4150
 F 0 "C1801" H 5615 4196 50  0000 L CNN

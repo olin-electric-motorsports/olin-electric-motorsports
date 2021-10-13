@@ -16,7 +16,7 @@ $EndDescr
 Wire Wire Line
 	6550 2880 6550 2780
 $Comp
-L sensing_controller-rescue:R_10K-formula R2002
+L formula:R_10K R2002
 U 1 1 616A5529
 P 5550 3280
 AR Path="/60A3DAC4/616A5529" Ref="R2002"  Part="1" 
@@ -50,7 +50,7 @@ Wire Wire Line
 	5550 3130 5550 2880
 Connection ~ 5550 2880
 $Comp
-L sensing_controller-rescue:R_10K-formula R2005
+L formula:R_10K R2005
 U 1 1 616A553C
 P 5550 4630
 AR Path="/60A3DAC4/616A553C" Ref="R2005"  Part="1" 
@@ -88,7 +88,7 @@ Wire Wire Line
 Wire Wire Line
 	6050 2880 5850 2880
 $Comp
-L sensing_controller-rescue:LED_0805-formula D2001
+L formula:LED_0805 D2001
 U 1 1 616A5553
 P 6100 3080
 AR Path="/60A3DAC4/616A5553" Ref="D2001"  Part="1" 
@@ -130,7 +130,7 @@ $EndComp
 Wire Wire Line
 	6450 3530 6450 3430
 $Comp
-L sensing_controller-rescue:LED_0805-formula D2002
+L formula:LED_0805 D2002
 U 1 1 616A5569
 P 6100 4430
 AR Path="/60A3DAC4/616A5569" Ref="D2002"  Part="1" 
@@ -173,7 +173,7 @@ Wire Wire Line
 Wire Wire Line
 	5550 4880 5550 4780
 $Comp
-L sensing_controller-rescue:R_200-formula R2006
+L formula:R_200 R2006
 U 1 1 616A558C
 P 6450 4630
 AR Path="/60A3DAC4/616A558C" Ref="R2006"  Part="1" 
@@ -189,7 +189,7 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 6930 50
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:R_200-formula R2003
+L formula:R_200 R2003
 U 1 1 616A5595
 P 6450 3280
 AR Path="/60A3DAC4/616A5595" Ref="R2003"  Part="1" 
@@ -211,7 +211,7 @@ FRONT_SENSE
 Text GLabel 5025 4230 0    50   Input ~ 0
 LEFT_SENSE
 $Comp
-L sensing_controller-rescue:R_0-formula R2001
+L formula:R_0 R2001
 U 1 1 616B605B
 P 6200 2880
 F 0 "R2001" V 5993 2880 50  0000 C CNN
@@ -233,7 +233,7 @@ Wire Wire Line
 Text GLabel 6550 4130 1    50   Input ~ 0
 5V
 $Comp
-L sensing_controller-rescue:R_0-formula R2004
+L formula:R_0 R2004
 U 1 1 616D00F0
 P 6200 4230
 F 0 "R2004" V 5993 4230 50  0000 C CNN
@@ -248,11 +248,12 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 $EndComp
 Connection ~ 5850 4230
 $Comp
-L sensing_controller-rescue:Test_Point_SMD-formula TP?
+L formula:Test_Point_SMD TP?
 U 1 1 6194549B
 P 5250 4000
 AR Path="/6194549B" Ref="TP?"  Part="1" 
 AR Path="/60A3D93E/6194549B" Ref="TP?"  Part="1" 
+AR Path="/60A3DAC4/6194549B" Ref="TP?"  Part="1" 
 F 0 "TP?" H 5328 4088 50  0000 L CNN
 F 1 "Test_Point_SMD" H 5328 3997 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 5250 3850 50  0001 C CNN
@@ -261,11 +262,12 @@ F 3 "" H 5250 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:Test_Point_SMD-formula TP?
+L formula:Test_Point_SMD TP?
 U 1 1 61948807
 P 5175 2725
 AR Path="/61948807" Ref="TP?"  Part="1" 
 AR Path="/60A3D93E/61948807" Ref="TP?"  Part="1" 
+AR Path="/60A3DAC4/61948807" Ref="TP?"  Part="1" 
 F 0 "TP?" H 5253 2813 50  0000 L CNN
 F 1 "Test_Point_SMD" H 5253 2722 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 5175 2575 50  0001 C CNN

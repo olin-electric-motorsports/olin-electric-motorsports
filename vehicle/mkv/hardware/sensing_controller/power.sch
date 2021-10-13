@@ -22,7 +22,7 @@ Add silkscreen on the\nlayout that says DNP (Resistor)\n
 Text Notes 4200 5650 0    50   ~ 0
 Replaced 3.65M and 1.18M resistors with 300K \nand 100K resistors respectively. Still buy both \nsets of resistors, so that we can test both.
 $Comp
-L sensing_controller-rescue:TPS560430YF-formula U401
+L formula:TPS560430YF U401
 U 1 1 6186BCA8
 P 7200 2100
 F 0 "U401" H 7225 2565 50  0000 C CNN
@@ -37,7 +37,7 @@ F 7 "https://www.digikey.com/product-detail/en/texas-instruments/TPS560430XDBVR/
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:TP-formula TP403
+L formula:TP TP403
 U 1 1 61874ED4
 P 4400 2450
 F 0 "TP403" V 4540 2340 50  0000 L CNN
@@ -53,7 +53,7 @@ $EndComp
 Text Notes 6250 1550 0    89   ~ 0
 BUCK CONVERTER (12V TO 7V)
 $Comp
-L sensing_controller-rescue:F_500mA_16V-formula F401
+L formula:F_500mA_16V F401
 U 1 1 61874F10
 P 5000 1950
 F 0 "F401" V 4803 1950 50  0000 C CNN
@@ -67,7 +67,7 @@ F 6 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-178
 	0    1    1    0   
 $EndComp
 $Comp
-L sensing_controller-rescue:C_2.2uF-formula C403
+L formula:C_2.2uF C403
 U 1 1 61878320
 P 6350 2450
 F 0 "C403" H 6470 2550 50  0000 L CNN
@@ -88,7 +88,7 @@ Wire Wire Line
 	6750 1950 6850 1950
 Connection ~ 6750 1950
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C402
+L formula:C_0.1uF C402
 U 1 1 61880CA4
 P 6150 2400
 F 0 "C402" H 6300 2350 50  0000 L CNN
@@ -108,7 +108,7 @@ Connection ~ 6150 1950
 Wire Wire Line
 	6150 1950 6350 1950
 $Comp
-L sensing_controller-rescue:R_1K-formula R402
+L formula:R_1K R402
 U 1 1 6188973A
 P 5650 2200
 F 0 "R402" H 5720 2246 50  0000 L CNN
@@ -133,7 +133,7 @@ Wire Wire Line
 Wire Wire Line
 	5650 2350 5650 2550
 $Comp
-L sensing_controller-rescue:LED_0805-formula D402
+L formula:LED_0805 D402
 U 1 1 618A2D58
 P 5650 2700
 F 0 "D402" V 5730 2630 50  0000 R CNN
@@ -149,7 +149,7 @@ $EndComp
 Wire Wire Line
 	5150 1950 5450 1950
 $Comp
-L sensing_controller-rescue:D_Zener_18V-formula D401
+L formula:D_Zener_18V D401
 U 1 1 618AC0C4
 P 5450 2450
 F 0 "D401" V 5390 2200 50  0000 L CNN
@@ -188,7 +188,7 @@ Wire Wire Line
 Text GLabel 4600 1950 0    50   Input ~ 0
 12V
 $Comp
-L sensing_controller-rescue:TP-formula TP401
+L formula:TP TP401
 U 1 1 61874EDD
 P 4400 2200
 F 0 "TP401" V 4540 2020 50  0000 L CNN
@@ -234,7 +234,7 @@ F 3 "" H 5150 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C401
+L formula:C_0.1uF C401
 U 1 1 618FE009
 P 7800 1900
 F 0 "C401" V 7548 1900 50  0000 C CNN
@@ -248,7 +248,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 8225 2400 60 
 	0    1    1    0   
 $EndComp
 $Comp
-L sensing_controller-rescue:C_33uF-formula COUT403
+L formula:C_33uF COUT403
 U 1 1 618FE021
 P 8800 2550
 F 0 "COUT403" H 8900 2500 50  0000 L CNN
@@ -262,7 +262,7 @@ F 6 "https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:C_22uF-formula COUT401
+L formula:C_22uF COUT401
 U 1 1 618FE02A
 P 8600 2300
 F 0 "COUT401" H 8715 2346 50  0000 L CNN
@@ -276,7 +276,7 @@ F 6 "https://www.digikey.com/product-detail/en/tdk-corporation/C3216JB1C226M160A
 	-1   0    0    1   
 $EndComp
 $Comp
-L sensing_controller-rescue:R_15k-formula R405
+L formula:R_15k R405
 U 1 1 618FE03B
 P 9550 3150
 F 0 "R405" H 9550 3375 50  0000 C CNN
@@ -288,7 +288,7 @@ F 4 "https://www.digikey.com/en/products/detail/yageo/RE0805FRE0715KL/5923506" H
 	0    1    1    0   
 $EndComp
 $Comp
-L sensing_controller-rescue:R_90k-formula R403
+L formula:R_90k R403
 U 1 1 618FE042
 P 9550 2400
 F 0 "R403" H 9550 2625 50  0000 C CNN
@@ -300,7 +300,7 @@ F 4 "https://www.digikey.com/en/products/detail/vishay-dale-thin-film/PTN0805E90
 	0    1    1    0   
 $EndComp
 $Comp
-L sensing_controller-rescue:L_8.1uH-formula L401
+L formula:L_8.1uH L401
 U 1 1 618FE04A
 P 8300 2150
 F 0 "L401" H 8300 2450 50  0000 C CNN
@@ -311,7 +311,7 @@ F 3 "https://www.coilcraft.com/getmedia/76c9c081-4945-4c85-9129-9356e1ad6734/xgl
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:R_0_2512-formula R401
+L formula:R_0_2512 R401
 U 1 1 618FE05A
 P 10250 2050
 F 0 "R401" V 10043 2050 50  0000 C CNN
@@ -325,7 +325,7 @@ F 6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" H 10730 2450 60 
 	0    1    1    0   
 $EndComp
 $Comp
-L sensing_controller-rescue:R_200-formula R404
+L formula:R_200 R404
 U 1 1 618FE065
 P 9900 2400
 F 0 "R404" H 9970 2446 50  0000 L CNN
@@ -339,7 +339,7 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 10380 2
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:LED_0805-formula D403
+L formula:LED_0805 D403
 U 1 1 618FE06E
 P 9900 2800
 F 0 "D403" V 9939 2683 50  0000 R CNN
@@ -373,7 +373,7 @@ Connection ~ 8600 2050
 Wire Wire Line
 	8600 2050 8800 2050
 $Comp
-L sensing_controller-rescue:C_47uF-formula COUT402
+L formula:C_47uF COUT402
 U 1 1 6192BCB8
 P 8950 2300
 F 0 "COUT402" H 9065 2346 50  0000 L CNN
@@ -483,7 +483,7 @@ Connection ~ 9900 2050
 Wire Wire Line
 	10400 2050 10600 2050
 $Comp
-L sensing_controller-rescue:TP-formula TP402
+L formula:TP TP402
 U 1 1 61A35E15
 P 10850 2200
 F 0 "TP402" V 10990 2020 50  0000 L CNN
@@ -504,7 +504,7 @@ Connection ~ 10600 2050
 Wire Wire Line
 	10600 2050 10700 2050
 $Comp
-L sensing_controller-rescue:TPS7A26-formula U402
+L formula:TPS7A26 U402
 U 1 1 61A919D2
 P 5600 4650
 F 0 "U402" H 5600 5015 50  0000 C CNN
@@ -540,7 +540,7 @@ $EndComp
 Wire Wire Line
 	5600 5100 5600 4950
 $Comp
-L sensing_controller-rescue:R_10K-formula R406
+L formula:R_10K R406
 U 1 1 61AA7E5B
 P 6300 4550
 F 0 "R406" V 6300 4500 50  0000 L CNN
@@ -576,7 +576,7 @@ Connection ~ 6600 4650
 Text GLabel 6950 4650 2    50   Input ~ 0
 5V
 $Comp
-L sensing_controller-rescue:C_47uF-formula C404
+L formula:C_47uF C404
 U 1 1 61AE44D0
 P 6700 4900
 F 0 "C404" H 6815 4946 50  0000 L CNN
@@ -606,7 +606,7 @@ F 3 "" H 6700 5150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:R_300K-formula R407
+L formula:R_300K R407
 U 1 1 61AF5510
 P 6200 4900
 F 0 "R407" H 6270 4946 50  0000 L CNN
@@ -625,7 +625,7 @@ Connection ~ 6200 4650
 Wire Wire Line
 	6200 4650 5900 4650
 $Comp
-L sensing_controller-rescue:R_100K-formula R408
+L formula:R_100K R408
 U 1 1 61AFE1F7
 P 6200 5350
 F 0 "R408" H 6270 5396 50  0000 L CNN
@@ -663,7 +663,7 @@ Connection ~ 6200 5100
 Wire Wire Line
 	6200 5100 6200 5050
 $Comp
-L sensing_controller-rescue:LM3480-formula U403
+L formula:LM3480 U403
 U 1 1 61B4474F
 P 9000 4800
 F 0 "U403" H 9000 5042 50  0000 C CNN
@@ -687,7 +687,7 @@ Wire Wire Line
 Wire Wire Line
 	9000 5100 9000 5250
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C405
+L formula:C_0.1uF C405
 U 1 1 61B5ACCA
 P 9450 5100
 F 0 "C405" H 9565 5146 50  0000 L CNN
@@ -709,7 +709,7 @@ Wire Wire Line
 	9450 5250 9000 5250
 Connection ~ 9000 5250
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C406
+L formula:C_0.1uF C406
 U 1 1 61B6A288
 P 8600 5150
 F 0 "C406" H 8290 5190 50  0000 L CNN
@@ -746,7 +746,7 @@ F 3 "" H 9000 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:TP-formula TP404
+L formula:TP TP404
 U 1 1 61BADD4E
 P 7150 4500
 F 0 "TP404" V 7150 4550 50  0000 L CNN
@@ -760,7 +760,7 @@ F 6 "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006
 	0    1    1    0   
 $EndComp
 $Comp
-L sensing_controller-rescue:TP-formula TP405
+L formula:TP TP405
 U 1 1 61BB0621
 P 9900 4650
 F 0 "TP405" V 9800 4700 50  0000 L CNN
