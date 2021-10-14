@@ -259,4 +259,16 @@ Text Label 9050 2650 0    50   ~ 0
 12V
 Text Notes 3950 900  0    157  ~ 0
 Accumulator Interface -- Internal
+NoConn ~ 9050 6200
+NoConn ~ 9050 6100
+NoConn ~ 9050 6000
+NoConn ~ 9050 5900
+NoConn ~ 9050 5800
+NoConn ~ 9050 5700
+NoConn ~ 9050 2850
+NoConn ~ 9050 2950
+NoConn ~ 9050 3050
+NoConn ~ 9050 3150
+NoConn ~ 9050 3250
+NoConn ~ 4400 5800
 $EndSCHEMATC
