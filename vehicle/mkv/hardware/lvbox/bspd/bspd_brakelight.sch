@@ -777,7 +777,7 @@ Wire Wire Line
 Wire Wire Line
 	7940 3900 7960 3900
 $Comp
-L formula:R_1.07K R7
+L formula:R_71.5k R7
 U 1 1 5C081446
 P 5380 2450
 F 0 "R7" V 5587 2450 50  0000 C CNN
