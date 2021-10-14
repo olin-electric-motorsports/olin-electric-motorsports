@@ -1,5 +1,6 @@
 /* Atmega 16M1 Uart Library Implementation
-All page numbers refer to http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7647-Automotive-Microcontrollers-ATmega16M1-32M1-64M1-32C1-64C1_datasheet.pdf
+All page numbers refer to
+http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7647-Automotive-Microcontrollers-ATmega16M1-32M1-64M1-32C1-64C1_datasheet.pdf
 */
 #include "libs/uart/api.h"
 #include <avr/io.h>
@@ -7,17 +8,17 @@ All page numbers refer to http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-
 void uart_init(uint16_t baudrate, bool use_interrupt) {
     // TODO: Implement
     (void)use_interrupt;
-    
+
     // pg 179, 191
     LINCR |= (1 << LENA) | 0x7; // Enable UART
     // Default samples per 8 bits of data
     // Samples each bit 8 times
     // pg 183-4,194
-    LINBTR |= 0x20; 
+    LINBTR |= 0x20;
     // pg 183, 194; use 2nd eq on 183
-    int cfg = ((F_CPU/0x20) / baudrate) - 1;
+    int cfg = ((F_CPU / 0x20) / baudrate) - 1;
     LINBRRL = (cfg & 0xFF);
-    LINBRRH = (cfg >> 8 & 0x0F);    
+    LINBRRH = (cfg >> 8 & 0x0F);
 }
 
 char uart_getchar(void) {

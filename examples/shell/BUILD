@@ -5,8 +5,8 @@ cc_firmware(
     srcs = [
         "main.c",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         "//libs/uart",
     ],
-    visibility = ["//visibility:public"],
 )
