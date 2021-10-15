@@ -38,7 +38,7 @@ jobs:
 
     - name: rescue_check
       uses: jitterbit/get-changed-files@v1
-      run: |
+    - run: |
         if [${{ steps.files.outputs.added_modified }} | grep -q rescue] then
           exit 1
         else
