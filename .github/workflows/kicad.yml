@@ -26,6 +26,9 @@ jobs:
 
     - name: rescue_check
       run: |
+        echo hi
+        echo ${{ steps.files.outputs.added_modified }}
+
         if [${{ steps.files.outputs.added_modified }} | grep -q rescue] then
           exit 1
         else
