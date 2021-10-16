@@ -3,11 +3,6 @@
 
 /*
  * Initializes UART peripheral with the specified baudrate
- *
- * If use_interrupt is true, UART receive interrupts will be enabled and the ISR
- * will be available using:
- *
- * TODO handle ISR and other bitrates (not just 9600)
  */
 void uart_init(uint32_t baudrate);
 
