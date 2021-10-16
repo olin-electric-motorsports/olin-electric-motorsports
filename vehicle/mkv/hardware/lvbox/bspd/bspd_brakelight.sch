@@ -1147,8 +1147,6 @@ Text Notes 15630 6140 0    31   ~ 0
 Connection ~ 1050 7150
 Connection ~ 3450 9850
 Connection ~ 3750 9850
-Text Notes 1800 6700 0    50   ~ 0
-Atmega 16 (Main Microcontroller)
 $Comp
 L formula:MCP6001 U7
 U 1 1 5BF0964E
@@ -2953,7 +2951,7 @@ F 3 "" H 7820 3580 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 11320 7740 0    50   ~ 0
-V_out = VCC * R19 / (R19 + R12)\n5 * 499 / (499 + 2200) = .92
+V_out = VCC * R19 / (R19 + R12)\n5 * 499 / (499 + 2200) = .92V
 Wire Notes Line
 	10090 5160 10090 7810
 Text Notes 10140 5830 0    50   ~ 0
@@ -2968,7 +2966,7 @@ Wire Notes Line
 	16050 5160 16050 9170
 Text Notes 6990 1680 0    50   ~ 0
 BSPD circuit is tripped when the motor controller is still providing power \nto the motor while the brake is being pressed. This means the brake \nis not behaving correctly and this is a very dangerous situation, so the\nBSPD relay is tripped and the shutdown circuit is opened (car shuts \ndown).\n\nThere is a BSPD test switch included for testing to make sure the\ncircuit works, and also because it is rules-required.
-Text Notes 8790 6180 0    118  ~ 0
+Text Notes 830  1060 0    118  ~ 0
 VCC = 5V
 $Comp
 L power:GND #PWR?
@@ -2984,7 +2982,7 @@ $EndComp
 Text Notes 2770 1750 0    50   ~ 0
 V_cap = V_source * (1 - e ^ (-t / RC))\nt = -RC * ln(1 - (V_cap / V_source))\nt = -(71500 * .00001 * ln(2.5 / 5))\n  = .5 s
 Text Notes 4580 1670 0    50   ~ 0
-V_cap = .5V because that is the \nvalue we compare to using the\nop amp (U2).
+V_cap = 2.5V because that is the \nvalue we compare to using the\nop amp (U2).
 Text Notes 2770 1400 0    79   ~ 0
 Timer Calculations
 Wire Wire Line
