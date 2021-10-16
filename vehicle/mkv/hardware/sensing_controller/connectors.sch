@@ -128,7 +128,7 @@ HALL_EFFECT_POWER
 Text GLabel 3450 5700 2    50   Input ~ 0
 HALL_EFFECT_RETURN
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C?
+L formula:C_0.1uF C?
 U 1 1 61D43758
 P 3300 5400
 AR Path="/60A3DAC4/61D43758" Ref="C?"  Part="1" 
@@ -177,7 +177,7 @@ Wire Wire Line
 Text Notes 3100 2050 0    87   ~ 0
 TO VEHICLE
 $Comp
-L sensing_controller-rescue:Ampseal_23_RA-formula J202
+L formula:Ampseal_23_RA J202
 U 1 1 61D5B9A1
 P 3050 3550
 F 0 "J202" H 3008 4897 60  0000 C CNN
@@ -191,7 +191,7 @@ F 6 "http://www.te.com/usa-en/product-776087-1.html" H 3100 5050 60  0001 C CNN 
 	1    0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:MicroFit_24-formula J201
+L formula:MicroFit_24 J201
 U 1 1 61D5DA0D
 P 5300 2300
 F 0 "J201" H 5483 2397 60  0000 C CNN

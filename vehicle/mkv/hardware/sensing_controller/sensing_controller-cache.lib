@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# 74HC4051-formula
+# formula_74HC4051
 #
-DEF 74HC4051-formula U 0 20 Y Y 1 F N
+DEF formula_74HC4051 U 0 20 Y Y 1 F N
 F0 "U" -200 450 50 H V C CNN
-F1 "74HC4051-formula" -300 -550 50 H V C CNN
+F1 "formula_74HC4051" -300 -550 50 H V C CNN
 F2 "footprints:TSSOP-16-OEM" 0 -400 50 H I C CNN
 F3 "" 0 -400 50 H I C CNN
 $FPLIST
@@ -35,13 +35,13 @@ X S2 9 -300 -100 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# ATMEGA16M1-formula
+# formula_ATMEGA16M1
 #
-DEF ATMEGA16M1-formula U 0 40 Y Y 1 F N
+DEF formula_ATMEGA16M1 U 0 40 Y Y 1 F N
 F0 "U" -950 1830 50 H V L BNN
-F1 "ATMEGA16M1-formula" 500 -1400 50 H V L BNN
+F1 "formula_ATMEGA16M1" 500 -1400 50 H V L BNN
 F2 "footprints:TQFP-32_7x7mm_Pitch0.8mm" 0 0 50 H I C CIN
-F3 "" -950 1830 50 H I C CNN
+F3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8209-8-bit%20AVR%20ATmega16M1-32M1-64M1_Datasheet.pdf" -950 1830 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
 F5 "ATMEGA16M1-AU-ND" 0 0 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208" -550 2230 60 H I C CNN "PurchasingLink"
@@ -85,16 +85,17 @@ X (PCINT1/MOSI/PSCOUT2B)PB1 9 1100 1600 150 L 40 40 1 1 B
 ENDDRAW
 ENDDEF
 #
-# ATmega328P-AU-formula
+# formula_ATmega328P-AU
 #
-DEF ATmega328P-AU-formula U 0 20 Y Y 1 F N
+DEF formula_ATmega328P-AU U 0 20 Y Y 1 F N
 F0 "U" -500 1450 50 H V L BNN
-F1 "ATmega328P-AU-formula" 100 -1450 50 H V L TNN
+F1 "formula_ATmega328P-AU" 100 -1450 50 H V L TNN
 F2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" -200 1550 50 H I C CIN
 F3 "" 0 0 50 H I C CNN
 F4 "https://www.digikey.com/product-detail/en/microchip-technology/ATMEGA328P-15AZ/ATMEGA328P-15AZTR-ND/1914586" 0 0 50 H I C CNN "PurchasingLink"
 F5 "ATMEGA328P-15AZTR-ND" 0 0 50 H I C CNN "MPN"
 F6 "DK" 0 0 50 H I C CNN "MFN"
+ALIAS ATmega48P-20AU ATmega48A-AU ATmega48PA-AU ATmega88PV-10AU ATmega88P-20AU ATmega88A-AU ATmega88PA-AU ATmega168PV-10AU ATmega168P-20AU ATmega168A-AU ATmega168PA-AU ATmega328-AU
 $FPLIST
  TQFP*7x7mm*P0.8mm*
 $ENDFPLIST
@@ -135,11 +136,11 @@ X (PCINT21/OC0B/T1)PD5 9 600 -1000 100 L 50 50 1 1 T
 ENDDRAW
 ENDDEF
 #
-# Ampseal_23_RA-formula
+# formula_Ampseal_23_RA
 #
-DEF Ampseal_23_RA-formula J 0 40 Y Y 1 F N
+DEF formula_Ampseal_23_RA J 0 40 Y Y 1 F N
 F0 "J" -250 1200 60 H V C CNN
-F1 "Ampseal_23_RA-formula" -300 -1200 60 H V L CNN
+F1 "formula_Ampseal_23_RA" -300 -1200 60 H V L CNN
 F2 "" -200 750 60 H I C CNN
 F3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F776087%7FE11%7Fpdf%7FEnglish%7FENG_CD_776087_E11.pdf%7F776087-1" -200 750 60 H I C CNN
 F4 "TE" -150 1300 60 H I C CNN "MFN"
@@ -173,11 +174,11 @@ X 9 9 200 300 200 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CONN_02X03-formula
+# formula_CONN_02X03
 #
-DEF CONN_02X03-formula J 0 1 Y N 1 F N
+DEF formula_CONN_02X03 J 0 1 Y N 1 F N
 F0 "J" 0 200 50 H V C CNN
-F1 "CONN_02X03-formula" 0 -200 50 H V C CNN
+F1 "formula_CONN_02X03" 0 -200 50 H V C CNN
 F2 "footprints:Pin_Header_Straight_2x03" 0 -1200 50 H I C CNN
 F3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" 0 -1200 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -206,11 +207,11 @@ X P6 6 250 -100 150 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# C_0.1uF-formula
+# formula_C_0.1uF
 #
-DEF C_0.1uF-formula C 0 10 N Y 1 F N
+DEF formula_C_0.1uF C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C_0.1uF-formula" 25 -100 50 H V L CNN
+F1 "formula_C_0.1uF" 25 -100 50 H V L CNN
 F2 "footprints:C_0805_OEM" 38 -150 50 H I C CNN
 F3 "http://datasheets.avx.com/X7RDielectric.pdf" 25 100 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -231,11 +232,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# C_100pF-formula
+# formula_C_100pF
 #
-DEF C_100pF-formula C 0 10 N Y 1 F N
+DEF formula_C_100pF C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C_100pF-formula" 25 -100 50 H V L CNN
+F1 "formula_C_100pF" 25 -100 50 H V L CNN
 F2 "footprints:C_0805_OEM" 38 -150 50 H I C CNN
 F3 "https://katalog.we-online.de/pbs/datasheet/885012007057.pdf" 25 100 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -256,11 +257,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# C_2.2uF-formula
+# formula_C_2.2uF
 #
-DEF C_2.2uF-formula C 0 10 N Y 1 F N
+DEF formula_C_2.2uF C 0 10 N Y 1 F N
 F0 "C" 25 150 50 H V L CNN
-F1 "C_2.2uF-formula" 25 -50 50 H V L CNN
+F1 "formula_C_2.2uF" 25 -50 50 H V L CNN
 F2 "footprints:C_0805_OEM" 38 600 50 H I C CNN
 F3 "" 25 850 50 H I C CNN
 F4 "https://www.digikey.com/product-detail/en/tdk-corporation/C2012X7R1H225M125AE/445-172488-1-ND/4990030" 425 500 60 H I C CNN "PurchasingLink"
@@ -279,11 +280,11 @@ X ~ 2 0 -100 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# C_22uF-formula
+# formula_C_22uF
 #
-DEF C_22uF-formula C 0 10 N Y 1 F N
+DEF formula_C_22uF C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C_22uF-formula" 25 -100 50 H V L CNN
+F1 "formula_C_22uF" 25 -100 50 H V L CNN
 F2 "footprints:C_1206_OEM" 38 -150 50 H I C CNN
 F3 "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf" 25 100 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -304,11 +305,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# C_30pF-formula
+# formula_C_30pF
 #
-DEF C_30pF-formula C 0 10 N Y 1 F N
+DEF formula_C_30pF C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C_30pF-formula" 25 -100 50 H V L CNN
+F1 "formula_C_30pF" 25 -100 50 H V L CNN
 F2 "footprints:C_0805_OEM" 38 -150 50 H I C CNN
 F3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" 25 100 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -329,11 +330,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# C_33uF-formula
+# formula_C_33uF
 #
-DEF C_33uF-formula C 0 10 N Y 1 F N
+DEF formula_C_33uF C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C_33uF-formula" 100 -300 50 H V L CNN
+F1 "formula_C_33uF" 100 -300 50 H V L CNN
 F2 "footprints:Fuse_1812" 50 -400 50 H I C CNN
 F3 "" 0 650 50 H I C CNN
 F4 "DK" 50 -500 60 H I C CNN "MFN"
@@ -354,11 +355,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# C_47uF-formula
+# formula_C_47uF
 #
-DEF C_47uF-formula C 0 10 N Y 1 F N
+DEF formula_C_47uF C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "C_47uF-formula" 25 -100 50 H V L CNN
+F1 "formula_C_47uF" 25 -100 50 H V L CNN
 F2 "footprints:C_0805_OEM" 38 -150 50 H I C CNN
 F3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/22/CL21A476MQYNNNG.pdf" 25 100 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -379,11 +380,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Crystal_SMD-formula
+# formula_Crystal_SMD
 #
-DEF Crystal_SMD-formula Y 0 40 Y N 1 F N
+DEF formula_Crystal_SMD Y 0 40 Y N 1 F N
 F0 "Y" 50 175 50 H V L CNN
-F1 "Crystal_SMD-formula" 50 100 50 H V L CNN
+F1 "formula_Crystal_SMD" 50 100 50 H V L CNN
 F2 "footprints:Crystal_SMD_FA238" -50 75 50 H I C CNN
 F3 "http://www.txccorp.com/download/products/quartz_crystals/2015TXC_7M_17.pdf" 50 175 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -405,11 +406,11 @@ X 4 4 0 150 75 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# D_Zener_18V-formula
+# formula_D_Zener_18V
 #
-DEF D_Zener_18V-formula D 0 40 N N 1 F N
+DEF formula_D_Zener_18V D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "D_Zener_18V-formula" 0 -100 50 H V C CNN
+F1 "formula_D_Zener_18V" 0 -100 50 H V C CNN
 F2 "footprints:DO-214AA" -100 0 50 H I C CNN
 F3 "http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf" 0 100 50 H I C CNN
 F4 "DK" 200 300 60 H I C CNN "MFN"
@@ -433,11 +434,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# F_500mA_16V-formula
+# formula_F_500mA_16V
 #
-DEF F_500mA_16V-formula F 0 0 N Y 1 F N
+DEF formula_F_500mA_16V F 0 0 N Y 1 F N
 F0 "F" 80 0 50 V V C CNN
-F1 "F_500mA_16V-formula" -75 0 50 V V C CNN
+F1 "formula_F_500mA_16V" -75 0 50 V V C CNN
 F2 "footprints:Fuse_1210" -70 0 50 V I C CNN
 F3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" 80 0 50 V I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -454,11 +455,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# LED_0805-formula
+# formula_LED_0805
 #
-DEF LED_0805-formula D 0 40 N N 1 F N
+DEF formula_LED_0805 D 0 40 N N 1 F N
 F0 "D" 0 -100 50 H V C CNN
-F1 "LED_0805-formula" 0 100 50 H V C CNN
+F1 "formula_LED_0805" 0 100 50 H V C CNN
 F2 "footprints:LED_0805_OEM" -100 0 50 H I C CNN
 F3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" 0 100 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -478,12 +479,12 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# LM3480-formula
+# formula_LM3480
 #
-DEF LM3480-formula U 0 10 Y Y 1 F N
+DEF formula_LM3480 U 0 10 Y Y 1 F N
 F0 "U" -150 125 50 H V C CNN
-F1 "LM3480-formula" 0 125 50 H V L CNN
-F2 "Package_TO_SOT_SMD:SOT-23" -50 200 50 H I C CNN
+F1 "formula_LM3480" 0 125 50 H V L CNN
+F2 "footprints:SOT-23-3_OEM" -50 200 50 H I C CNN
 F3 "" 100 -250 50 H I C CNN
 F4 "DK" 50 325 60 H I C CNN "MFN"
 F5 "LM3480IM3-3.3CT-ND" 150 425 60 H I C CNN "MPN"
@@ -499,11 +500,11 @@ X GND 3 0 -300 100 U 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
-# L_8.1uH-formula
+# formula_L_8.1uH
 #
-DEF L_8.1uH-formula L 0 40 Y Y 1 F N
+DEF formula_L_8.1uH L 0 40 Y Y 1 F N
 F0 "L" 0 50 50 H V C CNN
-F1 "L_8.1uH-formula" 0 200 50 H V C CNN
+F1 "formula_L_8.1uH" 0 200 50 H V C CNN
 F2 "footprints:L_8.1uH" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -516,11 +517,11 @@ X ~ 2 100 100 20 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# MCP2561-E_SN-formula
+# formula_MCP2561-E_SN
 #
-DEF MCP2561-E_SN-formula U 0 40 Y Y 1 F N
+DEF formula_MCP2561-E_SN U 0 40 Y Y 1 F N
 F0 "U" -400 350 50 H V L CNN
-F1 "MCP2561-E_SN-formula" 100 350 50 H V L CNN
+F1 "formula_MCP2561-E_SN" 100 350 50 H V L CNN
 F2 "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM" 0 -500 50 H I C CIN
 F3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en561044" -400 350 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -542,11 +543,11 @@ X STBY 8 -500 -200 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# MCP6001T-I-LT-formula
+# formula_MCP6001T-I-LT
 #
-DEF MCP6001T-I-LT-formula U 0 20 Y Y 1 F N
+DEF formula_MCP6001T-I-LT U 0 20 Y Y 1 F N
 F0 "U" 0 200 50 H V L CNN
-F1 "MCP6001T-I-LT-formula" 0 -200 50 H V L CNN
+F1 "formula_MCP6001T-I-LT" 0 -200 50 H V L CNN
 F2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" -100 100 50 H I C CNN
 F3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf" 0 200 50 H I C CNN
 F4 "DK" 100 300 60 H I C CNN "MFN"
@@ -562,16 +563,17 @@ X - 4 -300 -100 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# MLX90621ESF-BAB-000-TU-formula
+# formula_MLX90621ESF-BAB-000-TU
 #
-DEF MLX90621ESF-BAB-000-TU-formula U 0 20 Y Y 1 F N
+DEF formula_MLX90621ESF-BAB-000-TU U 0 20 Y Y 1 F N
 F0 "U" -250 250 50 H V C CNN
-F1 "MLX90621ESF-BAB-000-TU-formula" 300 250 50 H V C CNN
+F1 "formula_MLX90621ESF-BAB-000-TU" 300 250 50 H V C CNN
 F2 "footprints:MLX90621ESF-BAB-000-TU" 0 -400 50 H I C CNN
 F3 "" -200 300 50 H I C CNN
 F4 "MLX90621ESF-BAB-000-TU-ND " 0 0 50 H I C CNN "MPN"
 F5 "https://www.digikey.com/product-detail/en/melexis-technologies-nv/MLX90621ESF-BAB-000-TU/MLX90621ESF-BAB-000-TU-ND/4968086?utm_adgroup=Sensors%20&%20Transducers" 0 0 50 H I C CNN "PurchaseLink"
 F6 "DK" 0 0 50 H I C CNN "MF"
+ALIAS Si7051-A20 Si7053-A20 Si7054-A20 Si7055-A20
 $FPLIST
  DFN*1EP*3x3mm*P1mm*
 $ENDFPLIST
@@ -594,11 +596,11 @@ X GND 4 0 -300 100 U 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
-# MicroFit_24-formula
+# formula_MicroFit_24
 #
-DEF MicroFit_24-formula J 0 40 Y Y 1 F N
+DEF formula_MicroFit_24 J 0 40 Y Y 1 F N
 F0 "J" 50 -50 60 H V C CNN
-F1 "MicroFit_24-formula" 250 -2550 60 H V C CNN
+F1 "formula_MicroFit_24" 250 -2550 60 H V C CNN
 F2 "" -50 -150 60 H I C CNN
 F3 "https://www.molex.com/pdm_docs/sd/430452400_sd.pdf" 50 -50 60 H I C CNN
 F4 "DK" 150 50 60 H I C CNN "MFN"
@@ -633,11 +635,11 @@ X 9 9 350 -950 200 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# R_0-formula
+# formula_R_0
 #
-DEF R_0-formula R 0 0 N Y 1 F N
+DEF formula_R_0 R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_0-formula" -100 0 50 V V C CNN
+F1 "formula_R_0" -100 0 50 V V C CNN
 F2 "footprints:R_0603_1608Metric" -70 0 50 H I C CNN
 F3 "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -654,11 +656,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_0_2512-formula
+# formula_R_0_2512
 #
-DEF R_0_2512-formula R 0 0 N Y 1 F N
+DEF formula_R_0_2512 R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_0_2512-formula" -100 0 50 V V C CNN
+F1 "formula_R_0_2512" -100 0 50 V V C CNN
 F2 "footprints:R_2512_OEM" -70 0 50 H I C CNN
 F3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -675,11 +677,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_100-formula
+# formula_R_100
 #
-DEF R_100-formula R 0 0 N Y 1 F N
+DEF formula_R_100 R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_100-formula" -100 0 50 V V C CNN
+F1 "formula_R_100" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -800 150 50 H I C CNN
 F3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" -300 500 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -696,11 +698,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_100K-formula
+# formula_R_100K
 #
-DEF R_100K-formula R 0 0 N Y 1 F N
+DEF formula_R_100K R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_100K-formula" -100 0 50 V V C CNN
+F1 "formula_R_100K" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
 F3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -717,11 +719,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_10K-formula
+# formula_R_10K
 #
-DEF R_10K-formula R 0 0 N Y 1 F N
+DEF formula_R_10K R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_10K-formula" -100 0 50 V V C CNN
+F1 "formula_R_10K" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
 F3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -738,11 +740,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_120-formula
+# formula_R_120
 #
-DEF R_120-formula R 0 0 N Y 1 F N
+DEF formula_R_120 R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_120-formula" -100 0 50 V V C CNN
+F1 "formula_R_120" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -1200 150 50 H I L CNN
 F3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" -1200 450 50 H I L CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -759,11 +761,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_120_DNP-formula
+# formula_R_120_DNP
 #
-DEF R_120_DNP-formula R 0 0 N Y 1 F N
+DEF formula_R_120_DNP R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_120_DNP-formula" -100 0 50 V V C CNN
+F1 "formula_R_120_DNP" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -1200 150 50 H I L CNN
 F3 "" -1200 450 50 H I L CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -780,11 +782,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_15k-formula
+# formula_R_15k
 #
-DEF R_15k-formula R 0 40 Y Y 1 F N
+DEF formula_R_15k R 0 40 Y Y 1 F N
 F0 "R" 0 -100 50 H V C CNN
-F1 "R_15k-formula" 0 100 50 H V C CNN
+F1 "formula_R_15k" 0 100 50 H V C CNN
 F2 "footprints:R_0805_OEM" -100 -200 50 H I C CNN
 F3 "" 0 0 50 V I C CNN
 F4 "https://www.digikey.com/en/products/detail/yageo/RE0805FRE0715KL/5923506" 0 -250 50 H I C CNN "Link"
@@ -795,11 +797,11 @@ X ~ 2 150 0 50 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_1K-formula
+# formula_R_1K
 #
-DEF R_1K-formula R 0 0 N Y 1 F N
+DEF formula_R_1K R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_1K-formula" -100 0 50 V V C CNN
+F1 "formula_R_1K" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
 F3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -816,11 +818,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_1K_0.1-formula
+# formula_R_1K_0.1
 #
-DEF R_1K_0.1-formula R 0 0 N Y 1 F N
+DEF formula_R_1K_0.1 R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_1K_0.1-formula" -100 0 50 V V C CNN
+F1 "formula_R_1K_0.1" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
 F3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -837,11 +839,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_200-formula
+# formula_R_200
 #
-DEF R_200-formula R 0 0 N Y 1 F N
+DEF formula_R_200 R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_200-formula" -100 0 50 V V C CNN
+F1 "formula_R_200" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
 F3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -858,11 +860,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_300K-formula
+# formula_R_300K
 #
-DEF R_300K-formula R 0 0 N Y 1 F N
+DEF formula_R_300K R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_300K-formula" -100 0 50 V V C CNN
+F1 "formula_R_300K" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
 F3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
@@ -879,11 +881,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_4.7K-formula
+# formula_R_4.7K
 #
-DEF R_4.7K-formula R 0 0 N Y 1 F N
+DEF formula_R_4.7K R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "R_4.7K-formula" -100 0 50 V V C CNN
+F1 "formula_R_4.7K" -100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -70 0 50 V I C CNN
 F3 "http://www.yageo.com/documents/recent/PYu-RC_Group_51_RoHS_L_8.pdf" 80 0 50 V I C CNN
 F4 "DK" 180 100 60 V I C CNN "MFN"
@@ -900,11 +902,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_4.99K-formula
+# formula_R_4.99K
 #
-DEF R_4.99K-formula R 0 40 N N 1 F N
+DEF formula_R_4.99K R 0 40 N N 1 F N
 F0 "R" -100 50 50 H V C CNN
-F1 "R_4.99K-formula" 100 0 50 V V C CNN
+F1 "formula_R_4.99K" 100 0 50 V V C CNN
 F2 "footprints:R_0805_OEM" -200 -50 50 H I C CNN
 F3 "" -100 50 50 H I C CNN
 F4 "RNCP0805FTD4K99CT-ND " 0 150 50 H I C CNN "MPN"
@@ -917,11 +919,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# R_90k-formula
+# formula_R_90k
 #
-DEF R_90k-formula R 0 40 Y Y 1 F N
+DEF formula_R_90k R 0 40 Y Y 1 F N
 F0 "R" 0 -100 50 H V C CNN
-F1 "R_90k-formula" 0 100 50 H V C CNN
+F1 "formula_R_90k" 0 100 50 H V C CNN
 F2 "footprints:R_0805_OEM" -100 -200 50 H I C CNN
 F3 "" 0 0 50 V I C CNN
 F4 "https://www.digikey.com/en/products/detail/vishay-dale-thin-film/PTN0805E9002BST1/7103062" 0 -250 50 H I C CNN "Link"
@@ -932,11 +934,11 @@ X ~ 2 150 0 50 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# TP-formula
+# formula_TP
 #
-DEF TP-formula TP 0 0 N N 1 F N
+DEF formula_TP TP 0 0 N N 1 F N
 F0 "TP" 0 0 50 H V C CNN
-F1 "TP-formula" 0 0 50 H V C CNN
+F1 "formula_TP" 0 0 50 H V C CNN
 F2 "footprints:tp_1.6mm" -100 -100 50 H I C CNN
 F3 "http://www.keyelco.com/product-pdf.cfm?p=1314" 0 0 50 H I C CNN
 F4 "DK" 100 100 50 H I C CNN "MFN"
@@ -948,11 +950,11 @@ X TP 1 0 -200 100 U 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# TPS560430YF-formula
+# formula_TPS560430YF
 #
-DEF TPS560430YF-formula U 0 40 Y Y 1 F N
+DEF formula_TPS560430YF U 0 40 Y Y 1 F N
 F0 "U" -200 -350 50 H V C CNN
-F1 "TPS560430YF-formula" 0 400 50 H V C CNN
+F1 "formula_TPS560430YF" 0 400 50 H V C CNN
 F2 "footprints:SOT-23-6_OEM" -50 700 50 H I C CNN
 F3 "" 0 550 50 H I C CNN
 F4 "TPS560430YFDBVR-ND" -50 -1100 50 H I C CNN "MPN"
@@ -970,11 +972,11 @@ X SW 6 400 50 100 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
-# TPS7A26-formula
+# formula_TPS7A26
 #
-DEF TPS7A26-formula U 0 40 Y Y 1 F N
+DEF formula_TPS7A26 U 0 40 Y Y 1 F N
 F0 "U" 0 350 50 H V C CNN
-F1 "TPS7A26-formula" 0 250 50 H V C CNN
+F1 "formula_TPS7A26" 0 250 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -988,13 +990,13 @@ X IN 6 -300 50 100 R 50 50 1 1 U
 ENDDRAW
 ENDDEF
 #
-# TXB0104-formula
+# formula_TXB0104
 #
-DEF TXB0104-formula U 0 40 Y Y 1 F N
+DEF formula_TXB0104 U 0 40 Y Y 1 F N
 F0 "U" 0 0 50 H V C CNN
-F1 "TXB0104-formula" 0 0 50 H V C CNN
-F2 "Package_SO:TSSOP-14_4.4x5mm_P0.65mm" -100 -100 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
+F1 "formula_TXB0104" 0 0 50 H V C CNN
+F2 "Housings_SSOP:TSSOP-14_4.4x5mm_Pitch0.65mm" -100 -100 50 H I C CNN
+F3 "http://www.ti.com/lit/ds/symlink/txb0104.pdf" 0 0 50 H I C CNN
 F4 "DK" 100 100 50 H I C CNN "MFN"
 F5 "296-21929-1-ND" 200 200 50 H I C CNN "MPN"
 F6 "https://www.digikey.com/product-detail/en/texas-instruments/TXB0104PWR/296-21929-1-ND/1629282" 300 300 50 H I C CNN "PurchasingLink"
@@ -1014,6 +1016,47 @@ X NC 6 -400 -650 200 R 50 50 1 1 N
 X GND 7 -400 -750 200 R 50 50 1 1 W
 X OE 8 500 -750 200 L 50 50 1 1 I
 X NC 9 500 -650 200 L 50 50 1 1 N
+ENDDRAW
+ENDDEF
+#
+# formula_Test_Point_SMD
+#
+DEF formula_Test_Point_SMD TP 0 40 Y Y 1 F N
+F0 "TP" 0 300 50 H V C CNN
+F1 "formula_Test_Point_SMD" 50 200 50 H V C CNN
+F2 "footprints:Test_Point_SMD" 0 -150 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 100 50 1 1 0 N
+X ~ 1 0 -50 100 U 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# power_+5V
+#
+DEF power_+5V #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "power_+5V" 0 140 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 0 1 0 -30 50 0 100 N
+P 2 0 1 0 0 0 0 100 N
+P 2 0 1 0 0 100 30 50 N
+X +5V 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# power_GND
+#
+DEF power_GND #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "power_GND" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #

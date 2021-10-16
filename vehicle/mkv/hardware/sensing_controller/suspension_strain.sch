@@ -14,9 +14,11 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L sensing_controller-rescue:74HC4051-formula U501
+L formula:74HC4051 U501
 U 1 1 60AA887F
 P 10900 3650
+AR Path="/60AA887F" Ref="U501"  Part="1" 
+AR Path="/60A3D9FD/60AA887F" Ref="U501"  Part="1" 
 F 0 "U501" H 11150 4100 50  0000 C CNN
 F 1 "74HC4051" H 10600 3100 50  0000 C CNN
 F 2 "footprints:SOIC127P600X175-16N" H 10900 3250 50  0001 C CNN
@@ -25,7 +27,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/cd74hc4051.pdf" H 10900 3250 50  0001 C CN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C501
+L formula:C_0.1uF C501
 U 1 1 60AB4383
 P 11200 2950
 F 0 "C501" V 10948 2950 50  0000 C CNN
@@ -61,7 +63,7 @@ Wire Wire Line
 Wire Wire Line
 	11500 2950 11350 2950
 $Comp
-L sensing_controller-rescue:C_0.1uF-formula C502
+L formula:C_0.1uF C502
 U 1 1 60ABCD81
 P 11200 5700
 F 0 "C502" V 10948 5700 50  0000 C CNN
@@ -493,9 +495,11 @@ Wire Wire Line
 Wire Wire Line
 	10900 5700 10900 5900
 $Comp
-L sensing_controller-rescue:74HC4051-formula U502
+L formula:74HC4051 U502
 U 1 1 60AC6F2B
 P 10900 6400
+AR Path="/60AC6F2B" Ref="U502"  Part="1" 
+AR Path="/60A3D9FD/60AC6F2B" Ref="U502"  Part="1" 
 F 0 "U502" H 11150 6850 50  0000 C CNN
 F 1 "74HC4051" H 10600 5850 50  0000 C CNN
 F 2 "footprints:SOIC127P600X175-16N" H 10900 6000 50  0001 C CNN

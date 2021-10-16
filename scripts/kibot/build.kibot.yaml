@@ -54,12 +54,3 @@ outputs:
         output: '%f-%i%v.%x'
         type: 'ps'
       minimal_header: true
-
-  - name: gerb_zip
-    type: compress
-    options:
-      format: 'ZIP'
-      files:
-      - from_output: 'gerbers'
-      - from_output: 'drill'
-      output: '%f.gerbers.%x'
