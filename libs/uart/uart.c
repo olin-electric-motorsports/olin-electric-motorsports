@@ -1,7 +1,7 @@
 /* Atmega 16M1 Uart Library Implementation
  * All page numbers refer to
  * http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7647-Automotive-Microcontrollers-ATmega16M1-32M1-64M1-32C1-64C1_datasheet.pdf
-*/
+ */
 #include "libs/uart/api.h"
 #include <avr/io.h>
 
