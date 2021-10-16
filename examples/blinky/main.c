@@ -6,7 +6,7 @@
 
 int main(void) {
     DDRD |= _BV(LED0);
-    uart_init(9600, false);
+    uart_init(9600);
 
     for (;;) {
         PORTD ^= _BV(LED0);

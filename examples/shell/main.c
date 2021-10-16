@@ -2,7 +2,7 @@
 #include <stdbool.h>
 
 int main(void) {
-    uart_init(9600, false);
+    uart_init(9600);
     uart_puts("\nEcho shell");
     uart_puts("- Enter up to 255 characters\n");
 
