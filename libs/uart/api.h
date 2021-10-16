@@ -9,7 +9,7 @@
  *
  * TODO handle ISR and other bitrates (not just 9600)
  */
-void uart_init(uint32_t baudrate, bool use_interrupt);
+void uart_init(uint32_t baudrate);
 
 /*
  * Returns a single character from the UART peripheral
