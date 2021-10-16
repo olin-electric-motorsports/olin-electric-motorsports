@@ -27,10 +27,8 @@ jobs:
 
     - name: rescue_check
       run: |
-        echo hi
-        echo ${{ steps.files.outputs.added_modified }}
-
         if echo ${{ steps.files.outputs.added_modified }} | grep -q rescue; then
+          echo A \"rescue\" library was detected in this pull request! Delete the \"rescue\" library and ensure that all schematic symbols reference the \"formula\" library.
           exit 1
         else
           exit 0
