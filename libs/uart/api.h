@@ -9,7 +9,7 @@
  *
  * TODO handle ISR and other bitrates (not just 9600)
  */
-void uart_init(uint16_t baudrate, bool use_interrupt);
+void uart_init(uint32_t baudrate, bool use_interrupt);
 
 /*
  * Returns a single character from the UART peripheral
@@ -17,12 +17,12 @@ void uart_init(uint16_t baudrate, bool use_interrupt);
  * TODO
  *   How to deal with blocking or nonblocking? Do we need to?
  */
-char uart_getchar(void);
+char uart_getc(void);
 
 /*
  * Puts a single character over UART
  */
-void uart_putchar(char c);
+void uart_putc(char c);
 
 /*
  * Puts a null-terminated string `s` over UART
@@ -33,4 +33,4 @@ void uart_puts(char* s);
  * Receives a new-line terminated string from UART and converts the new-line
  * '\n' to a null-terminater '\0'
  */
-void uart_gets(char* s, int size);
+int uart_gets(char* s, int len);
