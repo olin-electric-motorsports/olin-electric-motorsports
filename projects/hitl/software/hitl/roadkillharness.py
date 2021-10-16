@@ -5,10 +5,10 @@ import configparser
 from typing import Optional
 
 # Project imports
-from hitl.utils import get_logging_config, root_path, artifacts_path
-from hitl.iocontroller import IOController
-from hitl.cancontroller import CANController
-
+from .ecu import ECU
+from .utils import get_logging_config, root_path, artifacts_path
+from .iocontroller import IOController
+from .cancontroller import CANController
 
 class RoadkillHarness:
     """Class to represent the entire tester
