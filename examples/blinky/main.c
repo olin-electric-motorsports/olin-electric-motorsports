@@ -1,3 +1,4 @@
+#include "libs/uart/api.h"
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -5,9 +6,12 @@
 
 int main(void) {
     DDRD |= _BV(LED0);
+    uart_init(9600);
 
     for (;;) {
         PORTD ^= _BV(LED0);
+
+        uart_puts("This is a string\n");
 
         _delay_ms(250);
     }

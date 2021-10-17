@@ -4,4 +4,7 @@ cc_firmware(
     name = "blinky",
     srcs = ["main.c"],
     target_compatible_with = ["//bazel/constraints:avr"],
+    deps = [
+        "//libs/uart",
+    ],
 )
