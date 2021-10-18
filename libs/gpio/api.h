@@ -19,7 +19,7 @@ typedef struct {
         }                                                   \
     } while (0)
 
-#define gpio_set_pin(gpio_pin) (_SFR_IO8(gpio_pin.ddr) |= (1 << gpio_pin.num))
+#define gpio_set_pin(gpio_pin) (_SFR_IO8(gpio_pin.port) |= (1 << gpio_pin.num))
 #define gpio_clear_pin(gpio_pin) \
     (_SFR_IO8(gpio_pin.port) &= ~(1 << gpio_pin.num))
 #define gpio_toggle_pin(gpio_pin) \
