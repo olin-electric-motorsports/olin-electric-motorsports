@@ -8,20 +8,22 @@
 
 gpio_t LED0 = PD5;
 gpio_t LED1 = PD6;
+gpio_t LED_EXT = PB7;
+gpio_t BUTTON = PB5;
 
 void toggle(void) {
-    gpio_toggle_pin(LED0);
+    gpio_toggle_pin(LED_EXT);
 }
 
 int main(void) {
     gpio_set_mode(LED0, OUTPUT);
-    gpio_set_mode(LED1, INPUT);
+    gpio_set_mode(LED_EXT, OUTPUT);
 
-    gpio_attach_interrupt(LED1, &toggle);
+    gpio_attach_interrupt(BUTTON, &toggle);
 
     for (;;) {
-        // gpio_toggle_pin(LED0);
-        // gpio_toggle_pin(LED1);
-        // _delay_ms(250);
+        gpio_toggle_pin(LED0);
+        // gpio_toggle_pin(LED_EXT);
+        _delay_ms(250);
     }
 }

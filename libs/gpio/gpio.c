@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "libs/gpio/api.h"
+#include "libs/uart/api.h"
 
 #define NUM_PIN_INTERRUPTS (26)
 
@@ -74,6 +75,7 @@ ISR(PCINT3_vect) {
 void gpio_attach_interrupt(gpio_t pin, void (*callback)(void)) {
     switch (pin.port) {
         case 0x05: {
+            uart_puts("Initialized PCIE0");
             PCICR |= (1 << PCIE0);
             PCMSK0 |= (1 << pin.num);
             callbacks[pin.num] = callback;
