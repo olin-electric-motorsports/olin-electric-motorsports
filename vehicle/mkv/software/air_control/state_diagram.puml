@@ -1,0 +1,85 @@
+@startuml
+start
+:Idle;
+
+:Interrupt>
+
+floating note left
+    SS TSMS is activated,
+    AIR+ weld detect shows
+    AIR is closed
+end note
+
+if (Read motor controller voltage) then (< 5V)
+    :Activate precharge;
+    floating note left
+        This is done by driving
+        the ""PrechargeCTL"" pin
+    end note
+else (> 5V)
+    #red:Fault;
+    stop
+endif
+
+:Wait 2 seconds;
+
+if (Read motor controller voltage) then (> 90% BMS Voltage)
+    :Close AIR-;
+    floating note left
+        This is done by driving
+        the ""AIR- LSD"" pin
+    end note
+else (Too low)
+    #red:Fault;
+    floating note right
+        No HV in motor controller
+    end note
+    stop
+endif
+
+#lightgreen:<b>TS Active</b>
+
+Wait for shutdown sense
+interrupt to detect
+discharge event;
+
+
+' title Accumultor Isolation Relay Control State Diagram
+' 
+' ' States
+' state Idle
+' state Precharge: Control PrechargeCTL pin
+' state ss_air_mismatch <<choice>>
+' state "Motor Controller Voltage" as mc_voltage <<choice>>
+' state Wait: Wait 2 seconds\nfor AIRs to close
+' state Fault
+' 
+' 
+' ' Transitions
+' [*] -> Idle
+' Idle -> ss_air_mismatch: SS TSMS closed,\nAIR+ closed
+' ss_air_mismatch -> Fault: Mismatch
+' note on link
+'   Mismatch means the
+'   shutdown circuit is
+'   closed but the AIR
+'   is open
+' end note
+' ss_air_mismatch -> Precharge: OK
+' 
+' Precharge -> mc_voltage
+' mc_voltage -> Wait
+' mc_voltage --> Fault
+' ' Precharge -> Wait
+' 
+' ' state "AIR Preclose" as air_preclose
+' ' Precharge -> air_preclose
+' 
+' ' note on link
+' '   AIR+ will close shortly after
+' '   the shutdown circuit is closed.
+' '   Need to determine number of
+' '   milliseconds.
+' ' end note
+' 
+@enduml
