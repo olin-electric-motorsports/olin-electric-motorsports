@@ -24,7 +24,6 @@ typedef struct {
     (_SFR_IO8(gpio_pin.port) &= ~(1 << gpio_pin.num))
 #define gpio_toggle_pin(gpio_pin) \
     (_SFR_IO8(gpio_pin.port) ^= (1 << gpio_pin.num))
-#define gpio_get_pin(gpio_pin) \
-    (!(!(_SFR_IO8(gpio_pin.port) & (1 << gpio_pin.num))))
+#define gpio_get_pin(gpio_pin) (_SFR_IO8(gpio_pin.pin) & (1 << gpio_pin.num))
 
 void gpio_attach_interrupt(gpio_t pin, void (*callback)(void));
