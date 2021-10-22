@@ -1,0 +1,41 @@
+MessagesTX:
+  receivers: air_ctrl, bms_core, brakelight_bspd_shutdown, dashboard
+  throttle:
+    id: 12.0
+    data_bytes: 5.0
+    signals:
+      error_code:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit
+      throttle_pos(0x00_-_0xff):
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit
+      bots_sense:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit
+      inertia_switch_sense:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit
+      driver_e-stop_sense:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit

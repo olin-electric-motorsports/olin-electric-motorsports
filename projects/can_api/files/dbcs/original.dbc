@@ -1,0 +1,74 @@
+VERSION "created by canmatrix"
+
+
+NS_ :
+
+BS_:
+
+BU_: air_ctrl dashboard throttle brakelight_bspd_shutdown bms_core
+
+
+BO_ 0 Panic: 0 air_ctrl
+ SG_ Panic : 7|2@0+ (1,1) [0|1] "" air_ctrl,bms_core,throttle,brakelight_bspd
+
+BO_ 14 air_ctrl: 8 air_ctrl
+ SG_ tsms_sense : 7|8@0+ (1,0) [0|1] ""
+ SG_ imd_sense : 15|8@0+ (1,0) [0|1] ""
+ SG_ main_pack__tsconn__sense : 23|8@0+ (1,0) [0|1] ""
+ SG_ connector_to_hvd__hvdconn__sense : 31|8@0+ (1,0) [0|1] ""
+ SG_ hvd_sense : 39|8@0+ (1,0) [0|1] ""
+ SG_ bms_sense : 47|8@0+ (1,0) [0|1] ""
+ SG_ imd_status : 55|8@0+ (1,0) [0|1] ""
+ SG_ bms_status : 63|8@0+ (1,0) [0|1] ""
+
+BO_ 15 dashboard: 4 dashboard
+ SG_ error_code : 7|8@0+ (1,0) [0|1] ""
+ SG_ ready_to_drive : 15|8@0+ (1,0) [0|1] ""
+ SG_ steering_pos__0x00___0xff_ : 23|8@0+ (1,0) [0|1] ""
+ SG_ start_button__unused_ : 31|8@0+ (1,0) [0|1] ""
+
+BO_ 12 throttle: 5 throttle
+ SG_ error_code : 7|8@0+ (1,0) [0|1] ""
+ SG_ throttle_pos_0x00___0xff_ : 15|8@0+ (1,0) [0|1] ""
+ SG_ bots_sense : 23|8@0+ (1,0) [0|1] ""
+ SG_ inertia_switch_sense : 31|8@0+ (1,0) [0|1] ""
+ SG_ driver_e_stop_sense : 39|8@0+ (1,0) [0|1] ""
+
+BO_ 11 brakelight_bspd_shutdown: 5 brakelight_bspd_shutdown
+ SG_ error_code : 7|8@0+ (1,0) [0|1] ""
+ SG_ brake_analog_voltage_msb : 15|8@0+ (1,0) [0|1] ""
+ SG_ brake_analog_voltage_lsb : 23|8@0+ (1,0) [0|1] ""
+ SG_ brake_gate : 31|8@0+ (1,0) [0|1] ""
+ SG_ bspdsense : 39|8@0+ (1,0) [0|1] ""
+
+BO_ 16 bms_core: 8 bms_core
+ SG_ error_code : 7|8@0+ (1,0) [0|1] ""
+ SG_ relay_status : 15|8@0+ (1,0) [0|1] ""
+ SG_ temperature : 23|8@0+ (1,0) [0|1] ""
+ SG_ soc_estimate____ : 31|8@0+ (1,0) [0|1] ""
+ SG_ bms_ok__for_the_bms_light_1_is_g : 39|8@0+ (1,0) [0|1] ""
+ SG_ regen_enabled : 47|8@0+ (1,0) [0|1] ""
+ SG_ current_limiting_enabled : 55|8@0+ (1,0) [0|1] ""
+ SG_ cell_balancing_status : 63|8@0+ (1,0) [0|1] ""
+
+
+BO_TX_BU_ 0 : air_ctrl,bms_core,throttle,brakelight_bspd;
+CM_ BO_ 0  "This is bad. Liek really bad";
+CM_ BO_ 14  "yo";
+CM_ BO_ 15  "yo";
+CM_ BO_ 12  "yo";
+CM_ BO_ 11  "yo";
+CM_ BO_ 16  "yo";
+
+
+CM_ BU_ air_ctrl "potato";
+CM_ BU_ dashboard "potato";
+CM_ BU_ throttle "potato";
+CM_ BU_ brakelight_bspd_shutdown "potato";
+CM_ BU_ bms_core "potato";
+
+BA_DEF_ SG_ "SystemSignalLongSymbol" STRING;
+
+
+
+BA_ "SystemSignalLongSymbol" SG_ 16 bms_ok__for_the_bms_light_1_is_g "bms_ok_(for_the_bms_light)1_is_good0_is_bad";
