@@ -1,5 +1,7 @@
 #include <stdint.h>
 
+#define AS_VOLTAGE(raw) (float)raw * (0.004882813)
+
 /*
  * adc_init
  *
@@ -19,11 +21,9 @@ void adc_init(void);
  * Parameters
  *   - (uint8_t) pin: the pin to use, must be between 0 and 10
  *
- * Returns (int)
- *   - 0: No error
- *   - 1: Invalid argument
+ * Returns (void)
  */
-int adc_start_convert(uint8_t pin);
+void adc_start_convert(uint8_t pin);
 
 /*
  * adc_poll_complete
@@ -40,6 +40,19 @@ int adc_start_convert(uint8_t pin);
  *   - -1: Data not ready
  */
 int adc_poll_complete(uint16_t* result);
+
+/*
+ * adc_read_results
+ *
+ * Reads the value of the ADC register. Used as an alternative to
+ * adc_poll_complete when using interrupts.
+ *
+ * Parameters
+ *   - [out] (uint16_t *) result: Pointer to where the value will be stored
+ *
+ * Returns (void)
+ */
+void adc_read_results(uint16_t* result);
 
 /*
  * adc_interrupt_enable
