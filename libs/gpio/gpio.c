@@ -83,17 +83,17 @@ void gpio_attach_interrupt(gpio_t pin, void (*callback)(void)) {
         case 0x08: {
             PCICR |= (1 << PCIE1);
             PCMSK1 |= (1 << pin.num);
-            callbacks[pin.num << 4] = callback;
+            callbacks[pin.num + 8] = callback;
         } break;
         case 0x0B: {
             PCICR |= (1 << PCIE2);
             PCMSK2 |= (1 << pin.num);
-            callbacks[pin.num << 8] = callback;
+            callbacks[pin.num + 16] = callback;
         } break;
         case 0x0E: {
             PCICR |= (1 << PCIE3);
             PCMSK3 |= (1 << pin.num);
-            callbacks[pin.num << 12] = callback;
+            callbacks[pin.num + 24] = callback;
         } break;
         default: {
             // Nothing
