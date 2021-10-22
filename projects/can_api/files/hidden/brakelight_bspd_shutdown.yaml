@@ -1,0 +1,42 @@
+MessagesTX:
+  receivers: air_ctrl, bms_core, dashboard, throttle
+  brakelight_bspd_shutdown:
+    id: 11.0
+    frequency: 100
+    data_bytes: 5.0
+    signals:
+      error_code:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit
+      brake_analog_voltage_msb:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit
+      brake_analog_voltage_lsb:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit
+      brake_gate:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit
+      bspdsense:
+        length: 8
+        scale: 1
+        offset: 0
+        min: 0
+        max: 1
+        unit: bit

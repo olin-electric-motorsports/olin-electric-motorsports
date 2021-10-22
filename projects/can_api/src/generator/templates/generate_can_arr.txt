@@ -1,0 +1,11 @@
+    //{msg_name} struct initialization
+    {arr_name} = malloc(sizeof(uint8_t) * 8);
+    struct can_msg_info MESSAGE = {{
+        .raw_arr = {arr_name},
+        .countdown = {cycle_time},
+        .cycle_time = {cycle_time},
+        .mob = {i}, // TODO?
+        .ident = {msg_id},
+        .length = {msg_length},
+    }};
+    CAN_msg_array[{i}] = &MESSAGE;
