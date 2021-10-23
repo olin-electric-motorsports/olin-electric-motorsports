@@ -14,9 +14,6 @@ ISR(ADC_vect) {
 
 void adc_init(void) {
     // Enables ADC
-    //
-    // TODO: Verify that setting ADPS (prescalar) to 2 (which would give an ADC
-    // clock of 2MHz) gives proper accuracy
     ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS0);
 
     // Sets voltage reference to AVCC with external capacitor connected (page
