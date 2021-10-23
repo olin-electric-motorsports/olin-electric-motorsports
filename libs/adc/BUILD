@@ -13,10 +13,13 @@ cc_library(
     srcs = [
         "adc.c",
     ],
+    target_compatible_with = [
+        "//bazel/constraints:atmega16m1",
+    ],
+    visibility = ["//visibility:public"],
     deps = [
         ":hdrs",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_firmware(
@@ -24,9 +27,9 @@ cc_firmware(
     srcs = [
         "test/adc_test.c",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":adc",
         "//libs/uart",
     ],
-    visibility = ["//visibility:public"],
 )
