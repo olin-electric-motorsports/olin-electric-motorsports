@@ -2,9 +2,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define INIT (0)
-#define SECOND (1)
-#define THIRD (2)
+typedef enum {
+    INIT = 0x0,
+    SECOND,
+    THIRD
+} state_e;
+
+// #define INIT (0)
+// #define SECOND (1)
+// #define THIRD (2)
 
 state_t init_transition(void) {
     static int i = 0;
@@ -24,7 +30,7 @@ state_t second_transition(void) {
     }
 }
 
-transition_t transitions[] = {
+static const transition_t transitions[] = {
     [INIT] = init_transition,
     [SECOND] = second_transition,
     [THIRD] = NULL,
