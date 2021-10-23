@@ -1,9 +1,9 @@
 #include "libs/adc/api.h"
 #include "libs/uart/api.h"
-#include <stdio.h>
-#include <stdbool.h>
-#include <util/delay.h>
 #include <avr/interrupt.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <util/delay.h>
 
 uint16_t adc_value = 0;
 volatile bool adc_ready = false;

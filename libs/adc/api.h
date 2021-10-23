@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-#define AS_VOLTAGE(raw) (float)raw * (0.004882813)
+#define AS_VOLTAGE(raw) (float)raw*(0.004882813)
 
 /*
  * adc_init
@@ -8,7 +8,7 @@
  * Initializes analog/digital converter peripheral
  *
  * TODO
- *   - Add in autoconvert support. We don't use this currently but we could in 
+ *   - Add in autoconvert support. We don't use this currently but we could in
  *     the future.
  */
 void adc_init(void);

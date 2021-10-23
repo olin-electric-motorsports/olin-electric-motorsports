@@ -1,7 +1,7 @@
 #include "libs/adc/api.h"
 
-#include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/io.h>
 #include <stdlib.h>
 
 void (*interrupt_callback)(void) = NULL;
