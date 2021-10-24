@@ -1,6 +1,14 @@
 #include <avr/io.h>
 
 // This file is specific to the ATMega16m1
+// It defines each pin to be a struct containing:
+//   - The pin index (0-7)
+//   - The memory-mapped register offset of the DDRx register
+//   - "   "             "        "      "  "   PORTx register
+//   - "   "             "        "      "  "   PINx register
+//
+// The register offsets are used in the functions with the _SFR_IO8 function
+// that sets memory directly
 
 #undef PB0
 #define PB0 \
