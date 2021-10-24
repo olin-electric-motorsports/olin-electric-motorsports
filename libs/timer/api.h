@@ -1,11 +1,9 @@
+#include <stdbool.h>
 #include <stdint.h>
-
-typedef void (*callback_f)(void);
 
 typedef enum {
     TIMER0, // 8-bit
     TIMER1, // 16-bit
-    TIMER2, // 8-bit
 } timer_e;
 
 /*
@@ -14,12 +12,12 @@ typedef enum {
  * table 15-9 in the complete datasheet.
  */
 typedef enum {
-    NORMAL = 0x0,
-    PHASE_CORRECT_PWM = 0x1,
-    CTC = 0x2,
-    FAST_PWM = 0x3,
-    PHASE_CORRECT_PWM_OCRA = 0x5,
-    FAST_PWM_OCRA = 0x7;
+    TIMER0_MODE_NORMAL = 0x0,
+    TIMER0_MODE_PHASE_CORRECT_PWM = 0x1,
+    TIMER0_MODE_CTC = 0x2,
+    TIMER0_MODE_FAST_PWM = 0x3,
+    TIMER0_MODE_PHASE_CORRECT_PWM_OCRA = 0x5,
+    TIMER0_MODE_FAST_PWM_OCRA = 0x7,
 } timer_0_mode_e;
 
 /*
@@ -28,21 +26,21 @@ typedef enum {
  * included for completeness of table 16-6 in the complete datasheet.
  */
 typedef enum {
-    NORMAL = 0x0,
-    PHASE_CORRECT_PWM_8_BIT = 0x1,
-    PHASE_CORRECT_PWM_9_BIT = 0x2,
-    PHASE_CORRECT_PWM_10_BIT = 0x3,
-    CTC = 0x4,
-    FAST_PWM_8_BIT = 0x5,
-    FAST_PWM_9_BIT = 0x6,
-    FAST_PWM_10_BIT = 0x7,
+    TIMER1_MODE_NORMAL = 0x0,
+    TIMER1_MODE_PHASE_CORRECT_PWM_8_BIT = 0x1,
+    TIMER1_MODE_PHASE_CORRECT_PWM_9_BIT = 0x2,
+    TIMER1_MODE_PHASE_CORRECT_PWM_10_BIT = 0x3,
+    TIMER1_MODE_CTC = 0x4,
+    TIMER1_MODE_FAST_PWM_8_BIT = 0x5,
+    TIMER1_MODE_FAST_PWM_9_BIT = 0x6,
+    TIMER1_MODE_FAST_PWM_10_BIT = 0x7,
     // PHASE_FREQUENCY_CORRECT_PWM = 0x8,
-    PHASE_FREQUENCY_CORRECT_PWM_OCRA = 0x9,
+    TIMER1_MODE_PHASE_FREQUENCY_CORRECT_PWM_OCRA = 0x9,
     // PHASE_CORRECT_PWM = 0xA,
-    PHASE_CORRECT_PWM_OCRA = 0xB,
+    TIMER1_MODE_PHASE_CORRECT_PWM_OCRA = 0xB,
     // CTC_ICR1 = 0xC,
     // FAST_PWM = 0xE,
-    FAST_PWM_OCR1A = 0xF,
+    TIMER1_MODE_FAST_PWM_OCR1A = 0xF,
 } timer_1_mode_e;
 
 /*
@@ -98,13 +96,13 @@ typedef struct {
     timer_pin_behavior_e pin_behavior_channel_b;
 
     bool timer_interrupt_enable_channel_a;
-    callback_f* timer_interrupt_callback_channel_a;
+    void (*timer_interrupt_callback_channel_a)(void);
 
     bool timer_interrupt_enable_channel_b;
-    callback_f* timer_interrupt_callback_channel_b;
+    void (*timer_interrupt_callback_channel_b)(void);
 
     bool timer_overflow_interrupt_enable;
-    callback_f* timer_overflow_interrupt_enable_callback;
+    void (*timer_overflow_interrupt_enable_callback)(void);
 } timer_cfg_s;
 
 /*
@@ -117,8 +115,10 @@ void timer_init(timer_cfg_s* timer_cfg);
 
 /*
  * Gets the raw value of the timer from TCNTn bit
+ *
+ * For timer0, value will only use the lower 8 bits
  */
-void timer_get_raw_value(timer_cfg_s* timer_cfg);
+void timer_get_raw_value(timer_cfg_s* timer_cfg, uint16_t* value);
 
 /*
  * Notes
