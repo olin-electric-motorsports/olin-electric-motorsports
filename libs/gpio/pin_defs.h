@@ -9,6 +9,24 @@
 //
 // The register offsets are used in the functions with the _SFR_IO8 function
 // that sets memory directly
+//
+// This has the potential to break normal functionality. Previously, we had
+// things like
+//
+// ```
+// #define PB0 (0)
+// ```
+//
+// so now all of these macros will be replaced by structs as defined below. If
+// errors occur at all they will be caught during compiling.
+//
+// In the end, this will make things easier because the definition of each pin
+// contains its own the DDRx, PORTx, and PINx. So we can do things like
+//
+// ```
+// gpio_t LED0 = PB0; // expands to: gpio_t LED0 = { 0, 0x04, 0x05, 0x03 };
+// gpio_set_mode(LED0, OUTPUT);
+// ```
 
 #undef PB0
 #define PB0 \

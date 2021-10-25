@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #include "libs/gpio/api.h"
-#include "libs/uart/api.h"
 
 #define NUM_PIN_INTERRUPTS (26)
 
