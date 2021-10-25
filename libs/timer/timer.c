@@ -128,3 +128,16 @@ void timer_get_raw_value(timer_cfg_s* timer_cfg, uint16_t* value) {
         }
     }
 }
+
+void timer_register_callback(timer_cfg_s* timer_cfg, timer_channel_e ch, void (*callback)(void)) {
+    switch (ch) {
+        case CHANNEL_A: {
+            timer_cfg->timer_interrupt_enable_channel_a = true;
+            timer_cfg->timer_interrupt_callback_channel_a = callback;
+        } break;
+        case CHANNEL_B: {
+            timer_cfg->timer_interrupt_enable_channel_b = true;
+            timer_cfg->timer_interrupt_callback_channel_b = callback;
+        } break;
+    }
+}

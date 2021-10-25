@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -5,6 +7,11 @@ typedef enum {
     TIMER0, // 8-bit
     TIMER1, // 16-bit
 } timer_e;
+
+typedef enum {
+    CHANNEL_A,
+    CHANNEL_B,
+} timer_channel_e;
 
 /*
  * Enum containing the operation mode of the timer. The order is important as it
@@ -119,6 +126,11 @@ void timer_init(timer_cfg_s* timer_cfg);
  * For timer0, value will only use the lower 8 bits
  */
 void timer_get_raw_value(timer_cfg_s* timer_cfg, uint16_t* value);
+
+/*
+ * Registers a timer interrupt callback
+ */
+void timer_register_callback(timer_cfg_s* timer_cfg, timer_channel_e ch, void (*callback)(void));
 
 /*
  * Notes

@@ -21,3 +21,16 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_firmware(
+    name = "timer_test",
+    srcs = [
+        "test/main.c",
+        "test/config.h",
+    ],
+    deps = [
+        ":timer",
+        "//libs/uart",
+    ],
+    visibility = ["//visibility:public"],
+)
