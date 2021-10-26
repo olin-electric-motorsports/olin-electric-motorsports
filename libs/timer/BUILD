@@ -13,24 +13,24 @@ cc_library(
     srcs = [
         "timer.c",
     ],
-    deps = [
-        ":hdrs",
-    ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
     visibility = ["//visibility:public"],
+    deps = [
+        ":hdrs",
+    ],
 )
 
 cc_firmware(
     name = "timer_test",
     srcs = [
-        "test/main.c",
         "test/config.h",
+        "test/main.c",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":timer",
         "//libs/uart",
     ],
-    visibility = ["//visibility:public"],
 )
