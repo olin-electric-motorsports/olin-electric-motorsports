@@ -86,6 +86,17 @@ typedef enum {
 } timer_source_prescalar_e;
 
 typedef struct {
+    timer_channel_e channel; // A or B
+
+    uint16_t output_compare_match; // OCRnx
+
+    timer_pin_behavior_e pin_behavior; // COMnx bits of TCCRnx
+
+    bool interrupt_enable;
+    void (*interrupt_callback)(void);
+} timer_channel_config_s;
+
+typedef struct {
     timer_e timer;
 
     // Only one will be set per-config, based on which timer is used
@@ -95,18 +106,21 @@ typedef struct {
     // Value of OCRnx, 15.9.6 and 15.9.7
     // For Timer0 , it will only use the lower 8 bits. Timer1 will
     // use all 16 bits
-    uint16_t output_compare_match_value_channel_a;
-    uint16_t output_compare_match_value_channel_b;
+    // uint16_t output_compare_match_value_channel_a;
+    // uint16_t output_compare_match_value_channel_b;
 
     timer_source_prescalar_e prescalar;
-    timer_pin_behavior_e pin_behavior_channel_a;
-    timer_pin_behavior_e pin_behavior_channel_b;
 
-    bool timer_interrupt_enable_channel_a;
-    void (*timer_interrupt_callback_channel_a)(void);
+    timer_channel_config_s channel_a;
+    timer_channel_config_s channel_b;
+    // timer_pin_behavior_e pin_behavior_channel_a;
+    // timer_pin_behavior_e pin_behavior_channel_b;
 
-    bool timer_interrupt_enable_channel_b;
-    void (*timer_interrupt_callback_channel_b)(void);
+    //     bool timer_interrupt_enable_channel_a;
+    //     void (*timer_interrupt_callback_channel_a)(void);
+    //
+    //     bool timer_interrupt_enable_channel_b;
+    //     void (*timer_interrupt_callback_channel_b)(void);
 
     bool timer_overflow_interrupt_enable;
     void (*timer_overflow_interrupt_enable_callback)(void);
@@ -130,7 +144,8 @@ void timer_get_raw_value(timer_cfg_s* timer_cfg, uint16_t* value);
 /*
  * Registers a timer interrupt callback
  */
-void timer_register_callback(timer_cfg_s* timer_cfg, timer_channel_e ch, void (*callback)(void));
+void timer_register_callback(timer_cfg_s* timer_cfg, timer_channel_e ch,
+                             void (*callback)(void));
 
 /*
  * Notes

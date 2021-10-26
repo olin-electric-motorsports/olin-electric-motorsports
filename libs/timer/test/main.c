@@ -1,9 +1,9 @@
 #include "libs/timer/api.h"
 #include "libs/uart/api.h"
 
-#include <avr/io.h>
-#include <avr/interrupt.h>
 #include "config.h"
+#include <avr/interrupt.h>
+#include <avr/io.h>
 
 // volatile uint8_t tick = 0;
 
@@ -16,9 +16,7 @@ int main(void) {
 
     // PWM
     DDRD |= _BV(PD3);
-   timer_init(&timer0_pwm_cfg);
+    timer_init(&timer0_pwm_cfg);
 
-    for (;;) {
-
-    }
+    for (;;) {}
 }

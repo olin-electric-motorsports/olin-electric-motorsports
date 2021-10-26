@@ -46,26 +46,26 @@ ISR(TIMER1_COMPB_vect) {
 }
 
 static void timer_0_init(timer_cfg_s* timer_cfg) {
-    TCCR0A |= (((uint8_t)timer_cfg->pin_behavior_channel_a) << 6)
-             | (((uint8_t)timer_cfg->pin_behavior_channel_b) << 4)
-             | ((uint8_t)timer_cfg->timer0_mode & 0x3);
+    TCCR0A |= (((uint8_t)timer_cfg->channel_a.pin_behavior) << 6)
+              | (((uint8_t)timer_cfg->channel_b.pin_behavior) << 4)
+              | ((uint8_t)timer_cfg->timer0_mode & 0x3);
 
     TCCR0B |= (((uint8_t)timer_cfg->timer0_mode & 0x4) << 1)
-             | ((uint8_t)timer_cfg->prescalar);
+              | ((uint8_t)timer_cfg->prescalar);
 
-    OCR0A = timer_cfg->output_compare_match_value_channel_a;
-    OCR0B = timer_cfg->output_compare_match_value_channel_b;
+    OCR0A = timer_cfg->channel_a.output_compare_match;
+    OCR0B = timer_cfg->channel_b.output_compare_match;
 
-    if (timer_cfg->timer_interrupt_enable_channel_a) {
+    if (timer_cfg->channel_a.interrupt_enable) {
         TIMSK0 |= (1 << 1);
         timer0_compa_interrupt_enabled = true;
-        timer0_compa_callback = timer_cfg->timer_interrupt_callback_channel_a;
+        timer0_compa_callback = timer_cfg->channel_a.interrupt_callback;
     }
 
-    if (timer_cfg->timer_interrupt_enable_channel_b) {
+    if (timer_cfg->channel_b.interrupt_enable) {
         TIMSK0 |= (1 << 2);
         timer0_compb_interrupt_enabled = true;
-        timer0_compb_callback = timer_cfg->timer_interrupt_callback_channel_b;
+        timer0_compb_callback = timer_cfg->channel_b.interrupt_callback;
     }
 
     if (timer_cfg->timer_overflow_interrupt_enable) {
@@ -77,27 +77,30 @@ static void timer_0_init(timer_cfg_s* timer_cfg) {
 }
 
 static void timer_1_init(timer_cfg_s* timer_cfg) {
-    TCCR1A = ((uint8_t)timer_cfg->pin_behavior_channel_a) << 6
-             | ((uint8_t)timer_cfg->pin_behavior_channel_b) << 4
-             | ((uint8_t)timer_cfg->timer1_mode & 0x3);
+    TCCR1A |= (((uint8_t)timer_cfg->channel_a.pin_behavior) << 6)
+              | (((uint8_t)timer_cfg->channel_b.pin_behavior) << 4)
+              | ((uint8_t)timer_cfg->timer1_mode & 0x3);
 
-    TCCR1B = ((uint8_t)timer_cfg->timer1_mode & 0xC) << 1
-             | ((uint8_t)timer_cfg->prescalar);
+    TCCR1B |= (((uint8_t)timer_cfg->timer1_mode & 0xC) << 1)
+              | ((uint8_t)timer_cfg->prescalar);
 
-    if (timer_cfg->timer_interrupt_enable_channel_a) {
-        TIMSK1 |= (1 << 1);
+    OCR0A = timer_cfg->channel_a.output_compare_match;
+    OCR0B = timer_cfg->channel_b.output_compare_match;
+
+    if (timer_cfg->channel_a.interrupt_enable) {
+        TIMSK1 |= (1 << 1); // Enable interrupt
         timer1_compa_interrupt_enabled = true;
-        timer1_compa_callback = timer_cfg->timer_interrupt_callback_channel_a;
+        timer1_compa_callback = timer_cfg->channel_a.interrupt_callback;
     }
 
-    if (timer_cfg->timer_interrupt_enable_channel_b) {
-        TIMSK1 |= (1 << 2);
+    if (timer_cfg->channel_b.interrupt_enable) {
+        TIMSK1 |= (1 << 2); // Enable interrupt
         timer1_compb_interrupt_enabled = true;
-        timer1_compb_callback = timer_cfg->timer_interrupt_callback_channel_b;
+        timer1_compb_callback = timer_cfg->channel_b.interrupt_callback;
     }
 
     if (timer_cfg->timer_overflow_interrupt_enable) {
-        TIMSK1 |= 1;
+        TIMSK1 |= 1; // Enable overflow interrupt
         timer1_ovf_interrupt_enabled = true;
         timer1_ovf_callback
             = timer_cfg->timer_overflow_interrupt_enable_callback;
@@ -112,9 +115,6 @@ void timer_init(timer_cfg_s* timer_cfg) {
         case TIMER1: {
             timer_1_init(timer_cfg);
         } break;
-        default: {
-            // No action
-        }
     }
 }
 
@@ -124,23 +124,32 @@ void timer_get_raw_value(timer_cfg_s* timer_cfg, uint16_t* value) {
             *value = TCNT0;
         } break;
         case TIMER1: {
+            /*
+             * Because we are using an 8-bit microcontroller, we can only access
+             * memory 8-bits at a time. This means that when we are accessing a
+             * 16-bit register like TCNT1, we need to be careful about how we
+             * access it. To ensure atomicity (to make sure nothing interrupts
+             * the read), we disable interrupts when we read, and re-enable them
+             * once we're done.
+             */
+            uint8_t sreg = SREG; // Store global interrupt settings
+            cli(); // Disable interrupts
             *value = TCNT1;
+            SREG = sreg; // Restore global interrupt settings
         } break;
-        default: {
-            // No action
-        }
     }
 }
 
-void timer_register_callback(timer_cfg_s* timer_cfg, timer_channel_e ch, void (*callback)(void)) {
+void timer_register_callback(timer_cfg_s* timer_cfg, timer_channel_e ch,
+                             void (*callback)(void)) {
     switch (ch) {
         case CHANNEL_A: {
-            timer_cfg->timer_interrupt_enable_channel_a = true;
-            timer_cfg->timer_interrupt_callback_channel_a = callback;
+            timer_cfg->channel_a.interrupt_enable = true;
+            timer_cfg->channel_a.interrupt_callback = callback;
         } break;
         case CHANNEL_B: {
-            timer_cfg->timer_interrupt_enable_channel_b = true;
-            timer_cfg->timer_interrupt_callback_channel_b = callback;
+            timer_cfg->channel_b.interrupt_enable = true;
+            timer_cfg->channel_b.interrupt_callback = callback;
         } break;
     }
 }
