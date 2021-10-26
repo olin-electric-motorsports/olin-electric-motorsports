@@ -11,8 +11,9 @@ cc_firmware(
     ],
     visibility = ["//visibility:public"],
     deps = [
+        "//libs/adc",
         "//libs/can",
         "//libs/gpio",
-        "//libs/adc",
+        "//libs/timer",
     ],
 )

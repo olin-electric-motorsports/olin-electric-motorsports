@@ -1,3 +1,4 @@
+#pragma once
 #include <stdint.h>
 
 #define AS_VOLTAGE(raw) (float)raw*(0.004882813)
