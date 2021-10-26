@@ -51,25 +51,25 @@ static void timer_0_init(timer_cfg_s* timer_cfg) {
               | ((uint8_t)timer_cfg->timer0_mode & 0x3);
 
     TCCR0B |= (((uint8_t)timer_cfg->timer0_mode & 0x4) << 1)
-              | ((uint8_t)timer_cfg->prescalar);
+              | ((uint8_t)timer_cfg->prescalar & 0x7);
 
     OCR0A = timer_cfg->channel_a.output_compare_match;
     OCR0B = timer_cfg->channel_b.output_compare_match;
 
     if (timer_cfg->channel_a.interrupt_enable) {
-        TIMSK0 |= (1 << 1);
+        TIMSK0 |= (1 << OCIE0A);
         timer0_compa_interrupt_enabled = true;
         timer0_compa_callback = timer_cfg->channel_a.interrupt_callback;
     }
 
     if (timer_cfg->channel_b.interrupt_enable) {
-        TIMSK0 |= (1 << 2);
+        TIMSK0 |= (1 << OCIE0B);
         timer0_compb_interrupt_enabled = true;
         timer0_compb_callback = timer_cfg->channel_b.interrupt_callback;
     }
 
     if (timer_cfg->timer_overflow_interrupt_enable) {
-        TIMSK0 |= 1;
+        TIMSK0 |= (1 << TOIE0);
         timer0_ovf_interrupt_enabled = true;
         timer0_ovf_callback
             = timer_cfg->timer_overflow_interrupt_enable_callback;
@@ -84,23 +84,23 @@ static void timer_1_init(timer_cfg_s* timer_cfg) {
     TCCR1B |= (((uint8_t)timer_cfg->timer1_mode & 0xC) << 1)
               | ((uint8_t)timer_cfg->prescalar);
 
-    OCR0A = timer_cfg->channel_a.output_compare_match;
-    OCR0B = timer_cfg->channel_b.output_compare_match;
+    OCR1A = timer_cfg->channel_a.output_compare_match;
+    OCR1B = timer_cfg->channel_b.output_compare_match;
 
     if (timer_cfg->channel_a.interrupt_enable) {
-        TIMSK1 |= (1 << 1); // Enable interrupt
+        TIMSK1 |= (1 << OCIE1A); // Enable interrupt
         timer1_compa_interrupt_enabled = true;
         timer1_compa_callback = timer_cfg->channel_a.interrupt_callback;
     }
 
     if (timer_cfg->channel_b.interrupt_enable) {
-        TIMSK1 |= (1 << 2); // Enable interrupt
+        TIMSK1 |= (1 << OCIE1B); // Enable interrupt
         timer1_compb_interrupt_enabled = true;
         timer1_compb_callback = timer_cfg->channel_b.interrupt_callback;
     }
 
     if (timer_cfg->timer_overflow_interrupt_enable) {
-        TIMSK1 |= 1; // Enable overflow interrupt
+        TIMSK1 |= (1 << TOIE1); // Enable overflow interrupt
         timer1_ovf_interrupt_enabled = true;
         timer1_ovf_callback
             = timer_cfg->timer_overflow_interrupt_enable_callback;

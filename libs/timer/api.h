@@ -103,24 +103,10 @@ typedef struct {
     timer_0_mode_e timer0_mode;
     timer_1_mode_e timer1_mode;
 
-    // Value of OCRnx, 15.9.6 and 15.9.7
-    // For Timer0 , it will only use the lower 8 bits. Timer1 will
-    // use all 16 bits
-    // uint16_t output_compare_match_value_channel_a;
-    // uint16_t output_compare_match_value_channel_b;
-
     timer_source_prescalar_e prescalar;
 
     timer_channel_config_s channel_a;
     timer_channel_config_s channel_b;
-    // timer_pin_behavior_e pin_behavior_channel_a;
-    // timer_pin_behavior_e pin_behavior_channel_b;
-
-    //     bool timer_interrupt_enable_channel_a;
-    //     void (*timer_interrupt_callback_channel_a)(void);
-    //
-    //     bool timer_interrupt_enable_channel_b;
-    //     void (*timer_interrupt_callback_channel_b)(void);
 
     bool timer_overflow_interrupt_enable;
     void (*timer_overflow_interrupt_enable_callback)(void);

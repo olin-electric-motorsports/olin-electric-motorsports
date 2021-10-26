@@ -31,6 +31,6 @@ cc_firmware(
     visibility = ["//visibility:public"],
     deps = [
         ":timer",
-        "//libs/uart",
+        "//libs/can",
     ],
 )
