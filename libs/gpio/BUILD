@@ -13,6 +13,7 @@ cc_library(
     hdrs = [
         "pin_defs.h",
     ],
+    target_compatible_with = ["//bazel/constraints:atmega16m1"],
     visibility = ["//visibility:public"],
     deps = [
         ":hdrs",
