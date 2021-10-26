@@ -15,3 +15,5 @@ As of 10/25:
 - Cleanup, resolve all relative paths and make artifacts have a consistent
   folder to live in
 - Add documentation and docstrings
+- Make sure that generated can_api.c can compile and run
+- then test with a hackerboard
