@@ -46,12 +46,15 @@ ISR(TIMER1_COMPB_vect) {
 }
 
 static void timer_0_init(timer_cfg_s* timer_cfg) {
-    TCCR0A = ((uint8_t)timer_cfg->pin_behavior_channel_a) << 6
-             | ((uint8_t)timer_cfg->pin_behavior_channel_b) << 4
+    TCCR0A |= (((uint8_t)timer_cfg->pin_behavior_channel_a) << 6)
+             | (((uint8_t)timer_cfg->pin_behavior_channel_b) << 4)
              | ((uint8_t)timer_cfg->timer0_mode & 0x3);
 
-    TCCR0B = ((uint8_t)timer_cfg->timer0_mode & 0x4) << 1
+    TCCR0B |= (((uint8_t)timer_cfg->timer0_mode & 0x4) << 1)
              | ((uint8_t)timer_cfg->prescalar);
+
+    OCR0A = timer_cfg->output_compare_match_value_channel_a;
+    OCR0B = timer_cfg->output_compare_match_value_channel_b;
 
     if (timer_cfg->timer_interrupt_enable_channel_a) {
         TIMSK0 |= (1 << 1);
