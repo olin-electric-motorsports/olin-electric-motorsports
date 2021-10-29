@@ -1,8 +1,6 @@
-import cantools
 import os
-import yaml
-import subprocess
 from pathlib import Path
+from defs import PATH_TO
 
 NUM_MSGS = lambda msgs: len(msgs) - 1
 RAW_ARR_NAME = lambda msg: msg.upper() + "_RAW_ARR"
@@ -24,7 +22,7 @@ class Utils:
 
     def edit_file(self, msgs):
         #open the file or create it if it doesn't exist already
-        save_path = os.path.join("./out", self.name)
+        save_path = os.path.join(PATH_TO("out/"), self.name)
         f = Path(save_path)
         f.touch(exist_ok=True)
         with open(save_path, "r") as f:
@@ -36,7 +34,7 @@ class Utils:
         print(f"updated {self.name}")
 
     def read_template(self, file):
-        with open(file, "r") as f:
+        with open(PATH_TO(os.path.join("files/c_templates/", file)), "r") as f:
             return f.read()
 
 
@@ -49,14 +47,14 @@ class HeaderGenerator(Utils):
         """
         Add board_CAN_init and initialize message_specific variables
         """
-        header_str = self.read_template("./templates/h_file.txt").format(
+        header_str = self.read_template("h_file.txt").format(
             prefix=self.prefix,
             setters=self._define_setters(msgs)
         )
         return header_str
 
     def _define_setters(self, msgs):
-        template = self.read_template("./templates/h_setters.txt")
+        template = self.read_template("h_setters.txt")
         final_str = ""
         for msg, msg_info in msgs.items():
             if msg == "receivers":
@@ -75,7 +73,7 @@ class CGenerator(Utils):
     def _generate_can_arr(self, msgs):
         final_str = ""
         i = 0
-        template = self.read_template("./templates/generate_can_arr.txt")
+        template = self.read_template("generate_can_arr.txt")
         for msg_name, msg_info in msgs.items():
             if msg_name == "receivers":
                 continue
@@ -92,7 +90,7 @@ class CGenerator(Utils):
         return final_str
 
     def _generate_structs(self, msgs):
-        template = self.read_template("./templates/generate_msg_structs.txt")
+        template = self.read_template("generate_msg_structs.txt")
         def_temp, sig_temp = template.split(TEMPLATE_SEPARATOR)
         init_str, def_str = "", ""
         for msg, msg_info in msgs.items():
@@ -115,7 +113,7 @@ class CGenerator(Utils):
 
     def _generate_setters(self, msgs):
         final_str = ""
-        template = self.read_template("./templates/c_setters.txt")
+        template = self.read_template("c_setters.txt")
         for msg, msg_info in msgs.items():
             if msg == "receivers":
                 continue
@@ -133,7 +131,7 @@ class CGenerator(Utils):
     def _raw_array_defs(self, msgs):
         #initialize structs and raw arrays here, remove them from the header file
         header_str = ""
-        template = self.read_template("./templates/raw_array_defs.txt")
+        template = self.read_template("raw_array_defs.txt")
         for msg_name in msgs.keys():
             if msg_name == "receivers":
                 continue
@@ -145,7 +143,7 @@ class CGenerator(Utils):
         #use a list of all outgoing messages in PYTHON to determine this order.
         #generate a str array of the outgoing message names in C as well. Use this to fill in the RAW_ARR once each has been malloc'd..
         struct_definition = self._generate_structs(msgs)
-        func_body = self.read_template("./templates/c_file.txt").format(
+        func_body = self.read_template("c_file.txt").format(
             prefix=self.prefix, 
             can_arr=self._generate_can_arr(msgs),
             struct_defs=struct_definition,
@@ -155,36 +153,3 @@ class CGenerator(Utils):
             mode=0 #TODO define mode macros like above 0= 1= 2=
         )
         return func_body
-
-def main(file_prefix):
-    """
-    TODO
-    """
-    #load the cantools file
-    dbc_path = f'../dbc/{file_prefix}.dbc'
-    db = cantools.database.load_file(dbc_path)
-    out = subprocess.run(['cantools', 'generate_c_source', '--no-floating-point-numbers', dbc_path])
-
-    #open the yaml file
-    with open(f"../mini_yamls/{file_prefix}.yaml", 'r') as f:
-        data = yaml.load(f, yaml.FullLoader)
-
-    # move generated files to ./out folder
-    Path("./out").mkdir(exist_ok=True)
-    os.replace(f"{file_prefix}.c", f"./out/{file_prefix}.c")
-    os.replace(f"{file_prefix}.h", f"./out/{file_prefix}.h")
-    
-    msgs = data["MessagesTX"]
-    if NUM_MSGS(msgs) > 6:
-        print("this mini YAML has more than the maximum 6 messages.")
-        return
-
-    c_gen = CGenerator(file_prefix)
-    c_gen.edit_file(msgs)
-
-    header = HeaderGenerator(file_prefix)
-    header.edit_file(msgs)
-
-
-if __name__ == "__main__":
-    main("shutdown")    #generate file based on the shutdown mini_yaml

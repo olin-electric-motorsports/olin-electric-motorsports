@@ -1,3 +1,9 @@
+"""
+Author: Hwei-Shin Harriman
+Olin Electric Motorsports
+
+Functionality to process mini-YAML files, autogenerate mini-YAMLS with ID assignments and RX messages definitions, and create DBCs
+"""
 from pprint import pprint
 from pathlib import Path
 import yaml
@@ -5,6 +11,7 @@ import os
 import canmatrix
 import math
 import string
+from defs import PATH_TO
 
 VALID_PRIORITIES = ["LO", "MED", "HI"]
 # DEFAULT VALUES FOR DBC MESSAGES AND SIGNALS
@@ -18,30 +25,34 @@ MAX_DEFAULT = 0
 BIT_START = 0
 NODE_NAME = "Vector__XXX"
 
-#TODO add cleanup functions for temp files
 
 class YAMLCompiler:
-    def __init__(self):
-        pass
-
+    """
+    Functionality to assign message IDs and create YAML files with both
+    TX and RX messages. Also checks if the input YAML is properly formatted
+    """
     def _read_yaml(self, file_path):
-        with open(file_path, 'r') as yaml_file:
+        with open(PATH_TO(file_path), 'r') as yaml_file:
             data = yaml.load(yaml_file)
         return data
 
     def _save_yaml(self, file_dir, file_name, contents):
-        Path(file_dir).mkdir(parents=True, exist_ok=True)
-        save_path = os.path.join(file_dir, file_name)
-        with open(save_path, 'w') as yaml_file:
+        Path(PATH_TO(file_dir)).mkdir(parents=True, exist_ok=True)
+        save_path = os.path.join(PATH_TO(file_dir), file_name)
+        with open(PATH_TO(save_path), 'w') as yaml_file:
             yaml.dump(contents, yaml_file, default_flow_style=False)
 
     def _add_receivers(self, mini_yaml, mappings):
+        """
+        Functionality TODO
+        """
         #add receivers to the temp mini-yamls
-        # TODO do TX messages first
         return mini_yaml
 
     def _get_priority_mapping(self, yaml_path):
-        """Create a temporary dict with message IDs"""
+        """
+        Create a temporary dict with message s mapped to relative priorities
+        """
         mappings = {}
         boards = {}
         #iteratively open each mini-yaml
@@ -87,15 +98,14 @@ class YAMLCompiler:
             priorities[metadata["priority"]].append(msg_name)
         # loop through and assign message IDs
         def assign(priority_array, msg_map, curr_id):
-            print(priority_array)
             for msg in priority_array:
                 max_iter = 10
                 while curr_id in used_ids and max_iter > 0:
                     curr_id += 1
                     max_iter -= 1   #prevent the slightly possible but very unlikely case of getting stuck in this while loop forever
                 if max_iter == 0:
-                    raise RuntimeWarning(f"Too many iterations while trying to find an unused ID, assigning message {msg_name} to next largest available ID: {max(used_ids)}")
-                    curr_id = max(used_ids)
+                    raise RuntimeWarning(f"Too many iterations while trying to find an unused ID, assigning message {msg_name} to next largest available ID: {max(used_ids) + 1}")
+                    curr_id = max(used_ids) + 1
                 used_ids.add(curr_id)
                 msg_map[msg]["id"] = curr_id
                 curr_id += 1
@@ -129,96 +139,20 @@ class YAMLCompiler:
             #TODO next PR
             mini = self._add_receivers(mini, mappings)
 
-            self._save_yaml(save_to, f"temp_{filename}", mini)
+            self._save_yaml(save_to, f"autogen_{filename}", mini)
     
 
 class Y2DHandler:
-    def __init__(self):
-        self.dbc = canmatrix.CanMatrix()
-    
-    def save_dbc(self, save_name):
-        canmatrix.canmatrix.formats.dumpp({"":self.dbc}, "dbcs/{save_name}.dbc")
-
-    def save_dbc_str(self, file_dir, file_name, dbc_str):
-        Path(file_dir).mkdir(parents=True, exist_ok=True)
-        save_path = os.path.join(file_dir, file_name)
-        with open(save_path, 'w') as f:
+    """
+    Functionality to generate DBC files based on YAML
+    """
+    def save_dbc(self, file_dir, file_name, dbc_str):
+        Path(PATH_TO(file_dir)).mkdir(parents=True, exist_ok=True)
+        save_path = os.path.join(PATH_TO(file_dir), f"{file_name}.dbc")
+        with open(PATH_TO(save_path), 'w') as f:
             f.write(dbc_str)
 
-    def add_ecu(self, data):
-        #isolate name of board (transmitter)
-        board_name = data["board"]
-        #create dictionary of board specific data from yaml data
-        board_data = dict((k, data["MessagesTX"][k]) for k in [board_name] if k in data)
-
-        #TODO do this with MessagesRX as well
-
-        #isolate receiver key
-        rec_names = list(data.keys())[0]
-        #create dictionary of reciever names
-        # rec_data = dict((k, data[k]) for k in [rec_names] if k in data)
-
-        #turns list of recievers into a string for dbc
-        rec_vals = str(rec_data.values())
-        rec_vals = rec_vals.replace('dict_values','')
-        rec_vals = rec_vals.strip(string.punctuation)
-
-        # Add frame
-        for frame_name, frame_data in board_data.items():
-            frame = canmatrix.Frame(
-                name = frame_name,
-                arbitration_id = int(frame_data["id"]),
-                transmitters = [frame_name],
-                attributes = {},
-                comment = "add comment here",
-                )
-
-            # Add signals
-            start_bit = 0
-            for signal_name, signal_data in frame_data["signals"].items():
-                sig = canmatrix.Signal(
-                    name = signal_name,
-                    start_bit = start_bit,
-                    size = signal_data["length"],
-                    is_float = False,
-                    is_little_endian = False,
-                    is_signed = False,
-                    factor = signal_data["scale"],
-                    offset = signal_data["offset"],
-                    min = signal_data["min"],
-                    max = signal_data["max"],
-                    # receivers = [rec_vals],
-                )
-                start_bit += signal_data["length"]
-                frame.add_signal(sig)
-            frame.calc_dlc()
-
-        print(f"Adding frame: {signal_frame_name}")
-        self.dbc.add_frame(frame)
-
-        self.dbc.add_ecu(
-            canmatrix.Ecu(
-                name = board_name,
-                comment = "more comments can go here"
-                )
-        )
-
-    def full_dbc(self, paths):
-        """Build one DBC for the vehicle"""
-        #open temp_yaml folder
-        #add all ecus
-        #save dbc
-        pass
-
-    def mini_dbc(self, path, file_dir, file_name):
-        with open(path, 'r') as f:
-            data = yaml.load(f)
-        #add ecus for one yaml
-        #TODO check how we can also add RX stuff
-        dbc_str = self.dbcMessagesTXGenerator(data["MessagesTX"], "")
-        self.save_dbc_str(file_dir, file_name, dbc_str)
-
-    def dbcMessagesTXGenerator(self, messagesTX_dict, dbc_str):
+    def _dbc_msgs_generator(self, messagesTX_dict, dbc_str):
         ''' 
         Input: 
             Dictionary with all TX messages
@@ -238,13 +172,12 @@ class Y2DHandler:
 
             # Generate DBC message
             dbc_str += "BO_ {} {}: {} {}\n".format(CAN_ID, MESSAGE_NAME, BYTE_LEN, NODE_NAME)
-            print(dbc_str)
 
             # Process signals
-            dbc_str = self.dbcSignalGenerator(signals_dict, dbc_str)
+            dbc_str = self._dbc_sig_generator(signals_dict, dbc_str)
         return dbc_str
 
-    def dbcSignalGenerator(self, signals_dict, dbc_str):
+    def _dbc_sig_generator(self, signals_dict, dbc_str):
         '''
         Input: DBC
         '''
@@ -268,8 +201,34 @@ class Y2DHandler:
             BIT_START += int(SIG_LEN)
         return dbc_str
 
+    def full_dbc(self, dir_path, out_path, file_name):
+        """
+        Build one DBC for the vehicle
+        """
+        dbc_str = ""
+        for yaml_name in os.listdir(dir_path):
+            print(yaml_name, dbc_str)
+            with open(os.path.join(dir_path, yaml_name), 'r') as f:
+                data = yaml.load(f)
+            dbc_str = self._dbc_msgs_generator(data["MessagesTX"], dbc_str)
+            dbc_str += "\n"
+        self.save_dbc(out_path, file_name, dbc_str)
+
+    def mini_dbc(self, path, file_dir, file_name):
+        """
+        Build DBC for one ECU
+        """
+        with open(path, 'r') as f:
+            data = yaml.load(f)
+        #add ecus for one yaml
+        dbc_str = self._dbc_msgs_generator(data["MessagesTX"], "")
+        # dbc_str = self._dbc_msgs_generator(data["MessagesRX"], dbc_str)
+        self.save_dbc(file_dir, file_name, dbc_str)
+
+
 if __name__ == "__main__":
     compiler = YAMLCompiler()
-    compiler.generate_artifacts('../../files/mini_yamls', '../../out/yaml')
+    compiler.generate_artifacts('files/mini_yamls', 'out/yaml')
     handler = Y2DHandler()
-    handler.mini_dbc('../../out/yaml/temp_air_ctrl.yaml', '../../out/dbcs/', 'air_ctrl.dbc')
+    handler.mini_dbc('out/yaml/autogen_air_ctrl.yaml', 'out/dbcs/', 'air_ctrl')
+    handler.full_dbc('out/yaml', 'out/dbcs', 'mk5')
