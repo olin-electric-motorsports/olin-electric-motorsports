@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/adi/Documents/Formula/olin-electric-motorsports/vehicle/mkv/hardware/lvbox/lvbms/tester_board/lv_bms_tester_board.sch</source>
+    <date>Wed 13 Oct 2021 06:01:51 PM EDT</date>
+    <tool>Eeschema 5.1.9-73d0e3b20d~88~ubuntu20.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>LV BMS High Current Path Tester Board</title>
+        <company>Olin Electric Motorsports</company>
+        <rev>1</rev>
+        <date>2021-09-17</date>
+        <source>lv_bms_tester_board.sch</source>
+        <comment number="1" value="Adi Ramachandran"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="Q1">
+      <value>SQM110P06</value>
+      <footprint>formula:TO-263-3-TabPin2</footprint>
+      <datasheet>https://www.vishay.com/docs/62784/sqm110p068m9l.pdf</datasheet>
+      <fields>
+        <field name="MPN">SQM110P06-8m9L</field>
+        <field name="Purchasing Link ">https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798</field>
+      </fields>
+      <libsource lib="formula" part="SQM110P06" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>613FE2BE</tstamp>
+    </comp>
+    <comp ref="Q3">
+      <value>SQM110P06</value>
+      <footprint>formula:TO-263-3-TabPin2</footprint>
+      <datasheet>https://www.vishay.com/docs/62784/sqm110p068m9l.pdf</datasheet>
+      <fields>
+        <field name="MPN">SQM110P06-8m9L</field>
+        <field name="Purchasing Link ">https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798</field>
+      </fields>
+      <libsource lib="formula" part="SQM110P06" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6140094F</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>redcube-7461057</value>
+      <footprint>formula:redcube_pressfit_6pin</footprint>
+      <datasheet>https://www.mouser.com/datasheet/2/445/7461057-1723744.pdf</datasheet>
+      <fields>
+        <field name="MPN">7461057</field>
+      </fields>
+      <libsource lib="formula" part="redcube-7461057" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>61404306</tstamp>
+    </comp>
+    <comp ref="U4">
+      <value>redcube-7461057</value>
+      <footprint>formula:redcube_pressfit_6pin</footprint>
+      <datasheet>https://www.mouser.com/datasheet/2/445/7461057-1723744.pdf</datasheet>
+      <fields>
+        <field name="MPN">7461057</field>
+      </fields>
+      <libsource lib="formula" part="redcube-7461057" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>61406058</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>R_10K</value>
+      <footprint>formula:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6140D893</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>R_10</value>
+      <footprint>formula:R_0805_OEM</footprint>
+      <fields>
+        <field name="MFN">Panasonic Electronic Components</field>
+        <field name="MPN">ERJ-P06F10R0V</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-P06F10R0V/5722444</field>
+      </fields>
+      <libsource lib="formula" part="R_10" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>614118F3</tstamp>
+    </comp>
+    <comp ref="Q2">
+      <value>MMBF170</value>
+      <footprint>formula:SOT-23-3_OEM</footprint>
+      <datasheet>https://rocelec.widen.net/view/pdf/bjayhgfvod/ONSM-S-A0003587638-1.pdf?t.download=true&amp;u=5oefqw</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MMBF170CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/on-semiconductor/MMBF170/MMBF170CT-ND/244295</field>
+      </fields>
+      <libsource lib="formula" part="MMBF170" description="MOSFET, N-channel, 60V, 500mA"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6141242D</tstamp>
+    </comp>
+    <comp ref="TP1">
+      <value>Test_Point_SMD</value>
+      <footprint>formula:Test_Point_SMD</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6141BE4B</tstamp>
+    </comp>
+    <comp ref="TP4">
+      <value>Test_Point_SMD</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.5mm</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6141C698</tstamp>
+    </comp>
+    <comp ref="TP2">
+      <value>Test_Point_SMD</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.5mm</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6141DD75</tstamp>
+    </comp>
+    <comp ref="TP3">
+      <value>Test_Point_SMD</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.5mm</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>61422B3F</tstamp>
+    </comp>
+    <comp ref="TP5">
+      <value>Test_Point_SMD</value>
+      <footprint>formula:Test_Point_SMD</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6144F96F</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>R_10K</value>
+      <footprint>formula:R_0805_OEM</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>614A6065</tstamp>
+    </comp>
+    <comp ref="TP6">
+      <value>Test_Point_SMD</value>
+      <footprint>formula:Test_Point_SMD</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>614A84EE</tstamp>
+    </comp>
+    <comp ref="TP7">
+      <value>Test_Point_SMD</value>
+      <footprint>formula:Test_Point_SMD</footprint>
+      <libsource lib="formula" part="Test_Point_SMD" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>614A9C4C</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="formula" part="MMBF170">
+      <description>MOSFET, N-channel, 60V, 500mA</description>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">MMBF170</field>
+        <field name="Footprint">TO_SOT_Packages_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.fairchildsemi.com/datasheets/MM/MMBF170.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">MMBF170CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/on-semiconductor/MMBF170/MMBF170CT-ND/244295</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_10">
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_10</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="MFN">Panasonic Electronic Components</field>
+        <field name="MPN">ERJ-P06F10R0V</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-P06F10R0V/5722444</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_10K">
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_10K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">http://www.bourns.com/data/global/pdfs/CRS.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="SQM110P06">
+      <docs>https://www.vishay.com/docs/62784/sqm110p068m9l.pdf</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">SQM110P06</field>
+        <field name="Footprint">formula:TO-263-3-TabPin2</field>
+        <field name="Purchasing Link ">https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798</field>
+        <field name="MPN">SQM110P06-8m9L</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="Test_Point_SMD">
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">Test_Point_SMD</field>
+        <field name="Footprint">footprints:Test_Point_SMD</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="redcube-7461057">
+      <docs>https://www.mouser.com/datasheet/2/445/7461057-1723744.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">redcube-7461057</field>
+        <field name="Footprint">formula:redcube_pressfit_6pin</field>
+        <field name="MPN">7461057</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="formula">
+      <uri>/home/adi/Documents/Formula/OEM_Preferred_Parts/schematic/formula.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(Q2-Pad3)">
+      <node ref="R5" pin="2"/>
+      <node ref="TP3" pin="1"/>
+      <node ref="Q2" pin="3"/>
+    </net>
+    <net code="2" name="GND">
+      <node ref="Q2" pin="2"/>
+      <node ref="R1" pin="2"/>
+      <node ref="TP5" pin="1"/>
+    </net>
+    <net code="3" name="Net-(Q2-Pad1)">
+      <node ref="Q2" pin="1"/>
+      <node ref="TP1" pin="1"/>
+      <node ref="R1" pin="1"/>
+    </net>
+    <net code="4" name="Net-(Q1-Pad2)">
+      <node ref="R4" pin="1"/>
+      <node ref="Q3" pin="2"/>
+      <node ref="Q1" pin="2"/>
+      <node ref="TP2" pin="1"/>
+    </net>
+    <net code="5" name="Net-(Q3-Pad3)">
+      <node ref="Q3" pin="3"/>
+      <node ref="TP7" pin="1"/>
+      <node ref="U4" pin="1"/>
+    </net>
+    <net code="6" name="Net-(Q1-Pad3)">
+      <node ref="TP6" pin="1"/>
+      <node ref="U3" pin="1"/>
+      <node ref="Q1" pin="3"/>
+    </net>
+    <net code="7" name="Net-(Q1-Pad1)">
+      <node ref="TP4" pin="1"/>
+      <node ref="R5" pin="1"/>
+      <node ref="Q1" pin="1"/>
+      <node ref="R4" pin="2"/>
+      <node ref="Q3" pin="1"/>
+    </net>
+  </nets>
+</export>
