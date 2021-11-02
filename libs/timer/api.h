@@ -25,7 +25,7 @@ typedef enum {
     TIMER0_MODE_FAST_PWM = 0x3,
     TIMER0_MODE_PHASE_CORRECT_PWM_OCRA = 0x5,
     TIMER0_MODE_FAST_PWM_OCRA = 0x7,
-} timer_0_mode_e;
+} timer0_mode_e;
 
 /*
  * These are the modes for timer1. Values that are commented out use input
@@ -48,7 +48,7 @@ typedef enum {
     // CTC_ICR1 = 0xC,
     // FAST_PWM = 0xE,
     TIMER1_MODE_FAST_PWM_OCR1A = 0xF,
-} timer_1_mode_e;
+} timer1_mode_e;
 
 /*
  * Defines the behavior of specific hardware pins connected to the timer, OCnx.
@@ -100,8 +100,10 @@ typedef struct {
     timer_e timer;
 
     // Only one will be set per-config, based on which timer is used
-    timer_0_mode_e timer0_mode;
-    timer_1_mode_e timer1_mode;
+    union {
+        timer0_mode_e timer0_mode;
+        timer1_mode_e timer1_mode;
+    };
 
     timer_source_prescalar_e prescalar;
 

@@ -82,7 +82,7 @@ static void timer_1_init(timer_cfg_s* timer_cfg) {
               | ((uint8_t)timer_cfg->timer1_mode & 0x3);
 
     TCCR1B |= (((uint8_t)timer_cfg->timer1_mode & 0xC) << 1)
-              | ((uint8_t)timer_cfg->prescalar);
+              | ((uint8_t)timer_cfg->prescalar & 0x7);
 
     OCR1A = timer_cfg->channel_a.output_compare_match;
     OCR1B = timer_cfg->channel_b.output_compare_match;
