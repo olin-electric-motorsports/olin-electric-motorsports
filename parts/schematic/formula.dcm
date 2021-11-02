@@ -1,5 +1,50 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP +12V_BUCK
+D Power symbol creates a global label with name "+5V"
+K power-flag
+$ENDCMP
+#
+$CMP +12V_IMD
+D Power symbol creates a global label with name "+5V"
+K power-flag
+$ENDCMP
+#
+$CMP +12V_SHUTDOWN
+D Power symbol creates a global label with name "+5V"
+K power-flag
+$ENDCMP
+#
+$CMP +12V_TSAL
+D Power symbol creates a global label with name "+5V"
+K power-flag
+$ENDCMP
+#
+$CMP +5V_AIR_CONTROL
+D Power symbol creates a global label with name "+5V"
+K power-flag
+$ENDCMP
+#
+$CMP +5V_BMS
+D Power symbol creates a global label with name "+5V"
+K power-flag
+$ENDCMP
+#
+$CMP +TS
+D Power symbol creates a global label with name "+5V"
+K power-flag
+$ENDCMP
+#
+$CMP -15V
+D Power symbol creates a global label with name "GND" , ground
+K power-flag
+$ENDCMP
+#
+$CMP -TS
+D Power symbol creates a global label with name "GND" , ground
+K power-flag
+$ENDCMP
+#
 $CMP 1.5A_Fuse
 D 1.5A Fuse LitteFuse
 F https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf
@@ -20,6 +65,10 @@ D Op-amp, dual supply
 $ENDCMP
 #
 $CMP ATMEGA16M1
+D Microcontroller, 8-bit, 4KB RAM, 64KB Flash
+$ENDCMP
+#
+$CMP ATMEGA64M1
 D Microcontroller, 8-bit, 1KB RAM, 16KB Flash
 $ENDCMP
 #
@@ -633,6 +682,11 @@ $ENDCMP
 #
 $CMP R_22K
 D Resistor, 22K, 0.125W, 5%, 0805
+$ENDCMP
+#
+$CMP R_23.7K
+D Resistor, 23.7K, 0.25W, 0.5%, 0805
+F https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf
 $ENDCMP
 #
 $CMP R_25K
