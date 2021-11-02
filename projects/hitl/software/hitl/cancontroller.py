@@ -48,13 +48,13 @@ class CANController:
         # Start listening
         bus_type = "socketcan"
         if "linux" in sys.platform:
-            can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
+            self.can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
             self.kill_threads = threading.Event()
             listener = threading.Thread(
                 target=self._listen,
                 name="listener",
                 kwargs={
-                    "can_bus": can_bus,
+                    "can_bus": self.can_bus,
                     "callback": self._parse_frame,
                     "kill_threads": self.kill_threads,
                 },
@@ -82,8 +82,12 @@ class CANController:
         the state of a signal only updates an internal lookup dictionary
         """
         try:
-            msg = self.message_of_signal[signal]
-            self.signals[msg][signal] = value
+             msg_name = self.message_of_signal[signal]
+             self.signals[msg_name][signal] = value
+             msg = self.db.get_message_by_name(msg_name)
+             data = msg.encode(self.signals[msg_name])
+             message = can.Message(arbitration_id=msg.frame_id, data=data)
+             self.can_bus.send(message)
         except KeyError:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
 
