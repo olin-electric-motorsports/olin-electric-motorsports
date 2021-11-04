@@ -16,10 +16,10 @@ $EndDescr
 Text Notes 4600 900  0    118  ~ 0
 AIR CONTROL RELAY CIRCUITS
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0904
 U 1 1 61065F69
 P 5850 5550
-F 0 "#PWR?" H 5850 5300 50  0001 C CNN
+F 0 "#PWR0904" H 5850 5300 50  0001 C CNN
 F 1 "GND" H 5855 5377 50  0000 C CNN
 F 2 "" H 5850 5550 50  0001 C CNN
 F 3 "" H 5850 5550 50  0001 C CNN
@@ -27,10 +27,10 @@ F 3 "" H 5850 5550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_10K R906
+L formula:R_10K R908
 U 1 1 61065F72
 P 5850 4900
-F 0 "R906" V 5750 4850 50  0000 L CNN
+F 0 "R908" V 5750 4850 50  0000 L CNN
 F 1 "R_10K" V 5950 4800 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5780 4900 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 5930 4900 50  0001 C CNN
@@ -41,10 +41,10 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 633
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:LED_0805 D903
+L formula:LED_0805 D904
 U 1 1 61065F7B
 P 5300 5200
-F 0 "D903" V 5300 5450 50  0000 R CNN
+F 0 "D904" V 5300 5450 50  0000 R CNN
 F 1 "LED_0805" V 5200 5600 50  0000 R CNN
 F 2 "footprints:LED_0805_OEM" H 5200 5200 50  0001 C CNN
 F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 5300 5300 50  0001 C CNN
@@ -55,10 +55,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 5700 5700 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:R_200 R905
+L formula:R_200 R906
 U 1 1 61065F84
 P 5300 4800
-F 0 "R905" H 5050 4750 50  0000 L CNN
+F 0 "R906" H 5050 4750 50  0000 L CNN
 F 1 "R_200" H 5000 4850 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5230 4800 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 5380 4800 50  0001 C CNN
@@ -70,13 +70,11 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 5780 52
 $EndComp
 Wire Wire Line
 	5300 4600 5600 4600
-Wire Wire Line
-	5800 4000 5350 4000
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0902
 U 1 1 61065F96
 P 3400 5550
-F 0 "#PWR?" H 3400 5300 50  0001 C CNN
+F 0 "#PWR0902" H 3400 5300 50  0001 C CNN
 F 1 "GND" H 3405 5377 50  0000 C CNN
 F 2 "" H 3400 5550 50  0001 C CNN
 F 3 "" H 3400 5550 50  0001 C CNN
@@ -86,10 +84,10 @@ $EndComp
 Wire Wire Line
 	2900 4650 3150 4650
 $Comp
-L formula:R_200 R901
+L formula:R_200 R903
 U 1 1 61065FAA
 P 2900 4850
-F 0 "R901" H 2650 4800 50  0000 L CNN
+F 0 "R903" H 2650 4800 50  0000 L CNN
 F 1 "R_200" H 2600 4900 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 2830 4850 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 2980 4850 50  0001 C CNN
@@ -100,10 +98,10 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 3380 52
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_10K R903
+L formula:R_10K R904
 U 1 1 61065FB3
 P 3400 5050
-F 0 "R903" H 3450 5100 50  0000 L CNN
+F 0 "R904" H 3450 5100 50  0000 L CNN
 F 1 "R_10K" H 3450 5000 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 3330 5050 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 3480 5050 50  0001 C CNN
@@ -115,13 +113,13 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 388
 $EndComp
 Wire Wire Line
 	3650 4000 2950 4000
-Text Notes 4950 3800 0    98   ~ 0
+Text Notes 5000 3650 0    98   ~ 0
 Air+ Weld Detection
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0906
 U 1 1 61066001
 P 6350 3100
-F 0 "#PWR?" H 6350 2850 50  0001 C CNN
+F 0 "#PWR0906" H 6350 2850 50  0001 C CNN
 F 1 "GND" H 6355 2927 50  0000 C CNN
 F 2 "" H 6350 3100 50  0001 C CNN
 F 3 "" H 6350 3100 50  0001 C CNN
@@ -131,10 +129,10 @@ $EndComp
 Wire Wire Line
 	6350 2350 6350 3100
 $Comp
-L formula:LED_0805 D904
+L formula:LED_0805 D903
 U 1 1 6106600B
 P 5200 2850
-F 0 "D904" V 5150 2800 50  0000 R CNN
+F 0 "D903" V 5150 2800 50  0000 R CNN
 F 1 "LED_0805" V 5250 2800 50  0000 R CNN
 F 2 "footprints:LED_0805_OEM" H 5100 2850 50  0001 C CNN
 F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 5200 2950 50  0001 C CNN
@@ -145,10 +143,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 5600 3350 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:R_10K R908
+L formula:R_10K R907
 U 1 1 61066016
 P 5650 2600
-F 0 "R908" H 5720 2646 50  0000 L CNN
+F 0 "R907" H 5720 2646 50  0000 L CNN
 F 1 "R_10K" H 5720 2555 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5580 2600 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 5730 2600 50  0001 C CNN
@@ -159,10 +157,10 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 613
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_200 R907
+L formula:R_200 R905
 U 1 1 61066021
 P 5200 2400
-F 0 "R907" H 5250 2350 50  0000 L CNN
+F 0 "R905" H 5250 2350 50  0000 L CNN
 F 1 "R_200" H 5250 2450 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5130 2400 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 5280 2400 50  0001 C CNN
@@ -187,10 +185,10 @@ F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0901
 U 1 1 61066035
 P 3150 3000
-F 0 "#PWR?" H 3150 2750 50  0001 C CNN
+F 0 "#PWR0901" H 3150 2750 50  0001 C CNN
 F 1 "GND" H 3155 2827 50  0000 C CNN
 F 2 "" H 3150 3000 50  0001 C CNN
 F 3 "" H 3150 3000 50  0001 C CNN
@@ -198,10 +196,10 @@ F 3 "" H 3150 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_200 R902
+L formula:R_200 R901
 U 1 1 61066040
 P 2050 2400
-F 0 "R902" H 1800 2350 50  0000 L CNN
+F 0 "R901" H 1800 2350 50  0000 L CNN
 F 1 "R_200" H 1750 2450 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 1980 2400 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 2130 2400 50  0001 C CNN
@@ -212,10 +210,10 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 2530 28
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:LED_0805 D902
+L formula:LED_0805 D901
 U 1 1 61066049
 P 2050 2800
-F 0 "D902" V 2050 3050 50  0000 R CNN
+F 0 "D901" V 2050 3050 50  0000 R CNN
 F 1 "LED_0805" V 1950 3200 50  0000 R CNN
 F 2 "footprints:LED_0805_OEM" H 1950 2800 50  0001 C CNN
 F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 2050 2900 50  0001 C CNN
@@ -251,13 +249,13 @@ Wire Wire Line
 	5550 1550 6300 1550
 Wire Wire Line
 	5300 5450 5850 5450
-Text Notes 2850 3800 0    98   ~ 0
+Text Notes 2900 3700 0    98   ~ 0
 Air- Weld Detection
 $Comp
-L formula:R_10K R904
+L formula:R_10K R902
 U 1 1 61066090
 P 2400 2550
-F 0 "R904" H 2470 2596 50  0000 L CNN
+F 0 "R902" H 2470 2596 50  0000 L CNN
 F 1 "R_10K" H 2470 2505 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 2330 2550 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 2480 2550 50  0001 C CNN
@@ -371,18 +369,14 @@ Text GLabel 6100 4600 2    50   Input ~ 0
 Wire Wire Line
 	5600 4250 5600 4600
 Connection ~ 5600 4600
-Text GLabel 3650 4000 2    50   Input ~ 0
-5V_AIR_CONTROL
-Text GLabel 5800 4000 2    50   Input ~ 0
-5V_AIR_CONTROL
 Connection ~ 10100 2700
 Wire Wire Line
 	10100 2700 10100 2850
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0907
 U 1 1 61065FC3
 P 10100 2850
-F 0 "#PWR?" H 10100 2600 50  0001 C CNN
+F 0 "#PWR0907" H 10100 2600 50  0001 C CNN
 F 1 "GND" H 10105 2677 50  0000 C CNN
 F 2 "" H 10100 2850 50  0001 C CNN
 F 3 "" H 10100 2850 50  0001 C CNN
@@ -558,10 +552,10 @@ Wire Wire Line
 Wire Wire Line
 	3400 5200 3400 5450
 $Comp
-L formula:LED_0805 D901
+L formula:LED_0805 D902
 U 1 1 61065FA0
 P 2900 5200
-F 0 "D901" V 2900 5450 50  0000 R CNN
+F 0 "D902" V 2900 5450 50  0000 R CNN
 F 1 "LED_0805" V 2800 5600 50  0000 R CNN
 F 2 "footprints:LED_0805_OEM" H 2800 5200 50  0001 C CNN
 F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 2900 5300 50  0001 C CNN
@@ -632,4 +626,10 @@ Wire Wire Line
 Connection ~ 5950 4600
 Wire Wire Line
 	5950 4600 6100 4600
+Wire Wire Line
+	5350 4000 6050 4000
+Text GLabel 6050 4000 2    50   Input ~ 0
++5V_AIR_CONTROL
+Text GLabel 3650 4000 2    50   Input ~ 0
++5V_AIR_CONTROL
 $EndSCHEMATC

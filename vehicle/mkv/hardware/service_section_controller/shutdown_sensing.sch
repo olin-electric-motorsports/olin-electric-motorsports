@@ -15,10 +15,10 @@ Comment4 ""
 $EndDescr
 Connection ~ 6050 2450
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0510
 U 1 1 610B9C4E
 P 6050 2450
-F 0 "#PWR?" H 6050 2200 50  0001 C CNN
+F 0 "#PWR0510" H 6050 2200 50  0001 C CNN
 F 1 "GND" H 6055 2277 50  0000 C CNN
 F 2 "" H 6050 2450 50  0001 C CNN
 F 3 "" H 6050 2450 50  0001 C CNN
@@ -27,10 +27,10 @@ F 3 "" H 6050 2450 50  0001 C CNN
 $EndComp
 Connection ~ 6000 4350
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0508
 U 1 1 610B9C55
 P 6000 4350
-F 0 "#PWR?" H 6000 4100 50  0001 C CNN
+F 0 "#PWR0508" H 6000 4100 50  0001 C CNN
 F 1 "GND" H 6005 4177 50  0000 C CNN
 F 2 "" H 6000 4350 50  0001 C CNN
 F 3 "" H 6000 4350 50  0001 C CNN
@@ -39,10 +39,10 @@ F 3 "" H 6000 4350 50  0001 C CNN
 $EndComp
 Connection ~ 3300 2450
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0506
 U 1 1 610B9C5C
 P 3300 2450
-F 0 "#PWR?" H 3300 2200 50  0001 C CNN
+F 0 "#PWR0506" H 3300 2200 50  0001 C CNN
 F 1 "GND" H 3305 2277 50  0000 C CNN
 F 2 "" H 3300 2450 50  0001 C CNN
 F 3 "" H 3300 2450 50  0001 C CNN
@@ -69,10 +69,10 @@ Connection ~ 2800 2450
 Wire Wire Line
 	2500 2450 2800 2450
 $Comp
-L formula:LED_0805 D505
+L formula:LED_0805 D506
 U 1 1 610B9C73
 P 5250 2300
-F 0 "D505" H 5300 2200 50  0000 R CNN
+F 0 "D506" H 5300 2200 50  0000 R CNN
 F 1 "LED_0805" H 5350 2400 50  0000 R CNN
 F 2 "footprints:LED_0805_OEM" H 5150 2300 50  0001 C CNN
 F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 5250 2400 50  0001 C CNN
@@ -83,10 +83,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 5650 2800 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:LED_0805 D506
+L formula:LED_0805 D505
 U 1 1 610B9C7C
 P 5150 4200
-F 0 "D506" H 5200 4100 50  0000 R CNN
+F 0 "D505" H 5200 4100 50  0000 R CNN
 F 1 "LED_0805" H 5250 4300 50  0000 R CNN
 F 2 "footprints:LED_0805_OEM" H 5050 4200 50  0001 C CNN
 F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 5150 4300 50  0001 C CNN
@@ -97,10 +97,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 5550 4700 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:LED_0805 D502
+L formula:LED_0805 D503
 U 1 1 610B9C85
 P 2500 2300
-F 0 "D502" H 2550 2200 50  0000 R CNN
+F 0 "D503" H 2550 2200 50  0000 R CNN
 F 1 "LED_0805" H 2600 2400 50  0000 R CNN
 F 2 "footprints:LED_0805_OEM" H 2400 2300 50  0001 C CNN
 F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 2500 2400 50  0001 C CNN
@@ -114,10 +114,10 @@ Wire Wire Line
 	5250 1850 5150 1850
 Connection ~ 5250 1850
 $Comp
-L formula:R_1K R511
+L formula:R_1K R512
 U 1 1 610B9C90
 P 5250 2000
-F 0 "R511" V 5350 1950 50  0000 L CNN
+F 0 "R512" V 5350 1950 50  0000 L CNN
 F 1 "R_1K" V 5150 1900 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5180 2000 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 5330 2000 50  0001 C CNN
@@ -131,10 +131,10 @@ Wire Wire Line
 	5150 3750 4950 3750
 Connection ~ 5150 3750
 $Comp
-L formula:R_1K R512
+L formula:R_1K R511
 U 1 1 610B9C9B
 P 5150 3900
-F 0 "R512" V 5250 3850 50  0000 L CNN
+F 0 "R511" V 5250 3850 50  0000 L CNN
 F 1 "R_1K" V 5050 3800 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5080 3900 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 5230 3900 50  0001 C CNN
@@ -149,10 +149,10 @@ Connection ~ 2500 1850
 Wire Wire Line
 	2500 1850 2800 1850
 $Comp
-L formula:R_1K R502
+L formula:R_1K R503
 U 1 1 610B9CA7
 P 2500 2000
-F 0 "R502" V 2600 1950 50  0000 L CNN
+F 0 "R503" V 2600 1950 50  0000 L CNN
 F 1 "R_1K" V 2400 1900 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 2430 2000 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 2580 2000 50  0001 C CNN
@@ -166,10 +166,10 @@ Wire Wire Line
 	5500 3750 5150 3750
 Connection ~ 5500 3750
 $Comp
-L formula:R_100K R515
+L formula:R_100K R514
 U 1 1 610B9CB2
 P 5500 3900
-F 0 "R515" V 5400 3850 50  0000 L CNN
+F 0 "R514" V 5400 3850 50  0000 L CNN
 F 1 "R_100K" V 5600 3750 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5430 3900 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 5580 3900 50  0001 C CNN
@@ -183,10 +183,10 @@ Wire Wire Line
 	5550 1850 5250 1850
 Connection ~ 5550 1850
 $Comp
-L formula:R_100K R514
+L formula:R_100K R515
 U 1 1 610B9CBD
 P 5550 2000
-F 0 "R514" V 5450 1950 50  0000 L CNN
+F 0 "R515" V 5450 1950 50  0000 L CNN
 F 1 "R_100K" V 5650 1850 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5480 2000 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 5630 2000 50  0001 C CNN
@@ -199,10 +199,10 @@ $EndComp
 Wire Wire Line
 	3000 1850 2950 1850
 $Comp
-L formula:R_100K R505
+L formula:R_100K R506
 U 1 1 610B9CC8
 P 2800 2000
-F 0 "R505" V 2700 1950 50  0000 L CNN
+F 0 "R506" V 2700 1950 50  0000 L CNN
 F 1 "R_100K" V 2900 1850 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 2730 2000 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 2880 2000 50  0001 C CNN
@@ -213,10 +213,10 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:SSM3K333R Q502
+L formula:SSM3K333R Q503
 U 1 1 610B9CD1
 P 3200 1850
-F 0 "Q502" H 3406 1896 50  0000 L CNN
+F 0 "Q503" H 3406 1896 50  0000 L CNN
 F 1 "SSM3K333R" H 3406 1805 50  0000 L CNN
 F 2 "footprints:SOT-23F" H 3400 1775 50  0001 L CIN
 F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 3400 1925 50  0001 L CNN
@@ -231,10 +231,10 @@ Wire Wire Line
 Wire Wire Line
 	5750 1850 5700 1850
 $Comp
-L formula:SSM3K333R Q505
+L formula:SSM3K333R Q504
 U 1 1 610B9CDC
 P 5900 3750
-F 0 "Q505" H 6106 3796 50  0000 L CNN
+F 0 "Q504" H 6106 3796 50  0000 L CNN
 F 1 "SSM3K333R" H 6106 3705 50  0000 L CNN
 F 2 "footprints:SOT-23F" H 6100 3675 50  0001 L CIN
 F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 6100 3825 50  0001 L CNN
@@ -245,10 +245,10 @@ F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:SSM3K333R Q504
+L formula:SSM3K333R Q505
 U 1 1 610B9CE5
 P 5950 1850
-F 0 "Q504" H 6156 1896 50  0000 L CNN
+F 0 "Q505" H 6156 1896 50  0000 L CNN
 F 1 "SSM3K333R" H 6156 1805 50  0000 L CNN
 F 2 "footprints:SOT-23F" H 6150 1775 50  0001 L CIN
 F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 6150 1925 50  0001 L CNN
@@ -259,24 +259,24 @@ F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_10K R517
+L formula:R_10K R516
 U 1 1 610B9CEE
-P 6000 3100
-F 0 "R517" H 6070 3146 50  0000 L CNN
-F 1 "R_10K" H 6070 3055 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 5930 3100 50  0001 C CNN
-F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 6080 3100 50  0001 C CNN
-F 4 "DK" H 6000 3100 60  0001 C CNN "MFN"
-F 5 "CRS0805-FX-1002ELFCT-ND" H 6000 3100 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 6480 3500 60  0001 C CNN "PurchasingLink"
-	1    6000 3100
+P 6000 3150
+F 0 "R516" H 6070 3196 50  0000 L CNN
+F 1 "R_10K" H 6070 3105 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 5930 3150 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 6080 3150 50  0001 C CNN
+F 4 "DK" H 6000 3150 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 6000 3150 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 6480 3550 60  0001 C CNN "PurchasingLink"
+	1    6000 3150
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_10K R516
+L formula:R_10K R517
 U 1 1 610B9CF7
 P 6050 1200
-F 0 "R516" H 6120 1246 50  0000 L CNN
+F 0 "R517" H 6120 1246 50  0000 L CNN
 F 1 "R_10K" H 6120 1155 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5980 1200 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 6130 1200 50  0001 C CNN
@@ -287,10 +287,10 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 653
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_10K R508
+L formula:R_10K R509
 U 1 1 610B9D00
 P 3300 1250
-F 0 "R508" H 3370 1296 50  0000 L CNN
+F 0 "R509" H 3370 1296 50  0000 L CNN
 F 1 "R_10K" H 3370 1205 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 3230 1250 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 3380 1250 50  0001 C CNN
@@ -305,24 +305,24 @@ SHUTDOWN SENSING
 Wire Wire Line
 	2800 2150 2800 2450
 $Comp
-L formula:R_10K R509
+L formula:R_10K R507
 U 1 1 610B9D24
-P 3250 3050
-F 0 "R509" H 3320 3096 50  0000 L CNN
-F 1 "R_10K" H 3320 3005 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 3180 3050 50  0001 C CNN
-F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 3330 3050 50  0001 C CNN
-F 4 "DK" H 3250 3050 60  0001 C CNN "MFN"
-F 5 "CRS0805-FX-1002ELFCT-ND" H 3250 3050 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 3730 3450 60  0001 C CNN "PurchasingLink"
-	1    3250 3050
+P 3250 3100
+F 0 "R507" H 3320 3146 50  0000 L CNN
+F 1 "R_10K" H 3320 3055 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 3180 3100 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 3330 3100 50  0001 C CNN
+F 4 "DK" H 3250 3100 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 3250 3100 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 3730 3500 60  0001 C CNN "PurchasingLink"
+	1    3250 3100
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:SSM3K333R Q503
+L formula:SSM3K333R Q501
 U 1 1 610B9D2D
 P 3150 3750
-F 0 "Q503" H 3356 3796 50  0000 L CNN
+F 0 "Q501" H 3356 3796 50  0000 L CNN
 F 1 "SSM3K333R" H 3356 3705 50  0000 L CNN
 F 2 "footprints:SOT-23F" H 3350 3675 50  0001 L CIN
 F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 3350 3825 50  0001 L CNN
@@ -333,10 +333,10 @@ F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_100K R506
+L formula:R_100K R505
 U 1 1 610B9D36
 P 2650 3900
-F 0 "R506" V 2550 3850 50  0000 L CNN
+F 0 "R505" V 2550 3850 50  0000 L CNN
 F 1 "R_100K" V 2750 3750 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 2580 3900 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 2730 3900 50  0001 C CNN
@@ -352,10 +352,10 @@ Connection ~ 2650 3750
 Wire Wire Line
 	2650 3750 2300 3750
 $Comp
-L formula:R_1K R503
+L formula:R_1K R502
 U 1 1 610B9D42
 P 2300 3900
-F 0 "R503" V 2400 3850 50  0000 L CNN
+F 0 "R502" V 2400 3850 50  0000 L CNN
 F 1 "R_1K" V 2200 3800 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 2230 3900 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 2380 3900 50  0001 C CNN
@@ -369,10 +369,10 @@ Connection ~ 2300 3750
 Wire Wire Line
 	2300 3750 2050 3750
 $Comp
-L formula:LED_0805 D503
+L formula:LED_0805 D502
 U 1 1 610B9D4D
 P 2300 4200
-F 0 "D503" H 2350 4100 50  0000 R CNN
+F 0 "D502" H 2350 4100 50  0000 R CNN
 F 1 "LED_0805" H 2400 4300 50  0000 R CNN
 F 2 "footprints:LED_0805_OEM" H 2200 4200 50  0001 C CNN
 F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 2300 4300 50  0001 C CNN
@@ -390,10 +390,10 @@ Connection ~ 2650 4350
 Wire Wire Line
 	2650 4350 3250 4350
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0502
 U 1 1 610B9D58
 P 3250 4350
-F 0 "#PWR?" H 3250 4100 50  0001 C CNN
+F 0 "#PWR0502" H 3250 4100 50  0001 C CNN
 F 1 "GND" H 3255 4177 50  0000 C CNN
 F 2 "" H 3250 4350 50  0001 C CNN
 F 3 "" H 3250 4350 50  0001 C CNN
@@ -473,10 +473,10 @@ Wire Wire Line
 	5450 6600 6050 6600
 Connection ~ 5450 6600
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0512
 U 1 1 610B9D91
 P 6050 6600
-F 0 "#PWR?" H 6050 6350 50  0001 C CNN
+F 0 "#PWR0512" H 6050 6350 50  0001 C CNN
 F 1 "GND" H 6200 6550 50  0000 C CNN
 F 2 "" H 6050 6600 50  0001 C CNN
 F 3 "" H 6050 6600 50  0001 C CNN
@@ -485,10 +485,10 @@ F 3 "" H 6050 6600 50  0001 C CNN
 $EndComp
 Connection ~ 6050 6600
 $Comp
-L formula:R_10K R507
+L formula:R_10K R508
 U 1 1 610B9DB5
 P 3250 5250
-F 0 "R507" H 3320 5296 50  0000 L CNN
+F 0 "R508" H 3320 5296 50  0000 L CNN
 F 1 "R_10K" H 3320 5205 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 3180 5250 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 3330 5250 50  0001 C CNN
@@ -556,10 +556,10 @@ Connection ~ 2600 6600
 Wire Wire Line
 	2600 6600 3250 6600
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0504
 U 1 1 610B9DE0
 P 3250 6600
-F 0 "#PWR?" H 3250 6350 50  0001 C CNN
+F 0 "#PWR0504" H 3250 6350 50  0001 C CNN
 F 1 "GND" H 3400 6550 50  0000 C CNN
 F 2 "" H 3250 6600 50  0001 C CNN
 F 3 "" H 3250 6600 50  0001 C CNN
@@ -568,10 +568,10 @@ F 3 "" H 3250 6600 50  0001 C CNN
 $EndComp
 Connection ~ 3250 6600
 $Comp
-L formula:SSM3K333R Q501
+L formula:SSM3K333R Q502
 U 1 1 610B9DEC
 P 3150 6000
-F 0 "Q501" H 3350 5900 50  0000 L CNN
+F 0 "Q502" H 3350 5900 50  0000 L CNN
 F 1 "SSM3K333R" H 3356 5955 50  0000 L CNN
 F 2 "footprints:SOT-23F" H 3350 5925 50  0001 L CIN
 F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 3350 6075 50  0001 L CNN
@@ -605,18 +605,6 @@ Text GLabel 5150 1850 0    50   Input ~ 0
 DETECT_BMS
 Text GLabel 6350 1400 2    50   Input ~ 0
 SS_BMS
-Text GLabel 3300 1050 2    50   Input ~ 0
-5V_AIR_CONTROL
-Text GLabel 6050 950  2    50   Input ~ 0
-5V_AIR_CONTROL
-Text GLabel 6000 2850 2    50   Input ~ 0
-5V_AIR_CONTROL
-Text GLabel 6050 5050 2    50   Input ~ 0
-5V_AIR_CONTROL
-Text GLabel 3250 4950 2    50   Input ~ 0
-5V_AIR_CONTROL
-Text GLabel 3250 2800 2    50   Input ~ 0
-5V_AIR_CONTROL
 Wire Wire Line
 	2350 1850 2500 1850
 $Comp
@@ -661,7 +649,7 @@ Connection ~ 3300 1600
 Wire Wire Line
 	3300 1600 3300 1450
 Wire Wire Line
-	6050 950  6050 1050
+	6050 900  6050 1050
 Wire Wire Line
 	6050 1350 6050 1400
 Wire Wire Line
@@ -702,18 +690,18 @@ Connection ~ 5700 1850
 Wire Wire Line
 	5700 1850 5550 1850
 Wire Wire Line
-	3250 2800 3250 2900
+	3250 2900 3250 2950
 Wire Wire Line
-	3250 3200 3250 3300
+	3250 3250 3250 3300
 Wire Wire Line
 	3600 3300 3250 3300
 Connection ~ 3250 3300
 Wire Wire Line
 	3250 3300 3250 3450
 Wire Wire Line
-	6000 2850 6000 2950
+	6000 2950 6000 3000
 Wire Wire Line
-	6000 3250 6000 3350
+	6000 3300 6000 3350
 Wire Wire Line
 	6350 3350 6000 3350
 Connection ~ 6000 3350
@@ -891,4 +879,16 @@ Wire Wire Line
 	3250 6200 3250 6600
 Wire Wire Line
 	6050 6200 6050 6600
+Text GLabel 6050 900  0    50   Input ~ 0
++5V_AIR_CONTROL
+Text GLabel 3300 1050 0    50   Input ~ 0
++5V_AIR_CONTROL
+Text GLabel 3250 2900 0    50   Input ~ 0
++5V_AIR_CONTROL
+Text GLabel 6000 2950 0    50   Input ~ 0
++5V_AIR_CONTROL
+Text GLabel 6050 5050 0    50   Input ~ 0
++5V_AIR_CONTROL
+Text GLabel 3250 4950 0    50   Input ~ 0
++5V_AIR_CONTROL
 $EndSCHEMATC

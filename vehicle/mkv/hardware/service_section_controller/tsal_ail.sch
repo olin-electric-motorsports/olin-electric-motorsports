@@ -126,7 +126,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 258
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	1150 3650 1200 3650
+	1000 3650 1200 3650
 Wire Wire Line
 	1500 3650 1700 3650
 Wire Wire Line
@@ -143,9 +143,7 @@ Wire Wire Line
 	2950 4050 2250 4050
 Connection ~ 2950 3850
 Wire Wire Line
-	1950 4050 1150 4050
-Wire Wire Line
-	1350 4500 1250 4500
+	1950 4050 1000 4050
 Wire Wire Line
 	1650 4500 1800 4500
 Wire Wire Line
@@ -199,15 +197,6 @@ Wire Wire Line
 Wire Wire Line
 	3750 2950 3600 2950
 Connection ~ 3600 2950
-Wire Wire Line
-	3600 2950 3600 2850
-Wire Wire Line
-	4250 2950 4250 3400
-Wire Wire Line
-	4050 3400 4250 3400
-Connection ~ 4250 3400
-Wire Wire Line
-	4250 3400 4250 3700
 Wire Wire Line
 	4000 3950 4150 3950
 Wire Wire Line
@@ -306,8 +295,6 @@ Wire Wire Line
 	6100 5300 6100 5450
 Wire Wire Line
 	7000 3950 7250 3950
-Wire Wire Line
-	7250 3950 7250 3600
 $Comp
 L formula:SSM3K333R Q?
 U 1 1 611250EA
@@ -357,8 +344,8 @@ L power:GND #PWR?
 U 1 1 61125105
 P 7150 4900
 AR Path="/60A3B236/61125105" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/61125105" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 7150 4650 50  0001 C CNN
+AR Path="/60A3B41E/61125105" Ref="#PWR0605"  Part="1" 
+F 0 "#PWR0605" H 7150 4650 50  0001 C CNN
 F 1 "GND" H 7155 4727 50  0000 C CNN
 F 2 "" H 7150 4900 50  0001 C CNN
 F 3 "" H 7150 4900 50  0001 C CNN
@@ -372,8 +359,8 @@ L power:GND #PWR?
 U 1 1 6112510C
 P 8150 4550
 AR Path="/60A3B236/6112510C" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/6112510C" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 8150 4300 50  0001 C CNN
+AR Path="/60A3B41E/6112510C" Ref="#PWR0609"  Part="1" 
+F 0 "#PWR0609" H 8150 4300 50  0001 C CNN
 F 1 "GND" H 8155 4377 50  0000 C CNN
 F 2 "" H 8150 4550 50  0001 C CNN
 F 3 "" H 8150 4550 50  0001 C CNN
@@ -391,7 +378,7 @@ Wire Wire Line
 Text Label 8350 2250 2    50   ~ 0
 TSAL_FLAG
 Wire Wire Line
-	9500 1150 10100 1150
+	9500 1250 10100 1250
 Wire Wire Line
 	6150 3950 6400 3950
 Wire Wire Line
@@ -410,40 +397,40 @@ LV\n\n
 $Comp
 L formula:R_51.1K R?
 U 1 1 61125165
-P 1800 4950
+P 1500 4500
 AR Path="/60A3B236/61125165" Ref="R?"  Part="1" 
-AR Path="/60A3B41E/61125165" Ref="R603"  Part="1" 
-F 0 "R603" H 1870 4996 50  0000 L CNN
-F 1 "R_51.1K" H 1870 4905 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 700 5250 50  0001 L CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 700 5350 50  0001 L CNN
-F 4 "DK" H 1800 4950 60  0001 C CNN "MFN"
-F 5 "P51.1KCCT-ND" H 700 5150 60  0001 L CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF5112V/P51.1KCCT-ND/119466" H 700 5450 60  0001 L CNN "PurchasingLink"
-	1    1800 4950
-	1    0    0    -1  
+AR Path="/60A3B41E/61125165" Ref="R602"  Part="1" 
+F 0 "R602" V 1400 4400 50  0000 L CNN
+F 1 "R_51.1K" V 1300 4400 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 400 4800 50  0001 L CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 400 4900 50  0001 L CNN
+F 4 "DK" H 1500 4500 60  0001 C CNN "MFN"
+F 5 "P51.1KCCT-ND" H 400 4700 60  0001 L CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF5112V/P51.1KCCT-ND/119466" H 400 5000 60  0001 L CNN "PurchasingLink"
+	1    1500 4500
+	0    1    1    0   
 $EndComp
 $Comp
 L formula:R_1.91K R?
 U 1 1 6112516C
-P 1500 4500
+P 1800 4950
 AR Path="/60A3B236/6112516C" Ref="R?"  Part="1" 
-AR Path="/60A3B41E/6112516C" Ref="R602"  Part="1" 
-F 0 "R602" V 1293 4500 50  0000 C CNN
-F 1 "R_1.91K" V 1384 4500 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 1430 4500 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf" H 1580 4500 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PB6D1911V/P21049CT-ND/6215304" H 1980 4900 60  0001 C CNN "PurchasingLink"
-	1    1500 4500
-	0    1    1    0   
+AR Path="/60A3B41E/6112516C" Ref="R603"  Part="1" 
+F 0 "R603" H 1650 5000 50  0000 C CNN
+F 1 "R_1.91K" H 1600 4900 50  0000 C CNN
+F 2 "footprints:R_0805_OEM" H 1730 4950 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf" H 1880 4950 50  0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PB6D1911V/P21049CT-ND/6215304" H 2280 5350 60  0001 C CNN "PurchasingLink"
+	1    1800 4950
+	-1   0    0    1   
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61125176
 P 10100 2500
 AR Path="/60A3B236/61125176" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/61125176" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 10100 2250 50  0001 C CNN
+AR Path="/60A3B41E/61125176" Ref="#PWR0615"  Part="1" 
+F 0 "#PWR0615" H 10100 2250 50  0001 C CNN
 F 1 "GND" H 10105 2327 50  0000 C CNN
 F 2 "" H 10100 2500 50  0001 C CNN
 F 3 "" H 10100 2500 50  0001 C CNN
@@ -455,8 +442,8 @@ L power:GND #PWR?
 U 1 1 6112517C
 P 9550 2750
 AR Path="/60A3B236/6112517C" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/6112517C" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 9550 2500 50  0001 C CNN
+AR Path="/60A3B41E/6112517C" Ref="#PWR0614"  Part="1" 
+F 0 "#PWR0614" H 9550 2500 50  0001 C CNN
 F 1 "GND" H 9555 2577 50  0000 C CNN
 F 2 "" H 9550 2750 50  0001 C CNN
 F 3 "" H 9550 2750 50  0001 C CNN
@@ -499,26 +486,10 @@ F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage
 	1    10000 2200
 	1    0    0    -1  
 $EndComp
-Text GLabel 1150 3650 0    50   Input ~ 0
-TS+
-Text GLabel 1150 4050 0    50   Input ~ 0
-TS-
-Text GLabel 1750 5250 0    50   Input ~ 0
-TS-
-Text GLabel 3550 4650 0    50   Input ~ 0
-TS-
-Text GLabel 7250 3400 0    50   Input ~ 0
-12V_TSAL
-Text GLabel 3550 5700 0    50   Input ~ 0
-TS-
 Text GLabel 4300 5700 2    50   Input ~ 0
 AIL-
 Text GLabel 4500 4950 0    50   Input ~ 0
 AIL+
-Text GLabel 6100 5450 0    50   Input ~ 0
-TS-
-Wire Wire Line
-	3600 4650 3550 4650
 Wire Wire Line
 	4550 4950 4500 4950
 Wire Wire Line
@@ -542,13 +513,11 @@ Wire Wire Line
 Text Notes 4100 5350 0    50   ~ 0
 To \nAIL LED
 Wire Wire Line
-	7250 3400 8150 3400
+	7400 3400 8150 3400
 Wire Wire Line
 	4550 4950 4850 4950
 Wire Wire Line
 	9550 2200 9800 2200
-Wire Wire Line
-	4050 2950 4250 2950
 $Comp
 L formula:C_1uF C603
 U 1 1 60BEA63B
@@ -562,10 +531,10 @@ F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0612
 U 1 1 60BF1A77
 P 9250 1750
-F 0 "#PWR?" H 9250 1500 50  0001 C CNN
+F 0 "#PWR0612" H 9250 1500 50  0001 C CNN
 F 1 "GND" H 9255 1577 50  0000 C CNN
 F 2 "" H 9250 1750 50  0001 C CNN
 F 3 "" H 9250 1750 50  0001 C CNN
@@ -584,27 +553,11 @@ Text GLabel 8150 3700 2    50   Input ~ 0
 TSAL_RED-
 Text GLabel 10100 1850 2    50   Input ~ 0
 TSAL_GREEN-
-Text GLabel 10100 1150 2    50   Input ~ 0
+Text GLabel 10100 1250 2    50   Input ~ 0
 TSAL_GREEN+
-Text GLabel 1150 4500 0    50   Input ~ 0
-15V+
-Wire Wire Line
-	1750 5250 1800 5250
-Text GLabel 3600 2600 0    50   Input ~ 0
-15V+
-Text GLabel 4150 3700 0    50   Input ~ 0
-TS-
-Wire Wire Line
-	4150 3700 4250 3700
-Text GLabel 8500 1550 0    50   Input ~ 0
-12V_TSAL
-Text GLabel 9500 1150 0    50   Input ~ 0
-12V_TSAL
 Wire Wire Line
 	5850 3950 5400 3950
 Connection ~ 5400 3950
-Text GLabel 7250 3600 0    50   Input ~ 0
-12V_TSAL
 Wire Wire Line
 	1800 5100 1800 5250
 Wire Wire Line
@@ -613,8 +566,6 @@ Wire Wire Line
 	8850 1650 8650 1650
 Wire Wire Line
 	8650 1650 8650 1850
-Wire Wire Line
-	8500 1550 8650 1550
 Wire Wire Line
 	8650 1550 8650 1650
 Connection ~ 8650 1650
@@ -637,8 +588,6 @@ $EndComp
 Wire Wire Line
 	9035 2200 9550 2200
 Connection ~ 9550 2200
-Text GLabel 7900 2150 0    50   Input ~ 0
-12V_TSAL
 Wire Wire Line
 	7900 2150 8350 2150
 $Comp
@@ -646,8 +595,8 @@ L power:GND #PWR?
 U 1 1 60EA29EB
 P 8650 2550
 AR Path="/60A3B236/60EA29EB" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/60EA29EB" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 8650 2300 50  0001 C CNN
+AR Path="/60A3B41E/60EA29EB" Ref="#PWR0611"  Part="1" 
+F 0 "#PWR0611" H 8650 2300 50  0001 C CNN
 F 1 "GND" H 8655 2377 50  0000 C CNN
 F 2 "" H 8650 2550 50  0001 C CNN
 F 3 "" H 8650 2550 50  0001 C CNN
@@ -657,46 +606,14 @@ $EndComp
 Text Notes 3000 3850 0    50   ~ 0
 3.67V
 Text Notes 1850 4500 0    50   ~ 0
-14.46V
+0.54V
 Text Notes 6750 6150 0    50   ~ 0
-LAYOUT NOTE: HV and LV need to be separated by at least 30.2mm
-$Comp
-L formula:Test_Point_SMD TP601
-U 1 1 615FD994
-P 1250 4700
-F 0 "TP601" H 1550 4900 50  0000 R CNN
-F 1 "15V+" H 1550 4800 50  0000 R CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 1250 4550 50  0001 C CNN
-F 3 "" H 1250 4700 50  0001 C CNN
-	1    1250 4700
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	1250 4500 1250 4650
-Connection ~ 1250 4500
-Wire Wire Line
-	1250 4500 1150 4500
+LAYOUT NOTE: HV and LV need to be separated by at least 12.7mm
 $Comp
 L formula:Test_Point_SMD TP603
-U 1 1 61601E3D
-P 3250 2850
-F 0 "TP603" V 3350 3150 50  0000 C CNN
-F 1 "15V+" V 3250 3150 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 3250 2700 50  0001 C CNN
-F 3 "" H 3250 2850 50  0001 C CNN
-	1    3250 2850
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	3300 2850 3600 2850
-Connection ~ 3600 2850
-Wire Wire Line
-	3600 2850 3600 2600
-$Comp
-L formula:Test_Point_SMD TP604
 U 1 1 616069D9
 P 3250 3600
-F 0 "TP604" H 3150 3900 50  0000 L CNN
+F 0 "TP603" H 3150 3900 50  0000 L CNN
 F 1 "VREF" H 3150 3800 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 3250 3450 50  0001 C CNN
 F 3 "" H 3250 3600 50  0001 C CNN
@@ -709,10 +626,10 @@ Connection ~ 3250 3850
 Wire Wire Line
 	3250 3850 2950 3850
 $Comp
-L formula:Test_Point_SMD TP605
+L formula:Test_Point_SMD TP604
 U 1 1 6160A904
 P 4150 4250
-F 0 "TP605" H 4200 4550 50  0000 R CNN
+F 0 "TP604" H 4200 4550 50  0000 R CNN
 F 1 "OPAMP_OUTPUT" H 4450 4450 50  0000 R CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 4150 4100 50  0001 C CNN
 F 3 "" H 4150 4250 50  0001 C CNN
@@ -725,10 +642,10 @@ Connection ~ 4150 3950
 Wire Wire Line
 	4150 3950 4550 3950
 $Comp
-L formula:Test_Point_SMD TP602
+L formula:Test_Point_SMD TP601
 U 1 1 61613E89
 P 2400 4700
-F 0 "TP602" H 2350 4700 50  0000 R CNN
+F 0 "TP601" H 2350 4700 50  0000 R CNN
 F 1 "VIN" H 2312 4787 50  0000 R CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2400 4550 50  0001 C CNN
 F 3 "" H 2400 4700 50  0001 C CNN
@@ -747,14 +664,91 @@ TSAL_FLAG
 Wire Wire Line
 	9100 5000 9500 5000
 $Comp
-L formula:Test_Point_SMD TP606
+L formula:Test_Point_SMD TP605
 U 1 1 6155C295
 P 9550 5000
-F 0 "TP606" V 9499 5178 50  0000 L CNN
+F 0 "TP605" V 9499 5178 50  0000 L CNN
 F 1 "TSAL_FLAG" V 9590 5178 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 9550 4850 50  0001 C CNN
 F 3 "" H 9550 5000 50  0001 C CNN
 	1    9550 5000
 	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4050 2950 4250 2950
+Connection ~ 4250 3400
+Wire Wire Line
+	4050 3400 4250 3400
+Wire Wire Line
+	4250 2950 4250 3400
+$Comp
+L power:+15V #PWR0602
+U 1 1 61B2B936
+P 1150 4500
+F 0 "#PWR0602" H 1150 4350 50  0001 C CNN
+F 1 "+15V" H 1165 4673 50  0000 C CNN
+F 2 "" H 1150 4500 50  0001 C CNN
+F 3 "" H 1150 4500 50  0001 C CNN
+	1    1150 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:-TS #PWR0604
+U 1 1 61B398D8
+P 4250 3600
+F 0 "#PWR0604" H 4250 3350 50  0001 C CNN
+F 1 "-TS" H 4255 3427 50  0000 C CNN
+F 2 "" H 4250 3600 50  0001 C CNN
+F 3 "" H 4250 3600 50  0001 C CNN
+	1    4250 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 3400 4250 3600
+Wire Wire Line
+	1150 4500 1350 4500
+Text GLabel 1800 5250 0    50   Input ~ 0
+-TS
+Text GLabel 1000 4050 0    50   Input ~ 0
+-TS
+Text GLabel 3550 5700 0    50   Input ~ 0
+-TS
+Text GLabel 3600 4650 0    50   Input ~ 0
+-TS
+Text GLabel 6100 5450 0    50   Input ~ 0
+-TS
+Text GLabel 1000 3650 0    50   Input ~ 0
++TS
+Text GLabel 3600 2600 0    50   Input ~ 0
++15V
+Text GLabel 7400 3400 0    50   Input ~ 0
++12V_TSAL
+Text GLabel 7250 3800 2    50   Input ~ 0
++12V_TSAL
+Wire Wire Line
+	7250 3950 7250 3800
+Text GLabel 7900 2150 0    50   Input ~ 0
++12V_TSAL
+Text GLabel 8650 1550 0    50   Input ~ 0
++12V_TSAL
+Text GLabel 9500 1250 0    50   Input ~ 0
++12V_TSAL
+Wire Wire Line
+	3600 2850 3600 2600
+Wire Wire Line
+	3600 2950 3600 2850
+Connection ~ 3600 2850
+Wire Wire Line
+	3300 2850 3600 2850
+$Comp
+L formula:Test_Point_SMD TP602
+U 1 1 61601E3D
+P 3250 2850
+F 0 "TP602" V 3350 3150 50  0000 C CNN
+F 1 "15V+" V 3250 3150 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 3250 2700 50  0001 C CNN
+F 3 "" H 3250 2850 50  0001 C CNN
+	1    3250 2850
+	0    -1   -1   0   
 $EndComp
 $EndSCHEMATC
