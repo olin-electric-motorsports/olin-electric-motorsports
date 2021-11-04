@@ -506,7 +506,7 @@ $Comp
 L formula:C_0.1uF C1003
 U 1 1 60C167D6
 P 1800 5300
-F 0 "C1003" V 1750 5150 50  0000 L CNN
+F 0 "C1003" V 1750 5000 50  0000 L CNN
 F 1 "C_0.1uF" V 1850 4950 50  0000 L CNN
 F 2 "footprints:C_0805_OEM" H 1838 5150 50  0001 C CNN
 F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 1825 5400 50  0001 C CNN
@@ -555,21 +555,6 @@ Wire Wire Line
 	1650 5300 1650 5350
 Wire Wire Line
 	1950 5300 2150 5300
-$Comp
-L formula:R_200 R1002
-U 1 1 60C167FF
-P 2350 5750
-F 0 "R1002" V 2430 5750 50  0000 C CNN
-F 1 "R_200" V 2250 5750 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 2280 5750 50  0001 C CNN
-F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 2430 5750 50  0001 C CNN
-F 4 "Digi-Key" H 2350 5750 60  0001 C CNN "MFN"
-F 5 "RMCF0805JT200RCT-ND" H 2350 5750 60  0001 C CNN "MPN"
-F 6 "Value" H 2350 5750 60  0001 C CNN "Package"
-F 7 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 2830 6150 60  0001 C CNN "PurchasingLink"
-	1    2350 5750
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2150 5600 2150 5650
 Wire Wire Line
@@ -587,31 +572,6 @@ F 5 "MCP2561-E/SN-ND" H 1650 5750 60  0001 C CNN "MPN"
 F 6 "https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn" H 1650 6500 60  0001 C CNN "PurchasingLink"
 	1    1650 5750
 	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2150 5600 2350 5600
-Wire Wire Line
-	2150 5900 2350 5900
-Connection ~ 2350 5600
-Wire Wire Line
-	2350 5600 2500 5600
-Connection ~ 2350 5900
-Wire Wire Line
-	2350 5900 2500 5900
-$Comp
-L formula:C_0.1uF C1004
-U 1 1 60C1AC97
-P 1800 6700
-F 0 "C1004" V 1750 6550 50  0000 L CNN
-F 1 "C_0.1uF" V 1850 6350 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 1838 6550 50  0001 C CNN
-F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 1825 6800 50  0001 C CNN
-F 4 "478-3352-1-ND" H 1800 6700 60  0001 C CNN "MPN"
-F 5 "Digi-Key" H 1800 6700 60  0001 C CNN "MFN"
-F 6 "Value" H 1800 6700 60  0001 C CNN "Package"
-F 7 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 2225 7200 60  0001 C CNN "PurchasingLink"
-	1    1800 6700
-	0    -1   -1   0   
 $EndComp
 $Comp
 L power:GND #PWR?
@@ -651,21 +611,6 @@ Wire Wire Line
 	1650 6700 1650 6750
 Wire Wire Line
 	1950 6700 2150 6700
-$Comp
-L formula:R_200 R1003
-U 1 1 60C1ACC0
-P 2350 7150
-F 0 "R1003" V 2430 7150 50  0000 C CNN
-F 1 "R_200" V 2250 7150 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 2280 7150 50  0001 C CNN
-F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 2430 7150 50  0001 C CNN
-F 4 "Digi-Key" H 2350 7150 60  0001 C CNN "MFN"
-F 5 "RMCF0805JT200RCT-ND" H 2350 7150 60  0001 C CNN "MPN"
-F 6 "Value" H 2350 7150 60  0001 C CNN "Package"
-F 7 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 2830 7550 60  0001 C CNN "PurchasingLink"
-	1    2350 7150
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2150 7000 2150 7050
 Wire Wire Line
@@ -684,16 +629,6 @@ F 6 "https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn" H 1650 7900 60
 	1    1650 7150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2150 7000 2350 7000
-Wire Wire Line
-	2150 7300 2350 7300
-Connection ~ 2350 7000
-Wire Wire Line
-	2350 7000 2500 7000
-Connection ~ 2350 7300
-Wire Wire Line
-	2350 7300 2500 7300
 Text Label 3950 3550 0    50   ~ 0
 PM_DBG_1
 Text Label 3950 3650 0    50   ~ 0
@@ -1042,9 +977,9 @@ L formula:ATMEGA16M1 U?
 U 1 1 60AE926F
 P 8300 2900
 AR Path="/60A3B20D/60AE926F" Ref="U?"  Part="1" 
-AR Path="/60AB52CF/60AE926F" Ref="U1003"  Part="1" 
-AR Path="/60AE926F" Ref="U1003"  Part="1" 
-F 0 "U1003" H 8400 4850 50  0000 C CNN
+AR Path="/60AB52CF/60AE926F" Ref="U1004"  Part="1" 
+AR Path="/60AE926F" Ref="U?"  Part="1" 
+F 0 "U1004" H 8400 4850 50  0000 C CNN
 F 1 "ATMEGA16M1" H 8400 4750 50  0000 C CNN
 F 2 "footprints:TQFP-32_7x7mm_Pitch0.8mm" H 8300 2900 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8209-8-bit%20AVR%20ATmega16M1-32M1-64M1_Datasheet.pdf" H 7350 4730 50  0001 C CNN
@@ -1117,10 +1052,6 @@ Text GLabel 2500 7000 2    50   Input ~ 0
 CANH
 Text GLabel 2500 7300 2    50   Input ~ 0
 CANL
-Text GLabel 950  900  0    50   Input ~ 0
-5V_BMS
-Text GLabel 6750 1050 0    50   Input ~ 0
-5V_AIR_CONTROL
 Wire Wire Line
 	6750 1050 6750 1200
 Connection ~ 6750 1200
@@ -1130,22 +1061,10 @@ Wire Wire Line
 	10250 5800 10400 5800
 Text GLabel 10400 5800 2    50   Input ~ 0
 5V_AIR_CONTROL
-Text GLabel 1650 5200 0    50   Input ~ 0
-5V_BMS
-Wire Wire Line
-	1650 5200 1650 5300
 Connection ~ 1650 5300
-Text GLabel 1650 6600 0    50   Input ~ 0
-5V_AIR_CONTROL
-Wire Wire Line
-	1650 6600 1650 6700
 Connection ~ 1650 6700
-Text GLabel 4650 3300 2    50   Input ~ 0
-5V_BMS
 Wire Wire Line
-	4650 3300 4650 3450
-Text GLabel 10200 3350 2    50   Input ~ 0
-5V_AIR_CONTROL
+	4650 3250 4650 3450
 Text GLabel 4550 3050 2    50   Input ~ 0
 BSPD_CURRENT_SENSE
 Text Notes 2800 7100 0    50   ~ 0
@@ -1208,8 +1127,6 @@ Text GLabel 4550 1550 2    50   Input ~ 0
 PM_RJ45_LEDO
 Text GLabel 4550 1450 2    50   Input ~ 0
 PM_RJ45_LEDG
-Wire Wire Line
-	10200 3350 10200 3500
 $Comp
 L formula:R_100 R?
 U 1 1 60D40AF9
@@ -1302,10 +1219,10 @@ Wire Wire Line
 NoConn ~ 3850 3450
 NoConn ~ 3850 1650
 $Comp
-L formula:ATMEGA64M1 U1004
+L formula:ATMEGA64M1 U1003
 U 1 1 60ED615E
 P 2750 2850
-F 0 "U1004" H 2750 4800 50  0000 C CNN
+F 0 "U1003" H 2750 4800 50  0000 C CNN
 F 1 "ATMEGA64M1" H 2750 4726 50  0000 C CNN
 F 2 "footprints:TQFP-32_7x7mm_Pitch0.8mm" H 2750 2850 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8209-8-bit%20AVR%20ATmega16M1-32M1-64M1_Datasheet.pdf" H 1800 4680 50  0001 C CNN
@@ -1330,11 +1247,11 @@ Wire Wire Line
 	1500 4050 1500 4150
 Text Notes 2450 800  0    50   ~ 0
 atmega64m1\n
-Text Notes 9950 2900 0    50   ~ 0
+Text Notes 9800 2950 0    50   ~ 0
 voltage divider on IMD schematic
 Wire Notes Line
 	4300 4850 4300 7800
-Text Notes 1600 5050 0    98   ~ 0
+Text Notes 2550 5050 0    98   ~ 0
 CAN TRANSCEIVERS
 Wire Notes Line
 	500  4850 11200 4850
@@ -1350,4 +1267,86 @@ Text Notes 4500 5450 0    50   ~ 0
 PRIMARY MICRO LEDS
 Text Notes 5800 5450 0    50   ~ 0
 SECONDARY MICRO LEDS
+$Comp
+L formula:R_120_DNP R1003
+U 1 1 6183D7D6
+P 2350 7150
+F 0 "R1003" H 2420 7196 50  0000 L CNN
+F 1 "R_120_DNP" H 2420 7105 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 1150 7300 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 1150 7600 50  0001 L CNN
+F 4 "DK" H 2350 7150 60  0001 C CNN "MFN"
+F 5 "667-ERJ-6ENF1200V" H 1150 7400 60  0001 L CNN "MPN"
+F 6 "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" H 1150 7500 60  0001 L CNN "PurchasingLink"
+	1    2350 7150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 7000 2350 7000
+Wire Wire Line
+	2150 7300 2350 7300
+Connection ~ 2350 7000
+Wire Wire Line
+	2350 7000 2500 7000
+Connection ~ 2350 7300
+Wire Wire Line
+	2350 7300 2500 7300
+Wire Wire Line
+	2150 5600 2350 5600
+Wire Wire Line
+	2150 5900 2350 5900
+$Comp
+L formula:R_120_DNP R1002
+U 1 1 6183F149
+P 2350 5750
+F 0 "R1002" H 2420 5796 50  0000 L CNN
+F 1 "R_120_DNP" H 2420 5705 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 1150 5900 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 1150 6200 50  0001 L CNN
+F 4 "DK" H 2350 5750 60  0001 C CNN "MFN"
+F 5 "667-ERJ-6ENF1200V" H 1150 6000 60  0001 L CNN "MPN"
+F 6 "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" H 1150 6100 60  0001 L CNN "PurchasingLink"
+	1    2350 5750
+	1    0    0    -1  
+$EndComp
+Connection ~ 2350 5600
+Wire Wire Line
+	2350 5600 2500 5600
+Connection ~ 2350 5900
+Wire Wire Line
+	2350 5900 2500 5900
+NoConn ~ 3850 2650
+Text GLabel 950  900  2    50   Input ~ 0
++5V_BMS
+Text GLabel 4650 3250 2    50   Input ~ 0
++5V_BMS
+Text GLabel 1650 5100 2    50   Input ~ 0
++5V_BMS
+Wire Wire Line
+	1650 5100 1650 5300
+$Comp
+L formula:C_0.1uF C1004
+U 1 1 60C1AC97
+P 1800 6700
+F 0 "C1004" V 1750 6400 50  0000 L CNN
+F 1 "C_0.1uF" V 1850 6350 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 1838 6550 50  0001 C CNN
+F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 1825 6800 50  0001 C CNN
+F 4 "478-3352-1-ND" H 1800 6700 60  0001 C CNN "MPN"
+F 5 "Digi-Key" H 1800 6700 60  0001 C CNN "MFN"
+F 6 "Value" H 1800 6700 60  0001 C CNN "Package"
+F 7 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 2225 7200 60  0001 C CNN "PurchasingLink"
+	1    1800 6700
+	0    -1   -1   0   
+$EndComp
+Text GLabel 1650 6450 2    50   Input ~ 0
++5V_AIR_CONTROL
+Wire Wire Line
+	1650 6450 1650 6700
+Text GLabel 6750 1050 0    50   Input ~ 0
++5V_AIR_CONTROL
+Text GLabel 10200 3400 2    50   Input ~ 0
++5V_AIR_CONTROL
+Wire Wire Line
+	10200 3400 10200 3500
 $EndSCHEMATC

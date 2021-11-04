@@ -172,18 +172,16 @@ HO 50S-0100\nhttps://www.lem.com/sites/default/files/products_datasheets/ho_50_2
 $Comp
 L power:GND #PWR?
 U 1 1 60CD7460
-P 3000 5000
+P 3000 4750
 AR Path="/60A3B220/60CD7460" Ref="#PWR?"  Part="1" 
 AR Path="/60A3BC90/60CD7460" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 3000 4750 50  0001 C CNN
-F 1 "GND" H 3000 4850 50  0000 C CNN
-F 2 "" H 3000 5000 50  0001 C CNN
-F 3 "" H 3000 5000 50  0001 C CNN
-	1    3000 5000
+F 0 "#PWR?" H 3000 4500 50  0001 C CNN
+F 1 "GND" H 3000 4600 50  0000 C CNN
+F 2 "" H 3000 4750 50  0001 C CNN
+F 3 "" H 3000 4750 50  0001 C CNN
+	1    3000 4750
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3000 4700 3000 5000
 Wire Wire Line
 	3000 4100 3000 3900
 $Comp
@@ -375,8 +373,8 @@ L formula:R_10K R?
 U 1 1 60CD74FA
 P 2100 3850
 AR Path="/60A3B220/60CD74FA" Ref="R?"  Part="1" 
-AR Path="/60A3BC90/60CD74FA" Ref="R803"  Part="1" 
-F 0 "R803" V 2307 3850 50  0000 C CNN
+AR Path="/60A3BC90/60CD74FA" Ref="R804"  Part="1" 
+F 0 "R804" V 2307 3850 50  0000 C CNN
 F 1 "R_10K" V 2216 3850 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 2030 3850 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 2180 3850 50  0001 C CNN
@@ -391,8 +389,8 @@ L formula:R_10K R?
 U 1 1 60CD7503
 P 2050 4500
 AR Path="/60A3B220/60CD7503" Ref="R?"  Part="1" 
-AR Path="/60A3BC90/60CD7503" Ref="R804"  Part="1" 
-F 0 "R804" V 2257 4500 50  0000 C CNN
+AR Path="/60A3BC90/60CD7503" Ref="R803"  Part="1" 
+F 0 "R803" V 2257 4500 50  0000 C CNN
 F 1 "R_10K" V 2166 4500 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 1980 4500 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 2130 4500 50  0001 C CNN
@@ -424,8 +422,6 @@ Wire Wire Line
 	2300 4500 2300 5000
 Wire Wire Line
 	2300 4500 2800 4500
-Wire Wire Line
-	2600 5000 3000 5000
 Wire Wire Line
 	3550 5000 3550 4400
 Connection ~ 3550 4400
@@ -482,7 +478,7 @@ P 6450 4650
 AR Path="/60A3B220/60CD753D" Ref="U?"  Part="1" 
 AR Path="/60A3BC90/60CD753D" Ref="U804"  Part="1" 
 F 0 "U804" H 6450 4850 50  0000 L CNN
-F 1 "MCP6001" H 6450 4450 50  0000 L CNN
+F 1 "MCP6001" H 6450 4500 50  0000 L CNN
 F 2 "footprints:SOT-23-5_OEM" H 6350 4750 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf" H 6450 4850 50  0001 C CNN
 F 4 "DK" H 6550 4950 60  0001 C CNN "MFN"
@@ -528,22 +524,6 @@ F 3 "" H 6800 4050 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3750 4300 4850 4300
-$Comp
-L formula:R_10K R?
-U 1 1 60CD7561
-P 5250 3550
-AR Path="/60A3B220/60CD7561" Ref="R?"  Part="1" 
-AR Path="/60A3BC90/60CD7561" Ref="R812"  Part="1" 
-F 0 "R812" H 5320 3596 50  0000 L CNN
-F 1 "R_10K" H 5320 3505 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 5180 3550 50  0001 C CNN
-F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 5330 3550 50  0001 C CNN
-F 4 "DK" H 5250 3550 60  0001 C CNN "MFN"
-F 5 "CRS0805-FX-1002ELFCT-ND" H 5250 3550 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 5730 3950 60  0001 C CNN "PurchasingLink"
-	1    5250 3550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	6500 3800 6350 3800
 Connection ~ 6350 3800
@@ -566,8 +546,6 @@ F 3 "" H 6350 4950 50  0001 C CNN
 	1    6350 4950
 	1    0    0    -1  
 $EndComp
-Text Notes 5500 4150 0    50   ~ 0
-0.45V
 $Comp
 L power:GND #PWR?
 U 1 1 60CD7594
@@ -596,8 +574,8 @@ L formula:R_475 R?
 U 1 1 60CD75C6
 P 5575 6425
 AR Path="/60A3B220/60CD75C6" Ref="R?"  Part="1" 
-AR Path="/60A3BC90/60CD75C6" Ref="R811"  Part="1" 
-F 0 "R811" V 5368 6425 50  0000 C CNN
+AR Path="/60A3BC90/60CD75C6" Ref="R813"  Part="1" 
+F 0 "R813" V 5368 6425 50  0000 C CNN
 F 1 "R_475" V 5459 6425 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 5505 6425 50  0001 C CNN
 F 3 "http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf" H 5655 6425 50  0001 C CNN
@@ -666,8 +644,8 @@ U 1 1 60B98A0F
 P 4450 2200
 AR Path="/60A3B220/60B98A0F" Ref="C?"  Part="1" 
 AR Path="/60A3BC90/60B98A0F" Ref="C805"  Part="1" 
-F 0 "C805" H 4350 2300 50  0000 C CNN
-F 1 "C_10nF" V 4600 2200 50  0000 C CNN
+F 0 "C805" H 4250 2100 50  0000 C CNN
+F 1 "C_10nF" H 4200 2200 50  0000 C CNN
 F 2 "footprints:C_0805_OEM" H 4250 2200 50  0001 C CNN
 F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/07/23/CL21B103KBANNNC.pdf" H 4350 2300 50  0001 C CNN
 F 4 "DK" H 4450 2400 50  0001 C CNN "MFN"
@@ -758,9 +736,9 @@ F 6 "https://www.digikey.com/products/en?keywords=311-3.01KCRCT-ND" H 2780 2500 
 	1    2300 2100
 	1    0    0    -1  
 $EndComp
-Text Notes 6450 1250 0    50   ~ 0
+Text Notes 6550 1450 0    50   ~ 0
 isoSPI connector
-Text Notes 5350 1150 0    50   ~ 0
+Text Notes 5300 1050 0    50   ~ 0
 Isolation Transformer
 Text Notes 3050 1100 0    50   ~ 0
 120 Ohm Termination
@@ -1006,38 +984,16 @@ Text GLabel 6150 1400 2    50   Input ~ 0
 IM
 Text GLabel 6150 1800 2    50   Input ~ 0
 IP
-Text GLabel 5225 6425 0    50   Input ~ 0
-5V_BMS
-Text GLabel 5250 3250 0    50   Input ~ 0
-5V_BMS
 Wire Wire Line
 	5250 3250 5250 3400
-Text GLabel 6350 3500 2    50   Input ~ 0
-5V_BMS
 Wire Wire Line
-	6350 3500 6350 3800
-Text GLabel 8625 4100 0    50   Input ~ 0
-5V_BMS
-Text GLabel 6700 5000 2    50   Input ~ 0
-5V_BMS
+	6350 3550 6350 3800
 Wire Wire Line
-	6700 5000 6700 5200
-Text GLabel 3000 3650 2    50   Input ~ 0
-5V_BMS
+	3000 3700 3000 3900
 Wire Wire Line
-	3000 3650 3000 3900
-Text GLabel 1650 3300 2    50   Input ~ 0
-5V_BMS
+	1650 3400 1650 3550
 Wire Wire Line
-	1650 3300 1650 3550
-Text GLabel 1200 3900 0    50   Input ~ 0
-5V_BMS
-Wire Wire Line
-	1200 3900 1200 4100
-Text GLabel 1100 1000 2    50   Input ~ 0
-5V_BMS
-Wire Wire Line
-	1100 1000 1100 1150
+	1100 850  1100 1150
 Wire Wire Line
 	1100 2250 1100 2150
 Wire Wire Line
@@ -1047,12 +1003,8 @@ Wire Wire Line
 	1200 2050 1100 2050
 Wire Wire Line
 	1100 2150 1100 2050
-Text GLabel 1100 2050 0    50   Input ~ 0
-5V_BMS
-Text GLabel 8800 1100 0    50   Input ~ 0
-12V_SHUTDOWN
 Wire Wire Line
-	8800 1100 8800 1250
+	8800 1000 8800 1250
 $Comp
 L formula:isoSPI-Cutout J802
 U 1 1 610DC9AC
@@ -1088,9 +1040,7 @@ Wire Wire Line
 	8800 1950 8800 2000
 Connection ~ 8800 1950
 Wire Wire Line
-	1350 6200 1350 6350
-Text GLabel 1350 6200 2    50   Input ~ 0
-5V_BMS
+	1350 6150 1350 6350
 Text GLabel 2400 6600 2    50   Input ~ 0
 FAN_PWM
 Text GLabel 1250 6700 0    50   Input ~ 0
@@ -1213,14 +1163,6 @@ F 6 "https://www.digikey.si/product-detail/en/bourns-inc/SM91501ALE/SM91501ALETR
 	1    6250 2350
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	950  4300 1100 4300
-Wire Wire Line
-	950  4400 1100 4400
-Wire Wire Line
-	1100 4200 1100 4300
-Wire Wire Line
-	950  4500 1100 4500
 NoConn ~ 1100 4300
 NoConn ~ 1100 4400
 NoConn ~ 1100 4500
@@ -1235,24 +1177,6 @@ F 3 "" H 3850 6450 50  0001 C CNN
 	1    3850 6450
 	0    -1   -1   0   
 $EndComp
-Connection ~ 1100 4300
-Wire Wire Line
-	1100 4300 1650 4300
-Wire Wire Line
-	1100 4300 1100 4400
-Connection ~ 1100 4400
-Wire Wire Line
-	1100 4400 1650 4400
-Wire Wire Line
-	1100 4400 1100 4500
-Connection ~ 1100 4500
-Wire Wire Line
-	1100 4500 1250 4500
-Wire Wire Line
-	1100 4500 1100 4650
-Connection ~ 3000 5000
-Wire Wire Line
-	3000 5000 3550 5000
 $Comp
 L formula:C_0.1uF C?
 U 1 1 60CD7477
@@ -1289,7 +1213,7 @@ $Comp
 L formula:Test_Point_SMD TP801
 U 1 1 618F49AE
 P 2650 3700
-F 0 "TP801" H 2728 3788 50  0000 L CNN
+F 0 "TP801" H 2350 3800 50  0000 L CNN
 F 1 "Test_Point_SMD" H 2300 3900 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2650 3550 50  0001 C CNN
 F 3 "" H 2650 3700 50  0001 C CNN
@@ -1337,8 +1261,8 @@ L formula:R_1K R?
 U 1 1 60CD75A0
 P 5250 4350
 AR Path="/60A3B220/60CD75A0" Ref="R?"  Part="1" 
-AR Path="/60A3BC90/60CD75A0" Ref="R813"  Part="1" 
-F 0 "R813" H 5320 4396 50  0000 L CNN
+AR Path="/60A3BC90/60CD75A0" Ref="R812"  Part="1" 
+F 0 "R812" H 5320 4396 50  0000 L CNN
 F 1 "R_1K" H 5320 4305 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5180 4350 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 5330 4350 50  0001 C CNN
@@ -1457,8 +1381,6 @@ $EndComp
 Wire Wire Line
 	8675 4675 8675 4250
 Wire Wire Line
-	8675 4100 8625 4100
-Wire Wire Line
 	8675 4250 8775 4250
 Connection ~ 8675 4250
 Wire Wire Line
@@ -1523,4 +1445,67 @@ Wire Wire Line
 Connection ~ 7500 5700
 Wire Wire Line
 	7500 5700 8150 5700
+Wire Wire Line
+	950  4300 1650 4300
+Wire Wire Line
+	950  4400 1650 4400
+Wire Wire Line
+	950  4500 1250 4500
+Wire Wire Line
+	1100 4200 1100 4650
+Connection ~ 1100 2050
+Wire Wire Line
+	1100 2050 1050 2050
+Wire Wire Line
+	1200 3950 1200 4100
+Wire Wire Line
+	2600 5000 3550 5000
+Wire Wire Line
+	3000 4700 3000 4750
+$Comp
+L formula:R_1M R811
+U 1 1 61D7F547
+P 5250 3550
+F 0 "R811" H 5320 3596 50  0000 L CNN
+F 1 "R_1M" H 5320 3505 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 5180 3550 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 5330 3550 50  0001 C CNN
+F 4 "DK" H 5250 3550 60  0001 C CNN "MFN"
+F 5 "RMCF0805JT1M00CT-ND" H 5250 3550 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT1M00/RMCF0805JT1M00CT-ND/1942600" H 5730 3950 60  0001 C CNN "PurchasingLink"
+	1    5250 3550
+	1    0    0    -1  
+$EndComp
+Text Notes 4350 4050 0    50   ~ 0
+Vout= Vin(R2/R2+R1)\n    = 5(1k/1.001M)\n    = 0.005V
+Text Notes 5300 4100 0    50   ~ 0
+0.005V
+Text Notes 4600 2900 0    50   ~ 0
+LAYOUT NOTE: Make sure the HV and LV are sepparated by 12.7mm
+Text GLabel 1100 850  0    50   Input ~ 0
++5V_BMS
+Text GLabel 1050 2050 0    50   Input ~ 0
++5V_BMS
+Text GLabel 1200 3950 2    50   Input ~ 0
++5V_BMS
+Text GLabel 1650 3400 0    50   Input ~ 0
++5V_BMS
+Text GLabel 3000 3700 2    50   Input ~ 0
++5V_BMS
+Text GLabel 5250 3250 2    50   Input ~ 0
++5V_BMS
+Text GLabel 6350 3550 2    50   Input ~ 0
++5V_BMS
+Text GLabel 6700 5000 2    50   Input ~ 0
++5V_BMS
+Wire Wire Line
+	6700 5000 6700 5200
+Text GLabel 5225 6425 0    50   Input ~ 0
++5V_BMS
+Text GLabel 8675 4100 0    50   Input ~ 0
++5V_BMS
+Text GLabel 1350 6150 2    50   Input ~ 0
++5V_BMS
+Text GLabel 8800 1000 2    50   Input ~ 0
++12V_SHUTDOWN
 $EndSCHEMATC
