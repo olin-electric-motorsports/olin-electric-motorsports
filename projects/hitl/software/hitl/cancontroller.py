@@ -119,16 +119,14 @@ class CANController:
         
         Parses through a CAN frame and updates the self.states dictionary
         """
-        print(msg)
         # Get the message name
         msg_name = self.db.get_message_by_frame_id(msg.arbitration_id).name
         # Decode the data
         data = self.db.decode_message(msg.arbitration_id, msg.data)
-        print(data)
         # Update the state dictionary
         self.signals[msg_name].update(data)
 
-    def delete(self):
+    def __del__(self):
         """Destructor (called when the program ends)
 
         End the listener thread for clean teardown

@@ -51,4 +51,4 @@ def test_set_and_get_state(can, can2, logger):
 
     can.set_state("ThrottlePos", 50)
     time.sleep(.1)
-    assert can2.get_state("ThrottlePos") == pytest.approx(50, rel=0.01) 
+    assert can2.get_state("ThrottlePos") == 50 
