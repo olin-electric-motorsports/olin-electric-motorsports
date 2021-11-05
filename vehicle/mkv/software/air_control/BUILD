@@ -11,11 +11,13 @@ exports_files([
 cc_firmware(
     name = "airs",
     srcs = [
-        "air_new.c",
+        "air.c",
         "config.h",
     ],
     deps = [
-        "//libs/can",
         "//libs/state_machine",
+        "//libs/can",
+        "//libs/gpio",
+        "//libs/timer",
     ],
 )
