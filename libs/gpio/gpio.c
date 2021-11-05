@@ -4,98 +4,65 @@
 
 #include "libs/gpio/api.h"
 
-#define NUM_PIN_INTERRUPTS (26)
-
 /*
- * List of function pointers to store the callbacks
+ * Placeholder functions for interrupt callbacks for the pin change interrupt
+ * vectors.
+ *
+ * The string `__attribute__((weak))` tells the compiler that there are default
+ * functions that are defined here, but if someone implements them elsewhere,
+ * use the other ones.
+ *
+ * So we have these defined as weak so that the code will always compile, and
+ * then in your code file (like `air_control.c`), you can define a function with
+ * the same name:
+ *
+ * ```
+ * void pcint0_callback(void) {
+ *     // Decide which pin changed, and do something
+ * }
+ * ```
+ *
+ * This is how interrupts work in this library.
  */
-void (*callbacks[NUM_PIN_INTERRUPTS])(void);
+__attribute__((weak)) void pcint0_callback(void) {};
+__attribute__((weak)) void pcint1_callback(void) {};
+__attribute__((weak)) void pcint2_callback(void) {};
+__attribute__((weak)) void pcint3_callback(void) {};
 
 ISR(PCINT0_vect) {
-    static uint8_t prev_vals = 0;
-    uint8_t vals = PINB;
-
-    uint8_t changed = prev_vals ^ vals;
-
-    for (uint8_t i = 0; i < 8; i++) {
-        if ((changed & (1 << i)) && (callbacks[i] != NULL)) {
-            (*callbacks[i])();
-        }
-    }
-
-    prev_vals = vals;
+    pcint0_callback();
 }
 
 ISR(PCINT1_vect) {
-    static uint8_t prev_vals = 0;
-    uint8_t vals = PINC;
-
-    uint8_t changed = prev_vals ^ vals;
-
-    for (uint8_t i = 0; i < 8; i++) {
-        if ((changed & (1 << i)) && (callbacks[i + 8] != NULL)) {
-            (*callbacks[i + 8])();
-        }
-    }
-
-    prev_vals = vals;
+    pcint1_callback();
 }
 
 ISR(PCINT2_vect) {
-    static uint8_t prev_vals = 0;
-    uint8_t vals = PIND;
-
-    uint8_t changed = prev_vals ^ vals;
-
-    for (uint8_t i = 0; i < 8; i++) {
-        if ((changed & (1 << i)) && (callbacks[i + 16] != NULL)) {
-            (*callbacks[i + 16])();
-        }
-    }
-
-    prev_vals = vals;
+    pcint2_callback();
 }
 
 ISR(PCINT3_vect) {
-    static uint8_t prev_vals = 0;
-    uint8_t vals = PINE;
-
-    uint8_t changed = prev_vals ^ vals;
-
-    for (uint8_t i = 0; i < 3; i++) {
-        if ((changed & (1 << i)) && (callbacks[i + 24] != NULL)) {
-            (*callbacks[i + 24])();
-        }
-    }
-
-    prev_vals = vals;
+    pcint3_callback();
 }
 
-void gpio_attach_interrupt(gpio_t pin, void (*callback)(void)) {
+void gpio_enable_interrupt(gpio_t pin) {
     sei();
     switch (pin.port) {
         case 0x05: {
             PCICR |= (1 << PCIE0);
             PCMSK0 |= (1 << pin.num);
-            callbacks[pin.num] = callback;
         } break;
         case 0x08: {
             PCICR |= (1 << PCIE1);
             PCMSK1 |= (1 << pin.num);
-            callbacks[pin.num + 8] = callback;
         } break;
         case 0x0B: {
             PCICR |= (1 << PCIE2);
             PCMSK2 |= (1 << pin.num);
-            callbacks[pin.num + 16] = callback;
         } break;
         case 0x0E: {
             PCICR |= (1 << PCIE3);
             PCMSK3 |= (1 << pin.num);
-            callbacks[pin.num + 24] = callback;
-        } break;
-        default: {
-            // Nothing
         } break;
     }
 }
