@@ -15,9 +15,12 @@ cc_firmware(
         "config.h",
     ],
     deps = [
-        "//libs/state_machine",
         "//libs/can",
         "//libs/gpio",
         "//libs/timer",
     ],
+    target_compatible_with = [
+        "//bazel/constraints:atmega16m1",
+    ],
+    visibility = ["//visibility:public"],
 )

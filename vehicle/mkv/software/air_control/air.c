@@ -1,7 +1,8 @@
 #include <stdlib.h>
 
-#include "libs/state_machine/api.h"
 #include "libs/can/api.h"
+#include "libs/gpio/api.h"
+#include "libs/timer/api.h"
 #include "config.h"
 
 enum State {
@@ -14,48 +15,73 @@ enum State {
     DISCHARGE,
     FAULT,
     NUM_STATES
-} current_state;
+};
 
-/*
- * IDLE state will always remain in IDLE. The only way to change state is with
- * an interrupt to the SS_TSMS pin
- */
-enum State transition_idle(void) {
-    return IDLE;
+volatile enum State current_state = IDLE;
+
+void timer0_isr(void) {
+    // can_send();
 }
 
 /*
- * Shutdown circuit closed with TSMS.
- *
- * AIR+ is closed AND motor controller voltage < 5V -> PRECHARGE
- * else -> FAULT
+ * Interrupts
  */
-enum State transition_ss_closed(void) {
-    if (gpio_get_pin(AIR_P_WELD_DETECT) && mc_voltage < 5.0f) {
-        return PRECHARGE;
-    } else {
-        return FAULT;
+void pcint0_callback(void) {
+    // SS_TSMS closed
+    if (gpio_get_pin(SS_TSMS)) {
+        current_state = SS_CLOSED;
     }
 }
 
-transition_t transitions[] = {
-    [IDLE] = transition_idle,
-    [SS_CLOSED] = transition_ss_closed,
-};
+void pcint1_callback(void) {
+    if (gpio_get_pin(BMS_SENSE)) {
 
-state_machine_t sm;
+    }
+}
+
+void pcint2_callback(void) {
+    if (gpio_get_pin(IMD_SENSE)) {
+
+    }
+}
+
+static void state_machine_run(void) {
+    switch (current_state) {
+        case IDLE: {
+            /*
+             * Do nothing. The state will be updated in the pcint0_callback when
+             * the TSMS shutdown sense is triggered.
+             */
+        } break;
+        case SS_CLOSED: {
+            if (gpio_get_pin()) {
+
+            }
+        } break;
+
+
+        case FAULT: {
+
+        } break;
+        default: {
+            // Shouldn't happen, but just in case
+            current_state = FAULT:
+        } break;
+    }
+}
 
 int main(void) {
     can_init(BAUD_500KBPS);
     timer_init(&timer0_cfg);
 
-    gpio_set_mode(SS_PRECHARGECTL, OUTPUT);
+    gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_P_LSD, OUTPUT);
 
-    sm.current_state = IDLE;
-    sm.transitions = transitions;
+    gpio_enable_interrupt(SS_TSMS);
+    gpio_enable_interrupt(BMS_SENSE);
+    gpio_enable_interrupt(IMD_SENSE);
 
     for (;;) {
-        state_machine_step(&sm);    
+        state_machine_run();
     }
 }
