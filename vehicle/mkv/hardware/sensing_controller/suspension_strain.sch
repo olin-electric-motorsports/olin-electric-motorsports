@@ -507,4 +507,93 @@ F 3 "http://www.ti.com/lit/ds/symlink/cd74hc4051.pdf" H 10900 6000 50  0001 C CN
 	1    10900 6400
 	-1   0    0    -1  
 $EndComp
+$Comp
+L formula:R_120_05 R1
+U 1 1 61875D72
+P 8400 3650
+AR Path="/61875D72" Ref="R1"  Part="1" 
+AR Path="/60A3D9FD/61875D72" Ref="R1"  Part="1" 
+F 0 "R1" V 8354 3838 50  0000 L CNN
+F 1 "R_120_05" V 8445 3838 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 8400 3650 50  0001 C CNN
+F 3 "https://www.susumu.co.jp/common/pdf/n_catalog_partition01_en.pdf" H 8400 3650 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/susumu/RG2012N-121-W-T1/600666" H 8400 3650 50  0001 C CNN "PurchasingLink"
+	1    8400 3650
+	0    1    1    0   
+$EndComp
+$Comp
+L formula:R_120_05 R2
+U 1 1 61877234
+P 8400 4150
+AR Path="/61877234" Ref="R2"  Part="1" 
+AR Path="/60A3D9FD/61877234" Ref="R2"  Part="1" 
+F 0 "R2" V 8354 4338 50  0000 L CNN
+F 1 "R_120_05" V 8445 4338 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 8400 4150 50  0001 C CNN
+F 3 "https://www.susumu.co.jp/common/pdf/n_catalog_partition01_en.pdf" H 8400 4150 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/susumu/RG2012N-121-W-T1/600666" H 8400 4150 50  0001 C CNN "PurchasingLink"
+	1    8400 4150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8500 3800 8500 3900
+$Comp
+L power:+5V #PWR?
+U 1 1 6187E9EC
+P 8500 3350
+AR Path="/60A3D9FD/60AD06C7/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB905F/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9387/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9617/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9863/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9A43/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9C37/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9E33/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9FB3/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60ABA183/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60ABA307/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60ABA487/6187E9EC" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/6187E9EC" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8500 3200 50  0001 C CNN
+F 1 "+5V" H 8515 3523 50  0000 C CNN
+F 2 "" H 8500 3350 50  0001 C CNN
+F 3 "" H 8500 3350 50  0001 C CNN
+	1    8500 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8500 3500 8500 3350
+$Comp
+L power:GND #PWR?
+U 1 1 61884DE4
+P 8500 4450
+AR Path="/60A3D9FD/60AD06C7/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB905F/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9387/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9617/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9863/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9A43/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9C37/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9E33/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60AB9FB3/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60ABA183/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60ABA307/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/60ABA487/61884DE4" Ref="#PWR?"  Part="1" 
+AR Path="/60A3D9FD/61884DE4" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8500 4200 50  0001 C CNN
+F 1 "GND" H 8505 4277 50  0000 C CNN
+F 2 "" H 8500 4450 50  0001 C CNN
+F 3 "" H 8500 4450 50  0001 C CNN
+	1    8500 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8500 4300 8500 4450
+Text GLabel 8600 3900 2    50   Input ~ 0
+WHEATSTONE_OUT_-
+Wire Wire Line
+	8600 3900 8500 3900
+Connection ~ 8500 3900
+Wire Wire Line
+	8500 3900 8500 4000
 $EndSCHEMATC
