@@ -661,6 +661,16 @@ $CMP R_120K
 D Resistor, 120K, 0.125W, 1%, 0805
 $ENDCMP
 #
+$CMP R_120_05
+D 0.05%, 0.125, 0805
+F https://www.susumu.co.jp/common/pdf/n_catalog_partition01_en.pdf
+$ENDCMP
+#
+$CMP R_120_05_copy
+D 0.05%, 0.125, 0805
+F https://www.susumu.co.jp/common/pdf/n_catalog_partition01_en.pdf
+$ENDCMP
+#
 $CMP R_120_DNP
 D Resistor, 120, 0.125W, 1%, 0805
 F https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf
@@ -715,6 +725,11 @@ $CMP R_3.3_25W_TO163
 D RES SMD 3.3 OHM 1% 25W DPAK
 K power resistor, balancing, BMS, Bourns, PWR163
 F https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf
+$ENDCMP
+#
+$CMP R_3.92k
+D 0.1%, 0.125, 0805
+F https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf
 $ENDCMP
 #
 $CMP R_300K
