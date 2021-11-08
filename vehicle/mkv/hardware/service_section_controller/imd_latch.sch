@@ -79,7 +79,7 @@ F 3 "" H 8250 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9500 4950 9500 5000
+	9500 4850 9500 5000
 $Comp
 L power:GND #PWR0331
 U 1 1 610EBBE2
@@ -1022,17 +1022,6 @@ Wire Wire Line
 	1800 4700 2000 4700
 Wire Wire Line
 	6750 1900 7650 1900
-$Comp
-L formula:+12V_IMD #PWR0332
-U 1 1 61AF5615
-P 9500 4950
-F 0 "#PWR0332" H 9500 4800 50  0001 C CNN
-F 1 "+12V_IMD" H 9515 5123 50  0000 C CNN
-F 2 "" H 9500 4950 50  0001 C CNN
-F 3 "" H 9500 4950 50  0001 C CNN
-	1    9500 4950
-	1    0    0    -1  
-$EndComp
 Text GLabel 1250 1150 0    50   Input ~ 0
 +12V_IMD
 Text GLabel 3400 1400 2    50   Input ~ 0
@@ -1068,4 +1057,6 @@ Text GLabel 9500 3000 0    50   Input ~ 0
 +12V_SHUTDOWN
 Wire Wire Line
 	9500 3000 9500 3150
+Text GLabel 9500 4850 2    50   Input ~ 0
++12V_IMD
 $EndSCHEMATC
