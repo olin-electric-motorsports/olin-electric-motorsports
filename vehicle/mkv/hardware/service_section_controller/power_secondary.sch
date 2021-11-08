@@ -153,8 +153,6 @@ Wire Wire Line
 	6550 2350 6550 2450
 Connection ~ 6550 2350
 Wire Wire Line
-	6550 2350 7050 2350
-Wire Wire Line
 	6550 2750 6550 2850
 Connection ~ 6550 2850
 Wire Wire Line
@@ -226,24 +224,6 @@ Wire Wire Line
 	2350 5950 2350 6100
 Wire Wire Line
 	2900 6100 2350 6100
-Wire Wire Line
-	1750 5650 1950 5650
-$Comp
-L formula:F_21mA_420V F?
-U 1 1 60AA1B80
-P 1600 5650
-AR Path="/60A99934/60AA1B80" Ref="F?"  Part="1" 
-AR Path="/60A3B0AB/60AA1B80" Ref="F701"  Part="1" 
-F 0 "F701" V 1403 5650 50  0000 C CNN
-F 1 "F_21mA_420V" V 1494 5650 50  0000 C CNN
-F 2 "footprints:F_21mA_420V" V 1000 5450 50  0001 C CNN
-F 3 "https://en.tdk.eu/inf/55/db/PTC/PTC_OC_Leaded_380V_500V.pdf" V 2250 5800 50  0001 C CNN
-F 4 "DK" H 700 6050 60  0001 C CNN "MFN"
-F 5 "495-75309-ND" H 1450 6300 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/epcos-tdk/B59884C0120A070/495-75309-ND/651926" V 2080 6050 60  0001 C CNN "PurchasingLink"
-	1    1600 5650
-	0    1    1    0   
-$EndComp
 $Comp
 L formula:LR8K4-G U?
 U 1 1 60AA1B77
@@ -328,22 +308,22 @@ Connection ~ 2900 2350
 $Comp
 L formula:F_500mA_16V F?
 U 1 1 60C180ED
-P 7200 2350
+P 9850 4850
 AR Path="/5C6B723E/60C180ED" Ref="F?"  Part="1" 
 AR Path="/60C180ED" Ref="F?"  Part="1" 
 AR Path="/5C702479/60C180ED" Ref="F?"  Part="1" 
 AR Path="/60A3B220/60C180ED" Ref="F?"  Part="1" 
 AR Path="/60A3B080/60C180ED" Ref="F?"  Part="1" 
 AR Path="/60A3B0AB/60C180ED" Ref="F702"  Part="1" 
-F 0 "F702" V 7300 2350 50  0000 C CNN
-F 1 "500mA" V 7100 2350 50  0000 C CNN
-F 2 "footprints:Fuse_1210" V 7130 2350 50  0001 C CNN
-F 3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" V 7280 2350 50  0001 C CNN
-F 4 "Digi-Key" H 7200 2350 60  0001 C CNN "MFN"
-F 5 "507-1786-1-ND" H 7200 2350 60  0001 C CNN "MPN"
-F 6 "Value" H 7200 2350 60  0001 C CNN "Package"
-F 7 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" V 7680 2750 60  0001 C CNN "PurchasingLink"
-	1    7200 2350
+F 0 "F702" V 9950 4850 50  0000 C CNN
+F 1 "500mA" V 9750 4850 50  0000 C CNN
+F 2 "footprints:Fuse_1210" V 9780 4850 50  0001 C CNN
+F 3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" V 9930 4850 50  0001 C CNN
+F 4 "Digi-Key" H 9850 4850 60  0001 C CNN "MFN"
+F 5 "507-1786-1-ND" H 9850 4850 60  0001 C CNN "MPN"
+F 6 "Value" H 9850 4850 60  0001 C CNN "Package"
+F 7 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" V 10330 5250 60  0001 C CNN "PurchasingLink"
+	1    9850 4850
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
@@ -1629,8 +1609,6 @@ AA 00 41 C6 ED 76 9F 3C 79 F2 DD 77 DF 45 08 95 96 96 86 3B 1C 80 15 60 A8 02 04
 EndData
 $EndBitmap
 Wire Wire Line
-	1250 5650 1450 5650
-Wire Wire Line
 	7450 2850 8250 2850
 Text Notes 9500 2250 0    98   ~ 0
 POWER FLAGS
@@ -1674,8 +1652,6 @@ $EndComp
 Wire Wire Line
 	10350 1200 10350 1450
 Wire Wire Line
-	7350 2350 8500 2350
-Wire Wire Line
 	3400 5650 4450 5650
 Wire Notes Line
 	9350 850  9350 1800
@@ -1717,11 +1693,7 @@ Text GLabel 8250 2850 2    50   Input ~ 0
 15V_RETURN
 Text GLabel 1200 2850 0    50   Input ~ 0
 -TS
-Text GLabel 1250 5650 0    50   Input ~ 0
-+TS
-Text GLabel 1400 1300 0    50   Input ~ 0
-+TS
-Text GLabel 8500 2350 2    50   Input ~ 0
+Text GLabel 8250 2350 2    50   Input ~ 0
 +15V
 Text GLabel 4450 5650 2    50   Input ~ 0
 +15V
@@ -1735,33 +1707,81 @@ Wire Wire Line
 	2750 5650 2900 5650
 Connection ~ 2900 5650
 Wire Wire Line
-	1400 1300 1400 1500
-Wire Wire Line
-	1400 1800 1400 1975
-Connection ~ 1400 1975
-Wire Wire Line
-	1400 1975 1400 2250
-$Comp
-L formula:F_21mA_420V F?
-U 1 1 61A11CF8
-P 1400 1650
-AR Path="/60A99934/61A11CF8" Ref="F?"  Part="1" 
-AR Path="/60A3B0AB/61A11CF8" Ref="F703"  Part="1" 
-F 0 "F703" H 1550 1700 50  0000 C CNN
-F 1 "F_21mA_420V" H 1700 1600 50  0000 C CNN
-F 2 "footprints:F_21mA_420V" V 800 1450 50  0001 C CNN
-F 3 "https://en.tdk.eu/inf/55/db/PTC/PTC_OC_Leaded_380V_500V.pdf" V 2050 1800 50  0001 C CNN
-F 4 "DK" H 500 2050 60  0001 C CNN "MFN"
-F 5 "495-75309-ND" H 1250 2300 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/epcos-tdk/B59884C0120A070/495-75309-ND/651926" V 1880 2050 60  0001 C CNN "PurchasingLink"
-	1    1400 1650
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
 	2350 7000 2850 7000
 Wire Wire Line
 	2850 7000 2850 7100
 Connection ~ 2850 7000
 Wire Wire Line
 	2850 7000 3400 7000
+Wire Wire Line
+	1800 5650 1950 5650
+Text GLabel 1250 1800 0    50   Input ~ 0
+TS+_FUSED
+Wire Wire Line
+	1250 1800 1400 1800
+Wire Wire Line
+	1400 1800 1400 1975
+Connection ~ 1400 1975
+Wire Wire Line
+	1400 1975 1400 2250
+Wire Wire Line
+	10000 4100 10300 4100
+Text GLabel 10300 4100 2    50   Input ~ 0
+TS+_FUSED
+Wire Wire Line
+	9450 4100 9700 4100
+Text GLabel 9450 4100 0    50   Input ~ 0
++TS
+$Comp
+L formula:F_21mA_420V F?
+U 1 1 60AA1B80
+P 9850 4100
+AR Path="/60A99934/60AA1B80" Ref="F?"  Part="1" 
+AR Path="/60A3B0AB/60AA1B80" Ref="F701"  Part="1" 
+F 0 "F701" V 9653 4100 50  0000 C CNN
+F 1 "F_21mA_420V" V 9744 4100 50  0000 C CNN
+F 2 "footprints:F_21mA_420V" V 9250 3900 50  0001 C CNN
+F 3 "https://en.tdk.eu/inf/55/db/PTC/PTC_OC_Leaded_380V_500V.pdf" V 10500 4250 50  0001 C CNN
+F 4 "DK" H 8950 4500 60  0001 C CNN "MFN"
+F 5 "495-75309-ND" H 9700 4750 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/epcos-tdk/B59884C0120A070/495-75309-ND/651926" V 10330 4500 60  0001 C CNN "PurchasingLink"
+	1    9850 4100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	10000 4500 10300 4500
+Text GLabel 10300 4500 2    50   Input ~ 0
+TS+_FUSED_LIN_REG
+Wire Wire Line
+	9450 4500 9700 4500
+Text GLabel 9450 4500 0    50   Input ~ 0
++TS
+$Comp
+L formula:F_21mA_420V F?
+U 1 1 6189139C
+P 9850 4500
+AR Path="/60A99934/6189139C" Ref="F?"  Part="1" 
+AR Path="/60A3B0AB/6189139C" Ref="F703"  Part="1" 
+F 0 "F703" V 9653 4500 50  0000 C CNN
+F 1 "F_21mA_420V" V 9744 4500 50  0000 C CNN
+F 2 "footprints:F_21mA_420V" V 9250 4300 50  0001 C CNN
+F 3 "https://en.tdk.eu/inf/55/db/PTC/PTC_OC_Leaded_380V_500V.pdf" V 10500 4650 50  0001 C CNN
+F 4 "DK" H 8950 4900 60  0001 C CNN "MFN"
+F 5 "495-75309-ND" H 9700 5150 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/epcos-tdk/B59884C0120A070/495-75309-ND/651926" V 10330 4900 60  0001 C CNN "PurchasingLink"
+	1    9850 4500
+	0    1    1    0   
+$EndComp
+Text GLabel 1800 5650 0    50   Input ~ 0
+TS+_FUSED_LIN_REG
+Wire Wire Line
+	6550 2350 8250 2350
+Text GLabel 10300 4850 2    50   Input ~ 0
++15V_FUSED
+Text GLabel 9450 4850 0    50   Input ~ 0
++15V
+Wire Wire Line
+	9450 4850 9700 4850
+Wire Wire Line
+	10000 4850 10300 4850
 $EndSCHEMATC

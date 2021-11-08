@@ -109,13 +109,13 @@ F 8 "https://www.digikey.com/products/en?keywords=1723101304" H 9375 5025 60  00
 	1    0    0    -1  
 $EndComp
 Text GLabel 9225 3975 2    50   Input ~ 0
-TS+
++TS
 Text GLabel 9225 4075 2    50   Input ~ 0
-TS-
+-TS
 Text GLabel 9225 4175 2    50   Input ~ 0
-TS+
++TS
 Text GLabel 9225 4275 2    50   Input ~ 0
-TS-
+-TS
 Text Notes 1250 2600 0    50   ~ 0
 BMS isoSPI cutout on ‘BMS Core’ page for clarity
 Text GLabel 9050 2000 2    50   Input ~ 0
