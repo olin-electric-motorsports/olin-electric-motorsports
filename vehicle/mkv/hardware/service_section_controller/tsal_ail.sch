@@ -679,17 +679,6 @@ Wire Wire Line
 	4450 3450 4650 3450
 Wire Wire Line
 	4650 3000 4650 3450
-$Comp
-L formula:-TS #PWR0604
-U 1 1 61B398D8
-P 4650 3650
-F 0 "#PWR0604" H 4650 3400 50  0001 C CNN
-F 1 "-TS" H 4655 3477 50  0000 C CNN
-F 2 "" H 4650 3650 50  0001 C CNN
-F 3 "" H 4650 3650 50  0001 C CNN
-	1    4650 3650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4650 3450 4650 3650
 Wire Wire Line
@@ -751,4 +740,6 @@ Wire Wire Line
 	1500 3700 1600 3700
 Text GLabel 1550 4550 0    50   Input ~ 0
 +15V_FUSED
+Text GLabel 4650 3650 2    50   Input ~ 0
+-TS
 $EndSCHEMATC
