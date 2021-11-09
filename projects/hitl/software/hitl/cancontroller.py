@@ -103,7 +103,7 @@ class CANController:
         Designed to input messages in following format:
 
         Timestamp,arbitration_id,signals...
-        
+
         """
         #Reading and parsing csv file
         log_file = open(path, 'r')
@@ -162,8 +162,6 @@ class CANController:
         msg_name = self.db.get_message_by_frame_id(msg.arbitration_id).name
         # Decode the data
         data = self.db.decode_message(msg.arbitration_id, msg.data)
-        print(msg)
-        print(data)
         # Update the state dictionary
         self.signals[msg_name].update(data)
 
