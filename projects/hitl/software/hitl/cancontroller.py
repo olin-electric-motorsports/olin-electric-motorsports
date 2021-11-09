@@ -5,6 +5,7 @@ import time
 import threading
 from typing import Callable, Tuple
 import logging
+import csv
 
 # Extended python
 import cantools
@@ -93,6 +94,27 @@ class CANController:
         except KeyError:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
 
+    def playback(self, path):
+        #Reading and parsing csv file
+        log_file = open(path, 'r')
+        csvreader = csv.reader(log_file)
+        messages = []
+        for row in csvreader:
+            row = list(filter(None, row))
+            row = [int(i) for i in row]
+            messages.append(row)
+        log_file.close()
+        prev_time = 0
+
+        for row in messages:
+            time_diff = int(row[0]) - prev_time
+            data = row[2:]
+            message = can.Message(arbitration_id=row[1], data=data)
+            self.can_bus.send(message)
+            time.sleep(time_diff/5)
+            prev_time = int(row[0])
+
+
     def _create_state_dictionary(self, path: str) -> None:
         """Generate self.message_of_signal and self.signals
 
@@ -123,6 +145,8 @@ class CANController:
         msg_name = self.db.get_message_by_frame_id(msg.arbitration_id).name
         # Decode the data
         data = self.db.decode_message(msg.arbitration_id, msg.data)
+        print(msg)
+        print(data)
         # Update the state dictionary
         self.signals[msg_name].update(data)
 
