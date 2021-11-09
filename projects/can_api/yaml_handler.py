@@ -13,18 +13,18 @@ import math
 import string
 from defs import PATH_TO
 
+#----------- DEFAULTS and CONSTANTS -----------
 VALID_PRIORITIES = ["LO", "MED", "HI"]
-# DEFAULT VALUES FOR DBC MESSAGES AND SIGNALS
 ENDIAN = "@0" # big
 SCALE_DEFAULT = 1
 OFFSET_DEFAULT = 0
 UNIT_DEFAULT = "n/a"
 MIN_DEFAULT = 0
 MAX_DEFAULT = 0
-# Acts as a counter that updates by "length" value everytime a signal is parsed
-BIT_START = 0
 NODE_NAME = "Vector__XXX"
 
+# Class and function used for dumping hex values into YAML
+# via https://stackoverflow.com/questions/18666816/using-python-to-dump-hexadecimals-into-yaml
 class HexInt(int): pass
 def representer(dumper, data):
     return yaml.ScalarNode('tag:yaml.org,2002:int', hex(data))
@@ -35,14 +35,30 @@ class YAMLCompiler:
     TX and RX messages. Also checks if the input YAML is properly formatted
     """
     def _read_yaml(self, file_path):
+        """
+        Read yaml into a dictionary
+
+        :param file_path: (str) path from project root to yaml file
+        :returns: (dict)
+        """
         with open(PATH_TO(file_path), 'r') as yaml_file:
             data = yaml.load(yaml_file, Loader=yaml.FullLoader)
         return data
 
     def _save_yaml(self, file_dir, file_name, contents):
+        """
+        Stores dictionary as a yaml
+
+        :param file_dir: (str) path from project root to folder to save yaml in
+        :param file_name: (str) name for the yaml file
+        :param contents: (dict) dictionary containing contents to store as yaml
+        :returns: None
+        """
+        # create directory if necessary
         Path(PATH_TO(file_dir)).mkdir(parents=True, exist_ok=True)
         save_path = os.path.join(PATH_TO(file_dir), file_name)
 
+        # add ability to dump hex values into yaml
         yaml.add_representer(HexInt, representer)
         with open(PATH_TO(save_path), 'w') as yaml_file:
             yaml.dump(contents, yaml_file, default_flow_style=False)
@@ -56,7 +72,10 @@ class YAMLCompiler:
 
     def _get_priority_mapping(self, yaml_path):
         """
-        Create a temporary dict with message s mapped to relative priorities
+        Create a temporary dict with messages mapped to relative priorities
+
+        :param yaml_path: (str) relative path to folder with source mini_yamls
+        :returns: (dict) mappings of message name -> relative priority and message data
         """
         mappings = {}
         boards = {}
@@ -65,7 +84,7 @@ class YAMLCompiler:
             path = os.path.join(yaml_path, filename)
             mini = self._read_yaml(path)
 
-            board_prefix = mini["board"]
+            board_prefix = mini["chip"]
             #check for board overlap
             if board_prefix in boards.keys():
                 raise RuntimeWarning(f"Collision between board prefixes: {boards[board_prefix]} and {path}")
@@ -88,14 +107,21 @@ class YAMLCompiler:
                 mappings[msg_name] = {"priority": vals["priority"], "msg_data": vals}
         return mappings
 
-    def _priorities(self, msg_map, reserved_ids, mode): #TODO mode=overwrite, append
-        # message ID algorithm
+    def _priorities(self, msg_map, reserved_path, mode="overwrite"): #TODO mode=overwrite, append
+        """
+        Assign specific message IDs to each message based on reserved_ids and relative priority mappings
+
+        :param msg_map: (dict) message name -> relative priority mappings
+        :param reserved_path: (str) path from project root -> yaml with all reserved IDs
+        :param mode: (str) "overwrite" to overwrite old mappings, "append" to append new IDs and preserve IDs that are already set
+        :returns: (dict) updated map with specific IDs for each message
+        """
         used_ids = set()
         curr_id = 1
-        with open(reserved_ids, 'r') as f:
+        with open(reserved_path, 'r') as f:
             reserved = yaml.load(f, Loader=yaml.FullLoader)
         for msg_name, r_id in reserved.items():
-            msg_map[msg_name]["id"] = HexInt(r_id)
+            msg_map[msg_name]["id"] = HexInt(r_id)  #indicate value should be saved in yaml in hex format
             used_ids.add(r_id)
 
         # TODO: only reassign ig there are differences, prioritizing maintaining IDs that were already set
@@ -127,6 +153,16 @@ class YAMLCompiler:
         return msg_map
 
     def generate_artifacts(self, yaml_path, save_to, reserved_ids, mode):
+        """
+        Generate new mini_yamls with specific IDs and RX messages added
+        **NOTE** RX messages are not added yet
+
+        :param yaml_path: (str) path from project root -> folder with mini yamls
+        :param save_to: (str) path from project root -> folder to save generated mini yamls
+        :param reserved_ids: (str) path from project root -> yaml with all reserved message IDs
+        :param mode: (str) "overwrite" to overwrite old mappings, "append" to append new IDs and preserve IDs that are already set
+        :returns: None
+        """
         # perform checks and create mini temp yamls with IDs in copied yaml file
 
         # add receivers to each mini yaml
@@ -145,7 +181,7 @@ class YAMLCompiler:
                 mini["MessagesTX"][msg_name]["id"] = mappings[msg_name]["id"]
 
             #paste in receiver stuff as well
-            #TODO next PR
+            #TODO not implemented
             mini = self._add_receivers(mini, mappings)
 
             self._save_yaml(save_to, f"autogen_{filename}", mini)
@@ -156,6 +192,9 @@ class Y2DHandler:
     Functionality to generate DBC files based on YAML
     """
     def save_dbc(self, file_dir, file_name, dbc_str):
+        """
+        
+        """
         Path(PATH_TO(file_dir)).mkdir(parents=True, exist_ok=True)
         save_path = os.path.join(PATH_TO(file_dir), f"{file_name}.dbc")
         with open(PATH_TO(save_path), 'w') as f:
@@ -202,6 +241,7 @@ class Y2DHandler:
             MIN = signal_param_dict.get("min", MIN_DEFAULT)
             MAX = signal_param_dict.get("max", MAX_DEFAULT)
             UNIT = signal_param_dict.get("unit", UNIT_DEFAULT)
+            #TODO receiver instead of Vector_XXX?
 
             # Generate DBC signal
             dbc_str += ' SG_ {}: {}|{}{}+ ({},{}) [{}|{}] "{}" {}\n'.format(SIGNAL_NAME, BIT_START, SIG_LEN, ENDIAN, SCALE, OFFSET, MIN, MAX, UNIT, NODE_NAME)
