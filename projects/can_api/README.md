@@ -10,13 +10,16 @@ As of 10/25: For this PR:
 - Add documentation and docstrings
 - Complete main script MVP
 - Make sure that generated can_api.c can compile and run
+- Bazel integration
+- can API integration
 
 Later PRs:
 
 - Convert current address space to mini-YAML files
-- Implement reserved Message ID handling (make a YAML with reserved IDs)
+- Implement reserved Message ID handling (make a YAML with reserved IDs) [x]
 - Preserve unchanged IDs unless specific override is passed when doing priority
   assignments
 - Implement RX message handling
   - Append RX message definitions to generated mini-yamls
 - test C code with a hackerboard
+- Make sure that generated files do not get out of sync

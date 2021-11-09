@@ -25,6 +25,9 @@ MAX_DEFAULT = 0
 BIT_START = 0
 NODE_NAME = "Vector__XXX"
 
+class HexInt(int): pass
+def representer(dumper, data):
+    return yaml.ScalarNode('tag:yaml.org,2002:int', hex(data))
 
 class YAMLCompiler:
     """
@@ -33,12 +36,14 @@ class YAMLCompiler:
     """
     def _read_yaml(self, file_path):
         with open(PATH_TO(file_path), 'r') as yaml_file:
-            data = yaml.load(yaml_file)
+            data = yaml.load(yaml_file, Loader=yaml.FullLoader)
         return data
 
     def _save_yaml(self, file_dir, file_name, contents):
         Path(PATH_TO(file_dir)).mkdir(parents=True, exist_ok=True)
         save_path = os.path.join(PATH_TO(file_dir), file_name)
+
+        yaml.add_representer(HexInt, representer)
         with open(PATH_TO(save_path), 'w') as yaml_file:
             yaml.dump(contents, yaml_file, default_flow_style=False)
 
@@ -83,12 +88,16 @@ class YAMLCompiler:
                 mappings[msg_name] = {"priority": vals["priority"], "msg_data": vals}
         return mappings
 
-    def _priorities(self, msg_map):
+    def _priorities(self, msg_map, reserved_ids, mode): #TODO mode=overwrite, append
         # message ID algorithm
         used_ids = set()
         curr_id = 1
-        # TODO: open the reserved ID file
-        # TODO: apply all reserved message IDs to specific messages, and add each ID to used_ids
+        with open(reserved_ids, 'r') as f:
+            reserved = yaml.load(f, Loader=yaml.FullLoader)
+        for msg_name, r_id in reserved.items():
+            msg_map[msg_name]["id"] = HexInt(r_id)
+            used_ids.add(r_id)
+
         # TODO: only reassign ig there are differences, prioritizing maintaining IDs that were already set
         priorities = {"LO": [], "MED": [], "HI": []}
         # sort all messages by priority
@@ -107,7 +116,7 @@ class YAMLCompiler:
                     raise RuntimeWarning(f"Too many iterations while trying to find an unused ID, assigning message {msg_name} to next largest available ID: {max(used_ids) + 1}")
                     curr_id = max(used_ids) + 1
                 used_ids.add(curr_id)
-                msg_map[msg]["id"] = curr_id
+                msg_map[msg]["id"] = HexInt(curr_id)
                 curr_id += 1
             return msg_map, curr_id
         # assign IDs for lo, med, hi priority messages
@@ -117,13 +126,13 @@ class YAMLCompiler:
         #return updated msg_map
         return msg_map
 
-    def generate_artifacts(self, yaml_path, save_to):
+    def generate_artifacts(self, yaml_path, save_to, reserved_ids, mode):
         # perform checks and create mini temp yamls with IDs in copied yaml file
 
         # add receivers to each mini yaml
         mappings = self._get_priority_mapping(yaml_path)
         #use message ID algorithm to get message IDs
-        mappings = self._priorities(mappings)
+        mappings = self._priorities(mappings, reserved_ids, mode)
 
         #for miniyamlpath, data in dict:
         #TODO should be able to pick a list of targets or auto-detect changes.
@@ -209,7 +218,7 @@ class Y2DHandler:
         for yaml_name in os.listdir(dir_path):
             print(yaml_name, dbc_str)
             with open(os.path.join(dir_path, yaml_name), 'r') as f:
-                data = yaml.load(f)
+                data = yaml.load(f, Loader=yaml.FullLoader)
             dbc_str = self._dbc_msgs_generator(data["MessagesTX"], dbc_str)
             dbc_str += "\n"
         self.save_dbc(out_path, file_name, dbc_str)
@@ -219,7 +228,7 @@ class Y2DHandler:
         Build DBC for one ECU
         """
         with open(path, 'r') as f:
-            data = yaml.load(f)
+            data = yaml.load(f, Loader=yaml.FullLoader)
         #add ecus for one yaml
         dbc_str = self._dbc_msgs_generator(data["MessagesTX"], "")
         # dbc_str = self._dbc_msgs_generator(data["MessagesRX"], dbc_str)
@@ -228,7 +237,7 @@ class Y2DHandler:
 
 if __name__ == "__main__":
     compiler = YAMLCompiler()
-    compiler.generate_artifacts('files/mini_yamls', 'out/yaml')
+    compiler.generate_artifacts('files/mini_yamls', 'out/yaml', 'files/reserved_ids.yaml', "overwrite")
     handler = Y2DHandler()
     handler.mini_dbc('out/yaml/autogen_air_ctrl.yaml', 'out/dbcs/', 'air_ctrl')
     handler.full_dbc('out/yaml', 'out/dbcs', 'mk5')
