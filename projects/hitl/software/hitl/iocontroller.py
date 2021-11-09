@@ -2,7 +2,12 @@
 import logging
 from typing import Tuple, Union
 
-import ft4222
+try:
+    import ft4222
+except ModuleNotFoundError:
+    # We haven't setup the ft4222 library yet...
+    # See https://awenstrup.github.io/setup.html
+    ft4222 = None
 
 # CONSTANTS
 # ADC parameters
@@ -45,13 +50,18 @@ class IOController:
         self.log = logging.getLogger(name=__name__)
 
         self.pin_info = self._read_pin_info(path=pin_info_path)
-        try:
-            self.dev = ft4222.openByDescription(device_description)
-            self.dev.i2cMaster_Init(400_000)
-        except ft4222.FT2XXDeviceError as e:
-            # Couldn't open the specified port; initialize w/o hardware for testing
-            self.log.error(f"Failed to connect to device {device_description}")
-            self.log.error(e)
+
+        if ft4222:
+            try:
+                self.dev = ft4222.openByDescription(device_description)
+                self.dev.i2cMaster_Init(400_000)
+            except ft4222.FT2XXDeviceError as e:
+                # Couldn't open the specified port; initialize w/o hardware for testing
+                self.log.error(f"Failed to connect to device {device_description}")
+                self.log.error(e)
+                self.dev = None
+        else:
+            self.log.warning("ft4222 could not be imported, cannot connect to hardware")
             self.dev = None
 
     def set_state(self, name: str, value) -> None:

@@ -14,14 +14,9 @@ import can
 class CANController:
     """High level python object to interface with hardware.
 
-    The CANController works **passively** for reading signals; you create one with a dictionary of ECUs, and it
-    will automatically keep all of their CAN states updated according to the CAN traffic it reads.
+    The CANController works **passively** for reading signals; you create one with a path to a DBC, and it keeps track of all states automatically
 
     `Confluence <https://docs.olinelectricmotorsports.com/display/AE/CAN+Controller>`_
-
-    :param dict ecus: A dictionary of ``str : ECU`` pairs. The CANController needs this to automatically
-        update the states of those ECUs. The keys in this dictionary should match the names of the senders in your
-        can spec file.
 
     :param str can_spec_path: The path to the can spec. For now, we only support ``.dbc`` files. Should be
         stored in ``artifacts``.
@@ -32,7 +27,7 @@ class CANController:
     :param int bitrate: The bitrate of the can bus. Defaults to 500K. If using a virtual bus, you can ignore this.
     """
 
-    def __init__(self, ecus: dict, can_spec_path: str, channel: str, bitrate: int = 500000):
+    def __init__(self, can_spec_path: str, channel: str, bitrate: int = 500000):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
@@ -48,9 +43,7 @@ class CANController:
         else:
             self.log.error("Cannot bring up real or fake can hardware; must be on linux.")
 
-        self.ecus = ecus
-        self.read_dict = {}  # Dictionary to help translate raw can to useful signals
-        self._get_states(can_spec_path)
+        self.message_of_signal, self.signals = self._create_state_dictionary(can_spec_path)
 
         # Start listening
         bus_type = "socketcan"
@@ -62,7 +55,7 @@ class CANController:
                 name="listener",
                 kwargs={
                     "can_bus": can_bus,
-                    "callback": self._update_ecu,
+                    "callback": self._parse_frame,
                     "kill_threads": self.kill_threads,
                 },
             )
@@ -71,34 +64,61 @@ class CANController:
             can_bus = None
             self.log.error("Not on linux; initializing self.can to None")
 
-    def _update_ecu(self, message: can.Message) -> None:
-        """Update an ECUs states
-
-        :param can.Message message: The `can message <https://python-can.readthedocs.io/en/master/message.html#can.Message>`_ that was received.
+    def get_state(self, signal):
         """
-        ecus = self.db.get_message_by_frame_id(message.arbitration_id).senders
-        values = self.db.decode_message(message.arbitration_id, message.data)
+        Get the state of a can signal on the car
+        """
+        try:
+            msg = self.message_of_signal[signal]
+            return self.signals[msg][signal]
+        except KeyError:
+            raise Exception(f"Cannot get state of signal '{signal}'. It wasn't found.")
 
-        for ecu in ecus:
-            self.ecus[ecu].update(values)
+    def set_state(self, signal, value):
+        """
+        Set the state of a can signal on the car
 
-    def _get_states(self, path: str) -> None:
-        """Populate each ECUs ``states`` dictionary, and self.read_dict
+        NOTE: This module does not yet support CAN injection, so setting
+        the state of a signal only updates an internal lookup dictionary
+        """
+        try:
+            msg = self.message_of_signal[signal]
+            self.signals[msg][signal] = value
+        except KeyError:
+            raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
+
+    def _create_state_dictionary(self, path: str) -> None:
+        """Generate self.message_of_signal and self.signals
 
         :param str path: Path the the CAN spec file
         """
-        ##create database that has all the messages in the dbc file in type message
+        # Create database that has all the messages in the dbc file in type message
         self.db = cantools.database.load_file(path)
 
-        ##Iterates through messages to create ECUS
+        # Iterates through messages to create state dictionaries
+        message_of_signal = {}
+        signals = {}
         for msg in self.db.messages:
-            for signal in msg.signals:
-                for sender in msg.senders:
-                    try:
-                        self.ecus[sender].states[signal.name] = None  # TODO Idk what to use for default values...
-                    except Exception as e:
-                        self.log.error(e)
-                        self.log.error(f"Could not add signal {signal} to sender {sender}")
+            if msg.name not in message_of_signal:
+                signals[msg.name] = {}
+            for sig in msg.signals:
+                signals[msg.name][sig.name] = 0
+                message_of_signal[sig.name] = msg.name
+
+        return message_of_signal, signals
+
+    def _parse_frame(self, msg):
+        """
+        Callback function to the listener thread.
+        
+        Parses through a CAN frame and updates the self.states dictionary
+        """
+        # Get the message name
+        msg_name = self.db.get_message_by_frame_id(msg.arbitration_id)
+        # Decode the data
+        data = self.db.decode_message(msg.arbitration_id, msg.data)
+        # Update the state dictionary
+        self.signals[msg_name].update(data)
 
     def __del__(self):
         """Destructor (called when the program ends)
