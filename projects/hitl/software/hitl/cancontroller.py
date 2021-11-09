@@ -95,23 +95,40 @@ class CANController:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
 
     def playback(self, path):
+        """
+        Play back a CSV log of CAN messages on the interface assigned to CANController object.
+
+        :param path: Path to CSV log file
+        
+        Designed to input messages in following format:
+
+        Timestamp,arbitration_id,signals...
+        
+        """
         #Reading and parsing csv file
         log_file = open(path, 'r')
         csvreader = csv.reader(log_file)
         messages = []
         for row in csvreader:
-            row = list(filter(None, row))
+            #remove empty elements from list
+            row = list(filter(None, row)) 
+            #convert strings to integers
             row = [int(i) for i in row]
             messages.append(row)
         log_file.close()
         prev_time = 0
 
         for row in messages:
+            #set sleep time and sleep according to message timestamp
             time_diff = int(row[0]) - prev_time
+            time.sleep(time_diff/1000)
+            #Pull out message data from csv
             data = row[2:]
+            #create CAN message
             message = can.Message(arbitration_id=row[1], data=data)
+            #send message
             self.can_bus.send(message)
-            time.sleep(time_diff/5)
+            #update previous time to calculate timestemp on next iteration
             prev_time = int(row[0])
 
 
