@@ -2395,7 +2395,7 @@ $EndComp
 Text Notes 9750 4500 0    50   ~ 0
 0.45V
 $Comp
-L BMS_core-rescue:SN74LVC1G32-formula U7
+L bms_core-rescue:SN74LVC1G32-formula-BMS_core-rescue U7
 U 1 1 5CFD6270
 P 12000 5350
 F 0 "U7" H 12200 5200 50  0000 L CNN
@@ -2593,7 +2593,7 @@ F 6 "https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/4
 	1    0    0    -1  
 $EndComp
 $Comp
-L BMS_core-rescue:C_22uF-footprints COUT102
+L bms_core-rescue:C_22uF-footprints-BMS_core-rescue COUT102
 U 1 1 5E5C89C8
 P 5350 9000
 F 0 "COUT102" H 5175 9325 50  0000 L CNN
@@ -2607,7 +2607,7 @@ F 6 "https://www.digikey.com/product-detail/en/tdk-corporation/C3216JB1C226M160A
 	1    0    0    -1  
 $EndComp
 $Comp
-L BMS_core-rescue:C_33uF-footprints COUT103
+L bms_core-rescue:C_33uF-footprints-BMS_core-rescue COUT103
 U 1 1 5E5CA0AF
 P 5700 9000
 F 0 "COUT103" H 5575 9325 50  0000 L CNN
@@ -2625,7 +2625,7 @@ Wire Wire Line
 Wire Wire Line
 	1000 8650 1075 8650
 $Comp
-L BMS_core-rescue:C_0.1uF-footprints C102
+L bms_core-rescue:C_0.1uF-footprints-BMS_core-rescue C102
 U 1 1 5E6C94BB
 P 2650 8875
 F 0 "C102" H 2550 9175 50  0000 L CNN
@@ -2639,7 +2639,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 3075 9375 60 
 	1    0    0    -1  
 $EndComp
 $Comp
-L BMS_core-rescue:C_2.2uF-footprints C101
+L bms_core-rescue:C_2.2uF-footprints-BMS_core-rescue C101
 U 1 1 5E6CA759
 P 2425 8875
 F 0 "C101" H 2325 9175 50  0000 L CNN
@@ -2732,7 +2732,7 @@ GND
 Text Label 12650 2750 0    50   ~ 0
 GND
 $Comp
-L BMS_core-rescue:T_LAN_SM91501ALE-footprints T1
+L bms_core-rescue:T_LAN_SM91501ALE-footprints-BMS_core-rescue T1
 U 1 1 5EF8F2AF
 P 10650 3100
 F 0 "T1" H 11525 4297 60  0000 C CNN
@@ -2783,10 +2783,10 @@ Wire Wire Line
 Wire Wire Line
 	5500 1825 5500 1900
 $Comp
-L formula:Test_Point_SMD 12V1
+L formula:Test_Point_SMD TP_12V1
 U 1 1 5E4C6F2A
 P 13850 4175
-F 0 "12V1" V 13850 4450 50  0000 C CNN
+F 0 "TP_12V1" V 13845 4525 50  0000 C CNN
 F 1 "Test_Point_SMD" H 13928 4172 50  0001 L CNN
 F 2 "footprints:Test_Point_SMD" H 13850 4025 50  0001 C CNN
 F 3 "" H 13850 4175 50  0001 C CNN
@@ -2873,7 +2873,7 @@ IM
 Text Label 13900 5175 0    50   ~ 0
 IP
 $Comp
-L BMS_core-rescue:G5Q-1A4-DC12-footprints K1
+L bms_core-rescue:G5Q-1A4-DC12-footprints-BMS_core-rescue K1
 U 1 1 5E4512AF
 P 8800 8800
 F 0 "K1" H 9130 8846 50  0000 L CNN
