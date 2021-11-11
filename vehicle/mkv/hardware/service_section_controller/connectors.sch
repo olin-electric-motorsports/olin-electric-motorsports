@@ -196,7 +196,7 @@ PM_MOSI
 Text GLabel 5100 2750 2    50   Input ~ 0
 PM_MISO
 Text GLabel 5100 2650 2    50   Input ~ 0
-5V_AIR_CONTROL
++5V_AIR_CONTROL
 Text GLabel 5100 2550 2    50   Input ~ 0
 PM_RJ45_LEDO
 Text GLabel 5100 2450 2    50   Input ~ 0
@@ -210,7 +210,7 @@ SM_MOSI
 Text GLabel 5100 2050 2    50   Input ~ 0
 SM_MISO
 Text GLabel 5100 1950 2    50   Input ~ 0
-5V_BMS
++5V_BMS
 $Comp
 L power:GND #PWR?
 U 1 1 60FC194A

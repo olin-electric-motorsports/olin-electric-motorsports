@@ -1056,11 +1056,11 @@ Wire Wire Line
 	6750 1050 6750 1200
 Connection ~ 6750 1200
 Text GLabel 8400 5800 2    50   Input ~ 0
-5V_BMS
++5V_BMS
 Wire Wire Line
 	10250 5800 10400 5800
 Text GLabel 10400 5800 2    50   Input ~ 0
-5V_AIR_CONTROL
++5V_AIR_CONTROL
 Connection ~ 1650 5300
 Connection ~ 1650 6700
 Wire Wire Line
