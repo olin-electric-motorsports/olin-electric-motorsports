@@ -193,7 +193,10 @@ class Y2DHandler:
     """
     def save_dbc(self, file_dir, file_name, dbc_str):
         """
-        
+        :param file_dir: (str) path from project root to folder to folder to save
+        :param file_name: (str) name for DBC file
+        :param dbc_str: (str) formatted string containing DBC
+        :returns: None
         """
         Path(PATH_TO(file_dir)).mkdir(parents=True, exist_ok=True)
         save_path = os.path.join(PATH_TO(file_dir), f"{file_name}.dbc")
@@ -201,34 +204,37 @@ class Y2DHandler:
             f.write(dbc_str)
 
     def _dbc_msgs_generator(self, messagesTX_dict, dbc_str):
-        ''' 
-        Input: 
-            Dictionary with all TX messages
-            DBC file to write to   
-        Output: Writes DBC message and signal to DBC file 
-        '''
-        for message in messagesTX_dict:
+        """
+        Generate DBC string for a dictionary of message data
+
+        :params messagesTX_dict: (dict) message name -> message data
+        :params dbc_str: (str) formatted string containing DBC 
+        :returns: updated dbc_str
+        """
+        for msg_name, msg_dict in messagesTX_dict.items():
             message_dict = messagesTX_dict[message]
 
-            # parse dictionary and set variables
-            MESSAGE_NAME = message
-            CAN_ID = message_dict["id"]
-            BYTE_LEN = message_dict["data_bytes"]
+            # receivers are optional
+            receivers = msg_dict.get("receivers", NODE_NAME)
 
             # Create dict of signals
-            signals_dict = message_dict["signals"]
+            signals_dict = msg_dict["signals"]
 
             # Generate DBC message
-            dbc_str += "BO_ {} {}: {} {}\n".format(CAN_ID, MESSAGE_NAME, BYTE_LEN, NODE_NAME)
+            dbc_str += "BO_ {} {}: {} {}\n".format(msg_dict["id"], msg_name, msg_dict["data_bytes"], receivers)
 
-            # Process signals
+            # update dbc_str with new signal information
             dbc_str = self._dbc_sig_generator(signals_dict, dbc_str)
         return dbc_str
 
     def _dbc_sig_generator(self, signals_dict, dbc_str):
-        '''
-        Input: DBC
-        '''
+        """
+        Generate DBC string for signals in a message
+
+        :params signals_dict: (dict) dictionary containing signal data
+        :params dbc_str: (str) formatting string containing DBC
+        :returns: update dbc_str
+        """
         BIT_START = 0
         for signal in signals_dict:
             signal_param_dict = signals_dict[signal]
@@ -253,6 +259,11 @@ class Y2DHandler:
     def full_dbc(self, dir_path, out_path, file_name):
         """
         Build one DBC for the vehicle
+
+        :params dir_path: (str) path from project root to folder with mini_yamls
+        :params out_path: (str) path from project root to folder to save DBC
+        :params file_name: (str) name of DBC
+        :returns: None
         """
         dbc_str = ""
         for yaml_name in os.listdir(dir_path):
@@ -265,7 +276,12 @@ class Y2DHandler:
 
     def mini_dbc(self, path, file_dir, file_name):
         """
-        Build DBC for one ECU
+        Build DBC for one chip
+
+        :params path: (str) path to a mini-yaml
+        :params file_dir: (str) path from project root -> folder to save DBC
+        :params file_name: (str) file name of DBC
+        :returns: None
         """
         with open(path, 'r') as f:
             data = yaml.load(f, Loader=yaml.FullLoader)
