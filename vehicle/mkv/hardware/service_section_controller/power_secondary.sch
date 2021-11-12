@@ -366,7 +366,7 @@ Connection ~ 3300 1875
 Wire Wire Line
 	2750 1275 2750 1525
 $Comp
-L service_section_controller-rescue:MP9488-formula U?
+L formula:MP9488 U?
 U 1 1 60B102A2
 P 2650 1825
 AR Path="/60B102A2" Ref="U?"  Part="1" 
