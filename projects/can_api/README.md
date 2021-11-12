@@ -36,6 +36,8 @@ chip: CHIPNAME -- should be short, unique, and capitalized. This will prefix all
 receives: CHIP1_msg1, CHIP2_another_message  --a comma separated list of messages that the chip will receive
 MessagesTX:
   CHIPNAME_msg_name:   --the full name of the message. Every message should start with the prefix, and use underscores
+    cycle_time:    -- time between cycles
+
 
 ```
 
@@ -44,8 +46,7 @@ chip: AIR
 receives: BMS_core
 MessagesTX:
   AIR_ctrl:
-    RX: THR, DASH
-    frequency: 100
+    cycle_time: 100
     priority: MED
     data_bytes: 8.0
     signals:

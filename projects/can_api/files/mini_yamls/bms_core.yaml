@@ -2,8 +2,7 @@ chip: BMS
 receives: AIR_ctrl
 MessagesTX:
   BMS_core:
-    RX: THR, SHD, DASH
-    frequency: 100
+    cycle_time: 100
     priority: HI
     data_bytes: 8.0
     signals:
