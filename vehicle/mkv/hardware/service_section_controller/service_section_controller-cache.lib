@@ -962,6 +962,27 @@ X 9 9 250 0 100 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
+# formula_MP9488
+#
+DEF formula_MP9488 U 0 40 Y Y 1 F N
+F0 "U" 0 750 50 H V C CNN
+F1 "formula_MP9488" 50 850 50 H V C CNN
+F2 "footprints:Converter_DCDC_MPS_MP9488" 50 950 50 H I C CNN
+F3 "" 0 750 50 H I C CNN
+F4 "https://www.monolithicpower.com/en/mp9488.html" 50 1050 50 H I C CNN "Purchasing Link"
+DRAW
+S -150 200 400 -350 0 1 0 f
+X VCC 1 100 300 100 D 50 50 1 1 B
+X FB 2 500 -50 100 L 50 50 1 1 B
+X SW 3 250 -450 100 U 50 50 1 1 B
+X SW 4 100 -450 100 U 50 50 1 1 B
+X NC 5 -250 50 100 R 50 50 1 1 B
+X NC 6 -250 -50 100 R 50 50 1 1 B
+X VIN 7 -250 -150 100 R 50 50 1 1 B
+X NC 8 -250 -250 100 R 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
 # formula_MicroFit_VT_12
 #
 DEF formula_MicroFit_VT_12 J 0 40 Y Y 1 F N
@@ -2009,27 +2030,6 @@ F3 "" 0 0 50 H I C CNN
 DRAW
 P 6 0 1 0 0 0 0 50 -40 75 0 100 40 75 0 50 N
 X pwr 1 0 0 0 U 50 50 0 0 w
-ENDDRAW
-ENDDEF
-#
-# service_section_controller-rescue_MP9488-formula
-#
-DEF service_section_controller-rescue_MP9488-formula U 0 40 Y Y 1 F N
-F0 "U" 0 750 50 H V C CNN
-F1 "service_section_controller-rescue_MP9488-formula" 50 850 50 H V C CNN
-F2 "footprints:Converter_DCDC_MPS_MP9488" 50 950 50 H I C CNN
-F3 "" 0 750 50 H I C CNN
-F4 "https://www.monolithicpower.com/en/mp9488.html" 50 1050 50 H I C CNN "Purchasing Link"
-DRAW
-S -150 200 400 -350 0 1 0 f
-X VCC 1 100 300 100 D 50 50 1 1 B
-X FB 2 500 -50 100 L 50 50 1 1 B
-X SW 3 250 -450 100 U 50 50 1 1 B
-X SW 4 100 -450 100 U 50 50 1 1 B
-X NC 5 -250 50 100 R 50 50 1 1 B
-X NC 6 -250 -50 100 R 50 50 1 1 B
-X VIN 7 -250 -150 100 R 50 50 1 1 B
-X NC 8 -250 -250 100 R 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
