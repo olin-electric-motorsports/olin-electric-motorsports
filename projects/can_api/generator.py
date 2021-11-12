@@ -81,7 +81,7 @@ class CGenerator(Utils):
             final_str += template.format(
                 msg_name=msg_name.upper(),
                 arr_name=RAW_ARR_NAME(msg_name),
-                cycle_time=msg_info["frequency"],
+                cycle_time=msg_info["cycle_time"],
                 i=i,
                 msg_id=msg_info["id"],
                 msg_length=msg_info["data_bytes"]
