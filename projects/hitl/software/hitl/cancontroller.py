@@ -94,15 +94,18 @@ class CANController:
         except KeyError:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
 
-    def playback(self, path):
+    def playback(self, path, initial_time=0):
         """
         Play back a CSV log of CAN messages on the interface assigned to CANController object.
 
         :param path: Path to CSV log file
+
+        :param initial_time: Timestamp of the first CAN message in the CSV file - can be useful 
+                             if you only want to test a certain portion of CAN messages. Defaults to 0.
         
         Designed to input messages in following format:
 
-        Timestamp,arbitration_id,signals...
+        Timestamp,arbitration_id,signals(0 to 255 value)...
 
         """
         #Reading and parsing csv file
@@ -114,9 +117,11 @@ class CANController:
             row = list(filter(None, row)) 
             #convert strings to integers
             row = [int(i) for i in row]
-            messages.append(row)
+            #check if row is within time range
+            if row[0] >= initial_time:
+                 messages.append(row)
         log_file.close()
-        prev_time = 0
+        prev_time = initial_time
 
         for row in messages:
             #set sleep time and sleep according to message timestamp
