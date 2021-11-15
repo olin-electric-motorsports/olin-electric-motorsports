@@ -4,7 +4,7 @@ cc_firmware(
     name = "bspd",
     srcs = [
         "bspd.c",
-        "config.h",
+        "bspd_config.h",
     ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",

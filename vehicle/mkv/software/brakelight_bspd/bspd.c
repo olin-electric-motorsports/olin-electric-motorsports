@@ -3,7 +3,7 @@
 #include "libs/timer/api.h"
 #include <avr/interrupt.h>
 
-#include "config.h"
+#include "bspd_config.h"
 #include "libs/gpio/api.h"
 
 #include <stdbool.h>
