@@ -26,6 +26,8 @@ def can():
 
     return out
 
+can2 = can
+
 
 @pytest.fixture
 def logger():
@@ -44,8 +46,9 @@ def test_create_state_dictionary(can, logger):
 
 @pytest.mark.soft
 @pytest.mark.unit
-def test_set_and_get_state(can, logger):
+def test_set_and_get_state(can, can2, logger):
     logger.info("Testing set_state and get_state...")
 
     can.set_state("ThrottlePos", 50)
-    assert can.get_state("ThrottlePos") == 50
+    time.sleep(.1)
+    assert can2.get_state("ThrottlePos") == 50 
