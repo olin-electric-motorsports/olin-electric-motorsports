@@ -467,6 +467,12 @@ D Battery Charge Controller
 F https://ww1.microchip.com/downloads/en/DeviceDoc/MCP73871-Data-Sheet-20002090E.pdf
 $ENDCMP
 #
+$CMP MCP79511-I_MS
+D SPI RTC
+K spi, rtc, clock, clk
+F https://ww1.microchip.com/downloads/en/DeviceDoc/MCP7951X-MCP7952X-Battery-Backed-SPI-RTCC-20002300C.pdf
+$ENDCMP
+#
 $CMP MLX90621ESF-BAB-000-TU
 D I2C Tire Temperature Sensor
 K I2C Temperature Sensor
