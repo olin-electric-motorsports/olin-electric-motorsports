@@ -6,12 +6,21 @@
 /*
  * GPIO pin definitions
  */
+// Outputs
 gpio_t PRECHARGE_CTL = PB2;
+gpio_t AIR_N_LSD = PC6;
+
+// Inputs
 gpio_t SS_TSMS = PB3;
+gpio_t SS_IMD_LATCH = PB4;
+gpio_t SS_MPC = PB5;
+gpio_t SS_HVD_CONN = PB6;
+gpio_t SS_HVD = PB7;
+
 gpio_t BMS_SENSE = PC0;
 gpio_t AIR_P_WELD_DETECT = PC4;
 gpio_t AIR_N_WELD_DETECT = PC5;
-gpio_t AIR_P_LSD = PC6;
+
 gpio_t IMD_SENSE = PD0;
 
 /*
@@ -33,25 +42,25 @@ can_frame_t air_ctrl_sense_msg = {
 };
 
 can_filter_t motor_controller_filter = {
-    // TODO correct values
-    .id = 0x00,
-    .mask = 0x7FF,
+    .id = 0xA7, // Motor controller voltage
+    .mask = 0x7FF, // Exact match
 };
 
-uint8_t motor_controller_data[8];
+uint8_t motor_controller_data[8] = {0};
 can_frame_t motor_controller_msg = {
     .mob = MOB_MOTOR_CONTROLLER,
+    .data = motor_controller_data,
 };
 
 can_filter_t bms_filter = {
-    // TODO correct values
     .id = 0x00,
     .mask = 0x7FF,
 };
 
-uint8_t bms_data[8];
+uint8_t bms_data[8] = {0};
 can_frame_t bms_msg = {
     .mob = MOB_BMS,
+    .data = bms_data,
 };
 
 /*
@@ -69,5 +78,20 @@ timer_cfg_s timer0_cfg = {
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer0_isr,
+    },
+};
+
+void timer1_isr(void);
+
+timer_cfg_s timer1_cfg = {
+    .timer = TIMER1,
+    .timer1_mode = TIMER1_MODE_CTC,
+    .prescalar = CLKIO_DIV_1,
+    .channel_a = {
+        .channel = CHANNEL_A,
+        .output_compare_match = 4000,
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer1_isr,
     },
 };

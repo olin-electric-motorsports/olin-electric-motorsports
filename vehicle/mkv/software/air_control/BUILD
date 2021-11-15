@@ -9,7 +9,7 @@ exports_files([
 ])
 
 cc_firmware(
-    name = "airs",
+    name = "air_control",
     srcs = [
         "air.c",
         "config.h",

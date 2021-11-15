@@ -5,6 +5,13 @@
 #include "libs/can/mob.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
+#include <avr/interrupt.h>
+
+__attribute__((weak)) void can_isr(void) {};
+
+ISR(CAN_INT_vect) {
+    can_isr();
+}
 
 __attribute__((weak)) void can_isr(void) {};
 
