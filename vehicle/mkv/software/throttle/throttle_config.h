@@ -45,10 +45,10 @@ timer_cfg_s timer0_cfg = {
  * CAN messages
  */
 #define CAN_MSG_DLC (5)
-uint8_t can_data_bspd[CAN_MSG_DLC] = { 0 };
+uint8_t can_data_throttle[CAN_MSG_DLC] = { 0 };
 
 can_frame_t bspd_msg = {
-    .id = 0xB,
+    .id = 0xC,
     .dlc = CAN_MSG_DLC,
     .mob = 0,
 };
