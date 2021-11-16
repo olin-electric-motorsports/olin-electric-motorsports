@@ -52,3 +52,13 @@ def test_set_and_get_state(can, can2, logger):
     can.set_state("ThrottlePos", 50)
     time.sleep(.1)
     assert can2.get_state("ThrottlePos") == 50 
+
+@pytest.mark.soft
+@pytest.mark.unit
+def test_playback(can, can2, logger):
+    logger.info('Testing drive log playback')
+    
+    path = os.path.abspath(os.path.dirname(__file__) + "/can_test_log.csv")
+    can.playback(path)
+    assert can2.get_state('StartButton') == 33
+    assert can2.get_state('Temperature') == 145
