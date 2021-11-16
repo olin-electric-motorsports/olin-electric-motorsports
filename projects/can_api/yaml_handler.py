@@ -38,20 +38,26 @@ class YamlParser:
 
         for raw in self.data["publish"]:
 
-            id = raw["id"]
-            signals, length = self._parse_signals(raw)
-            cycle_time = (1 / raw["freq_hz"]) * 1000 # Milliseconds
+            if raw.get("id"):
+                # Must check for "id" because there are cases where we are
+                # publishing a message defined elsewhere, like the motor
+                # controller message
+                id = raw["id"]
+                signals, length = self._parse_signals(raw)
+                cycle_time = (1 / raw["freq_hz"]) * 1000 # Milliseconds
 
-            m = CANMessage(
-                id,
-                raw["name"],
-                length,
-                signals,
-                senders = [self.name],
-                cycle_time = cycle_time,
-            )
+                m = CANMessage(
+                    id,
+                    raw["name"],
+                    length,
+                    signals,
+                    senders = [self.name],
+                    cycle_time = cycle_time,
+                )
 
-            messages.append(m)
+                messages.append(m)
+            else:
+                pass
 
         return messages
 
