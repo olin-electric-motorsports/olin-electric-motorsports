@@ -626,20 +626,6 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 106
 	1    10200 4100
 	0    1    1    0   
 $EndComp
-$Comp
-L formula:C_10uF C26
-U 1 1 61998379
-P 10150 4450
-F 0 "C26" V 9898 4500 50  0000 C CNN
-F 1 "C_10uF" V 9989 4500 50  0000 C CNN
-F 2 "footprints:C_0805_OEM" H 10188 5050 50  0001 C CNN
-F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf" H 10175 5300 50  0001 C CNN
-F 4 "DK" H 10150 4500 60  0001 C CNN "MFN"
-F 5 "1276-1052-1-ND" H 10150 5200 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138" H 10575 4950 60  0001 C CNN "PurchasingLink"
-	1    10150 4450
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	10000 3300 10000 4100
 Wire Wire Line
@@ -739,20 +725,6 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 106
 	1    10150 6700
 	0    1    1    0   
 $EndComp
-$Comp
-L formula:C_10uF C25
-U 1 1 6195AB85
-P 10100 7050
-F 0 "C25" V 9848 7100 50  0000 C CNN
-F 1 "C_10uF" V 9939 7100 50  0000 C CNN
-F 2 "footprints:C_0805_OEM" H 10138 7650 50  0001 C CNN
-F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf" H 10125 7900 50  0001 C CNN
-F 4 "DK" H 10100 7100 60  0001 C CNN "MFN"
-F 5 "1276-1052-1-ND" H 10100 7800 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138" H 10525 7550 60  0001 C CNN "PurchasingLink"
-	1    10100 7050
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	9950 5900 9950 6700
 Wire Wire Line
@@ -812,4 +784,32 @@ F2 "STRAIN_+" U L 5400 5250 50
 F3 "OUT" O R 6300 5350 50 
 F4 "STRAIN_-" U L 5400 5450 50 
 $EndSheet
+$Comp
+L formula:C_10nF C26
+U 1 1 619382BD
+P 10200 4450
+F 0 "C26" V 9948 4450 50  0000 C CNN
+F 1 "C_10nF" V 10039 4450 50  0000 C CNN
+F 2 "footprints:C_1206_OEM" H 10000 4450 50  0001 C CNN
+F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/07/23/CL21B103KBANNNC.pdf" H 10100 4550 50  0001 C CNN
+F 4 "Kemet" H 10200 4650 50  0001 C CNN "MFN"
+F 5 "C1206C103KCRACTU" H 10300 4750 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/kemet/C1206C103KCRACTU/721283" H 10400 4850 50  0001 C CNN "PurchasingLink"
+	1    10200 4450
+	0    1    1    0   
+$EndComp
+$Comp
+L formula:C_10nF C25
+U 1 1 6194CB9D
+P 10150 7050
+F 0 "C25" V 9898 7050 50  0000 C CNN
+F 1 "C_10nF" V 9989 7050 50  0000 C CNN
+F 2 "footprints:C_1206_OEM" H 9950 7050 50  0001 C CNN
+F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/07/23/CL21B103KBANNNC.pdf" H 10050 7150 50  0001 C CNN
+F 4 "Kemet" H 10150 7250 50  0001 C CNN "MFN"
+F 5 "C1206C103KCRACTU" H 10250 7350 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/kemet/C1206C103KCRACTU/721283" H 10350 7450 50  0001 C CNN "PurchasingLink"
+	1    10150 7050
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
