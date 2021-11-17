@@ -206,7 +206,7 @@ ENDDEF
 DEF formula_CPC1025NTR U 0 40 Y Y 1 F N
 F0 "U" -200 200 50 H V L CNN
 F1 "formula_CPC1025NTR" 0 200 50 H V L CNN
-F2 "Package_DIP:DIP-4_W7.62mm" -200 -200 50 H I L CIN
+F2 "footprints:4-pin_SOP" -200 -200 50 H I L CIN
 F3 "" 0 0 50 H I L CNN
 ALIAS SFH617A-1 SFH617A-2 SFH617A-3 SFH617A-4 SFH617A-1X001 SFH617A-2X001 SFH617A-3X001 SFH617A-4X001
 $FPLIST
@@ -983,6 +983,23 @@ X NC 8 -250 -250 100 R 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
+# formula_MicroFit_RA_V_2
+#
+DEF formula_MicroFit_RA_V_2 J 0 40 Y Y 1 F N
+F0 "J" -100 50 50 H V C CNN
+F1 "formula_MicroFit_RA_V_2" 0 -150 50 H V C CNN
+F2 "footprints:MicroFit_RA_V_2" -50 200 50 H I C CNN
+F3 "https://www.molex.com/pdm_docs/sd/430450200_sd.pdf" -50 200 50 H I C CNN
+F4 "MFN" 100 250 50 H I C CNN "DK"
+F5 "WM1865-ND" 200 350 50 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/molex/0430450200/WM1813-ND/252526" 0 150 50 H I C CNN "PurchasingLink"
+DRAW
+S 150 -100 -150 100 1 1 0 f
+X 1 1 250 50 100 L 50 50 1 1 B
+X 2 2 250 -50 100 L 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
 # formula_MicroFit_VT_12
 #
 DEF formula_MicroFit_VT_12 J 0 40 Y Y 1 F N
@@ -1004,23 +1021,6 @@ X ~ 6 200 50 100 L 50 50 1 1 I
 X ~ 7 200 -50 100 L 50 50 1 1 I
 X ~ 8 200 -150 100 L 50 50 1 1 I
 X ~ 9 200 -250 100 L 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# formula_MicroFit_V_2
-#
-DEF formula_MicroFit_V_2 J 0 40 Y Y 1 F N
-F0 "J" -100 50 50 H V C CNN
-F1 "formula_MicroFit_V_2" 0 -150 50 H V C CNN
-F2 "footprints:MicroFit_V_2" -50 200 50 H I C CNN
-F3 "https://www.molex.com/pdm_docs/sd/430450225_sd.pdf" -50 200 50 H I C CNN
-F4 "MFN" 100 250 50 H I C CNN "DK"
-F5 "WM10660-ND" 200 350 50 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180" 0 150 50 H I C CNN "PurchasingLink"
-DRAW
-S 150 -100 -150 100 1 1 0 f
-X 1 1 250 50 100 L 50 50 1 1 B
-X 2 2 250 -50 100 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
