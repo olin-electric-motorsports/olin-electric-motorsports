@@ -45,26 +45,6 @@ F 3 "" H 8900 2200 100 0001 C CNN
 	1    8850 2250
 	1    0    0    -1  
 $EndComp
-$Comp
-L formula:MicroFit_V_2 J?
-U 1 1 60C16849
-P 8900 3300
-AR Path="/60A3B20D/60C16849" Ref="J?"  Part="1" 
-AR Path="/60A3B236/60C16849" Ref="J?"  Part="1" 
-AR Path="/60A3B41E/60C16849" Ref="J?"  Part="1" 
-AR Path="/60A3B1F8/60C16849" Ref="J405"  Part="1" 
-F 0 "J405" H 8900 3550 60  0000 C CNN
-F 1 "Ultrafit_4_RA" H 8850 3450 60  0000 C CNN
-F 2 "footprints:Ultrafit_4_RA" H 8400 3950 60  0001 C CNN
-F 3 "https://www.molex.com/pdm_docs/sd/1723101104_sd.pdf" H 9350 4400 60  0001 C CNN
-F 4 "Digi-Key" H 8200 4550 60  0001 C CNN "MFN"
-F 5 "Value" H 8050 3700 60  0001 C CNN "Package"
-F 6 "WM11574-ND" H 8250 3800 60  0001 C CNN "MPN"
-F 7 "WM11564-ND" H 9300 4050 60  0001 C CNN "MPN2"
-F 8 "https://www.digikey.com/products/en?keywords=1723101304" H 9400 4150 60  0001 C CNN "PurchasingLink"
-	1    8900 3300
-	1    0    0    -1  
-$EndComp
 Text Notes 8600 1300 0    98   ~ 0
 TO AIR MOUNT BOARDS
 Text Notes 1250 2300 0    50   ~ 0
@@ -138,8 +118,6 @@ Text GLabel 9050 2800 2    50   Input ~ 0
 FINAL_SHUTDOWN
 Text GLabel 9150 3350 2    50   Input ~ 0
 FINAL_SHUTDOWN
-Wire Wire Line
-	9150 3250 9900 3250
 Wire Wire Line
 	9800 2700 9050 2700
 $Comp
@@ -309,4 +287,22 @@ Wire Wire Line
 	6750 2850 6850 2850
 Text Notes 6250 3250 0    50   ~ 0
 This needs to be a right angle connector
+$Comp
+L formula:MicroFit_RA_V_2 J405
+U 1 1 62060F67
+P 8850 3300
+F 0 "J405" H 8908 3575 50  0000 C CNN
+F 1 "MicroFit_RA_V_2" H 8908 3484 50  0000 C CNN
+F 2 "footprints:MicroFit_RA_V_2" H 8800 3500 50  0001 C CNN
+F 3 "https://www.molex.com/pdm_docs/sd/430450200_sd.pdf" H 8800 3500 50  0001 C CNN
+F 4 "MFN" H 8950 3550 50  0001 C CNN "DK"
+F 5 "WM1865-ND" H 9050 3650 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/molex/0430450200/WM1813-ND/252526" H 8850 3450 50  0001 C CNN "PurchasingLink"
+	1    8850 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 3250 9900 3250
+Wire Wire Line
+	9100 3350 9150 3350
 $EndSCHEMATC

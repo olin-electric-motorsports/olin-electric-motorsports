@@ -268,19 +268,6 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 	1    6400 4000
 	0    1    1    0   
 $EndComp
-$Comp
-L formula:CPC1025NTR U?
-U 1 1 611250CC
-P 7100 4100
-AR Path="/60A3B236/611250CC" Ref="U?"  Part="1" 
-AR Path="/60A3B41E/611250CC" Ref="U602"  Part="1" 
-F 0 "U602" H 7100 4425 50  0000 C CNN
-F 1 "CPC1025NTR" H 7100 4334 50  0000 C CNN
-F 2 "footprints:DIP-5-6_W7.62mm" H 6900 3900 50  0001 L CIN
-F 3 "https://toshiba.semicon-storage.com/info/docget.jsp?did=10569&prodName=TLP785" H 7100 4100 50  0001 L CNN
-	1    7100 4100
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5800 4600 5800 4900
 Wire Wire Line
@@ -742,4 +729,15 @@ Text GLabel 1550 4550 0    50   Input ~ 0
 +15V_FUSED
 Text GLabel 4650 3650 2    50   Input ~ 0
 -TS
+$Comp
+L formula:CPC1025NTR U602
+U 1 1 620A052C
+P 7100 4100
+F 0 "U602" H 7100 4425 50  0000 C CNN
+F 1 "CPC1025NTR" H 7100 4334 50  0000 C CNN
+F 2 "footprints:4-pin_SOP" H 6900 3900 50  0001 L CIN
+F 3 "https://toshiba.semicon-storage.com/info/docget.jsp?did=10569&prodName=TLP785" H 7100 4100 50  0001 L CNN
+	1    7100 4100
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
