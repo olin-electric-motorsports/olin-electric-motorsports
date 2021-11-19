@@ -138,9 +138,6 @@ class CANController:
                 self.can_bus.send(message)
                 #increment row
                 row += 1
-        end_time = time.time_ns() - start_time
-        end_time /= 1000000
-        print(end_time)
 
 
     def _create_state_dictionary(self, path: str) -> None:
