@@ -123,18 +123,24 @@ class CANController:
         log_file.close()
         prev_time = initial_time
 
-        for row in messages:
-            #set sleep time and sleep according to message timestamp
-            time_diff = int(row[0]) - prev_time
-            time.sleep(time_diff/1000)
-            #Pull out message data from csv
-            data = row[2:]
-            #create CAN message
-            message = can.Message(arbitration_id=row[1], data=data)
-            #send message
-            self.can_bus.send(message)
-            #update previous time to calculate timestemp on next iteration
-            prev_time = int(row[0])
+
+        start_time = time.time_ns() # initial time
+        row = 0 # initial row
+        while row < len(messages):
+            #calculate time elapsed and check if next message should be sent
+            time_elapsed = (time.time_ns() - start_time)/1000000
+            if time_elapsed >= int(messages[row][0]):
+                #Pull out message data from csv
+                data = messages[row][2:]
+                #create CAN message
+                message = can.Message(arbitration_id=messages[row][1], data=data)
+                #send message
+                self.can_bus.send(message)
+                #increment row
+                row += 1
+        end_time = time.time_ns() - start_time
+        end_time /= 1000000
+        print(end_time)
 
 
     def _create_state_dictionary(self, path: str) -> None:
