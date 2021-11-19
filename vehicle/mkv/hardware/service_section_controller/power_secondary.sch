@@ -1713,8 +1713,6 @@ Wire Wire Line
 Connection ~ 2850 7000
 Wire Wire Line
 	2850 7000 3400 7000
-Wire Wire Line
-	1800 5650 1950 5650
 Text GLabel 1250 1800 0    50   Input ~ 0
 TS+_FUSED
 Wire Wire Line
@@ -1749,32 +1747,6 @@ F 6 "https://www.digikey.com/product-detail/en/epcos-tdk/B59884C0120A070/495-753
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	10000 4500 10300 4500
-Text GLabel 10300 4500 2    50   Input ~ 0
-TS+_FUSED_LIN_REG
-Wire Wire Line
-	9450 4500 9700 4500
-Text GLabel 9450 4500 0    50   Input ~ 0
-+TS
-$Comp
-L formula:F_21mA_420V F?
-U 1 1 6189139C
-P 9850 4500
-AR Path="/60A99934/6189139C" Ref="F?"  Part="1" 
-AR Path="/60A3B0AB/6189139C" Ref="F703"  Part="1" 
-F 0 "F703" V 9653 4500 50  0000 C CNN
-F 1 "F_21mA_420V" V 9744 4500 50  0000 C CNN
-F 2 "footprints:F_21mA_420V" V 9250 4300 50  0001 C CNN
-F 3 "https://en.tdk.eu/inf/55/db/PTC/PTC_OC_Leaded_380V_500V.pdf" V 10500 4650 50  0001 C CNN
-F 4 "DK" H 8950 4900 60  0001 C CNN "MFN"
-F 5 "495-75309-ND" H 9700 5150 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/epcos-tdk/B59884C0120A070/495-75309-ND/651926" V 10330 4900 60  0001 C CNN "PurchasingLink"
-	1    9850 4500
-	0    1    1    0   
-$EndComp
-Text GLabel 1800 5650 0    50   Input ~ 0
-TS+_FUSED_LIN_REG
-Wire Wire Line
 	6550 2350 8250 2350
 Text GLabel 10300 4850 2    50   Input ~ 0
 +15V_FUSED
@@ -1784,4 +1756,8 @@ Wire Wire Line
 	9450 4850 9700 4850
 Wire Wire Line
 	10000 4850 10300 4850
+Text GLabel 1550 5650 0    50   Input ~ 0
+TS+_FUSED
+Wire Wire Line
+	1550 5650 1950 5650
 $EndSCHEMATC
