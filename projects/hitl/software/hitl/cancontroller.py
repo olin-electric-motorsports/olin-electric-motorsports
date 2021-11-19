@@ -48,13 +48,13 @@ class CANController:
         # Start listening
         bus_type = "socketcan"
         if "linux" in sys.platform:
-            can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
+            self.can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
             self.kill_threads = threading.Event()
             listener = threading.Thread(
                 target=self._listen,
                 name="listener",
                 kwargs={
-                    "can_bus": can_bus,
+                    "can_bus": self.can_bus,
                     "callback": self._parse_frame,
                     "kill_threads": self.kill_threads,
                 },
@@ -78,12 +78,18 @@ class CANController:
         """
         Set the state of a can signal on the car
 
-        NOTE: This module does not yet support CAN injection, so setting
-        the state of a signal only updates an internal lookup dictionary
         """
         try:
-            msg = self.message_of_signal[signal]
-            self.signals[msg][signal] = value
+             #find message name
+             msg_name = self.message_of_signal[signal] 
+             #update signals dict to new value and pull out message to send
+             self.signals[msg_name][signal] = value
+             msg = self.db.get_message_by_name(msg_name)
+             #encode message data and create message
+             data = msg.encode(self.signals[msg_name])
+             message = can.Message(arbitration_id=msg.frame_id, data=data)
+             #send message
+             self.can_bus.send(message)
         except KeyError:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
 
@@ -114,7 +120,7 @@ class CANController:
         Parses through a CAN frame and updates the self.states dictionary
         """
         # Get the message name
-        msg_name = self.db.get_message_by_frame_id(msg.arbitration_id)
+        msg_name = self.db.get_message_by_frame_id(msg.arbitration_id).name
         # Decode the data
         data = self.db.decode_message(msg.arbitration_id, msg.data)
         # Update the state dictionary
@@ -139,4 +145,4 @@ class CANController:
             msg = can_bus.recv(1)  # 1 second receive timeout
             if msg:
                 callback(msg)
-        can_bus.shutdown()
+        self.can_bus.shutdown()
