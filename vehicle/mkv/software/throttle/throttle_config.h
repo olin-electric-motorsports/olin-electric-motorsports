@@ -6,9 +6,9 @@
  * Pin definitions
  */
 
-gpio_t PLED1 = PC6;
-gpio_t PLED2 = PB3;
-gpio_t PLED3 = PB4;
+gpio_t DEBUG_LED1 = PC6;
+gpio_t DEBUG_LED2 = PB3;
+gpio_t DEBUG_LED3 = PB4;
 
 gpio_t SS_ESTOP = PB5;
 gpio_t SS_IS = PB6;

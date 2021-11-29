@@ -178,8 +178,8 @@ ISR(CAN_INT_vect) {
 		gBrakeLightCan[5] = CANMSG;
 		gBrakeLightCan[6] = CANMSG;
 
-		if(gBrakeLightCan[2] == 0xFF) {
-			gFlag |= _BV(FLAG_BRAKE);
+		if(gBrakeLightCan[2] == 0xFF) {   //if true, brake is activated
+			gFlag |= _BV(FLAG_BRAKE); // _BV(thing) = (1 << thing) 00000001
 		}
 
 		else if ((gThrottle1Out == 0x00 || gThrottle2Out == 0x00) && gBrakeLightCan[2] == 0x00) {
@@ -295,7 +295,7 @@ void initMC(void) {
 	gCANMotorController[1] = 0;
 	gCANMotorController[2] = 0;
 	gCANMotorController[3] = 0;
-	gCANMotorController[4] = 1;
+	gCANMotorController[4] = 1; // anticlockwise
 	gCANMotorController[5] = 0;
 	gCANMotorController[6] = 0;
 	gCANMotorController[7] = 0;
@@ -695,11 +695,11 @@ void sendCanMessages(int viewCan){
 int main(void) {
 	initTimer();
 	initADC();
-	sei();
+	sei(); // interrupt init
 	CAN_init(CAN_ENABLED);
-	setPledOut();
-	LOG_init();
-	enablePCINT();
+	setPledOut(); // gpio init
+	LOG_init(); // initializes UART (can ignore for now)
+	enablePCINT(); //enables interrupts for gpio pins
 	initMC();
 
 	CAN_wait_on_receive(MOB_DASHBOARD,
@@ -721,8 +721,8 @@ int main(void) {
 
 
 	while(1) {
-		if(bit_is_set(gTimerFlag,UPDATE_STATUS)) {
-			gTimerFlag &= ~_BV(UPDATE_STATUS);
+		if(bit_is_set(gTimerFlag,UPDATE_STATUS)) { //everytime timer goes off, clear flag, store throttle, etc.
+			gTimerFlag &= ~_BV(UPDATE_STATUS); 
 			storeThrottle();
 			getAverage();
 			checkPanic();
