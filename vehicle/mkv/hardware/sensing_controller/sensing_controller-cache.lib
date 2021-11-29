@@ -1,6 +1,72 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# formula_74HC4051
+#
+DEF formula_74HC4051 U 0 20 Y Y 1 F N
+F0 "U" -200 450 50 H V C CNN
+F1 "formula_74HC4051" -300 -550 50 H V C CNN
+F2 "footprints:TSSOP-16-OEM" 0 -400 50 H I C CNN
+F3 "" 0 -400 50 H I C CNN
+ALIAS 74HCT4051
+$FPLIST
+ DIP*W7.62mm*
+ SOIC*3.9x9.9mm*P1.27mm*
+ SOIC*5.3x10.2mm*P1.27mm*
+ TSSOP*4.4x5mm*P0.65mm*
+$ENDFPLIST
+DRAW
+S -200 400 300 -500 0 1 10 f
+X A4 1 400 -100 100 L 50 50 1 1 P
+X S1 10 -300 0 100 R 50 50 1 1 I
+X S0 11 -300 100 100 R 50 50 1 1 I
+X A3 12 400 0 100 L 50 50 1 1 P
+X A0 13 400 300 100 L 50 50 1 1 P
+X A1 14 400 200 100 L 50 50 1 1 P
+X A2 15 400 100 100 L 50 50 1 1 P
+X VCC 16 0 500 100 D 50 50 1 1 W
+X A6 2 400 -300 100 L 50 50 1 1 P
+X A 3 -300 300 100 R 50 50 1 1 P
+X A7 4 400 -400 100 L 50 50 1 1 P
+X A5 5 400 -200 100 L 50 50 1 1 P
+X ~E 6 -300 -300 100 R 50 50 1 1 I
+X VEE 7 100 -600 100 U 50 50 1 1 W
+X GND 8 0 -600 100 U 50 50 1 1 W
+X S2 9 -300 -100 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# formula_AD8553ARMZ-REEL
+#
+DEF formula_AD8553ARMZ-REEL U 0 10 Y Y 1 F N
+F0 "U" 1300 400 60 H V C CNN
+F1 "formula_AD8553ARMZ-REEL" 1300 300 60 H V C CNN
+F2 "RM_10_ADI" 1300 240 60 H I C CNN
+F3 "" 0 0 60 H I C CNN
+F4 "https://www.digikey.com/en/products/detail/analog-devices-inc/AD8553ARMZ-REEL/995767" 0 0 50 H I C CNN "PurchasingLink:"
+$FPLIST
+ RM_10_ADI
+ RM_10_ADI-M
+ RM_10_ADI-L
+$ENDFPLIST
+DRAW
+P 2 1 1 5 300 -600 2300 -600 N
+P 2 1 1 5 300 200 300 -600 N
+P 2 1 1 5 2300 -600 2300 200 N
+P 2 1 1 5 2300 200 300 200 N
+X RGA 1 0 0 300 R 59 59 1 1 U
+X RGB 10 2600 0 300 L 59 59 1 1 U
+X VINP 2 0 -100 300 R 59 59 1 1 I
+X VCC 3 0 -200 300 R 59 59 1 1 W
+X VO 4 0 -300 300 R 59 59 1 1 O
+X VFB 5 0 -400 300 R 59 59 1 1 U
+X ENABLE 6 2600 -400 300 L 59 59 1 1 U
+X VREF 7 2600 -300 300 L 59 59 1 1 W
+X GND 8 2600 -200 300 L 59 59 1 1 W
+X VINN 9 2600 -100 300 L 59 59 1 1 I
+ENDDRAW
+ENDDEF
+#
 # formula_ATMEGA16M1
 #
 DEF formula_ATMEGA16M1 U 0 40 Y Y 1 F N
@@ -486,6 +552,44 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# formula_LM3480
+#
+DEF formula_LM3480 U 0 10 Y Y 1 F N
+F0 "U" -150 125 50 H V C CNN
+F1 "formula_LM3480" 0 125 50 H V L CNN
+F2 "Package_TO_SOT_SMD:SOT-23" -50 200 50 H I C CNN
+F3 "" 100 -250 50 H I C CNN
+F4 "DK" 50 325 60 H I C CNN "MFN"
+F5 "LM3480IM3-3.3CT-ND" 150 425 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/texas-instruments/LM3480IM3-3.3/LM3480IM3-3.3CT-ND/3701583" -50 225 60 H I C CNN "PurchasingLink"
+$FPLIST
+ SOT?223*TabPin2*
+$ENDFPLIST
+DRAW
+S -200 -200 200 75 0 1 10 f
+X VO 1 300 0 100 L 50 50 1 1 P
+X VI 2 -300 0 100 R 50 50 1 1 W
+X GND 3 0 -300 100 U 50 50 1 1 W
+ENDDRAW
+ENDDEF
+#
+# formula_L_8.1uH
+#
+DEF formula_L_8.1uH L 0 40 Y Y 1 F N
+F0 "L" 0 50 50 H V C CNN
+F1 "formula_L_8.1uH" 0 200 50 H V C CNN
+F2 "footprints:L_8.1uH" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+A -60 100 20 1 1799 1 1 0 N -40 100 -80 100
+A -20 100 20 1 1799 1 1 0 N 0 100 -40 100
+A 20 100 20 1 1799 1 1 0 N 40 100 0 100
+A 60 100 20 1 1799 1 1 0 N 80 100 40 100
+X ~ 1 -100 100 20 R 50 50 1 1 P
+X ~ 2 100 100 20 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # formula_MCP2561-E_SN
 #
 DEF formula_MCP2561-E_SN U 0 40 Y Y 1 F N
@@ -529,6 +633,39 @@ X V+ 5 -100 300 150 D 50 50 0 1 W
 X ~ 1 300 0 100 L 50 50 1 1 O
 X + 3 -300 100 100 R 50 50 1 1 I
 X - 4 -300 -100 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# formula_MLX90621ESF-BAB-000-TU
+#
+DEF formula_MLX90621ESF-BAB-000-TU U 0 20 Y Y 1 F N
+F0 "U" -250 250 50 H V C CNN
+F1 "formula_MLX90621ESF-BAB-000-TU" 300 250 50 H V C CNN
+F2 "footprints:MLX90621ESF-BAB-000-TU" 0 -400 50 H I C CNN
+F3 "" -200 300 50 H I C CNN
+F4 "MLX90621ESF-BAB-000-TU-ND " 0 0 50 H I C CNN "MPN"
+F5 "https://www.digikey.com/product-detail/en/melexis-technologies-nv/MLX90621ESF-BAB-000-TU/MLX90621ESF-BAB-000-TU-ND/4968086?utm_adgroup=Sensors%20&%20Transducers" 0 0 50 H I C CNN "PurchaseLink"
+F6 "DK" 0 0 50 H I C CNN "MF"
+ALIAS Si7051-A20 Si7053-A20 Si7054-A20 Si7055-A20
+$FPLIST
+ DFN*1EP*3x3mm*P1mm*
+$ENDFPLIST
+DRAW
+A 145 125 25 1 1799 1 1 10 N 170 125 120 125
+C 145 -100 50 1 1 10 F
+S -300 200 300 -200 0 1 10 f
+S 170 -75 120 0 1 1 10 F
+P 2 1 1 10 120 25 145 25 N
+P 2 1 1 10 120 50 145 50 N
+P 2 1 1 10 120 75 145 75 N
+P 2 1 1 10 120 100 145 100 N
+P 2 1 1 10 120 125 120 0 N
+P 2 1 1 10 120 125 145 125 N
+P 2 1 1 10 170 125 170 0 N
+X SCL 1 -400 100 100 R 50 50 1 1 I
+X SDA 2 -400 0 100 R 50 50 1 1 B
+X VDD 3 0 300 100 D 50 50 1 1 W
+X GND 4 0 -300 100 U 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
@@ -602,6 +739,27 @@ F3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&Do
 F4 "DK" 0 0 60 H I C CNN "MFN"
 F5 "A121322CT-ND" 0 0 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" 480 400 60 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_1.18M
+#
+DEF formula_R_1.18M R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_1.18M" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
+F3 "" 80 0 50 H I C CNN
+F4 "Vishay Dale" 0 0 60 H I C CNN "MFN"
+F5 "CRCW08051M18FKEA" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/vishay-dale/CRCW08051M18FKEA/1176023" 480 400 60 H I C CNN "PurchasingLink"
 $FPLIST
  R_*
  Resistor_*
@@ -712,6 +870,21 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# formula_R_15k
+#
+DEF formula_R_15k R 0 40 Y Y 1 F N
+F0 "R" 0 -100 50 H V C CNN
+F1 "formula_R_15k" 0 100 50 H V C CNN
+F2 "footprints:R_0805_OEM" -100 -200 50 H I C CNN
+F3 "" 0 0 50 V I C CNN
+F4 "https://www.digikey.com/en/products/detail/yageo/RE0805FRE0715KL/5923506" 0 -250 50 H I C CNN "Link"
+DRAW
+S 100 -40 -100 40 1 1 10 N
+X ~ 1 -150 0 50 R 50 50 1 1 P
+X ~ 2 150 0 50 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # formula_R_1K
 #
 DEF formula_R_1K R 0 0 N Y 1 F N
@@ -722,6 +895,27 @@ F3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" 80 0 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
 F5 "RNCP0805FTD1K00CT-ND" 0 0 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" 480 400 60 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_1K_0.1
+#
+DEF formula_R_1K_0.1 R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_1K_0.1" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
+F3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "P1.0KDACT-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERA-6AEB102V/P1.0KDACT-ND/1465947" 480 400 60 H I C CNN "PurchasingLink"
 $FPLIST
  R_*
  Resistor_*
@@ -849,6 +1043,53 @@ X SW 6 400 50 100 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
+# formula_TPS7A26
+#
+DEF formula_TPS7A26 U 0 40 Y Y 1 F N
+F0 "U" 0 350 50 H V C CNN
+F1 "formula_TPS7A26" 0 250 50 H V C CNN
+F2 "footprints:TPS7A26" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -200 200 200 -200 0 1 0 f
+X OUT 1 300 0 100 L 50 50 1 1 O
+X FB 2 300 -100 100 L 50 50 1 1 U
+X PG 3 300 100 100 L 50 50 1 1 U
+X EN 4 -300 -100 100 R 50 50 1 1 U
+X GND 5 0 -300 100 U 50 50 1 1 U
+X IN 6 -300 50 100 R 50 50 1 1 U
+ENDDRAW
+ENDDEF
+#
+# formula_TXB0104
+#
+DEF formula_TXB0104 U 0 40 Y Y 1 F N
+F0 "U" 0 0 50 H V C CNN
+F1 "formula_TXB0104" 0 0 50 H V C CNN
+F2 "Package_SO:TSSOP-14_4.4x5mm_P0.65mm" -100 -100 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+F4 "DK" 100 100 50 H I C CNN "MFN"
+F5 "296-21929-1-ND" 200 200 50 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/texas-instruments/TXB0104PWR/296-21929-1-ND/1629282" 300 300 50 H I C CNN "PurchasingLink"
+DRAW
+S -200 -100 300 -800 0 1 0 f
+X VCCA 1 -400 -150 200 R 50 50 1 1 W
+X B4 10 500 -550 200 L 50 50 1 1 B
+X B3 11 500 -450 200 L 50 50 1 1 B
+X B2 12 500 -350 200 L 50 50 1 1 B
+X B1 13 500 -250 200 L 50 50 1 1 B
+X VCCB 14 500 -150 200 L 50 50 1 1 W
+X A1 2 -400 -250 200 R 50 50 1 1 B
+X A2 3 -400 -350 200 R 50 50 1 1 B
+X A3 4 -400 -450 200 R 50 50 1 1 B
+X A4 5 -400 -550 200 R 50 50 1 1 B
+X NC 6 -400 -650 200 R 50 50 1 1 N
+X GND 7 -400 -750 200 R 50 50 1 1 W
+X OE 8 500 -750 200 L 50 50 1 1 I
+X NC 9 500 -650 200 L 50 50 1 1 N
+ENDDRAW
+ENDDEF
+#
 # formula_Test_Point_SMD
 #
 DEF formula_Test_Point_SMD TP 0 40 Y Y 1 F N
@@ -908,260 +1149,6 @@ F3 "" 0 0 50 H I C CNN
 DRAW
 P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
 X GND 1 0 0 0 D 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_74HC4051-formula
-#
-DEF sensing_controller-rescue_74HC4051-formula U 0 20 Y Y 1 F N
-F0 "U" -200 450 50 H V C CNN
-F1 "sensing_controller-rescue_74HC4051-formula" -300 -550 50 H V C CNN
-F2 "footprints:TSSOP-16-OEM" 0 -400 50 H I C CNN
-F3 "" 0 -400 50 H I C CNN
-$FPLIST
- DIP*W7.62mm*
- SOIC*3.9x9.9mm*P1.27mm*
- SOIC*5.3x10.2mm*P1.27mm*
- TSSOP*4.4x5mm*P0.65mm*
-$ENDFPLIST
-DRAW
-S -200 400 300 -500 0 1 10 f
-X A4 1 400 -100 100 L 50 50 1 1 P
-X S1 10 -300 0 100 R 50 50 1 1 I
-X S0 11 -300 100 100 R 50 50 1 1 I
-X A3 12 400 0 100 L 50 50 1 1 P
-X A0 13 400 300 100 L 50 50 1 1 P
-X A1 14 400 200 100 L 50 50 1 1 P
-X A2 15 400 100 100 L 50 50 1 1 P
-X VCC 16 0 500 100 D 50 50 1 1 W
-X A6 2 400 -300 100 L 50 50 1 1 P
-X A 3 -300 300 100 R 50 50 1 1 P
-X A7 4 400 -400 100 L 50 50 1 1 P
-X A5 5 400 -200 100 L 50 50 1 1 P
-X ~E 6 -300 -300 100 R 50 50 1 1 I
-X VEE 7 100 -600 100 U 50 50 1 1 W
-X GND 8 0 -600 100 U 50 50 1 1 W
-X S2 9 -300 -100 100 R 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_AD8553ARMZ-REEL-formula
-#
-DEF sensing_controller-rescue_AD8553ARMZ-REEL-formula U 0 10 Y Y 1 F N
-F0 "U" 1300 400 60 H V C CNN
-F1 "sensing_controller-rescue_AD8553ARMZ-REEL-formula" 1300 300 60 H V C CNN
-F2 "RM_10_ADI" 1300 240 60 H I C CNN
-F3 "" 0 0 60 H I C CNN
-F4 "https://www.digikey.com/en/products/detail/analog-devices-inc/AD8553ARMZ-REEL/995767" 0 0 50 H I C CNN "PurchasingLink:"
-$FPLIST
- RM_10_ADI
- RM_10_ADI-M
- RM_10_ADI-L
-$ENDFPLIST
-DRAW
-P 2 1 1 5 300 -600 2300 -600 N
-P 2 1 1 5 300 200 300 -600 N
-P 2 1 1 5 2300 -600 2300 200 N
-P 2 1 1 5 2300 200 300 200 N
-X RGA 1 0 0 300 R 59 59 1 1 U
-X RGB 10 2600 0 300 L 59 59 1 1 U
-X VINP 2 0 -100 300 R 59 59 1 1 I
-X VCC 3 0 -200 300 R 59 59 1 1 W
-X VO 4 0 -300 300 R 59 59 1 1 O
-X VFB 5 0 -400 300 R 59 59 1 1 U
-X ENABLE 6 2600 -400 300 L 59 59 1 1 U
-X VREF 7 2600 -300 300 L 59 59 1 1 W
-X GND 8 2600 -200 300 L 59 59 1 1 W
-X VINN 9 2600 -100 300 L 59 59 1 1 I
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_LM3480-formula
-#
-DEF sensing_controller-rescue_LM3480-formula U 0 10 Y Y 1 F N
-F0 "U" -150 125 50 H V C CNN
-F1 "sensing_controller-rescue_LM3480-formula" 0 125 50 H V L CNN
-F2 "Package_TO_SOT_SMD:SOT-23" -50 200 50 H I C CNN
-F3 "" 100 -250 50 H I C CNN
-F4 "DK" 50 325 60 H I C CNN "MFN"
-F5 "LM3480IM3-3.3CT-ND" 150 425 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/texas-instruments/LM3480IM3-3.3/LM3480IM3-3.3CT-ND/3701583" -50 225 60 H I C CNN "PurchasingLink"
-$FPLIST
- SOT?223*TabPin2*
-$ENDFPLIST
-DRAW
-S -200 -200 200 75 0 1 10 f
-X VO 1 300 0 100 L 50 50 1 1 P
-X VI 2 -300 0 100 R 50 50 1 1 W
-X GND 3 0 -300 100 U 50 50 1 1 W
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_L_8.1uH-formula
-#
-DEF sensing_controller-rescue_L_8.1uH-formula L 0 40 Y Y 1 F N
-F0 "L" 0 50 50 H V C CNN
-F1 "sensing_controller-rescue_L_8.1uH-formula" 0 200 50 H V C CNN
-F2 "footprints:L_8.1uH" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-A -60 100 20 1 1799 1 1 0 N -40 100 -80 100
-A -20 100 20 1 1799 1 1 0 N 0 100 -40 100
-A 20 100 20 1 1799 1 1 0 N 40 100 0 100
-A 60 100 20 1 1799 1 1 0 N 80 100 40 100
-X ~ 1 -100 100 20 R 50 50 1 1 P
-X ~ 2 100 100 20 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_MLX90621ESF-BAB-000-TU-formula
-#
-DEF sensing_controller-rescue_MLX90621ESF-BAB-000-TU-formula U 0 20 Y Y 1 F N
-F0 "U" -250 250 50 H V C CNN
-F1 "sensing_controller-rescue_MLX90621ESF-BAB-000-TU-formula" 300 250 50 H V C CNN
-F2 "footprints:MLX90621ESF-BAB-000-TU" 0 -400 50 H I C CNN
-F3 "" -200 300 50 H I C CNN
-F4 "MLX90621ESF-BAB-000-TU-ND " 0 0 50 H I C CNN "MPN"
-F5 "https://www.digikey.com/product-detail/en/melexis-technologies-nv/MLX90621ESF-BAB-000-TU/MLX90621ESF-BAB-000-TU-ND/4968086?utm_adgroup=Sensors%20&%20Transducers" 0 0 50 H I C CNN "PurchaseLink"
-F6 "DK" 0 0 50 H I C CNN "MF"
-$FPLIST
- DFN*1EP*3x3mm*P1mm*
-$ENDFPLIST
-DRAW
-A 145 125 25 1 1799 1 1 10 N 170 125 120 125
-C 145 -100 50 1 1 10 F
-S -300 200 300 -200 0 1 10 f
-S 170 -75 120 0 1 1 10 F
-P 2 1 1 10 120 25 145 25 N
-P 2 1 1 10 120 50 145 50 N
-P 2 1 1 10 120 75 145 75 N
-P 2 1 1 10 120 100 145 100 N
-P 2 1 1 10 120 125 120 0 N
-P 2 1 1 10 120 125 145 125 N
-P 2 1 1 10 170 125 170 0 N
-X SCL 1 -400 100 100 R 50 50 1 1 I
-X SDA 2 -400 0 100 R 50 50 1 1 B
-X VDD 3 0 300 100 D 50 50 1 1 W
-X GND 4 0 -300 100 U 50 50 1 1 W
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_R_1.18M-formula
-#
-DEF sensing_controller-rescue_R_1.18M-formula R 0 0 N Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "sensing_controller-rescue_R_1.18M-formula" -100 0 50 V V C CNN
-F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
-F3 "" 80 0 50 H I C CNN
-F4 "Vishay Dale" 0 0 60 H I C CNN "MFN"
-F5 "CRCW08051M18FKEA" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/en/products/detail/vishay-dale/CRCW08051M18FKEA/1176023" 480 400 60 H I C CNN "PurchasingLink"
-$FPLIST
- R_*
- Resistor_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_R_15k-formula
-#
-DEF sensing_controller-rescue_R_15k-formula R 0 40 Y Y 1 F N
-F0 "R" 0 -100 50 H V C CNN
-F1 "sensing_controller-rescue_R_15k-formula" 0 100 50 H V C CNN
-F2 "footprints:R_0805_OEM" -100 -200 50 H I C CNN
-F3 "" 0 0 50 V I C CNN
-F4 "https://www.digikey.com/en/products/detail/yageo/RE0805FRE0715KL/5923506" 0 -250 50 H I C CNN "Link"
-DRAW
-S 100 -40 -100 40 1 1 10 N
-X ~ 1 -150 0 50 R 50 50 1 1 P
-X ~ 2 150 0 50 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_R_1K_0.1-formula
-#
-DEF sensing_controller-rescue_R_1K_0.1-formula R 0 0 N Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "sensing_controller-rescue_R_1K_0.1-formula" -100 0 50 V V C CNN
-F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
-F3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" 80 0 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "P1.0KDACT-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERA-6AEB102V/P1.0KDACT-ND/1465947" 480 400 60 H I C CNN "PurchasingLink"
-$FPLIST
- R_*
- Resistor_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_R_90k-formula
-#
-DEF sensing_controller-rescue_R_90k-formula R 0 40 Y Y 1 F N
-F0 "R" 0 -100 50 H V C CNN
-F1 "sensing_controller-rescue_R_90k-formula" 0 100 50 H V C CNN
-F2 "footprints:R_0805_OEM" -100 -200 50 H I C CNN
-F3 "" 0 0 50 V I C CNN
-F4 "https://www.digikey.com/en/products/detail/vishay-dale-thin-film/PTN0805E9002BST1/7103062" 0 -250 50 H I C CNN "Link"
-DRAW
-S 100 -40 -100 40 1 1 10 N
-X ~ 1 -150 0 50 R 50 50 1 1 P
-X ~ 2 150 0 50 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_TPS7A26-formula
-#
-DEF sensing_controller-rescue_TPS7A26-formula U 0 40 Y Y 1 F N
-F0 "U" 0 350 50 H V C CNN
-F1 "sensing_controller-rescue_TPS7A26-formula" 0 250 50 H V C CNN
-F2 "footprints:TPS7A26" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-S -200 200 200 -200 0 1 0 f
-X OUT 1 300 0 100 L 50 50 1 1 O
-X FB 2 300 -100 100 L 50 50 1 1 U
-X PG 3 300 100 100 L 50 50 1 1 U
-X EN 4 -300 -100 100 R 50 50 1 1 U
-X GND 5 0 -300 100 U 50 50 1 1 U
-X IN 6 -300 50 100 R 50 50 1 1 U
-ENDDRAW
-ENDDEF
-#
-# sensing_controller-rescue_TXB0104-formula
-#
-DEF sensing_controller-rescue_TXB0104-formula U 0 40 Y Y 1 F N
-F0 "U" 0 0 50 H V C CNN
-F1 "sensing_controller-rescue_TXB0104-formula" 0 0 50 H V C CNN
-F2 "Package_SO:TSSOP-14_4.4x5mm_P0.65mm" -100 -100 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-F4 "DK" 100 100 50 H I C CNN "MFN"
-F5 "296-21929-1-ND" 200 200 50 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/texas-instruments/TXB0104PWR/296-21929-1-ND/1629282" 300 300 50 H I C CNN "PurchasingLink"
-DRAW
-S -200 -100 300 -800 0 1 0 f
-X VCCA 1 -400 -150 200 R 50 50 1 1 W
-X B4 10 500 -550 200 L 50 50 1 1 B
-X B3 11 500 -450 200 L 50 50 1 1 B
-X B2 12 500 -350 200 L 50 50 1 1 B
-X B1 13 500 -250 200 L 50 50 1 1 B
-X VCCB 14 500 -150 200 L 50 50 1 1 W
-X A1 2 -400 -250 200 R 50 50 1 1 B
-X A2 3 -400 -350 200 R 50 50 1 1 B
-X A3 4 -400 -450 200 R 50 50 1 1 B
-X A4 5 -400 -550 200 R 50 50 1 1 B
-X NC 6 -400 -650 200 R 50 50 1 1 N
-X GND 7 -400 -750 200 R 50 50 1 1 W
-X OE 8 500 -750 200 L 50 50 1 1 I
-X NC 9 500 -650 200 L 50 50 1 1 N
 ENDDRAW
 ENDDEF
 #

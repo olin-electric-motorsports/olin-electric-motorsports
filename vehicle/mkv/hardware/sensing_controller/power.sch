@@ -290,7 +290,7 @@ F 4 "https://www.digikey.com/en/products/detail/yageo/RE0805FRE0715KL/5923506" H
 	0    1    1    0   
 $EndComp
 $Comp
-L formula::R_90k R403
+L formula:_R_90k R403
 U 1 1 618FE042
 P 9550 2400
 AR Path="/618FE042" Ref="R403"  Part="1" 
