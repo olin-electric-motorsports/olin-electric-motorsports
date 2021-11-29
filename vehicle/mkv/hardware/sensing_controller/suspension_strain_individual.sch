@@ -309,7 +309,7 @@ AR Path="/60A3D9FD/60ABA487/61871819" Ref="U12"  Part="1"
 AR Path="/61871819" Ref="U1"  Part="1" 
 F 0 "U1" H 8200 5187 60  0000 C CNN
 F 1 "AD8553ARMZ-REEL" H 8200 5081 60  0000 C CNN
-F 2 "RM_10_ADI" H 8200 5040 60  0001 C CNN
+F 2 "footprints:AD8553ARMZ-REEL" H 8200 5040 60  0001 C CNN
 F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8553.pdf" H 6900 4800 60  0001 C CNN
 F 4 "https://www.digikey.com/en/products/detail/analog-devices-inc/AD8553ARMZ-REEL/995767" H 6900 4800 50  0001 C CNN "PurchasingLink:"
 	1    6900 4800
