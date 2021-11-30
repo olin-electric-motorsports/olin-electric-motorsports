@@ -14,9 +14,9 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Text Label 1300 1350 2    50   ~ 0
-BAT+
+HV_BAT+
 Text Label 2200 1350 0    50   ~ 0
-TS+
+HV_TS+
 Text Label 2200 1650 0    50   ~ 0
 PRECHARGE_LSD
 Text Label 1600 1650 2    50   ~ 0
@@ -41,24 +41,22 @@ F 3 "~" H 3800 3400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Text Label 3650 3400 2    50   ~ 0
-TS+
-Text Label 3950 3400 0    50   ~ 0
-TSMP+
+HV_TS+
 Text Label 1100 3250 2    50   ~ 0
-TS+
+HV_TS+
 Wire Wire Line
 	1700 3250 1900 3250
 Wire Wire Line
 	1900 3250 2050 3250
 Connection ~ 1900 3250
 Text Label 2050 3500 0    50   ~ 0
-TS_FUSE+
+HV_TS_FUSE+
 Text Label 2050 3250 0    50   ~ 0
-ENERGY_METER
+HV_ENERGY_METER
 Text Label 2050 3375 0    50   ~ 0
-TSAL+
+HV_TSAL+
 Text Label 2050 3125 0    50   ~ 0
-BSPD_CURRENT_SENSOR
+HV_BSPD_CURRENT_SENSOR
 Text Label 5000 1050 0    50   ~ 0
 PRECHARGE_LSD
 Text Label 5000 1250 0    50   ~ 0
@@ -98,7 +96,7 @@ TS+ Fusing
 Text Notes 975  900  0    50   ~ 0
 Precharge Relay. Low Side Driven by AIR Control\n
 Text Label 5925 2350 0    50   ~ 0
-BAT+
+HV_BAT+
 $Comp
 L Formula:F_1A_600V F1
 U 1 1 5E5873B3
@@ -178,7 +176,7 @@ F 3 "we-online.de/katalog/datasheet/7461166.pdf" H 5050 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 5200 2350 0    50   ~ 0
-TS+
+HV_TS+
 $Comp
 L Formula:MicroFit_VT_6 U1
 U 1 1 5E5C8F8F
@@ -315,13 +313,13 @@ F 5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509
 	1    0    0    -1  
 $EndComp
 Text Label 3600 2600 0    50   ~ 0
-TSMP+
+HV_TSMP+
 Text Label 3600 2500 0    50   ~ 0
-TS_FUSE+
+HV_TS_FUSE+
 Text Label 3600 2400 0    50   ~ 0
-ENERGY_METER
+HV_ENERGY_METER
 Text Label 3600 2300 0    50   ~ 0
-BSPD_CURRENT_SENSOR
+HV_BSPD_CURRENT_SENSOR
 Text Notes 3575 850  0    50   ~ 0
 To Relay
 Text Notes 3575 1950 0    50   ~ 0
@@ -352,4 +350,6 @@ Wire Notes Line
 	4550 1675 4550 600 
 Wire Notes Line
 	4550 600  5700 600 
+Text Label 3950 3400 0    50   ~ 0
+HV_TSMP+
 $EndSCHEMATC

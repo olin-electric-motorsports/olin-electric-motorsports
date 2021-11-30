@@ -5,6 +5,7 @@ import time
 import threading
 from typing import Callable, Tuple
 import logging
+import csv
 
 # Extended python
 import cantools
@@ -92,6 +93,52 @@ class CANController:
              self.can_bus.send(message)
         except KeyError:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
+
+    def playback(self, path, initial_time=0):
+        """
+        Play back a CSV log of CAN messages on the interface assigned to CANController object.
+
+        :param path: Path to CSV log file
+
+        :param initial_time: Timestamp of the first CAN message in the CSV file - can be useful 
+                             if you only want to test a certain portion of CAN messages. Defaults to 0.
+        
+        Designed to input messages in following format:
+
+        Timestamp,arbitration_id,signals(0 to 255 value)...
+
+        """
+        #Reading and parsing csv file
+        log_file = open(path, 'r')
+        csvreader = csv.reader(log_file)
+        messages = []
+        for row in csvreader:
+            #remove empty elements from list
+            row = list(filter(None, row)) 
+            #convert strings to integers
+            row = [int(i) for i in row]
+            #check if row is within time range
+            if row[0] >= initial_time:
+                 messages.append(row)
+        log_file.close()
+        prev_time = initial_time
+
+
+        start_time = time.time_ns() # initial time
+        row = 0 # initial row
+        while row < len(messages):
+            #calculate time elapsed and check if next message should be sent
+            time_elapsed = (time.time_ns() - start_time)/1000000
+            if time_elapsed >= int(messages[row][0]):
+                #Pull out message data from csv
+                data = messages[row][2:]
+                #create CAN message
+                message = can.Message(arbitration_id=messages[row][1], data=data)
+                #send message
+                self.can_bus.send(message)
+                #increment row
+                row += 1
+
 
     def _create_state_dictionary(self, path: str) -> None:
         """Generate self.message_of_signal and self.signals

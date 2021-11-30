@@ -32,7 +32,7 @@ Wire Wire Line
 Wire Wire Line
 	1750 2325 1600 2325
 Text Label 1075 3100 2    50   ~ 0
-TS-
+HV_TS-
 $Comp
 L Formula:UF_4_VT J1
 U 1 1 5DB02E97
@@ -61,7 +61,7 @@ F 3 "we-online.de/katalog/datasheet/7461166.pdf" H 4450 2600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 4600 2700 0    50   ~ 0
-TS-
+HV_TS-
 $Comp
 L Formula:redcude_7461166 J5
 U 1 1 5E2FA0CC
@@ -74,7 +74,7 @@ F 3 "we-online.de/katalog/datasheet/7461166.pdf" H 5175 2600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 5325 2700 0    50   ~ 0
-BAT-
+HV_BAT-
 Wire Wire Line
 	1600 1825 1600 2325
 $Comp
@@ -106,9 +106,9 @@ F 8 "https://www.digikey.com/product-detail/en/wakefield-vette/657-15ABPEN/345-1
 	0    -1   -1   0   
 $EndComp
 Text Label 1300 1525 2    50   ~ 0
-BAT-
+HV_BAT-
 Text Label 2200 1525 0    50   ~ 0
-TS-
+HV_TS-
 Wire Wire Line
 	2200 1825 2200 2325
 Text Label 2200 1825 0    50   ~ 0
@@ -120,13 +120,13 @@ AUX-
 Text Label 3650 1425 0    50   ~ 0
 AUX+
 Text Label 3050 3450 0    50   ~ 0
-TSMP-
+HV_TSMP-
 Text Label 3650 1625 0    50   ~ 0
 Coil+
 Text Label 3500 2725 0    50   ~ 0
-TS-
+HV_TS-
 Text Label 3500 2625 0    50   ~ 0
-TSMP-
+HV_TSMP-
 Text Label 3500 2425 0    50   ~ 0
 TSAL-
 $Comp
@@ -142,7 +142,7 @@ F 4 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527
 	1    0    0    -1  
 $EndComp
 Text Label 3500 2525 0    50   ~ 0
-TS_Fused-
+HV_TS_Fused-
 NoConn ~ 4675 1925
 Text Label 4675 1525 0    50   ~ 0
 Coil+
@@ -155,7 +155,7 @@ AUX-
 Text Label 4675 1625 0    50   ~ 0
 AUX+
 Text Label 1675 3100 0    50   ~ 0
-TS_Fused-
+HV_TS_Fused-
 Text Notes 2000 625  0    50   ~ 0
 NEW AIR PLUS\n
 $Comp
@@ -263,7 +263,7 @@ F 6 "https://www.digikey.com/products/en?keywords=PPC5D10.0KCT-ND" H 3380 3850 6
 	0    1    1    0   
 $EndComp
 Text Label 2750 3450 2    50   ~ 0
-TS-
+HV_TS-
 Wire Notes Line
 	4075 2175 5650 2175
 Wire Notes Line
