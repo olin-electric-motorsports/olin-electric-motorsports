@@ -21,7 +21,7 @@ void adc_init(void) {
     ADMUX |= (1 << REFS0);
 }
 
-void adc_start_convert(uint8_t pin) {
+void adc_start_convert(adc_pin_e pin) {
     // Set the correct pin in the multiplexer
     ADMUX |= (pin & 0x1F);
 
@@ -47,7 +47,7 @@ void adc_interrupt_enable(void (*callback)(void)) {
     interrupt_callback = callback;
 }
 
-uint16_t adc_read(uint8_t pin) {
+uint16_t adc_read(adc_pin_e pin) {
     adc_start_convert(pin);
 
     uint16_t ret = 0;
