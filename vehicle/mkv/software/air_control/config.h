@@ -31,14 +31,23 @@ gpio_t IMD_SENSE = PD0;
 #define MOB_BMS (2) // Receive BMS data
 #define MOB_SENSE (3) // Send sense data
 
-uint8_t air_ctrl_critical_data[5];
+#define AIR_FAULT_CODE (0)
+#define AIR_STATE (1)
+#define AIR_STATUS (2)
+
+#define AIR_P_STATUS (0)
+#define AIR_N_STATUS (1)
+#define TSMS_SENSE (2)
+#define IMD_STATUS (3)
+#define MAIN_PACK_CONNECTOR_SENSE (4)
+#define HVD_CONNECTOR_SENSE (5)
+#define HVD_SENSE (6)
+#define BMS_STATUS (7)
+
+uint8_t air_ctrl_critical_data[5] = { 0 };
 can_frame_t air_ctrl_critical_msg = {
     .mob = MOB_CRIT,
-};
-
-uint8_t air_ctrl_sense_data[8];
-can_frame_t air_ctrl_sense_msg = {
-    .mob = MOB_SENSE,
+    .data = air_ctrl_critical_data,
 };
 
 can_filter_t motor_controller_filter = {

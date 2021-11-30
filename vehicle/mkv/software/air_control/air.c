@@ -31,6 +31,8 @@ enum FAULT_CODE {
 volatile enum State current_state = IDLE;
 
 void timer0_isr(void) {
+    air_ctrl_critical_data[AIR_STATE] = current_state;
+
     can_send(&air_ctrl_critical_msg);
     can_send(&air_ctrl_sense_msg);
 }
@@ -64,53 +66,49 @@ void timer1_isr(void) {
 volatile uint8_t imd_st = 1;
 volatile uint8_t bms_st = 1;
 
-static enum State change_state(enum State new_state) {
-    bool ok = false;
-
-    ok = ok && imd_st && bms_st;
-
-    uint16_t pack_voltage, mc_voltage;
-    memcpy(&pack_voltage, (bms_data + 2), sizeof(uint16_t));
-    memcpy(&mc_voltage, motor_controller_data, sizeof(uint16_t));
-
-    switch (current_state) {
-        case IDLE: {
-            ok = ok && (mc_voltage < 5);
-        } break;
-        case SHUTDOWN_CIRCUIT_CLOSED: {
-
-        } break;
-        case PRECHARGE: {
-
-        } break;
-        case TS_ACTIVE: {
-
-        } break;
-        case DISCHARGE: {
-
-        } break;
-        case FAULT: {
-
-        } break;
-    }
-
-    if (ok) {
-        current_state = new_state;
-    } else {
-        current_state = FAULT;
-    }
-
-    return current_state;
-}
+// static enum State change_state(enum State new_state) {
+//     bool ok = false;
+// 
+//     ok = ok && imd_st && bms_st;
+// 
+//     uint16_t pack_voltage, mc_voltage;
+//     memcpy(&pack_voltage, (bms_data + 2), sizeof(uint16_t));
+//     memcpy(&mc_voltage, motor_controller_data, sizeof(uint16_t));
+// 
+//     switch (current_state) {
+//         case IDLE: {
+//             ok = ok && (mc_voltage < 5);
+//         } break;
+//         case SHUTDOWN_CIRCUIT_CLOSED: {
+// 
+//         } break;
+//         case PRECHARGE: {
+// 
+//         } break;
+//         case TS_ACTIVE: {
+// 
+//         } break;
+//         case DISCHARGE: {
+// 
+//         } break;
+//         case FAULT: {
+// 
+//         } break;
+//     }
+// 
+//     if (ok) {
+//         current_state = new_state;
+//     } else {
+//         current_state = FAULT;
+//     }
+// 
+//     return current_state;
+// }
 
 /*
  * Interrupts
  */
-// volatile uint8_t ss_tsms_st;
-// volatile uint8_t ss_imd_latch_st;
-// volatile uint8_t ss_mpc_st;
-// volatile uint8_t ss_hvd_conn_st;
-// volatile uint8_t ss_hvd_st;
+volatile bool shutdown_nodes = 0;
 
 void pcint0_callback(void) {
     uint8_t ss_tsms = !!gpio_get_pin(SS_TSMS);
@@ -119,26 +117,31 @@ void pcint0_callback(void) {
     uint8_t ss_hvd_conn = !!gpio_get_pin(SS_HVD_CONN);
     uint8_t ss_hvd = !!gpio_get_pin(SS_HVD);
 
-    air_ctrl_sense_data[0] = (
-        (ss_tsms << 0) ||
-        (ss_imd_latch << 1) ||
-        (ss_mpc << 2) ||
-        (ss_hvd_conn << 3) ||
-        (ss_hvd << 4)
+    shutdown_nodes = ss_tsms && ss_imd_latch && ss_mpc && ss_hvd_conn
+        && ss_hvd;
+
+    air_ctrl_critical_data[AIR_STATUS] |= (
+        (ss_tsms << TSMS_SENSE) ||
+        (ss_imd_latch << IMD_SENSE) ||
+        (ss_mpc << MAIN_PACK_CONNECTOR_SENSE) ||
+        (ss_hvd_conn << HVD_CONNECTOR_SENSE) ||
+        (ss_hvd << HVC_SENSE)
     );
 }
 
 void pcint1_callback(void) {
-    bms_st = gpio_get_pin(BMS_SENSE);
-    
-    air_ctrl_sense_data[1] = (
-        (!!gpio_get_pin(AIR_P_WELD_DETECT) << 0) ||
-        (!!gpio_get_pin(AIR_N_WELD_DETECT) << 1)
+    bms_st = !!gpio_get_pin(BMS_SENSE);
+
+    air_ctrl_critical_data[AIR_STATUS] |= (
+        (!!gpio_get_pin(AIR_P_WELD_DETECT) << AIR_POS_STATUS) ||
+        (!!gpio_get_pin(AIR_N_WELD_DETECT) << AIR_NEG_STATUS) ||
+        (bms_st << BMS_STATUS)
     );
 }
 
 void pcint2_callback(void) {
-    imd_st = gpio_get_pin(IMD_SENSE);
+    imd_st = !!gpio_get_pin(IMD_SENSE);
+    air_ctrl_critical_data[AIR_STATUS] |= imd_st << IMD_STATUS;
 }
 
 static void state_machine_run(void) {
@@ -185,7 +188,8 @@ static void state_machine_run(void) {
             } else {
                 gpio_set_pin(AIR_N_LSD); // Close AIR-
                 gpio_clear_pin(PRECHARGE_CTL);
-                change_state(TS_ACTIVE);
+                // change_state(TS_ACTIVE);
+                current_state = TS_ACTIVE;
             }
 
         } break;
@@ -193,6 +197,9 @@ static void state_machine_run(void) {
             // CAN message is updated
 
             // wait for an interrupt from any of the shutdown sense pins
+            if (!shutdown_nodes) {
+                current_state = DISCHARGE;
+            }
         } break;
         case DISCHARGE: {
             gpio_clear_pin(AIR_N_LSD);
@@ -245,9 +252,13 @@ int main(void) {
     gpio_set_mode(AIR_N_LSD, OUTPUT);
 
     gpio_enable_interrupt(SS_TSMS);
+    gpio_enable_interrupt(SS_IMD_LATCH);
+    gpio_enable_interrupt(SS_MPC);
+    gpio_enable_interrupt(SS_HVD_CONN);
+    gpio_enable_interrupt(SS_HVD);
+
     gpio_enable_interrupt(BMS_SENSE);
     gpio_enable_interrupt(IMD_SENSE);
-    // TODO enable interrupts for other SS pins
 
     // Check plausibility
     // assert(AIR_SENSE_+ == LOW)
