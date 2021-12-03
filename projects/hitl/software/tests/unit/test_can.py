@@ -16,7 +16,7 @@ config.read(os.path.join(artifacts_path, "config.ini"))
 
 @pytest.fixture
 def can():
-    path = os.path.abspath(os.path.dirname(__file__) + "/dash.dbc")
+    path = os.path.abspath(os.path.dirname(__file__) + "/veh.dbc")
 
     out = CANController(
         can_spec_path=path,

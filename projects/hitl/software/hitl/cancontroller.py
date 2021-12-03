@@ -6,11 +6,17 @@ import threading
 from typing import Callable, Tuple
 import logging
 import csv
+from configparser import ConfigParser
 
 # Extended python
 import cantools
 import can
 
+# Project Imports 
+from hitl.utils import artifacts_path
+
+config = ConfigParser(interpolation=None)
+config.read(os.path.join(artifacts_path, "config.ini"))
 
 class CANController:
     """High level python object to interface with hardware.
@@ -28,7 +34,12 @@ class CANController:
     :param int bitrate: The bitrate of the can bus. Defaults to 500K. If using a virtual bus, you can ignore this.
     """
 
-    def __init__(self, can_spec_path: str, channel: str, bitrate: int = 500000):
+    def __init__(
+        self, 
+        can_spec_path: str = config.get("PATH", "dbc_path", fallback=os.path.join(artifacts_path, "veh.dbc")), 
+        channel: str = config.get("HARDWARE", "can_channel", fallback="vcan0"), 
+        bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000), 
+    ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
