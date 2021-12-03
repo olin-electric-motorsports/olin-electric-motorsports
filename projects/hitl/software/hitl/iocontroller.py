@@ -1,13 +1,19 @@
-# IMPORTS
+# Base Python
+import os
 import logging
 from typing import Tuple, Union
+from configparser import ConfigParser
 
+# Extended Python
 try:
     import ft4222
 except ModuleNotFoundError:
     # We haven't setup the ft4222 library yet...
     # See https://awenstrup.github.io/setup.html
     ft4222 = None
+
+# Project Imports 
+from hitl.utils import artifacts_path
 
 # CONSTANTS
 # ADC parameters
@@ -33,6 +39,9 @@ GPIO_CHANNEL_TO_ADD_BITS = {i: i for i in range(4, 32)}
 GPIO_COMMANDS = {"single port": 0b00100000}
 GPIO_RETURN_SIZE_BYTES = 1
 
+config = ConfigParser(interpolation=None)
+config.read(os.path.join(artifacts_path, "config.ini"))
+
 
 class IOController:
     """High level python object to interface with hardware.
@@ -45,7 +54,10 @@ class IOController:
     :param str device_description: The description of the device; used to connect.
     """
 
-    def __init__(self, pin_info_path: str, device_description: str = "FT4222 A"):
+    def __init__(self, 
+    pin_info_path: str = config.get("PATH", "pin_info_path", fallback=os.path.join(artifacts_path, "pin_info.csv")),
+     device_description: str = "FT4222 A"
+    ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
