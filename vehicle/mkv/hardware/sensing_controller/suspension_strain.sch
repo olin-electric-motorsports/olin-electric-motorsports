@@ -497,30 +497,6 @@ F 4 "https://www.digikey.com/en/products/detail/susumu/RG2012N-121-W-T1/600666" 
 $EndComp
 Wire Wire Line
 	8400 3000 8400 3100
-$Comp
-L power:+5V #PWR?
-U 1 1 6187E9EC
-P 8400 2550
-AR Path="/60A3D9FD/60AD06C7/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60AB905F/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60AB9387/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60AB9617/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60AB9863/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60AB9A43/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60AB9C37/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60AB9E33/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60AB9FB3/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60ABA183/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60ABA307/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/60ABA487/6187E9EC" Ref="#PWR?"  Part="1" 
-AR Path="/60A3D9FD/6187E9EC" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 8400 2400 50  0001 C CNN
-F 1 "+5V" H 8415 2723 50  0000 C CNN
-F 2 "" H 8400 2550 50  0001 C CNN
-F 3 "" H 8400 2550 50  0001 C CNN
-	1    8400 2550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8400 2700 8400 2550
 $Comp
@@ -586,17 +562,6 @@ Text GLabel 11100 3200 2    50   Input ~ 0
 WHEATSTONE_OUT_-
 Wire Wire Line
 	10600 3200 10700 3200
-$Comp
-L power:+5V #PWR?
-U 1 1 6199835F
-P 10200 2800
-F 0 "#PWR?" H 10200 2650 50  0001 C CNN
-F 1 "+5V" H 10215 2973 50  0000 C CNN
-F 2 "" H 10200 2800 50  0001 C CNN
-F 3 "" H 10200 2800 50  0001 C CNN
-	1    10200 2800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	10200 2900 10200 2800
 $Comp
@@ -685,17 +650,6 @@ Text GLabel 11050 5800 2    50   Input ~ 0
 STRAIN_VOLTAGE_REF_2INAMP
 Wire Wire Line
 	10550 5800 10650 5800
-$Comp
-L power:+5V #PWR?
-U 1 1 6195286F
-P 10150 5400
-F 0 "#PWR?" H 10150 5250 50  0001 C CNN
-F 1 "+5V" H 10165 5573 50  0000 C CNN
-F 2 "" H 10150 5400 50  0001 C CNN
-F 3 "" H 10150 5400 50  0001 C CNN
-	1    10150 5400
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	10150 5500 10150 5400
 $Comp
@@ -812,4 +766,10 @@ F 6 "https://www.digikey.com/en/products/detail/kemet/C1206C103KCRACTU/721283" H
 	1    10150 7050
 	0    1    1    0   
 $EndComp
+Text GLabel 8400 2550 1    50   Input ~ 0
+5V
+Text GLabel 10200 2800 1    50   Input ~ 0
+5V
+Text GLabel 10150 5400 1    50   Input ~ 0
+5V
 $EndSCHEMATC
