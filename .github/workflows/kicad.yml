@@ -1,0 +1,57 @@
+name: kicad-build
+
+on:
+  pull_request:
+    paths:
+    - '**.sch'
+    - '**.kicad_pcb'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: build
+      id: build_kicad
+      run: |
+        sudo apt install librsvg2-bin
+        ./.github/git-bazel-kicad.sh
+      env:
+        GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
+
+    - name: get_changed_files
+      id: files
+      uses: jitterbit/get-changed-files@v1
+
+    - name: rescue_check
+      run: |
+        if echo ${{ steps.files.outputs.added_modified }} | grep -q rescue; then
+          echo A \"rescue\" library was detected in this pull request! Delete the \"rescue\" library and ensure that all schematic symbols reference the \"formula\" library.
+          exit 1
+        else
+          exit 0
+        fi
+
+    - name: upload
+      uses: BetaHuhn/do-spaces-action@v2
+      with:
+        access_key: ${{ secrets.DO_ACCESS_KEY }}
+        secret_key: ${{ secrets.DO_SECRET_KEY }}
+        space_name: ${{ secrets.DO_SPACE_NAME }}
+        space_region: ${{ secrets.DO_SPACE_REGION }}
+        source: build
+        out_dir: kicad-artifacts
+        versioning: false
+
+    - name: comment
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        path: build/comment.md
+
+    # - name: update_outline
+    #   if: ${{ github.event_name == 'push' }} # TODO
+    #   run: ./.github/update_kicad_outline.py
+    #   env:
+    #     url: 
+    #

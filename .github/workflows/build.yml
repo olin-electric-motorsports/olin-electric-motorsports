@@ -1,6 +1,9 @@
 name: ci
 
-on: [pull_request]
+on: 
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -8,7 +11,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Cache bazel
       uses: actions/cache@v2
       env:
@@ -27,11 +29,11 @@ jobs:
       run: sudo apt install gcc-avr avr-libc binutils-avr
 
     - name: Build all host
-      run: bazelisk build //...
+      run: bazelisk build -c opt --build_tag_filters="-kicad" //...
     - name: Build all ATMega16m1
-      run: bazelisk build --config=m16m1-avr //...
+      run: bazelisk build --config=m16m1-avr --build_tag_filters="-kicad" -c opt //...
     - name: Build all ATMega328p
-      run: bazelisk build --config=m328p-avr //...
+      run: bazelisk build --config=m328p-avr --build_tag_filters="-kicad" -c opt //...
 
   test:
     needs: build
@@ -50,4 +52,4 @@ jobs:
       run: sudo apt install gcc-avr avr-libc binutils-avr
 
     - name: Run all tests
-      run: bazelisk test //...
+      run: bazelisk test --build_tag_filters="-kicad" //...
