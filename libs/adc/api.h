@@ -1,6 +1,21 @@
+#pragma once
 #include <stdint.h>
 
 #define AS_VOLTAGE(raw) (float)raw*(0.004882813)
+
+typedef enum {
+    ADC0,
+    ADC1,
+    ADC2,
+    ADC3,
+    ADC4,
+    ADC5,
+    ADC6,
+    ADC7,
+    ADC8,
+    ADC9,
+    ADC10,
+} adc_pin_e;
 
 /*
  * adc_init
@@ -23,7 +38,7 @@ void adc_init(void);
  *
  * Returns (void)
  */
-void adc_start_convert(uint8_t pin);
+void adc_start_convert(adc_pin_e pin);
 
 /*
  * adc_poll_complete
@@ -82,4 +97,4 @@ void adc_interrupt_enable(void (*callback)(void));
  * Returns (uint16_t)
  *   - Value of the ADC conversion
  */
-uint16_t adc_read(uint8_t pin);
+uint16_t adc_read(adc_pin_e pin);

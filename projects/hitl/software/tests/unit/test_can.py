@@ -16,7 +16,7 @@ config.read(os.path.join(artifacts_path, "config.ini"))
 
 @pytest.fixture
 def can():
-    path = os.path.abspath(os.path.dirname(__file__) + "/dash.dbc")
+    path = os.path.abspath(os.path.dirname(__file__) + "/veh.dbc")
 
     out = CANController(
         can_spec_path=path,
@@ -25,6 +25,8 @@ def can():
     )
 
     return out
+
+can2 = can
 
 
 @pytest.fixture
@@ -44,8 +46,23 @@ def test_create_state_dictionary(can, logger):
 
 @pytest.mark.soft
 @pytest.mark.unit
-def test_set_and_get_state(can, logger):
+def test_set_and_get_state(can, can2, logger):
     logger.info("Testing set_state and get_state...")
 
     can.set_state("ThrottlePos", 50)
-    assert can.get_state("ThrottlePos") == 50
+    time.sleep(.1)
+    assert can2.get_state("ThrottlePos") == 50 
+
+@pytest.mark.soft
+@pytest.mark.unit
+def test_playback(can, can2, logger):
+    logger.info('Testing drive log playback')
+    
+    path = os.path.abspath(os.path.dirname(__file__) + "/can_test_log.csv")
+    start_time = time.time_ns()
+    can.playback(path)
+    end_time = (time.time_ns() - start_time)/1000000
+    time.sleep(1)
+    assert can2.get_state('StartButton') == 33
+    assert can2.get_state('Temperature') == 145
+    assert end_time == pytest.approx(109, rel=.01)

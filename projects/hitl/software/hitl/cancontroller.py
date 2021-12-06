@@ -5,11 +5,18 @@ import time
 import threading
 from typing import Callable, Tuple
 import logging
+import csv
+from configparser import ConfigParser
 
 # Extended python
 import cantools
 import can
 
+# Project Imports 
+from hitl.utils import artifacts_path
+
+config = ConfigParser(interpolation=None)
+config.read(os.path.join(artifacts_path, "config.ini"))
 
 class CANController:
     """High level python object to interface with hardware.
@@ -27,7 +34,12 @@ class CANController:
     :param int bitrate: The bitrate of the can bus. Defaults to 500K. If using a virtual bus, you can ignore this.
     """
 
-    def __init__(self, can_spec_path: str, channel: str, bitrate: int = 500000):
+    def __init__(
+        self, 
+        can_spec_path: str = config.get("PATH", "dbc_path", fallback=os.path.join(artifacts_path, "veh.dbc")), 
+        channel: str = config.get("HARDWARE", "can_channel", fallback="vcan0"), 
+        bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000), 
+    ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
@@ -48,13 +60,13 @@ class CANController:
         # Start listening
         bus_type = "socketcan"
         if "linux" in sys.platform:
-            can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
+            self.can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
             self.kill_threads = threading.Event()
             listener = threading.Thread(
                 target=self._listen,
                 name="listener",
                 kwargs={
-                    "can_bus": can_bus,
+                    "can_bus": self.can_bus,
                     "callback": self._parse_frame,
                     "kill_threads": self.kill_threads,
                 },
@@ -78,14 +90,66 @@ class CANController:
         """
         Set the state of a can signal on the car
 
-        NOTE: This module does not yet support CAN injection, so setting
-        the state of a signal only updates an internal lookup dictionary
         """
         try:
-            msg = self.message_of_signal[signal]
-            self.signals[msg][signal] = value
+             #find message name
+             msg_name = self.message_of_signal[signal] 
+             #update signals dict to new value and pull out message to send
+             self.signals[msg_name][signal] = value
+             msg = self.db.get_message_by_name(msg_name)
+             #encode message data and create message
+             data = msg.encode(self.signals[msg_name])
+             message = can.Message(arbitration_id=msg.frame_id, data=data)
+             #send message
+             self.can_bus.send(message)
         except KeyError:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
+
+    def playback(self, path, initial_time=0):
+        """
+        Play back a CSV log of CAN messages on the interface assigned to CANController object.
+
+        :param path: Path to CSV log file
+
+        :param initial_time: Timestamp of the first CAN message in the CSV file - can be useful 
+                             if you only want to test a certain portion of CAN messages. Defaults to 0.
+        
+        Designed to input messages in following format:
+
+        Timestamp,arbitration_id,signals(0 to 255 value)...
+
+        """
+        #Reading and parsing csv file
+        log_file = open(path, 'r')
+        csvreader = csv.reader(log_file)
+        messages = []
+        for row in csvreader:
+            #remove empty elements from list
+            row = list(filter(None, row)) 
+            #convert strings to integers
+            row = [int(i) for i in row]
+            #check if row is within time range
+            if row[0] >= initial_time:
+                 messages.append(row)
+        log_file.close()
+        prev_time = initial_time
+
+
+        start_time = time.time_ns() # initial time
+        row = 0 # initial row
+        while row < len(messages):
+            #calculate time elapsed and check if next message should be sent
+            time_elapsed = (time.time_ns() - start_time)/1000000
+            if time_elapsed >= int(messages[row][0]):
+                #Pull out message data from csv
+                data = messages[row][2:]
+                #create CAN message
+                message = can.Message(arbitration_id=messages[row][1], data=data)
+                #send message
+                self.can_bus.send(message)
+                #increment row
+                row += 1
+
 
     def _create_state_dictionary(self, path: str) -> None:
         """Generate self.message_of_signal and self.signals
@@ -114,7 +178,7 @@ class CANController:
         Parses through a CAN frame and updates the self.states dictionary
         """
         # Get the message name
-        msg_name = self.db.get_message_by_frame_id(msg.arbitration_id)
+        msg_name = self.db.get_message_by_frame_id(msg.arbitration_id).name
         # Decode the data
         data = self.db.decode_message(msg.arbitration_id, msg.data)
         # Update the state dictionary
@@ -139,4 +203,4 @@ class CANController:
             msg = can_bus.recv(1)  # 1 second receive timeout
             if msg:
                 callback(msg)
-        can_bus.shutdown()
+        self.can_bus.shutdown()
