@@ -8,7 +8,6 @@ TOGGLE_PIN = 1 # GPIO pin on the raspberry pi for the toggle button
 LED_PIN = 2 # GPIO pin on the raspberry pi for the indicator LED
 def set_runner(new_state):
     '''Starts or stops the action runner based on the value of runner_on'''
-    global runner_on
     if runner_on is not new_state:
         runner_on = new_state
         action = 'start' if new_state else 'stop'
@@ -20,7 +19,6 @@ def action_runner_button_callback():
     '''
     Toggles the action runner on and off
     '''
-    global runner_on
     set_runner(not runner_on) # Switches the state of the action runner
 
 def set_indicator_LED(LED_on):
