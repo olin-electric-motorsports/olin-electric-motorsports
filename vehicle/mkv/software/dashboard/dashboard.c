@@ -21,10 +21,14 @@
 #include "libs/timer/api.h"
 #include "libs/adc/api.h"
 
-volatile global bool START_BUTTON_STATE;
-volatile global bool HV_STATE;
-volatile global bool BRAKE_PRESSED;
-volatile global bool READY2DRIVE;
+volatile bool START_BUTTON_STATE;
+volatile bool HV_STATE;
+volatile bool BRAKE_PRESSED;
+volatile bool READY2DRIVE;
+
+volatile bool send_can;
+
+int steering_pos;
 
 
 // CAN Interrupts
@@ -32,8 +36,8 @@ ISR(CAN_INT_vect){
     CANPAGE = (BRAKELIGHT_MBOX << MOBNB0);
 
     //Brakelight message for Brakelight LED and Brake status for Ready2Drive check
-    if  (!can_poll_receive(BRAKELIGHT_CAN_FRAME)){
-        can_receive(BRAKELIGHT_CAN_FRAME, BRAKELIGHT_FILTER);
+    if  (!can_poll_receive(&BRAKELIGHT_CAN_FRAME)){
+        can_receive(&BRAKELIGHT_CAN_FRAME, BRAKELIGHT_FILTER);
         if (BRAKELIGHT_CAN_FRAME.data[4] == 0xFF) {
             BRAKE_PRESSED = true;
             gpio_set_pin(BRAKE_LED);
@@ -47,9 +51,9 @@ ISR(CAN_INT_vect){
     
     // BMS Core message for BMS Status LED
     CANPAGE = (BMS_CORE_MBOX << MOBNB0);
-    if (!can_poll_receive(BMS_CORE_MBOX)){
-        can_receive(BMS_CORE_CAN_FRAME, BMS_CORE_FILTER);
-        if (BMS_CORE_CAN_FRAME.data[4] == 0x0){ // check BMS status
+    if (!can_poll_receive(&BMS_CORE_FRAME)){
+        can_receive(&BMS_CORE_FRAME, BMS_CORE_FILTER);
+        if (BMS_CORE_FRAME.data[4] == 0x0){ // check BMS status
             gpio_set_pin(AMS_LED); // set BMS light high
         }
         else{
@@ -59,8 +63,8 @@ ISR(CAN_INT_vect){
 
     // AIR Control Critical message for HV LED and disabling Ready2Drive if HV goes down
     CANPAGE = (AIRCTRL_CRITICAL_MBOX << MOBNB0);
-    if (!can_poll_receive(AIRCTRL_CRITICAL_MBOX){
-        can_receive(AIRCTRL_CRITICAL_FRAME, AIRCTRL_CRITICAL_FILTER);
+    if (!can_poll_receive(&AIRCTRL_CRITICAL_FRAME)){
+        can_receive(&AIRCTRL_CRITICAL_FRAME, AIRCTRL_CRITICAL_FILTER);
         if (AIRCTRL_CRITICAL_FRAME.data[4] == 0xFF && AIRCTRL_CRITICAL_FRAME.data[5] == 0xFF){
             HV_STATE = true;
             gpio_set_pin(HV_LED); // set HV LED
@@ -74,8 +78,8 @@ ISR(CAN_INT_vect){
 
     //AIR Control Sense message for IMD LED
     CANPAGE = (AIRCTRL_SENSE_MBOX << MOBNB0);
-    if (!can_poll_receive((AIRCTRL_SENSE_MBOX)){
-        can_receive((AIRCTRL_SENSE_FRAME, AIRCTRL_SENSE_FILTER);
+    if (!can_poll_receive(&AIRCTRL_SENSE_FRAME)){
+        can_receive(&AIRCTRL_SENSE_FRAME, AIRCTRL_SENSE_FILTER);
         if (AIRCTRL_SENSE_FRAME.data[6] == 0x0) { // check IMD Status
             gpio_set_pin(IMD_LED); // set IMD light high
         }
@@ -86,14 +90,14 @@ ISR(CAN_INT_vect){
 
     //Throttle message for interfacing with LED Bars Board - TODO (waiting for SPI library)
     CANPAGE = (THROTTLE_MBOX << MOBNB0);
-    if (!can_poll_receive(THROTTLE_MBOX)){
-        can_receive(THROTTLE__FRAME, THROTTLE_FILTER);
+    if (!can_poll_receive(&THROTTLE_FRAME)){
+        can_receive(&THROTTLE_FRAME, THROTTLE_FILTER);
     }
 }
 
 //Start Button interrupt & final Ready2Drive check
 void pcint14_callback(void) {
-    if (gpio_get_pin(START_BTN){
+    if (gpio_get_pin(START_BTN)){
         START_BUTTON_STATE = true;
         if (HV_STATE && BRAKE_PRESSED) {
             gpio_set_pin(START_LED);

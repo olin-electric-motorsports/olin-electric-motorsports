@@ -1,6 +1,10 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/adc/api.h"
+#include "libs/timer/api.h"
+#include "libs/can/api.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
 
 //Pin definitions
 gpio_t IMD_LED = PB3;
