@@ -6,6 +6,8 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#define RTD_BUZZ_TIME 4000 // milliseconds
+
 //Pin definitions
 gpio_t IMD_LED = PB3;
 gpio_t START_LED = PB4;
@@ -14,6 +16,7 @@ gpio_t START_BTN = PC6;
 gpio_t HV_LED = PD7;
 gpio_t LV_LED = PD6;
 gpio_t BRAKE_LED = PB2;
+gpio_t RTD_BUZZER_LSD = PC5;
 
 //ADC PIN
 adc_pin_e STEERING_POS = ADC2;

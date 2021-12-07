@@ -5,7 +5,7 @@
                 -listening for CAN messages and controlling LED appropriately
             : Start button + LED - DONE
                 - based on input off of the physical start button before entering R2D
-            : Interface with LED Bars Boards
+            : Interface with LED Bars Boards - TODO
                 - listening for CAN messages and outputting over I2C
             : Implement debugging LEDs (brake, LV, HV) - DONE
                 - CAN
@@ -28,6 +28,7 @@ volatile bool READY2DRIVE;
 
 volatile bool send_can;
 
+volatile int buzzer_counter = 0;
 int steering_pos;
 
 
@@ -73,6 +74,7 @@ ISR(CAN_INT_vect){
             HV_STATE = false;
             READY2DRIVE = false; // Disable R2D
             gpio_clear_pin(HV_LED); //clear HV LED
+            coutner = 0; // reset counter for next RTD cycle
         }
     }
 
@@ -102,6 +104,7 @@ void pcint14_callback(void) {
         if (HV_STATE && BRAKE_PRESSED) {
             gpio_set_pin(START_LED);
             READY2DRIVE = true;
+            gpio_set_pin(RTD_BUZZER_LSD); // turn on R2D Buzzer
         }
     }
 }
@@ -124,6 +127,7 @@ int main(void) {
     gpio_set_mode(HV_LED, OUTPUT);
     gpio_set_mode(LV_LED, OUTPUT);
     gpio_set_mode(BRAKE_LED, OUTPUT);
+    gpio_set_mode(RTD_BUZZER_LSD, OUTPUT);
 
     gpio_set_mode(START_BTN, INPUT);
 
@@ -141,6 +145,14 @@ int main(void) {
             dashboard_msg.data = can_data;
             can_send(&dashboard_msg);
             send_can = false;
+
+            // Uses CAN Timer to measure the 4 seconds for the RTD buzzer timer
+            if (READY2DRIVE && counter < RTD_BUZZ_TIME) {
+               counter ++;
+            }
+            if (counter > RTD_BUZZ_TIME){
+                gpio_clear_pin(RTD_BUZZER_LSD);
+            }
         }
     }    
 }
