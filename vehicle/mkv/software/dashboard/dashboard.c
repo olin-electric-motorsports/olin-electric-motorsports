@@ -74,7 +74,7 @@ ISR(CAN_INT_vect){
             HV_STATE = false;
             READY2DRIVE = false; // Disable R2D
             gpio_clear_pin(HV_LED); //clear HV LED
-            coutner = 0; // reset counter for next RTD cycle
+            buzzer_counter = 0; // reset counter for next RTD cycle
         }
     }
 
@@ -146,9 +146,9 @@ int main(void) {
             can_send(&dashboard_msg);
             send_can = false;
 
-            // Uses CAN Timer to measure the 4 seconds for the RTD buzzer timer
+            // Uses CAN Timer to measure the 4 seconds to activate the RTD timer
             if (READY2DRIVE && counter < RTD_BUZZ_TIME) {
-               counter ++;
+               buzzer_counter ++;
             }
             if (counter > RTD_BUZZ_TIME){
                 gpio_clear_pin(RTD_BUZZER_LSD);
