@@ -19,14 +19,19 @@
 #include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
+#include "libs/adc/api.h"
 
 volatile global bool START_BUTTON_STATE;
 volatile global bool HV_STATE;
 volatile global bool BRAKE_PRESSED;
 volatile global bool READY2DRIVE;
 
+
+// CAN Interrupts
 ISR(CAN_INT_vect){
     CANPAGE = (BRAKELIGHT_MBOX << MOBNB0);
+
+    //Brakelight message for Brakelight LED and Brake status for Ready2Drive check
     if  (!can_poll_receive(BRAKELIGHT_CAN_FRAME)){
         can_receive(BRAKELIGHT_CAN_FRAME, BRAKELIGHT_FILTER);
         if (BRAKELIGHT_CAN_FRAME.data[4] == 0xFF) {
@@ -40,6 +45,7 @@ ISR(CAN_INT_vect){
 
     }
     
+    // BMS Core message for BMS Status LED
     CANPAGE = (BMS_CORE_MBOX << MOBNB0);
     if (!can_poll_receive(BMS_CORE_MBOX)){
         can_receive(BMS_CORE_CAN_FRAME, BMS_CORE_FILTER);
@@ -51,6 +57,7 @@ ISR(CAN_INT_vect){
         }
     }
 
+    // AIR Control Critical message for HV LED and disabling Ready2Drive if HV goes down
     CANPAGE = (AIRCTRL_CRITICAL_MBOX << MOBNB0);
     if (!can_poll_receive(AIRCTRL_CRITICAL_MBOX){
         can_receive(AIRCTRL_CRITICAL_FRAME, AIRCTRL_CRITICAL_FILTER);
@@ -60,11 +67,12 @@ ISR(CAN_INT_vect){
         }
         else {
             HV_STATE = false;
-            READY2DRIVE = false;
+            READY2DRIVE = false; // Disable R2D
             gpio_clear_pin(HV_LED); //clear HV LED
         }
     }
 
+    //AIR Control Sense message for IMD LED
     CANPAGE = (AIRCTRL_SENSE_MBOX << MOBNB0);
     if (!can_poll_receive((AIRCTRL_SENSE_MBOX)){
         can_receive((AIRCTRL_SENSE_FRAME, AIRCTRL_SENSE_FILTER);
@@ -76,12 +84,14 @@ ISR(CAN_INT_vect){
         }
     }
 
+    //Throttle message for interfacing with LED Bars Board - TODO (waiting for SPI library)
     CANPAGE = (THROTTLE_MBOX << MOBNB0);
     if (!can_poll_receive(THROTTLE_MBOX)){
         can_receive(THROTTLE__FRAME, THROTTLE_FILTER);
     }
 }
 
+//Start Button interrupt & final Ready2Drive check
 void pcint14_callback(void) {
     if (gpio_get_pin(START_BTN){
         START_BUTTON_STATE = true;
@@ -120,10 +130,10 @@ int main(void) {
         steering_pos = adc_read(STEERING_POS);
 
         if (send_can) {
-            can_data[1] = READY2DRIVE ? 0xFF : 0x00;
-            can_data[2] = steering_pos;
-            can_data[3] = START_BUTTON_STATE ? 0xFF : 0x00;
-            can_data[0] = 0;
+            can_data[1] = READY2DRIVE ? 0xFF : 0x00; // Ready2Drive
+            can_data[2] = steering_pos; // Steering Position
+            can_data[3] = START_BUTTON_STATE ? 0xFF : 0x00; // Start Button State
+            can_data[0] = 0; // Error code
             dashboard_msg.data = can_data;
             can_send(&dashboard_msg);
             send_can = false;

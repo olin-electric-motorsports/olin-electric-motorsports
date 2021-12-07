@@ -14,5 +14,6 @@ cc_firmware(
         "//libs/can",
         "//libs/gpio",
         "//libs/timer",
+        "//libs/adc"
     ],
 )
