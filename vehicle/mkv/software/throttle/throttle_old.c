@@ -39,7 +39,7 @@
 #define PLED2_PORT PORTB
 #define PLED3 PB4
 #define PLED3_PORT PORTB
-
+// ^^ QUESTION: what are port macros/CAN MACros for?
 #define LED1 PB0 //orange
 #define LED2 PB1 //green
 #define EXT_LED_PORT PORTB
@@ -85,11 +85,12 @@
 #define UPDATE_STATUS 1
 
 #define ADC_ERROR 6
-#define DEAD_ZONE 64
+#define DEAD_ZONE 64 
+// QUESTION: What is DEAD_ZONE
 
 //********************Global variables***************
-uint8_t gFlag = 0;
-uint8_t gTimerFlag = 0;
+uint8_t gFlag = 0; // Global Flag. Tells us that gFlag will change and to assign it to an unsigned 8bit integer
+uint8_t gTimerFlag = 0; 
 
 uint16_t gDriveModeVoltage = 0;
 uint8_t gDriveMode = 0;
@@ -110,19 +111,21 @@ uint8_t gError = 0b00000000;
 
 uint16_t gThrottle1Voltage = 0;
 uint16_t gThrottle2Voltage = 0;
-uint16_t gThrottle1In = 0;
-uint16_t gThrottle2In = 0;
-uint8_t gThrottle1Out = 0;
+uint16_t gThrottle1In = 0; // throttle position mapped from 0 to 255
+uint16_t gThrottle2In = 0; // throttle position mapped from 0 to 255
+uint8_t gThrottle1Out = 0; // basically same as g throttle ins
 uint8_t gThrottle2Out = 0;
 
 uint8_t gThrottleArrayIndex = 0;
 //uint8_t gAverageSize = 8;
 uint8_t gThrottleArray[ROLLING_AVG_SIZE];
 uint16_t gRollingSum = 0;
-uint8_t gThrottleOut = 0;
+uint8_t gThrottleOut = 0; // Rolling average of throttle outputs. (i.e. rolling sum of both 
+								//throttle outputs over time divided by size of rolling sum)
 volatile uint8_t msg;
 
 // Throttle mapping values
+// Throttle values are capped to this range
 //Values set last on Oct 12 by Alex Wenstrup
 const uint16_t throttle1_HIGH = 654;
 const uint16_t throttle1_LOW = 154 + DEAD_ZONE;
@@ -259,6 +262,7 @@ ISR(PCINT0_vect) {
 }
 
 //****************Initializers*****************
+// QUESTIONS: when are the inits called
 void initTimer(void) {
 	// Set up 8-bit timer in CTC mode
 	TCCR0A = _BV(WGM01);
@@ -387,7 +391,10 @@ void checkPanic(void) {
 	}
 }
 
+
 void checkPlausibility(void) {
+
+	// QUESTION: What is this doing?
 	if (gThrottle1Voltage * 50 > gThrottle2Voltage * 35 || gThrottle1Voltage * 55 < gThrottle2Voltage * 32) {
 		throttle10Counter += 1;
 	}
@@ -420,9 +427,11 @@ void readPots(void) {
 	   Reads: throttle1 and throttle2
 	 */
 
-	ADMUX = _BV(REFS0);
+	ADMUX = _BV(REFS0); // Bit Value
 	ADMUX |= THROTTLE1_ADC_NUM;
-	ADCSRA |= _BV(ADSC);
+	//QUESTION: I still don't really understand what setting the bit means. = _BV vs. |= ?????
+	// I Confused :((((((((
+	ADCSRA |= _BV(ADSC); //Set bit value
 	loop_until_bit_is_clear(ADCSRA, ADSC);
 	uint16_t t1 = ADC;
 
@@ -440,10 +449,17 @@ void readPots(void) {
 }
 
 void mapThrottle(void) {
+
+
 	//Map ADC to 0-255
 	uint32_t map1;
 	uint32_t map2;
 
+	// The right shift operator >> causes the bits of the left operand to be 
+	// shifted right by the number of positions specified by the right operand.
+
+	//QUESTION: what's the reason for shifting the bits. i dont have a good
+	// grasp on what >> is
 	uint16_t v1 = gThrottle1Voltage >> 2;
 	uint16_t v2 = gThrottle2Voltage >> 2;
 
@@ -473,6 +489,7 @@ void mapThrottle(void) {
 	gThrottle1In = map1;
 	gThrottle2In = map2;
 
+	// QUESTION: Are gThrottleout and in not the samee??
 	gThrottle1Out = gThrottle1In;
 	gThrottle2Out = gThrottle2In;
 
@@ -512,6 +529,9 @@ void mapThrottle(void) {
 }
 
 void storeThrottle(void) {
+
+	// Reads potentiometers, maps voltage for them from 0 to 255,
+	// Stores rolling sum value into array.
 	readPots();
 	mapThrottle();
 	checkPlausibility();
@@ -519,7 +539,7 @@ void storeThrottle(void) {
 	uint16_t new = (gThrottle1Out + gThrottle2Out) >> 1;
 	uint8_t old = gThrottleArray[gThrottleArrayIndex];
 
-	gRollingSum -= old;
+	gRollingSum -= old; 
 	gRollingSum += new;
 
 	gThrottleArray[gThrottleArrayIndex] = new;
@@ -697,7 +717,7 @@ int main(void) {
 	initADC();
 	sei(); // interrupt init
 	CAN_init(CAN_ENABLED);
-	setPledOut(); // gpio init
+	setPledOut(); // gpio init. Sets the programming LEDs as output
 	LOG_init(); // initializes UART (can ignore for now)
 	enablePCINT(); //enables interrupts for gpio pins
 	initMC();
@@ -723,8 +743,8 @@ int main(void) {
 	while(1) {
 		if(bit_is_set(gTimerFlag,UPDATE_STATUS)) { //everytime timer goes off, clear flag, store throttle, etc.
 			gTimerFlag &= ~_BV(UPDATE_STATUS); 
-			storeThrottle();
-			getAverage();
+			storeThrottle(); // Stores rolling sum of throttle outputs into array.
+			getAverage(); // gets average of throttle through rolling sum and rolling size.
 			checkPanic();
 			// checkShutdownState();
 			// testStartup();
