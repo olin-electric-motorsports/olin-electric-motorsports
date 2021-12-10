@@ -43,8 +43,10 @@ class CANController:
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
-        # Get config
+        # Create empty list of periodic messages
+        self.periodic_messages = {}
 
+        # Get config
         if "linux" in sys.platform:
             # Bring CAN hardware online
             if "vcan" in channel:
@@ -92,18 +94,48 @@ class CANController:
 
         """
         try:
-             #find message name
-             msg_name = self.message_of_signal[signal] 
-             #update signals dict to new value and pull out message to send
-             self.signals[msg_name][signal] = value
-             msg = self.db.get_message_by_name(msg_name)
-             #encode message data and create message
-             data = msg.encode(self.signals[msg_name])
-             message = can.Message(arbitration_id=msg.frame_id, data=data)
-             #send message
-             self.can_bus.send(message)
+            #find message name
+            msg_name = self.message_of_signal[signal] 
+
+            #update signals dict to new value and pull out message to send
+            self.signals[msg_name][signal] = value
+            msg = self.db.get_message_by_name(msg_name)
+
+            #encode message data and create message
+            data = msg.encode(self.signals[msg_name])
+            message = can.Message(arbitration_id=msg.frame_id, data=data)
+
+            #send message
+            if msg_name in self.periodic_messages:
+                self.periodic_messages[msg_name].modify_data(message)
+            else:
+                self.can_bus.send(message)
         except KeyError:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
+
+    def set_periodic(self, msg_name, period):
+        """
+        Set a message to be send periodically, at a specified period
+
+        All states in the message should be set before starting a periodic broadcast,
+        though they can be changed without interrupting the periodic broadcast.
+        """
+        if msg_name not in self.singals:
+            raise Exception(f"Message {msg_name} not found in messages.")
+
+        if msg_name in self.periodic_messages:
+            raise Exception(f"Message {msg_name} is already being sent periodically.")
+
+        #update signals dict to new value and pull out message to send
+        msg = self.db.get_message_by_name(msg_name)
+
+        #encode message data and create message
+        data = msg.encode(self.signals[msg_name])
+        message = can.Message(arbitration_id=msg.frame_id, data=data)
+
+        #send message
+        self.periodic_messages[msg_name] = message
+        self.can_bus.send_periodic(message, period)
 
     def playback(self, path, initial_time=0):
         """
