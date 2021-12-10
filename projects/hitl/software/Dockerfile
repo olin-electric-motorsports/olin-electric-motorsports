@@ -8,4 +8,4 @@ RUN ln /usr/bin/python3.9 /usr/bin/python
 COPY . /src/
 RUN cd src && python -m pip install -e .
 
-ENTRYPOINT bash
+ENTRYPOINT python
