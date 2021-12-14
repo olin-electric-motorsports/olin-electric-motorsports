@@ -7,6 +7,7 @@ from typing import Callable, Tuple
 import logging
 import csv
 from configparser import ConfigParser
+import atexit
 
 # Extended python
 import cantools
@@ -61,18 +62,18 @@ class CANController:
 
         # Start listening
         bus_type = "socketcan"
+
         if "linux" in sys.platform:
             self.can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
-            self.kill_threads = threading.Event()
             listener = threading.Thread(
                 target=self._listen,
                 name="listener",
                 kwargs={
                     "can_bus": self.can_bus,
-                    "callback": self._parse_frame,
-                    "kill_threads": self.kill_threads,
+                    "callback": self._parse_frame
                 },
             )
+            listener.daemon = True
             listener.start()
         else:
             can_bus = None
@@ -216,23 +217,14 @@ class CANController:
         # Update the state dictionary
         self.signals[msg_name].update(data)
 
-    def __del__(self):
-        """Destructor (called when the program ends)
-
-        End the listener thread for clean teardown
-        """
-        if hasattr(self, "kill_threads"):
-            self.kill_threads.set()
-
-    def _listen(self, can_bus: can.Bus, callback: Callable, kill_threads: threading.Event) -> None:
+    def _listen(self, can_bus: can.Bus, callback: Callable) -> None:
         """Thread that runs all the time to listen to CAN messages
 
         References:
           - https://python-can.readthedocs.io/en/master/interfaces/socketcan.html
           - https://python-can.readthedocs.io/en/master/
         """
-        while not kill_threads.isSet():
+        while True:
             msg = can_bus.recv(1)  # 1 second receive timeout
             if msg:
                 callback(msg)
-        self.can_bus.shutdown()
