@@ -7,10 +7,11 @@
                 - based on input off of the physical start button before entering R2D
             : Interface with LED Bars Boards - TODO
                 - listening for CAN messages and outputting over I2C
-            : Implement debugging LEDs (brake, LV, HV) - DONE
+            : Implement other LEDs (brake, LV, HV) - DONE
                 - CAN
-            : Implement power cycle logic - Done?
-            : CAN Sending
+            : Implement power cycle logic - DONE
+            : Implement RTD Buzzer - DONE
+
 
     Questions
 */
@@ -90,7 +91,7 @@ ISR(CAN_INT_vect){
         }
     }
 
-    //Throttle message for interfacing with LED Bars Board - TODO (waiting for SPI library)
+    //Throttle message for interfacing with LED Bars Board - TODO (SPI library)
     CANPAGE = (THROTTLE_MBOX << MOBNB0);
     if (!can_poll_receive(&THROTTLE_FRAME)){
         can_receive(&THROTTLE_FRAME, THROTTLE_FILTER);
@@ -146,11 +147,11 @@ int main(void) {
             can_send(&dashboard_msg);
             send_can = false;
 
-            // Uses CAN Timer to measure the 4 seconds to activate the RTD timer
-            if (READY2DRIVE && counter < RTD_BUZZ_TIME) {
+            // Uses timer to measure the 4 seconds to activate the RTD buzzer
+            if (READY2DRIVE && buzzer_counter < RTD_BUZZ_TIME) {
                buzzer_counter ++;
             }
-            if (counter > RTD_BUZZ_TIME){
+            if (buzzer_counter > RTD_BUZZ_TIME){
                 gpio_clear_pin(RTD_BUZZER_LSD);
             }
         }

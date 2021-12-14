@@ -4,7 +4,7 @@
     Function: Responsible for IMD and BMS LED indicators - get info from those boards
             : Start Button + corresponding LED - Final Check before entering RTD
             : Interface with LED Bars Board
-						: Interface with Brake, LV and HV leds on board
+			: Interface with Brake, LV and HV leds on board
 
 
     TODO: IMPLEMENT POWER CYCLE LOGIC
