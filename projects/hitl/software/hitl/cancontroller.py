@@ -120,7 +120,7 @@ class CANController:
         All states in the message should be set before starting a periodic broadcast,
         though they can be changed without interrupting the periodic broadcast.
         """
-        if msg_name not in self.singals:
+        if msg_name not in self.signals:
             raise Exception(f"Message {msg_name} not found in messages.")
 
         if msg_name in self.periodic_messages:
