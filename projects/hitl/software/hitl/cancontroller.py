@@ -134,8 +134,8 @@ class CANController:
         message = can.Message(arbitration_id=msg.frame_id, data=data)
 
         #send message
-        self.periodic_messages[msg_name] = message
-        self.can_bus.send_periodic(message, period)
+        send_task = self.can_bus.send_periodic(message, period)
+        self.periodic_messages[msg_name] = send_task
 
     def playback(self, path, initial_time=0):
         """

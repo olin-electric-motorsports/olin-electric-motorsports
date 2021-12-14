@@ -66,3 +66,23 @@ def test_playback(can, can2, logger):
     assert can2.get_state('StartButton') == 33
     assert can2.get_state('Temperature') == 145
     assert end_time == pytest.approx(109, rel=.01)
+
+@pytest.mark.soft
+@pytest.mark.unit
+def test_periodic_sending(can, can2, logger):
+    logger.info('Testing periodic sending of CAN messages')
+
+    #Setting to 1 and adding message to periodic sending with period = 1, then asserting that it was set to 1  
+    can.set_state('InertiaSwitchSense', 1)
+    can.set_periodic('Throttle', 1)
+    time.sleep(.1)
+    assert can2.get_state('InertiaSwitchSense') == 1
+
+    #Setting signal to 0 and making sure it is still 1 after .5 seconds
+    can.set_state('InertiaSwitchSense', 0)
+    time.sleep(.5)
+    assert can2.get_state('InertiaSwitchSense') == 1
+
+    #Let the periodic message send and verify that it changed to 0
+    time.sleep(2)
+    assert can2.get_state('InertiaSwitchSense') == 0
