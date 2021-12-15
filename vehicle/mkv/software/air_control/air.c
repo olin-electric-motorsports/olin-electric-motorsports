@@ -1,11 +1,11 @@
-#include <stdlib.h>
 #include <avr/interrupt.h>
+#include <stdlib.h>
 #include <string.h> // memcpy
 
+#include "config.h"
 #include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
-#include "config.h"
 
 enum State {
     IDLE,
@@ -16,35 +16,42 @@ enum State {
     FAULT,
 };
 
-enum FAULT_CODE {
-    NO_FAULT = 0x00,
-    AIR_N_WELD,
-    AIR_P_WELD,
-    BOTH_AIRS_WELD,
-    PRECHARGE_FAIL,
-    DISCHARGE_FAIL,
-    PRECHARGE_FAIL_RELAY_WELDED, // voltage divider
-    CAN_BMS_TIMEOUT,
-    CAN_MC_TIMEOUT,
+enum FaultCode {
+    FAULT_NONE = 0x00,
+    FAULT_AIR_N_WELD,
+    FAULT_AIR_P_WELD,
+    FAULT_BOTH_AIRS_WELD,
+    FAULT_PRECHARGE_FAIL,
+    FAULT_DISCHARGE_FAIL,
+    FAULT_PRECHARGE_FAIL_RELAY_WELDED, // voltage divider
+    FAULT_CAN_ERROR,
+    FAULT_CAN_BMS_TIMEOUT,
+    FAULT_CAN_MC_TIMEOUT,
+    FAULT_SHUTDOWN_IMPLAUSIBILITY,
+    FAULT_MOTOR_CONTROLLER_VOLTAGE,
+    FAULT_BMS_VOLTAGE,
+    FAULT_IMD_FAULT,
 };
 
 volatile enum State current_state = IDLE;
+volatile enum FaultCode fault_state = FAULT_NONE;
+
+void can_isr(void) {
+    if (can_mob_has_interrupt(MOB_MOTOR_CONTROLLER)) {
+        can_poll_receive(
+            &motor_controller_msg); // Retrieves the CAN message from the MOb
+    }
+
+    if (can_mob_has_interrupt(MOB_BMS)) {
+        can_poll_receive(&bms_msg); // Retrieves the CAN message from the MOb
+    }
+}
 
 void timer0_isr(void) {
     air_ctrl_critical_data[AIR_STATE] = current_state;
 
     can_send(&air_ctrl_critical_msg);
     can_send(&air_ctrl_sense_msg);
-}
-
-void can_isr(void) {
-    if (can_mob_has_interrupt(MOB_MOTOR_CONTROLLER)) {
-        can_poll_receive(&motor_controller_msg); // Retrieves the CAN message from the MOb
-    }
-
-    if (can_mob_has_interrupt(MOB_BMS)) {
-        can_poll_receive(&bms_msg); // Retrieves the CAN message from the MOb
-    }
 }
 
 volatile uint32_t time;
@@ -66,82 +73,43 @@ void timer1_isr(void) {
 volatile uint8_t imd_st = 1;
 volatile uint8_t bms_st = 1;
 
-// static enum State change_state(enum State new_state) {
-//     bool ok = false;
-// 
-//     ok = ok && imd_st && bms_st;
-// 
-//     uint16_t pack_voltage, mc_voltage;
-//     memcpy(&pack_voltage, (bms_data + 2), sizeof(uint16_t));
-//     memcpy(&mc_voltage, motor_controller_data, sizeof(uint16_t));
-// 
-//     switch (current_state) {
-//         case IDLE: {
-//             ok = ok && (mc_voltage < 5);
-//         } break;
-//         case SHUTDOWN_CIRCUIT_CLOSED: {
-// 
-//         } break;
-//         case PRECHARGE: {
-// 
-//         } break;
-//         case TS_ACTIVE: {
-// 
-//         } break;
-//         case DISCHARGE: {
-// 
-//         } break;
-//         case FAULT: {
-// 
-//         } break;
-//     }
-// 
-//     if (ok) {
-//         current_state = new_state;
-//     } else {
-//         current_state = FAULT;
-//     }
-// 
-//     return current_state;
-// }
-
 /*
  * Interrupts
  */
 volatile bool shutdown_nodes = 0;
 
 void pcint0_callback(void) {
-    uint8_t ss_tsms = !!gpio_get_pin(SS_TSMS);
-    uint8_t ss_imd_latch = !!gpio_get_pin(SS_IMD_LATCH);
-    uint8_t ss_mpc = !!gpio_get_pin(SS_MPC);
-    uint8_t ss_hvd_conn = !!gpio_get_pin(SS_HVD_CONN);
-    uint8_t ss_hvd = !!gpio_get_pin(SS_HVD);
-
-    shutdown_nodes = ss_tsms && ss_imd_latch && ss_mpc && ss_hvd_conn
-        && ss_hvd;
-
-    air_ctrl_critical_data[AIR_STATUS] |= (
-        (ss_tsms << TSMS_SENSE) ||
-        (ss_imd_latch << IMD_SENSE) ||
-        (ss_mpc << MAIN_PACK_CONNECTOR_SENSE) ||
-        (ss_hvd_conn << HVD_CONNECTOR_SENSE) ||
-        (ss_hvd << HVC_SENSE)
-    );
+    //     uint8_t ss_tsms = !!gpio_get_pin(SS_TSMS);
+    //     uint8_t ss_imd_latch = !!gpio_get_pin(SS_IMD_LATCH);
+    //     uint8_t ss_mpc = !!gpio_get_pin(SS_MPC);
+    //     uint8_t ss_hvd_conn = !!gpio_get_pin(SS_HVD_CONN);
+    //     uint8_t ss_hvd = !!gpio_get_pin(SS_HVD);
+    //
+    //     shutdown_nodes = ss_tsms && ss_imd_latch && ss_mpc && ss_hvd_conn
+    //         && ss_hvd;
+    //
+    //     air_ctrl_critical_data[AIR_STATUS] |= (
+    //         (ss_tsms << TSMS_SENSE) ||
+    //         (ss_imd_latch << IMD_SENSE) ||
+    //         (ss_mpc << MAIN_PACK_CONNECTOR_SENSE) ||
+    //         (ss_hvd_conn << HVD_CONNECTOR_SENSE) ||
+    //         (ss_hvd << HVC_SENSE)
+    //     );
 }
 
 void pcint1_callback(void) {
-    bms_st = !!gpio_get_pin(BMS_SENSE);
-
-    air_ctrl_critical_data[AIR_STATUS] |= (
-        (!!gpio_get_pin(AIR_P_WELD_DETECT) << AIR_POS_STATUS) ||
-        (!!gpio_get_pin(AIR_N_WELD_DETECT) << AIR_NEG_STATUS) ||
-        (bms_st << BMS_STATUS)
-    );
+    //     bms_st = !!gpio_get_pin(BMS_SENSE);
+    //
+    //     air_ctrl_critical_data[AIR_STATUS] |= (
+    //         (!!gpio_get_pin(AIR_P_WELD_DETECT) << AIR_POS_STATUS) ||
+    //         (!!gpio_get_pin(AIR_N_WELD_DETECT) << AIR_NEG_STATUS) ||
+    //         (bms_st << BMS_STATUS)
+    //     );
 }
 
 void pcint2_callback(void) {
-    imd_st = !!gpio_get_pin(IMD_SENSE);
-    air_ctrl_critical_data[AIR_STATUS] |= imd_st << IMD_STATUS;
+    // imd_st = !!gpio_get_pin(IMD_SENSE);
+    // air_ctrl_critical_data[AIR_STATUS] |= imd_st << IMD_STATUS;
 }
 
 static void state_machine_run(void) {
@@ -260,13 +228,61 @@ int main(void) {
     gpio_enable_interrupt(BMS_SENSE);
     gpio_enable_interrupt(IMD_SENSE);
 
+    sei();
+
+    // Get MC voltage and BMS voltage
+    /*
+     * Get MC and BMS voltages
+     *
+     * Will poll for 1 second and if the CAN message isn't received, will fault
+     */
+    can_receive(&motor_controller_msg, motor_controller_filter);
+    can_receive(&bms_msg, bms_filter);
+
+    int rc_mc, rc_bms;
+    uint32_t now = get_time();
+
+    do {
+        rc_mc = can_poll_receive(&motor_controller_msg);
+        rc_bms = can_poll_receive(&bms_msg);
+
+        if ((rc_mc == 1) || (rc_bms == 1)) {
+            fault_state = CAN_ERROR;
+            goto fault;
+        }
+
+        if (get_time() - now > 1000) {
+            if (rc_mc == -1) {
+                fault_state = FAULT_CAN_MC_TIMEOUT;
+            } else if (rc_bms == -1) {
+                fault_state = FAULT_CAN_BMS_TIMEOUT;
+            }
+            goto fault;
+        }
+    } while ((rc_mc == -1) || (rc_bms == -1));
+
     // Check plausibility
-    // assert(AIR_SENSE_+ == LOW)
-    // assert(AIR_SENSE_- == LOW)
-    // assert(SS_TSMS- == HIGH)
-    // assert(MC_VOLTAGE == 0V)
-    // assert(BMS_VOLTAGE == PACK_VOLTAGE)
-    // assert(IMD == TODO: Corey: IMD needs time to start up and calibrate)
+    if (gpio_get_pin(AIR_P_WELD_DETECT)) {
+        fault_state = FAULT_AIR_P_WELD;
+        goto fault;
+    } else if (gpio_get_pin(AIR_N_WELD_DETECT)) {
+        fault_state = FAULT_AIR_N_WELD;
+        goto fault;
+    } else if (!gpio_get_pin(SS_TSMS)) {
+        fault_state = FAULT_SHUTDOWN_IMPLAUSIBILITY;
+        goto fault;
+    } else if (bms_data[PACK_VOLTAGE] > PACK_THRESHOLD_LOW) {
+        fault_state = FAULT_BMS_VOLTAGE;
+        goto fault;
+    } else if ((motor_controller_data[MC_VOLTAGE_MSB] << 8)
+               & (motor_controller_data[MC_VOLTAGE_LSB])
+                     > MOTOR_CONTROLLER_THRESHOLD_LOW) {
+        fault_state = FAULT_MOTOR_CONTROLLER_VOLTAGE;
+        goto fault;
+    } else if (gpio_get_pin(IMD_SENSE)) {
+        fault_state = FAULT_IMD_FAULT;
+        goto fault;
+    }
 
     while (1) {
         if (run_1ms) {
@@ -274,4 +290,7 @@ int main(void) {
             run_1ms = false;
         }
     }
+
+fault:
+    while (1) {};
 }

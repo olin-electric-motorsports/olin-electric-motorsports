@@ -1,6 +1,6 @@
+#include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
-#include "libs/can/api.h"
 #include "libs/timer/api.h"
 
 /*
@@ -26,28 +26,41 @@ gpio_t IMD_SENSE = PD0;
 /*
  * CAN
  */
-#define MOB_CRIT (0) // Sending critical message
+#define MOB_CRIT             (0) // Sending critical message
 #define MOB_MOTOR_CONTROLLER (1) // Receive motor controller voltage
-#define MOB_BMS (2) // Receive BMS data
-#define MOB_SENSE (3) // Send sense data
+#define MOB_BMS              (2) // Receive BMS data
+#define MOB_SENSE            (3) // Send sense data
 
 #define AIR_FAULT_CODE (0)
-#define AIR_STATE (1)
-#define AIR_STATUS (2)
+#define AIR_STATE      (1)
+#define AIR_STATUS     (2)
 
-#define AIR_P_STATUS (0)
-#define AIR_N_STATUS (1)
-#define TSMS_SENSE (2)
-#define IMD_STATUS (3)
-#define MAIN_PACK_CONNECTOR_SENSE (4)
-#define HVD_CONNECTOR_SENSE (5)
-#define HVD_SENSE (6)
-#define BMS_STATUS (7)
+// #define AIR_P_STATUS (0)
+// #define AIR_N_STATUS (1)
+// #define TSMS_SENSE (2)
+// #define IMD_STATUS (3)
+// #define MAIN_PACK_CONNECTOR_SENSE (4)
+// #define HVD_CONNECTOR_SENSE (5)
+// #define HVD_SENSE (6)
+// #define BMS_STATUS (7)
 
-uint8_t air_ctrl_critical_data[5] = { 0 };
+#define PACK_VOLTAGE       (3)
+#define PACK_THRESHOLD_LOW (10) // 10 Volts
+
+#define MC_VOLTAGE_MSB                 (0)
+#define MC_VOLTAGE_LSB                 (1)
+#define MOTOR_CONTROLLER_THRESHOLD_LOW (10)
+
+uint8_t air_ctrl_critical_data[8] = { 0 };
 can_frame_t air_ctrl_critical_msg = {
     .mob = MOB_CRIT,
     .data = air_ctrl_critical_data,
+};
+
+uint8_t air_ctrl_sense_data[8] = { 0 };
+can_frame_t air_ctrl_sense_msg = {
+    .mob = MOB_SENSE,
+    .data = air_ctrl_sense_data,
 };
 
 can_filter_t motor_controller_filter = {
@@ -55,7 +68,7 @@ can_filter_t motor_controller_filter = {
     .mask = 0x7FF, // Exact match
 };
 
-uint8_t motor_controller_data[8] = {0};
+uint8_t motor_controller_data[8] = { 0 };
 can_frame_t motor_controller_msg = {
     .mob = MOB_MOTOR_CONTROLLER,
     .data = motor_controller_data,
@@ -66,7 +79,7 @@ can_filter_t bms_filter = {
     .mask = 0x7FF,
 };
 
-uint8_t bms_data[8] = {0};
+uint8_t bms_data[8] = { 0 };
 can_frame_t bms_msg = {
     .mob = MOB_BMS,
     .data = bms_data,
