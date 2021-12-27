@@ -47,7 +47,7 @@ typedef struct __attribute__((packed)) {
  * Fetch the image header from flash into memory and return a pointer to a
  * memory location
  */
-const image_hdr_t* image_get_header(void);
+image_hdr_t image_get_header(void);
 
 /*
  * Validates the image. Image must have the following correct properties:

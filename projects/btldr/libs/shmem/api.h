@@ -29,7 +29,7 @@ void bootflag_clear(uint8_t flag);
 /*
  * Get the value of the specified bootflag
  */
-bool bootflag_get(uint32_t flag);
+bool bootflag_get(uint8_t flag);
 
 /*
  * Used to get the 1-byte updater version from EEPROM
