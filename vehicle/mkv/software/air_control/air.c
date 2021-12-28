@@ -33,8 +33,8 @@ enum FaultCode {
     FAULT_IMD_FAULT,
 };
 
-volatile enum State current_state = IDLE;
-volatile enum FaultCode fault_state = FAULT_NONE;
+volatile enum State* current_state; // = IDLE;
+volatile enum FaultCode* fault_state; // = FAULT_NONE;
 
 void can_isr(void) {
     if (can_mob_has_interrupt(MOB_MOTOR_CONTROLLER)) {
@@ -48,8 +48,6 @@ void can_isr(void) {
 }
 
 void timer0_isr(void) {
-    air_ctrl_critical_data[AIR_STATE] = current_state;
-
     can_send(&air_ctrl_critical_msg);
     can_send(&air_ctrl_sense_msg);
 }
@@ -112,19 +110,107 @@ void pcint2_callback(void) {
     // air_ctrl_critical_data[AIR_STATUS] |= imd_st << IMD_STATUS;
 }
 
-static void state_machine_run(void) {
-    if (!imd_st || !bms_st) {
-        current_state = FAULT;
+/*
+ *
+ */
+static int initial_checks(void) {
+    int rc = 0;
+
+    /*
+     * Get MC and BMS voltages
+     *
+     * Will poll for 1 second and if the CAN message isn't received, will fault
+     */
+    can_receive(&motor_controller_msg, motor_controller_filter);
+    can_receive(&bms_msg, bms_filter);
+
+    int rc_mc = 0, rc_bms = 0;
+    uint32_t now = get_time();
+
+    /*
+     * This loop waits for up to 1 second (1000ms) to receive both a BMS and a
+     * motor controller CAN message. If neither is received, fault_state is set
+     * and the function exits.
+     */
+    do { 
+        // If either receive has an error, go into fault
+        if ((rc_mc = can_poll_receive(&motor_controller_msg)) == 1) {
+            *fault_state = CAN_ERROR;
+            rc = 1;
+            goto bail;
+        }
+
+        if ((rc_mc = can_poll_receive(&bms_msg)) == 1) {
+            *fault_state = CAN_ERROR;
+            rc = 1;
+            goto bail;
+        }
+
+        if (get_time() - now > 1000) {
+            if (rc_mc == -1) {
+                *fault_state = FAULT_CAN_MC_TIMEOUT;
+            } else if (rc_bms == -1) {
+                *fault_state = FAULT_CAN_BMS_TIMEOUT;
+            }
+            rc = 1;
+            goto bail;
+        }
+    } while ((rc_mc == -1) || (rc_bms == -1));
+
+    // The following checks ensure that the hardware is in the correct initial
+    // state.
+
+    if (gpio_get_pin(AIR_P_WELD_DETECT)) {
+        // AIR_P_WELD_DETECT should start low
+        *fault_state = FAULT_AIR_P_WELD;
+        rc = 1;
+        goto bail;
+    } else if (gpio_get_pin(AIR_N_WELD_DETECT)) {
+        // AIR_N_WELD_DETECT should start low
+        *fault_state = FAULT_AIR_N_WELD;
+        rc = 1;
+        goto bail;
+    } else if (!gpio_get_pin(SS_TSMS)) {
+        // SS_TSMS should start high
+        *fault_state = FAULT_SHUTDOWN_IMPLAUSIBILITY;
+        rc = 1;
+        goto bail;
+    } else if (bms_data[PACK_VOLTAGE] > PACK_THRESHOLD_LOW) {
+        // BMS pack voltage should start below the LOW threshold
+        *fault_state = FAULT_BMS_VOLTAGE;
+        rc = 1;
+        goto bail;
+    } else if ((motor_controller_data[MC_VOLTAGE_MSB] << 8)
+               & (motor_controller_data[MC_VOLTAGE_LSB])
+                     > MOTOR_CONTROLLER_THRESHOLD_LOW) {
+        // Motor controller voltage should start below the LOW threshold
+        *fault_state = FAULT_MOTOR_CONTROLLER_VOLTAGE;
+        rc = 1;
+        goto bail;
+    } else if (gpio_get_pin(IMD_SENSE)) {
+        // IMD_SENSE pin should start low
+        *fault_state = FAULT_IMD_FAULT;
+        rc = 1;
+        goto bail;
     }
 
-    switch (current_state) {
+bail:
+    return rc;
+}
+
+static void state_machine_run(void) {
+    if (!imd_st || !bms_st) {
+        *current_state = FAULT;
+    }
+
+    switch (*current_state) {
         case IDLE: {
             /*
              * Do nothing. The state will be updated in the pcint0_callback when
              * the TSMS shutdown sense is triggered.
              */
             if (air_ctrl_sense_data[0] & 0x1) {
-                current_state = SHUTDOWN_CIRCUIT_CLOSED;
+                *current_state = SHUTDOWN_CIRCUIT_CLOSED;
             }
         } break;
         case SHUTDOWN_CIRCUIT_CLOSED: {
@@ -135,7 +221,7 @@ static void state_machine_run(void) {
             } while (get_time() - now < 200); // Wait 200ms
 
             if (current_state == SHUTDOWN_CIRCUIT_CLOSED) {
-                current_state = FAULT;
+                *current_state = FAULT;
             }
         } break;
         case PRECHARGE: {
@@ -152,12 +238,12 @@ static void state_machine_run(void) {
             memcpy(&mc_voltage, motor_controller_data, sizeof(uint16_t));
 
             if (pack_voltage - mc_voltage > (0.05 * pack_voltage)) {
-                current_state = FAULT;
+                *current_state = FAULT;
             } else {
                 gpio_set_pin(AIR_N_LSD); // Close AIR-
                 gpio_clear_pin(PRECHARGE_CTL);
                 // change_state(TS_ACTIVE);
-                current_state = TS_ACTIVE;
+                *current_state = TS_ACTIVE;
             }
 
         } break;
@@ -166,7 +252,7 @@ static void state_machine_run(void) {
 
             // wait for an interrupt from any of the shutdown sense pins
             if (!shutdown_nodes) {
-                current_state = DISCHARGE;
+                *current_state = DISCHARGE;
             }
         } break;
         case DISCHARGE: {
@@ -176,13 +262,13 @@ static void state_machine_run(void) {
             uint8_t air_n_detect = gpio_get_pin(AIR_N_WELD_DETECT);
 
             if (air_p_detect && air_n_detect) {
-                current_state = FAULT;
+                *current_state = FAULT;
                 return;
             } else if (air_p_detect) {
-                current_state = FAULT;
+                *current_state = FAULT;
                 return;
             } else if (air_n_detect) {
-                current_state = FAULT;
+                *current_state = FAULT;
                 return;
             }
 
@@ -196,9 +282,9 @@ static void state_machine_run(void) {
             memcpy(&mc_voltage, motor_controller_data, sizeof(uint16_t));
 
             if (mc_voltage < 10) {
-                current_state = IDLE;
+                *current_state = IDLE;
             } else {
-                current_state = FAULT;
+                *current_state = FAULT;
             }
         } break;
         case FAULT: {
@@ -206,7 +292,7 @@ static void state_machine_run(void) {
         } break;
         default: {
             // Shouldn't happen, but just in case
-            current_state = FAULT;
+            *current_state = FAULT;
         } break;
     }
 }
@@ -228,61 +314,23 @@ int main(void) {
     gpio_enable_interrupt(BMS_SENSE);
     gpio_enable_interrupt(IMD_SENSE);
 
-    sei();
+    // Set the fault state and current state address to be the same as the CAN
+    // signal so that we don't have to set things twice. Now, setting the
+    // fault_state or current_state will also update the CAN message data
+    current_state = air_ctrl_critical_msg + 1;
+    fault_state = air_ctrl_critical_msg;
 
-    // Get MC voltage and BMS voltage
-    /*
-     * Get MC and BMS voltages
-     *
-     * Will poll for 1 second and if the CAN message isn't received, will fault
-     */
-    can_receive(&motor_controller_msg, motor_controller_filter);
-    can_receive(&bms_msg, bms_filter);
+    // Initialize states
+    *current_state = IDLE;
+    *fault_state = FAULT_NONE;
 
-    int rc_mc, rc_bms;
-    uint32_t now = get_time();
-
-    do {
-        rc_mc = can_poll_receive(&motor_controller_msg);
-        rc_bms = can_poll_receive(&bms_msg);
-
-        if ((rc_mc == 1) || (rc_bms == 1)) {
-            fault_state = CAN_ERROR;
-            goto fault;
-        }
-
-        if (get_time() - now > 1000) {
-            if (rc_mc == -1) {
-                fault_state = FAULT_CAN_MC_TIMEOUT;
-            } else if (rc_bms == -1) {
-                fault_state = FAULT_CAN_BMS_TIMEOUT;
-            }
-            goto fault;
-        }
-    } while ((rc_mc == -1) || (rc_bms == -1));
-
-    // Check plausibility
-    if (gpio_get_pin(AIR_P_WELD_DETECT)) {
-        fault_state = FAULT_AIR_P_WELD;
-        goto fault;
-    } else if (gpio_get_pin(AIR_N_WELD_DETECT)) {
-        fault_state = FAULT_AIR_N_WELD;
-        goto fault;
-    } else if (!gpio_get_pin(SS_TSMS)) {
-        fault_state = FAULT_SHUTDOWN_IMPLAUSIBILITY;
-        goto fault;
-    } else if (bms_data[PACK_VOLTAGE] > PACK_THRESHOLD_LOW) {
-        fault_state = FAULT_BMS_VOLTAGE;
-        goto fault;
-    } else if ((motor_controller_data[MC_VOLTAGE_MSB] << 8)
-               & (motor_controller_data[MC_VOLTAGE_LSB])
-                     > MOTOR_CONTROLLER_THRESHOLD_LOW) {
-        fault_state = FAULT_MOTOR_CONTROLLER_VOLTAGE;
-        goto fault;
-    } else if (gpio_get_pin(IMD_SENSE)) {
-        fault_state = FAULT_IMD_FAULT;
+    int rc = initial_checks();
+    if (rc == 1) {
         goto fault;
     }
+
+    // Initialize interrupts
+    sei();
 
     while (1) {
         if (run_1ms) {
