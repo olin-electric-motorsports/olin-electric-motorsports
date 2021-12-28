@@ -77,5 +77,6 @@ cc_firmware(
     visibility = ["//visibility:public"],
     deps = [
         "//libs/can",
+        "//vehicle/mkv:mkv_can_api",
     ],
 )

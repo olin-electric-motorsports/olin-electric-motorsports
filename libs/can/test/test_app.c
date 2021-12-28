@@ -3,6 +3,7 @@
 #include <avr/io.h>
 #include <stdbool.h>
 #include <util/delay.h>
+#include "vehicle/mkv/can_api.h"
 
 #define LED0 (PD6)
 
