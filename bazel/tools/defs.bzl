@@ -1,20 +1,16 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
-def _dbc_impl(ctx):
-    """
-    Generates a DBC file from a list of YAML files
-    """
-    pass
-
-dbc = rule(
-    implementation = _dbc_impl,
-    attrs = {
-        "srcs": attr.label_list(
-            mandatory = True,
-        ),
-    },
-    executable = False,
-)
+def dbc_gen(name, srcs):
+    native.genrule(
+        name = name,
+        srcs = srcs,
+        outs = [name],
+        tools = [
+            "//projects/can_api:dbc_generator",
+        ],
+        cmd = "$(location //projects/can_api:dbc_generator) -o $(OUTS) $(SRCS)",
+        visibility = ["//visibility:public"],
+    )
 
 def can_api_files(name, dbc):
     native.genrule(

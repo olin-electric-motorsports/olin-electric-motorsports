@@ -1,0 +1,48 @@
+name: air_control
+subscribe:
+  - name: bms_core
+    mob: 1
+  - name: motor_controller_voltage
+    mob: 2
+  - name: updater
+    mob: 5
+publish:
+  - name: air_control_critical
+    id: 0x12
+    signals:
+      - name: fault_state
+        slice: 0 + 8
+        unit:
+          type: enum
+          values:
+            - NO_FAULT
+            - AIR_N_WELD
+            - AIR_P_WELD
+            - BOTH_AIRS_WELD
+            - PRECHARGE_FAIL
+            - DISCHARGE_FAIL
+            - PRECHARGE_FAIL_RELAY_WELDED
+            - CAN_BMS_TIMEOUT
+            - CAN_MC_TIMEOUT
+      - name: state
+        slice: 8 + 8
+        unit:
+          type: enum
+          values:
+            - IDLE
+            - SHUTDOWN_CIRCUIT_CLOSED
+            - PRECHARGE
+            - TS_ACTIVE
+            - DISCHARGE
+            - FAULT
+      - name: example_16_bit
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 5 / 4096
+      - name: example_bool
+        slice: 32 + 1
+        unit:
+          type: bool

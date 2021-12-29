@@ -1,9 +1,11 @@
-load("//bazel/tools:defs.bzl", "dbc", "can_api_files")
+load("//bazel/tools:defs.bzl", "dbc_gen", "can_api_files")
 
-dbc(
-    name = "mkv_dbc",
+# Generates DBC
+dbc_gen(
+    name = "mkv.dbc",
     srcs = [
-        "//vehicles/mkv/software/air_control:air.yml",
+        "//vehicle/mkv/software/air_control:air.yml",
+        "//vehicle/mkv/software/motor_controller:motor_controller.dbc",
     ],
 )
 

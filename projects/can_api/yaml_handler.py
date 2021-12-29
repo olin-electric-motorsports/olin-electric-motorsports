@@ -8,14 +8,15 @@ from pprint import pprint
 from pathlib import Path
 import yaml
 import os
-import canmatrix
+# import canmatrix
 import math
 import string
 from defs import PATH_TO
+from cantools.database.can import Message as CANMessage, Signal as MessageSignal
 
 #----------- DEFAULTS and CONSTANTS -----------
 VALID_PRIORITIES = ["LO", "MED", "HI"]
-ENDIAN = "@0" # big
+ENDIAN = "@1" # little
 SCALE_DEFAULT = 1
 OFFSET_DEFAULT = 0
 UNIT_DEFAULT = "n/a"
@@ -290,10 +291,80 @@ class Y2DHandler:
         # dbc_str = self._dbc_msgs_generator(data["MessagesRX"], dbc_str)
         self.save_dbc(file_dir, file_name, dbc_str)
 
+class YamlParser:
+    """
+    Handles parsing of YAML file
+    """
+    def __init__(self, yml):
+        with open(yml, 'r') as f:
+            self.data = yaml.load(f, Loader=yaml.FullLoader)
 
-if __name__ == "__main__":
-    compiler = YAMLCompiler()
-    compiler.generate_artifacts('files/mini_yamls', 'out/yaml', 'files/reserved_ids.yaml', "overwrite")
-    handler = Y2DHandler()
-    handler.mini_dbc('out/yaml/autogen_air_ctrl.yaml', 'out/dbcs/', 'air_ctrl')
-    handler.full_dbc('out/yaml', 'out/dbcs', 'mk5')
+        self.name = self.data["name"]
+        self.messages = self._parse_messages()
+
+    def _parse_messages(self):
+        messages = []
+        for raw in self.data["publish"]:
+
+            id = raw["id"]
+            signals, length = self._parse_signals(raw)
+
+            m = CANMessage(
+                id,
+                raw["name"],
+                length,
+                signals,
+            )
+
+            messages.append(m)
+
+        return messages
+
+    def _parse_signals(self, msg):
+        signals = []
+        message_length = 0
+
+        for sig in msg["signals"]:
+            name = sig["name"]
+            start, length = sig["slice"].split(" + ")
+
+            scale = None
+            offset = None
+
+            sig_type = sig["unit"]["type"]
+
+            unit = None
+            is_signed = False
+            choices = None
+
+            if sig_type == "enum":
+                choices = dict(enumerate(sig["unit"]["values"]))
+            elif sig_type == "uint8_t" or sig_type == "uint16_t":
+                unit = sig["unit"]["name"]
+                offset = eval(str(sig["unit"]["offset"]))
+                scale = eval(str(sig["unit"]["scale"]))
+            elif sig_type == "int8_t" or sig_type == "int16_t":
+                is_signed = True
+                unit = sig["unit"]["name"]
+                offset = eval(sig["unit"]["offset"])
+                scale = eval(sig["unit"]["scale"])
+            elif sig_type == "bool":
+                unit = "bool"
+            else:
+                raise Exception("Unknown type: {}".format(sig_type))
+
+            s = MessageSignal(
+                name,
+                int(start),
+                int(length),
+                is_signed = is_signed,
+                scale = scale,
+                offset = offset,
+                unit = unit,
+                choices = choices,
+            )
+
+            signals.append(s)
+            message_length += int(length) / 8
+
+        return signals, math.ceil(message_length)

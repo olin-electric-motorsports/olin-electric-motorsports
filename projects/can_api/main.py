@@ -1,47 +1,50 @@
-from defs import PATH_TO
-import cantools
-import subprocess
-import os
-import yaml
-from yaml_handler import *
+import argparse
+from cantools.database.can import Database as CANDatabase
+from cantools.database import dump_file
+from yaml_handler import YamlParser
 
-def main(file_prefix):
+__version__ = "2021.12.28"
+
+def main():
     """
-    TODO
+    CLI to generate a DBC file from YAML files
     """
-    #generate autogen yaml and dbc
-    compiler = YAMLCompiler()
-    compiler.generate_artifacts('files/mini_yamls', 'out/yaml')
-    handler = Y2DHandler()
-    handler.mini_dbc(f'out/yaml/autogen_{file_prefix}.yaml', 'out/dbcs/', file_prefix)
-    # handler.mini_dbc('out/yaml/autogen_bms_core.yaml', 'out/dbcs/', 'bms_core')
-    # handler.full_dbc('out/yaml', 'out/dbcs', 'mk5')
+    parser = argparse.ArgumentParser(
+        description = "Generate DBC from YAML and DBC files",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
-    #load the cantools file
-    dbc_path = PATH_TO(f'out/dbcs/{file_prefix}.dbc')
-    db = cantools.database.load_file(dbc_path)
-    out = subprocess.run(['cantools', 'generate_c_source', '--no-floating-point-numbers', dbc_path])
+    parser.add_argument(
+        '-o', '--output',
+        default='out.dbc',
+        help='Output filename (default is out.dbc)'
+    )
 
-    #open the yaml file
-    with open(PATH_TO(f"out/yaml/{file_prefix}.yaml"), 'r') as f:
-        data = yaml.load(f, yaml.FullLoader)
+    parser.add_argument(
+        'inputs',
+        help='Input YAML and DBC files',
+        nargs="+",
+    )
 
-    # move generated files to ./out folder
-    Path(PATH_TO("out/c_code")).mkdir(parents=True, exist_ok=True)
-    os.replace(f"{file_prefix}.c", PATH_TO(f"out/c_code/{file_prefix}.c"))
-    os.replace(f"{file_prefix}.h", PATH_TO(f"out/c_code/{file_prefix}.h"))
-    
-    msgs = data["MessagesTX"]
-    if NUM_MSGS(msgs) > 6:
-        print("this mini YAML has more than the maximum 6 messages.")
-        return
+    args = parser.parse_args()
 
-    c_gen = CGenerator(file_prefix)
-    c_gen.edit_file(msgs)
+    messages = []
 
-    header = HeaderGenerator(file_prefix)
-    header.edit_file(msgs)
+    # For each YAML file, create a parser
+    for yml in filter(lambda s: s.endswith((".yaml", ".yml")), args.inputs):
+        parser = YamlParser(yml)
+        messages += parser.messages
+
+    db = CANDatabase(
+        messages = messages,
+        version = __version__,
+    )
+
+    # Add in extra DBC files
+    for dbc in filter(lambda s: s.endswith((".dbc")), args.inputs):
+        db.add_dbc_file(dbc)
+
+    dump_file(db, args.output)
 
 if __name__ == "__main__":
-  #TODO add cmd line tools here
-  main("air_ctrl")
+  main()
