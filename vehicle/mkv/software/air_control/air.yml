@@ -9,6 +9,7 @@ subscribe:
 publish:
   - name: air_control_critical
     id: 0x12
+    freq_hz: 1000
     signals:
       - name: fault_state
         slice: 0 + 8
@@ -46,3 +47,6 @@ publish:
         slice: 32 + 1
         unit:
           type: bool
+          values:
+            t: SS is closed
+            f: SS is open
