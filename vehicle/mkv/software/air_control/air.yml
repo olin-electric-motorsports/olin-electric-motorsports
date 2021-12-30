@@ -2,7 +2,8 @@ name: air_control
 subscribe:
   - name: bms_core
     mob: 1
-  - name: motor_controller_voltage
+  - name: M167_Voltage_Info
+    rename: motor_controller_voltage
     mob: 2
   - name: updater
     mob: 5

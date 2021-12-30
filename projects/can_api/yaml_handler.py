@@ -6,7 +6,7 @@ Functionality to process mini-YAML files, autogenerate mini-YAMLS with ID assign
 """
 import yaml
 import math
-from cantools.database.can import Message as CANMessage, Signal as MessageSignal
+from cantools.database.can import Message as CANMessage, Signal as MessageSignal, Node
 
 #----------- DEFAULTS and CONSTANTS -----------
 VALID_PRIORITIES = ["LO", "MED", "HI"]
@@ -35,6 +35,7 @@ class YamlParser:
                 raw["name"],
                 length,
                 signals,
+                senders = [self.name]
             )
 
             messages.append(m)
@@ -49,8 +50,8 @@ class YamlParser:
             name = sig["name"]
             start, length = sig["slice"].split(" + ")
 
-            scale = None
-            offset = None
+            scale = 1
+            offset = 0
 
             sig_type = sig["unit"]["type"]
 

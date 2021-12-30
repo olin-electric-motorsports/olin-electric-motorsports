@@ -1,0 +1,34 @@
+#include <stdint.h>
+
+#include "libs/can/api.h"
+#include "can_tools.h"
+
+/*
+ * Initialize the {{ node.name }} CAN peripheral
+ */
+void can_init_{{ node.name }}(void);
+
+{% for message in tx_messages %}
+extern uint8_t {{ message.name }}_data[];
+extern can_frame_t {{ message.name }}_msg;
+extern struct can_tools_{{ message.name }}_t {{ message.name }};
+
+/*
+ * Send the {{ message.name }} message
+ *
+ * First it takes the data struct `{{ message.name }}_t` and packs it into an
+ * array of bytes in {{ message.name }}_data, which is a part of the
+ * can_frame_t. Then the can_frame_t is sent.
+ */
+void can_send_{{ message.name }}(void);
+
+{% endfor %}
+
+{% for message in rx_messages %}
+extern uint8_t {{ message.name }}_data[];
+extern can_frame_t {{ message.name }}_msg;
+extern struct can_tools_{{ message.name }}_T {{ message.name }};
+
+int can_receive_{{ message.name }}(void);
+
+{% endfor %}

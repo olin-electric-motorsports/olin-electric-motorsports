@@ -1,0 +1,59 @@
+#include {{ header_file }}
+
+void can_init_{{ node.name }}(void) {
+    can_init(BAUD_500KBPS);
+}
+
+/*
+ * Transmit messages
+ */
+{% for message in tx_messages %}
+uint8_t {{ message.name }}_data[{{ message.length }}];
+
+can_frame_t {{ message.name }}_msg = {
+    .data = {{ message.name }}_data,
+};
+
+struct can_tools_{{ message.name }}_t {{ message.name }};
+
+void can_send_{{ message.name }}(void) {
+    can_tools_{{ message.name }}_pack(
+        {{ message.name }}_data,
+        &{{ message.name }},
+        {{ message.length }}
+    );
+
+    can_send(&{{ message.name }}_msg);
+}
+
+{% endfor %}
+
+
+/*
+ * Receive messages
+ */
+{% for message in rx_messages %}
+uint8_t {{ message.name }}_data[{{ message.length }}];
+
+can_frame_t {{ message.name }}_msg = {
+    .data = {{ message.name }}_data,
+};
+
+can_filter_t {{ message.name }}_filter = {
+    .id = {{ message.id }},
+    .mask = {{ message.mask }},
+};
+
+struct can_tools_{{ message.name }}_t {{ message.name }};
+
+int can_receive_{{ message.name }}(void) {
+    int rc = can_receive(&{{ message.name }}_msg, {{ message.name }}_filter);
+
+    if (rc == 0) {
+        can_tools_{{ message.name }}_unpack(&{{ message.name }}, &{{ message.name }}_msg.data, {{ message.length }});
+    }
+
+    return rc;
+}
+
+{% endfor %}

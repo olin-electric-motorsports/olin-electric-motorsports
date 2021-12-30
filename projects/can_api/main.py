@@ -1,5 +1,5 @@
 import argparse
-from cantools.database.can import Database as CANDatabase
+from cantools.database.can import Database as CANDatabase, Node
 from cantools.database import dump_file
 from yaml_handler import YamlParser
 
@@ -28,21 +28,20 @@ def main():
 
     args = parser.parse_args()
 
-    messages = []
-
-    # For each YAML file, create a parser
-    for yml in filter(lambda s: s.endswith((".yaml", ".yml")), args.inputs):
-        parser = YamlParser(yml)
-        messages += parser.messages
-
     db = CANDatabase(
-        messages = messages,
+        strict = True,
         version = __version__,
     )
 
     # Add in extra DBC files
     for dbc in filter(lambda s: s.endswith((".dbc")), args.inputs):
         db.add_dbc_file(dbc)
+
+    for yml in filter(lambda s: s.endswith((".yaml", ".yml")), args.inputs):
+        parser = YamlParser(yml)
+
+        db._messages += parser.messages
+        db._nodes.append(Node(parser.name))
 
     dump_file(db, args.output)
 

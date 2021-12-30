@@ -1,4 +1,4 @@
-load("//bazel/tools:defs.bzl", "dbc_gen", "can_api_files")
+load("//bazel/tools:defs.bzl", "dbc_gen")
 
 # Generates DBC
 dbc_gen(
@@ -7,10 +7,4 @@ dbc_gen(
         "//vehicle/mkv/software/air_control:air.yml",
         "//vehicle/mkv/software/motor_controller:motor_controller.dbc",
     ],
-)
-
-# Generates C source
-can_api_files(
-    name = "mkv_can_api",
-    dbc = ":mkv.dbc",
 )
