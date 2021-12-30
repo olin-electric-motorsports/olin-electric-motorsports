@@ -70,8 +70,8 @@ cc_library(
 )
 
 can_api_files(
-    name = "test_api",
-    node = "air_control",
+    name = "air_control_can_api",
+    yaml = "//vehicle/mkv/software/air_control:air.yml",
     dbc = "//vehicle/mkv:mkv.dbc",
 )
 
@@ -84,6 +84,6 @@ cc_firmware(
     visibility = ["//visibility:public"],
     deps = [
         "//libs/can",
-        ":test_api",
+        ":air_control_can_api",
     ],
 )

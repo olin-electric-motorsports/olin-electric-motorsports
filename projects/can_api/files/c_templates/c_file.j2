@@ -1,4 +1,4 @@
-#include {{ header_file }}
+#include "{{ header_file }}"
 
 void can_init_{{ node.name }}(void) {
     can_init(BAUD_500KBPS);
@@ -8,49 +8,55 @@ void can_init_{{ node.name }}(void) {
  * Transmit messages
  */
 {% for message in tx_messages %}
-uint8_t {{ message.name }}_data[{{ message.length }}];
+uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
-can_frame_t {{ message.name }}_msg = {
-    .data = {{ message.name }}_data,
+can_frame_t {{ message.name|lower }}_msg = {
+    .mob = 0,
+    .data = {{ message.name|lower }}_data,
+    .dlc = {{ message.length }},
 };
 
-struct can_tools_{{ message.name }}_t {{ message.name }};
+struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
-void can_send_{{ message.name }}(void) {
-    can_tools_{{ message.name }}_pack(
-        {{ message.name }}_data,
-        &{{ message.name }},
+void can_send_{{ message.name|lower }}(void) {
+    can_tools_{{ message.name|lower }}_pack(
+        {{ message.name|lower }}_data,
+        &{{ message.name|lower }},
         {{ message.length }}
     );
 
-    can_send(&{{ message.name }}_msg);
+    can_send(&{{ message.name|lower }}_msg);
 }
 
 {% endfor %}
-
 
 /*
  * Receive messages
  */
 {% for message in rx_messages %}
-uint8_t {{ message.name }}_data[{{ message.length }}];
+uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
-can_frame_t {{ message.name }}_msg = {
-    .data = {{ message.name }}_data,
+can_frame_t {{ message.name|lower }}_msg = {
+    .mob = {{ mobs[message.name] }},
+    .data = {{ message.name|lower }}_data,
 };
 
-can_filter_t {{ message.name }}_filter = {
-    .id = {{ message.id }},
-    .mask = {{ message.mask }},
+can_filter_t {{ message.name|lower }}_filter = {
+    .id = {{ message.frame_id }},
+
+    /*
+     * TODO: It would be nice if this was configurable...
+     */
+    .mask = 0x7FF, // Exact match
 };
 
-struct can_tools_{{ message.name }}_t {{ message.name }};
+struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
-int can_receive_{{ message.name }}(void) {
-    int rc = can_receive(&{{ message.name }}_msg, {{ message.name }}_filter);
+int can_receive_{{ message.name|lower }}(void) {
+    int rc = can_receive(&{{ message.name|lower }}_msg, {{ message.name|lower }}_filter);
 
     if (rc == 0) {
-        can_tools_{{ message.name }}_unpack(&{{ message.name }}, &{{ message.name }}_msg.data, {{ message.length }});
+        can_tools_{{ message.name|lower }}_unpack(&{{ message.name|lower }}, {{ message.name|lower }}_msg.data, {{ message.length }});
     }
 
     return rc;

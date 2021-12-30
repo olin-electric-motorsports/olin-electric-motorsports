@@ -1,11 +1,15 @@
 name: air_control
 subscribe:
+  # Transmit MOb is 0
   - name: bms_core
     mob: 1
   - name: M167_Voltage_Info
+    # TODO: rename is currently not handled. Name comes from DBC
     rename: motor_controller_voltage
     mob: 2
-  - name: updater
+
+    # TODO: How are we handling this? Maybe we don't handle it here...
+  - name: air_control_updater
     mob: 5
 publish:
   - name: air_control_critical

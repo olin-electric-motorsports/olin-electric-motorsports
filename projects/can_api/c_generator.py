@@ -1,9 +1,5 @@
 import yaml
-from cantools.database.can import (
-    Message as CANMessage,
-    Signal as MessageSignal,
-    Database as CANDatabase
-)
+from cantools.database.can import Database as CANDatabase
 import argparse
 from yaml_handler import YamlParser
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -25,9 +21,9 @@ def main():
     )
 
     parser.add_argument(
-        '-n', '--node',
+        '-y', '--yaml',
         required=True,
-        help='Node to generate code for'
+        help='YAML file for the node'
     )
 
     parser.add_argument(
@@ -53,41 +49,58 @@ def main():
     db = CANDatabase()
     db.add_dbc_file(args.dbc)
 
+    with open(args.yaml, 'r') as y:
+        yaml_data = yaml.load(y, Loader=yaml.FullLoader)
+
     # Get the Node that we want
-    node = db.get_node_by_name(args.node)
+    node = db.get_node_by_name(yaml_data["name"])
 
     # Filter messages to get only the ones our Node sends
-    tx_messages = list(filter(lambda m: node.name in m.senders,db.messages))
+    tx_messages = list(filter(lambda m: node.name in m.senders, db.messages))
 
+    # Get messages received by the node
+    rx_message_names = [d["name"] for d in yaml_data["subscribe"]]
+    rx_messages = list(filter(lambda m: m.name in rx_message_names, db.messages))
+
+    mobs = {}
+
+    for m in yaml_data["subscribe"]:
+        mobs[m["name"]] = m["mob"]
+
+    # Create the Jinja2 environment that contains the template info
     env = Environment(
         loader=FileSystemLoader(os.path.dirname(args.c_file)),
         autoescape=select_autoescape()
     )
 
+    # Retrieve the templates
     c_template = env.get_template("c_file.j2")
     h_template = env.get_template("h_file.j2")
 
-    c_out = "{}/{}_can_api.c".format(args.output_dir, args.node)
-    h_out = "{}/{}_can_api.h".format(args.output_dir, args.node)
+    # Output file names
+    c_out = "{}/can_api.c".format(args.output_dir)
+    h_out = "{}/can_api.h".format(args.output_dir)
 
+    # Render templates and write the output to the file
     with open(c_out, 'w+') as f:
         contents = c_template.render(
-            node = args.node,
+            node = node.name,
             tx_messages=tx_messages,
-            header_file='"' + args.node + '_can_api.h"',
+            rx_messages=rx_messages,
+            mobs=mobs,
+            header_file='can_api.h',
         )
 
         f.write(contents)
 
     with open(h_out, 'w+') as f:
         contents = h_template.render(
-            node = args.node,
-            tx_messages=tx_messages
+            node = node.name,
+            tx_messages=tx_messages,
+            rx_messages=rx_messages,
         )
 
         f.write(contents)
-
-    # TODO get rx_messages
 
 if __name__ == "__main__":
     main()
