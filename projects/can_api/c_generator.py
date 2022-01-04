@@ -58,14 +58,18 @@ def main():
     # Filter messages to get only the ones our Node sends
     tx_messages = list(filter(lambda m: node.name in m.senders, db.messages))
 
-    # Get messages received by the node
-    rx_message_names = [d["name"] for d in yaml_data["subscribe"]]
-    rx_messages = list(filter(lambda m: m.name in rx_message_names, db.messages))
-
+    rx_messages = []
     mobs = {}
 
-    for m in yaml_data["subscribe"]:
-        mobs[m["name"]] = m["mob"]
+    if "subscribe" in yaml_data.keys():
+        # Get messages received by the node
+        rx_message_names = [d["name"] for d in yaml_data["subscribe"]]
+        rx_messages = list(filter(lambda m: m.name in rx_message_names, db.messages))
+
+        mobs = {}
+
+        for m in yaml_data["subscribe"]:
+            mobs[m["name"]] = m["mob"]
 
     # Create the Jinja2 environment that contains the template info
     env = Environment(
@@ -84,7 +88,7 @@ def main():
     # Render templates and write the output to the file
     with open(c_out, 'w+') as f:
         contents = c_template.render(
-            node = node.name,
+            node = node,
             tx_messages=tx_messages,
             rx_messages=rx_messages,
             mobs=mobs,
@@ -95,7 +99,7 @@ def main():
 
     with open(h_out, 'w+') as f:
         contents = h_template.render(
-            node = node.name,
+            node = node,
             tx_messages=tx_messages,
             rx_messages=rx_messages,
         )

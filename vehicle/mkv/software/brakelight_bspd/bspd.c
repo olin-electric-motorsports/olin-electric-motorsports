@@ -1,10 +1,11 @@
-#include "libs/adc/api.h"
-#include "libs/can/api.h"
-#include "libs/timer/api.h"
-#include <avr/interrupt.h>
-
 #include "bspd_config.h"
+
+#include "libs/adc/api.h"
+#include "vehicle/mkv/software/brakelight_bspd/can_api.h"
+#include "libs/timer/api.h"
 #include "libs/gpio/api.h"
+
+#include <avr/interrupt.h>
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -21,19 +22,14 @@ void timer0_callback(void) {
 }
 
 void pcint1_callback(void) {
-    brakelight_activated = gpio_get_pin(BRAKELIGHT_GATE);
-    can_data_bspd[3] = brakelight_activated ? 0xFF : 0x00;
-
-    bspd_current_sense = gpio_get_pin(BSPD_CURRENT_SENSE);
-    can_data_bspd[4] = (bspd_current_sense) ? 0xFF : 0x00;
-
-    shutdown_sense_activated = gpio_get_pin(SHUTDOWN_SENSE_BSPD);
-    can_data_bspd[0] = (shutdown_sense_activated) ? 0xFF : 0x00;
+    brakelight.brake_gate = gpio_get_pin(BRAKELIGHT_GATE);
+    brakelight.bspd_current_sense = gpio_get_pin(BSPD_CURRENT_SENSE);
+    brakelight.status = gpio_get_pin(SHUTDOWN_SENSE_BSPD);
 }
 
 int main(void) {
     sei();
-    can_init(BAUD_500KBPS);
+    can_init_brakelight_bspd();
     adc_init();
     timer_init(&timer0_cfg);
 
@@ -52,13 +48,10 @@ int main(void) {
     pcint1_callback();
 
     for (;;) {
-        brake_pressure = adc_read(BRAKE_PRESSURE_SENSE);
-
         if (send_can) {
-            can_data_bspd[1] = (uint8_t)((brake_pressure & 0xFF00) >> 8);
-            can_data_bspd[2] = (uint8_t)brake_pressure & 0xFF;
-            bspd_msg.data = can_data_bspd;
-            can_send(&bspd_msg);
+            brake_pressure = adc_read(BRAKE_PRESSURE_SENSE);
+            brakelight.brake_voltage = brake_pressure;
+            can_send_brakelight();
             send_can = false;
         }
     }
