@@ -10,6 +10,7 @@ py_library(
     srcs = glob(
         include = ["cantools/**/*.py"],
     ),
+    tags = ["manual"],  # must be built as @cmocka//:cmocka
     deps = [
         requirement("bitstruct"),
         requirement("python-can"),
@@ -23,6 +24,7 @@ py_binary(
     srcs = ["cantools/__main__.py"],
     main = "cantools/__main__.py",
     python_version = "PY3",
+    tags = ["manual"],  # must be built as @cmocka//:cmocka
     deps = [
         ":cantools_lib",
     ],
