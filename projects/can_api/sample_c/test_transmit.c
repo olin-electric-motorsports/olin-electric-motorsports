@@ -1,7 +1,7 @@
+#include "can_api.h"
+#include "shutdown_generated.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "shutdown_generated.h"
-#include "can_api.h"
 
 struct shutdown_brakelight_bspd_shutdown_t BRAKELIGHT_BSPD_SHUTDOWN_MSG;
 
@@ -21,7 +21,8 @@ int main() {
     //         int s = set_brakelight_bspd_shutdown_error_code(value);
     //     }
     //     if (countdown == 30) {
-    //         int s = set_brakelight_bspd_shutdown_brake_analog_voltage_msb(second);
+    //         int s =
+    //         set_brakelight_bspd_shutdown_brake_analog_voltage_msb(second);
     //     }
     //     countdown--;
     // }

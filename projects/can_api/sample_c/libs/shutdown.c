@@ -32,27 +32,19 @@
 
 #include "shutdown.h"
 
-static inline uint8_t pack_left_shift_u8(
-    uint8_t value,
-    uint8_t shift,
-    uint8_t mask)
-{
+static inline uint8_t pack_left_shift_u8(uint8_t value, uint8_t shift,
+                                         uint8_t mask) {
     return (uint8_t)((uint8_t)(value << shift) & mask);
 }
 
-static inline uint8_t unpack_right_shift_u8(
-    uint8_t value,
-    uint8_t shift,
-    uint8_t mask)
-{
+static inline uint8_t unpack_right_shift_u8(uint8_t value, uint8_t shift,
+                                            uint8_t mask) {
     return (uint8_t)((uint8_t)(value & mask) >> shift);
 }
 
 int shutdown_brakelight_bspd_shutdown_pack(
-    uint8_t *dst_p,
-    const struct shutdown_brakelight_bspd_shutdown_t *src_p,
-    size_t size)
-{
+    uint8_t* dst_p, const struct shutdown_brakelight_bspd_shutdown_t* src_p,
+    size_t size) {
     if (size < 5u) {
         return (-EINVAL);
     }
@@ -69,44 +61,41 @@ int shutdown_brakelight_bspd_shutdown_pack(
 }
 
 int shutdown_brakelight_bspd_shutdown_unpack(
-    struct shutdown_brakelight_bspd_shutdown_t *dst_p,
-    const uint8_t *src_p,
-    size_t size)
-{
+    struct shutdown_brakelight_bspd_shutdown_t* dst_p, const uint8_t* src_p,
+    size_t size) {
     if (size < 5u) {
         return (-EINVAL);
     }
 
     dst_p->error_code = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
-    dst_p->brake_analog_voltage_msb = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
-    dst_p->brake_analog_voltage_lsb = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+    dst_p->brake_analog_voltage_msb
+        = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+    dst_p->brake_analog_voltage_lsb
+        = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
     dst_p->brake_gate = unpack_right_shift_u8(src_p[3], 0u, 0xffu);
     dst_p->bspdsense = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
 
     return (0);
 }
 
-bool shutdown_brakelight_bspd_shutdown_error_code_is_in_range(uint8_t value)
-{
+bool shutdown_brakelight_bspd_shutdown_error_code_is_in_range(uint8_t value) {
     return (value <= 1u);
 }
 
-bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_msb_is_in_range(uint8_t value)
-{
+bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_msb_is_in_range(
+    uint8_t value) {
     return (value <= 1u);
 }
 
-bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_lsb_is_in_range(uint8_t value)
-{
+bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_lsb_is_in_range(
+    uint8_t value) {
     return (value <= 1u);
 }
 
-bool shutdown_brakelight_bspd_shutdown_brake_gate_is_in_range(uint8_t value)
-{
+bool shutdown_brakelight_bspd_shutdown_brake_gate_is_in_range(uint8_t value) {
     return (value <= 1u);
 }
 
-bool shutdown_brakelight_bspd_shutdown_bspdsense_is_in_range(uint8_t value)
-{
+bool shutdown_brakelight_bspd_shutdown_bspdsense_is_in_range(uint8_t value) {
     return (value <= 1u);
 }

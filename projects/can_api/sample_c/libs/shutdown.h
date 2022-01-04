@@ -35,12 +35,12 @@
 extern "C" {
 #endif
 
-#include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
 
 #ifndef EINVAL
-#    define EINVAL 22
+#define EINVAL 22
 #endif
 
 /* Frame ids. */
@@ -54,9 +54,7 @@ extern "C" {
 
 /* Frame cycle times in milliseconds. */
 
-
 /* Signal choices. */
-
 
 /**
  * Signals in message brakelight_bspd_shutdown.
@@ -110,8 +108,7 @@ struct shutdown_brakelight_bspd_shutdown_t {
  * @return Size of packed data, or negative error code.
  */
 int shutdown_brakelight_bspd_shutdown_pack(
-    uint8_t *dst_p,
-    const struct shutdown_brakelight_bspd_shutdown_t *src_p,
+    uint8_t* dst_p, const struct shutdown_brakelight_bspd_shutdown_t* src_p,
     size_t size);
 
 /**
@@ -124,8 +121,7 @@ int shutdown_brakelight_bspd_shutdown_pack(
  * @return zero(0) or negative error code.
  */
 int shutdown_brakelight_bspd_shutdown_unpack(
-    struct shutdown_brakelight_bspd_shutdown_t *dst_p,
-    const uint8_t *src_p,
+    struct shutdown_brakelight_bspd_shutdown_t* dst_p, const uint8_t* src_p,
     size_t size);
 
 /**
@@ -144,7 +140,8 @@ bool shutdown_brakelight_bspd_shutdown_error_code_is_in_range(uint8_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_msb_is_in_range(uint8_t value);
+bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_msb_is_in_range(
+    uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -153,7 +150,8 @@ bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_msb_is_in_range(uint
  *
  * @return true if in range, false otherwise.
  */
-bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_lsb_is_in_range(uint8_t value);
+bool shutdown_brakelight_bspd_shutdown_brake_analog_voltage_lsb_is_in_range(
+    uint8_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -172,7 +170,6 @@ bool shutdown_brakelight_bspd_shutdown_brake_gate_is_in_range(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool shutdown_brakelight_bspd_shutdown_bspdsense_is_in_range(uint8_t value);
-
 
 #ifdef __cplusplus
 }

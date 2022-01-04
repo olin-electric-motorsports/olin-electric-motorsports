@@ -1,22 +1,24 @@
 #include "can_api.h"
 
 /*----- Interrupt(s) -----*/
-char uart_buf[64];  //for debugging
+char uart_buf[64]; // for debugging
 
 ISR(TIMER1_COMPA_vect) {
-	// Interrupt fires at 100Hz, check all messages that need to be sent
-	// Timer Counter1 compare match A
+    // Interrupt fires at 100Hz, check all messages that need to be sent
+    // Timer Counter1 compare match A
 
     // TODO, make sure that this doesn't limit performance
-    for (int i=0; i<CAN_info_len; i++) {
+    for (int i = 0; i < CAN_info_len; i++) {
         msg_info* msg = CAN_msg_array[i];
         msg->countdown = msg->countdown - 1;
         if (msg->countdown <= 0) { // time to send the message
             CAN_transmit(msg->mob, msg->ident, msg->length, msg->raw_arr);
             msg->countdown = msg->cycle_time;
-            //TODO: debugggginngg,  need a hackerboard to test + picocom terminal tool
+            // TODO: debugggginngg,  need a hackerboard to test + picocom
+            // terminal tool
             // for (int i=0; i<8; i++) {
-                //    sprintf(uart_buf, "%d, " msg->raw_arr[i]);    // To print when we have a hackerboard
+            //    sprintf(uart_buf, "%d, " msg->raw_arr[i]);    // To print when
+            //    we have a hackerboard
             //     LOG_println(uart_buf, strlen(uart_buf));
             // }
         }
@@ -25,15 +27,14 @@ ISR(TIMER1_COMPA_vect) {
 
 /*----- Functions -----*/
 void initTimer(void) {
-    //TODO check with a hackerboard pls
-	TCCR1A = _BV(WGM12);    // Set up 16-bit timer in CTC mode
-	TCCR1B = 0x05;          // clkio/1024 prescaler 16MHz -> 16kHz
-	TIMSK0 |= _BV(OCIE1A);   // enable timer compare interrupt
-	OCR1A = 0x27;           // 16khz/0x27 = Makes timer run at ~100Hz
+    // TODO check with a hackerboard pls
+    TCCR1A = _BV(WGM12); // Set up 16-bit timer in CTC mode
+    TCCR1B = 0x05; // clkio/1024 prescaler 16MHz -> 16kHz
+    TIMSK0 |= _BV(OCIE1A); // enable timer compare interrupt
+    OCR1A = 0x27; // 16khz/0x27 = Makes timer run at ~100Hz
 }
 
-uint8_t CAN_init (uint8_t mode)
-{
+uint8_t CAN_init(uint8_t mode) {
     // Software reset; necessary for all CAN
     // stuff.
     CANGCON = _BV(SWRES);
@@ -45,14 +46,13 @@ uint8_t CAN_init (uint8_t mode)
     CANGSTA |= _BV(ERRP);
 
     // Set BAUD rate
-    
 
     // 500 kbps
     CANBT1 = 0x00;
     CANBT2 = 0x04;
     CANBT3 = 0x12;
-    
-    /* 
+
+    /*
     // 250 kbps
     CANBT1 = 0x00;
     CANBT2 = 0x0C;
@@ -66,18 +66,16 @@ uint8_t CAN_init (uint8_t mode)
     CANIE1 = 0;
 
     // enable interrupts on all MObs
-    CANIE2 = ( _BV(IEMOB0) | _BV(IEMOB1) |
-               _BV(IEMOB2) | _BV(IEMOB3) |
-               _BV(IEMOB4) | _BV(IEMOB5) );
-
+    CANIE2 = (_BV(IEMOB0) | _BV(IEMOB1) | _BV(IEMOB2) | _BV(IEMOB3)
+              | _BV(IEMOB4) | _BV(IEMOB5));
 
     // All MObs come arbitrarily set up at first,
     // must reset all in order to make them useable
     int8_t mob;
-    for( mob=0; mob<6; mob++ ){
+    for (mob = 0; mob < 6; mob++) {
         // Selects Message Object 0-5
         // This changes the MOb that is selected
-        CANPAGE = ( mob << 4 );
+        CANPAGE = (mob << 4);
 
         // Disable mob
         CANCDMOB = 0x00;
@@ -90,23 +88,20 @@ uint8_t CAN_init (uint8_t mode)
     //  instead of standby
     //  Necessary in order to get CAN
     //  communication
-    if (mode == CAN_ENABLED)
-    {
-        CANGCON |= _BV( ENASTB );
-    }
-    else if( mode == CAN_LISTEN )
-    {
-        CANGCON |= _BV(LISTEN) | _BV( ENASTB );
+    if (mode == CAN_ENABLED) {
+        CANGCON |= _BV(ENASTB);
+    } else if (mode == CAN_LISTEN) {
+        CANGCON |= _BV(LISTEN) | _BV(ENASTB);
     }
 
     return 0;
 }
 
 // TODO: refactor this function to take a struct instead
-uint8_t CAN_transmit (uint8_t mob, uint16_t ident, uint8_t msg_length, uint8_t msg[])
-{
+uint8_t CAN_transmit(uint8_t mob, uint16_t ident, uint8_t msg_length,
+                     uint8_t msg[]) {
     // Check that the MOb is free
-    if( bit_is_set(CANEN2, mob) ){
+    if (bit_is_set(CANEN2, mob)) {
         return CAN_ERR_MOB_BUSY;
     }
 
@@ -118,8 +113,8 @@ uint8_t CAN_transmit (uint8_t mob, uint16_t ident, uint8_t msg_length, uint8_t m
     CANSTMOB = 0x00;
 
     // Set MOb ID
-    CANIDT1 = (uint8_t) (ident >> 3);
-    CANIDT2 = (uint8_t) (ident << 5);
+    CANIDT1 = (uint8_t)(ident >> 3);
+    CANIDT2 = (uint8_t)(ident << 5);
     CANIDT3 = 0x00;
     CANIDT4 = 0x00; // Data frame
 
@@ -132,12 +127,12 @@ uint8_t CAN_transmit (uint8_t mob, uint16_t ident, uint8_t msg_length, uint8_t m
 
     // Set the message
     uint8_t i;
-    for(i=0; i < msg_length; i++){
+    for (i = 0; i < msg_length; i++) {
         CANMSG = msg[i];
     }
 
     // Send the message
-    //CANCDMOB = _BV(CONMOB0) | (msg_length << DLC0);
+    // CANCDMOB = _BV(CONMOB0) | (msg_length << DLC0);
     CANCDMOB = 0x00;
     CANCDMOB = (0x01 << CONMOB0) | (msg_length << DLC0);
 
@@ -146,34 +141,28 @@ uint8_t CAN_transmit (uint8_t mob, uint16_t ident, uint8_t msg_length, uint8_t m
     return 0;
 }
 
-
-uint8_t CAN_transmit_success (uint8_t mob)
-{
+uint8_t CAN_transmit_success(uint8_t mob) {
     // Check busy status
-    if (bit_is_set(CANEN2, mob))
-    {
+    if (bit_is_set(CANEN2, mob)) {
         return CAN_ERR_MOB_BUSY;
     }
 
     // Check if OK transmission
-    if (bit_is_set(CANSTMOB, TXOK))
-    {
+    if (bit_is_set(CANSTMOB, TXOK)) {
         CANSTMOB &= ~_BV(TXOK);
     }
 
-    if (CANSTMOB != 0x00)
-    {
+    if (CANSTMOB != 0x00) {
         return CAN_ERR_UNKNOWN;
     }
 
     return 0;
 }
 
-
-uint8_t CAN_wait_on_receive (uint8_t mob, uint16_t ident, uint8_t msg_length, uint16_t mask)
-{
+uint8_t CAN_wait_on_receive(uint8_t mob, uint16_t ident, uint8_t msg_length,
+                            uint16_t mask) {
     // Check that the MOb is free
-    if( bit_is_set(CANEN2, mob) ){
+    if (bit_is_set(CANEN2, mob)) {
         return CAN_ERR_MOB_BUSY;
     }
 
@@ -184,28 +173,26 @@ uint8_t CAN_wait_on_receive (uint8_t mob, uint16_t ident, uint8_t msg_length, ui
     CANSTMOB = 0x00;
 
     // Set MOb ID
-    CANIDT1 = (uint8_t) (ident >> 3); // node ID
-    CANIDT2 = (uint8_t) (ident << 5);
+    CANIDT1 = (uint8_t)(ident >> 3); // node ID
+    CANIDT2 = (uint8_t)(ident << 5);
     CANIDT3 = 0x00;
     CANIDT4 = 0x00; // Data frame
 
     // Set up MASK
-    CANIDM1 = (uint8_t) (mask >> 3);
-    CANIDM2 = (uint8_t) (mask << 5);
+    CANIDM1 = (uint8_t)(mask >> 3);
+    CANIDM2 = (uint8_t)(mask << 5);
     CANIDM3 = 0x00;
     CANIDM4 = (_BV(RTRMSK) | _BV(IDEMSK)); // Use what is set above
 
     // Begin waiting for Rx
-    //CANCDMOB = _BV(CONMOB1) | (msg_length << DLC0);
+    // CANCDMOB = _BV(CONMOB1) | (msg_length << DLC0);
     CANCDMOB = 0x00;
     CANCDMOB = (0x02 << CONMOB0) | (msg_length << DLC0);
 
     return 0;
 }
 
-
-uint8_t CAN_read_received (uint8_t mob, uint8_t msg_length, uint8_t *msg)
-{
+uint8_t CAN_read_received(uint8_t mob, uint8_t msg_length, uint8_t* msg) {
     // Keep track of errors
     uint8_t error_value = 0;
 
@@ -213,20 +200,16 @@ uint8_t CAN_read_received (uint8_t mob, uint8_t msg_length, uint8_t *msg)
     CANPAGE = (mob << MOBNB0);
 
     // Check to see if RXOK flag is set
-    if (bit_is_set(CANSTMOB, RXOK))
-    {
+    if (bit_is_set(CANSTMOB, RXOK)) {
         // Reset RXOK if it is set
         CANSTMOB &= ~_BV(RXOK);
-    }
-    else
-    {
+    } else {
         // Update the error value
         error_value = CAN_ERR_NO_RX_FLAG;
     }
 
     // Check if DLC is as expected
-    if (bit_is_set(CANSTMOB, DLCW))
-    {
+    if (bit_is_set(CANSTMOB, DLCW)) {
         error_value = CAN_ERR_DLCW;
 
         // Set message length to the correct DLC
@@ -234,8 +217,7 @@ uint8_t CAN_read_received (uint8_t mob, uint8_t msg_length, uint8_t *msg)
     }
 
     // Grab messages anyway
-    for (int i = 0; i < msg_length; i++)
-    {
+    for (int i = 0; i < msg_length; i++) {
         msg[i] = CANMSG;
     }
 

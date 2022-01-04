@@ -1,20 +1,20 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /* Struct holding all information necessary to send a CAN message */
 typedef struct can_msg_info {
-    //pointer to raw data array
-    uint8_t *raw_arr;
+    // pointer to raw data array
+    uint8_t* raw_arr;
     // ticks until message should be sent
     int countdown;
     // number of cycles between messages
     int cycle_time;
-    //mailbox ID for the message
+    // mailbox ID for the message
     uint8_t mob;
     // message ID
-    uint16_t ident; 
-    //byte length of message
+    uint16_t ident;
+    // byte length of message
     uint8_t length;
 } msg_info;
 

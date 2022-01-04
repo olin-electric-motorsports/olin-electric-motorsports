@@ -1,9 +1,9 @@
 #include "bspd_config.h"
 
 #include "libs/adc/api.h"
-#include "vehicle/mkv/software/brakelight_bspd/can_api.h"
-#include "libs/timer/api.h"
 #include "libs/gpio/api.h"
+#include "libs/timer/api.h"
+#include "vehicle/mkv/software/brakelight_bspd/can_api.h"
 
 #include <avr/interrupt.h>
 

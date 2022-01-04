@@ -14,17 +14,17 @@ cc_firmware(
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":can_api",
         "//libs/adc",
         "//libs/gpio",
         "//libs/timer",
     ],
-    visibility = ["//visibility:public"],
 )
 
 can_api_files(
     name = "can_api",
-    yaml = ":bspd.yml",
     dbc = "//vehicle/mkv:mkv.dbc",
+    yaml = ":bspd.yml",
 )
