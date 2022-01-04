@@ -1,6 +1,7 @@
 #include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
+#include "libs/timer/api.h"
 
 /*
  * Pin definitions
@@ -36,16 +37,4 @@ timer_cfg_s timer0_cfg = {
         .interrupt_enable = true,
         .interrupt_callback = timer0_callback,
     },
-};
-
-/*
- * CAN messages
- */
-#define CAN_MSG_DLC (5)
-uint8_t can_data_bspd[CAN_MSG_DLC] = { 0 };
-
-can_frame_t bspd_msg = {
-    .id = 0xB,
-    .dlc = CAN_MSG_DLC,
-    .mob = 0,
 };
