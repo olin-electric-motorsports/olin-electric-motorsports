@@ -29,6 +29,7 @@ py_binary(
     srcs = [
         "c_generator.py",
         "yaml_handler.py",
+        "utils.py",
     ],
     data = [
         "//projects/can_api/files/c_templates:c_file.j2",

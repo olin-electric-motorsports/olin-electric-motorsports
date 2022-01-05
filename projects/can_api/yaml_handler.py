@@ -24,6 +24,9 @@ class YamlParser:
 
     def _parse_messages(self):
         messages = []
+        if "publish" not in self.data.keys():
+            return []
+
         for raw in self.data["publish"]:
 
             id = raw["id"]

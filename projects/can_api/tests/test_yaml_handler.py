@@ -1,14 +1,9 @@
 import sys
 import pytest
 from cantools.database.can import Message, Signal, Node
-from ..yaml_handler import YamlParser
 
-@pytest.fixture
-def tx_only():
-    return YamlParser("projects/can_api/tests/tx_only.yml")
-
-def test_messages(tx_only):
-    messages = tx_only.messages
+def test_messages(tx_parser):
+    messages = tx_parser.messages
 
     assert(messages[0].name == "test_tx")
     test_tx = messages[0]
@@ -35,10 +30,10 @@ def test_messages(tx_only):
     assert(example_16_bit.offset == 0)
     assert(example_16_bit.scale - (5 / 4096) < 0.00001) # Gotta love floats
 
-def test_no_signals(tx_only):
-    assert(tx_only.messages[1].name == "test_no_signals")
+def test_no_signals(tx_parser):
+    assert(tx_parser.messages[1].name == "test_no_signals")
 
-    no_signals = tx_only.messages[1]
+    no_signals = tx_parser.messages[1]
 
     assert(no_signals.signals == [])
     assert(no_signals.length == 0)

@@ -2,6 +2,7 @@ import yaml
 from cantools.database.can import Database as CANDatabase
 import argparse
 from yaml_handler import YamlParser
+from utils import get_rx_messages
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import os
 
@@ -58,18 +59,11 @@ def main():
     # Filter messages to get only the ones our Node sends
     tx_messages = list(filter(lambda m: node.name in m.senders, db.messages))
 
-    rx_messages = []
-    mobs = {}
-
     if "subscribe" in yaml_data.keys():
-        # Get messages received by the node
-        rx_message_names = [d["name"] for d in yaml_data["subscribe"]]
-        rx_messages = list(filter(lambda m: m.name in rx_message_names, db.messages))
-
+        rx_messages, mobs = get_rx_messages(yaml_data["subscribe"], db.messages)
+    else:
+        rx_messages = []
         mobs = {}
-
-        for m in yaml_data["subscribe"]:
-            mobs[m["name"]] = m["mob"]
 
     # Create the Jinja2 environment that contains the template info
     env = Environment(
