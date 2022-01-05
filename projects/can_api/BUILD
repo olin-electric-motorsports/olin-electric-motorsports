@@ -1,16 +1,27 @@
 load("@rules_python//python:defs.bzl", "py_binary", "py_library")
+load("//tools/pytest:defs.bzl", "pytest_test")
 
-py_binary(
-    name = "dbc_generator",
+py_library(
+    name = "yaml_handler",
     srcs = [
-        "main.py",
         "yaml_handler.py",
     ],
-    main = "main.py",
     visibility = ["//visibility:public"],
     deps = [
         "@cantools_//:cantools_lib",
     ],
+)
+
+py_binary(
+    name = "dbc_generator",
+    srcs = [
+        "dbc_generator.py",
+    ],
+    main = "dbc_generator.py",
+    deps = [
+        ":yaml_handler",
+    ],
+    visibility = ["//visibility:public"],
 )
 
 py_binary(
@@ -26,6 +37,6 @@ py_binary(
     main = "c_generator.py",
     visibility = ["//visibility:public"],
     deps = [
-        "@cantools_//:cantools_lib",
+        ":yaml_handler",
     ],
 )

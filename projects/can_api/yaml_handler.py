@@ -35,7 +35,8 @@ class YamlParser:
                 raw["name"],
                 length,
                 signals,
-                senders = [self.name]
+                senders = [self.name],
+                cycle_time = cycle_time,
             )
 
             messages.append(m)
@@ -45,6 +46,9 @@ class YamlParser:
     def _parse_signals(self, msg):
         signals = []
         message_length = 0
+
+        if "signals" not in msg.keys():
+            return [], 0
 
         for sig in msg["signals"]:
             name = sig["name"]
