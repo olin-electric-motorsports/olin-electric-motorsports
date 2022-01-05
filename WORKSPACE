@@ -98,3 +98,8 @@ pip_install(
     name = "cantools_deps",
     requirements = "@cantools_//:requirements.txt",
 )
+
+pip_install(
+    name = "pytest_deps",
+    requirements = "//tools/pytest:requirements.txt",
+)

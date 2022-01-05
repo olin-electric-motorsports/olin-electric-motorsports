@@ -1,1 +1,4 @@
-exports_files(["pytest_wrapper.py"])
+exports_files([
+    "pytest_wrapper.py",
+    "requirements.txt",
+])
