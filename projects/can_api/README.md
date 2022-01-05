@@ -78,7 +78,7 @@ Now we specify the messages _sent_ by the ECU. Let's take the following row from
 the MKV CAN Address Space as an example:
 
 Name | ID | Length | Frequency (Hz) | Byte0 | Byte1 | Byte2 | Byte3 | Byte4 | Byte5 | Byte6 | Byte7
------|--------|----------------|-------|-------|-------|-------|-------|-------|-------|------
+-----|----|--------|----------------|-------|-------|-------|-------|-------|-------|-------|------
 BMS Core|0x10|8|16|Fault Code|Relay Status|Temperature|Pack Voltage|SOC Estimate|BMS OK|Current-limiting enabled|Cell-balancing status
 
 The MKV CAN Address space specified that the minimum size of any signal is 1
