@@ -18,18 +18,18 @@ py_binary(
         "dbc_generator.py",
     ],
     main = "dbc_generator.py",
+    visibility = ["//visibility:public"],
     deps = [
         ":yaml_handler",
     ],
-    visibility = ["//visibility:public"],
 )
 
 py_binary(
     name = "c_generator",
     srcs = [
         "c_generator.py",
-        "yaml_handler.py",
         "utils.py",
+        "yaml_handler.py",
     ],
     data = [
         "//projects/can_api/files/c_templates:c_file.j2",
