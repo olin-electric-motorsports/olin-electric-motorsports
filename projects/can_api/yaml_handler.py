@@ -75,8 +75,8 @@ class YamlParser:
             elif sig_type == "int8_t" or sig_type == "int16_t":
                 is_signed = True
                 unit = sig["unit"]["name"]
-                offset = eval(sig["unit"]["offset"])
-                scale = eval(sig["unit"]["scale"])
+                offset = eval(str(sig["unit"]["offset"]))
+                scale = eval(str(sig["unit"]["scale"]))
             elif sig_type == "bool":
                 unit = "bool"
                 choices = dict(enumerate(dict.values(sig["unit"]["values"])))
