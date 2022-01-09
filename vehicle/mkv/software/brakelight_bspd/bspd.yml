@@ -12,13 +12,12 @@ publish:
             t: OK
             f: SHUTDOWN
       - name: brake_voltage
-        # TODO: Should we report as brake pressure instead?
         slice: 8 + 16
         unit:
           type: uint16_t
-          name: V
-          offset: 0
-          scale: 5 / 4096
+          name: PSI
+          offset: -1.25
+          scale: 25 * (5 / 4096)
       - name: brake_gate
         slice: 24 + 1
         unit:
