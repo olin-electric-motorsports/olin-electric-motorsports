@@ -1,5 +1,5 @@
-#include <avr/interrupt.h>
 #include "libs/timer/api.h"
+#include <avr/interrupt.h>
 
 volatile uint32_t time;
 volatile bool run_1ms;

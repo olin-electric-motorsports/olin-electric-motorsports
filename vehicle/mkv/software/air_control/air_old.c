@@ -538,9 +538,9 @@ ISR(CAN_INT_vect) {
                         if (bit_is_clear(
                                 gFlag,
                                 FLAG_TSMS_STATUS)) { //|| bit_is_clear(gFlag,
-                                                     //FLAG_COOLING_PRESSURE)){
+                                                     // FLAG_COOLING_PRESSURE)){
                                                      //// if tsms node no longer
-                                                     //has shutdown voltage
+                                                     // has shutdown voltage
                             char tsms_open[] = "tsms_open";
                             LOG_println(tsms_open, strlen(tsms_open));
                             char discharging[] = "discharging";

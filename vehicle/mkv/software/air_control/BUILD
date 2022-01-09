@@ -15,14 +15,14 @@ cc_firmware(
         "air.c",
         "air_config.h",
     ],
-    deps = [
-        ":can_api",
-        ":bsp",
-        "//libs/gpio",
-        "//libs/timer",
-    ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
+    ],
+    deps = [
+        ":bsp",
+        ":can_api",
+        "//libs/gpio",
+        "//libs/timer",
     ],
 )
 
@@ -36,14 +36,14 @@ cc_library(
         "bsp/bsp.h",
         "bsp/timer.h",
     ],
-    deps = [
-        "//libs/timer",
-        ":can_api",
-    ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
     visibility = ["//visibility:private"],
+    deps = [
+        ":can_api",
+        "//libs/timer",
+    ],
 )
 
 can_api_files(

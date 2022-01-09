@@ -10,6 +10,9 @@
 gpio_t PRECHARGE_CTL = PB2;
 gpio_t AIR_N_LSD = PC6;
 
+gpio_t FAULT_LED = PD6;
+gpio_t GENERAL_LED = PD7;
+
 // Inputs
 gpio_t SS_TSMS = PB3;
 gpio_t SS_IMD_LATCH = PB4;
@@ -23,8 +26,9 @@ gpio_t AIR_N_WELD_DETECT = PC5;
 
 gpio_t IMD_SENSE = PD0;
 
-#define BMS_VOLTAGE_THRESHOLD_LOW (10) // 10 Volts
-#define MOTOR_CONTROLLER_THRESHOLD_LOW (10)
+#define BMS_VOLTAGE_THRESHOLD_LOW      (200) // 200 V
+#define MOTOR_CONTROLLER_THRESHOLD_LOW (5) // 5 V
+#define PRECHARGE_THRESHOLD            (0.95) // 95% of pack voltage
 
 /*
  * Timer

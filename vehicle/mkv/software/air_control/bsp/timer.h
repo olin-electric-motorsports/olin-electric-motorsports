@@ -1,4 +1,7 @@
+#include <stdbool.h>
 #include <stdint.h>
+
+extern volatile bool run_1ms;
 
 /*
  * Timer1 is used to generate a 1ms timer that increments a time variable each

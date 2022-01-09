@@ -2,7 +2,7 @@
 #include "timer.h"
 #include "vehicle/mkv/software/air_control/can_api.h"
 
-int get_motor_controller_voltage(int16_t *voltage) {
+int get_motor_controller_voltage(int16_t* voltage) {
     int rc;
 
     uint32_t now = get_time();
@@ -31,7 +31,7 @@ bail:
  *   - 0: No error, value is in *voltage
  *   - 1: Fatal error, go into fault
  */
-int get_bms_voltage(int16_t *voltage) {
+int get_bms_voltage(int16_t* voltage) {
     int rc;
 
     uint32_t now = get_time();
