@@ -41,42 +41,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Copyright 2017 Linear Technology Corp. (LTC)
 */
 #include "bms_hardware.h"
-#include <stdint.h>
-// #include "LT_SPI.h"
-// #include <SPI.h>
 
-void cs_low(uint8_t pin) {
-    output_low(pin);
+#include "libs/gpio/api.h"
+#include "libs/spi/api.h"
+
+#include <stdlib.h>
+#include <stdint.h>
+#include <avr/io.h>
+#include <util/delay.h>
+
+void cs_low(gpio_t pin) {
+    gpio_clear_pin(pin);
 }
 
-void cs_high(uint8_t pin) {
-    output_high(pin);
+void cs_high(gpio_t pin) {
+    gpio_set_pin(pin);
 }
 
 void delay_u(uint16_t micro) {
-    delayMicroseconds(micro);
-}
-
-void delay_m(uint16_t milli) {
-    delay(milli);
+    _delay_us(micro);
 }
 
 /*
-Writes an array of bytes out of the SPI port
-*/
+ * Writes an array of bytes out of the SPI port
+ */
 void spi_write_array(
-    uint8_t len, // Option: Number of bytes to be written on the SPI port
-    uint8_t data[] // Array of bytes to be written on the SPI port
+    uint8_t len,
+    uint8_t* data
 ) {
-    for (uint8_t i = 0; i < len; i++) {
-        SPI.transfer((int8_t)data[i]);
-    }
+    uint8_t _rx_buffer[len] = {0};
+    spi_transceive(data, _rx_buffer, len);
 }
 
 /*
- Writes and read a set number of bytes using the SPI port.
-
-*/
+ * Writes and read a set number of bytes using the SPI port.
+ */
 
 void spi_write_read(
     uint8_t tx_Data[], // array of data to be written on SPI port
@@ -85,17 +84,13 @@ void spi_write_read(
         rx_data, // Input: array that will store the data read by the SPI port
     uint8_t rx_len // Option: number of bytes to be read from the SPI port
 ) {
-    for (uint8_t i = 0; i < tx_len; i++) {
-        SPI.transfer(tx_Data[i]);
-    }
-
-    for (uint8_t i = 0; i < rx_len; i++) {
-        rx_data[i] = (uint8_t)SPI.transfer(0xFF);
-    }
+    uint8_t _rx_buffer[tx_len];
+    spi_transceive(tx_Data, _rx_buffer, tx_len);
+    spi_transceive(NULL, rx_data, rx_len);
 }
 
 uint8_t spi_read_byte(uint8_t tx_dat) {
     uint8_t data;
-    data = (uint8_t)SPI.transfer(0xFF);
-    return (data);
+    spi_receive(&data, 1);
+    return data;
 }
