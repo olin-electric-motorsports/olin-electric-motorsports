@@ -40,27 +40,23 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Copyright 2017 Linear Technology Corp. (LTC)
 */
-#ifndef BMSHARDWARE_H
-#define BMSHARDWARE_H
+#pragma once
 
 #include <stdint.h>
+#include "libs/gpio/api.h"
 
-void cs_low(uint8_t pin); // name conflicts with linduino
+void cs_low(gpio_t pin); // name conflicts with linduino
 
-void cs_high(uint8_t pin);
+void cs_high(gpio_t pin);
 
 void delay_u(uint16_t micro);
-
-void delay_m(uint16_t milli);
-
-void set_spi_freq();
 
 /*
 Writes an array of bytes out of the SPI port
 */
 void spi_write_array(
-    uint8_t len, // Option: Number of bytes to be written on the SPI port
-    uint8_t data[] // Array of bytes to be written on the SPI port
+    uint8_t len,
+    uint8_t* data
 );
 /*
  Writes and read a set number of bytes using the SPI port.
@@ -77,4 +73,3 @@ void spi_write_read(
 
 uint8_t spi_read_byte(uint8_t tx_dat); // name conflicts with linduino also
                                        // needs to take a byte as a parameter
-#endif
