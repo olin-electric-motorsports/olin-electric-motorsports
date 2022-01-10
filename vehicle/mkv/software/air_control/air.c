@@ -13,6 +13,8 @@
  *
  * - Make sure CAN variables are volatile
  * - Verify initial conditions and correct/fault conditions of all GPIOs
+ * - In FAULT state, should we clear PRECHARGE_CTL and AIR_N_LSD?
+ * - Should we be able to recover from any faults? Which ones? How?
  */
 
 enum State {
@@ -43,7 +45,6 @@ enum FaultCode {
 };
 
 static void set_fault(enum FaultCode the_fault) {
-    // air_control_critical.state = FAULT;
     gpio_set_pin(FAULT_LED);
 
     if (air_control_critical.fault_state == FAULT_NONE) {
@@ -292,6 +293,10 @@ static void state_machine_run(void) {
         } break;
         case FAULT: {
             gpio_set_pin(FAULT_LED);
+
+            // TODO: Is this the safest move?
+            gpio_clear_pin(PRECHARGE_CTL);
+            gpio_clear_pin(AIR_N_LSD);
         } break;
         default: {
             // Shouldn't happen, but just in case
@@ -307,8 +312,8 @@ int main(void) {
 
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_N_LSD, OUTPUT);
-    gpio_set_mode(FAULT_LED, OUTPUT);
     gpio_set_mode(GENERAL_LED, OUTPUT);
+    gpio_set_mode(FAULT_LED, OUTPUT);
 
     gpio_enable_interrupt(SS_TSMS);
     gpio_enable_interrupt(SS_IMD_LATCH);
@@ -318,17 +323,21 @@ int main(void) {
     gpio_enable_interrupt(BMS_SENSE);
     gpio_enable_interrupt(IMD_SENSE);
 
+    // Set LED to indicate initial checks will be run
+    gpio_set_pin(GENERAL_LED);
+
     if (initial_checks() == 1) {
         goto fault;
     }
 
-    // Set LED to indicate initial checks have passed
-    gpio_set_pin(GENERAL_LED);
+    // Clear LED to indicate that initial checks passed
+    gpio_clear_pin(GENERAL_LED);
 
     // Initialize interrupts
     sei();
 
     while (1) {
+        // Run state machine every 1ms
         if (run_1ms) {
             state_machine_run();
             run_1ms = false;
@@ -337,5 +346,6 @@ int main(void) {
 
 fault:
     gpio_set_pin(FAULT_LED);
+
     while (1) {};
 }
