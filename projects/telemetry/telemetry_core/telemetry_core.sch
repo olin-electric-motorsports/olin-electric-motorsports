@@ -81,10 +81,10 @@ Wire Wire Line
 	2250 8600 2550 8600
 Connection ~ 2250 8600
 $Comp
-L formula:R_100K R6
+L formula:R_100K R4
 U 1 1 5BEE2A52
 P 4150 9400
-F 0 "R6" V 4250 9350 50  0000 L CNN
+F 0 "R4" V 4250 9350 50  0000 L CNN
 F 1 "R_100K" V 4050 9250 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 4080 9400 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 4230 9400 50  0001 C CNN
@@ -173,10 +173,10 @@ Wire Wire Line
 	5350 8700 5750 8700
 Connection ~ 5350 8700
 $Comp
-L formula:R_25K R5
+L formula:R_25K R3
 U 1 1 5C0B315C
 P 3650 9400
-F 0 "R5" V 3750 9350 50  0000 L CNN
+F 0 "R3" V 3750 9350 50  0000 L CNN
 F 1 "R_25K" V 3550 9300 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 3700 8850 50  0001 C CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773200-1&DocType=DS&DocLang=English" H 3650 9000 50  0001 C CNN
@@ -201,10 +201,10 @@ F 6 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-178
 	0    1    1    0   
 $EndComp
 $Comp
-L formula:R_0_2512 R12
+L formula:R_0_2512 R10
 U 1 1 5C0C29A9
 P 6700 8500
-F 0 "R12" V 6500 8500 50  0000 C CNN
+F 0 "R10" V 6500 8500 50  0000 C CNN
 F 1 "R_0_2512" V 6600 8550 50  0000 C CNN
 F 2 "footprints:R_2512_OEM" H 6630 8500 50  0001 C CNN
 F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 6780 8500 50  0001 C CNN
@@ -229,10 +229,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 6850 10050 60
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:R_200 R8
+L formula:R_200 R6
 U 1 1 5C0C44F9
 P 6450 8950
-F 0 "R8" H 6520 8996 50  0000 L CNN
+F 0 "R6" H 6520 8996 50  0000 L CNN
 F 1 "R_200" H 6520 8905 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 6380 8950 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 6530 8950 50  0001 C CNN
@@ -467,10 +467,10 @@ F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_10K R7
+L formula:R_10K R5
 U 1 1 5D5EB7F3
 P 4400 3800
-F 0 "R7" V 4320 3800 50  0000 C CNN
+F 0 "R5" V 4320 3800 50  0000 C CNN
 F 1 "R_10K" V 4450 4050 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 4330 3800 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 4480 3800 50  0001 C CNN
@@ -536,10 +536,10 @@ F 3 "" H 1550 4350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:MCP2561-E_SN U3
+L formula:MCP2561-E_SN U6
 U 1 1 5D5FAEDE
 P 14800 2150
-F 0 "U3" H 15160 2500 50  0000 C CNN
+F 0 "U6" H 15160 2500 50  0000 C CNN
 F 1 "MCP2561-E_SN" H 15150 1790 50  0000 C CNN
 F 2 "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM" H 14800 1650 50  0001 C CIN
 F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en561044" H 14400 2500 50  0001 C CNN
@@ -550,10 +550,10 @@ F 6 "https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn" H 14800 2900 6
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:C_0.1uF C8
+L formula:C_0.1uF C16
 U 1 1 5D5FB603
 P 14650 1550
-F 0 "C8" V 14500 1550 50  0000 C CNN
+F 0 "C16" V 14500 1550 50  0000 C CNN
 F 1 "C_0.1uF" V 14600 1350 50  0000 C CNN
 F 2 "footprints:C_0805_OEM" H 14688 1400 50  0001 C CNN
 F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 14675 1650 50  0001 C CNN
@@ -825,10 +825,10 @@ F 6 "https://www.digikey.com/product-detail/en/texas-instruments/TPS560430XDBVR/
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_1K R3
+L formula:R_1K R2
 U 1 1 5DE6EFCB
 P 1850 8800
-F 0 "R3" H 1920 8846 50  0000 L CNN
+F 0 "R2" H 1920 8846 50  0000 L CNN
 F 1 "R_1K" H 1920 8755 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 1780 8800 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 1930 8800 50  0001 C CNN
@@ -884,10 +884,10 @@ Connection ~ 1450 8600
 Wire Wire Line
 	1450 8750 1450 8600
 $Comp
-L formula:R_120_DNP R13
+L formula:R_120_DNP R12
 U 1 1 5FA5AB4A
 P 15600 2150
-F 0 "R13" H 15670 2196 50  0000 L CNN
+F 0 "R12" H 15670 2196 50  0000 L CNN
 F 1 "R_120_DNP" H 15670 2105 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 14400 2300 50  0001 L CNN
 F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 14400 2600 50  0001 L CNN
@@ -1001,11 +1001,11 @@ F 3 "" H 14550 8450 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	14550 8450 14550 8600
-Text Label 3900 1300 0    50   ~ 0
+Text Label 3900 1500 0    50   ~ 0
 P_LED_1
-Text Label 3900 1400 0    50   ~ 0
-P_LED_3
 Text Label 3900 1600 0    50   ~ 0
+P_LED_3
+Text Label 3900 1700 0    50   ~ 0
 P_LED_2
 $Comp
 L power:PWR_FLAG #FLG?
@@ -1152,9 +1152,6 @@ Wire Notes Line
 	7350 10250 750  10250
 Wire Notes Line
 	750  10250 750  7700
-NoConn ~ 3900 1500
-NoConn ~ 3900 1700
-NoConn ~ 3900 1800
 NoConn ~ 3900 2200
 NoConn ~ 3900 2300
 NoConn ~ 3900 2600
@@ -1273,10 +1270,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 7500 2850 60 
 	-1   0    0    1   
 $EndComp
 $Comp
-L formula:R_200 R11
+L formula:R_200 R9
 U 1 1 61855745
 P 6700 2350
-F 0 "R11" V 6493 2350 50  0000 C CNN
+F 0 "R9" V 6493 2350 50  0000 C CNN
 F 1 "R_200" V 6584 2350 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 6630 2350 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 6780 2350 50  0001 C CNN
@@ -1332,10 +1329,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 7500 2400 60 
 	-1   0    0    1   
 $EndComp
 $Comp
-L formula:R_200 R10
+L formula:R_200 R8
 U 1 1 61852A68
 P 6700 1900
-F 0 "R10" V 6493 1900 50  0000 C CNN
+F 0 "R8" V 6493 1900 50  0000 C CNN
 F 1 "R_200" V 6584 1900 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 6630 1900 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 6780 1900 50  0001 C CNN
@@ -1393,10 +1390,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 7500 1900 60 
 	-1   0    0    1   
 $EndComp
 $Comp
-L formula:R_200 R9
+L formula:R_200 R7
 U 1 1 618378C8
 P 6700 1400
-F 0 "R9" V 6493 1400 50  0000 C CNN
+F 0 "R7" V 6493 1400 50  0000 C CNN
 F 1 "R_200" V 6584 1400 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 6630 1400 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 6780 1400 50  0001 C CNN
@@ -1478,8 +1475,6 @@ Text Notes 15550 5150 0    50   ~ 0
 TX
 Text Notes 15550 5250 0    50   ~ 0
 RX
-Text Label 3900 3600 0    50   ~ 0
-CS
 Text Notes 4150 3350 0    50   ~ 0
 MOSI, MISO, and SCK must\nstay connected to the _A pins\nfor programming.
 Text Label 15050 4950 0    50   ~ 0
@@ -1499,300 +1494,273 @@ Wire Notes Line
 Wire Notes Line
 	13850 5700 13850 4100
 Wire Notes Line
-	11100 4700 8900 4700
+	11100 5050 8900 5050
 Wire Notes Line
-	11100 6100 11100 4700
+	11100 6450 11100 5050
 Wire Notes Line
-	8900 6100 11100 6100
+	8900 6450 11100 6450
 Wire Notes Line
-	8900 4700 8900 6100
+	8900 5050 8900 6450
 Wire Notes Line
-	5600 7200 5600 4700
+	5600 7550 5600 5050
 Wire Notes Line
-	8750 7200 5600 7200
+	8750 7550 5600 7550
 Wire Notes Line
-	8750 4700 8750 7200
+	8750 5050 8750 7550
 Wire Notes Line
-	5600 4700 8750 4700
+	5600 5050 8750 5050
 Wire Wire Line
-	9600 5400 9600 5200
+	9600 5750 9600 5550
 Wire Wire Line
-	9600 5400 9600 5500
-Connection ~ 9600 5400
+	9600 5750 9600 5850
+Connection ~ 9600 5750
 Wire Wire Line
-	9750 5400 9600 5400
+	9750 5750 9600 5750
 Wire Wire Line
-	10500 5400 10500 5200
+	10500 5750 10500 5550
 Wire Wire Line
-	10350 5400 10500 5400
-Connection ~ 10500 5400
+	10350 5750 10500 5750
+Connection ~ 10500 5750
 Wire Wire Line
-	10500 5500 10500 5400
+	10500 5850 10500 5750
 Wire Wire Line
-	10050 5700 10050 5800
+	10050 6050 10050 6150
 Wire Wire Line
-	10500 5800 10050 5800
-Connection ~ 10050 5800
+	10500 6150 10050 6150
+Connection ~ 10050 6150
 Wire Wire Line
-	9600 5800 10050 5800
+	9600 6150 10050 6150
 $Comp
 L power:+3V3 #PWR?
 U 1 1 61952FDC
-P 10500 5200
-F 0 "#PWR?" H 10500 5050 50  0001 C CNN
-F 1 "+3V3" H 10515 5373 50  0000 C CNN
-F 2 "" H 10500 5200 50  0001 C CNN
-F 3 "" H 10500 5200 50  0001 C CNN
-	1    10500 5200
+P 10500 5550
+F 0 "#PWR?" H 10500 5400 50  0001 C CNN
+F 1 "+3V3" H 10515 5723 50  0000 C CNN
+F 2 "" H 10500 5550 50  0001 C CNN
+F 3 "" H 10500 5550 50  0001 C CNN
+	1    10500 5550
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR?
 U 1 1 61951B74
-P 9600 5200
-F 0 "#PWR?" H 9600 5050 50  0001 C CNN
-F 1 "+5V" H 9615 5373 50  0000 C CNN
-F 2 "" H 9600 5200 50  0001 C CNN
-F 3 "" H 9600 5200 50  0001 C CNN
-	1    9600 5200
+P 9600 5550
+F 0 "#PWR?" H 9600 5400 50  0001 C CNN
+F 1 "+5V" H 9615 5723 50  0000 C CNN
+F 2 "" H 9600 5550 50  0001 C CNN
+F 3 "" H 9600 5550 50  0001 C CNN
+	1    9600 5550
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 6194DE21
-P 10050 5800
-F 0 "#PWR?" H 10050 5550 50  0001 C CNN
-F 1 "GND" H 10055 5627 50  0000 C CNN
-F 2 "" H 10050 5800 50  0001 C CNN
-F 3 "" H 10050 5800 50  0001 C CNN
-	1    10050 5800
+P 10050 6150
+F 0 "#PWR?" H 10050 5900 50  0001 C CNN
+F 1 "GND" H 10055 5977 50  0000 C CNN
+F 2 "" H 10050 6150 50  0001 C CNN
+F 3 "" H 10050 6150 50  0001 C CNN
+	1    10050 6150
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:C_0.1uF C11
+L formula:C_0.1uF C14
 U 1 1 6193D5A8
-P 10500 5650
-F 0 "C11" H 10200 5700 50  0000 L CNN
-F 1 "C_0.1uF" H 10050 5600 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 10538 5500 50  0001 C CNN
-F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 10525 5750 50  0001 C CNN
-F 4 "DK" H 10500 5650 60  0001 C CNN "MFN"
-F 5 "478-3352-1-ND" H 10500 5650 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 10925 6150 60  0001 C CNN "PurchasingLink"
-	1    10500 5650
+P 10500 6000
+F 0 "C14" H 10200 6050 50  0000 L CNN
+F 1 "C_0.1uF" H 10050 5950 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 10538 5850 50  0001 C CNN
+F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 10525 6100 50  0001 C CNN
+F 4 "DK" H 10500 6000 60  0001 C CNN "MFN"
+F 5 "478-3352-1-ND" H 10500 6000 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 10925 6500 60  0001 C CNN "PurchasingLink"
+	1    10500 6000
 	-1   0    0    -1  
 $EndComp
 $Comp
-L formula:C_0.1uF C10
+L formula:C_0.1uF C13
 U 1 1 6193CC13
-P 9600 5650
-F 0 "C10" H 9750 5700 50  0000 L CNN
-F 1 "C_0.1uF" H 9750 5600 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 9638 5500 50  0001 C CNN
-F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 9625 5750 50  0001 C CNN
-F 4 "DK" H 9600 5650 60  0001 C CNN "MFN"
-F 5 "478-3352-1-ND" H 9600 5650 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 10025 6150 60  0001 C CNN "PurchasingLink"
-	1    9600 5650
+P 9600 6000
+F 0 "C13" H 9750 6050 50  0000 L CNN
+F 1 "C_0.1uF" H 9750 5950 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 9638 5850 50  0001 C CNN
+F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 9625 6100 50  0001 C CNN
+F 4 "DK" H 9600 6000 60  0001 C CNN "MFN"
+F 5 "478-3352-1-ND" H 9600 6000 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 10025 6500 60  0001 C CNN "PurchasingLink"
+	1    9600 6000
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	8150 5600 8150 5650
+	8150 5950 8150 6000
 $Comp
 L power:GND #PWR?
 U 1 1 61933B6D
+P 8150 6000
+F 0 "#PWR?" H 8150 5750 50  0001 C CNN
+F 1 "GND" H 8155 5827 50  0000 C CNN
+F 2 "" H 8150 6000 50  0001 C CNN
+F 3 "" H 8150 6000 50  0001 C CNN
+	1    8150 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7250 5750 7250 5650
+Wire Wire Line
+	8150 5650 7250 5650
+Wire Wire Line
+	7050 5650 6150 5650
+Wire Wire Line
+	7050 5750 7050 5650
+Wire Wire Line
+	6750 5950 6550 5950
+Text Notes 9050 5250 0    89   ~ 0
+LINEAR VOLTAGE REGULATOR
+$Comp
+L Regulator_Linear:LM3480-3.3 U5
+U 1 1 618D2CBA
+P 10050 5750
+F 0 "U5" H 10050 5992 50  0000 C CNN
+F 1 "LM3480-3.3" H 10050 5901 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 10050 5975 50  0001 C CIN
+F 3 "http://www.ti.com/lit/ds/symlink/lm3480.pdf" H 10050 5750 50  0001 C CNN
+	1    10050 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 618C230E
+P 6150 5650
+F 0 "#PWR?" H 6150 5500 50  0001 C CNN
+F 1 "+3V3" H 6165 5823 50  0000 C CNN
+F 2 "" H 6150 5650 50  0001 C CNN
+F 3 "" H 6150 5650 50  0001 C CNN
+	1    6150 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 618BF3B1
+P 6550 5950
+F 0 "#PWR?" H 6550 5800 50  0001 C CNN
+F 1 "+3V3" H 6565 6123 50  0000 C CNN
+F 2 "" H 6550 5950 50  0001 C CNN
+F 3 "" H 6550 5950 50  0001 C CNN
+	1    6550 5950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 5950 6150 6000
+Connection ~ 6150 5650
+$Comp
+L formula:C_0.1uF C8
+U 1 1 617EBFF4
+P 6150 5800
+F 0 "C8" H 5950 5850 50  0000 L CNN
+F 1 "C_0.1uF" H 5750 5750 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 6188 5650 50  0001 C CNN
+F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 6175 5900 50  0001 C CNN
+F 4 "DK" H 6150 5800 60  0001 C CNN "MFN"
+F 5 "478-3352-1-ND" H 6150 5800 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 6575 6300 60  0001 C CNN "PurchasingLink"
+	1    6150 5800
+	1    0    0    1   
+$EndComp
+$Comp
+L formula:C_0.1uF C11
+U 1 1 617EB4B5
+P 8150 5800
+F 0 "C11" H 8265 5846 50  0000 L CNN
+F 1 "C_0.1uF" H 8265 5755 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 8188 5650 50  0001 C CNN
+F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 8175 5900 50  0001 C CNN
+F 4 "DK" H 8150 5800 60  0001 C CNN "MFN"
+F 5 "478-3352-1-ND" H 8150 5800 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 8575 6300 60  0001 C CNN "PurchasingLink"
+	1    8150 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 617EA675
+P 6150 6000
+F 0 "#PWR?" H 6150 5750 50  0001 C CNN
+F 1 "GND" H 6155 5827 50  0000 C CNN
+F 2 "" H 6150 6000 50  0001 C CNN
+F 3 "" H 6150 6000 50  0001 C CNN
+	1    6150 6000
+	1    0    0    -1  
+$EndComp
+Connection ~ 8150 5650
+$Comp
+L power:+5V #PWR?
+U 1 1 617E5864
 P 8150 5650
-F 0 "#PWR?" H 8150 5400 50  0001 C CNN
-F 1 "GND" H 8155 5477 50  0000 C CNN
+F 0 "#PWR?" H 8150 5500 50  0001 C CNN
+F 1 "+5V" H 8165 5823 50  0000 C CNN
 F 2 "" H 8150 5650 50  0001 C CNN
 F 3 "" H 8150 5650 50  0001 C CNN
 	1    8150 5650
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7250 5400 7250 5300
-Wire Wire Line
-	8150 5300 7250 5300
-Wire Wire Line
-	7050 5300 6150 5300
-Wire Wire Line
-	7050 5400 7050 5300
-Wire Wire Line
-	6750 5600 6550 5600
-Text Notes 9050 4900 0    89   ~ 0
-LINEAR VOLTAGE REGULATOR
-$Comp
-L Regulator_Linear:LM3480-3.3 U4
-U 1 1 618D2CBA
-P 10050 5400
-F 0 "U4" H 10050 5642 50  0000 C CNN
-F 1 "LM3480-3.3" H 10050 5551 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10050 5625 50  0001 C CIN
-F 3 "http://www.ti.com/lit/ds/symlink/lm3480.pdf" H 10050 5400 50  0001 C CNN
-	1    10050 5400
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR?
-U 1 1 618C230E
-P 6150 5300
-F 0 "#PWR?" H 6150 5150 50  0001 C CNN
-F 1 "+3V3" H 6165 5473 50  0000 C CNN
-F 2 "" H 6150 5300 50  0001 C CNN
-F 3 "" H 6150 5300 50  0001 C CNN
-	1    6150 5300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR?
-U 1 1 618BF3B1
-P 6550 5600
-F 0 "#PWR?" H 6550 5450 50  0001 C CNN
-F 1 "+3V3" H 6565 5773 50  0000 C CNN
-F 2 "" H 6550 5600 50  0001 C CNN
-F 3 "" H 6550 5600 50  0001 C CNN
-	1    6550 5600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6150 5600 6150 5650
-Connection ~ 6150 5300
-$Comp
-L formula:C_0.1uF C8
-U 1 1 617EBFF4
-P 6150 5450
-F 0 "C8" H 5950 5500 50  0000 L CNN
-F 1 "C_0.1uF" H 5750 5400 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 6188 5300 50  0001 C CNN
-F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 6175 5550 50  0001 C CNN
-F 4 "DK" H 6150 5450 60  0001 C CNN "MFN"
-F 5 "478-3352-1-ND" H 6150 5450 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 6575 5950 60  0001 C CNN "PurchasingLink"
-	1    6150 5450
-	1    0    0    1   
-$EndComp
-$Comp
-L formula:C_0.1uF C9
-U 1 1 617EB4B5
-P 8150 5450
-F 0 "C9" H 8265 5496 50  0000 L CNN
-F 1 "C_0.1uF" H 8265 5405 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 8188 5300 50  0001 C CNN
-F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 8175 5550 50  0001 C CNN
-F 4 "DK" H 8150 5450 60  0001 C CNN "MFN"
-F 5 "478-3352-1-ND" H 8150 5450 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 8575 5950 60  0001 C CNN "PurchasingLink"
-	1    8150 5450
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 617EA675
-P 6150 5650
-F 0 "#PWR?" H 6150 5400 50  0001 C CNN
-F 1 "GND" H 6155 5477 50  0000 C CNN
-F 2 "" H 6150 5650 50  0001 C CNN
-F 3 "" H 6150 5650 50  0001 C CNN
-	1    6150 5650
-	1    0    0    -1  
-$EndComp
-Connection ~ 8150 5300
-$Comp
-L power:+5V #PWR?
-U 1 1 617E5864
-P 8150 5300
-F 0 "#PWR?" H 8150 5150 50  0001 C CNN
-F 1 "+5V" H 8165 5473 50  0000 C CNN
-F 2 "" H 8150 5300 50  0001 C CNN
-F 3 "" H 8150 5300 50  0001 C CNN
-	1    8150 5300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7150 6800 7150 6900
+	7150 7150 7150 7250
 $Comp
 L power:GND #PWR?
 U 1 1 617D3F9B
-P 7150 6900
-F 0 "#PWR?" H 7150 6650 50  0001 C CNN
-F 1 "GND" H 7155 6727 50  0000 C CNN
-F 2 "" H 7150 6900 50  0001 C CNN
-F 3 "" H 7150 6900 50  0001 C CNN
-	1    7150 6900
+P 7150 7250
+F 0 "#PWR?" H 7150 7000 50  0001 C CNN
+F 1 "GND" H 7155 7077 50  0000 C CNN
+F 2 "" H 7150 7250 50  0001 C CNN
+F 3 "" H 7150 7250 50  0001 C CNN
+	1    7150 7250
 	1    0    0    -1  
 $EndComp
-Text Notes 6100 4900 0    89   ~ 0
+Text Notes 6100 5250 0    89   ~ 0
 4-BIT 5V-3V3 LEVEL SHIFTER
 $Comp
-L Logic_LevelTranslator:TXB0104PW U3
+L Logic_LevelTranslator:TXB0104PW U4
 U 1 1 617BA7D9
-P 7150 6100
-F 0 "U3" H 7150 7150 50  0000 C CNN
-F 1 "TXB0104PW" H 7150 7050 50  0000 C CNN
-F 2 "Package_SO:TSSOP-14_4.4x5mm_P0.65mm" H 7150 5350 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/txb0104.pdf" H 7260 6195 50  0001 C CNN
-	1    7150 6100
+P 7150 6450
+F 0 "U4" H 7150 7500 50  0000 C CNN
+F 1 "TXB0104PW" H 7150 7400 50  0000 C CNN
+F 2 "Package_SO:TSSOP-14_4.4x5mm_P0.65mm" H 7150 5700 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/txb0104.pdf" H 7260 6545 50  0001 C CNN
+	1    7150 6450
 	1    0    0    -1  
 $EndComp
-$Comp
-L formula:MCP79511-I_MS U?
-U 1 1 619A9C99
-P 6550 3650
-F 0 "U?" H 7650 4039 60  0000 C CNN
-F 1 "MCP79511-I_MS" H 7650 3933 60  0000 C CNN
-F 2 "footprints:MCP79511-I&slashMS" H 7650 3900 60  0001 C CNN
-F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP7951X-MCP7952X-Battery-Backed-SPI-RTCC-20002300C.pdf" H 7050 3650 60  0001 C CNN
-F 4 "https://www.digikey.com/short/8h8hqbn4" H 7650 3000 50  0001 C CNN "PurchasingLink"
-	1    6550 3650
-	1    0    0    -1  
-$EndComp
-Text Notes 7000 3000 0    89   ~ 0
+Text Notes 7200 3000 0    89   ~ 0
 REAL-TIME CLOCK
 $Comp
 L power:+3V3 #PWR?
 U 1 1 61A05BE5
-P 8250 3500
-F 0 "#PWR?" H 8250 3350 50  0001 C CNN
-F 1 "+3V3" H 8265 3673 50  0000 C CNN
-F 2 "" H 8250 3500 50  0001 C CNN
-F 3 "" H 8250 3500 50  0001 C CNN
-	1    8250 3500
+P 8450 3300
+F 0 "#PWR?" H 8450 3150 50  0001 C CNN
+F 1 "+3V3" H 8465 3473 50  0000 C CNN
+F 2 "" H 8450 3300 50  0001 C CNN
+F 3 "" H 8450 3300 50  0001 C CNN
+	1    8450 3300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8250 3650 8250 3500
-$Comp
-L formula:Crystal_32_768kHz Y?
-U 1 1 61A94C98
-P 6500 3700
-F 0 "Y?" V 6500 3500 50  0000 L CNN
-F 1 "Crystal_32_768kHz" V 6200 3350 50  0000 L CNN
-F 2 "footprints:Crystal_32_768kHZ" H 6200 4000 50  0001 L BNN
-F 3 "https://www.jauch.com/downloadfile/57fde22d50dbf_d3c203011c87952f2834/jtx310-auto-2-210512.pdf" H 6500 3700 50  0001 L BNN
-F 4 "https://www.digikey.com/short/3nzmt0hf" H 6450 3500 50  0001 C CNN "PurchasingLink"
-F 5 "Jauch Quartz" H 6200 3400 50  0001 L BNN "MANUFACTURER"
-	1    6500 3700
-	0    1    1    0   
-$EndComp
+	7150 3900 6750 3900
 Wire Wire Line
-	7050 3650 6650 3650
+	6750 3900 6750 3750
 Wire Wire Line
-	6650 3650 6650 3500
+	6750 3750 6600 3750
 Wire Wire Line
-	6650 3500 6500 3500
+	7150 4000 6750 4000
 Wire Wire Line
-	7050 3750 6650 3750
+	6750 4000 6750 4150
 Wire Wire Line
-	6650 3750 6650 3900
-Wire Wire Line
-	6650 3900 6500 3900
-Text Notes 5750 3250 0    89   ~ 0
+	6750 4150 6600 4150
+Text Notes 5850 3500 0    89   ~ 0
 32.768 kHz CRYSTAL\n
 $Comp
-L formula:JST_SM06B-GHS-TB_LF__SN_ J?
+L formula:JST_SM06B-GHS-TB_LF__SN_ J2
 U 1 1 61941897
 P 14650 5050
-F 0 "J?" H 14543 4383 50  0000 C CNN
+F 0 "J2" H 14543 4383 50  0000 C CNN
 F 1 "JST_SM06B-GHS-TB_LF__SN_" H 14543 4474 50  0000 C CNN
 F 2 "footprints:JST_SM06B-GHS-TB_LF__SN_" H 14900 4850 50  0001 L BNN
 F 3 "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf" H 14650 5050 50  0001 L BNN
@@ -1803,153 +1771,43 @@ F 7 "N/A" H 15250 4650 50  0001 L BNN "PARTREV"
 	1    14650 5050
 	-1   0    0    1   
 $EndComp
-Text Label 8250 3850 0    50   ~ 0
+Text Label 8350 4100 0    50   ~ 0
 SCK_RTC
-Text Label 7050 3950 2    50   ~ 0
-CS_RTC
-Text Label 8250 3950 0    50   ~ 0
+Text Label 7150 4200 2    50   ~ 0
+CSB_RTC
+Text Label 8350 4200 0    50   ~ 0
 SO_RTC
-Text Label 8250 4050 0    50   ~ 0
+Text Label 8350 4300 0    50   ~ 0
 SI_RTC
 $Comp
 L power:GND #PWR?
 U 1 1 619C044D
-P 7050 4150
-F 0 "#PWR?" H 7050 3900 50  0001 C CNN
-F 1 "GND" H 7055 3977 50  0000 C CNN
-F 2 "" H 7050 4150 50  0001 C CNN
-F 3 "" H 7050 4150 50  0001 C CNN
-	1    7050 4150
+P 7150 4400
+F 0 "#PWR?" H 7150 4150 50  0001 C CNN
+F 1 "GND" H 7155 4227 50  0000 C CNN
+F 2 "" H 7150 4400 50  0001 C CNN
+F 3 "" H 7150 4400 50  0001 C CNN
+	1    7150 4400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7050 4050 7050 4150
-Text Label 6750 6400 2    50   ~ 0
-CS_RTC
-Text Label 6750 6200 2    50   ~ 0
+	7150 4300 7150 4400
+Text Label 6750 6750 2    50   ~ 0
+CSB_RTC
+Text Label 6750 6550 2    50   ~ 0
 SCK_RTC
-Text Label 6750 6000 2    50   ~ 0
+Text Label 6750 6350 2    50   ~ 0
 SO_RTC
-Text Label 6750 5800 2    50   ~ 0
+Text Label 6750 6150 2    50   ~ 0
 SI_RTC
-Wire Wire Line
-	7050 3850 6750 3850
-Wire Wire Line
-	6750 3850 6750 4050
-Wire Wire Line
-	6750 4050 7050 4050
-Connection ~ 7050 4050
 Text Notes 10400 1600 0    50   ~ 0
 CAPACITOR HERE, DIODES BEHIND CAPACITOR.\ncheck notes\n
-$Comp
-L power:+3V3 #PWR?
-U 1 1 61A77D83
-P 8400 3650
-F 0 "#PWR?" H 8400 3500 50  0001 C CNN
-F 1 "+3V3" H 8415 3823 50  0000 C CNN
-F 2 "" H 8400 3650 50  0001 C CNN
-F 3 "" H 8400 3650 50  0001 C CNN
-	1    8400 3650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8250 3750 8400 3750
-Wire Wire Line
-	8400 3750 8400 3650
-Wire Notes Line
-	8750 2800 8750 4550
-Wire Notes Line
-	8750 4550 5650 4550
-Wire Notes Line
-	5650 4550 5650 2800
-Wire Notes Line
-	5650 2800 8750 2800
-Text Notes 8450 3700 0    50   ~ 0
-Check if needs pullup resistor
-Text Notes 950  5050 0    50   ~ 0
-Resistors for RTC and Radio connections for MOSI and SCK pins\n
-Text Label 7550 5800 0    50   ~ 0
+Text Label 7550 6150 0    50   ~ 0
 SI_ATMEGA
-Text Label 7550 6000 0    50   ~ 0
+Text Label 7550 6350 0    50   ~ 0
 SO_ATMEGA
-Text Label 7550 6200 0    50   ~ 0
+Text Label 7550 6550 0    50   ~ 0
 SCK_ATMEGA
-Text Label 7550 6400 0    50   ~ 0
-CS
-Text Label 2900 5450 0    50   ~ 0
-SI_ATMEGA
-Text Label 2900 5350 0    50   ~ 0
-SO_ATMEGA
-Text Label 2900 5550 0    50   ~ 0
-SCK_ATMEGA
-Text Label 1400 5350 2    50   ~ 0
-MISO
-Text Label 1400 5450 2    50   ~ 0
-MOSI
-Text Label 1400 5550 2    50   ~ 0
-SCK
-$Comp
-L formula:R_499 R?
-U 1 1 61B42F7B
-P 1750 5350
-F 0 "R?" V 1543 5350 50  0000 C CNN
-F 1 "R_499" V 1634 5350 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 1680 5350 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 1830 5350 50  0001 C CNN
-F 4 "DK" H 1750 5350 60  0001 C CNN "MFN"
-F 5 "P499CCT-ND" H 1750 5350 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 2230 5750 60  0001 C CNN "PurchasingLink"
-	1    1750 5350
-	0    1    1    0   
-$EndComp
-$Comp
-L formula:R_499 R?
-U 1 1 61B445F1
-P 2550 5550
-F 0 "R?" V 2150 5550 50  0000 C CNN
-F 1 "R_499" V 2250 5550 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 2480 5550 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 2630 5550 50  0001 C CNN
-F 4 "DK" H 2550 5550 60  0001 C CNN "MFN"
-F 5 "P499CCT-ND" H 2550 5550 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 3030 5950 60  0001 C CNN "PurchasingLink"
-	1    2550 5550
-	0    1    1    0   
-$EndComp
-$Comp
-L formula:R_499 R?
-U 1 1 61B43D6C
-P 2150 5450
-F 0 "R?" V 1850 5450 50  0000 C CNN
-F 1 "R_499" V 1950 5450 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 2080 5450 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 2230 5450 50  0001 C CNN
-F 4 "DK" H 2150 5450 60  0001 C CNN "MFN"
-F 5 "P499CCT-ND" H 2150 5450 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 2630 5850 60  0001 C CNN "PurchasingLink"
-	1    2150 5450
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	1400 5350 1600 5350
-Wire Wire Line
-	1900 5350 2900 5350
-Wire Wire Line
-	1400 5450 2000 5450
-Wire Wire Line
-	2300 5450 2900 5450
-Wire Wire Line
-	1400 5550 2400 5550
-Wire Wire Line
-	2700 5550 2900 5550
-Wire Notes Line
-	850  4850 850  5700
-Wire Notes Line
-	850  5700 3600 5700
-Wire Notes Line
-	3600 5700 3600 4850
-Wire Notes Line
-	850  4850 3600 4850
 Text Label 4450 2850 2    50   ~ 0
 SCK
 Text Label 4450 2950 2    50   ~ 0
@@ -1974,7 +1832,7 @@ Text Notes 4200 2600 0    50   ~ 0
 Clarify radio connections
 Text Label 3900 1900 0    50   ~ 0
 RTS_RADIO
-Text Label 3900 2000 0    50   ~ 0
+Text Label 3900 1800 0    50   ~ 0
 CTS_RADIO
 Text Notes 12000 2250 2    50   ~ 0
 Generic capacitor to \ndetermine after assembly\n
@@ -1987,10 +1845,10 @@ Text Label 11400 1950 2    50   ~ 0
 Text Label 11700 1950 0    50   ~ 0
 12V
 $Comp
-L Device:C C?
+L Device:C C15
 U 1 1 61D6EFCD
 P 11550 1950
-F 0 "C?" V 11298 1950 50  0000 C CNN
+F 0 "C15" V 11298 1950 50  0000 C CNN
 F 1 "C" V 11389 1950 50  0000 C CNN
 F 2 "" H 11588 1800 50  0001 C CNN
 F 3 "~" H 11550 1950 50  0001 C CNN
@@ -2005,4 +1863,166 @@ Wire Notes Line
 	12150 2350 12150 1550
 Wire Notes Line
 	10900 1550 12150 1550
+Text Label 3900 1400 0    50   ~ 0
+SI_ATMEGA
+Text Label 3900 1300 0    50   ~ 0
+SO_ATMEGA
+NoConn ~ 3900 2000
+Text Label 3900 3600 0    50   ~ 0
+CSB
+Text Label 7550 6750 0    50   ~ 0
+CSB
+Text Notes 4100 3600 0    50   ~ 0
+for RTC
+Text Notes 9100 3850 0    50   ~ 0
+Check if needs\npullup resistor
+Text Notes 4100 3500 0    50   ~ 0
+for radio
+Wire Wire Line
+	7150 4100 6800 4100
+Wire Wire Line
+	6800 4100 6800 4300
+Wire Wire Line
+	6800 4300 7150 4300
+$Comp
+L Device:C C10
+U 1 1 61EEE253
+P 6250 4150
+F 0 "C10" V 5998 4150 50  0000 C CNN
+F 1 "C" V 6100 4150 50  0000 C CNN
+F 2 "" H 6288 4000 50  0001 C CNN
+F 3 "~" H 6250 4150 50  0001 C CNN
+	1    6250 4150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:C C9
+U 1 1 61F01F6F
+P 6250 3750
+F 0 "C9" V 5998 3750 50  0000 C CNN
+F 1 "C" V 6089 3750 50  0000 C CNN
+F 2 "" H 6288 3600 50  0001 C CNN
+F 3 "~" H 6250 3750 50  0001 C CNN
+	1    6250 3750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61F2BF60
+P 5900 4250
+F 0 "#PWR?" H 5900 4000 50  0001 C CNN
+F 1 "GND" H 5905 4077 50  0000 C CNN
+F 2 "" H 5900 4250 50  0001 C CNN
+F 3 "" H 5900 4250 50  0001 C CNN
+	1    5900 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6100 4150 6000 4150
+Wire Wire Line
+	6000 4150 6000 3950
+Wire Wire Line
+	6000 3750 6100 3750
+$Comp
+L formula:Crystal_32_768kHz Y2
+U 1 1 61A94C98
+P 6600 3950
+F 0 "Y2" V 6600 3750 50  0000 L CNN
+F 1 "Crystal_32_768kHz" V 6300 3700 50  0000 L CNN
+F 2 "footprints:Crystal_32_768kHZ" H 6300 4250 50  0001 L BNN
+F 3 "https://www.jauch.com/downloadfile/57fde22d50dbf_d3c203011c87952f2834/jtx310-auto-2-210512.pdf" H 6600 3950 50  0001 L BNN
+F 4 "https://www.digikey.com/short/3nzmt0hf" H 6550 3750 50  0001 C CNN "PurchasingLink"
+F 5 "Jauch Quartz" H 6300 3650 50  0001 L BNN "MANUFACTURER"
+	1    6600 3950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6400 3750 6600 3750
+Connection ~ 6600 3750
+Wire Wire Line
+	6400 4150 6600 4150
+Connection ~ 6600 4150
+Wire Wire Line
+	6000 3950 5900 3950
+Wire Wire Line
+	5900 3950 5900 4250
+Connection ~ 6000 3950
+Wire Wire Line
+	6000 3950 6000 3750
+Text Notes 5850 4700 0    50   ~ 0
+See notes for capacitors.
+Wire Notes Line
+	5650 2800 9800 2800
+Text Notes 9700 4700 2    50   ~ 0
+The real-time clock to be used by the \nATMEGA when dealing with incoming data.
+$Comp
+L formula:R_475 R11
+U 1 1 61FAEB20
+P 8950 3800
+F 0 "R11" H 8750 3850 50  0000 L CNN
+F 1 "R_475" H 8650 3750 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 8880 3800 50  0001 C CNN
+F 3 "http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf" H 9030 3800 50  0001 C CNN
+F 4 "DK" H 8950 3800 60  0001 C CNN "MFN"
+F 5 "311-475CRCT-ND" H 8950 3800 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=311-475CRCT-ND" H 9430 4200 60  0001 C CNN "PurchasingLink"
+	1    8950 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:C_10nF C12
+U 1 1 62047513
+P 8450 3550
+F 0 "C12" H 8565 3596 50  0000 L CNN
+F 1 "C_10nF" H 8565 3505 50  0000 L CNN
+F 2 "footprints:C_1206_OEM" H 8250 3550 50  0001 C CNN
+F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/07/23/CL21B103KBANNNC.pdf" H 8350 3650 50  0001 C CNN
+F 4 "Kemet" H 8450 3750 50  0001 C CNN "MFN"
+F 5 "C1206C103KCRACTU" H 8550 3850 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/kemet/C1206C103KCRACTU/721283" H 8650 3950 50  0001 C CNN "PurchasingLink"
+	1    8450 3550
+	1    0    0    -1  
+$EndComp
+Connection ~ 7150 4300
+$Comp
+L formula:MCP79511-I_MS U3
+U 1 1 619A9C99
+P 6650 3900
+F 0 "U3" H 7750 4289 60  0000 C CNN
+F 1 "MCP79511-I_MS" H 7750 4183 60  0000 C CNN
+F 2 "footprints:MCP79511-I&slashMS" H 7750 4150 60  0001 C CNN
+F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP7951X-MCP7952X-Battery-Backed-SPI-RTCC-20002300C.pdf" H 7150 3900 60  0001 C CNN
+F 4 "https://www.digikey.com/short/8h8hqbn4" H 7750 3250 50  0001 C CNN "PurchasingLink"
+	1    6650 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 61A77D83
+P 8950 3550
+F 0 "#PWR?" H 8950 3400 50  0001 C CNN
+F 1 "+3V3" H 8965 3723 50  0000 C CNN
+F 2 "" H 8950 3550 50  0001 C CNN
+F 3 "" H 8950 3550 50  0001 C CNN
+	1    8950 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 3300 8450 3400
+Wire Wire Line
+	8450 3700 8450 3900
+Wire Wire Line
+	8450 3900 8350 3900
+Wire Wire Line
+	8350 4000 8950 4000
+Wire Wire Line
+	8950 4000 8950 3950
+Wire Wire Line
+	8950 3650 8950 3550
+Wire Notes Line
+	9800 4850 5650 4850
+Wire Notes Line
+	5650 2800 5650 4850
+Wire Notes Line
+	9800 2800 9800 4850
 $EndSCHEMATC
