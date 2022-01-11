@@ -56,7 +56,7 @@
 #ifndef LTC6811_H
 #define LTC6811_H
 
-#include "LTC681x.h"
+#include "ltc681x.h"
 #include <stdint.h>
 
 #define CELL 1

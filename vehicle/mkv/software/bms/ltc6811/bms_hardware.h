@@ -42,8 +42,8 @@ Copyright 2017 Linear Technology Corp. (LTC)
 */
 #pragma once
 
-#include <stdint.h>
 #include "libs/gpio/api.h"
+#include <stdint.h>
 
 void cs_low(gpio_t pin); // name conflicts with linduino
 
@@ -54,10 +54,7 @@ void delay_u(uint16_t micro);
 /*
 Writes an array of bytes out of the SPI port
 */
-void spi_write_array(
-    uint8_t len,
-    uint8_t* data
-);
+void spi_write_array(uint8_t len, uint8_t* data);
 /*
  Writes and read a set number of bytes using the SPI port.
 

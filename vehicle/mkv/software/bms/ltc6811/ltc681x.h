@@ -42,10 +42,9 @@
     Library for LTC681x Multi-cell Battery Monitor
 */
 
-#ifndef LTC681x_h
-#define LTC681x_h
+#pragma once
 
-#define IC_LTC6813
+// #define IC_LTC6813
 
 #define MD_422HZ_1KHZ  0
 #define MD_27KHZ_14KHZ 1
@@ -100,7 +99,21 @@
 #define STAT       3
 #define CFGR       0
 #define CFGRB      4
-#define CS_PIN     10
+
+#include <avr/pgmspace.h>
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "libs/gpio/api.h"
+#include "libs/gpio/pin_defs.h"
+
+#ifndef SPI_CS_PIN
+// #warning Must define SPI_CS_PIN as a gpio_t in the application. Setting to
+// PB1.
+gpio_t CS_PIN = PB1;
+#else
+gpio_t CS_PIN = SPI_CS_PIN;
+#endif
 
 /*! Cell Voltage data structure. */
 typedef struct {
@@ -884,5 +897,4 @@ const uint16_t crc15Table[256] PROGMEM
         0x2630, 0xe3a9, 0xe89b, 0x2d02, 0xa76f, 0x62f6, 0x69c4, 0xac5d, 0x7fa0,
         0xba39, 0xb10b, 0x7492, 0x5368, 0x96f1, 0x9dc3, 0x585a, 0x8ba7, 0x4e3e,
         0x450c, 0x8095 };
-#endif
 #endif

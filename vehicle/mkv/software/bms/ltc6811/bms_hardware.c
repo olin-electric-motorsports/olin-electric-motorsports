@@ -42,13 +42,14 @@ Copyright 2017 Linear Technology Corp. (LTC)
 */
 #include "bms_hardware.h"
 
+#include <avr/io.h>
+#include <util/delay.h>
+
 #include "libs/gpio/api.h"
 #include "libs/spi/api.h"
 
-#include <stdlib.h>
 #include <stdint.h>
-#include <avr/io.h>
-#include <util/delay.h>
+#include <stdlib.h>
 
 void cs_low(gpio_t pin) {
     gpio_clear_pin(pin);
@@ -58,18 +59,13 @@ void cs_high(gpio_t pin) {
     gpio_set_pin(pin);
 }
 
-void delay_u(uint16_t micro) {
-    _delay_us(micro);
-}
+#define delay_u _delay_us
 
 /*
  * Writes an array of bytes out of the SPI port
  */
-void spi_write_array(
-    uint8_t len,
-    uint8_t* data
-) {
-    uint8_t _rx_buffer[len] = {0};
+void spi_write_array(uint8_t len, uint8_t* data) {
+    uint8_t _rx_buffer[len];
     spi_transceive(data, _rx_buffer, len);
 }
 

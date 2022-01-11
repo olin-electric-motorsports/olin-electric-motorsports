@@ -43,7 +43,7 @@
 */
 
 #include "ltc681x.h"
-#include "libs/spi/api.h"
+#include "bms_hardware.h"
 #include <stdint.h>
 
 /* Wake isoSPI up from IDlE state and enters the READY state */
@@ -74,6 +74,7 @@ void cmd_68(uint8_t tx_cmd[2]) // The command to be transmitted
     uint8_t cmd[4];
     uint16_t cmd_pec;
     uint8_t md_bits;
+    (void)md_bits;
 
     cmd[0] = tx_cmd[0];
     cmd[1] = tx_cmd[1];
@@ -96,12 +97,11 @@ void write_68(uint8_t total_ic, // Number of ICs to be written to
 ) {
     const uint8_t BYTES_IN_REG = 6;
     const uint8_t CMD_LEN = 4 + (8 * total_ic);
-    uint8_t* cmd;
     uint16_t data_pec;
     uint16_t cmd_pec;
     uint8_t cmd_index;
 
-    cmd = (uint8_t*)malloc(CMD_LEN * sizeof(uint8_t));
+    uint8_t cmd[CMD_LEN];
     cmd[0] = tx_cmd[0];
     cmd[1] = tx_cmd[1];
     cmd_pec = pec15_calc(2, cmd);
@@ -132,8 +132,6 @@ void write_68(uint8_t total_ic, // Number of ICs to be written to
     cs_low(CS_PIN);
     spi_write_array(CMD_LEN, cmd);
     cs_high(CS_PIN);
-
-    free(cmd);
 }
 
 /* Generic function to write 68xx commands and read data. Function calculated
@@ -410,7 +408,8 @@ void LTC681x_adcvax(uint8_t MD, // ADC Mode
     md_bits = (MD & 0x02) >> 1;
     cmd[0] = md_bits | 0x04;
     md_bits = (MD & 0x01) << 7;
-    cmd[1] = md_bits | ((DCP & 0x01) << 4) + 0x6F;
+    // TODO: are the parenthases in the right place??
+    cmd[1] = (md_bits | ((DCP & 0x01) << 4)) + 0x6F;
 
     cmd_68(cmd);
 }
@@ -427,9 +426,9 @@ LTC681x_rdcv(uint8_t reg, // Controls which cell voltage register is read back.
              cell_asic* ic // Array of the parsed cell codes
 ) {
     int8_t pec_error = 0;
-    uint8_t* cell_data;
+    // uint8_t* cell_data;
     uint8_t c_ic = 0;
-    cell_data = (uint8_t*)malloc((NUM_RX_BYT * total_ic) * sizeof(uint8_t));
+    uint8_t cell_data[NUM_RX_BYT * total_ic];
 
     if (reg == 0) {
         for (uint8_t cell_reg = 1; cell_reg < ic[0].ic_reg.num_cv_reg + 1;
@@ -467,7 +466,6 @@ LTC681x_rdcv(uint8_t reg, // Controls which cell voltage register is read back.
         }
     }
     LTC681x_check_pec(total_ic, CELL, ic);
-    free(cell_data);
 
     return (pec_error);
 }
@@ -482,10 +480,9 @@ int8_t LTC681x_rdaux(
     uint8_t total_ic, // The number of ICs in the system
     cell_asic* ic // A two dimensional array of the gpio voltage codes.
 ) {
-    uint8_t* data;
     int8_t pec_error = 0;
     uint8_t c_ic = 0;
-    data = (uint8_t*)malloc((NUM_RX_BYT * total_ic) * sizeof(uint8_t));
+    uint8_t data[NUM_RX_BYT * total_ic];
 
     if (reg == 0) {
         for (uint8_t gpio_reg = 1; gpio_reg < ic[0].ic_reg.num_gpio_reg + 1;
@@ -521,7 +518,6 @@ int8_t LTC681x_rdaux(
         }
     }
     LTC681x_check_pec(total_ic, AUX, ic);
-    free(data);
 
     return (pec_error);
 }
@@ -541,15 +537,13 @@ LTC681x_rdstat(uint8_t reg, // Determines which Stat  register is read back.
 {
     const uint8_t BYT_IN_REG = 6;
     const uint8_t STAT_IN_REG = 3;
-    uint8_t* data;
-    uint8_t data_counter = 0;
+    uint16_t data_counter = 0;
     int8_t pec_error = 0;
     uint16_t parsed_stat;
     uint16_t received_pec;
     uint16_t data_pec;
     uint8_t c_ic = 0;
-
-    data = (uint8_t*)malloc((12 * total_ic) * sizeof(uint8_t));
+    uint8_t data[12 * total_ic];
 
     if (reg == 0) {
         for (uint8_t stat_reg = 1; stat_reg < 3;
@@ -658,8 +652,8 @@ LTC681x_rdstat(uint8_t reg, // Determines which Stat  register is read back.
                                             // by two for each parsed stat code
                 }
             } else if (reg == 2) {
-                parsed_stat = data[data_counter++]
-                              + (data[data_counter++]
+                parsed_stat = data[data_counter + 1]
+                              + (data[data_counter + 2]
                                  << 8); // Each stat codes is received as two
                                         // bytes and is combined to
                 ic[c_ic].stat.stat_codes[3] = parsed_stat;
@@ -668,6 +662,8 @@ LTC681x_rdstat(uint8_t reg, // Determines which Stat  register is read back.
                 ic[c_ic].stat.flags[2] = data[data_counter++];
                 ic[c_ic].stat.mux_fail[0] = (data[data_counter] & 0x02) >> 1;
                 ic[c_ic].stat.thsd[0] = data[data_counter++] & 0x01;
+
+                data_counter = data_counter + 2;
             }
 
             received_pec = (data[data_counter] << 8)
@@ -686,8 +682,6 @@ LTC681x_rdstat(uint8_t reg, // Determines which Stat  register is read back.
         }
     }
     LTC681x_check_pec(total_ic, STAT, ic);
-
-    free(data);
 
     return (pec_error);
 }
@@ -1138,7 +1132,6 @@ uint16_t LTC681x_run_adc_overlap(
     int32_t measure_delta = 0;
     int16_t failure_pos_limit = 20;
     int16_t failure_neg_limit = -20;
-    int32_t a, b;
 
     wakeup_idle(total_ic);
     LTC681x_adol(MD_7KHZ_3KHZ, DCP_DISABLED);
@@ -1285,10 +1278,10 @@ void LTC681x_run_openwire_single(
     uint16_t pullUp[total_ic][N_CHANNELS];
     uint16_t pullDwn[total_ic][N_CHANNELS];
     int16_t openWire_delta[total_ic][N_CHANNELS];
+    uint32_t conv_time;
 
     int8_t error;
     int8_t i;
-    uint32_t conv_time = 0;
 
     wakeup_sleep(total_ic);
     LTC681x_clrcell();
@@ -1352,6 +1345,8 @@ void LTC681x_run_openwire_single(
             ic[cic].system_open_wire = N_CHANNELS;
         }
     }
+    (void)error; // TODO use error?
+    (void)conv_time; // TODO use conv_time?
 }
 
 /* Runs the data sheet algorithm for open wire for multiple cell and two
@@ -1423,8 +1418,8 @@ void LTC681x_run_openwire_multi(
     for (int cic = 0; cic < total_ic; cic++) {
         n = 0;
 
-        Serial.print("IC:");
-        Serial.println(cic + 1, DEC);
+        // Serial.print("IC:");
+        // Serial.println(cic + 1, DEC);
 
         for (int cell = 0; cell < N_CHANNELS; cell++) {
             if (openWire_delta[cic][cell] > OPENWIRE_THRESHOLD) {
@@ -1445,8 +1440,8 @@ void LTC681x_run_openwire_multi(
         }
         if (pullDwn[cic][0] == 0) {
             opencells[n] = 0;
-            Serial.println(
-                "Cell 0 is Open and multiple open wires maybe possible.");
+            // Serial.println(
+            //     "Cell 0 is Open and multiple open wires maybe possible.");
             n++;
         }
 
@@ -1485,20 +1480,22 @@ void LTC681x_run_openwire_multi(
         }
 
         // Checking the value of n
-        Serial.println("Number of Open wires:");
-        Serial.println(n);
+        // Serial.println("Number of Open wires:");
+        // Serial.println(n);
 
         // Printing open cell array
-        Serial.println("OPEN CELLS:");
-        if (n == 0) {
-            Serial.println("No Open wires");
-        } else {
-            for (i = 0; i < n; i++) {
-                Serial.println(opencells[i]);
-            }
-        }
+        // Serial.println("OPEN CELLS:");
+        // if (n == 0) {
+        //     // Serial.println("No Open wires");
+        // } else {
+        //     for (i = 0; i < n; i++) {
+        //         // Serial.println(opencells[i]);
+        //     }
+        // }
     }
-    Serial.println("\n");
+    // Serial.println("\n");
+    (void)error; // TODO use?
+    (void)conv_time; // TODO use?
 }
 
 /* Runs open wire for GPIOs */
@@ -1574,6 +1571,8 @@ void LTC681x_run_gpio_openwire(
             }
         }
     }
+    (void)conv_time; // TODO: use?
+    (void)error; // TODO: use?
 }
 
 /* Clears all of the DCC bits in the configuration registers */
@@ -1628,7 +1627,6 @@ LTC681x_rdpwm(uint8_t total_ic, // Number of ICs in the system
               uint8_t pwmReg, // The PWM Register to be written A or B
               cell_asic ic[] // A two dimensional array that will store the data
 ) {
-    const uint8_t BYTES_IN_REG = 8;
     uint8_t cmd[4];
     uint8_t read_buffer[256];
     int8_t pec_error = 0;

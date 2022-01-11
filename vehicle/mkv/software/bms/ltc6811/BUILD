@@ -3,47 +3,47 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 cc_library(
     name = "ltc6811",
     srcs = [
-        "ltc6811.cpp",
+        "ltc6811.c",
     ],
     hdrs = ["ltc6811.h"],
-    deps = [
-        ":ltc681x",
-    ],
     target_compatible_with = [
         "//bazel/constraints:avr",
     ],
     visibility = ["//visibility:public"],
+    deps = [
+        ":ltc681x",
+    ],
 )
 
 cc_library(
     name = "ltc681x",
-    srcs = ["ltc681x.cpp"],
+    srcs = ["ltc681x.c"],
     hdrs = [
         "ltc681x.h",
-    ],
-    deps = [
-        ":bms_hardware",
     ],
     target_compatible_with = [
         "//bazel/constraints:avr",
     ],
     visibility = ["//visibility:private"],
+    deps = [
+        ":bms_hardware",
+    ],
 )
 
 cc_library(
     name = "bms_hardware",
     srcs = [
-        "bms_hardware.cpp",
+        "bms_hardware.c",
     ],
     hdrs = [
         "bms_hardware.h",
     ],
+    target_compatible_with = [
+        "//bazel/constraints:atmega16m1",
+    ],
+    visibility = ["//visibility:private"],
     deps = [
         "//libs/gpio",
         "//libs/spi",
     ],
-    target_compatible_with = [
-        "//bazel/constraints:avr",
-    ],
-    visibility = ["//visibility:private"],
 )
