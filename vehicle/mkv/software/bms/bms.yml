@@ -1,21 +1,150 @@
-# The rest of this file will be fleshed out in the BMS code PR
 name: bms
+subscribe:
+  - name: air_control_critical
+    mob: 1
+  - name: bms_charging
+    mob: 2
 publish:
   - name: bms_core
     id: 0x10
     freq_hz: 100
     signals:
-      - name: pack_voltage
-        slice: 0 + 16
+      - name: bms_fault_state
+        slice: 0 + 4
         unit:
-          type: int16_t
+          type: enum
+          values:
+            - BMS_FAULT_NONE
+            - BMS_FAULT_UNDERVOLTAGE
+            - BMS_FAULT_OVERVOLTAGE
+            - BMS_FAULT_UNDERTEMPERATURE
+            - BMS_FAULT_OVERTEMPERATURE
+            - BMS_FAULT_DIAGNOSTICS_FAIL
+            - BMS_FAULT_OPEN_WIRE
+            - BMS_FAULT_OVERCURRENT
+            - BMS_FAULT_PEC
+      - name: bms_state
+        slice: 4 + 4
+        unit:
+          type: enum
+          values:
+            - INIT
+            - IDLE
+            - DISCHARGING
+            - CHARGING
+            - FAULT
+      - name: pack_voltage
+        slice: 8 + 16
+        unit:
+          type: uint16_t
           name: V
           offset: 0
-          scale: 10
-      - name: bms_ok
-        slice: 16 + 2
+          scale: 0.0001 * 16
+      - name: pack_temperature
+        slice: 24 + 16
+        unit:
+          type: int16_t
+          name: degC
+          offset: 0
+          scale: 0.0001
+      - name: pack_current
+        slice: 40 + 12
+        unit:
+          type: int16_t
+          name: A
+          offset: 0
+          scale: 1
+      - name: cell_balancing_status
+        slice: 52 + 1
         unit:
           type: bool
           values:
-            t: BMS OK
-            f: BMS NOT OK
+            t: Cell balancing enabled
+            f: Cell balancing disabled
+      - name: regen_enabled
+        slice: 53 + 1
+        unit:
+          type: bool
+          values:
+            t: Regenerative braking enabled
+            f: Regenerative braking disabled
+      - name: current_limiting_enabled
+        slice: 54 + 1
+        unit:
+          type: bool
+          values:
+            t: Current limiting enabled
+            f: Current limiting disabled
+      - name: relay_status
+        slice: 55 + 1
+        unit:
+          type: bool
+          values:
+            t: BMS relay closed
+            f: BMS relay open
+      - name: bspd_current_sense
+        slice: 56 + 1
+        unit:
+          type: bool
+          values:
+            t: Current sensed
+            f: No current sensed
+      - name: overcurrent_detect
+        slice: 57 + 1
+        unit:
+          type: bool
+          values:
+            t: Over-current detected
+            f: No over-current detected
+
+  - name: bms_metrics
+    id: 0x510
+    freq_hz: 100
+    signals:
+      - name: voltage_pec_error_count
+        slice: 0 + 8
+        unit:
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
+      - name: temperature_pec_error_count
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
+
+  - name: bms_debug
+    id: 0x511
+    freq_hz: 100
+    signals:
+      - name: dbg_1
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: dbg_2
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: dbg_3
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: dbg_4
+        slice: 48 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
