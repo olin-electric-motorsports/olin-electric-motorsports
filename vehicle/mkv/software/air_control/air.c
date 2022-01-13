@@ -18,6 +18,7 @@
  */
 
 enum State {
+    INIT,
     IDLE,
     SHUTDOWN_CIRCUIT_CLOSED,
     PRECHARGE,
@@ -95,6 +96,8 @@ void pcint2_callback(void) {
  */
 static int initial_checks(void) {
     int rc = 0;
+
+    air_control_critical.state = INIT;
 
     /*
      * Get MC and BMS voltages
@@ -323,8 +326,14 @@ int main(void) {
     gpio_enable_interrupt(BMS_SENSE);
     gpio_enable_interrupt(IMD_SENSE);
 
+    // Initialize interrupts
+    sei();
+
     // Set LED to indicate initial checks will be run
     gpio_set_pin(GENERAL_LED);
+
+    // Send message once before checks
+    can_send_air_control_critical();
 
     if (initial_checks() == 1) {
         goto fault;
@@ -333,8 +342,10 @@ int main(void) {
     // Clear LED to indicate that initial checks passed
     gpio_clear_pin(GENERAL_LED);
 
-    // Initialize interrupts
-    sei();
+    // Send message again after initial checks are run
+    can_send_air_control_critical();
+
+    air_control_critical.state = IDLE;
 
     while (1) {
         // Run state machine every 1ms
@@ -346,6 +357,7 @@ int main(void) {
 
 fault:
     gpio_set_pin(FAULT_LED);
+    can_send_air_control_critical();
 
     while (1) {};
 }
