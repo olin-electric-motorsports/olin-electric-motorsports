@@ -30,7 +30,7 @@ tested.
 ### Goals
 
 * A DBC file can be generated from the individual YAML files
-* All message collisions are detected before collisions are detected
+* All message collisions are detected at compile-time
 * A `.c` and `.h` file are generated for each YAML file that include send and
   receive functions for each of the messages sent and received by the ECU as
   specified by the YAML file
