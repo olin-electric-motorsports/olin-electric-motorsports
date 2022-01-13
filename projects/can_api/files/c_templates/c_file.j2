@@ -8,15 +8,15 @@ void can_init_{{ node.name }}(void) {
  * Transmit messages
  */
 {% for message in tx_messages %}
-uint8_t {{ message.name|lower }}_data[{{ message.length }}];
+volatile uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
-can_frame_t {{ message.name|lower }}_msg = {
+volatile can_frame_t {{ message.name|lower }}_msg = {
     .mob = 0,
     .data = {{ message.name|lower }}_data,
     .dlc = {{ message.length }},
 };
 
-struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
+volatile struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 void can_send_{{ message.name|lower }}(void) {
     can_tools_{{ message.name|lower }}_pack(
@@ -34,9 +34,9 @@ void can_send_{{ message.name|lower }}(void) {
  * Receive messages
  */
 {% for message in rx_messages %}
-uint8_t {{ message.name|lower }}_data[{{ message.length }}];
+volatile uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
-can_frame_t {{ message.name|lower }}_msg = {
+volatile can_frame_t {{ message.name|lower }}_msg = {
     .mob = {{ mobs[message.name] }},
     .data = {{ message.name|lower }}_data,
 };
@@ -50,7 +50,7 @@ can_filter_t {{ message.name|lower }}_filter = {
     .mask = 0x7FF, // Exact match
 };
 
-struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
+volatile struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 int can_receive_{{ message.name|lower }}(void) {
     int rc = can_receive(&{{ message.name|lower }}_msg, {{ message.name|lower }}_filter);
