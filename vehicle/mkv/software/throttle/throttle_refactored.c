@@ -117,6 +117,107 @@ volatile bool send_can = false;
 
 
 //********************Functions*************************
+//*************ISRs*****************
+
+ISR(CAN_INT_vect) {
+	/*
+	   CAN Interupt
+	   Listens for CAN messages from the brakes,
+	   start button (through the dashboard), and panic
+	 */
+
+	// Brakelight
+	CANPAGE = (MOB_BRAKELIGHT << MOBNB0);
+	if (bit_is_set(CANSTMOB,RXOK)) {
+
+		//Gets the third value of of the message
+		gBrakeLightCan[0] = CANMSG;
+		gBrakeLightCan[1] = CANMSG;
+		gBrakeLightCan[2] = CANMSG;
+		gBrakeLightCan[3] = CANMSG;
+		gBrakeLightCan[4] = CANMSG;
+		gBrakeLightCan[5] = CANMSG;
+		gBrakeLightCan[6] = CANMSG;
+
+		if(gBrakeLightCan[2] == 0xFF) {   //if true, brake is activated
+			gFlag |= _BV(FLAG_BRAKE); // _BV(thing) = (1 << thing) 00000001
+		}
+
+		else if ((gThrottle1Out == 0x00 || gThrottle2Out == 0x00) && gBrakeLightCan[2] == 0x00) {
+			gFlag &= ~_BV(FLAG_BRAKE);
+		}
+
+		CANSTMOB = 0x00;
+		CAN_wait_on_receive(MOB_BRAKELIGHT,
+		                    CAN_ID_BRAKE_LIGHT,
+		                    CAN_LEN_BRAKE_LIGHT,
+		                    0xFF);
+	}
+
+	//Start button
+	CANPAGE = (MOB_DASHBOARD << MOBNB0);
+	if (bit_is_set(CANSTMOB,RXOK)) {
+		volatile uint8_t msg = CANMSG;
+
+		if (msg == 0xFF) {
+			gFlag |= _BV(FLAG_MOTOR_ON);
+			// PLED1_PORT |= _BV(PLED1);
+			PLED2_PORT ^= _BV(PLED2);
+		} else {
+			gFlag &= ~_BV(FLAG_MOTOR_ON);
+			PLED1_PORT ^= _BV(PLED1);
+		}
+
+		CANSTMOB = 0x00;
+		CAN_wait_on_receive(MOB_DASHBOARD,
+		                    CAN_ID_DASHBOARD,
+		                    CAN_LEN_DASHBOARD,
+		                    0xFF);
+	}
+
+	//Panic
+	CANPAGE = (MOB_PANIC << MOBNB0);
+	if (bit_is_set(CANSTMOB,RXOK)) {
+		volatile uint8_t msg = CANMSG;
+
+		if(msg == 0xFF) {
+			gFlag |= _BV(FLAG_PANIC);
+
+		} else {
+			gFlag &= ~_BV(FLAG_PANIC);
+		}
+
+		CANSTMOB = 0x00;
+		CAN_wait_on_receive(MOB_PANIC,
+		                    CAN_ID_PANIC,
+		                    CAN_LEN_PANIC,
+		                    0xFF);
+	}
+}
+
+ISR(PCINT0_vect) {
+	/*
+	   Checks if the shutdown circuit
+	   nodes are open or closed, and sets flags accordingly
+	 */
+	if(bit_is_clear(PINB,SS_IS)) {
+		gFlag |= _BV(FLAG_IS);
+	} else {
+		gFlag &= ~_BV(FLAG_IS);
+	}
+
+	if(bit_is_clear(PINB,SS_ESTOP)) {
+		gFlag |= _BV(FLAG_ESTOP);
+	} else {
+		gFlag &= ~_BV(FLAG_ESTOP);
+	}
+
+	if(bit_is_clear(PINB,SS_BOTS)) {
+		gFlag |= _BV(FLAG_BOTS);
+	} else {
+		gFlag &= ~_BV(FLAG_BOTS);
+	}
+}
 void timer0_callback(void) {
     send_can = true;
 }
