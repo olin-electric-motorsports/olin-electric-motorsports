@@ -39,11 +39,9 @@ tested.
 
 * _Getters_ and _setters_: Functions of these types are used to set the values
   of signals in a CAN message (like `set_bspd_brakelight_voltage(uint16_t
-  voltage)`), but these functions aren't strictly necessary and can be more
-  confusing, so we avoid them
+  voltage)`). These could be useful, but for now, we opt to use global variables
+  because they have a simpler implementation.
 * Message ID assignment: This could be a future goal, see __Future Work__ below
-
-## Design
 
 ## Usage
 
@@ -298,6 +296,21 @@ $ bazel build //vehicle/mkv:mkv.dbc
 
 Then we can access the DBC file in `bazel-bin/vehicle/mkv/mkv.dbc` and use it in
 Wireshark, BusMaster, or any other software that uses a DBC.
+
+## Concurrency
+
+__⚠️ Important Usage Note. ⚠️__
+
+The `can_send_{{ message }}` function must _not_ be called from an interrupt
+context. If it is, there can be unpredictable behavior. In general, special care
+should be taken around interrupts and concurrency. There is a global, `volatile`
+variable for the CAN data containing each of the signals, and this struct is
+used in the `can_send` function. Thus, if the `can_send` function happens in an
+interrupt that occured when a variable was in the middle of being updated, the
+data can become garbled.
+
+The `can_send` function is wrapped in atomic block, meaning that during its
+execution, no interrupts will occur.
 
 ## Future Work
 

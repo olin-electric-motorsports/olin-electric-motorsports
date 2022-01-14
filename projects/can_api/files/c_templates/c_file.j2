@@ -1,4 +1,5 @@
 #include "{{ header_file }}"
+#include <util/atomic.h>
 
 void can_init_{{ node.name }}(void) {
     can_init(BAUD_500KBPS);
@@ -8,9 +9,9 @@ void can_init_{{ node.name }}(void) {
  * Transmit messages
  */
 {% for message in tx_messages %}
-volatile uint8_t {{ message.name|lower }}_data[{{ message.length }}];
+uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
-volatile can_frame_t {{ message.name|lower }}_msg = {
+can_frame_t {{ message.name|lower }}_msg = {
     .mob = 0,
     .data = {{ message.name|lower }}_data,
     .dlc = {{ message.length }},
@@ -19,11 +20,17 @@ volatile can_frame_t {{ message.name|lower }}_msg = {
 volatile struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 void can_send_{{ message.name|lower }}(void) {
-    can_tools_{{ message.name|lower }}_pack(
-        {{ message.name|lower }}_data,
-        &{{ message.name|lower }},
-        {{ message.length }}
-    );
+    ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+        // We can be sure here that the CAN data struct won't change here
+
+        can_tools_{{ message.name|lower }}_pack(
+            {{ message.name|lower }}_data,
+            // We can safely discard the volatile qualifier because we are in an
+            // ATOMIC block, so the value will not be changed in an ISR
+            (const struct can_tools_{{ message.name|lower }}_t*) &{{ message.name|lower }},
+            {{ message.length }}
+        );
+    }
 
     can_send(&{{ message.name|lower }}_msg);
 }
@@ -34,9 +41,9 @@ void can_send_{{ message.name|lower }}(void) {
  * Receive messages
  */
 {% for message in rx_messages %}
-volatile uint8_t {{ message.name|lower }}_data[{{ message.length }}];
+uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
-volatile can_frame_t {{ message.name|lower }}_msg = {
+can_frame_t {{ message.name|lower }}_msg = {
     .mob = {{ mobs[message.name] }},
     .data = {{ message.name|lower }}_data,
 };
@@ -50,7 +57,7 @@ can_filter_t {{ message.name|lower }}_filter = {
     .mask = 0x7FF, // Exact match
 };
 
-volatile struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
+struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 int can_receive_{{ message.name|lower }}(void) {
     int rc = can_receive(&{{ message.name|lower }}_msg, {{ message.name|lower }}_filter);

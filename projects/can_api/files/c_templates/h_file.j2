@@ -9,8 +9,8 @@
 void can_init_{{ node.name }}(void);
 
 {% for message in tx_messages %}
-extern volatile uint8_t {{ message.name|lower }}_data[];
-extern volatile can_frame_t {{ message.name|lower }}_msg;
+extern uint8_t {{ message.name|lower }}_data[];
+extern can_frame_t {{ message.name|lower }}_msg;
 extern volatile struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 /*
@@ -25,9 +25,9 @@ void can_send_{{ message.name|lower }}(void);
 {% endfor %}
 
 {% for message in rx_messages %}
-extern volatile uint8_t {{ message.name|lower }}_data[];
-extern volatile can_frame_t {{ message.name|lower }}_msg;
-extern volatile struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
+extern uint8_t {{ message.name|lower }}_data[];
+extern can_frame_t {{ message.name|lower }}_msg;
+extern struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 int can_receive_{{ message.name|lower }}(void);
 
