@@ -11,7 +11,7 @@ publish:
           values:
             t: OK
             f: SHUTDOWN
-      - name: brake_voltage
+      - name: brake_pressure
         slice: 8 + 16
         unit:
           type: uint16_t

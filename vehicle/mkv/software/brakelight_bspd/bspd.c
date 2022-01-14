@@ -46,7 +46,7 @@ int main(void) {
     for (;;) {
         if (send_can) {
             brake_pressure = adc_read(BRAKE_PRESSURE_SENSE);
-            brakelight.brake_voltage = brake_pressure;
+            brakelight.brake_pressure = brake_pressure;
             can_send_brakelight();
             send_can = false;
         }
