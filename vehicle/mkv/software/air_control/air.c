@@ -57,8 +57,10 @@ static void set_fault(enum FaultCode the_fault) {
 /*
  * Interrupts
  */
+volatile bool send_can = false;
+
 void timer0_isr(void) {
-    can_send_air_control_critical();
+    send_can = true;
 }
 
 void pcint0_callback(void) {
@@ -352,6 +354,11 @@ int main(void) {
         if (run_1ms) {
             state_machine_run();
             run_1ms = false;
+        }
+
+        if (send_can) {
+            can_send_air_control_critical();
+            send_can = false;
         }
     }
 
