@@ -39,7 +39,7 @@
 #define PLED2_PORT PORTB
 #define PLED3 PB4
 #define PLED3_PORT PORTB
-// ^^ QUESTION: what are port macros/CAN MACros for?
+
 #define LED1 PB0 //orange
 #define LED2 PB1 //green
 #define EXT_LED_PORT PORTB
@@ -262,7 +262,6 @@ ISR(PCINT0_vect) {
 }
 
 //****************Initializers*****************
-// QUESTIONS: when are the inits called
 void initTimer(void) {
 	// Set up 8-bit timer in CTC mode
 	TCCR0A = _BV(WGM01);
@@ -394,7 +393,7 @@ void checkPanic(void) {
 
 void checkPlausibility(void) {
 
-	// QUESTION: What is this doing?
+	// compares the mapping of the two voltages 
 	if (gThrottle1Voltage * 50 > gThrottle2Voltage * 35 || gThrottle1Voltage * 55 < gThrottle2Voltage * 32) {
 		throttle10Counter += 1;
 	}
@@ -429,8 +428,7 @@ void readPots(void) {
 
 	ADMUX = _BV(REFS0); // Bit Value
 	ADMUX |= THROTTLE1_ADC_NUM;
-	//QUESTION: I still don't really understand what setting the bit means. = _BV vs. |= ?????
-	// I Confused :((((((((
+
 	ADCSRA |= _BV(ADSC); //Set bit value
 	loop_until_bit_is_clear(ADCSRA, ADSC);
 	uint16_t t1 = ADC;
@@ -458,8 +456,6 @@ void mapThrottle(void) {
 	// The right shift operator >> causes the bits of the left operand to be 
 	// shifted right by the number of positions specified by the right operand.
 
-	//QUESTION: what's the reason for shifting the bits. i dont have a good
-	// grasp on what >> is
 	uint16_t v1 = gThrottle1Voltage >> 2;
 	uint16_t v2 = gThrottle2Voltage >> 2;
 
@@ -489,7 +485,6 @@ void mapThrottle(void) {
 	gThrottle1In = map1;
 	gThrottle2In = map2;
 
-	// QUESTION: Are gThrottleout and in not the samee??
 	gThrottle1Out = gThrottle1In;
 	gThrottle2Out = gThrottle2In;
 

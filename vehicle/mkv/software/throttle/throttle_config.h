@@ -10,6 +10,9 @@ gpio_t DEBUG_LED1 = PC6;
 gpio_t DEBUG_LED2 = PB3;
 gpio_t DEBUG_LED3 = PB4;
 
+gpio_t LED1 = PB0; //orange
+gpio_t LED2 = PB1; //green
+
 gpio_t SS_ESTOP = PB5;
 gpio_t SS_IS = PB6;
 gpio_t SS_BOTS = PB7;
@@ -47,8 +50,14 @@ timer_cfg_s timer0_cfg = {
 #define CAN_MSG_DLC (5)
 uint8_t can_data_throttle[CAN_MSG_DLC] = { 0 };
 
-can_frame_t bspd_msg = {
+can_frame_t throttle_msg = {
     .id = 0xC,
+    .dlc = CAN_MSG_DLC,
+    .mob = 0,
+};
+
+can_frame_t mc_msg = {
+    .id = 0xC0,
     .dlc = CAN_MSG_DLC,
     .mob = 0,
 };

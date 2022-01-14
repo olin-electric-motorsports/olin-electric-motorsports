@@ -120,3 +120,291 @@ volatile bool send_can = false;
 void timer0_callback(void) {
     send_can = true;
 }
+
+void initMC(void) {
+	gCANMotorController[0] = 0;
+	gCANMotorController[1] = 0;
+	gCANMotorController[2] = 0;
+	gCANMotorController[3] = 0;
+	gCANMotorController[4] = 1; // anticlockwise
+	gCANMotorController[5] = 0;
+	gCANMotorController[6] = 0;
+	gCANMotorController[7] = 0;
+
+  mc_msg.data = gCANMotorController;
+
+	can_send(&mc_msg)
+}
+
+void mapThrottle(void) {
+
+
+	//Map ADC to 0-255
+	uint32_t map1;
+	uint32_t map2;
+
+	// The right shift operator >> causes the bits of the left operand to be 
+	// shifted right by the number of positions specified by the right operand.
+
+	uint16_t v1 = gThrottle1Voltage >> 2;
+	uint16_t v2 = gThrottle2Voltage >> 2;
+
+	uint16_t t1h = throttle1_HIGH >> 2;
+	uint16_t t1l = throttle1_LOW >> 2;
+	uint16_t t2h = throttle2_HIGH >> 2;
+	uint16_t t2l = throttle2_LOW >> 2;
+
+	//If the voltage is out of range, set to min or max
+	if (v1 < t1l) {
+		v1 = t1l;
+	}
+	else if (v1 > t1h) {
+		v1 = t1h;
+	}
+
+	if (v2 < t2l) {
+		v2 = t2l;
+	}
+	else if (v2 > t2h) {
+		v2 = t2h;
+	}
+
+	//Map from 0-255
+	map1 = ((v1 - t1l) * 255) / (t1h - t1l);
+	map2 = ((v2 - t2l) * 255) / (t2h - t2l);
+	gThrottle1In = map1;
+	gThrottle2In = map2;
+
+	gThrottle1Out = gThrottle1In;
+	gThrottle2Out = gThrottle2In;
+
+	/*
+	   //---------Map based on drive mode------------
+	   if (gDriveMode == 0) { //error, default to standard
+	   gThrottle1Out = gThrottle1In;
+	   gThrottle2Out = gThrottle2In;
+	   }
+	   else if (gDriveMode == 1) { //standard
+	   gThrottle1Out = gThrottle1In;
+	   gThrottle2Out = gThrottle2In;
+	   }
+	   else if (gDriveMode == 2) { //acceleration
+	   gThrottle1Out = gThrottle1In;
+	   gThrottle2Out = gThrottle2In;
+	   }
+	   else if (gDriveMode == 3) { //skid pad
+	   if (gThrottle1In < 128) {
+	    gThrottle1Out = gThrottle1In;
+	    gThrottle2Out = gThrottle2In;
+	   }
+	   else {
+	    gThrottle1Out = 128 + ((gThrottle1In - 128) >> 1);
+	    gThrottle2Out = 128 + ((gThrottle2In - 128) >> 1);
+	   }
+	   }
+	   else if (gDriveMode == 4) { //autocross
+	   gThrottle1Out = gThrottle1In;
+	   gThrottle2Out = gThrottle2In;
+	   }
+	   else if (gDriveMode == 5) { //endurance
+	   gThrottle1Out = gThrottle1In;
+	   gThrottle2Out = gThrottle2In;
+	   }
+	 */
+}
+
+void checkPlausibility(void) {
+
+	// compares the mapping of the two voltages 
+	if (gThrottle1Voltage * 50 > gThrottle2Voltage * 35 || gThrottle1Voltage * 55 < gThrottle2Voltage * 32) {
+		throttle10Counter += 1;
+	}
+	//else if ((gThrottle1Voltage > (throttle1_HIGH + ADC_ERROR)) || gThrottle1Voltage < throttle1_LOW - ADC_ERROR) {
+	else if (gThrottle1Voltage > 1022 || gThrottle1Voltage < 16) {
+		throttle10Counter += 1;
+	}
+	//else if ((gThrottle2Voltage > (throttle2_HIGH + ADC_ERROR)) || gThrottle2Voltage < throttle2_LOW - ADC_ERROR) {
+	else if (gThrottle2Voltage > 1022 || gThrottle2Voltage < 16) {
+		throttle10Counter += 1;
+	}
+	else {
+		throttle10Counter = 0;
+	}
+
+	if (throttle10Counter > throttle10Ticks) {
+		gFlag |= _BV(FLAG_THROTTLE_10);
+	}
+	else {
+		gFlag &= ~_BV(FLAG_THROTTLE_10);
+	}
+}
+
+void storeThrottle(void) {
+
+	// Reads potentiometers, maps voltage for them from 0 to 255,
+	// Stores rolling sum value into array.
+
+  gThrottle1Voltage = adc_read(THROTTLE1_SENSE);
+  gThrottle2Voltage = adc_read(THROTTLE2_SENSE);
+	mapThrottle();
+	checkPlausibility();
+
+	uint16_t new = (gThrottle1Out + gThrottle2Out) >> 1;
+	uint8_t old = gThrottleArray[gThrottleArrayIndex];
+
+	gRollingSum -= old; 
+	gRollingSum += new;
+
+	gThrottleArray[gThrottleArrayIndex] = new;
+
+	gThrottleArrayIndex = gThrottleArrayIndex + 1;
+
+	if (gThrottleArrayIndex == ROLLING_AVG_SIZE) {
+		gThrottleArrayIndex = 0;
+	}
+
+	// sprintf(uart_buf, "NEW: %u", new);
+	// LOG_println(uart_buf, strlen(uart_buf));
+	// sprintf(uart_buf, "OLD: %u", old);
+	// LOG_println(uart_buf, strlen(uart_buf));
+}
+
+void getAverage(void) {
+	uint32_t temp = gRollingSum;
+	temp /= ROLLING_AVG_SIZE;
+	gThrottleOut = temp;
+}
+
+// QUESTION: Is there a way to replace this with something?
+void checkPanic(void) {
+	if(bit_is_set(gFlag,FLAG_PANIC)) {
+		gThrottle1Out = 0;
+		gThrottle2Out = 0;
+		gThrottleOut = 0;
+		// PLED1_PORT ^= _BV(PLED1);
+		// PLED2_PORT ^= _BV(PLED2);
+		// PLED3_PORT ^= _BV(PLED3);
+	}
+}
+
+void printThrottle1(void) {
+	char uart_buf[64];
+	sprintf(uart_buf, "tout: %d", gThrottleOut);
+	LOG_println(uart_buf, strlen(uart_buf));
+
+	sprintf(uart_buf, "v1: %d", gThrottle1Voltage);
+	LOG_println(uart_buf, strlen(uart_buf));
+
+	sprintf(uart_buf, "v2: %d", gThrottle2Voltage);
+	LOG_println(uart_buf, strlen(uart_buf));
+
+	sprintf(uart_buf, " ");
+	LOG_println(uart_buf, strlen(uart_buf));
+}
+
+void sendCanMessages(int viewCan){
+	//FOR TESTING ONLY
+	//gFlag |= _BV(FLAG_MOTOR_ON);
+
+	gCANMessage[0] = bit_is_set(gFlag, FLAG_MOTOR_ON) ? gThrottleOut : 0;
+	gCANMessage[1] = bit_is_set(gFlag,FLAG_BOTS) ? 0xFF : 0x00;
+	gCANMessage[2] = bit_is_set(gFlag,FLAG_IS) ? 0xFF : 0x00;
+	gCANMessage[3] = bit_is_set(gFlag,FLAG_ESTOP) ? 0xFF : 0x00;
+
+	if (bit_is_set(gFlag, FLAG_THROTTLE_10) || bit_is_set(gFlag, FLAG_BRAKE)) {
+		gCANMessage[0] = 0;
+	}
+
+  throttle_msg.data = gCANMessage;
+  can_send(&throttle_msg);
+
+	// Send out Motor controller info
+	// REMAP
+
+	uint16_t thrott = bit_is_clear(gFlag, FLAG_THROTTLE_10) ? (uint16_t) gThrottleOut : 0;
+	uint16_t mc_remap = (uint16_t)(thrott * 9);
+	gCANMotorController[0] = mc_remap;      //torque command
+	gCANMotorController[1] = mc_remap >> 8; //torque command
+	gCANMotorController[2] = 0x00;      //speed command (unused)
+	gCANMotorController[3] = 0x00;      //speed command (unused)
+	gCANMotorController[4] = 0x00;      //direction command (0=reverse,,,1=forward)
+	gCANMotorController[5] = bit_is_set(gFlag,FLAG_MOTOR_ON) ? 0x01 : 0x00; //inverter on or off
+	gCANMotorController[6] = 0x00;      // commanded torque limit, if 0, uses EEPROM set value
+	gCANMotorController[7] = 0x00;      // commanded torque limit, ^
+
+	if (bit_is_set(gFlag, FLAG_THROTTLE_10) || bit_is_set(gFlag, FLAG_BRAKE) || bit_is_clear(gFlag, FLAG_MOTOR_ON)) {
+		gCANMotorController[0] = 0x00;
+		gCANMotorController[1] = 0x00;
+		gCANMotorController[5] = 0x00;
+	}
+
+  mc_msg.data = gCANMotorController;
+  can_send(&mc_msg);
+
+
+	if(viewCan) {
+		// char msg1[128];
+		// char msg2[128];
+		// sprintf(msg1,"CAN message one to all:\nThrottle:%d\nSteering:%d\nBOTS:%d\nInertia:%d\nEstop:%d",
+		//         gCANMessage[0],gCANMessage[1],gCANMessage[2],gCANMessage[3],gCANMessage[4]);
+		// LOG_println(msg1,strlen(msg1));
+		// sprintf(msg2,"CAN message to motorcontroller:\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d",
+		//         gCANMotorController[0],gCANMotorController[1],gCANMotorController[2],gCANMotorController[3],
+		//         gCANMotorController[4],gCANMotorController[5],gCANMotorController[6],gCANMotorController[7]);
+		// LOG_println(msg2,strlen(msg2));
+
+	}
+}
+
+int main(void) {
+    sei();
+    can_init(BAUD_500KBPS);
+    adc_init();
+    timer_init(&timer0_cfg);
+
+    gpio_set_mode(DEBUG_LED1, OUTPUT);
+    gpio_set_mode(DEBUG_LED2, OUTPUT);
+    gpio_set_mode(DEBUG_LED3, OUTPUT);
+    gpio_set_mode(LED1, OUTPUT);
+    gpio_set_mode(LED2, OUTPUT);
+    
+
+    gpio_set_mode(SS_ESTOP, INPUT);
+    gpio_set_mode(SS_IS, INPUT);
+    gpio_set_mode(SS_BOTS, INPUT);
+
+    gpio_enable_interrupt(SS_ESTOP);
+    gpio_enable_interrupt(SS_IS);
+    gpio_enable_interrupt(SS_BOTS);
+
+    initMC();
+
+    CAN_wait_on_receive(MOB_DASHBOARD,
+                    CAN_ID_DASHBOARD,
+                    CAN_LEN_DASHBOARD,
+                    0xFF);
+
+    CAN_wait_on_receive(MOB_BRAKELIGHT,
+                        CAN_ID_BRAKE_LIGHT,
+                        CAN_LEN_BRAKE_LIGHT,
+                        0xFF);
+
+    CAN_wait_on_receive(MOB_PANIC,
+                        CAN_ID_PANIC,
+                        CAN_LEN_PANIC,
+                        0xFF);
+    for (;;) {
+      if (send_can) {
+        storeThrottle(); // Stores rolling sum of throttle outputs into array.
+        getAverage(); // gets average of throttle through rolling sum and rolling size.
+        checkPanic();
+
+        printThrottle1();
+        sendCanMessages(0);
+
+        send_can = false;
+
+
+        }
+    }
+}
