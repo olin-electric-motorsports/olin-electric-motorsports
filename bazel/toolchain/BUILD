@@ -6,4 +6,6 @@ package(
 
 create_avr_toolchain("atmega16m1", "4000000")
 
+create_avr_toolchain("atmega64m1", "4000000")
+
 create_avr_toolchain("atmega328p", "16000000")

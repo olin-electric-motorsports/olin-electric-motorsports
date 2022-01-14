@@ -6,6 +6,8 @@
 #define MUX2 (0x92)
 #define MUX3 (0x94)
 
+#define NUM_MUXES (3)
+
 #define MUX_ENABLE (true)
 #define MUX_DISABLE (false)
 

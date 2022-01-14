@@ -23,8 +23,7 @@ cc_firmware(
         "//libs/timer",
         "//vehicle/mkv/software/bms/ltc6811",
     ],
-    # TODO Add ATmega64m1 constraint
-    target_compatible_with = ["//bazel/constraints:atmega16m1"],
+    target_compatible_with = ["//bazel/constraints:atmega64m1"],
 )
 
 package(

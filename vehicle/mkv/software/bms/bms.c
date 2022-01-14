@@ -111,7 +111,20 @@ void voltage_task(void) {
 }
 
 void temperature_task(void) {
+    for (uint8_t mux = 0; mux < NUM_MUXES; mux++) {
+        // For each mux, 
+        for (uint8_t ch = 0; ch < NUM_MUX_CHANNELS; ch++) {
+            // TODO: mux is the wrong arg, needs to be mux addr
+            configure_mux(NUM_ICS, ICS, mux, true, ch);
 
+            // read aux gpio voltage for temperature
+        }
+    }
+
+    // Finally, disable all multiplexers
+    configure_mux(NUM_ICS, ICS, MUX1, false, 0);
+    configure_mux(NUM_ICS, ICS, MUX2, false, 0);
+    configure_mux(NUM_ICS, ICS, MUX3, false, 0);
 }
 
 void openwire_task(void) {

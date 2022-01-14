@@ -17,6 +17,14 @@ platform(
 )
 
 platform(
+    name = "atmega64m1_avr",
+    constraint_values = [
+        "//bazel/constraints:atmega64m1",
+    ],
+    parents = [":avr_common"],
+)
+
+platform(
     name = "atmega328p_avr",
     constraint_values = [
         "//bazel/constraints:atmega328p",
