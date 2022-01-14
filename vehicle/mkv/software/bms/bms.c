@@ -73,35 +73,41 @@ bail:
 static void configure_ics(void) {
     LTC6811_init_cfg(NUM_ICS, ICS);
 
-    bool gpios[5] = { false };
-    bool dcc[12] = { false };
-    bool dcto[4] = { false };
-
     for (uint8_t ic = 0; ic < NUM_ICS; ic ++) {
-        LTC6811_set_cfgr(
-            ic,
-            ICS,
-            false,
-            false,
-            gpios,
-            dcc,
-            dcto,
-            UNDERVOLTAGE_THRESHOLD,
-            OVERVOLTAGE_THRESHOLD
-        );
+        // Configure over/undervoltage thresholds for each chip
+        LTC6811_set_cfgr_uv(ic, ICS, UNDERVOLTAGE_THRESHOLD);
+        LTC6811_set_cfgr_ov(ic, ICS, OVERVOLTAGE_THRESHOLD);
     }
 
-    LTC68811_wrcfgr(NUM_ICS, ICS); // TODO
+    // Write the configured values to the chips
+    LTC6811_wrcfg(NUM_ICS, ICS);
 }
 
 void voltage_task(void) {
-
     // Start cell voltage ADC conversions PLUS Sum of Cells Conversion
     LTC6811_adcvsc(MD_7KHZ_3KHZ, DCP_ENABLED);
 
     // Blocks until all ADCs are done being read
-    (void)LTC6811_pollAdc();
+    (void)LTC6811_pollAdc(); // Ignore return value because we don't care how
+                             // long it took
 
+    wakeup_idle(NUM_ICS);
+
+    // Stores the voltages in the c_codes variable
+    int error = LTC6811_rdcv(SEL_ALL_REG, NUM_ICS, ICS);
+
+    if (error) {
+        // Do something
+    }
+
+    uint16_t voltage = 0;
+
+    // Sum together all the voltages of the cells
+    for (uint8_t ic; ic < NUM_ICS; ic++) {
+        voltage += (ICS[ic].stat.stat_codes[0] * 0.0001 * 20);
+    }
+
+    bms_core.pack_voltage = voltage;
 }
 
 void temperature_task(void) {

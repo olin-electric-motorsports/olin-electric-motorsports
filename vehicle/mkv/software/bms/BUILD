@@ -9,8 +9,12 @@ cc_firmware(
     srcs = [
         "bms.c",
         "bms_config.h",
+
+        # TODO: Move these to a diff folder
         "bsp.c",
         "bsp.h",
+        "mux.c",
+        "mux.h",
     ],
     deps = [
         ":can_api",
