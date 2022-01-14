@@ -13,18 +13,14 @@
 volatile uint16_t brake_pressure = 0;
 volatile bool send_can = false;
 
-volatile uint8_t shutdown_sense_activated = 0;
-volatile uint8_t brakelight_activated = 0;
-volatile uint8_t bspd_current_sense = 0;
-
 void timer0_callback(void) {
     send_can = true;
 }
 
 void pcint1_callback(void) {
-    brakelight.brake_gate = gpio_get_pin(BRAKELIGHT_GATE);
-    brakelight.bspd_current_sense = gpio_get_pin(BSPD_CURRENT_SENSE);
-    brakelight.status = gpio_get_pin(SHUTDOWN_SENSE_BSPD);
+    brakelight.brake_gate = !!gpio_get_pin(BRAKELIGHT_GATE);
+    brakelight.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_SENSE);
+    brakelight.status = !!gpio_get_pin(SHUTDOWN_SENSE_BSPD);
 }
 
 int main(void) {
