@@ -1,9 +1,9 @@
 #include <stdint.h>
 
-#define OVERVOLTAGE (1)
+#define OVERVOLTAGE  (1)
 #define UNDERVOLTAGE (2)
 
-#define OVERTEMPERATURE (1)
+#define OVERTEMPERATURE  (1)
 #define UNDERTEMPERATURE (2)
 
 /*

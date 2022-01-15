@@ -19,6 +19,14 @@ enum fault_code {
 // voltages, auxiliary readings (i.e. temperatures), and configs
 cell_asic ICS[NUM_ICS];
 
+// Array of mux addresses
+uint8_t MUXES[3] = { MUX1, MUX2, MUX3 };
+
+struct ErrorMetrics {
+    uint16_t cell_pec_errors;
+    uint16_t aux_pec_errors;
+} metrics;
+
 static void set_fault(enum fault_code the_fault) {
     if (bms_core.fault_state == FAULT_NONE) {
         bms_core.fault_state = the_fault;
@@ -42,7 +50,7 @@ static int initial_checks(void) {
     int rc = 0;
 
     LTC6811_diagn();
-    
+
     for (uint8_t ic; ic < NUM_ICS; ic++) {
         if (ICS[ic].stat.mux_fail[0] == 1) {
             set_fault(FAULT_DIAGNOSTICS_FAIL);
@@ -73,7 +81,7 @@ bail:
 static void configure_ics(void) {
     LTC6811_init_cfg(NUM_ICS, ICS);
 
-    for (uint8_t ic = 0; ic < NUM_ICS; ic ++) {
+    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         // Configure over/undervoltage thresholds for each chip
         LTC6811_set_cfgr_uv(ic, ICS, UNDERVOLTAGE_THRESHOLD);
         LTC6811_set_cfgr_ov(ic, ICS, OVERVOLTAGE_THRESHOLD);
@@ -96,28 +104,58 @@ void voltage_task(void) {
     // Stores the voltages in the c_codes variable
     int error = LTC6811_rdcv(SEL_ALL_REG, NUM_ICS, ICS);
 
+    // TODO
     if (error) {
+        metrics.cell_pec_errors++;
         // Do something
     }
 
-    uint16_t voltage = 0;
+    uint16_t pack_voltage = 0;
 
     // Sum together all the voltages of the cells
     for (uint8_t ic; ic < NUM_ICS; ic++) {
-        voltage += (ICS[ic].stat.stat_codes[0] * 0.0001 * 20);
+        pack_voltage += (ICS[ic].stat.stat_codes[0]);
     }
 
-    bms_core.pack_voltage = voltage;
+    bms_core.pack_voltage = pack_voltage;
 }
 
 void temperature_task(void) {
+    uint8_t error = 0;
+
     for (uint8_t mux = 0; mux < NUM_MUXES; mux++) {
-        // For each mux, 
+        // For each mux,
         for (uint8_t ch = 0; ch < NUM_MUX_CHANNELS; ch++) {
-            // TODO: mux is the wrong arg, needs to be mux addr
-            configure_mux(NUM_ICS, ICS, mux, true, ch);
+            configure_mux(NUM_ICS, ICS, MUXES[mux], true, ch);
 
             // read aux gpio voltage for temperature
+            LTC6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1);
+            (void)LTC6811_pollAdc();
+
+            int error = LTC6811_rdaux(AUX_CH_ALL, NUM_ICS, ICS);
+
+            // TODO
+            if (error) {
+                metrics.cell_pec_errors++;
+                // Do something
+            }
+
+            uint32_t temperature = 0;
+
+            for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+                // Use 0 as the a_codes index for GPIO1 channel
+                temperature = ICS[ic].aux.a_codes[0];
+
+                // Using negative-temperature-coefficient (NTC) thermistors, so
+                // comparisons are reversed
+                if (temperature < OVERTEMPERATURE_THRESHOLD) {
+                    set_fault(FAULT_OVERTEMPERATURE);
+                } else if (temperature > UNDERTEMPERATURE_THRESHOLD) {
+                    set_fault(FAULT_UNDERTEMPERATURE);
+                }
+            }
+
+            bms_core.temperature = temperature_voltage;
         }
     }
 
@@ -127,17 +165,15 @@ void temperature_task(void) {
     configure_mux(NUM_ICS, ICS, MUX3, false, 0);
 }
 
-void openwire_task(void) {
-
-}
+void openwire_task(void) {}
 
 /*
  * Interrupts
  */
-static volatile bool run_1ms = false;
+static volatile bool run_10ms = false;
 
 void timer0_isr(void) {
-    run_1ms = true;
+    run_10ms = true;
 }
 
 int main(void) {
@@ -167,21 +203,32 @@ int main(void) {
     // Turn off GENERAL_LED to indicate checks passed
     gpio_clear_pin(GENERAL_LED);
 
-    // configure_ics();
+    configure_ics();
+
     sei();
 
     while (true) {
-        if (run_1ms) {
+        // Tracks the number of times the 10ms loop has been run
+        uint8_t loop_counter = 0;
+
+        if (run_10ms) {
             wakeup_sleep(NUM_ICS);
 
             voltage_task();
             temperature_task();
             openwire_task();
 
-            // bms_core.pack_voltage = get_pack_voltage(NUM_ICS, ICS);
-            // bms_core.temperature = get_pack_temperature(NUM_ICS, ICS);
-
             can_send_bms_core();
+
+            if (loop_counter == 25) {
+                // Occurs at 4Hz, every 250ms
+                can_send_bms_voltages();
+                can_send_bms_temperatures();
+
+                loop_counter = 0;
+            }
+
+            loop_counter++;
         }
     }
 
@@ -189,5 +236,9 @@ fault:
     gpio_set_pin(BMS_RELAY_LSD);
     gpio_set_pin(FAULT_LED);
 
-    while (true);
+    while (true) {
+        if (run_10ms) {
+            can_send_bms_core();
+        }
+    };
 }

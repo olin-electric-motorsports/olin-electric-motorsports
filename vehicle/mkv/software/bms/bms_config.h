@@ -1,17 +1,21 @@
+#include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
-#include "libs/can/api.h"
 
 /*
  * Macros
  */
-#define NUM_ICS (10) // TODO: Number of ICs in the daisy chain
-#define NUM_CELLS (16) // Number of cells that _can_ be measured (we only measure 12)
+#define NUM_ICS (12) // TODO: Number of ICs in the daisy chain
+#define NUM_CELLS \
+    (16) // Number of cells that _can_ be measured (we only measure 12)
 #define NUM_TEMPS (20) // Number of temperature sensors per segment
 
 // TODO verify these
-#define OVERVOLTAGE_THRESHOLD (42000) // 4.2V
+#define OVERVOLTAGE_THRESHOLD  (42000) // 4.2V
 #define UNDERVOLTAGE_THRESHOLD (30000) // 3.0V
+
+#define OVERTEMPERATURE_THRESHOLD  (728) // 60 degC
+#define UNDERTEMPERATURE_THRESHOLD (7384) // 0 degC // TODO: confirm this
 
 // Muxes
 #define NUM_MUXES (3)
@@ -35,31 +39,28 @@ gpio_t SPI_CS = PB6;
 /*
  * SPI
  */
-spi_cfg_s spi_cfg = {
-    .interrupt_enable = false,
-    .data_order = LSB;
-    .mode = MAIN;
-    .polarity = FALLING_RISING;
-    .phase = SETUP_SAMPLE;
-    .clock_rate = F_OSC_DIV_4;
-    cs_pin_overide = &SPI_CS; // Set as void to use default pins
-    pin_redirect = false;
+spi_cfg_s spi_cfg = { .interrupt_enable = false, .data_order = LSB;
+.mode = MAIN;
+.polarity = FALLING_RISING;
+.phase = SETUP_SAMPLE;
+.clock_rate = F_OSC_DIV_4;
+cs_pin_overide = &SPI_CS; // Set as void to use default pins
+pin_redirect = false;
 }
-
 
 /*
  * Timer
  */
 void timer0_isr(void);
 
-// ~1ms / 1kHz tick timer
+// ~10ms / 100 Hz tick timer
 timer_cfg_s timer0_cfg = {
     .timer = TIMER0,
     .timer0_mode = TIMER0_MODE_CTC,
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
-        .output_compare_match = 4,
+        .output_compare_match = 39,
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer0_isr,
