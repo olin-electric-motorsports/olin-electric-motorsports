@@ -244,8 +244,6 @@ void mapThrottle(void) {
 	uint32_t map1;
 	uint32_t map2;
 
-	// The right shift operator >> causes the bits of the left operand to be 
-	// shifted right by the number of positions specified by the right operand.
 
 	uint16_t v1 = gThrottle1Voltage >> 2;
 	uint16_t v2 = gThrottle2Voltage >> 2;
