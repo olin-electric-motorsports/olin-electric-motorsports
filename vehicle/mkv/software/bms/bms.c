@@ -6,6 +6,16 @@
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
+/* TODO
+ *   State machine
+ *     INIT
+ *     IDLE: Maybe if the car is off but the board is powered?
+ *     ACTIVE
+ *     CHARGING
+ *     FAULT
+ *   Do not do BMS if car is off (TS off? LV off?)
+ */
+
 enum fault_code {
     FAULT_NONE = 0x00,
     FAULT_UNDERVOLTAGE,
@@ -22,12 +32,9 @@ cell_asic ICS[NUM_ICS];
 // Array of mux addresses
 uint8_t MUXES[3] = { MUX1, MUX2, MUX3 };
 
-struct ErrorMetrics {
-    uint16_t cell_pec_errors;
-    uint16_t aux_pec_errors;
-} metrics;
-
 static void set_fault(enum fault_code the_fault) {
+    gpio_clear_pin(BMS_RELAY_LSD);
+
     if (bms_core.fault_state == FAULT_NONE) {
         bms_core.fault_state = the_fault;
     }
@@ -111,10 +118,29 @@ void voltage_task(void) {
     }
 
     uint16_t pack_voltage = 0;
+    uint32_t uv = 0;
+    uint32_t ov = 0;
 
-    // Sum together all the voltages of the cells
+    // Sum together all the voltages of the cells and check over/under voltage
+    // conditions
     for (uint8_t ic; ic < NUM_ICS; ic++) {
-        pack_voltage += (ICS[ic].stat.stat_codes[0]);
+        pack_voltage += ICS[ic].stat.stat_codes[0];
+
+        // Odd bits of the ST register are used for undervoltage flags
+        uv = (ICS[ic].st.flags[0] & 0x55)
+             | (ICS[ic].st.flags[1] & 0x55)
+             | (ICS[ic].st.flags[2] & 0x55);
+
+        // Even bits of the ST register are used for overvoltage flags
+        ov = (ICS[ic].st.flags[0] & 0xAA)
+             | (ICS[ic].st.flags[1] & 0xAA)
+             | (ICS[ic].st.flags[2] & 0xAA);
+
+        if (uv > 0) {
+            set_fault(FAULT_UNDERVOLTAGE);
+        } else if (uv > 0) {
+            set_fault(FAULT_OVERVOLTAGE);
+        }
     }
 
     bms_core.pack_voltage = pack_voltage;
@@ -165,7 +191,15 @@ void temperature_task(void) {
     configure_mux(NUM_ICS, ICS, MUX3, false, 0);
 }
 
-void openwire_task(void) {}
+void openwire_task(void) {
+    // Run open wire test on all cells
+    LTC6811_run_openwire_single(NUM_ICS, ICS);
+
+    long open_wire;
+    for (uint8_t ic; ic < NUM_ICS; ic++) {
+        open_wire = ICS[ic].system_open_wire;
+    }
+}
 
 /*
  * Interrupts
@@ -200,10 +234,14 @@ int main(void) {
         goto fault;
     }
 
+    configure_ics();
+
     // Turn off GENERAL_LED to indicate checks passed
     gpio_clear_pin(GENERAL_LED);
 
-    configure_ics();
+    // Close the BMS shutdown circuit relay
+    // TODO: Unless charging
+    gpio_set_pin(BMS_RELAY_LSD);
 
     sei();
 
@@ -233,7 +271,7 @@ int main(void) {
     }
 
 fault:
-    gpio_set_pin(BMS_RELAY_LSD);
+    gpio_clear_pin(BMS_RELAY_LSD);
     gpio_set_pin(FAULT_LED);
 
     while (true) {
