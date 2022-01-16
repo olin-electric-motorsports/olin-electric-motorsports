@@ -75,11 +75,26 @@ static int initial_checks(void) {
     // read all voltages
     voltage_task();
 
+    if (bms_core.fault_state) {
+        rc = 1;
+        goto bail;
+    }
+
     // read all temperatures
     temperature_task();
 
+    if (bms_core.fault_state) {
+        rc = 1;
+        goto bail;
+    }
+
     // check for open-circuit
     openwire_task();
+
+    if (bms_core.fault_state) {
+        rc = 1;
+        goto bail;
+    }
 
 bail:
     return rc;
