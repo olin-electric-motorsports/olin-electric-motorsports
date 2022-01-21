@@ -11,14 +11,13 @@
 
 /* TODO
  *
- * - Make sure CAN variables are volatile
  * - Verify initial conditions and correct/fault conditions of all GPIOs
  * - In FAULT state, should we clear PRECHARGE_CTL and AIR_N_LSD?
  * - Should we be able to recover from any faults? Which ones? How?
  */
 
 enum State {
-    INIT,
+    INIT = 0,
     IDLE,
     SHUTDOWN_CIRCUIT_CLOSED,
     PRECHARGE,
@@ -194,35 +193,42 @@ static void state_machine_run(void) {
             }
         } break;
         case SHUTDOWN_CIRCUIT_CLOSED: {
-            // Double check that air closed
-            //             uint32_t now = get_time();
-            //
-            //             do {
-            //                 // nothing--state will be changed in an interrupt
-            //             } while (get_time() - now < 200); // Wait 200ms
-            //
-            //             if (air_control_critical.state ==
-            //             SHUTDOWN_CIRCUIT_CLOSED) {
-            //                 air_control_critical.state = FAULT;
-            //             }
+            timer_set = get_time();
+
+            if (get_time() - timer_set < 200) {
+                if (gpio_get_pin(AIR_N_WELD_DETECT)) {
+                    air_control_critical.state = PRECHARGE;
+                    return;
+                }
+            } else {
+                if (!gpio_get_pin(AIR_N_WELD_DETECT)) {
+                    // The AIR_N should have closed by now, so if not, throw a
+                    // fault
+                    set_fault(FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                    return;
+                }
+            }
         } break;
         case PRECHARGE: {
             // Start precharge
             gpio_set_pin(PRECHARGE_CTL);
 
+            // Get pack voltage to compare with MC voltage
             int16_t pack_voltage = 0;
-            int rc = get_bms_voltage(&pack_voltage);
+            int16_t motor_controller_voltage = 0;
+            int rc;
+
+            rc = get_bms_voltage(&pack_voltage);
 
             if (rc != 0) {
                 set_fault(FAULT_CAN_BMS_TIMEOUT);
                 return;
             }
 
-            int16_t motor_controller_voltage = 0;
+            // static uint32_t now = get_time();
+            timer_set = get_time();
 
-            uint32_t now = get_time();
-
-            do {
+            if (get_time() - timer_set < 2000) {
                 rc = get_motor_controller_voltage(&motor_controller_voltage);
                 if (rc != 0) {
                     set_fault(FAULT_CAN_MC_TIMEOUT);
@@ -232,21 +238,17 @@ static void state_machine_run(void) {
                 int16_t diff = pack_voltage - motor_controller_voltage;
 
                 if (diff > (PRECHARGE_THRESHOLD * pack_voltage)) {
-                    rc = 0;
-                    break;
+                    gpio_set_pin(AIR_N_LSD); // Close AIR_N
+                    gpio_clear_pin(PRECHARGE_CTL); // Close precharge relay
+                    air_control_critical.state = TS_ACTIVE;
                 } else {
-                    rc = 1;
+                    return;
                 }
-            } while (get_time() - now < 2000);
-
-            if (rc == 1) {
+            } else {
+                // 2000 ms (2sec) have elapsed and the motor controller hasn't
+                // reached the appropriate voltage, so precharge failed
                 set_fault(FAULT_PRECHARGE_FAIL);
-                return;
             }
-
-            gpio_set_pin(AIR_N_LSD); // Close AIR_N
-            gpio_clear_pin(PRECHARGE_CTL);
-            air_control_critical.state = TS_ACTIVE;
         } break;
         case TS_ACTIVE: {
             // If any of the shutdown nodes open, the SS_TSMS will trigger as
@@ -277,10 +279,11 @@ static void state_machine_run(void) {
 
             // Wait for 2 seconds while the motor controller discharges
             uint32_t now = get_time();
+            timer_set = get_time();
 
-            do {
-                // nothing
-            } while (get_time() - now < 2000); // Wait 2s
+            if (get_time() - timer_set < 2000) {
+                return;
+            }
 
             int16_t mc_voltage;
             int rc = get_motor_controller_voltage(&mc_voltage);
@@ -293,7 +296,8 @@ static void state_machine_run(void) {
             if (mc_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW) {
                 air_control_critical.state = IDLE;
             } else {
-                air_control_critical.state = FAULT;
+                set_fault(FAULT_DISCHARGE_FAIL);
+                return;
             }
         } break;
         case FAULT: {
