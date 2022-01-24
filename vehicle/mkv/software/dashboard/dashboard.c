@@ -73,7 +73,7 @@ ISR(CAN_INT_vect){
         }
         else {
             HV_STATE = false;
-            READY2DRIVE = false; // Disable R2D
+            READY2DRIVE = false; // Disable RTD
             gpio_clear_pin(HV_LED); //clear HV LED
             buzzer_counter = 0; // reset counter for next RTD cycle
         }
