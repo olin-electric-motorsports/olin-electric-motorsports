@@ -4,7 +4,7 @@
     Function: Responsible for AMS and IMD LED Indicators - DONE
                 -listening for CAN messages and controlling LED appropriately
             : Start button + LED - DONE
-                - based on input off of the physical start button before entering R2D
+                - based on input off of the physical start button before entering RTD
             : Interface with LED Bars Boards - TODO
                 - listening for CAN messages and outputting over I2C
             : Implement other LEDs (brake, LV, HV) - DONE
@@ -25,7 +25,7 @@
 volatile bool START_BUTTON_STATE;
 volatile bool HV_STATE;
 volatile bool BRAKE_PRESSED;
-volatile bool READY2DRIVE;
+volatile bool READYTODRIVE;
 
 volatile bool send_can;
 
@@ -37,7 +37,7 @@ int steering_pos;
 ISR(CAN_INT_vect){
     CANPAGE = (BRAKELIGHT_MBOX << MOBNB0);
 
-    //Brakelight message for Brakelight LED and Brake status for Ready2Drive check
+    //Brakelight message for Brakelight LED and Brake status for ReadyToDrive check
     if  (!can_poll_receive(&BRAKELIGHT_CAN_FRAME)){
         can_receive(&BRAKELIGHT_CAN_FRAME, BRAKELIGHT_FILTER);
         if (BRAKELIGHT_CAN_FRAME.data[4] == 0xFF) {
@@ -63,7 +63,7 @@ ISR(CAN_INT_vect){
         }
     }
 
-    // AIR Control Critical message for HV LED and disabling Ready2Drive if HV goes down
+    // AIR Control Critical message for HV LED and disabling ReadyToDrive if HV goes down
     CANPAGE = (AIRCTRL_CRITICAL_MBOX << MOBNB0);
     if (!can_poll_receive(&AIRCTRL_CRITICAL_FRAME)){
         can_receive(&AIRCTRL_CRITICAL_FRAME, AIRCTRL_CRITICAL_FILTER);
@@ -73,7 +73,7 @@ ISR(CAN_INT_vect){
         }
         else {
             HV_STATE = false;
-            READY2DRIVE = false; // Disable RTD
+            READYTODRIVE = false; // Disable RTD
             gpio_clear_pin(HV_LED); //clear HV LED
             buzzer_counter = 0; // reset counter for next RTD cycle
         }
@@ -98,14 +98,14 @@ ISR(CAN_INT_vect){
     }
 }
 
-//Start Button interrupt & final Ready2Drive check
+//Start Button interrupt & final ReadyToDrive check
 void pcint14_callback(void) {
     if (gpio_get_pin(START_BTN)){
         START_BUTTON_STATE = true;
         if (HV_STATE && BRAKE_PRESSED) {
             gpio_set_pin(START_LED);
-            READY2DRIVE = true;
-            gpio_set_pin(RTD_BUZZER_LSD); // turn on R2D Buzzer
+            READYTODRIVE = true;
+            gpio_set_pin(RTD_BUZZER_LSD); // turn on RTD Buzzer
         }
     }
 }
@@ -139,7 +139,7 @@ int main(void) {
         steering_pos = adc_read(STEERING_POS);
 
         if (send_can) {
-            can_data[1] = READY2DRIVE ? 0xFF : 0x00; // Ready2Drive
+            can_data[1] = READYTODRIVE ? 0xFF : 0x00; // ReadyToDrive
             can_data[2] = steering_pos; // Steering Position
             can_data[3] = START_BUTTON_STATE ? 0xFF : 0x00; // Start Button State
             can_data[0] = 0; // Error code
@@ -148,7 +148,7 @@ int main(void) {
             send_can = false;
 
             // Uses timer to measure the 4 seconds to activate the RTD buzzer
-            if (READY2DRIVE && buzzer_counter < RTD_BUZZ_TIME) {
+            if (READYTODRIVE && buzzer_counter < RTD_BUZZ_TIME) {
                buzzer_counter ++;
             }
             if (buzzer_counter > RTD_BUZZ_TIME){
