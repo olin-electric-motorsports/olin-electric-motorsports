@@ -9,8 +9,8 @@ publish:
         unit:
           type: bool
           values:
-            t: OK
-            f: SHUTDOWN
+            t: SHUTDOWN
+            f: OK
       - name: brake_pressure
         slice: 8 + 16
         unit:

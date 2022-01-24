@@ -79,7 +79,7 @@ class YamlParser:
                 scale = eval(str(sig["unit"]["scale"]))
             elif sig_type == "bool":
                 unit = "bool"
-                choices = dict(enumerate(dict.values(sig["unit"]["values"])))
+                choices = {0: sig["unit"]["values"]["f"], 1: sig["unit"]["values"]["t"]}
             else:
                 raise Exception("Unknown type: {}".format(sig_type))
 

@@ -12,6 +12,7 @@ void can_init_{{ node.name }}(void) {
 uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
 can_frame_t {{ message.name|lower }}_msg = {
+    .id = {{ message.frame_id }},
     .mob = 0,
     .data = {{ message.name|lower }}_data,
     .dlc = {{ message.length }},
