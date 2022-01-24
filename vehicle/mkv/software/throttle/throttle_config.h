@@ -10,13 +10,12 @@ gpio_t DEBUG_LED1 = PC6;
 gpio_t DEBUG_LED2 = PB3;
 gpio_t DEBUG_LED3 = PB4;
 
-gpio_t LED1 = PB0; //orange
-gpio_t LED2 = PB1; //green
+gpio_t LED1 = PB0; // orange
+gpio_t LED2 = PB1; // green
 
 gpio_t SS_ESTOP = PB5;
 gpio_t SS_IS = PB6;
 gpio_t SS_BOTS = PB7;
-
 
 /*
  * ADC pins
@@ -24,7 +23,6 @@ gpio_t SS_BOTS = PB7;
 adc_pin_e THROTTLE1_SENSE = ADC8;
 adc_pin_e THROTTLE2_SENSE = ADC9;
 adc_pin_e DRIVE_MODE_SENSE = ADC2;
-
 
 /*
  * Timer config
@@ -47,7 +45,9 @@ timer_cfg_s timer0_cfg = {
 /*
  * CAN messages
  */
-#define CAN_MSG_DLC (5)
+#define CAN_MSG_DLC       (5)
+#define DASHBOARD_MSG_DLC (4)
+
 uint8_t can_data_throttle[CAN_MSG_DLC] = { 0 };
 
 can_frame_t throttle_msg = {
@@ -56,8 +56,18 @@ can_frame_t throttle_msg = {
     .mob = 0,
 };
 
-can_frame_t mc_msg = {
-    .id = 0xC0,
-    .dlc = CAN_MSG_DLC,
-    .mob = 0,
-};
+can_frame_t mc_msg = { .id = 0xC0,
+                       .dlc = CAN_MSG_DLC,
+                       .mob = 0,
+
+                       uint8_t rx_dashboard_msg_data[DASHBOARD_MSG_DLC];
+
+can_frame_t rx_dashboard_msg = { .mob = 1,
+                                 .data = rx_dashboard_msg_data,
+
+                                 can_filter_t rx_dashboard_filter = {
+                                     .mask = 0xFF,
+                                     .id = 0x0F,
+                                 };
+}
+;
