@@ -98,8 +98,6 @@ void pcint2_callback(void) {
 static int initial_checks(void) {
     int rc = 0;
 
-    air_control_critical.state = INIT;
-
     /*
      * Get MC and BMS voltages
      *
@@ -117,7 +115,7 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (bms_voltage > BMS_VOLTAGE_THRESHOLD_LOW) {
+    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
         set_fault(FAULT_BMS_VOLTAGE);
         rc = 1;
         goto bail;
@@ -158,8 +156,8 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (!gpio_get_pin(SS_TSMS)) {
-        // SS_TSMS should start high
+    if (gpio_get_pin(SS_TSMS)) {
+        // SS_TSMS should start low
         air_control_critical.ss_tsms = true;
         set_fault(FAULT_SHUTDOWN_IMPLAUSIBILITY);
         rc = 1;
@@ -368,7 +366,11 @@ int main(void) {
 
 fault:
     gpio_set_pin(FAULT_LED);
-    can_send_air_control_critical();
 
-    while (1) {};
+    while (1) {
+        if (send_can) {
+            can_send_air_control_critical();
+            send_can = false;
+        }
+    };
 }
