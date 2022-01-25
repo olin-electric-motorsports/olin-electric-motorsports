@@ -1,14 +1,14 @@
+#include "libs/adc/api.h"
+#include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
-#include "libs/adc/api.h"
 #include "libs/timer/api.h"
-#include "libs/can/api.h"
-#include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/io.h>
 
 #define RTD_BUZZ_TIME 4000 // milliseconds
 
-//Pin definitions
+// Pin definitions
 gpio_t IMD_LED = PB3;
 gpio_t START_LED = PB4;
 gpio_t AMS_LED = PD0;
@@ -18,10 +18,10 @@ gpio_t LV_LED = PD6;
 gpio_t BRAKE_LED = PB2;
 gpio_t RTD_BUZZER_LSD = PC5;
 
-//ADC PIN
+// ADC PIN
 adc_pin_e STEERING_POS = ADC2;
 
-//Timer setup
+// Timer setup
 void timer0_callback(void);
 
 timer_cfg_s timer0_cfg = {
@@ -36,23 +36,22 @@ timer_cfg_s timer0_cfg = {
     },
 };
 
+// CAN things
 
-//CAN things
-
-//Define MOBs and DLCs
-#define BRAKELIGHT_MBOX 0
-#define BMS_CORE_MBOX 1
+// Define MOBs and DLCs
+#define BRAKELIGHT_MBOX       0
+#define BMS_CORE_MBOX         1
 #define AIRCTRL_CRITICAL_MBOX 2
-#define AIRCTRL_SENSE_MBOX 3
-#define THROTTLE_MBOX 4
+#define AIRCTRL_SENSE_MBOX    3
+#define THROTTLE_MBOX         4
 
-#define BRAKELIGHT_DLC (5)
-#define BMS_CORE_DLC (8)
+#define BRAKELIGHT_DLC       (5)
+#define BMS_CORE_DLC         (8)
 #define AIRCTRL_CRITICAL_DLC (5)
-#define AIRCTRL_SENSE_DLC (8)
-#define THROTTLE_DLC (5)
+#define AIRCTRL_SENSE_DLC    (8)
+#define THROTTLE_DLC         (5)
 
-//Define frames
+// Define frames
 can_frame_t BRAKELIGHT_CAN_FRAME = {
     .mob = BRAKELIGHT_MBOX,
     .id = 0xB,
@@ -83,7 +82,7 @@ can_frame_t THROTTLE_FRAME = {
     .dlc = THROTTLE_DLC,
 };
 
-//Define Filters
+// Define Filters
 can_filter_t BRAKELIGHT_FILTER = {
     .mask = 0x7FF,
     .id = 0xB,
@@ -109,13 +108,8 @@ can_filter_t THROTTLE_FILTER = {
     .id = 0xC,
 };
 
-//Define message to send
+// Define message to send
 #define DASHBOARD_DLC (5)
 uint8_t can_data[DASHBOARD_DLC] = { 0 };
 
-can_frame_t dashboard_msg = {
-    .id = 0xF,
-    .dlc = DASHBOARD_DLC,
-    .mob = 5
-};
-
+can_frame_t dashboard_msg = { .id = 0xF, .dlc = DASHBOARD_DLC, .mob = 5 };
