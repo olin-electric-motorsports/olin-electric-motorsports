@@ -2,7 +2,8 @@
 Author: Hwei-Shin Harriman, Jack Greenberg
 Olin Electric Motorsports
 
-Functionality to process mini-YAML files, autogenerate mini-YAMLS with ID assignments and RX messages definitions, and create DBCs
+Functionality to process mini-YAML files, autogenerate mini-YAMLS with ID
+assignments and RX messages definitions, and create DBCs
 """
 import yaml
 import math
@@ -14,6 +15,10 @@ VALID_PRIORITIES = ["LO", "MED", "HI"]
 class YamlParser:
     """
     Handles parsing of YAML file
+
+    Usage:
+
+        parser = YamlHandler("path/to/yaml_file.yml")
     """
     def __init__(self, yml):
         with open(yml, 'r') as f:
@@ -22,6 +27,10 @@ class YamlParser:
         self.name = self.data["name"]
         self.messages = self._parse_messages()
 
+    """
+    Parses messages from the YAML file. Internally it will pull the frequency
+    and message IDs, and then call _parse_signals to get the list of signals
+    """
     def _parse_messages(self):
         messages = []
         if "publish" not in self.data.keys():
@@ -46,6 +55,10 @@ class YamlParser:
 
         return messages
 
+    """
+    Parses signals from the YAML file. The possible types are currently: enum,
+    int8_t, int16_t, uint8_t, uint16_t, and bool.
+    """
     def _parse_signals(self, msg):
         signals = []
         message_length = 0
