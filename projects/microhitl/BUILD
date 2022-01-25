@@ -1,4 +1,6 @@
 py_binary(
     name = "microhitl",
-    srcs = ["microhitl.py"],
+    srcs = [
+        "microhitl.py",
+    ],
 )
