@@ -293,12 +293,12 @@
       (net 5 GND))
     (pad 12 thru_hole circle (at 50.5 4.5 180) (size 3 3) (drill 1.75) (layers *.Cu *.Mask)
       (net 5 GND))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ampseal-35/C-1-776231-4.step
+    (model ${OEM_DIR}/parts/3DModels/Ampseal-35/C-1-776231-4.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ampseal-35/Ampseal35_OtherSide.stp
+    (model ${OEM_DIR}/parts/3DModels/Ampseal-35/Ampseal35_OtherSide.stp
       (offset (xyz 29.20999956130981 0.6349999904632568 24.76499962806702))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 0))
@@ -349,7 +349,7 @@
       (net 2 /12V))
     (pad 2 smd rect (at 1.4 0) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 1 "/BSPD RELAY LSD"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOD-123_OEM/SOD-123.step
+    (model ${OEM_DIR}/parts/3DModels/SOD-123_OEM/SOD-123.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -403,12 +403,12 @@
     (pad 1 thru_hole circle (at 6.5 4.5) (size 3 3) (drill 1.75) (layers *.Cu *.Mask)
       (net 5 GND))
     (pad "" np_thru_hole circle (at 0 0) (size 2.85 2.85) (drill 2.85) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ampseal-14/AmpSeal-14.step
+    (model ${OEM_DIR}/parts/3DModels/Ampseal-14/AmpSeal-14.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ampseal-14/ampseal-14_OtherSide.stp
+    (model ${OEM_DIR}/parts/3DModels/Ampseal-14/ampseal-14_OtherSide.stp
       (offset (xyz 13.96999979019165 0.6349999904632568 24.76499962806702))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 -180 0))
@@ -468,12 +468,12 @@
       (net 49 "/CAN +"))
     (pad 4 thru_hole circle (at 3 3) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask)
       (net 48 "/CAN -"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/MicroFit_VT_4/MicroFit_VT_4.stp
+    (model ${OEM_DIR}/parts/3DModels/MicroFit_VT_4/MicroFit_VT_4.stp
       (offset (xyz 1.523999977111816 -1.536699976921081 5.079999923706055))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/MicroFit_VT_4/MicroFit_4_OtherSide.stp
+    (model ${OEM_DIR}/parts/3DModels/MicroFit_VT_4/MicroFit_4_OtherSide.stp
       (offset (xyz 1.269999980926514 -1.269999980926514 13.96999979019165))
       (scale (xyz 1 1 1))
       (rotate (xyz 90 0 0))
@@ -539,7 +539,7 @@
       (net 49 "/CAN +"))
     (pad 5 thru_hole circle (at 0 0 270) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 7 /5V))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
       (offset (xyz 1.269999980926514 -6.984999895095826 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -605,7 +605,7 @@
       (net 5 GND))
     (pad 20 thru_hole circle (at 2.54 19.05 270) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 5 GND))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
       (offset (xyz 1.269999980926514 -6.984999895095826 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -671,7 +671,7 @@
       (net 33 "/EXTRA TEMP 4 -"))
     (pad 20 thru_hole circle (at 2.54 19.05 270) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 5 GND))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
       (offset (xyz 1.269999980926514 -6.984999895095826 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -737,7 +737,7 @@
       (net 5 GND))
     (pad 20 thru_hole circle (at 2.54 19.05 270) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 5 GND))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
       (offset (xyz 1.269999980926514 -6.984999895095826 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -772,7 +772,7 @@
     (pad 1 thru_hole circle (at 0 3.5 90) (size 1.397 1.397) (drill 1.02) (layers *.Cu *.Mask)
       (net 45 /BATT+))
     (pad "" thru_hole circle (at 2.23 1.75 90) (size 1.981 1.981) (drill 1.6) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ultrafit-2/Ultrafit-2.step
+    (model ${OEM_DIR}/parts/3DModels/Ultrafit-2/Ultrafit-2.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -838,7 +838,7 @@
       (net 5 GND))
     (pad 20 thru_hole circle (at 2.54 19.05 270) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 5 GND))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
       (offset (xyz 1.269999980926514 -6.984999895095826 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -898,12 +898,12 @@
       (net 2 /12V))
     (pad "" np_thru_hole circle (at 6 3.94) (size 1 1) (drill 1) (layers *.Cu *.Mask))
     (pad "" np_thru_hole circle (at -3 3.94) (size 1 1) (drill 1) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/MicroFit_VT_4/MicroFit_VT_4.stp
+    (model ${OEM_DIR}/parts/3DModels/MicroFit_VT_4/MicroFit_VT_4.stp
       (offset (xyz 1.523999977111816 -1.523999977111816 5.079999923706055))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/MicroFit_VT_4/MicroFit_4_OtherSide.stp
+    (model ${OEM_DIR}/parts/3DModels/MicroFit_VT_4/MicroFit_4_OtherSide.stp
       (offset (xyz 1.269999980926514 -1.269999980926514 13.96999979019165))
       (scale (xyz 1 1 1))
       (rotate (xyz 90 0 0))
@@ -969,7 +969,7 @@
       (net 49 "/CAN +"))
     (pad 5 thru_hole circle (at 0 0 270) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 35 /5V_GLV))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
       (offset (xyz 1.269999980926514 -6.984999895095826 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1027,7 +1027,7 @@
       (net 3 "/E-STOP-R > BSPD"))
     (pad 5 thru_hole circle (at 0 -7.62 270) (size 1.8 1.8) (drill 1.3) (layers *.Cu *.Mask)
       (net 2 /12V))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/G5Q_OEM/G5Q.step
+    (model ${OEM_DIR}/parts/3DModels/G5Q_OEM/G5Q.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1076,7 +1076,7 @@
       (net 5 GND))
     (pad 14 thru_hole circle (at 13.5 4.75 180) (size 2.75 2.75) (drill 2.18) (layers *.Cu *.Mask)
       (net 5 GND))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/rj45-vert/rj45-vert.step
+    (model ${OEM_DIR}/parts/3DModels/rj45-vert/rj45-vert.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1106,7 +1106,7 @@
       (net 42 /12V_Fused))
     (pad 2 thru_hole circle (at 6.75 1.7 180) (size 2.032 2.032) (drill 1.6002) (layers *.Cu *.Mask)
       (net 42 /12V_Fused))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/fuse_block_3557_2/Fuse_3557-2.step
+    (model ${OEM_DIR}/parts/3DModels/fuse_block_3557_2/Fuse_3557-2.step
       (offset (xyz 0 -0.3809999942779541 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 0))
@@ -1136,7 +1136,7 @@
       (net 47 /GLVMS>FUSE))
     (pad 1 thru_hole circle (at -6.75 1.7 180) (size 2.032 2.032) (drill 1.6002) (layers *.Cu *.Mask)
       (net 47 /GLVMS>FUSE))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/fuse_block_3557_2/Fuse_3557-2.step
+    (model ${OEM_DIR}/parts/3DModels/fuse_block_3557_2/Fuse_3557-2.step
       (offset (xyz 0 -0.3809999942779541 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 0))
@@ -1234,12 +1234,12 @@
       (net 5 GND))
     (pad 2 smd rect (at 1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 35 /5V_GLV))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1281,12 +1281,12 @@
       (net 46 "Net-(D3-Pad2)"))
     (pad 1 smd rect (at -1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 5 GND))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1319,12 +1319,12 @@
       (net 2 /12V))
     (pad 2 smd rect (at 0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 46 "Net-(D3-Pad2)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1357,12 +1357,12 @@
       (net 35 /5V_GLV))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 44 /ALERT_GLV))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1395,12 +1395,12 @@
       (net 35 /5V_GLV))
     (pad 2 smd rect (at 0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 37 /SCL_GLV))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1433,12 +1433,12 @@
       (net 35 /5V_GLV))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 36 /SDA_GLV))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1476,7 +1476,7 @@
       (net 42 /12V_Fused))
     (pad 1 smd rect (at -2.032 0 180) (size 1.778 2.159) (layers F.Cu F.Paste F.Mask)
       (net 5 GND))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/DO_214AA_OEM/DO_214AA.wrl
+    (model ${OEM_DIR}/parts/3DModels/DO_214AA_OEM/DO_214AA.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1514,7 +1514,7 @@
       (net 5 GND))
     (pad 2 smd rect (at 2.032 0 180) (size 1.778 2.159) (layers F.Cu F.Paste F.Mask)
       (net 4 "/FUSE > E-STOP-L"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/DO_214AA_OEM/DO_214AA.wrl
+    (model ${OEM_DIR}/parts/3DModels/DO_214AA_OEM/DO_214AA.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
