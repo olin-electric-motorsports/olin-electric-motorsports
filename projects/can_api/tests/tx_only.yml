@@ -9,8 +9,8 @@ publish:
         unit:
           type: bool
           values:
-            t: OK
-            f: FAULT
+            t: FAULT
+            f: OK
       - name: example_16_bit
         slice: 8 + 16
         unit:
