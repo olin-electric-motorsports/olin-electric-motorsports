@@ -1,0 +1,23 @@
+name: tx_only
+publish:
+  - name: test_tx
+    id: 0xab
+    freq_hz: 100
+    signals:
+      - name: signal_a
+        slice: 0 + 8
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: OK
+      - name: example_16_bit
+        slice: 8 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 5 / 4096
+  - name: test_no_signals
+    freq_hz: 1
+    id: 0x1f
