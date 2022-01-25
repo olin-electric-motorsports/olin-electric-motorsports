@@ -4,7 +4,7 @@ cc_firmware(
     name = "dashboard",
     srcs = [
         "dashboard.c",
-        "dashboard.h",
+        "dashboard_config.h",
     ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",

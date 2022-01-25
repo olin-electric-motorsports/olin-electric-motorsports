@@ -16,7 +16,7 @@
     Questions
 */
 
-#include "dashboard.h"
+#include "dashboard_config.h"
 #include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
@@ -30,7 +30,6 @@ volatile bool READYTODRIVE;
 volatile bool send_can;
 
 volatile int buzzer_counter = 0;
-int steering_pos;
 
 
 // CAN Interrupts
@@ -99,7 +98,7 @@ ISR(CAN_INT_vect){
 }
 
 //Start Button interrupt & final ReadyToDrive check
-void pcint14_callback(void) {
+void pcint1_callback(void) {
     if (gpio_get_pin(START_BTN)){
         START_BUTTON_STATE = true;
         if (HV_STATE && BRAKE_PRESSED) {
@@ -115,8 +114,7 @@ void timer0_callback(void) {
 }
 
 int main(void) {
-    //Initialize and enable interrupts
-    sei();
+    //Initialization
     can_init(BAUD_500KBPS); 
     timer_init(&timer0_cfg);
     adc_init();
@@ -132,8 +130,13 @@ int main(void) {
 
     gpio_set_mode(START_BTN, INPUT);
 
+    //Enable interrupts
+    sei();
+
     //Turn on LV LED
     gpio_set_pin(LV_LED);
+
+    int steering_pos;
 
     for (;;) {
         steering_pos = adc_read(STEERING_POS);
