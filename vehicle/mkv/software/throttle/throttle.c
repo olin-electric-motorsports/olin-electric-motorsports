@@ -17,7 +17,6 @@
 #define throttle2_min_voltage (298)
 #define throttle2_max_voltage (1016)
 
-uint8_t CANMotorController[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 /*
  * Interrupts
@@ -58,16 +57,10 @@ int main(void) {
     sei();
 
     // Initialize motor controller
-    CANMotorController[0] = 0;
-    CANMotorController[1] = 0;
-    CANMotorController[2] = 0;
-    CANMotorController[3] = 0;
-    CANMotorController[4] = 1; // anticlockwise
-    CANMotorController[5] = 0;
-    CANMotorController[6] = 0;
-    CANMotorController[7] = 0;
+    can_motor_controller[4] = 1; // anticlockwise
 
-    mc_msg.data = gCANMotorController;
+
+    mc_msg.data = can_motor_controller;
 
     can_send(&mc_msg)
 
@@ -98,28 +91,28 @@ int main(void) {
 
 			// get average of two throttle positions
 
-			uint8_t ThrottleArrayIndex = 0;
-			uint8_t ThrottleArray[8];
-			uint16_t RollingSum = 0;
+			uint8_t throttle_array_index = 0;
+			uint8_t throttle_array[8];
+			uint16_t rolling_sum = 0;
 
 			uint16_t new_throttle_value = (throttle1_mapped + throttle2_mapped) >> 1;
-			uint8_t old_throttle_value = ThrottleArray[ThrottleArrayIndex];
+			uint8_t old_throttle_value = throttle_array[throttle_array_index];
 
-			RollingSum -= old; 
-			RollingSum += new;
+			rolling_sum -= old; 
+			rolling_sum += new;
 
-			ghrottleArray[ThrottleArrayIndex] = new;
+			throttle_array[throttle_array_index] = new;
 
-			ThrottleArrayIndex = ThrottleArrayIndex + 1;
+			throttle_array_index = throttle_array_index + 1;
 
 			// Start back at the first index if at the last index
-			if (ThrottleArrayIndex == 8) {
-                ThrottleArrayIndex = 0;
+			if (throttle_array_index == 8) {
+                throttle_array_index = 0;
 
                 // Take the rolling average of the past 8 throttle values
-                uint32_t temp = gRollingSum;
+                uint32_t temp = rolling_sum;
                 temp /= 8;
-                uint8_t ThrottleOut = temp;
+                uint8_t throttle_out = temp;
 
                 /* TODO
                  * - Plausibility
@@ -134,10 +127,8 @@ int main(void) {
     }
 
 		if (send_can) {
-            // send_can
-
-            // Send out Motor Controller info
-            // Send out throttle info
+            can_send(&throttle_msg);
+            can_send(&mc_msg);
 		}
         }
     }
