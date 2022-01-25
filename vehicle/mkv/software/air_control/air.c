@@ -276,7 +276,6 @@ static void state_machine_run(void) {
             }
 
             // Wait for 2 seconds while the motor controller discharges
-            uint32_t now = get_time();
             timer_set = get_time();
 
             if (get_time() - timer_set < 2000) {
