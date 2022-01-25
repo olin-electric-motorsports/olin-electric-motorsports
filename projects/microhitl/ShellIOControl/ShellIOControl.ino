@@ -18,7 +18,7 @@ int gpio_mode(int argc, char** argv) {
         shell_println("");
         return SHELL_RET_FAILURE;
     }
-    int pin = strtol(argv[1], 0, 0);
+    int pin = atoi(argv[1]);
     if (!strcmp(argv[2], (const char*)"INPUT"))
         pinMode(pin, INPUT);
     else if (!strcmp(argv[2], (const char*)"OUTPUT"))
@@ -33,7 +33,7 @@ int gpio_read(int argc, char** argv) {
         shell_println("");
         return SHELL_RET_FAILURE;
     }
-    int pin = strtol(argv[1], 0, 0);
+    int pin = atoi(argv[1]);
     if (digitalRead(pin) == HIGH)
         shell_println("read:HIGH");
     else
@@ -47,7 +47,7 @@ int gpio_write(int argc, char** argv) {
         shell_println("");
         return SHELL_RET_FAILURE;
     }
-    int pin = strtol(argv[1], 0, 0);
+    int pin = atoi(argv[1]);
     if (!strcmp(argv[2], (const char*)"HIGH"))
         digitalWrite(pin, HIGH);
     else if (!strcmp(argv[2], (const char*)"LOW"))
