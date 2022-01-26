@@ -8,10 +8,10 @@ py_library(
         "//projects/hitl/software/artifacts:config.ini",
         "//projects/hitl/software/artifacts:pin_info.csv",
     ],
+    visibility = ["//visibility:private"],
     deps = [
         requirement("pyusb"),
     ],
-    visibility = ["//visibility:private"],
 )
 
 py_library(
