@@ -7,8 +7,8 @@ py_test(
         "test_main.py",
         "throttle_test.py",
     ],
-    main = "test_main.py",
     imports = ["."],
+    main = "test_main.py",
     deps = [
         ":conftest",
         "//projects/hitl/software/hitl:rkh",

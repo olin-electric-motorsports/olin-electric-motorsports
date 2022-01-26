@@ -16,11 +16,11 @@ py_library(
     srcs = [
         "roadkillharness.py",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":hitl",
         ":utils",
     ],
-    visibility = ["//visibility:public"],
 )
 
 py_library(
@@ -32,11 +32,11 @@ py_library(
         "iocontroller.py",
     ],
     imports = ["."],
+    srcs_version = "PY3",
     visibility = ["//visibility:public"],
     deps = [
         ":utils",
         requirement("ft4222"),
         requirement("cantools"),
     ],
-    srcs_version = "PY3",
 )
