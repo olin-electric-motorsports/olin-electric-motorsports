@@ -3,12 +3,6 @@ workspace(name = "formula")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
 
-http_archive(
-    name = "rules_python",
-    sha256 = "954aa89b491be4a083304a2cb838019c8b8c3720a7abb9c4cb81ac7a24230cea",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.4.0/rules_python-0.4.0.tar.gz",
-)
-
 register_execution_platforms("@local_config_platform//:host", "//bazel/platforms:all")
 
 register_toolchains("//bazel/toolchain:atmega16m1_toolchain")
@@ -62,6 +56,14 @@ http_archive(
     url = "https://github.com/bazelbuild/buildtools/archive/master.zip",
 )
 
+http_archive(
+    name = "rules_python",
+    sha256 = "cd6730ed53a002c56ce4e2f396ba3b3be262fd7cb68339f0377a45e8227fe332",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.5.0/rules_python-0.5.0.tar.gz",
+)
+
+load("@rules_python//python:pip.bzl", "pip_install")
+
 # CMocka
 
 http_archive(
@@ -91,14 +93,6 @@ http_archive(
         "https://github.com/jack-greenberg/cantools/archive/refs/tags/37.0.1-bazel.tar.gz",
     ],
 )
-
-http_archive(
-    name = "rules_python",
-    sha256 = "cd6730ed53a002c56ce4e2f396ba3b3be262fd7cb68339f0377a45e8227fe332",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.5.0/rules_python-0.5.0.tar.gz",
-)
-
-load("@rules_python//python:pip.bzl", "pip_install")
 
 pip_install(
     name = "cantools_deps",
