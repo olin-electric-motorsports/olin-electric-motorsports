@@ -14,7 +14,7 @@ import cantools
 import can
 
 # Project Imports 
-from hitl.utils import artifacts_path
+from .utils import artifacts_path
 
 config = ConfigParser(interpolation=None)
 config.read(os.path.join(artifacts_path, "config.ini"))

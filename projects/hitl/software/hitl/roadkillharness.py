@@ -5,7 +5,6 @@ import configparser
 from typing import Optional
 
 # Project imports
-from .ecu import ECU
 from .utils import get_logging_config, root_path, artifacts_path
 from .iocontroller import IOController
 from .cancontroller import CANController

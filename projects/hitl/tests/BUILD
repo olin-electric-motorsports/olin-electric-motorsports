@@ -1,6 +1,7 @@
 load("@rules_python//python:defs.bzl", "py_binary", "py_library")
+load("//tools/pytest:defs.bzl", "pytest_test")
 
-py_test(
+pytest_test(
     name = "hitl",
     srcs = [
         "__init__.py",
@@ -8,7 +9,6 @@ py_test(
         "throttle_test.py",
     ],
     imports = ["."],
-    main = "test_main.py",
     deps = [
         ":conftest",
         "//projects/hitl/software/hitl:rkh",

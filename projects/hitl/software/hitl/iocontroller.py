@@ -13,7 +13,7 @@ except ModuleNotFoundError:
     ft4222 = None
 
 # Project Imports 
-from hitl.utils import artifacts_path
+from .utils import artifacts_path
 
 # CONSTANTS
 # ADC parameters
