@@ -28,7 +28,7 @@ py_library(
     srcs = [
         "__init__.py",
         "cancontroller.py",
-        "ecu.py",
+        "hitl.py",
         "iocontroller.py",
     ],
     imports = ["."],
