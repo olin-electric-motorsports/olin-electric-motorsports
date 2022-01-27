@@ -43,6 +43,9 @@ void pcint0_isr(void) {
 }
 
 
+/*
+* This function takes in an ADC value and maps it to the 0-255 range. 
+*/
 void mapThrottleVoltages(int* throttle1_mapped, int*throttle2_mapped){
     // read both throttle potentiometers
     uint16_t throttle1_voltage = 0;
@@ -74,6 +77,10 @@ void mapThrottleVoltages(int* throttle1_mapped, int*throttle2_mapped){
 
 }
 
+/*
+* This function takes in an the mapped throttle voltages, finds their average, and then
+* calculates the rolling average. 
+*/
 void getAverageThrottlePos(throttle1_mapped, throttle2_mapped) {
      // Get average throttle pos values
 
@@ -105,6 +112,10 @@ void getAverageThrottlePos(throttle1_mapped, throttle2_mapped) {
 
 }
 
+/*
+* This function detects if there is an implausibility due to a deviation
+* in throttle values.
+*/
 void checkPlausibility(throttle1_mapped, throttle2_mapped) {
 
     // Compare mapping of the two voltages to detect implausibility
@@ -173,7 +184,7 @@ int main(void) {
 		if (send_can) {
             can_send(&throttle_msg);
             can_send(&mc_msg);
-            // TODO: cut power to throttle if there is an implausibliity
+            // TODO: check if there is implausibility (don't send throttle if so)
 		}
         }
     }
