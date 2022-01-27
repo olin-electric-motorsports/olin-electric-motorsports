@@ -56,14 +56,15 @@ class IOController:
 
     def __init__(self, 
     pin_info_path: str = config.get("PATH", "pin_info_path", fallback=os.path.join(artifacts_path, "pin_info.csv")),
-     device_description: str = "FT4222 A"
+     device_description: str = "FT4222 A",
+     real: bool = True
     ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
         self.pin_info = self._read_pin_info(path=pin_info_path)
 
-        if ft4222:
+        if ft4222 and real:
             try:
                 self.dev = ft4222.openByDescription(device_description)
                 self.dev.i2cMaster_Init(400_000)

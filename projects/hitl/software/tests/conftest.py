@@ -4,5 +4,5 @@ from hitl.roadkillharness import RoadkillHarness
 
 @pytest.fixture
 def harness():
-    h = RoadkillHarness()
+    h = RoadkillHarness(real = False)
     return h

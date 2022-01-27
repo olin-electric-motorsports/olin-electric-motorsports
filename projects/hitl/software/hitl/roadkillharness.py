@@ -23,7 +23,7 @@ class RoadkillHarness:
     this system.
     """
 
-    def __init__(self):
+    def __init__(self, real: bool = True):
         # Read config
         config = configparser.ConfigParser(interpolation=None)
         config.read(os.path.join(artifacts_path, "config.ini"))

@@ -39,7 +39,8 @@ class CANController:
         self, 
         can_spec_path: str = config.get("PATH", "dbc_path", fallback=os.path.join(artifacts_path, "veh.dbc")), 
         channel: str = config.get("HARDWARE", "can_channel", fallback="vcan0"), 
-        bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000), 
+        bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000),
+        real: bool = True
     ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
