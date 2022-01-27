@@ -49,7 +49,7 @@ class CANController:
         self.periodic_messages = {}
 
         # Get config
-        if "linux" in sys.platform:
+        if "linux" in sys.platform and real:
             # Bring CAN hardware online
             if "vcan" in channel:
                 os.system(f"sudo ip link add dev {channel} type vcan")
@@ -64,7 +64,7 @@ class CANController:
         # Start listening
         bus_type = "socketcan"
 
-        if "linux" in sys.platform:
+        if "linux" in sys.platform and real:
             self.can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
             listener = threading.Thread(
                 target=self._listen,
