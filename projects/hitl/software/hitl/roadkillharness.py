@@ -38,6 +38,7 @@ class RoadkillHarness:
             pin_info_path=os.path.join(
                 artifacts_path,
                 config.get("PATHS", "pin_config", fallback="pin_info.csv"),
+                real,
             )
         )
 
@@ -47,4 +48,5 @@ class RoadkillHarness:
             can_spec_path=os.path.join(artifacts_path, config.get("PATHS", "dbc_path")),
             channel=config.get("HARDWARE", "can_channel", fallback="vcan0"),
             bitrate=config.get("HARDWARE", "can_bitrate", fallback="500000"),
+            real
         )
