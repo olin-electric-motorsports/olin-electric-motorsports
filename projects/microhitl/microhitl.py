@@ -26,7 +26,7 @@ class MicroHitl():
     def read_pin(self, pin: int):
         '''Reads from arduino pin and return true if output contains HIGH'''
         self.arduino.write(f"gpio_read {pin}\r".encode('utf-8'))
-        return 'read:HIGH' in self.arduino.read(50).decode("utf-8")
+        return 'read:HIGH' in self.arduino.readline().decode("utf-8")
 
     def configure_pin(self, pin: int, pin_type: PinTypes):
         '''Configures arduino pins as INPUT or OUTPUT'''

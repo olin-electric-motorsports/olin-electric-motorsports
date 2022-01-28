@@ -15,7 +15,7 @@ void loop() {
 int gpio_mode(int argc, char** argv) {
     if (argc != 3) {
         shell_print_error(E_SHELL_ERR_ARGCOUNT, 0);
-        shell_println("");
+        Serial.println("");
         return SHELL_RET_FAILURE;
     }
     int pin = atoi(argv[1]);
@@ -30,21 +30,21 @@ int gpio_mode(int argc, char** argv) {
 int gpio_read(int argc, char** argv) {
     if (argc != 2) {
         shell_print_error(E_SHELL_ERR_ARGCOUNT, 0);
-        shell_println("");
+        Serial.println("");
         return SHELL_RET_FAILURE;
     }
     int pin = atoi(argv[1]);
     if (digitalRead(pin) == HIGH)
-        shell_println("read:HIGH");
+        Serial.println("read:HIGH");
     else
-        shell_println("read:LOW");
+        Serial.println("read:LOW");
     return SHELL_RET_SUCCESS;
 }
 
 int gpio_write(int argc, char** argv) {
     if (argc != 3) {
         shell_print_error(E_SHELL_ERR_ARGCOUNT, 0);
-        shell_println("");
+        Serial.println("");
         return SHELL_RET_FAILURE;
     }
     int pin = atoi(argv[1]);
@@ -76,5 +76,5 @@ int shell_reader(char* data) {
  */
 void shell_writer(char data) {
     // Wrapper for Serial.write() method
-    Serial.write(data);
+//    Serial.write(data);
 }
