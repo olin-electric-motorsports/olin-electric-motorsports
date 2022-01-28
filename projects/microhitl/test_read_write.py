@@ -7,7 +7,8 @@ import os
 
 if __name__ == "__main__":
     port = os.getenv("ARDUINO_PORT") or "/dev/ttyACM0"
-    arduino = MicroHitl()
+    arduino = MicroHitl(port=port) # Wait 2 seconds for the device to boot up
+    time.sleep(2)
     arduino.configure_pin(5, PinTypes.OUTPUT)
     arduino.configure_pin(6, PinTypes.INPUT)
     while True:

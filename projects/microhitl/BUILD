@@ -8,7 +8,7 @@ py_library(
 )
 
 py_binary(
-    name = "microhitl_script",
+    name = "test_script",
     srcs = [
         "test_read_write.py",
     ],
