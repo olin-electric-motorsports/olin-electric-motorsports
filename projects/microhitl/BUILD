@@ -15,5 +15,5 @@ py_binary(
     main = "test_read_write.py",
     deps = [
         ":microhitl",
-    ]
+    ],
 )

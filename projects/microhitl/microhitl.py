@@ -1,7 +1,5 @@
 import serial
 from enum import Enum
-import time
-
 
 class PinTypes(Enum):
     INPUT = "INPUT"
@@ -11,7 +9,6 @@ class PinTypes(Enum):
 class Values(Enum):
     HIGH = "HIGH"
     LOW = "LOW"
-
 
 class MicroHitl():
     def __init__(self, port='/dev/ttyACM0', baudrate=9600, timeout=.1):
