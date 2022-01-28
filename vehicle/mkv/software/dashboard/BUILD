@@ -1,4 +1,5 @@
 load("//bazel:defs.bzl", "cc_firmware")
+load("//bazel/tools:defs.bzl", "can_api_files")
 
 cc_firmware(
     name = "dashboard",
@@ -12,8 +13,19 @@ cc_firmware(
     visibility = ["//visibility:public"],
     deps = [
         "//libs/adc",
-        "//libs/can",
+        ":can_api",
         "//libs/gpio",
         "//libs/timer",
     ],
+)
+
+exports_files([
+    "dashboard.yml",
+])
+
+# Defines the CAN API library
+can_api_files(
+    name = "can_api",
+    dbc = "//vehicle/mkv:mkv.dbc",
+    yaml = ":dashboard.yml",
 )
