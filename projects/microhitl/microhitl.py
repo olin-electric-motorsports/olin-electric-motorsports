@@ -19,16 +19,29 @@ class MicroHitl():
             port=port, baudrate=baudrate, timeout=timeout)
 
     def write_pin(self, pin: int, output_value: Values):
-        '''Writes to arduino pin with Value of HIGH or LOW'''
+        '''Writes to pin with Value of HIGH or LOW'''
+
         self.arduino.write(
             f"gpio_write {pin} {output_value.value}\r".encode('utf-8'))
 
     def read_pin(self, pin: int):
-        '''Reads from arduino pin and return true if output contains HIGH'''
+        '''Reads from pin and return true if output contains read:HIGH and 
+        false if output contains read:LOW. Raises exception if neither is 
+        present'''
+
         self.arduino.write(f"gpio_read {pin}\r".encode('utf-8'))
-        return 'read:HIGH' in self.arduino.readline().decode("utf-8")
+        output = self.arduino.readline().decode("utf-8").strip()
+
+        if (output == 'read:HIGH'):
+            return True
+        elif (output == 'read:LOW'):
+            return False
+        else:
+            raise Exception(
+                f"Read from pin \"{pin}\" resulted in invalid output \"{output}\"")
 
     def configure_pin(self, pin: int, pin_type: PinTypes):
         '''Configures arduino pins as INPUT or OUTPUT'''
+
         self.arduino.write(
             f"gpio_mode {pin} {pin_type.value}\r".encode('utf-8'))

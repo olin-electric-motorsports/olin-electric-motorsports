@@ -55,13 +55,7 @@ int gpio_write(int argc, char** argv) {
     return SHELL_RET_SUCCESS;
 }
 
-/**
- * Function to read data from serial port
- * Functions to read from physical media should use this prototype:
- * int my_reader_function(char * data)
- */
 int shell_reader(char* data) {
-    // Wrapper for Serial.read() method
     if (Serial.available()) {
         *data = Serial.read();
         return 1;
@@ -69,12 +63,4 @@ int shell_reader(char* data) {
     return 0;
 }
 
-/**
- * Function to write data to serial port
- * Functions to write to physical media should use this prototype
- * void my_writer_function(char data)
- */
-void shell_writer(char data) {
-    // Wrapper for Serial.write() method
-//    Serial.write(data);
-}
+void shell_writer(char data) {}
