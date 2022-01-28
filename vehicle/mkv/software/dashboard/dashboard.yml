@@ -12,36 +12,37 @@ subscribe:
   mob: 4 
 
 publish:
-  id: 0xF
-  freq_hz: 100
-  signals:
-  - name: fault_code
-    slice: 0+8
-    unit:
-      type: enum
-      values:
-        NO_FAULT
+  - name: dashboard
+    id: 0xF
+    freq_hz: 100
+    signals:
+    - name: fault_code
+      slice: 0 + 8
+      unit:
+        type: enum
+        values:
+          NO_FAULT
 
-  - name: steering_position
-    slice: 8+8
-    unit: 
-      type: uint8_t
-      name: deg
-      offset: 0
-      scale: 1
+    - name: steering_position
+      slice: 8 + 8
+      unit: 
+        type: uint8_t
+        name: deg
+        offset: 0
+        scale: 1
 
-  - name: ready_to_drive
-    slice: 16+1
-    unit: 
-      type: bool
-      values:
-        t: READY TO DRIVE
-        f: NOT READY TO DRIVE
+    - name: ready_to_drive
+      slice: 16 + 1
+      unit: 
+        type: bool
+        values:
+          t: READY TO DRIVE
+          f: NOT READY TO DRIVE
 
-  - name: start_button_state
-    slice: 17+1
-    unit: 
-      type: bool
-      values:
-        t: START BUTTON PUSHED
-        f: START BUTTON NOT PUSHED
+    - name: start_button_state
+      slice: 17 + 1
+      unit: 
+        type: bool
+        values:
+          t: START BUTTON PUSHED
+          f: START BUTTON NOT PUSHED
