@@ -133,14 +133,14 @@ int main(void) {
     // Turn on LV LED
     gpio_set_pin(LV_LED);
 
-    int steering_pos;
+    uint16_t steering_pos;
 
     for (;;) {
         steering_pos = adc_read(STEERING_POS);
 
         if (send_can) {
             can_data[1] = READYTODRIVE ? 0xFF : 0x00; // ReadyToDrive
-            can_data[2] = steering_pos; // Steering Position
+            can_data[2] = steering_pos & 0xFF; // Steering Position
             can_data[3]
                 = START_BUTTON_STATE ? 0xFF : 0x00; // Start Button State
             can_data[0] = 0; // Error code
