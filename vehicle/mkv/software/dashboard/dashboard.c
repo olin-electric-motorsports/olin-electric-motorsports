@@ -11,16 +11,15 @@
                 - CAN
             : Implement power cycle logic - DONE
             : Implement RTD Buzzer - DONE
-
-
-    Questions
+    Questions:
+        Air control message location for IMD
 */
 
 #include "dashboard_config.h"
 #include "libs/adc/api.h"
-#include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
+#include "vehicle/mkv/software/dashboard/can_api.h"
 
 volatile bool START_BUTTON_STATE;
 volatile bool HV_STATE;
@@ -28,71 +27,7 @@ volatile bool BRAKE_PRESSED;
 volatile bool READYTODRIVE;
 
 volatile bool send_can;
-
 volatile int buzzer_counter = 0;
-
-// CAN Interrupts
-ISR(CAN_INT_vect) {
-    CANPAGE = (BRAKELIGHT_MBOX << MOBNB0);
-
-    // Brakelight message for Brakelight LED and Brake status for ReadyToDrive
-    // check
-    if (!can_poll_receive(&BRAKELIGHT_CAN_FRAME)) {
-        can_receive(&BRAKELIGHT_CAN_FRAME, BRAKELIGHT_FILTER);
-        if (BRAKELIGHT_CAN_FRAME.data[4] == 0xFF) {
-            BRAKE_PRESSED = true;
-            gpio_set_pin(BRAKE_LED);
-        } else {
-            BRAKE_PRESSED = false;
-            gpio_clear_pin(BRAKE_LED);
-        }
-    }
-
-    // BMS Core message for BMS Status LED
-    CANPAGE = (BMS_CORE_MBOX << MOBNB0);
-    if (!can_poll_receive(&BMS_CORE_FRAME)) {
-        can_receive(&BMS_CORE_FRAME, BMS_CORE_FILTER);
-        if (BMS_CORE_FRAME.data[4] == 0x0) { // check BMS status
-            gpio_set_pin(AMS_LED); // set BMS light high
-        } else {
-            gpio_clear_pin(AMS_LED); // clear BMS light
-        }
-    }
-
-    // AIR Control Critical message for HV LED and disabling ReadyToDrive if HV
-    // goes down
-    CANPAGE = (AIRCTRL_CRITICAL_MBOX << MOBNB0);
-    if (!can_poll_receive(&AIRCTRL_CRITICAL_FRAME)) {
-        can_receive(&AIRCTRL_CRITICAL_FRAME, AIRCTRL_CRITICAL_FILTER);
-        if (AIRCTRL_CRITICAL_FRAME.data[4] == 0xFF
-            && AIRCTRL_CRITICAL_FRAME.data[5] == 0xFF) {
-            HV_STATE = true;
-            gpio_set_pin(HV_LED); // set HV LED
-        } else {
-            HV_STATE = false;
-            READYTODRIVE = false; // Disable RTD
-            gpio_clear_pin(HV_LED); // clear HV LED
-            buzzer_counter = 0; // reset counter for next RTD cycle
-        }
-    }
-
-    // AIR Control Sense message for IMD LED
-    CANPAGE = (AIRCTRL_SENSE_MBOX << MOBNB0);
-    if (!can_poll_receive(&AIRCTRL_SENSE_FRAME)) {
-        can_receive(&AIRCTRL_SENSE_FRAME, AIRCTRL_SENSE_FILTER);
-        if (AIRCTRL_SENSE_FRAME.data[6] == 0x0) { // check IMD Status
-            gpio_set_pin(IMD_LED); // set IMD light high
-        } else {
-            gpio_clear_pin(IMD_LED); // set IMD light low
-        }
-    }
-
-    // Throttle message for interfacing with LED Bars Board - TODO (SPI library)
-    CANPAGE = (THROTTLE_MBOX << MOBNB0);
-    if (!can_poll_receive(&THROTTLE_FRAME)) {
-        can_receive(&THROTTLE_FRAME, THROTTLE_FILTER);
-    }
-}
 
 // Start Button interrupt & final ReadyToDrive check
 void pcint1_callback(void) {
@@ -138,14 +73,63 @@ int main(void) {
     for (;;) {
         steering_pos = adc_read(STEERING_POS);
 
+        // Brakelight message for Brakelight LED and
+        // check
+        if (can_receive_brakelight_bspd() == 0) {
+            if (brakelight_bspd.brake_gate == 0xFF) {
+                BRAKE_PRESSED = true;
+                gpio_set_pin(BRAKE_LED);
+            } else {
+                BRAKE_PRESSED = false;
+                gpio_clear_pin(BRAKE_LED);
+            }
+        }
+
+        // BMS Core message for BMS Status LED
+        if (can_receive_bms_core() == 0) {
+            if (bms_core.bms_ok == true) { // check BMS status
+                gpio_set_pin(AMS_LED); // set BMS light high
+            } else {
+                gpio_clear_pin(AMS_LED); // clear BMS light
+            }
+        }
+
+        // AIR Control Critical message for HV LED and disabling ReadyToDrive if
+        // HV goes down
+        if (can_receive_air_control_critical() == 0) {
+            if (air_control_critical.air_p_status == false
+                && air_control_critical.air_n_status == false) {
+                HV_STATE = true;
+                gpio_set_pin(HV_LED); // set HV LED
+            } else {
+                HV_STATE = false;
+                READYTODRIVE = false; // Disable RTD
+                gpio_clear_pin(HV_LED); // clear HV LED
+                buzzer_counter = 0; // reset counter for next RTD cycle
+            }
+        }
+
+        // Is this now under Air Control Critical?
+        if (can_receive_air_control_critical() == 0) {
+            if (air_control_critical.imd_status == false) {
+                gpio_set_pin(IMD_LED); // set IMD light high
+            } else {
+                gpio_clear_pin(IMD_LED); // set IMD light low
+            }
+        }
+
+        // Throttle message for interfacing with LED Bars Board - TODO (SPI
+        // library)
+        if (can_receive_throttle() == 0) {
+            // do some stuff here
+        }
+
         if (send_can) {
-            can_data[1] = READYTODRIVE ? 0xFF : 0x00; // ReadyToDrive
-            can_data[2] = steering_pos & 0xFF; // Steering Position
-            can_data[3]
-                = START_BUTTON_STATE ? 0xFF : 0x00; // Start Button State
-            can_data[0] = 0; // Error code
-            dashboard_msg.data = can_data;
-            can_send(&dashboard_msg);
+            dashboard.fault_code = 0;
+            dashboard.steering_position = steering_pos & 0xFF;
+            dashboard.ready_to_drive = READYTODRIVE ? 0xFF : 0x00;
+            dashboard.start_button_state = START_BUTTON_STATE ? 0xFF : 0x00;
+            can_send_dashboard();
             send_can = false;
 
             // Uses timer to measure the 4 seconds to activate the RTD buzzer
