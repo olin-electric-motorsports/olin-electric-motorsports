@@ -62,13 +62,13 @@ int main(void) {
     // Turn on LV LED
     gpio_set_pin(LV_LED);
 
-    //Set Error Code
+    // Set Error Code
     dashboard.fault_code = 0;
 
     for (;;) {
         dashboard.steering_position = adc_read(STEERING_POS);
 
-        //Receive CAN Messages
+        // Receive CAN Messages
         can_receive_brakelight();
         can_receive_bms_core();
         can_receive_air_control_critical();
@@ -93,7 +93,8 @@ int main(void) {
 
         // AIR Control Critical message for HV LED and disabling ReadyToDrive if
         // HV goes down
-        if (!air_control_critical.air_p_status && !air_control_critical.air_n_status) {
+        if (!air_control_critical.air_p_status
+            && !air_control_critical.air_n_status) {
             HV_STATE = true;
             gpio_set_pin(HV_LED); // set HV LED
         } else {
@@ -116,7 +117,7 @@ int main(void) {
         if (can_receive_throttle() == 0) {
             // do some stuff here
         }
-        
+
         if (START_BUTTON_STATE && HV_STATE && BRAKE_PRESSED) {
             gpio_set_pin(START_LED);
             READYTODRIVE = true;
