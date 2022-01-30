@@ -11,7 +11,7 @@
 // Pin definitions
 gpio_t IMD_LED = PB3;
 gpio_t START_LED = PB4;
-gpio_t AMS_LED = PD0;
+gpio_t BMS_LED = PD0;
 gpio_t START_BTN = PC6;
 gpio_t HV_LED = PD7;
 gpio_t LV_LED = PD6;
