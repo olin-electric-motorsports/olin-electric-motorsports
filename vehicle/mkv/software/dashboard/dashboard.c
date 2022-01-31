@@ -72,7 +72,7 @@ int main(void) {
         can_receive_brakelight();
         can_receive_bms_core();
         can_receive_air_control_critical();
-        can_receive_throttle();
+        //can_receive_throttle();
 
         // Brakelight message for Brakelight LED and
         // check
@@ -114,9 +114,9 @@ int main(void) {
 
         // Throttle message for interfacing with LED Bars Board - TODO (SPI
         // library)
-        if (can_receive_throttle() == 0) {
+        //if (can_receive_throttle() == 0) {
             // do some stuff here
-        }
+        //}
 
         if (START_BUTTON_STATE && HV_STATE && BRAKE_PRESSED) {
             gpio_set_pin(START_LED);
