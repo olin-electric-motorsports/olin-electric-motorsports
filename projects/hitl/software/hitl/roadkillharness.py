@@ -5,10 +5,9 @@ import configparser
 from typing import Optional
 
 # Project imports
-from hitl.utils import get_logging_config, root_path, artifacts_path
-from hitl.iocontroller import IOController
-from hitl.cancontroller import CANController
-
+from .utils import get_logging_config, root_path, artifacts_path
+from .iocontroller import IOController
+from .cancontroller import CANController
 
 class RoadkillHarness:
     """Class to represent the entire tester
@@ -24,7 +23,7 @@ class RoadkillHarness:
     this system.
     """
 
-    def __init__(self):
+    def __init__(self, real: bool = True):
         # Read config
         config = configparser.ConfigParser(interpolation=None)
         config.read(os.path.join(artifacts_path, "config.ini"))
@@ -39,13 +38,15 @@ class RoadkillHarness:
             pin_info_path=os.path.join(
                 artifacts_path,
                 config.get("PATHS", "pin_config", fallback="pin_info.csv"),
-            )
+            ),
+            real=real,
         )
 
         # Create CANController
         self.log.info("Creating CANController...")
         self.can = CANController(
-            can_spec_path=os.path.join(artifacts_path, config.get("PATHS", "dbc_path")),
+            can_spec_path="vehicle/mkv/mkv.dbc",
             channel=config.get("HARDWARE", "can_channel", fallback="vcan0"),
             bitrate=config.get("HARDWARE", "can_bitrate", fallback="500000"),
+            real=real,
         )
