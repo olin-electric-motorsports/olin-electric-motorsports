@@ -38,7 +38,7 @@ class RoadkillHarness:
             pin_info_path=os.path.join(
                 artifacts_path,
                 config.get("PATHS", "pin_config", fallback="pin_info.csv"),
-            )
+            ),
             real=real,
         )
 
