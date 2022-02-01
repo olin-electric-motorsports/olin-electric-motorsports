@@ -8,7 +8,14 @@ pytest_test(
         "test_main.py",
         "throttle_test.py",
     ],
+    data = [
+        "//vehicle/mkv:mkv.dbc",
+    ],
     imports = ["."],
+    tags = [
+        "hardware",
+        "manual",
+    ],
     deps = [
         ":conftest",
         "//projects/hitl/software/hitl:rkh",

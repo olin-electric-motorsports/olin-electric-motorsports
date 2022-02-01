@@ -102,7 +102,7 @@ class IOController:
         GPIO Datasheet: https://datasheets.maximintegrated.com/en/ds/MAX7300.pdf
         """
         # Raise an exception if the signal is read only
-        if self.pin[name]["read_write"] == "READ":
+        if self.pin_info[name]["read_write"] == "READ":
             raise Exception(f"{name} is a read-only signal, you cannot set it!")
 
         # If no hardware, log an error

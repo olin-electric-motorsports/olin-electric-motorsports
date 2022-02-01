@@ -45,7 +45,7 @@ class RoadkillHarness:
         # Create CANController
         self.log.info("Creating CANController...")
         self.can = CANController(
-            can_spec_path=os.path.join(artifacts_path, config.get("PATHS", "dbc_path")),
+            can_spec_path="vehicle/mkv/mkv.dbc",
             channel=config.get("HARDWARE", "can_channel", fallback="vcan0"),
             bitrate=config.get("HARDWARE", "can_bitrate", fallback="500000"),
             real=real,

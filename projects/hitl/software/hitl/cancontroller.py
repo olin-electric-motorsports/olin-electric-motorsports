@@ -24,7 +24,7 @@ class CANController:
 
     The CANController works **passively** for reading signals; you create one with a path to a DBC, and it keeps track of all states automatically
 
-    `Confluence <https://docs.olinelectricmotorsports.com/display/AE/CAN+Controller>`_
+    `Confluence <https://docs.olinelectricmotorsports.com/display/AE/CAN+Controller>`
 
     :param str can_spec_path: The path to the can spec. For now, we only support ``.dbc`` files. Should be
         stored in ``artifacts``.
@@ -37,7 +37,7 @@ class CANController:
 
     def __init__(
         self, 
-        can_spec_path: str = config.get("PATH", "dbc_path", fallback=os.path.join(artifacts_path, "veh.dbc")), 
+        can_spec_path: str = config.get("PATH", "dbc_path", fallback="vehicle/mkv/mkv.dbc"), 
         channel: str = config.get("HARDWARE", "can_channel", fallback="vcan0"), 
         bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000),
         real: bool = True
@@ -48,17 +48,7 @@ class CANController:
         # Create empty list of periodic messages
         self.periodic_messages = {}
 
-        # Get config
-        if "linux" in sys.platform and real:
-            # Bring CAN hardware online
-            if "vcan" in channel:
-                os.system(f"sudo ip link add dev {channel} type vcan")
-                os.system(f"sudo ip link set {channel} up")  # virtual hardware
-            else:
-                os.system(f"sudo ip link set {channel} up type can bitrate {bitrate} restart-ms 100")  # real hardware
-        else:
-            self.log.error("Cannot bring up real or fake can hardware; must be on linux.")
-
+        # Set up dictionary of messages
         self.message_of_signal, self.signals = self._create_state_dictionary(can_spec_path)
 
         # Start listening
