@@ -1,6 +1,9 @@
 import pytest
 
-def test_throttle(harness):
+def test_simple():
+   assert False
+   
+'''def test_throttle(harness):
    harness.io.set_state("THROTTLE_POT_1", 2.5)
    harness.io.set_state("THROTTLE_POT_2", 2.5)
 
@@ -8,3 +11,4 @@ def test_throttle(harness):
 
    torque = harness.throttle.get_state("mcTorqueRequest")
    assert 100 < torque < 150
+'''
