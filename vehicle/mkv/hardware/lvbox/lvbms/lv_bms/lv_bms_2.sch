@@ -1765,13 +1765,13 @@ Wire Wire Line
 $Comp
 L formula:redcube-7461057 U11
 U 1 1 6141885F
-P 11325 8250
-F 0 "U11" H 11342 8375 50  0000 C CNN
-F 1 "redcube-7461057" H 11342 8284 50  0000 C CNN
-F 2 "footprints:redcube_pressfit_6pin" H 11325 8250 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/445/7461057-1723744.pdf" H 11325 8250 50  0001 C CNN
-F 4 "7461057" H 11325 8250 50  0001 C CNN "MPN"
-	1    11325 8250
+P 11325 8700
+F 0 "U11" H 11342 8825 50  0000 C CNN
+F 1 "redcube-7461057" H 11342 8734 50  0000 C CNN
+F 2 "footprints:redcube_pressfit_6pin" H 11325 8700 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/445/7461057-1723744.pdf" H 11325 8700 50  0001 C CNN
+F 4 "7461057" H 11325 8700 50  0001 C CNN "MPN"
+	1    11325 8700
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1820,11 +1820,7 @@ Wire Wire Line
 Connection ~ 9250 7450
 Wire Wire Line
 	9250 7650 9250 7750
-Wire Wire Line
-	9250 8350 9875 8350
 Connection ~ 9250 7750
-Wire Wire Line
-	9250 7750 9250 8350
 $Comp
 L formula:C_1nf C20
 U 1 1 6157E14C
@@ -1843,137 +1839,124 @@ Wire Wire Line
 $Comp
 L formula:SQM110P06 Q2
 U 1 1 61487F0F
-P 10075 8400
-F 0 "Q2" V 10368 8400 50  0000 C CNN
-F 1 "SQM110P06" V 10277 8400 50  0000 C CNN
-F 2 "footprints:TO-263-3-TabPin2" H 10025 9000 50  0001 C CNN
-F 3 "https://www.vishay.com/docs/62784/sqm110p068m9l.pdf" H 10075 8400 50  0001 C CNN
-F 4 "https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798" H 10025 8900 50  0001 C CNN "Purchasing Link "
-F 5 "SQM110P06-8m9L" H 10125 9100 50  0001 C CNN "MPN"
-	1    10075 8400
+P 9975 8850
+F 0 "Q2" V 10150 8850 50  0000 C CNN
+F 1 "SQM110P06" V 10575 9175 50  0000 C CNN
+F 2 "footprints:TO-263-3-TabPin2" H 9925 9450 50  0001 C CNN
+F 3 "https://www.vishay.com/docs/62784/sqm110p068m9l.pdf" H 9975 8850 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798" H 9925 9350 50  0001 C CNN "Purchasing Link "
+F 5 "SQM110P06-8m9L" H 10025 9550 50  0001 C CNN "MPN"
+	1    9975 8850
 	0    -1   -1   0   
 $EndComp
 $Comp
 L formula:SQM110P06 Q5
 U 1 1 6148C0A4
-P 10625 8400
-F 0 "Q5" V 10918 8400 50  0000 C CNN
-F 1 "SQM110P06" V 10825 8475 50  0000 C CNN
-F 2 "footprints:TO-263-3-TabPin2" H 10575 9000 50  0001 C CNN
-F 3 "https://www.vishay.com/docs/62784/sqm110p068m9l.pdf" H 10625 8400 50  0001 C CNN
-F 4 "https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798" H 10575 8900 50  0001 C CNN "Purchasing Link "
-F 5 "SQM110P06-8m9L" H 10675 9100 50  0001 C CNN "MPN"
-	1    10625 8400
+P 10625 8850
+F 0 "Q5" V 10800 8850 50  0000 C CNN
+F 1 "SQM110P06" V 11225 9275 50  0000 C CNN
+F 2 "footprints:TO-263-3-TabPin2" H 10575 9450 50  0001 C CNN
+F 3 "https://www.vishay.com/docs/62784/sqm110p068m9l.pdf" H 10625 8850 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798" H 10575 9350 50  0001 C CNN "Purchasing Link "
+F 5 "SQM110P06-8m9L" H 10675 9550 50  0001 C CNN "MPN"
+	1    10625 8850
 	0    1    -1   0   
 $EndComp
 Wire Wire Line
-	10275 8350 10300 8350
-Wire Wire Line
-	10300 8350 10300 8450
-Connection ~ 10300 8350
+	10300 8800 10300 8900
+Connection ~ 10300 8800
 $Comp
 L formula:R_10K R40
 U 1 1 614D511D
-P 10300 8600
-F 0 "R40" H 10370 8646 50  0000 L CNN
-F 1 "R_10K" H 10370 8555 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 10230 8600 50  0001 C CNN
-F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 10380 8600 50  0001 C CNN
-F 4 "DK" H 10300 8600 60  0001 C CNN "MFN"
-F 5 "CRS0805-FX-1002ELFCT-ND" H 10300 8600 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 10780 9000 60  0001 C CNN "PurchasingLink"
-	1    10300 8600
+P 10300 9050
+F 0 "R40" V 10450 8975 50  0000 L CNN
+F 1 "R_10K" V 10150 8950 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 10230 9050 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 10380 9050 50  0001 C CNN
+F 4 "DK" H 10300 9050 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 10300 9050 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 10780 9450 60  0001 C CNN "PurchasingLink"
+	1    10300 9050
 	1    0    0    -1  
 $EndComp
+Connection ~ 10300 9200
 Wire Wire Line
-	10075 8650 10075 8750
+	10250 9200 10250 9275
 Wire Wire Line
-	10075 8750 10250 8750
-Connection ~ 10300 8750
+	10250 9275 10300 9275
 Wire Wire Line
-	10250 8750 10250 8825
+	10300 9275 10300 9325
+Connection ~ 10250 9200
 Wire Wire Line
-	10250 8825 10300 8825
-Wire Wire Line
-	10300 8825 10300 8875
-Connection ~ 10250 8750
-Wire Wire Line
-	10250 8750 10300 8750
+	10250 9200 10300 9200
 $Comp
 L formula:R_10 R41
 U 1 1 6150E131
-P 10300 9025
-F 0 "R41" H 10370 9071 50  0000 L CNN
-F 1 "R_10" H 10370 8980 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 10230 9025 50  0001 C CNN
-F 3 "" H 10380 9025 50  0001 C CNN
-F 4 "Panasonic Electronic Components" H 10300 9025 60  0001 C CNN "MFN"
-F 5 "ERJ-P06F10R0V" H 10300 9025 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-P06F10R0V/5722444" H 10780 9425 60  0001 C CNN "PurchasingLink"
-	1    10300 9025
+P 10300 9475
+F 0 "R41" H 10370 9521 50  0000 L CNN
+F 1 "R_10" H 10370 9430 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 10230 9475 50  0001 C CNN
+F 3 "" H 10380 9475 50  0001 C CNN
+F 4 "Panasonic Electronic Components" H 10300 9475 60  0001 C CNN "MFN"
+F 5 "ERJ-P06F10R0V" H 10300 9475 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-P06F10R0V/5722444" H 10780 9875 60  0001 C CNN "PurchasingLink"
+	1    10300 9475
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9700 9375 9875 9375
+	9700 9825 9875 9825
 $Comp
 L formula:R_100K R38
 U 1 1 6158878F
-P 9875 9525
-F 0 "R38" H 9945 9571 50  0000 L CNN
-F 1 "R_100K" H 9945 9480 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 9805 9525 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 9955 9525 50  0001 C CNN
-F 4 "DK" H 9875 9525 60  0001 C CNN "MFN"
-F 5 "P100KCCT-ND" H 9875 9525 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" H 10355 9925 60  0001 C CNN "PurchasingLink"
-	1    9875 9525
+P 9875 9975
+F 0 "R38" H 9945 10021 50  0000 L CNN
+F 1 "R_100K" H 9945 9930 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 9805 9975 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 9955 9975 50  0001 C CNN
+F 4 "DK" H 9875 9975 60  0001 C CNN "MFN"
+F 5 "P100KCCT-ND" H 9875 9975 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" H 10355 10375 60  0001 C CNN "PurchasingLink"
+	1    9875 9975
 	1    0    0    -1  
 $EndComp
-Connection ~ 9875 9375
+Connection ~ 9875 9825
 Wire Wire Line
-	9875 9375 10000 9375
+	9875 9825 10000 9825
 Wire Wire Line
-	9875 9675 10300 9675
+	9875 10125 10300 10125
 Wire Wire Line
-	10300 9575 10300 9675
-Text Label 9700 9375 2    50   ~ 0
+	10300 10025 10300 10125
+Text Label 9700 9825 2    50   ~ 0
 LOAD_SWITCH_FET_DRIVE
-Text Notes 10700 9375 0    39   ~ 0
+Text Notes 10700 9825 0    39   ~ 0
 Low side driven FET to enable \nand disable load switch
 $Comp
 L formula:Test_Point_SMD TP13
 U 1 1 61650710
-P 10675 8750
-F 0 "TP13" V 10624 8928 50  0000 L CNN
-F 1 "Test_Point_SMD" V 10715 8928 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10675 8600 50  0001 C CNN
-F 3 "" H 10675 8750 50  0001 C CNN
-	1    10675 8750
+P 10675 9200
+F 0 "TP13" V 10624 9378 50  0000 L CNN
+F 1 "Test_Point_SMD" V 10715 9378 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10675 9050 50  0001 C CNN
+F 3 "" H 10675 9200 50  0001 C CNN
+	1    10675 9200
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	10825 8350 11025 8350
+	10300 9200 10400 9200
 Wire Wire Line
-	10300 8750 10625 8750
-Wire Wire Line
-	10625 8650 10625 8750
-Connection ~ 10625 8750
-Wire Wire Line
-	10300 8350 10375 8350
+	10625 9100 10625 9200
+Connection ~ 10625 9200
 $Comp
 L formula:Test_Point_SMD TP6
 U 1 1 6169859F
-P 10375 8300
-F 0 "TP6" H 10250 8500 50  0000 L CNN
-F 1 "Test_Point_SMD" H 10375 8550 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10375 8150 50  0001 C CNN
-F 3 "" H 10375 8300 50  0001 C CNN
-	1    10375 8300
+P 10325 8275
+F 0 "TP6" H 10250 8475 50  0000 L CNN
+F 1 "Test_Point_SMD" H 10850 7225 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10325 8125 50  0001 C CNN
+F 3 "" H 10325 8275 50  0001 C CNN
+	1    10325 8275
 	1    0    0    -1  
 $EndComp
-Connection ~ 10375 8350
-Wire Wire Line
-	10375 8350 10425 8350
 Text Label 9075 7150 2    50   ~ 0
 PACK_SIDE_CURRENT_PATH
 Wire Wire Line
@@ -1982,11 +1965,11 @@ Connection ~ 9075 7450
 Wire Wire Line
 	9075 7450 9250 7450
 Wire Wire Line
-	11025 8350 11025 8525
-Connection ~ 11025 8350
+	11025 8800 11025 8975
+Connection ~ 11025 8800
 Wire Wire Line
-	11025 8350 11175 8350
-Text Label 11025 8525 0    50   ~ 0
+	11025 8800 11175 8800
+Text Label 11025 8975 0    50   ~ 0
 LOAD_SIDE_CURRENT_PATH
 Text Label 9000 3950 2    50   ~ 0
 PACK_SIDE_CURRENT_PATH
@@ -1994,11 +1977,9 @@ Text Label 10375 3950 0    50   ~ 0
 LOAD_SIDE_CURRENT_PATH
 Wire Notes Line
 	12850 5650 15475 5650
-Wire Notes Line
-	12125 7025 12125 9875
 Text Notes 8025 7000 0    89   ~ 0
 HIGH CURRENT PATH\n
-Text Notes 9300 8700 0    39   ~ 0
+Text Notes 9225 9325 0    39   ~ 0
 Bidirectional Discrete \nDual-PMOS Load switch
 $Comp
 L formula:Test_Point_SMD TP14
@@ -2037,11 +2018,7 @@ F 4 "7461057" H 8100 7550 50  0001 C CNN "MPN"
 	-1   0    0    1   
 $EndComp
 Wire Notes Line
-	7975 9875 7975 7025
-Wire Notes Line
 	7975 7025 12125 7025
-Wire Notes Line
-	7975 9875 12125 9875
 Wire Wire Line
 	9075 7150 9075 7450
 $Comp
@@ -2070,7 +2047,7 @@ L formula:Test_Point_SMD TP16
 U 1 1 6181F84F
 P 6475 7675
 F 0 "TP16" H 6400 7875 50  0000 L CNN
-F 1 "Test_Point_SMD" H 6450 7950 50  0000 L CNN
+F 1 "Test_Point_SMD" H 6325 8025 50  0000 L CNN
 F 2 "footprints:Test_Point_SMD" H 6475 7525 50  0001 C CNN
 F 3 "" H 6475 7675 50  0001 C CNN
 	1    6475 7675
@@ -2086,12 +2063,12 @@ Since we are using an LTC6810-2 chip, we have to use the address pins.\nWe've ti
 $Comp
 L Transistor_FET:BSS138 Q6
 U 1 1 617DAFFB
-P 10200 9375
-F 0 "Q6" H 10404 9421 50  0000 L CNN
-F 1 "BSS138" H 10404 9330 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10400 9300 50  0001 L CIN
-F 3 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 10200 9375 50  0001 L CNN
-	1    10200 9375
+P 10200 9825
+F 0 "Q6" H 10404 9871 50  0000 L CNN
+F 1 "BSS138" H 10404 9780 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 10400 9750 50  0001 L CIN
+F 3 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 10200 9825 50  0001 L CNN
+	1    10200 9825
 	1    0    0    -1  
 $EndComp
 Text Notes 4450 2850 0    50   ~ 0
@@ -2476,7 +2453,7 @@ L power:GND #PWR?
 U 1 1 61BE306E
 P 6900 7425
 F 0 "#PWR?" H 6900 7175 50  0001 C CNN
-F 1 "GND" H 6905 7252 50  0000 C CNN
+F 1 "GND" H 7050 7350 50  0000 C CNN
 F 2 "" H 6900 7425 50  0001 C CNN
 F 3 "" H 6900 7425 50  0001 C CNN
 	1    6900 7425
@@ -2620,12 +2597,12 @@ $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61D2E0F0
-P 10300 9675
-F 0 "#PWR?" H 10300 9425 50  0001 C CNN
-F 1 "GND" H 10450 9600 50  0000 C CNN
-F 2 "" H 10300 9675 50  0001 C CNN
-F 3 "" H 10300 9675 50  0001 C CNN
-	1    10300 9675
+P 10300 10125
+F 0 "#PWR?" H 10300 9875 50  0001 C CNN
+F 1 "GND" H 10450 10050 50  0000 C CNN
+F 2 "" H 10300 10125 50  0001 C CNN
+F 3 "" H 10300 10125 50  0001 C CNN
+	1    10300 10125
 	1    0    0    -1  
 $EndComp
 Text Notes 8025 9175 0    47   ~ 0
@@ -3138,8 +3115,6 @@ F 3 "" H 11350 1750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
-	12450 775  12450 3175
-Wire Notes Line
 	8050 775  8050 3175
 $Comp
 L formula:R_0 R44
@@ -3192,10 +3167,6 @@ F 3 "" H 11525 875 50  0001 C CNN
 	1    11525 875 
 	1    0    0    -1  
 $EndComp
-Wire Notes Line
-	8050 775  12450 775 
-Wire Notes Line
-	8050 3175 12450 3175
 $Comp
 L formula:R_500 R29
 U 1 1 621CC2E1
@@ -3240,9 +3211,9 @@ BATT_4
 Wire Wire Line
 	3800 5350 3800 5575
 Text Label 11575 2875 2    50   ~ 0
-THERM_4_+
+THERM_3_+
 Text Label 11575 3025 2    50   ~ 0
-THERM_4_-
+THERM_3_-
 $Comp
 L formula:Test_Point_SMD TP18
 U 1 1 6219D6D3
@@ -3269,8 +3240,8 @@ $Comp
 L formula:Test_Point_SMD TP20
 U 1 1 62292F47
 P 6600 7675
-F 0 "TP20" H 6500 7875 50  0000 L CNN
-F 1 "Test_Point_SMD" H 6075 7950 50  0000 L CNN
+F 0 "TP20" H 6500 7575 50  0000 L CNN
+F 1 "Test_Point_SMD" H 6050 8100 50  0000 L CNN
 F 2 "footprints:Test_Point_SMD" H 6600 7525 50  0001 C CNN
 F 3 "" H 6600 7675 50  0001 C CNN
 	1    6600 7675
@@ -3329,4 +3300,200 @@ Connection ~ 5025 9075
 Wire Wire Line
 	5025 9075 5025 8975
 Connection ~ 5375 8975
+$Comp
+L formula:Test_Point_SMD TP21
+U 1 1 61F97971
+P 6725 7675
+F 0 "TP21" H 6650 7875 50  0000 L CNN
+F 1 "Test_Point_SMD" H 6700 7950 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 6725 7525 50  0001 C CNN
+F 3 "" H 6725 7675 50  0001 C CNN
+	1    6725 7675
+	-1   0    0    1   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP22
+U 1 1 61F97977
+P 6850 7675
+F 0 "TP22" H 6775 7575 50  0000 L CNN
+F 1 "Test_Point_SMD" H 6350 8025 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 6850 7525 50  0001 C CNN
+F 3 "" H 6850 7675 50  0001 C CNN
+	1    6850 7675
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6600 7625 6725 7625
+Connection ~ 6600 7625
+Connection ~ 6725 7625
+Wire Wire Line
+	6725 7625 6850 7625
+Text Label 13075 875  0    50   ~ 0
+THERM_0_+
+Text Label 13075 975  0    50   ~ 0
+THERM_0_-
+Text Label 13075 1175 0    50   ~ 0
+THERM_1_+
+Text Label 13075 1275 0    50   ~ 0
+THERM_1_-
+Text Label 13075 1500 0    50   ~ 0
+THERM_2_+
+Text Label 13075 1600 0    50   ~ 0
+THERM_2_-
+$Comp
+L formula:Test_Point_SMD TP24
+U 1 1 61FECA9A
+P 13025 975
+F 0 "TP24" V 12974 1153 50  0000 L CNN
+F 1 "Test_Point_SMD" V 11975 950 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 13025 825 50  0001 C CNN
+F 3 "" H 13025 975 50  0001 C CNN
+	1    13025 975 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP23
+U 1 1 61FECAA0
+P 13025 875
+F 0 "TP23" V 12974 1053 50  0000 L CNN
+F 1 "Test_Point_SMD" V 11725 850 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 13025 725 50  0001 C CNN
+F 3 "" H 13025 875 50  0001 C CNN
+	1    13025 875 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP26
+U 1 1 62001CD1
+P 13025 1275
+F 0 "TP26" V 12974 1453 50  0000 L CNN
+F 1 "Test_Point_SMD" V 12200 1250 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 13025 1125 50  0001 C CNN
+F 3 "" H 13025 1275 50  0001 C CNN
+	1    13025 1275
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP25
+U 1 1 62001CD7
+P 13025 1175
+F 0 "TP25" V 12974 1353 50  0000 L CNN
+F 1 "Test_Point_SMD" V 12400 1150 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 13025 1025 50  0001 C CNN
+F 3 "" H 13025 1175 50  0001 C CNN
+	1    13025 1175
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP28
+U 1 1 62017168
+P 13025 1600
+F 0 "TP28" V 12974 1778 50  0000 L CNN
+F 1 "Test_Point_SMD" V 12750 1575 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 13025 1450 50  0001 C CNN
+F 3 "" H 13025 1600 50  0001 C CNN
+	1    13025 1600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP27
+U 1 1 6201716E
+P 13025 1500
+F 0 "TP27" V 12974 1678 50  0000 L CNN
+F 1 "Test_Point_SMD" V 12575 1475 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 13025 1350 50  0001 C CNN
+F 3 "" H 13025 1500 50  0001 C CNN
+	1    13025 1500
+	0    -1   -1   0   
+$EndComp
+Connection ~ 10300 10125
+$Comp
+L formula:SQM110P06 Q7
+U 1 1 61FD94D4
+P 9975 8375
+F 0 "Q7" V 10268 8375 50  0000 C CNN
+F 1 "SQM110P06" V 10177 8375 50  0000 C CNN
+F 2 "footprints:TO-263-3-TabPin2" H 9925 8975 50  0001 C CNN
+F 3 "https://www.vishay.com/docs/62784/sqm110p068m9l.pdf" H 9975 8375 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798" H 9925 8875 50  0001 C CNN "Purchasing Link "
+F 5 "SQM110P06-8m9L" H 10025 9075 50  0001 C CNN "MPN"
+	1    9975 8375
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:SQM110P06 Q8
+U 1 1 61FD94DC
+P 10625 8375
+F 0 "Q8" V 10918 8375 50  0000 C CNN
+F 1 "SQM110P06" V 10825 8450 50  0000 C CNN
+F 2 "footprints:TO-263-3-TabPin2" H 10575 8975 50  0001 C CNN
+F 3 "https://www.vishay.com/docs/62784/sqm110p068m9l.pdf" H 10625 8375 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/vishay-siliconix/SQM110P06-8M9L-GE3/7566798" H 10575 8875 50  0001 C CNN "Purchasing Link "
+F 5 "SQM110P06-8m9L" H 10675 9075 50  0001 C CNN "MPN"
+	1    10625 8375
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	9975 9100 9975 9200
+Wire Wire Line
+	9975 9200 10200 9200
+Wire Wire Line
+	9775 8325 9775 8800
+Wire Wire Line
+	10175 8800 10250 8800
+Wire Wire Line
+	10300 8800 10425 8800
+Wire Wire Line
+	10175 8325 10250 8325
+Wire Wire Line
+	9975 8625 10200 8625
+Wire Wire Line
+	10200 8625 10200 9200
+Connection ~ 10200 9200
+Wire Wire Line
+	10200 9200 10250 9200
+Wire Wire Line
+	10625 8625 10400 8625
+Wire Wire Line
+	10400 8625 10400 9200
+Connection ~ 10400 9200
+Wire Wire Line
+	10400 9200 10625 9200
+Wire Wire Line
+	10250 8800 10250 8325
+Connection ~ 10250 8800
+Wire Wire Line
+	10250 8800 10300 8800
+Connection ~ 10250 8325
+Wire Wire Line
+	10250 8325 10325 8325
+Wire Wire Line
+	10825 8800 11025 8800
+Wire Wire Line
+	10825 8325 10825 8800
+Connection ~ 10825 8800
+Wire Wire Line
+	9775 8800 9250 8800
+Wire Wire Line
+	9250 7750 9250 8800
+Connection ~ 9775 8800
+Connection ~ 10325 8325
+Wire Wire Line
+	10325 8325 10425 8325
+Wire Notes Line
+	12125 10325 7975 10325
+Wire Notes Line
+	12125 7025 12125 10325
+Wire Notes Line
+	7975 7025 7975 10325
+Text Notes 10850 8450 0    50   ~ 0
+DNP\nFET
+Text Notes 9600 8450 0    50   ~ 0
+DNP\nFET
+Wire Notes Line
+	13625 775  13625 3175
+Wire Notes Line
+	8050 775  13625 775 
+Wire Notes Line
+	8050 3175 13625 3175
 $EndSCHEMATC
