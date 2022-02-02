@@ -1,5 +1,6 @@
 load("//bazel:defs.bzl", "cc_firmware")
 load("@rules_cc//cc:defs.bzl", "cc_library")
+load("//bazel/tools:defs.bzl", "can_api_files")
 
 cc_library(
     name = "hdrs",
@@ -68,6 +69,12 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+can_api_files(
+    name = "air_control_can_api",
+    dbc = "//vehicle/mkv:mkv.dbc",
+    yaml = "//vehicle/mkv/software/air_control:air.yml",
+)
+
 cc_firmware(
     name = "app_test",
     srcs = ["test/test_app.c"],
@@ -76,6 +83,7 @@ cc_firmware(
     ],
     visibility = ["//visibility:public"],
     deps = [
+        ":air_control_can_api",
         "//libs/can",
     ],
 )

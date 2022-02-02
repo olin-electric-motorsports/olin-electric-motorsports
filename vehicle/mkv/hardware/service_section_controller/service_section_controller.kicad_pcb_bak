@@ -557,12 +557,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 107 -AIR_LSD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -600,7 +600,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 180) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 107 -AIR_LSD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -642,12 +642,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 43 "Net-(D901-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -689,12 +689,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 46 "Net-(D904-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -727,12 +727,12 @@
       (net 46 "Net-(D904-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 107 -AIR_LSD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -774,12 +774,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 47 "Net-(D905-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -880,7 +880,7 @@
       (net 16 5V_BMS))
     (pad 1 thru_hole rect (at 0 0 90) (size 1.4 1.4) (drill 1.016) (layers *.Cu *.Mask)
       (net 66 PM_MISO))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Header_Pin_2x3/Header_Straight_2x3.wrl
+    (model ${OEM_DIR}/parts/3DModels/Header_Pin_2x3/Header_Straight_2x3.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -1038,7 +1038,7 @@
       (scale (xyz 0.24 0.24 0.24))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Crystal/Crystal_SMD_SeikoEpson_TSX3225-4Pin_3.2x2.5mm_HandSoldering.step
+    (model ${OEM_DIR}/parts/3DModels/Crystal/Crystal_SMD_SeikoEpson_TSX3225-4Pin_3.2x2.5mm_HandSoldering.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1080,7 +1080,7 @@
       (scale (xyz 0.24 0.24 0.24))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Crystal/Crystal_SMD_SeikoEpson_TSX3225-4Pin_3.2x2.5mm_HandSoldering.step
+    (model ${OEM_DIR}/parts/3DModels/Crystal/Crystal_SMD_SeikoEpson_TSX3225-4Pin_3.2x2.5mm_HandSoldering.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1186,7 +1186,7 @@
       (net 77 SM_MOSI))
     (pad 1 smd rect (at -4.25 -2.8 90) (size 1.6 0.55) (layers F.Cu F.Paste F.Mask)
       (net 75 SM_MISO))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Atmega16m1/Atmega16m1.step
+    (model ${OEM_DIR}/parts/3DModels/Atmega16m1/Atmega16m1.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1237,7 +1237,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -2.7 -1.905) (size 1.55 0.6) (layers F.Cu F.Paste F.Mask)
       (net 151 /micros/SM_TXCAN))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/CAN Transceiver/SOIC8-N_MC.step"
+    (model "${OEM_DIR}/parts/3DModels/CAN Transceiver/SOIC8-N_MC.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1288,7 +1288,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -2.7 -1.905) (size 1.55 0.6) (layers F.Cu F.Paste F.Mask)
       (net 63 /micros/PM_TXCAN))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/CAN Transceiver/SOIC8-N_MC.step"
+    (model "${OEM_DIR}/parts/3DModels/CAN Transceiver/SOIC8-N_MC.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1328,7 +1328,7 @@
       (net 147 "Net-(U805-Pad1)"))
     (pad 1 smd rect (at -1.1 -0.95) (size 1.06 0.65) (layers F.Cu F.Paste F.Mask)
       (net 146 "Net-(U804-Pad1)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
+    (model "${OEM_DIR}/parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1368,7 +1368,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.1 -0.95) (size 1.06 0.65) (layers F.Cu F.Paste F.Mask)
       (net 147 "Net-(U805-Pad1)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
+    (model "${OEM_DIR}/parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1408,7 +1408,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.1 -0.95 180) (size 1.06 0.65) (layers F.Cu F.Paste F.Mask)
       (net 146 "Net-(U804-Pad1)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
+    (model "${OEM_DIR}/parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1448,7 +1448,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.1 -0.95 180) (size 1.06 0.65) (layers F.Cu F.Paste F.Mask)
       (net 126 "Net-(R808-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
+    (model "${OEM_DIR}/parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1777,7 +1777,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.1 -0.95 180) (size 1.06 0.65) (layers F.Cu F.Paste F.Mask)
       (net 140 "Net-(U302-Pad1)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
+    (model "${OEM_DIR}/parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1817,7 +1817,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.1 -0.95 90) (size 1.06 0.65) (layers F.Cu F.Paste F.Mask)
       (net 139 "Net-(U301-Pad1)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
+    (model "${OEM_DIR}/parts/3DModels/SOT-23-5(generic)/SOT-23-5(generic).step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1859,7 +1859,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.1 -0.95 90) (size 1.06 0.65) (layers F.Cu F.Paste F.Mask)
       (net 3 "Net-(C203-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23-6(generic)/SOT-23-6(generic).wrl"
+    (model "${OEM_DIR}/parts/3DModels/SOT-23-6(generic)/SOT-23-6(generic).wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1937,12 +1937,12 @@
       (net 76 SM_RESET))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1975,12 +1975,12 @@
       (net 132 "Net-(R1013-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 70 SM_RJ45_LEDO))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2013,12 +2013,12 @@
       (net 131 "Net-(R1012-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 71 SM_RJ45_LEDG))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2051,12 +2051,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 270) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 95 "Net-(PD1004-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2089,12 +2089,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 270) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 93 "Net-(PD1003-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2127,12 +2127,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 92 "Net-(PD1002-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2165,12 +2165,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 91 "Net-(PD1001-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2203,12 +2203,12 @@
       (net 51 PM_RESET))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2241,12 +2241,12 @@
       (net 165 "Net-(R1005-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 72 PM_RJ45_LEDO))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2279,12 +2279,12 @@
       (net 164 "Net-(R1004-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 73 PM_RJ45_LEDG))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2317,12 +2317,12 @@
       (net 82 CANL))
     (pad 1 smd rect (at -0.95 0 270) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 83 CANH))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2355,12 +2355,12 @@
       (net 82 CANL))
     (pad 1 smd rect (at -0.95 0 270) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 83 CANH))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2393,12 +2393,12 @@
       (net 20 "Net-(C1002-Pad1)"))
     (pad 1 smd rect (at -0.95 0 270) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2431,12 +2431,12 @@
       (net 47 "Net-(D905-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 19 +AIR_COIL+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2469,12 +2469,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 86 +AIR_AUX-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2507,12 +2507,12 @@
       (net 45 "Net-(D903-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 86 +AIR_AUX-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2545,12 +2545,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 106 PRECHARGE_CTL))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2583,12 +2583,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 85 -AIR_AUX-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2621,12 +2621,12 @@
       (net 44 "Net-(D902-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 106 PRECHARGE_CTL))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2659,12 +2659,12 @@
       (net 43 "Net-(D901-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 85 -AIR_AUX-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2697,12 +2697,12 @@
       (net 56 BMS_RELAY_DRIVE))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2735,12 +2735,12 @@
       (net 129 "Net-(R811-Pad1)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2773,12 +2773,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 130 "Net-(R812-Pad2)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2811,12 +2811,12 @@
       (net 130 "Net-(R812-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2849,12 +2849,12 @@
       (net 16 5V_BMS))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 129 "Net-(R811-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2887,12 +2887,12 @@
       (net 128 "Net-(R810-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 17 "Net-(C804-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2925,12 +2925,12 @@
       (net 17 "Net-(C804-Pad1)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 127 "Net-(R809-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2963,12 +2963,12 @@
       (net 126 "Net-(R808-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 123 "Net-(R804-Pad2)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3001,12 +3001,12 @@
       (net 122 "Net-(R803-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3039,12 +3039,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 124 "Net-(R805-Pad2)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3077,12 +3077,12 @@
       (net 124 "Net-(R805-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 125 "Net-(R805-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3115,12 +3115,12 @@
       (net 123 "Net-(R804-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 174 VREF))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3153,12 +3153,12 @@
       (net 122 "Net-(R803-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 175 VOUT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3191,12 +3191,12 @@
       (net 16 5V_BMS))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 175 VOUT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3229,12 +3229,12 @@
       (net 173 nOCD))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3267,12 +3267,12 @@
       (net 8 15V-))
     (pad 1 smd rect (at -0.95 0 270) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 15 "Net-(C706-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3305,12 +3305,12 @@
       (net 12 /power_secondary.sch/VCC))
     (pad 1 smd rect (at -0.95 0 270) (size 0.7 1.3) (layers B.Cu B.Paste B.Mask)
       (net 41 "Net-(D701-Pad2)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3343,12 +3343,12 @@
       (net 40 "Net-(D601-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 120 "Net-(R610-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3381,12 +3381,12 @@
       (net 8 15V-))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 39 "Net-(D601-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3419,12 +3419,12 @@
       (net 119 AIL+))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 40 "Net-(D601-Pad2)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3457,12 +3457,12 @@
       (net 118 "Net-(R606-Pad1)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 117 "Net-(R605-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3495,12 +3495,12 @@
       (net 116 "Net-(R604-Pad1)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 118 "Net-(R606-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3533,12 +3533,12 @@
       (net 8 15V-))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 117 "Net-(R605-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3571,12 +3571,12 @@
       (net 114 "Net-(R601-Pad1)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 116 "Net-(R604-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3609,12 +3609,12 @@
       (net 8 15V-))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 115 "Net-(R602-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3647,12 +3647,12 @@
       (net 7 15V+))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 115 "Net-(R602-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3685,12 +3685,12 @@
       (net 10 TS+))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 114 "Net-(R601-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3723,12 +3723,12 @@
       (net 105 SS_TSMS))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3761,12 +3761,12 @@
       (net 104 SS_IMD_LATCH))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3799,12 +3799,12 @@
       (net 103 SS_BMS))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3837,12 +3837,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 88 DETECT_IMD_LATCH))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3875,12 +3875,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 89 DETECT_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3913,12 +3913,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 19 +AIR_COIL+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3951,12 +3951,12 @@
       (net 38 "Net-(D506-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 88 DETECT_IMD_LATCH))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -3989,12 +3989,12 @@
       (net 37 "Net-(D505-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 89 DETECT_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4027,12 +4027,12 @@
       (net 36 "Net-(D504-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 19 +AIR_COIL+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4065,12 +4065,12 @@
       (net 102 SS_MPC))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4103,12 +4103,12 @@
       (net 100 SS_HVD))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4141,12 +4141,12 @@
       (net 98 SS_HVD_CONN))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4179,12 +4179,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 90 DETECT_MPC))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4217,12 +4217,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 101 DETECT_HVD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4255,12 +4255,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 99 DETECT_HVD_CONN))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4293,12 +4293,12 @@
       (net 35 "Net-(D503-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 90 DETECT_MPC))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4331,12 +4331,12 @@
       (net 34 "Net-(D502-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 101 DETECT_HVD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4369,12 +4369,12 @@
       (net 33 "Net-(D501-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 99 DETECT_HVD_CONN))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4407,12 +4407,12 @@
       (net 32 "Net-(D302-Pad2)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 6 12V_IMD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4445,12 +4445,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 162 /imd_latch/LATCH_OUTPUT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4483,12 +4483,12 @@
       (net 113 "Net-(R308-Pad1)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4521,12 +4521,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 5 "Net-(C301-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4559,12 +4559,12 @@
       (net 112 "Net-(R305-Pad1)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 113 "Net-(R308-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4597,12 +4597,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 69 IMD_Output))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4635,12 +4635,12 @@
       (net 111 "Net-(R304-Pad1)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4673,12 +4673,12 @@
       (net 6 12V_IMD))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 112 "Net-(R305-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4711,12 +4711,12 @@
       (net 110 "Net-(R302-Pad1)"))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 111 "Net-(R304-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4749,12 +4749,12 @@
       (net 109 "Net-(R301-Pad1)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 5 "Net-(C301-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4787,12 +4787,12 @@
       (net 6 12V_IMD))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 110 "Net-(R302-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4825,12 +4825,12 @@
       (net 6 12V_IMD))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 109 "Net-(R301-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4863,12 +4863,12 @@
       (net 29 "Net-(D203-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 27 "Net-(COUT201-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4901,7 +4901,7 @@
       (net 27 "Net-(COUT201-Pad1)"))
     (pad 1 smd rect (at -3.1 0 180) (size 1 3.2) (layers F.Cu F.Paste F.Mask)
       (net 48 +5V))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_2512_OEM/R_2512_OEM.step
+    (model ${OEM_DIR}/parts/3DModels/R_2512_OEM/R_2512_OEM.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4934,12 +4934,12 @@
       (net 27 "Net-(COUT201-Pad1)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 108 "Net-(R202-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4972,12 +4972,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 108 "Net-(R202-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5010,12 +5010,12 @@
       (net 28 "Net-(D202-Pad2)"))
     (pad 1 smd rect (at -0.95 0 270) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 157 /power_main/12v_BUCK))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5053,7 +5053,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 180) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 106 PRECHARGE_CTL))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5091,7 +5091,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 180) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 56 BMS_RELAY_DRIVE))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5129,7 +5129,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 270) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 19 +AIR_COIL+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5167,7 +5167,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 270) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 88 DETECT_IMD_LATCH))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5205,7 +5205,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 270) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 89 DETECT_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5243,7 +5243,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 270) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 90 DETECT_MPC))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5281,7 +5281,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 270) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 101 DETECT_HVD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5319,7 +5319,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 270) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 99 DETECT_HVD_CONN))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5357,7 +5357,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95 270) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 162 /imd_latch/LATCH_OUTPUT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5395,7 +5395,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.05 -0.95) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 162 /imd_latch/LATCH_OUTPUT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5437,12 +5437,12 @@
       (net 95 "Net-(PD1004-Pad1)"))
     (pad 2 smd rect (at 1.1 0 270) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 96 /micros/SM_DBG_2))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5484,12 +5484,12 @@
       (net 93 "Net-(PD1003-Pad1)"))
     (pad 2 smd rect (at 1.1 0 270) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 94 /micros/SM_DBG_1))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5531,12 +5531,12 @@
       (net 92 "Net-(PD1002-Pad1)"))
     (pad 2 smd rect (at 1.1 0) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 57 /micros/PM_DBG_2))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5578,12 +5578,12 @@
       (net 91 "Net-(PD1001-Pad1)"))
     (pad 2 smd rect (at 1.1 0) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 58 /micros/PM_DBG_1))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5685,7 +5685,7 @@
       (net 89 DETECT_BMS))
     (pad 1 thru_hole circle (at 0 0 270) (size 1.8 1.8) (drill 1.3) (layers *.Cu *.Mask)
       (net 42 "Net-(D801-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/G5Q_OEM/G5Q.step
+    (model ${OEM_DIR}/parts/3DModels/G5Q_OEM/G5Q.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -5728,7 +5728,7 @@
       (net 21 +AIR_AUX+))
     (pad 1 thru_hole rect (at 0 0 90) (size 1.4 1.4) (drill 1.016) (layers *.Cu *.Mask)
       (net 75 SM_MISO))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Header_Pin_2x3/Header_Straight_2x3.wrl
+    (model ${OEM_DIR}/parts/3DModels/Header_Pin_2x3/Header_Straight_2x3.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -5813,7 +5813,7 @@
     (pad 4 thru_hole circle (at 0 5.25) (size 1.397 1.397) (drill 1.02) (layers *.Cu *.Mask))
     (pad 1 thru_hole circle (at 0 -5.25) (size 1.397 1.397) (drill 1.02) (layers *.Cu *.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ultrafit-4-RA/172310-1304_stp/1723101304.stp
+    (model ${OEM_DIR}/parts/3DModels/Ultrafit-4-RA/172310-1304_stp/1723101304.stp
       (offset (xyz 5 0 3))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 -90))
@@ -5847,7 +5847,7 @@
       (net 8 15V-))
     (pad 1 thru_hole circle (at 0 -5.25 180) (size 1.397 1.397) (drill 1.02) (layers *.Cu *.Mask)
       (net 10 TS+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ultrafit-4-RA/172310-1304_stp/1723101304.stp
+    (model ${OEM_DIR}/parts/3DModels/Ultrafit-4-RA/172310-1304_stp/1723101304.stp
       (offset (xyz 5 0 3))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 -90))
@@ -5982,7 +5982,7 @@
       (net 16 5V_BMS))
     (pad 5 thru_hole circle (at 0 0 90) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 77 SM_MOSI))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/micromatch_female_vert_16/c-1-338068-6-f-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/micromatch_female_vert_16/c-1-338068-6-f-3d.stp
       (offset (xyz 1.3 -4.5 3.6))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -6023,7 +6023,7 @@
       (net 69 IMD_Output))
     (pad 2 thru_hole circle (at 0 1.75 270) (size 1.397 1.397) (drill 1.02) (layers *.Cu *.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ultrafit-5/COMPOUND_sp.step
+    (model ${OEM_DIR}/parts/3DModels/Ultrafit-5/COMPOUND_sp.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6082,7 +6082,7 @@
       (net 7 15V+))
     (pad 1 smd rect (at -1.45 0) (size 0.9 2.5) (layers F.Cu F.Paste F.Mask)
       (net 15 "Net-(C706-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
+    (model ${OEM_DIR}/parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6138,7 +6138,7 @@
       (net 30 12V_SHUTDOWN))
     (pad 1 smd rect (at -1.45 0 270) (size 0.9 2.5) (layers F.Cu F.Paste F.Mask)
       (net 49 +BATT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
+    (model ${OEM_DIR}/parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6171,7 +6171,7 @@
       (net 6 12V_IMD))
     (pad 1 smd rect (at -1.45 0 270) (size 0.9 2.5) (layers F.Cu F.Paste F.Mask)
       (net 49 +BATT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
+    (model ${OEM_DIR}/parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6204,7 +6204,7 @@
       (net 9 12V_TSAL))
     (pad 1 smd rect (at -1.45 0 270) (size 0.9 2.5) (layers F.Cu F.Paste F.Mask)
       (net 49 +BATT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
+    (model ${OEM_DIR}/parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6237,7 +6237,7 @@
       (net 157 /power_main/12v_BUCK))
     (pad 1 smd rect (at -1.45 0) (size 0.9 2.5) (layers F.Cu F.Paste F.Mask)
       (net 49 +BATT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
+    (model ${OEM_DIR}/parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6270,7 +6270,7 @@
       (net 21 +AIR_AUX+))
     (pad 1 smd rect (at -1.45 0) (size 0.9 2.5) (layers F.Cu F.Paste F.Mask)
       (net 48 +5V))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
+    (model ${OEM_DIR}/parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6303,7 +6303,7 @@
       (net 16 5V_BMS))
     (pad 1 smd rect (at -1.45 0) (size 0.9 2.5) (layers F.Cu F.Paste F.Mask)
       (net 48 +5V))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
+    (model ${OEM_DIR}/parts/3DModels/Fuse_1210_OEM/Fuse1210.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6345,12 +6345,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 45 "Net-(D903-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6392,12 +6392,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 44 "Net-(D902-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6539,12 +6539,12 @@
       (net 39 "Net-(D601-Pad1)"))
     (pad 2 smd rect (at 1.1 0 180) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 40 "Net-(D601-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6586,12 +6586,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 38 "Net-(D506-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6633,12 +6633,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 37 "Net-(D505-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6680,12 +6680,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 36 "Net-(D504-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6727,12 +6727,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 35 "Net-(D503-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6774,12 +6774,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 34 "Net-(D502-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6821,12 +6821,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 33 "Net-(D501-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6868,12 +6868,12 @@
       (net 31 "Net-(D302-Pad1)"))
     (pad 2 smd rect (at 1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 32 "Net-(D302-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6915,12 +6915,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0 90) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 29 "Net-(D203-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -6962,12 +6962,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1.1 0 270) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 28 "Net-(D202-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7005,7 +7005,7 @@
       (net 157 /power_main/12v_BUCK))
     (pad 2 smd rect (at 2.032 0 90) (size 1.778 2.159) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/DO_214AA_OEM/DO_214AA.wrl
+    (model ${OEM_DIR}/parts/3DModels/DO_214AA_OEM/DO_214AA.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7057,7 +7057,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1.5 0 180) (size 1 1.6) (layers F.Cu F.Paste F.Mask)
       (net 27 "Net-(COUT201-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_1206_OEM/C_1206_OEM.wrl
+    (model ${OEM_DIR}/parts/3DModels/C_1206_OEM/C_1206_OEM.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7090,12 +7090,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 27 "Net-(COUT201-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7128,12 +7128,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 26 "Net-(C1010-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7166,12 +7166,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 25 "Net-(C1009-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7204,12 +7204,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 24 "Net-(C1008-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7242,12 +7242,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7280,12 +7280,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 23 "Net-(C1006-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7318,12 +7318,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 22 "Net-(C1005-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7356,12 +7356,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 21 +AIR_AUX+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7394,12 +7394,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7432,12 +7432,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 20 "Net-(C1002-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7470,12 +7470,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7501,7 +7501,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 thru_hole rect (at -5.0038 0 90) (size 1.3716 1.3716) (drill 0.8636) (layers *.Cu *.Mask B.Adhes F.Paste)
       (net 19 +AIR_COIL+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/UVZ_Cap/UVZ_Cap.step
+    (model ${OEM_DIR}/parts/3DModels/UVZ_Cap/UVZ_Cap.step
       (offset (xyz -5 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7527,7 +7527,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 thru_hole rect (at -5.0038 0) (size 1.3716 1.3716) (drill 0.8636) (layers *.Cu *.Mask B.Adhes F.Paste)
       (net 19 +AIR_COIL+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/UVZ_Cap/UVZ_Cap.step
+    (model ${OEM_DIR}/parts/3DModels/UVZ_Cap/UVZ_Cap.step
       (offset (xyz -5 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7560,12 +7560,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7598,12 +7598,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7636,12 +7636,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7674,12 +7674,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 18 "Net-(C805-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7712,12 +7712,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 17 "Net-(C804-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7750,12 +7750,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7788,12 +7788,12 @@
       (net 16 5V_BMS))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7826,12 +7826,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 16 5V_BMS))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7864,12 +7864,12 @@
       (net 8 15V-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 15 "Net-(C706-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7921,12 +7921,12 @@
       (net 8 15V-))
     (pad 1 smd rect (at -1 0 90) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 7 15V+))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7959,12 +7959,12 @@
       (net 11 /power_secondary.sch/SW))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers B.Cu B.Paste B.Mask)
       (net 14 "Net-(C704-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7997,12 +7997,12 @@
       (net 11 /power_secondary.sch/SW))
     (pad 1 smd rect (at -1 0 90) (size 1 1.25) (layers B.Cu B.Paste B.Mask)
       (net 13 /power_secondary.sch/FB))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8035,12 +8035,12 @@
       (net 11 /power_secondary.sch/SW))
     (pad 1 smd rect (at -1 0) (size 1 1.25) (layers B.Cu B.Paste B.Mask)
       (net 12 /power_secondary.sch/VCC))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8095,12 +8095,12 @@
       (net 9 12V_TSAL))
     (pad 1 smd rect (at -1 0) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8133,12 +8133,12 @@
       (net 7 15V+))
     (pad 1 smd rect (at -1 0) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 8 15V-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8171,12 +8171,12 @@
       (net 7 15V+))
     (pad 1 smd rect (at -1 0) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 8 15V-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8209,12 +8209,12 @@
       (net 6 12V_IMD))
     (pad 1 smd rect (at -1 0 90) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8247,12 +8247,12 @@
       (net 6 12V_IMD))
     (pad 1 smd rect (at -1 0 180) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8321,12 +8321,12 @@
       (net 3 "Net-(C203-Pad2)"))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 4 "Net-(C203-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8359,12 +8359,12 @@
       (net 2 +AIR_COIL-))
     (pad 1 smd rect (at -1 0 270) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 157 /power_main/12v_BUCK))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8446,12 +8446,12 @@
       (net 144 /tsal_ail/TSAL_FLAG))
     (pad 2 smd rect (at 0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8504,7 +8504,7 @@
       (net 119 AIL+))
     (pad "" np_thru_hole circle (at 0 -7.18 90) (size 1.6 1.6) (drill 1.6) (layers *.Cu *.Mask))
     (pad "" np_thru_hole circle (at 2.5 -7.18 90) (size 1.6 1.6) (drill 1.6) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Molex_NanoFit_1x02x2_50mm_Angled_OEM/Molex_NanoFit_1x02x2_50mm_Angled_OEM001.wrl
+    (model ${OEM_DIR}/parts/3DModels/Molex_NanoFit_1x02x2_50mm_Angled_OEM/Molex_NanoFit_1x02x2_50mm_Angled_OEM001.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8542,7 +8542,7 @@
       (net 2 +AIR_COIL-))
     (pad 3 smd rect (at 1.05 0) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 81 TSAL_RED-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8575,12 +8575,12 @@
       (net 158 "Net-(Q602-Pad1)"))
     (pad 2 smd rect (at 0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8652,7 +8652,7 @@
       (net 2 +AIR_COIL-))
     (pad 3 smd rect (at 1.05 0) (size 0.9 0.8) (layers F.Cu F.Paste F.Mask)
       (net 80 TSAL_GREEN-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/SOT-23_OEM/SOT-23.wrl
+    (model ${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8685,12 +8685,12 @@
       (net 163 "Net-(R313-Pad2)"))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 162 /imd_latch/LATCH_OUTPUT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8723,12 +8723,12 @@
       (net 163 "Net-(R313-Pad2)"))
     (pad 2 smd rect (at 0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 97 IMD_STATUS_OUTPUT))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8761,12 +8761,12 @@
       (net 97 IMD_STATUS_OUTPUT))
     (pad 2 smd rect (at 0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8927,7 +8927,7 @@
       (net 51 PM_RESET))
     (pad 32 smd rect (at -2.8 -4.25 180) (size 1.6 0.55) (layers F.Cu F.Paste F.Mask)
       (net 1 BSPD_CURRENT_SENSE))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Atmega16m1/Atmega16m1.step
+    (model ${OEM_DIR}/parts/3DModels/Atmega16m1/Atmega16m1.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8960,12 +8960,12 @@
       (net 7 15V+))
     (pad 2 smd rect (at 0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 121 "Net-(R702-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8998,12 +8998,12 @@
       (net 171 "Net-(R702-Pad2)"))
     (pad 1 smd rect (at -0.95 0 90) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 121 "Net-(R702-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9036,12 +9036,12 @@
       (net 171 "Net-(R702-Pad2)"))
     (pad 2 smd rect (at 0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 8 15V-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9074,12 +9074,12 @@
       (net 11 /power_secondary.sch/SW))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers B.Cu B.Paste B.Mask)
       (net 13 /power_secondary.sch/FB))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9112,12 +9112,12 @@
       (net 14 "Net-(C704-Pad1)"))
     (pad 2 smd rect (at 0.95 0 180) (size 0.7 1.3) (layers B.Cu B.Paste B.Mask)
       (net 13 /power_secondary.sch/FB))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9150,12 +9150,12 @@
       (net 2 +AIR_COIL-))
     (pad 2 smd rect (at 1 0 90) (size 1 1.25) (layers F.Cu F.Paste F.Mask)
       (net 6 12V_IMD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/C_0805_OEM/C_0805.step
+    (model ${OEM_DIR}/parts/3DModels/C_0805_OEM/C_0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9213,7 +9213,7 @@
       (net 88 DETECT_IMD_LATCH))
     (pad 5 thru_hole circle (at 0 -7.62 90) (size 1.8 1.8) (drill 1.3) (layers *.Cu *.Mask)
       (net 30 12V_SHUTDOWN))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/G5Q_OEM/G5Q.step
+    (model ${OEM_DIR}/parts/3DModels/G5Q_OEM/G5Q.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9246,12 +9246,12 @@
       (net 21 +AIR_AUX+))
     (pad 2 smd rect (at 0.95 0 270) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 24 "Net-(C1008-Pad1)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))

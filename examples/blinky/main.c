@@ -1,14 +1,15 @@
-#include <avr/io.h>
 #include <util/delay.h>
 
-#define LED0 (PD6)
+#include "libs/gpio/api.h"
+#include "libs/gpio/pin_defs.h"
+
+gpio_t LED0 = PD5;
 
 int main(void) {
-    DDRD |= _BV(LED0);
+    gpio_set_mode(LED0, OUTPUT);
 
     for (;;) {
-        PORTD ^= _BV(LED0);
-
-        _delay_ms(250);
+        gpio_toggle_pin(LED0);
+        _delay_ms(500);
     }
 }

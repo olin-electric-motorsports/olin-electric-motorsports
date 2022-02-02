@@ -1,5 +1,5 @@
 load("//bazel:defs.bzl", "kicad_hardware")
 
 kicad_hardware(
-    name = "lvbms_tester_board",
+    name = "lv_bms_tester_board",
 )

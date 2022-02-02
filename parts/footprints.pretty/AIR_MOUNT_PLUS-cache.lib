@@ -1,0 +1,63 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# Formula_DBR71210(NC)
+#
+DEF Formula_DBR71210(NC) K 0 40 Y Y 1 F N
+F0 "K" 350 150 50 H V L CNN
+F1 "Formula_DBR71210(NC)" 400 -150 50 H V L CNN
+F2 "footprints:D-Series_Cynergy_Relay" 450 -50 50 H I L CNN
+F3 "https://www.cynergy3.com/sites/default/files/D%20series%202016_5.pdf" 450 -350 50 H I L CNN
+F4 "DK" 850 550 60 H I C CNN "MFN"
+F5 "725-1049-ND" 750 450 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/cynergy-3/DBR71210/725-1049-ND/752025" 950 650 60 H I C CNN "PurchasingLink"
+$FPLIST
+ Relay?SPDT?OMRON?G5Q*
+$ENDFPLIST
+DRAW
+S -400 200 300 -200 0 1 10 f
+S -325 75 -75 -75 0 1 10 N
+P 2 0 0 0 100 150 100 200 N
+P 2 0 1 10 -300 -75 -100 75 N
+P 2 0 1 0 -200 -200 -200 -75 N
+P 2 0 1 0 -200 200 -200 75 N
+P 2 0 1 10 -75 0 -50 0 N
+P 2 0 1 10 -25 0 0 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 75 0 100 0 N
+P 2 0 1 0 100 -100 100 -200 N
+P 2 0 1 10 100 -100 100 100 N
+P 2 0 1 10 125 0 150 0 N
+P 3 0 1 0 100 100 125 125 100 150 F
+X ~ 1 100 -300 100 U 50 50 1 1 P
+X ~ 2 100 300 100 D 50 50 1 1 P
+X - 3 -200 -300 100 U 50 50 1 1 P
+X + 4 -200 300 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Formula_R_3K_HS
+#
+DEF Formula_R_3K_HS R 0 0 Y Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "Formula_R_3K_HS" -100 0 50 V V C CNN
+F2 "footprints:R_3k_HS_TO247" -70 0 50 H I C CNN
+F3 "http://dpk3n3gg92jwt.cloudfront.net/domains/ohmite/pdf/acl_ap101.pdf" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "AP1013KJ-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/ohmite/AP101-3K-J/AP101-3K-J-ND/5878525" 480 400 60 H I C CNN "PurchasingLink"
+F7 "345-1223-ND" 580 500 60 V I C CNN "MPN2"
+F8 "https://www.digikey.com/product-detail/en/wakefield-vette/657-15ABPEN/345-1223-ND/3945700" 680 600 60 V I C CNN "PurchasingLink2"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library

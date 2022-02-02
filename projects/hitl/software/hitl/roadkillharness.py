@@ -5,11 +5,9 @@ import configparser
 from typing import Optional
 
 # Project imports
-from hitl.ecu import ECU
-from hitl.utils import get_logging_config, root_path, artifacts_path
-from hitl.iocontroller import IOController
-from hitl.cancontroller import CANController
-
+from .utils import get_logging_config, root_path, artifacts_path
+from .iocontroller import IOController
+from .cancontroller import CANController
 
 class RoadkillHarness:
     """Class to represent the entire tester
@@ -25,7 +23,7 @@ class RoadkillHarness:
     this system.
     """
 
-    def __init__(self):
+    def __init__(self, real: bool = True):
         # Read config
         config = configparser.ConfigParser(interpolation=None)
         config.read(os.path.join(artifacts_path, "config.ini"))
@@ -40,39 +38,15 @@ class RoadkillHarness:
             pin_info_path=os.path.join(
                 artifacts_path,
                 config.get("PATHS", "pin_config", fallback="pin_info.csv"),
-            )
+            ),
+            real=real,
         )
-
-        # Create all ECUs
-        ecus = {}
-
-        self.log.info("Creating throttle ecu...")
-        self.throttle = ECU(name="throttle", io=self.io)
-        ecus["throttle"] = self.throttle
-
-        self.log.info("Creating dashboard ecu...")
-        self.dashboard = ECU(name="dashboard", io=self.io)
-        ecus["dashboard"] = self.dashboard
-
-        self.log.info("Creating air_ctrl ecu...")
-        self.air_ctrl = ECU(name="air_ctrl", io=self.io)
-        ecus["air_ctrl"] = self.air_ctrl
-
-        self.log.info("Creating bms_core ecu...")
-        self.bms_core = ECU(name="bms_core", io=self.io)
-        ecus["bms_core"] = self.bms_core
-
-        self.log.info("Creating brakelight_bspd ecu...")
-        self.brakelight_bspd = ECU(name="brakelight_bspd", io=self.io)
-        ecus["brakelight_bspd"] = self.brakelight_bspd
-
-        # Add more ECUs here
 
         # Create CANController
         self.log.info("Creating CANController...")
         self.can = CANController(
-            ecus=ecus,
-            can_spec_path=os.path.join(artifacts_path, config.get("PATHS", "dbc_path")),
+            can_spec_path="vehicle/mkv/mkv.dbc",
             channel=config.get("HARDWARE", "can_channel", fallback="vcan0"),
             bitrate=config.get("HARDWARE", "can_bitrate", fallback="500000"),
+            real=real,
         )

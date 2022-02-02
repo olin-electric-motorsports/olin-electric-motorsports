@@ -1,8 +1,19 @@
-# IMPORTS
+# Base Python
+import os
 import logging
 from typing import Tuple, Union
+from configparser import ConfigParser
 
-import ft4222
+# Extended Python
+try:
+    import ft4222
+except ModuleNotFoundError:
+    # We haven't setup the ft4222 library yet...
+    # See https://awenstrup.github.io/setup.html
+    ft4222 = None
+
+# Project Imports 
+from .utils import artifacts_path
 
 # CONSTANTS
 # ADC parameters
@@ -28,6 +39,9 @@ GPIO_CHANNEL_TO_ADD_BITS = {i: i for i in range(4, 32)}
 GPIO_COMMANDS = {"single port": 0b00100000}
 GPIO_RETURN_SIZE_BYTES = 1
 
+config = ConfigParser(interpolation=None)
+config.read(os.path.join(artifacts_path, "config.ini"))
+
 
 class IOController:
     """High level python object to interface with hardware.
@@ -40,18 +54,27 @@ class IOController:
     :param str device_description: The description of the device; used to connect.
     """
 
-    def __init__(self, pin_info_path: str, device_description: str = "FT4222 A"):
+    def __init__(self, 
+    pin_info_path: str = config.get("PATH", "pin_info_path", fallback=os.path.join(artifacts_path, "pin_info.csv")),
+     device_description: str = "FT4222 A",
+     real: bool = True
+    ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
         self.pin_info = self._read_pin_info(path=pin_info_path)
-        try:
-            self.dev = ft4222.openByDescription(device_description)
-            self.dev.i2cMaster_Init(400_000)
-        except ft4222.FT2XXDeviceError as e:
-            # Couldn't open the specified port; initialize w/o hardware for testing
-            self.log.error(f"Failed to connect to device {device_description}")
-            self.log.error(e)
+
+        if ft4222 and real:
+            try:
+                self.dev = ft4222.openByDescription(device_description)
+                self.dev.i2cMaster_Init(400_000)
+            except ft4222.FT2XXDeviceError as e:
+                # Couldn't open the specified port; initialize w/o hardware for testing
+                self.log.error(f"Failed to connect to device {device_description}")
+                self.log.error(e)
+                self.dev = None
+        else:
+            self.log.warning("ft4222 could not be imported, cannot connect to hardware")
             self.dev = None
 
     def set_state(self, name: str, value) -> None:
@@ -79,7 +102,7 @@ class IOController:
         GPIO Datasheet: https://datasheets.maximintegrated.com/en/ds/MAX7300.pdf
         """
         # Raise an exception if the signal is read only
-        if self.pin[name]["read_write"] == "READ":
+        if self.pin_info[name]["read_write"] == "READ":
             raise Exception(f"{name} is a read-only signal, you cannot set it!")
 
         # If no hardware, log an error
