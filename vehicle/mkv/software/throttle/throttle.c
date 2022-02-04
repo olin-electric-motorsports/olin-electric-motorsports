@@ -5,6 +5,7 @@
 
 #include "libs/gpio/api.h"
 #include "throttle_config.h"
+#include "vehicle/mkv/software/throttle/can_api.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -182,9 +183,7 @@ int main(void) {
     
 
 		if (send_can) {
-            can_send(&throttle_msg);
-            can_send(&mc_msg);
-            // TODO: check if there is implausibility (don't send throttle if so)
+            can_send_throttle();
+            // TODO: send motor controller message 
 		}
-        }
     }

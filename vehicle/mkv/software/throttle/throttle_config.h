@@ -41,37 +41,3 @@ timer_cfg_s timer0_cfg = {
         .interrupt_callback = timer0_callback,
     },
 };
-
-/*
- * CAN messages
- */
-#define CAN_MSG_DLC       (5)
-#define DASHBOARD_MSG_DLC (4)
-
-uint8_t can_data_throttle[CAN_MSG_DLC] = { 0 };
-uint8_t can_motor_controller[8] = {0};
-
-
-can_frame_t throttle_msg = {
-    .id = 0xC,
-    .dlc = CAN_MSG_DLC,
-    .mob = 0,
-};
-
-can_frame_t mc_msg = { 
-    .id = 0xC0,
-    .dlc = CAN_MSG_DLC,
-    .mob = 0,
-};
-
-uint8_t rx_dashboard_msg_data[DASHBOARD_MSG_DLC];
-
-can_frame_t rx_dashboard_msg = { 
-    .mob = 1,
-    .data = rx_dashboard_msg_data,
-};
-
-can_filter_t rx_dashboard_filter = {
-    .mask = 0xFF,
-    .id = 0x0F,
-};
