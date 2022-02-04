@@ -1,6 +1,6 @@
 def get_rx_messages(subs, messages):
     """
-    Gets the received Messages from the list of messages, based on the subs 
+    Gets the received Messages from the list of messages, based on the subs
     dictionary.
     """
     rx_message_names = [d["name"] for d in subs]
