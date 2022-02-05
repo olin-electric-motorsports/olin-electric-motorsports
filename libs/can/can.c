@@ -12,12 +12,6 @@ ISR(CAN_INT_vect) {
     can_isr();
 }
 
-__attribute__((weak)) void can_isr(void) {};
-
-ISR(CAN_INT_vect) {
-    can_isr();
-}
-
 void can_init(baud_rate_t baud) {
     can_reset();
 
