@@ -1,42 +1,127 @@
-def assert_fault(the_fault):
-    assert(air_control_critical.fault_state == the_fault)
+import pytest
+import time
+from formula.projects.microhitl import Values as PinValue
 
-def test_bms_can_timeout():
-    # stop BMS_CORE message
-    air_control.run()
-    assert_fault(FAULT_CAN_BMS_TIMEOUT)
-    # air_control.halt() # This should be done in a fixture
+def reset(iocontroller, pins):
+    iocontroller.write_pin(pins["RESET"][0], PinValue.LOW)
+    time.sleep(0.5)
+    iocontroller.write_pin(pins["RESET"][0], PinValue.HIGH)
 
-def test_bms_voltage_low():
-    # periodic BMS_CORE messages
-    # set BMS_CORE CAN message to be too low
-    air_control.run()
-    assert_fault(FAULT_BMS_VOLTAGE)
+"""
+Fault during init if BMS message takes longer than 1 second to receive
+"""
+def test_bms_can_timeout(canbus, iocontroller, pins):
+    reset(iocontroller, pins)
+    assert(canbus.get_state("air_fault") == "NONE")
+    time.sleep(1.1)
+    assert(canbus.get_state("air_fault") == "CAN_BMS_TIMEOUT")
 
-def test_motor_controller_timeout():
-    # turn off motor controller CAN message
-    assert_fault(FAULT_CAN_MC_TIMEOUT)
+"""
+Fault during init if BMS voltage is less than 200V
+"""
+def test_bms_voltage_low(canbus, iocontroller, pins):
+    canbus.set_state("pack_voltage", 100)
+    canbus.set_periodic("bms_core", 0.3)
 
-def test_motor_controller_voltage_high():
+    reset(iocontroller, pins)
+    assert(canbus.get_state("air_fault") == "NONE")
+    time.sleep(1)
+    assert(canbus.get_state("air_fault") == "BMS_VOLTAGE")
+
+"""
+Fault during init if motor controller voltage message takes longer than 1
+second to receive
+"""
+def test_motor_controller_timeout(canbus, iocontroller, pins):
+    canbus.set_state("pack_voltage", 350)
+    canbus.set_periodic("bms_core", 0.30)
+
+    reset(iocontroller, pins)
+    time.sleep(1.1)
+    assert(canbus.get_state("air_fault") == "CAN_MC_TIMEOUT")
+
+def test_motor_controller_voltage_high(canbus, iocontroller, pins):
     # set motor controller voltage message too high
-    assert_fault(FAULT_MOTOR_CONTROLLER_VOLTAGE)
+    canbus.set_state("pack_voltage", 350)
+    canbus.set_state("D1_DC_Bus_Voltage", 10)
+    canbus.set_periodic("bms_core", 0.1)
+    canbus.set_periodic("M167_Voltage_Info", 0.1)
 
-def test_air_p_weld():
-    # set air_p_weld_detect HIGH
-    assert_fault(FAULT_AIR_P_WELD)
+    reset(iocontroller, pins)
+    time.sleep(1)
+    assert(canbus.get_state("air_fault") ==
+            "MOTOR_CONTROLLER_VOLTAGE")
 
-def test_air_n_weld():
-    # set air_n_weld_detect HIGH
-    assert_fault(FAULT_AIR_N_WELD)
 
-def test_shutdown_circuit_closed():
-    # set all SS pins
-    assert_fault(FAULT_SHUTDOWN_IMPLAUSIBILITY)
+def test_air_p_weld(canbus, iocontroller, pins):
+    canbus.periodic_messages = {}
+    canbus.set_state("pack_voltage", 350)
+    canbus.set_state("D1_DC_Bus_Voltage", 0)
+    canbus.set_periodic("bms_core", 0.1)
+    canbus.set_periodic("M167_Voltage_Info", 0.1)
 
-def test_imd_implausibility():
-    # aset IMD_SENSE pin high
-    assert_fault(FAULT_IMD_STATUS)
+    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.HIGH)
 
-def test_initial_checks_success():
-    # set CAN messages correctly, set correct configuration
-    assert(state == IDLE)
+    reset(iocontroller, pins)
+    time.sleep(1)
+    assert(canbus.get_state("air_fault") == "AIR_P_WELD")
+
+def test_air_n_weld(canbus, iocontroller, pins):
+    canbus.set_periodic("bms_core", 0.1)
+    canbus.set_state("pack_voltage", 350)
+    canbus.set_periodic("M167_Voltage_Info", 0.1)
+    canbus.set_state("D1_DC_Bus_Voltage", 0)
+
+    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
+    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+
+    reset(iocontroller, pins)
+    time.sleep(1)
+    assert(canbus.get_state("air_fault") == "AIR_N_WELD")
+
+def test_shutdown_circuit_closed(canbus, iocontroller, pins):
+    canbus.set_state("pack_voltage", 350)
+    canbus.set_periodic("bms_core", 0.1)
+    canbus.set_state("D1_DC_Bus_Voltage", 0)
+    canbus.set_periodic("M167_Voltage_Info", 0.1)
+
+    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
+    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
+    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
+
+    reset(iocontroller, pins)
+    time.sleep(1)
+    assert(canbus.get_state("air_fault") ==
+            "SHUTDOWN_IMPLAUSIBILITY")
+
+def test_imd_implausibility(canbus, iocontroller, pins):
+    canbus.set_state("pack_voltage", 350)
+    canbus.set_periodic("bms_core", 0.1)
+    canbus.set_state("D1_DC_Bus_Voltage", 0)
+    canbus.set_periodic("M167_Voltage_Info", 0.1)
+
+    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
+    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
+    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+    iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.LOW)
+
+    reset(iocontroller, pins)
+    time.sleep(1)
+    assert(canbus.get_state("air_fault") ==
+            "IMD_STATUS")
+
+
+def test_initial_checks_success(canbus, iocontroller, pins):
+    canbus.set_state("pack_voltage", 350)
+    canbus.set_periodic("bms_core", 0.1)
+    canbus.set_state("D1_DC_Bus_Voltage", 0)
+    canbus.set_periodic("M167_Voltage_Info", 0.1)
+
+    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
+    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
+    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+    iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.HIGH)
+
+    reset(iocontroller, pins)
+    time.sleep(1)
+    assert(canbus.get_state("air_state") == "IDLE")
