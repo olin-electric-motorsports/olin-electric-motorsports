@@ -7,7 +7,7 @@ on:
     - '**.kicad_pcb'
 
 jobs:
-  build:
+  build_comment:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
