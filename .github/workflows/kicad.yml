@@ -53,3 +53,4 @@ jobs:
      - name: update_outline
        if: ${{ github.event_name == 'push' }} 
        run: ./.github/git-bazel-kicad.sh
+       
