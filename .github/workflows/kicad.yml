@@ -51,9 +51,9 @@ jobs:
       with:
         path: build/comment.md
 
-     - name: update_outline
-       if: ${{ github.event_name == 'push' }}
-       run: ./.github/git-bazel-site-update.sh
-       env:
-         url: 
+     - #name: update_outline
+       #if: ${{ github.event_name == 'push' }}
+       #run: ./.github/git-bazel-site-update.sh
+       #env:
+       #  url: 
     
