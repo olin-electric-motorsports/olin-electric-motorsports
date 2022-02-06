@@ -50,7 +50,9 @@ jobs:
       with:
         path: build/comment.md
 
-     - name: update_outline
-       if: ${{ github.event_name == 'push' }} 
-       run: ./.github/git-bazel-kicad.sh
-       
+    # - name: update_outline
+    #   if: ${{ github.event_name == 'push' }} # TODO
+    #   run: ./.github/update_kicad_outline.py
+    #   env:
+    #     url: 
+    #
