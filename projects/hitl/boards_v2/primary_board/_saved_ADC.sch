@@ -854,10 +854,10 @@ Wire Wire Line
 Text Notes 8600 3250 0    50   ~ 0
 For input voltages higher than Vbus
 $Comp
-L formula:74HCT4051D U?
+L formula:74HCT4051D U7
 U 1 1 62116DF9
 P 7050 1650
-F 0 "U?" H 7500 1900 60  0000 C CNN
+F 0 "U7" H 7500 1900 60  0000 C CNN
 F 1 "74HCT4051D" H 7600 1800 60  0000 C CNN
 F 2 "footprints:74HCT4051D" H 7850 1890 60  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/74HC_HCT4051.pdf" H 7300 2119 60  0001 C CNN

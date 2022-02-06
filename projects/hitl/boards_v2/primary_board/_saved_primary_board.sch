@@ -950,46 +950,6 @@ F 6 "https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/LH-
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:Barrel_jack J2
-U 1 1 61325E21
-P 850 1450
-F 0 "J2" H 870 1465 50  0000 C CNN
-F 1 "Barrel_jack" H 870 1374 50  0000 C CNN
-F 2 "footprints:barrel_jack_PJ-037A" H 750 1350 50  0001 C CNN
-F 3 "https://www.cui.com/product/resource/pj-037a.pdf" H 850 1450 50  0001 C CNN
-F 4 "DK" H 950 1550 50  0001 C CNN "MFN"
-F 5 "CP-037A-ND" H 1050 1650 50  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/cui-inc/PJ-037A/CP-037A-ND/1644545" H 1150 1750 50  0001 C CNN "PurchasingLink"
-	1    850  1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+12V #PWR?
-U 1 1 61328319
-P 2000 1450
-F 0 "#PWR?" H 2000 1300 50  0001 C CNN
-F 1 "+12V" H 2015 1623 50  0000 C CNN
-F 2 "" H 2000 1450 50  0001 C CNN
-F 3 "" H 2000 1450 50  0001 C CNN
-	1    2000 1450
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2000 1450 2000 1650
-$Comp
-L power:GND #PWR?
-U 1 1 61335B01
-P 2000 1900
-F 0 "#PWR?" H 2000 1650 50  0001 C CNN
-F 1 "GND" H 2005 1727 50  0000 C CNN
-F 2 "" H 2000 1900 50  0001 C CNN
-F 3 "" H 2000 1900 50  0001 C CNN
-	1    2000 1900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2000 1900 2000 1850
-$Comp
 L power:VBUS #PWR?
 U 1 1 61344599
 P 6050 5050
@@ -1022,52 +982,6 @@ F 3 "" H 11450 3750 50  0001 C CNN
 	1    11450 3750
 	1    0    0    -1  
 $EndComp
-$Comp
-L formula:C_10uF_50V C5
-U 1 1 6134964A
-P 2300 1750
-F 0 "C5" H 2350 1950 50  0000 L CNN
-F 1 "C_10uF_50V" H 2650 1700 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 2338 2350 50  0001 C CNN
-F 3 "http://www.samsungsem.com/kr/support/product-https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM21BR61H106KE43-01A.pdf" H 2325 2600 50  0001 C CNN
-F 4 "Murata" H 2300 1800 60  0001 C CNN "MFN"
-F 5 "GRM21BR61H106KE43L" H 2300 2500 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/murata-electronics/GRM21BR61H106KE43L/10326316" H 2725 2250 60  0001 C CNN "PurchasingLink"
-	1    2300 1750
-	1    0    0    -1  
-$EndComp
-$Comp
-L formula:C_10uF_50V C6
-U 1 1 61349FEC
-P 2550 1750
-F 0 "C6" H 2600 1950 50  0000 L CNN
-F 1 "C_10uF_50V" H 2650 1800 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 2588 2350 50  0001 C CNN
-F 3 "http://www.samsungsem.com/kr/support/product-https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM21BR61H106KE43-01A.pdf" H 2575 2600 50  0001 C CNN
-F 4 "Murata" H 2550 1800 60  0001 C CNN "MFN"
-F 5 "GRM21BR61H106KE43L" H 2550 2500 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/murata-electronics/GRM21BR61H106KE43L/10326316" H 2975 2250 60  0001 C CNN "PurchasingLink"
-	1    2550 1750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2300 1550 2300 1450
-Wire Wire Line
-	2300 1450 2000 1450
-Connection ~ 2000 1450
-Wire Wire Line
-	2550 1550 2550 1450
-Wire Wire Line
-	2550 1450 2300 1450
-Connection ~ 2300 1450
-Wire Wire Line
-	2300 1850 2000 1850
-Connection ~ 2000 1850
-Wire Wire Line
-	2000 1850 2000 1800
-Wire Wire Line
-	2550 1850 2300 1850
-Connection ~ 2300 1850
 $Comp
 L formula:R_1.91K R18
 U 1 1 61385B69
@@ -3029,20 +2943,6 @@ $EndComp
 Wire Notes Line width 20 style solid
 	9450 4550 9450 5950
 $Comp
-L formula:LED_0805 D3
-U 1 1 6145E058
-P 3400 1900
-F 0 "D3" V 3439 1783 50  0000 R CNN
-F 1 "LED_0805" V 3348 1783 50  0000 R CNN
-F 2 "footprints:LED_0805_OEM" H 3300 1900 50  0001 C CNN
-F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 3400 2000 50  0001 C CNN
-F 4 "DK" H 3400 1900 60  0001 C CNN "MFN"
-F 5 "475-1410-1-ND" H 3400 1900 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 3800 2400 60  0001 C CNN "PurchasingLink"
-	1    3400 1900
-	0    -1   -1   0   
-$EndComp
-$Comp
 L formula:LED_0805 D1
 U 1 1 6145E5FE
 P 1700 5000
@@ -4903,54 +4803,6 @@ GPIO-27
 Wire Wire Line
 	13800 6450 14150 6450
 Connection ~ 14150 6450
-$Comp
-L formula:R_1.91K R7
-U 1 1 613E2765
-P 3400 1600
-F 0 "R7" H 3470 1646 50  0000 L CNN
-F 1 "R_1.91K" H 3470 1555 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 3330 1600 50  0001 C CNN
-F 3 "" H 3480 1600 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PB6D1911V/P21049CT-ND/6215304" H 3880 2000 60  0001 C CNN "PurchasingLink"
-	1    3400 1600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3400 1450 2550 1450
-Connection ~ 2550 1450
-$Comp
-L power:GND #PWR?
-U 1 1 6140FD98
-P 3400 2100
-F 0 "#PWR?" H 3400 1850 50  0001 C CNN
-F 1 "GND" H 3405 1927 50  0000 C CNN
-F 2 "" H 3400 2100 50  0001 C CNN
-F 3 "" H 3400 2100 50  0001 C CNN
-	1    3400 2100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3400 2100 3400 2050
-Text Notes 3600 1800 0    50   ~ 0
-~~5mA
-$Comp
-L formula:1.5A_Fuse F2
-U 1 1 614285C0
-P 1350 1650
-F 0 "F2" H 1350 1875 50  0000 C CNN
-F 1 "1.5A_Fuse" H 1350 1784 50  0000 C CNN
-F 2 "footprints:Fuse_1206" H 1350 1350 50  0001 C CNN
-F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" H 1300 1650 50  0001 C CNN
-F 4 "F1462CT-ND" H 1450 1900 50  0001 C CNN "MPN"
-F 5 "https://www.digikey.com/product-detail/en/littelfuse-inc/046601.5NR/F1462CT-ND/521360" H 1550 2000 50  0001 C CNN "PurchasingLink"
-F 6 "046601.5NR" H 1650 2100 50  0001 C CNN "MFN"
-	1    1350 1650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1650 1650 1800 1650
-Wire Wire Line
-	1050 1800 1650 1800
 Wire Notes Line width 20 style solid
 	11800 4550 11800 5950
 Text Notes 14350 4450 0    50   ~ 0
@@ -4959,38 +4811,6 @@ Text Notes 14350 4550 0    50   ~ 0
 https://www.digikey.com/en/products/detail/samtec-inc/SSW-122-01-G-D/1112036\n
 Text Label 5300 1750 2    50   ~ 0
 Analog-MUX5
-$Comp
-L formula:R_3.01K R9
-U 1 1 611DACBB
-P 4400 1950
-F 0 "R9" H 4470 1996 50  0000 L CNN
-F 1 "R_3.01K" H 4470 1905 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 4330 1950 50  0001 C CNN
-F 3 "http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf" H 4480 1950 50  0001 C CNN
-F 4 "DK" H 4400 1950 60  0001 C CNN "MFN"
-F 5 "311-3.01KCRCT-ND" H 4400 1950 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=311-3.01KCRCT-ND" H 4880 2350 60  0001 C CNN "PurchasingLink"
-	1    4400 1950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3400 1450 4400 1450
-Connection ~ 3400 1450
-$Comp
-L power:GND #PWR?
-U 1 1 6120BF3C
-P 4400 2100
-F 0 "#PWR?" H 4400 1850 50  0001 C CNN
-F 1 "GND" H 4405 1927 50  0000 C CNN
-F 2 "" H 4400 2100 50  0001 C CNN
-F 3 "" H 4400 2100 50  0001 C CNN
-	1    4400 2100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5300 1750 4400 1750
-Wire Wire Line
-	4400 1800 4400 1750
 $Comp
 L formula:R_3.01K R2
 U 1 1 6126CA0C
@@ -5022,21 +4842,6 @@ Wire Wire Line
 	1950 3750 1950 4400
 Wire Wire Line
 	1950 4400 2000 4400
-$Comp
-L formula:R_12K R8
-U 1 1 612AB79B
-P 4400 1600
-F 0 "R8" H 4470 1646 50  0000 L CNN
-F 1 "R_12K" H 4470 1555 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" V 4330 1600 50  0001 C CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-9&DocType=DS&DocLang=English" V 4480 1600 50  0001 C CNN
-F 4 "TE" V 4580 1700 60  0001 C CNN "MFN"
-F 5 "CRGP0805F12K" V 4680 1800 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/CRGP0805F12K/8577092" V 4780 1900 60  0001 C CNN "PurchasingLink"
-	1    4400 1600
-	1    0    0    -1  
-$EndComp
-Connection ~ 4400 1750
 Text Notes 4800 1550 0    50   ~ 0
 Vout = Vin * ~~0.2\nVout ≈ 2.4V
 $Comp
@@ -5745,32 +5550,6 @@ Wire Wire Line
 Connection ~ 3950 10150
 Wire Wire Line
 	3950 10150 3950 9950
-$Comp
-L formula:D_Zener_13V D2
-U 1 1 61549EF4
-P 1800 2200
-F 0 "D2" V 1754 2279 50  0000 L CNN
-F 1 "D_Zener_13V" V 1845 2279 50  0000 L CNN
-F 2 "footprints:D_13V_Zener" H 1700 2200 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub/Collateral/1SMB5913BT3-D.PDF" H 1800 2300 50  0001 C CNN
-F 4 "DK" H 2000 2500 60  0001 C CNN "MFN"
-F 5 "1SMB5928BT3GOSCT-ND" H 1900 2400 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/1SMB5928BT3G/1SMB5928BT3GOSCT-ND/917730?WT.z_cid=ref_octopart_dkc_buynow&site=us" H 1900 2400 60  0001 C CNN "PurchasingLink"
-	1    1800 2200
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	1800 2050 1800 1650
-Connection ~ 1800 1650
-Wire Wire Line
-	1800 1650 2000 1650
-Wire Wire Line
-	1650 1800 1650 2350
-Wire Wire Line
-	1650 2350 1800 2350
-Connection ~ 1650 1800
-Wire Wire Line
-	1650 1800 2000 1800
 $Comp
 L formula:R_8.06k R12
 U 1 1 612CC8D8
@@ -7199,4 +6978,225 @@ Wire Wire Line
 Connection ~ 7850 8800
 Text Notes 5500 10900 0    50   ~ 0
 Will interface with: IPEH-002021\nP-CAN USB
+Wire Wire Line
+	1650 1800 2000 1800
+Connection ~ 1650 1800
+Wire Wire Line
+	1650 2350 1800 2350
+Wire Wire Line
+	1650 1800 1650 2350
+Wire Wire Line
+	1800 1650 2000 1650
+Connection ~ 1800 1650
+Wire Wire Line
+	1800 2050 1800 1650
+$Comp
+L formula:D_Zener_13V D2
+U 1 1 61549EF4
+P 1800 2200
+F 0 "D2" V 1754 2279 50  0000 L CNN
+F 1 "D_Zener_13V" V 1845 2279 50  0000 L CNN
+F 2 "footprints:D_13V_Zener" H 1700 2200 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub/Collateral/1SMB5913BT3-D.PDF" H 1800 2300 50  0001 C CNN
+F 4 "DK" H 2000 2500 60  0001 C CNN "MFN"
+F 5 "1SMB5928BT3GOSCT-ND" H 1900 2400 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/1SMB5928BT3G/1SMB5928BT3GOSCT-ND/917730?WT.z_cid=ref_octopart_dkc_buynow&site=us" H 1900 2400 60  0001 C CNN "PurchasingLink"
+	1    1800 2200
+	0    1    1    0   
+$EndComp
+Connection ~ 4400 1750
+$Comp
+L formula:R_12K R8
+U 1 1 612AB79B
+P 4400 1600
+F 0 "R8" H 4470 1646 50  0000 L CNN
+F 1 "R_12K" H 4470 1555 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" V 4330 1600 50  0001 C CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-9&DocType=DS&DocLang=English" V 4480 1600 50  0001 C CNN
+F 4 "TE" V 4580 1700 60  0001 C CNN "MFN"
+F 5 "CRGP0805F12K" V 4680 1800 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/CRGP0805F12K/8577092" V 4780 1900 60  0001 C CNN "PurchasingLink"
+	1    4400 1600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 1800 4400 1750
+Wire Wire Line
+	5300 1750 4400 1750
+$Comp
+L power:GND #PWR?
+U 1 1 6120BF3C
+P 4400 2100
+F 0 "#PWR?" H 4400 1850 50  0001 C CNN
+F 1 "GND" H 4405 1927 50  0000 C CNN
+F 2 "" H 4400 2100 50  0001 C CNN
+F 3 "" H 4400 2100 50  0001 C CNN
+	1    4400 2100
+	1    0    0    -1  
+$EndComp
+Connection ~ 3400 1450
+Wire Wire Line
+	3400 1450 4400 1450
+$Comp
+L formula:R_3.01K R9
+U 1 1 611DACBB
+P 4400 1950
+F 0 "R9" H 4470 1996 50  0000 L CNN
+F 1 "R_3.01K" H 4470 1905 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 4330 1950 50  0001 C CNN
+F 3 "http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf" H 4480 1950 50  0001 C CNN
+F 4 "DK" H 4400 1950 60  0001 C CNN "MFN"
+F 5 "311-3.01KCRCT-ND" H 4400 1950 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=311-3.01KCRCT-ND" H 4880 2350 60  0001 C CNN "PurchasingLink"
+	1    4400 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1050 1800 1650 1800
+Wire Wire Line
+	1650 1650 1800 1650
+$Comp
+L formula:1.5A_Fuse F2
+U 1 1 614285C0
+P 1350 1650
+F 0 "F2" H 1350 1875 50  0000 C CNN
+F 1 "1.5A_Fuse" H 1350 1784 50  0000 C CNN
+F 2 "footprints:Fuse_1206" H 1350 1350 50  0001 C CNN
+F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" H 1300 1650 50  0001 C CNN
+F 4 "F1462CT-ND" H 1450 1900 50  0001 C CNN "MPN"
+F 5 "https://www.digikey.com/product-detail/en/littelfuse-inc/046601.5NR/F1462CT-ND/521360" H 1550 2000 50  0001 C CNN "PurchasingLink"
+F 6 "046601.5NR" H 1650 2100 50  0001 C CNN "MFN"
+	1    1350 1650
+	1    0    0    -1  
+$EndComp
+Text Notes 3600 1800 0    50   ~ 0
+~~5mA
+Wire Wire Line
+	3400 2100 3400 2050
+$Comp
+L power:GND #PWR?
+U 1 1 6140FD98
+P 3400 2100
+F 0 "#PWR?" H 3400 1850 50  0001 C CNN
+F 1 "GND" H 3405 1927 50  0000 C CNN
+F 2 "" H 3400 2100 50  0001 C CNN
+F 3 "" H 3400 2100 50  0001 C CNN
+	1    3400 2100
+	1    0    0    -1  
+$EndComp
+Connection ~ 2550 1450
+Wire Wire Line
+	3400 1450 2550 1450
+$Comp
+L formula:R_1.91K R7
+U 1 1 613E2765
+P 3400 1600
+F 0 "R7" H 3470 1646 50  0000 L CNN
+F 1 "R_1.91K" H 3470 1555 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 3330 1600 50  0001 C CNN
+F 3 "" H 3480 1600 50  0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PB6D1911V/P21049CT-ND/6215304" H 3880 2000 60  0001 C CNN "PurchasingLink"
+	1    3400 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:LED_0805 D3
+U 1 1 6145E058
+P 3400 1900
+F 0 "D3" V 3439 1783 50  0000 R CNN
+F 1 "LED_0805" V 3348 1783 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 3300 1900 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 3400 2000 50  0001 C CNN
+F 4 "DK" H 3400 1900 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 3400 1900 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 3800 2400 60  0001 C CNN "PurchasingLink"
+	1    3400 1900
+	0    -1   -1   0   
+$EndComp
+Connection ~ 2300 1850
+Wire Wire Line
+	2550 1850 2300 1850
+Wire Wire Line
+	2000 1850 2000 1800
+Connection ~ 2000 1850
+Wire Wire Line
+	2300 1850 2000 1850
+Connection ~ 2300 1450
+Wire Wire Line
+	2550 1450 2300 1450
+Wire Wire Line
+	2550 1550 2550 1450
+Connection ~ 2000 1450
+Wire Wire Line
+	2300 1450 2000 1450
+Wire Wire Line
+	2300 1550 2300 1450
+$Comp
+L formula:C_10uF_50V C6
+U 1 1 61349FEC
+P 2550 1750
+F 0 "C6" H 2600 1950 50  0000 L CNN
+F 1 "C_10uF_50V" H 2650 1800 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 2588 2350 50  0001 C CNN
+F 3 "http://www.samsungsem.com/kr/support/product-https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM21BR61H106KE43-01A.pdf" H 2575 2600 50  0001 C CNN
+F 4 "Murata" H 2550 1800 60  0001 C CNN "MFN"
+F 5 "GRM21BR61H106KE43L" H 2550 2500 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/murata-electronics/GRM21BR61H106KE43L/10326316" H 2975 2250 60  0001 C CNN "PurchasingLink"
+	1    2550 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:C_10uF_50V C5
+U 1 1 6134964A
+P 2300 1750
+F 0 "C5" H 2350 1950 50  0000 L CNN
+F 1 "C_10uF_50V" H 2650 1700 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 2338 2350 50  0001 C CNN
+F 3 "http://www.samsungsem.com/kr/support/product-https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM21BR61H106KE43-01A.pdf" H 2325 2600 50  0001 C CNN
+F 4 "Murata" H 2300 1800 60  0001 C CNN "MFN"
+F 5 "GRM21BR61H106KE43L" H 2300 2500 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/murata-electronics/GRM21BR61H106KE43L/10326316" H 2725 2250 60  0001 C CNN "PurchasingLink"
+	1    2300 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 1900 2000 1850
+$Comp
+L power:GND #PWR?
+U 1 1 61335B01
+P 2000 1900
+F 0 "#PWR?" H 2000 1650 50  0001 C CNN
+F 1 "GND" H 2005 1727 50  0000 C CNN
+F 2 "" H 2000 1900 50  0001 C CNN
+F 3 "" H 2000 1900 50  0001 C CNN
+	1    2000 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 1450 2000 1650
+$Comp
+L power:+12V #PWR?
+U 1 1 61328319
+P 2000 1450
+F 0 "#PWR?" H 2000 1300 50  0001 C CNN
+F 1 "+12V" H 2015 1623 50  0000 C CNN
+F 2 "" H 2000 1450 50  0001 C CNN
+F 3 "" H 2000 1450 50  0001 C CNN
+	1    2000 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:Barrel_jack J2
+U 1 1 61325E21
+P 850 1450
+F 0 "J2" H 870 1465 50  0000 C CNN
+F 1 "Barrel_jack" H 870 1374 50  0000 C CNN
+F 2 "footprints:barrel_jack_PJ-037A" H 750 1350 50  0001 C CNN
+F 3 "https://www.cui.com/product/resource/pj-037a.pdf" H 850 1450 50  0001 C CNN
+F 4 "DK" H 950 1550 50  0001 C CNN "MFN"
+F 5 "CP-037A-ND" H 1050 1650 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/cui-inc/PJ-037A/CP-037A-ND/1644545" H 1150 1750 50  0001 C CNN "PurchasingLink"
+	1    850  1450
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
