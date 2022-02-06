@@ -34,6 +34,12 @@ jobs:
         else
           exit 0
         fi
+    - name: update_outline
+      if: ${{ github.event_name == 'push' }}
+      run: ./.github/git-bazel-site-update.sh
+      env:
+        GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
+        
     - name: upload
       uses: BetaHuhn/do-spaces-action@v2
       with:
