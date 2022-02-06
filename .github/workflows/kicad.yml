@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: build
       id: build_kicad
       run: |
@@ -33,7 +34,6 @@ jobs:
         else
           exit 0
         fi
-
     - name: upload
       uses: BetaHuhn/do-spaces-action@v2
       with:
@@ -50,9 +50,9 @@ jobs:
       with:
         path: build/comment.md
 
-     - name: update_outline
-       if: ${{ github.event_name == 'push' }}
-       run: ./.github/git-bazel-site-update.sh
-       env:
-         url: 
-    
+    # - name: update_outline
+    #   if: ${{ github.event_name == 'push' }} # TODO
+    #   run: ./.github/update_kicad_outline.py
+    #   env:
+    #     url: 
+    #
