@@ -91,3 +91,6 @@ if [[ ! -z $buildables ]]; then
 else
     echo "Nothing to build"
 fi
+
+echo "Site update should be happening now"
+curl -X POST -H "Content-type: application/json" -d '{"schematic": "schematic4", "layout": "layout4", "bom": "bom4"}' "http://localhost:5000/hitl/commit4"
