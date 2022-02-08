@@ -2189,7 +2189,6 @@
     )
   )
 
-
   (junction (at 384.81 99.06) (diameter 0) (color 0 0 0 0)
     (uuid 05ac7ab3-04dc-41b0-b3b2-0ce389afdbf6)
   )
@@ -2329,10 +2328,8 @@
   (no_connect (at 393.7 184.15) (uuid 11236c7f-31f1-45e1-b4ba-dfe7db8a12cd))
   (no_connect (at 370.84 76.2) (uuid 13bc3998-5745-424e-ada9-f8a9e1f5329c))
   (no_connect (at 314.96 48.26) (uuid 2da60390-ff21-4437-82a4-3e8bcdc893cf))
-  (no_connect (at 370.84 55.88) (uuid 3b0f90e8-57d9-42d7-85e4-9d338a5720fc))
   (no_connect (at 381 185.42) (uuid 708ae4a5-cc3f-4ad0-be7f-b39e38a69ee8))
   (no_connect (at 370.84 71.12) (uuid 8d4bb02a-864a-42ea-9279-3a04375beb41))
-  (no_connect (at 370.84 53.34) (uuid ac7e114a-a636-4d70-9396-f001c58d28eb))
   (no_connect (at 370.84 35.56) (uuid bffae139-ddab-4784-b0c7-5e3e493c77c8))
   (no_connect (at 11.43 102.87) (uuid c4a44aac-37fe-4082-bec4-f10a25ebe3db))
   (no_connect (at 25.4 -33.02) (uuid f262f7f3-4b2a-45e1-a49e-8f0b08514d16))
@@ -2963,6 +2960,10 @@
     (uuid d6955d83-1493-456c-ad49-8e23731b5a91)
   )
 
+  (wire (pts (xy 370.84 53.34) (xy 370.84 55.88))
+    (stroke (width 0) (type default) (color 0 0 0 0))
+    (uuid d6dba6ae-d838-4f62-a9da-a0ad16ee06ec)
+  )
   (wire (pts (xy 231.14 246.38) (xy 232.41 246.38))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid d751be33-bc96-4cde-8cd7-54ee5cf97ea0)
@@ -8208,7 +8209,7 @@
     (pin "1" (uuid 78473f1f-6ee5-4e5e-8bef-5760b345797c))
   )
 
-  (symbol (lib_id "power:GND") (at 251.46 162.56 0)
+  (symbol (lib_id "power:GND") (at 251.46 162.56 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca4a)
     (property "Reference" "#PWR0157" (id 0) (at 251.46 168.91 0)
@@ -8224,7 +8225,7 @@
     (pin "1" (uuid 96d25356-22db-4b91-891d-03518f2f7335))
   )
 
-  (symbol (lib_id "power:GND") (at 232.41 154.94 0)
+  (symbol (lib_id "power:GND") (at 232.41 154.94 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca50)
     (property "Reference" "#PWR0145" (id 0) (at 232.41 161.29 0)
@@ -8240,7 +8241,7 @@
     (pin "1" (uuid 5eac54c5-305d-41d6-8b17-f9ef74142fc5))
   )
 
-  (symbol (lib_id "power:GND") (at 224.79 154.94 0)
+  (symbol (lib_id "power:GND") (at 224.79 154.94 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca56)
     (property "Reference" "#PWR0144" (id 0) (at 224.79 161.29 0)
@@ -8256,7 +8257,7 @@
     (pin "1" (uuid ed1a5791-066a-41fc-93f9-84cc9e3ab3d5))
   )
 
-  (symbol (lib_id "throttle-rescue:C_2.2uF-formula-throttle-rescue") (at 232.41 151.13 0)
+  (symbol (lib_id "throttle-rescue:C_2.2uF-formula-throttle-rescue") (at 232.41 151.13 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca5f)
     (property "Reference" "C102" (id 0) (at 233.68 154.94 0)
@@ -8284,7 +8285,7 @@
     (pin "2" (uuid 5b6552db-1934-4e21-b64f-ae7a1f76c8c1))
   )
 
-  (symbol (lib_id "throttle-rescue:C_0.1uF-formula-throttle-rescue") (at 224.79 151.13 0)
+  (symbol (lib_id "throttle-rescue:C_0.1uF-formula-throttle-rescue") (at 224.79 151.13 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca69)
     (property "Reference" "C101" (id 0) (at 226.06 154.94 0)
@@ -8312,7 +8313,7 @@
     (pin "2" (uuid 4860b7ca-5462-43f4-a38e-eb1a17b607b0))
   )
 
-  (symbol (lib_id "throttle-rescue:R_100K-formula-throttle-rescue") (at 288.29 166.37 270)
+  (symbol (lib_id "throttle-rescue:R_100K-formula-throttle-rescue") (at 288.29 166.37 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca73)
     (property "Reference" "R103" (id 0) (at 285.75 168.91 90)
@@ -8340,7 +8341,7 @@
     (pin "2" (uuid 483c6d94-68c1-4f1b-8e98-c40bca319724))
   )
 
-  (symbol (lib_id "throttle-rescue:C_22uF-formula-throttle-rescue") (at 288.29 153.67 0)
+  (symbol (lib_id "throttle-rescue:C_22uF-formula-throttle-rescue") (at 288.29 153.67 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca7e)
     (property "Reference" "COUT101" (id 0) (at 285.75 147.32 0)
@@ -8368,7 +8369,7 @@
     (pin "2" (uuid 2b7ce8cf-15d8-46c4-b3a9-cb827efeb07e))
   )
 
-  (symbol (lib_id "throttle-rescue:C_47uF-formula-throttle-rescue") (at 306.07 153.67 0)
+  (symbol (lib_id "throttle-rescue:C_47uF-formula-throttle-rescue") (at 306.07 153.67 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca88)
     (property "Reference" "COUT103" (id 0) (at 303.53 147.32 0)
@@ -8396,7 +8397,7 @@
     (pin "2" (uuid 417d526e-3812-4843-9479-358992ac501d))
   )
 
-  (symbol (lib_id "throttle-rescue:C_33uF-formula-throttle-rescue") (at 297.18 153.67 0)
+  (symbol (lib_id "throttle-rescue:C_33uF-formula-throttle-rescue") (at 297.18 153.67 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca92)
     (property "Reference" "COUT102" (id 0) (at 294.64 147.32 0)
@@ -8424,7 +8425,7 @@
     (pin "2" (uuid 40ca1f1f-2d65-458c-815a-303c43691a68))
   )
 
-  (symbol (lib_id "throttle-rescue:R_25K-formula-throttle-rescue") (at 275.59 166.37 270)
+  (symbol (lib_id "throttle-rescue:R_25K-formula-throttle-rescue") (at 275.59 166.37 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005cacca9c)
     (property "Reference" "R102" (id 0) (at 273.05 168.91 90)
@@ -8452,7 +8453,7 @@
     (pin "2" (uuid e2d6b49b-9591-491a-ac53-ca3ab113243a))
   )
 
-  (symbol (lib_id "throttle-rescue:F_500mA_16V-formula-throttle-rescue") (at 200.66 167.64 0)
+  (symbol (lib_id "throttle-rescue:F_500mA_16V-formula-throttle-rescue") (at 200.66 167.64 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccaa6)
     (property "Reference" "F101" (id 0) (at 203.2 167.64 90))
@@ -8476,7 +8477,7 @@
     (pin "2" (uuid 105af4fe-09fb-4fa3-9035-ea11530186fc))
   )
 
-  (symbol (lib_id "throttle-rescue:R_0_2512-formula-throttle-rescue") (at 326.39 149.86 90)
+  (symbol (lib_id "throttle-rescue:R_0_2512-formula-throttle-rescue") (at 326.39 149.86 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccab0)
     (property "Reference" "R104" (id 0) (at 326.39 154.94 90))
@@ -8500,7 +8501,7 @@
     (pin "2" (uuid 6ee7d2de-047e-40cf-8ded-ac861f5f8aeb))
   )
 
-  (symbol (lib_id "throttle-rescue:LED_0805-formula-throttle-rescue") (at 336.55 168.91 90)
+  (symbol (lib_id "throttle-rescue:LED_0805-formula-throttle-rescue") (at 336.55 168.91 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccaba)
     (property "Reference" "D103" (id 0) (at 339.5218 167.9448 90)
@@ -8528,7 +8529,7 @@
     (pin "2" (uuid 3ea9b17b-e755-496c-b648-afdb7ba73cb1))
   )
 
-  (symbol (lib_id "throttle-rescue:R_200-formula-throttle-rescue") (at 336.55 154.94 0)
+  (symbol (lib_id "throttle-rescue:R_200-formula-throttle-rescue") (at 336.55 154.94 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccac4)
     (property "Reference" "R105" (id 0) (at 338.328 153.7716 0)
@@ -8556,7 +8557,7 @@
     (pin "2" (uuid 78030749-23c0-418c-a906-1eb6f78c81bd))
   )
 
-  (symbol (lib_id "power:GND") (at 336.55 180.34 0)
+  (symbol (lib_id "power:GND") (at 336.55 180.34 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccacb)
     (property "Reference" "#PWR0140" (id 0) (at 336.55 186.69 0)
@@ -8572,7 +8573,7 @@
     (pin "1" (uuid 65f9ed6c-ff13-4968-84cf-edc86f501a5f))
   )
 
-  (symbol (lib_id "throttle-rescue:D_Zener_18V-formula-throttle-rescue") (at 200.66 154.94 270)
+  (symbol (lib_id "throttle-rescue:D_Zener_18V-formula-throttle-rescue") (at 200.66 154.94 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccad4)
     (property "Reference" "D101" (id 0) (at 207.01 154.94 0))
@@ -8596,7 +8597,7 @@
     (pin "2" (uuid 8016ace4-b164-40ff-a63b-582c2cabda23))
   )
 
-  (symbol (lib_id "power:GND") (at 200.66 180.34 0)
+  (symbol (lib_id "power:GND") (at 200.66 180.34 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccadc)
     (property "Reference" "#PWR0115" (id 0) (at 200.66 186.69 0)
@@ -8612,7 +8613,7 @@
     (pin "1" (uuid db36e6ee-f559-4e77-a8a2-6ec0e4e940a0))
   )
 
-  (symbol (lib_id "throttle-rescue:LED_0805-formula-throttle-rescue") (at 213.36 167.64 90)
+  (symbol (lib_id "throttle-rescue:LED_0805-formula-throttle-rescue") (at 213.36 167.64 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccae7)
     (property "Reference" "D102" (id 0) (at 216.3318 166.6748 90)
@@ -8640,7 +8641,7 @@
     (pin "2" (uuid feca530a-c6c1-4219-b383-a5f1908d3bf8))
   )
 
-  (symbol (lib_id "throttle-rescue:R_200-formula-throttle-rescue") (at 213.36 154.94 0)
+  (symbol (lib_id "throttle-rescue:R_200-formula-throttle-rescue") (at 213.36 154.94 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccaf1)
     (property "Reference" "R101" (id 0) (at 215.138 153.7716 0)
@@ -8668,7 +8669,7 @@
     (pin "2" (uuid 365d579f-70b2-41d1-a248-5455cf5ee6c4))
   )
 
-  (symbol (lib_id "power:GND") (at 213.36 180.34 0)
+  (symbol (lib_id "power:GND") (at 213.36 180.34 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccaf8)
     (property "Reference" "#PWR0149" (id 0) (at 213.36 186.69 0)
@@ -8684,7 +8685,7 @@
     (pin "1" (uuid af8a4dba-9855-44c4-97ef-ec4655c6f16d))
   )
 
-  (symbol (lib_id "power:GND") (at 267.97 170.18 0)
+  (symbol (lib_id "power:GND") (at 267.97 170.18 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccb07)
     (property "Reference" "#PWR0156" (id 0) (at 267.97 176.53 0)
@@ -8700,7 +8701,7 @@
     (pin "1" (uuid a8dd0e96-9bbb-44b0-a104-cd5939b785ab))
   )
 
-  (symbol (lib_id "throttle-rescue:L_100uH-formula-throttle-rescue") (at 271.78 149.86 0)
+  (symbol (lib_id "throttle-rescue:L_100uH-formula-throttle-rescue") (at 271.78 149.86 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccb14)
     (property "Reference" "L101" (id 0) (at 271.78 153.67 0))
@@ -8724,7 +8725,7 @@
     (pin "2" (uuid 6adc9c8d-ae4f-456c-812a-b4236b51008b))
   )
 
-  (symbol (lib_id "power:GND") (at 288.29 157.48 0)
+  (symbol (lib_id "power:GND") (at 288.29 157.48 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccb1b)
     (property "Reference" "#PWR0158" (id 0) (at 288.29 163.83 0)
@@ -8740,7 +8741,7 @@
     (pin "1" (uuid 97998cb6-a494-40b7-8bbd-7df2c034b907))
   )
 
-  (symbol (lib_id "power:GND") (at 297.18 157.48 0)
+  (symbol (lib_id "power:GND") (at 297.18 157.48 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccb21)
     (property "Reference" "#PWR0135" (id 0) (at 297.18 163.83 0)
@@ -8756,7 +8757,7 @@
     (pin "1" (uuid a6b973bf-3c82-4206-bae7-4f835d16d359))
   )
 
-  (symbol (lib_id "power:GND") (at 306.07 157.48 0)
+  (symbol (lib_id "power:GND") (at 306.07 157.48 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccb27)
     (property "Reference" "#PWR0134" (id 0) (at 306.07 163.83 0)
@@ -8772,7 +8773,7 @@
     (pin "1" (uuid 849b2233-bcea-4d4b-88ae-21161e99a811))
   )
 
-  (symbol (lib_id "power:VCC") (at 336.55 144.78 0)
+  (symbol (lib_id "power:VCC") (at 336.55 144.78 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccb2e)
     (property "Reference" "#PWR0142" (id 0) (at 336.55 148.59 0)
@@ -8788,7 +8789,7 @@
     (pin "1" (uuid f58c3928-37aa-4b6c-bc79-caa7d95369b8))
   )
 
-  (symbol (lib_id "formula:TPS560430YF") (at 250.19 151.13 0)
+  (symbol (lib_id "formula:TPS560430YF") (at 250.19 151.13 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccb3d)
     (property "Reference" "U101" (id 0) (at 250.825 139.319 0))
@@ -8816,7 +8817,7 @@
     (pin "6" (uuid 26534b93-9904-42cd-82fb-fe8c6b572766))
   )
 
-  (symbol (lib_id "throttle-rescue:C_0.1uF-formula-throttle-rescue") (at 265.43 146.05 180)
+  (symbol (lib_id "throttle-rescue:C_0.1uF-formula-throttle-rescue") (at 265.43 146.05 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00005caccb58)
     (property "Reference" "C103" (id 0) (at 271.78 146.05 0))
