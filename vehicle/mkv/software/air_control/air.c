@@ -63,11 +63,11 @@ void timer0_isr(void) {
 }
 
 void pcint0_callback(void) {
-    air_control_critical.ss_tsms = !!gpio_get_pin(SS_TSMS);
-    air_control_critical.ss_imd = !!gpio_get_pin(SS_IMD_LATCH);
-    air_control_critical.ss_mpc = !!gpio_get_pin(SS_MPC);
-    air_control_critical.ss_hvd_conn = !!gpio_get_pin(SS_HVD_CONN);
-    air_control_critical.ss_hvd = !!gpio_get_pin(SS_HVD);
+    air_control_critical.ss_tsms = !gpio_get_pin(SS_TSMS);
+    air_control_critical.ss_imd = !gpio_get_pin(SS_IMD_LATCH);
+    air_control_critical.ss_mpc = !gpio_get_pin(SS_MPC);
+    air_control_critical.ss_hvd_conn = !gpio_get_pin(SS_HVD_CONN);
+    air_control_critical.ss_hvd = !gpio_get_pin(SS_HVD);
 }
 
 void pcint1_callback(void) {
@@ -170,6 +170,19 @@ static int initial_checks(void) {
         set_fault(FAULT_IMD_STATUS);
         rc = 1;
         goto bail;
+    } else {
+        air_control_critical.imd_status = true;
+    }
+
+    // TODO implement hitl test
+    if (!gpio_get_pin(BMS_SENSE)) {
+        // IMD_SENSE pin should start high
+        air_control_critical.bms_status = false;
+        set_fault(FAULT_BMS_STATUS);
+        rc = 1;
+        goto bail;
+    } else {
+        air_control_critical.bms_status = true;
     }
 
 bail:
@@ -191,20 +204,25 @@ static void state_machine_run(void) {
             }
         } break;
         case SHUTDOWN_CIRCUIT_CLOSED: {
-            timer_set = get_time();
+            static bool once = true;
+
+            if (once) {
+                timer_set = get_time();
+                once = false;
+            }
 
             if (get_time() - timer_set < 200) {
-                if (gpio_get_pin(AIR_N_WELD_DETECT)) {
+                if (air_control_critical.air_n_status) {
                     air_control_critical.air_state = PRECHARGE;
+                    once = true;
+                    return;
+                } else {
                     return;
                 }
             } else {
-                if (!gpio_get_pin(AIR_N_WELD_DETECT)) {
-                    // The AIR_N should have closed by now, so if not, throw a
-                    // fault
-                    set_fault(FAULT_SHUTDOWN_IMPLAUSIBILITY);
-                    return;
-                }
+                set_fault(FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                once = true;
+                return;
             }
         } break;
         case PRECHARGE: {
@@ -223,29 +241,43 @@ static void state_machine_run(void) {
                 return;
             }
 
-            // static uint32_t now = get_time();
-            timer_set = get_time();
+            // Set correct scale for pack voltage
+            pack_voltage = pack_voltage * 10;
+
+            static bool once = true;
+
+            if (once) {
+                timer_set = get_time();
+                once = false;
+            }
 
             if (get_time() - timer_set < 2000) {
                 rc = get_motor_controller_voltage(&motor_controller_voltage);
                 if (rc != 0) {
                     set_fault(FAULT_CAN_MC_TIMEOUT);
+                    once = true;
                     return;
                 }
 
-                int16_t diff = pack_voltage - motor_controller_voltage;
+                // Set correct scale for MC voltage
+                motor_controller_voltage = motor_controller_voltage / 10;
 
-                if (diff > (PRECHARGE_THRESHOLD * pack_voltage)) {
+                if (motor_controller_voltage > 
+                        (PRECHARGE_THRESHOLD * pack_voltage)) {
                     gpio_set_pin(AIR_N_LSD); // Close AIR_N
                     gpio_clear_pin(PRECHARGE_CTL); // Close precharge relay
+                    once = true;
                     air_control_critical.air_state = TS_ACTIVE;
+                    return;
                 } else {
                     return;
                 }
             } else {
                 // 2000 ms (2sec) have elapsed and the motor controller hasn't
                 // reached the appropriate voltage, so precharge failed
+                once = true;
                 set_fault(FAULT_PRECHARGE_FAIL);
+                return;
             }
         } break;
         case TS_ACTIVE: {
@@ -276,8 +308,16 @@ static void state_machine_run(void) {
             }
 
             // Wait for 2 seconds while the motor controller discharges
-            timer_set = get_time();
+            static bool once = true;
 
+            if (once) {
+                timer_set = get_time();
+                once = false;
+            }
+
+            // TODO: we might want to be checking for motor controller messages
+            // here. If the MC stops transmitting during TS_ACTIVE, it won't be
+            // caught until at least 3 seconds after DISCHARGE begins
             if (get_time() - timer_set < 2000) {
                 return;
             }
@@ -287,13 +327,17 @@ static void state_machine_run(void) {
 
             if (rc != 0) {
                 set_fault(FAULT_CAN_MC_TIMEOUT);
+                once = true;
                 return;
             }
 
             if (mc_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW) {
+                once = true;
                 air_control_critical.air_state = IDLE;
+                return;
             } else {
                 set_fault(FAULT_DISCHARGE_FAIL);
+                once = true;
                 return;
             }
         } break;
@@ -328,6 +372,8 @@ int main(void) {
     gpio_enable_interrupt(SS_HVD);
     gpio_enable_interrupt(BMS_SENSE);
     gpio_enable_interrupt(IMD_SENSE);
+    gpio_enable_interrupt(AIR_N_WELD_DETECT);
+    gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
     air_control_critical.air_state = INIT;
 
@@ -335,7 +381,7 @@ int main(void) {
     sei();
 
     // Set LED to indicate initial checks will be run
-    // gpio_set_pin(GENERAL_LED);
+    gpio_set_pin(GENERAL_LED);
 
     // Send message once before checks
     can_send_air_control_critical();
@@ -345,7 +391,7 @@ int main(void) {
     }
 
     // Clear LED to indicate that initial checks passed
-    // gpio_clear_pin(GENERAL_LED);
+    gpio_clear_pin(GENERAL_LED);
 
     // Send message again after initial checks are run
     can_send_air_control_critical();

@@ -3,8 +3,9 @@ load("//tools/pytest:defs.bzl", "pytest_test")
 pytest_test(
     name = "tests",
     srcs = [
-        "test_initial_checks.py",
         "conftest.py",
+        # "test_initial_checks.py",
+        "test_air.py",
     ],
     data = [
         "//vehicle/mkv:mkv.dbc",
