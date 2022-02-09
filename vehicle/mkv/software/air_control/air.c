@@ -262,8 +262,8 @@ static void state_machine_run(void) {
                 // Set correct scale for MC voltage
                 motor_controller_voltage = motor_controller_voltage / 10;
 
-                if (motor_controller_voltage > 
-                        (PRECHARGE_THRESHOLD * pack_voltage)) {
+                if (motor_controller_voltage
+                    > (PRECHARGE_THRESHOLD * pack_voltage)) {
                     gpio_set_pin(AIR_N_LSD); // Close AIR_N
                     gpio_clear_pin(PRECHARGE_CTL); // Close precharge relay
                     once = true;

@@ -11,11 +11,11 @@ pytest_test(
         "//vehicle/mkv:mkv.dbc",
         "//vehicle/mkv/software/air_control",
     ],
+    target_compatible_with = [
+        "//bazel/constraints:atmega16m1",
+    ],
     deps = [
         "//projects/hitl/software/hitl",
         "//projects/microhitl",
-    ],
-    target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
     ],
 )
