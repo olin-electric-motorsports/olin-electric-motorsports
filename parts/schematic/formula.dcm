@@ -198,8 +198,8 @@ D Capacitor, 10uF, 16V, 10%, 0805
 $ENDCMP
 #
 $CMP C_10uF_25V
-D Capacitor, 10uF, 10V, 10%, 0805
-F https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM21BR61E106KA73-01.pdf
+D Capacitor, 10uF, 25V, 10%, 0805
+F http://www.samsungsem.com/kr/support/product-search/mlcc/CL21A106KAYNNNE.jsp
 $ENDCMP
 #
 $CMP C_10uF_450V
@@ -214,12 +214,12 @@ $ENDCMP
 #
 $CMP C_1uF
 D Capacitor, 1uF, 50V, 0805
-F https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf
+F https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf
 $ENDCMP
 #
 $CMP C_2.2uF
 D Capacitor, 2.2uF, 50V, 20%, 0805
-F https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_soft_en.pdf
+F https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21A225KBFNNNE_Spec.pdf
 $ENDCMP
 #
 $CMP C_22uF
@@ -240,7 +240,7 @@ $ENDCMP
 #
 $CMP C_4.7uF_25V
 D Capacitor, 4.7uF, 25V, 10%, 0805
-F https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM219R61E475KA73-01.pdf
+F http://www.samsungsem.com/kr/support/product-search/mlcc/CL21A475KAQNNNE.jsp
 $ENDCMP
 #
 $CMP C_470pF
@@ -687,7 +687,7 @@ $ENDCMP
 #
 $CMP R_1.91K
 D Resistor, 1.91K, 0.25W, 0.5%, 0805
-F https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf
+F https://www.seielect.com/catalog/sei-rncf.pdf
 $ENDCMP
 #
 $CMP R_100
@@ -848,6 +848,10 @@ $ENDCMP
 #
 $CMP R_499
 D Resistor, 499, 0.125W, 1%, 0805
+$ENDCMP
+#
+$CMP R_500
+F https://www.vishay.com/docs/28779/tnpue3.pdf
 $ENDCMP
 #
 $CMP R_51.1K

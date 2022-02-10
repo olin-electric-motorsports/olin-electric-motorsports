@@ -299,8 +299,6 @@ Wire Wire Line
 	2900 6200 1900 6200
 Wire Wire Line
 	1900 6200 1900 6050
-Text Notes 650  7950 0    100  ~ 0
-Parts to add:\n- USB diodes?
 $Comp
 L formula:C_4.7uF_25V C1
 U 1 1 611617C9
@@ -5658,7 +5656,7 @@ $Comp
 L formula:R_8.06k R12
 U 1 1 612CC8D8
 P 5400 5350
-F 0 "R12" H 5250 5400 50  0000 L CNN
+F 0 "R12" H 5150 5400 50  0000 L CNN
 F 1 "R_8.06k" H 5050 5300 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 5330 5850 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Tyco%20Electronics%20P%20B%20PDFs/RQ73-0618%20v2.pdf" H 5480 5350 50  0001 C CNN
@@ -5767,7 +5765,7 @@ U 1 1 6160646F
 P 4600 4400
 F 0 "J5" H 4518 4617 50  0000 C CNN
 F 1 "CONN_01x02" H 4518 4526 50  0000 C CNN
-F 2 "footprints:PinHeader_1x02_P2.54mm_Vertical" H 4500 4400 50  0001 C CNN
+F 2 "footprints:pinheader_1x2" H 4500 4400 50  0001 C CNN
 F 3 "https://katalog.we-online.de/em/datasheet/6130xx11121.pdf" H 4600 4500 50  0001 C CNN
 F 4 "DK" H 4700 4600 50  0001 C CNN "MFN"
 F 5 "732-5315-ND" H 4800 4700 50  0001 C CNN "MPN"
@@ -6031,7 +6029,7 @@ $Comp
 L formula:R_8.06k R21
 U 1 1 613E36EF
 P 9650 8300
-F 0 "R21" H 9500 8350 50  0000 L CNN
+F 0 "R21" H 9450 8350 50  0000 L CNN
 F 1 "R_8.06k" H 9300 8250 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 9580 8800 50  0001 C CNN
 F 3 "https://media.digikey.com/pdf/Data%20Sheets/Tyco%20Electronics%20P%20B%20PDFs/RQ73-0618%20v2.pdf" H 9730 8300 50  0001 C CNN
@@ -6462,7 +6460,7 @@ U 1 1 62392BF1
 P 13750 4450
 F 0 "J13" H 13668 4667 50  0000 C CNN
 F 1 "CONN_01x02" H 13668 4576 50  0000 C CNN
-F 2 "footprints:PinHeader_1x02_P2.54mm_Vertical" H 13650 4450 50  0001 C CNN
+F 2 "footprints:pinheader_1x2" H 13650 4450 50  0001 C CNN
 F 3 "https://katalog.we-online.de/em/datasheet/6130xx11121.pdf" H 13750 4550 50  0001 C CNN
 F 4 "DK" H 13850 4650 50  0001 C CNN "MFN"
 F 5 "732-5315-ND" H 13950 4750 50  0001 C CNN "MPN"
@@ -6484,7 +6482,7 @@ U 1 1 6241DF9C
 P 14750 4450
 F 0 "J15" H 14668 4667 50  0000 C CNN
 F 1 "CONN_01x02" H 14668 4576 50  0000 C CNN
-F 2 "footprints:PinHeader_1x02_P2.54mm_Vertical" H 14650 4450 50  0001 C CNN
+F 2 "footprints:pinheader_1x2" H 14650 4450 50  0001 C CNN
 F 3 "https://katalog.we-online.de/em/datasheet/6130xx11121.pdf" H 14750 4550 50  0001 C CNN
 F 4 "DK" H 14850 4650 50  0001 C CNN "MFN"
 F 5 "732-5315-ND" H 14950 4750 50  0001 C CNN "MPN"
@@ -7115,4 +7113,30 @@ Wire Wire Line
 	11850 3600 11750 3600
 Wire Wire Line
 	11450 3600 11450 3800
+$Comp
+L formula:C_10uF_50V C29
+U 1 1 626AD773
+P 13250 4200
+F 0 "C29" H 13350 4350 50  0000 L CNN
+F 1 "C_10uF_50V" H 13350 4250 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 13288 4800 50  0001 C CNN
+F 3 "http://www.samsungsem.com/kr/support/product-https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM21BR61H106KE43-01A.pdf" H 13275 5050 50  0001 C CNN
+F 4 "Murata" H 13250 4250 60  0001 C CNN "MFN"
+F 5 "GRM21BR61H106KE43L" H 13250 4950 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/murata-electronics/GRM21BR61H106KE43L/10326316" H 13675 4700 60  0001 C CNN "PurchasingLink"
+	1    13250 4200
+	1    0    0    -1  
+$EndComp
+Connection ~ 13250 4000
+$Comp
+L power:GND #PWR?
+U 1 1 626AE047
+P 13250 4300
+F 0 "#PWR?" H 13250 4050 50  0001 C CNN
+F 1 "GND" H 13255 4127 50  0000 C CNN
+F 2 "" H 13250 4300 50  0001 C CNN
+F 3 "" H 13250 4300 50  0001 C CNN
+	1    13250 4300
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
