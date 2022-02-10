@@ -95,6 +95,41 @@ X VOUT7 9 1000 450 100 L 50 50 0 0 O
 ENDDRAW
 ENDDEF
 #
+# formula_AD7091R-5BRUZ
+#
+DEF formula_AD7091R-5BRUZ U 0 40 Y Y 1 F N
+F0 "U" 50 150 50 H V C CNN
+F1 "formula_AD7091R-5BRUZ" 350 50 50 H V C CNN
+F2 "footprints:AD7091R-5BRUZ" 100 700 50 H I C CNN
+F3 "" -50 0 50 H I C CNN
+F4 "AD7091R-5BRUZ-ND" 100 250 50 H I C CNN "MPN"
+F5 "https://www.digikey.com/en/products/detail/analog-devices-inc/AD7091R-5BRUZ/5441090" 200 350 50 H I C CNN "PurchasingLink"
+F6 "DK" 300 450 50 H I C CNN "MFN"
+DRAW
+S 0 0 1350 -2050 0 1 5 f
+X AS0 1 -300 -850 300 R 59 59 1 1 U
+X ALERT/BUSY/GPO0 10 -300 -1150 300 R 59 59 1 1 U
+X GPO2 11 -300 -1350 300 R 59 59 1 1 U
+X VIN3 12 1650 -850 300 L 59 59 1 1 U
+X VIN1 13 1650 -450 300 L 59 59 1 1 U
+X ADCIN 14 1650 -1950 300 L 59 59 1 1 U
+X GND 15 -300 -1950 300 R 59 59 1 1 U
+X AS1 16 -300 -950 300 R 59 59 1 1 U
+X SDA 17 -300 -550 300 R 59 59 1 1 U
+X SCL 18 -300 -650 300 R 59 59 1 1 U
+X *CONVST/GPPO1 19 -300 -1250 300 R 59 59 1 1 U
+X *RESET 2 -300 -1450 300 R 59 59 1 1 U
+X VDRIVE 20 -300 -200 300 R 59 59 1 1 U
+X VDD 3 -300 -100 300 R 59 59 1 1 U
+X REGCAP 4 -300 -300 300 R 59 59 1 1 U
+X REFIN/REFOUT 5 -300 -1700 300 R 59 59 1 1 U
+X GND 6 -300 -1850 300 R 59 59 1 1 U
+X MUXOUT 7 1650 -1650 300 L 59 59 1 1 U
+X VIN0 8 1650 -250 300 L 59 59 1 1 U
+X VIN2 9 1650 -650 300 L 59 59 1 1 U
+ENDDRAW
+ENDDEF
+#
 # formula_Barrel_jack
 #
 DEF formula_Barrel_jack J 0 0 Y N 1 F N
@@ -264,6 +299,31 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# formula_C_10uF_16V
+#
+DEF formula_C_10uF_16V C 0 10 N Y 1 F N
+F0 "C" 25 100 50 H V L CNN
+F1 "formula_C_10uF_16V" 25 -100 50 H V L CNN
+F2 "footprints:C_0805_OEM" 38 -150 50 H I C CNN
+F3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2016/01/15/Data%20sheet_CL21A106KOCLRNC.pdf" 25 100 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "1276-2399-1-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KOCLRNC/1276-2399-1-ND/3890485" 425 500 60 H I C CNN "PurchasingLink"
+$FPLIST
+ C?
+ C_????_*
+ C_????
+ SMD*_c
+ Capacitor*
+$ENDFPLIST
+DRAW
+P 2 0 1 20 -80 -30 80 -30 N
+P 2 0 1 20 -80 30 80 30 N
+X ~ 1 0 150 110 D 50 50 1 1 P
+X ~ 2 0 -150 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # formula_C_10uF_25V
 #
 DEF formula_C_10uF_25V C 0 40 Y Y 1 F N
@@ -291,6 +351,52 @@ F3 "" 25 850 50 H I C CNN
 F4 "Murata" 0 50 60 H I C CNN "MFN"
 F5 "GRM21BR61H106KE43L" 0 750 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/en/products/detail/murata-electronics/GRM21BR61H106KE43L/10326316" 0 750 60 H I C CNN "PurchasingLink"
+$FPLIST
+ C?
+ C_????_*
+ C_????
+ SMD*_c
+ Capacitor*
+$ENDFPLIST
+DRAW
+P 2 0 1 20 -80 20 80 20 N
+P 2 0 1 20 -80 80 80 80 N
+X ~ 1 0 200 110 D 50 50 1 1 P
+X ~ 2 0 -100 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_C_1uF
+#
+DEF formula_C_1uF C 0 10 N Y 1 F N
+F0 "C" 25 150 50 H V L CNN
+F1 "formula_C_1uF" 25 -50 50 H V L CNN
+F2 "footprints:C_0805_OEM" 38 600 50 H I C CNN
+F3 "" 25 850 50 H I C CNN
+F4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" 425 500 60 H I C CNN "PurchasingLink"
+$FPLIST
+ C?
+ C_????_*
+ C_????
+ SMD*_c
+ Capacitor*
+$ENDFPLIST
+DRAW
+P 2 0 1 20 -80 20 80 20 N
+P 2 0 1 20 -80 80 80 80 N
+X ~ 1 0 200 110 D 50 50 1 1 P
+X ~ 2 0 -100 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_C_2.2uF
+#
+DEF formula_C_2.2uF C 0 10 N Y 1 F N
+F0 "C" 25 150 50 H V L CNN
+F1 "formula_C_2.2uF" 25 -50 50 H V L CNN
+F2 "footprints:C_0805_OEM" 38 600 50 H I C CNN
+F3 "" 25 850 50 H I C CNN
+F4 "https://www.digikey.com/product-detail/en/tdk-corporation/C2012X7R1H225M125AE/445-172488-1-ND/4990030" 425 500 60 H I C CNN "PurchasingLink"
 $FPLIST
  C?
  C_????_*
@@ -633,36 +739,6 @@ X GND 9 1300 200 100 L 50 50 0 0 W
 ENDDRAW
 ENDDEF
 #
-# formula_LTC2489CDEPBF
-#
-DEF formula_LTC2489CDEPBF U 0 40 Y Y 1 F N
-F0 "U" 550 1150 50 H V L BNN
-F1 "formula_LTC2489CDEPBF" 0 -100 50 H V L BNN
-F2 "footprints:DFN-14_DE_AD" 250 1700 50 H I L BNN
-F3 "" -300 900 50 H I L BNN
-F4 "ltc2489cde#pbf" 200 1600 50 H I L BNN "MPN"
-F5 "LinearTech" 600 1650 50 H I L BNN "MFN"
-F6 "https://www.digikey.com/en/products/detail/analog-devices-inc/LTC2489CDE-PBF/1745796" 600 1650 50 H I L BNN "PurchasingLink"
-DRAW
-S 0 0 700 1100 0 0 6 f
-X FO 1 -300 1000 300 R 40 40 0 0 I
-X CH2 10 1000 350 300 L 40 40 0 0 I
-X CH3 11 1000 250 300 L 40 40 0 0 I
-X VCC 12 1000 1000 300 L 40 40 0 0 W
-X REF+ 13 1000 800 300 L 40 40 0 0 I
-X REF- 14 1000 700 300 L 40 40 0 0 I
-X EPAD 15 -300 100 300 R 40 40 0 0 P
-X CA0 2 -300 900 300 R 40 40 0 0 P
-X CA1 3 -300 800 300 R 40 40 0 0 P
-X SCL 4 -300 600 300 R 40 40 0 0 I
-X SDA 5 -300 500 300 R 40 40 0 0 B
-X GND 6 -300 200 300 R 40 40 0 0 W
-X COM 7 1000 100 300 L 40 40 0 0 I
-X CH0 8 1000 550 300 L 40 40 0 0 I
-X CH1 9 1000 450 300 L 40 40 0 0 I
-ENDDRAW
-ENDDEF
-#
 # formula_MAX7300AAXT
 #
 DEF formula_MAX7300AAXT U 0 40 Y Y 1 F N
@@ -714,24 +790,49 @@ X P10 9 -700 -100 200 R 40 40 0 0 B
 ENDDRAW
 ENDDEF
 #
-# formula_MM_F_VT_06_SM
+# formula_MCP6001
 #
-DEF formula_MM_F_VT_06_SM J 0 40 Y Y 1 F N
-F0 "J" 0 350 60 H V C CNN
-F1 "formula_MM_F_VT_06_SM" 100 -400 60 H V C CNN
-F2 "footprints:micromatch_female_vert_6_sm" -150 400 60 H V C CNN
+DEF formula_MCP6001 U 0 20 Y Y 1 F N
+F0 "U" 0 200 50 H V L CNN
+F1 "formula_MCP6001" 0 -200 50 H V L CNN
+F2 "footprints:SOT-23-5_OEM" -100 100 50 H I C CNN
+F3 "" 0 200 50 H I C CNN
+F4 "DK" 100 300 60 H I C CNN "MFN"
+F5 "MCP6001T-I/OTCT-ND" 200 400 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158" 300 500 60 H I C CNN "PurchasingLink"
+$FPLIST
+ SOT*23*
+$ENDFPLIST
+DRAW
+P 4 0 1 10 -200 200 200 0 -200 -200 -200 200 f
+X V- 2 -100 -300 150 U 50 50 0 1 W
+X V+ 5 -100 300 150 D 50 50 0 1 W
+X ~ 1 300 0 100 L 50 50 1 1 O
+X + 3 -300 100 100 R 50 50 1 1 I
+X - 4 -300 -100 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# formula_MM_F_VT_08_SM
+#
+DEF formula_MM_F_VT_08_SM J 0 40 Y Y 1 F N
+F0 "J" 0 400 60 H V C CNN
+F1 "formula_MM_F_VT_08_SM" 50 -550 60 H V C CNN
+F2 "footprints:micromatch_female_vert_8_sm" -100 300 60 H I C CNN
 F3 "" -100 1200 60 H I C CNN
 F4 "TE" 100 1400 60 H I C CNN "MFN"
-F5 "7-338069-6" 200 1500 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/en/products/detail/te-connectivity-amp-connectors/7-338069-6/1955661" 200 1500 60 H I C CNN "PurchasingLink"
+F5 "A107024CT-ND" 200 1500 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/te-connectivity-amp-connectors/188275-8/1860417" 0 1300 60 H I C CNN "PurchasingLink"
 DRAW
-S 150 -300 -150 300 0 1 0 f
-X 1 1 250 250 100 L 50 50 1 1 B
-X 2 2 250 150 100 L 50 50 1 1 B
-X 3 3 250 50 100 L 50 50 1 1 B
-X 4 4 250 -50 100 L 50 50 1 1 B
-X 5 5 250 -150 100 L 50 50 1 1 B
-X 6 6 250 -250 100 L 50 50 1 1 B
+S 150 -450 -150 350 0 1 0 f
+X 1 1 250 300 100 L 50 50 1 1 B
+X 2 2 250 200 100 L 50 50 1 1 B
+X 3 3 250 100 100 L 50 50 1 1 B
+X 4 4 250 0 100 L 50 50 1 1 B
+X 5 5 250 -100 100 L 50 50 1 1 B
+X 6 6 250 -200 100 L 50 50 1 1 B
+X 7 7 250 -300 100 L 50 50 1 1 B
+X 8 8 250 -400 100 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
@@ -1210,6 +1311,31 @@ X SHIELD 6 300 -300 100 L 40 40 0 0 P
 X SHIELD 7 300 -300 100 L 40 40 0 0 P
 X SHIELD 8 300 -300 100 L 40 40 0 0 P
 X SHIELD 9 300 -300 100 L 40 40 0 0 P
+ENDDRAW
+ENDDEF
+#
+# formula_old_C_30pF
+#
+DEF formula_old_C_30pF C 0 10 N Y 1 F N
+F0 "C" 25 100 50 H V L CNN
+F1 "formula_old_C_30pF" 25 -100 50 H V L CNN
+F2 "footprints:C_0805_OEM" 38 -150 50 H I C CNN
+F3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" 25 100 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "1276-1130-1-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216" 0 0 60 H I C CNN "PurchasingLink"
+$FPLIST
+ C?
+ C_????_*
+ C_????
+ SMD*_c
+ Capacitor*
+$ENDFPLIST
+DRAW
+P 2 0 1 20 -80 -30 80 -30 N
+P 2 0 1 20 -80 30 80 30 N
+X ~ 1 0 150 110 D 50 50 1 1 P
+X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #

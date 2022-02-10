@@ -15,10 +15,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L formula:LT3045 U8
+L formula:LT3045 U9
 U 1 1 612445AB
 P 4700 3400
-F 0 "U8" H 5525 4465 50  0000 C CNN
+F 0 "U9" H 5525 4465 50  0000 C CNN
 F 1 "LT3045" H 5525 4374 50  0000 C CNN
 F 2 "footprints:MSOP-12_MSE" H 4800 6100 50  0001 C CIN
 F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/LT3045.pdf" H 3750 5230 50  0001 C CNN
@@ -76,10 +76,10 @@ Connection ~ 6050 2600
 Wire Wire Line
 	6050 2600 6000 2600
 $Comp
-L formula:C_4.7uF_25V C21
+L formula:C_4.7uF_25V C26
 U 1 1 612445CE
 P 4700 2950
-F 0 "C21" H 4450 3050 50  0000 L CNN
+F 0 "C26" H 4450 3050 50  0000 L CNN
 F 1 "C_4.7uF_25V" H 4100 2950 50  0000 L CNN
 F 2 "footprints:C_0805_OEM" H 4738 3550 50  0001 C CNN
 F 3 "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM219R61E475KA73-01.pdf" H 4725 3800 50  0001 C CNN
@@ -137,10 +137,10 @@ Wire Wire Line
 	6450 3000 6450 2600
 Connection ~ 6450 2600
 $Comp
-L formula:C_10uF_25V C23
+L formula:C_10uF_25V C27
 U 1 1 612445F2
 P 6600 2750
-F 0 "C23" H 6715 2796 50  0000 L CNN
+F 0 "C27" H 6715 2796 50  0000 L CNN
 F 1 "C_10uF_25V" H 6715 2705 50  0000 L CNN
 F 2 "footprints:C_0805_OEM" H 6550 2550 50  0001 C CNN
 F 3 "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM21BR61E106KA73-01.pdf" H 6600 2750 50  0001 C CNN
@@ -173,10 +173,10 @@ F 3 "" H 3950 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:CONN_01X03 J10
+L formula:CONN_01X03 J20
 U 1 1 612611D3
 P 3650 3950
-F 0 "J10" H 3678 3991 50  0000 L CNN
+F 0 "J20" H 3678 3991 50  0000 L CNN
 F 1 "CONN_01X03" H 3678 3900 50  0000 L CNN
 F 2 "footprints:PinHeader_1x03_P2.54mm_Vertical" H 3650 2750 50  0001 C CNN
 F 3 "https://www.mouser.com/datasheet/2/181/M20-999-1218971.pdf" H 3650 2750 50  0001 C CNN
@@ -191,10 +191,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 3850 3950 3700
 $Comp
-L formula:R_49.90k R40
+L formula:R_49.90k R41
 U 1 1 6147FE31
 P 6500 3550
-F 0 "R40" H 6570 3596 50  0000 L CNN
+F 0 "R41" H 6570 3596 50  0000 L CNN
 F 1 "R_49.90k" V 6700 3400 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 6430 4050 50  0001 C CNN
 F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" H 6580 3550 50  0001 C CNN
@@ -205,10 +205,10 @@ F 6 "https://www.digikey.com/en/products/detail/panasonic-electronic-components/
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_33.2k R39
+L formula:R_33.2k R40
 U 1 1 6148208D
 P 6250 3550
-F 0 "R39" H 6320 3596 50  0000 L CNN
+F 0 "R40" H 6320 3596 50  0000 L CNN
 F 1 "R_33.2k" V 6150 3400 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 6180 4050 50  0001 C CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773272&DocType=DS&DocLang=English" H 6330 3550 50  0001 C CNN
@@ -260,10 +260,10 @@ F 3 "" H 6250 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:C_1000nF C22
+L formula:C_1000nF C28
 U 1 1 6148908A
 P 6850 3550
-F 0 "C22" H 6965 3596 50  0000 L CNN
+F 0 "C28" H 6965 3596 50  0000 L CNN
 F 1 "C_1000nF" H 6965 3505 50  0000 L CNN
 F 2 "footprints:C_0603_1608Metric" H 6888 3400 50  0001 C CNN
 F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/CL10A475KQ8NNNC.jsp" H 6875 3650 50  0001 C CNN
@@ -308,10 +308,10 @@ $EndComp
 Text Notes 2800 2050 0    50   ~ 0
 Power flags are universal so this page doesn't require IN/OUT net labels
 $Comp
-L formula:R_0_2512 R42
+L formula:R_0_2512 R43
 U 1 1 62431B18
 P 7900 2600
-F 0 "R42" V 7693 2600 50  0000 C CNN
+F 0 "R43" V 7693 2600 50  0000 C CNN
 F 1 "R_0_2512" V 7784 2600 50  0000 C CNN
 F 2 "footprints:R_2512_OEM" H 7830 2600 50  0001 C CNN
 F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 7980 2600 50  0001 C CNN
@@ -345,10 +345,10 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 7550 3050 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:R_330 R41
+L formula:R_330 R42
 U 1 1 62437B1A
 P 7550 2750
-F 0 "R41" H 7620 2796 50  0000 L CNN
+F 0 "R42" H 7620 2796 50  0000 L CNN
 F 1 "R_330" H 7620 2705 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 7480 2750 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 7630 2750 50  0001 C CNN
