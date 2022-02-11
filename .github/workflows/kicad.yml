@@ -25,6 +25,12 @@ jobs:
       uses: jitterbit/get-changed-files@v1
       with:
         format: 'csv'
+        
+    - name: update_kicad_site
+      if: ${{ github.event_name == 'push' }}
+      run: ./.github/git-bazel-kicad-site.sh
+      env:
+        url:
 
     - name: rescue_check
       run: |
@@ -50,10 +56,3 @@ jobs:
       uses: marocchino/sticky-pull-request-comment@v2
       with:
         path: build/comment.md
-
-    # - name: update_outline
-    #   if: ${{ github.event_name == 'push' }} # TODO
-    #   run: ./.github/update_kicad_outline.py
-    #   env:
-    #     url: 
-    #
