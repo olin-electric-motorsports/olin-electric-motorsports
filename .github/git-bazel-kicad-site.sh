@@ -14,3 +14,4 @@ buildables=$(bazel query --keep going --noshow_progress "kind(kibot, rdeps(//...
 if [[ ! -z $buildables ]]; then 
     echo "Building:"
     echo "${buildables}"
+fi
