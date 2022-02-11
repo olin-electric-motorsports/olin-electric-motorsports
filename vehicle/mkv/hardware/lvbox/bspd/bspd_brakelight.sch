@@ -2676,8 +2676,6 @@ $EndComp
 NoConn ~ 3450 7150
 NoConn ~ 3450 7250
 NoConn ~ 3450 7050
-NoConn ~ 3450 9250
-NoConn ~ 3450 9350
 $Comp
 L formula:Test_Point_SMD TP1
 U 1 1 5E3C5FC8
@@ -3136,4 +3134,6 @@ Wire Wire Line
 	3450 7850 3450 7750
 Wire Wire Line
 	3450 8750 3450 8650
+Wire Wire Line
+	3450 9350 3450 9250
 $EndSCHEMATC
