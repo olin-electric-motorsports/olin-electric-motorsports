@@ -7,7 +7,7 @@
 if [[ ! -z $GITHUB_BASE_REF ]]; then
     git fetch origin $GITHUB_BASE_REF
 fi
-
+echo "Beginning of File"
 # Set the HEAD Git commit (the current commit)
 GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 
