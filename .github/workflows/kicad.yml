@@ -25,6 +25,9 @@ jobs:
       uses: jitterbit/get-changed-files@v1
       with:
         format: 'csv'
+    - name: update_kicad_site
+      if: ${{ github.event_name == 'push' }}
+      run: ./.github/git-bazel-kicad-site.sh
 
     - name: rescue_check
       run: |
