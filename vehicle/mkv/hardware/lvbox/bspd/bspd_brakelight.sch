@@ -2129,7 +2129,6 @@ F 7 "https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU
 	1    2350 8550
 	1    0    0    -1  
 $EndComp
-NoConn ~ 3450 8650
 Wire Wire Line
 	3450 9550 4110 9550
 Wire Notes Line
@@ -2497,7 +2496,6 @@ Text Notes 5130 5920 0    50   ~ 0
 Shutdown Sense
 Text Label 3450 9150 0    50   ~ 0
 BSPD_RELAY_INTENTION
-NoConn ~ 3450 8750
 Text Label 3450 8250 0    50   ~ 0
 BRAKELIGHT_GATE
 $Comp
@@ -3136,4 +3134,6 @@ $EndComp
 Connection ~ 6930 6520
 Wire Wire Line
 	3450 7850 3450 7750
+Wire Wire Line
+	3450 8750 3450 8650
 $EndSCHEMATC
