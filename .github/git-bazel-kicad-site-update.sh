@@ -5,6 +5,13 @@ fi
 echo "Yo I am here"
 
 GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
+echo "${GITHUB_SHA}"
+echo "blah"
+echo "${GITHUB_BASE_SHA}"
+echo "blah"
+echo "${GITHUB_BASE_SHA:-"origin/main"}"
+echo "blah"
+echo "${GITHUB_SHA:-$(git rev-parse HEAD)}"
 
 files=()
 for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|sch$"); do
