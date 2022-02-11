@@ -28,7 +28,7 @@ jobs:
 
     - name: update_kicad_site
       if: ${{ github.event_name == 'push' }}
-      run: ./.github/git-bazel-kicad-site.sh
+      run: ./.github/git-bazel-kicad-site-update.sh
       env:
         GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
 
