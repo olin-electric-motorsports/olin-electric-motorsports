@@ -3136,4 +3136,6 @@ F 3 "" H 6980 6520 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Connection ~ 6930 6520
+Wire Wire Line
+	3450 8750 3450 8650
 $EndSCHEMATC
