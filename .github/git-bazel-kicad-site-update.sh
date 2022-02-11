@@ -11,6 +11,7 @@ for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origi
     files+=($(bazel query --keep_going --noshow_progress $file))
 done
 
+echo "${Files}"
 echo "Check Here"
 
 buildables=$(bazel query --keep going --noshow_progress "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
