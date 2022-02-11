@@ -1,3 +1,4 @@
+
 name: kicad-build
 
 on:
@@ -17,7 +18,7 @@ jobs:
       run: |
         sudo apt install librsvg2-bin
         ./.github/git-bazel-kicad.sh
-     env:
+      env:
         GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
 
     - name: get_changed_files
@@ -30,7 +31,6 @@ jobs:
       run: ./.github/git-bazel-kicad-site-update.sh
       env:
         GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
-
     - name: rescue_check
       run: |
         if echo ${{ steps.files.outputs.added_modified }} | grep -q rescue; then
@@ -39,7 +39,6 @@ jobs:
         else
           exit 0
         fi
-
     - name: upload
       uses: BetaHuhn/do-spaces-action@v2
       with:
@@ -55,3 +54,4 @@ jobs:
       uses: marocchino/sticky-pull-request-comment@v2
       with:
         path: build/comment.md
+      
