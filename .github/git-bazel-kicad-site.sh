@@ -6,7 +6,7 @@ GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 
 files=()
 for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|sch$"); do
-    files+=($(bazel query --keep_going ==noshow+progress $file))
+    files+=($(bazel query --keep_going --noshow_progress $file))
 done
 
 buildables=$(bazel query --keep going --noshow_progress "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
