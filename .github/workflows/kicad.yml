@@ -12,13 +12,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: build
-      id: build_kicad
-      run: |
-        sudo apt install librsvg2-bin
-        ./.github/git-bazel-kicad.sh
-      env:
-        GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
+    #- name: build
+    #  id: build_kicad
+    #  run: |
+    #    sudo apt install librsvg2-bin
+    #    ./.github/git-bazel-kicad.sh
+    # env:
+    #    GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
 
     - name: get_changed_files
       id: files
