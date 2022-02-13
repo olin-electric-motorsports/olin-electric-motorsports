@@ -2,8 +2,8 @@ load("//bazel:defs.bzl", "kicad_hardware")
 
 kicad_hardware(
     name = "hitl-primary",
-    schematic_files = ["primary_board.sch"] + glob(
+    schematic_files = ["hitl-primary.sch"] + glob(
         ["*.sch"],
-        ["primary_board.sch"],
+        ["hitl-primary.sch"],
     ),
 )
