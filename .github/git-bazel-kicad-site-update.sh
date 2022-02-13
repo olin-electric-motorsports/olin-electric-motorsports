@@ -5,6 +5,7 @@ fi
 echo "Yo I am here"
 
 GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
+git log
 echo "${GITHUB_SHA}"
 echo "blah"
 echo "${GITHUB_BASE_SHA}"
