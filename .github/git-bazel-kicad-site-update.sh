@@ -46,21 +46,6 @@ if [[ ! -z $buildables ]]; then
         mkdir -p build/$(dirname ${file:2})
         cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
     done
-
-    # Create a Markdown file that will be uploaded as a GitHub PR comment
-    echo "Creating GH comment"
-    echo "# KiCad Artifacts" >> build/comment.md
-
-    # List of files that were generated
-    echo "<details><summary>File links</summary><ul>" >> build/comment.md
-    for file in $(find build -type f); do
-        chmod 777 $file
-        if [[ ! $file == "build/comment.md" ]]; then
-            url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}"
-            echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
-        fi
-    done
-    echo "</ul></details>" >> build/comment.md
 else
     echo "Nothing to build"
 fi
