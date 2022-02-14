@@ -61,33 +61,6 @@ if [[ ! -z $buildables ]]; then
         fi
     done
     echo "</ul></details>" >> build/comment.md
-
-    # By default, SVGs are have transparent backgrounds, which makes things hard
-    # to read when using dark-mode on Github. This converts them to have white
-    # backgrounds
-    echo "Converting SVGs to use white backgrounds"
-    for file in $(find build -name '*.svg' -type f); do
-        cp ${file} ${file}_old
-        rsvg-convert -b white -f svg ${file}_old > ${file}
-        rm -rf ${file}_old
-    done
-
-    # Adds the schematic images into the Markdown file
-    for file in $(find build -name "*_sch.svg" -type f); do
-        # Importantly, we add a `?ref=${GITHUB_SHA}` to the end of the URL. This
-        # prevents Github from caching the image we upload, which would mean
-        # that when this image changes we wouldn't be able to tell from the
-        # comment. This just prevents Github from caching it
-        echo "<p align=\"center\"><img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"100%\"/></p>" >> build/comment.md
-    done
-
-    # Adds SVGs of the layouts as images (uses the same caching principles as
-    # above).
-    for file in $(find build -name "*_pcb.svg" -type f); do
-        echo "<p align=\"center\">" >> build/comment.md
-        echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
-        echo "</p>" >> build/comment.md
-    done
 else
     echo "Nothing to build"
 fi
