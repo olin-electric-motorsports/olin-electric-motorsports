@@ -315,10 +315,16 @@ static void state_machine_run(void) {
                 once = false;
             }
 
-            // TODO: we might want to be checking for motor controller messages
-            // here. If the MC stops transmitting during TS_ACTIVE, it won't be
-            // caught until at least 3 seconds after DISCHARGE begins
+            int16_t motor_controller_voltage = 0;
+
             if (get_time() - timer_set < 2000) {
+                int rc
+                    = get_motor_controller_voltage(&motor_controller_voltage);
+
+                if (rc == 2) {
+                    // Timeout
+                    set_fault(FAULT_CAN_MC_TIMEOUT);
+                }
                 return;
             }
 

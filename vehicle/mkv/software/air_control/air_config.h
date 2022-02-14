@@ -7,7 +7,8 @@
  * GPIO pin definitions
  */
 
-#define BOARD_16M1_HACKER
+// #define BOARD_16M1_HACKER
+#define BOARD_SERVICE_SECTION_CONTROLLER
 
 #ifdef BOARD_SERVICE_SECTION_CONTROLLER
 // Outputs

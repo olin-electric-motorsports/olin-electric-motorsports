@@ -272,9 +272,7 @@ def test_discharge_mc_timeout(canbus, iocontroller, pins):
     iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
     iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
 
-    # TODO: This might be too long to wait
-    time.sleep(2) # Wait for discharge timer
-    time.sleep(1.5) # Wait for CAN_MC timeout
+    time.sleep(1.2) # Wait for CAN_MC timeout
 
     assert(canbus.get_state("air_fault") == "CAN_MC_TIMEOUT")
     assert(canbus.get_state("air_state") == "FAULT")
@@ -288,7 +286,7 @@ def test_discharge_fail(canbus, iocontroller, pins):
     iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
     iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
 
-    time.sleep(2.5) # Wait for discharge timer
+    time.sleep(2.2) # Wait for discharge timer
 
     assert(canbus.get_state("air_state") == "FAULT")
     assert(canbus.get_state("air_fault") == "DISCHARGE_FAIL")

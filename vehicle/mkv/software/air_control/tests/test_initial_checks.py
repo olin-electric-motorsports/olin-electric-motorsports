@@ -121,7 +121,9 @@ def test_initial_checks_success(canbus, iocontroller, pins):
     iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
     iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
     iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.HIGH)
+    iocontroller.write_pin(pins["BMS_SENSE"][0], PinValue.HIGH)
 
     reset(iocontroller, pins)
-    time.sleep(1)
+    time.sleep(1.1)
+    assert(canbus.get_state("air_fault") == "NONE")
     assert(canbus.get_state("air_state") == "IDLE")
