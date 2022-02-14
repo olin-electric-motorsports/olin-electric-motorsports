@@ -35,17 +35,6 @@ if [[ ! -z $buildables ]]; then
         --noshow_progress \
         --build_tag_filters=kicad \
         $buildables 2>/dev/null
-
-    # Clear out the build/ folder
-    rm -rf build
-    mkdir -p build
-
-    # Copy all the built files from their Bazel folder to the `build/` folder
-    for file in $buildables; do
-        file="${file//://}"
-        mkdir -p build/$(dirname ${file:2})
-        cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
-    done
 else
     echo "Nothing to build"
 fi
