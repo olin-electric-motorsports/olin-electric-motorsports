@@ -24,17 +24,12 @@ buildables=$(bazelisk query \
     --noshow_progress \
     "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
 
+echo "${Buildables}"
+
 # Only build if there are things that have changed
 if [[ ! -z $buildables ]]; then
     echo "Building:"
     echo "${buildables}"
-
-    # Build all of the targets that have changed
-    bazelisk build \
-        --config=docker-kicad \
-        --noshow_progress \
-        --build_tag_filters=kicad \
-        $buildables 2>/dev/null
 else
     echo "Nothing to build"
 fi
