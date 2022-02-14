@@ -10,7 +10,8 @@ fi
 
 # Set the HEAD Git commit (the current commit)
 GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
-
+echo "${GITHUB_SHA}"
+echo "${GITHUB_BASE_SHA}"
 # Creates a list of .kicad_pcb and .sch files that have changed since the
 # GITHUB_BASE_REF
 files=()
