@@ -6,7 +6,24 @@ bazel:
 - '.bazelversion'
 
 hitl:
-- projects/hitl/**/*
+- 'projects/hitl/**/*'
 
 telemetry:
-- projects/telemetry/**/*
+- 'projects/telemetry/**/*'
+
+vehicle:
+- 'vehicle/**/*'
+
+mkv:
+- 'vehicle/mkv/**/*'
+
+mkvi:
+- 'vehicle/mkvi/**/*'
+
+gokart:
+- 'vehicle/gokart/**/*'
+
+hardware:
+- '**/*.pro'
+- '**/*.sch'
+- '**/*.kicad_pcb'
