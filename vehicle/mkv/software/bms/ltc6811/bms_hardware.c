@@ -65,8 +65,7 @@ void cs_high(gpio_t pin) {
  * Writes an array of bytes out of the SPI port
  */
 void spi_write_array(uint8_t len, uint8_t* data) {
-    uint8_t _rx_buffer[len];
-    spi_transceive(data, _rx_buffer, len);
+    spi_transceive(data, NULL, len);
 }
 
 /*
@@ -80,9 +79,8 @@ void spi_write_read(
         rx_data, // Input: array that will store the data read by the SPI port
     uint8_t rx_len // Option: number of bytes to be read from the SPI port
 ) {
-    uint8_t _rx_buffer[tx_len];
-    spi_transceive(tx_Data, _rx_buffer, tx_len);
-    spi_transceive(NULL, rx_data, rx_len);
+    spi_transceive(tx_Data, NULL, tx_len);
+    spi_receive(rx_data, rx_len);
 }
 
 uint8_t spi_read_byte(uint8_t tx_dat) {
