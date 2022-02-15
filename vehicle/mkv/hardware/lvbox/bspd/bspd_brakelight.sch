@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L power:PWR_FLAG #FLG?
+L bspd_brakelight-rescue:PWR_FLAG-power #FLG?
 U 1 1 5C00B3D7
 P 6600 9920
 F 0 "#FLG?" H 6600 9995 50  0001 C CNN
@@ -25,7 +25,7 @@ F 3 "" H 6600 9920 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG?
+L bspd_brakelight-rescue:PWR_FLAG-power #FLG?
 U 1 1 59E0A773
 P 6980 9920
 F 0 "#FLG?" H 6980 9995 50  0001 C CNN
@@ -36,7 +36,7 @@ F 3 "" H 6980 9920 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG?
+L bspd_brakelight-rescue:PWR_FLAG-power #FLG?
 U 1 1 5C031BDC
 P 7380 9920
 F 0 "#FLG?" H 7380 9995 50  0001 C CNN
@@ -47,7 +47,7 @@ F 3 "" H 7380 9920 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+12V #PWR?
+L bspd_brakelight-rescue:+12V-power #PWR?
 U 1 1 59E0A7D7
 P 6600 9940
 F 0 "#PWR?" H 6600 9790 50  0001 C CNN
@@ -58,7 +58,7 @@ F 3 "" H 6600 9940 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 59E0A859
 P 7380 9950
 F 0 "#PWR?" H 7380 9700 50  0001 C CNN
@@ -84,7 +84,7 @@ F 7 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 14835 3660 60
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 59E080E5
 P 13760 3810
 F 0 "#PWR?" H 13760 3560 50  0001 C CNN
@@ -96,7 +96,7 @@ F 3 "" H 13760 3810 50  0001 C CNN
 $EndComp
 NoConn ~ 14760 3610
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 59E082CD
 P 14260 4010
 F 0 "#PWR?" H 14260 3760 50  0001 C CNN
@@ -107,7 +107,7 @@ F 3 "" H 14260 4010 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C00B3D0
 P 14760 3160
 F 0 "#PWR?" H 14760 2910 50  0001 C CNN
@@ -118,7 +118,7 @@ F 3 "" H 14760 3160 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C00B3D3
 P 6980 9950
 F 0 "#PWR?" H 6980 9800 50  0001 C CNN
@@ -129,7 +129,7 @@ F 3 "" H 6980 9950 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C00B3D5
 P 14260 3160
 F 0 "#PWR?" H 14260 3010 50  0001 C CNN
@@ -140,7 +140,7 @@ F 3 "" H 14260 3160 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 59E0C6BE
 P 11860 2290
 F 0 "#PWR?" H 11860 2140 50  0001 C CNN
@@ -151,7 +151,7 @@ F 3 "" H 11860 2290 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C00B3DD
 P 11910 2490
 F 0 "#PWR?" H 11910 2240 50  0001 C CNN
@@ -206,7 +206,7 @@ Connection ~ 14260 3160
 Wire Wire Line
 	1210 4270 1360 4270
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BFFA62E
 P 1690 3910
 F 0 "#PWR?" H 1690 3660 50  0001 C CNN
@@ -217,7 +217,7 @@ F 3 "" H 1690 3910 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+12V #PWR?
+L bspd_brakelight-rescue:+12V-power #PWR?
 U 1 1 5BFFA71A
 P 1910 4320
 F 0 "#PWR?" H 1910 4170 50  0001 C CNN
@@ -248,7 +248,7 @@ $EndComp
 Wire Wire Line
 	4330 2800 4480 2800
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C00A330
 P 4480 2800
 F 0 "#PWR?" H 4480 2550 50  0001 C CNN
@@ -275,7 +275,7 @@ $EndComp
 Wire Wire Line
 	3980 2500 4430 2500
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C02BFF1
 P 4730 2100
 F 0 "#PWR?" H 4730 1950 50  0001 C CNN
@@ -314,7 +314,7 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 5480 3560 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C02CB4F
 P 5080 3210
 F 0 "#PWR?" H 5080 2960 50  0001 C CNN
@@ -341,7 +341,7 @@ F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A10
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C032D9D
 P 5630 2950
 F 0 "#PWR?" H 5630 2700 50  0001 C CNN
@@ -387,7 +387,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 611
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C03FCD3
 P 5430 3380
 F 0 "#PWR?" H 5430 3230 50  0001 C CNN
@@ -416,7 +416,7 @@ $EndComp
 Wire Wire Line
 	6480 3380 6630 3380
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C04D081
 P 6630 3380
 F 0 "#PWR?" H 6630 3130 50  0001 C CNN
@@ -443,7 +443,7 @@ $EndComp
 Wire Wire Line
 	6180 2250 6180 2150
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C050C08
 P 6180 2100
 F 0 "#PWR?" H 6180 1950 50  0001 C CNN
@@ -475,7 +475,7 @@ $EndComp
 Wire Wire Line
 	6330 1950 6330 2150
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C05F402
 P 6480 2250
 F 0 "#PWR?" H 6480 2000 50  0001 C CNN
@@ -486,7 +486,7 @@ F 3 "" H 6480 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C05F611
 P 6180 2850
 F 0 "#PWR?" H 6180 2600 50  0001 C CNN
@@ -515,7 +515,7 @@ F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A10
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C0633A3
 P 6980 2950
 F 0 "#PWR?" H 6980 2700 50  0001 C CNN
@@ -543,7 +543,7 @@ F 6 "https://www.digikey.com/product-detail/en/texas-instruments/SN74LVC1G02DBVR
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C08D2ED
 P 7490 3550
 F 0 "#PWR?" H 7490 3400 50  0001 C CNN
@@ -554,7 +554,7 @@ F 3 "" H 7490 3550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C08D9A2
 P 7740 2260
 F 0 "#PWR?" H 7740 2110 50  0001 C CNN
@@ -632,7 +632,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 6085 5190 60 
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C0C9250
 P 7490 4250
 F 0 "#PWR?" H 7490 4000 50  0001 C CNN
@@ -649,7 +649,7 @@ Wire Wire Line
 Wire Wire Line
 	6310 4990 6310 4640
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C0D0648
 P 6310 4990
 F 0 "#PWR?" H 6310 4740 50  0001 C CNN
@@ -691,7 +691,7 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 8790 3710 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C0E3F66
 P 8390 3360
 F 0 "#PWR?" H 8390 3110 50  0001 C CNN
@@ -727,7 +727,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 927
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C0F4A52
 P 8790 3110
 F 0 "#PWR?" H 8790 2860 50  0001 C CNN
@@ -753,7 +753,7 @@ F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage
 $EndComp
 Connection ~ 8790 2610
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C0F4DFB
 P 9090 2810
 F 0 "#PWR?" H 9090 2560 50  0001 C CNN
@@ -889,7 +889,7 @@ F 7 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BEE9841
 P 1250 9750
 F 0 "#PWR?" H 1250 9500 50  0001 C CNN
@@ -900,7 +900,7 @@ F 3 "" H 1250 9750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BEE9847
 P 1050 7450
 F 0 "#PWR?" H 1050 7200 50  0001 C CNN
@@ -911,7 +911,7 @@ F 3 "" H 1050 7450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BEE984D
 P 850 7150
 F 0 "#PWR?" H 850 6900 50  0001 C CNN
@@ -937,7 +937,7 @@ F 7 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 474
 	0    1    1    0   
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5BEE985E
 P 1050 6850
 F 0 "#PWR?" H 1050 6700 50  0001 C CNN
@@ -948,7 +948,7 @@ F 3 "" H 1050 6850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BEE9864
 P 3600 10000
 F 0 "#PWR?" H 3600 9750 50  0001 C CNN
@@ -959,7 +959,7 @@ F 3 "" H 3600 10000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BEE986A
 P 3450 10150
 F 0 "#PWR?" H 3450 9900 50  0001 C CNN
@@ -970,7 +970,7 @@ F 3 "" H 3450 10150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BEE9870
 P 3750 10150
 F 0 "#PWR?" H 3750 9900 50  0001 C CNN
@@ -981,7 +981,7 @@ F 3 "" H 3750 10150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BEE9876
 P 3950 9800
 F 0 "#PWR?" H 3950 9550 50  0001 C CNN
@@ -992,7 +992,7 @@ F 3 "" H 3950 9800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5BEE987C
 P 4410 9400
 F 0 "#PWR?" H 4410 9250 50  0001 C CNN
@@ -1057,7 +1057,7 @@ Wire Wire Line
 Text Label 3450 7950 0    60   ~ 0
 TXCAN
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BF9EE1D
 P 13960 6690
 F 0 "#PWR?" H 13960 6440 50  0001 C CNN
@@ -1072,7 +1072,7 @@ Wire Wire Line
 Wire Wire Line
 	12220 7340 12320 7340
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5BF9EE33
 P 12320 7340
 F 0 "#PWR?" H 12320 7090 50  0001 C CNN
@@ -1103,7 +1103,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 155
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C008230
 P 15090 6640
 F 0 "#PWR?" H 15090 6390 50  0001 C CNN
@@ -1130,7 +1130,7 @@ F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C00D7EA
 P 15630 6540
 F 0 "#PWR?" H 15630 6290 50  0001 C CNN
@@ -1182,7 +1182,7 @@ SCK
 Text Label 1210 4470 0    50   ~ 0
 CAN_HIGH
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C20CC65
 P 4730 2800
 F 0 "#PWR?" H 4730 2550 50  0001 C CNN
@@ -1224,7 +1224,7 @@ Wire Wire Line
 Wire Wire Line
 	8190 3160 8190 2610
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C4ECE17
 P 7740 2960
 F 0 "#PWR?" H 7740 2710 50  0001 C CNN
@@ -1270,7 +1270,7 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 4680 73
 $EndComp
 NoConn ~ 3450 7850
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C7E27E9
 P 11470 7340
 F 0 "#PWR?" H 11470 7190 50  0001 C CNN
@@ -1289,7 +1289,7 @@ Wire Notes Line
 Text Notes 5850 1760 0    50   ~ 0
 Op-Amp Timer\n
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C583B22
 P 5160 3960
 F 0 "#PWR?" H 5160 3810 50  0001 C CNN
@@ -1359,7 +1359,7 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 12470 3670 60
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C6400B5
 P 12540 3580
 F 0 "#PWR?" H 12540 3330 50  0001 C CNN
@@ -1442,7 +1442,7 @@ DEBUG_LED_2
 Text Label 3450 7550 0    50   ~ 0
 DEBUG_LED_3
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C7972C7
 P 12540 3170
 F 0 "#PWR?" H 12540 2920 50  0001 C CNN
@@ -1453,7 +1453,7 @@ F 3 "" H 12540 3170 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5C7A176B
 P 12540 4010
 F 0 "#PWR?" H 12540 3760 50  0001 C CNN
@@ -1478,7 +1478,7 @@ Wire Wire Line
 Wire Wire Line
 	7380 9920 7380 9950
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC79406
 P 7510 9330
 AR Path="/5CC68CC1/5CC79406" Ref="#PWR?"  Part="1" 
@@ -1491,7 +1491,7 @@ F 3 "" H 7510 9330 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC7940C
 P 6760 9030
 AR Path="/5CC68CC1/5CC7940C" Ref="#PWR?"  Part="1" 
@@ -1504,7 +1504,7 @@ F 3 "" H 6760 9030 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC79412
 P 6460 9030
 AR Path="/5CC68CC1/5CC79412" Ref="#PWR?"  Part="1" 
@@ -1666,7 +1666,7 @@ $EndComp
 Wire Wire Line
 	5610 9480 5610 9630
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC79498
 P 5610 9630
 AR Path="/5CC68CC1/5CC79498" Ref="#PWR?"  Part="1" 
@@ -1697,7 +1697,7 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 6410 9930 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC794B4
 P 6010 9930
 AR Path="/5CC68CC1/5CC794B4" Ref="#PWR?"  Part="1" 
@@ -1728,7 +1728,7 @@ Wire Wire Line
 Wire Wire Line
 	8160 9480 8160 9630
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC794C3
 P 8160 9630
 AR Path="/5CC68CC1/5CC794C3" Ref="#PWR?"  Part="1" 
@@ -1766,7 +1766,7 @@ F 7 "https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/4
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC794D7
 P 8960 9130
 AR Path="/5CC68CC1/5CC794D7" Ref="#PWR?"  Part="1" 
@@ -1779,7 +1779,7 @@ F 3 "" H 8960 9130 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC794DD
 P 9310 9130
 AR Path="/5CC68CC1/5CC794DD" Ref="#PWR?"  Part="1" 
@@ -1792,7 +1792,7 @@ F 3 "" H 9310 9130 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC794E3
 P 9660 9130
 AR Path="/5CC68CC1/5CC794E3" Ref="#PWR?"  Part="1" 
@@ -1805,7 +1805,7 @@ F 3 "" H 9660 9130 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5CC794EA
 P 11160 8630
 AR Path="/5CC68CC1/5CC794EA" Ref="#PWR?"  Part="1" 
@@ -1926,7 +1926,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 124
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CE209D2
 P 11920 6040
 F 0 "#PWR?" H 11920 5790 50  0001 C CNN
@@ -1937,7 +1937,7 @@ F 3 "" H 11920 6040 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5CE20ACC
 P 11920 5440
 F 0 "#PWR?" H 11920 5290 50  0001 C CNN
@@ -1957,7 +1957,7 @@ Connection ~ 12370 6790
 Wire Wire Line
 	12370 6790 12420 6790
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CE37426
 P 12620 6140
 F 0 "#PWR?" H 12620 5890 50  0001 C CNN
@@ -2000,7 +2000,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 122
 $EndComp
 Connection ~ 11800 6790
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5CE3B3B0
 P 11800 6490
 F 0 "#PWR?" H 11800 6340 50  0001 C CNN
@@ -2029,7 +2029,7 @@ Wire Wire Line
 Wire Wire Line
 	13660 6890 13660 6440
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5CE7C747
 P 13960 5960
 F 0 "#PWR?" H 13960 5810 50  0001 C CNN
@@ -2079,7 +2079,7 @@ Text Notes 11620 5790 0    50   ~ 0
 Text Notes 10440 6870 0    50   ~ 0
 0.5-4.5V
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CF09EC0
 P 12620 7190
 F 0 "#PWR?" H 12620 6940 50  0001 C CNN
@@ -2098,7 +2098,7 @@ Wire Notes Line
 Text Notes 12160 5560 0    50   ~ 0
 GND SHORT\nDETECTION
 $Comp
-L power:+12V #PWR?
+L bspd_brakelight-rescue:+12V-power #PWR?
 U 1 1 5CF66C0F
 P 5310 8380
 F 0 "#PWR?" H 5310 8230 50  0001 C CNN
@@ -2202,7 +2202,7 @@ F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A10
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5DF78FFE
 P 13480 6240
 F 0 "#PWR?" H 13480 5990 50  0001 C CNN
@@ -2250,7 +2250,7 @@ F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A10
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5DFD6ED7
 P 13480 7290
 F 0 "#PWR?" H 13480 7040 50  0001 C CNN
@@ -2318,7 +2318,7 @@ BSPD_TEST_SWITCH
 Text Label 1210 5670 0    50   ~ 0
 RJ45_LED_G
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5DDD089A
 P 2130 5100
 F 0 "#PWR?" H 2130 4950 50  0001 C CNN
@@ -2333,7 +2333,7 @@ Wire Wire Line
 Wire Wire Line
 	2130 5170 2130 5100
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5DDD99A9
 P 2130 5420
 F 0 "#PWR?" H 2130 5170 50  0001 C CNN
@@ -2421,7 +2421,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 653
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5DE9EE7F
 P 6930 7480
 F 0 "#PWR?" H 6930 7230 50  0001 C CNN
@@ -2432,7 +2432,7 @@ F 3 "" H 6930 7480 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5DE9F491
 P 6050 7480
 F 0 "#PWR?" H 6050 7230 50  0001 C CNN
@@ -2443,7 +2443,7 @@ F 3 "" H 6050 7480 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5DEA853C
 P 6930 6050
 F 0 "#PWR?" H 6930 5900 50  0001 C CNN
@@ -2517,7 +2517,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 13445 5930 60
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5DD4609C
 P 13020 5580
 F 0 "#PWR?" H 13020 5330 50  0001 C CNN
@@ -2530,7 +2530,7 @@ $EndComp
 Wire Wire Line
 	12830 5280 13020 5280
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5CE37519
 P 12620 5540
 F 0 "#PWR?" H 12620 5390 50  0001 C CNN
@@ -2574,7 +2574,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 13425 6930 60
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5DD76AA2
 P 13000 6580
 F 0 "#PWR?" H 13000 6330 50  0001 C CNN
@@ -2585,7 +2585,7 @@ F 3 "" H 13000 6580 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5C8151B6
 P 12620 6590
 F 0 "#PWR?" H 12620 6440 50  0001 C CNN
@@ -2617,7 +2617,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 14805 6340 60
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5DD96370
 P 14380 5990
 F 0 "#PWR?" H 14380 5740 50  0001 C CNN
@@ -2680,8 +2680,6 @@ $EndComp
 NoConn ~ 3450 7150
 NoConn ~ 3450 7250
 NoConn ~ 3450 7050
-NoConn ~ 3450 9250
-NoConn ~ 3450 9350
 $Comp
 L formula:Test_Point_SMD TP1
 U 1 1 5E3C5FC8
@@ -2733,7 +2731,7 @@ F 3 "" H 1470 2020 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5E4FFA44
 P 1290 2380
 F 0 "#PWR?" H 1290 2230 50  0001 C CNN
@@ -2757,7 +2755,7 @@ $EndComp
 Wire Wire Line
 	1290 2380 1480 2380
 $Comp
-L power:+12V #PWR?
+L bspd_brakelight-rescue:+12V-power #PWR?
 U 1 1 5E50C39C
 P 1280 2070
 F 0 "#PWR?" H 1280 1920 50  0001 C CNN
@@ -2781,7 +2779,7 @@ F 3 "" H 1480 2620 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5E55CE3E
 P 1480 2670
 F 0 "#PWR?" H 1480 2420 50  0001 C CNN
@@ -2828,7 +2826,7 @@ F 7 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-323
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L bspd_brakelight-rescue:VCC-power #PWR?
 U 1 1 5E726D8B
 P 1660 4670
 F 0 "#PWR?" H 1660 4520 50  0001 C CNN
@@ -2876,7 +2874,7 @@ Wire Wire Line
 	4860 1880 4990 1880
 Connection ~ 4730 2100
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5E750304
 P 4990 2180
 F 0 "#PWR?" H 4990 1930 50  0001 C CNN
@@ -2908,7 +2906,7 @@ Connection ~ 7740 2260
 Wire Wire Line
 	7970 2260 7970 1950
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5E77C068
 P 8130 2250
 F 0 "#PWR?" H 8130 2000 50  0001 C CNN
@@ -2940,7 +2938,7 @@ Wire Wire Line
 	7630 3280 7820 3280
 Connection ~ 7490 3550
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5E78B2F8
 P 7820 3580
 F 0 "#PWR?" H 7820 3330 50  0001 C CNN
@@ -2969,7 +2967,7 @@ BSPD circuit is tripped when the motor controller is still providing power \nto 
 Text Notes 830  1060 0    118  ~ 0
 VCC = 5V
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5E8310A8
 P 1210 6170
 F 0 "#PWR?" H 1210 5920 50  0001 C CNN
@@ -3026,7 +3024,7 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 10790 9
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L bspd_brakelight-rescue:GND-power #PWR?
 U 1 1 5CC79487
 P 10310 10020
 AR Path="/5CC68CC1/5CC79487" Ref="#PWR?"  Part="1" 
@@ -3136,4 +3134,6 @@ F 3 "" H 6980 6520 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Connection ~ 6930 6520
+Wire Wire Line
+	3450 9250 3450 9350
 $EndSCHEMATC
