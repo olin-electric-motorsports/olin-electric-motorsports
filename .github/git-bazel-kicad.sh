@@ -7,7 +7,11 @@
 if [[ ! -z $GITHUB_BASE_REF ]]; then
     git fetch origin $GITHUB_BASE_REF
 fi
+<<<<<<< HEAD
 echo "Beginning of File"
+=======
+
+>>>>>>> ed6b704... Add KiCad automation (#43)
 # Set the HEAD Git commit (the current commit)
 GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 

@@ -52,4 +52,8 @@ jobs:
       run: sudo apt install gcc-avr avr-libc binutils-avr
 
     - name: Run all tests
+<<<<<<< HEAD
       run: bazelisk test --build_tag_filters="-kicad" --test_output=all //...
+=======
+      run: bazelisk test --build_tag_filters="-kicad" //...
+>>>>>>> ed6b704... Add KiCad automation (#43)

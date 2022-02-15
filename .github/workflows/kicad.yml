@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> ed6b704... Add KiCad automation (#43)
 name: kicad-build
 
 on:
@@ -21,6 +24,7 @@ jobs:
       env:
         GITHUB_BASE_SHA: "${{ github.event.pull_request.base.sha }}"
 
+<<<<<<< HEAD
     - name: get_changed_files
       id: files
       uses: jitterbit/get-changed-files@v1
@@ -43,6 +47,8 @@ jobs:
         else
           exit 0
         fi
+=======
+>>>>>>> ed6b704... Add KiCad automation (#43)
     - name: upload
       uses: BetaHuhn/do-spaces-action@v2
       with:
@@ -58,4 +64,14 @@ jobs:
       uses: marocchino/sticky-pull-request-comment@v2
       with:
         path: build/comment.md
+<<<<<<< HEAD
       
+=======
+
+    # - name: update_outline
+    #   if: ${{ github.event_name == 'push' }} # TODO
+    #   run: ./.github/update_kicad_outline.py
+    #   env:
+    #     url: 
+    #
+>>>>>>> ed6b704... Add KiCad automation (#43)

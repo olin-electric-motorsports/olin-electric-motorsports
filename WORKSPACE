@@ -83,6 +83,7 @@ http_archive(
         "https://mirror.bazel.build/github.com/bazelbuild/bazel-toolchains/releases/download/4.0.0/bazel-toolchains-4.0.0.tar.gz",
     ],
 )
+<<<<<<< HEAD
 
 http_archive(
     name = "cantools_",
@@ -108,3 +109,5 @@ pip_install(
     name = "hitl_deps",
     requirements = "//projects/hitl/software:requirements.txt",
 )
+=======
+>>>>>>> ed6b704... Add KiCad automation (#43)

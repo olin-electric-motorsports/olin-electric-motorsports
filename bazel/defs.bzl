@@ -416,6 +416,10 @@ def kicad_hardware(
             ":{}_sch.svg".format(name),
             ":{}.pdf".format(name),
             ":{}.csv".format(name),
+<<<<<<< HEAD
+=======
+            ":{}.gerbers.zip".format(name),
+>>>>>>> ed6b704... Add KiCad automation (#43)
             # ":{}.step".format(name),
         ],
         extension = "tgz",
@@ -473,6 +477,19 @@ def kicad_hardware(
         tags = ["kicad"],
     )
 
+<<<<<<< HEAD
+=======
+    kibot(
+        name = "{}.gerbers.zip".format(name),
+        config_file = "//scripts/kibot:build.kibot.yaml",
+        output_name = ["gerbers", "drill", "gerb_zip"],
+        pcb_file = pcb_file,
+        schematic_files = schematic_files,
+        lib_cache = lib_cache,
+        tags = ["kicad"],
+    )
+
+>>>>>>> ed6b704... Add KiCad automation (#43)
     # Once 3D modles are sorted out, this will be uncommented
     # kibot(
     #     name = "{}.step".format(name),
