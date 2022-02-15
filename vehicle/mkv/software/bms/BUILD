@@ -4,6 +4,7 @@ load("//bazel/tools:defs.bzl", "can_api_files")
 """
 Runs on service section controller primary micro U1003, ATmega64m1
 """
+
 cc_firmware(
     name = "bms",
     srcs = [
@@ -16,6 +17,7 @@ cc_firmware(
         "mux.c",
         "mux.h",
     ],
+    target_compatible_with = ["//bazel/constraints:atmega64m1"],
     deps = [
         ":can_api",
         "//libs/gpio",
@@ -23,7 +25,6 @@ cc_firmware(
         "//libs/timer",
         "//vehicle/mkv/software/bms/ltc6811",
     ],
-    target_compatible_with = ["//bazel/constraints:atmega64m1"],
 )
 
 package(

@@ -13,8 +13,8 @@
 #define NUM_TEMPS (20) // Number of temperature sensors per segment
 
 // TODO verify over/under voltage/temperature thresholds
-#define OVERVOLTAGE_THRESHOLD  (42000) // 4.2V
-#define UNDERVOLTAGE_THRESHOLD (30000) // 3.0V
+#define OVERVOLTAGE_THRESHOLD      (42000) // 4.2V
+#define UNDERVOLTAGE_THRESHOLD     (30000) // 3.0V
 #define OVERTEMPERATURE_THRESHOLD  (728) // 60 degC
 #define UNDERTEMPERATURE_THRESHOLD (7384) // 0 degC
 

@@ -142,13 +142,11 @@ void voltage_task(void) {
         pack_voltage += ICS[ic].stat.stat_codes[0];
 
         // Odd bits of the ST register are used for undervoltage flags
-        uv = (ICS[ic].st.flags[0] & 0x55)
-             | (ICS[ic].st.flags[1] & 0x55)
+        uv = (ICS[ic].st.flags[0] & 0x55) | (ICS[ic].st.flags[1] & 0x55)
              | (ICS[ic].st.flags[2] & 0x55);
 
         // Even bits of the ST register are used for overvoltage flags
-        ov = (ICS[ic].st.flags[0] & 0xAA)
-             | (ICS[ic].st.flags[1] & 0xAA)
+        ov = (ICS[ic].st.flags[0] & 0xAA) | (ICS[ic].st.flags[1] & 0xAA)
              | (ICS[ic].st.flags[2] & 0xAA);
 
         if (uv > 0) {
