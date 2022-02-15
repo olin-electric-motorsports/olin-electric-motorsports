@@ -1,11 +1,49 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Device_LED
+# cooling_sense-rescue_C_2.2uF-formula
 #
-DEF Device_LED D 0 40 N N 1 F N
+DEF cooling_sense-rescue_C_2.2uF-formula C 0 10 N Y 1 F N
+F0 "C" 25 100 50 H V L CNN
+F1 "cooling_sense-rescue_C_2.2uF-formula" 25 -100 50 H V L CNN
+F2 "footprints:C_0603_1608Metric" 38 -150 50 H I C CNN
+F3 "http://www.yageo.com/documents/recent/UPY-GPHC_X5R_4V-to-50V_25.pdf" 25 100 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "311-1451-1-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/yageo/CC0603KRX5R6BB225/311-1451-1-ND/2833757" 425 500 60 H I C CNN "PurchasingLink"
+$FPLIST
+ C?
+ C_????_*
+ C_????
+ SMD*_c
+ Capacitor*
+$ENDFPLIST
+DRAW
+P 2 0 1 20 -80 -30 80 -30 N
+P 2 0 1 20 -80 30 80 30 N
+X ~ 1 0 150 110 D 50 50 1 1 P
+X ~ 2 0 -150 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# cooling_sense-rescue_GND-power
+#
+DEF cooling_sense-rescue_GND-power #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "cooling_sense-rescue_GND-power" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# cooling_sense-rescue_LED-Device
+#
+DEF cooling_sense-rescue_LED-Device D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "Device_LED" 0 -100 50 H V C CNN
+F1 "cooling_sense-rescue_LED-Device" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -24,13 +62,40 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# cooling_sense-rescue_PWR_FLAG-power
+#
+DEF cooling_sense-rescue_PWR_FLAG-power #FLG 0 0 N N 1 F P
+F0 "#FLG" 0 75 50 H I C CNN
+F1 "cooling_sense-rescue_PWR_FLAG-power" 0 150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 50 -40 75 0 100 40 75 0 50 N
+X pwr 1 0 0 0 U 50 50 0 0 w
+ENDDRAW
+ENDDEF
+#
+# cooling_sense-rescue_VCC-power
+#
+DEF cooling_sense-rescue_VCC-power #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "cooling_sense-rescue_VCC-power" 0 150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 75 25 0 1 0 N
+P 2 0 1 0 0 0 0 50 N
+X VCC 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
 # formula_ATMEGA16M1
 #
 DEF formula_ATMEGA16M1 U 0 40 Y Y 1 F N
 F0 "U" -950 1830 50 H V L BNN
 F1 "formula_ATMEGA16M1" 500 -1400 50 H V L BNN
 F2 "footprints:TQFP-32_7x7mm_Pitch0.8mm" 0 0 50 H I C CIN
-F3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8209-8-bit%20AVR%20ATmega16M1-32M1-64M1_Datasheet.pdf" -950 1830 50 H I C CNN
+F3 "" -950 1830 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
 F5 "ATMEGA16M1-AU-ND" 0 0 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208" -550 2230 60 H I C CNN "PurchasingLink"
@@ -142,31 +207,6 @@ F3 "https://katalog.we-online.de/pbs/datasheet/885012007057.pdf" 25 100 50 H I C
 F4 "DK" 0 0 60 H I C CNN "MFN"
 F5 "732-7852-1-ND" 0 0 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/product-detail/en/wurth-electronics-inc/885012007057/732-7852-1-ND/5454479" 425 500 60 H I C CNN "PurchasingLink"
-$FPLIST
- C?
- C_????_*
- C_????
- SMD*_c
- Capacitor*
-$ENDFPLIST
-DRAW
-P 2 0 1 20 -80 -30 80 -30 N
-P 2 0 1 20 -80 30 80 30 N
-X ~ 1 0 150 110 D 50 50 1 1 P
-X ~ 2 0 -150 110 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# formula_C_2.2uF
-#
-DEF formula_C_2.2uF C 0 10 N Y 1 F N
-F0 "C" 25 100 50 H V L CNN
-F1 "formula_C_2.2uF" 25 -100 50 H V L CNN
-F2 "footprints:C_0603_1608Metric" 38 -150 50 H I C CNN
-F3 "http://www.yageo.com/documents/recent/UPY-GPHC_X5R_4V-to-50V_25.pdf" 25 100 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "311-1451-1-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/yageo/CC0603KRX5R6BB225/311-1451-1-ND/2833757" 425 500 60 H I C CNN "PurchasingLink"
 $FPLIST
  C?
  C_????_*
@@ -678,46 +718,6 @@ F3 "" 0 0 50 H I C CNN
 DRAW
 C 0 100 50 1 1 0 N
 X ~ 1 0 -50 100 U 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# power_GND
-#
-DEF power_GND #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -250 50 H I C CNN
-F1 "power_GND" 0 -150 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
-X GND 1 0 0 0 D 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# power_PWR_FLAG
-#
-DEF power_PWR_FLAG #FLG 0 0 N N 1 F P
-F0 "#FLG" 0 75 50 H I C CNN
-F1 "power_PWR_FLAG" 0 150 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 6 0 1 0 0 0 0 50 -40 75 0 100 40 75 0 50 N
-X pwr 1 0 0 0 U 50 50 0 0 w
-ENDDRAW
-ENDDEF
-#
-# power_VCC
-#
-DEF power_VCC #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -150 50 H I C CNN
-F1 "power_VCC" 0 150 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-C 0 75 25 0 1 0 N
-P 2 0 1 0 0 0 0 50 N
-X VCC 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #

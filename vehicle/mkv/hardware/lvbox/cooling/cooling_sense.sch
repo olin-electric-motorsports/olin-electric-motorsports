@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5BEE119A
 P 2900 7100
 F 0 "#PWR?" H 2900 6850 50  0001 C CNN
@@ -25,7 +25,7 @@ F 3 "" H 2900 7100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5BEE168D
 P 2150 6850
 F 0 "#PWR?" H 2150 6600 50  0001 C CNN
@@ -36,7 +36,7 @@ F 3 "" H 2150 6850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5BEE1A40
 P 1850 6850
 F 0 "#PWR?" H 1850 6600 50  0001 C CNN
@@ -47,7 +47,7 @@ F 3 "" H 1850 6850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:C_2.2uF C102
+L cooling_sense-rescue:C_2.2uF-formula C102
 U 1 1 5BEE2647
 P 2150 6700
 F 0 "C102" H 2200 6550 50  0000 L CNN
@@ -103,7 +103,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 4175 7000 60 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5BEE3CCE
 P 10600 6100
 F 0 "#PWR?" H 10600 5850 50  0001 C CNN
@@ -228,7 +228,7 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 6780 73
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5C0C5382
 P 6300 7550
 F 0 "#PWR?" H 6300 7300 50  0001 C CNN
@@ -253,7 +253,7 @@ F 6 "https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND" H 1100 73
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5C62BB38
 P 700 7100
 F 0 "#PWR?" H 700 6850 50  0001 C CNN
@@ -294,7 +294,7 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 1930 71
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5C754D8E
 P 1450 7400
 F 0 "#PWR?" H 1450 7150 50  0001 C CNN
@@ -313,7 +313,7 @@ Protection\n
 Text Notes 2350 6200 0    89   ~ 0
 BUCK CONVERTER\n
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5C77960D
 P 3100 7350
 F 0 "#PWR?" H 3100 7100 50  0001 C CNN
@@ -344,7 +344,7 @@ F 6 "https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/4
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5C781579
 P 4550 6950
 F 0 "#PWR?" H 4550 6700 50  0001 C CNN
@@ -355,7 +355,7 @@ F 3 "" H 4550 6950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5C7815F8
 P 4950 6950
 F 0 "#PWR?" H 4950 6700 50  0001 C CNN
@@ -366,7 +366,7 @@ F 3 "" H 4950 6950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5C781DA3
 P 5350 6950
 F 0 "#PWR?" H 5350 6700 50  0001 C CNN
@@ -423,7 +423,7 @@ F 6 "https://www.digikey.com/product-detail/en/wurth-electronics-inc/88501200705
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D58E5E0
 P 700 1150
 F 0 "#PWR?" H 700 900 50  0001 C CNN
@@ -434,7 +434,7 @@ F 3 "" H 700 1150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D591138
 P 1050 1500
 F 0 "#PWR?" H 1050 1250 50  0001 C CNN
@@ -501,7 +501,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 473
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D5F2681
 P 3800 4350
 F 0 "#PWR?" H 3800 4100 50  0001 C CNN
@@ -512,7 +512,7 @@ F 3 "" H 3800 4350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D5F26EE
 P 4200 4350
 F 0 "#PWR?" H 4200 4100 50  0001 C CNN
@@ -523,7 +523,7 @@ F 3 "" H 4200 4350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D5F2774
 P 4000 4100
 F 0 "#PWR?" H 4000 3850 50  0001 C CNN
@@ -534,7 +534,7 @@ F 3 "" H 4000 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D5F27E1
 P 4350 3800
 F 0 "#PWR?" H 4350 3550 50  0001 C CNN
@@ -545,7 +545,7 @@ F 3 "" H 4350 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L cooling_sense-rescue:VCC-power #PWR?
 U 1 1 5D5F7547
 P 4550 3250
 F 0 "#PWR?" H 4550 3100 50  0001 C CNN
@@ -556,7 +556,7 @@ F 3 "" H 4550 3250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D5F86E8
 P 1200 3900
 F 0 "#PWR?" H 1200 3650 50  0001 C CNN
@@ -596,7 +596,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 10075 1500 60
 $EndComp
 NoConn ~ 10300 1600
 $Comp
-L power:VCC #PWR?
+L cooling_sense-rescue:VCC-power #PWR?
 U 1 1 5D602F58
 P 9800 850
 F 0 "#PWR?" H 9800 700 50  0001 C CNN
@@ -607,7 +607,7 @@ F 3 "" H 9800 850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D60300D
 P 9500 1150
 F 0 "#PWR?" H 9500 900 50  0001 C CNN
@@ -618,7 +618,7 @@ F 3 "" H 9500 1150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D6030BB
 P 9800 2000
 F 0 "#PWR?" H 9800 1750 50  0001 C CNN
@@ -629,7 +629,7 @@ F 3 "" H 9800 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D607469
 P 9300 1800
 F 0 "#PWR?" H 9300 1550 50  0001 C CNN
@@ -656,7 +656,7 @@ Text Notes 2400 4200 0    89   ~ 0
 Text Notes 9650 5650 0    89   ~ 0
 POWER FLAGS\n
 $Comp
-L power:PWR_FLAG #FLG?
+L cooling_sense-rescue:PWR_FLAG-power #FLG?
 U 1 1 5D6150F1
 P 9800 5950
 F 0 "#FLG?" H 9800 6025 50  0001 C CNN
@@ -667,7 +667,7 @@ F 3 "~" H 9800 5950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG?
+L cooling_sense-rescue:PWR_FLAG-power #FLG?
 U 1 1 5D615167
 P 10200 5950
 F 0 "#FLG?" H 10200 6025 50  0001 C CNN
@@ -678,7 +678,7 @@ F 3 "~" H 10200 5950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG?
+L cooling_sense-rescue:PWR_FLAG-power #FLG?
 U 1 1 5D615217
 P 10600 5950
 F 0 "#FLG?" H 10600 6025 50  0001 C CNN
@@ -689,7 +689,7 @@ F 3 "~" H 10600 5950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L cooling_sense-rescue:VCC-power #PWR?
 U 1 1 5D6181B6
 P 10200 6100
 F 0 "#PWR?" H 10200 5950 50  0001 C CNN
@@ -702,7 +702,7 @@ $EndComp
 Text Label 9500 6100 0    50   ~ 0
 5V
 $Comp
-L power:VCC #PWR?
+L cooling_sense-rescue:VCC-power #PWR?
 U 1 1 5D61D085
 P 9500 5950
 F 0 "#PWR?" H 9500 5800 50  0001 C CNN
@@ -713,7 +713,7 @@ F 3 "" H 9500 5950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D622997
 P 10900 6100
 F 0 "#PWR?" H 10900 5850 50  0001 C CNN
@@ -748,7 +748,7 @@ RESET
 Text Label 10500 2850 0    50   ~ 0
 MOSI
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5D62962D
 P 10500 2950
 F 0 "#PWR?" H 10500 2700 50  0001 C CNN
@@ -759,7 +759,7 @@ F 3 "" H 10500 2950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L cooling_sense-rescue:VCC-power #PWR?
 U 1 1 5D6297EA
 P 10500 2750
 F 0 "#PWR?" H 10500 2600 50  0001 C CNN
@@ -772,7 +772,7 @@ $EndComp
 Text Notes 9250 2500 0    89   ~ 0
 16M1 PROGRAMMING HEADER\n
 $Comp
-L power:VCC #PWR?
+L cooling_sense-rescue:VCC-power #PWR?
 U 1 1 5DB132A0
 P 700 700
 F 0 "#PWR?" H 700 550 50  0001 C CNN
@@ -1128,7 +1128,7 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 10800 5200 60
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5DCECA51
 P 10850 4800
 F 0 "#PWR?" H 10850 4550 50  0001 C CNN
@@ -1176,8 +1176,6 @@ Text Label 5250 1250 0    50   ~ 0
 12V
 Text Label 5250 1150 0    50   ~ 0
 GND
-NoConn ~ 3550 1850
-NoConn ~ 3550 2450
 NoConn ~ 3550 3350
 Text Label 3550 1150 0    50   ~ 0
 LED_3
@@ -1236,7 +1234,7 @@ $EndComp
 Text Label 8500 2200 0    50   ~ 0
 PUMP_RELAY_READ
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5E0A4B89
 P 8500 2600
 F 0 "#PWR?" H 8500 2350 50  0001 C CNN
@@ -1265,7 +1263,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 868
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:LED D3
+L cooling_sense-rescue:LED-Device D3
 U 1 1 5E0A4B9A
 P 7800 2850
 F 0 "D3" V 7839 2733 50  0000 R CNN
@@ -1276,7 +1274,7 @@ F 3 "~" H 7800 2850 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5E0A4BA0
 P 7800 3000
 F 0 "#PWR?" H 7800 2750 50  0001 C CNN
@@ -1309,7 +1307,7 @@ Wire Wire Line
 Connection ~ 7800 2400
 Connection ~ 8200 2400
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5E0A4BB4
 P 8200 2700
 F 0 "#PWR?" H 8200 2450 50  0001 C CNN
@@ -1322,7 +1320,7 @@ $EndComp
 Wire Notes Line
 	7100 3250 7100 2100
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5DF048E8
 P 5250 3050
 F 0 "#PWR?" H 5250 2800 50  0001 C CNN
@@ -1337,7 +1335,7 @@ COOLING_ACTIVE_LED
 Wire Wire Line
 	9100 4400 9100 4500
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5DC0C20C
 P 9100 4500
 F 0 "#PWR?" H 9100 4250 50  0001 C CNN
@@ -1462,7 +1460,7 @@ READ_6
 Text Label 3550 2350 0    50   ~ 0
 PUMP_CONTROL
 $Comp
-L power:VCC #PWR?
+L cooling_sense-rescue:VCC-power #PWR?
 U 1 1 5DF48159
 P 6300 6500
 F 0 "#PWR?" H 6300 6350 50  0001 C CNN
@@ -1515,7 +1513,7 @@ F 3 "" H 8150 6100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L cooling_sense-rescue:GND-power #PWR?
 U 1 1 5E430843
 P 8150 6150
 F 0 "#PWR?" H 8150 5900 50  0001 C CNN
@@ -1542,4 +1540,10 @@ Text Label 8150 5850 3    50   ~ 0
 5V
 Text Notes 7750 5400 0    89   ~ 0
 TESTING POINTS\n\n
+Wire Wire Line
+	3550 1850 4400 1850
+Wire Wire Line
+	4400 1850 4400 2450
+Wire Wire Line
+	4400 2450 3550 2450
 $EndSCHEMATC
