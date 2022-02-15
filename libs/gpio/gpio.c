@@ -47,7 +47,7 @@ ISR(PCINT3_vect) {
 
 void gpio_enable_interrupt(gpio_t pin) {
     sei();
-    switch (pin.port) {
+    switch ((pin).port) {
         case 0x05: {
             PCICR |= (1 << PCIE0);
             PCMSK0 |= (1 << pin.num);
