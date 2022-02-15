@@ -5,7 +5,7 @@
 /*
  * Macros
  */
-#define NUM_ICS (12) // TODO: Verify number of ICs in the chain
+#define NUM_ICS (12) // TODO: Verify number of LTC6811s in the chain
 
 // Number of cells that can be measured
 #define NUM_CELLS (12)
@@ -40,14 +40,16 @@ gpio_t SPI_CS = PB6;
 /*
  * SPI
  */
-spi_cfg_s spi_cfg = { .interrupt_enable = false, .data_order = LSB;
-.mode = MAIN;
-.polarity = FALLING_RISING;
-.phase = SETUP_SAMPLE;
-.clock_rate = F_OSC_DIV_4;
-cs_pin_overide = &SPI_CS; // Set as void to use default pins
-pin_redirect = false;
-}
+spi_cfg_s spi_cfg = {
+    .interrupt_enable = false,
+    .data_order = LSB,
+    .mode = MAIN,
+    .polarity = FALLING_RISING,
+    .phase = SETUP_SAMPLE,
+    .clock_rate = F_OSC_DIV_4,
+    .cs_pin_overide = &SPI_CS,
+    .pin_redirect = false,
+};
 
 /*
  * Timer
