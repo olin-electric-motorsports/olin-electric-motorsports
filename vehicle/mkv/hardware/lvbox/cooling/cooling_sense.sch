@@ -1541,9 +1541,11 @@ Text Label 8150 5850 3    50   ~ 0
 Text Notes 7750 5400 0    89   ~ 0
 TESTING POINTS\n\n
 Wire Wire Line
-	3550 1850 4400 1850
-Wire Wire Line
-	4400 1850 4400 2450
-Wire Wire Line
 	4400 2450 3550 2450
+Wire Wire Line
+	4400 1800 3550 1800
+Wire Wire Line
+	3550 1800 3550 1850
+Wire Wire Line
+	4400 1800 4400 2450
 $EndSCHEMATC
