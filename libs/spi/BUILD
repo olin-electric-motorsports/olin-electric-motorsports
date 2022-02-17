@@ -29,13 +29,10 @@ cc_library(
     srcs = [
         "spi.c",
     ],
-    #https://docs.bazel.build/versions/main/platforms.html#more-expressive-constraints
-    # target_compatible_with = select({
-    #     "//bazel/constraints:atmega16m1": [],
-    #     # "//bazel/constraints:atmega328p": [],
-    #     # "//conditions:default": ["@platforms//:incompatible"],
-    # }),
-    target_compatible_with = ["//bazel/constraints:atmega16m1"],
+    target_compatible_with = select({
+        "//bazel/constraints:atmega16m1": [],
+        "//bazel/constraints:atmega64m1": [],
+    }),
     visibility = ["//visibility:public"],
     deps = [
         ":hdrs",

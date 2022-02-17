@@ -16,9 +16,10 @@ cc_library(
     hdrs = [
         "mob.h",
     ],
-    target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
-    ],
+    target_compatible_with = select({
+        "//bazel/constraints:atmega16m1": [],
+        "//bazel/constraints:atmega64m1": [],
+    }),
     visibility = ["//visibility:public"],
     deps = [
         ":hdrs",
