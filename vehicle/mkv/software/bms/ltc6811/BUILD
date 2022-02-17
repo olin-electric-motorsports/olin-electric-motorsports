@@ -38,9 +38,6 @@ cc_library(
     hdrs = [
         "bms_hardware.h",
     ],
-    target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
-    ],
     visibility = ["//visibility:private"],
     deps = [
         "//libs/gpio",

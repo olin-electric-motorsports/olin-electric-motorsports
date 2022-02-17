@@ -51,16 +51,6 @@ Copyright 2017 Linear Technology Corp. (LTC)
 #include <stdint.h>
 #include <stdlib.h>
 
-void cs_low(gpio_t pin) {
-    gpio_clear_pin(pin);
-}
-
-void cs_high(gpio_t pin) {
-    gpio_set_pin(pin);
-}
-
-#define delay_u _delay_us
-
 /*
  * Writes an array of bytes out of the SPI port
  */

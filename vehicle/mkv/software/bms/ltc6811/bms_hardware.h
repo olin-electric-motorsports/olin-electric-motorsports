@@ -45,12 +45,6 @@ Copyright 2017 Linear Technology Corp. (LTC)
 #include "libs/gpio/api.h"
 #include <stdint.h>
 
-void cs_low(gpio_t pin); // name conflicts with linduino
-
-void cs_high(gpio_t pin);
-
-void delay_u(uint16_t micro);
-
 /*
 Writes an array of bytes out of the SPI port
 */
