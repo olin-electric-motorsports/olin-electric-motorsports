@@ -10,12 +10,6 @@ cc_firmware(
     srcs = [
         "bms.c",
         "bms_config.h",
-
-        # TODO: Move these to a diff folder
-        "bsp.c",
-        "bsp.h",
-        "mux.c",
-        "mux.h",
     ],
     target_compatible_with = ["//bazel/constraints:atmega64m1"],
     deps = [
@@ -24,6 +18,7 @@ cc_firmware(
         "//libs/spi",
         "//libs/timer",
         "//vehicle/mkv/software/bms/ltc6811",
+        "//vehicle/mkv/software/bms/bsp",
     ],
 )
 

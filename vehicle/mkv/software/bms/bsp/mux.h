@@ -1,10 +1,12 @@
+#pragma once
+
 #include <stdbool.h>
 #include <stdint.h>
 
 // Mux addresses
-#define MUX1 (0x90)
-#define MUX2 (0x92)
-#define MUX3 (0x94)
+#define LTC1380_MUX1 (0x90)
+#define LTC1380_MUX2 (0x92)
+#define LTC1380_MUX3 (0x94)
 
 #define NUM_MUXES (3)
 

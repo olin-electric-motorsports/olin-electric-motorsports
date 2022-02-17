@@ -1,5 +1,6 @@
 #pragma once
 
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include <stdint.h>
 
 /*

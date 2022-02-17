@@ -1,7 +1,6 @@
 #include "can.h"
 
 #include "libs/can/api.h"
-#include "vehicle/mkv/software/bms/can_tools.h"
 
 #define CAN_ID_VOLTAGE_BASE     (0x100)
 #define CAN_ID_TEMPERATURE_BASE (0x100 + 24)
@@ -16,7 +15,7 @@ void can_send_bms_voltages(uint8_t num_ics, cell_asic ics[]) {
         .dlc = 8,
     };
 
-    for (uint8_t ic; ic < num_ics; ic++) {
+    for (uint8_t ic = 0; ic < num_ics; ic++) {
         // For every chip
         for (uint8_t cell_group = 0; cell_group < NUM_CELL_GROUPS;
              cell_group++) {
@@ -39,14 +38,14 @@ void can_send_bms_voltages(uint8_t num_ics, cell_asic ics[]) {
     }
 }
 
-void can_send_bms_temperatures(uint8_t num_ics, uint16_t temperatures[][]) {
+void can_send_bms_temperatures(uint8_t num_ics, cell_asic ics[]) {
     can_frame_t temperature_frame = {
         .id = CAN_ID_TEMPERATURE_BASE,
         .mob = 0,
         .dlc = 8,
     };
 
-    for (uint8_t ic; ic < num_ics; ic++) {
+    for (uint8_t ic = 0; ic < num_ics; ic++) {
         // For every chip
         for (uint8_t temp_group = 0; temp_group < 3; temp_group++) {
             /*

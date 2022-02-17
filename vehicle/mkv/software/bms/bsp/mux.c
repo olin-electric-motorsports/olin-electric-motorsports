@@ -1,5 +1,4 @@
-#include "i2c.h"
-#include "ltc6811/ltc6811.h"
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
 #include <stdbool.h>
 
