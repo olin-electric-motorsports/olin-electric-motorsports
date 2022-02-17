@@ -56,7 +56,7 @@ SENSE_7+
 Text HLabel 7450 1150 2    50   Input ~ 0
 SENSE_7_OUT
 $Comp
-L cooling_sense-rescue:VCC-power #PWR?
+L power:VCC #PWR?
 U 1 1 5E590809
 P 1150 850
 F 0 "#PWR?" H 1150 700 50  0001 C CNN
@@ -81,7 +81,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 163
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5E5922E1
 P 1150 1250
 F 0 "#PWR?" H 1150 1000 50  0001 C CNN
@@ -92,7 +92,7 @@ F 3 "" H 1150 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:VCC-power #PWR?
+L power:VCC #PWR?
 U 1 1 5E593C0F
 P 2200 850
 F 0 "#PWR?" H 2200 700 50  0001 C CNN
@@ -117,7 +117,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 268
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5E593C26
 P 2200 1250
 F 0 "#PWR?" H 2200 1000 50  0001 C CNN
@@ -128,7 +128,7 @@ F 3 "" H 2200 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:VCC-power #PWR?
+L power:VCC #PWR?
 U 1 1 5E595505
 P 3250 850
 F 0 "#PWR?" H 3250 700 50  0001 C CNN
@@ -153,7 +153,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 373
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5E59551C
 P 3250 1250
 F 0 "#PWR?" H 3250 1000 50  0001 C CNN
@@ -164,7 +164,7 @@ F 3 "" H 3250 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:VCC-power #PWR?
+L power:VCC #PWR?
 U 1 1 5E598727
 P 4300 850
 F 0 "#PWR?" H 4300 700 50  0001 C CNN
@@ -189,7 +189,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 478
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5E59873E
 P 4300 1250
 F 0 "#PWR?" H 4300 1000 50  0001 C CNN
@@ -200,7 +200,7 @@ F 3 "" H 4300 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:VCC-power #PWR?
+L power:VCC #PWR?
 U 1 1 5E5B335A
 P 5350 850
 F 0 "#PWR?" H 5350 700 50  0001 C CNN
@@ -225,7 +225,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 583
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5E5B3371
 P 5350 1250
 F 0 "#PWR?" H 5350 1000 50  0001 C CNN
@@ -250,7 +250,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 688
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5E5B48CE
 P 6400 1250
 F 0 "#PWR?" H 6400 1000 50  0001 C CNN
@@ -261,7 +261,7 @@ F 3 "" H 6400 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:VCC-power #PWR?
+L power:VCC #PWR?
 U 1 1 5E5B7C89
 P 7450 850
 F 0 "#PWR?" H 7450 700 50  0001 C CNN
@@ -286,7 +286,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 793
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5E5B7CA0
 P 7450 1250
 F 0 "#PWR?" H 7450 1000 50  0001 C CNN
@@ -297,7 +297,7 @@ F 3 "" H 7450 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L cooling_sense-rescue:VCC-power #PWR?
+L power:VCC #PWR?
 U 1 1 5E5BCFB0
 P 6400 850
 F 0 "#PWR?" H 6400 700 50  0001 C CNN
