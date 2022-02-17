@@ -44,6 +44,7 @@
 
 #include "ltc681x.h"
 #include "bms_hardware.h"
+#include "libs/spi/api.h"
 #include <stdint.h>
 #include <util/delay.h>
 
@@ -83,9 +84,9 @@ const uint16_t crc15Table[256] PROGMEM
 void wakeup_idle(uint8_t total_ic) // Number of ICs in the system
 {
     for (int i = 0; i < total_ic; i++) {
-        cs_low(CS_PIN);
+        spi_cs_low();
         spi_read_byte(0xff); // Guarantees the isoSPI will be in ready mode
-        cs_high(CS_PIN);
+        spi_cs_high();
     }
 }
 
@@ -115,9 +116,9 @@ void cmd_68(uint8_t tx_cmd[2]) // The command to be transmitted
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_array(4, cmd);
-    cs_high(CS_PIN);
+    spi_cs_high();
 }
 
 /*
@@ -162,9 +163,9 @@ void write_68(uint8_t total_ic, // Number of ICs to be written to
         cmd_index = cmd_index + 2;
     }
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_array(CMD_LEN, cmd);
-    cs_high(CS_PIN);
+    spi_cs_high();
 }
 
 /* Generic function to write 68xx commands and read data. Function calculated
@@ -187,13 +188,13 @@ int8_t read_68(uint8_t total_ic, // Number of ICs in the system
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_read(
         cmd, 4, data,
         (BYTES_IN_REG
          * total_ic)); // Transmits the command and reads the configuration data
                        // of all ICs on the daisy chain into rx_data[] array
-    cs_high(CS_PIN);
+    spi_cs_high();
 
     for (uint8_t current_ic = 0; current_ic < total_ic;
          current_ic++) // Executes for each LTC681x in the daisy chain and packs
@@ -760,9 +761,9 @@ void LTC681x_rdcv_reg(
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_read(cmd, 4, data, (REG_LEN * total_ic));
-    cs_high(CS_PIN);
+    spi_cs_high();
 }
 
 /*
@@ -806,9 +807,9 @@ void LTC681x_rdaux_reg(
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_read(cmd, 4, data, (REG_LEN * total_ic));
-    cs_high(CS_PIN);
+    spi_cs_high();
 }
 
 /*
@@ -846,9 +847,9 @@ void LTC681x_rdstat_reg(
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_read(cmd, 4, data, (REG_LEN * total_ic));
-    cs_high(CS_PIN);
+    spi_cs_high();
 }
 
 /* Helper function that parses voltage measurement registers */
@@ -912,10 +913,10 @@ uint8_t LTC681x_pladc() {
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_array(4, cmd);
     adc_state = spi_read_byte(0xFF);
-    cs_high(CS_PIN);
+    spi_cs_high();
 
     return (adc_state);
 }
@@ -935,7 +936,7 @@ uint32_t LTC681x_pollAdc() {
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_array(4, cmd);
     while ((counter < 200000) && (finished == 0)) {
         current_time = spi_read_byte(0xff);
@@ -945,7 +946,7 @@ uint32_t LTC681x_pollAdc() {
             counter = counter + 10;
         }
     }
-    cs_high(CS_PIN);
+    spi_cs_high();
 
     return (counter);
 }
@@ -1791,9 +1792,9 @@ void LTC681x_stsctrl() {
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_array(4, cmd);
-    cs_high(CS_PIN);
+    spi_cs_high();
 }
 
 /*
@@ -1879,12 +1880,12 @@ void LTC681x_stcomm(uint8_t len) // Length of data to be transmitted
     cmd[2] = (uint8_t)(cmd_pec >> 8);
     cmd[3] = (uint8_t)(cmd_pec);
 
-    cs_low(CS_PIN);
+    spi_cs_low();
     spi_write_array(4, cmd);
     for (int i = 0; i < len * 3; i++) {
         spi_read_byte(0xFF);
     }
-    cs_high(CS_PIN);
+    spi_cs_high();
 }
 
 /* Helper function that increments PEC counters */

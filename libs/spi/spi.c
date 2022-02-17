@@ -125,3 +125,11 @@ void spi_receive(uint8_t* rxdata, uint8_t len) {
     uint8_t* txdata = 0;
     spi_transceive(txdata, rxdata, len);
 }
+
+void spi_cs_low(void) {
+    gpio_clear_pin(*(spi_state.spi_pin_defs->cs));
+}
+
+void spi_cs_high(void) {
+    gpio_set_pin(*(spi_state.spi_pin_defs->cs));
+}
