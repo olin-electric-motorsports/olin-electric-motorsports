@@ -1,6 +1,9 @@
+#include <stdint.h>
 #include "libs/can/api.h"
+#include "libs/timer/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
+#include "libs/spi/api.h"
 
 /*
  * Macros
@@ -68,7 +71,7 @@ timer_cfg_s timer0_cfg = {
         .interrupt_enable = true,
         .interrupt_callback = timer0_isr,
     },
-}
+};
 
 // Fan PWM config
 timer_cfg_s timer1_fan_cfg = {
@@ -81,4 +84,4 @@ timer_cfg_s timer1_fan_cfg = {
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = false,
     },
-}
+};
