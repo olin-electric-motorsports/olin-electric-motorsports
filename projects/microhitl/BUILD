@@ -3,8 +3,10 @@ load("@rules_python//python:defs.bzl", "py_binary", "py_library")
 py_library(
     name = "microhitl",
     srcs = [
+        "__init__.py",
         "microhitl.py",
     ],
+    visibility = ["//visibility:public"],
 )
 
 py_binary(

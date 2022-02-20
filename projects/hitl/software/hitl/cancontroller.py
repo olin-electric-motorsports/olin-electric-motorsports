@@ -95,7 +95,7 @@ class CANController:
 
             #encode message data and create message
             data = msg.encode(self.signals[msg_name])
-            message = can.Message(arbitration_id=msg.frame_id, data=data)
+            message = can.Message(arbitration_id=msg.frame_id, data=data, is_extended_id=False)
 
             #send message
             if msg_name in self.periodic_messages:
@@ -123,11 +123,14 @@ class CANController:
 
         #encode message data and create message
         data = msg.encode(self.signals[msg_name])
-        message = can.Message(arbitration_id=msg.frame_id, data=data)
+        message = can.Message(arbitration_id=msg.frame_id, data=data, is_extended_id=False)
 
         #send message
         send_task = self.can_bus.send_periodic(message, period)
         self.periodic_messages[msg_name] = send_task
+
+    def stop_periodic(self):
+        self.can_bus.stop_all_periodic_tasks()
 
     def playback(self, path, initial_time=0):
         """
@@ -168,7 +171,7 @@ class CANController:
                 #Pull out message data from csv
                 data = messages[row][2:]
                 #create CAN message
-                message = can.Message(arbitration_id=messages[row][1], data=data)
+                message = can.Message(arbitration_id=messages[row][1], data=data, is_extended_id=False)
                 #send message
                 self.can_bus.send(message)
                 #increment row
