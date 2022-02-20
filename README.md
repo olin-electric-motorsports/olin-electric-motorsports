@@ -34,8 +34,6 @@ Next, install the AVR toolchain:
 sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
 ```
 
-
-
 ### Installing Bazel
 
 Next, install Bazelisk. [This
