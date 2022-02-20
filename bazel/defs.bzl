@@ -164,53 +164,28 @@ _bin_file = rule(
 )
 
 def _flash_impl(ctx):
-    template = """#!/bin/bash
-
-if [ ! -z ${{SET_FUSES+x}} ]; then
-    FUSE_OP=w
-else
-    FUSE_OP=v
-fi
-
-_LFUSE=${{LFUSE:=0x65}}
-_HFUSE=${{HFUSE:=0xD8}}
-_EFUSE=${{EFUSE:=0xFE}}
-
-if [ ! -z ${{DEBUG+x}} ]; then
-    printf "FUSE_OP: ${{FUSE_OP}}\\n"
-    printf "  LFUSE: ${{_LFUSE}}\\n"
-    printf "  HFUSE: ${{_HFUSE}}\\n"
-    printf "  EFUSE: ${{_EFUSE}}\\n"
-
-fi
-
-avrdude -v -P usb -p {part} -F \\
-        -U lfuse:${{FUSE_OP}}:${{_LFUSE}}:m \\
-        -U hfuse:${{FUSE_OP}}:${{_HFUSE}}:m \\
-        -U efuse:${{FUSE_OP}}:${{_EFUSE}}:m \\
-        -U flash:w:{binary}:r \\
-        $@
-"""
-
+    template = ctx.file.template
     input_file = ctx.file.binary
-
     script = ctx.actions.declare_file("{}.sh".format(ctx.label.name))
 
-    script_body = template.format(
-        part = ctx.attr.part,
-        binary = input_file.short_path,
-    )
-
-    ctx.actions.write(
+    ctx.actions.expand_template(
+        template = template,
         output = script,
-        content = script_body,
         is_executable = True,
+        substitutions = {
+            "{part}": ctx.attr.part,
+            "{binary}": input_file.short_path,
+            "{config}": ctx.file.avr_config.path,
+        },
     )
 
     return [
         DefaultInfo(
             executable = script,
-            runfiles = ctx.runfiles(files = [ctx.file.binary]),
+            runfiles = ctx.runfiles(files = [
+                ctx.file.binary,
+                ctx.file.avr_config,
+            ]),
         ),
     ]
 
@@ -234,6 +209,16 @@ _flash = rule(
         "part": attr.string(
             doc = "Part name for avrdude",
             mandatory = True,
+        ),
+        "avr_config": attr.label(
+            doc = "Configuration file",
+            allow_single_file = True,
+            default = Label("//:.avrduderc"),
+        ),
+        "template": attr.label(
+            doc = "Template file for flashing",
+            allow_single_file = True,
+            default = Label("//bazel/tools:avrdude.sh.tmpl"),
         ),
     },
     executable = True,

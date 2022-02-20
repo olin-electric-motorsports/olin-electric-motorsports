@@ -26,12 +26,12 @@ Once you have it, you'll need to install the KiCad Git filters:
 $ ./scripts/install_kicad_git_filters.sh
 ```
 
-### Installing `gcc-avr`
+### Installing AVR and tools
 
 Next, install the AVR toolchain:
 
 ```shell
-sudo apt install gcc-avr avrdude
+sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
 ```
 
 ### Installing Bazel
