@@ -8,24 +8,6 @@
 
 #define LED0 (PD6)
 
-uint8_t _bms_core_data[8] = { 0 };
-
-can_frame_t _bms_core_msg = {
-    .mob = 1,
-    .data = _bms_core_data,
-};
-
-can_filter_t _bms_core_filter = {
-    .id = 16,
-
-    /*
-     * TODO: It would be nice if this was configurable...
-     */
-    .mask = 0x7FF, // Exact match
-};
-
-struct can_tools_bms_core_t _bms_core = { 0 };
-
 void timer0_callback(void);
 
 timer_cfg_s timer0_cfg = {
@@ -56,17 +38,15 @@ int main(void) {
 
     int rc = 0;
 
-    can_receive_bms_core();
+    can_receive_air_control_critical();
 
     while (1) {
-        // rc = can_poll_receive(&_bms_core_msg);
-        rc = can_poll_receive_bms_core();
+        rc = can_poll_receive_air_control_critical();
 
         if (rc == 0) {
             test_msg.test_sig = test_msg.test_sig + 1;
             PORTD |= _BV(LED0);
-            can_receive_bms_core();
-            // can_receive(&_bms_core_msg, _bms_core_filter);
+            can_receive_air_control_critical();
         }
 
         if (send_can) {
