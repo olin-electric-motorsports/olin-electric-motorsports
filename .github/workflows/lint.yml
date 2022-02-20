@@ -32,3 +32,10 @@ jobs:
 
     - name: Run clang-format
       run: git fetch origin main && ./scripts/clang-format.sh check
+    
+    - uses: actions/checkout@v2
+    - uses: psf/black@stable
+      with:
+        options: "--check --verbose"
+        src: "."
+        version: "21.5b1"

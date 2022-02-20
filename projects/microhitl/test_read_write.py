@@ -2,13 +2,13 @@ from projects.microhitl.microhitl import MicroHitl, Values, PinTypes
 import time
 import os
 
-'''Script to test the read and write of the MicroHitl python wrapper'''
+"""Script to test the read and write of the MicroHitl python wrapper"""
 
 
 if __name__ == "__main__":
     port = os.getenv("ARDUINO_PORT") or "/dev/ttyACM0"
-    arduino = MicroHitl(port=port) 
-    time.sleep(2) # Wait 2 seconds for the device to boot up
+    arduino = MicroHitl(port=port)
+    time.sleep(2)  # Wait 2 seconds for the device to boot up
     arduino.configure_pin(5, PinTypes.OUTPUT)
     arduino.configure_pin(6, PinTypes.INPUT)
     while True:

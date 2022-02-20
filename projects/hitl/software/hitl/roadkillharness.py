@@ -9,6 +9,7 @@ from .utils import get_logging_config, root_path, artifacts_path
 from .iocontroller import IOController
 from .cancontroller import CANController
 
+
 class RoadkillHarness:
     """Class to represent the entire tester
 
