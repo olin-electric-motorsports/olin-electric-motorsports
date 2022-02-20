@@ -185,6 +185,7 @@ if [ ! -z ${{DEBUG+x}} ]; then
 fi
 
 avrdude -v -P usb -p {part} -F \\
+        -C /home/manu/Desktop/Formula/olin-electric-motorsports/.avrduderc \\
         -U lfuse:${{FUSE_OP}}:${{_LFUSE}}:m \\
         -U hfuse:${{FUSE_OP}}:${{_HFUSE}}:m \\
         -U efuse:${{FUSE_OP}}:${{_EFUSE}}:m \\
