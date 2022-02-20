@@ -11,8 +11,6 @@
                 - CAN
             : Implement power cycle logic - DONE
             : Implement RTD Buzzer - DONE
-    Questions:
-        Air control message location for IMD
 */
 
 #include "dashboard_config.h"
@@ -58,6 +56,7 @@ int main(void) {
 
     // Enable interrupts
     sei();
+    gpio_enable_interrupt(START_BTN);
 
     // Turn on LV LED
     gpio_set_pin(LV_LED);
@@ -65,58 +64,65 @@ int main(void) {
     // Set Error Code
     dashboard.fault_code = 0;
 
+    // Receive CAN Messages
+    can_receive_brakelight();
+    can_receive_bms_core();
+    can_receive_air_control_critical();
     for (;;) {
         dashboard.steering_position = adc_read(STEERING_POS);
 
-        // Receive CAN Messages
-        can_receive_brakelight();
-        can_receive_bms_core();
-        can_receive_air_control_critical();
-        // can_receive_throttle();
-
         // Brakelight message for Brakelight LED and
         // check
-        if (brakelight.brake_gate) {
-            BRAKE_PRESSED = true;
-            gpio_set_pin(BRAKE_LED);
-        } else {
-            BRAKE_PRESSED = false;
-            gpio_clear_pin(BRAKE_LED);
+        if (can_poll_receive_brakelight() == 0) {
+            if (brakelight.brake_gate) {
+                BRAKE_PRESSED = true;
+                gpio_set_pin(BRAKE_LED);
+            } else {
+                BRAKE_PRESSED = false;
+                gpio_clear_pin(BRAKE_LED);
+            }
+            can_receive_brakelight();
         }
 
         // BMS Core message for BMS Status LED
-        if (bms_core.bms_ok) { // check BMS status
-            gpio_set_pin(BMS_LED); // set BMS light high
-        } else {
-            gpio_clear_pin(BMS_LED); // clear BMS light
+        if (can_poll_receive_bms_core() == 0) {
+            if (bms_core.bms_ok) { // check BMS status
+                gpio_set_pin(BMS_LED); // set BMS light high
+            } else {
+                gpio_clear_pin(BMS_LED); // clear BMS light
+            }
+            can_receive_bms_core();
         }
 
         // AIR Control Critical message for HV LED and disabling ReadyToDrive if
-        // HV goes down
-        if (!air_control_critical.air_p_status
-            && !air_control_critical.air_n_status) {
-            HV_STATE = true;
-            gpio_set_pin(HV_LED); // set HV LED
-        } else {
-            HV_STATE = false;
-            READYTODRIVE = false; // Disable RTD
-            dashboard.ready_to_drive = false;
-            gpio_clear_pin(HV_LED); // clear HV LED
-            buzzer_counter = 0; // reset counter for next RTD cycle
-        }
+        // HV goes down and IMD Status LED
+        if (can_poll_receive_air_control_critical() == 0) {
+            if (!air_control_critical.air_p_status
+                && !air_control_critical.air_n_status) {
+                HV_STATE = true;
+                gpio_set_pin(HV_LED); // set HV LED
+            } else {
+                HV_STATE = false;
+                READYTODRIVE = false; // Disable RTD
+                dashboard.ready_to_drive = false;
+                gpio_clear_pin(HV_LED); // clear HV LED
+                gpio_clear_pin(START_LED); // clear Start LED
+                buzzer_counter = 0; // reset counter for next RTD cycle
+            }
 
-        // AIR Control Critical Message for IMD LED
-        if (!air_control_critical.imd_status) {
-            gpio_set_pin(IMD_LED); // set IMD light high
-        } else {
-            gpio_clear_pin(IMD_LED); // set IMD light low
+            if (!air_control_critical.imd_status) {
+                gpio_set_pin(IMD_LED); // set IMD light high
+            } else {
+                gpio_clear_pin(IMD_LED); // set IMD light low
+            }
+            can_receive_air_control_critical();
         }
 
         // Throttle message for interfacing with LED Bars Board - TODO (SPI
         // library)
         // if (can_receive_throttle() == 0) {
         // do some stuff here
-        //}
+        // }
 
         if (START_BUTTON_STATE && HV_STATE && BRAKE_PRESSED) {
             gpio_set_pin(START_LED);
@@ -130,10 +136,10 @@ int main(void) {
             send_can = false;
 
             // Uses timer to measure the 4 seconds to activate the RTD buzzer
-            if (READYTODRIVE && buzzer_counter < RTD_BUZZ_TIME) {
+            if (READYTODRIVE && (buzzer_counter < RTD_BUZZ_TIME)) {
                 buzzer_counter++;
             }
-            if (buzzer_counter > RTD_BUZZ_TIME) {
+            if (buzzer_counter >= RTD_BUZZ_TIME) {
                 gpio_clear_pin(RTD_BUZZER_LSD);
             }
         }

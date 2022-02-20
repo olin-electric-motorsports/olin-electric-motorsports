@@ -6,7 +6,7 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
-#define RTD_BUZZ_TIME 4000 // milliseconds
+#define RTD_BUZZ_TIME 400 // hundredths of a second
 
 // Pin definitions
 gpio_t IMD_LED = PB3;
