@@ -13,7 +13,7 @@ if __name__ == "__main__":
     arduino.configure_pin(6, PinTypes.INPUT)
     while True:
         arduino.write_pin(5, Values.HIGH)
-        time.sleep(0.25) # changed to test formatting
+        time.sleep(0.25)
         arduino.write_pin(5, Values.LOW)
         time.sleep(0.25)
         print(arduino.read_pin(6))
