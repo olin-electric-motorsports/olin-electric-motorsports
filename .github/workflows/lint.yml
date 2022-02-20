@@ -37,4 +37,4 @@ jobs:
       run: sudo apt install black 
 
     - name: Run black on diffed files
-      run: git diff --name-only origin/$GITHUB_BASE_REF origin/$GITHUB_HEAD_REF | grep ".py$" | xargs black --check
+      run: git diff --name-only $GITHUB_BASE_REF...$GITHUB_HEAD_REF | grep ".py$" | xargs black --check
