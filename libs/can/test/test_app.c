@@ -1,5 +1,6 @@
 #include "libs/can/api.h"
-#include "libs/can/can_api.h"
+#include "libs/can/test/can_api.h"
+#include "libs/timer/api.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <stdbool.h>
@@ -7,81 +8,70 @@
 
 #define LED0 (PD6)
 
-volatile bool turn_led_off = false;
+uint8_t _bms_core_data[8] = { 0 };
 
-uint8_t rx_msg_data[MAX_DLC];
-
-can_frame_t rx_msg = {
+can_frame_t _bms_core_msg = {
     .mob = 1,
-    .data = rx_msg_data,
+    .data = _bms_core_data,
 };
 
-can_filter_t rx_filter = {
-    .mask = 0x7FF,
-    .id = 0x011,
+can_filter_t _bms_core_filter = {
+    .id = 16,
+
+    /*
+     * TODO: It would be nice if this was configurable...
+     */
+    .mask = 0x7FF, // Exact match
 };
 
-ISR(TIMER1_COMPA_vect) {
-    // Turn off LED
-    if (turn_led_off) {
-        PORTD &= ~_BV(LED0);
-        turn_led_off = false;
-    }
-}
+struct can_tools_bms_core_t _bms_core = { 0 };
 
-/*
- * Restart timer at 0
- */
-static void start_timer(void) {
-    TCNT1 = 0;
-    turn_led_off = true;
-}
+void timer0_callback(void);
 
-/*
- * f_clk_io = 4'000'000
- * desired frequency = 1Hz
- * counter resolution = 16-bit, so (2^16)-1 is max value
- * prescaler = 256
- *
- * compare value = [f_clk_io / (prescale * freq)] - 1 = 15624
- */
-static void timer_init(void) {
-    TCCR1B = _BV(WGM12) | 0x4; // CTC mode and prescaler of 256
-    TIMSK1 |= _BV(OCIE1A);
-    OCR1A = 15624;
+timer_cfg_s timer0_cfg = {
+    .timer = TIMER0,
+    .timer0_mode = TIMER0_MODE_CTC,
+    .prescalar = CLKIO_DIV_1024,
+    .channel_a = {
+        .output_compare_match = 0xFF,
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer0_callback,
+    },
+};
+
+volatile bool send_can = false;
+
+void timer0_callback(void) {
+    send_can = true;
 }
 
 int main(void) {
+    can_init_test_node();
+    timer_init(&timer0_cfg);
+
     sei();
-    can_init(BAUD_500KBPS);
-    timer_init();
+
     DDRD |= _BV(LED0);
 
-    can_frame_t msg = {
-        .id = 0x010,
-        .dlc = 1,
-        .mob = 0,
-    };
+    int rc = 0;
 
-    uint8_t can_data[1] = { 0x0F };
-
-    msg.data = can_data;
-
-    can_receive(&rx_msg, rx_filter);
+    can_receive_bms_core();
 
     while (1) {
-        // Testing transmit
-        can_send(&msg);
+        // rc = can_poll_receive(&_bms_core_msg);
+        rc = can_poll_receive_bms_core();
 
-        int ready = can_poll_receive(&rx_msg);
-        if (ready == 0) {
-            // When a message is received, turn on the LED for a second
+        if (rc == 0) {
+            test_msg.test_sig = test_msg.test_sig + 1;
             PORTD |= _BV(LED0);
-            start_timer();
-
-            can_receive(&rx_msg, rx_filter);
+            can_receive_bms_core();
+            // can_receive(&_bms_core_msg, _bms_core_filter);
         }
 
-        _delay_ms(10);
+        if (send_can) {
+            can_send_test_msg();
+            send_can = false;
+        }
     }
 }

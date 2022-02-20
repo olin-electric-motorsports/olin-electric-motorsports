@@ -1,0 +1,16 @@
+name: test_node
+subscribe:
+  - name: bms_core
+    mob: 1
+publish:
+  - name: test_msg
+    id: 0x700
+    freq_hz: 10
+    signals:
+      - name: test_sig
+        slice: 0 + 8
+        unit:
+          name: "V"
+          type: uint8_t
+          offset: 0
+          scale: 1
