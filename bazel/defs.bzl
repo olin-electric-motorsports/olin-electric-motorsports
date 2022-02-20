@@ -184,7 +184,7 @@ def _flash_impl(ctx):
             executable = script,
             runfiles = ctx.runfiles(files = [
                 ctx.file.binary,
-                ctx.file.avr_config
+                ctx.file.avr_config,
             ]),
         ),
     ]
@@ -219,7 +219,7 @@ _flash = rule(
             doc = "Template file for flashing",
             allow_single_file = True,
             default = Label("//bazel/tools:avrdude.sh.tmpl"),
-        )
+        ),
     },
     executable = True,
 )
