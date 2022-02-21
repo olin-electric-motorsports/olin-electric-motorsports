@@ -15,24 +15,13 @@ py_library(
 )
 
 py_library(
-    name = "rkh",
-    srcs = [
-        "roadkillharness.py",
-    ],
-    visibility = ["//visibility:public"],
-    deps = [
-        ":hitl",
-        ":utils",
-    ],
-)
-
-py_library(
     name = "hitl",
     srcs = [
         "__init__.py",
         "cancontroller.py",
         "hitl.py",
         "iocontroller.py",
+        "roadkillharness.py",
     ],
     imports = ["."],
     srcs_version = "PY3",
