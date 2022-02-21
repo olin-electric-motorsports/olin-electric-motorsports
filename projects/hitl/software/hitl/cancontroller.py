@@ -13,11 +13,12 @@ import atexit
 import cantools
 import can
 
-# Project Imports 
+# Project Imports
 from .utils import artifacts_path
 
 config = ConfigParser(interpolation=None)
 config.read(os.path.join(artifacts_path, "config.ini"))
+
 
 class CANController:
     """High level python object to interface with hardware.
@@ -36,11 +37,13 @@ class CANController:
     """
 
     def __init__(
-        self, 
-        can_spec_path: str = config.get("PATH", "dbc_path", fallback="vehicle/mkv/mkv.dbc"), 
-        channel: str = config.get("HARDWARE", "can_channel", fallback="vcan0"), 
+        self,
+        can_spec_path: str = config.get(
+            "PATH", "dbc_path", fallback="vehicle/mkv/mkv.dbc"
+        ),
+        channel: str = config.get("HARDWARE", "can_channel", fallback="vcan0"),
         bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000),
-        real: bool = True
+        real: bool = True,
     ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
@@ -49,20 +52,21 @@ class CANController:
         self.periodic_messages = {}
 
         # Set up dictionary of messages
-        self.message_of_signal, self.signals = self._create_state_dictionary(can_spec_path)
+        self.message_of_signal, self.signals = self._create_state_dictionary(
+            can_spec_path
+        )
 
         # Start listening
         bus_type = "socketcan"
 
         if "linux" in sys.platform and real:
-            self.can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
+            self.can_bus = can.interface.Bus(
+                channel=channel, bustype=bus_type, bitrate=bitrate
+            )
             listener = threading.Thread(
                 target=self._listen,
                 name="listener",
-                kwargs={
-                    "can_bus": self.can_bus,
-                    "callback": self._parse_frame
-                },
+                kwargs={"can_bus": self.can_bus, "callback": self._parse_frame},
             )
             listener.daemon = True
             listener.start()
@@ -86,18 +90,20 @@ class CANController:
 
         """
         try:
-            #find message name
-            msg_name = self.message_of_signal[signal] 
+            # find message name
+            msg_name = self.message_of_signal[signal]
 
-            #update signals dict to new value and pull out message to send
+            # update signals dict to new value and pull out message to send
             self.signals[msg_name][signal] = value
             msg = self.db.get_message_by_name(msg_name)
 
-            #encode message data and create message
+            # encode message data and create message
             data = msg.encode(self.signals[msg_name])
-            message = can.Message(arbitration_id=msg.frame_id, data=data, is_extended_id=False)
+            message = can.Message(
+                arbitration_id=msg.frame_id, data=data, is_extended_id=False
+            )
 
-            #send message
+            # send message
             if msg_name in self.periodic_messages:
                 self.periodic_messages[msg_name].modify_data(message)
             else:
@@ -118,14 +124,16 @@ class CANController:
         if msg_name in self.periodic_messages:
             raise Exception(f"Message {msg_name} is already being sent periodically.")
 
-        #update signals dict to new value and pull out message to send
+        # update signals dict to new value and pull out message to send
         msg = self.db.get_message_by_name(msg_name)
 
-        #encode message data and create message
+        # encode message data and create message
         data = msg.encode(self.signals[msg_name])
-        message = can.Message(arbitration_id=msg.frame_id, data=data, is_extended_id=False)
+        message = can.Message(
+            arbitration_id=msg.frame_id, data=data, is_extended_id=False
+        )
 
-        #send message
+        # send message
         send_task = self.can_bus.send_periodic(message, period)
         self.periodic_messages[msg_name] = send_task
 
@@ -146,37 +154,37 @@ class CANController:
         Timestamp,arbitration_id,signals(0 to 255 value)...
 
         """
-        #Reading and parsing csv file
-        log_file = open(path, 'r')
+        # Reading and parsing csv file
+        log_file = open(path, "r")
         csvreader = csv.reader(log_file)
         messages = []
         for row in csvreader:
-            #remove empty elements from list
-            row = list(filter(None, row)) 
-            #convert strings to integers
+            # remove empty elements from list
+            row = list(filter(None, row))
+            # convert strings to integers
             row = [int(i) for i in row]
-            #check if row is within time range
+            # check if row is within time range
             if row[0] >= initial_time:
-                 messages.append(row)
+                messages.append(row)
         log_file.close()
         prev_time = initial_time
 
-
-        start_time = time.time_ns() # initial time
-        row = 0 # initial row
+        start_time = time.time_ns()  # initial time
+        row = 0  # initial row
         while row < len(messages):
-            #calculate time elapsed and check if next message should be sent
-            time_elapsed = (time.time_ns() - start_time)/1000000
+            # calculate time elapsed and check if next message should be sent
+            time_elapsed = (time.time_ns() - start_time) / 1000000
             if time_elapsed >= int(messages[row][0]):
-                #Pull out message data from csv
+                # Pull out message data from csv
                 data = messages[row][2:]
-                #create CAN message
-                message = can.Message(arbitration_id=messages[row][1], data=data, is_extended_id=False)
-                #send message
+                # create CAN message
+                message = can.Message(
+                    arbitration_id=messages[row][1], data=data, is_extended_id=False
+                )
+                # send message
                 self.can_bus.send(message)
-                #increment row
+                # increment row
                 row += 1
-
 
     def _create_state_dictionary(self, path: str) -> None:
         """Generate self.message_of_signal and self.signals
