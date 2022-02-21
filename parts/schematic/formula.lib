@@ -1397,6 +1397,22 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# C_10pf
+#
+DEF C_10pf C 0 40 Y N 1 F N
+F0 "C" 0 150 50 H V L BNN
+F1 "C_10pf" -50 -150 50 H V L BNN
+F2 "footprints:C_10pf" 0 0 50 H I L BNN
+F3 "" 0 0 50 H I L BNN
+F4 "https://www.digikey.com/en/products/detail/kemet/CDR31BP100BJUS7185/3738523" -400 -200 50 H I C CNN "PurchasingLink"
+DRAW
+S 0 -75 25 75 0 0 0 F
+S 75 -75 100 75 0 0 0 F
+X ~ 1 -100 0 100 R 40 40 0 0 P
+X ~ 2 200 0 100 L 40 40 0 0 P
+ENDDRAW
+ENDDEF
+#
 # C_10uF
 #
 DEF C_10uF C 0 10 N Y 1 F N
@@ -1733,6 +1749,34 @@ P 2 0 1 20 -80 -30 80 -30 N
 P 2 0 1 20 -80 30 80 30 N
 X ~ 1 0 150 110 D 50 50 1 1 P
 X ~ 2 0 -150 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# C_radial_10mm_5mm
+#
+DEF C_radial_10mm_5mm C 0 40 N N 1 F N
+F0 "C" 0 150 50 H V L BNN
+F1 "C_radial_10mm_5mm" -300 -200 50 H V L BNN
+F2 "footprints:C_radial_10mm_5mm" 0 0 50 H I L BNN
+F3 "" 0 0 50 H I L BNN
+F4 "0.6" 0 0 50 H I L BNN "b_nom"
+F5 "PANASONIC" 0 0 50 H I L BNN "MF"
+F6 "0.65" 0 0 50 H I L BNN "b_max"
+F7 "10" 0 0 50 H I L BNN "D_nom"
+F8 "20" 0 0 50 H I L BNN "A_max"
+F9 "EB-A" 0 0 50 H I L BNN "DESCRIPTION"
+F10 "5" 0 0 50 H I L BNN "e_nom"
+F11 "28-FEB-20" 0 0 50 H I L BNN "PARTREV"
+DRAW
+A 233 0 174 1450 -1450 0 0 10 N 90 100 90 -100
+S -46 -60 -11 -55 0 0 0 F
+S -31 -75 -26 -40 0 0 0 F
+P 2 0 0 6 0 0 20 0 N
+P 2 0 0 10 20 0 20 -100 N
+P 2 0 0 10 20 100 20 0 N
+P 2 0 0 6 100 0 60 0 N
+X ~ N 200 0 100 L 40 40 0 0 P
+X ~ P -100 0 100 R 40 40 0 0 P
 ENDDRAW
 ENDDEF
 #

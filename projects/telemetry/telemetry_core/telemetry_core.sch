@@ -1754,8 +1754,6 @@ Wire Wire Line
 	6750 4000 6750 4150
 Wire Wire Line
 	6750 4150 6600 4150
-Text Notes 5850 3500 0    89   ~ 0
-32.768 kHz CRYSTAL\n
 $Comp
 L formula:JST_SM06B-GHS-TB_LF__SN_ J2
 U 1 1 61941897
@@ -1800,8 +1798,8 @@ Text Label 6750 6350 2    50   ~ 0
 SO_RTC
 Text Label 6750 6150 2    50   ~ 0
 SI_RTC
-Text Notes 10400 1600 0    50   ~ 0
-CAPACITOR HERE, DIODES BEHIND CAPACITOR.\ncheck notes\n
+Text Notes 10450 1500 0    50   ~ 0
+"Keep Alive" Capacitor
 Text Label 7550 6150 0    50   ~ 0
 SI_ATMEGA
 Text Label 7550 6350 0    50   ~ 0
@@ -1834,35 +1832,10 @@ Text Label 3900 1900 0    50   ~ 0
 RTS_RADIO
 Text Label 3900 1800 0    50   ~ 0
 CTS_RADIO
-Text Notes 12000 2250 2    50   ~ 0
+Text Notes 12150 2800 2    50   ~ 0
 Generic capacitor to \ndetermine after assembly\n
 Text Notes 4750 2750 0    50   ~ 0
 swapped
-Text Label 13150 1600 0    50   ~ 0
-12V_IN
-Text Label 11400 1950 2    50   ~ 0
-12V_IN
-Text Label 11700 1950 0    50   ~ 0
-12V
-$Comp
-L Device:C C15
-U 1 1 61D6EFCD
-P 11550 1950
-F 0 "C15" V 11298 1950 50  0000 C CNN
-F 1 "C" V 11389 1950 50  0000 C CNN
-F 2 "" H 11588 1800 50  0001 C CNN
-F 3 "~" H 11550 1950 50  0001 C CNN
-	1    11550 1950
-	0    1    1    0   
-$EndComp
-Wire Notes Line
-	10900 1550 10900 2350
-Wire Notes Line
-	10900 2350 12150 2350
-Wire Notes Line
-	12150 2350 12150 1550
-Wire Notes Line
-	10900 1550 12150 1550
 Text Label 3900 1400 0    50   ~ 0
 SI_ATMEGA
 Text Label 3900 1300 0    50   ~ 0
@@ -1885,28 +1858,6 @@ Wire Wire Line
 Wire Wire Line
 	6800 4300 7150 4300
 $Comp
-L Device:C C10
-U 1 1 61EEE253
-P 6250 4150
-F 0 "C10" V 5998 4150 50  0000 C CNN
-F 1 "C" V 6100 4150 50  0000 C CNN
-F 2 "" H 6288 4000 50  0001 C CNN
-F 3 "~" H 6250 4150 50  0001 C CNN
-	1    6250 4150
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:C C9
-U 1 1 61F01F6F
-P 6250 3750
-F 0 "C9" V 5998 3750 50  0000 C CNN
-F 1 "C" V 6089 3750 50  0000 C CNN
-F 2 "" H 6288 3600 50  0001 C CNN
-F 3 "~" H 6250 3750 50  0001 C CNN
-	1    6250 3750
-	0    -1   -1   0   
-$EndComp
-$Comp
 L power:GND #PWR?
 U 1 1 61F2BF60
 P 5900 4250
@@ -1928,7 +1879,7 @@ L formula:Crystal_32_768kHz Y2
 U 1 1 61A94C98
 P 6600 3950
 F 0 "Y2" V 6600 3750 50  0000 L CNN
-F 1 "Crystal_32_768kHz" V 6300 3700 50  0000 L CNN
+F 1 "Crystal_32_768kHz" V 6300 3800 50  0000 L CNN
 F 2 "footprints:Crystal_32_768kHZ" H 6300 4250 50  0001 L BNN
 F 3 "https://www.jauch.com/downloadfile/57fde22d50dbf_d3c203011c87952f2834/jtx310-auto-2-210512.pdf" H 6600 3950 50  0001 L BNN
 F 4 "https://www.digikey.com/short/3nzmt0hf" H 6550 3750 50  0001 C CNN "PurchasingLink"
@@ -2025,4 +1976,97 @@ Wire Notes Line
 	5650 2800 5650 4850
 Wire Notes Line
 	9800 2800 9800 4850
+Text Notes 5850 3400 0    89   ~ 0
+32.768 kHz CRYSTAL\n
+$Comp
+L formula:C_10pf C9
+U 1 1 620FD9D6
+P 6300 3750
+F 0 "C9" H 6350 3510 50  0000 C CNN
+F 1 "C_10pf" H 6350 3601 50  0000 C CNN
+F 2 "footprints:C_10pf" H 6300 3750 50  0001 L BNN
+F 3 "https://content.kemet.com/datasheets/F3102_MIL-PRF-55681.pdf" H 6300 3750 50  0001 L BNN
+F 4 "https://www.digikey.com/en/products/detail/kemet/CDR31BP100BJUS7185/3738523" H 5900 3550 50  0001 C CNN "PurchasingLink"
+	1    6300 3750
+	-1   0    0    1   
+$EndComp
+$Comp
+L formula:C_10pf C10
+U 1 1 620F96C6
+P 6300 4150
+F 0 "C10" H 6350 4300 50  0000 C CNN
+F 1 "C_10pf" H 6350 4400 50  0000 C CNN
+F 2 "footprints:C_10pf" H 6300 4150 50  0001 L BNN
+F 3 "https://content.kemet.com/datasheets/F3102_MIL-PRF-55681.pdf" H 6300 4150 50  0001 L BNN
+F 4 "https://www.digikey.com/en/products/detail/kemet/CDR31BP100BJUS7185/3738523" H 5900 3950 50  0001 C CNN "PurchasingLink"
+	1    6300 4150
+	-1   0    0    1   
+$EndComp
+$Comp
+L formula:C_radial_10mm_5mm C15
+U 1 1 6204B3A8
+P 11600 2000
+F 0 "C15" V 11600 1800 50  0000 C CNN
+F 1 "C_radial_10mm_5mm" V 11700 1450 50  0000 C CNN
+F 2 "footprints:C_radial_10mm_5mm" H 11600 2000 50  0001 L BNN
+F 3 "" H 11600 2000 50  0001 L BNN
+F 4 "0.6" H 11600 2000 50  0001 L BNN "b_nom"
+F 5 "PANASONIC" H 11600 2000 50  0001 L BNN "MF"
+F 6 "0.65" H 11600 2000 50  0001 L BNN "b_max"
+F 7 "10" H 11600 2000 50  0001 L BNN "D_nom"
+F 8 "20" H 11600 2000 50  0001 L BNN "A_max"
+F 9 "EB-A" H 11600 2000 50  0001 L BNN "DESCRIPTION"
+F 10 "5" H 11600 2000 50  0001 L BNN "e_nom"
+F 11 "28-FEB-20" H 11600 2000 50  0001 L BNN "PARTREV"
+	1    11600 2000
+	0    1    1    0   
+$EndComp
+Text Label 11700 1850 0    50   ~ 0
+12V
+Text Label 13150 1600 0    50   ~ 0
+12V_IN
+Text Label 11050 1850 2    50   ~ 0
+12V_IN
+$Comp
+L power:GND #PWR?
+U 1 1 621C3D8D
+P 11600 2300
+F 0 "#PWR?" H 11600 2050 50  0001 C CNN
+F 1 "GND" H 11605 2127 50  0000 C CNN
+F 2 "" H 11600 2300 50  0001 C CNN
+F 3 "" H 11600 2300 50  0001 C CNN
+	1    11600 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:BAT400D-7-F D7
+U 1 1 621C7C27
+P 11300 1850
+F 0 "D7" H 11300 1634 50  0000 C CNN
+F 1 "BAT400D-7-F" H 11300 1725 50  0000 C CNN
+F 2 "footprints:SOT-23-3_OEM" H 11200 1850 50  0001 C CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ds30182.pdf" H 11300 1950 50  0001 C CNN
+F 4 "https://www.digikey.com/products/en?keywords=BAT400D-FDICT-ND" H 11600 2250 60  0001 C CNN "PurchasingLink"
+	1    11300 1850
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	11450 1850 11600 1850
+Wire Wire Line
+	11600 1850 11600 1900
+Wire Wire Line
+	11600 2200 11600 2300
+Wire Wire Line
+	11600 1850 11700 1850
+Connection ~ 11600 1850
+Wire Wire Line
+	11150 1850 11050 1850
+Wire Notes Line
+	12200 1350 12200 2600
+Wire Notes Line
+	12200 2600 10350 2600
+Wire Notes Line
+	10350 2600 10350 1350
+Wire Notes Line
+	10350 1350 12200 1350
 $EndSCHEMATC

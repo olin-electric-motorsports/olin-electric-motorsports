@@ -1,24 +1,6 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Device_C
-#
-DEF Device_C C 0 10 N Y 1 F N
-F0 "C" 25 100 50 H V L CNN
-F1 "Device_C" 25 -100 50 H V L CNN
-F2 "" 38 -150 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- C_*
-$ENDFPLIST
-DRAW
-P 2 0 1 20 -80 -30 80 -30 N
-P 2 0 1 20 -80 30 80 30 N
-X ~ 1 0 150 110 D 50 50 1 1 P
-X ~ 2 0 -150 110 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # Logic_LevelTranslator_TXB0104PW
 #
 DEF Logic_LevelTranslator_TXB0104PW U 0 20 Y Y 1 F N
@@ -142,6 +124,30 @@ X (PCINT1/MOSI/PSCOUT2B)PB1 9 1100 1600 150 L 40 40 1 1 B
 ENDDRAW
 ENDDEF
 #
+# formula_BAT400D-7-F
+#
+DEF formula_BAT400D-7-F D 0 40 N N 1 F N
+F0 "D" 0 100 50 H V C CNN
+F1 "formula_BAT400D-7-F" 0 -100 50 H V C CNN
+F2 "footprints:SOT-23-3_OEM" -100 0 50 H I C CNN
+F3 "" 0 100 50 H I C CNN
+F4 "https://www.digikey.com/products/en?keywords=BAT400D-FDICT-ND" 300 400 60 H I C CNN "PurchasingLink"
+$FPLIST
+ TO-???*
+ *SingleDiode
+ *_Diode_*
+ *SingleDiode*
+ D_*
+$ENDFPLIST
+DRAW
+P 2 0 1 0 50 0 -50 0 N
+P 4 0 1 8 50 50 50 -50 -50 0 50 50 N
+P 6 0 1 8 -75 25 -75 50 -50 50 -50 -50 -25 -50 -25 -25 N
+X K 1 -150 0 100 R 50 50 1 1 P
+X A 2 150 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # formula_CONN_02X03
 #
 DEF formula_CONN_02X03 J 0 1 Y N 1 F N
@@ -240,6 +246,22 @@ P 2 0 1 20 -80 -30 80 -30 N
 P 2 0 1 20 -80 30 80 30 N
 X ~ 1 0 150 110 D 50 50 1 1 P
 X ~ 2 0 -150 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_C_10pf
+#
+DEF formula_C_10pf C 0 40 Y N 1 F N
+F0 "C" 0 150 50 H V L BNN
+F1 "formula_C_10pf" -50 -150 50 H V L BNN
+F2 "footprints:C_10pf" 0 0 50 H I L BNN
+F3 "" 0 0 50 H I L BNN
+F4 "https://www.digikey.com/en/products/detail/kemet/CDR31BP100BJUS7185/3738523" -400 -200 50 H I C CNN "PurchasingLink"
+DRAW
+S 0 -75 25 75 0 0 0 F
+S 75 -75 100 75 0 0 0 F
+X ~ 1 -100 0 100 R 40 40 0 0 P
+X ~ 2 200 0 100 L 40 40 0 0 P
 ENDDRAW
 ENDDEF
 #
@@ -365,6 +387,34 @@ P 2 0 1 20 -80 -30 80 -30 N
 P 2 0 1 20 -80 30 80 30 N
 X ~ 1 0 150 110 D 50 50 1 1 P
 X ~ 2 0 -150 110 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_C_radial_10mm_5mm
+#
+DEF formula_C_radial_10mm_5mm C 0 40 N N 1 F N
+F0 "C" 0 150 50 H V L BNN
+F1 "formula_C_radial_10mm_5mm" -300 -200 50 H V L BNN
+F2 "footprints:C_radial_10mm_5mm" 0 0 50 H I L BNN
+F3 "" 0 0 50 H I L BNN
+F4 "0.6" 0 0 50 H I L BNN "b_nom"
+F5 "PANASONIC" 0 0 50 H I L BNN "MF"
+F6 "0.65" 0 0 50 H I L BNN "b_max"
+F7 "10" 0 0 50 H I L BNN "D_nom"
+F8 "20" 0 0 50 H I L BNN "A_max"
+F9 "EB-A" 0 0 50 H I L BNN "DESCRIPTION"
+F10 "5" 0 0 50 H I L BNN "e_nom"
+F11 "28-FEB-20" 0 0 50 H I L BNN "PARTREV"
+DRAW
+A 233 0 174 1450 -1450 0 0 10 N 90 100 90 -100
+S -46 -60 -11 -55 0 0 0 F
+S -31 -75 -26 -40 0 0 0 F
+P 2 0 0 6 0 0 20 0 N
+P 2 0 0 10 20 0 20 -100 N
+P 2 0 0 10 20 100 20 0 N
+P 2 0 0 6 100 0 60 0 N
+X ~ N 200 0 100 L 40 40 0 0 P
+X ~ P -100 0 100 R 40 40 0 0 P
 ENDDRAW
 ENDDEF
 #

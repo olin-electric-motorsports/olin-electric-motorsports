@@ -188,6 +188,12 @@ K cap, ceramic, capacitor, 10nF, 10000pF, 0805
 F http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/07/23/CL21B103KBANNNC.pdf
 $ENDCMP
 #
+$CMP C_10pf
+D CDR31BP100BJUS7185,10 pF capacitor
+K capacitor, cap, c, 10, 10pF, pF
+F https://content.kemet.com/datasheets/F3102_MIL-PRF-55681.pdf
+$ENDCMP
+#
 $CMP C_10uF
 D Capacitor, 10uF, 10V, 10%, 0805
 F http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf
@@ -250,6 +256,11 @@ $ENDCMP
 #
 $CMP C_47uF
 D Capacitor, 47uF, 6.3V, 20%, 0805
+$ENDCMP
+#
+$CMP C_radial_10mm_5mm
+D THT (throughhole) capacitor, diameter is 10mm and the spacing is 5mm
+K capacitor, tht, throughhole
 $ENDCMP
 #
 $CMP Crystal_32_768kHz
