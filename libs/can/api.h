@@ -44,6 +44,11 @@ void can_init(baud_rate_t baud);
 void can_enable_interrupt(uint8_t mob);
 
 /*
+ * Returns 0 if there is no interrupt for the given MOb, and (1 << mob) if so
+ */
+int can_mob_has_interrupt(uint8_t mob);
+
+/*
  * Sends a CAN message
  *
  * @param[in] frame - CAN frame struct

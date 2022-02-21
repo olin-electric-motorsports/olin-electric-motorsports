@@ -1,5 +1,6 @@
 #include "libs/can/api.h"
-#include "libs/can/can_api.h"
+#include "libs/can/test/can_api.h"
+#include "libs/timer/api.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <stdbool.h>
@@ -7,81 +8,50 @@
 
 #define LED0 (PD6)
 
-volatile bool turn_led_off = false;
+void timer0_callback(void);
 
-uint8_t rx_msg_data[MAX_DLC];
-
-can_frame_t rx_msg = {
-    .mob = 1,
-    .data = rx_msg_data,
+timer_cfg_s timer0_cfg = {
+    .timer = TIMER0,
+    .timer0_mode = TIMER0_MODE_CTC,
+    .prescalar = CLKIO_DIV_1024,
+    .channel_a = {
+        .output_compare_match = 0xFF,
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer0_callback,
+    },
 };
 
-can_filter_t rx_filter = {
-    .mask = 0x7FF,
-    .id = 0x011,
-};
+volatile bool send_can = false;
 
-ISR(TIMER1_COMPA_vect) {
-    // Turn off LED
-    if (turn_led_off) {
-        PORTD &= ~_BV(LED0);
-        turn_led_off = false;
-    }
-}
-
-/*
- * Restart timer at 0
- */
-static void start_timer(void) {
-    TCNT1 = 0;
-    turn_led_off = true;
-}
-
-/*
- * f_clk_io = 4'000'000
- * desired frequency = 1Hz
- * counter resolution = 16-bit, so (2^16)-1 is max value
- * prescaler = 256
- *
- * compare value = [f_clk_io / (prescale * freq)] - 1 = 15624
- */
-static void timer_init(void) {
-    TCCR1B = _BV(WGM12) | 0x4; // CTC mode and prescaler of 256
-    TIMSK1 |= _BV(OCIE1A);
-    OCR1A = 15624;
+void timer0_callback(void) {
+    send_can = true;
 }
 
 int main(void) {
+    can_init_test_node();
+    timer_init(&timer0_cfg);
+
     sei();
-    can_init(BAUD_500KBPS);
-    timer_init();
+
     DDRD |= _BV(LED0);
 
-    can_frame_t msg = {
-        .id = 0x010,
-        .dlc = 1,
-        .mob = 0,
-    };
+    int rc = 0;
 
-    uint8_t can_data[1] = { 0x0F };
-
-    msg.data = can_data;
-
-    can_receive(&rx_msg, rx_filter);
+    can_receive_air_control_critical();
 
     while (1) {
-        // Testing transmit
-        can_send(&msg);
+        rc = can_poll_receive_air_control_critical();
 
-        int ready = can_poll_receive(&rx_msg);
-        if (ready == 0) {
-            // When a message is received, turn on the LED for a second
+        if (rc == 0) {
+            test_msg.test_sig = test_msg.test_sig + 1;
             PORTD |= _BV(LED0);
-            start_timer();
-
-            can_receive(&rx_msg, rx_filter);
+            can_receive_air_control_critical();
         }
 
-        _delay_ms(10);
+        if (send_can) {
+            can_send_test_msg();
+            send_can = false;
+        }
     }
 }
