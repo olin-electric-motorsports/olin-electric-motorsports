@@ -868,7 +868,7 @@ U 1 1 5F881F17
 P 4550 8700
 F 0 "L1" H 4550 8800 50  0000 C CNN
 F 1 "L_100uH" H 4550 8650 50  0000 C CNN
-F 2 "formula:L_100uH" H 4450 8500 50  0001 C CNN
+F 2 "footprints:L_100uH_OEM" H 4450 8500 50  0001 C CNN
 F 3 "https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_decoupling_nlfv32-ef_en.pdf" H 4450 8550 50  0001 C CNN
 F 4 "Digikey" H 4650 8500 50  0001 C CNN "MFN"
 F 5 "445-15759-1-ND" H 4550 8950 50  0001 C CNN "MPN"
@@ -1934,19 +1934,6 @@ F 6 "https://www.digikey.com/en/products/detail/kemet/C1206C103KCRACTU/721283" H
 	1    8450 3550
 	1    0    0    -1  
 $EndComp
-Connection ~ 7150 4300
-$Comp
-L formula:MCP79511-I_MS U3
-U 1 1 619A9C99
-P 6650 3900
-F 0 "U3" H 7750 4289 60  0000 C CNN
-F 1 "MCP79511-I_MS" H 7750 4183 60  0000 C CNN
-F 2 "footprints:MCP79511-I&slashMS" H 7750 4150 60  0001 C CNN
-F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP7951X-MCP7952X-Battery-Backed-SPI-RTCC-20002300C.pdf" H 7150 3900 60  0001 C CNN
-F 4 "https://www.digikey.com/short/8h8hqbn4" H 7750 3250 50  0001 C CNN "PurchasingLink"
-	1    6650 3900
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:+3V3 #PWR?
 U 1 1 61A77D83
@@ -2069,4 +2056,19 @@ Wire Notes Line
 	10350 2600 10350 1350
 Wire Notes Line
 	10350 1350 12200 1350
+NoConn ~ 15050 4650
+NoConn ~ 15050 4750
+$Comp
+L formula:MCP79511-I_MS U3
+U 1 1 6229D803
+P 6650 3900
+F 0 "U3" H 7750 4289 60  0000 C CNN
+F 1 "MCP79511-I_MS" H 7750 4183 60  0000 C CNN
+F 2 "footprints:MCP79511_I_MS" H 7750 4150 60  0001 C CNN
+F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP7951X-MCP7952X-Battery-Backed-SPI-RTCC-20002300C.pdf" H 7150 3900 60  0001 C CNN
+F 4 "https://www.digikey.com/short/8h8hqbn4" H 7750 3250 50  0001 C CNN "PurchasingLink"
+	1    6650 3900
+	1    0    0    -1  
+$EndComp
+Connection ~ 7150 4300
 $EndSCHEMATC
