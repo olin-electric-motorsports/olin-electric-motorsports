@@ -18,7 +18,7 @@ pytest_test(
     ],
     deps = [
         ":conftest",
-        "//projects/hitl/software/hitl:rkh",
+        "//projects/hitl/software/hitl",
     ],
 )
 
@@ -26,6 +26,6 @@ py_library(
     name = "conftest",
     srcs = ["conftest.py"],
     deps = [
-        "//projects/hitl/software/hitl:rkh",
+        "//projects/hitl/software/hitl",
     ],
 )
