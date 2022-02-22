@@ -105,14 +105,6 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 
-#ifndef SPI_CS_PIN
-// #warning Must define SPI_CS_PIN as a gpio_t in the application. Setting to
-// PB1.
-gpio_t CS_PIN = PB1;
-#else
-gpio_t CS_PIN = SPI_CS_PIN;
-#endif
-
 /*! Cell Voltage data structure. */
 typedef struct {
     uint16_t c_codes[18]; //!< Cell Voltage Codes
