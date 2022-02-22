@@ -17,8 +17,8 @@ cc_firmware(
         "//libs/gpio",
         "//libs/spi",
         "//libs/timer",
-        "//vehicle/mkv/software/bms/ltc6811",
         "//vehicle/mkv/software/bms/bsp",
+        "//vehicle/mkv/software/bms/ltc6811",
     ],
 )
 

@@ -1,9 +1,9 @@
-#include <stdint.h>
 #include "libs/can/api.h"
-#include "libs/timer/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
+#include "libs/timer/api.h"
+#include <stdint.h>
 
 /*
  * Macros

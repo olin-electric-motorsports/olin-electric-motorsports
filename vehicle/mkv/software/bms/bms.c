@@ -55,9 +55,9 @@ static void set_fault(enum FaultCode the_fault) {
 
 // static void fan_enable(bool enable) {
 //     timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
-// 
-//     // No way to update a single part of the config so we just re-init the timer
-//     timer_init(&timer1_fan_cfg);
+//
+//     // No way to update a single part of the config so we just re-init the
+//     timer timer_init(&timer1_fan_cfg);
 // }
 
 static void configure_ics(void) {

@@ -4,20 +4,20 @@ cc_library(
     name = "bsp",
     srcs = [
         "bsp.c",
-        "mux.c",
         "can.c",
+        "mux.c",
     ],
     hdrs = [
         "bsp.h",
-        "mux.h",
         "can.h",
+        "mux.h",
     ],
     visibility = ["//visibility:public"],
     deps = [
+        "//libs/can",
         "//libs/gpio",
         "//libs/spi",
         "//libs/timer",
-        "//libs/can",
         "//vehicle/mkv/software/bms/ltc6811",
     ],
 )

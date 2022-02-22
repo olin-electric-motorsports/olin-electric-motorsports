@@ -1,9 +1,9 @@
 #pragma once
 
-#include <stdint.h>
-#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
-#include "vehicle/mkv/software/bms/bsp/mux.h"
 #include "vehicle/mkv/software/bms/bsp/can.h"
+#include "vehicle/mkv/software/bms/bsp/mux.h"
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
+#include <stdint.h>
 
 #define OVERVOLTAGE  (1)
 #define UNDERVOLTAGE (2)
