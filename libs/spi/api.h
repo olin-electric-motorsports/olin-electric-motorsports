@@ -60,3 +60,13 @@ void spi_init(spi_cfg_s* cfg);
 void spi_transceive(uint8_t* txdata, uint8_t* rxdata, uint8_t len);
 
 void spi_receive(uint8_t* rxdata, uint8_t len);
+
+/*
+ * Set CS pin low. Used for LTC681x libraries and for fine-grain SPI control
+ */
+void spi_cs_low(void);
+
+/*
+ * Set CS pin high. Used for LTC681x libraries and for fine-grain SPI control
+ */
+void spi_cs_high(void);
