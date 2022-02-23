@@ -8,21 +8,18 @@
 /*
  * Macros
  */
-#define NUM_ICS (12) // TODO: Verify number of LTC6811s in the chain
+#define NUM_ICS             (12)
+#define NUM_TEMPERATURE_ICS (6) // Only half the ICs monitor temperatures
 
 // Number of cells that can be measured
 #define NUM_CELLS (12)
 
-#define NUM_TEMPS (20) // Number of temperature sensors per segment
-
 // TODO verify over/under voltage/temperature thresholds
-#define OVERVOLTAGE_THRESHOLD      (42000) // 4.2V
-#define UNDERVOLTAGE_THRESHOLD     (30000) // 3.0V
-#define OVERTEMPERATURE_THRESHOLD  (728) // 60 degC
-#define UNDERTEMPERATURE_THRESHOLD (7384) // 0 degC
-
-// Muxes
-#define NUM_MUXES (3)
+#define OVERVOLTAGE_THRESHOLD          (42000) // 4.2V
+#define UNDERVOLTAGE_THRESHOLD         (30000) // 3.0V
+#define OVERTEMPERATURE_THRESHOLD      (728) // 60 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD (1255) // 45 degC
+#define UNDERTEMPERATURE_THRESHOLD     (7384) // 0 degC
 
 /*
  * GPIO
@@ -39,6 +36,13 @@ gpio_t GENERAL_LED = PD6;
 gpio_t FAULT_LED = PD7;
 
 gpio_t SPI_CS = PB6;
+
+// TODO
+// * nOCD
+// * CHARGE_ENABLEn
+// * VREF
+// * VOUT
+// * BSPD_CURRENT_SENSE
 
 /*
  * SPI

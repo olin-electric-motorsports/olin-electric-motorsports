@@ -11,4 +11,4 @@ void can_send_bms_voltages(uint8_t num_ics, cell_asic ics[]);
 /*
  * Sends all BMS cell temperature CAN data
  */
-void can_send_bms_temperatures(uint8_t num_ics, cell_asic ics[]);
+void can_send_bms_temperatures(uint8_t num_ics, uint16_t** temperatures);

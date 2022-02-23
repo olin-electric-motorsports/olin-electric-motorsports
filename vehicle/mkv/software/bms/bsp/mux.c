@@ -15,8 +15,8 @@
 #define NACK      (0b1000)
 #define NACK_STOP (0b1001)
 
-void configure_mux(uint8_t num_ics, cell_asic ics[], uint8_t address,
-                   bool enable, uint8_t channel) {
+void enable_mux(uint8_t num_ics, cell_asic ics[], uint8_t address, bool enable,
+                uint8_t channel) {
     uint8_t cmd = enable ? 0x8 : 0x00;
     cmd |= channel & 0x7;
 

@@ -20,6 +20,9 @@
  *     CHARGING
  *     FAULT
  *   Do not do BMS if car is off (TS off? LV off?)
+ *
+ *   Only the #2 chip reads the temperatures. So if we index at 0, then only odd
+ *   chips read temperatures
  */
 
 enum State {
@@ -42,8 +45,10 @@ enum FaultCode {
 // voltages, auxiliary readings (i.e. temperatures), and configs
 cell_asic ICS[NUM_ICS];
 
+uint16_t TEMPERATURES[NUM_TEMPERATURE_ICS][NUM_MUXES * NUM_MUX_CHANNELS];
+
 // Array of mux addresses
-const uint8_t MUXES[3] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
+const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
 
 static void set_fault(enum FaultCode the_fault) {
     gpio_clear_pin(BMS_RELAY_LSD);
@@ -53,15 +58,16 @@ static void set_fault(enum FaultCode the_fault) {
     }
 }
 
-// static void fan_enable(bool enable) {
-//     timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
-//
-//     // No way to update a single part of the config so we just re-init the
-//     timer timer_init(&timer1_fan_cfg);
-// }
+static void fan_enable(bool enable) {
+    timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
+
+    // No way to update a single part of the config so we just re-init the timer
+    timer_init(&timer1_fan_cfg);
+}
 
 static void configure_ics(void) {
     LTC6811_init_cfg(NUM_ICS, ICS);
+    LTC6811_init_reg_limits(NUM_ICS, ICS);
 
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         // Configure over/undervoltage thresholds for each chip
@@ -99,6 +105,14 @@ static void voltage_task(void) {
     // Sum together all the voltages of the cells and check over/under voltage
     // conditions
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+        if ((ic == 4) || (ic == 5) || (ic == 10) || (ic == 11)) {
+            /*
+             * The pins C5, C6, C11, and C12 are not connected to their own
+             * cells, so we ignore them.
+             */
+            continue;
+        }
+
         pack_voltage += ICS[ic].stat.stat_codes[0];
 
         // Odd bits of the ST register are used for undervoltage flags
@@ -122,16 +136,22 @@ static void voltage_task(void) {
 static void temperature_task(void) {
     uint8_t error = 0;
 
+    int32_t cumulative_temperature = 0;
+
     for (uint8_t mux = 0; mux < NUM_MUXES; mux++) {
         // For each mux,
         for (uint8_t ch = 0; ch < NUM_MUX_CHANNELS; ch++) {
-            configure_mux(NUM_ICS, ICS, MUXES[mux], true, ch);
+            // For each mux channel (ch)
+
+            enable_mux(NUM_ICS, ICS, MUXES[mux], MUX_ENABLE, ch);
 
             // read aux gpio voltage for temperature
             LTC6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1);
+
+            // wait for conversions to finish
             (void)LTC6811_pollAdc();
 
-            error = LTC6811_rdaux(AUX_CH_ALL, NUM_ICS, ICS);
+            error = LTC6811_rdaux(AUX_CH_GPIO1, NUM_ICS, ICS);
 
             // TODO
             if (error) {
@@ -139,29 +159,70 @@ static void temperature_task(void) {
                 // Do something
             }
 
-            uint32_t temperature = 0;
+            uint16_t temperature = 0;
 
-            for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+            // temp_ic indexes the ICs that measure the temperature, so
+            //   temp_ic = 0 := ic 1
+            //   temp_ic = 1 := ic 3
+            //   temp_ic = 2 := ic 5
+            //   etc.
+            for (uint8_t temp_ic = 0; temp_ic < NUM_TEMPERATURE_ICS;
+                 temp_ic += 1) {
                 // Use 0 as the a_codes index for GPIO1 channel
-                temperature = ICS[ic].aux.a_codes[0];
+                // uint8_t ic = (temp_ic*2) + 1;
+                temperature = ICS[(temp_ic * 2) + 1].aux.a_codes[0];
+
+                // Store temperature [(mux * NUM_MUX_CHANNELS) + ch] indexes the
+                // channel of the mux. We store temperatures as a 2D array of
+                // ICS vs mux channels and use 24 as the number of mux channels
+                // (3 muxes, 8 channels each).
+                uint16_t channel = (mux * NUM_MUX_CHANNELS) + ch;
+                TEMPERATURES[temp_ic][channel] = temperature;
+                cumulative_temperature += temperature;
 
                 // Using negative-temperature-coefficient (NTC) thermistors, so
-                // comparisons are reversed
+                // comparisons are reversed (i.e. less than over-temp threshold)
                 if (temperature < OVERTEMPERATURE_THRESHOLD) {
                     set_fault(FAULT_OVERTEMPERATURE);
-                } else if (temperature > UNDERTEMPERATURE_THRESHOLD) {
+                }
+
+                // TODO: It would be good to have some buffer so the fans aren't
+                // pulsing on and off ever. This could be as simple as having a
+                // counter while the fan is on, and we keep the fan on for the
+                // duration of the counter, and once the counter is up, we check
+                // if the temperature is in safe range (lower than soft OT), we
+                // turn the fan off and keep checking.
+
+                // In case the temperatures are getting a bit too high, we turn
+                // on the fan
+                if (temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
+                    fan_enable(true);
+                }
+
+                if (temperature > SOFT_OVERTEMPERATURE_THRESHOLD) {
+                    fan_enable(false);
+                }
+
+                if (temperature > UNDERTEMPERATURE_THRESHOLD) {
                     set_fault(FAULT_UNDERTEMPERATURE);
                 }
-            }
+            } // End for each IC
 
-            bms_core.temperature = temperature;
-        }
-    }
+            // Compute average temperature. WARNING: truncates a 32 bit number
+            // into a 16 bit number. This shouldn't be a problem, but the reader
+            // should be aware that this is intentional. A 32 bit number is
+            // needed to store the cumulative sum.
+            bms_core.temperature
+                = (uint16_t)cumulative_temperature
+                  / (NUM_MUXES * NUM_MUX_CHANNELS * NUM_TEMPERATURE_ICS);
+
+        } // End for each mux channel
+    } // End for each mux
 
     // Finally, disable all multiplexers
-    configure_mux(NUM_ICS, ICS, MUX1, false, 0);
-    configure_mux(NUM_ICS, ICS, MUX2, false, 0);
-    configure_mux(NUM_ICS, ICS, MUX3, false, 0);
+    enable_mux(NUM_ICS, ICS, MUX1, MUX_DISABLE, 0);
+    enable_mux(NUM_ICS, ICS, MUX2, MUX_DISABLE, 0);
+    enable_mux(NUM_ICS, ICS, MUX3, MUX_DISABLE, 0);
 }
 
 static void openwire_task(void) {
@@ -289,7 +350,7 @@ int main(void) {
             if (loop_counter == 25) {
                 // Occurs at 4Hz, every 250ms
                 can_send_bms_voltages(NUM_ICS, ICS);
-                can_send_bms_temperatures(NUM_ICS, ICS);
+                can_send_bms_temperatures(NUM_ICS, (uint16_t**)TEMPERATURES);
 
                 loop_counter = 0;
             }
