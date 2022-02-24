@@ -4,10 +4,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 11
-Title "Service Section Controller"
-Date "2021-11-08"
-Rev "1.0"
-Comp "Dasha Chadiuk"
+Title ""
+Date ""
+Rev ""
+Comp ""
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -77,4 +77,6 @@ U 60AEF08C
 F0 "shutdown" 50
 F1 "shutdown.sch" 50
 $EndSheet
+Text Notes 3450 4400 0    50   ~ 0
+TODO\nadd test point footprint (circular) to the formula footprint library\nrename the test points on the bms page \nmake sure no labels overlap
 $EndSCHEMATC
