@@ -3,14 +3,7 @@
  */
 #include "libs/can/api.h"
 #include "libs/can/mob.h"
-#include <avr/interrupt.h>
 #include <avr/io.h>
-
-__attribute__((weak)) void can_isr(void) {};
-
-ISR(CAN_INT_vect) {
-    can_isr();
-}
 
 void can_init(baud_rate_t baud) {
     can_reset();
@@ -47,10 +40,6 @@ void can_enable_interrupt(uint8_t mob) {
     mob_enable_interrupt(mob);
 }
 
-int can_mob_has_interrupt(uint8_t mob) {
-    return CANSIT & (1 << mob);
-}
-
 int can_send(can_frame_t* frame) {
     select_mob(frame->mob);
     mob_reset();
@@ -80,9 +69,11 @@ int can_receive(can_frame_t* frame, can_filter_t filter) {
 int can_poll_receive(can_frame_t* frame) {
     select_mob(frame->mob);
 
-    if (CANSTMOB & (1 << RXOK)) {
-        CANSTMOB &= ~(1 << RXOK);
-        uint8_t dlc = 0xF & CANCDMOB;
+    uint8_t canstmob = CANSTMOB;
+    uint8_t cancdmob = CANCDMOB;
+
+    if (canstmob & (1 << RXOK)) {
+        uint8_t dlc = 0xF & cancdmob;
 
         for (uint8_t i = 0; i < dlc; i++) {
             frame->data[i] = CANMSG;
@@ -91,10 +82,8 @@ int can_poll_receive(can_frame_t* frame) {
         frame->id = (CANIDT1 << 3) | (CANIDT2 >> 5);
         frame->dlc = dlc;
 
-        mob_reset();
-
         return 0;
-    } else if (CANSTMOB
+    } else if (canstmob
                & ((1 << BERR) | (1 << SERR) | (1 << CERR) | (1 << FERR))) {
         // TODO: Do we want more fine grain error handling?
         return 1;
@@ -103,5 +92,3 @@ int can_poll_receive(can_frame_t* frame) {
         return -1;
     }
 }
-
-int can_get_message(can_frame_t* can_frame);

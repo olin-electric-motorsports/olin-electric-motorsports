@@ -1,12 +1,12 @@
 #include <avr/io.h>
 
 typedef enum {
-    CAN_MOB0 = 0,
-    CAN_MOB1 = 1,
-    CAN_MOB2 = 2,
-    CAN_MOB3 = 3,
-    CAN_MOB4 = 4,
-    CAN_MOB5 = 5,
+    CAN_MOB0,
+    CAN_MOB1,
+    CAN_MOB2,
+    CAN_MOB3,
+    CAN_MOB4,
+    CAN_MOB5,
 
     // Must be last!
     CAN_NUM_MOB,

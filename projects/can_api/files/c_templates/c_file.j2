@@ -9,7 +9,7 @@ void can_init_{{ node.name }}(void) {
  * Transmit messages
  */
 {% for message in tx_messages %}
-uint8_t {{ message.name|lower }}_data[{{ message.length }}] = {0};
+uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
 can_frame_t {{ message.name|lower }}_msg = {
     .id = {{ message.frame_id }},
@@ -18,7 +18,7 @@ can_frame_t {{ message.name|lower }}_msg = {
     .dlc = {{ message.length }},
 };
 
-volatile struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }} = {0};
+volatile struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 void can_send_{{ message.name|lower }}(void) {
     ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -42,7 +42,7 @@ void can_send_{{ message.name|lower }}(void) {
  * Receive messages
  */
 {% for message in rx_messages %}
-uint8_t {{ message.name|lower }}_data[{{ message.length }}] = {0};
+uint8_t {{ message.name|lower }}_data[{{ message.length }}];
 
 can_frame_t {{ message.name|lower }}_msg = {
     .mob = {{ mobs[message.name] }},
@@ -58,16 +58,10 @@ can_filter_t {{ message.name|lower }}_filter = {
     .mask = 0x7FF, // Exact match
 };
 
-struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }} = {0};
+struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 int can_receive_{{ message.name|lower }}(void) {
-    (void)can_receive(&{{ message.name|lower }}_msg, {{ message.name|lower }}_filter);
-
-    return 0;
-}
-
-int can_poll_receive_{{ message.name|lower }}(void) {
-    int rc = can_poll_receive(&{{ message.name|lower }}_msg);
+    int rc = can_receive(&{{ message.name|lower }}_msg, {{ message.name|lower }}_filter);
 
     if (rc == 0) {
         can_tools_{{ message.name|lower }}_unpack(&{{ message.name|lower }}, {{ message.name|lower }}_msg.data, {{ message.length }});

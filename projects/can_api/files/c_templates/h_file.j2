@@ -30,6 +30,5 @@ extern can_frame_t {{ message.name|lower }}_msg;
 extern struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }};
 
 int can_receive_{{ message.name|lower }}(void);
-int can_poll_receive_{{ message.name|lower }}(void);
 
 {% endfor %}
