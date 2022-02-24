@@ -64,14 +64,14 @@ _OPT_FEATURE = feature(
             actions = _C_ALL_COMPILE_ACTIONS,
             flag_groups = [
                 flag_group(
-                    flags = ["-Os", "-finline-small-functions"],
+                    flags = ["-Os", "-ffunction-sections", "-fdata-sections"],
                 ),
             ],
         ),
         flag_set(
             actions = _LD_ALL_ACTIONS,
             flag_groups = [
-                flag_group(flags = ["-flto"]),
+                flag_group(flags = ["-flto", "-Wl,--gc-sections"]),
             ],
         ),
     ],
@@ -85,7 +85,7 @@ _DEFAULT_FEATURE = feature(
         flag_set(
             actions = _C_ALL_COMPILE_ACTIONS,
             flag_groups = [
-                flag_group(flags = ["-fno-jump-tables", "-ffunction-sections", "-std=c99"]),
+                flag_group(flags = ["-fno-jump-tables", "-std=c99"]),
             ],
         ),
     ],

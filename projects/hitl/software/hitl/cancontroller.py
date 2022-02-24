@@ -7,13 +7,14 @@ from typing import Callable, Tuple
 import logging
 import csv
 from configparser import ConfigParser
+import atexit
 
 # Extended python
 import cantools
 import can
 
 # Project Imports 
-from hitl.utils import artifacts_path
+from .utils import artifacts_path
 
 config = ConfigParser(interpolation=None)
 config.read(os.path.join(artifacts_path, "config.ini"))
@@ -23,7 +24,7 @@ class CANController:
 
     The CANController works **passively** for reading signals; you create one with a path to a DBC, and it keeps track of all states automatically
 
-    `Confluence <https://docs.olinelectricmotorsports.com/display/AE/CAN+Controller>`_
+    `Confluence <https://docs.olinelectricmotorsports.com/display/AE/CAN+Controller>`
 
     :param str can_spec_path: The path to the can spec. For now, we only support ``.dbc`` files. Should be
         stored in ``artifacts``.
@@ -36,41 +37,34 @@ class CANController:
 
     def __init__(
         self, 
-        can_spec_path: str = config.get("PATH", "dbc_path", fallback=os.path.join(artifacts_path, "veh.dbc")), 
+        can_spec_path: str = config.get("PATH", "dbc_path", fallback="vehicle/mkv/mkv.dbc"), 
         channel: str = config.get("HARDWARE", "can_channel", fallback="vcan0"), 
-        bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000), 
+        bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000),
+        real: bool = True
     ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
-        # Get config
+        # Create empty list of periodic messages
+        self.periodic_messages = {}
 
-        if "linux" in sys.platform:
-            # Bring CAN hardware online
-            if "vcan" in channel:
-                os.system(f"sudo ip link add dev {channel} type vcan")
-                os.system(f"sudo ip link set {channel} up")  # virtual hardware
-            else:
-                os.system(f"sudo ip link set {channel} up type can bitrate {bitrate} restart-ms 100")  # real hardware
-        else:
-            self.log.error("Cannot bring up real or fake can hardware; must be on linux.")
-
+        # Set up dictionary of messages
         self.message_of_signal, self.signals = self._create_state_dictionary(can_spec_path)
 
         # Start listening
         bus_type = "socketcan"
-        if "linux" in sys.platform:
+
+        if "linux" in sys.platform and real:
             self.can_bus = can.interface.Bus(channel=channel, bustype=bus_type, bitrate=bitrate)
-            self.kill_threads = threading.Event()
             listener = threading.Thread(
                 target=self._listen,
                 name="listener",
                 kwargs={
                     "can_bus": self.can_bus,
-                    "callback": self._parse_frame,
-                    "kill_threads": self.kill_threads,
+                    "callback": self._parse_frame
                 },
             )
+            listener.daemon = True
             listener.start()
         else:
             can_bus = None
@@ -92,18 +86,48 @@ class CANController:
 
         """
         try:
-             #find message name
-             msg_name = self.message_of_signal[signal] 
-             #update signals dict to new value and pull out message to send
-             self.signals[msg_name][signal] = value
-             msg = self.db.get_message_by_name(msg_name)
-             #encode message data and create message
-             data = msg.encode(self.signals[msg_name])
-             message = can.Message(arbitration_id=msg.frame_id, data=data)
-             #send message
-             self.can_bus.send(message)
+            #find message name
+            msg_name = self.message_of_signal[signal] 
+
+            #update signals dict to new value and pull out message to send
+            self.signals[msg_name][signal] = value
+            msg = self.db.get_message_by_name(msg_name)
+
+            #encode message data and create message
+            data = msg.encode(self.signals[msg_name])
+            message = can.Message(arbitration_id=msg.frame_id, data=data)
+
+            #send message
+            if msg_name in self.periodic_messages:
+                self.periodic_messages[msg_name].modify_data(message)
+            else:
+                self.can_bus.send(message)
         except KeyError:
             raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
+
+    def set_periodic(self, msg_name, period):
+        """
+        Set a message to be send periodically, at a specified period
+
+        All states in the message should be set before starting a periodic broadcast,
+        though they can be changed without interrupting the periodic broadcast.
+        """
+        if msg_name not in self.signals:
+            raise Exception(f"Message {msg_name} not found in messages.")
+
+        if msg_name in self.periodic_messages:
+            raise Exception(f"Message {msg_name} is already being sent periodically.")
+
+        #update signals dict to new value and pull out message to send
+        msg = self.db.get_message_by_name(msg_name)
+
+        #encode message data and create message
+        data = msg.encode(self.signals[msg_name])
+        message = can.Message(arbitration_id=msg.frame_id, data=data)
+
+        #send message
+        send_task = self.can_bus.send_periodic(message, period)
+        self.periodic_messages[msg_name] = send_task
 
     def playback(self, path, initial_time=0):
         """
@@ -184,23 +208,14 @@ class CANController:
         # Update the state dictionary
         self.signals[msg_name].update(data)
 
-    def __del__(self):
-        """Destructor (called when the program ends)
-
-        End the listener thread for clean teardown
-        """
-        if hasattr(self, "kill_threads"):
-            self.kill_threads.set()
-
-    def _listen(self, can_bus: can.Bus, callback: Callable, kill_threads: threading.Event) -> None:
+    def _listen(self, can_bus: can.Bus, callback: Callable) -> None:
         """Thread that runs all the time to listen to CAN messages
 
         References:
           - https://python-can.readthedocs.io/en/master/interfaces/socketcan.html
           - https://python-can.readthedocs.io/en/master/
         """
-        while not kill_threads.isSet():
+        while True:
             msg = can_bus.recv(1)  # 1 second receive timeout
             if msg:
                 callback(msg)
-        self.can_bus.shutdown()

@@ -9,9 +9,9 @@ KiCad library employed by Olin Electric Motorsports electrical team.
          * Value (e.g., `STM32F439BI`)
          * Footprint (e.g., `Housings_QFP:LQFP-208_28x28mm_Pitch0.5mm`)
          * Datasheet (e.g., `https://www.st.com/content/ccc/resource/technical/document/datasheet/fd/8c/0a/19/13/8f/41/99/DM00077036.pdf/files/DM00077036.pdf/jcr:content/translations/en.DM00077036.pdf`)
-         * MFN, or Manufacuture Name (e.g., `ST`)
-         * MPN, or Manufacture Part Number (e.g., `STM32F439BIT6`)
-         * PurchaingLink (e.g, `https://www.digikey.com/product-detail/en/stmicroelectronics/STM32F439BIT6/497-17468-ND/5268309`)
+         * MFN, or Manufacturer Name (e.g., `ST`)
+         * MPN, or Manufacturer Part Number (e.g., `STM32F439BIT6`)
+         * PurchasingLink (e.g, `https://www.digikey.com/product-detail/en/stmicroelectronics/STM32F439BIT6/497-17468-ND/5268309`)
 
     * Library naming should not be duplicated in footprint name
 

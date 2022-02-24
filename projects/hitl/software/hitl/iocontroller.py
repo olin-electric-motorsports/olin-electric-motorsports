@@ -13,7 +13,7 @@ except ModuleNotFoundError:
     ft4222 = None
 
 # Project Imports 
-from hitl.utils import artifacts_path
+from .utils import artifacts_path
 
 # CONSTANTS
 # ADC parameters
@@ -56,14 +56,15 @@ class IOController:
 
     def __init__(self, 
     pin_info_path: str = config.get("PATH", "pin_info_path", fallback=os.path.join(artifacts_path, "pin_info.csv")),
-     device_description: str = "FT4222 A"
+     device_description: str = "FT4222 A",
+     real: bool = True
     ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
         self.pin_info = self._read_pin_info(path=pin_info_path)
 
-        if ft4222:
+        if ft4222 and real:
             try:
                 self.dev = ft4222.openByDescription(device_description)
                 self.dev.i2cMaster_Init(400_000)
@@ -101,7 +102,7 @@ class IOController:
         GPIO Datasheet: https://datasheets.maximintegrated.com/en/ds/MAX7300.pdf
         """
         # Raise an exception if the signal is read only
-        if self.pin[name]["read_write"] == "READ":
+        if self.pin_info[name]["read_write"] == "READ":
             raise Exception(f"{name} is a read-only signal, you cannot set it!")
 
         # If no hardware, log an error

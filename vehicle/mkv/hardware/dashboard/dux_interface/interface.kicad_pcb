@@ -244,7 +244,7 @@
       (net 3 GND))
     (pad 14 thru_hole circle (at 13.5 4.75) (size 2.75 2.75) (drill 2.18) (layers *.Cu *.Mask)
       (net 3 GND))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/rj45-vert/rj45-vert.step
+    (model ${OEM_DIR}/parts/3DModels/rj45-vert/rj45-vert.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -340,7 +340,7 @@
       (net 3 GND))
     (pad 12 thru_hole circle (at 50.5 4.5) (size 3 3) (drill 1.75) (layers *.Cu *.Mask)
       (net 9 /CAN-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Ampseal-35/C-1-776231-4.step
+    (model ${OEM_DIR}/parts/3DModels/Ampseal-35/C-1-776231-4.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -425,12 +425,12 @@
       (net 5 +12V))
     (pad 1 smd rect (at -0.95 0) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 45 "Net-(D1-Pad2)"))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -472,12 +472,12 @@
       (net 3 GND))
     (pad 2 smd rect (at 1.1 0 270) (size 1.2 1.2) (layers F.Cu F.Paste F.Mask)
       (net 45 "Net-(D1-Pad2)"))
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
     )
-    (model "${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
+    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED 0805 Base GREEN001_sp.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -561,7 +561,7 @@
     (pad 12 thru_hole circle (at 2.5 12.5 270) (size 1.7 1.7) (drill 1.2) (layers *.Cu *.Mask)
       (net 3 GND))
     (pad "" np_thru_hole circle (at -1.34 6.25 270) (size 1.3 1.3) (drill 1.3) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/NanoFit_VT_TH_2x6/NF_VT_TH_2x6.stp
+    (model ${OEM_DIR}/parts/3DModels/NanoFit_VT_TH_2x6/NF_VT_TH_2x6.stp
       (offset (xyz 1.269999980926514 -6.349999904632568 5.079999923706055))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 -90))
@@ -610,7 +610,7 @@
       (net 3 GND))
     (pad 12 thru_hole circle (at 0 0) (size 1.5 1.5) (drill 0.95) (layers *.Cu *.Mask)
       (net 16 /RJ45_LED_G_DUX))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/rj45-vert/rj45-vert.step
+    (model ${OEM_DIR}/parts/3DModels/rj45-vert/rj45-vert.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -677,7 +677,7 @@
       (net 32 /5V_THROTTLE))
     (pad 5 thru_hole circle (at 0 0 270) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 33 /MOSI_THROTTLE))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
       (offset (xyz 1.269999980926514 -6.984999895095826 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 -90))
@@ -744,7 +744,7 @@
     (pad 20 thru_hole circle (at 2.54 19.05 90) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 47 /STEERING_POT_-))
     (pad 21 thru_hole circle (at 1.8 -6.48 90) (size 2 2) (drill 1.5) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/Micromatch_Male_MOB_20/c-2-215464-0-c-3d.stp
       (offset (xyz 1.269999980926514 -6.984999895095826 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -824,7 +824,7 @@
     (pad 10 thru_hole circle (at 2.5 10 270) (size 1.7 1.7) (drill 1.2) (layers *.Cu *.Mask)
       (net 3 GND))
     (pad "" np_thru_hole circle (at -1.34 3.75 270) (size 1.3 1.3) (drill 1.3) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/NanoFit_VT_TH_2x5/NF_VT_TH_2x5.stp
+    (model ${OEM_DIR}/parts/3DModels/NanoFit_VT_TH_2x5/NF_VT_TH_2x5.stp
       (offset (xyz 1.269999980926514 -5.079999923706055 5.079999923706055))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 -90))
@@ -898,7 +898,7 @@
     (pad 4 thru_hole circle (at 2.5 2.5 90) (size 1.7 1.7) (drill 1.2) (layers *.Cu *.Mask)
       (net 35 /SPEED_LED_BAR))
     (pad "" np_thru_hole circle (at -1.34 1.25 90) (size 1.3 1.3) (drill 1.3) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/NanoFit_VT_TH_2x2/NF_VT_TH_2x2.stp
+    (model ${OEM_DIR}/parts/3DModels/NanoFit_VT_TH_2x2/NF_VT_TH_2x2.stp
       (offset (xyz 1.269999980926514 -1.269999980926514 5.079999923706055))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 -90))
@@ -933,7 +933,7 @@
       (net 43 /BOTS>ESTOP))
     (pad 3 thru_hole circle (at 0 -2.54) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 42 /ESTOP>HVD))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/micromatch_male_4/c-215464-4-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/micromatch_male_4/c-215464-4-c-3d.stp
       (offset (xyz 1.269999980926514 3.174999952316284 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 -90))
@@ -1007,7 +1007,7 @@
            (xy -0.6 -0.6) (xy 0.6 -0.6) (xy 0.6 0.6) (xy -0.2 0.6) (xy -0.6 0.2)
 ) (width 0.5))
       ))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/NanoFit_VT_TH_2x2/NF_VT_TH_2x2.stp
+    (model ${OEM_DIR}/parts/3DModels/NanoFit_VT_TH_2x2/NF_VT_TH_2x2.stp
       (offset (xyz 1.269999980926514 -1.269999980926514 5.079999923706055))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 -90))
@@ -1054,7 +1054,7 @@
       (net 37 /BRAKE_LED))
     (pad 5 thru_hole circle (at -1.27 -0.635) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 35 /SPEED_LED_BAR))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/micromatch_male_10/c-1-215464-0-c-3d.stp
+    (model ${OEM_DIR}/parts/3DModels/micromatch_male_10/c-1-215464-0-c-3d.stp
       (offset (xyz 0 0 3.809999942779541))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 -90))
@@ -1110,7 +1110,7 @@
       (net 43 /BOTS>ESTOP))
     (pad 2 thru_hole circle (at 0 3) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask)
       (net 42 /ESTOP>HVD))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/MicroFit_V_2/MicroFit_V_2.stp
+    (model ${OEM_DIR}/parts/3DModels/MicroFit_V_2/MicroFit_V_2.stp
       (offset (xyz 0 -1.269999980926514 5.079999923706055))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 180))
@@ -1143,12 +1143,12 @@
       (net 8 /CAN+))
     (pad 1 smd rect (at -0.95 0 180) (size 0.7 1.3) (layers F.Cu F.Paste F.Mask)
       (net 9 /CAN-))
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model ${LOCAL_DIR}/OEM_Preferred_Parts/3DModels/R_0805_OEM/res0805.step
+    (model ${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))

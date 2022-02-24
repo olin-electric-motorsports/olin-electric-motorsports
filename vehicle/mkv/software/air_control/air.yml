@@ -1,0 +1,43 @@
+name: air_control
+subscribe:
+  # Transmit MOb is 0
+  - name: bms_core
+    mob: 1
+  - name: M167_Voltage_Info
+    # TODO: rename is currently not handled. Name comes from DBC
+    rename: motor_controller_voltage
+    mob: 2
+
+    # TODO: How are we handling this? Maybe we don't handle it here...
+  - name: air_control_updater
+    mob: 5
+publish:
+  - name: air_control_critical
+    id: 0xd
+    freq_hz: 1000
+    signals:
+      - name: fault_state
+        slice: 0 + 8
+        unit:
+          type: enum
+          values:
+            - NO_FAULT
+            - AIR_N_WELD
+            - AIR_P_WELD
+            - BOTH_AIRS_WELD
+            - PRECHARGE_FAIL
+            - DISCHARGE_FAIL
+            - PRECHARGE_FAIL_RELAY_WELDED
+            - CAN_BMS_TIMEOUT
+            - CAN_MC_TIMEOUT
+      - name: state
+        slice: 8 + 8
+        unit:
+          type: enum
+          values:
+            - IDLE
+            - SHUTDOWN_CIRCUIT_CLOSED
+            - PRECHARGE
+            - TS_ACTIVE
+            - DISCHARGE
+            - FAULT

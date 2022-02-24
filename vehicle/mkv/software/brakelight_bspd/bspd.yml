@@ -1,0 +1,34 @@
+name: brakelight_bspd
+publish:
+  - name: brakelight
+    id: 0xb
+    freq_hz: 100
+    signals:
+      - name: status
+        slice: 0 + 8
+        unit:
+          type: bool
+          values:
+            t: SHUTDOWN
+            f: OK
+      - name: brake_pressure
+        slice: 8 + 16
+        unit:
+          type: uint16_t
+          name: PSI
+          offset: -1.25
+          scale: 25 * (5 / 4096)
+      - name: brake_gate
+        slice: 24 + 1
+        unit:
+          type: bool
+          values:
+            t: Brakelight ON
+            f: Brakelight OFF
+      - name: bspd_current_sense
+        slice: 25 + 1
+        unit:
+          type: bool
+          values:
+            t: BSPD current sensed
+            f: BSPD current not sensed
