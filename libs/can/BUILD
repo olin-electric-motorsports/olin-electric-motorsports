@@ -27,15 +27,6 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "utest",
-    srcs = ["test/utest.c"],
-    visibility = ["//visibility:public"],
-    deps = [
-        ":mock",
-    ],
-)
-
 cc_library(
     name = "mock",
     srcs = [
@@ -73,17 +64,4 @@ can_api_files(
     name = "air_control_can_api",
     dbc = "//vehicle/mkv:mkv.dbc",
     yaml = "//vehicle/mkv/software/air_control:air.yml",
-)
-
-cc_firmware(
-    name = "app_test",
-    srcs = ["test/test_app.c"],
-    target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
-    ],
-    visibility = ["//visibility:public"],
-    deps = [
-        ":air_control_can_api",
-        "//libs/can",
-    ],
 )
