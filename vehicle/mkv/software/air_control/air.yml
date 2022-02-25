@@ -21,15 +21,21 @@ publish:
         unit:
           type: enum
           values:
-            - NO_FAULT
-            - AIR_N_WELD
-            - AIR_P_WELD
-            - BOTH_AIRS_WELD
-            - PRECHARGE_FAIL
-            - DISCHARGE_FAIL
-            - PRECHARGE_FAIL_RELAY_WELDED
-            - CAN_BMS_TIMEOUT
-            - CAN_MC_TIMEOUT
+            - FAULT_NONE
+            - FAULT_AIR_N_WELD
+            - FAULT_AIR_P_WELD
+            - FAULT_BOTH_AIRS_WELD
+            - FAULT_PRECHARGE_FAIL
+            - FAULT_DISCHARGE_FAIL
+            - FAULT_PRECHARGE_FAIL_RELAY_WELDED
+            - FAULT_CAN_ERROR
+            - FAULT_CAN_BMS_TIMEOUT
+            - FAULT_CAN_MC_TIMEOUT
+            - FAULT_SHUTDOWN_IMPLAUSIBILITY
+            - FAULT_MOTOR_CONTROLLER_VOLTAGE
+            - FAULT_BMS_VOLTAGE
+            - FAULT_IMD_STATUS
+            - FAULT_BMS_STATUS
       - name: state
         slice: 8 + 8
         unit:
@@ -41,3 +47,75 @@ publish:
             - TS_ACTIVE
             - DISCHARGE
             - FAULT
+      - name: air_p_status
+        slice: 16 + 1
+        unit:
+          type: bool
+          values:
+            t: AIR plus is OPEN
+            f: AIR plus is CLOSED
+      - name: air_n_status
+        slice: 17 + 1
+        unit:
+          type: bool
+          values:
+            t: AIR minus is OPEN
+            f: AIR minus is CLOSED
+      - name: ss_tsms
+        slice: 18 + 1
+        unit:
+          type: bool
+          values:
+            t: TSMS shutdown node closed
+            f: TSMS shutdown node opened
+      - name: ss_imd
+        slice: 19 + 1
+        unit:
+          type: bool
+          values:
+            t: IMD shutdown node closed
+            f: IMD shutdown node open
+      - name: ss_mpc
+        slice: 20 + 1
+        unit:
+          type: bool
+          values:
+            t: Main Pack Connector node closed
+            f: Main Pack Connector node open
+      - name: ss_hvd_conn
+        slice: 21 + 1
+        unit:
+          type: bool
+          values:
+            t: HVD Connector node closed
+            f: HVD Connector node open
+      - name: ss_hvd
+        slice: 22 + 1
+        unit:
+          type: bool
+          values:
+            t: HVD node closed
+            f: HVD node open
+      - name: ss_bms
+        slice: 23 + 1
+        unit:
+          type: bool
+          values:
+            t: BMS node closed
+            f: BMS node open
+
+      - name: imd_status
+        slice: 24 + 1
+        unit:
+          type: bool
+          values:
+            t: IMD OK
+            f: IMD NOT OK
+      - name: bms_status
+        slice: 25 + 1
+        unit:
+          type: bool
+          values:
+            t: BMS OK
+            f: BMS NOT OK
+

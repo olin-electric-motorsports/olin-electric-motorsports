@@ -1,0 +1,15 @@
+name: bms_core
+
+publish:
+  - name: bms_core
+    id: 0x10
+    freq_hz: 4
+    signals:
+      - name: bms_ok
+        slice: 0 + 2
+        unit:
+          type: bool
+          values:
+            t: BMS OK
+            f: BMS NOT OK
+
