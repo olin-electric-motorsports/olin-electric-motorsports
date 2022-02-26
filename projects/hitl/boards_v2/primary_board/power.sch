@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:primary_board-cache
+LIBS:hitl-primary-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268

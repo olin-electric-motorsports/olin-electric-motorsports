@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:primary_board-cache
+LIBS:hitl-primary-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -58,9 +58,9 @@ Analog-MUX3
 Text Label 8250 2050 2    50   ~ 0
 Analog-MUX4
 Text Label 6500 2050 0    50   ~ 0
-gpio26
+gpio20
 Text Label 6500 2150 0    50   ~ 0
-gpio28
+gpio21
 Wire Wire Line
 	6500 2050 6950 2050
 Text Label 5200 2050 2    50   ~ 0
@@ -144,11 +144,11 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 693
 	1    0    0    -1  
 $EndComp
 Text Label 6000 2800 0    50   ~ 0
-gpio23
+gpio18
 Wire Wire Line
 	6500 2150 6950 2150
 Text Label 6500 1950 0    50   ~ 0
-gpio24
+gpio19
 Wire Wire Line
 	6450 2400 6450 1950
 Wire Wire Line
@@ -558,21 +558,21 @@ Connection ~ 8350 3450
 Wire Wire Line
 	8350 3450 8400 3450
 Text HLabel 1100 2600 0    50   Input ~ 0
-GPIO-23
+GPIO-18
 Text Label 1550 2600 2    50   ~ 0
-gpio23
+gpio18
 Text Label 1550 2750 2    50   ~ 0
-gpio24
+gpio19
 Text Label 1550 2900 2    50   ~ 0
-gpio26
+gpio20
 Text Label 1550 3050 2    50   ~ 0
-gpio28
+gpio21
 Text HLabel 1100 2750 0    50   Input ~ 0
-GPIO-24
+GPIO-19
 Text HLabel 1100 2900 0    50   Input ~ 0
-GPIO-26
+GPIO-20
 Text HLabel 1100 3050 0    50   Input ~ 0
-GPIO-28
+GPIO-21
 Wire Wire Line
 	1100 2600 1550 2600
 Wire Wire Line

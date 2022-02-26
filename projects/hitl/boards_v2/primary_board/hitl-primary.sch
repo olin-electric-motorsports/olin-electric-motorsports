@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:primary_board-cache
+LIBS:hitl-primary-cache
 EELAYER 29 0
 EELAYER END
 $Descr A3 16535 11693
@@ -98,101 +98,43 @@ F 6 "https://www.digikey.com/en/products/detail/maxim-integrated/MAX7300AAX/1511
 	1    0    0    -1  
 $EndComp
 Text Label 11750 4650 2    50   ~ 0
-GPIO-1
+GPIO-18
 Text Label 11750 4750 2    50   ~ 0
-GPIO-3
+GPIO-19
 Text Label 11750 4850 2    50   ~ 0
-GPIO-5
+GPIO-20
 Text Label 11750 4950 2    50   ~ 0
-GPIO-7
-Text Label 11750 5050 2    50   ~ 0
-GPIO-9
-Text Label 11750 5150 2    50   ~ 0
-GPIO-11
-Text Label 11750 5250 2    50   ~ 0
-GPIO-13
-Text Label 11750 5350 2    50   ~ 0
-GPIO-15
-Text Label 11750 5450 2    50   ~ 0
-GPIO-17
-Text Label 11750 5550 2    50   ~ 0
-GPIO-19
-Text Label 11750 5650 2    50   ~ 0
 GPIO-21
-Text Label 11750 5750 2    50   ~ 0
+Text Label 11750 5050 2    50   ~ 0
+GPIO-22
+Text Label 11750 5150 2    50   ~ 0
 GPIO-23
-Text Label 11750 5850 2    50   ~ 0
+Text Label 11750 5250 2    50   ~ 0
+GPIO-24
+Text Label 11750 5350 2    50   ~ 0
 GPIO-25
-Text Label 11750 5950 2    50   ~ 0
+Text Label 11750 5450 2    50   ~ 0
+GPIO-26
+Text Label 11750 5550 2    50   ~ 0
 GPIO-27
-Text Label 15500 2100 2    50   ~ 0
-GPIO-1
-Text Label 15500 2200 2    50   ~ 0
-GPIO-3
-Text Label 15500 2300 2    50   ~ 0
-GPIO-5
-Text Label 15500 2400 2    50   ~ 0
-GPIO-7
-Text Label 15500 2500 2    50   ~ 0
-GPIO-9
-Text Label 15500 2600 2    50   ~ 0
-GPIO-11
-Text Label 15500 2700 2    50   ~ 0
-GPIO-13
-Text Label 15500 2800 2    50   ~ 0
-GPIO-15
-Text Label 15500 2900 2    50   ~ 0
-GPIO-17
-Text Label 15500 3000 2    50   ~ 0
-GPIO-19
+Text Label 11750 5650 2    50   ~ 0
+GPIO-28
+Text Label 11750 5750 2    50   ~ 0
+GPIO-29
+Text Label 11750 5850 2    50   ~ 0
+GPIO-30
+Text Label 11750 5950 2    50   ~ 0
+GPIO-31
 Text Label 9500 4650 0    50   ~ 0
-GPIO-2
-Text Label 9500 4750 0    50   ~ 0
 GPIO-4
+Text Label 9500 4750 0    50   ~ 0
+GPIO-5
 Text Label 9500 4850 0    50   ~ 0
 GPIO-6
 Text Label 9500 4950 0    50   ~ 0
-GPIO-8
+GPIO-7
 Text Label 9500 5050 0    50   ~ 0
-GPIO-10
-Text Label 9500 5150 0    50   ~ 0
-GPIO-12
-Text Label 9500 5250 0    50   ~ 0
-GPIO-14
-Text Label 9500 5350 0    50   ~ 0
-GPIO-16
-Text Label 9500 5450 0    50   ~ 0
-GPIO-18
-Text Label 9500 5550 0    50   ~ 0
-GPIO-20
-Text Label 9500 5650 0    50   ~ 0
-GPIO-22
-Text Label 9500 5750 0    50   ~ 0
-GPIO-24
-Text Label 9500 5850 0    50   ~ 0
-GPIO-26
-Text Label 9500 5950 0    50   ~ 0
-GPIO-28
-Text Label 13600 2100 0    50   ~ 0
-GPIO-2
-Text Label 13600 2200 0    50   ~ 0
-GPIO-4
-Text Label 13600 2300 0    50   ~ 0
-GPIO-6
-Text Label 13600 2400 0    50   ~ 0
 GPIO-8
-Text Label 13600 2500 0    50   ~ 0
-GPIO-10
-Text Label 13600 2600 0    50   ~ 0
-GPIO-12
-Text Label 13600 2700 0    50   ~ 0
-GPIO-14
-Text Label 13600 2800 0    50   ~ 0
-GPIO-16
-Text Label 13600 2900 0    50   ~ 0
-GPIO-18
-Text Label 13600 3000 0    50   ~ 0
-GPIO-20
 Text Label 11350 2500 0    50   ~ 0
 VOUT-8
 Text Label 11350 1800 0    50   ~ 0
@@ -659,26 +601,6 @@ Connection ~ 10150 1500
 Wire Wire Line
 	10150 1500 10150 1600
 Wire Wire Line
-	14050 2100 13600 2100
-Wire Wire Line
-	13600 2200 14050 2200
-Wire Wire Line
-	14050 2300 13600 2300
-Wire Wire Line
-	13600 2400 14050 2400
-Wire Wire Line
-	14050 2500 13600 2500
-Wire Wire Line
-	13600 2600 14050 2600
-Wire Wire Line
-	14050 2700 13600 2700
-Wire Wire Line
-	13600 2800 14050 2800
-Wire Wire Line
-	13600 2900 14050 2900
-Wire Wire Line
-	14050 3000 13600 3000
-Wire Wire Line
 	13600 3300 14050 3300
 Wire Wire Line
 	14050 3400 13600 3400
@@ -686,14 +608,6 @@ Wire Wire Line
 	13600 3500 14050 3500
 Wire Wire Line
 	14050 3600 13600 3600
-Wire Wire Line
-	15500 2100 15050 2100
-Wire Wire Line
-	15050 2200 15500 2200
-Wire Wire Line
-	15500 2300 15050 2300
-Wire Wire Line
-	15050 2400 15500 2400
 Wire Wire Line
 	15500 2500 15050 2500
 Wire Wire Line
@@ -703,9 +617,17 @@ Wire Wire Line
 Wire Wire Line
 	15050 2800 15500 2800
 Wire Wire Line
-	15050 2900 15500 2900
+	15500 2900 15050 2900
 Wire Wire Line
-	15500 3000 15050 3000
+	15050 3000 15500 3000
+Wire Wire Line
+	15500 3100 15050 3100
+Wire Wire Line
+	15050 2100 15500 2100
+Wire Wire Line
+	15050 2200 15500 2200
+Wire Wire Line
+	15500 2300 15050 2300
 Text Label 13600 3300 0    50   ~ 0
 VOUT-2
 Text Label 12550 2500 2    50   ~ 0
@@ -758,14 +680,8 @@ Text Label 15500 3300 2    50   ~ 0
 VOUT-1
 NoConn ~ 4700 5400
 NoConn ~ 4700 5500
-Text Label 13600 3100 0    50   ~ 0
-GPIO-22
 Wire Wire Line
-	14050 3100 13600 3100
-Text Label 15500 3100 2    50   ~ 0
-GPIO-21
-Wire Wire Line
-	15500 3100 15050 3100
+	15500 2400 15050 2400
 $Comp
 L power:GND #PWR?
 U 1 1 6126F7BE
@@ -4889,13 +4805,9 @@ F 6 "https://www.digikey.com/product-detail/en/visual-communications-company-vcc
 	1    14750 5950
 	0    -1   -1   0   
 $EndComp
-Text Label 12050 6400 0    50   ~ 0
-GPIO-25
 Wire Wire Line
 	12400 6400 12050 6400
 Connection ~ 12400 6400
-Text Label 13800 6450 0    50   ~ 0
-GPIO-27
 Wire Wire Line
 	13800 6450 14150 6450
 Connection ~ 14150 6450
@@ -5106,26 +5018,26 @@ F9 "AMUX-4" I R 14650 8500 50
 F10 "AMUX-5" I R 14650 8600 50 
 F11 "AMUX-6" I R 14650 8700 50 
 F12 "AMUX-7" I R 14650 8800 50 
-F13 "GPIO-23" I L 12900 8250 50 
-F14 "GPIO-24" I L 12900 8350 50 
-F15 "GPIO-26" I L 12900 8450 50 
-F16 "GPIO-28" I L 12900 8550 50 
-F17 "ADC-4" I R 14650 8000 50 
-F18 "CA0" I L 12900 8650 50 
-F19 "CA1" I L 12900 8750 50 
+F13 "ADC-4" I R 14650 8000 50 
+F14 "CA0" I L 12900 8650 50 
+F15 "CA1" I L 12900 8750 50 
+F16 "GPIO-18" I L 12900 8250 50 
+F17 "GPIO-19" I L 12900 8350 50 
+F18 "GPIO-20" I L 12900 8450 50 
+F19 "GPIO-21" I L 12900 8550 50 
 $EndSheet
 Text Label 12450 8050 0    50   ~ 0
 SDA
 Wire Wire Line
 	12450 8050 12900 8050
 Text Label 12450 8250 0    50   ~ 0
-GPIO-23
+GPIO-18
 Text Label 12450 8350 0    50   ~ 0
-GPIO-24
+GPIO-19
 Text Label 12450 8450 0    50   ~ 0
-GPIO-26
+GPIO-20
 Text Label 12450 8550 0    50   ~ 0
-GPIO-28
+GPIO-21
 Wire Wire Line
 	12450 8250 12900 8250
 Wire Wire Line
@@ -5468,10 +5380,6 @@ Wire Wire Line
 	15650 2100 15650 2000
 Wire Wire Line
 	15650 2000 15050 2000
-Wire Wire Line
-	14050 2000 13450 2000
-Wire Wire Line
-	13450 2000 13450 2100
 Text Label 6800 9950 2    50   ~ 0
 CANH+
 Text Label 5200 9950 0    50   ~ 0
@@ -7139,4 +7047,96 @@ F 3 "" H 13250 4300 50  0001 C CNN
 	1    13250 4300
 	1    0    0    -1  
 $EndComp
+Text Label 9500 5250 0    50   ~ 0
+GPIO-10
+Text Label 9500 5350 0    50   ~ 0
+GPIO-11
+Text Label 9500 5450 0    50   ~ 0
+GPIO-12
+Text Label 9500 5550 0    50   ~ 0
+GPIO-13
+Text Label 9500 5650 0    50   ~ 0
+GPIO-14
+Text Label 9500 5750 0    50   ~ 0
+GPIO-15
+Text Label 9500 5850 0    50   ~ 0
+GPIO-16
+Text Label 9500 5950 0    50   ~ 0
+GPIO-17
+Text Label 9500 5150 0    50   ~ 0
+GPIO-9
+Text Label 12050 6400 0    50   ~ 0
+GPIO-8
+Text Label 13800 6450 0    50   ~ 0
+GPIO-12
+Text Label 15500 2500 2    50   ~ 0
+GPIO-31
+Text Label 15500 2600 2    50   ~ 0
+GPIO-30
+Text Label 15500 2700 2    50   ~ 0
+GPIO-29
+Text Label 15500 2800 2    50   ~ 0
+GPIO-28
+Text Label 15500 2900 2    50   ~ 0
+GPIO-26
+Text Label 15500 3000 2    50   ~ 0
+GPIO-24
+Text Label 15500 3100 2    50   ~ 0
+GPIO-22
+Text Label 15500 2100 2    50   ~ 0
+GPIO-13
+Text Label 15500 2200 2    50   ~ 0
+GPIO-14
+Text Label 15500 2300 2    50   ~ 0
+GPIO-15
+Text Label 15500 2400 2    50   ~ 0
+GPIO-17
+Wire Wire Line
+	13450 2000 13450 2100
+Wire Wire Line
+	14050 2000 13450 2000
+Text Label 13600 2400 0    50   ~ 0
+GPIO-16
+Text Label 13600 2300 0    50   ~ 0
+GPIO-11
+Text Label 13600 2200 0    50   ~ 0
+GPIO-10
+Text Label 13600 2100 0    50   ~ 0
+GPIO-9
+Wire Wire Line
+	14050 2400 13600 2400
+Wire Wire Line
+	14050 2300 13600 2300
+Wire Wire Line
+	13600 2200 14050 2200
+Wire Wire Line
+	13600 2100 14050 2100
+Wire Wire Line
+	14050 2500 13600 2500
+Wire Wire Line
+	13600 2600 14050 2600
+Wire Wire Line
+	14050 2700 13600 2700
+Wire Wire Line
+	13600 2800 14050 2800
+Wire Wire Line
+	14050 2900 13600 2900
+Wire Wire Line
+	13600 3000 14050 3000
+Wire Wire Line
+	14050 3100 13600 3100
+Text Label 13600 2500 0    50   ~ 0
+GPIO-4
+Text Label 13600 2600 0    50   ~ 0
+GPIO-5
+Text Label 13600 2700 0    50   ~ 0
+GPIO-6
+Text Label 13600 2800 0    50   ~ 0
+GPIO-7
+Text Label 13600 2900 0    50   ~ 0
+GPIO-27
+Text Label 13600 3000 0    50   ~ 0
+GPIO-25
+Text Label 13600 3100 0    50   ~ 0
+GPIO-23
 $EndSCHEMATC
