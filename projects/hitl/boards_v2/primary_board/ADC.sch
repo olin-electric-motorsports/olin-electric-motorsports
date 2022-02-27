@@ -889,19 +889,6 @@ Wire Wire Line
 Connection ~ 2850 3550
 Wire Wire Line
 	2850 3550 2850 3650
-$Comp
-L power:VBUS #PWR?
-U 1 1 62113AD6
-P 2300 2900
-F 0 "#PWR?" H 2300 2750 50  0001 C CNN
-F 1 "VBUS" H 2200 3050 50  0000 C CNN
-F 2 "" H 2300 2900 50  0001 C CNN
-F 3 "" H 2300 2900 50  0001 C CNN
-	1    2300 2900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2300 3050 2300 2900
 NoConn ~ 2900 2750
 NoConn ~ 2900 2850
 NoConn ~ 2900 2950
@@ -1011,5 +998,10 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1750 1700 2900 1700
+	1750 1700 2300 1700
+Wire Wire Line
+	2300 1700 2300 3050
+Connection ~ 2300 1700
+Wire Wire Line
+	2300 1700 2900 1700
 $EndSCHEMATC
