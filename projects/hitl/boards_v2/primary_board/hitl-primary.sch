@@ -5381,9 +5381,9 @@ Wire Wire Line
 Wire Wire Line
 	15650 2000 15050 2000
 Text Label 6800 9950 2    50   ~ 0
-CANH+
+CAN+
 Text Label 5200 9950 0    50   ~ 0
-CANL-
+CAN-
 Wire Wire Line
 	5600 9950 5500 9950
 $Comp
@@ -5428,9 +5428,9 @@ Text Notes 6300 10250 0    50   ~ 0
 Text Notes 5300 9800 0    50   ~ 0
 5V (output)
 Text Label 15400 4100 2    50   ~ 0
-CANH+
+CAN+
 Text Label 13700 4100 0    50   ~ 0
-CANL-
+CAN-
 Wire Wire Line
 	15400 4100 15100 4100
 Wire Wire Line
@@ -6267,9 +6267,9 @@ Connection ~ 3950 10200
 Wire Wire Line
 	3950 10200 3950 10450
 Text Label 3750 10250 2    50   ~ 0
-CANH+
+CAN+
 Text Label 3750 10350 2    50   ~ 0
-CANL-
+CAN-
 Wire Wire Line
 	3750 10250 3350 10250
 Wire Wire Line
