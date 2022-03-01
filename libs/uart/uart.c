@@ -67,8 +67,8 @@ int uart_gets(char* s, int len) {
             }
             case '\r': {
                 // Enter key pressed, carriage return
-                s[ret] = '\0';
                 uart_puts("\r\n");
+                goto getout;
                 break;
             }
             default: {
