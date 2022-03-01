@@ -711,7 +711,6 @@ VIN4
 Text Notes 1800 5550 0    89   ~ 0
 Connectors
 NoConn ~ 3650 1000
-NoConn ~ 3650 1100
 NoConn ~ 3650 1300
 NoConn ~ 3650 1400
 NoConn ~ 3650 1900
@@ -721,7 +720,6 @@ NoConn ~ 3650 2800
 NoConn ~ 3650 2900
 NoConn ~ 3650 3300
 NoConn ~ 3650 3400
-NoConn ~ 3650 3500
 Wire Notes Line
 	1300 5350 1300 7200
 Wire Notes Line
@@ -875,74 +873,63 @@ F 5 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527
 	1    1700 6100
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	10150 5050 10700 5050
-Connection ~ 10150 5050
 $Comp
 L formula:C_1uF C10
 U 1 1 62225665
-P 10150 5250
-F 0 "C10" H 10265 5346 50  0000 L CNN
-F 1 "C_1uF" H 10265 5255 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 10188 5850 50  0001 C CNN
-F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 10175 6100 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 10575 5750 60  0001 C CNN "PurchasingLink"
-	1    10150 5250
-	1    0    0    -1  
+P 10700 4750
+F 0 "C10" H 10815 4846 50  0000 L CNN
+F 1 "C_1uF" H 10815 4755 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 10738 5350 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 10725 5600 50  0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 11125 5250 60  0001 C CNN "PurchasingLink"
+	1    10700 4750
+	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	9500 5050 10150 5050
 $Comp
 L throttle-rescue:GND-power #PWR?
 U 1 1 62208969
-P 6600 6900
-F 0 "#PWR?" H 6600 6650 50  0001 C CNN
-F 1 "GND" H 6605 6727 50  0000 C CNN
-F 2 "" H 6600 6900 50  0001 C CNN
-F 3 "" H 6600 6900 50  0001 C CNN
-	1    6600 6900
-	1    0    0    -1  
+P 6900 6300
+F 0 "#PWR?" H 6900 6050 50  0001 C CNN
+F 1 "GND" H 6905 6127 50  0000 C CNN
+F 2 "" H 6900 6300 50  0001 C CNN
+F 3 "" H 6900 6300 50  0001 C CNN
+	1    6900 6300
+	0    1    1    0   
 $EndComp
-Wire Wire Line
-	6600 6600 7100 6600
-Connection ~ 6600 6600
 $Comp
 L formula:C_1uF C9
 U 1 1 62207FAF
-P 6600 6800
-F 0 "C9" H 6715 6896 50  0000 L CNN
-F 1 "C_1uF" H 6715 6805 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 6638 7400 50  0001 C CNN
-F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 6625 7650 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 7025 7300 60  0001 C CNN "PurchasingLink"
-	1    6600 6800
-	1    0    0    -1  
+P 7100 6300
+F 0 "C9" H 7215 6396 50  0000 L CNN
+F 1 "C_1uF" H 7215 6305 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 7138 6900 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 7125 7150 50  0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 7525 6800 60  0001 C CNN "PurchasingLink"
+	1    7100 6300
+	0    -1   -1   0   
 $EndComp
 $Comp
 L throttle-rescue:GND-power #PWR?
 U 1 1 621E4075
-P 6550 5350
-F 0 "#PWR?" H 6550 5100 50  0001 C CNN
-F 1 "GND" H 6555 5177 50  0000 C CNN
-F 2 "" H 6550 5350 50  0001 C CNN
-F 3 "" H 6550 5350 50  0001 C CNN
-	1    6550 5350
-	1    0    0    -1  
+P 6950 4750
+F 0 "#PWR?" H 6950 4500 50  0001 C CNN
+F 1 "GND" H 6955 4577 50  0000 C CNN
+F 2 "" H 6950 4750 50  0001 C CNN
+F 3 "" H 6950 4750 50  0001 C CNN
+	1    6950 4750
+	0    1    1    0   
 $EndComp
-Wire Wire Line
-	6550 5050 7100 5050
-Connection ~ 6550 5050
 $Comp
 L formula:C_1uF C8
 U 1 1 621AFD26
-P 6550 5250
-F 0 "C8" H 6665 5346 50  0000 L CNN
-F 1 "C_1uF" H 6665 5255 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 6588 5850 50  0001 C CNN
-F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 6575 6100 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 6975 5750 60  0001 C CNN "PurchasingLink"
-	1    6550 5250
-	1    0    0    -1  
+P 7150 4750
+F 0 "C8" H 7265 4846 50  0000 L CNN
+F 1 "C_1uF" H 7265 4755 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 7188 5350 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 7175 5600 50  0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 7575 5250 60  0001 C CNN "PurchasingLink"
+	1    7150 4750
+	0    -1   -1   0   
 $EndComp
 $Comp
 L formula:MCP6001 U5
@@ -1087,12 +1074,12 @@ VOUT2
 $Comp
 L throttle-rescue:+5V-power #PWR?
 U 1 1 6228241E
-P 10900 4850
-F 0 "#PWR?" H 10900 4700 50  0001 C CNN
-F 1 "+5V" H 10915 5023 50  0000 C CNN
-F 2 "" H 10900 4850 50  0001 C CNN
-F 3 "" H 10900 4850 50  0001 C CNN
-	1    10900 4850
+P 10900 4650
+F 0 "#PWR?" H 10900 4500 50  0001 C CNN
+F 1 "+5V" H 10915 4823 50  0000 C CNN
+F 2 "" H 10900 4650 50  0001 C CNN
+F 3 "" H 10900 4650 50  0001 C CNN
+	1    10900 4650
 	1    0    0    -1  
 $EndComp
 Text Label 9400 5050 2    50   ~ 0
@@ -1108,8 +1095,6 @@ F 3 "" H 6050 6900 50  0001 C CNN
 	1    6050 6900
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6050 6600 6600 6600
 Connection ~ 6050 6600
 Wire Wire Line
 	5750 6600 6050 6600
@@ -1138,8 +1123,6 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 	1    6050 5200
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	6050 5050 6550 5050
 Connection ~ 6050 5050
 Wire Wire Line
 	5750 5050 6050 5050
@@ -1173,12 +1156,12 @@ $EndComp
 $Comp
 L throttle-rescue:+5V-power #PWR?
 U 1 1 6222C2AC
-P 7300 6400
-F 0 "#PWR?" H 7300 6250 50  0001 C CNN
-F 1 "+5V" H 7315 6573 50  0000 C CNN
-F 2 "" H 7300 6400 50  0001 C CNN
-F 3 "" H 7300 6400 50  0001 C CNN
-	1    7300 6400
+P 7300 6200
+F 0 "#PWR?" H 7300 6050 50  0001 C CNN
+F 1 "+5V" H 7315 6373 50  0000 C CNN
+F 2 "" H 7300 6200 50  0001 C CNN
+F 3 "" H 7300 6200 50  0001 C CNN
+	1    7300 6200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1315,12 +1298,12 @@ VOUT1
 $Comp
 L throttle-rescue:+5V-power #PWR?
 U 1 1 62221DAD
-P 7300 4850
-F 0 "#PWR?" H 7300 4700 50  0001 C CNN
-F 1 "+5V" H 7315 5023 50  0000 C CNN
-F 2 "" H 7300 4850 50  0001 C CNN
-F 3 "" H 7300 4850 50  0001 C CNN
-	1    7300 4850
+P 7300 4650
+F 0 "#PWR?" H 7300 4500 50  0001 C CNN
+F 1 "+5V" H 7315 4823 50  0000 C CNN
+F 2 "" H 7300 4650 50  0001 C CNN
+F 3 "" H 7300 4650 50  0001 C CNN
+	1    7300 4650
 	1    0    0    -1  
 $EndComp
 Text Label 5750 5050 2    50   ~ 0
@@ -1399,8 +1382,6 @@ F 3 "" H 9550 6900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9550 6600 10150 6600
-Wire Wire Line
 	9400 6600 9550 6600
 Connection ~ 9550 6600
 $Comp
@@ -1433,12 +1414,12 @@ $EndComp
 $Comp
 L throttle-rescue:+5V-power #PWR?
 U 1 1 62282479
-P 10900 6400
-F 0 "#PWR?" H 10900 6250 50  0001 C CNN
-F 1 "+5V" H 10915 6573 50  0000 C CNN
-F 2 "" H 10900 6400 50  0001 C CNN
-F 3 "" H 10900 6400 50  0001 C CNN
-	1    10900 6400
+P 10900 6200
+F 0 "#PWR?" H 10900 6050 50  0001 C CNN
+F 1 "+5V" H 10915 6373 50  0000 C CNN
+F 2 "" H 10900 6200 50  0001 C CNN
+F 3 "" H 10900 6200 50  0001 C CNN
+	1    10900 6200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1455,39 +1436,36 @@ Wire Wire Line
 $Comp
 L throttle-rescue:GND-power #PWR?
 U 1 1 622260BD
-P 10150 5350
-F 0 "#PWR?" H 10150 5100 50  0001 C CNN
-F 1 "GND" H 10155 5177 50  0000 C CNN
-F 2 "" H 10150 5350 50  0001 C CNN
-F 3 "" H 10150 5350 50  0001 C CNN
-	1    10150 5350
-	1    0    0    -1  
+P 10500 4750
+F 0 "#PWR?" H 10500 4500 50  0001 C CNN
+F 1 "GND" H 10505 4577 50  0000 C CNN
+F 2 "" H 10500 4750 50  0001 C CNN
+F 3 "" H 10500 4750 50  0001 C CNN
+	1    10500 4750
+	0    1    1    0   
 $EndComp
 $Comp
 L formula:C_1uF C11
 U 1 1 622CB044
-P 10150 6800
-F 0 "C11" H 10265 6896 50  0000 L CNN
-F 1 "C_1uF" H 10265 6805 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 10188 7400 50  0001 C CNN
-F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 10175 7650 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 10575 7300 60  0001 C CNN "PurchasingLink"
-	1    10150 6800
-	1    0    0    -1  
+P 10650 6300
+F 0 "C11" H 10765 6396 50  0000 L CNN
+F 1 "C_1uF" H 10765 6305 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 10688 6900 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 10675 7150 50  0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 11075 6800 60  0001 C CNN "PurchasingLink"
+	1    10650 6300
+	0    -1   -1   0   
 $EndComp
-Connection ~ 10150 6600
-Wire Wire Line
-	10150 6600 10700 6600
 $Comp
 L throttle-rescue:GND-power #PWR?
 U 1 1 622CB8E2
-P 10150 6900
-F 0 "#PWR?" H 10150 6650 50  0001 C CNN
-F 1 "GND" H 10155 6727 50  0000 C CNN
-F 2 "" H 10150 6900 50  0001 C CNN
-F 3 "" H 10150 6900 50  0001 C CNN
-	1    10150 6900
-	1    0    0    -1  
+P 10450 6300
+F 0 "#PWR?" H 10450 6050 50  0001 C CNN
+F 1 "GND" H 10455 6127 50  0000 C CNN
+F 2 "" H 10450 6300 50  0001 C CNN
+F 3 "" H 10450 6300 50  0001 C CNN
+	1    10450 6300
+	0    1    1    0   
 $EndComp
 Wire Notes Line
 	12800 8000 12800 4300
@@ -1526,4 +1504,97 @@ Text Label 1900 6800 0    50   ~ 0
 CAN_+
 Text Label 1900 6900 0    50   ~ 0
 CAN_-
+Wire Wire Line
+	6050 5050 7100 5050
+Wire Wire Line
+	7300 4650 7300 4750
+Wire Wire Line
+	7250 4750 7300 4750
+Connection ~ 7300 4750
+Wire Wire Line
+	7300 4750 7300 4850
+Wire Wire Line
+	9500 5050 10700 5050
+Wire Wire Line
+	10900 4650 10900 4750
+Wire Wire Line
+	10800 4750 10900 4750
+Connection ~ 10900 4750
+Wire Wire Line
+	10900 4750 10900 4850
+Wire Wire Line
+	6050 6600 7100 6600
+Wire Wire Line
+	7300 6200 7300 6300
+Wire Wire Line
+	7200 6300 7300 6300
+Connection ~ 7300 6300
+Wire Wire Line
+	7300 6300 7300 6400
+Wire Wire Line
+	9550 6600 10700 6600
+Wire Wire Line
+	10900 6200 10900 6300
+Wire Wire Line
+	10750 6300 10900 6300
+Connection ~ 10900 6300
+Wire Wire Line
+	10900 6300 10900 6400
+$Comp
+L formula:MicroFit_RA_4 J3
+U 1 1 62265EEC
+P 7400 9350
+F 0 "J3" H 7458 9725 50  0000 C CNN
+F 1 "MicroFit_RA_4" H 7458 9634 50  0000 C CNN
+F 2 "footprints:MicroFit_RA_4" H 7400 9050 50  0001 C CNN
+F 3 "" H 7400 9350 100 0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" H 7400 9350 50  0001 C CNN "Purchasing Link"
+F 5 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" H 7400 9350 50  0001 C CNN "PurchasingLink"
+	1    7400 9350
+	1    0    0    -1  
+$EndComp
+Text Label 7600 9200 0    50   ~ 0
+START_BUTTON
+Text Label 7600 9300 0    50   ~ 0
+GND
+Text Label 7600 9500 0    50   ~ 0
+GND
+Text Label 8450 9400 0    50   ~ 0
+READY_TO_DRIVE_LED
+$Comp
+L formula:R_200 R19
+U 1 1 6226D5CB
+P 8300 9400
+F 0 "R19" V 8093 9400 50  0000 C CNN
+F 1 "R_200" V 8184 9400 50  0000 C CNN
+F 2 "footprints:R_0805_OEM" H 8230 9400 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 8380 9400 50  0001 C CNN
+F 4 "DK" H 8300 9400 60  0001 C CNN "MFN"
+F 5 "RMCF0805JT200RCT-ND" H 8300 9400 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 8780 9800 60  0001 C CNN "PurchasingLink"
+	1    8300 9400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7600 9400 8150 9400
+Wire Notes Line
+	7100 8700 9350 8700
+Wire Notes Line
+	9350 8700 9350 9650
+Wire Notes Line
+	9350 9650 7100 9650
+Wire Notes Line
+	7100 9650 7100 8700
+Text Notes 8050 8850 0    50   ~ 0
+DRIVER UX
+Text Label 3650 1100 0    50   ~ 0
+START_BUTTON
+Wire Wire Line
+	3650 3500 3850 3500
+Wire Wire Line
+	3850 3500 3850 3100
+Wire Wire Line
+	3850 3100 4600 3100
+Text Label 4600 3100 0    50   ~ 0
+READY_TO_DRIVE_LED
 $EndSCHEMATC
