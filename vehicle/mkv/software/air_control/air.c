@@ -196,34 +196,33 @@ static void state_machine_run(void) {
 
     switch (air_control_critical.air_state) {
         case IDLE: {
-            /*
-             * Idle until shutdown circuit is closed
-             */
+            // Idle until shutdown circuit is closed
             if (air_control_critical.ss_tsms) {
                 air_control_critical.air_state = SHUTDOWN_CIRCUIT_CLOSED;
             }
         } break;
         case SHUTDOWN_CIRCUIT_CLOSED: {
+            /*
+             * This pattern ensures that we only call get_time() once because we
+             * only want to capture the time that PRECHARGE starts
+             */
             static bool once = true;
 
             if (once) {
-                timer_set = get_time();
+                start_time = get_time();
                 once = false;
             }
 
-            if (get_time() - timer_set < 200) {
+            if (get_time() - start_time < 200) {
                 if (air_control_critical.air_n_status) {
                     air_control_critical.air_state = PRECHARGE;
                     once = true;
-                    return;
-                } else {
-                    return;
                 }
             } else {
                 set_fault(FAULT_SHUTDOWN_IMPLAUSIBILITY);
                 once = true;
-                return;
             }
+            return;
         } break;
         case PRECHARGE: {
             // Start precharge
@@ -244,14 +243,17 @@ static void state_machine_run(void) {
             // Set correct scale for pack voltage
             pack_voltage = pack_voltage * 10;
 
+            /*
+             * This pattern ensures that we only call get_time() once because we
+             * only want to capture the time that PRECHARGE starts
+             */
             static bool once = true;
-
             if (once) {
-                timer_set = get_time();
+                start_time = get_time();
                 once = false;
             }
 
-            if (get_time() - timer_set < 2000) {
+            if (get_time() - start_time < 2000) {
                 rc = get_motor_controller_voltage(&motor_controller_voltage);
                 if (rc != 0) {
                     set_fault(FAULT_CAN_MC_TIMEOUT);
@@ -307,17 +309,21 @@ static void state_machine_run(void) {
                 return;
             }
 
-            // Wait for 2 seconds while the motor controller discharges
+            /*
+             * This pattern ensures that we only call get_time() once because we
+             * only want to capture the time that PRECHARGE starts
+             */
             static bool once = true;
 
             if (once) {
-                timer_set = get_time();
+                start_time = get_time();
                 once = false;
             }
 
             int16_t motor_controller_voltage = 0;
 
-            if (get_time() - timer_set < 2000) {
+            // Wait for 2 seconds while the motor controller discharges
+            if (get_time() - start_time < 2000) {
                 int rc
                     = get_motor_controller_voltage(&motor_controller_voltage);
 
@@ -349,8 +355,6 @@ static void state_machine_run(void) {
         } break;
         case FAULT: {
             gpio_set_pin(FAULT_LED);
-
-            // TODO: Is this the safest move?
             gpio_clear_pin(PRECHARGE_CTL);
             gpio_clear_pin(AIR_N_LSD);
         } break;

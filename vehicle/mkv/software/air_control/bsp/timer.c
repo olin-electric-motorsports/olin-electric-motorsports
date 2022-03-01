@@ -3,7 +3,7 @@
 
 volatile uint32_t time;
 volatile bool run_1ms;
-volatile uint32_t timer_set;
+volatile uint32_t start_time;
 
 void timer1_isr(void) {
     time++;

@@ -26,13 +26,6 @@ bail:
     return rc;
 }
 
-/*
- * Polls for CAN message from the BMS
- *
- * Returns:
- *   - 0: No error, value is in *voltage
- *   - 1: Fatal error, go into fault
- */
 int get_bms_voltage(int16_t* voltage) {
     int rc;
 
