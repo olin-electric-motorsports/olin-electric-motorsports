@@ -1,7 +1,6 @@
 import argparse
 import ast
 import csv
-import can
 import cantools
 import sys
 
