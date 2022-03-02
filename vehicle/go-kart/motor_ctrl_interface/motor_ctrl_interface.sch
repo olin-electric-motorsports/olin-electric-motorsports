@@ -1214,7 +1214,7 @@ F 3 "" H 8625 4575 50  0001 C CNN
 $EndComp
 Text Notes 7950 4300 0    50   ~ 0
 SPDT IC for MC EBrake
-Text Label 3650 1225 0    50   ~ 0
+Text Label 3650 2525 0    50   ~ 0
 SL_MODE
 Text Label 3650 1325 0    50   ~ 0
 REVERSE
@@ -1423,7 +1423,6 @@ NoConn ~ 3650 3125
 NoConn ~ 3650 3525
 NoConn ~ 3650 3625
 NoConn ~ 3650 3725
-NoConn ~ 3650 2525
 NoConn ~ 3650 2625
 Wire Notes Line
 	575  725  4900 725 
@@ -1517,4 +1516,6 @@ Wire Wire Line
 Wire Wire Line
 	8200 9050 8350 9050
 Connection ~ 8200 9050
+Text Label 3650 1225 0    50   ~ 0
+HALL_SNS
 $EndSCHEMATC
