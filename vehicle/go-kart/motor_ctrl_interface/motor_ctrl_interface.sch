@@ -1382,17 +1382,6 @@ Text Label 7825 8100 0    50   ~ 0
 CONN_BRK_BLACK
 Text Label 7825 8200 0    50   ~ 0
 CONN_BRK_YELLOW
-$Comp
-L Connector_Generic:Conn_01x05 J4
-U 1 1 622841C7
-P 7675 9350
-F 0 "J4" V 7875 9525 50  0000 L CNN
-F 1 "Conn_01x05" V 7775 9150 50  0000 L CNN
-F 2 "" H 7675 9350 50  0001 C CNN
-F 3 "~" H 7675 9350 50  0001 C CNN
-	1    7675 9350
-	-1   0    0    1   
-$EndComp
 Wire Notes Line
 	550  7975 4925 7975
 Wire Notes Line
@@ -1460,57 +1449,26 @@ NoConn ~ 7825 8700
 NoConn ~ 7825 8800
 NoConn ~ 7825 8900
 Wire Wire Line
-	7875 9150 8000 9150
-Wire Wire Line
-	7875 9550 8000 9550
-$Comp
-L power:+5V #PWR?
-U 1 1 622D936B
-P 8000 9150
-F 0 "#PWR?" H 8000 9000 50  0001 C CNN
-F 1 "+5V" H 8015 9323 50  0000 C CNN
-F 2 "" H 8000 9150 50  0001 C CNN
-F 3 "" H 8000 9150 50  0001 C CNN
-	1    8000 9150
-	1    0    0    -1  
-$EndComp
+	7875 9450 8000 9450
 $Comp
 L power:GND #PWR?
 U 1 1 622DA0A8
-P 8000 9550
-F 0 "#PWR?" H 8000 9300 50  0001 C CNN
-F 1 "GND" H 8005 9377 50  0000 C CNN
-F 2 "" H 8000 9550 50  0001 C CNN
-F 3 "" H 8000 9550 50  0001 C CNN
-	1    8000 9550
+P 8000 9450
+F 0 "#PWR?" H 8000 9200 50  0001 C CNN
+F 1 "GND" H 8005 9277 50  0000 C CNN
+F 2 "" H 8000 9450 50  0001 C CNN
+F 3 "" H 8000 9450 50  0001 C CNN
+	1    8000 9450
 	1    0    0    -1  
 $EndComp
-Text Label 8025 9450 0    50   ~ 0
-A
-Text Label 8025 9350 0    50   ~ 0
-B
-Text Label 8025 9250 0    50   ~ 0
-X
-$Comp
-L formula:R_10K R9
-U 1 1 622E70ED
-P 8525 9300
-F 0 "R9" V 8525 9200 50  0000 L CNN
-F 1 "R_10K" H 8550 9675 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 8455 9300 50  0001 C CNN
-F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 8605 9300 50  0001 C CNN
-F 4 "DK" H 8525 9300 60  0001 C CNN "MFN"
-F 5 "CRS0805-FX-1002ELFCT-ND" H 8525 9300 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 9005 9700 60  0001 C CNN "PurchasingLink"
-	1    8525 9300
-	1    0    0    -1  
-$EndComp
+Text Label 7900 9350 0    50   ~ 0
+HALL_SNS
 $Comp
 L formula:R_10K R8
 U 1 1 622E7D57
 P 8350 9200
 F 0 "R8" V 8350 9100 50  0000 L CNN
-F 1 "R_10K" H 8550 9400 50  0000 L CNN
+F 1 "R_10K" V 8425 9100 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 8280 9200 50  0001 C CNN
 F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 8430 9200 50  0001 C CNN
 F 4 "DK" H 8350 9200 60  0001 C CNN "MFN"
@@ -1519,51 +1477,44 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 883
 	1    8350 9200
 	1    0    0    -1  
 $EndComp
-$Comp
-L formula:R_10K R7
-U 1 1 622E8A67
-P 8175 9100
-F 0 "R7" V 8175 9000 50  0000 L CNN
-F 1 "R_10K" H 8550 9125 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 8105 9100 50  0001 C CNN
-F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 8255 9100 50  0001 C CNN
-F 4 "DK" H 8175 9100 60  0001 C CNN "MFN"
-F 5 "CRS0805-FX-1002ELFCT-ND" H 8175 9100 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 8655 9500 60  0001 C CNN "PurchasingLink"
-	1    8175 9100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7875 9250 8175 9250
 Wire Wire Line
 	8350 9350 7875 9350
-Wire Wire Line
-	7875 9450 8525 9450
-Wire Wire Line
-	8175 8950 8350 8950
-Wire Wire Line
-	8525 8950 8525 9150
-Wire Wire Line
-	8350 9050 8350 8950
-Connection ~ 8350 8950
-Wire Wire Line
-	8350 8950 8525 8950
 $Comp
 L power:+5V #PWR?
 U 1 1 62300F0F
-P 8525 8950
-F 0 "#PWR?" H 8525 8800 50  0001 C CNN
-F 1 "+5V" H 8540 9123 50  0000 C CNN
-F 2 "" H 8525 8950 50  0001 C CNN
-F 3 "" H 8525 8950 50  0001 C CNN
-	1    8525 8950
+P 8200 9050
+F 0 "#PWR?" H 8200 8900 50  0001 C CNN
+F 1 "+5V" H 8215 9223 50  0000 C CNN
+F 2 "" H 8200 9050 50  0001 C CNN
+F 3 "" H 8200 9050 50  0001 C CNN
+	1    8200 9050
 	1    0    0    -1  
 $EndComp
-Connection ~ 8525 8950
-Text Notes 8775 9475 1    50   ~ 0
-DNP 10K\nPullups
+Text Notes 8650 9375 1    50   ~ 0
+DNP 10K\nPullup
 Text Notes 7750 9975 0    50   ~ 0
-Quadrature Encoder \nConnector
-Text Notes 5675 7225 0    50   ~ 0
-NOTES: \nUncertain about the quadrature encoder at the moment. \nAlso assuming that we'll be tying the Red power switch wire\nstraight to the MC+ Input and switching via the AIR
+Hall Effect Sense \nConnector
+Text Notes 5750 6850 0    50   ~ 0
+NOTES: \nAssuming that we'll be tying the Red power switch wire\nstraight to the MC+ Input and switching via the AIR
+$Comp
+L formula:CONN_01X03 J?
+U 1 1 621EF47E
+P 7625 9350
+F 0 "J?" H 7492 9025 50  0000 C CNN
+F 1 "CONN_01X03" H 7492 9116 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 7625 8150 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/181/M20-999-1218971.pdf" H 7625 8150 50  0001 C CNN
+F 4 "Mouser" H 7625 9350 60  0001 C CNN "MFN"
+F 5 "855-M20-9990346" H 7625 9350 60  0001 C CNN "MPN"
+F 6 "https://www.mouser.com/ProductDetail/Harwin/M20-9990346?qs=sGAEpiMZZMs%252bGHln7q6pmzlZUuX%2f53qj1ROyRKct5o4%3d" H 8025 9950 60  0001 C CNN "PurchasingLink"
+	1    7625 9350
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7875 9250 8200 9250
+Wire Wire Line
+	8200 9250 8200 9050
+Wire Wire Line
+	8200 9050 8350 9050
+Connection ~ 8200 9050
 $EndSCHEMATC

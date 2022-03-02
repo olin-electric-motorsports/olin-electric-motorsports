@@ -1,31 +1,6 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Connector_Generic_Conn_01x05
-#
-DEF Connector_Generic_Conn_01x05 J 0 40 Y N 1 F N
-F0 "J" 0 300 50 H V C CNN
-F1 "Connector_Generic_Conn_01x05" 0 -300 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- Connector*:*_1x??_*
-$ENDFPLIST
-DRAW
-S -50 -195 0 -205 1 1 6 N
-S -50 -95 0 -105 1 1 6 N
-S -50 5 0 -5 1 1 6 N
-S -50 105 0 95 1 1 6 N
-S -50 205 0 195 1 1 6 N
-S -50 250 50 -250 1 1 10 f
-X Pin_1 1 -200 200 150 R 50 50 1 1 P
-X Pin_2 2 -200 100 150 R 50 50 1 1 P
-X Pin_3 3 -200 0 150 R 50 50 1 1 P
-X Pin_4 4 -200 -100 150 R 50 50 1 1 P
-X Pin_5 5 -200 -200 150 R 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # formula_AD5220BRZ50
 #
 DEF formula_AD5220BRZ50 U 0 40 Y Y 1 F N
@@ -115,6 +90,33 @@ X (PCINT10/T0/TXCAN)PC2 6 1100 600 150 L 40 40 1 1 B
 X (PCINT11/T1/ICP1B/RXCAN)PC3 7 1100 500 150 L 40 40 1 1 B
 X (PCINT0/MISO/PSCOUT2A)PB0 8 1100 1700 150 L 40 40 1 1 B
 X (PCINT1/MOSI/PSCOUT2B)PB1 9 1100 1600 150 L 40 40 1 1 B
+ENDDRAW
+ENDDEF
+#
+# formula_CONN_01X03
+#
+DEF formula_CONN_01X03 J 0 1 Y N 1 F N
+F0 "J" 0 200 50 H V C CNN
+F1 "formula_CONN_01X03" 0 -200 50 H V C CNN
+F2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" 0 -1200 50 H I C CNN
+F3 "https://www.mouser.com/datasheet/2/181/M20-999-1218971.pdf" 0 -1200 50 H I C CNN
+F4 "Mouser" 0 0 60 H I C CNN "MFN"
+F5 "855-M20-9990346" 0 0 60 H I C CNN "MPN"
+F6 "https://www.mouser.com/ProductDetail/Harwin/M20-9990346?qs=sGAEpiMZZMs%252bGHln7q6pmzlZUuX%2f53qj1ROyRKct5o4%3d" 400 600 60 H I C CNN "PurchasingLink"
+$FPLIST
+ Pin_Header_Straight_2X03
+ Pin_Header_Angled_2X03
+ Socket_Strip_Straight_2X03
+ Socket_Strip_Angled_2X03
+$ENDFPLIST
+DRAW
+S -100 -95 -50 -105 0 1 0 N
+S -100 5 -50 -5 0 1 0 N
+S -100 105 -50 95 0 1 0 N
+S -100 150 0 -150 0 1 0 f
+X P1 1 -250 100 150 R 50 50 1 1 P
+X P2 2 -250 0 150 R 50 50 1 1 P
+X P3 3 -250 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
