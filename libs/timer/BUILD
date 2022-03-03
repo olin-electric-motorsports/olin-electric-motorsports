@@ -16,6 +16,7 @@ cc_library(
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
         "//bazel/constraints:atmega64m1": [],
+        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
     }),
     visibility = ["//visibility:public"],
     deps = [
@@ -29,6 +30,11 @@ cc_firmware(
         "test/config.h",
         "test/main.c",
     ],
+    target_compatible_with = select({
+        "//bazel/constraints:atmega16m1": [],
+        "//bazel/constraints:atmega64m1": [],
+        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+    }),
     visibility = ["//visibility:public"],
     deps = [
         ":timer",

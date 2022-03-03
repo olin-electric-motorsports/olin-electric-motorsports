@@ -12,6 +12,13 @@
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
+/*
+ * ic.system_open_wire is a 16 bit number. Each bit is an open wire (1: no
+ * openwire, 0: openwire)
+ */
+#define NO_OPEN_WIRES \
+    (65335) // ic.system_open_wire is a 16 bit number. Each
+            // bit is an open wire (1: no openwire, 0: openwire)
 /* TODO
  *   State machine
  *     INIT
@@ -20,9 +27,6 @@
  *     CHARGING
  *     FAULT
  *   Do not do BMS if car is off (TS off? LV off?)
- *
- *   Only the #2 chip reads the temperatures. So if we index at 0, then only odd
- *   chips read temperatures
  */
 
 enum State {
@@ -39,6 +43,7 @@ enum FaultCode {
     FAULT_UNDERTEMPERATURE,
     FAULT_OVERTEMPERATURE,
     FAULT_DIAGNOSTICS_FAIL,
+    FAULT_OPEN_WIRE,
 };
 
 // Represents all of LTC6811 chips used in the BMS. Contains cell
@@ -90,12 +95,11 @@ static void voltage_task(void) {
     wakeup_idle(NUM_ICS);
 
     // Stores the voltages in the c_codes variable
-    int error = LTC6811_rdcv(REG_ALL, NUM_ICS, ICS);
+    uint8_t error = LTC6811_rdcv(REG_ALL, NUM_ICS, ICS);
 
-    // TODO
     if (error) {
-        // metrics.cell_pec_errors++;
-        // Do something
+        bms_metrics.voltage_pec_error_count += error;
+        return;
     }
 
     uint16_t pack_voltage = 0;
@@ -113,6 +117,7 @@ static void voltage_task(void) {
             continue;
         }
 
+        // Sum of cells for a single IC
         pack_voltage += ICS[ic].stat.stat_codes[0];
 
         // Odd bits of the ST register are used for undervoltage flags
@@ -145,56 +150,62 @@ static void temperature_task(void) {
 
             enable_mux(NUM_ICS, ICS, MUXES[mux], MUX_ENABLE, ch);
 
-            // read aux gpio voltage for temperature
+            // read aux gpio voltage (this is what the tmperature sensor is
+            // connected to) for temperature
             LTC6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1);
 
-            // wait for conversions to finish
+            // Wait for conversions to finish
             (void)LTC6811_pollAdc();
 
             error = LTC6811_rdaux(AUX_CH_GPIO1, NUM_ICS, ICS);
 
-            // TODO
             if (error) {
-                // metrics.cell_pec_errors++;
-                // Do something
+                bms_metrics.temperature_pec_error_count += error;
+                continue;
             }
 
             uint16_t temperature = 0;
 
-            // temp_ic indexes the ICs that measure the temperature, so
-            //   temp_ic = 0 := ic 1
-            //   temp_ic = 1 := ic 3
-            //   temp_ic = 2 := ic 5
-            //   etc.
+            /*
+             * temp_ic indexes the ICs that measure the temperature, so
+             *   temp_ic = 0 := ic 1
+             *   temp_ic = 1 := ic 3
+             *   temp_ic = 2 := ic 5
+             *   etc.
+             */
             for (uint8_t temp_ic = 0; temp_ic < NUM_TEMPERATURE_ICS;
                  temp_ic += 1) {
                 // Use 0 as the a_codes index for GPIO1 channel
-                // uint8_t ic = (temp_ic*2) + 1;
                 temperature = ICS[(temp_ic * 2) + 1].aux.a_codes[0];
 
-                // Store temperature [(mux * NUM_MUX_CHANNELS) + ch] indexes the
-                // channel of the mux. We store temperatures as a 2D array of
-                // ICS vs mux channels and use 24 as the number of mux channels
-                // (3 muxes, 8 channels each).
+                /*
+                 * Store temperature [(mux * NUM_MUX_CHANNELS) + ch] indexes the
+                 * channel of the mux. We store temperatures as a 2D array of
+                 * ICS vs mux channels and use 24 as the number of mux channels
+                 * (3 muxes, 8 channels each).
+                 */
                 uint16_t channel = (mux * NUM_MUX_CHANNELS) + ch;
                 TEMPERATURES[temp_ic][channel] = temperature;
                 cumulative_temperature += temperature;
 
-                // Using negative-temperature-coefficient (NTC) thermistors, so
-                // comparisons are reversed (i.e. less than over-temp threshold)
+                /*
+                 * Using negative-temperature-coefficient (NTC) thermistors, so
+                 * comparisons are reversed (i.e. less than over-temp threshold)
+                 */
                 if (temperature < OVERTEMPERATURE_THRESHOLD) {
                     set_fault(FAULT_OVERTEMPERATURE);
                 }
 
-                // TODO: It would be good to have some buffer so the fans aren't
-                // pulsing on and off ever. This could be as simple as having a
-                // counter while the fan is on, and we keep the fan on for the
-                // duration of the counter, and once the counter is up, we check
-                // if the temperature is in safe range (lower than soft OT), we
-                // turn the fan off and keep checking.
+                /*
+                 * TODO: It would be good to have some buffer so the fans aren't
+                 * pulsing on and off ever. This could be as simple as having a
+                 * counter while the fan is on, and we keep the fan on for the
+                 * duration of the counter, and once the counter is up, we check
+                 * if the temperature is in safe range (lower than soft OT), we
+                 * turn the fan off and keep checking.
+                 */
 
-                // In case the temperatures are getting a bit too high, we turn
-                // on the fan
+                // If temperatures are getting a bit too high, we turn on the fan
                 if (temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
                     fan_enable(true);
                 }
@@ -208,10 +219,12 @@ static void temperature_task(void) {
                 }
             } // End for each IC
 
-            // Compute average temperature. WARNING: truncates a 32 bit number
-            // into a 16 bit number. This shouldn't be a problem, but the reader
-            // should be aware that this is intentional. A 32 bit number is
-            // needed to store the cumulative sum.
+            /*
+             * Compute average temperature. WARNING: truncates a 32 bit number
+             * into a 16 bit number. This shouldn't be a problem, but the reader
+             * should be aware that this is intentional. A 32 bit number is
+             * needed to store the cumulative sum.
+             */
             bms_core.temperature
                 = (uint16_t)cumulative_temperature
                   / (NUM_MUXES * NUM_MUX_CHANNELS * NUM_TEMPERATURE_ICS);
@@ -230,11 +243,17 @@ static void openwire_task(void) {
     LTC6811_run_openwire_single(NUM_ICS, ICS);
 
     long open_wire;
-    for (uint8_t ic; ic < NUM_ICS; ic++) {
+    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         open_wire = ICS[ic].system_open_wire;
+
+        /*
+         * If system_open_wire is 0xFFFF, there are no open wires. Otherwise,
+         * the value is set to the first pin that has an open wire.
+         */
+        if (open_wire != NO_OPEN_WIRES) {
+            set_fault(FAULT_OPEN_WIRE);
+        }
     }
-    // TODO
-    (void)open_wire;
 }
 
 /*
@@ -346,11 +365,14 @@ int main(void) {
             openwire_task();
 
             can_send_bms_core();
+            can_send_bms_metrics();
+            can_send_bms_debug();
 
             if (loop_counter == 25) {
                 // Occurs at 4Hz, every 250ms
                 can_send_bms_voltages(NUM_ICS, ICS);
                 can_send_bms_temperatures(NUM_ICS, (uint16_t**)TEMPERATURES);
+                can_send_open_wires(NUM_ICS, ICS);
 
                 loop_counter = 0;
             }

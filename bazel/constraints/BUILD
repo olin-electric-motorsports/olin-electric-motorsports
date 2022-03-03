@@ -24,6 +24,11 @@ constraint_value(
     constraint_setting = ":mcu",
 )
 
+constraint_value(
+    name = "incompatible_mcu",
+    constraint_setting = ":mcu",
+)
+
 # Runtime environment
 constraint_setting(name = "environment")
 

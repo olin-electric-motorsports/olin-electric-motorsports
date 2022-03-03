@@ -4,7 +4,8 @@
 #include "libs/can/api.h"
 
 #define CAN_ID_VOLTAGE_BASE     (0x100)
-#define CAN_ID_TEMPERATURE_BASE (0x100 + 24)
+#define CAN_ID_TEMPERATURE_BASE (0x100 + 32)
+#define CAN_ID_OPEN_WIRE_BASE   (0x100 + 64)
 
 #define CELL_GROUP_1_OFFSET (0) // Cells 1-4
 #define CELL_GROUP_2_OFFSET (6) // Cells 7-10
@@ -67,7 +68,7 @@ void can_send_bms_temperatures(uint8_t num_ics, uint16_t** temperatures) {
 
             /*
              * Trick: instead of creating our own data array, we just set the
-             * pointer to the array to be the pointer to the cell voltages in
+             * pointer to the array to be the pointer to the cell temps in
              * the ICS object with some offset. That way, we can reuse memory
              * and avoid memcpy-ing.
              */
@@ -80,5 +81,27 @@ void can_send_bms_temperatures(uint8_t num_ics, uint16_t** temperatures) {
             can_send(&temperature_frame);
             temperature_frame.id++;
         }
+    }
+}
+
+void can_send_open_wires(uint8_t num_ics, cell_asic ics[]) {
+    can_frame_t open_wire_frame = {
+        .id = CAN_ID_OPEN_WIRE_BASE,
+        .mob = 0,
+        .dlc = 2,
+    };
+
+    for (uint8_t ic = 0; ic < num_ics; ic++) {
+        // For every chip, send the open wires
+
+        /*
+         * Trick: instead of creating our own data array, we just set the
+         * pointer to the array to be the pointer to the cell open_wires in
+         * the ICS object with some offset. That way, we can reuse memory
+         * and avoid memcpy-ing.
+         */
+        open_wire_frame.data = (uint8_t*)&(ics[ic].system_open_wire);
+        can_send(&open_wire_frame);
+        open_wire_frame.id++;
     }
 }
