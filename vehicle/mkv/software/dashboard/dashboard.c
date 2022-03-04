@@ -19,6 +19,8 @@
 #include "libs/timer/api.h"
 #include "vehicle/mkv/software/dashboard/can_api.h"
 
+#define BMS_FAULT_NONE (0)
+
 volatile bool START_BUTTON_STATE;
 volatile bool HV_STATE;
 volatile bool BRAKE_PRESSED;
@@ -86,7 +88,7 @@ int main(void) {
 
         // BMS Core message for BMS Status LED
         if (can_poll_receive_bms_core() == 0) {
-            if (bms_core.fault_state == FAULT_NONE) { // check BMS status
+            if (bms_core.fault_state == BMS_FAULT_NONE) { // check BMS status
                 gpio_set_pin(BMS_LED); // set BMS light high
             } else {
                 gpio_clear_pin(BMS_LED); // clear BMS light
