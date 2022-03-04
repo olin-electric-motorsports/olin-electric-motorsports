@@ -2,18 +2,15 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
 // Mux addresses
 #define LTC1380_MUX1 (0x90)
 #define LTC1380_MUX2 (0x92)
 #define LTC1380_MUX3 (0x94)
 
-#define NUM_MUXES (3)
-
 #define MUX_ENABLE  (true)
 #define MUX_DISABLE (false)
-
-#define NUM_MUX_CHANNELS (8)
 
 /*
  * Configures the multiplexer

@@ -1,6 +1,8 @@
-#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
+#include "mux.h"
 
 #include <stdbool.h>
+
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
 #define MUX_DATALENGTH (3)
 

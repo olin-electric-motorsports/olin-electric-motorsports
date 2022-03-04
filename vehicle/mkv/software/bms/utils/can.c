@@ -1,7 +1,7 @@
 #include "can.h"
-#include "mux.h"
 
 #include "libs/can/api.h"
+#include "vehicle/mkv/software/bms/bms_config.h"
 
 #define CAN_ID_VOLTAGE_BASE     (0x100)
 #define CAN_ID_TEMPERATURE_BASE (0x100 + 32)
