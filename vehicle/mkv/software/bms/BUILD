@@ -16,6 +16,7 @@ cc_library(
     target_compatible_with = [
         "//bazel/constraints:atmega64m1",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         "//libs/adc",
         "//libs/can",
@@ -24,7 +25,6 @@ cc_library(
         "//libs/timer",
         "//vehicle/mkv/software/bms/ltc6811",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_firmware(
@@ -42,9 +42,9 @@ cc_firmware(
         "//libs/gpio",
         "//libs/spi",
         "//libs/timer",
-        "//vehicle/mkv/software/bms/utils",
-        "//vehicle/mkv/software/bms/tasks:bms_tasks",
         "//vehicle/mkv/software/bms/ltc6811",
+        "//vehicle/mkv/software/bms/tasks:bms_tasks",
+        "//vehicle/mkv/software/bms/utils",
     ],
 )
 

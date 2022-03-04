@@ -1,10 +1,10 @@
 #include "tasks.h"
 
 #include "vehicle/mkv/software/bms/bms_config.h"
-#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/can_api.h"
-#include "vehicle/mkv/software/bms/utils/mux.h"
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/utils/fault.h"
+#include "vehicle/mkv/software/bms/utils/mux.h"
 
 // Array of mux addresses
 const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };

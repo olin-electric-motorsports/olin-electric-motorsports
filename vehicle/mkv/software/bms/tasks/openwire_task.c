@@ -1,8 +1,8 @@
 #include "tasks.h"
 
 #include "vehicle/mkv/software/bms/bms_config.h"
-#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/can_api.h"
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/utils/fault.h"
 
 /*

@@ -1,10 +1,10 @@
 #include "tasks.h"
 
 #include "vehicle/mkv/software/bms/bms_config.h"
-#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/can_api.h"
-#include "vehicle/mkv/software/bms/utils/mux.h"
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/utils/fault.h"
+#include "vehicle/mkv/software/bms/utils/mux.h"
 
 void voltage_task(void) {
     wakeup_sleep(NUM_ICS);
@@ -39,11 +39,9 @@ void voltage_task(void) {
          * The pins C5, C6, C11, and C12 are not connected to their own
          * cells, so we subtract them off
          */
-        pack_voltage += ICS[ic].stat.stat_codes[0]
-            - ICS[ic].cells.c_codes[4]
-            - ICS[ic].cells.c_codes[5]
-            - ICS[ic].cells.c_codes[10]
-            - ICS[ic].cells.c_codes[11];
+        pack_voltage += ICS[ic].stat.stat_codes[0] - ICS[ic].cells.c_codes[4]
+                        - ICS[ic].cells.c_codes[5] - ICS[ic].cells.c_codes[10]
+                        - ICS[ic].cells.c_codes[11];
 
         // Odd bits of the ST register are used for undervoltage flags
         uv = (ICS[ic].stat.flags[0] & 0x55) | (ICS[ic].stat.flags[1] & 0x55)

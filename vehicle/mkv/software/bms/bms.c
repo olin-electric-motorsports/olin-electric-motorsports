@@ -9,12 +9,12 @@
 #include <avr/interrupt.h>
 #include <stdbool.h>
 
-#include "vehicle/mkv/software/bms/utils/mux.h"
+#include "vehicle/mkv/software/bms/can_api.h"
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
+#include "vehicle/mkv/software/bms/tasks/tasks.h"
 #include "vehicle/mkv/software/bms/utils/can.h"
 #include "vehicle/mkv/software/bms/utils/fault.h"
-#include "vehicle/mkv/software/bms/can_api.h"
-#include "vehicle/mkv/software/bms/tasks/tasks.h"
-#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
+#include "vehicle/mkv/software/bms/utils/mux.h"
 
 // Defines maximum current range (-125 to 125A)
 #define MAX_CURRENT_RANGE (250)

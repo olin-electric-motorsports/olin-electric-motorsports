@@ -1,8 +1,8 @@
 #pragma once
 
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include <stdbool.h>
 #include <stdint.h>
-#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
 // Mux addresses
 #define LTC1380_MUX1 (0x90)
