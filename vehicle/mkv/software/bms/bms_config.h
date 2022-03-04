@@ -1,3 +1,4 @@
+#include "libs/adc/api.h"
 #include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
@@ -19,30 +20,31 @@
 #define UNDERVOLTAGE_THRESHOLD         (30000) // 3.0V
 #define OVERTEMPERATURE_THRESHOLD      (728) // 60 degC
 #define SOFT_OVERTEMPERATURE_THRESHOLD (1255) // 45 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD_LOW (SOFT_OVER_TEMPERATURE_THRESHOLD + 500) // TODO degC
 #define UNDERTEMPERATURE_THRESHOLD     (7384) // 0 degC
 
 /*
  * GPIO
  */
+// Outputs
 gpio_t BMS_RELAY_LSD = PC7; // Shutdown circuit relay
-
 gpio_t RJ45_LEDG = PB3;
 gpio_t RJ45_LEDO = PB4;
-
 gpio_t CHARGE_ENABLE1 = PD0;
 gpio_t CHARGE_ENABLE2 = PC0;
-
 gpio_t GENERAL_LED = PD6;
 gpio_t FAULT_LED = PD7;
-
 gpio_t SPI_CS = PB6;
 
+// Inputs
+gpio_t nOCD = PB2; // Over-current detect
+gpio_t BSPD_CURRENT_SENSE = PD1;
+
+adc_pin_e CURRENT_SENSE_VREF = ADC8;
+adc_pin_e CURRENT_SENSE_VOUT = ADC9;
+
 // TODO
-// * nOCD
 // * CHARGE_ENABLEn
-// * VREF
-// * VOUT
-// * BSPD_CURRENT_SENSE
 
 /*
  * SPI

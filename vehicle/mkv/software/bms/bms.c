@@ -1,5 +1,6 @@
 #include "bms_config.h"
 
+#include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
@@ -19,6 +20,10 @@
 #define NO_OPEN_WIRES \
     (65335) // ic.system_open_wire is a 16 bit number. Each
             // bit is an open wire (1: no openwire, 0: openwire)
+
+// Defines maximum current range (-125 to 125A)
+#define MAX_CURRENT_RANGE (250)
+
 /* TODO
  *   State machine
  *     INIT
@@ -44,6 +49,7 @@ enum FaultCode {
     FAULT_OVERTEMPERATURE,
     FAULT_DIAGNOSTICS_FAIL,
     FAULT_OPEN_WIRE,
+    FAULT_OVERCURRENT,
 };
 
 // Represents all of LTC6811 chips used in the BMS. Contains cell
@@ -63,11 +69,36 @@ static void set_fault(enum FaultCode the_fault) {
     }
 }
 
+/*
+ * Interrupt for nOCD
+ */
+void pcint0_callback(void) {
+    bms_core.overcurrent_detect = !gpio_get_pin(nOCD);
+
+    if (bms_core.overcurrent_detect) {
+        set_fault(FAULT_OVERCURRENT);
+    }
+}
+
+/*
+ * Interrupt for BSPD_CURRENT_SENSE
+ */
+void pcint2_callback(void) {
+    bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_SENSE);
+}
+
 static void fan_enable(bool enable) {
     timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
 
     // No way to update a single part of the config so we just re-init the timer
     timer_init(&timer1_fan_cfg);
+}
+
+static uint16_t get_current_sensor_value(void) {
+    uint16_t vref = adc_read(CURRENT_SENSE_VREF);
+    uint16_t vout = adc_read(CURRENT_SENSE_VOUT);
+
+    return (vout - vref) / MAX_CURRENT_RANGE;
 }
 
 static void configure_ics(void) {
@@ -85,6 +116,8 @@ static void configure_ics(void) {
 }
 
 static void voltage_task(void) {
+    wakeup_sleep(NUM_ICS);
+
     // Start cell voltage ADC conversions PLUS Sum of Cells Conversion
     LTC6811_adcvsc(MD_7KHZ_3KHZ, DCP_ENABLED);
 
@@ -140,7 +173,6 @@ static void voltage_task(void) {
 
 static void temperature_task(void) {
     uint8_t error = 0;
-
     int32_t cumulative_temperature = 0;
 
     for (uint8_t mux = 0; mux < NUM_MUXES; mux++) {
@@ -157,6 +189,7 @@ static void temperature_task(void) {
             // Wait for conversions to finish
             (void)LTC6811_pollAdc();
 
+            // Read voltage from auxiliary pin (connected to the mux)
             error = LTC6811_rdaux(AUX_CH_GPIO1, NUM_ICS, ICS);
 
             if (error) {
@@ -329,6 +362,14 @@ int main(void) {
     gpio_set_mode(GENERAL_LED, OUTPUT);
     gpio_set_mode(FAULT_LED, OUTPUT);
 
+    gpio_set_mode(nOCD, INPUT);
+    gpio_set_mode(BSPD_CURRENT_SENSE, INPUT);
+
+    gpio_enable_interrupt(nOCD);
+    gpio_enable_interrupt(BSPD_CURRENT_SENSE);
+
+    adc_init();
+
     spi_init(&spi_cfg);
 
     timer_init(&timer0_cfg);
@@ -363,6 +404,9 @@ int main(void) {
             voltage_task();
             temperature_task();
             openwire_task();
+
+            uint16_t current = get_current_sensor_value();
+            (void)current;
 
             can_send_bms_core();
             can_send_bms_metrics();
