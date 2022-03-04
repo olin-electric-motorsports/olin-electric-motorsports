@@ -548,7 +548,7 @@ F 3 "" H 14300 6050 50  0001 C CNN
 	1    14300 6050
 	0    1    1    0   
 $EndComp
-Text Label 3650 2500 0    50   ~ 0
+Text Label 3650 1200 0    50   ~ 0
 VOUT1
 Text Label 3650 1500 0    50   ~ 0
 VOUT2
@@ -589,7 +589,7 @@ Text Label 3650 2300 0    50   ~ 0
 PROGRAMMINGLED1
 Text Label 3650 2400 0    50   ~ 0
 PROGRAMMINGLED2
-Text Label 3650 1200 0    50   ~ 0
+Text Label 3650 1000 0    50   ~ 0
 PROGRAMMINGLED3
 Text Notes 14350 5650 0    89   ~ 0
 Programming LEDs
@@ -710,7 +710,6 @@ Text Label 2750 6950 0    50   ~ 0
 VIN4
 Text Notes 1800 5550 0    89   ~ 0
 Connectors
-NoConn ~ 3650 1000
 NoConn ~ 3650 1300
 NoConn ~ 3650 1400
 NoConn ~ 3650 1900
@@ -894,7 +893,7 @@ F 1 "GND" H 6905 6127 50  0000 C CNN
 F 2 "" H 6900 6300 50  0001 C CNN
 F 3 "" H 6900 6300 50  0001 C CNN
 	1    6900 6300
-	0    1    1    0   
+	1    0    0    -1  
 $EndComp
 $Comp
 L formula:C_1uF C9
@@ -917,7 +916,7 @@ F 1 "GND" H 6955 4577 50  0000 C CNN
 F 2 "" H 6950 4750 50  0001 C CNN
 F 3 "" H 6950 4750 50  0001 C CNN
 	1    6950 4750
-	0    1    1    0   
+	1    0    0    -1  
 $EndComp
 $Comp
 L formula:C_1uF C8
@@ -1434,17 +1433,6 @@ Connection ~ 11700 7250
 Wire Wire Line
 	11700 7250 10600 7250
 $Comp
-L throttle-rescue:GND-power #PWR?
-U 1 1 622260BD
-P 10500 4750
-F 0 "#PWR?" H 10500 4500 50  0001 C CNN
-F 1 "GND" H 10505 4577 50  0000 C CNN
-F 2 "" H 10500 4750 50  0001 C CNN
-F 3 "" H 10500 4750 50  0001 C CNN
-	1    10500 4750
-	0    1    1    0   
-$EndComp
-$Comp
 L formula:C_1uF C11
 U 1 1 622CB044
 P 10650 6300
@@ -1465,7 +1453,7 @@ F 1 "GND" H 10455 6127 50  0000 C CNN
 F 2 "" H 10450 6300 50  0001 C CNN
 F 3 "" H 10450 6300 50  0001 C CNN
 	1    10450 6300
-	0    1    1    0   
+	1    0    0    -1  
 $EndComp
 Wire Notes Line
 	12800 8000 12800 4300
@@ -1477,8 +1465,6 @@ Wire Notes Line
 	5350 8000 12800 8000
 Text Label 1900 5950 0    50   ~ 0
 GND
-Text Label 1900 6050 0    50   ~ 0
-+5V
 Text Label 1900 6150 0    50   ~ 0
 CAN_+
 Text Label 1900 6250 0    50   ~ 0
@@ -1498,8 +1484,6 @@ F 5 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527
 $EndComp
 Text Label 1900 6600 0    50   ~ 0
 GND
-Text Label 1900 6700 0    50   ~ 0
-+5V
 Text Label 1900 6800 0    50   ~ 0
 CAN_+
 Text Label 1900 6900 0    50   ~ 0
@@ -1597,4 +1581,42 @@ Wire Wire Line
 	3850 3100 4600 3100
 Text Label 4600 3100 0    50   ~ 0
 READY_TO_DRIVE_LED
+$Comp
+L throttle-rescue:+BATT-power #PWR?
+U 1 1 6222643F
+P 2150 6050
+F 0 "#PWR?" H 2150 5900 50  0001 C CNN
+F 1 "+BATT" H 2165 6223 50  0000 C CNN
+F 2 "" H 2150 6050 50  0001 C CNN
+F 3 "" H 2150 6050 50  0001 C CNN
+	1    2150 6050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1900 6050 2150 6050
+$Comp
+L throttle-rescue:+BATT-power #PWR?
+U 1 1 6222C4E4
+P 2150 6700
+F 0 "#PWR?" H 2150 6550 50  0001 C CNN
+F 1 "+BATT" H 2165 6873 50  0000 C CNN
+F 2 "" H 2150 6700 50  0001 C CNN
+F 3 "" H 2150 6700 50  0001 C CNN
+	1    2150 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1900 6700 2150 6700
+$Comp
+L throttle-rescue:GND-power #PWR?
+U 1 1 622260BD
+P 10500 4750
+F 0 "#PWR?" H 10500 4500 50  0001 C CNN
+F 1 "GND" H 10505 4577 50  0000 C CNN
+F 2 "" H 10500 4750 50  0001 C CNN
+F 3 "" H 10500 4750 50  0001 C CNN
+	1    10500 4750
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3650 2500
 $EndSCHEMATC
