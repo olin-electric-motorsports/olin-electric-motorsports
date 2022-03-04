@@ -86,7 +86,7 @@ int main(void) {
 
         // BMS Core message for BMS Status LED
         if (can_poll_receive_bms_core() == 0) {
-            if (bms_core.bms_ok) { // check BMS status
+            if (bms_core.fault_state == FAULT_NONE) { // check BMS status
                 gpio_set_pin(BMS_LED); // set BMS light high
             } else {
                 gpio_clear_pin(BMS_LED); // clear BMS light
