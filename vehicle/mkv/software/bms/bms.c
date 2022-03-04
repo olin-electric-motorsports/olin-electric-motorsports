@@ -142,16 +142,17 @@ static void voltage_task(void) {
     // Sum together all the voltages of the cells and check over/under voltage
     // conditions
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-        if ((ic == 4) || (ic == 5) || (ic == 10) || (ic == 11)) {
-            /*
-             * The pins C5, C6, C11, and C12 are not connected to their own
-             * cells, so we ignore them.
-             */
-            continue;
-        }
-
-        // Sum of cells for a single IC
-        pack_voltage += ICS[ic].stat.stat_codes[0];
+        /*
+         * Sum of cells for a single IC
+         *
+         * The pins C5, C6, C11, and C12 are not connected to their own
+         * cells, so we subtract them off
+         */
+        pack_voltage += ICS[ic].stat.stat_codes[0]
+            - ICS[ic].cells.c_codes[4]
+            - ICS[ic].cells.c_codes[5]
+            - ICS[ic].cells.c_codes[10]
+            - ICS[ic].cells.c_codes[11];
 
         // Odd bits of the ST register are used for undervoltage flags
         uv = (ICS[ic].stat.flags[0] & 0x55) | (ICS[ic].stat.flags[1] & 0x55)
