@@ -238,7 +238,8 @@ static void temperature_task(void) {
                  * turn the fan off and keep checking.
                  */
 
-                // If temperatures are getting a bit too high, we turn on the fan
+                // If temperatures are getting a bit too high, we turn on the
+                // fan
                 if (temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
                     fan_enable(true);
                 }

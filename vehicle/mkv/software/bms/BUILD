@@ -12,7 +12,7 @@ cc_firmware(
         "bms_config.h",
     ],
     target_compatible_with = [
-        "//bazel/constraints:atmega64m1"
+        "//bazel/constraints:atmega64m1",
     ],
     deps = [
         ":can_api",
