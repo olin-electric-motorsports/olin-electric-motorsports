@@ -89,20 +89,6 @@ F 6 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-178
 	0    1    1    0   
 $EndComp
 $Comp
-L formula:R_0_2512 R104
-U 1 1 5C0C29A9
-P 4200 8600
-F 0 "R104" V 4000 8600 50  0000 C CNN
-F 1 "R_0_2512" V 4100 8650 50  0000 C CNN
-F 2 "footprints:R_2512_OEM" H 4130 8600 50  0001 C CNN
-F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 4280 8600 50  0001 C CNN
-F 4 "DK" H 4200 8600 60  0001 C CNN "MFN"
-F 5 "A121322CT-ND" H 4200 8600 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" H 4680 9000 60  0001 C CNN "PurchasingLink"
-	1    4200 8600
-	1    0    0    -1  
-$EndComp
-$Comp
 L formula:LED_0805 D103
 U 1 1 5C0C344A
 P 3950 9650
@@ -201,7 +187,7 @@ Text Notes 550  7925 0    89   ~ 0
 LINREG
 Text Notes 3225 8575 0    50   ~ 0
 Output Capacitors\n
-Text Notes 4300 8650 0    50   ~ 0
+Text Notes 4525 8775 1    50   ~ 0
 VCC Jumper\n
 Text Notes 3800 9900 1    50   ~ 0
 5V Indicator
@@ -1272,9 +1258,9 @@ F 3 "" H 6500 10000 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6500 9850 6850 9850
-Text Label 6850 10050 2    50   ~ 0
-CAN_+
 Text Label 6850 10150 2    50   ~ 0
+CAN_+
+Text Label 6850 10050 2    50   ~ 0
 CAN_-
 Text Notes 6200 9925 1    50   ~ 0
 Vehicle Connectors
@@ -1654,4 +1640,18 @@ $EndComp
 Connection ~ 8600 2925
 Text Label 7825 8300 0    50   ~ 0
 CONN_SL_1
+$Comp
+L formula:R_0 R9
+U 1 1 62241F08
+P 4200 8600
+F 0 "R9" H 4270 8646 50  0000 L CNN
+F 1 "R_0" H 4270 8555 50  0000 L CNN
+F 2 "footprints:R_0603_1608Metric" H 4130 8600 50  0001 C CNN
+F 3 "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" H 4280 8600 50  0001 C CNN
+F 4 "DK" H 4200 8600 60  0001 C CNN "MFN"
+F 5 "P0.0GCT-ND" H 4200 8600 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEY0R00V/P0.0GCT-ND/134711" H 4680 9000 60  0001 C CNN "PurchasingLink"
+	1    4200 8600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
