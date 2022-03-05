@@ -1,25 +1,6 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Formula_UF_4_VT
-#
-DEF Formula_UF_4_VT J 0 40 Y N 1 F N
-F0 "J" 0 300 60 H V C CNN
-F1 "Formula_UF_4_VT" 0 -200 60 H V C CNN
-F2 "footprints:Ultrafit_4" -100 250 60 H I C CNN
-F3 "http://www.literature.molex.com/SQLImages/kelmscott/Molex/PDF_Images/987651-1008.pdf" 0 350 60 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "WM11574-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=WM11574-ND" 500 850 60 H I C CNN "PurchasingLink"
-DRAW
-S 150 250 -150 -150 0 1 0 f
-X 1 1 350 200 200 L 50 50 1 1 P
-X 2 2 350 100 200 L 50 50 1 1 P
-X 3 3 350 0 200 L 50 50 1 1 P
-X 4 4 350 -100 200 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # formula_AP7370
 #
 DEF formula_AP7370 U 0 10 Y Y 1 F N
@@ -396,40 +377,21 @@ X STBY 8 -500 -200 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# formula_MicroFit_VT_6
+# formula_MicroFit_RA_4
 #
-DEF formula_MicroFit_VT_6 U 0 40 Y Y 1 F N
-F0 "U" 0 500 50 H V C CNN
-F1 "formula_MicroFit_VT_6" 0 400 50 H V C CNN
-F2 "footprints:MicroFit_VT_6" 0 -400 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-F4 "430450614" -100 650 50 H V C CNN "MPN"
-F5 "https://www.digikey.com/product-detail/en/molex/0430450614/WM1797-ND/252510" -250 550 50 H V C CNN "PurchasingLink"
+DEF formula_MicroFit_RA_4 J 0 40 Y Y 1 F N
+F0 "J" 0 400 50 H V C CNN
+F1 "formula_MicroFit_RA_4" 0 300 50 H V C CNN
+F2 "footprints:MicroFit_RA_4" 0 -300 50 H I C CNN
+F3 "" 0 0 100 H I C CNN
+F4 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" 0 0 50 H I C CNN "Purchasing Link"
+F5 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" 0 0 50 H I C CNN "PurchasingLink"
 DRAW
-S -100 300 100 -300 0 1 0 f
-X ~ 1 200 250 100 L 50 50 1 1 I
-X ~ 2 200 150 100 L 50 50 1 1 I
-X ~ 3 200 50 100 L 50 50 1 1 I
-X ~ 4 200 -50 100 L 50 50 1 1 I
-X ~ 5 200 -150 100 L 50 50 1 1 I
-X ~ 6 200 -250 100 L 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# formula_MicroFit_V_2
-#
-DEF formula_MicroFit_V_2 J 0 40 Y Y 1 F N
-F0 "J" -100 50 50 H V C CNN
-F1 "formula_MicroFit_V_2" 0 -150 50 H V C CNN
-F2 "footprints:MicroFit_V_2" -50 200 50 H I C CNN
-F3 "https://www.molex.com/pdm_docs/sd/430450225_sd.pdf" -50 200 50 H I C CNN
-F4 "MFN" 100 250 50 H I C CNN "DK"
-F5 "WM10660-ND" 200 350 50 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180" 0 150 50 H I C CNN "PurchasingLink"
-DRAW
-S 150 -100 -150 100 1 1 0 f
-X 1 1 250 50 100 L 50 50 1 1 B
-X 2 2 250 -50 100 L 50 50 1 1 B
+S -100 200 100 -200 1 1 0 f
+X ~ 1 200 150 100 L 50 50 1 1 I
+X ~ 2 200 50 100 L 50 50 1 1 I
+X ~ 3 200 -50 100 L 50 50 1 1 I
+X ~ 4 200 -150 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
@@ -576,27 +538,6 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# formula_R_3.01K
-#
-DEF formula_R_3.01K R 0 0 N Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "formula_R_3.01K" -100 0 50 V V C CNN
-F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
-F3 "http://www.yageo.com.tw/exep/pages/download/literatures/PYu-R_INT-thick_7.pdf" 80 0 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "311-3.01KCRCT-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=311-3.01KCRCT-ND" 480 400 60 H I C CNN "PurchasingLink"
-$FPLIST
- R_*
- Resistor_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # formula_R_60.4
 #
 DEF formula_R_60.4 R 0 40 Y Y 1 F N
@@ -614,23 +555,41 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# formula_SN74LVC1G17
+# formula_SSM3J334R
 #
-DEF formula_SN74LVC1G17 U 0 40 Y Y 1 F N
-F0 "U" 400 100 60 H V C CNN
-F1 "formula_SN74LVC1G17" 650 -400 60 H V C CNN
-F2 "" 0 0 60 H I C CNN
-F3 "http://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf" 0 0 60 H I C CNN
-F4 "DK" -50 400 60 H I C CNN "MFN"
-F5 "296-11933-1-ND" -150 300 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/texas-instruments/SN74LVC1G17DBVR/296-11933-1-ND/389050" 50 500 60 H I C CNN "PurchasingLink"
+DEF formula_SSM3J334R Q 0 0 Y N 1 F N
+F0 "Q" 200 75 50 H V L CNN
+F1 "formula_SSM3J334R" 200 0 50 H V L CNN
+F2 "footprints:SOT-23F" 200 -75 50 H I L CIN
+F3 "" 200 75 50 H I L CNN
+F4 "DK" 500 375 60 H I C CNN "MFN"
+F5 "SSM3J334R,LF" 500 250 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/toshiba-semiconductor-and-storage/SSM3J334R-LF/3863578" 1250 -175 60 H I C CNN "PurchasingLink"
+$FPLIST
+ SOT?23*
+$ENDFPLIST
 DRAW
-S 850 50 350 -350 0 1 0 f
-X N.C. 1 1050 -50 200 L 50 50 1 1 O
-X A 2 1050 -150 200 L 50 50 1 1 O
-X GND 3 1050 -250 200 L 50 50 1 1 O
-X Y 4 150 -250 200 R 50 50 1 1 I
-X VCC 5 150 -50 200 R 50 50 1 1 I
+C 65 0 111 1 1 10 N
+C 100 -70 11 1 1 0 F
+C 100 70 11 1 1 0 F
+P 2 1 1 0 2 0 10 0 N
+P 2 1 1 0 30 -70 100 -70 N
+P 2 1 1 10 30 -50 30 -90 N
+P 2 1 1 0 30 0 100 0 N
+P 2 1 1 10 30 20 30 -20 N
+P 2 1 1 0 30 70 100 70 N
+P 2 1 1 10 30 90 30 50 N
+P 2 1 1 0 100 -70 100 -100 N
+P 2 1 1 0 100 -70 100 0 N
+P 2 1 1 0 100 100 100 70 N
+P 3 1 1 10 10 75 10 -75 10 -75 N
+P 4 1 1 0 90 0 50 -15 50 15 90 0 F
+P 4 1 1 0 100 -70 130 -70 130 70 100 70 N
+P 4 1 1 0 110 -20 115 -15 145 -15 150 -10 N
+P 4 1 1 0 130 -15 115 10 145 10 130 -15 N
+X G 1 -200 0 200 R 50 50 1 1 I
+X S 2 100 -200 100 U 50 50 1 1 P
+X D 3 100 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -671,16 +630,16 @@ X D 3 100 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# formula_T_LAN_7490100111A
+# formula_T_LAN_SM91501ALE
 #
-DEF formula_T_LAN_7490100111A T 0 40 Y Y 1 F N
+DEF formula_T_LAN_SM91501ALE T 0 40 Y Y 1 F N
 F0 "T" 500 1050 60 H V C CNN
-F1 "formula_T_LAN_7490100111A" 950 -400 60 H V C CNN
-F2 "footprints:T_LAN_7490100111A" 400 950 60 H I C CNN
-F3 "https://katalog.we-online.de/pbs/datasheet/7490100111A.pdf" 0 0 60 H I C CNN
+F1 "formula_T_LAN_SM91501ALE" 950 -400 60 H V C CNN
+F2 "footprints:T_LAN_SM91501ALE" 400 950 60 H I C CNN
+F3 "" 0 0 60 H I C CNN
 F4 "DK" 350 500 60 H I C CNN "MFN"
-F5 "732-5711-1-ND" 250 400 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/wurth-electronics-inc/7490100111A/732-5711-1-ND/4969381" 150 300 60 H I C CNN "PurchasingLink"
+F5 "SM91501ALE" 250 400 60 H I C CNN "MPN"
+F6 "https://www.digikey.si/product-detail/en/bourns-inc/SM91501ALE/SM91501ALETR-ND/9650127" 150 300 60 H I C CNN "PurchasingLink"
 DRAW
 A 550 -125 25 -899 899 0 1 0 N 550 -150 550 -100
 A 550 -125 25 -899 899 0 1 0 N 550 -150 550 -100
@@ -820,17 +779,17 @@ P 6 0 1 0 650 50 800 50 800 -300 1200 -300 1200 50 1300 50 N
 P 6 0 1 0 650 750 800 750 800 400 1200 400 1200 750 1300 750 N
 P 6 0 1 0 650 750 800 750 800 400 1200 400 1200 750 1300 750 N
 X ~ 1 250 950 200 R 50 50 1 1 I
-X ~ 10 1500 50 200 L 50 50 1 1 I
-X ~ 11 1500 250 200 L 50 50 1 1 I
-X ~ 14 1500 550 200 L 50 50 1 1 I
-X ~ 15 1500 750 200 L 50 50 1 1 I
-X ~ 16 1500 950 200 L 50 50 1 1 I
+X ~ 10 1500 550 200 L 50 50 1 1 I
+X ~ 11 1500 750 200 L 50 50 1 1 I
+X ~ 12 1500 950 200 L 50 50 1 1 I
 X ~ 2 250 750 200 R 50 50 1 1 I
 X ~ 3 250 550 200 R 50 50 1 1 I
-X ~ 6 250 250 200 R 50 50 1 1 I
-X ~ 7 250 50 200 R 50 50 1 1 I
-X ~ 8 250 -150 200 R 50 50 1 1 I
-X ~ 9 1500 -150 200 L 50 50 1 1 I
+X ~ 4 250 250 200 R 50 50 1 1 I
+X ~ 5 250 50 200 R 50 50 1 1 I
+X ~ 6 250 -150 200 R 50 50 1 1 I
+X ~ 7 1500 -150 200 L 50 50 1 1 I
+X ~ 8 1500 50 200 L 50 50 1 1 I
+X ~ 9 1500 250 200 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
