@@ -14,11 +14,11 @@ S -300 200 250 -300 0 1 0 f
 X CLK 1 -400 100 100 R 50 50 1 1 I
 X U/~D 2 -400 -200 100 R 50 50 1 1 I
 X A1 3 350 100 100 L 50 50 1 1 I
+X GND 4 0 -400 100 U 50 50 1 1 I
 X W 5 350 -50 100 L 50 50 1 1 I
 X B1 6 350 -200 100 L 50 50 1 1 I
 X ~CS 7 -400 -50 100 R 50 50 1 1 I
 X VDD 8 0 300 100 D 50 50 1 1 I
-X GND ~ 0 -400 100 U 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
@@ -434,17 +434,17 @@ X STBY 8 -500 -200 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# formula_MicroFit_VT_4
+# formula_MicroFit_RA_4
 #
-DEF formula_MicroFit_VT_4 J 0 40 Y Y 1 F N
+DEF formula_MicroFit_RA_4 J 0 40 Y Y 1 F N
 F0 "J" 0 400 50 H V C CNN
-F1 "formula_MicroFit_VT_4" 0 300 50 H V C CNN
-F2 "footprints:MicroFit_VT_4" 0 -300 50 H I C CNN
-F3 "" 0 -50 50 H I C CNN
-F4 "430450414" -200 450 50 H V C CNN "MPN"
-F5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" -300 550 50 H V C CNN "PurchasingLink"
+F1 "formula_MicroFit_RA_4" 0 300 50 H V C CNN
+F2 "footprints:MicroFit_RA_4" 0 -300 50 H I C CNN
+F3 "" 0 0 100 H I C CNN
+F4 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" 0 0 50 H I C CNN "Purchasing Link"
+F5 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" 0 0 50 H I C CNN "PurchasingLink"
 DRAW
-S -100 200 100 -200 0 1 0 f
+S -100 200 100 -200 1 1 0 f
 X ~ 1 200 150 100 L 50 50 1 1 I
 X ~ 2 200 50 100 L 50 50 1 1 I
 X ~ 3 200 -50 100 L 50 50 1 1 I
