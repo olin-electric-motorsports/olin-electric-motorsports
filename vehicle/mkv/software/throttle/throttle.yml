@@ -1,12 +1,14 @@
 name: throttle
 subscribe:
   # Transmit MOB is 0
-  - name: dashboard
+  - name: air_control_critical
     mob: 1
   - name: brakelight
     mob: 2
+  - name: dashboard
+    mob: 3
 publish:
-  - name: M167_Voltage_Info
+  - name: M192_Command_Message
   - name: throttle
     id: 0xC
     freq_hz: 100
@@ -21,9 +23,9 @@ publish:
       - name: throttle_pos
         slice: 8 + 8
         unit:
-          type: uint8_t 
+          type: uint8_t
           name: deg
-          offset: 0 
+          offset: 0
           scale: 1
       - name: BOTS_sense
         slice: 16 + 1
@@ -46,4 +48,3 @@ publish:
           values:
             t: E-stop shutdown node closed
             f: E-stop shutdown node open
-

@@ -2,6 +2,14 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 
+// Define throttle values to use when mapping
+// Values are capped at this range
+// Recheck/set these values
+#define THROTTLE0_MIN_COUNTS (uint16_t)(218)
+#define THROTTLE0_MAX_COUNTS (uint16_t)(654)
+#define THROTTLE1_MAX_COUNTS (uint16_t)(298)
+#define THROTTLE1_MIN_COUNTS (uint16_t)(1016)
+
 /*
  * Pin definitions
  */
@@ -20,15 +28,32 @@ gpio_t SS_BOTS = PB7;
 /*
  * ADC pins
  */
-adc_pin_e THROTTLE1_SENSE = ADC8;
-adc_pin_e THROTTLE2_SENSE = ADC9;
 adc_pin_e DRIVE_MODE_SENSE = ADC2;
+
+typedef struct {
+    adc_pin_e adc_pin;
+    // Min ADC Counts
+    uint16_t throttle_min;
+    // Max ADC Counts
+    uint16_t throttle_max;
+} throttle_potentiometer_s;
+
+static throttle_potentiometer_s throttle_0 = {
+    .adc_pin = ADC8,
+    .throttle_min = THROTTLE0_MIN_COUNTS,
+    .throttle_max = THROTTLE0_MAX_COUNTS,
+};
+
+static throttle_potentiometer_s throttle_1 = {
+    .adc_pin = ADC9,
+    .throttle_min = THROTTLE1_MIN_COUNTS,
+    .throttle_max = THROTTLE1_MAX_COUNTS,
+};
 
 /*
  * Timer config
  */
-
-void timer0_callback(void);
+void timer0_isr(void);
 
 timer_cfg_s timer0_cfg = {
     .timer = TIMER0,
@@ -38,6 +63,6 @@ timer_cfg_s timer0_cfg = {
         .output_compare_match = 0x27,
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
-        .interrupt_callback = timer0_callback,
+        .interrupt_callback = timer0_isr,
     },
 };
