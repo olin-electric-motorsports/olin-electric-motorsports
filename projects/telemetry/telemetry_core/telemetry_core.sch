@@ -863,10 +863,10 @@ F 3 "" H 5750 9000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:L_100uH L1
+L formula:L_100uH L101
 U 1 1 5F881F17
 P 4550 8700
-F 0 "L1" H 4550 8800 50  0000 C CNN
+F 0 "L101" H 4550 8800 50  0000 C CNN
 F 1 "L_100uH" H 4550 8650 50  0000 C CNN
 F 2 "footprints:L_100uH_OEM" H 4450 8500 50  0001 C CNN
 F 3 "https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_decoupling_nlfv32-ef_en.pdf" H 4450 8550 50  0001 C CNN
