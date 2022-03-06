@@ -1158,9 +1158,9 @@ Text Notes 11100 1850 0    50   ~ 0
 isoSPI connector
 Text Label 9900 8550 2    50   ~ 0
 SHUTDOWN_IN
-Text Label 12550 4550 2    50   ~ 0
-CAN_+
 Text Label 12550 4650 2    50   ~ 0
+CAN_+
+Text Label 12550 4550 2    50   ~ 0
 CAN_-
 $Comp
 L power:GND #PWR?
@@ -1478,23 +1478,22 @@ Wire Notes Line
 	11800 4000 13550 4000
 Wire Notes Line
 	11800 5650 13550 5650
-Text Label 4200 2150 0    50   ~ 0
-AIR_WELD
 Text Label 4200 3050 0    50   ~ 0
-DEBUG_1
+AIR_WELD
 Text Label 4200 1950 0    50   ~ 0
-DEBUG_2
+DEBUG_1
 Text Label 4200 2050 0    50   ~ 0
+DEBUG_2
+Text Label 4200 2150 0    50   ~ 0
 DEBUG_3
 NoConn ~ 4200 2350
 NoConn ~ 4200 2750
 NoConn ~ 4200 2850
-NoConn ~ 4200 2950
 NoConn ~ 4200 3350
 NoConn ~ 4200 3750
 NoConn ~ 4200 3850
 NoConn ~ 4200 3950
-Text Label 4200 3250 0    50   ~ 0
+Text Label 4200 2950 0    50   ~ 0
 SHUTDOWN_SENSE
 $Comp
 L formula:LED_0805 D6
@@ -1800,9 +1799,9 @@ F 5 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527
 	1    12750 4700
 	-1   0    0    1   
 $EndComp
-Text Label 12550 5150 2    50   ~ 0
-CAN_+
 Text Label 12550 5250 2    50   ~ 0
+CAN_+
+Text Label 12550 5150 2    50   ~ 0
 CAN_-
 $Comp
 L power:+BATT #PWR?
@@ -2022,4 +2021,7 @@ F 3 "" H 12550 5450 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	12150 5350 12550 5350
+NoConn ~ 4200 3250
+Text Label 4200 1850 0    50   ~ 0
+AIR_LSD
 $EndSCHEMATC
