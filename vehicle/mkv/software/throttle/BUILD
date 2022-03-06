@@ -16,10 +16,28 @@ cc_firmware(
     ],
     visibility = ["//visibility:public"],
     deps = [
-    	":can_api",
+        ":can_api",
+        ":utils",
         "//libs/adc",
         "//libs/can",
         "//libs/gpio",
+        "//libs/timer",
+    ],
+)
+
+cc_library(
+    name = "utils",
+    srcs = [
+        "utils/timer.c",
+    ],
+    hdrs = [
+        "utils/timer.h",
+    ],
+    target_compatible_with = [
+        "//bazel/constraints:atmega16m1",
+    ],
+    visibility = ["//visibility:private"],
+    deps = [
         "//libs/timer",
     ],
 )

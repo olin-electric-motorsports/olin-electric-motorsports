@@ -5,137 +5,128 @@
 
 #include "libs/gpio/api.h"
 #include "throttle_config.h"
+#include "utils/timer.h"
 #include "vehicle/mkv/software/throttle/can_api.h"
 
 #include <stdbool.h>
 #include <stdint.h>
 
-// Define throttle values to use when mapping
-// Values are capped at this range
-// Recheck/set these values
-#define throttle1_min_voltage (218)
-#define throttle1_max_voltage (654)
-#define throttle2_min_voltage (298)
-#define throttle2_max_voltage (1016)
+#define ROLLING_AVG_SIZE          8
+#define IMPLAUSIBILITY_TIMEOUT_MS 100
 
-uint8_t deviation_counter = 0; // keeps track of elapsed time of >= 10% deviation in mapped throttle values
+uint8_t deviation_counter = 0; // keeps track of elapsed time of >= 10%
+                               // deviation in mapped throttle values
 
+typedef enum {
+    THROTTLE_IDLE = 0,
+    THROTTLE_RUN,
+    THROTTLE_IMPLAUSIBILITY,
+    THROTTLE_FAULT
+} throttle_state_e;
 
-/*----- gFlag -----*/
-#define FLAG_IMPLAUSIBILITY       	 0
+// copied from air.c for now, but really should be made available via CAN api in
+// future
+typedef enum {
+    AIR_STATE_INIT = 0,
+    AIR_STATE_IDLE,
+    AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED,
+    AIR_STATE_PRECHARGE,
+    AIR_STATE_TS_ACTIVE,
+    AIR_STATE_DISCHARGE,
+    AIR_STATE_FAULT,
+} air_state_e;
 
-volatile uint8_t gFlag = 0x00; // Global Flag. Tells us that gFlag will change and to assign it to an unsigned 8bit integer
-volatile bool send_can = false;
-
-
-/*
- * Interrupts
- */
+struct throttle_state_s {
+    throttle_state_e state;
+    volatile bool send_can;
+    uint16_t throttle0_processed_position;
+    uint16_t throttle1_processed_position;
+    uint16_t throttle_values[8];
+    uint16_t rolling_sum;
+    uint8_t implausibility_fault_counter;
+    bool brake_pressed;
+    bool ready_to_drive;
+    air_state_e air_state;
+} throttle_state = { 0 };
 
 void timer0_isr(void) {
-    send_can = true;
+    // Can timer
+    throttle_state.send_can = true;
 }
 
 void pcint0_isr(void) {
-    /*
-       Check if shutdown Circuit nodes are open or closed.
-     */
-    // Check value of SS_IS, SS_ESTOP, and SS_BOTS pins
+    // Check if shutdown circuit node states
+    throttle.e_stop_sense = !gpio_get_pin(SS_ESTOP);
+    throttle.inertia_switch_sense = !gpio_get_pin(SS_IS);
+    throttle.bots_sense = !gpio_get_pin(SS_BOTS);
 }
 
-
-/*
-* This function takes in an ADC value and maps it to the 0-255 range. 
-*/
-void mapThrottleVoltages(int* throttle1_mapped, int*throttle2_mapped){
-    // read both throttle potentiometers
-    uint16_t throttle1_voltage = 0;
-    uint16_t throttle2_voltage = 0;
-
-
-    throttle1_voltage = adc_read(THROTTLE1_SENSE);
-    throttle2_voltage = adc_read(THROTTLE2_SENSE);
-
-    // TODO: - if the voltage is out of range, 
-    // 	"we might want to throw a fault. Or maybe if it's out of range for too long"
-
-    // If the voltage is out of range, set to min or max
-    if (throttle1_voltage < throttle1_min_voltage) {
-        throttle1_voltage = throttle1_min_voltage;
-    } else if (throttle1_voltage > throttle1_max_voltage) {
-        throttle1_voltage = throttle1_max_voltage;
+uint16_t read_and_process_throttle_pot(throttle_potentiometer_s* throttle) {
+    uint16_t throttle_raw_counts = adc_read(throttle->adc_pin);
+    if (throttle_raw_counts < throttle->throttle_min) {
+        throttle_raw_counts = throttle->throttle_min;
+    } else if (throttle_raw_counts > throttle->throttle_max) {
+        throttle_raw_counts = throttle->throttle_max;
     }
 
-    if (throttle2_voltage < throttle2_min_voltage) {
-        throttle2_voltage = throttle2_min_voltage;
-    } else if (throttle2_voltage > throttle2_max_voltage) {
-        throttle2_voltage = throttle2_max_voltage;
-    }
-
-    // map the values from the pots to 0-255 (8 bits)
-    throttle1_mapped = ((throttle1_voltage - throttle1_min_voltage) * 255) / (throttle1_max_voltage - throttle1_min_voltage);
-    throttle2_mapped = ((throttle2_voltage - throttle2_min_voltage) * 255) / (throttle2_max_voltage - throttle2_min_voltage);
-
+    return ((throttle_raw_counts - throttle->throttle_min) * 255)
+           / (throttle->throttle_max - throttle->throttle_min);
 }
 
 /*
-* This function takes in an the mapped throttle voltages, finds their average, and then
-* calculates the rolling average. 
-*/
-void getAverageThrottlePos(throttle1_mapped, throttle2_mapped) {
-     // Get average throttle pos values
+ * This function takes in an the mapped throttle voltages, finds their average,
+ * and then calculates the rolling average.
+ */
+void get_average_throttle_position() {
+    read_and_process_throttle_pot(&throttle_0);
+    read_and_process_throttle_pot(&throttle_1);
+    // Get average throttle pos values
+    static uint8_t throttle_array_index = 0;
 
-    // get average of two throttle positions
-    uint8_t throttle_array_index = 0;
-    uint8_t throttle_array[8];
-    uint16_t rolling_sum = 0;
+    // Divide by 2 to get average and then by 8 for rolling sum (Shift by 4
+    // total)
+    uint16_t new_throttle_value
+        = ((throttle_state.throttle0_processed_position
+            + throttle_state.throttle1_processed_position)
+           >> 4);
 
-    uint16_t new_throttle_value = (throttle1_mapped + throttle2_mapped) >> 1;
-    uint8_t old_throttle_value = throttle_array[throttle_array_index];
+    // Remove oldest throttle value
+    throttle_state.rolling_sum
+        -= (uint16_t)throttle_state.throttle_values[throttle_array_index];
+    // Add in newest throtlle value and save to buffer
+    throttle_state.rolling_sum += new_throttle_value;
+    throttle_state.throttle_values[throttle_array_index] = new_throttle_value;
 
-    rolling_sum -= old; 
-    rolling_sum += new;
-
-    throttle_array[throttle_array_index] = new;
-
-    throttle_array_index = throttle_array_index + 1;
-
-    // Start back at the first index if at the last index
-    if (throttle_array_index == 8) {
+    // Increment throttle_val_index
+    throttle_array_index++;
+    if (throttle_array_index == ROLLING_AVG_SIZE) {
         throttle_array_index = 0;
-    }   
-
-    // Take the rolling average of the past 8 throttle values
-    uint32_t temp = rolling_sum;
-    temp /= 8;
-    uint8_t throttle_out = temp;
-    return throttle_out;
-
+    }
 }
-
 /*
-* This function detects if there is an implausibility due to a deviation
-* in throttle values.
-*/
-void checkPlausibility(throttle1_mapped, throttle2_mapped) {
+ * This function detects if there is an implausibility due to a deviation
+ * in throttle values.
+ *
+ * Compare mapping of the two voltages to detect implausibility
+ * 	Implausibility is if throttle position between sensors
+ * 	deviates more than 10% (T.4.2.4, T.4.2.5)
+ * 	If implausility persists more than 100 msec, cut power to throttle
+ *
+ * returns integer. 0 means good state, 1 means implausible
+ */
+int check_implausibility() {
+    uint8_t throttle_diff = (throttle_state.throttle0_processed_position
+                             - throttle_state.throttle1_processed_position)
+                            * 10;
 
-    // Compare mapping of the two voltages to detect implausibility
-    //      Implausibility is if throttle position between sensors
-    //      deviates more than 10% (T.4.2.4, T.4.2.5)
-    //      If implausility persists more than 100 msec, cut power to throttle
-
-    if ((abs(throttle1_mapped - throttle2_mapped)) > 256/10) {
-        deviation_counter +=1;
+    if (throttle_diff > 255 || throttle_diff < 255) {
+        throttle_state.implausibility_fault_counter += 1;
     } else {
-        deviation_counter = 0;
-    }
-    
-    if (deviation_coutner > 100) {
-        gFlag |= _BV(FLAG_IMPLAUSIBILITY); 
-    } else {
-        gFlag &= ~_BV(FLAG_IMPLAUSIBILITY);
+        throttle_state.implausibility_fault_counter = 0;
     }
 
+    return (int)(throttle_state.implausibility_fault_counter
+                 > IMPLAUSIBILITY_TIMEOUT_MS);
 }
 
 int main(void) {
@@ -161,29 +152,92 @@ int main(void) {
     sei();
 
     // Initialize motor controller
-    can_motor_controller[4] = 1; // anticlockwise
-
-    mc_msg.data = can_motor_controller;
-
-    can_send(&mc_msg)
-
-    can_receive(&rx_dashboard_msg, rx_dashboard_filter);
+    m192_command_message.torque_command = 0;
+    m192_command_message.speed_command = 0;
+    m192_command_message.direction_command = 1; // anticlockwise
+    m192_command_message.inverter_enable = 0;
+    m192_command_message.inverter_discharge = 0;
+    m192_command_message.speed_mode_enable = 0;
+    m192_command_message.rolling_counter = 0;
+    m192_command_message.torque_command = 0;
+    can_send_m192_command_message();
 
     while (1) {
         if (run_1ms) {
-            // Do 1 millisecond loop stuff
+            // Faults detects
+            // state trap is throttle and brake
 
-            uint16_t throttle1_mapped;
-            uint16_t throttle2__mapped;
-            mapThrottleVoltages(&throttle1_mapped, throttle2_mapped);
-            getAverageThrottlePos(throttle1_mapped, throttle2_mapped);    
-            checkPlausibility(throttle1_mapped, throttle2_mapped);
-    
-            // TODO: check if brake is activated (don't send throttle if so)           
-    
+            if (can_poll_receive_air_control_critical() == 0) {
+                throttle_state.air_state = air_control_critical.state;
+                can_receive_air_control_critical();
+            }
+            if (throttle_state.air_state == AIR_STATE_FAULT) {
+                throttle_state.state = THROTTLE_FAULT;
+            }
 
-		if (send_can) {
-            can_send_throttle();
-            // TODO: send motor controller message 
-		}
+            if (can_poll_receive_brakelight() == 0) {
+                throttle_state.brake_pressed = brakelight.brake_gate;
+                can_receive_brakelight();
+            }
+
+            if (can_poll_receive_dashboard() == 0) {
+                throttle_state.ready_to_drive = dashboard.ready_to_drive;
+                can_receive_dashboard();
+            }
+
+            switch (throttle_state.state) {
+                case THROTTLE_IDLE: {
+                    m192_command_message.torque_command = 0;
+                    if (throttle_state.ready_to_drive) {
+                        throttle_state.state = THROTTLE_RUN;
+                    }
+                    break;
+                }
+                case THROTTLE_RUN: {
+                    get_average_throttle_position();
+
+                    // Brake has precedence over throttle
+                    if (throttle_state.brake_pressed) {
+                        m192_command_message.torque_command = 0;
+                    } else {
+                        m192_command_message.torque_command
+                            = throttle_state.rolling_sum;
+                    }
+
+                    if (!(throttle_state.air_state
+                          == AIR_STATE_TS_ACTIVE)) { // Switch to postive enums
+                                                     // cases?
+                        throttle_state.state = THROTTLE_IDLE;
+                    } else if (!check_implausibility()) {
+                        throttle_state.state = THROTTLE_IMPLAUSIBILITY;
+                    }
+                    break;
+                }
+                // This case could be lumped in with the brake if statment
+                // above, but is seperated out for easy debugging
+                case THROTTLE_IMPLAUSIBILITY: {
+                    // Need to update throttle val to leave implausibility
+                    // state
+                    get_average_throttle_position();
+                    m192_command_message.torque_command = 0;
+                    if (!check_implausibility()) {
+                        throttle_state.state = THROTTLE_RUN;
+                    }
+                    break;
+                }
+                case THROTTLE_FAULT: {
+                    m192_command_message.torque_command = 0;
+                    // Anything else?
+                    break;
+                }
+            }
+
+            if (throttle_state.send_can) {
+                can_send_throttle();
+                can_send_m192_command_message();
+            }
+        }
     }
+}
+
+// can timeout?
