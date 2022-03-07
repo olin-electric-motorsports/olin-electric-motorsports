@@ -1004,9 +1004,9 @@ Wire Wire Line
 Text Label 3900 1500 0    50   ~ 0
 P_LED_1
 Text Label 3900 1600 0    50   ~ 0
-P_LED_3
-Text Label 3900 1700 0    50   ~ 0
 P_LED_2
+Text Label 3900 1700 0    50   ~ 0
+P_LED_3
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 618699AF
