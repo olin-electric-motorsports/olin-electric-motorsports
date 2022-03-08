@@ -115,7 +115,7 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
+    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW_daV) {
         set_fault(AIR_FAULT_BMS_VOLTAGE);
         rc = 1;
         goto bail;
@@ -133,7 +133,7 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW) {
+    if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
         set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
         rc = 1;
         goto bail;
@@ -342,7 +342,7 @@ static void state_machine_run(void) {
                 return;
             }
 
-            if (motor_controller_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW) {
+            if (motor_controller_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
                 once = true;
                 air_control_critical.air_state = IDLE;
                 return;

@@ -5,7 +5,7 @@
 int get_motor_controller_voltage(int16_t* voltage) {
     int rc;
 
-    uint32_t now = get_time();
+    uint32_t start_time = get_time();
 
     (void)can_receive_m167_voltage_info();
 
@@ -14,7 +14,7 @@ int get_motor_controller_voltage(int16_t* voltage) {
 
         if (rc == 1) {
             goto bail;
-        } else if (get_time() - now > 1000) {
+        } else if (get_time() - start_time > 1000) {
             rc = 2;
             goto bail;
         }
@@ -29,7 +29,7 @@ bail:
 int get_bms_voltage(int16_t* voltage) {
     int rc;
 
-    uint32_t now = get_time();
+    uint32_t start_time = get_time();
 
     (void)can_receive_bms_core();
 
@@ -38,7 +38,7 @@ int get_bms_voltage(int16_t* voltage) {
 
         if (rc == 1) {
             goto bail;
-        } else if (get_time() - now > 1000) {
+        } else if (get_time() - start_time > 1000) {
             rc = 2;
             goto bail;
         }
