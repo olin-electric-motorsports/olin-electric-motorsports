@@ -123,6 +123,7 @@ def _map_file_impl(ctx):
     args = ctx.actions.args()
     args.add(input_file)
     args.add(output_file)
+    args.add("-t")
 
     ctx.actions.run(
         mnemonic = "GenerateMap",
