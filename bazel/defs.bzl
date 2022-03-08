@@ -108,6 +108,55 @@ _hex_file = rule(
     fragments = ["cpp"],
 )
 
+def _map_file_impl(ctx):
+    # ctx.file contains a single File or None for dependency attributes whose
+    # specs set allow_single_file=True
+    # (https://docs.bazel.build/versions/main/skylark/rules.html)
+    input_file = ctx.file.elf
+
+    cc_toolchain = find_cpp_toolchain(ctx)
+
+    # Declares an output file with the name `label`.bin
+    output_file = ctx.actions.declare_file(ctx.label.name)
+
+    # Declare a set of commandline args
+    args = ctx.actions.args()
+    args.add(input_file)
+    args.add(output_file)
+
+    ctx.actions.run(
+        mnemonic = "GenerateMap",
+        executable = cc_toolchain.objdump_executable,
+        arguments = [args],
+        inputs = depset([input_file]),
+        outputs = [output_file],
+    )
+
+    return [
+        DefaultInfo(
+            files = depset([output_file]),
+        ),
+    ]
+
+_map_file = rule(
+    implementation = _map_file_impl,
+    attrs = {
+        "elf": attr.label(
+            mandatory = True,
+            allow_single_file = True,
+        ),
+        "_cc_toolchain": attr.label(
+            default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
+        ),
+    },
+    executable = False,
+    toolchains = [
+        "@bazel_tools//tools/cpp:toolchain_type",
+    ],
+    incompatible_use_toolchain_transition = True,
+    fragments = ["cpp"],
+)
+
 def _bin_file_impl(ctx):
     # ctx.file contains a single File or None for dependency attributes whose
     # specs set allow_single_file=True
@@ -255,6 +304,12 @@ def cc_firmware(name, **kwargs):
     # Generates .eep file
     _eep_file(
         name = "{}.eep".format(name),
+        elf = ":{}.elf".format(name),
+    )
+
+    # Generate .map file
+    _map_file(
+        name = "{}.map".format(name),
         elf = ":{}.elf".format(name),
     )
 
