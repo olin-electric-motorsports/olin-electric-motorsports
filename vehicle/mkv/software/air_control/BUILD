@@ -19,22 +19,22 @@ cc_firmware(
         "//bazel/constraints:atmega16m1",
     ],
     deps = [
-        ":bsp",
         ":can_api",
+        ":utils",
         "//libs/gpio",
         "//libs/timer",
     ],
 )
 
 cc_library(
-    name = "bsp",
+    name = "utils",
     srcs = [
-        "bsp/bsp.c",
-        "bsp/timer.c",
+        "utils/timer.c",
+        "utils/utils.c",
     ],
     hdrs = [
-        "bsp/bsp.h",
-        "bsp/timer.h",
+        "utils/timer.h",
+        "utils/utils.h",
     ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
