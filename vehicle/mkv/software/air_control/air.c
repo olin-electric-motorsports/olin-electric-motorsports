@@ -334,8 +334,7 @@ static void state_machine_run(void) {
                 return;
             }
 
-            int16_t mc_voltage;
-            int rc = get_motor_controller_voltage(&mc_voltage);
+            int rc = get_motor_controller_voltage(&motor_controller_voltage);
 
             if (rc != 0) {
                 set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
@@ -343,7 +342,7 @@ static void state_machine_run(void) {
                 return;
             }
 
-            if (mc_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW) {
+            if (motor_controller_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW) {
                 once = true;
                 air_control_critical.air_state = IDLE;
                 return;
