@@ -3,7 +3,6 @@
 #include "vehicle/mkv/software/bms/bms_config.h"
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
-#include "vehicle/mkv/software/bms/utils/fault.h"
 #include "vehicle/mkv/software/bms/utils/mux.h"
 
 // Array of mux addresses
@@ -16,8 +15,10 @@ static void fan_enable(bool enable) {
     timer_init(&timer1_fan_cfg);
 }
 
-void temperature_task(void) {
-    uint8_t error = 0;
+int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
+                     uint32_t* ut) {
+    int rc = 0;
+    int error = 0;
     int32_t cumulative_temperature = 0;
 
     for (uint8_t mux = 0; mux < NUM_MUXES; mux++) {
@@ -37,8 +38,9 @@ void temperature_task(void) {
             // Read voltage from auxiliary pin (connected to the mux)
             error = LTC6811_rdaux(AUX_CH_GPIO1, NUM_ICS, ICS);
 
-            if (error) {
-                bms_metrics.temperature_pec_error_count += error;
+            if (error = -1) {
+                bms_metrics.temperature_pec_error_count++;
+                rc = 1;
                 continue;
             }
 
@@ -71,17 +73,8 @@ void temperature_task(void) {
                  * comparisons are reversed (i.e. less than over-temp threshold)
                  */
                 if (temperature < OVERTEMPERATURE_THRESHOLD) {
-                    set_fault(BMS_FAULT_OVERTEMPERATURE);
+                    *ot++;
                 }
-
-                /*
-                 * TODO: It would be good to have some buffer so the fans aren't
-                 * pulsing on and off ever. This could be as simple as having a
-                 * counter while the fan is on, and we keep the fan on for the
-                 * duration of the counter, and once the counter is up, we check
-                 * if the temperature is in safe range (lower than soft OT), we
-                 * turn the fan off and keep checking.
-                 */
 
                 // If temperatures are getting a bit too high, we turn on the
                 // fan
@@ -89,30 +82,35 @@ void temperature_task(void) {
                     fan_enable(true);
                 }
 
-                if (temperature > SOFT_OVERTEMPERATURE_THRESHOLD) {
+                if (temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
                     fan_enable(false);
                 }
 
                 if (temperature > UNDERTEMPERATURE_THRESHOLD) {
-                    set_fault(BMS_FAULT_UNDERTEMPERATURE);
+                    *ut++;
                 }
             } // End for each IC
 
             /*
-             * Compute average temperature. WARNING: truncates a 32 bit number
-             * into a 16 bit number. This shouldn't be a problem, but the reader
+             * Compute average temperature. This truncates a 32 bit number
+             * into a 16 bit number. This shouldn't be a problem because the
+             * average temperature won't be larger than 16-bits, but the reader
              * should be aware that this is intentional. A 32 bit number is
-             * needed to store the cumulative sum.
+             * needed to store the cumulative sum, and it can be shown that this
+             * is sufficient to store the sum of all the temperature sensor
+             * voltages
              */
-            bms_core.pack_temperature
-                = (uint16_t)cumulative_temperature
-                  / (NUM_MUXES * NUM_MUX_CHANNELS * NUM_TEMPERATURE_ICS);
-
+            bms_core.pack_temperature = (uint16_t)(
+                cumulative_temperature
+                / (NUM_MUXES * NUM_MUX_CHANNELS * NUM_TEMPERATURE_ICS));
         } // End for each mux channel
     } // End for each mux
 
     // Finally, disable all multiplexers
+    // TODO: needed?
     enable_mux(NUM_ICS, ICS, MUX1, MUX_DISABLE, 0);
     enable_mux(NUM_ICS, ICS, MUX2, MUX_DISABLE, 0);
     enable_mux(NUM_ICS, ICS, MUX3, MUX_DISABLE, 0);
+
+    return rc;
 }
