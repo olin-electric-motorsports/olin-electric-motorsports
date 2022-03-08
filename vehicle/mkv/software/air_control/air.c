@@ -424,6 +424,9 @@ fault:
     gpio_set_pin(FAULT_LED);
 
     while (1) {
+        /*
+         * Continue senging CAN messages
+         */
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
