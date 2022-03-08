@@ -27,27 +27,27 @@ enum State {
 };
 
 enum FaultCode {
-    FAULT_NONE = 0x00,
-    FAULT_AIR_N_WELD,
-    FAULT_AIR_P_WELD,
-    FAULT_BOTH_AIRS_WELD,
-    FAULT_PRECHARGE_FAIL,
-    FAULT_DISCHARGE_FAIL,
-    FAULT_PRECHARGE_FAIL_RELAY_WELDED, // voltage divider
-    FAULT_CAN_ERROR,
-    FAULT_CAN_BMS_TIMEOUT,
-    FAULT_CAN_MC_TIMEOUT,
-    FAULT_SHUTDOWN_IMPLAUSIBILITY,
-    FAULT_MOTOR_CONTROLLER_VOLTAGE,
-    FAULT_BMS_VOLTAGE,
-    FAULT_IMD_STATUS,
-    FAULT_BMS_STATUS,
+    AIR_FAULT_NONE = 0x00,
+    AIR_FAULT_AIR_N_WELD,
+    AIR_FAULT_AIR_P_WELD,
+    AIR_FAULT_BOTH_AIRS_WELD,
+    AIR_FAULT_PRECHARGE_FAIL,
+    AIR_FAULT_DISCHARGE_FAIL,
+    AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // voltage divider
+    AIR_FAULT_CAN_ERROR,
+    AIR_FAULT_CAN_BMS_TIMEOUT,
+    AIR_FAULT_CAN_MC_TIMEOUT,
+    AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY,
+    AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE,
+    AIR_FAULT_BMS_VOLTAGE,
+    AIR_FAULT_IMD_STATUS,
+    AIR_FAULT_BMS_STATUS,
 };
 
 static void set_fault(enum FaultCode the_fault) {
     gpio_set_pin(FAULT_LED);
 
-    if (air_control_critical.air_fault == FAULT_NONE) {
+    if (air_control_critical.air_fault == AIR_FAULT_NONE) {
         // Only update fault state for the first fault to occur
         air_control_critical.air_fault = the_fault;
     }
@@ -72,7 +72,7 @@ void pcint0_callback(void) {
 
 void pcint1_callback(void) {
     if (!gpio_get_pin(BMS_SENSE)) {
-        set_fault(FAULT_BMS_STATUS);
+        set_fault(AIR_FAULT_BMS_STATUS);
         air_control_critical.bms_status = false;
     }
 
@@ -82,7 +82,7 @@ void pcint1_callback(void) {
 
 void pcint2_callback(void) {
     if (!gpio_get_pin(IMD_SENSE)) {
-        set_fault(FAULT_IMD_STATUS);
+        set_fault(AIR_FAULT_IMD_STATUS);
         air_control_critical.imd_status = false;
     }
 }
@@ -107,16 +107,16 @@ static int initial_checks(void) {
     rc = get_bms_voltage(&bms_voltage);
 
     if (rc == 1) {
-        set_fault(FAULT_CAN_ERROR);
+        set_fault(AIR_FAULT_CAN_ERROR);
         goto bail;
     } else if (rc == 2) {
-        set_fault(FAULT_CAN_BMS_TIMEOUT);
+        set_fault(AIR_FAULT_CAN_BMS_TIMEOUT);
         rc = 1;
         goto bail;
     }
 
     if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
-        set_fault(FAULT_BMS_VOLTAGE);
+        set_fault(AIR_FAULT_BMS_VOLTAGE);
         rc = 1;
         goto bail;
     }
@@ -125,16 +125,16 @@ static int initial_checks(void) {
     rc = get_motor_controller_voltage(&mc_voltage);
 
     if (rc == 1) {
-        set_fault(FAULT_CAN_ERROR);
+        set_fault(AIR_FAULT_CAN_ERROR);
         goto bail;
     } else if (rc == 2) {
-        set_fault(FAULT_CAN_MC_TIMEOUT);
+        set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
         rc = 1;
         goto bail;
     }
 
     if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW) {
-        set_fault(FAULT_MOTOR_CONTROLLER_VOLTAGE);
+        set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
         rc = 1;
         goto bail;
     }
@@ -145,13 +145,13 @@ static int initial_checks(void) {
     air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 
     if (air_control_critical.air_p_status) {
-        set_fault(FAULT_AIR_P_WELD);
+        set_fault(AIR_FAULT_AIR_P_WELD);
         rc = 1;
         goto bail;
     }
 
     if (air_control_critical.air_n_status) {
-        set_fault(FAULT_AIR_N_WELD);
+        set_fault(AIR_FAULT_AIR_N_WELD);
         rc = 1;
         goto bail;
     }
@@ -159,7 +159,7 @@ static int initial_checks(void) {
     if (!gpio_get_pin(SS_TSMS)) {
         // SS_TSMS should start high
         air_control_critical.ss_tsms = true;
-        set_fault(FAULT_SHUTDOWN_IMPLAUSIBILITY);
+        set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
         rc = 1;
         goto bail;
     }
@@ -167,7 +167,7 @@ static int initial_checks(void) {
     if (!gpio_get_pin(IMD_SENSE)) {
         // IMD_SENSE pin should start high
         air_control_critical.imd_status = false;
-        set_fault(FAULT_IMD_STATUS);
+        set_fault(AIR_FAULT_IMD_STATUS);
         rc = 1;
         goto bail;
     } else {
@@ -178,7 +178,7 @@ static int initial_checks(void) {
     if (!gpio_get_pin(BMS_SENSE)) {
         // IMD_SENSE pin should start high
         air_control_critical.bms_status = false;
-        set_fault(FAULT_BMS_STATUS);
+        set_fault(AIR_FAULT_BMS_STATUS);
         rc = 1;
         goto bail;
     } else {
@@ -190,7 +190,7 @@ bail:
 }
 
 static void state_machine_run(void) {
-    if (air_control_critical.air_fault != FAULT_NONE) {
+    if (air_control_critical.air_fault != AIR_FAULT_NONE) {
         air_control_critical.air_state = FAULT;
     }
 
@@ -219,7 +219,7 @@ static void state_machine_run(void) {
                     once = true;
                 }
             } else {
-                set_fault(FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
                 once = true;
             }
             return;
@@ -236,7 +236,7 @@ static void state_machine_run(void) {
             rc = get_bms_voltage(&pack_voltage);
 
             if (rc != 0) {
-                set_fault(FAULT_CAN_BMS_TIMEOUT);
+                set_fault(AIR_FAULT_CAN_BMS_TIMEOUT);
                 return;
             }
 
@@ -256,7 +256,7 @@ static void state_machine_run(void) {
             if (get_time() - start_time < 2000) {
                 rc = get_motor_controller_voltage(&motor_controller_voltage);
                 if (rc != 0) {
-                    set_fault(FAULT_CAN_MC_TIMEOUT);
+                    set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
                     once = true;
                     return;
                 }
@@ -278,7 +278,7 @@ static void state_machine_run(void) {
                 // 2000 ms (2sec) have elapsed and the motor controller hasn't
                 // reached the appropriate voltage, so precharge failed
                 once = true;
-                set_fault(FAULT_PRECHARGE_FAIL);
+                set_fault(AIR_FAULT_PRECHARGE_FAIL);
                 return;
             }
         } break;
@@ -297,15 +297,15 @@ static void state_machine_run(void) {
             if (air_control_critical.air_p_status
                 && air_control_critical.air_n_status) {
                 air_control_critical.air_state = FAULT;
-                set_fault(FAULT_BOTH_AIRS_WELD);
+                set_fault(AIR_FAULT_BOTH_AIRS_WELD);
                 return;
             } else if (air_control_critical.air_p_status) {
                 air_control_critical.air_state = FAULT;
-                set_fault(FAULT_AIR_P_WELD);
+                set_fault(AIR_FAULT_AIR_P_WELD);
                 return;
             } else if (air_control_critical.air_n_status) {
                 air_control_critical.air_state = FAULT;
-                set_fault(FAULT_AIR_N_WELD);
+                set_fault(AIR_FAULT_AIR_N_WELD);
                 return;
             }
 
@@ -329,7 +329,7 @@ static void state_machine_run(void) {
 
                 if (rc == 2) {
                     // Timeout
-                    set_fault(FAULT_CAN_MC_TIMEOUT);
+                    set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
                 }
                 return;
             }
@@ -338,7 +338,7 @@ static void state_machine_run(void) {
             int rc = get_motor_controller_voltage(&mc_voltage);
 
             if (rc != 0) {
-                set_fault(FAULT_CAN_MC_TIMEOUT);
+                set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
                 once = true;
                 return;
             }
@@ -348,7 +348,7 @@ static void state_machine_run(void) {
                 air_control_critical.air_state = IDLE;
                 return;
             } else {
-                set_fault(FAULT_DISCHARGE_FAIL);
+                set_fault(AIR_FAULT_DISCHARGE_FAIL);
                 once = true;
                 return;
             }
