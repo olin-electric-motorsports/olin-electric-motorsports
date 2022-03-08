@@ -53,9 +53,9 @@ gpio_t AIR_N_WELD_DETECT = PC7;
 gpio_t IMD_SENSE = PD0;
 #endif
 
-#define BMS_VOLTAGE_THRESHOLD_LOW_daV      (20) // 20 decavolts (200 volts)
+#define BMS_VOLTAGE_THRESHOLD_LOW_daV     (20) // 20 decavolts (200 volts)
 #define MOTOR_CONTROLLER_THRESHOLD_LOW_dV (50) // 50 decivolts (5 volts)
-#define PRECHARGE_THRESHOLD            (0.95) // 95% of pack voltage
+#define PRECHARGE_THRESHOLD               (0.95) // 95% of pack voltage
 
 /*
  * Timer
