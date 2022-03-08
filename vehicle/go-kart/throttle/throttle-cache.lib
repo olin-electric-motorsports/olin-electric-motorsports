@@ -30,8 +30,8 @@ F1 "formula_ATMEGA16M1" 500 -1400 50 H V L BNN
 F2 "footprints:TQFP-32_7x7mm_Pitch0.8mm" 0 0 50 H I C CIN
 F3 "" -950 1830 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "ATMEGA16M1-AU-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208" -550 2230 60 H I C CNN "PurchasingLink"
+F5 "ATMEGA64M1-AU-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/microchip-technology/ATMEGA64M1-AU/2271014" -550 2230 60 H I C CNN "PurchasingLink"
 $FPLIST
  TQFP*32*7x7mm*
 $ENDFPLIST
@@ -226,6 +226,55 @@ X 1 1 -100 0 50 R 50 50 1 1 P
 X 2 2 0 -150 75 U 50 50 1 1 P
 X 3 3 100 0 50 L 50 50 1 1 P
 X 4 4 0 150 75 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_D_Zener_18V
+#
+DEF formula_D_Zener_18V D 0 40 N N 1 F N
+F0 "D" 0 100 50 H V C CNN
+F1 "formula_D_Zener_18V" 0 -100 50 H V C CNN
+F2 "footprints:DO-214AA" -100 0 50 H I C CNN
+F3 "http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf" 0 100 50 H I C CNN
+F4 "DK" 200 300 60 H I C CNN "MFN"
+F5 "SMBJ5355B-TPMSCT-ND" 100 200 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND" 400 500 60 H I C CNN "PurchasingLink"
+$FPLIST
+ TO-???*
+ *SingleDiode
+ *_Diode_*
+ *SingleDiode*
+ D_*
+$ENDFPLIST
+DRAW
+P 2 0 1 8 -50 -50 -100 -50 N
+P 2 0 1 8 -50 50 0 50 N
+P 2 0 1 0 50 0 -50 0 N
+P 3 0 1 8 -50 -50 -50 50 -30 50 N
+P 4 0 1 8 50 -50 50 50 -50 0 50 -50 N
+X K 1 -150 0 100 R 50 50 1 1 P
+X A 2 150 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_F_500mA_16V
+#
+DEF formula_F_500mA_16V F 0 0 N Y 1 F N
+F0 "F" 80 0 50 V V C CNN
+F1 "formula_F_500mA_16V" -75 0 50 V V C CNN
+F2 "footprints:Fuse_1210" -70 0 50 V I C CNN
+F3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" 80 0 50 V I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "507-1786-1-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" 480 400 60 V I C CNN "PurchasingLink"
+$FPLIST
+ *Fuse*
+$ENDFPLIST
+DRAW
+S -30 -100 30 100 0 1 10 N
+P 2 0 1 0 0 100 0 -100 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -468,6 +517,27 @@ F3 "" -1200 450 50 H I L CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
 F5 "667-ERJ-6ENF1200V" -1200 250 60 H I L CNN "MPN"
 F6 "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" -1200 350 60 H I L CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_1K
+#
+DEF formula_R_1K R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_1K" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
+F3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "RNCP0805FTD1K00CT-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" 480 400 60 H I C CNN "PurchasingLink"
 $FPLIST
  R_*
  Resistor_*

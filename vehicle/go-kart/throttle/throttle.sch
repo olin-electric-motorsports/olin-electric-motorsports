@@ -694,7 +694,7 @@ F 6 "https://www.mouser.com/ProductDetail/Molex/43650-1212?qs=sGAEpiMZZMs%252bGH
 $EndComp
 Text Label 2750 5950 0    50   ~ 0
 GND
-Text Label 2750 6050 0    50   ~ 0
+Text Label 2750 6950 0    50   ~ 0
 VIN1
 Text Label 2750 6250 0    50   ~ 0
 GND
@@ -702,11 +702,11 @@ Text Label 2750 6550 0    50   ~ 0
 GND
 Text Label 2750 6850 0    50   ~ 0
 GND
-Text Label 2750 6350 0    50   ~ 0
-VIN2
 Text Label 2750 6650 0    50   ~ 0
+VIN2
+Text Label 2750 6350 0    50   ~ 0
 VIN3
-Text Label 2750 6950 0    50   ~ 0
+Text Label 2750 6050 0    50   ~ 0
 VIN4
 Text Notes 1800 5550 0    89   ~ 0
 Connectors
@@ -730,39 +730,39 @@ Wire Notes Line
 $Comp
 L formula:AP7370 U7
 U 1 1 621865CC
-P 2650 8650
-F 0 "U7" H 2650 8892 50  0000 C CNN
-F 1 "AP7370" H 2650 8801 50  0000 C CNN
-F 2 "footprints:SOT-23-5" H 2600 8850 50  0001 C CNN
-F 3 "https://www.diodes.com/assets/Datasheets/AP7370.pdf" H 2750 8400 50  0001 C CNN
-F 4 "DK" H 2700 8975 60  0001 C CNN "MFN"
-F 5 "AP7370-50W5-7DICT-ND" H 2800 9075 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/diodes-incorporated/AP7370-50W5-7/10235827" H 2800 9075 60  0001 C CNN "PurchasingLink"
-	1    2650 8650
+P 3100 8500
+F 0 "U7" H 3100 8742 50  0000 C CNN
+F 1 "AP7370" H 3100 8651 50  0000 C CNN
+F 2 "footprints:SOT-23-5" H 3050 8700 50  0001 C CNN
+F 3 "https://www.diodes.com/assets/Datasheets/AP7370.pdf" H 3200 8250 50  0001 C CNN
+F 4 "DK" H 3150 8825 60  0001 C CNN "MFN"
+F 5 "AP7370-50W5-7DICT-ND" H 3250 8925 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/diodes-incorporated/AP7370-50W5-7/10235827" H 3250 8925 60  0001 C CNN "PurchasingLink"
+	1    3100 8500
 	1    0    0    -1  
 $EndComp
 $Comp
 L throttle-rescue:GND-power #PWR?
 U 1 1 62188C46
-P 2650 8950
-F 0 "#PWR?" H 2650 8700 50  0001 C CNN
-F 1 "GND" H 2655 8777 50  0000 C CNN
-F 2 "" H 2650 8950 50  0001 C CNN
-F 3 "" H 2650 8950 50  0001 C CNN
-	1    2650 8950
+P 3100 8800
+F 0 "#PWR?" H 3100 8550 50  0001 C CNN
+F 1 "GND" H 3105 8627 50  0000 C CNN
+F 2 "" H 3100 8800 50  0001 C CNN
+F 3 "" H 3100 8800 50  0001 C CNN
+	1    3100 8800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2950 8650 3350 8650
+	3400 8500 3550 8500
 $Comp
 L throttle-rescue:+5V-power #PWR?
 U 1 1 6218F3B2
-P 3800 8650
-F 0 "#PWR?" H 3800 8500 50  0001 C CNN
-F 1 "+5V" H 3815 8823 50  0000 C CNN
-F 2 "" H 3800 8650 50  0001 C CNN
-F 3 "" H 3800 8650 50  0001 C CNN
-	1    3800 8650
+P 4650 8300
+F 0 "#PWR?" H 4650 8150 50  0001 C CNN
+F 1 "+5V" H 4665 8473 50  0000 C CNN
+F 2 "" H 4650 8300 50  0001 C CNN
+F 3 "" H 4650 8300 50  0001 C CNN
+	1    4650 8300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -779,77 +779,67 @@ $EndComp
 $Comp
 L throttle-rescue:+BATT-power #PWR?
 U 1 1 62196DD9
-P 1550 8650
-F 0 "#PWR?" H 1550 8500 50  0001 C CNN
-F 1 "+BATT" H 1565 8823 50  0000 C CNN
-F 2 "" H 1550 8650 50  0001 C CNN
-F 3 "" H 1550 8650 50  0001 C CNN
-	1    1550 8650
+P 1050 8500
+F 0 "#PWR?" H 1050 8350 50  0001 C CNN
+F 1 "+BATT" H 1065 8673 50  0000 C CNN
+F 2 "" H 1050 8500 50  0001 C CNN
+F 3 "" H 1050 8500 50  0001 C CNN
+	1    1050 8500
 	1    0    0    -1  
 $EndComp
 $Comp
 L formula:C_1uF C7
 U 1 1 62198FDD
-P 3350 8850
-F 0 "C7" H 3465 8946 50  0000 L CNN
-F 1 "C_1uF" H 3465 8855 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 3388 9450 50  0001 C CNN
-F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 3375 9700 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 3775 9350 60  0001 C CNN "PurchasingLink"
-	1    3350 8850
+P 3550 8700
+F 0 "C7" H 3665 8796 50  0000 L CNN
+F 1 "C_1uF" H 3665 8705 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 3588 9300 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 3575 9550 50  0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 3975 9200 60  0001 C CNN "PurchasingLink"
+	1    3550 8700
 	1    0    0    -1  
 $EndComp
 $Comp
 L throttle-rescue:GND-power #PWR?
 U 1 1 62199AFF
-P 3350 8950
-F 0 "#PWR?" H 3350 8700 50  0001 C CNN
-F 1 "GND" H 3355 8777 50  0000 C CNN
-F 2 "" H 3350 8950 50  0001 C CNN
-F 3 "" H 3350 8950 50  0001 C CNN
-	1    3350 8950
+P 3550 8800
+F 0 "#PWR?" H 3550 8550 50  0001 C CNN
+F 1 "GND" H 3555 8627 50  0000 C CNN
+F 2 "" H 3550 8800 50  0001 C CNN
+F 3 "" H 3550 8800 50  0001 C CNN
+	1    3550 8800
 	1    0    0    -1  
 $EndComp
-Connection ~ 3350 8650
+Connection ~ 3550 8500
 Wire Wire Line
-	3350 8650 3800 8650
-Wire Wire Line
-	1550 8650 1900 8650
+	3550 8500 4300 8500
 $Comp
 L formula:C_1uF C6
 U 1 1 6219D59E
-P 1900 8850
-F 0 "C6" H 2015 8946 50  0000 L CNN
-F 1 "C_1uF" H 2015 8855 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 1938 9450 50  0001 C CNN
-F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 1925 9700 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 2325 9350 60  0001 C CNN "PurchasingLink"
-	1    1900 8850
+P 2450 8700
+F 0 "C6" H 2565 8796 50  0000 L CNN
+F 1 "C_1uF" H 2565 8705 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 2488 9300 50  0001 C CNN
+F 3 "https://www.yageo.com/upload/media/product/productsearch/datasheet/mlcc/UPY-GPHC_Y5V_6.3V-to-50V_9.pdf" H 2475 9550 50  0001 C CNN
+F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" H 2875 9200 60  0001 C CNN "PurchasingLink"
+	1    2450 8700
 	1    0    0    -1  
 $EndComp
 $Comp
 L throttle-rescue:GND-power #PWR?
 U 1 1 6219D5A4
-P 1900 8950
-F 0 "#PWR?" H 1900 8700 50  0001 C CNN
-F 1 "GND" H 1905 8777 50  0000 C CNN
-F 2 "" H 1900 8950 50  0001 C CNN
-F 3 "" H 1900 8950 50  0001 C CNN
-	1    1900 8950
+P 2450 8800
+F 0 "#PWR?" H 2450 8550 50  0001 C CNN
+F 1 "GND" H 2455 8627 50  0000 C CNN
+F 2 "" H 2450 8800 50  0001 C CNN
+F 3 "" H 2450 8800 50  0001 C CNN
+	1    2450 8800
 	1    0    0    -1  
 $EndComp
-Connection ~ 1900 8650
+Connection ~ 2450 8500
 Wire Wire Line
-	1900 8650 2350 8650
-Wire Notes Line
-	1250 8100 1250 9250
-Wire Notes Line
-	1250 9250 4100 9250
-Wire Notes Line
-	4100 9250 4100 8100
-Wire Notes Line
-	4100 8100 1250 8100
-Text Notes 2050 8300 0    89   ~ 0
+	2450 8500 2800 8500
+Text Notes 2500 8150 0    89   ~ 0
 Linear Regulator
 Text Label 2750 7050 0    50   ~ 0
 +5V
@@ -1619,4 +1609,156 @@ F 3 "" H 10500 4750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 3650 2500
+$Comp
+L formula:R_200 R21
+U 1 1 62286D84
+P 4300 8650
+F 0 "R21" H 4370 8696 50  0000 L CNN
+F 1 "R_200" H 4370 8605 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 4230 8650 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 4380 8650 50  0001 C CNN
+F 4 "DK" H 4300 8650 60  0001 C CNN "MFN"
+F 5 "RMCF0805JT200RCT-ND" H 4300 8650 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 4780 9050 60  0001 C CNN "PurchasingLink"
+	1    4300 8650
+	1    0    0    -1  
+$EndComp
+Connection ~ 4300 8500
+Wire Wire Line
+	4300 8500 4650 8500
+$Comp
+L formula:LED_0805 D6
+U 1 1 622882D2
+P 4300 9000
+F 0 "D6" V 4339 8883 50  0000 R CNN
+F 1 "LED_0805" V 4248 8883 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 4200 9000 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 4300 9100 50  0001 C CNN
+F 4 "DK" H 4300 9000 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 4300 9000 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 4700 9500 60  0001 C CNN "PurchasingLink"
+	1    4300 9000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4300 8800 4300 8850
+$Comp
+L throttle-rescue:GND-power #PWR?
+U 1 1 6228BE72
+P 4300 9300
+F 0 "#PWR?" H 4300 9050 50  0001 C CNN
+F 1 "GND" H 4305 9127 50  0000 C CNN
+F 2 "" H 4300 9300 50  0001 C CNN
+F 3 "" H 4300 9300 50  0001 C CNN
+	1    4300 9300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 9150 4300 9300
+$Comp
+L formula:R_1K R20
+U 1 1 62294AC8
+P 2000 8650
+F 0 "R20" H 2070 8696 50  0000 L CNN
+F 1 "R_1K" H 2070 8605 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 1930 8650 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 2080 8650 50  0001 C CNN
+F 4 "DK" H 2000 8650 60  0001 C CNN "MFN"
+F 5 "RNCP0805FTD1K00CT-ND" H 2000 8650 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" H 2480 9050 60  0001 C CNN "PurchasingLink"
+	1    2000 8650
+	1    0    0    -1  
+$EndComp
+Connection ~ 2000 8500
+Wire Wire Line
+	2000 8500 2450 8500
+$Comp
+L formula:LED_0805 D5
+U 1 1 62295515
+P 2000 9100
+F 0 "D5" V 2039 8983 50  0000 R CNN
+F 1 "LED_0805" V 1948 8983 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 1900 9100 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 2000 9200 50  0001 C CNN
+F 4 "DK" H 2000 9100 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 2000 9100 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 2400 9600 60  0001 C CNN "PurchasingLink"
+	1    2000 9100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2000 8800 2000 8950
+$Comp
+L throttle-rescue:GND-power #PWR?
+U 1 1 622A2F56
+P 2000 9400
+F 0 "#PWR?" H 2000 9150 50  0001 C CNN
+F 1 "GND" H 2005 9227 50  0000 C CNN
+F 2 "" H 2000 9400 50  0001 C CNN
+F 3 "" H 2000 9400 50  0001 C CNN
+	1    2000 9400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 9250 2000 9400
+$Comp
+L formula:F_500mA_16V F1
+U 1 1 622A7605
+P 1450 8500
+F 0 "F1" V 1253 8500 50  0000 C CNN
+F 1 "F_500mA_16V" V 1344 8500 50  0000 C CNN
+F 2 "footprints:Fuse_1210" V 1380 8500 50  0001 C CNN
+F 3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" V 1530 8500 50  0001 C CNN
+F 4 "DK" H 1450 8500 60  0001 C CNN "MFN"
+F 5 "507-1786-1-ND" H 1450 8500 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" V 1930 8900 60  0001 C CNN "PurchasingLink"
+	1    1450 8500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1600 8500 1650 8500
+$Comp
+L formula:D_Zener_18V D4
+U 1 1 622B4E74
+P 1650 8850
+F 0 "D4" H 1650 9050 50  0000 L CNN
+F 1 "D_Zener_18V" H 1450 8950 50  0000 L CNN
+F 2 "footprints:DO-214AA" H 1550 8850 50  0001 C CNN
+F 3 "http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf" H 1650 8950 50  0001 C CNN
+F 4 "DK" H 1850 9150 60  0001 C CNN "MFN"
+F 5 "SMBJ5355B-TPMSCT-ND" H 1750 9050 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND" H 2050 9350 60  0001 C CNN "PurchasingLink"
+	1    1650 8850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1650 8500 1650 8700
+Connection ~ 1650 8500
+Wire Wire Line
+	1650 8500 2000 8500
+$Comp
+L throttle-rescue:GND-power #PWR?
+U 1 1 622BB256
+P 1650 9150
+F 0 "#PWR?" H 1650 8900 50  0001 C CNN
+F 1 "GND" H 1655 8977 50  0000 C CNN
+F 2 "" H 1650 9150 50  0001 C CNN
+F 3 "" H 1650 9150 50  0001 C CNN
+	1    1650 9150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 9000 1650 9150
+Wire Notes Line
+	5250 7650 5250 9700
+Wire Notes Line
+	5250 9700 850  9700
+Wire Notes Line
+	850  9700 850  7650
+Wire Notes Line
+	850  7650 5250 7650
+Wire Wire Line
+	1050 8500 1300 8500
+Wire Wire Line
+	4650 8300 4650 8500
 $EndSCHEMATC
