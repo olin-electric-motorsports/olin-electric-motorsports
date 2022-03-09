@@ -106,8 +106,8 @@ $Comp
 L formula:R_200 R105
 U 1 1 5C0C44F9
 P 3950 9050
-F 0 "R105" H 4020 9096 50  0000 L CNN
-F 1 "R_200" H 4020 9005 50  0000 L CNN
+F 0 "R105" V 3875 8950 50  0000 L CNN
+F 1 "R_200" V 4025 8925 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" H 3880 9050 50  0001 C CNN
 F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 4030 9050 50  0001 C CNN
 F 4 "DK" H 3950 9050 60  0001 C CNN "MFN"
@@ -945,7 +945,7 @@ F 3 "https://www.ixysic.com/home/pdfs.nsf/www/CPC1004N.pdf/$file/CPC1004N.pdf" H
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6125 3025 6125 3150
+	6125 3025 6125 3125
 $Comp
 L formula:R_1K R5
 U 1 1 621E8EA5
@@ -960,8 +960,6 @@ F 6 "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" H 6605 3
 	1    6125 3300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6125 3850 6125 3900
 $Comp
 L power:+5V #PWR?
 U 1 1 621E8EAC
@@ -1121,7 +1119,7 @@ $EndComp
 Connection ~ 8625 3875
 Wire Wire Line
 	8625 3875 8700 3875
-Text Notes 9325 2825 0    50   ~ 0
+Text Notes 8725 2650 0    50   ~ 0
 SPDT IC for MC Speed Control 
 $Comp
 L formula:SN74LVC2G53 U11
@@ -1180,20 +1178,16 @@ Text Label 3650 1325 0    50   ~ 0
 REVERSE
 Text Label 3650 1425 0    50   ~ 0
 CRUISE_CONTROL
-Text Label 3650 1525 0    50   ~ 0
+Text Label 3650 2225 0    50   ~ 0
 POT_CLK
 Text Label 3650 1625 0    50   ~ 0
 POT_~CS
-Text Label 3650 1725 0    50   ~ 0
-POT_U~D
 Text Label 3650 1825 0    50   ~ 0
 SPD_INH
 Text Label 3650 1925 0    50   ~ 0
 SPD_A
 Text Label 3650 2125 0    50   ~ 0
 BRK_INH
-Text Label 3650 2225 0    50   ~ 0
-BRK_A
 Text Notes 6825 7825 0    50   ~ 0
 Motor Controller Harnessing
 $Comp
@@ -1344,8 +1338,6 @@ Wire Notes Line
 	13575 2900 13575 1000
 Wire Notes Line
 	13575 1000 11400 1000
-NoConn ~ 3650 2725
-NoConn ~ 3650 2825
 NoConn ~ 3650 3025
 NoConn ~ 3650 3125
 NoConn ~ 3650 3525
@@ -1656,4 +1648,137 @@ Wire Wire Line
 	6450 9950 6850 9950
 Wire Wire Line
 	6850 10225 6850 10150
+Text Label 3650 1525 0    50   ~ 0
+BRK_A
+Text Label 3650 1725 0    50   ~ 0
+POT_U~D
+Text Notes 4000 2050 0    50   ~ 0
+POT_CLK is a PWM \npin for the digipot
+$Comp
+L formula:Test_Point_SMD TP2
+U 1 1 6228C164
+P 6075 3125
+F 0 "TP2" V 6325 3700 50  0000 C CNN
+F 1 "Test_Point_SMD" V 6225 3475 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 6075 2975 50  0001 C CNN
+F 3 "" H 6075 3125 50  0001 C CNN
+	1    6075 3125
+	0    -1   -1   0   
+$EndComp
+Connection ~ 6125 3125
+Wire Wire Line
+	6125 3125 6125 3150
+Text Label 3650 2825 0    50   ~ 0
+LED_1
+Text Label 3650 2725 0    50   ~ 0
+LED_0
+$Comp
+L formula:LED_0805 D1
+U 1 1 6229027E
+P 11850 4725
+F 0 "D1" V 11889 4608 50  0000 R CNN
+F 1 "LED_0805" V 11798 4608 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 11750 4725 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 11850 4825 50  0001 C CNN
+F 4 "DK" H 11850 4725 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 11850 4725 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 12250 5225 60  0001 C CNN "PurchasingLink"
+	1    11850 4725
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:LED_0805 D2
+U 1 1 62290FD9
+P 12475 4725
+F 0 "D2" V 12514 4608 50  0000 R CNN
+F 1 "LED_0805" V 12423 4608 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 12375 4725 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 12475 4825 50  0001 C CNN
+F 4 "DK" H 12475 4725 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 12475 4725 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 12875 5225 60  0001 C CNN "PurchasingLink"
+	1    12475 4725
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:R_499 R10
+U 1 1 62292791
+P 11850 5025
+F 0 "R10" H 11920 5071 50  0000 L CNN
+F 1 "R_499" H 11920 4980 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 11780 5025 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 11930 5025 50  0001 C CNN
+F 4 "DK" H 11850 5025 60  0001 C CNN "MFN"
+F 5 "P499CCT-ND" H 11850 5025 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 12330 5425 60  0001 C CNN "PurchasingLink"
+	1    11850 5025
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:R_499 R11
+U 1 1 62293791
+P 12475 5025
+F 0 "R11" H 12545 5071 50  0000 L CNN
+F 1 "R_499" H 12545 4980 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 12405 5025 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 12555 5025 50  0001 C CNN
+F 4 "DK" H 12475 5025 60  0001 C CNN "MFN"
+F 5 "P499CCT-ND" H 12475 5025 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 12955 5425 60  0001 C CNN "PurchasingLink"
+	1    12475 5025
+	1    0    0    -1  
+$EndComp
+Text Label 11850 4575 0    50   ~ 0
+LED_1
+Text Label 12475 4575 0    50   ~ 0
+LED_0
+$Comp
+L power:GND #PWR?
+U 1 1 62295DC3
+P 11850 5175
+F 0 "#PWR?" H 11850 4925 50  0001 C CNN
+F 1 "GND" H 11855 5002 50  0000 C CNN
+F 2 "" H 11850 5175 50  0001 C CNN
+F 3 "" H 11850 5175 50  0001 C CNN
+	1    11850 5175
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62296A38
+P 12475 5175
+F 0 "#PWR?" H 12475 4925 50  0001 C CNN
+F 1 "GND" H 12480 5002 50  0000 C CNN
+F 2 "" H 12475 5175 50  0001 C CNN
+F 3 "" H 12475 5175 50  0001 C CNN
+	1    12475 5175
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP3
+U 1 1 6229758B
+P 6175 3900
+F 0 "TP3" V 6425 4475 50  0000 C CNN
+F 1 "Test_Point_SMD" V 6325 4250 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 6175 3750 50  0001 C CNN
+F 3 "" H 6175 3900 50  0001 C CNN
+	1    6175 3900
+	0    1    1    0   
+$EndComp
+Connection ~ 6125 3900
+Wire Wire Line
+	6125 3850 6125 3900
+$Comp
+L formula:Test_Point_SMD TP1
+U 1 1 6229B64D
+P 4200 8850
+F 0 "TP1" H 4075 8975 50  0000 C CNN
+F 1 "Test_Point_SMD" H 3850 8900 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 4200 8700 50  0001 C CNN
+F 3 "" H 4200 8850 50  0001 C CNN
+	1    4200 8850
+	-1   0    0    1   
+$EndComp
+Text Notes 11800 4400 0    89   ~ 0
+DEBUG LEDS
 $EndSCHEMATC
