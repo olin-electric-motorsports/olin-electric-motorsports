@@ -1,0 +1,57 @@
+# ripped from dashboard
+name: lvbms
+# subscribe:
+# - name: brakelight
+#   mob: 1
+# - name: bms_core
+#   mob: 2 
+# - name: air_control_critical
+#   mob: 3 
+# - name: throttle
+#   mob: 4 
+
+publish:
+  - name: lvbms
+    id: 0x70
+    freq_hz: 1
+    signals:
+    - name: fault_code
+      slice: 0 + 8
+      unit:
+        type: enum
+        values:
+          NO_FAULT
+
+    - name: pack_soc
+      slice: 8 + 16
+      unit: 
+        type: uint16_t
+        name: V
+        offset: 0
+        scale: 1
+
+    - name: pec_error_count
+      slice: 24 + 8
+      unit: 
+        type: uint8_t
+        name: C
+        offset: 0
+        scale: 1
+
+
+    # - name: pack_temp_1
+    #   slice: 16 + 8
+    #   unit: 
+    #     type: uint8_t
+    #     name: C
+    #     offset: 0
+    #     scale: 1
+
+    # - name: pack_temp_2
+    #   slice: 24 + 8
+    #   unit: 
+    #     type: uint8_t
+    #     name: C
+    #     offset: 0
+    #     scale: 1
+        

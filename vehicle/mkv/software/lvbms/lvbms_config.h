@@ -1,4 +1,5 @@
 #include "libs/can/api.h"
+#include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
@@ -7,10 +8,20 @@
 #define OV_THRESHOLD
 #define UV_THRESHOLD
 #define OC_THRESHOLD
+#define IDLE_TIMEOUT    5900 // 59 seconds
 
-// state machine enums 
+// adcs
+#define THERM_0         ADC7// TODO change to ADC num??  
+#define THERM_1         ADC8
+#define THERM_2         ADC9
+#define THERM_3         ADC10 
+#define THERM_4         ADC2
+#define THERM_5         ADC3
+#define CURRENT_SNS     ADC4
+
+// state machine enum 
 typedef enum {
-    STANDBY = 0x0, 
+    STANDBY = 0x00, 
     IDLE, 
     CHARGING, 
     DISCHARING, 
@@ -28,12 +39,11 @@ typedef enum {
     OV_FAULT, 
     UV_FAULT, 
     OC_FAULT, 
+    OPEN_CIRCUIT_FAULT, 
+    PEC_FAULT, 
     COMPARATOR_FAULT, 
 } fault_flags; 
 
-
-
-void timer0_IDLE_callback(void); 
 
 /* define GPIOS, ADCs, pin consts*/
 
@@ -47,33 +57,27 @@ gpio_t LOAD_SW_FET_DRV  = PC7; // toggles PMOS load switch for entire LV system
 gpio_t SPI_CSB          = PD7; // TODO / FIX: should this be a GPIO or part of SPI lib? 
 
 // PWM
-// gpio_t FAN_PWM          = PC1; 
+gpio_t FAN_PWM          = PC1; 
 
 // external level triggered interrupts - TODO test if initing them as GPIOS interferes with the external interrupt setup  
 gpio_t COMP_1_IN        = PB2; 
 gpio_t COMP_2_IN        = PB5; 
 
-// adcs
-adc_pin_e THERM_0       = PB6; // TODO change to ADC num??  
-adc_pin_e THERM_1       = PC4; 
-adc_pin_e THERM_2       = PC5; 
-adc_pin_e THERM_3       = PC6; 
-adc_pin_e THERM_4       = PD5; 
-adc_pin_e THERM_5       = PD6; 
-adc_pin_e CURRENT_SNS   = PB7;  
-
-adc_pin_e adc_pins[] = [THERM_0, THERM_1, THERM_2, THERM_3, THERM_4, THERM_5, CURRENT_SNS]; 
+adc_pin_e adc_pins[] = {THERM_0, THERM_1, THERM_2, THERM_3, THERM_4, THERM_5, CURRENT_SNS}; 
 
 
 /* config timer0 for IDLE timer */
 // IDLE --> STANDBY timer0 config 
 // TODO: config for 1Hz
+
+void timer0_IDLE_callback(void); 
+
 timer_cfg_s timer0_IDLE_ctc_cfg = {
     .timer = TIMER0,
     .timer0_mode = TIMER0_MODE_CTC,
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
-        .output_compare_match = 249,
+        .output_compare_match = 0x27,
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer0_IDLE_callback,
@@ -97,10 +101,10 @@ timer_cfg_s timer0_IDLE_ctc_cfg = {
  * CAN message (at GLV monitor rn )
  * data format: FAULT code, SoC Estimation, pack voltage, pack voltage, pack current, pack current, pack temp, board temp
  */
-uint8_t can_data[] = { 0x12 };
+uint8_t can_data[] = { 0xF };
 
 can_frame_t msg = {
-    .id = 0x12,
+    .id = 0x70,
     .dlc = 1,
     .mob = 0,
     .data = can_data,

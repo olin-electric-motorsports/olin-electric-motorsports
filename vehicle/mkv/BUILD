@@ -10,5 +10,6 @@ dbc_gen(
         "//vehicle/mkv/software/brakelight_bspd:bspd.yml",
         "//vehicle/mkv/software/dashboard:dashboard.yml",
         "//vehicle/mkv/software/motor_controller:motor_controller.dbc",
+        "//vehicle/mkv/software/lvbms:lvbms.yml",
     ],
 )

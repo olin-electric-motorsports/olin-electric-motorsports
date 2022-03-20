@@ -3,16 +3,22 @@
 * author: adi ramachandran
 * AVR libs courtesy of Jack G & rest of OEM FSAE team
 * 
+* 
+
+Code tests: 
+can we exist in IDLE and just flash an LED accordingly. 
+can we time out of IDLE into STANDBY
+can we wakeup from IDLE to STANDBY 
+
+
 * todo: 
-* fault checking
+* complete CAN setup
+* complete LTC impl
 * PWM 
-* fault state LED timing
-* LTC 
 * entire state machine and transitions
-* CAN interface + message setup
 * differentiating between cooling / GLV  
-* testing on real HW lmao 
-* reset seconds_counter on every switch back to idle
+* continue testing on real HW lmao 
+* reset ms_counter on every switch back to idle
 */
 
 #include "lvbms_config.h"
@@ -24,9 +30,10 @@
 
 volatile lvbms_state SYSTEM_STATE = IDLE; 
 volatile uint8_t    adc_ptr     = 0; 
-volatile uint16_t   adc_data[7] = { 0 }; 
-uint32_t            seconds_counter         = 0; 
+uint16_t            adc_data[7] = { 0 }; // todo used to be voltatile
+uint64_t            ms_counter         = 0; 
 volatile uint8_t    fault_flag  = 0x00; 
+uint8_t             one_second_passed = true; 
 
 /* 
 * FAULT FLAGS (TODO: is it ok to have more than 8 flags)
@@ -36,6 +43,10 @@ volatile uint8_t    fault_flag  = 0x00;
 * 0x09     OC error
 * 0x0A     comp error 
 */
+
+void system_ON(void); 
+void system_OFF(void); 
+
 
 void wake(){
     // clear the SE bit in sleep mode reg
@@ -49,6 +60,8 @@ void enable_external_interrupts(){
 } // peek the EIFR to check which INT triggered your wakeup 
 
 
+// Do gpios stay set and cleared in STBY?? 
+// does code still run in STBY? 
 void enable_STANDBY_mode(){
     SMCR |= 0x01; // set SE the bit 
     SMCR |= 0x0D; // sets Atmega into STANDBY mode
@@ -70,16 +83,13 @@ void gpio_init(){
 }
 
 void timer0_IDLE_callback(void){
-    collect_telem(); 
-    // send_CAN(); // TODO filler 
-    if (SYSTEM_STATE == IDLE){
-        seconds_counter ++; 
-    }
+    ms_counter = (ms_counter + 1)%6000; // resets after 1 min
+    // ms_counter ++; 
 }
 
 void adc_callback(void){
     // read value
-    adc_poll_complete(adc_data[adc_ptr]); 
+    adc_poll_complete(&adc_data[adc_ptr]); 
 
     // check adc_ptr & accordingly start next conversion 
     if (adc_ptr==6){
@@ -96,8 +106,8 @@ void adc_callback(void){
 */
 ISR(INT2_vect){
     SYSTEM_STATE = IDLE;
-
-    
+    system_ON(); 
+   
 }
 
 
@@ -107,6 +117,7 @@ ISR(INT2_vect){
 */
 ISR(INT1_vect){
     SYSTEM_STATE = IDLE; 
+    system_ON(); 
 
 }
 
@@ -116,120 +127,173 @@ ISR(INT1_vect){
 * https://github.com/analogdevicesinc/Linduino/blob/master/LTSketchbook/libraries/LTC6810/LTC6810.h
 * 
 */
-void init_LTC(){
+// void LTC_init(){
     
-    LTC6810_init_cfg(); 
-    // set config reg bits in LTC 
-    LTC6810_set_cfgr(
-        0, 
-        0, 
-    ); 
+//     LTC6810_init_cfg(); 
+//     // set config reg bits in LTC 
+//     LTC6810_set_cfgr(
+//         0, 
+//         0, 
+//     ); 
 
-    // selftests? 
-    LTC6810_adstatd(MD_7KHZ_3KHZ, ); 
+//     // selftests? 
+//     LTC6810_adstatd(MD_7KHZ_3KHZ, ); 
 
-    // muting / unmuting discharge transistors? 
-    LTC6810_mute(); 
+//     // muting / unmuting discharge transistors? 
+//     LTC6810_mute(); 
+
+// }
 
 
+/* Request & poll ADC voltages & check those voltages - Jack's BMS code heavily referenced*/
+void LTC_voltage_task(){
+
+    wakeup_sleep(NUM_ICS); 
+
+    // start ADC conversion on LTC chip for cells 1-6, & SoC 
+    LTC6810_adcvsc(MD_7KHZ_3KHZ, DCP_DISABLED); 
     
+    (void)LTC6810_pollAdc(); 
+
+    uint8_t num_pec_errors = LTC6810_rdcv(REG_ALL, NUM_ICS, ICS); // ensure ICS are initialized to store data
+
+    lvbms.pec_error_count += num_pec_errors; 
+
+    uint16_t pack_voltage = 0;
+    uint32_t uv = 0;
+    uint32_t ov = 0;
+
+    pack_voltage += ICS[ic].stat.stat_codes[0]
+            - ICS[ic].cells.c_codes[4]
+            - ICS[ic].cells.c_codes[5]
+
+    uv = (ICS[ic].stat.flags[0] & 0x55) | (ICS[ic].stat.flags[1] & 0x55)
+            | (ICS[ic].stat.flags[2] & 0x55);
+
+    // Even bits of the ST register are used for overvoltage flags
+    ov = (ICS[ic].stat.flags[0] & 0xAA) | (ICS[ic].stat.flags[1] & 0xAA)
+            | (ICS[ic].stat.flags[2] & 0xAA);
+
+    if (uv > 0) {
+        enter_fault_state(UV_FAULT);
+    } else if (ov > 0) {
+        enter_fault_state(OV_FAULT);
+    }
+
+    lvbms.pack_soc = pack_voltage; 
+
+/* TODO: look into datasheet on balancing code? something discharge registers */    
 }
 
 /* sample thermistor ADC's, sample current sensor ADC, !LTC! */
 void collect_telem(){
     // begin lvbms ADC conversion chain 
     adc_start_convert(adc_pins[adc_ptr]); 
-
-    // start ADC conversion on LTC chip for cells 1-4
-    LTC6810_adcv(); 
-    LTC6810_adcv();  
-    LTC6810_adcv();  
-    LTC6810_adcv();  
-    LTC6810_check_pec(); 
-
-/* 
-// why not use LTC6810_adcvsc() w SoC conversion too? 
-or LTC6810_pollAdc() blocking fn? 
-TODO: 
-look into datasheet + .cpp on ADC config setup & how we interface with polling
-look into datasheet on balancing code? 
-*/
-
-    
-
-
+    // ltc_voltage_task(); 
 }
 
+
+
+
 /* check for OT, UT, OV, UV, comparator error */ 
-void fault_check(){
-    // OT checks 
-    for (int i = 0; i < 6; i++){
-        if (adc_data[i]>OT_THRESHOLD){
-            fault_flag |= (i+1); 
-        }
-    }
+// void fault_check(){
+//     // OT checks 
+//     for (int i = 0; i < 6; i++){
+//         if (adc_data[i]>OT_THRESHOLD){
+//             enter_fault_state(i+1); 
+//         }
+//     }
 
-    // OV checks 
+//     // OV checks 
 
-    // UV checks 
+//     // UV checks 
 
-    // OC checks 
-    if (adc_data[7] > OC_THRESHOLD) {
-        fault_flag |= OC_FAULT; 
-    }   
+//     // OC checks 
+//     if (adc_data[7] > OC_THRESHOLD) {
+//         enter_fault_state(OC_FAULT); 
+//     }   
 
-    // comperator error check 
-    if (gpio_get_pin(COMP_1_IN) == 0 && gpio_get_pin(COMP_2_IN) == 0){
-        fault_flag |= COMPARATOR_FAULT; 
-    }
+//     // comperator error check 
+//     if (gpio_get_pin(COMP_1_IN) == 0 && gpio_get_pin(COMP_2_IN) == 0){
+//         enter_fault_state(COMPARATOR_FAULT); 
+//     }
+// }
 
-    if (fault_flag ~= 0){
-        SYSTEM_STATE = FAULT; 
-    }
+/* fault handling */
+void enter_fault_state(fault_flags fault){
+    SYSTEM_STATE = FAULT; 
+    lvbms.fault_code |= fault; 
 }
 
 /* set LEDs based on system state & fault state */
 void drive_leds(){
-    // always drive LED_0 on
-    gpio_set_pin(LED_0); 
+    // always flash LED_0
+    if ((ms_counter / 50)%2 == 0){
+        gpio_clear_pin(LED_0); 
+    } else {
+        gpio_set_pin(LED_0); 
+    }
+
     // drive LED_1 based on charge / discharge 
     if (SYSTEM_STATE == CHARGING || SYSTEM_STATE == DISCHARING){
         gpio_set_pin(LED_1); 
     }else {
         gpio_clear_pin(LED_1); 
     }
+
     // drive LED_2 based on fault state  
     if (SYSTEM_STATE == FAULT){
         gpio_set_pin(LED_2); 
+    } else {
+        gpio_clear_pin(LED_2); 
     }
 }
 
 // TODO: is this semantically correct? 
+/* contains comparator logic */
 void check_state_transition(){
+    uint8_t comp_1 = gpio_get_pin(COMP_1_IN); 
+    uint8_t comp_2 = gpio_get_pin(COMP_2_IN); // TODO is return uint8_t 
 
+    if (comp_1 & comp_2){
+        // both comparators high, remain in IDLE
+    } else if (comp_1 & ~comp_2){
+        // transition to CHARGING
+
+    } else if (comp_2 & ~comp_1){
+        // transition to DISCHARGING
+
+    } else if (~comp_1 & ~comp_2){
+        enter_fault_state(COMPARATOR_FAULT); 
+    }
 }
 
 void drive_fan(){}
 
 
-void prepare_CAN_msg(){
 
-}
-
-/* needs better name */
+/* called on transition from STANDBY to IDLE */
 void system_ON(){
+    
+    wake(); 
     // set CANTRx into normal mode 
     gpio_clear_pin(CAN_STBY); 
     // enable onstate cmpnts
     gpio_set_pin(ON_STATE_FET_DRV); 
 }
 
+/* called on transition to STANDBY */
 void system_OFF(){
     // set CANTRx into STBY
     gpio_set_pin(CAN_STBY); 
     // disable onstate cmpnts
     gpio_clear_pin(ON_STATE_FET_DRV); 
-
+    // ensure all LED's are off
+    gpio_clear_pin(LED_0); 
+    gpio_clear_pin(LED_1); 
+    gpio_clear_pin(LED_2); 
+    // enter STANDBY
+    enable_STANDBY_mode(); 
 }
 
 
@@ -238,32 +302,46 @@ int main(void){
     // SYSTEM_STATE should be IDLE
     // this code is called only on first power up
     sei(); 
-    adc_init(); 
-    adc_interrupt_enable(adc_callback); 
+    // adc_init(); 
+    // adc_interrupt_enable(adc_callback); 
     gpio_init(); 
+    timer_init(&timer0_IDLE_ctc_cfg); 
     enable_external_interrupts(); 
+    // can_init(BAUD_500KBPS);
+    system_ON();
 
     while(1){
 
         // regardless of state, always: 
         drive_leds(); 
 
+        // 1 second task 
+        if ((ms_counter / 100)%2 != one_second_passed) {
+            send_can_lvbms(); 
+            collect_telem(); 
+            one_second_passed = (ms_counter / 100)%2; 
+        }
+
 
         switch(SYSTEM_STATE){
             case STANDBY: 
-                enable_STANDBY_mode(); 
+                system_OFF(); 
                 break; 
             case IDLE:
-                if (seconds_counter > 59){
-                    // once CTC IDLE timer has completed 60 times, send system from IDLE into STANDBY state
+                if (ms_counter > IDLE_TIMEOUT){ 
+                    // once 59 seconds have passed in IDLE mode, send system from IDLE into STANDBY state
                     SYSTEM_STATE = STANDBY; 
                 }
+                
+                
                 
                 break; 
             case CHARGING: 
                 
                 break; 
             case DISCHARING: 
+                break; 
+            case FAULT: 
                 break; 
             default: 
                 break; 

@@ -3,7 +3,7 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 
-gpio_t LED0 = PD5;
+gpio_t LED0 = PB0;
 
 int main(void) {
     gpio_set_mode(LED0, OUTPUT);
