@@ -18,7 +18,7 @@ buildables=$(bazelisk query \
 if [[ ! -z $buildables ]]; then
     echo "Files to update in site:"
     echo "${buildables}"
-    curl -x POST -H "Content-type: application/json" -d '{"commit_number": ${GITHUB_SHA}, "buildable_list": ${buildables}}' "kicad.olinelectricmotorsports.com/"
+    curl -X POST -H "Content-type: application/json" -d '{"commit_number": ${GITHUB_SHA}, "buildable_list": ${buildables}}' "kicad.olinelectricmotorsports.com/"
     echo "Post request sent to kicad artifacts site"
 else
     echo "Nothing to update"
