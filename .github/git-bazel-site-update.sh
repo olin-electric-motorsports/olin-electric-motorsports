@@ -15,16 +15,25 @@ buildables=$(bazelisk query \
     --noshow_progress \
     "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
     
+generate_post_data()
+{
+    cat <<EOF
+{
+    "commit_number": "$GITHUB_SHA",
+    "buildables_list": "$buildables"
+}
+EOF
+}
+
 if [[ ! -z $buildables ]]; then
     echo "Files to update in site:"
     echo "${buildables}"
-    curl -X POST -H "Content-type: application/json" -d '{"commit_number": "${GITHUB_SHA}", "buildable_list": ["//examples/template_board:template_board_sch.svg", "//examples/template_board:template_board_b_bottom_pcb.svg", "//examples/template_board:template_board_a_top_pcb.svg", "//examples/template_board:template_board.pdf", "//examples/template_board:template_board.csv"]}' "https://kicad.olinelectricmotorsports.com"
+    post_request_data={"commit_number": "${GITHUB_SHA}", "buildable_list": "${buildables}"}
+    curl -X POST -H "Content-type: application/json" -d "$(generate_post_data)" "https://kicad.olinelectricmotorsports.com"
     echo "Post request sent to kicad artifacts site"
 else
     echo "Nothing to update"
 fi
-
-
 
 # tasks:
 # create a list of board names that have been updated
