@@ -241,10 +241,12 @@ static void state_machine_run(void) {
             // TODO
             if (blink_counter == 50) {
                 gpio_set_pin(GENERAL_LED);
+                blink_counter++;
             } else if (blink_counter == 100) {
                 gpio_clear_pin(GENERAL_LED);
                 blink_counter = 0;
             } else {
+                blink_counter++;
             }
 
             if (ov > 0) {
