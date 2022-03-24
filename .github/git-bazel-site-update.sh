@@ -17,7 +17,7 @@ buildables=$(bazelisk query \
 
 files=()
 for file in buildables; do
-    files+=file
+    files+=$file
 done
 echo "Hopefully a list: "
 echo $files
