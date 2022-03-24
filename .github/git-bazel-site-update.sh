@@ -19,6 +19,7 @@ files=()
 for file in buildables; do
     files+=file
 done
+echo "Hopefully a list: "
 echo $files
 if [[ ! -z $buildables ]]; then
     echo "Files to update in site:"
