@@ -28,13 +28,14 @@ EOF
 if [[ ! -z $buildables ]]; then
     echo "Files to update in site:"
     echo "${buildables}"
-    declare -A post_request_data
-    first_key="commit_number"
-    first_value=$GITHUB_SHA
-    post_request_data[$first_key]=$first_value
-    second_key="buildable_list"
-    second_value=$buildables
-    post_request_data[$second_key]=$second_value
+    # declare -A post_request_data
+    # first_key="commit_number"
+    # first_value=$GITHUB_SHA
+    # post_request_data[$first_key]=$first_value
+    # second_key="buildable_list"
+    # second_value=$buildables
+    # post_request_data[$second_key]=$second_value
+    post_request_data=["blah","bluh"]
     echo "Post request data: "
     echo $post_request_data
     curl -X POST -H "Content-type: application/json" -d "${post_request_data}" "https://kicad.olinelectricmotorsports.com"
