@@ -28,7 +28,11 @@ EOF
 if [[ ! -z $buildables ]]; then
     echo "Files to update in site:"
     echo "${buildables}"
-    curl -X POST -H "Content-type: application/json" -d "`echo  ${buildables[@]} | jq -R . | jq -sc .`" "https://kicad.olinelectricmotorsports.com"
+    build_list=`echo  ${buildables[@]} | jq -R . | jq -sc .`
+    echo "Data being sent through post request: "
+    echo "${build_list}"
+    echo "Post Request Result: "
+    curl -X POST -H "Content-type: application/json" -d "${build_list}" "https://kicad.olinelectricmotorsports.com"
     echo "Post request sent to kicad artifacts site"
 else
     echo "Nothing to update"
