@@ -14,17 +14,12 @@ buildables=$(bazelisk query \
     --keep_going \
     --noshow_progress \
     "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
-    
-generate_post_data()
-{
-    cat <<EOF
-{
-    "commit_number": "$GITHUB_SHA",
-    "buildables_list": "$buildables"
-}
-EOF
-}
 
+files=()
+for file in buildables; do
+    files+=file
+done
+echo $files
 if [[ ! -z $buildables ]]; then
     echo "Files to update in site:"
     echo "${buildables}"
