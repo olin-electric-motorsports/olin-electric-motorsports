@@ -16,7 +16,7 @@ buildables=$(bazelisk query \
     "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
 
 files=()
-for file in buildables; do
+for file in $buildables; do
     files+=$file
 done
 echo "Hopefully a list: "

@@ -2931,7 +2931,7 @@ $EndComp
 Wire Wire Line
 	8475 2925 8475 3000
 Connection ~ 8475 2925
-Text Notes 10525 4450 0    50   ~ 0
+Text Notes 9775 3700 0    50   ~ 0
 Resistor dividers set at ~~90% to \nact as inputs for comparators 
 $Comp
 L lvbms-rescue:NanoFit_RA_SMT_02-formula J3
