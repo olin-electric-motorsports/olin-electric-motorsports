@@ -35,6 +35,7 @@ if [[ ! -z $buildables ]]; then
     second_key="buildable_list"
     second_value=$buildables
     post_request_data[$second_key]=$second_value
+    echo $post_request_data
     curl -X POST -H "Content-type: application/json" -d "${post_request_data}" "https://kicad.olinelectricmotorsports.com"
     echo "Post request sent to kicad artifacts site"
 else
