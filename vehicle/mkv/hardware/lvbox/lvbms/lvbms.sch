@@ -1559,7 +1559,7 @@ Connection ~ 6850 7425
 Wire Notes Line
 	550  550  5725 550 
 Wire Notes Line
-	5725 550  5725 4775
+	6375 750  6375 4975
 Wire Notes Line
 	5725 4775 550  4775
 Wire Notes Line
@@ -2071,7 +2071,7 @@ F 3 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 10200 9825 50  0001 L
 	1    10200 9825
 	1    0    0    -1  
 $EndComp
-Text Notes 4450 2850 0    50   ~ 0
+Text Notes 5100 3050 0    50   ~ 0
 MOSI, MISO, and SCK must\nstay connected to the _A pins\nfor programming.\n\nBecause ISP uses same SPI bus \nas LTC chip comms, we place \nresistors to limit current 
 Text Label 3650 2000 0    50   ~ 0
 FAN_PWM
