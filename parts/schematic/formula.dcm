@@ -1,50 +1,5 @@
 EESchema-DOCLIB  Version 2.0
 #
-$CMP +12V_BUCK
-D Power symbol creates a global label with name "+5V"
-K power-flag
-$ENDCMP
-#
-$CMP +12V_IMD
-D Power symbol creates a global label with name "+5V"
-K power-flag
-$ENDCMP
-#
-$CMP +12V_SHUTDOWN
-D Power symbol creates a global label with name "+5V"
-K power-flag
-$ENDCMP
-#
-$CMP +12V_TSAL
-D Power symbol creates a global label with name "+5V"
-K power-flag
-$ENDCMP
-#
-$CMP +5V_AIR_CONTROL
-D Power symbol creates a global label with name "+5V"
-K power-flag
-$ENDCMP
-#
-$CMP +5V_BMS
-D Power symbol creates a global label with name "+5V"
-K power-flag
-$ENDCMP
-#
-$CMP +TS
-D Power symbol creates a global label with name "+5V"
-K power-flag
-$ENDCMP
-#
-$CMP -15V
-D Power symbol creates a global label with name "GND" , ground
-K power-flag
-$ENDCMP
-#
-$CMP -TS
-D Power symbol creates a global label with name "GND" , ground
-K power-flag
-$ENDCMP
-#
 $CMP 1.5A_Fuse
 D 1.5A Fuse LitteFuse
 F https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf
@@ -60,22 +15,32 @@ D IC EEPROM 1K I2C 400KHZ 8DIP
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21711J.pdf
 $ENDCMP
 #
+$CMP 74HC4051
+D 8-channel analog multiplexer/demultiplexer, DIP-16/SOIC-16/TSSOP-16
+K HCMOS Multiplexer Demultiplexer Analog
+F http://www.ti.com/lit/ds/symlink/cd74hc4051.pdf
+$ENDCMP
+#
+$CMP 74HCT4051
+D 8-channel analog multiplexer/demultiplexer, DIP-16/SOIC-16/TSSOP-16
+K TTL Multiplexer Demultiplexer Analog
+F http://www.ti.com/lit/ds/symlink/cd74hct4051.pdf
+$ENDCMP
+#
 $CMP AD623
 D Op-amp, dual supply
 $ENDCMP
 #
-$CMP AP7370
-D Linear Voltage Regulator IC Positive Fixed 1 Output 300mA SOT-25
-K LDO
-F https://www.diodes.com/assets/Datasheets/AP7370.pdf
+$CMP AD8553ARMZ-REEL
+F https://www.analog.com/media/en/technical-documentation/data-sheets/AD8553.pdf
 $ENDCMP
 #
 $CMP ATMEGA16M1
-D Microcontroller, 8-bit, 4KB RAM, 64KB Flash
+D Microcontroller, 8-bit, 1KB RAM, 16KB Flash
 $ENDCMP
 #
-$CMP ATMEGA64M1
-D Microcontroller, 8-bit, 1KB RAM, 16KB Flash
+$CMP ATmega328P-AU
+F http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
 $ENDCMP
 #
 $CMP ATMEGA64M1
@@ -362,6 +327,12 @@ $CMP LIS3DHTR
 F https://www.st.com/content/ccc/resource/technical/document/datasheet/3c/ae/50/85/d6/b1/46/fe/CD00274221.pdf/files/CD00274221.pdf/jcr:content/translations/en.CD00274221.pdf
 $ENDCMP
 #
+$CMP LM3480
+D Linear regulator, 30V max input, 3.3V output, 100mA
+K LDO
+F http://www.ti.com/lit/ds/symlink/lm3480.pdf
+$ENDCMP
+#
 $CMP LR8K4-G
 D Linear regulator, 13.2-450V input, adj 1.2-438V output, 20mA
 $ENDCMP
@@ -408,6 +379,10 @@ $CMP L_4.7uH
 D Inductor, 4.7uH, 4.4A, 25mOhm, 20%
 $ENDCMP
 #
+$CMP L_8.1uH
+F https://www.coilcraft.com/getmedia/76c9c081-4945-4c85-9129-9356e1ad6734/xgl4020.pdf
+$ENDCMP
+#
 $CMP MCP2561-E_SN
 D High speed CAN transceiver, 1Mb/s
 $ENDCMP
@@ -432,6 +407,12 @@ $ENDCMP
 $CMP MCP73871T-2CCI_ML
 D Battery Charge Controller
 F https://ww1.microchip.com/downloads/en/DeviceDoc/MCP73871-Data-Sheet-20002090E.pdf
+$ENDCMP
+#
+$CMP MLX90621ESF-BAB-000-TU
+D I2C Tire Temperature Sensor
+K I2C Temperature Sensor
+F https://www.melexis.com/-/media/files/documents/datasheets/mlx90621-datasheet-melexis.pdf
 $ENDCMP
 #
 $CMP MMBF170
@@ -620,6 +601,10 @@ $CMP R_1.13K
 D Resistor, 1.13K, 0.125W, 0.1%, 0805
 $ENDCMP
 #
+$CMP R_1.18M
+F https://www.vishay.com/docs/20035/dcrcwe3.pdf
+$ENDCMP
+#
 $CMP R_1.43K
 D Resistor, 1.43K, 0.1W, 0.1%, 0805
 $ENDCMP
@@ -661,9 +646,23 @@ $CMP R_120K
 D Resistor, 120K, 0.125W, 1%, 0805
 $ENDCMP
 #
+$CMP R_120_05
+D 0.05%, 0.125, 0805
+F https://www.susumu.co.jp/common/pdf/n_catalog_partition01_en.pdf
+$ENDCMP
+#
+$CMP R_120_05_copy
+D 0.05%, 0.125, 0805
+F https://www.susumu.co.jp/common/pdf/n_catalog_partition01_en.pdf
+$ENDCMP
+#
 $CMP R_120_DNP
 D Resistor, 120, 0.125W, 1%, 0805
 F https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf
+$ENDCMP
+#
+$CMP R_15k
+F https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RE_105_RoHS_L_6.pdf
 $ENDCMP
 #
 $CMP R_17.8K
@@ -715,6 +714,11 @@ $CMP R_3.3_25W_TO163
 D RES SMD 3.3 OHM 1% 25W DPAK
 K power resistor, balancing, BMS, Bourns, PWR163
 F https://www.bourns.com/docs/Product-Datasheets/PWR163.pdf
+$ENDCMP
+#
+$CMP R_3.92k
+D 0.1%, 0.125, 0805
+F https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf
 $ENDCMP
 #
 $CMP R_300K
@@ -799,6 +803,10 @@ $ENDCMP
 #
 $CMP R_75k
 D Resistor, 75K, 0.25W, 1%, 0805
+$ENDCMP
+#
+$CMP R_90k
+F https://www.vishay.com/docs/60026/ptn.pdf
 $ENDCMP
 #
 $CMP SD_socket
@@ -893,6 +901,11 @@ $ENDCMP
 $CMP TPS61090RSAR
 D Synchronous Boost Converter
 F https://www.ti.com/lit/ds/symlink/tps61090.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe&ts=1601340035977
+$ENDCMP
+#
+$CMP TPS7A26
+D LDO
+F https://www.ti.com/lit/ds/symlink/tps7a26.pdf
 $ENDCMP
 #
 $CMP T_LAN_7490100111A
