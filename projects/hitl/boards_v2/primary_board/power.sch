@@ -376,4 +376,16 @@ Wire Wire Line
 	7550 3300 7550 3200
 Text Notes 7900 2950 0    50   ~ 0
 5V -> ~~9mA\n3.3V -> ~~3mA
+$Comp
+L formula:Test_Point_SMD TP12
+U 1 1 6243B567
+P 8350 2600
+F 0 "TP12" V 8345 2778 50  0000 L CNN
+F 1 "Test_Point_SMD" H 8428 2597 50  0001 L CNN
+F 2 "footprints:Test_Point_SMD" H 8350 2450 50  0001 C CNN
+F 3 "" H 8350 2600 50  0001 C CNN
+	1    8350 2600
+	0    1    1    0   
+$EndComp
+Connection ~ 8300 2600
 $EndSCHEMATC

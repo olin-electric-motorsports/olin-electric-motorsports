@@ -668,7 +668,7 @@ Analog-MUX8
 Wire Wire Line
 	4700 5400 4700 5500
 Wire Wire Line
-	5600 5050 4700 5050
+	5600 5050 5000 5050
 Connection ~ 4700 5050
 Wire Wire Line
 	4700 5050 4700 5000
@@ -832,13 +832,13 @@ Connection ~ 6550 3350
 Text Label 6850 3350 2    50   ~ 0
 ADCIN
 Wire Wire Line
-	5800 1750 6950 1750
+	5800 1750 6000 1750
 Wire Wire Line
 	4850 3250 5450 3250
 Text Label 5150 3550 2    50   ~ 0
 ADCIN
 Wire Wire Line
-	5150 3550 4850 3550
+	5150 3550 4900 3550
 $Comp
 L formula:C_1uF C23
 U 1 1 6210801F
@@ -1004,4 +1004,46 @@ Wire Wire Line
 Connection ~ 2300 1700
 Wire Wire Line
 	2300 1700 2900 1700
+$Comp
+L formula:Test_Point_SMD TP10
+U 1 1 624421C1
+P 5000 5100
+F 0 "TP10" H 4912 5142 50  0000 R CNN
+F 1 "Test_Point_SMD" H 5078 5097 50  0001 L CNN
+F 2 "footprints:Test_Point_SMD" H 5000 4950 50  0001 C CNN
+F 3 "" H 5000 5100 50  0001 C CNN
+	1    5000 5100
+	-1   0    0    1   
+$EndComp
+Connection ~ 5000 5050
+Wire Wire Line
+	5000 5050 4700 5050
+$Comp
+L formula:Test_Point_SMD TP9
+U 1 1 62443C13
+P 4900 3600
+F 0 "TP9" H 4812 3642 50  0000 R CNN
+F 1 "Test_Point_SMD" H 4978 3597 50  0001 L CNN
+F 2 "footprints:Test_Point_SMD" H 4900 3450 50  0001 C CNN
+F 3 "" H 4900 3600 50  0001 C CNN
+	1    4900 3600
+	-1   0    0    1   
+$EndComp
+Connection ~ 4900 3550
+Wire Wire Line
+	4900 3550 4850 3550
+$Comp
+L formula:Test_Point_SMD TP11
+U 1 1 6244518B
+P 6000 1700
+F 0 "TP11" H 6078 1742 50  0000 L CNN
+F 1 "Test_Point_SMD" H 6078 1697 50  0001 L CNN
+F 2 "footprints:Test_Point_SMD" H 6000 1550 50  0001 C CNN
+F 3 "" H 6000 1700 50  0001 C CNN
+	1    6000 1700
+	1    0    0    -1  
+$EndComp
+Connection ~ 6000 1750
+Wire Wire Line
+	6000 1750 6950 1750
 $EndSCHEMATC

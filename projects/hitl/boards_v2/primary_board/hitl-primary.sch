@@ -5591,9 +5591,9 @@ $EndComp
 Wire Wire Line
 	5400 5500 5400 5600
 Wire Wire Line
-	4700 5600 5400 5600
+	4700 5600 5150 5600
 Wire Wire Line
-	5550 5700 5550 5500
+	5550 5700 5550 5600
 Wire Wire Line
 	4700 5700 5550 5700
 $Comp
@@ -5930,7 +5930,7 @@ Wire Wire Line
 Wire Wire Line
 	9800 8600 9800 8450
 Wire Wire Line
-	9000 8500 9650 8500
+	9000 8500 9600 8500
 Wire Wire Line
 	9650 8500 9650 8450
 $Comp
@@ -7139,4 +7139,128 @@ Text Label 13600 3000 0    50   ~ 0
 GPIO-25
 Text Label 13600 3100 0    50   ~ 0
 GPIO-23
+$Comp
+L formula:Test_Point_SMD TP1
+U 1 1 623FE3ED
+P 9150 10300
+F 0 "TP1" H 9228 10388 50  0000 L CNN
+F 1 "Test_Point_SMD" H 9228 10297 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 9150 10150 50  0001 C CNN
+F 3 "" H 9150 10300 50  0001 C CNN
+	1    9150 10300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 623FF25C
+P 9150 10350
+F 0 "#PWR?" H 9150 10100 50  0001 C CNN
+F 1 "GND" H 9155 10177 50  0000 C CNN
+F 2 "" H 9150 10350 50  0001 C CNN
+F 3 "" H 9150 10350 50  0001 C CNN
+	1    9150 10350
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP6
+U 1 1 62403A82
+P 9850 8600
+F 0 "TP6" V 9799 8778 50  0000 L CNN
+F 1 "Test_Point_SMD" V 9890 8778 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 9850 8450 50  0001 C CNN
+F 3 "" H 9850 8600 50  0001 C CNN
+	1    9850 8600
+	0    1    1    0   
+$EndComp
+Connection ~ 9800 8600
+$Comp
+L formula:Test_Point_SMD TP7
+U 1 1 62404263
+P 9850 8800
+F 0 "TP7" V 9799 8978 50  0000 L CNN
+F 1 "Test_Point_SMD" V 9890 8978 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 9850 8650 50  0001 C CNN
+F 3 "" H 9850 8800 50  0001 C CNN
+	1    9850 8800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9800 8800 9600 8800
+Wire Wire Line
+	9600 8800 9600 8500
+Connection ~ 9600 8500
+Wire Wire Line
+	9600 8500 9650 8500
+$Comp
+L formula:Test_Point_SMD TP5
+U 1 1 6243480E
+P 5600 5600
+F 0 "TP5" V 5595 5778 50  0000 L CNN
+F 1 "Test_Point_SMD" V 5640 5778 50  0001 L CNN
+F 2 "footprints:Test_Point_SMD" H 5600 5450 50  0001 C CNN
+F 3 "" H 5600 5600 50  0001 C CNN
+	1    5600 5600
+	0    1    1    0   
+$EndComp
+Connection ~ 5550 5600
+Wire Wire Line
+	5550 5600 5550 5500
+$Comp
+L formula:Test_Point_SMD TP4
+U 1 1 62435496
+P 5150 5550
+F 0 "TP4" H 5228 5592 50  0000 L CNN
+F 1 "Test_Point_SMD" V 5190 5728 50  0001 L CNN
+F 2 "footprints:Test_Point_SMD" H 5150 5400 50  0001 C CNN
+F 3 "" H 5150 5550 50  0001 C CNN
+	1    5150 5550
+	1    0    0    -1  
+$EndComp
+Connection ~ 5150 5600
+Wire Wire Line
+	5150 5600 5400 5600
+$Comp
+L formula:Test_Point_SMD TP3
+U 1 1 62436175
+P 3800 10350
+F 0 "TP3" V 3795 10528 50  0000 L CNN
+F 1 "Test_Point_SMD" V 3840 10528 50  0001 L CNN
+F 2 "footprints:Test_Point_SMD" H 3800 10200 50  0001 C CNN
+F 3 "" H 3800 10350 50  0001 C CNN
+	1    3800 10350
+	0    1    1    0   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP2
+U 1 1 62436899
+P 3800 10250
+F 0 "TP2" V 3795 10428 50  0000 L CNN
+F 1 "Test_Point_SMD" V 3840 10428 50  0001 L CNN
+F 2 "footprints:Test_Point_SMD" H 3800 10100 50  0001 C CNN
+F 3 "" H 3800 10250 50  0001 C CNN
+	1    3800 10250
+	0    1    1    0   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP8
+U 1 1 62447253
+P 9950 10300
+F 0 "TP8" H 10028 10388 50  0000 L CNN
+F 1 "Test_Point_SMD" H 10028 10297 50  0000 L CNN
+F 2 "footprints:Test_Point_SMD" H 9950 10150 50  0001 C CNN
+F 3 "" H 9950 10300 50  0001 C CNN
+	1    9950 10300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6244725D
+P 9950 10350
+F 0 "#PWR?" H 9950 10100 50  0001 C CNN
+F 1 "GND" H 9955 10177 50  0000 C CNN
+F 2 "" H 9950 10350 50  0001 C CNN
+F 3 "" H 9950 10350 50  0001 C CNN
+	1    9950 10350
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

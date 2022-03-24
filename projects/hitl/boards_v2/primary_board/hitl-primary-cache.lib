@@ -1297,6 +1297,19 @@ X 44 44 -500 -1000 200 R 40 40 0 0 P
 ENDDRAW
 ENDDEF
 #
+# formula_Test_Point_SMD
+#
+DEF formula_Test_Point_SMD TP 0 40 Y Y 1 F N
+F0 "TP" 0 300 50 H V C CNN
+F1 "formula_Test_Point_SMD" 50 200 50 H V C CNN
+F2 "footprints:Test_Point_SMD" 0 -150 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C 0 100 50 1 1 0 N
+X ~ 1 0 -50 100 U 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
 # formula_USB-Micro-1981568-1
 #
 DEF formula_USB-Micro-1981568-1 J 0 40 Y Y 1 F N
