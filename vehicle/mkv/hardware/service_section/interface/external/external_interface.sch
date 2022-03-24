@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 30 0
+LIBS:external_interface-cache
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -42,9 +43,7 @@ IMD->TSMS
 Text Label 3600 3750 0    50   ~ 0
 TSMS->FinalShutdown
 Text Label 3600 3850 0    50   ~ 0
-GND
-Text Label 3600 3950 0    50   ~ 0
-GND
+CoolingBat-
 Text Label 3600 4050 0    50   ~ 0
 GND
 Text Label 3600 4150 0    50   ~ 0
@@ -60,13 +59,11 @@ TSAL-Green-Pos
 Text Label 3600 4650 0    50   ~ 0
 TSAL-Green-Neg
 Text Label 3600 4750 0    50   ~ 0
-FAN-PWM
+GND
 Text Label 3600 4950 0    50   ~ 0
 GND
 Text Label 3600 5050 0    50   ~ 0
-CAN_P
-Text Label 3600 5150 0    50   ~ 0
-CAN_N
+CAN_EMETER_P
 Text Label 3600 5250 0    50   ~ 0
 CAN_P
 Text Label 3600 5350 0    50   ~ 0
@@ -83,14 +80,6 @@ Text Label 3600 5650 0    50   ~ 0
 TSAL-Red-Pos
 Text Label 3600 5750 0    50   ~ 0
 TSAL-Red-Neg
-Text Label 3600 6050 0    50   ~ 0
-12V
-Text Label 3600 6150 0    50   ~ 0
-CAN_P
-Text Label 3600 6250 0    50   ~ 0
-CAN_N
-Text Label 3600 6350 0    50   ~ 0
-CAN-GND
 Text Label 3600 6450 0    50   ~ 0
 BSDP-Current-Sense
 Text Label 3600 6550 0    50   ~ 0
@@ -241,10 +230,6 @@ Text Label 9050 1750 0    50   ~ 0
 TSMS->FinalShutdown
 Text Label 9050 2150 0    50   ~ 0
 GND
-Text Label 9050 2250 0    50   ~ 0
-GND
-Text Label 9050 2350 0    50   ~ 0
-GND
 Text Label 9050 2450 0    50   ~ 0
 GND
 Text Label 9050 3700 0    50   ~ 0
@@ -290,7 +275,7 @@ GND
 Text Label 9050 2750 0    50   ~ 0
 12V
 Text Label 3600 4850 0    50   ~ 0
-5V_AIRC
+12V
 Text Label 5200 3800 0    50   ~ 0
 GND
 Text Label 5000 3800 2    50   ~ 0
@@ -299,8 +284,46 @@ Wire Wire Line
 	5200 3800 5000 3800
 Text Notes 3000 2750 0    118  ~ 0
 Ampseal
-Text Notes 9450 3350 0    118  ~ 0
+Text Notes 9800 3400 0    118  ~ 0
 To Internal
 Text Notes 3000 1100 0    157  ~ 0
 Accumulator Interface -- External
+Text Label 3600 3950 0    50   ~ 0
+CoolingBat-
+Text Label 3600 5150 0    50   ~ 0
+CAN_EMETER_N
+Text Label 3600 6050 0    50   ~ 0
+CoolingBat+
+Text Label 3600 6150 0    50   ~ 0
+CoolingBat+
+Text Label 3600 6350 0    50   ~ 0
+BSDP-Current-Trigger-
+Text Label 3600 6250 0    50   ~ 0
+BSDP-Current-Trigger+
+Text Label 9050 2850 0    50   ~ 0
+GND
+Text Label 9050 2950 0    50   ~ 0
+BSDP-Current-Trigger+
+Text Label 9050 3050 0    50   ~ 0
+BSDP-Current-Trigger+
+Text Label 9050 3150 0    50   ~ 0
+BSDP-Current-Trigger-
+Text Label 9050 3250 0    50   ~ 0
+BSDP-Current-Trigger-
+Text Label 9050 6200 0    50   ~ 0
+CoolingBat+
+Text Label 9050 6100 0    50   ~ 0
+CoolingBat+
+Text Label 9050 6000 0    50   ~ 0
+CoolingBat+
+Text Label 9050 5900 0    50   ~ 0
+CoolingBat-
+Text Label 9050 5800 0    50   ~ 0
+CoolingBat-
+Text Label 9050 5700 0    50   ~ 0
+CoolingBat-
+Text Label 9050 2250 0    50   ~ 0
+CAN_EMETER_P
+Text Label 9050 2350 0    50   ~ 0
+CAN_EMETER_N
 $EndSCHEMATC
