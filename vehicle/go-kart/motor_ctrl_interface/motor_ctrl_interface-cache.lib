@@ -19,6 +19,7 @@ X W 5 350 -50 100 L 50 50 1 1 I
 X B1 6 350 -200 100 L 50 50 1 1 I
 X ~CS 7 -400 -50 100 R 50 50 1 1 I
 X VDD 8 0 300 100 D 50 50 1 1 I
+X GND ~ 0 -400 100 U 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
@@ -51,8 +52,8 @@ F1 "formula_ATMEGA16M1" 500 -1400 50 H V L BNN
 F2 "footprints:TQFP-32_7x7mm_Pitch0.8mm" 0 0 50 H I C CIN
 F3 "" -950 1830 50 H I C CNN
 F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "ATMEGA64M1-AU-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/en/products/detail/microchip-technology/ATMEGA64M1-AU/2271014" -550 2230 60 H I C CNN "PurchasingLink"
+F5 "ATMEGA16M1-AU-ND" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208" -550 2230 60 H I C CNN "PurchasingLink"
 $FPLIST
  TQFP*32*7x7mm*
 $ENDFPLIST
@@ -245,7 +246,9 @@ F0 "C" 25 150 50 H V L CNN
 F1 "formula_C_1uF" 25 -50 50 H V L CNN
 F2 "footprints:C_0805_OEM" 38 600 50 H I C CNN
 F3 "" 25 850 50 H I C CNN
-F4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-1-ND/5195811#images" 425 500 60 H I C CNN "PurchasingLink"
+F4 "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467" 425 500 60 H I C CNN "PurchasingLink"
+F5 "DK" 0 0 50 H I C CNN "MFN"
+F6 "1276-6470-1-ND" 0 0 50 H I C CNN "MPN"
 $FPLIST
  C?
  C_????_*
@@ -268,7 +271,9 @@ F0 "C" 25 150 50 H V L CNN
 F1 "formula_C_2.2uF" 25 -50 50 H V L CNN
 F2 "footprints:C_0805_OEM" 38 600 50 H I C CNN
 F3 "" 25 850 50 H I C CNN
-F4 "https://www.digikey.com/product-detail/en/tdk-corporation/C2012X7R1H225M125AE/445-172488-1-ND/4990030" 425 500 60 H I C CNN "PurchasingLink"
+F4 "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A225KBFNNNE/5961186" 425 500 60 H I C CNN "PurchasingLink"
+F5 "1276-6702-1-ND" 0 0 50 H I C CNN "MFN"
+F6 "DK" 0 0 50 H I C CNN "MPN"
 $FPLIST
  C?
  C_????_*
