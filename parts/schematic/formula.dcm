@@ -747,18 +747,10 @@ $ENDCMP
 #
 $CMP R_2.2K
 D Resistor, 2.2K, 0.125W, 1%, 0805
-$ENDCMP
-#
-$CMP R_200
-D Resistor, 200, 0.125W, 5%, 0805
-$ENDCMP
-#
-$CMP R_200K
-D Resistor, 200K, 0805
-$ENDCMP
-#
-$CMP R_22K
-D Resistor, 22K, 0.125W, 5%, 0805
+$CMP 74HC4051
+D 8-channel analog multiplexer/demultiplexer, DIP-16/SOIC-16/TSSOP-16
+K HCMOS Multiplexer Demultiplexer Analog
+F http://www.ti.com/lit/ds/symlink/cd74hc4051.pdf
 $ENDCMP
 #
 $CMP R_23.7K
