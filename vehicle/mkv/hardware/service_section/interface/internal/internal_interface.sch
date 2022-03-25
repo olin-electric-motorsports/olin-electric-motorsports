@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 30 0
+LIBS:internal_interface-cache
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -329,115 +330,111 @@ Wire Wire Line
 $Comp
 L formula:MicroFit_24 J6
 U 1 1 623CEDA0
-P 7000 3700
-F 0 "J6" H 7183 3797 60  0000 C CNN
-F 1 "MicroFit_24" H 7183 3691 60  0000 C CNN
-F 2 "footprints:Molex_Microfit3_Header_02x12_Straight_0444322401_OEM" H 6950 3550 60  0001 C CNN
-F 3 "" H 7050 3650 60  0001 C CNN
-F 4 "DK" H 7150 3750 60  0001 C CNN "MFN"
-F 5 "WM4728-ND" H 7250 3850 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/molex-llc/0430452400/WM4728-ND/531428" H 7350 3950 60  0001 C CNN "PurchasingLink"
-	1    7000 3700
+P 5900 3700
+F 0 "J6" H 6083 3797 60  0000 C CNN
+F 1 "MicroFit_24" H 6083 3691 60  0000 C CNN
+F 2 "footprints:Molex_Microfit3_Header_02x12_Straight_0444322401_OEM" H 5850 3550 60  0001 C CNN
+F 3 "" H 5950 3650 60  0001 C CNN
+F 4 "DK" H 6050 3750 60  0001 C CNN "MFN"
+F 5 "WM4728-ND" H 6150 3850 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/molex-llc/0430452400/WM4728-ND/531428" H 6250 3950 60  0001 C CNN "PurchasingLink"
+	1    5900 3700
 	1    0    0    -1  
 $EndComp
-Text Notes 6700 5300 1    118  ~ 0
+Text Notes 5600 5300 1    118  ~ 0
 To Cooling Fans
-Text Label 7700 3950 0    50   ~ 0
+Text Label 6600 6050 0    50   ~ 0
 CoolingBat-
-Text Label 7350 4050 0    50   ~ 0
+Text Label 6250 3850 0    50   ~ 0
 fanPWM
-Text Label 7350 4150 0    50   ~ 0
+Text Label 6250 4950 0    50   ~ 0
 fanSense1
 Wire Wire Line
-	7400 3850 7350 3850
-Text Label 7700 3850 0    50   ~ 0
+	6300 6150 6250 6150
+Text Label 6600 6150 0    50   ~ 0
 CoolingBat+
 Wire Wire Line
-	7700 3950 7350 3950
-Text Label 7700 4350 0    50   ~ 0
+	6600 6050 6250 6050
+Text Label 6600 5850 0    50   ~ 0
 CoolingBat-
-Text Label 7350 4450 0    50   ~ 0
+Text Label 6250 4250 0    50   ~ 0
 fanPWM
-Text Label 7350 4550 0    50   ~ 0
+Text Label 6250 4750 0    50   ~ 0
 fanSense2
 Wire Wire Line
-	7400 4250 7350 4250
-Text Label 7800 4250 0    50   ~ 0
+	6300 5950 6250 5950
+Text Label 6700 5950 0    50   ~ 0
 CoolingBat+
 Wire Wire Line
-	7700 4350 7350 4350
+	6600 5850 6250 5850
 Wire Wire Line
-	7800 4250 7700 4250
-Text Label 7700 4750 0    50   ~ 0
+	6700 5950 6600 5950
+Text Label 6600 5650 0    50   ~ 0
 CoolingBat-
-Text Label 7350 4850 0    50   ~ 0
+Text Label 6250 4650 0    50   ~ 0
 fanPWM
-Text Label 7350 4950 0    50   ~ 0
+Text Label 6250 4550 0    50   ~ 0
 fanSense3
 Wire Wire Line
-	7400 4650 7350 4650
-Text Label 7800 4650 0    50   ~ 0
+	6300 5750 6250 5750
+Text Label 6700 5750 0    50   ~ 0
 CoolingBat+
 Wire Wire Line
-	7700 4750 7350 4750
+	6600 5650 6250 5650
 Wire Wire Line
-	7800 4650 7700 4650
-Text Label 7700 5150 0    50   ~ 0
+	6700 5750 6600 5750
+Text Label 6600 5450 0    50   ~ 0
 CoolingBat-
-Text Label 7350 5250 0    50   ~ 0
+Text Label 6250 4050 0    50   ~ 0
 fanPWM
-Text Label 7350 5350 0    50   ~ 0
+Text Label 6250 4350 0    50   ~ 0
 fanSense4
 $Comp
 L formula:F_4A F4
 U 1 1 623DA1CE
-P 7550 5050
-F 0 "F4" V 7500 5200 50  0000 C CNN
-F 1 "F_4A" V 7500 5050 50  0000 C CNN
-F 2 "footprints:Fuse_1206" V 7480 5050 50  0001 C CNN
-F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 7630 5050 50  0001 C CNN
-F 4 "DK" H 7550 5050 60  0001 C CNN "MFN"
-F 5 "F1459CT-ND" H 7550 5050 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 8030 5450 60  0001 C CNN "PurchasingLink"
-	1    7550 5050
+P 6450 5550
+F 0 "F4" V 6400 5700 50  0000 C CNN
+F 1 "F_4A" V 6400 5550 50  0000 C CNN
+F 2 "footprints:Fuse_1206" V 6380 5550 50  0001 C CNN
+F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 6530 5550 50  0001 C CNN
+F 4 "DK" H 6450 5550 60  0001 C CNN "MFN"
+F 5 "F1459CT-ND" H 6450 5550 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 6930 5950 60  0001 C CNN "PurchasingLink"
+	1    6450 5550
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	7400 5050 7350 5050
-Text Label 7800 5050 0    50   ~ 0
+	6300 5550 6250 5550
+Text Label 6700 5550 0    50   ~ 0
 CoolingBat+
 Wire Wire Line
-	7700 5150 7350 5150
+	6600 5450 6250 5450
 Wire Wire Line
-	7800 5050 7700 5050
-Text Label 7700 5550 0    50   ~ 0
-CoolingBat-
-Text Label 7350 5650 0    50   ~ 0
+	6700 5550 6600 5550
+Text Label 6250 4450 0    50   ~ 0
 fanPWM
-Text Label 7350 5750 0    50   ~ 0
+Text Label 6250 4150 0    50   ~ 0
 fanSense5
 Wire Wire Line
-	7400 5450 7350 5450
-Text Label 7800 5450 0    50   ~ 0
+	6300 5350 6250 5350
+Text Label 6700 5350 0    50   ~ 0
 CoolingBat+
 Wire Wire Line
-	7700 5550 7350 5550
-Wire Wire Line
-	7800 5450 7700 5450
-Text Label 7700 5950 0    50   ~ 0
+	6700 5350 6600 5350
+Text Label 6600 5050 0    50   ~ 0
 CoolingBat-
-Text Label 7350 6050 0    50   ~ 0
+Text Label 6250 4850 0    50   ~ 0
 fanPWM
-Text Label 7350 6150 0    50   ~ 0
+Text Label 6250 3950 0    50   ~ 0
 fanSense6
 Wire Wire Line
-	7400 5850 7350 5850
-Text Label 7800 5850 0    50   ~ 0
+	6300 5150 6250 5150
+Text Label 6700 5150 0    50   ~ 0
 CoolingBat+
 Wire Wire Line
-	7700 5950 7350 5950
+	6600 5050 6250 5050
 Wire Wire Line
-	7800 5850 7700 5850
+	6700 5150 6600 5150
 $Comp
 L formula:SSM3K333R Q1
 U 1 1 623DDEE5
@@ -716,71 +713,75 @@ Wire Wire Line
 $Comp
 L formula:F_4A F5
 U 1 1 623EE9BE
-P 7550 5450
-F 0 "F5" V 7500 5600 50  0000 C CNN
-F 1 "F_4A" V 7500 5450 50  0000 C CNN
-F 2 "footprints:Fuse_1206" V 7480 5450 50  0001 C CNN
-F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 7630 5450 50  0001 C CNN
-F 4 "DK" H 7550 5450 60  0001 C CNN "MFN"
-F 5 "F1459CT-ND" H 7550 5450 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 8030 5850 60  0001 C CNN "PurchasingLink"
-	1    7550 5450
+P 6450 5350
+F 0 "F5" V 6400 5500 50  0000 C CNN
+F 1 "F_4A" V 6400 5350 50  0000 C CNN
+F 2 "footprints:Fuse_1206" V 6380 5350 50  0001 C CNN
+F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 6530 5350 50  0001 C CNN
+F 4 "DK" H 6450 5350 60  0001 C CNN "MFN"
+F 5 "F1459CT-ND" H 6450 5350 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 6930 5750 60  0001 C CNN "PurchasingLink"
+	1    6450 5350
 	0    1    1    0   
 $EndComp
 $Comp
 L formula:F_4A F6
 U 1 1 623EFB59
-P 7550 5850
-F 0 "F6" V 7500 6000 50  0000 C CNN
-F 1 "F_4A" V 7500 5850 50  0000 C CNN
-F 2 "footprints:Fuse_1206" V 7480 5850 50  0001 C CNN
-F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 7630 5850 50  0001 C CNN
-F 4 "DK" H 7550 5850 60  0001 C CNN "MFN"
-F 5 "F1459CT-ND" H 7550 5850 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 8030 6250 60  0001 C CNN "PurchasingLink"
-	1    7550 5850
+P 6450 5150
+F 0 "F6" V 6400 5300 50  0000 C CNN
+F 1 "F_4A" V 6400 5150 50  0000 C CNN
+F 2 "footprints:Fuse_1206" V 6380 5150 50  0001 C CNN
+F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 6530 5150 50  0001 C CNN
+F 4 "DK" H 6450 5150 60  0001 C CNN "MFN"
+F 5 "F1459CT-ND" H 6450 5150 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 6930 5550 60  0001 C CNN "PurchasingLink"
+	1    6450 5150
 	0    1    1    0   
 $EndComp
 $Comp
 L formula:F_4A F1
 U 1 1 623F337C
-P 7550 3850
-F 0 "F1" V 7500 4000 50  0000 C CNN
-F 1 "F_4A" V 7500 3850 50  0000 C CNN
-F 2 "footprints:Fuse_1206" V 7480 3850 50  0001 C CNN
-F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 7630 3850 50  0001 C CNN
-F 4 "DK" H 7550 3850 60  0001 C CNN "MFN"
-F 5 "F1459CT-ND" H 7550 3850 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 8030 4250 60  0001 C CNN "PurchasingLink"
-	1    7550 3850
+P 6450 6150
+F 0 "F1" V 6400 6300 50  0000 C CNN
+F 1 "F_4A" V 6400 6150 50  0000 C CNN
+F 2 "footprints:Fuse_1206" V 6380 6150 50  0001 C CNN
+F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 6530 6150 50  0001 C CNN
+F 4 "DK" H 6450 6150 60  0001 C CNN "MFN"
+F 5 "F1459CT-ND" H 6450 6150 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 6930 6550 60  0001 C CNN "PurchasingLink"
+	1    6450 6150
 	0    1    1    0   
 $EndComp
 $Comp
 L formula:F_4A F2
 U 1 1 623F4764
-P 7550 4250
-F 0 "F2" V 7500 4400 50  0000 C CNN
-F 1 "F_4A" V 7500 4250 50  0000 C CNN
-F 2 "footprints:Fuse_1206" V 7480 4250 50  0001 C CNN
-F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 7630 4250 50  0001 C CNN
-F 4 "DK" H 7550 4250 60  0001 C CNN "MFN"
-F 5 "F1459CT-ND" H 7550 4250 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 8030 4650 60  0001 C CNN "PurchasingLink"
-	1    7550 4250
+P 6450 5950
+F 0 "F2" V 6400 6100 50  0000 C CNN
+F 1 "F_4A" V 6400 5950 50  0000 C CNN
+F 2 "footprints:Fuse_1206" V 6380 5950 50  0001 C CNN
+F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 6530 5950 50  0001 C CNN
+F 4 "DK" H 6450 5950 60  0001 C CNN "MFN"
+F 5 "F1459CT-ND" H 6450 5950 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 6930 6350 60  0001 C CNN "PurchasingLink"
+	1    6450 5950
 	0    1    1    0   
 $EndComp
 $Comp
 L formula:F_4A F3
 U 1 1 623F6133
-P 7550 4650
-F 0 "F3" V 7500 4800 50  0000 C CNN
-F 1 "F_4A" V 7500 4650 50  0000 C CNN
-F 2 "footprints:Fuse_1206" V 7480 4650 50  0001 C CNN
-F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 7630 4650 50  0001 C CNN
-F 4 "DK" H 7550 4650 60  0001 C CNN "MFN"
-F 5 "F1459CT-ND" H 7550 4650 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 8030 5050 60  0001 C CNN "PurchasingLink"
-	1    7550 4650
+P 6450 5750
+F 0 "F3" V 6400 5900 50  0000 C CNN
+F 1 "F_4A" V 6400 5750 50  0000 C CNN
+F 2 "footprints:Fuse_1206" V 6380 5750 50  0001 C CNN
+F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/fuses/littelfuse_fuse_466_datasheet.pdf.pdf" V 6530 5750 50  0001 C CNN
+F 4 "DK" H 6450 5750 60  0001 C CNN "MFN"
+F 5 "F1459CT-ND" H 6450 5750 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340" V 6930 6150 60  0001 C CNN "PurchasingLink"
+	1    6450 5750
 	0    1    1    0   
 $EndComp
+Wire Wire Line
+	6600 5250 6250 5250
+Text Label 6600 5250 0    50   ~ 0
+CoolingBat-
 $EndSCHEMATC

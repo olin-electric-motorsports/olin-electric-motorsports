@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 30 0
+LIBS:external_interface-cache
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -41,13 +42,13 @@ Text Label 3600 3650 0    50   ~ 0
 IMD->TSMS
 Text Label 3600 3750 0    50   ~ 0
 TSMS->FinalShutdown
-Text Label 3600 3850 0    50   ~ 0
+Text Label 3600 4150 0    50   ~ 0
 CoolingBat-
 Text Label 3600 4050 0    50   ~ 0
 GND
-Text Label 3600 4150 0    50   ~ 0
+Text Label 3600 3850 0    50   ~ 0
 12V
-Text Label 3600 4250 0    50   ~ 0
+Text Label 3600 3950 0    50   ~ 0
 GND
 Text Label 3600 4350 0    50   ~ 0
 CAN_P
@@ -79,9 +80,9 @@ Text Label 3600 5650 0    50   ~ 0
 TSAL-Red-Pos
 Text Label 3600 5750 0    50   ~ 0
 TSAL-Red-Neg
-Text Label 3600 6450 0    50   ~ 0
+Text Label 3600 6050 0    50   ~ 0
 BSDP-Current-Sense
-Text Label 3600 6550 0    50   ~ 0
+Text Label 3600 6150 0    50   ~ 0
 HVD->HVD-Connector
 $Comp
 L formula:SS-126-G-2 J2
@@ -287,13 +288,13 @@ Text Notes 9800 3400 0    118  ~ 0
 To Internal
 Text Notes 3000 1100 0    157  ~ 0
 Accumulator Interface -- External
-Text Label 3600 3950 0    50   ~ 0
+Text Label 3600 4250 0    50   ~ 0
 CoolingBat-
 Text Label 3600 5150 0    50   ~ 0
 CAN_EMETER_N
-Text Label 3600 6050 0    50   ~ 0
+Text Label 3600 6450 0    50   ~ 0
 CoolingBat+
-Text Label 3600 6150 0    50   ~ 0
+Text Label 3600 6550 0    50   ~ 0
 CoolingBat+
 Text Label 3600 6350 0    50   ~ 0
 BSDP-Current-Trigger-
