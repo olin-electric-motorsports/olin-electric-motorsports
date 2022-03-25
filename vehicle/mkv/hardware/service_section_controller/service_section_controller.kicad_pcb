@@ -1,4 +1,4 @@
-(kicad_pcb (version 20171130) (host pcbnew "(5.1.0)-1")
+(kicad_pcb (version 20171130) (host pcbnew 5.1.10-88a1d61d58~88~ubuntu20.04.1)
 
   (general
     (thickness 1.6)
@@ -73,7 +73,7 @@
     (pad_drill 1.02)
     (pad_to_mask_clearance 0)
     (aux_axis_origin 0 0)
-    (visible_elements 7FFFFFFF)
+    (visible_elements FFFFFF7F)
     (pcbplotparams
       (layerselection 0x010fc_ffffffff)
       (usegerberextensions false)
@@ -485,7 +485,7 @@
       (net 170 -TS))
     (pad 1 thru_hole circle (at 0 -5.25) (size 1.397 1.397) (drill 1.02) (layers *.Cu *.Mask)
       (net 165 +TS))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/Ultrafit-4-RA/172310-1304_stp/1723101304.stp
+    (model ${USER_OEM}/3DModels/Ultrafit-4-RA/172310-1304_stp/1723101304.stp
       (offset (xyz 5 0 3))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 -90))
@@ -2028,7 +2028,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 thru_hole rect (at -5.0038 0) (size 1.3716 1.3716) (drill 0.8636) (layers *.Cu *.Mask B.Adhes F.Paste)
       (net 11 +AIR_COIL+))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/UVZ_Cap/UVZ_Cap.step
+    (model ${USER_OEM}/3DModels/UVZ_Cap/UVZ_Cap.step
       (offset (xyz -5 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2724,13 +2724,8 @@
       (net 76 DETECT_BMS))
     (pad 12 thru_hole circle (at 15 3) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask)
       (net 11 +AIR_COIL+))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/MicroFit_VT_6/MicroFit_VT_6.stp
-      (offset (xyz 2.5146 -0.1524 5.08))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/MicroFit_VT_6/MicroFit_VT_6.stp
-      (offset (xyz 12.7 0 5.08))
+    (model ${KISYS3DMOD}/Connector_Molex.3dshapes/Molex_Micro-Fit_3.0_43045-1212_2x06_P3.00mm_Vertical.wrl
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
@@ -7095,11 +7090,6 @@
       (net 146 +15V))
     (pad 1 thru_hole circle (at 0 0 270) (size 1 1) (drill 0.7) (layers *.Cu *.Mask)
       (net 6 /power_secondary.sch/SW))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/UVZ_Cap/UVZ_Cap.step
-      (offset (xyz -2.54 -2.54 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module footprints:L_100uH_OEM (layer F.Cu) (tedit 5DD6FFE6) (tstamp 614B38B3)
@@ -7181,7 +7171,7 @@
       (net 76 DETECT_BMS))
     (pad 1 thru_hole circle (at 0 0) (size 1.8 1.8) (drill 1.3) (layers *.Cu *.Mask)
       (net 32 "Net-(D801-Pad1)"))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/G5Q_OEM/G5Q.step
+    (model ${USER_OEM}/3DModels/G5Q_OEM/G5Q.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -7252,8 +7242,8 @@
       (net 55 IM))
     (pad 2 thru_hole circle (at 1.905 0 270) (size 1.9 1.9) (drill 1.2) (layers *.Cu *.Mask)
       (net 56 IP))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/Molex_NanoFit_1x02x2_50mm_Angled_OEM/Molex_NanoFit_1x02x2_50mm_Angled_OEM001.wrl
-      (offset (xyz -1.778 0 0))
+    (model /home/noah/formula/OEM_Preferred_Parts/3DModels/Molex_NanoFit_1x02x2_50mm_Angled_OEM/Molex_NanoFit_1x02x2_50mm_Angled_OEM001.wrl
+      (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
@@ -7412,7 +7402,7 @@
       (net 166 +5V_BMS))
     (pad 5 thru_hole circle (at 0 0) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 65 SM_MOSI))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/micromatch_female_vert_16/c-1-338068-6-f-3d.stp
+    (model ${OEM_DIR}/3DModels/micromatch_female_vert_16/c-1-338068-6-f-3d.stp
       (offset (xyz 1.3 -4.5 3.6))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 90))
@@ -7453,7 +7443,7 @@
       (net 57 IMD_Output))
     (pad 2 thru_hole circle (at 0 1.75 270) (size 1.397 1.397) (drill 1.02) (layers *.Cu *.Mask)
       (net 2 +AIR_COIL-))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/Ultrafit-5/COMPOUND_sp.step
+    (model ${USER_OEM}/3DModels/Ultrafit-5/COMPOUND_sp.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -8849,7 +8839,7 @@
       (net 2 +AIR_COIL-))
     (pad 1 thru_hole rect (at -5.0038 0) (size 1.3716 1.3716) (drill 0.8636) (layers *.Cu *.Mask B.Adhes F.Paste)
       (net 11 +AIR_COIL+))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/UVZ_Cap/UVZ_Cap.step
+    (model ${USER_OEM}/3DModels/UVZ_Cap/UVZ_Cap.step
       (offset (xyz -5 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -9177,11 +9167,6 @@
       (net 170 -TS))
     (pad 1 smd rect (at 0 0 90) (size 1.1 3.2) (layers F.Cu F.Paste F.Mask)
       (net 146 +15V))
-    (model C:/Users/Corey/Downloads/ul_UVZ1E102MPD/2022-02-26_02-09-21/STEP/U1-T_NCH.step
-      (offset (xyz -0.1016 -3.81 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module footprints:C_0805_OEM (layer F.Cu) (tedit 5C3D8347) (tstamp 619460FA)
@@ -9758,7 +9743,7 @@
       (net 106 AIL+))
     (pad "" np_thru_hole circle (at 0 -7.18 270) (size 1.6 1.6) (drill 1.6) (layers *.Cu *.Mask))
     (pad "" np_thru_hole circle (at 2.5 -7.18 270) (size 1.6 1.6) (drill 1.6) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/Molex_NanoFit_1x02x2_50mm_Angled_OEM/Molex_NanoFit_1x02x2_50mm_Angled_OEM001.wrl
+    (model ${USER_OEM}/3DModels/Molex_NanoFit_1x02x2_50mm_Angled_OEM/Molex_NanoFit_1x02x2_50mm_Angled_OEM001.wrl
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -10361,7 +10346,7 @@
       (net 75 DETECT_IMD_LATCH))
     (pad 5 thru_hole circle (at 0 -7.62 180) (size 1.8 1.8) (drill 1.3) (layers *.Cu *.Mask)
       (net 168 +12V_SHUTDOWN))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/G5Q_OEM/G5Q.step
+    (model ${USER_OEM}/3DModels/G5Q_OEM/G5Q.step
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -11723,11 +11708,6 @@
     (pad 14 thru_hole circle (at 2.54 11.43) (size 1.3 1.3) (drill 0.8) (layers *.Cu *.Mask)
       (net 2 +AIR_COIL-))
     (pad 15 thru_hole circle (at 1.8 -6.48) (size 2 2) (drill 1.5) (layers *.Cu *.Mask))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/micromatch_female_vert_16/c-1-338068-6-f-3d.stp
-      (offset (xyz 1.1938 -2.54 2.54))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
-    )
   )
 
   (module footprints:MicroFit_RA_V_2 (layer F.Cu) (tedit 5C55CE73) (tstamp 6192FFF3)
@@ -11748,11 +11728,6 @@
       (net 2 +AIR_COIL-))
     (pad 2 thru_hole circle (at 0 7.32 90) (size 1.42 1.42) (drill 1.02) (layers *.Cu *.Mask)
       (net 11 +AIR_COIL+))
-    (model ${LOCAL_DIR}/olin-electric-motorsports/parts/3DModels/MICROFIT4RA/43045-0400_stp/430450400.stp
-      (offset (xyz 0 0 4.572))
-      (scale (xyz 1 1 1))
-      (rotate (xyz -90 0 180))
-    )
   )
 
   (module footprints:4-pin_SOP (layer F.Cu) (tedit 5BFC5734) (tstamp 61936EE2)
