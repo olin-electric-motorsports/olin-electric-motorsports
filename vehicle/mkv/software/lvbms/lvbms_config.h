@@ -3,12 +3,18 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
+#include "libs/spi/api.h"
 
 #define OT_THRESHOLD        // ~60deg C  
-#define OV_THRESHOLD
-#define UV_THRESHOLD
+#define LTC_OV_THRESHOLD        (2625) // 4.2V / (16*100*10**-6)
+#define LTC_UV_THRESHOLD        (1875) // 3.0V / (16*100*10**-6)
+#define LTC_ITEMP_THRESHOLD     
 #define OC_THRESHOLD
 #define IDLE_TIMEOUT    5900 // 59 seconds
+
+
+
+#define NUM_ICS         1
 
 // adcs
 #define THERM_0         ADC7// TODO change to ADC num??  
@@ -18,6 +24,7 @@
 #define THERM_4         ADC2
 #define THERM_5         ADC3
 #define CURRENT_SNS     ADC4
+
 
 // state machine enum 
 typedef enum {
@@ -96,6 +103,21 @@ timer_cfg_s timer0_IDLE_ctc_cfg = {
 //         .interrupt_callback = timer0_callback,
 //     },
 // };
+
+/*
+ * SPI
+ * TODO verify if this is the correct SPI setup 
+ */
+spi_cfg_s spi_cfg = {
+    .interrupt_enable = false,  // good 
+    .data_order = LSB,          // was LSB?? 
+    .mode = MAIN,               // good 
+    .polarity = RISING_FALLING, // ?? was FALLING_RISING 
+    .phase = SAMPLE_SETUP,      // was SAMPLE_SETUP?? 
+    .clock_rate = F_OSC_DIV_32,  // 16M/32 = 500K
+    .cs_pin_overide = &SPI_CSB, // good 
+    .pin_redirect = false,      // good
+};
 
 /*
  * CAN message (at GLV monitor rn )

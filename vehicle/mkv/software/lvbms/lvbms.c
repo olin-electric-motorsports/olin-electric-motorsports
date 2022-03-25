@@ -25,8 +25,10 @@ can we wakeup from IDLE to STANDBY
 #include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
+#include "libs/spi/api.h"
 #include "vehicle/mkv/software/lvbms/can_api.h" // TODO: why?? 
 #include "avr/interrupt.h"
+#include "vehicle/mkv/software/lvbms/LTC6810/ltc6810.h"
 
 volatile lvbms_state SYSTEM_STATE = IDLE; 
 volatile uint8_t    adc_ptr     = 0; 
@@ -34,6 +36,8 @@ uint16_t            adc_data[7] = { 0 }; // todo used to be voltatile
 uint64_t            ms_counter         = 0; 
 volatile uint8_t    fault_flag  = 0x00; 
 uint8_t             one_second_passed = true; 
+
+cell_asic ICS[NUM_ICS]; 
 
 /* 
 * FAULT FLAGS (TODO: is it ok to have more than 8 flags)
@@ -67,8 +71,6 @@ void enable_STANDBY_mode(){
     SMCR |= 0x0D; // sets Atmega into STANDBY mode
 }
 
-
-
 void gpio_init(){
     gpio_set_mode(LED_0,            OUTPUT); 
     gpio_set_mode(LED_1,            OUTPUT); 
@@ -100,12 +102,20 @@ void adc_callback(void){
     }
 }
 
+/* fault handling */
+void enter_fault_state(fault_flags fault){
+    SYSTEM_STATE = FAULT; 
+    // prevent cascading fault reporting 
+    if (lvbms.fault_code == FAULT_NONE){
+        lvbms.fault_code |= fault; 
+    }
+}
+
 /* interrupt handler for COMP 2 (CHARGING) 
  * should be called on wakeup 
 
 */
 ISR(INT2_vect){
-    SYSTEM_STATE = IDLE;
     system_ON(); 
    
 }
@@ -116,33 +126,41 @@ ISR(INT2_vect){
 
 */
 ISR(INT1_vect){
-    SYSTEM_STATE = IDLE; 
     system_ON(); 
 
 }
 
 /* 
-* init LTC chip - SPI? 
-* ref: 
-* https://github.com/analogdevicesinc/Linduino/blob/master/LTSketchbook/libraries/LTC6810/LTC6810.h
-* 
+* init LTC chip 
 */
-// void LTC_init(){
+void LTC_init(){
     
-//     LTC6810_init_cfg(); 
-//     // set config reg bits in LTC 
-//     LTC6810_set_cfgr(
-//         0, 
-//         0, 
-//     ); 
+    // initialize cfgr data structures & populate with limits 
+    LTC6810_init_cfg(NUM_ICS, ICS); 
+    LTC6810_init_reg_limits(NUM_ICS, ICS); 
 
-//     // selftests? 
-//     LTC6810_adstatd(MD_7KHZ_3KHZ, ); 
+    // set config reg bits in LTC - for now we'll only enable vov and vuv limits  
+    LTC6810_set_cfgr_uv(0, ICS, LTC_UV_THRESHOLD); 
 
-//     // muting / unmuting discharge transistors? 
-//     LTC6810_mute(); 
+    LTC6810_set_cfgr_ov(0, ICS, LTC_OV_THRESHOLD); 
 
-// }
+    // write the configs over SPI 
+    LTC6810_wrcfg(NUM_ICS, ICS); 
+
+    /* adstatd checks: 
+    * sum of all cells
+    * internal die temperature  
+    * Analog psu voltage 
+    * Digital psu voltage  
+    */
+    LTC6810_adstatd(MD_7KHZ_3KHZ, STAT_CH_ALL); 
+
+    LTC6810_rdstat(STAT_CH_ALL, NUM_ICS, ICS);
+
+    // muting / unmuting discharge transistors? 
+    LTC6810_mute(); 
+
+}
 
 
 /* Request & poll ADC voltages & check those voltages - Jack's BMS code heavily referenced*/
@@ -159,20 +177,25 @@ void LTC_voltage_task(){
 
     lvbms.pec_error_count += num_pec_errors; 
 
+    num_pec_errors = LTC6810_rdstat(STAT_CH_SOC, NUM_ICS, ICS); // ensure ICS are initialized to store data
+
+    lvbms.pec_error_count += num_pec_errors; 
+
     uint16_t pack_voltage = 0;
     uint32_t uv = 0;
     uint32_t ov = 0;
 
-    pack_voltage += ICS[ic].stat.stat_codes[0]
-            - ICS[ic].cells.c_codes[4]
-            - ICS[ic].cells.c_codes[5]
+    // data should be stored in mV 
+    pack_voltage += ICS[0].stat.stat_codes[0] //* 10 ** -6
+            - ICS[0].cells.c_codes[4]
+            - ICS[0].cells.c_codes[5]; 
 
-    uv = (ICS[ic].stat.flags[0] & 0x55) | (ICS[ic].stat.flags[1] & 0x55)
-            | (ICS[ic].stat.flags[2] & 0x55);
+    uv = (ICS[0].stat.flags[0] & 0x55) | (ICS[0].stat.flags[1] & 0x55)
+            | (ICS[0].stat.flags[2] & 0x55);
 
     // Even bits of the ST register are used for overvoltage flags
-    ov = (ICS[ic].stat.flags[0] & 0xAA) | (ICS[ic].stat.flags[1] & 0xAA)
-            | (ICS[ic].stat.flags[2] & 0xAA);
+    ov = (ICS[0].stat.flags[0] & 0xAA) | (ICS[0].stat.flags[1] & 0xAA)
+            | (ICS[0].stat.flags[2] & 0xAA);
 
     if (uv > 0) {
         enter_fault_state(UV_FAULT);
@@ -191,9 +214,6 @@ void collect_telem(){
     adc_start_convert(adc_pins[adc_ptr]); 
     // ltc_voltage_task(); 
 }
-
-
-
 
 /* check for OT, UT, OV, UV, comparator error */ 
 // void fault_check(){
@@ -219,11 +239,6 @@ void collect_telem(){
 //     }
 // }
 
-/* fault handling */
-void enter_fault_state(fault_flags fault){
-    SYSTEM_STATE = FAULT; 
-    lvbms.fault_code |= fault; 
-}
 
 /* set LEDs based on system state & fault state */
 void drive_leds(){
@@ -268,12 +283,14 @@ void check_state_transition(){
     }
 }
 
+/* uses PWM to drive fan at certain speed */
 void drive_fan(){}
 
 
 
 /* called on transition from STANDBY to IDLE */
 void system_ON(){
+    SYSTEM_STATE = IDLE;
     
     wake(); 
     // set CANTRx into normal mode 
@@ -307,7 +324,7 @@ int main(void){
     gpio_init(); 
     timer_init(&timer0_IDLE_ctc_cfg); 
     enable_external_interrupts(); 
-    // can_init(BAUD_500KBPS);
+    can_init(BAUD_500KBPS);
     system_ON();
 
     while(1){
@@ -317,7 +334,7 @@ int main(void){
 
         // 1 second task 
         if ((ms_counter / 100)%2 != one_second_passed) {
-            send_can_lvbms(); 
+            can_send_lvbms(); 
             collect_telem(); 
             one_second_passed = (ms_counter / 100)%2; 
         }

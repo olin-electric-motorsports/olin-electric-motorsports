@@ -1,7 +1,7 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
-    name = "ltc6810",
+    name = "LTC6810",
     srcs = [
         "ltc6810.c",
     ],

@@ -16,6 +16,8 @@ cc_firmware(
         "//libs/adc",
         "//libs/gpio",
         "//libs/timer",
+        "//libs/spi",
+        "//vehicle/mkv/software/lvbms/LTC6810"
     ],
 )
 
