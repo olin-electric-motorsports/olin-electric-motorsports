@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:hitl-primary-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -783,9 +782,11 @@ Wire Wire Line
 Wire Wire Line
 	6100 3350 6100 3950
 $Comp
-L formula_old:C_30pF C24
+L formula:C_30pF C24
 U 1 1 620E7351
 P 6550 3500
+AR Path="/620E7351" Ref="C24"  Part="1" 
+AR Path="/6143EE2A/620E7351" Ref="C24"  Part="1" 
 F 0 "C24" H 6665 3546 50  0000 L CNN
 F 1 "C_30pF" H 6665 3455 50  0000 L CNN
 F 2 "footprints:C_0805_OEM" H 6588 3350 50  0001 C CNN
