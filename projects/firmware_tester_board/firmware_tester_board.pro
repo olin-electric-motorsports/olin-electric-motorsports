@@ -1,4 +1,4 @@
-update=Mon 07 Mar 2022 06:27:11 PM EST
+update=Date
 version=1
 last_client=kicad
 [general]
