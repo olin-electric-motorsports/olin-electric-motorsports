@@ -61,6 +61,7 @@
 #include "stdint.h"
 #include "ltc681x.h"
 #include "ltc6810.h"
+#include <stdint.h>
 
 /* Helper function to initialize register limits */
 void LTC6810_init_reg_limits(uint8_t total_ic, // Number of ICs in the system
@@ -450,7 +451,7 @@ void LTC6810_run_gpio_openwire(uint8_t total_ic, //Number of ICs in the daisy ch
 	}
 	
 	wakeup_idle(total_ic);
-	int8_t error = LTC6810_rdaux(0, total_ic,ic);
+	(void)LTC6810_rdaux(0, total_ic,ic);
 	
 	for (int cic=0; cic<total_ic; cic++)
 	{
@@ -466,11 +467,11 @@ void LTC6810_run_gpio_openwire(uint8_t total_ic, //Number of ICs in the daisy ch
 	{ 
 		wakeup_idle(total_ic);
 		LTC6810_axow(MD_7KHZ_3KHZ,PULL_UP_CURRENT);
-		conv_time =LTC6810_pollAdc();
+		// uint32_t conv_time = LTC6810_pollAdc();
 	} 
 	
 	wakeup_idle(total_ic);
-	error = LTC6810_rdaux(0, total_ic,ic);
+	(void)LTC6810_rdaux(0, total_ic,ic);
 	
 	for (int cic=0; cic<total_ic; cic++)
 	{
@@ -581,7 +582,7 @@ void LTC6810_stcomm(uint8_t len) //Length of data to be transmitted
     LTC681x_stcomm(len);  
 }
 
-/* Reads Serial ID registers group. */
+/* Reads Serial ID registers group.
 uint8_t LTC6810_rdsid(uint8_t total_ic, // The number of ICs in the system
                      cell_asic *ic //A two dimensional array that the function stores the read data.
                     )
@@ -616,7 +617,7 @@ uint8_t LTC6810_rdsid(uint8_t total_ic, // The number of ICs in the system
         }
     }
     return(pec_error);
-} 
+} */
 
 /* Mutes the LTC6810 discharge transistors */
 void LTC6810_mute()
@@ -693,7 +694,7 @@ void LTC6810_set_cfgr_adcopt(uint8_t nIC, cell_asic *ic, bool adcopt)
 }
 
 /* Helper function to set GPIO bits */
-void LTC6810_set_cfgr_gpio(uint8_t nIC, cell_asic *ic,bool gpio[4])
+void LTC6810_set_cfgr_gpio(uint8_t nIC, cell_asic *ic,bool gpio[])
 {  
 	for (int i =0; i<4; i++)
 	{
@@ -703,7 +704,7 @@ void LTC6810_set_cfgr_gpio(uint8_t nIC, cell_asic *ic,bool gpio[4])
 }
 
 /* Helper function to control discharge */
-void LTC6810_set_cfgr_dis(uint8_t nIC, cell_asic *ic,bool dcc[6])
+void LTC6810_set_cfgr_dis(uint8_t nIC, cell_asic *ic,bool dcc[])
 {  
 	for (int i =0; i<6; i++)
 	{
@@ -767,7 +768,7 @@ void LTC6810_set_cfgr_sconv(uint8_t nIC, cell_asic *ic, bool sconv)
 }
 
 /* Helper function to set the discharge timer bits */
-void LTC6810_set_cfgr_dcto(uint8_t nIC, cell_asic *ic, bool dcto[4])
+void LTC6810_set_cfgr_dcto(uint8_t nIC, cell_asic *ic, bool dcto[])
 {
 	LTC681x_set_cfgr_dcto(nIC, ic, dcto);
 }

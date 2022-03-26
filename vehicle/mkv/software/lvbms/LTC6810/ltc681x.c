@@ -2026,7 +2026,7 @@ void LTC681x_set_cfgr_adcopt(uint8_t nIC, cell_asic* ic, bool adcopt) {
 }
 
 /* Helper function to set GPIO bits */
-void LTC681x_set_cfgr_gpio(uint8_t nIC, cell_asic* ic, bool gpio[5]) {
+void LTC681x_set_cfgr_gpio(uint8_t nIC, cell_asic* ic, bool gpio[]) {
     for (int i = 0; i < 5; i++) {
         if (gpio[i])
             ic[nIC].config.tx_data[0]
@@ -2038,7 +2038,7 @@ void LTC681x_set_cfgr_gpio(uint8_t nIC, cell_asic* ic, bool gpio[5]) {
 }
 
 /* Helper function to control discharge */
-void LTC681x_set_cfgr_dis(uint8_t nIC, cell_asic* ic, bool dcc[12]) {
+void LTC681x_set_cfgr_dis(uint8_t nIC, cell_asic* ic, bool dcc[]) {
     for (int i = 0; i < 8; i++) {
         if (dcc[i])
             ic[nIC].config.tx_data[4] = ic[nIC].config.tx_data[4] | (0x01 << i);
@@ -2056,7 +2056,7 @@ void LTC681x_set_cfgr_dis(uint8_t nIC, cell_asic* ic, bool dcc[12]) {
 }
 
 /* Helper function to control discharge time value */
-void LTC681x_set_cfgr_dcto(uint8_t nIC, cell_asic* ic, bool dcto[4]) {
+void LTC681x_set_cfgr_dcto(uint8_t nIC, cell_asic* ic, bool dcto[]) {
     for (int i = 0; i < 4; i++) {
         if (dcto[i])
             ic[nIC].config.tx_data[5]
