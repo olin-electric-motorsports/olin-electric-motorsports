@@ -28,9 +28,9 @@ F 6 "http://www.te.com/usa-en/product-1-776231-1.html" H 3450 6950 60  0001 C CN
 	1    3400 4850
 	1    0    0    -1  
 $EndComp
-Text Label 3600 3150 0    50   ~ 0
+Text Label 3600 4250 0    50   ~ 0
 GND
-Text Label 3600 3250 0    50   ~ 0
+Text Label 3600 4150 0    50   ~ 0
 12V
 Text Label 3600 3350 0    50   ~ 0
 CAN_P
@@ -38,17 +38,17 @@ Text Label 3600 3450 0    50   ~ 0
 CAN_N
 Text Label 3600 3550 0    50   ~ 0
 CAN-GND
-Text Label 3600 3650 0    50   ~ 0
+Text Label 3600 4850 0    50   ~ 0
 IMD->TSMS
-Text Label 3600 3750 0    50   ~ 0
+Text Label 3600 4950 0    50   ~ 0
 TSMS->FinalShutdown
-Text Label 3600 4150 0    50   ~ 0
-CoolingBat-
-Text Label 3600 4050 0    50   ~ 0
-GND
+Text Label 3600 3250 0    50   ~ 0
+CoolingBat1-
 Text Label 3600 3850 0    50   ~ 0
+GND
+Text Label 3600 5250 0    50   ~ 0
 12V
-Text Label 3600 3950 0    50   ~ 0
+Text Label 3600 5350 0    50   ~ 0
 GND
 Text Label 3600 4350 0    50   ~ 0
 CAN_P
@@ -60,21 +60,21 @@ Text Label 3600 4650 0    50   ~ 0
 TSAL-Green-Neg
 Text Label 3600 4750 0    50   ~ 0
 GND
-Text Label 3600 4950 0    50   ~ 0
+Text Label 3600 3950 0    50   ~ 0
 GND
-Text Label 3600 5050 0    50   ~ 0
+Text Label 3600 6250 0    50   ~ 0
 CAN_EMETER_P
-Text Label 3600 5250 0    50   ~ 0
+Text Label 3600 3650 0    50   ~ 0
 CAN_P
-Text Label 3600 5350 0    50   ~ 0
+Text Label 3600 3750 0    50   ~ 0
 CAN_N
 Text Label 3600 5850 0    50   ~ 0
 ChargeEnable1
 Text Label 3600 5950 0    50   ~ 0
 ChargeEnable2
-Text Label 3600 5450 0    50   ~ 0
+Text Label 3600 5150 0    50   ~ 0
 12V
-Text Label 3600 5550 0    50   ~ 0
+Text Label 3600 5050 0    50   ~ 0
 GND
 Text Label 3600 5650 0    50   ~ 0
 TSAL-Red-Pos
@@ -232,98 +232,114 @@ Text Label 9050 2150 0    50   ~ 0
 GND
 Text Label 9050 2450 0    50   ~ 0
 GND
-Text Label 9050 3700 0    50   ~ 0
-5V_BMS
-Text Label 9050 3800 0    50   ~ 0
-MISO_BMS
-Text Label 9050 3900 0    50   ~ 0
-MOSI_BMS
-Text Label 9050 4000 0    50   ~ 0
-SCK_BMS
-Text Label 9050 4100 0    50   ~ 0
-RESET_BMS
-Text Label 9050 4200 0    50   ~ 0
-LED_O_BMS
-Text Label 9050 4300 0    50   ~ 0
-LED_G_BMS
-Text Label 9050 4400 0    50   ~ 0
-5V_AIRC
-Text Label 9050 4500 0    50   ~ 0
-MISO_AIRC
-Text Label 9050 4600 0    50   ~ 0
-MOSI_AIRC
-Text Label 9050 4700 0    50   ~ 0
-SCK_AIRC
-Text Label 9050 4800 0    50   ~ 0
-RESET_AIRC
 Text Label 9050 4900 0    50   ~ 0
-LED_O_AIRC
+5V_BMS
 Text Label 9050 5000 0    50   ~ 0
-LED_G_AIRC
+MISO_BMS
 Text Label 9050 5100 0    50   ~ 0
-GND
+MOSI_BMS
 Text Label 9050 5200 0    50   ~ 0
-GND
+SCK_BMS
 Text Label 9050 5300 0    50   ~ 0
-GND
+RESET_BMS
 Text Label 9050 5400 0    50   ~ 0
-GND
+LED_O_BMS
 Text Label 9050 5500 0    50   ~ 0
-GND
+LED_G_BMS
 Text Label 9050 5600 0    50   ~ 0
-GND
+5V_AIRC
+Text Label 9050 5700 0    50   ~ 0
+MISO_AIRC
+Text Label 9050 5800 0    50   ~ 0
+MOSI_AIRC
+Text Label 9050 5900 0    50   ~ 0
+SCK_AIRC
+Text Label 9050 6000 0    50   ~ 0
+RESET_AIRC
+Text Label 9050 6100 0    50   ~ 0
+LED_O_AIRC
+Text Label 9050 6200 0    50   ~ 0
+LED_G_AIRC
 Text Label 9050 2750 0    50   ~ 0
 12V
-Text Label 3600 4850 0    50   ~ 0
+Text Label 3600 4050 0    50   ~ 0
 12V
-Text Label 5200 3800 0    50   ~ 0
+Text Label 5050 3750 2    50   ~ 0
 GND
-Text Label 5000 3800 2    50   ~ 0
+Text Label 5600 3750 0    50   ~ 0
 CAN-GND
-Wire Wire Line
-	5200 3800 5000 3800
 Text Notes 3000 2750 0    118  ~ 0
 Ampseal
 Text Notes 9800 3400 0    118  ~ 0
 To Internal
 Text Notes 3000 1100 0    157  ~ 0
 Accumulator Interface -- External
-Text Label 3600 4250 0    50   ~ 0
-CoolingBat-
-Text Label 3600 5150 0    50   ~ 0
-CAN_EMETER_N
-Text Label 3600 6450 0    50   ~ 0
-CoolingBat+
-Text Label 3600 6550 0    50   ~ 0
-CoolingBat+
+Text Label 3600 3150 0    50   ~ 0
+CoolingBat2-
 Text Label 3600 6350 0    50   ~ 0
+CAN_EMETER_N
+Text Label 3600 5450 0    50   ~ 0
+CoolingBat1+
+Text Label 3600 5550 0    50   ~ 0
+CoolingBat2+
+Text Label 3600 6550 0    50   ~ 0
 BSDP-Current-Trigger-
-Text Label 3600 6250 0    50   ~ 0
+Text Label 3600 6450 0    50   ~ 0
 BSDP-Current-Trigger+
 Text Label 9050 2850 0    50   ~ 0
 GND
-Text Label 9050 2950 0    50   ~ 0
-BSDP-Current-Trigger+
-Text Label 9050 3050 0    50   ~ 0
-BSDP-Current-Trigger+
-Text Label 9050 3150 0    50   ~ 0
-BSDP-Current-Trigger-
-Text Label 9050 3250 0    50   ~ 0
-BSDP-Current-Trigger-
-Text Label 9050 6200 0    50   ~ 0
-CoolingBat+
-Text Label 9050 6100 0    50   ~ 0
-CoolingBat+
-Text Label 9050 6000 0    50   ~ 0
-CoolingBat+
-Text Label 9050 5900 0    50   ~ 0
-CoolingBat-
-Text Label 9050 5800 0    50   ~ 0
-CoolingBat-
-Text Label 9050 5700 0    50   ~ 0
-CoolingBat-
+Text Label 9050 3800 0    50   ~ 0
+CoolingBat1+
+Text Label 9050 3700 0    50   ~ 0
+CoolingBat1-
 Text Label 9050 2250 0    50   ~ 0
 CAN_EMETER_P
 Text Label 9050 2350 0    50   ~ 0
 CAN_EMETER_N
+Text Label 9050 4000 0    50   ~ 0
+CoolingBat1+
+Text Label 9050 3900 0    50   ~ 0
+CoolingBat1-
+Text Label 9050 4200 0    50   ~ 0
+CoolingBat1+
+Text Label 9050 4100 0    50   ~ 0
+CoolingBat1-
+Text Label 9050 4400 0    50   ~ 0
+CoolingBat2+
+Text Label 9050 4300 0    50   ~ 0
+CoolingBat2-
+Text Label 9050 4600 0    50   ~ 0
+CoolingBat2+
+Text Label 9050 4500 0    50   ~ 0
+CoolingBat2-
+Text Label 9050 4800 0    50   ~ 0
+CoolingBat2+
+Text Label 9050 4700 0    50   ~ 0
+CoolingBat2-
+Wire Wire Line
+	5050 3750 5600 3750
+Text Notes 1050 3850 0    79   ~ 0
+CoolingBat# is to funnel current.\nEach ampsel pin can take 17A\nCooling bat will 'see' 24A\nso we give each a pin and \nload each at 12A
+$Comp
+L formula:UF_2_RA J4
+U 1 1 62418DF7
+P 5000 7250
+F 0 "J4" H 5058 7547 60  0000 C CNN
+F 1 "UF_2_RA" H 5058 7441 60  0000 C CNN
+F 2 "footprints:Ultrafit_2_RA" H 4900 7300 60  0001 C CNN
+F 3 "" H 5000 7400 60  0001 C CNN
+F 4 "DK" H 5200 7600 60  0001 C CNN "MFN"
+F 5 "WM11825-ND" H 5300 7700 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/molex-llc/1723101302/WM11825-ND/5360290" H 5100 7500 60  0001 C CNN "PurchasingLink"
+	1    5000 7250
+	1    0    0    -1  
+$EndComp
+Text Label 5250 7300 0    50   ~ 0
+BSDP-Current-Trigger+
+Text Label 5250 7200 0    50   ~ 0
+BSDP-Current-Trigger-
+NoConn ~ 9050 2950
+NoConn ~ 9050 3050
+NoConn ~ 9050 3150
+NoConn ~ 9050 3250
 $EndSCHEMATC

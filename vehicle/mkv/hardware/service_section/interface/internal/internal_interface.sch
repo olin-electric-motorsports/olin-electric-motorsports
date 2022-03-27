@@ -76,46 +76,8 @@ Text Label 9050 2450 0    50   ~ 0
 GND
 Text Label 9050 2550 0    50   ~ 0
 GND
-Text Label 9050 3700 0    50   ~ 0
-5V_BMS
-Text Label 9050 3800 0    50   ~ 0
-MISO_BMS
-Text Label 9050 3900 0    50   ~ 0
-MOSI_BMS
-Text Label 9050 4000 0    50   ~ 0
-SCK_BMS
-Text Label 9050 4100 0    50   ~ 0
-RESET_BMS
-Text Label 9050 4200 0    50   ~ 0
-LED_O_BMS
-Text Label 9050 4300 0    50   ~ 0
-LED_G_BMS
-Text Label 9050 4400 0    50   ~ 0
-5V_AIRC
-Text Label 9050 4500 0    50   ~ 0
-MISO_AIRC
-Text Label 9050 4600 0    50   ~ 0
-MOSI_AIRC
-Text Label 9050 4700 0    50   ~ 0
-SCK_AIRC
-Text Label 9050 4800 0    50   ~ 0
-RESET_AIRC
 Text Label 9050 4900 0    50   ~ 0
-LED_O_AIRC
-Text Label 9050 5000 0    50   ~ 0
-LED_G_AIRC
-Text Label 9050 5100 0    50   ~ 0
-GND
-Text Label 9050 5200 0    50   ~ 0
-GND
-Text Label 9050 5300 0    50   ~ 0
-GND
-Text Label 9050 5400 0    50   ~ 0
-GND
-Text Label 9050 5500 0    50   ~ 0
-GND
-Text Label 9050 5600 0    50   ~ 0
-GND
+5V_BMS
 $Comp
 L formula:MM_F_VT_14 J1
 U 1 1 5E1EB3D3
@@ -267,18 +229,6 @@ Text Label 9050 2950 0    50   ~ 0
 BSDP-Current-Trigger+
 Text Label 9050 2850 0    50   ~ 0
 GND
-Text Label 9050 5700 0    50   ~ 0
-CoolingBat-
-Text Label 9050 5800 0    50   ~ 0
-CoolingBat-
-Text Label 9050 5900 0    50   ~ 0
-CoolingBat-
-Text Label 9050 6000 0    50   ~ 0
-CoolingBat+
-Text Label 9050 6100 0    50   ~ 0
-CoolingBat+
-Text Label 9050 6200 0    50   ~ 0
-CoolingBat+
 Text Label 6300 2750 0    50   ~ 0
 CAN_EMETER_P
 Text Label 6300 2850 0    50   ~ 0
@@ -343,48 +293,28 @@ F 6 "https://www.digikey.com/product-detail/en/molex-llc/0430452400/WM4728-ND/53
 $EndComp
 Text Notes 5600 5300 1    118  ~ 0
 To Cooling Fans
-Text Label 6600 6050 0    50   ~ 0
-CoolingBat-
 Text Label 6250 3850 0    50   ~ 0
 fanPWM
 Text Label 6250 4950 0    50   ~ 0
 fanSense1
 Wire Wire Line
 	6300 6150 6250 6150
-Text Label 6600 6150 0    50   ~ 0
-CoolingBat+
-Wire Wire Line
-	6600 6050 6250 6050
-Text Label 6600 5850 0    50   ~ 0
-CoolingBat-
 Text Label 6250 4250 0    50   ~ 0
 fanPWM
 Text Label 6250 4750 0    50   ~ 0
 fanSense2
 Wire Wire Line
 	6300 5950 6250 5950
-Text Label 6700 5950 0    50   ~ 0
-CoolingBat+
-Wire Wire Line
-	6600 5850 6250 5850
 Wire Wire Line
 	6700 5950 6600 5950
-Text Label 6600 5650 0    50   ~ 0
-CoolingBat-
 Text Label 6250 4650 0    50   ~ 0
 fanPWM
 Text Label 6250 4550 0    50   ~ 0
 fanSense3
 Wire Wire Line
 	6300 5750 6250 5750
-Text Label 6700 5750 0    50   ~ 0
-CoolingBat+
-Wire Wire Line
-	6600 5650 6250 5650
 Wire Wire Line
 	6700 5750 6600 5750
-Text Label 6600 5450 0    50   ~ 0
-CoolingBat-
 Text Label 6250 4050 0    50   ~ 0
 fanPWM
 Text Label 6250 4350 0    50   ~ 0
@@ -405,10 +335,6 @@ F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340
 $EndComp
 Wire Wire Line
 	6300 5550 6250 5550
-Text Label 6700 5550 0    50   ~ 0
-CoolingBat+
-Wire Wire Line
-	6600 5450 6250 5450
 Wire Wire Line
 	6700 5550 6600 5550
 Text Label 6250 4450 0    50   ~ 0
@@ -417,22 +343,14 @@ Text Label 6250 4150 0    50   ~ 0
 fanSense5
 Wire Wire Line
 	6300 5350 6250 5350
-Text Label 6700 5350 0    50   ~ 0
-CoolingBat+
 Wire Wire Line
 	6700 5350 6600 5350
-Text Label 6600 5050 0    50   ~ 0
-CoolingBat-
 Text Label 6250 4850 0    50   ~ 0
 fanPWM
 Text Label 6250 3950 0    50   ~ 0
 fanSense6
 Wire Wire Line
 	6300 5150 6250 5150
-Text Label 6700 5150 0    50   ~ 0
-CoolingBat+
-Wire Wire Line
-	6600 5050 6250 5050
 Wire Wire Line
 	6700 5150 6600 5150
 $Comp
@@ -507,21 +425,6 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 228
 $EndComp
 $Comp
 L power:GND #PWR?
-U 1 1 623E4F14
-P 9900 5650
-F 0 "#PWR?" H 9900 5400 50  0001 C CNN
-F 1 "GND" H 9905 5477 50  0000 C CNN
-F 2 "" H 9900 5650 50  0001 C CNN
-F 3 "" H 9900 5650 50  0001 C CNN
-	1    9900 5650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9050 5600 9900 5600
-Wire Wire Line
-	9900 5600 9900 5650
-$Comp
-L power:GND #PWR?
 U 1 1 623E668D
 P 1800 6750
 F 0 "#PWR?" H 1800 6500 50  0001 C CNN
@@ -553,10 +456,6 @@ F 3 "" H 3300 6600 50  0001 C CNN
 	1    3300 6600
 	1    0    0    -1  
 $EndComp
-Text Label 2400 5700 0    50   ~ 0
-CoolingBat+
-Text Label 3300 5650 0    50   ~ 0
-CoolingBat+
 Wire Wire Line
 	3300 6050 3300 6150
 Text Label 3500 6150 0    50   ~ 0
@@ -633,8 +532,6 @@ F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A10
 	1    2800 7150
 	1    0    0    -1  
 $EndComp
-Text Label 2800 6900 2    50   ~ 0
-CoolingBat+
 Wire Wire Line
 	2800 6950 2800 6900
 Wire Wire Line
@@ -780,8 +677,113 @@ F 6 "https://www.digikey.com/en/products/detail/littelfuse-inc/0466004-NR/521340
 	1    6450 5750
 	0    1    1    0   
 $EndComp
+Text Label 9050 6200 0    50   ~ 0
+LED_G_AIRC
+Text Label 9050 6100 0    50   ~ 0
+LED_O_AIRC
+Text Label 9050 6000 0    50   ~ 0
+RESET_AIRC
+Text Label 9050 5900 0    50   ~ 0
+SCK_AIRC
+Text Label 9050 5800 0    50   ~ 0
+MOSI_AIRC
+Text Label 9050 5700 0    50   ~ 0
+MISO_AIRC
+Text Label 9050 5600 0    50   ~ 0
+5V_AIRC
+Text Label 9050 5500 0    50   ~ 0
+LED_G_BMS
+Text Label 9050 5400 0    50   ~ 0
+LED_O_BMS
+Text Label 9050 5300 0    50   ~ 0
+RESET_BMS
+Text Label 9050 5200 0    50   ~ 0
+SCK_BMS
+Text Label 9050 5100 0    50   ~ 0
+MOSI_BMS
+Text Label 9050 5000 0    50   ~ 0
+MISO_BMS
+Text Label 6700 6050 0    50   ~ 0
+CoolingBat6-
+Text Label 6700 5850 0    50   ~ 0
+CoolingBat5-
+Text Label 6700 5250 0    50   ~ 0
+CoolingBat2-
+Text Label 6700 5050 0    50   ~ 0
+CoolingBat1-
+$Comp
+L power:GND #PWR?
+U 1 1 623E4F14
+P 9900 2200
+F 0 "#PWR?" H 9900 1950 50  0001 C CNN
+F 1 "GND" H 9905 2027 50  0000 C CNN
+F 2 "" H 9900 2200 50  0001 C CNN
+F 3 "" H 9900 2200 50  0001 C CNN
+	1    9900 2200
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	6600 5250 6250 5250
-Text Label 6600 5250 0    50   ~ 0
-CoolingBat-
+	9050 2150 9900 2150
+Wire Wire Line
+	9900 2150 9900 2200
+Text Label 6700 5650 0    50   ~ 0
+CoolingBat4-
+Text Label 6700 5450 0    50   ~ 0
+CoolingBat3-
+Wire Wire Line
+	6700 6150 6600 6150
+Text Label 6700 5150 0    50   ~ 0
+CoolingBat1+
+Text Label 6700 5350 0    50   ~ 0
+CoolingBat2+
+Text Label 6700 5750 0    50   ~ 0
+CoolingBat4+
+Text Label 6700 5550 0    50   ~ 0
+CoolingBat3+
+Text Label 6700 5950 0    50   ~ 0
+CoolingBat5+
+Text Label 6700 6150 0    50   ~ 0
+CoolingBat6+
+Wire Wire Line
+	6250 5050 6700 5050
+Wire Wire Line
+	6250 5250 6700 5250
+Wire Wire Line
+	6250 5450 6700 5450
+Wire Wire Line
+	6250 5650 6700 5650
+Wire Wire Line
+	6250 5850 6700 5850
+Wire Wire Line
+	6250 6050 6700 6050
+Text Label 2400 5700 0    50   ~ 0
+CoolingBat6+
+Text Label 3300 5650 0    50   ~ 0
+CoolingBat6+
+Text Label 9050 4700 0    50   ~ 0
+CoolingBat6-
+Text Label 9050 4500 0    50   ~ 0
+CoolingBat5-
+Text Label 9050 3900 0    50   ~ 0
+CoolingBat2-
+Text Label 9050 3700 0    50   ~ 0
+CoolingBat1-
+Text Label 9050 4300 0    50   ~ 0
+CoolingBat4-
+Text Label 9050 4100 0    50   ~ 0
+CoolingBat3-
+Text Label 9050 3800 0    50   ~ 0
+CoolingBat1+
+Text Label 9050 4000 0    50   ~ 0
+CoolingBat2+
+Text Label 9050 4400 0    50   ~ 0
+CoolingBat4+
+Text Label 9050 4200 0    50   ~ 0
+CoolingBat3+
+Text Label 9050 4600 0    50   ~ 0
+CoolingBat5+
+Text Label 9050 4800 0    50   ~ 0
+CoolingBat6+
+Text Label 2800 6900 2    50   ~ 0
+CoolingBat6+
 $EndSCHEMATC
