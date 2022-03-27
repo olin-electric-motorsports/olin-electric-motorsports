@@ -22,17 +22,11 @@ def main():
 
     parser.add_argument("-y", "--yaml", required=True, help="YAML file for the node")
 
-    parser.add_argument(
-        "-d", "--dbc", required=True, help="Input dbc file",
-    )
+    parser.add_argument("-d", "--dbc", required=True, help="Input dbc file")
 
-    parser.add_argument(
-        "-c", "--c-file", required=True, help="Input dbc file",
-    )
+    parser.add_argument("-c", "--c-file", required=True, help="Input dbc file")
 
-    parser.add_argument(
-        "-H", "--h-file", required=True, help="Input dbc file",
-    )
+    parser.add_argument("-H", "--h-file", required=True, help="Input dbc file")
 
     args = parser.parse_args()
 
@@ -83,9 +77,7 @@ def main():
         f.write(contents)
 
     with open(h_out, "w+") as f:
-        contents = h_template.render(
-            node=node, tx_messages=tx_messages, rx_messages=rx_messages,
-        )
+        contents = h_template.render(node=node, tx_messages=tx_messages, rx_messages=rx_messages)
 
         f.write(contents)
 
