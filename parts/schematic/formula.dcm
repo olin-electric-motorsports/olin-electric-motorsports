@@ -188,6 +188,12 @@ K cap, ceramic, capacitor, 10nF, 10000pF, 0805
 F http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/07/23/CL21B103KBANNNC.pdf
 $ENDCMP
 #
+$CMP C_10pf
+D CDR31BP100BJUS7185,10 pF capacitor
+K capacitor, cap, c, 10, 10pF, pF
+F https://content.kemet.com/datasheets/F3102_MIL-PRF-55681.pdf
+$ENDCMP
+#
 $CMP C_10uF
 D Capacitor, 10uF, 10V, 10%, 0805
 F http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf
@@ -250,6 +256,17 @@ $ENDCMP
 #
 $CMP C_47uF
 D Capacitor, 47uF, 6.3V, 20%, 0805
+$ENDCMP
+#
+$CMP C_radial_10mm_5mm
+D THT (throughhole) capacitor, diameter is 10mm and the spacing is 5mm
+K capacitor, tht, throughhole
+$ENDCMP
+#
+$CMP Crystal_32_768kHz
+D 32.768 kHZ Crystal
+K crystal, 32.768, 32.768kHZ
+F https://www.jauch.com/downloadfile/57fde22d50dbf_d3c203011c87952f2834/jtx310-auto-2-210512.pdf
 $ENDCMP
 #
 $CMP Crystal_12MHz
@@ -348,6 +365,12 @@ $CMP INA260
 D Current/power/voltage monitor with Integrated 2mΩ Shunt Resistor, 2.7V - 5.5V, I2C, TSSOP-16
 K Current/power/voltage monitor
 F http://www.ti.com/lit/ds/symlink/ina260.pdf
+$ENDCMP
+#
+$CMP JST_SM06B-GHS-TB_LF__SN_
+D JST-GH 6-Pin Connector
+K JST, GH, 6-pin, connector
+F https://www.jst-mfg.com/product/pdf/eng/eGH.pdf
 $ENDCMP
 #
 $CMP LED_0805
@@ -465,6 +488,12 @@ $ENDCMP
 $CMP MCP73871T-2CCI_ML
 D Battery Charge Controller
 F https://ww1.microchip.com/downloads/en/DeviceDoc/MCP73871-Data-Sheet-20002090E.pdf
+$ENDCMP
+#
+$CMP MCP79511-I_MS
+D SPI RTC
+K spi, rtc, clock, clk
+F https://ww1.microchip.com/downloads/en/DeviceDoc/MCP7951X-MCP7952X-Battery-Backed-SPI-RTCC-20002300C.pdf
 $ENDCMP
 #
 $CMP MLX90621ESF-BAB-000-TU
