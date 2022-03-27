@@ -77,7 +77,9 @@ def main():
         f.write(contents)
 
     with open(h_out, "w+") as f:
-        contents = h_template.render(node=node, tx_messages=tx_messages, rx_messages=rx_messages)
+        contents = h_template.render(
+            node=node, tx_messages=tx_messages, rx_messages=rx_messages
+        )
 
         f.write(contents)
 
