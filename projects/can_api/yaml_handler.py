@@ -9,8 +9,9 @@ import yaml
 import math
 from cantools.database.can import Message as CANMessage, Signal as MessageSignal, Node
 
-#----------- DEFAULTS and CONSTANTS -----------
+# ----------- DEFAULTS and CONSTANTS -----------
 VALID_PRIORITIES = ["LO", "MED", "HI"]
+
 
 class YamlParser:
     """
@@ -20,8 +21,9 @@ class YamlParser:
 
         parser = YamlHandler("path/to/yaml_file.yml")
     """
+
     def __init__(self, yml):
-        with open(yml, 'r') as f:
+        with open(yml, "r") as f:
             self.data = yaml.load(f, Loader=yaml.FullLoader)
 
         self.name = self.data["name"]
@@ -31,6 +33,7 @@ class YamlParser:
     Parses messages from the YAML file. Internally it will pull the frequency
     and message IDs, and then call _parse_signals to get the list of signals
     """
+
     def _parse_messages(self):
         messages = []
         if "publish" not in self.data.keys():
@@ -44,15 +47,15 @@ class YamlParser:
                 # controller message
                 id = raw["id"]
                 signals, length = self._parse_signals(raw)
-                cycle_time = (1 / raw["freq_hz"]) * 1000 # Milliseconds
+                cycle_time = (1 / raw["freq_hz"]) * 1000  # Milliseconds
 
                 m = CANMessage(
                     id,
                     raw["name"],
                     length,
                     signals,
-                    senders = [self.name],
-                    cycle_time = cycle_time,
+                    senders=[self.name],
+                    cycle_time=cycle_time,
                 )
 
                 messages.append(m)
@@ -65,6 +68,7 @@ class YamlParser:
     Parses signals from the YAML file. The possible types are currently: enum,
     int8_t, int16_t, uint8_t, uint16_t, and bool.
     """
+
     def _parse_signals(self, msg):
         signals = []
         message_length = 0
@@ -106,11 +110,11 @@ class YamlParser:
                 name,
                 int(start),
                 int(length),
-                is_signed = is_signed,
-                scale = scale,
-                offset = offset,
-                unit = unit,
-                choices = choices,
+                is_signed=is_signed,
+                scale=scale,
+                offset=offset,
+                unit=unit,
+                choices=choices,
             )
 
             signals.append(s)
