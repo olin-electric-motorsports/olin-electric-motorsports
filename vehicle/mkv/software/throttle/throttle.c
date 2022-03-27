@@ -8,7 +8,6 @@
 #include "utils/timer.h"
 #include "vehicle/mkv/software/throttle/can_api.h"
 
-#include <math.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -20,10 +19,13 @@
 // max torque)
 #define TORQUE_REQUEST_SCALE (10)
 
-// TODO: comment and add reference to rules
-#define APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD (0.25)
+// TODO: comment and add reference to rules (25% of (256 - 1))
+#define APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD (63)
 
-#define APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD (0.10)
+// floor(5% of (256 - 1))
+#define APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW (12)
+
+#define APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD (25)
 
 /*
  * Sets the torque request in the motor controller command message
@@ -33,13 +35,6 @@
 
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
-
-typedef enum {
-    THROTTLE_IDLE = 0,
-    THROTTLE_RUN,
-    THROTTLE_IMPLAUSIBILITY,
-    THROTTLE_FAULT
-} throttle_state_e;
 
 // copied from air.c for now, but really should be made available via CAN api in
 // future
@@ -54,11 +49,7 @@ typedef enum {
 } air_state_e;
 
 struct throttle_state_s {
-    throttle_state_e state;
     volatile bool send_can;
-    uint16_t throttle_r_position;
-    uint16_t throttle_l_position;
-    uint16_t rolling_sum;
     uint16_t implausibility_fault_counter;
     bool brake_pressed;
     bool ready_to_drive;
@@ -70,7 +61,6 @@ void timer0_isr(void) {
 }
 
 void pcint0_isr(void) {
-    // Check if shutdown circuit node states
     throttle.e_stop_sense = !gpio_get_pin(SS_ESTOP);
     throttle.inertia_switch_sense = !gpio_get_pin(SS_IS);
     throttle.bots_sense = !gpio_get_pin(SS_BOTS);
@@ -82,18 +72,17 @@ void pcint0_isr(void) {
  *
  * Returns an int16_t that represents the pedal travel
  */
-static int16_t
-get_throttle_travel_pct(const throttle_potentiometer_s* throttle) {
-    uint16_t throttle_raw = adc_read(throttle->adc_pin);
+static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
+    int16_t throttle_raw = adc_read(throttle->adc_pin);
 
     // Voltage range between 0% and 100% pedal travel
-    uint16_t range = throttle->throttle_max - throttle->throttle_min;
+    int16_t range = throttle->throttle_max - throttle->throttle_min;
 
     // Pedal position percentage (between 0 and 1)
-    float position_pct
-        = (float)(throttle_raw - throttle->throttle_min) / (float)range;
+    int16_t position_pct = (throttle_raw - throttle->throttle_min) / range;
 
-    return (int16_t)round(position_pct * 255);
+    // NOTE: If we decide to do a non-linear map, that would go here
+    return (position_pct * 255);
 }
 
 static bool check_out_of_range(int16_t* pos_r, int16_t* pos_l) {
@@ -136,9 +125,20 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
 
 static bool check_brake(int16_t pos_min) {
     // Check brake plausibility (EV.5.7)
-    if ((throttle_state.brake_pressed)
-        && (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD)) {
-        return true;
+    static bool brake_implausibility_occured = false;
+
+    if (throttle_state.brake_pressed) {
+        if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
+            brake_implausibility_occured = true;
+            return true;
+        }
+
+        if (brake_implausibility_occured) {
+            if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
+                brake_implausibility_occured = false;
+                return false;
+            }
+        }
     } else {
         return false;
     }
@@ -179,6 +179,7 @@ int main(void) {
                 can_receive_air_control_critical();
 
                 if (air_control_critical.state != AIR_STATE_TS_ACTIVE) {
+                    SET_TORQUE_REQUEST(0);
                     continue;
                 }
             }
@@ -192,6 +193,7 @@ int main(void) {
                 can_receive_dashboard();
 
                 if (!dashboard.ready_to_drive) {
+                    SET_TORQUE_REQUEST(0);
                     continue;
                 }
             }
@@ -201,12 +203,12 @@ int main(void) {
                 continue;
             }
 
-            int16_t pos_r = get_throttle_travel_pct(&throttle_r);
-            int16_t pos_l = get_throttle_travel_pct(&throttle_l);
+            int16_t pos_r = get_throttle_travel(&throttle_r);
+            int16_t pos_l = get_throttle_travel(&throttle_l);
             int16_t pos_min = MIN(pos_r, pos_l);
             int16_t pos_max = MAX(pos_r, pos_l);
 
-            static bool implausibility = false;
+            bool implausibility = false;
             implausibility |= check_out_of_range(&pos_r, &pos_l);
             implausibility |= check_deviation(pos_max, pos_min);
             implausibility |= check_brake(pos_min);
@@ -217,13 +219,16 @@ int main(void) {
                 if (throttle_state.implausibility_fault_counter
                     >= IMPLAUSIBILITY_TIMEOUT) {
                     SET_TORQUE_REQUEST(0);
+                    throttle_state.implausibility_fault_counter = 0;
                 } // else maintain previous throttle request
 
                 continue;
             } else {
                 // With no implausibility...
-                int16_t torque_request
-                    = (int16_t)round(pos_min * TORQUE_REQUEST_SCALE);
+                throttle_state.implausibility_fault_counter = 0;
+
+                int16_t torque_request = pos_min * TORQUE_REQUEST_SCALE;
+
                 SET_TORQUE_REQUEST(torque_request);
             }
 
