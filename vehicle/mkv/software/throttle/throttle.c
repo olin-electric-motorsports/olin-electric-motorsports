@@ -162,7 +162,11 @@ static bool check_brake(int16_t pos_min) {
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 brake_implausibility_occured = false;
                 return false;
+            } else {
+                return true;
             }
+        } else {
+            return false;
         }
     } else {
         return false;
