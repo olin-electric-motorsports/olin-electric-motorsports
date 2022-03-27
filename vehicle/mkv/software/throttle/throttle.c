@@ -97,8 +97,6 @@ get_throttle_travel_pct(const throttle_potentiometer_s* throttle) {
 }
 
 static bool check_out_of_range(int16_t* pos_r, int16_t* pos_l) {
-    bool implausibility = false;
-
     // Check range of positions
     if (*pos_r > 255) {
         // Out of range upper
@@ -140,7 +138,9 @@ static bool check_brake(int16_t pos_min) {
     // Check brake plausibility (EV.5.7)
     if ((throttle_state.brake_pressed)
         && (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD)) {
-        implausibility = true;
+        return true;
+    } else {
+        return false;
     }
 }
 
@@ -201,8 +201,8 @@ int main(void) {
                 continue;
             }
 
-            float pos_r = get_throttle_travel_pct(&throttle_r);
-            float pos_l = get_throttle_travel_pct(&throttle_l);
+            int16_t pos_r = get_throttle_travel_pct(&throttle_r);
+            int16_t pos_l = get_throttle_travel_pct(&throttle_l);
             int16_t pos_min = MIN(pos_r, pos_l);
             int16_t pos_max = MAX(pos_r, pos_l);
 
