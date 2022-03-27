@@ -13,36 +13,48 @@ publish:
     id: 0xC
     freq_hz: 100
     signals:
-      - name: fault_state
+      - name: state
         slice: 0 + 8
         unit:
           type: enum
           values:
-            - FAULT_NONE
-            - FAULT_OUT_OF_RANGE
-      - name: throttle_pos
+            - THROTTLE_IDLE
+            - THROTTLE_RUN
+            - THROTTLE_FAULT
+            - THROTTLE_OUT_OF_RANGE_UPPER
+            - THROTTLE_OUT_OF_RANGE_LOWER
+            - THROTTLE_POSITION_IMPLAUSIBILITY
+            - THROTTLE_BRAKE_PRESSED
+      - name: throttle_r_pos
         slice: 8 + 8
         unit:
           type: uint8_t
           name: deg
           offset: 0
           scale: 1
+      - name: throttle_l_pos
+        slice: 16 + 8
+        unit:
+          type: uint8_t
+          name: deg
+          offset: 0
+          scale: 1
       - name: BOTS_sense
-        slice: 16 + 1
+        slice: 24 + 1
         unit:
           type: bool
           values:
             t: BOTS shutdown node closed
             f: BOTS shutdown node open
       - name: inertia_switch_sense
-        slice: 17 + 1
+        slice: 25 + 1
         unit:
           type: bool
           values:
             t: inertia switch shutdown node closed
             f: inertia switch shutdown node open
       - name: E_stop_sense
-        slice: 18 + 1
+        slice: 26 + 1
         unit:
           type: bool
           values:
