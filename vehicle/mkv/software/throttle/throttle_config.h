@@ -6,12 +6,12 @@
  * Pin definitions
  */
 
-gpio_t DEBUG_LED1 = PC6;
-gpio_t DEBUG_LED2 = PB3;
-gpio_t DEBUG_LED3 = PB4;
+gpio_t BRAKE_IMPLAUSIBILTIY_LED = PC6;
+gpio_t DEVIATION_IMPLAUSIBILITY_LED = PB3;
+gpio_t OUT_OF_RANGE_IMPLAUSIBILITY_LED = PB4;
 
-gpio_t LED1 = PB0; // orange
-gpio_t LED2 = PB1; // green
+gpio_t RJ45_LED1 = PB0; // orange
+gpio_t RJ45_LED2 = PB1; // green
 
 gpio_t SS_ESTOP = PB5;
 gpio_t SS_IS = PB6;
