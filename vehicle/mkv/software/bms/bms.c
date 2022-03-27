@@ -352,6 +352,8 @@ int main(void) {
             }
 
             loop_counter++;
+
+            run_10ms = false;
         }
     }
 
@@ -362,6 +364,7 @@ fault:
     while (true) {
         if (run_10ms) {
             can_send_bms_core();
+            run_10ms = false;
         }
     };
 }
