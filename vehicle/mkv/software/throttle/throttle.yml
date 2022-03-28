@@ -1,12 +1,10 @@
 name: throttle
 subscribe:
   # Transmit MOB is 0
-  - name: air_control_critical
-    mob: 1
   - name: brakelight
-    mob: 2
+    mob: 1
   - name: dashboard
-    mob: 3
+    mob: 2
 publish:
   - name: M192_Command_Message
   - name: throttle

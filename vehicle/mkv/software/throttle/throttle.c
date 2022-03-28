@@ -37,24 +37,11 @@
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
-// copied from air.c for now, but really should be made available via CAN api in
-// future
-typedef enum {
-    AIR_STATE_INIT = 0,
-    AIR_STATE_IDLE,
-    AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED,
-    AIR_STATE_PRECHARGE,
-    AIR_STATE_TS_ACTIVE,
-    AIR_STATE_DISCHARGE,
-    AIR_STATE_FAULT,
-} air_state_e;
-
 struct throttle_state_s {
     volatile bool send_can;
     uint16_t implausibility_fault_counter;
     bool brake_pressed;
     bool ready_to_drive;
-    air_state_e air_state;
 } throttle_state = { 0 };
 
 void timer0_isr(void) {
@@ -78,11 +65,9 @@ static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
 
     // Voltage range between 0% and 100% pedal travel
     int16_t range = throttle->throttle_max - throttle->throttle_min;
+    int16_t position = (throttle_raw - throttle->throttle_min) * 255 / range;
 
-    // Pedal position percentage (between 0 and 1)
-    int16_t position_pct = (throttle_raw - throttle->throttle_min) / range;
-
-    return (position_pct * 255);
+    return position;
 }
 
 /*
@@ -197,22 +182,19 @@ int main(void) {
     // Initialize motor controller direction
     m192_command_message.direction_command = MOTOR_ANTICLOCKWISE;
 
+    /*
+     * Inverter enable lockout (motor controller CAN datasheet section 2.2.1.1):
+     *
+     * This feature is added so that the inverter cannot be accidentally enabled
+     * when first powered up. This feature requires that before sending out an
+     * Inverter Enable command, the user must send out an Inverter Disable
+     * command. Once the inverter sees a Disable command, the lockout is removed
+     * and controller can receive the Inverter Enable command
+     */
     can_send_m192_command_message();
 
     while (true) {
         if (run_1ms) {
-            // External CAN messages
-            if (can_poll_receive_air_control_critical() == 0) {
-                throttle_state.air_state = air_control_critical.state;
-
-                can_receive_air_control_critical();
-
-                if (air_control_critical.state != AIR_STATE_TS_ACTIVE) {
-                    SET_TORQUE_REQUEST(0);
-                    continue;
-                }
-            }
-
             if (can_poll_receive_brakelight() == 0) {
                 throttle_state.brake_pressed = brakelight.brake_gate;
                 can_receive_brakelight();
@@ -222,8 +204,11 @@ int main(void) {
                 can_receive_dashboard();
 
                 if (!dashboard.ready_to_drive) {
+                    m192_command_message.inverter_enable = false;
                     SET_TORQUE_REQUEST(0);
                     continue;
+                } else {
+                    m192_command_message.inverter_enable = true;
                 }
             }
 
