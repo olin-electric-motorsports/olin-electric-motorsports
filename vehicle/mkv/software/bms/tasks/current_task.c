@@ -5,6 +5,7 @@
 // Defines maximum current range (-125 to 125A)
 #define MAX_CURRENT_RANGE (250)
 
+// TODO: Check types
 void current_task(int16_t* current) {
     uint16_t vref = adc_read(CURRENT_SENSE_VREF);
     uint16_t vout = adc_read(CURRENT_SENSE_VOUT);

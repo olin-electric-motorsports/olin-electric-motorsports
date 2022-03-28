@@ -148,15 +148,3 @@ publish:
           name: ""
           scale: 1
           offset: 0
-
-  - name: bms_charging
-    id: 0x101
-    freq_hz: 1
-    signals:
-      - name: charge_enable
-        slice: 0 + 1
-        unit:
-          type: bool
-          values:
-            t: Start charging
-            f: Stop charging

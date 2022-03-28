@@ -24,6 +24,16 @@ enum State {
     FAULT,
 };
 
+enum AIR_State {
+    AIR_STATE_IDLE,
+    AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED,
+    AIR_STATE_PRECHARGE,
+    AIR_STATE_TS_ACTIVE,
+    AIR_STATE_DISCHARGE,
+    AIR_STATE_FAULT,
+} air_state
+    = AIR_STATE_IDLE;
+
 // Represents all of LTC6811 chips used in the BMS. Contains cell
 // voltages, auxiliary readings (i.e. temperatures), and configs
 cell_asic ICS[NUM_ICS];
@@ -46,6 +56,7 @@ void pcint0_callback(void) {
     bms_core.overcurrent_detect = !gpio_get_pin(nOCD);
 
     if (bms_core.overcurrent_detect) {
+        bms_core.bms_state = FAULT;
         set_fault(BMS_FAULT_OVERCURRENT);
     }
 }
@@ -178,7 +189,7 @@ static void state_machine_run(void) {
     wakeup_sleep(NUM_ICS);
 
     /*
-     * Voltages
+     * Read voltages
      */
     uint32_t ov = 0;
     uint32_t uv = 0;
@@ -189,15 +200,8 @@ static void state_machine_run(void) {
 
     (void)rc;
 
-    // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
-    //     we
-    //                  // start seeing a lot of failures, we should fault
-    //     return;
-    // };
-
     /*
-     * Temperatures
+     * Read temperatures
      */
     uint32_t ot = 0;
     uint32_t ut = 0;
@@ -206,81 +210,97 @@ static void state_machine_run(void) {
     rc = temperature_task(&pack_temperature, &ot, &ut);
     bms_core.pack_temperature = pack_temperature;
 
-    // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
-    //     we
-    //                  // start seeing a lot of failures, we should fault
-    //     return;
-    // }
-
     /*
-     * Open-wire
+     * Check for open-wires
      */
     rc = openwire_task();
-
-    // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
-    //     we
-    //                  // start seeing a lot of failures, we should fault
-    //     return;
-    // }
 
     int16_t current = 0;
     current_task(&current);
 
     if (ut > 0) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        bms_core.bms_state = FAULT;
         return;
     } else if (ot > 0) {
         set_fault(BMS_FAULT_OVERTEMPERATURE);
+        bms_core.bms_state = FAULT;
         return;
     }
 
     switch (bms_core.bms_state) {
         case IDLE: {
-        } break;
-        case DISCHARGING: {
             if (uv > 0) {
                 set_fault(BMS_FAULT_UNDERVOLTAGE);
             } else if (ov > 0) {
                 set_fault(BMS_FAULT_OVERVOLTAGE);
             }
-        } break;
-        case CHARGING: {
-            // called every 10ms, so we lower the blink rate to every 500ms
-            static uint8_t blink_counter = 0;
 
-            // TODO
-            if (blink_counter == 50) {
-                gpio_set_pin(GENERAL_LED);
-                blink_counter++;
-            } else if (blink_counter == 100) {
-                gpio_clear_pin(GENERAL_LED);
-                blink_counter = 0;
-            } else {
-                blink_counter++;
+            if (air_state != AIR_STATE_IDLE) {
+                bms_core.bms_state = DISCHARGING;
             }
 
-            if (ov > 0) {
+            if (can_poll_receive_bms_charging() == 0) {
+                can_receive_bms_charging();
+                if (bms_charging.charge_enable == true) {
+                    bms_core.bms_state = CHARGING;
+                    return;
+                }
+            }
+        } break;
+        case DISCHARGING: {
+            if (air_state == AIR_STATE_IDLE) {
                 bms_core.bms_state = IDLE;
             }
 
-            // Detect charger disconnected?
+            if (uv > 0) {
+                set_fault(BMS_FAULT_UNDERVOLTAGE);
+                bms_core.bms_state = FAULT;
+                return;
+            } else if (ov > 0) {
+                set_fault(BMS_FAULT_OVERVOLTAGE);
+                bms_core.bms_state = FAULT;
+                return;
+            }
+        } break;
+        case CHARGING: {
+            gpio_set_pin(BMS_RELAY_LSD);
+            gpio_set_pin(CHARGE_ENABLE1);
+            gpio_set_pin(CHARGE_ENABLE2);
+
+            if (ov > 0) {
+                gpio_clear_pin(CHARGE_ENABLE1);
+                gpio_clear_pin(CHARGE_ENABLE2);
+                bms_core.bms_state = IDLE;
+            }
+
+            if (can_poll_receive_bms_charging() == 0) {
+                can_receive_bms_charging();
+                if (bms_charging.charge_enable == false) {
+                    bms_core.bms_state = CHARGING;
+                    return;
+                }
+            }
         } break;
         case FAULT: {
+            gpio_clear_pin(CHARGE_ENABLE1);
+            gpio_clear_pin(CHARGE_ENABLE2);
             gpio_clear_pin(BMS_RELAY_LSD);
             gpio_set_pin(FAULT_LED);
 
-            // TODO: If charger is detected, move into CHARGING
+            /*
+             * We can ONLY exit fault state if the fault is under-voltage, and
+             * we do so by entering CHARGING. Charging begins once we receive
+             * the bms_charging message with charge_enable set to true.
+             */
             if (bms_core.bms_fault_state == BMS_FAULT_UNDERVOLTAGE) {
-                // Listen for charging message
-                //
-                // if (charger_connected) {
-                //     gpio_set_pin(CHARGE_ENABLE1);
-                //     gpio_set_pin(CHARGE_ENABLE2);
-                //     bms_core.bms_fault_state = BMS_FAULT_NONE;
-                //     bms_core.bms_state = CHARGING;
-                // }
+                if (can_poll_receive_bms_charging() == 0) {
+                    can_receive_bms_charging();
+                    if (bms_charging.charge_enable == true) {
+                        bms_core.bms_state = CHARGING;
+                        return;
+                    }
+                }
             }
         } break;
         default: {
@@ -317,7 +337,7 @@ int main(void) {
     // Turn on GENERAL_LED to indicate checks will run
     gpio_set_pin(GENERAL_LED);
 
-    // do initial checks
+    // Check state of cells
     if (!initial_checks()) {
         goto fault;
     }
@@ -334,9 +354,20 @@ int main(void) {
 
     sei();
 
+    // Set up first receive of AIR Control and BMS charging messages
+    can_receive_air_control_critical();
+    can_receive_bms_charging();
+
     while (true) {
         // Tracks the number of times the 10ms loop has been run
         uint8_t loop_counter = 0;
+
+        // Listen for and save tractive system state
+        int err = can_poll_receive_air_control_critical();
+        if (err == 0) {
+            air_state = air_control_critical.state;
+            can_receive_air_control_critical();
+        }
 
         if (run_10ms) {
             state_machine_run();
@@ -355,7 +386,6 @@ int main(void) {
             }
 
             loop_counter++;
-
             run_10ms = false;
         }
     }
