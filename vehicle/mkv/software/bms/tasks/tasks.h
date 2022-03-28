@@ -34,6 +34,13 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                      uint32_t* ut);
 
 /*
+ * Task to check for open-wires between the BMS peipherals and the cells
  *
+ * Returns 1 if there was an open wire, and 0 if not
  */
-void openwire_task(void);
+int openwire_task(void);
+
+/*
+ * Task to read current from current sensor
+ */
+void current_task(int16_t* current);

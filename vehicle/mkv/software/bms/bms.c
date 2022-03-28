@@ -16,13 +16,6 @@
 #include "vehicle/mkv/software/bms/utils/fault.h"
 #include "vehicle/mkv/software/bms/utils/mux.h"
 
-// Defines maximum current range (-125 to 125A)
-#define MAX_CURRENT_RANGE (250)
-
-/* TODO
- *   Do not do BMS if car is off (TS off? LV off?)
- */
-
 enum State {
     INIT = 0,
     IDLE,
@@ -62,13 +55,6 @@ void pcint0_callback(void) {
  */
 void pcint2_callback(void) {
     bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_SENSE);
-}
-
-static uint16_t current_task(void) {
-    uint16_t vref = adc_read(CURRENT_SENSE_VREF);
-    uint16_t vout = adc_read(CURRENT_SENSE_VOUT);
-
-    return (vout - vref) / MAX_CURRENT_RANGE;
 }
 
 static void configure_ics(void) {
@@ -120,13 +106,15 @@ static int initial_checks(void) {
     uint32_t ov = 0;
     uint32_t uv = 0;
 
-    rc = voltage_task(&bms_core.pack_voltage, &ov, &uv);
+    uint16_t pack_voltage = 0;
+    rc = voltage_task(&pack_voltage, &ov, &uv);
+    bms_core.pack_voltage = pack_voltage;
 
-    if (rc != 0) {
-        set_fault(); // TODO: maybe we should keep track of metrics, and if we
-                     // start seeing a lot of failures, we should fault
-        goto bail;
-    }
+    // if (rc != 0) {
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //                  // start seeing a lot of failures, we should fault
+    //     goto bail;
+    // }
 
     if (uv > 0) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
@@ -142,14 +130,16 @@ static int initial_checks(void) {
     uint32_t ot = 0;
     uint32_t ut = 0;
 
-    rc = temperature_task(&bms_core.pack_temperature, &ot, &ut);
+    uint16_t pack_temperature = 0;
+    rc = temperature_task(&pack_temperature, &ot, &ut);
+    bms_core.pack_temperature = pack_temperature;
 
-    if (rc != 0) {
-        set_fault(); // TODO: maybe we should keep track of metrics, and if we
-                     // start seeing a lot of failures, we should fault
-        rc = 1;
-        goto bail;
-    }
+    // if (rc != 0) {
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //                  // start seeing a lot of failures, we should fault
+    //     rc = 1;
+    //     goto bail;
+    // }
 
     if (ut > 0) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
@@ -191,25 +181,48 @@ static void state_machine_run(void) {
     uint32_t ov = 0;
     uint32_t uv = 0;
 
-    int rc = voltage_task(&bms_core.pack_voltage, &ov, &uv);
+    uint16_t pack_voltage = 0;
+    int rc = voltage_task(&pack_voltage, &ov, &uv);
+    bms_core.pack_voltage = pack_voltage;
 
-    if (rc != 0) {
-        set_fault(); // TODO: maybe we should keep track of metrics, and if we
-                     // start seeing a lot of failures, we should fault
-        return;
-    };
+    (void)rc;
+
+    // if (rc != 0) {
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //                  // start seeing a lot of failures, we should fault
+    //     return;
+    // };
 
 
     /*
      * Temperatures
      */
-    rc = temperature_task(&bms_core.pack_temperature, &ot, &ut);
+    uint32_t ot = 0;
+    uint32_t ut = 0;
 
-    if (rc != 0) {
-        set_fault(); // TODO: maybe we should keep track of metrics, and if we
-                     // start seeing a lot of failures, we should fault
-        return;
-    }
+    uint16_t pack_temperature;
+    rc = temperature_task(&pack_temperature, &ot, &ut);
+    bms_core.pack_temperature = pack_temperature;
+
+    // if (rc != 0) {
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //                  // start seeing a lot of failures, we should fault
+    //     return;
+    // }
+
+    /*
+     * Open-wire
+     */
+    rc = openwire_task();
+
+    // if (rc != 0) {
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //                  // start seeing a lot of failures, we should fault
+    //     return;
+    // }
+
+    int16_t current = 0;
+    current_task(&current);
 
     if (ut > 0) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
@@ -228,13 +241,8 @@ static void state_machine_run(void) {
             } else if (ov > 0) {
                 set_fault(BMS_FAULT_OVERVOLTAGE);
             }
-
-            /*
-             * Temperature
-             */
         } break;
         case CHARGING: {
-            // static bool blink_led = true;
             // called every 10ms, so we lower the blink rate to every 500ms
             static uint8_t blink_counter = 0;
 
@@ -250,8 +258,10 @@ static void state_machine_run(void) {
             }
 
             if (ov > 0) {
-                // Do we set fault or just disable charging and move to IDLE?
+                bms_core.bms_state = IDLE;
             }
+
+            // Detect charger disconnected?
         } break;
         case FAULT: {
             gpio_clear_pin(BMS_RELAY_LSD);
@@ -259,6 +269,8 @@ static void state_machine_run(void) {
 
             // TODO: If charger is detected, move into CHARGING
             if (bms_core.bms_fault_state == BMS_FAULT_UNDERVOLTAGE) {
+                // Listen for charging message
+                //
                 // if (charger_connected) {
                 //     gpio_set_pin(CHARGE_ENABLE1);
                 //     gpio_set_pin(CHARGE_ENABLE2);
@@ -324,19 +336,6 @@ int main(void) {
 
         if (run_10ms) {
             state_machine_run();
-
-            // wakeup_sleep(NUM_ICS);
-
-            // uint16_t pack_voltage = 0;
-            // uint32_t ov = 0;
-            // uint32_t uv = 0;
-
-            // int rc = voltage_task(&pack_voltage, &ov, &uv);
-            // temperature_task();
-            openwire_task();
-
-            uint16_t current = current_task();
-            (void)current;
 
             can_send_bms_core();
             can_send_bms_metrics();

@@ -38,7 +38,7 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
             // Read voltage from auxiliary pin (connected to the mux)
             error = LTC6811_rdaux(AUX_CH_GPIO1, NUM_ICS, ICS);
 
-            if (error = -1) {
+            if (error == -1) {
                 bms_metrics.temperature_pec_error_count++;
                 rc = 1;
                 continue;
@@ -73,7 +73,7 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                  * comparisons are reversed (i.e. less than over-temp threshold)
                  */
                 if (temperature < OVERTEMPERATURE_THRESHOLD) {
-                    *ot++;
+                    *ot = *ot + 1;
                 }
 
                 // If temperatures are getting a bit too high, we turn on the
@@ -87,7 +87,7 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                 }
 
                 if (temperature > UNDERTEMPERATURE_THRESHOLD) {
-                    *ut++;
+                    *ut = *ut + 1;
                 }
             } // End for each IC
 

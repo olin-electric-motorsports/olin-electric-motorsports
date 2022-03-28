@@ -13,7 +13,7 @@
     (65335) // ic.system_open_wire is a 16 bit number. Each
             // bit is an open wire (1: no openwire, 0: openwire)
 
-void openwire_task(void) {
+int openwire_task(void) {
     // Run open wire test on all cells
     LTC6811_run_openwire_single(NUM_ICS, ICS);
 
@@ -26,7 +26,10 @@ void openwire_task(void) {
          * the value is set to the first pin that has an open wire.
          */
         if (open_wire != NO_OPEN_WIRES) {
-            set_fault(BMS_FAULT_OPEN_WIRE);
+            return true;
+            // set_fault(BMS_FAULT_OPEN_WIRE);
         }
     }
+
+    return false;
 }
