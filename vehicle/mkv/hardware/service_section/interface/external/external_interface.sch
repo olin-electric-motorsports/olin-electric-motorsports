@@ -317,7 +317,7 @@ CoolingBat2+
 Text Label 9050 4700 0    50   ~ 0
 CoolingBat2-
 Wire Wire Line
-	5050 3750 5600 3750
+	5050 3750 5350 3750
 Text Notes 1050 3850 0    79   ~ 0
 CoolingBat# is to funnel current.\nEach ampsel pin can take 17A\nCooling bat will 'see' 24A\nso we give each a pin and \nload each at 12A
 $Comp
@@ -342,4 +342,31 @@ NoConn ~ 9050 2950
 NoConn ~ 9050 3050
 NoConn ~ 9050 3150
 NoConn ~ 9050 3250
+Wire Wire Line
+	6350 7200 5250 7200
+$Comp
+L power:GND #PWR?
+U 1 1 62412286
+P 5350 3750
+F 0 "#PWR?" H 5350 3500 50  0001 C CNN
+F 1 "GND" H 5355 3577 50  0000 C CNN
+F 2 "" H 5350 3750 50  0001 C CNN
+F 3 "" H 5350 3750 50  0001 C CNN
+	1    5350 3750
+	1    0    0    -1  
+$EndComp
+Connection ~ 5350 3750
+Wire Wire Line
+	5350 3750 5600 3750
+$Comp
+L power:GND #PWR?
+U 1 1 62412BC2
+P 6350 7200
+F 0 "#PWR?" H 6350 6950 50  0001 C CNN
+F 1 "GND" H 6355 7027 50  0000 C CNN
+F 2 "" H 6350 7200 50  0001 C CNN
+F 3 "" H 6350 7200 50  0001 C CNN
+	1    6350 7200
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
