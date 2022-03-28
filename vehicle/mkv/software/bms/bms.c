@@ -111,7 +111,8 @@ static int initial_checks(void) {
     bms_core.pack_voltage = pack_voltage;
 
     // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+    //     we
     //                  // start seeing a lot of failures, we should fault
     //     goto bail;
     // }
@@ -135,7 +136,8 @@ static int initial_checks(void) {
     bms_core.pack_temperature = pack_temperature;
 
     // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+    //     we
     //                  // start seeing a lot of failures, we should fault
     //     rc = 1;
     //     goto bail;
@@ -188,11 +190,11 @@ static void state_machine_run(void) {
     (void)rc;
 
     // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+    //     we
     //                  // start seeing a lot of failures, we should fault
     //     return;
     // };
-
 
     /*
      * Temperatures
@@ -205,7 +207,8 @@ static void state_machine_run(void) {
     bms_core.pack_temperature = pack_temperature;
 
     // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+    //     we
     //                  // start seeing a lot of failures, we should fault
     //     return;
     // }
@@ -216,7 +219,8 @@ static void state_machine_run(void) {
     rc = openwire_task();
 
     // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+    //     we
     //                  // start seeing a lot of failures, we should fault
     //     return;
     // }

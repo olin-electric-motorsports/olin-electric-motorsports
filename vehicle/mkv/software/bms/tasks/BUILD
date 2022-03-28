@@ -3,10 +3,10 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 cc_library(
     name = "bms_tasks",
     srcs = [
+        "current_task.c",
         "openwire_task.c",
         "temperature_task.c",
         "voltage_task.c",
-        "current_task.c",
     ],
     hdrs = [
         "tasks.h",

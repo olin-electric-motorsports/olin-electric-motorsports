@@ -1,6 +1,6 @@
-#include <stdint.h>
 #include "libs/adc/api.h"
 #include "vehicle/mkv/software/bms/bms_config.h"
+#include <stdint.h>
 
 // Defines maximum current range (-125 to 125A)
 #define MAX_CURRENT_RANGE (250)
