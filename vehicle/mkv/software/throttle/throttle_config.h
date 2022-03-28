@@ -5,7 +5,6 @@
 /*
  * Pin definitions
  */
-
 gpio_t BRAKE_IMPLAUSIBILTIY_LED = PC6;
 gpio_t DEVIATION_IMPLAUSIBILITY_LED = PB3;
 gpio_t OUT_OF_RANGE_IMPLAUSIBILITY_LED = PB4;
@@ -18,11 +17,6 @@ gpio_t SS_IS = PB6;
 gpio_t SS_BOTS = PB7;
 
 /*
- * ADC pins
- */
-// adc_pin_e DRIVE_MODE_SENSE = ADC2; // UNUSED
-
-/*
  * Represents a throttle potentiometer, or APPS (Accelerator Pedal Position
  * Sensor)
  */
@@ -32,8 +26,7 @@ typedef struct {
     uint16_t throttle_max; // Maximum position (100%) in raw ADC
 } throttle_potentiometer_s;
 
-// Define throttle values to use when mapping
-// Values are capped at this range
+// Minimum and maximum ADC counts representing 0% and 100% pedal travel
 // TODO: Recheck/set these values
 #define THROTTLE_R_MIN_COUNTS (uint16_t)(218)
 #define THROTTLE_R_MAX_COUNTS (uint16_t)(654)
