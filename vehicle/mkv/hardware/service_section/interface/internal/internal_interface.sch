@@ -219,14 +219,6 @@ Text Label 9050 2250 0    50   ~ 0
 CAN_EMETER_P
 Text Label 9050 2350 0    50   ~ 0
 CAN_EMETER_N
-Text Label 9050 3250 0    50   ~ 0
-BSDP-Current-Trigger-
-Text Label 9050 3150 0    50   ~ 0
-BSDP-Current-Trigger-
-Text Label 9050 3050 0    50   ~ 0
-BSDP-Current-Trigger+
-Text Label 9050 2950 0    50   ~ 0
-BSDP-Current-Trigger+
 Text Label 9050 2850 0    50   ~ 0
 GND
 Text Label 6300 2750 0    50   ~ 0
@@ -423,39 +415,6 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 228
 	1    1800 6600
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 623E668D
-P 1800 6750
-F 0 "#PWR?" H 1800 6500 50  0001 C CNN
-F 1 "GND" H 1805 6577 50  0000 C CNN
-F 2 "" H 1800 6750 50  0001 C CNN
-F 3 "" H 1800 6750 50  0001 C CNN
-	1    1800 6750
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 623E6EEB
-P 2400 6600
-F 0 "#PWR?" H 2400 6350 50  0001 C CNN
-F 1 "GND" H 2405 6427 50  0000 C CNN
-F 2 "" H 2400 6600 50  0001 C CNN
-F 3 "" H 2400 6600 50  0001 C CNN
-	1    2400 6600
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 623E7351
-P 3300 6600
-F 0 "#PWR?" H 3300 6350 50  0001 C CNN
-F 1 "GND" H 3305 6427 50  0000 C CNN
-F 2 "" H 3300 6600 50  0001 C CNN
-F 3 "" H 3300 6600 50  0001 C CNN
-	1    3300 6600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3300 6050 3300 6150
 Text Label 3500 6150 0    50   ~ 0
@@ -543,17 +502,6 @@ Wire Wire Line
 Wire Wire Line
 	3300 6900 3300 6950
 Connection ~ 3050 6900
-$Comp
-L power:GND #PWR?
-U 1 1 623F40BB
-P 3050 7300
-F 0 "#PWR?" H 3050 7050 50  0001 C CNN
-F 1 "GND" H 3055 7127 50  0000 C CNN
-F 2 "" H 3050 7300 50  0001 C CNN
-F 3 "" H 3050 7300 50  0001 C CNN
-	1    3050 7300
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3300 7250 3050 7250
 Connection ~ 3050 7250
@@ -786,4 +734,24 @@ Text Label 9050 4800 0    50   ~ 0
 CoolingBat6+
 Text Label 2800 6900 2    50   ~ 0
 CoolingBat6+
+NoConn ~ 9050 2950
+NoConn ~ 9050 3050
+NoConn ~ 9050 3150
+NoConn ~ 9050 3250
+Wire Wire Line
+	3300 6600 3300 6700
+Text Label 3300 6700 0    50   ~ 0
+CoolingBat6-
+Text Label 2400 6750 0    50   ~ 0
+CoolingBat6-
+Wire Wire Line
+	2400 6750 2400 6600
+Text Label 1800 6850 0    50   ~ 0
+CoolingBat6-
+Wire Wire Line
+	1800 6850 1800 6750
+Text Label 3050 7400 0    50   ~ 0
+CoolingBat6-
+Wire Wire Line
+	3050 7400 3050 7300
 $EndSCHEMATC
