@@ -19,6 +19,6 @@ buildifier(
 refresh_compile_commands(
     name = "refresh_compile_commands",
     targets = {
-        "//vehicle/mkv/software/brakelight_bspd:bspd": "--platforms=//bazel/platforms:atmega16m1_avr",
+        "//vehicle/mkv/software/...": "--platforms=//bazel/platforms:atmega16m1_avr -c opt",
     },
 )
