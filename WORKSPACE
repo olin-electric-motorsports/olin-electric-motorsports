@@ -9,6 +9,14 @@ register_toolchains("//bazel/toolchain:atmega16m1_toolchain")
 
 register_toolchains("//bazel/toolchain:atmega328p_toolchain")
 
+http_archive(
+    name = "rules_python",
+    sha256 = "cd6730ed53a002c56ce4e2f396ba3b3be262fd7cb68339f0377a45e8227fe332",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.5.0/rules_python-0.5.0.tar.gz",
+)
+
+load("@rules_python//python:pip.bzl", "pip_install")
+
 # Buildifier formatter for Bazel
 
 http_archive(
@@ -56,14 +64,6 @@ http_archive(
     url = "https://github.com/bazelbuild/buildtools/archive/master.zip",
 )
 
-http_archive(
-    name = "rules_python",
-    sha256 = "cd6730ed53a002c56ce4e2f396ba3b3be262fd7cb68339f0377a45e8227fe332",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.5.0/rules_python-0.5.0.tar.gz",
-)
-
-load("@rules_python//python:pip.bzl", "pip_install")
-
 # CMocka
 
 http_archive(
@@ -108,3 +108,17 @@ pip_install(
     name = "hitl_deps",
     requirements = "//projects/hitl/software:requirements.txt",
 )
+
+http_archive(
+    name = "hedron_compile_commands",
+    strip_prefix = "bazel-compile-commands-extractor-140666077ab4ca7f10041080e8b55cf641c07d30",
+
+    # Replace the commit hash in both places (below) with the latest, rather than using the stale one here.
+    # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in the README).
+    url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/140666077ab4ca7f10041080e8b55cf641c07d30.tar.gz",
+    # When you first run this tool, it'll recommend a sha256 hash to put here with a message like: "DEBUG: Rule 'hedron_compile_commands' indicated that a canonical reproducible form can be obtained by modifying arguments sha256 = ..."
+)
+
+load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
+
+hedron_compile_commands_setup()
