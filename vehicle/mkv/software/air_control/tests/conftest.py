@@ -2,6 +2,7 @@ import os
 import pytest
 import time
 from formula.projects.hitl.software.hitl import CANController
+from formula.projects.hitl.software.hitl import IOController
 from formula.projects.microhitl import MicroHitl, Values as PinValue, PinTypes
 
 # Allow passing in arguments
@@ -13,11 +14,6 @@ def pytest_addoption(parser):
 @pytest.fixture
 def candevice(request):
     return request.config.getoption("--canbus")
-
-
-@pytest.fixture
-def hitl_port(request):
-    return request.config.getoption("--hitl-port")
 
 
 @pytest.fixture
@@ -39,14 +35,14 @@ def pins():
 
 
 @pytest.fixture
-def iocontroller(hitl_port, pins):
-    ioctrl = MicroHitl(hitl_port)
+def iocontroller(pins):
+    ioctrl = IOController()
     time.sleep(2)
 
-    for idx, (name, info) in enumerate(pins.items()):
-        ioctrl.configure_pin(info[0], info[1])
+    # for idx, (name, info) in enumerate(pins.items()):
+    #     ioctrl.configure_pin(info[0], info[1])
 
-    ioctrl.write_pin(pins["RESET"][0], PinValue.HIGH)
+    # ioctrl.write_pin(pins["RESET"][0], PinValue.HIGH)
 
     return ioctrl
 

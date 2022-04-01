@@ -1,16 +1,15 @@
 import pytest
 import math
 import time
-from formula.projects.microhitl import Values as PinValue
 
 # Time constant for motor controller precharge circuit
 MC_TAU = 0.2
 
 
 def reset(iocontroller, pins):
-    iocontroller.write_pin(pins["RESET"][0], PinValue.LOW)
+    iocontroller.set_state("RESET", 0)
     time.sleep(0.5)
-    iocontroller.write_pin(pins["RESET"][0], PinValue.HIGH)
+    iocontroller.set_state("RESET", 1)
 
 
 def initialize_to_idle(canbus, iocontroller, pins):
@@ -22,11 +21,11 @@ def initialize_to_idle(canbus, iocontroller, pins):
     canbus.set_state("D1_DC_Bus_Voltage", 0)
     canbus.set_periodic("M167_Voltage_Info", 0.1)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
-    iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.HIGH)
-    iocontroller.write_pin(pins["BMS_SENSE"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
+    iocontroller.set_state("IMD_SENSE", 1)
+    iocontroller.set_state("BMS_SENSE", 1)
 
 
 """
@@ -44,7 +43,7 @@ def test_idle_imd_fault(canbus, iocontroller, pins):
     assert canbus.get_state("air_state") == "IDLE"
 
     # IMD FAULT
-    iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.LOW)
+    iocontroller.set_state("IMD_SENSE", 0)
     time.sleep(0.1)
     assert canbus.get_state("air_state") == "FAULT"
     assert canbus.get_state("air_fault") == "IMD_STATUS"
@@ -60,7 +59,7 @@ def test_idle_bms_fault(canbus, iocontroller, pins):
     assert canbus.get_state("air_state") == "IDLE"
 
     # IMD FAULT
-    iocontroller.write_pin(pins["BMS_SENSE"][0], PinValue.LOW)
+    iocontroller.set_state("BMS_SENSE", 0)
     time.sleep(0.1)
     assert canbus.get_state("air_state") == "FAULT"
     assert canbus.get_state("air_fault") == "BMS_STATUS"
@@ -76,7 +75,7 @@ def test_transition_idle_ss_closed(canbus, iocontroller, pins):
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
+    iocontroller.set_state("SS_TSMS", 0)
 
     time.sleep(0.05)
     assert "SHUTDOWN_CIRCUIT_CLOSED" == canbus.get_state("air_state")
@@ -92,7 +91,7 @@ def test_ss_closed_implausibility(canbus, iocontroller, pins):
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
+    iocontroller.set_state("SS_TSMS", 0)
 
     time.sleep(0.05)
     assert "SHUTDOWN_CIRCUIT_CLOSED" == canbus.get_state("air_state")
@@ -114,15 +113,15 @@ def test_transition_ss_closed_precharge(canbus, iocontroller, pins):
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+    iocontroller.set_state("SS_TSMS", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 1)
 
     time.sleep(0.05)
     assert "SHUTDOWN_CIRCUIT_CLOSED" == canbus.get_state("air_state")
     time.sleep(0.25)
 
     assert "PRECHARGE" == canbus.get_state("air_state")
-    assert True == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+    assert True == iocontroller.get_state("PRECHARGE_CTL")
 
 
 def test_precharge_charge_failure(canbus, iocontroller, pins):
@@ -136,21 +135,21 @@ def test_precharge_charge_failure(canbus, iocontroller, pins):
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+    iocontroller.set_state("SS_TSMS", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 1)
 
     time.sleep(0.05)
     assert "SHUTDOWN_CIRCUIT_CLOSED" == canbus.get_state("air_state")
     time.sleep(0.3)
 
     assert "PRECHARGE" == canbus.get_state("air_state")
-    assert True == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+    assert True == iocontroller.get_state("PRECHARGE_CTL")
 
     time.sleep(2.1)
 
     assert "PRECHARGE_FAIL" == canbus.get_state("air_fault")
     assert "FAULT" == canbus.get_state("air_state")
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
 
 
 def test_precharge_motor_controller_timeout(canbus, iocontroller, pins):
@@ -163,8 +162,8 @@ def test_precharge_motor_controller_timeout(canbus, iocontroller, pins):
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+    iocontroller.set_state("SS_TSMS", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 1)
 
     # Stop MC CAN messages
     time.sleep(0.05)
@@ -175,13 +174,13 @@ def test_precharge_motor_controller_timeout(canbus, iocontroller, pins):
     del canbus.periodic_messages["bms_core"]
 
     assert "PRECHARGE" == canbus.get_state("air_state")
-    assert True == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+    assert True == iocontroller.get_state("PRECHARGE_CTL")
 
     time.sleep(1.1)
 
     assert "CAN_BMS_TIMEOUT" == canbus.get_state("air_fault")
     assert "FAULT" == canbus.get_state("air_state")
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
 
 
 def test_precharge_bms_timeout(canbus, iocontroller, pins):
@@ -194,8 +193,8 @@ def test_precharge_bms_timeout(canbus, iocontroller, pins):
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+    iocontroller.set_state("SS_TSMS", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 1)
 
     # Stop MC CAN messages
     time.sleep(0.05)
@@ -206,13 +205,13 @@ def test_precharge_bms_timeout(canbus, iocontroller, pins):
     del canbus.periodic_messages["M167_Voltage_Info"]
 
     assert "PRECHARGE" == canbus.get_state("air_state")
-    assert True == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+    assert True == iocontroller.get_state("PRECHARGE_CTL")
 
     time.sleep(1.1)
 
     assert "CAN_MC_TIMEOUT" == canbus.get_state("air_fault")
     assert "FAULT" == canbus.get_state("air_state")
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
 
 
 def test_precharge_success(canbus, iocontroller, pins):
@@ -225,15 +224,15 @@ def test_precharge_success(canbus, iocontroller, pins):
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+    iocontroller.set_state("SS_TSMS", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 1)
 
     time.sleep(0.05)
     assert "SHUTDOWN_CIRCUIT_CLOSED" == canbus.get_state("air_state")
     time.sleep(0.25)
 
     assert "PRECHARGE" == canbus.get_state("air_state")
-    assert True == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+    assert True == iocontroller.get_state("PRECHARGE_CTL")
 
     # In PRECHARGE
 
@@ -249,11 +248,11 @@ def test_precharge_success(canbus, iocontroller, pins):
 
     time.sleep(0.5)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 1)
     assert "NONE" == canbus.get_state("air_fault")
     assert "TS_ACTIVE" == canbus.get_state("air_state")
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert True == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert True == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_ts_active_imd_fault(canbus, iocontroller, pins):
@@ -263,14 +262,14 @@ def test_ts_active_imd_fault(canbus, iocontroller, pins):
     """
     test_precharge_success(canbus, iocontroller, pins)
 
-    iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.LOW)
+    iocontroller.set_state("IMD_SENSE", 0)
 
     time.sleep(0.1)
 
     assert canbus.get_state("air_state") == "FAULT"
     assert canbus.get_state("air_fault") == "IMD_STATUS"
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert False == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_ts_active_bms_fault(canbus, iocontroller, pins):
@@ -280,14 +279,14 @@ def test_ts_active_bms_fault(canbus, iocontroller, pins):
     """
     test_precharge_success(canbus, iocontroller, pins)
 
-    iocontroller.write_pin(pins["BMS_SENSE"][0], PinValue.LOW)
+    iocontroller.set_state("BMS_SENSE", 0)
 
     time.sleep(0.1)
 
     assert canbus.get_state("air_state") == "FAULT"
     assert canbus.get_state("air_fault") == "BMS_STATUS"
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert False == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_discharge_both_airs_weld(canbus, iocontroller, pins):
@@ -296,13 +295,13 @@ def test_discharge_both_airs_weld(canbus, iocontroller, pins):
     We simulate entering DISCHARGE by setting SS_TSMS high during TS_ACTIVE.
     """
     test_precharge_success(canbus, iocontroller, pins)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+    iocontroller.set_state("SS_TSMS", 1)
     time.sleep(0.1)
 
     assert canbus.get_state("air_state") == "FAULT"
     assert canbus.get_state("air_fault") == "BOTH_AIRS_WELD"
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert False == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_discharge_air_p_weld(canbus, iocontroller, pins):
@@ -310,14 +309,14 @@ def test_discharge_air_p_weld(canbus, iocontroller, pins):
     ECU should fault during DISCHARGE if AIR_P stays closed
     """
     test_precharge_success(canbus, iocontroller, pins)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
     time.sleep(0.1)
 
     assert canbus.get_state("air_state") == "FAULT"
     assert canbus.get_state("air_fault") == "AIR_P_WELD"
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert False == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_discharge_air_n_weld(canbus, iocontroller, pins):
@@ -325,14 +324,14 @@ def test_discharge_air_n_weld(canbus, iocontroller, pins):
     ECU should fault during DISCHARGE if AIR_N stays closed
     """
     test_precharge_success(canbus, iocontroller, pins)
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
     time.sleep(0.1)
 
     assert canbus.get_state("air_state") == "FAULT"
     assert canbus.get_state("air_fault") == "AIR_N_WELD"
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert False == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_discharge_mc_timeout(canbus, iocontroller, pins):
@@ -345,16 +344,16 @@ def test_discharge_mc_timeout(canbus, iocontroller, pins):
     canbus.periodic_messages["M167_Voltage_Info"].stop()
     del canbus.periodic_messages["M167_Voltage_Info"]
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
 
     time.sleep(1.2)  # Wait for CAN_MC timeout
 
     assert canbus.get_state("air_fault") == "CAN_MC_TIMEOUT"
     assert canbus.get_state("air_state") == "FAULT"
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert False == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_discharge_fail(canbus, iocontroller, pins):
@@ -364,16 +363,16 @@ def test_discharge_fail(canbus, iocontroller, pins):
     """
     test_precharge_success(canbus, iocontroller, pins)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
 
     time.sleep(2.2)  # Wait for discharge timer
 
     assert canbus.get_state("air_state") == "FAULT"
     assert canbus.get_state("air_fault") == "DISCHARGE_FAIL"
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert False == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_discharge_success(canbus, iocontroller, pins):
@@ -383,9 +382,9 @@ def test_discharge_success(canbus, iocontroller, pins):
     """
     test_precharge_success(canbus, iocontroller, pins)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
 
     v0 = canbus.get_state("D1_DC_Bus_Voltage")
 
@@ -402,8 +401,8 @@ def test_discharge_success(canbus, iocontroller, pins):
 
     assert canbus.get_state("air_state") == "IDLE"
     assert canbus.get_state("air_fault") == "NONE"
-    assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-    assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+    assert False == iocontroller.get_state("PRECHARGE_CTL")
+    assert False == iocontroller.get_state("AIR_N_LSD")
 
 
 def test_state_machine_cycle_twice(canbus, iocontroller, pins):
@@ -417,11 +416,11 @@ def test_state_machine_cycle_twice(canbus, iocontroller, pins):
     canbus.set_state("D1_DC_Bus_Voltage", 0)
     canbus.set_periodic("M167_Voltage_Info", 0.1)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
-    iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.HIGH)
-    iocontroller.write_pin(pins["BMS_SENSE"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
+    iocontroller.set_state("IMD_SENSE", 1)
+    iocontroller.set_state("BMS_SENSE", 1)
 
     # Start device
     reset(iocontroller, pins)
@@ -429,15 +428,15 @@ def test_state_machine_cycle_twice(canbus, iocontroller, pins):
     assert canbus.get_state("air_state") == "IDLE"
 
     for i in range(2):
-        iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
-        iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+        iocontroller.set_state("SS_TSMS", 0)
+        iocontroller.set_state("AIR_N_WELD_DETECT", 1)
 
         time.sleep(0.05)
         assert "SHUTDOWN_CIRCUIT_CLOSED" == canbus.get_state("air_state")
         time.sleep(0.25)
 
         assert "PRECHARGE" == canbus.get_state("air_state")
-        assert True == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
+        assert True == iocontroller.get_state("PRECHARGE_CTL")
 
         # In PRECHARGE
 
@@ -453,15 +452,15 @@ def test_state_machine_cycle_twice(canbus, iocontroller, pins):
 
         time.sleep(0.5)
 
-        iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.HIGH)
+        iocontroller.set_state("AIR_P_WELD_DETECT", 1)
         assert "NONE" == canbus.get_state("air_fault")
         assert "TS_ACTIVE" == canbus.get_state("air_state")
-        assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-        assert True == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+        assert False == iocontroller.get_state("PRECHARGE_CTL")
+        assert True == iocontroller.get_state("AIR_N_LSD")
 
-        iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-        iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-        iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
+        iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+        iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+        iocontroller.set_state("SS_TSMS", 1)
 
         v0 = canbus.get_state("D1_DC_Bus_Voltage")
 
@@ -478,7 +477,7 @@ def test_state_machine_cycle_twice(canbus, iocontroller, pins):
 
         assert canbus.get_state("air_state") == "IDLE"
         assert canbus.get_state("air_fault") == "NONE"
-        assert False == iocontroller.read_pin(pins["PRECHARGE_CTL"][0])
-        assert False == iocontroller.read_pin(pins["AIR_N_LSD"][0])
+        assert False == iocontroller.get_state("PRECHARGE_CTL")
+        assert False == iocontroller.get_state("AIR_N_LSD")
 
         time.sleep(0.5)

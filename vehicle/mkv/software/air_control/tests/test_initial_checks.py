@@ -1,12 +1,11 @@
 import pytest
 import time
-from formula.projects.microhitl import Values as PinValue
 
 
 def reset(iocontroller, pins):
-    iocontroller.write_pin(pins["RESET"][0], PinValue.LOW)
+    iocontroller.set_state("RESET", 0)
     time.sleep(0.5)
-    iocontroller.write_pin(pins["RESET"][0], PinValue.HIGH)
+    iocontroller.set_state("RESET", 1)
 
 
 def test_bms_can_timeout(canbus, iocontroller, pins):
@@ -74,7 +73,7 @@ def test_air_p_weld(canbus, iocontroller, pins):
     canbus.set_periodic("bms_core", 0.1)
     canbus.set_periodic("M167_Voltage_Info", 0.1)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 1)
 
     reset(iocontroller, pins)
     time.sleep(1)
@@ -91,8 +90,8 @@ def test_air_n_weld(canbus, iocontroller, pins):
     canbus.set_periodic("M167_Voltage_Info", 0.1)
     canbus.set_state("D1_DC_Bus_Voltage", 0)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 1)
 
     reset(iocontroller, pins)
     time.sleep(1)
@@ -109,9 +108,9 @@ def test_shutdown_circuit_closed(canbus, iocontroller, pins):
     canbus.set_state("D1_DC_Bus_Voltage", 0)
     canbus.set_periodic("M167_Voltage_Info", 0.1)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.LOW)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 0)
 
     reset(iocontroller, pins)
     time.sleep(1)
@@ -128,10 +127,10 @@ def test_imd_implausibility(canbus, iocontroller, pins):
     canbus.set_state("D1_DC_Bus_Voltage", 0)
     canbus.set_periodic("M167_Voltage_Info", 0.1)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
-    iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.LOW)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
+    iocontroller.set_state("IMD_SENSE", 0)
 
     reset(iocontroller, pins)
     time.sleep(1)
@@ -148,11 +147,11 @@ def test_initial_checks_success(canbus, iocontroller, pins):
     canbus.set_state("D1_DC_Bus_Voltage", 0)
     canbus.set_periodic("M167_Voltage_Info", 0.1)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["SS_TSMS"][0], PinValue.HIGH)
-    iocontroller.write_pin(pins["IMD_SENSE"][0], PinValue.HIGH)
-    iocontroller.write_pin(pins["BMS_SENSE"][0], PinValue.HIGH)
+    iocontroller.set_state("AIR_P_WELD_DETECT", 0)
+    iocontroller.set_state("AIR_N_WELD_DETECT", 0)
+    iocontroller.set_state("SS_TSMS", 1)
+    iocontroller.set_state("IMD_SENSE", 1)
+    iocontroller.set_state("BMS_SENSE", 1)
 
     reset(iocontroller, pins)
     time.sleep(1.1)
