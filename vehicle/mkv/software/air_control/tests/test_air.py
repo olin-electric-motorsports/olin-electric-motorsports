@@ -6,13 +6,13 @@ import time
 MC_TAU = 0.2
 
 
-def reset(iocontroller, pins):
+def reset(iocontroller):
     iocontroller.set_state("RESET", 0)
     time.sleep(0.5)
     iocontroller.set_state("RESET", 1)
 
 
-def initialize_to_idle(canbus, iocontroller, pins):
+def initialize_to_idle(canbus, iocontroller):
     """
     Sets up initial conditions to get ECU into IDLE mode
     """
@@ -33,12 +33,12 @@ Tests
 """
 
 
-def test_idle_imd_fault(canbus, iocontroller, pins):
+def test_idle_imd_fault(canbus, iocontroller):
     """
     Set IMD pin low in IDLE state to simulate IMD fault
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -49,12 +49,12 @@ def test_idle_imd_fault(canbus, iocontroller, pins):
     assert canbus.get_state("air_fault") == "IMD_STATUS"
 
 
-def test_idle_bms_fault(canbus, iocontroller, pins):
+def test_idle_bms_fault(canbus, iocontroller):
     """
     Set BMS_SENSE pin low to simulate BMS fault during IDLE state
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -65,13 +65,13 @@ def test_idle_bms_fault(canbus, iocontroller, pins):
     assert canbus.get_state("air_fault") == "BMS_STATUS"
 
 
-def test_transition_idle_ss_closed(canbus, iocontroller, pins):
+def test_transition_idle_ss_closed(canbus, iocontroller):
     """
     Simulate closing shutdown circuit by setting SS_TSMS low to test the
     IDLE->SS_CLOSED transition
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -81,13 +81,13 @@ def test_transition_idle_ss_closed(canbus, iocontroller, pins):
     assert "SHUTDOWN_CIRCUIT_CLOSED" == canbus.get_state("air_state")
 
 
-def test_ss_closed_implausibility(canbus, iocontroller, pins):
+def test_ss_closed_implausibility(canbus, iocontroller):
     """
     Test fault where closing the shutdown circuit does NOT lead to
     AIR_N_WELD_DETECT detecting the AIR_N closing.
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -103,13 +103,13 @@ def test_ss_closed_implausibility(canbus, iocontroller, pins):
     assert "SHUTDOWN_IMPLAUSIBILITY" == canbus.get_state("air_fault")
 
 
-def test_transition_ss_closed_precharge(canbus, iocontroller, pins):
+def test_transition_ss_closed_precharge(canbus, iocontroller):
     """
     Tests transition from SS_CLOSED to PRECHARGE by entering SS_CLOSED with
     SS_TSMS being low and AIR_N_WELD_DETECT detecting the AIR_N being closed.
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -124,14 +124,14 @@ def test_transition_ss_closed_precharge(canbus, iocontroller, pins):
     assert True == iocontroller.get_state("PRECHARGE_CTL")
 
 
-def test_precharge_charge_failure(canbus, iocontroller, pins):
+def test_precharge_charge_failure(canbus, iocontroller):
     """
     ECU should fault if the motor controller voltage fails to reach the pack
     voltage during precharge. We simulate this by not changing the motor
     controller voltage during the 2-second duration of precharge.
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -152,13 +152,13 @@ def test_precharge_charge_failure(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("PRECHARGE_CTL")
 
 
-def test_precharge_motor_controller_timeout(canbus, iocontroller, pins):
+def test_precharge_motor_controller_timeout(canbus, iocontroller):
     """
     ECU should fault during PRECHARGE if it fails to receive a motor controller
     CAN message for more than 1 second.
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -183,13 +183,13 @@ def test_precharge_motor_controller_timeout(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("PRECHARGE_CTL")
 
 
-def test_precharge_bms_timeout(canbus, iocontroller, pins):
+def test_precharge_bms_timeout(canbus, iocontroller):
     """
     ECU should fault if it fails to receive BMS message for more than one second
     during precharge.
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -214,13 +214,13 @@ def test_precharge_bms_timeout(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("PRECHARGE_CTL")
 
 
-def test_precharge_success(canbus, iocontroller, pins):
+def test_precharge_success(canbus, iocontroller):
     """
     ECU should enter TS_ACTIVE if motor controller voltage reaches pack voltage
     within two seconds of PRECHARGE beginning.
     """
-    initialize_to_idle(canbus, iocontroller, pins)
-    reset(iocontroller, pins)
+    initialize_to_idle(canbus, iocontroller)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
@@ -255,12 +255,12 @@ def test_precharge_success(canbus, iocontroller, pins):
     assert True == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_ts_active_imd_fault(canbus, iocontroller, pins):
+def test_ts_active_imd_fault(canbus, iocontroller):
     """
     ECU should fault if IMD fault occurs during TS_ACTIVE. We simulate this by
     setting the IMD_SENSE pin low during TS_ACTIVE
     """
-    test_precharge_success(canbus, iocontroller, pins)
+    test_precharge_success(canbus, iocontroller)
 
     iocontroller.set_state("IMD_SENSE", 0)
 
@@ -272,12 +272,12 @@ def test_ts_active_imd_fault(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_ts_active_bms_fault(canbus, iocontroller, pins):
+def test_ts_active_bms_fault(canbus, iocontroller):
     """
     ECU should fault if BMS fault occurs during TS_ACTIVE. We simulate this by
     setting the BMS_SENSE pin low during TS_ACTIVE
     """
-    test_precharge_success(canbus, iocontroller, pins)
+    test_precharge_success(canbus, iocontroller)
 
     iocontroller.set_state("BMS_SENSE", 0)
 
@@ -289,12 +289,12 @@ def test_ts_active_bms_fault(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_discharge_both_airs_weld(canbus, iocontroller, pins):
+def test_discharge_both_airs_weld(canbus, iocontroller):
     """
     ECU should fault during DISCHARGE if neither AIR_x_WELD_DETECT pin changes.
     We simulate entering DISCHARGE by setting SS_TSMS high during TS_ACTIVE.
     """
-    test_precharge_success(canbus, iocontroller, pins)
+    test_precharge_success(canbus, iocontroller)
     iocontroller.set_state("SS_TSMS", 1)
     time.sleep(0.1)
 
@@ -304,11 +304,11 @@ def test_discharge_both_airs_weld(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_discharge_air_p_weld(canbus, iocontroller, pins):
+def test_discharge_air_p_weld(canbus, iocontroller):
     """
     ECU should fault during DISCHARGE if AIR_P stays closed
     """
-    test_precharge_success(canbus, iocontroller, pins)
+    test_precharge_success(canbus, iocontroller)
     iocontroller.set_state("AIR_N_WELD_DETECT", 0)
     iocontroller.set_state("SS_TSMS", 1)
     time.sleep(0.1)
@@ -319,11 +319,11 @@ def test_discharge_air_p_weld(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_discharge_air_n_weld(canbus, iocontroller, pins):
+def test_discharge_air_n_weld(canbus, iocontroller):
     """
     ECU should fault during DISCHARGE if AIR_N stays closed
     """
-    test_precharge_success(canbus, iocontroller, pins)
+    test_precharge_success(canbus, iocontroller)
     iocontroller.set_state("AIR_P_WELD_DETECT", 0)
     iocontroller.set_state("SS_TSMS", 1)
     time.sleep(0.1)
@@ -334,12 +334,12 @@ def test_discharge_air_n_weld(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_discharge_mc_timeout(canbus, iocontroller, pins):
+def test_discharge_mc_timeout(canbus, iocontroller):
     """
     ECU should fault during DISCHARGE if it fails to receive motor controller
     voltage CAN messages for more than a second
     """
-    test_precharge_success(canbus, iocontroller, pins)
+    test_precharge_success(canbus, iocontroller)
 
     canbus.periodic_messages["M167_Voltage_Info"].stop()
     del canbus.periodic_messages["M167_Voltage_Info"]
@@ -356,12 +356,12 @@ def test_discharge_mc_timeout(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_discharge_fail(canbus, iocontroller, pins):
+def test_discharge_fail(canbus, iocontroller):
     """
     ECU should fault during DISCHARGE if the motor controller voltage doesn't
     fall to ~zero within two seconds.
     """
-    test_precharge_success(canbus, iocontroller, pins)
+    test_precharge_success(canbus, iocontroller)
 
     iocontroller.set_state("AIR_P_WELD_DETECT", 0)
     iocontroller.set_state("AIR_N_WELD_DETECT", 0)
@@ -375,12 +375,12 @@ def test_discharge_fail(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_discharge_success(canbus, iocontroller, pins):
+def test_discharge_success(canbus, iocontroller):
     """
     ECU should return to IDLE after DISCHARGE if the motor controller
     voltage falls to ~zero volts within two seconds
     """
-    test_precharge_success(canbus, iocontroller, pins)
+    test_precharge_success(canbus, iocontroller)
 
     iocontroller.set_state("AIR_P_WELD_DETECT", 0)
     iocontroller.set_state("AIR_N_WELD_DETECT", 0)
@@ -405,7 +405,7 @@ def test_discharge_success(canbus, iocontroller, pins):
     assert False == iocontroller.get_state("AIR_N_LSD")
 
 
-def test_state_machine_cycle_twice(canbus, iocontroller, pins):
+def test_state_machine_cycle_twice(canbus, iocontroller):
     """
     Tests two cycles of the IDLE->PRECHARGE->TS_ACTIVE->DISCHARGE->IDLE to
     ensure that the firmware is able to complete the cycle without fault.
@@ -423,7 +423,7 @@ def test_state_machine_cycle_twice(canbus, iocontroller, pins):
     iocontroller.set_state("BMS_SENSE", 1)
 
     # Start device
-    reset(iocontroller, pins)
+    reset(iocontroller)
     time.sleep(0.5)
     assert canbus.get_state("air_state") == "IDLE"
 
