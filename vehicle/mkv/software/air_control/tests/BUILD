@@ -16,6 +16,5 @@ pytest_test(
     ],
     deps = [
         "//projects/hitl/software/hitl",
-        "//projects/microhitl",
     ],
 )
