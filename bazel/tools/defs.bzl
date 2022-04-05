@@ -49,17 +49,24 @@ def can_api_files(name, yaml, dbc):
     )
 
     cc_library(
+        name = name + "_hdrs",
+        hdrs = [
+            "can_tools.h",
+            "can_api.h",
+        ],
+        include_prefix = ".",
+        visibility = ["//visibility:public"],
+    )
+
+    cc_library(
         name = name,
         srcs = [
-            ":can_tools.c",
-            ":can_api.c",
-        ],
-        hdrs = [
-            ":can_tools.h",
-            ":can_api.h",
+            "can_tools.c",
+            "can_api.c",
         ],
         deps = [
             "//libs/can",
+            ":" + name + "_hdrs",
         ],
         visibility = ["//visibility:public"],
     )
