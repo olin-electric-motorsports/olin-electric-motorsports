@@ -12,7 +12,6 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
     // Start cell voltage ADC conversions PLUS Sum of Cells Conversion
     LTC6811_adcvsc(MD_7KHZ_3KHZ, DCP_ENABLED);
-    /* // LTC6811_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL); */
 
     // Blocks until all ADCs are done being read
     LTC6811_pollAdc(); // Ignore return value because we don't
@@ -26,7 +25,6 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
     if (error != 0) {
         bms_metrics.voltage_pec_error_count++;
-        bms_debug.dbg_4 = error;
         return error;
     }
 

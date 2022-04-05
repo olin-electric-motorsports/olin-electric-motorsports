@@ -68,8 +68,8 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                  * ICS vs mux channels and use 24 as the number of mux channels
                  * (3 muxes, 8 channels each).
                  */
-                uint16_t channel = (mux * NUM_MUX_CHANNELS) + ch;
-                TEMPERATURES[temp_ic][channel] = temperature;
+                /* uint16_t channel = (mux * NUM_MUX_CHANNELS) + ch; */
+                /* TEMPERATURES[temp_ic][channel] = temperature; */
                 cumulative_temperature += temperature;
 
                 /*
