@@ -6,22 +6,22 @@
 #include "libs/gpio/api.h"
 
 typedef enum {
-    MSB,
+    MSB = 0,
     LSB,
 } spi_data_order_e;
 
 typedef enum {
-    SECONDARY,
+    SECONDARY = 0,
     MAIN,
 } spi_mode_e;
 
 typedef enum {
-    RISING_FALLING,
+    RISING_FALLING = 0,
     FALLING_RISING,
 } spi_clock_polarity_e;
 
 typedef enum {
-    SAMPLE_SETUP,
+    SAMPLE_SETUP = 0,
     SETUP_SAMPLE,
 } spi_clock_phase_e;
 

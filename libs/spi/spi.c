@@ -15,10 +15,10 @@ uint8_t txdata_receive = 0xFF;
 // CS Pins
 
 // Spi pins
+gpio_t miso = PB0;
 gpio_t mosi = PB1;
-gpio_t miso = PB2;
 gpio_t sck = PB7;
-gpio_t* cs = NULL;
+gpio_t cs;
 
 spi_mode_e mode = MAIN;
 
@@ -39,29 +39,32 @@ ISR(SPI_STC_vect) {
 }
 
 void spi_init(spi_cfg_s* spi_cfg) {
-    *cs = *spi_cfg->cs_pin;
+    cs = *spi_cfg->cs_pin;
     mode = spi_cfg->mode;
 
     uint8_t main_direction = (mode == MAIN) ? OUTPUT : INPUT;
-    /* uint8_t secondary_direction = (mode == MAIN) ? INPUT : OUTPUT; */
 
     gpio_set_mode(mosi, main_direction);
-    gpio_set_mode(sck, main_direction);
     gpio_set_mode(miso, main_direction);
-    gpio_set_mode(*cs, main_direction);
+    gpio_set_mode(sck, main_direction);
+
+    gpio_t ss = PD3;
+    gpio_set_mode(ss, OUTPUT);
 
     SPCR |= (spi_cfg->data_order << DORD)
          | (spi_cfg->interrupt_enable << SPIE)
          | (spi_cfg->polarity << CPOL)
          | (spi_cfg->phase << CPHA)
          | (spi_cfg->mode << MSTR)
-         | (spi_cfg->clock_rate & 0x3);
+         | (spi_cfg->clock_rate);
 
-    /* SPSR |= (((uint8_t)spi_cfg->clock_rate & 0x4) >> 2); */
+    SPSR |= (((uint8_t)spi_cfg->clock_rate & 0x4) >> 2);
 
     SPCR |= 1 << SPE; // Enable SPI
 
-    gpio_set_pin(*cs);
+    gpio_set_mode(cs, main_direction);
+    gpio_set_pin(cs);
+
     gpio_set_pin(miso);
 }
 
@@ -106,9 +109,9 @@ void spi_receive(uint8_t* rxdata, uint8_t len) {
 }
 
 void spi_cs_low(void) {
-    gpio_clear_pin(*cs);
+    gpio_clear_pin(cs);
 }
 
 void spi_cs_high(void) {
-    gpio_set_pin(*cs);
+    gpio_set_pin(cs);
 }
