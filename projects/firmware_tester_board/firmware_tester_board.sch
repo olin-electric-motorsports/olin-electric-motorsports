@@ -974,34 +974,31 @@ Text Notes 6650 5950 0    89   ~ 0
 ADC MULTIPLEX JUMPER
 NoConn ~ 10100 2650
 NoConn ~ 11100 2750
-NoConn ~ 11100 3750
 NoConn ~ 11100 3550
 NoConn ~ 11100 3450
-NoConn ~ 11100 3350
 NoConn ~ 10100 3350
 NoConn ~ 10100 3450
 NoConn ~ 10100 3550
-NoConn ~ 10100 3750
 $Comp
 L formula:SSM3K333R Q1
 U 1 1 62220448
-P 4400 6600
-F 0 "Q1" H 4606 6646 50  0000 L CNN
-F 1 "SSM3K333R" H 4606 6555 50  0000 L CNN
-F 2 "footprints:SOT-23F" H 4600 6525 50  0001 L CIN
-F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 4600 6675 50  0001 L CNN
-F 4 "DK" H 4900 6975 60  0001 C CNN "MFN"
-F 5 "SSM3K333RLFCT-ND" H 4800 6875 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 4700 6775 60  0001 C CNN "PurchasingLink"
-	1    4400 6600
+P 4350 6500
+F 0 "Q1" H 4556 6546 50  0000 L CNN
+F 1 "SSM3K333R" H 4556 6455 50  0000 L CNN
+F 2 "footprints:SOT-23F" H 4550 6425 50  0001 L CIN
+F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 4550 6575 50  0001 L CNN
+F 4 "DK" H 4850 6875 60  0001 C CNN "MFN"
+F 5 "SSM3K333RLFCT-ND" H 4750 6775 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 4650 6675 60  0001 C CNN "PurchasingLink"
+	1    4350 6500
 	1    0    0    -1  
 $EndComp
-Text Label 4600 6350 0    50   ~ 0
+Text Label 4550 6250 0    50   ~ 0
 RESET
 Wire Wire Line
-	4500 6350 4500 6400
+	4450 6250 4450 6300
 Wire Wire Line
-	4500 6350 4600 6350
+	4450 6250 4550 6250
 Text Label 9550 2750 0    50   ~ 0
 DIG-RESET
 $Comp
@@ -1017,7 +1014,7 @@ F 3 "" H 9500 2850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	9550 2750 10100 2750
-Text Label 4200 6600 2    50   ~ 0
+Text Label 3900 6500 2    50   ~ 0
 DIG-RESET
 Text Notes 3250 6050 0    89   ~ 0
 DIGITAL RESET: LOW SIDE DRIVE
@@ -1055,20 +1052,6 @@ F 1 "GND" H 2705 8827 50  0000 C CNN
 F 2 "" H 2700 9000 50  0001 C CNN
 F 3 "" H 2700 9000 50  0001 C CNN
 	1    2700 9000
-	1    0    0    -1  
-$EndComp
-$Comp
-L formula:SSW-122-01-G-D J12
-U 1 1 621B9736
-P 10600 2750
-F 0 "J12" H 10600 4117 50  0000 C CNN
-F 1 "SSW-122-01-G-D" H 10600 4026 50  0000 C CNN
-F 2 "footprints:SAMTEC_SSW-122-01-G-D" H 11600 2550 50  0001 L BNN
-F 3 "http://suddendocs.samtec.com/prints/ssw-d.pdf" H 11850 2850 50  0001 L BNN
-F 4 "Würth Elektronik" H 11900 2850 50  0001 C CNN "MFN"
-F 5 "61304421121" H 11700 2800 50  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61304421121/4846887" H 11700 2800 50  0001 C CNN "PurchasingLink"
-	1    10600 2750
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1293,12 +1276,12 @@ Wire Notes Line
 $Comp
 L power:GND #PWR0131
 U 1 1 6222FFC8
-P 4500 6800
-F 0 "#PWR0131" H 4500 6550 50  0001 C CNN
-F 1 "GND" H 4505 6627 50  0000 C CNN
-F 2 "" H 4500 6800 50  0001 C CNN
-F 3 "" H 4500 6800 50  0001 C CNN
-	1    4500 6800
+P 4450 6900
+F 0 "#PWR0131" H 4450 6650 50  0001 C CNN
+F 1 "GND" H 4455 6727 50  0000 C CNN
+F 2 "" H 4450 6900 50  0001 C CNN
+F 3 "" H 4450 6900 50  0001 C CNN
+	1    4450 6900
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
@@ -1353,7 +1336,7 @@ F 3 "" H 1250 8450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:ATMEGA64M1 U0
+L firmware_tester_board-rescue:ATMEGA64M1-formula U0
 U 1 1 623EB33A
 P 2900 3150
 F 0 "U0" H 2900 5117 50  0000 C CNN
@@ -1367,10 +1350,10 @@ F 6 "https://www.digikey.com/product-detail/en/atmel/ATMEGA64M1-AU/ATMEGA64M1-AU
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:Test_Point_SMD TP?
+L formula:Test_Point_SMD TP1
 U 1 1 6249C10A
 P 9950 6750
-F 0 "TP?" H 10000 7000 50  0000 R CNN
+F 0 "TP1" H 10000 7000 50  0000 R CNN
 F 1 "Test_Point_SMD" H 10250 7100 50  0000 R CNN
 F 2 "footprints:Test_Point_SMD" H 9950 6600 50  0001 C CNN
 F 3 "" H 9950 6750 50  0001 C CNN
@@ -1378,10 +1361,10 @@ F 3 "" H 9950 6750 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:+12V #PWR?
+L power:+12V #PWR01
 U 1 1 6249E4C9
 P 9950 6700
-F 0 "#PWR?" H 9950 6550 50  0001 C CNN
+F 0 "#PWR01" H 9950 6550 50  0001 C CNN
 F 1 "+12V" H 9965 6873 50  0000 C CNN
 F 2 "" H 9950 6700 50  0001 C CNN
 F 3 "" H 9950 6700 50  0001 C CNN
@@ -1389,10 +1372,10 @@ F 3 "" H 9950 6700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:Test_Point_SMD TP?
+L formula:Test_Point_SMD TP2
 U 1 1 624A64B2
 P 10700 6750
-F 0 "TP?" H 10750 7000 50  0000 R CNN
+F 0 "TP2" H 10750 7000 50  0000 R CNN
 F 1 "Test_Point_SMD" H 11000 7100 50  0000 R CNN
 F 2 "footprints:Test_Point_SMD" H 10700 6600 50  0001 C CNN
 F 3 "" H 10700 6750 50  0001 C CNN
@@ -1400,10 +1383,10 @@ F 3 "" H 10700 6750 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:+5V #PWR?
+L power:+5V #PWR02
 U 1 1 624AC6DA
 P 10700 6700
-F 0 "#PWR?" H 10700 6550 50  0001 C CNN
+F 0 "#PWR02" H 10700 6550 50  0001 C CNN
 F 1 "+5V" H 10715 6873 50  0000 C CNN
 F 2 "" H 10700 6700 50  0001 C CNN
 F 3 "" H 10700 6700 50  0001 C CNN
@@ -1411,10 +1394,10 @@ F 3 "" H 10700 6700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR03
 U 1 1 624AD126
 P 11400 6700
-F 0 "#PWR?" H 11400 6450 50  0001 C CNN
+F 0 "#PWR03" H 11400 6450 50  0001 C CNN
 F 1 "GND" H 11405 6527 50  0000 C CNN
 F 2 "" H 11400 6700 50  0001 C CNN
 F 3 "" H 11400 6700 50  0001 C CNN
@@ -1422,10 +1405,10 @@ F 3 "" H 11400 6700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:Test_Point_SMD TP?
+L formula:Test_Point_SMD TP3
 U 1 1 624A9483
 P 11400 6650
-F 0 "TP?" H 11450 6300 50  0000 R CNN
+F 0 "TP3" H 11450 6300 50  0000 R CNN
 F 1 "Test_Point_SMD" H 11700 6200 50  0000 R CNN
 F 2 "footprints:Test_Point_SMD" H 11400 6500 50  0001 C CNN
 F 3 "" H 11400 6650 50  0001 C CNN
@@ -1434,4 +1417,65 @@ F 3 "" H 11400 6650 50  0001 C CNN
 $EndComp
 Text Notes 10300 6300 0    89   ~ 0
 TEST POINTS
+$Comp
+L power:+5V #PWR04
+U 1 1 624C6880
+P 11700 3350
+F 0 "#PWR04" H 11700 3200 50  0001 C CNN
+F 1 "+5V" H 11715 3523 50  0000 C CNN
+F 2 "" H 11700 3350 50  0001 C CNN
+F 3 "" H 11700 3350 50  0001 C CNN
+	1    11700 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:SSW-122-01-G-D J12
+U 1 1 621B9736
+P 10600 2750
+F 0 "J12" H 10600 4117 50  0000 C CNN
+F 1 "SSW-122-01-G-D" H 10600 4026 50  0000 C CNN
+F 2 "footprints:SAMTEC_SSW-122-01-G-D" H 11600 2550 50  0001 L BNN
+F 3 "http://suddendocs.samtec.com/prints/ssw-d.pdf" H 11850 2850 50  0001 L BNN
+F 4 "Würth Elektronik" H 11900 2850 50  0001 C CNN "MFN"
+F 5 "61304421121" H 11700 2800 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61304421121/4846887" H 11700 2800 50  0001 C CNN "PurchasingLink"
+	1    10600 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11100 3350 11700 3350
+$Comp
+L formula:R_10K R7
+U 1 1 624CE964
+P 4150 6700
+F 0 "R7" H 4300 6650 50  0000 C CNN
+F 1 "R_10K" H 4350 6750 50  0000 C CNN
+F 2 "footprints:R_0805_OEM" H 4080 6700 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 4230 6700 50  0001 C CNN
+F 4 "DK" H 4150 6700 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 4150 6700 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 4630 7100 60  0001 C CNN "PurchasingLink"
+	1    4150 6700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4450 6700 4450 6850
+Wire Wire Line
+	4450 6900 4450 6850
+Connection ~ 4450 6850
+Wire Wire Line
+	4150 6850 4450 6850
+Wire Wire Line
+	3900 6500 4150 6500
+Wire Wire Line
+	4150 6550 4150 6500
+Connection ~ 4150 6500
+Text Label 11400 3750 2    50   ~ 0
+CAN_+
+Wire Wire Line
+	11100 3750 11400 3750
+Text Label 9800 3750 0    50   ~ 0
+CAN_-
+Wire Wire Line
+	9800 3750 10100 3750
 $EndSCHEMATC
