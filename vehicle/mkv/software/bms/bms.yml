@@ -148,3 +148,1072 @@ publish:
           name: ""
           scale: 1
           offset: 0
+
+ # - name: bms_temperature_1_1_4
+ #   id: 0x58
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_4
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_3
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_2
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_1
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_1_5_8
+ #   id: 0x59
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_8
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_7
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_6
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_5
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_1_9_12
+ #   id: 0x5a
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_10
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_9
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_1_13_16
+ #   id: 0x5b
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_16
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_15
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_14
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_13
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_1_17_20
+ #   id: 0x5c
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_20
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_19
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_18
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_17
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_1_21_24
+ #   id: 0x5d
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_24
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_23
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_22
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_21
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_2_1_4
+ #   id: 0x5e
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_4
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_3
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_2
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_1
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_2_5_8
+ #   id: 0x5f
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_8
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_7
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_6
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_5
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_2_9_12
+ #   id: 0x64
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_10
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_9
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_2_13_16
+ #   id: 0x65
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_16
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_15
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_14
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_13
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_2_17_20
+ #   id: 0x66
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_20
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_19
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_18
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_17
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_2_21_24
+ #   id: 0x67
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_24
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_23
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_22
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_21
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_3_1_4
+ #   id: 0x68
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_4
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_3
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_2
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_1
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_3_5_8
+ #   id: 0x69
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_8
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_7
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_6
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_5
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_3_9_12
+ #   id: 0x6a
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_10
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_9
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_3_13_16
+ #   id: 0x6b
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_16
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_15
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_14
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_13
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_3_17_20
+ #   id: 0x6c
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_20
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_19
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_18
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_17
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_3_21_24
+ #   id: 0x6d
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_24
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_23
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_22
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_21
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_4_1_4
+ #   id: 0x6e
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_4
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_3
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_2
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_1
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_4_5_8
+ #   id: 0x6f
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_8
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_7
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_6
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_5
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_4_9_12
+ #   id: 0x70
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_10
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_9
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_4_13_16
+ #   id: 0x71
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_16
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_15
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_14
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_13
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_4_17_20
+ #   id: 0x72
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_20
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_19
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_18
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_17
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_4_21_24
+ #   id: 0x73
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_24
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_23
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_22
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_21
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_5_1_4
+ #   id: 0x74
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_4
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_3
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_2
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_1
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_5_5_8
+ #   id: 0x75
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_8
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_7
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_6
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_5
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_5_9_12
+ #   id: 0x76
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_10
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_9
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_5_13_16
+ #   id: 0x77
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_16
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_15
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_14
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_13
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_5_17_20
+ #   id: 0x78
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_20
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_19
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_18
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_17
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_5_21_24
+ #   id: 0x79
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_24
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_23
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_22
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_21
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_6_1_4
+ #   id: 0x7a
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_4
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_3
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_2
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_1
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_6_5_8
+ #   id: 0x7b
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_8
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_7
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_6
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_5
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_6_9_12
+ #   id: 0x7c
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_10
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_9
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_6_13_16
+ #   id: 0x7d
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_16
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_15
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_14
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_13
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_6_17_20
+ #   id: 0x7e
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_20
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_19
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_18
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_17
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ # - name: bms_temperature_6_21_24
+ #   id: 0x7f
+ #   freq_hz: 4
+ #   signals:
+ #     - name: cell_24
+ #       slice: 48 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_23
+ #       slice: 32 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_22
+ #       slice: 16 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1
+ #     - name: cell_21
+ #       slice: 0 + 16
+ #       unit:
+ #         name: temp
+ #         type: uint16_t
+ #         offset: 0
+ #         scale: 1

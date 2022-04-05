@@ -14,7 +14,7 @@ cc_library(
         "bms_config.h",
     ],
     target_compatible_with = [
-        "//bazel/constraints:atmega64m1",
+        "//bazel/constraints:atmega16m1",
     ],
     visibility = ["//visibility:public"],
     deps = [
@@ -33,7 +33,7 @@ cc_firmware(
         "bms.c",
     ],
     target_compatible_with = [
-        "//bazel/constraints:atmega64m1",
+        "//bazel/constraints:atmega16m1",
     ],
     deps = [
         ":bms_config",

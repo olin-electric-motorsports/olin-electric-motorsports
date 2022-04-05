@@ -3,9 +3,9 @@
 #include "libs/can/api.h"
 #include "vehicle/mkv/software/bms/bms_config.h"
 
-#define CAN_ID_VOLTAGE_BASE     (0x100)
-#define CAN_ID_TEMPERATURE_BASE (0x100 + 32)
-#define CAN_ID_OPEN_WIRE_BASE   (0x100 + 64)
+#define CAN_ID_VOLTAGE_BASE     (0x410)
+#define CAN_ID_TEMPERATURE_BASE (CAN_ID_VOLTAGE_BASE + 32)
+#define CAN_ID_OPEN_WIRE_BASE   (CAN_ID_VOLTAGE_BASE + 64)
 
 #define CELL_GROUP_1_OFFSET (0) // Cells 1-4
 #define CELL_GROUP_2_OFFSET (6) // Cells 7-10

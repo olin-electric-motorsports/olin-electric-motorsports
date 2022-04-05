@@ -3,7 +3,6 @@
 #include "vehicle/mkv/software/bms/bms_config.h"
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
-// #include "vehicle/mkv/software/bms/utils/fault.h"
 
 #define UNDERVOLTAGE_MASK (0x55)
 #define OVERVOLTAGE_MASK  (0xAA)
@@ -13,19 +12,22 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
     // Start cell voltage ADC conversions PLUS Sum of Cells Conversion
     LTC6811_adcvsc(MD_7KHZ_3KHZ, DCP_ENABLED);
+    /* // LTC6811_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL); */
 
     // Blocks until all ADCs are done being read
-    (void)LTC6811_pollAdc(); // Ignore return value because we don't care how
-                             // long it took
+    LTC6811_pollAdc(); // Ignore return value because we don't
+                                         // care how long it took
 
     wakeup_idle(NUM_ICS);
 
     // Stores the voltages in the c_codes variable
     int error = LTC6811_rdcv(REG_ALL, NUM_ICS, ICS);
+    error += LTC6811_rdstat(REG_ALL, NUM_ICS, ICS);
 
-    if (error == -1) {
+    if (error != 0) {
         bms_metrics.voltage_pec_error_count++;
-        return 1;
+        bms_debug.dbg_4 = error;
+        return error;
     }
 
     /*

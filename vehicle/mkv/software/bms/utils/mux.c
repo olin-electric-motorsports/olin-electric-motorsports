@@ -39,6 +39,9 @@ void enable_mux(uint8_t num_ics, cell_asic ics[], uint8_t address, bool enable,
         ics[ic].com.tx_data[5] = (cmd << 4) | NACK_STOP;
     }
 
+    wakeup_sleep(num_ics);
     LTC6811_wrcomm(num_ics, ics);
+
+    wakeup_idle(num_ics);
     LTC6811_stcomm(MUX_DATALENGTH); // TODO: what len do we do?
 }

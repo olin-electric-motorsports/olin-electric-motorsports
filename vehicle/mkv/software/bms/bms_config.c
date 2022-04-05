@@ -27,21 +27,17 @@ gpio_t BSPD_CURRENT_SENSE = PD1;
 adc_pin_e CURRENT_SENSE_VREF = ADC8;
 adc_pin_e CURRENT_SENSE_VOUT = ADC9;
 
-// TODO
-// * CHARGE_ENABLEn
-
 /*
  * SPI
  */
 spi_cfg_s spi_cfg = {
     .interrupt_enable = false,
-    .data_order = LSB,
+    .data_order = MSB,
     .mode = MAIN,
     .polarity = FALLING_RISING,
     .phase = SETUP_SAMPLE,
     .clock_rate = F_OSC_DIV_4,
-    .cs_pin_overide = &SPI_CS,
-    .pin_redirect = false,
+    .cs_pin = &SPI_CS,
 };
 
 // ~10ms / 100 Hz tick timer
@@ -51,7 +47,7 @@ timer_cfg_s timer0_cfg = {
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
-        .output_compare_match = 39,
+        .output_compare_match = 0x27,
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer0_isr,

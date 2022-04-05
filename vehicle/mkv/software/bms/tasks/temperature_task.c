@@ -21,6 +21,8 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
     int error = 0;
     int32_t cumulative_temperature = 0;
 
+    wakeup_sleep(NUM_ICS);
+
     for (uint8_t mux = 0; mux < NUM_MUXES; mux++) {
         // For each mux,
         for (uint8_t ch = 0; ch < NUM_MUX_CHANNELS; ch++) {
@@ -30,12 +32,14 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
 
             // read aux gpio voltage (this is what the tmperature sensor is
             // connected to) for temperature
+            wakeup_idle(NUM_ICS);
             LTC6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1);
 
             // Wait for conversions to finish
             (void)LTC6811_pollAdc();
 
             // Read voltage from auxiliary pin (connected to the mux)
+            wakeup_idle(NUM_ICS);
             error = LTC6811_rdaux(AUX_CH_GPIO1, NUM_ICS, ICS);
 
             if (error == -1) {
