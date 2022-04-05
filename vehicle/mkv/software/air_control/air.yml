@@ -16,7 +16,7 @@ publish:
     id: 0xd
     freq_hz: 1000
     signals:
-      - name: fault_state
+      - name: air_fault
         slice: 0 + 8
         unit:
           type: enum
@@ -36,11 +36,12 @@ publish:
             - FAULT_BMS_VOLTAGE
             - FAULT_IMD_STATUS
             - FAULT_BMS_STATUS
-      - name: state
+      - name: air_state
         slice: 8 + 8
         unit:
           type: enum
           values:
+            - INIT
             - IDLE
             - SHUTDOWN_CIRCUIT_CLOSED
             - PRECHARGE
@@ -52,15 +53,15 @@ publish:
         unit:
           type: bool
           values:
-            t: AIR plus is OPEN
-            f: AIR plus is CLOSED
+            t: AIR plus is CLOSED
+            f: AIR plus is OPEN
       - name: air_n_status
         slice: 17 + 1
         unit:
           type: bool
           values:
-            t: AIR minus is OPEN
-            f: AIR minus is CLOSED
+            t: AIR minus is CLOSED
+            f: AIR minus is OPEN
       - name: ss_tsms
         slice: 18 + 1
         unit:
@@ -118,4 +119,3 @@ publish:
           values:
             t: BMS OK
             f: BMS NOT OK
-
