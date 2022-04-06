@@ -15,5 +15,5 @@
 /*
  * Configures the multiplexer
  */
-void enable_mux(uint8_t num_ics, cell_asic ics[], uint8_t address, bool enable,
+void enable_mux(uint8_t num_ics, uint8_t address, bool enable,
                 uint8_t channel);

@@ -20,7 +20,7 @@
 #define CAN_ID_OPEN_WIRE_BASE   (CAN_ID_VOLTAGE_BASE + 64)
 
 #define CELL_GROUP_1_OFFSET (0) // Cells 1-4
-#define CELL_GROUP_2_OFFSET (4) // Cells 7-10
+#define CELL_GROUP_2_OFFSET (8) // Cells 7-10
 
 uint16_t cell_voltages[NUM_ICS][NUM_CELLS_PER_IC];
 
@@ -44,37 +44,47 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
      */
     uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
 
+    // uint16_t cell_storage_index = 0;
+
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
+        // 0 1 2 3
         // Executes once for each of the LTC681x cell voltage
 
         // + 1 because of the way _rdcv_reg is written
         LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
 
         for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach LTC6811
-            uint8_t data_counter = ic * NUM_RX_BYT;
+            uint16_t data_counter = ic * NUM_RX_BYT;
 
             for (uint8_t cell_counter = 0; cell_counter < NUM_CELLS_IN_REG;
                  cell_counter++) {
+                // 0 1 2
+
+                // Skip certain cells
                 uint8_t cell_idx
                     = cell_reg * NUM_CELLS_IN_REG + cell_counter; // 0-11
 
                 if ((cell_idx == 4) || (cell_idx == 5) || (cell_idx == 10)
                     || (cell_idx == 11)) {
+                    data_counter += 2;
                     continue;
                 }
 
                 // Parse cell voltage
                 uint16_t cell_voltage
-                    = raw_data[data_counter]
-                      + (raw_data[data_counter + 1]
-                         << 8); // Each code is received as two bytes and is
+                    = raw_data[data_counter] + (raw_data[data_counter + 1] << 8);
 
                 // Store cell voltage
-                cell_voltages[ic][cell_reg * NUM_CELLS_IN_REG + cell_counter]
-                    = cell_voltage;
+                uint16_t cell_storage_index = cell_reg * NUM_CELLS_IN_REG + cell_counter;
+
+                if (cell_reg >= 2) {
+                    cell_storage_index -= 2;
+                }
+
+                cell_voltages[ic][cell_storage_index] = cell_voltage;
 
                 // Accumulate!
-                *pack_voltage += cell_voltage;
+                *pack_voltage += cell_voltage >> 4;
 
                 // Check under/over voltage
                 if (cell_voltage >= OVERVOLTAGE_THRESHOLD) {
@@ -85,6 +95,8 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
                 data_counter += 2;
             }
+
+            // cell_storage_index -= 3;
 
             /*
              * The received PEC for the current_ic
@@ -124,12 +136,12 @@ void can_send_bms_voltages(void) {
          * and avoid memcpy-ing.
          */
         voltage_frame.data
-            = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_1_OFFSET);
+            = (uint8_t*)(cell_voltages[ic] + 0);
         can_send(&voltage_frame);
         voltage_frame.id++;
 
         voltage_frame.data
-            = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_2_OFFSET);
+            = (uint8_t*)(cell_voltages[ic] + 4);
         can_send(&voltage_frame);
         voltage_frame.id++;
     }

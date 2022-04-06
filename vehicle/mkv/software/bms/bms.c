@@ -38,7 +38,7 @@ enum AIR_State {
  * Represents all of LTC6811 chips used in the BMS. Contains cell voltages,
  * auxiliary readings (i.e. temperatures), and configs
  */
-cell_asic ICS[NUM_ICS] = { 0 };
+// cell_asic ICS[NUM_ICS] = { 0 };
 
 /* uint16_t TEMPERATURES[NUM_TEMPERATURE_ICS][NUM_MUXES * NUM_MUX_CHANNELS]; */
 
@@ -71,19 +71,19 @@ void pcint2_callback(void) {
 }
 
 static void configure_ics(void) {
-    LTC6811_init_cfg(NUM_ICS, ICS);
-
-    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-        // Configure over/undervoltage thresholds for each chip
-        LTC6811_set_cfgr_uv(ic, ICS, UNDERVOLTAGE_THRESHOLD);
-        LTC6811_set_cfgr_ov(ic, ICS, OVERVOLTAGE_THRESHOLD);
-    }
-
-    LTC6811_reset_crc_count(NUM_ICS, ICS);
-    LTC6811_init_reg_limits(NUM_ICS, ICS);
-
-    // Write the configured values to the chips
-    LTC6811_wrcfg(NUM_ICS, ICS);
+    // LTC6811_init_cfg(NUM_ICS, ICS);
+    //
+    // for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+    //     // Configure over/undervoltage thresholds for each chip
+    //     LTC6811_set_cfgr_uv(ic, ICS, UNDERVOLTAGE_THRESHOLD);
+    //     LTC6811_set_cfgr_ov(ic, ICS, OVERVOLTAGE_THRESHOLD);
+    // }
+    //
+    // LTC6811_reset_crc_count(NUM_ICS, ICS);
+    // LTC6811_init_reg_limits(NUM_ICS, ICS);
+    //
+    // // Write the configured values to the chips
+    // LTC6811_wrcfg(NUM_ICS, ICS);
 
     // TODO: read cfg back and make sure no errors
 }
@@ -94,121 +94,121 @@ static void configure_ics(void) {
  * - Runs BIST (built-in self test) in all the ICs
  * - Checks all temperatures and voltages and ensures they are in range
  */
-static int initial_checks(void) {
-    int rc = 0;
-
-    wakeup_idle(NUM_ICS);
-    wakeup_sleep(NUM_ICS);
-    /* LTC6811_diagn(); */
-    /*  */
-    /* for (uint8_t ic = 0; ic < NUM_ICS; ic++) { */
-    /*     if (ICS[ic].stat.mux_fail[0] == 1) { */
-    /*         set_fault(BMS_FAULT_DIAGNOSTICS_FAIL); */
-    /*         rc = 1; */
-    /*         goto bail; */
-    /*     } */
-    /* } */
-
-    /*
-     * Run all LTC6811 self-tests
-     *
-     * TODO: not working
-     */
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(CELL, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(AUX, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(STAT, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    //
-    // if (rc != 0) {
-    //     set_fault(BMS_FAULT_DIAGNOSTICS_FAIL);
-    //     goto bail;
-    // }
-
-    // read all voltages
-    uint32_t ov = 0;
-    uint32_t uv = 0;
-
-    uint16_t pack_voltage = 0;
-    rc = voltage_task(&pack_voltage, &ov, &uv);
-    bms_core.pack_voltage = pack_voltage;
-
-    bms_debug.dbg_4 = rc;
-
-    /* bms_debug.dbg_1++; */
-    can_send_bms_debug();
-    can_send_bms_core();
-
-    // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
-    //     we
-    //                  // start seeing a lot of failures, we should fault
-    //     goto bail;
-    // }
-
-    if (uv > 0) {
-        set_fault(BMS_FAULT_UNDERVOLTAGE);
-        rc = 1;
-        goto bail;
-    } else if (ov > 0) {
-        set_fault(BMS_FAULT_OVERVOLTAGE);
-        rc = 1;
-        goto bail;
-    }
-
-    // read all temperatures
-    // uint32_t ot = 0;
-    // uint32_t ut = 0;
-    //
-    // uint16_t pack_temperature = 0;
-    // rc = temperature_task(&pack_temperature, &ot, &ut);
-    // bms_core.pack_temperature = pack_temperature;
-    //
-    // bms_debug.dbg_1++;
-    // can_send_bms_debug();
-
-    // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
-    //     we
-    //                  // start seeing a lot of failures, we should fault
-    //     rc = 1;
-    //     goto bail;
-    // }
-
-    // if (ut > 0) {
-    //     set_fault(BMS_FAULT_UNDERTEMPERATURE);
-    //     rc = 1;
-    //     goto bail;
-    // } else if (ot > 0) {
-    //     set_fault(BMS_FAULT_OVERTEMPERATURE);
-    //     rc = 1;
-    //     goto bail;
-    // }
-
-    // check for open-circuit
-    // openwire_task();
-
-    // bms_debug.dbg_1++;
-    // can_send_bms_debug();
-
-    // if (bms_core.bms_fault_state) {
-    //     rc = 1;
-    //     goto bail;
-    // }
-    //
-    // bms_debug.dbg_1++;
-    // can_send_bms_debug();
-
-bail:
-    return rc;
-}
+// static int initial_checks(void) {
+//     int rc = 0;
+//
+//     wakeup_idle(NUM_ICS);
+//     wakeup_sleep(NUM_ICS);
+//     /* LTC6811_diagn(); */
+//     /*  */
+//     /* for (uint8_t ic = 0; ic < NUM_ICS; ic++) { */
+//     /*     if (ICS[ic].stat.mux_fail[0] == 1) { */
+//     /*         set_fault(BMS_FAULT_DIAGNOSTICS_FAIL); */
+//     /*         rc = 1; */
+//     /*         goto bail; */
+//     /*     } */
+//     /* } */
+//
+//     /*
+//      * Run all LTC6811 self-tests
+//      *
+//      * TODO: not working
+//      */
+//     // wakeup_sleep(NUM_ICS);
+//     // rc += LTC6811_run_cell_adc_st(CELL, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
+//     // can_send_bms_debug();
+//     //
+//     // wakeup_sleep(NUM_ICS);
+//     // rc += LTC6811_run_cell_adc_st(AUX, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
+//     // can_send_bms_debug();
+//     //
+//     // wakeup_sleep(NUM_ICS);
+//     // rc += LTC6811_run_cell_adc_st(STAT, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
+//     // can_send_bms_debug();
+//     //
+//     //
+//     // if (rc != 0) {
+//     //     set_fault(BMS_FAULT_DIAGNOSTICS_FAIL);
+//     //     goto bail;
+//     // }
+//
+//     // read all voltages
+//     // uint32_t ov = 0;
+//     // uint32_t uv = 0;
+//     //
+//     // uint16_t pack_voltage = 0;
+//     // rc = voltage_task(&pack_voltage, &ov, &uv);
+//     // bms_core.pack_voltage = pack_voltage;
+//     //
+//     // bms_debug.dbg_4 = rc;
+//
+//     /* bms_debug.dbg_1++; */
+//     // can_send_bms_debug();
+//     // can_send_bms_core();
+//
+//     // if (rc != 0) {
+//     //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+//     //     we
+//     //                  // start seeing a lot of failures, we should fault
+//     //     goto bail;
+//     // }
+//
+//     // if (uv > 0) {
+//     //     set_fault(BMS_FAULT_UNDERVOLTAGE);
+//     //     rc = 1;
+//     //     goto bail;
+//     // } else if (ov > 0) {
+//     //     set_fault(BMS_FAULT_OVERVOLTAGE);
+//     //     rc = 1;
+//     //     goto bail;
+//     // }
+//
+//     // read all temperatures
+//     // uint32_t ot = 0;
+//     // uint32_t ut = 0;
+//     //
+//     // uint16_t pack_temperature = 0;
+//     // rc = temperature_task(&pack_temperature, &ot, &ut);
+//     // bms_core.pack_temperature = pack_temperature;
+//     //
+//     // bms_debug.dbg_1++;
+//     // can_send_bms_debug();
+//
+//     // if (rc != 0) {
+//     //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+//     //     we
+//     //                  // start seeing a lot of failures, we should fault
+//     //     rc = 1;
+//     //     goto bail;
+//     // }
+//
+//     // if (ut > 0) {
+//     //     set_fault(BMS_FAULT_UNDERTEMPERATURE);
+//     //     rc = 1;
+//     //     goto bail;
+//     // } else if (ot > 0) {
+//     //     set_fault(BMS_FAULT_OVERTEMPERATURE);
+//     //     rc = 1;
+//     //     goto bail;
+//     // }
+//
+//     // check for open-circuit
+//     // openwire_task();
+//
+//     // bms_debug.dbg_1++;
+//     // can_send_bms_debug();
+//
+//     // if (bms_core.bms_fault_state) {
+//     //     rc = 1;
+//     //     goto bail;
+//     // }
+//     //
+//     // bms_debug.dbg_1++;
+//     // can_send_bms_debug();
+//
+// // bail:
+//     return rc;
+// }
 
 /*
  * Primary state machine function
@@ -355,7 +355,7 @@ int main(void) {
     sei();
 
     can_init_bms();
-    can_send_bms_debug();
+    // can_send_bms_debug();
 
     gpio_set_mode(BMS_RELAY_LSD, OUTPUT);
     gpio_set_mode(RJ45_LEDO, OUTPUT);
@@ -386,9 +386,9 @@ int main(void) {
     configure_ics();
 
     // Check state of cells
-    if (!initial_checks()) {
-        goto fault;
-    }
+    // if (!initial_checks()) {
+    //     goto fault;
+    // }
 
     // Turn off GENERAL_LED to indicate checks passed
     gpio_clear_pin(GENERAL_LED);
@@ -412,23 +412,21 @@ int main(void) {
         /*     air_state = air_control_critical.state; */
         /*     can_receive_air_control_critical(); */
         /* } */
-        bms_debug.dbg_1 = sizeof(cell_asic);
 
         if (run_10ms) {
-            /* wakeup_sleep(NUM_ICS); */
             // state_machine_run();
 
             // Every 100ms read voltages
             if (loop_counter % 10 == 0) {
-                /* uint32_t ov = 0; */
-                /* uint32_t uv = 0; */
-                /*          */
-                /* uint16_t pack_voltage = 0; */
-                /* gpio_set_pin(GENERAL_LED); */
-                /* int rc = voltage_task(&pack_voltage, &ov, &uv); */
-                /* gpio_clear_pin(GENERAL_LED); */
-                /* bms_core.pack_voltage = pack_voltage; */
-                /* bms_debug.dbg_2 = rc; */
+                uint32_t ov = 0;
+                uint32_t uv = 0;
+
+                uint16_t pack_voltage = 0;
+                int rc = voltage_task(&pack_voltage, &ov, &uv); // ~10ms
+                bms_core.pack_voltage = pack_voltage;
+                bms_debug.dbg_2 = rc;
+                
+                can_send_bms_voltages(); // <1ms
             }
 
             /* bms_debug.dbg_2 = ov; */
@@ -443,11 +441,8 @@ int main(void) {
             /* bms_core.pack_temperature = pack_temperature; */
             /* (void)rc; */
 
-            /* bms_debug.dbg_1 = ot; */
-            /* bms_debug.dbg_3 = ut; */
-
-            can_send_bms_core();
-            can_send_bms_debug();
+            // can_send_bms_core();
+            // can_send_bms_debug();
             /* can_send_bms_voltages(NUM_ICS, ICS); */
             /* can_send_bms_temperatures(NUM_ICS, (uint16_t**)TEMPERATURES); */
 
@@ -493,15 +488,15 @@ int main(void) {
         }
     }
 
-fault:
-    // If fault occurs
-    gpio_clear_pin(BMS_RELAY_LSD);
-    gpio_set_pin(FAULT_LED);
-
-    while (true) {
-        if (run_10ms) {
-            can_send_bms_core();
-            run_10ms = false;
-        }
-    };
+// fault:
+//     // If fault occurs
+//     gpio_clear_pin(BMS_RELAY_LSD);
+//     gpio_set_pin(FAULT_LED);
+//
+//     while (true) {
+//         if (run_10ms) {
+//             can_send_bms_core();
+//             run_10ms = false;
+//         }
+//     };
 }

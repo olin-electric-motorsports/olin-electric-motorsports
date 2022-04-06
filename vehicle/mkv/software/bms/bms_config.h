@@ -34,10 +34,6 @@
 #define UNDERTEMPERATURE_THRESHOLD (7384) // 0 degC
 
 // Globals
-extern cell_asic ICS[NUM_ICS];
-/* extern uint16_t TEMPERATURES[NUM_TEMPERATURE_ICS][NUM_MUXES *
- * NUM_MUX_CHANNELS]; */
-
 extern gpio_t BMS_RELAY_LSD;
 extern gpio_t RJ45_LEDG;
 extern gpio_t RJ45_LEDO;

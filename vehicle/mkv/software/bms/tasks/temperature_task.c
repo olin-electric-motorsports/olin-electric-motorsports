@@ -27,7 +27,7 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
         for (uint8_t ch = 0; ch < NUM_MUX_CHANNELS; ch++) {
             // For each mux channel (ch)
 
-            enable_mux(NUM_ICS, ICS, MUXES[mux], MUX_ENABLE, ch);
+            enable_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, ch);
 
             // read aux gpio voltage (this is what the tmperature sensor is
             // connected to) for temperature
@@ -94,9 +94,9 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
 
     // Finally, disable all multiplexers
     // TODO: needed?
-    enable_mux(NUM_ICS, ICS, MUX1, MUX_DISABLE, 0);
-    enable_mux(NUM_ICS, ICS, MUX2, MUX_DISABLE, 0);
-    enable_mux(NUM_ICS, ICS, MUX3, MUX_DISABLE, 0);
+    enable_mux(NUM_ICS, MUX1, MUX_DISABLE, 0);
+    enable_mux(NUM_ICS, MUX2, MUX_DISABLE, 0);
+    enable_mux(NUM_ICS, MUX3, MUX_DISABLE, 0);
 
     return pec_errors;
 }

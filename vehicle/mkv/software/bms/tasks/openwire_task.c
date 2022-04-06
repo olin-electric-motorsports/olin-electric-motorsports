@@ -15,21 +15,21 @@
 
 int openwire_task(void) {
     // Run open wire test on all cells
-    LTC6811_run_openwire_single(NUM_ICS, ICS);
+    // LTC6811_run_openwire_single(NUM_ICS, ICS);
 
-    long open_wire;
-    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-        open_wire = ICS[ic].system_open_wire;
+    // long open_wire;
+    // for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+    //     open_wire = ICS[ic].system_open_wire;
 
-        /*
-         * If system_open_wire is 0xFFFF, there are no open wires. Otherwise,
-         * the value is set to the first pin that has an open wire.
-         */
-        if (open_wire != NO_OPEN_WIRES) {
-            return true;
-            // set_fault(BMS_FAULT_OPEN_WIRE);
-        }
-    }
+    //     /*
+    //      * If system_open_wire is 0xFFFF, there are no open wires. Otherwise,
+    //      * the value is set to the first pin that has an open wire.
+    //      */
+    //     if (open_wire != NO_OPEN_WIRES) {
+    //         return true;
+    //         // set_fault(BMS_FAULT_OPEN_WIRE);
+    //     }
+    // }
 
     return false;
 }
