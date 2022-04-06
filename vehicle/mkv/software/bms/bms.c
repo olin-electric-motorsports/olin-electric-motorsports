@@ -147,7 +147,8 @@ static void configure_ics(void) {
 //     // can_send_bms_core();
 //
 //     // if (rc != 0) {
-//     //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+//     //     set_fault(); // TODO: maybe we should keep track of metrics, and
+//     if
 //     //     we
 //     //                  // start seeing a lot of failures, we should fault
 //     //     goto bail;
@@ -175,7 +176,8 @@ static void configure_ics(void) {
 //     // can_send_bms_debug();
 //
 //     // if (rc != 0) {
-//     //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+//     //     set_fault(); // TODO: maybe we should keep track of metrics, and
+//     if
 //     //     we
 //     //                  // start seeing a lot of failures, we should fault
 //     //     rc = 1;
@@ -425,7 +427,7 @@ int main(void) {
                 int rc = voltage_task(&pack_voltage, &ov, &uv); // ~10ms
                 bms_core.pack_voltage = pack_voltage;
                 bms_debug.dbg_2 = rc;
-                
+
                 can_send_bms_voltages(); // <1ms
             }
 
@@ -488,15 +490,15 @@ int main(void) {
         }
     }
 
-// fault:
-//     // If fault occurs
-//     gpio_clear_pin(BMS_RELAY_LSD);
-//     gpio_set_pin(FAULT_LED);
-//
-//     while (true) {
-//         if (run_10ms) {
-//             can_send_bms_core();
-//             run_10ms = false;
-//         }
-//     };
+    // fault:
+    //     // If fault occurs
+    //     gpio_clear_pin(BMS_RELAY_LSD);
+    //     gpio_set_pin(FAULT_LED);
+    //
+    //     while (true) {
+    //         if (run_10ms) {
+    //             can_send_bms_core();
+    //             run_10ms = false;
+    //         }
+    //     };
 }

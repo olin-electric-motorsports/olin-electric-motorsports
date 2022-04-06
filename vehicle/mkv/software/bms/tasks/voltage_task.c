@@ -71,11 +71,12 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 }
 
                 // Parse cell voltage
-                uint16_t cell_voltage
-                    = raw_data[data_counter] + (raw_data[data_counter + 1] << 8);
+                uint16_t cell_voltage = raw_data[data_counter]
+                                        + (raw_data[data_counter + 1] << 8);
 
                 // Store cell voltage
-                uint16_t cell_storage_index = cell_reg * NUM_CELLS_IN_REG + cell_counter;
+                uint16_t cell_storage_index
+                    = cell_reg * NUM_CELLS_IN_REG + cell_counter;
 
                 if (cell_reg >= 2) {
                     cell_storage_index -= 2;
@@ -135,13 +136,11 @@ void can_send_bms_voltages(void) {
          * the ICS object with some offset. That way, we can reuse memory
          * and avoid memcpy-ing.
          */
-        voltage_frame.data
-            = (uint8_t*)(cell_voltages[ic] + 0);
+        voltage_frame.data = (uint8_t*)(cell_voltages[ic] + 0);
         can_send(&voltage_frame);
         voltage_frame.id++;
 
-        voltage_frame.data
-            = (uint8_t*)(cell_voltages[ic] + 4);
+        voltage_frame.data = (uint8_t*)(cell_voltages[ic] + 4);
         can_send(&voltage_frame);
         voltage_frame.id++;
     }
