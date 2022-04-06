@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5BEE3CCE
 P 15450 8600
 F 0 "#PWR?" H 15450 8350 50  0001 C CNN
@@ -79,7 +79,7 @@ F 6 "https://www.digikey.com/product-detail/en/wurth-electronics-inc/88501200705
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D58E5E0
 P 800 1300
 F 0 "#PWR?" H 800 1050 50  0001 C CNN
@@ -90,7 +90,7 @@ F 3 "" H 800 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D591138
 P 1150 1600
 F 0 "#PWR?" H 1150 1350 50  0001 C CNN
@@ -157,7 +157,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 463
 	0    1    1    0   
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D5F2681
 P 3900 4500
 F 0 "#PWR?" H 3900 4250 50  0001 C CNN
@@ -168,7 +168,7 @@ F 3 "" H 3900 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D5F26EE
 P 4300 4500
 F 0 "#PWR?" H 4300 4250 50  0001 C CNN
@@ -179,7 +179,7 @@ F 3 "" H 4300 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D5F2774
 P 4100 4250
 F 0 "#PWR?" H 4100 4000 50  0001 C CNN
@@ -190,7 +190,7 @@ F 3 "" H 4100 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D5F27E1
 P 4450 3950
 F 0 "#PWR?" H 4450 3700 50  0001 C CNN
@@ -201,7 +201,7 @@ F 3 "" H 4450 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D5F86E8
 P 1300 4050
 F 0 "#PWR?" H 1300 3800 50  0001 C CNN
@@ -241,7 +241,7 @@ F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 15075 1950 60
 $EndComp
 NoConn ~ 15300 2050
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D60300D
 P 14500 1600
 F 0 "#PWR?" H 14500 1350 50  0001 C CNN
@@ -252,7 +252,7 @@ F 3 "" H 14500 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D6030BB
 P 14800 2450
 F 0 "#PWR?" H 14800 2200 50  0001 C CNN
@@ -263,7 +263,7 @@ F 3 "" H 14800 2450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D607469
 P 14300 2250
 F 0 "#PWR?" H 14300 2000 50  0001 C CNN
@@ -290,7 +290,7 @@ Text Notes 3550 4900 0    89   ~ 0
 Text Notes 14600 8150 0    89   ~ 0
 POWER FLAGS\n
 $Comp
-L throttle-rescue:PWR_FLAG-power #FLG?
+L power:PWR_FLAG #FLG?
 U 1 1 5D6150F1
 P 14550 8600
 F 0 "#FLG?" H 14550 8675 50  0001 C CNN
@@ -301,7 +301,7 @@ F 3 "~" H 14550 8600 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L throttle-rescue:PWR_FLAG-power #FLG?
+L power:PWR_FLAG #FLG?
 U 1 1 5D615167
 P 15000 8600
 F 0 "#FLG?" H 15000 8675 50  0001 C CNN
@@ -312,7 +312,7 @@ F 3 "~" H 15000 8600 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L throttle-rescue:PWR_FLAG-power #FLG?
+L power:PWR_FLAG #FLG?
 U 1 1 5D615217
 P 15450 8450
 F 0 "#FLG?" H 15450 8525 50  0001 C CNN
@@ -345,7 +345,7 @@ RESET
 Text Label 15100 3750 0    50   ~ 0
 MOSI
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 5D62962D
 P 15100 3850
 F 0 "#PWR?" H 15100 3600 50  0001 C CNN
@@ -467,7 +467,7 @@ Connection ~ 15600 2200
 Wire Wire Line
 	15600 2200 15750 2200
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 5FD33423
 P 800 850
 F 0 "#PWR?" H 800 700 50  0001 C CNN
@@ -478,7 +478,7 @@ F 3 "" H 800 850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 5FD3B2BE
 P 14800 1300
 F 0 "#PWR?" H 14800 1150 50  0001 C CNN
@@ -489,7 +489,7 @@ F 3 "" H 14800 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 5FD3C2F8
 P 15100 3650
 F 0 "#PWR?" H 15100 3500 50  0001 C CNN
@@ -500,7 +500,7 @@ F 3 "" H 15100 3650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 5FD3CE98
 P 15000 8450
 F 0 "#PWR?" H 15000 8300 50  0001 C CNN
@@ -511,7 +511,7 @@ F 3 "" H 15000 8450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 5FD477AE
 P 4450 3350
 F 0 "#PWR?" H 4450 3200 50  0001 C CNN
@@ -538,7 +538,7 @@ F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 14850 6550 60
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 621B291F
 P 14300 6050
 F 0 "#PWR?" H 14300 5800 50  0001 C CNN
@@ -571,7 +571,7 @@ F 6 "https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/LH-
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 620CB538
 P 14300 7000
 F 0 "#PWR?" H 14300 6750 50  0001 C CNN
@@ -610,7 +610,7 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 15480 6
 	0    1    1    0   
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 620C8FDA
 P 14300 6550
 F 0 "#PWR?" H 14300 6300 50  0001 C CNN
@@ -742,7 +742,7 @@ F 6 "https://www.digikey.com/en/products/detail/diodes-incorporated/AP7370-50W5-
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 62188C46
 P 3100 8800
 F 0 "#PWR?" H 3100 8550 50  0001 C CNN
@@ -755,7 +755,7 @@ $EndComp
 Wire Wire Line
 	3400 8500 3550 8500
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 6218F3B2
 P 4650 8300
 F 0 "#PWR?" H 4650 8150 50  0001 C CNN
@@ -766,7 +766,7 @@ F 3 "" H 4650 8300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:+BATT-power #PWR?
+L power:+BATT #PWR?
 U 1 1 6160D1CA
 P 14550 8450
 F 0 "#PWR?" H 14550 8300 50  0001 C CNN
@@ -777,7 +777,7 @@ F 3 "" H 14550 8450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:+BATT-power #PWR?
+L power:+BATT #PWR?
 U 1 1 62196DD9
 P 1050 8500
 F 0 "#PWR?" H 1050 8350 50  0001 C CNN
@@ -800,7 +800,7 @@ F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 62199AFF
 P 3550 8800
 F 0 "#PWR?" H 3550 8550 50  0001 C CNN
@@ -826,7 +826,7 @@ F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 6219D5A4
 P 2450 8800
 F 0 "#PWR?" H 2450 8550 50  0001 C CNN
@@ -875,7 +875,7 @@ F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-
 	0    -1   -1   0   
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 62208969
 P 6900 6300
 F 0 "#PWR?" H 6900 6050 50  0001 C CNN
@@ -898,7 +898,7 @@ F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-
 	0    -1   -1   0   
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 621E4075
 P 6950 4750
 F 0 "#PWR?" H 6950 4500 50  0001 C CNN
@@ -963,7 +963,7 @@ F 6 "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-O
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 622824A4
 P 9500 5350
 F 0 "#PWR?" H 9500 5100 50  0001 C CNN
@@ -1021,7 +1021,7 @@ $EndComp
 Wire Wire Line
 	10550 5250 10700 5250
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 62282434
 P 10900 5450
 F 0 "#PWR?" H 10900 5200 50  0001 C CNN
@@ -1037,7 +1037,7 @@ Wire Wire Line
 Wire Wire Line
 	10550 5250 10550 5700
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 6228242B
 P 11650 6050
 F 0 "#PWR?" H 11650 5800 50  0001 C CNN
@@ -1061,7 +1061,7 @@ Wire Wire Line
 Text Label 12300 5150 0    50   ~ 0
 VOUT2
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 6228241E
 P 10900 4650
 F 0 "#PWR?" H 10900 4500 50  0001 C CNN
@@ -1074,7 +1074,7 @@ $EndComp
 Text Label 9400 5050 2    50   ~ 0
 VIN2
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 62206F7F
 P 6050 6900
 F 0 "#PWR?" H 6050 6650 50  0001 C CNN
@@ -1088,7 +1088,7 @@ Connection ~ 6050 6600
 Wire Wire Line
 	5750 6600 6050 6600
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 621C4303
 P 6050 5350
 F 0 "#PWR?" H 6050 5100 50  0001 C CNN
@@ -1132,7 +1132,7 @@ $EndComp
 Text Label 5750 6600 2    50   ~ 0
 VIN3
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 6222C2C2
 P 7300 7000
 F 0 "#PWR?" H 7300 6750 50  0001 C CNN
@@ -1143,7 +1143,7 @@ F 3 "" H 7300 7000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 6222C2AC
 P 7300 6200
 F 0 "#PWR?" H 7300 6050 50  0001 C CNN
@@ -1193,7 +1193,7 @@ Wire Wire Line
 Wire Wire Line
 	7000 6800 7000 7250
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 6222C2B9
 P 8100 7600
 F 0 "#PWR?" H 8100 7350 50  0001 C CNN
@@ -1245,7 +1245,7 @@ $EndComp
 Wire Wire Line
 	6950 5250 7100 5250
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 62221DC3
 P 7300 5450
 F 0 "#PWR?" H 7300 5200 50  0001 C CNN
@@ -1261,7 +1261,7 @@ Wire Wire Line
 Wire Wire Line
 	6950 5250 6950 5700
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 62221DBA
 P 8050 6050
 F 0 "#PWR?" H 8050 5800 50  0001 C CNN
@@ -1285,7 +1285,7 @@ Wire Wire Line
 Text Label 8700 5150 0    50   ~ 0
 VOUT1
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 62221DAD
 P 7300 4650
 F 0 "#PWR?" H 7300 4500 50  0001 C CNN
@@ -1328,7 +1328,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 121
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 6228245C
 P 11700 7600
 F 0 "#PWR?" H 11700 7350 50  0001 C CNN
@@ -1360,7 +1360,7 @@ F 6 "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-O
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 622824AD
 P 9550 6900
 F 0 "#PWR?" H 9550 6650 50  0001 C CNN
@@ -1390,7 +1390,7 @@ $EndComp
 Text Label 9400 6600 2    50   ~ 0
 VIN4
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 6228247F
 P 10900 7000
 F 0 "#PWR?" H 10900 6750 50  0001 C CNN
@@ -1401,7 +1401,7 @@ F 3 "" H 10900 7000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L throttle-rescue:+5V-power #PWR?
+L power:+5V #PWR?
 U 1 1 62282479
 P 10900 6200
 F 0 "#PWR?" H 10900 6050 50  0001 C CNN
@@ -1435,7 +1435,7 @@ F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-
 	0    -1   -1   0   
 $EndComp
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 622CB8E2
 P 10450 6300
 F 0 "#PWR?" H 10450 6050 50  0001 C CNN
@@ -1572,7 +1572,7 @@ Wire Wire Line
 Text Label 4600 3100 0    50   ~ 0
 READY_TO_DRIVE_LED
 $Comp
-L throttle-rescue:+BATT-power #PWR?
+L power:+BATT #PWR?
 U 1 1 6222643F
 P 2150 6050
 F 0 "#PWR?" H 2150 5900 50  0001 C CNN
@@ -1585,7 +1585,7 @@ $EndComp
 Wire Wire Line
 	1900 6050 2150 6050
 $Comp
-L throttle-rescue:+BATT-power #PWR?
+L power:+BATT #PWR?
 U 1 1 6222C4E4
 P 2150 6700
 F 0 "#PWR?" H 2150 6550 50  0001 C CNN
@@ -1598,7 +1598,7 @@ $EndComp
 Wire Wire Line
 	1900 6700 2150 6700
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 622260BD
 P 10500 4750
 F 0 "#PWR?" H 10500 4500 50  0001 C CNN
@@ -1643,7 +1643,7 @@ $EndComp
 Wire Wire Line
 	4300 8800 4300 8850
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 6228BE72
 P 4300 9300
 F 0 "#PWR?" H 4300 9050 50  0001 C CNN
@@ -1689,7 +1689,7 @@ $EndComp
 Wire Wire Line
 	2000 8800 2000 8950
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 622A2F56
 P 2000 9400
 F 0 "#PWR?" H 2000 9150 50  0001 C CNN
@@ -1737,7 +1737,7 @@ Connection ~ 1650 8500
 Wire Wire Line
 	1650 8500 2000 8500
 $Comp
-L throttle-rescue:GND-power #PWR?
+L power:GND #PWR?
 U 1 1 622BB256
 P 1650 9150
 F 0 "#PWR?" H 1650 8900 50  0001 C CNN
