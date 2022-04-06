@@ -4,72 +4,133 @@
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
+/*
+ * TODO: Get from elsewhere?
+ */
+#define NUM_CELLS_IN_REG (3)
+#define NUM_CELL_REG     (4)
+#define NUM_BYTES_IN_REG (6)
+#define NUM_CELLS_PER_IC (8)
+
 #define UNDERVOLTAGE_MASK (0x55)
 #define OVERVOLTAGE_MASK  (0xAA)
 
+#define CAN_ID_VOLTAGE_BASE     (0x410)
+#define CAN_ID_TEMPERATURE_BASE (CAN_ID_VOLTAGE_BASE + 32)
+#define CAN_ID_OPEN_WIRE_BASE   (CAN_ID_VOLTAGE_BASE + 64)
+
+#define CELL_GROUP_1_OFFSET (0) // Cells 1-4
+#define CELL_GROUP_2_OFFSET (4) // Cells 7-10
+
+uint16_t cell_voltages[NUM_ICS][NUM_CELLS_PER_IC];
+
 int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
+    int pec_errors = 0;
+
     wakeup_sleep(NUM_ICS);
 
     // Start cell voltage ADC conversions PLUS Sum of Cells Conversion
     LTC6811_adcvsc(MD_7KHZ_3KHZ, DCP_ENABLED);
 
     // Blocks until all ADCs are done being read
-    LTC6811_pollAdc(); // Ignore return value because we don't
-                                         // care how long it took
+    LTC6811_pollAdc(); // Ignore return value because we don't care how long it
+                       // took
 
     wakeup_idle(NUM_ICS);
 
-    // Stores the voltages in the c_codes variable
-    int error = LTC6811_rdcv(REG_ALL, NUM_ICS, ICS);
-    error += LTC6811_rdstat(REG_ALL, NUM_ICS, ICS);
-
-    if (error != 0) {
-        bms_metrics.voltage_pec_error_count++;
-        return error;
-    }
-
     /*
-     * Sum together all the voltages of the cells and check over/under voltage
-     * conditions
+     * Read Cell Group Register A for all ICS,
+     * then the Register B, etc.
      */
+    uint8_t cell_data[NUM_RX_BYT * NUM_ICS] = { 0 };
+
+    for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
+        // Executes once for each of the LTC681x cell voltage
+
+        // + 1 because of the way _rdcv_reg is written
+        LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, cell_data);
+
+        for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach LTC6811
+            uint8_t data_counter = ic * NUM_RX_BYT;
+
+            for (uint8_t cell_counter = 0; cell_counter < NUM_CELLS_IN_REG;
+                 cell_counter++) {
+                uint8_t cell_idx
+                    = cell_reg * NUM_CELLS_IN_REG + cell_counter; // 0-11
+
+                if ((cell_idx == 4) || (cell_idx == 5) || (cell_idx == 10)
+                    || (cell_idx == 11)) {
+                    continue;
+                }
+
+                // Parse cell voltage
+                uint16_t cell_voltage
+                    = cell_data[data_counter]
+                      + (cell_data[data_counter + 1]
+                         << 8); // Each code is received as two bytes and is
+
+                // Store cell voltage
+                cell_voltages[ic][cell_reg * NUM_CELLS_IN_REG + cell_counter]
+                    = cell_voltage;
+
+                // Accumulate!
+                *pack_voltage += cell_voltage;
+
+                // Check under/over voltage
+                if (cell_voltage >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_voltage <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
+
+                data_counter += 2;
+            }
+
+            /*
+             * The received PEC for the current_ic
+             * is transmitted as the 7th and 8th
+             * after the 6 cell voltage data bytes
+             */
+            uint16_t received_pec
+                = (cell_data[data_counter] << 8) | cell_data[data_counter + 1];
+
+            uint16_t data_pec
+                = pec15_calc(NUM_BYTES_IN_REG, &cell_data[(ic)*NUM_RX_BYT]);
+
+            if (received_pec != data_pec) {
+                pec_errors++;
+            }
+            data_counter = data_counter + 2;
+        } // end foreach ltc6811
+    } // end foreach cell reg (A, B, C, D)
+
+    return pec_errors;
+}
+
+void can_send_bms_voltages(void) {
+    can_frame_t voltage_frame = {
+        .id = CAN_ID_VOLTAGE_BASE,
+        .mob = 0,
+        .dlc = 8,
+    };
+
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-        /*
-         * Sum of cells for a single IC
-         *
-         * The pins C5, C6, C11, and C12 are not connected to their own
-         * cells, so we subtract them off
-         *
-         * stat.stat_codes[0] contains the sum-of-cells measurement
-         * cells.c_codes[n] contains the nth cell voltage
-         */
-        *pack_voltage += ICS[ic].stat.stat_codes[0] - ICS[ic].cells.c_codes[4]
-                         - ICS[ic].cells.c_codes[5] - ICS[ic].cells.c_codes[10]
-                         - ICS[ic].cells.c_codes[11];
-
-        // Odd bits of the ST register are used for undervoltage flags
-        uint32_t _uv = (ICS[ic].stat.flags[0] & UNDERVOLTAGE_MASK)
-                       | (ICS[ic].stat.flags[1] & UNDERVOLTAGE_MASK)
-                       | (ICS[ic].stat.flags[2] & UNDERVOLTAGE_MASK);
-
-        // Even bits of the ST register are used for overvoltage flags
-        uint32_t _ov = (ICS[ic].stat.flags[0] & OVERVOLTAGE_MASK)
-                       | (ICS[ic].stat.flags[1] & OVERVOLTAGE_MASK)
-                       | (ICS[ic].stat.flags[2] & OVERVOLTAGE_MASK);
+        // For every chip, send the lower and upper cell voltages in CAN frames
 
         /*
-         * If we detect any under/overvoltage cells, we add one to the uv
-         * variable. This doesn't tell us _how many_ cells were
-         * under/overvoltage, but we don't need that information (and it will be
-         * accessible through the cell voltage CAN messages), so this method
-         * suffices.
+         * Trick: instead of creating our own data array, we just set the
+         * pointer to the array to be the pointer to the cell voltages in
+         * the ICS object with some offset. That way, we can reuse memory
+         * and avoid memcpy-ing.
          */
-        if (_uv) {
-            (*uv)++;
-        }
-        if (_ov) {
-            (*ov)++;
-        }
+        voltage_frame.data
+            = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_1_OFFSET);
+        can_send(&voltage_frame);
+        voltage_frame.id++;
+
+        voltage_frame.data
+            = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_2_OFFSET);
+        can_send(&voltage_frame);
+        voltage_frame.id++;
     }
-
-    return 0;
 }

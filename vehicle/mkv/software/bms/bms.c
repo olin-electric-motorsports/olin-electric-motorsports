@@ -31,13 +31,14 @@ enum AIR_State {
     AIR_STATE_TS_ACTIVE,
     AIR_STATE_DISCHARGE,
     AIR_STATE_FAULT,
-} air_state = AIR_STATE_IDLE;
+} air_state
+    = AIR_STATE_IDLE;
 
 /*
  * Represents all of LTC6811 chips used in the BMS. Contains cell voltages,
- * auxiliary readings (i.e. temperatures), and configs 
+ * auxiliary readings (i.e. temperatures), and configs
  */
-cell_asic ICS[NUM_ICS] = {0};
+cell_asic ICS[NUM_ICS] = { 0 };
 
 /* uint16_t TEMPERATURES[NUM_TEMPERATURE_ICS][NUM_MUXES * NUM_MUX_CHANNELS]; */
 
@@ -116,16 +117,16 @@ static int initial_checks(void) {
     // wakeup_sleep(NUM_ICS);
     // rc += LTC6811_run_cell_adc_st(CELL, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
     // can_send_bms_debug();
-    // 
+    //
     // wakeup_sleep(NUM_ICS);
     // rc += LTC6811_run_cell_adc_st(AUX, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
     // can_send_bms_debug();
-    // 
+    //
     // wakeup_sleep(NUM_ICS);
     // rc += LTC6811_run_cell_adc_st(STAT, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
     // can_send_bms_debug();
-    // 
-    // 
+    //
+    //
     // if (rc != 0) {
     //     set_fault(BMS_FAULT_DIAGNOSTICS_FAIL);
     //     goto bail;
@@ -146,7 +147,8 @@ static int initial_checks(void) {
     can_send_bms_core();
 
     // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if we
+    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
+    //     we
     //                  // start seeing a lot of failures, we should fault
     //     goto bail;
     // }
@@ -164,11 +166,11 @@ static int initial_checks(void) {
     // read all temperatures
     // uint32_t ot = 0;
     // uint32_t ut = 0;
-    // 
+    //
     // uint16_t pack_temperature = 0;
     // rc = temperature_task(&pack_temperature, &ot, &ut);
     // bms_core.pack_temperature = pack_temperature;
-    // 
+    //
     // bms_debug.dbg_1++;
     // can_send_bms_debug();
 
@@ -192,7 +194,7 @@ static int initial_checks(void) {
 
     // check for open-circuit
     // openwire_task();
-    
+
     // bms_debug.dbg_1++;
     // can_send_bms_debug();
 
@@ -216,46 +218,47 @@ bail:
 //         bms_core.bms_state = FAULT;
 //         gpio_clear_pin(BMS_RELAY_LSD);
 //     }
-// 
+//
 //     // Wake up all LTC6811s
 //     wakeup_sleep(NUM_ICS);
-// 
+//
 //     /*
 //      * Read voltages
 //      */
 //     uint32_t ov = 0;
 //     uint32_t uv = 0;
-// 
+//
 //     uint16_t pack_voltage = 0;
 //     int rc = voltage_task(&pack_voltage, &ov, &uv);
 //     bms_core.pack_voltage = pack_voltage;
-// 
+//
 //     // X in a row per amoun of time.
 //     // We might get a failure mode where one of the isoSPI wires gets loose
 //     // Consider it safe if we still get data once per second
 //     //
-//     // As long as we can get data once per second, we're safe (we don't need to
+//     // As long as we can get data once per second, we're safe (we don't need
+//     to
 //     // shut down the car)
 //     (void)rc;
-// 
+//
 //     /*
 //      * Read temperatures
 //      */
 //     uint32_t ot = 0;
 //     uint32_t ut = 0;
-// 
+//
 //     uint16_t pack_temperature;
 //     rc = temperature_task(&pack_temperature, &ot, &ut);
 //     bms_core.pack_temperature = pack_temperature;
-// 
+//
 //     /*
 //      * Check for open-wires
 //      */
 //     rc = openwire_task(); // TODO test
-// 
+//
 //     int16_t current = 0;
 //     current_task(&current);
-// 
+//
 //     if (ut > 0) {
 //         set_fault(BMS_FAULT_UNDERTEMPERATURE);
 //         bms_core.bms_state = FAULT;
@@ -265,7 +268,7 @@ bail:
 //         bms_core.bms_state = FAULT;
 //         return;
 //     }
-// 
+//
 //     switch (bms_core.bms_state) {
 //         case IDLE: {
 //             if (uv > 0) {
@@ -275,11 +278,11 @@ bail:
 //                 set_fault(BMS_FAULT_OVERVOLTAGE);
 //                 bms_core.bms_state = FAULT;
 //             }
-// 
+//
 //             if (air_state != AIR_STATE_IDLE) {
 //                 bms_core.bms_state = DISCHARGING;
 //             }
-// 
+//
 //             if (can_poll_receive_bms_charging() == 0) {
 //                 can_receive_bms_charging();
 //                 if (bms_charging.charge_enable == true) {
@@ -291,7 +294,7 @@ bail:
 //             if (air_state == AIR_STATE_IDLE) {
 //                 bms_core.bms_state = IDLE;
 //             }
-// 
+//
 //             if (uv > 0) {
 //                 set_fault(BMS_FAULT_UNDERVOLTAGE);
 //                 bms_core.bms_state = FAULT;
@@ -304,13 +307,13 @@ bail:
 //             gpio_set_pin(BMS_RELAY_LSD);
 //             gpio_set_pin(CHARGE_ENABLE1);
 //             gpio_set_pin(CHARGE_ENABLE2);
-// 
+//
 //             if (ov > 0) {
 //                 gpio_clear_pin(CHARGE_ENABLE1);
 //                 gpio_clear_pin(CHARGE_ENABLE2);
 //                 bms_core.bms_state = IDLE;
 //             }
-// 
+//
 //             if (can_poll_receive_bms_charging() == 0) {
 //                 can_receive_bms_charging();
 //                 if (bms_charging.charge_enable == false) {
@@ -325,7 +328,7 @@ bail:
 //             gpio_clear_pin(CHARGE_ENABLE2);
 //             gpio_clear_pin(BMS_RELAY_LSD);
 //             gpio_set_pin(FAULT_LED);
-// 
+//
 //             /*
 //              * We can ONLY exit fault state if the fault is under-voltage,
 //              and
@@ -364,16 +367,16 @@ int main(void) {
 
     gpio_set_mode(nOCD, INPUT);
     gpio_set_mode(BSPD_CURRENT_SENSE, INPUT);
-    
+
     gpio_set_pin(BMS_RELAY_LSD);
 
     gpio_enable_interrupt(nOCD);
     gpio_enable_interrupt(BSPD_CURRENT_SENSE);
-    
+
     adc_init();
-    
+
     spi_init(&spi_cfg);
-    
+
     timer_init(&timer0_cfg);
     timer_init(&timer1_fan_cfg);
 
@@ -403,7 +406,6 @@ int main(void) {
     uint8_t loop_counter = 0;
 
     while (true) {
-
         // Listen for and save tractive system state
         /* int err = can_poll_receive_air_control_critical(); */
         /* if (err == 0) { */
@@ -415,7 +417,7 @@ int main(void) {
         if (run_10ms) {
             /* wakeup_sleep(NUM_ICS); */
             // state_machine_run();
-            
+
             // Every 100ms read voltages
             if (loop_counter % 10 == 0) {
                 /* uint32_t ov = 0; */
@@ -441,7 +443,6 @@ int main(void) {
             /* bms_core.pack_temperature = pack_temperature; */
             /* (void)rc; */
 
-
             /* bms_debug.dbg_1 = ot; */
             /* bms_debug.dbg_3 = ut; */
 
@@ -449,18 +450,19 @@ int main(void) {
             can_send_bms_debug();
             /* can_send_bms_voltages(NUM_ICS, ICS); */
             /* can_send_bms_temperatures(NUM_ICS, (uint16_t**)TEMPERATURES); */
-            
+
             /* bms_debug.dbg_1++; */
             /* can_send_bms_debug(); */
-        
+
             // if (rc != 0) {
-            //     set_fault(); // TODO: maybe we should keep track of metrics, and if
-            //     we
-            //                  // start seeing a lot of failures, we should fault
+            //     set_fault(); // TODO: maybe we should keep track of metrics,
+            //     and if we
+            //                  // start seeing a lot of failures, we should
+            //                  fault
             //     rc = 1;
             //     goto bail;
             // }
-        
+
             // if (ut > 0) {
             //     set_fault(BMS_FAULT_UNDERTEMPERATURE);
             //     rc = 1;
@@ -481,10 +483,9 @@ int main(void) {
                  */
                 // can_send_bms_metrics();
                 // Occurs at 4Hz, every 250ms
-                
+
                 // can_send_bms_temperatures(NUM_ICS, (uint16_t**)TEMPERATURES);
                 // can_send_open_wires(NUM_ICS, ICS);
-            
             }
 
             loop_counter++;

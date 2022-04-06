@@ -46,8 +46,8 @@
 #include "bms_hardware.h"
 #include "libs/spi/api.h"
 #include <stdint.h>
-#include <util/delay.h>
 #include <string.h>
+#include <util/delay.h>
 
 // Precomputed CRC15 table
 const uint16_t crc15Table[256] PROGMEM
@@ -174,8 +174,8 @@ int8_t read_68(uint8_t total_ic, // Number of ICs in the system
                uint8_t* rx_data // Data to be read
 ) {
     const uint8_t BYTES_IN_REG = 8;
-    uint8_t cmd[4] = {0};
-    uint8_t data[256] = {0};
+    uint8_t cmd[4] = { 0 };
+    uint8_t data[256] = { 0 };
     int8_t pec_error = 0;
     uint16_t cmd_pec = 0;
     uint16_t data_pec = 0;
@@ -247,7 +247,7 @@ void LTC681x_wrcfg(uint8_t total_ic, // The number of ICs being written to
                                   // configuration data that will be written
 ) {
     uint8_t cmd[2] = { 0x00, 0x01 };
-    uint8_t write_buffer[256] = {0};
+    uint8_t write_buffer[256] = { 0 };
     uint8_t write_count = 0;
     uint8_t c_ic = 0;
 

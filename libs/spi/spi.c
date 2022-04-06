@@ -51,12 +51,9 @@ void spi_init(spi_cfg_s* spi_cfg) {
     gpio_t ss = PD3;
     gpio_set_mode(ss, OUTPUT);
 
-    SPCR |= (spi_cfg->data_order << DORD)
-         | (spi_cfg->interrupt_enable << SPIE)
-         | (spi_cfg->polarity << CPOL)
-         | (spi_cfg->phase << CPHA)
-         | (spi_cfg->mode << MSTR)
-         | (spi_cfg->clock_rate);
+    SPCR |= (spi_cfg->data_order << DORD) | (spi_cfg->interrupt_enable << SPIE)
+            | (spi_cfg->polarity << CPOL) | (spi_cfg->phase << CPHA)
+            | (spi_cfg->mode << MSTR) | (spi_cfg->clock_rate);
 
     SPSR |= (((uint8_t)spi_cfg->clock_rate & 0x4) >> 2);
 
@@ -73,7 +70,8 @@ static void spi_transceive_private(uint8_t txdata, uint8_t* rxdata) {
     SPDR = txdata;
 
     // Wait until we've shifted out the bits and shifted in new ones
-    while (!(SPSR & (1 << SPIF)));
+    while (!(SPSR & (1 << SPIF)))
+        ;
 
     // Read out result
     /* uint8_t read = SPDR; */
