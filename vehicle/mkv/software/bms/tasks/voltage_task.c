@@ -29,8 +29,8 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
     wakeup_sleep(NUM_ICS);
 
-    // Start cell voltage ADC conversions PLUS Sum of Cells Conversion
-    LTC6811_adcvsc(MD_7KHZ_3KHZ, DCP_ENABLED);
+    // Start cell voltage ADC conversions
+    LTC6811_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL);
 
     // Blocks until all ADCs are done being read
     LTC6811_pollAdc(); // Ignore return value because we don't care how long it
@@ -42,13 +42,13 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
      * Read Cell Group Register A for all ICS,
      * then the Register B, etc.
      */
-    uint8_t cell_data[NUM_RX_BYT * NUM_ICS] = { 0 };
+    uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
 
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
         // Executes once for each of the LTC681x cell voltage
 
         // + 1 because of the way _rdcv_reg is written
-        LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, cell_data);
+        LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
 
         for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach LTC6811
             uint8_t data_counter = ic * NUM_RX_BYT;
@@ -65,8 +65,8 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
                 // Parse cell voltage
                 uint16_t cell_voltage
-                    = cell_data[data_counter]
-                      + (cell_data[data_counter + 1]
+                    = raw_data[data_counter]
+                      + (raw_data[data_counter + 1]
                          << 8); // Each code is received as two bytes and is
 
                 // Store cell voltage
@@ -92,10 +92,10 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
              * after the 6 cell voltage data bytes
              */
             uint16_t received_pec
-                = (cell_data[data_counter] << 8) | cell_data[data_counter + 1];
+                = (raw_data[data_counter] << 8) | raw_data[data_counter + 1];
 
             uint16_t data_pec
-                = pec15_calc(NUM_BYTES_IN_REG, &cell_data[(ic)*NUM_RX_BYT]);
+                = pec15_calc(NUM_BYTES_IN_REG, &raw_data[(ic)*NUM_RX_BYT]);
 
             if (received_pec != data_pec) {
                 pec_errors++;

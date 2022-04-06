@@ -17,8 +17,7 @@ static void fan_enable(bool enable) {
 
 int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                      uint32_t* ut) {
-    int rc = 0;
-    int error = 0;
+    int pec_errors = 0;
     int32_t cumulative_temperature = 0;
 
     wakeup_sleep(NUM_ICS);
@@ -40,36 +39,19 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
 
             // Read voltage from auxiliary pin (connected to the mux)
             wakeup_idle(NUM_ICS);
-            error = LTC6811_rdaux(AUX_CH_GPIO1, NUM_ICS, ICS);
 
-            if (error == -1) {
-                bms_metrics.temperature_pec_error_count++;
-                rc = 1;
-                continue;
-            }
+            uint8_t raw_data[NUM_RX_BYT * NUM_ICS]; // raw data read back
+            LTC681x_rdaux_reg(AUX_CH_GPIO1, NUM_ICS, raw_data);
 
-            uint16_t temperature = 0;
+            for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+                if (ic % 2 == 0) {
+                    // Skip every even IC (only odd LTC6811s have temperature
+                    // sensing)
+                    continue;
+                }
 
-            /*
-             * temp_ic indexes the ICs that measure the temperature, so
-             *   temp_ic = 0 := ic 1
-             *   temp_ic = 1 := ic 3
-             *   temp_ic = 2 := ic 5
-             *   etc.
-             */
-            for (uint8_t temp_ic = 0; temp_ic < NUM_TEMPERATURE_ICS;
-                 temp_ic += 1) {
-                // Use 0 as the a_codes index for GPIO1 channel
-                temperature = ICS[(temp_ic * 2) + 1].aux.a_codes[0];
-
-                /*
-                 * Store temperature [(mux * NUM_MUX_CHANNELS) + ch] indexes the
-                 * channel of the mux. We store temperatures as a 2D array of
-                 * ICS vs mux channels and use 24 as the number of mux channels
-                 * (3 muxes, 8 channels each).
-                 */
-                /* uint16_t channel = (mux * NUM_MUX_CHANNELS) + ch; */
-                /* TEMPERATURES[temp_ic][channel] = temperature; */
+                // Data is zeroth byte of response
+                uint16_t temperature = raw_data[0] | (raw_data[1] << 8);
                 cumulative_temperature += temperature;
 
                 /*
@@ -77,7 +59,7 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                  * comparisons are reversed (i.e. less than over-temp threshold)
                  */
                 if (temperature < OVERTEMPERATURE_THRESHOLD) {
-                    *ot = *ot + 1;
+                    *ot += 1;
                 }
 
                 // If temperatures are getting a bit too high, we turn on the
@@ -91,9 +73,9 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                 }
 
                 if (temperature > UNDERTEMPERATURE_THRESHOLD) {
-                    *ut = *ut + 1;
+                    *ut += 1;
                 }
-            } // End for each IC
+            }
 
             /*
              * Compute average temperature. This truncates a 32 bit number
@@ -116,5 +98,5 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
     enable_mux(NUM_ICS, ICS, MUX2, MUX_DISABLE, 0);
     enable_mux(NUM_ICS, ICS, MUX3, MUX_DISABLE, 0);
 
-    return rc;
+    return pec_errors;
 }
