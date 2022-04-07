@@ -134,7 +134,7 @@ void write_68(uint8_t total_ic, // Number of ICs to be written to
     uint8_t cmd_index = 0;
 
     uint8_t cmd[CMD_LEN];
-    memset(cmd, 0, CMD_LEN);
+    // memset(cmd, 0, CMD_LEN); // REMOVED
     cmd[0] = tx_cmd[0];
     cmd[1] = tx_cmd[1];
     cmd_pec = pec15_calc(2, cmd);

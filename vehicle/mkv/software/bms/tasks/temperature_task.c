@@ -4,6 +4,7 @@
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/utils/mux.h"
+#include <string.h>
 
 // Array of mux addresses
 const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
@@ -14,6 +15,9 @@ static void fan_enable(bool enable) {
     // No way to update a single part of the config so we just re-init the timer
     timer_init(&timer1_fan_cfg);
 }
+
+#define NUM_TEMPS_PER_IC (NUM_MUXES * NUM_MUX_CHANNELS)
+static uint16_t temperatures[NUM_TEMPERATURE_ICS][NUM_TEMPS_PER_IC] = { 0 };
 
 int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                      uint32_t* ut) {
@@ -52,6 +56,15 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
 
                 // Data is zeroth byte of response
                 uint16_t temperature = raw_data[0] | (raw_data[1] << 8);
+
+                // TODO: calc PEC
+
+                uint16_t temperature_idx = mux * NUM_MUX_CHANNELS + ch;
+                temperatures[ic - 1][temperature_idx] = temperature;
+                bms_debug.dbg_1 = temperature;
+                // bms_debug.dbg_2 = ch;
+                // bms_debug.dbg_3 = temperature_idx;
+                can_send_bms_debug();
                 cumulative_temperature += temperature;
 
                 /*
@@ -93,10 +106,55 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
     } // End for each mux
 
     // Finally, disable all multiplexers
-    // TODO: needed?
     enable_mux(NUM_ICS, MUX1, MUX_DISABLE, 0);
     enable_mux(NUM_ICS, MUX2, MUX_DISABLE, 0);
     enable_mux(NUM_ICS, MUX3, MUX_DISABLE, 0);
 
     return pec_errors;
+}
+
+#define CAN_ID_TEMPERATURE_BASE (0x430)
+#define NUM_TEMPS_PER_MESSAGE   (4)
+#define NUM_CAN_TEMP_MSG_PER_IC \
+    (NUM_MUX_CHANNELS * NUM_MUXES / NUM_TEMPS_PER_MESSAGE)
+
+void can_send_bms_temperatures(void) {
+    can_frame_t temperature_frame = {
+        .id = CAN_ID_TEMPERATURE_BASE,
+        .mob = 0,
+        .dlc = 8,
+    };
+
+    for (uint8_t ic = 0; ic < NUM_TEMPERATURE_ICS; ic++) {
+        // Every second chip (index = 1, 3, 5, etc) measures temperatures
+
+        /*
+         * NUM_MUXES = 3
+         * NUM_MUX_CHANNELS = 8
+         * 3 * 8 = 24 total channels per peripheral board
+         *
+         * Each CAN message can send 8 bytes, or 4 temperatures (each temp is 2
+         *     bytes)
+         *
+         * Need 6 CAN messages per board (per iteration of ic)
+         */
+        for (uint8_t message = 0; message < NUM_CAN_TEMP_MSG_PER_IC;
+             message++) {
+            // For each group of temperatures
+
+            /*
+             * Trick: instead of creating our own data array, we just set the
+             * pointer to the array to be the pointer to the cell temps in
+             * the ICS object with some offset. That way, we can reuse memory
+             * and avoid memcpy-ing.
+             */
+            temperature_frame.data
+                = (uint8_t*)(temperatures[ic]
+                             + message * NUM_TEMPS_PER_MESSAGE);
+            // memcpy(data, temperatures[ic]
+
+            can_send(&temperature_frame);
+            temperature_frame.id++;
+        }
+    }
 }

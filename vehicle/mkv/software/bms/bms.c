@@ -420,31 +420,32 @@ int main(void) {
 
             // Every 100ms read voltages
             if (loop_counter % 10 == 0) {
-                uint32_t ov = 0;
-                uint32_t uv = 0;
+                // uint32_t ov = 0;
+                // uint32_t uv = 0;
+                //
+                // uint16_t pack_voltage = 0;
+                // int rc = voltage_task(&pack_voltage, &ov, &uv); // ~10ms
+                // bms_core.pack_voltage = pack_voltage;
+                // bms_debug.dbg_2 = rc;
+                //
+                // can_send_bms_voltages(); // <1ms
+                uint32_t ot = 0;
+                uint32_t ut = 0;
 
-                uint16_t pack_voltage = 0;
-                int rc = voltage_task(&pack_voltage, &ov, &uv); // ~10ms
-                bms_core.pack_voltage = pack_voltage;
-                bms_debug.dbg_2 = rc;
+                uint16_t pack_temperature = 0;
+                int rc = temperature_task(&pack_temperature, &ot, &ut);
+                bms_debug.dbg_1 = rc;
+                bms_core.pack_temperature = pack_temperature;
 
-                can_send_bms_voltages(); // <1ms
+                can_send_bms_core();
+                can_send_bms_debug();
+                can_send_bms_temperatures();
             }
 
             /* bms_debug.dbg_2 = ov; */
             /* bms_debug.dbg_3 = uv; */
 
             // read all temperatures
-            /* uint32_t ot = 0; */
-            /* uint32_t ut = 0; */
-            /*  */
-            /* uint16_t pack_temperature = 0; */
-            /* int rc = temperature_task(&pack_temperature, &ot, &ut); */
-            /* bms_core.pack_temperature = pack_temperature; */
-            /* (void)rc; */
-
-            // can_send_bms_core();
-            // can_send_bms_debug();
             /* can_send_bms_voltages(NUM_ICS, ICS); */
             /* can_send_bms_temperatures(NUM_ICS, (uint16_t**)TEMPERATURES); */
 

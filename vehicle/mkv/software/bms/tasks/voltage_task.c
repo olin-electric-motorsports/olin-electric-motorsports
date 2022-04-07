@@ -88,11 +88,11 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 *pack_voltage += cell_voltage >> 4;
 
                 // Check under/over voltage
-                if (cell_voltage >= OVERVOLTAGE_THRESHOLD) {
-                    *ov += 1;
-                } else if (cell_voltage <= UNDERVOLTAGE_THRESHOLD) {
-                    *uv += 1;
-                }
+                // if (cell_voltage >= OVERVOLTAGE_THRESHOLD) {
+                //     *ov += 1;
+                // } else if (cell_voltage <= UNDERVOLTAGE_THRESHOLD) {
+                //     *uv += 1;
+                // }
 
                 data_counter += 2;
             }

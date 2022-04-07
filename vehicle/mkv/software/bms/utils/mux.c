@@ -3,6 +3,7 @@
 #include <stdbool.h>
 
 #include "vehicle/mkv/software/bms/bms_config.h"
+#include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
 #define MUX_DATALENGTH (3 * 3) // 3 bytes of data for 3 muxes each
@@ -33,6 +34,7 @@ void enable_mux(uint8_t num_ics, uint8_t address, bool enable,
     uint8_t mux_cmd = enable ? 0x8 : 0x00;
     mux_cmd |= channel & 0x7;
 
+    // The following effectively takes the place of LTC681x_wrcomm
     for (uint8_t ic = 0; ic < num_ics; ic++) {
         // Do nothing for the first byte transmitted
         tx_data[0] = START;
@@ -46,7 +48,7 @@ void enable_mux(uint8_t num_ics, uint8_t address, bool enable,
         tx_data[5] = (mux_cmd << 4) | NACK_STOP;
     }
 
-    wakeup_sleep(num_ics);
+    wakeup_sleep(NUM_ICS);
 
     uint8_t wrcomm_cmd[2] = { 0x07, 0x21 };
     write_68(NUM_ICS, wrcomm_cmd, tx_data);
