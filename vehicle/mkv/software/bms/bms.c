@@ -436,6 +436,8 @@ int main(void) {
                 int rc = temperature_task(&pack_temperature, &ot, &ut);
                 bms_debug.dbg_1 = rc;
                 bms_core.pack_temperature = pack_temperature;
+                bms_debug.dbg_2 = ot;
+                bms_debug.dbg_3 = ut;
 
                 can_send_bms_core();
                 can_send_bms_debug();

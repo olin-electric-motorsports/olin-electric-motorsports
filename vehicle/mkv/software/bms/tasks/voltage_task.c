@@ -132,9 +132,9 @@ void can_send_bms_voltages(void) {
 
         /*
          * Trick: instead of creating our own data array, we just set the
-         * pointer to the array to be the pointer to the cell voltages in
-         * the ICS object with some offset. That way, we can reuse memory
-         * and avoid memcpy-ing.
+         * pointer to the array to be the pointer to the cell voltages in giant
+         * array with some offset. That way, we can reuse memory and avoid
+         * memcpy-ing.
          */
         voltage_frame.data = (uint8_t*)(cell_voltages[ic] + 0);
         can_send(&voltage_frame);

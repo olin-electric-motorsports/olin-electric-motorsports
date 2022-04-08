@@ -9,15 +9,19 @@
 // Array of mux addresses
 const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
 
+#define NUM_TEMPS_PER_IC (NUM_MUXES * NUM_MUX_CHANNELS)
+static uint16_t temperatures[NUM_TEMPERATURE_ICS][NUM_TEMPS_PER_IC] = { 0 };
+
+/*
+ * Enables or disables the accumulator fans by turning on or off the PWM pin
+ * connected to timer 1.
+ */
 static void fan_enable(bool enable) {
     timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
 
     // No way to update a single part of the config so we just re-init the timer
     timer_init(&timer1_fan_cfg);
 }
-
-#define NUM_TEMPS_PER_IC (NUM_MUXES * NUM_MUX_CHANNELS)
-static uint16_t temperatures[NUM_TEMPERATURE_ICS][NUM_TEMPS_PER_IC] = { 0 };
 
 int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                      uint32_t* ut) {
@@ -31,6 +35,7 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
         for (uint8_t ch = 0; ch < NUM_MUX_CHANNELS; ch++) {
             // For each mux channel (ch)
 
+            // enable_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, ch-1);
             enable_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, ch);
 
             // read aux gpio voltage (this is what the tmperature sensor is
@@ -42,29 +47,32 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
             (void)LTC6811_pollAdc();
 
             // Read voltage from auxiliary pin (connected to the mux)
-            wakeup_idle(NUM_ICS);
 
             uint8_t raw_data[NUM_RX_BYT * NUM_ICS]; // raw data read back
+
+            wakeup_idle(NUM_ICS);
             LTC681x_rdaux_reg(AUX_CH_GPIO1, NUM_ICS, raw_data);
 
+            uint8_t ic_idx = 0;
+
             for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-                if (ic % 2 == 0) {
-                    // Skip every even IC (only odd LTC6811s have temperature
-                    // sensing)
+                if (ic % 2 == 1) {
+                    // Skip all odd ICs
                     continue;
                 }
+                // Executes for every other chip (0, 2, 4, etc)
 
-                // Data is zeroth byte of response
-                uint16_t temperature = raw_data[0] | (raw_data[1] << 8);
+                uint16_t data_counter = (ic) * NUM_RX_BYT;
+                uint16_t temperature_idx = mux * NUM_MUX_CHANNELS + ch;
+
+                // Data is zeroth byte of response TODO update comment
+                uint16_t temperature = raw_data[data_counter] | (raw_data[data_counter+1] << 8);
 
                 // TODO: calc PEC
 
-                uint16_t temperature_idx = mux * NUM_MUX_CHANNELS + ch;
-                temperatures[ic - 1][temperature_idx] = temperature;
-                bms_debug.dbg_1 = temperature;
-                // bms_debug.dbg_2 = ch;
-                // bms_debug.dbg_3 = temperature_idx;
-                can_send_bms_debug();
+                temperatures[ic_idx][temperature_idx] = temperature;
+                ic_idx++;
+
                 cumulative_temperature += temperature;
 
                 /*
@@ -99,9 +107,11 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
              * is sufficient to store the sum of all the temperature sensor
              * voltages
              */
-            bms_core.pack_temperature = (uint16_t)(
+            *avg_pack_temperature = (
                 cumulative_temperature
                 / (NUM_MUXES * NUM_MUX_CHANNELS * NUM_TEMPERATURE_ICS));
+
+            enable_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, ch);
         } // End for each mux channel
     } // End for each mux
 
@@ -114,19 +124,18 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
 }
 
 #define CAN_ID_TEMPERATURE_BASE (0x430)
+#define CAN_TEMP_DLC (8)
 #define NUM_TEMPS_PER_MESSAGE   (4)
-#define NUM_CAN_TEMP_MSG_PER_IC \
-    (NUM_MUX_CHANNELS * NUM_MUXES / NUM_TEMPS_PER_MESSAGE)
+#define NUM_CAN_TEMP_MSG_PER_IC (6)
 
 void can_send_bms_temperatures(void) {
     can_frame_t temperature_frame = {
         .id = CAN_ID_TEMPERATURE_BASE,
         .mob = 0,
-        .dlc = 8,
+        .dlc = CAN_TEMP_DLC,
     };
 
-    for (uint8_t ic = 0; ic < NUM_TEMPERATURE_ICS; ic++) {
-        // Every second chip (index = 1, 3, 5, etc) measures temperatures
+    for (uint8_t temp_ic = 0; temp_ic < NUM_TEMPERATURE_ICS; temp_ic++) {
 
         /*
          * NUM_MUXES = 3
@@ -144,14 +153,12 @@ void can_send_bms_temperatures(void) {
 
             /*
              * Trick: instead of creating our own data array, we just set the
-             * pointer to the array to be the pointer to the cell temps in
-             * the ICS object with some offset. That way, we can reuse memory
-             * and avoid memcpy-ing.
+             * pointer to the array to be the pointer to the cell temps in 
+             * giant array with some offset. That way, we can reuse memory and 
+             * avoid memcpy-ing.
              */
-            temperature_frame.data
-                = (uint8_t*)(temperatures[ic]
-                             + message * NUM_TEMPS_PER_MESSAGE);
-            // memcpy(data, temperatures[ic]
+            temperature_frame.data = ((uint8_t*)temperatures[temp_ic])
+                + (message * CAN_TEMP_DLC);
 
             can_send(&temperature_frame);
             temperature_frame.id++;
