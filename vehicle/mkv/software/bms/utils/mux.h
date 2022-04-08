@@ -5,9 +5,9 @@
 #include <stdint.h>
 
 // Mux addresses
-#define LTC1380_MUX1 (0x90)// (0x90)
+#define LTC1380_MUX1 (0x90) // (0x90)
 #define LTC1380_MUX2 (0x92) // (0x92)
-#define LTC1380_MUX3 (0x94)// (0x94)
+#define LTC1380_MUX3 (0x94) // (0x94)
 
 #define MUX_ENABLE  (true)
 #define MUX_DISABLE (false)

@@ -42,13 +42,13 @@ void enable_mux(uint8_t num_ics, uint8_t address, bool enable,
      *         address = 0x90;  //10010000
      *         cmd = (0xf << 4) | (0x8 + (0x7 & channel));
      *     }
-     * 
+     *
      *     uint8_t disable_comp = 0;
      *     if (disabled)
      *     {
      *         disable_comp = 0x8;
      *     }
-     * 
+     *
      *     return ((address << 8) | ((cmd & 0xff) - disable_comp));
      * }
      */
