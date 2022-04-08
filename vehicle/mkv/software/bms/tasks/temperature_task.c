@@ -115,11 +115,6 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
         } // End for each mux channel
     } // End for each mux
 
-    // Finally, disable all multiplexers
-    enable_mux(NUM_ICS, MUX1, MUX_DISABLE, 0);
-    enable_mux(NUM_ICS, MUX2, MUX_DISABLE, 0);
-    enable_mux(NUM_ICS, MUX3, MUX_DISABLE, 0);
-
     return pec_errors;
 }
 
