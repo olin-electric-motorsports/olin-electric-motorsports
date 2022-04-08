@@ -357,7 +357,6 @@ int main(void) {
     sei();
 
     can_init_bms();
-    // can_send_bms_debug();
 
     gpio_set_mode(BMS_RELAY_LSD, OUTPUT);
     gpio_set_mode(RJ45_LEDO, OUTPUT);
@@ -366,6 +365,7 @@ int main(void) {
     gpio_set_mode(CHARGE_ENABLE2, OUTPUT);
     gpio_set_mode(GENERAL_LED, OUTPUT);
     gpio_set_mode(FAULT_LED, OUTPUT);
+    gpio_set_mode(FAN_PWM, OUTPUT);
 
     gpio_set_mode(nOCD, INPUT);
     gpio_set_mode(BSPD_CURRENT_SENSE, INPUT);
@@ -406,6 +406,11 @@ int main(void) {
 
     // Tracks the number of times the 10ms loop has been run
     uint8_t loop_counter = 0;
+
+
+    // No way to update a single part of the config so we just re-init the timer
+    timer1_fan_cfg.channel_b.pin_behavior = TOGGLE;
+    timer_init(&timer1_fan_cfg);
 
     while (true) {
         // Listen for and save tractive system state

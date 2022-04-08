@@ -44,6 +44,7 @@ extern gpio_t FAULT_LED;
 extern gpio_t SPI_CS;
 extern gpio_t nOCD;
 extern gpio_t BSPD_CURRENT_SENSE;
+extern gpio_t FAN_PWM;
 
 extern adc_pin_e CURRENT_SENSE_VREF;
 extern adc_pin_e CURRENT_SENSE_VOUT;

@@ -90,7 +90,8 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                 }
 
                 if (temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
-                    fan_enable(false);
+                    // fan_enable(false);
+                    fan_enable(true);
                 }
 
                 if (temperature > UNDERTEMPERATURE_THRESHOLD) {

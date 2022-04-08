@@ -19,6 +19,7 @@ gpio_t CHARGE_ENABLE2 = PC0;
 gpio_t GENERAL_LED = PD6;
 gpio_t FAULT_LED = PD7;
 gpio_t SPI_CS = PB6;
+gpio_t FAN_PWM = PC1;
 
 // Inputs
 gpio_t nOCD = PB2; // Over-current detect
@@ -54,14 +55,14 @@ timer_cfg_s timer0_cfg = {
     },
 };
 
-// Fan PWM config
+// Fan PWM config (25 kHz)
 timer_cfg_s timer1_fan_cfg = {
     .timer = TIMER1,
-    .timer1_mode = TIMER1_MODE_FAST_PWM_8_BIT,
-    .prescalar = CLKIO_DIV_1, // TODO
+    .timer1_mode = TIMER1_MODE_PHASE_CORRECT_PWM_OCRA,
+    .prescalar = CLKIO_DIV_1,
     .channel_b = {
         .channel = CHANNEL_B,
-        .output_compare_match = 10, // TODO
+        .output_compare_match = 160,
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = false,
     },
