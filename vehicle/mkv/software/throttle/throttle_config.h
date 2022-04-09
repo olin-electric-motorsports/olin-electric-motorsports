@@ -1,6 +1,8 @@
 #include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
+#include "libs/timer/api.h"
+
 
 /*
  * Pin definitions
@@ -9,8 +11,8 @@ gpio_t BRAKE_IMPLAUSIBILTIY_LED = PC6;
 gpio_t DEVIATION_IMPLAUSIBILITY_LED = PB3;
 gpio_t OUT_OF_RANGE_IMPLAUSIBILITY_LED = PB4;
 
-gpio_t RJ45_LED1 = PB0; // orange
-gpio_t RJ45_LED2 = PB1; // green
+gpio_t RJ45_LED1 = PD6; // orange
+gpio_t RJ45_LED2 = PD5; // green
 
 gpio_t SS_ESTOP = PB5;
 gpio_t SS_IS = PB6;
@@ -55,9 +57,25 @@ timer_cfg_s timer0_cfg = {
     .timer0_mode = TIMER0_MODE_CTC,
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
+        .channel = CHANNEL_A,
         .output_compare_match = 0x27, // 100 Hz
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer0_isr,
+    },
+};
+
+void timer1_isr(void);
+
+timer_cfg_s timer1_cfg = {
+    .timer = TIMER1,
+    .timer1_mode = TIMER1_MODE_CTC,
+    .prescalar = CLKIO_DIV_1,
+    .channel_a = {
+        .channel = CHANNEL_A,
+        .output_compare_match = 4000,
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer1_isr,
     },
 };
