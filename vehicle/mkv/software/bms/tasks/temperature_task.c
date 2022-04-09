@@ -62,11 +62,12 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                 }
                 // Executes for every other chip (0, 2, 4, etc)
 
-                uint16_t data_counter = (ic) * NUM_RX_BYT;
+                uint16_t data_counter = (ic)*NUM_RX_BYT;
                 uint16_t temperature_idx = mux * NUM_MUX_CHANNELS + ch;
 
                 // Data is zeroth byte of response TODO update comment
-                uint16_t temperature = raw_data[data_counter] | (raw_data[data_counter+1] << 8);
+                uint16_t temperature = raw_data[data_counter]
+                                       | (raw_data[data_counter + 1] << 8);
 
                 // TODO: calc PEC
 
@@ -108,9 +109,9 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
              * is sufficient to store the sum of all the temperature sensor
              * voltages
              */
-            *avg_pack_temperature = (
-                cumulative_temperature
-                / (NUM_MUXES * NUM_MUX_CHANNELS * NUM_TEMPERATURE_ICS));
+            *avg_pack_temperature
+                = (cumulative_temperature
+                   / (NUM_MUXES * NUM_MUX_CHANNELS * NUM_TEMPERATURE_ICS));
 
             enable_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, ch);
         } // End for each mux channel
@@ -120,7 +121,7 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
 }
 
 #define CAN_ID_TEMPERATURE_BASE (0x430)
-#define CAN_TEMP_DLC (8)
+#define CAN_TEMP_DLC            (8)
 #define NUM_TEMPS_PER_MESSAGE   (4)
 #define NUM_CAN_TEMP_MSG_PER_IC (6)
 
@@ -132,7 +133,6 @@ void can_send_bms_temperatures(void) {
     };
 
     for (uint8_t temp_ic = 0; temp_ic < NUM_TEMPERATURE_ICS; temp_ic++) {
-
         /*
          * NUM_MUXES = 3
          * NUM_MUX_CHANNELS = 8
@@ -149,12 +149,12 @@ void can_send_bms_temperatures(void) {
 
             /*
              * Trick: instead of creating our own data array, we just set the
-             * pointer to the array to be the pointer to the cell temps in 
-             * giant array with some offset. That way, we can reuse memory and 
+             * pointer to the array to be the pointer to the cell temps in
+             * giant array with some offset. That way, we can reuse memory and
              * avoid memcpy-ing.
              */
-            temperature_frame.data = ((uint8_t*)temperatures[temp_ic])
-                + (message * CAN_TEMP_DLC);
+            temperature_frame.data
+                = ((uint8_t*)temperatures[temp_ic]) + (message * CAN_TEMP_DLC);
 
             can_send(&temperature_frame);
             temperature_frame.id++;

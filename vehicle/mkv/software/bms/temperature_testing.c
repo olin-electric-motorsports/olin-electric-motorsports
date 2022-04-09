@@ -76,15 +76,14 @@ int main(void) {
     // Tracks the number of times the 10ms loop has been run
 
     while (true) {
-
         if (run_10ms) {
             uint32_t ov = 0;
             uint32_t uv = 0;
-            
+
             uint16_t pack_voltage = 0;
             voltage_task(&pack_voltage, &ov, &uv);
             bms_core.pack_voltage = pack_voltage;
-            
+
             can_send_bms_voltages();
 
             uint32_t ot = 0;
