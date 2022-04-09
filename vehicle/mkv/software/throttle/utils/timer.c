@@ -5,21 +5,6 @@ volatile uint32_t time;
 volatile bool run_1ms;
 volatile uint32_t start_time;
 
-void timer1_isr(void);
-
-timer_cfg_s timer1_cfg = {
-    .timer = TIMER1,
-    .timer1_mode = TIMER1_MODE_CTC,
-    .prescalar = CLKIO_DIV_8,
-    .channel_a = {
-        .channel = CHANNEL_A,
-        .output_compare_match = 2000,
-        .pin_behavior = DISCONNECTED,
-        .interrupt_enable = true,
-        .interrupt_callback = timer1_isr,
-    },
-};
-
 void timer1_isr(void) {
     time++;
     run_1ms = true;

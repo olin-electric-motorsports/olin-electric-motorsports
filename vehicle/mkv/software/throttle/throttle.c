@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <sys/types.h>
 
 #define IMPLAUSIBILITY_TIMEOUT_MS (100)
 #define MOTOR_ANTICLOCKWISE       (1)
@@ -37,11 +38,20 @@
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
+enum State {
+    THROTTLE_IDLE,
+    THROTTLE_RUN,
+    THROTTLE_FAULT,
+    THROTTLE_OUT_OF_RANGE_UPPER,
+    THROTTLE_OUT_OF_RANGE_LOWER,
+    THROTTLE_POSITION_PLAUSIBILITY,
+    THROTTLE_BRAKE_PRESSED
+};
+
 struct throttle_state_s {
     volatile bool send_can;
     uint16_t implausibility_fault_counter;
     bool brake_pressed;
-    bool ready_to_drive;
 } throttle_state = { 0 };
 
 void timer0_isr(void) {
@@ -162,6 +172,7 @@ int main(void) {
     can_init_throttle();
     adc_init();
     timer_init(&timer0_cfg);
+    timer_init(&timer1_cfg);
 
     gpio_set_mode(BRAKE_IMPLAUSIBILTIY_LED, OUTPUT);
     gpio_set_mode(DEVIATION_IMPLAUSIBILITY_LED, OUTPUT);
@@ -178,13 +189,12 @@ int main(void) {
     gpio_enable_interrupt(SS_BOTS);
 
     sei();
-
+    
     // Initialize motor controller direction
     m192_command_message.direction_command = MOTOR_ANTICLOCKWISE;
+    throttle.state = THROTTLE_IDLE;
 
-    /*
-     * Inverter enable lockout (motor controller CAN datasheet section 2.2.1.1):
-     *
+     /*
      * This feature is added so that the inverter cannot be accidentally enabled
      * when first powered up. This feature requires that before sending out an
      * Inverter Enable command, the user must send out an Inverter Disable
@@ -195,13 +205,13 @@ int main(void) {
 
     while (true) {
         if (run_1ms) {
+            run_1ms = false;
             if (can_poll_receive_brakelight() == 0) {
                 throttle_state.brake_pressed = brakelight.brake_gate;
                 can_receive_brakelight();
             }
 
-            if (can_poll_receive_dashboard() == 0) {
-                can_receive_dashboard();
+            if (can_poll_receive_dashboard() == 0) { can_receive_dashboard();
 
                 if (!dashboard.ready_to_drive) {
                     m192_command_message.inverter_enable = false;
@@ -212,13 +222,9 @@ int main(void) {
                 }
             }
 
-            if (!throttle_state.ready_to_drive) {
-                SET_TORQUE_REQUEST(0);
-                continue;
-            }
-
             int16_t pos_r = get_throttle_travel(&throttle_r);
             int16_t pos_l = get_throttle_travel(&throttle_l);
+
 
             int16_t pos_min = MIN(pos_r, pos_l);
             int16_t pos_max = MAX(pos_r, pos_l);
@@ -249,13 +255,17 @@ int main(void) {
                 // NOTE: If we decide to do a non-linear map, that would go here
                 int16_t torque_request = pos_min * TORQUE_REQUEST_SCALE;
 
+                throttle.throttle_r_pos = (uint8_t)pos_r;
+                throttle.throttle_l_pos = (uint8_t)pos_l;
+
                 SET_TORQUE_REQUEST(torque_request);
             }
 
-            if (throttle_state.send_can) {
-                can_send_throttle();
-                can_send_m192_command_message();
-            }
+        }
+        if (throttle_state.send_can) {
+            can_send_throttle();
+            can_send_m192_command_message();
+            throttle_state.send_can = false;
         }
     }
 }
