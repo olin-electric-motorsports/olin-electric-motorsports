@@ -19,11 +19,6 @@
 // Number of cells that can be measured
 #define NUM_CELLS (12)
 
-// Number of multiplexers
-#define NUM_MUXES (3)
-
-#define NUM_MUX_CHANNELS (8)
-
 // TODO verify over/under voltage/temperature thresholds
 #define OVERVOLTAGE_THRESHOLD          (42000) // 4.2V
 #define UNDERVOLTAGE_THRESHOLD         (30000) // 3.0V
@@ -32,6 +27,9 @@
 #define SOFT_OVERTEMPERATURE_THRESHOLD_LOW \
     (SOFT_OVERTEMPERATURE_THRESHOLD + 500) // TODO degC
 #define UNDERTEMPERATURE_THRESHOLD (7384) // 0 degC
+
+#define MAX_PEC_RETRY    (10) // Arbitrary for now
+#define MAX_PEC_IN_A_ROW (32) // Arbitrary for now
 
 // Globals
 extern gpio_t BMS_RELAY_LSD;

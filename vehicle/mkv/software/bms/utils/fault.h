@@ -41,6 +41,11 @@ enum FaultCode {
      * Too much current into/out of cells
      */
     BMS_FAULT_OVERCURRENT,
+
+    /*
+     * Received too many packet encoding errors from LTC6811s
+     */
+    BMS_FAULT_PEC,
 };
 
 void set_fault(enum FaultCode the_fault);

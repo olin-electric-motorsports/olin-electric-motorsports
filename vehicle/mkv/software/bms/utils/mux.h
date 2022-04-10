@@ -12,6 +12,10 @@
 #define MUX_ENABLE  (true)
 #define MUX_DISABLE (false)
 
+#define NUM_MUXES (3)
+
+#define NUM_MUX_CHANNELS (8)
+
 /*
  * Configures the multiplexer
  */

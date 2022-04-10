@@ -104,17 +104,21 @@ static int initial_checks(void) {
     // read all voltages
     uint32_t ov = 0;
     uint32_t uv = 0;
+    uint8_t retry = 0;
 
-    uint16_t pack_voltage = 0;
-    rc = voltage_task(&pack_voltage, &ov, &uv);
-    bms_core.pack_voltage = pack_voltage;
+    do {
+        uint16_t pack_voltage = 0;
+        rc = voltage_task(&pack_voltage, &ov, &uv);
+        bms_core.pack_voltage = pack_voltage;
+        bms_metrics.voltage_pec_error_count += rc;
 
-    // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
-    //     we
-    //                  // start seeing a lot of failures, we should fault
-    //     goto bail;
-    // }
+        if (retry >= MAX_PEC_RETRY) {
+            set_fault(BMS_FAULT_PEC);
+            goto bail;
+        } else {
+            retry++;
+        }
+    } while (rc != 0);
 
     if (uv > 0) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
@@ -129,18 +133,21 @@ static int initial_checks(void) {
     // read all temperatures
     uint32_t ot = 0;
     uint32_t ut = 0;
+    retry = 0;
 
-    uint16_t pack_temperature = 0;
-    rc = temperature_task(&pack_temperature, &ot, &ut);
-    bms_core.pack_temperature = pack_temperature;
+    do {
+        uint16_t pack_temperature = 0;
+        rc = temperature_task(&pack_temperature, &ot, &ut);
+        bms_core.pack_temperature = pack_temperature;
+        bms_metrics.temperature_pec_error_count += rc;
 
-    // if (rc != 0) {
-    //     set_fault(); // TODO: maybe we should keep track of metrics, and if
-    //     we
-    //                  // start seeing a lot of failures, we should fault
-    //     rc = 1;
-    //     goto bail;
-    // }
+        if (retry >= MAX_PEC_RETRY) {
+            set_fault(BMS_FAULT_PEC);
+            goto bail;
+        } else {
+            retry++;
+        }
+    } while (rc != 0);
 
     if (ut > 0) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
@@ -153,7 +160,7 @@ static int initial_checks(void) {
     }
 
     // check for open-circuit
-    // openwire_task();
+    // TODO: openwire_task();
 
 bail:
     return rc;
@@ -187,7 +194,10 @@ static void state_machine_run(void) {
     if (rc) {
         bms_metrics.voltage_pec_error_count += rc;
 
-        // TODO: check_pec_fault();
+        if (bms_metrics.voltage_pec_error_count >= MAX_PEC_IN_A_ROW) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = FAULT;
+        }
     } else {
         bms_metrics.voltage_pec_error_count = 0;
     }
@@ -214,6 +224,11 @@ static void state_machine_run(void) {
 
     if (rc) {
         bms_metrics.temperature_pec_error_count += rc;
+
+        if (bms_metrics.temperature_pec_error_count >= MAX_PEC_IN_A_ROW) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = FAULT;
+        }
     } else {
         bms_metrics.temperature_pec_error_count = 0;
     }
@@ -221,7 +236,7 @@ static void state_machine_run(void) {
     /*
      * Check for open-wires
      */
-    // rc = openwire_task(); // TODO test
+    // TODO: rc = openwire_task();
 
     int16_t current = 0;
     current_task(&current);
