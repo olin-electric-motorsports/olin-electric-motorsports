@@ -139,27 +139,25 @@ if __name__ == "__main__":
 
     # Temperatures
     for segment in range(num_segments):
-        cell = 14 
+        cell = 14
         temperature = 2
 
         for msg_number in range(num_temperature_messages_per_segment):
             msg = TEMPERATURE_MESSAGE_TEMPLATE()
             msg["id"] = HexInt(TEMPERATURE_ID_START + msg_idx)
             msg["name"] = TEMPERATURE_MESSAGE_TEMPLATE()["name"].format(
-                segment=segment+1,
-                message_index=msg_number+1,
+                segment=segment + 1, message_index=msg_number + 1,
             )
 
             for sig in range(4):
                 s = TEMPERATURE_SIGNAL_TEMPLATE()
                 s["name"] = TEMPERATURE_SIGNAL_TEMPLATE()["name"].format(
-                    cell = cell + 1,
-                    temp = temperature + 1,
+                    cell=cell + 1, temp=temperature + 1,
                 )
 
                 temperature = (temperature - 1) % 3
-                if (temperature == 2):
-                    cell = (cell - 2)
+                if temperature == 2:
+                    cell = cell - 2
 
                 s["slice"] = TEMPERATURE_SIGNAL_TEMPLATE()["slice"].format(
                     slice_start=sig * 16

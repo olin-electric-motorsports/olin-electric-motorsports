@@ -8,10 +8,10 @@ dbc_gen(
         "//vehicle/mkv/software/air_control:air.yml",
         "//vehicle/mkv/software/bms:bms.yml",
         "//vehicle/mkv/software/bms/charging:charging.yml",
+        "//vehicle/mkv/software/bms/tools:bms_sensing.yml",
         "//vehicle/mkv/software/brakelight_bspd:bspd.yml",
         "//vehicle/mkv/software/dashboard:dashboard.yml",
         "//vehicle/mkv/software/emeter:emeter.dbc",
         "//vehicle/mkv/software/motor_controller:motor_controller.dbc",
-        "//vehicle/mkv/software/bms/tools:bms_sensing.yml",
     ],
 )

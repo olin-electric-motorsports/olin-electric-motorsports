@@ -20,8 +20,8 @@
 #define NUM_CELLS (12)
 
 // TODO verify over/under voltage/temperature thresholds
-#define OVERVOLTAGE_THRESHOLD          (42000) // 4.2V
-#define UNDERVOLTAGE_THRESHOLD         (30000) // 3.0V
+#define OVERVOLTAGE_THRESHOLD  (42000) // 4.2V
+#define UNDERVOLTAGE_THRESHOLD (30000) // 3.0V
 
 #define OVERTEMPERATURE_THRESHOLD      (728) // 60 degC
 #define SOFT_OVERTEMPERATURE_THRESHOLD (1255) // 45 degC

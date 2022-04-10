@@ -19,9 +19,9 @@ genrule(
     outs = [
         "bms_sensing.yml",
     ],
+    cmd = "$(location :sensing_yml_generator) -c $(location //vehicle/mkv/software/bms:bms_config.h) -o $(OUTS)",
     tools = [
         ":sensing_yml_generator",
     ],
-    cmd = "$(location :sensing_yml_generator) -c $(location //vehicle/mkv/software/bms:bms_config.h) -o $(OUTS)",
     visibility = ["//visibility:public"],
 )
