@@ -71,6 +71,7 @@ cc_firmware(
 
 exports_files([
     "bms.yml",
+    "bms_config.h",
 ])
 
 # Defines the CAN API library
