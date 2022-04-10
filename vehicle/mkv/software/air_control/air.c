@@ -41,7 +41,6 @@ enum FaultCode {
     AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE,
     AIR_FAULT_BMS_VOLTAGE,
     AIR_FAULT_IMD_STATUS,
-    AIR_FAULT_BMS_STATUS,
 };
 
 static void set_fault(enum FaultCode the_fault) {
@@ -71,11 +70,6 @@ void pcint0_callback(void) {
 }
 
 void pcint1_callback(void) {
-    if (!gpio_get_pin(BMS_SENSE)) {
-        set_fault(AIR_FAULT_BMS_STATUS);
-        air_control_critical.bms_status = false;
-    }
-
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
     air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 }
@@ -172,17 +166,6 @@ static int initial_checks(void) {
         goto bail;
     } else {
         air_control_critical.imd_status = true;
-    }
-
-    // TODO implement hitl test
-    if (!gpio_get_pin(BMS_SENSE)) {
-        // IMD_SENSE pin should start high
-        air_control_critical.bms_status = false;
-        set_fault(AIR_FAULT_BMS_STATUS);
-        rc = 1;
-        goto bail;
-    } else {
-        air_control_critical.bms_status = true;
     }
 
 bail:
@@ -379,7 +362,6 @@ int main(void) {
     gpio_enable_interrupt(SS_MPC);
     gpio_enable_interrupt(SS_HVD_CONN);
     gpio_enable_interrupt(SS_HVD);
-    gpio_enable_interrupt(BMS_SENSE);
     gpio_enable_interrupt(IMD_SENSE);
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
