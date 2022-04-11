@@ -15,9 +15,11 @@ cc_firmware(
         "air.c",
         "air_config.h",
     ],
-    target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
-    ],
+    target_compatible_with = select({
+        "//bazel/constraints:atmega16m1": [],
+        "//bazel/constraints:atmega64m1": [],
+        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+    }),
     deps = [
         ":can_api",
         ":utils",
@@ -36,9 +38,11 @@ cc_library(
         "utils/timer.h",
         "utils/utils.h",
     ],
-    target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
-    ],
+    target_compatible_with = select({
+        "//bazel/constraints:atmega16m1": [],
+        "//bazel/constraints:atmega64m1": [],
+        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+    }),
     visibility = ["//visibility:private"],
     deps = [
         ":can_api",

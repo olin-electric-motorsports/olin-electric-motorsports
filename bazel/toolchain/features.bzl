@@ -49,7 +49,7 @@ _DEBUG_FEATURE = feature(
         flag_set(
             actions = _C_ALL_COMPILE_ACTIONS,
             flag_groups = [
-                flag_group(flags = ["-O0", "-g3"]),
+                flag_group(flags = ["-Os", "-g3"]),
             ],
         ),
     ],
