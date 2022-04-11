@@ -53,7 +53,12 @@ def VOLTAGE_SIGNAL_TEMPLATE():
     return {
         "name": "segment{segment_index}_cell{cell_index}",
         "slice": "{slice_start} + 16",
-        "unit": {"name": "volts", "type": "uint16_t", "offset": 0, "scale": 0.0001,},
+        "unit": {
+            "name": "volts",
+            "type": "uint16_t",
+            "offset": 0,
+            "scale": 0.0001,
+        },
     }
 
 
@@ -71,7 +76,12 @@ def TEMPERATURE_SIGNAL_TEMPLATE():
     return {
         "name": "C{cell}_T{temp}",
         "slice": "{slice_start} + 16",
-        "unit": {"name": "volts", "type": "uint16_t", "offset": 0, "scale": 0.0001,},
+        "unit": {
+            "name": "volts",
+            "type": "uint16_t",
+            "offset": 0,
+            "scale": 0.0001,
+        },
     }
 
 
@@ -127,7 +137,8 @@ if __name__ == "__main__":
             for sig in range(4):
                 s = VOLTAGE_SIGNAL_TEMPLATE()
                 s["name"] = VOLTAGE_SIGNAL_TEMPLATE()["name"].format(
-                    segment_index=segment + 1, cell_index=(msg_number * 4) + sig + 1,
+                    segment_index=segment + 1,
+                    cell_index=(msg_number * 4) + sig + 1,
                 )
 
                 s["slice"] = VOLTAGE_SIGNAL_TEMPLATE()["slice"].format(
@@ -147,13 +158,15 @@ if __name__ == "__main__":
             msg_idx = segment * num_temperature_messages_per_segment + msg_number
             msg["id"] = HexInt(TEMPERATURE_ID_START + msg_idx)
             msg["name"] = TEMPERATURE_MESSAGE_TEMPLATE()["name"].format(
-                segment=segment + 1, message_index=msg_number + 1,
+                segment=segment + 1,
+                message_index=msg_number + 1,
             )
 
             for sig in range(4):
                 s = TEMPERATURE_SIGNAL_TEMPLATE()
                 s["name"] = TEMPERATURE_SIGNAL_TEMPLATE()["name"].format(
-                    cell=cell + 1, temp=temperature + 1,
+                    cell=cell + 1,
+                    temp=temperature + 1,
                 )
 
                 temperature = (temperature - 1) % 3
