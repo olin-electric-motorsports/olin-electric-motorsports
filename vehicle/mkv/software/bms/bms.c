@@ -380,7 +380,7 @@ int main(void) {
         // Listen for and save tractive system state
         int err = can_poll_receive_air_control_critical();
         if (err == 0) {
-            air_state = air_control_critical.state;
+            air_state = air_control_critical.air_state;
             can_receive_air_control_critical();
         }
 

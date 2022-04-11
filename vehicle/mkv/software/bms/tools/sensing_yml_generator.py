@@ -144,6 +144,7 @@ if __name__ == "__main__":
 
         for msg_number in range(num_temperature_messages_per_segment):
             msg = TEMPERATURE_MESSAGE_TEMPLATE()
+            msg_idx = segment * num_temperature_messages_per_segment + msg_number
             msg["id"] = HexInt(TEMPERATURE_ID_START + msg_idx)
             msg["name"] = TEMPERATURE_MESSAGE_TEMPLATE()["name"].format(
                 segment=segment + 1, message_index=msg_number + 1,
@@ -167,7 +168,6 @@ if __name__ == "__main__":
             HEADER["publish"].append(msg)
 
     yml = dump(HEADER, Dumper=Dumper, sort_keys=False)
-    print(yml)
     f = open(args.output, "w")
     f.write(yml)
     f.close()

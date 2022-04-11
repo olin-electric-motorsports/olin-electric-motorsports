@@ -12,7 +12,7 @@ py_binary(
 )
 
 genrule(
-    name = "bms_sensing.yml",
+    name = "bms_sensing_yml",
     srcs = [
         "//vehicle/mkv/software/bms:bms_config.h",
     ],
