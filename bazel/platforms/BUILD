@@ -42,6 +42,28 @@ platform(
 )
 
 platform(
+    name = "hitl_firmware_test",
+    constraint_values = [
+        "//bazel/constraints:atmega64m1",
+        "//bazel/constraints:hitl",
+    ],
+    parents = [
+        ":avr_common",
+    ],
+)
+
+platform(
+    name = "hackerboard",
+    constraint_values = [
+        "//bazel/constraints:atmega16m1",
+        "//bazel/constraints:hackerboard",
+    ],
+    parents = [
+        ":avr_common",
+    ],
+)
+
+platform(
     name = "linux-x86_64",
     constraint_values = [
         "@platforms//os:linux",

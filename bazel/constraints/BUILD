@@ -48,6 +48,11 @@ constraint_value(
 )
 
 constraint_value(
+    name = "hackerboard",
+    constraint_setting = ":environment",
+)
+
+constraint_value(
     name = "mkvi",
     constraint_setting = ":environment",
 )
