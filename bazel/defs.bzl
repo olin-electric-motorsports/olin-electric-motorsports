@@ -242,7 +242,7 @@ def cc_firmware(name, **kwargs):
         copts = select({
             "//bazel/constraints:hitl": ["-DBOARD_FIRMWARE_TEST"],
             "//bazel/constraints:hackerboard": ["-DBOARD_HACKERBOARD"],
-            "//conditions:default": []
+            "//conditions:default": [],
         }),
         **kwargs
     )
