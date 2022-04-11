@@ -7,6 +7,8 @@ register_execution_platforms("@local_config_platform//:host", "//bazel/platforms
 
 register_toolchains("//bazel/toolchain:atmega16m1_toolchain")
 
+register_toolchains("//bazel/toolchain:atmega64m1_toolchain")
+
 register_toolchains("//bazel/toolchain:atmega328p_toolchain")
 
 http_archive(
