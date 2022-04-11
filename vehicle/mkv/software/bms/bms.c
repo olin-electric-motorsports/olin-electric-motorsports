@@ -185,12 +185,6 @@ static void state_machine_run(void) {
     int rc = voltage_task(&pack_voltage, &ov, &uv);
     bms_core.pack_voltage = pack_voltage;
 
-    // X in a row per amoun of time.
-    // We might get a failure mode where one of the isoSPI wires gets loose
-    // Consider it safe if we still get data once per second
-    //
-    // As long as we can get data once per second, we're safe (we don't need to
-    // shut down the car)
     if (rc) {
         bms_metrics.voltage_pec_error_count += rc;
 
@@ -244,6 +238,8 @@ static void state_machine_run(void) {
 
     switch (bms_core.bms_state) {
         case IDLE: {
+            gpio_set_pin(BMS_RELAY_LSD);
+
             if (uv > 0) {
                 set_fault(BMS_FAULT_UNDERVOLTAGE);
                 bms_core.bms_state = FAULT;
@@ -264,6 +260,8 @@ static void state_machine_run(void) {
             }
         } break;
         case DISCHARGING: {
+            gpio_set_pin(BMS_RELAY_LSD);
+
             if (air_state == AIR_STATE_IDLE) {
                 bms_core.bms_state = IDLE;
             }
@@ -358,16 +356,16 @@ int main(void) {
 
     // Check state of cells
     if (!initial_checks()) {
-        goto fault;
+        bms_core.bms_state = FAULT;
+        gpio_set_pin(FAULT_LED);
+    } else {
+        // Close the BMS shutdown circuit relay
+        bms_core.bms_state = IDLE;
+        gpio_set_pin(BMS_RELAY_LSD);
     }
 
     // Turn off GENERAL_LED to indicate checks passed
     gpio_clear_pin(GENERAL_LED);
-
-    bms_core.bms_state = IDLE;
-
-    // Close the BMS shutdown circuit relay
-    gpio_set_pin(BMS_RELAY_LSD);
 
     // Set up first receive of AIR Control and BMS charging messages
     can_receive_air_control_critical();
@@ -402,16 +400,4 @@ int main(void) {
             run_10ms = false;
         }
     }
-
-fault:
-    // If fault occurs
-    gpio_clear_pin(BMS_RELAY_LSD);
-    gpio_set_pin(FAULT_LED);
-
-    while (true) {
-        if (run_10ms) {
-            can_send_bms_core();
-            run_10ms = false;
-        }
-    };
 }
