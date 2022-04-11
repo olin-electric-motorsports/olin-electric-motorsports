@@ -57,7 +57,7 @@ Copyright 2017 Linear Technology Corp. (LTC)
  */
 void spi_write_array(uint8_t len, uint8_t* data) {
     uint8_t _read[len];
-    spi_transceive_chip_select(data, _read, len, false);
+    spi_transceive(data, _read, len);
     (void)_read;
 }
 
@@ -74,14 +74,14 @@ void spi_write_read(
 ) {
     uint8_t tx_read[tx_len];
     memset(tx_read, 0xff, tx_len);
-    spi_transceive_chip_select(tx_Data, tx_read, tx_len, false);
+    spi_transceive(tx_Data, tx_read, tx_len);
     uint8_t rx_send[rx_len];
     memset(rx_send, 0, rx_len);
-    spi_transceive_chip_select(rx_send, rx_data, rx_len, false);
+    spi_transceive(rx_send, rx_data, rx_len);
 }
 
 uint8_t spi_read_byte(uint8_t tx_dat) {
     uint8_t data;
-    spi_transceive_chip_select(&tx_dat, &data, 1, false);
+    spi_transceive(&tx_dat, &data, 1);
     return data;
 }

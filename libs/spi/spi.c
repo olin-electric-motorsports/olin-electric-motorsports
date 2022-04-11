@@ -74,32 +74,13 @@ static void spi_transceive_private(uint8_t txdata, uint8_t* rxdata) {
         ;
 
     // Read out result
-    /* uint8_t read = SPDR; */
-
     *rxdata = SPDR;
-    /* if (rxdata) { */
-    /*     // Store result if requested */
-    /*     *rxdata = read; */
-    /* } */
 }
 
 void spi_transceive(uint8_t* txdata, uint8_t* rxdata, uint8_t len) {
-    spi_transceive_chip_select(txdata, rxdata, len, true);
-}
-
-void spi_transceive_chip_select(uint8_t* txdata, uint8_t* rxdata, uint8_t len,
-                                bool chip_select_control) {
-    /* if (chip_select_control && (mode == MAIN)) { */
-    /*     spi_cs_low(); */
-    /* } */
-
     for (uint8_t i = 0; i < len; i++) {
         spi_transceive_private(txdata[i], &rxdata[i]);
     }
-
-    /* if (chip_select_control && (mode == MAIN)) { */
-    /*     spi_cs_high(); */
-    /* } */
 }
 
 void spi_receive(uint8_t* rxdata, uint8_t len) {
