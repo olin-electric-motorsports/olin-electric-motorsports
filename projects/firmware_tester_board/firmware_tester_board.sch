@@ -546,7 +546,7 @@ PD5_ADC2
 Text Label 7300 2050 2    50   ~ 0
 ADC3
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J2
+L formula:CONN_01X03 J2
 U 1 1 621B46D6
 P 7550 1950
 F 0 "J2" H 7578 1991 50  0000 L CNN
@@ -610,7 +610,7 @@ $EndComp
 Text Label 7300 1600 2    50   ~ 0
 ADC2
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J1
+L formula:CONN_01X03 J1
 U 1 1 6207E8DA
 P 7550 1500
 F 0 "J1" H 7578 1541 50  0000 L CNN
@@ -624,7 +624,7 @@ F 6 "https://www.mouser.com/ProductDetail/Harwin/M20-9990346?qs=sGAEpiMZZMs%252b
 	1    0    0    -1  
 $EndComp
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J9
+L formula:CONN_01X03 J9
 U 1 1 6207C7B6
 P 7550 5100
 F 0 "J9" H 7578 5141 50  0000 L CNN
@@ -640,7 +640,7 @@ $EndComp
 Text Label 7300 4750 2    50   ~ 0
 ADC9
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J8
+L formula:CONN_01X03 J8
 U 1 1 6207B142
 P 7550 4650
 F 0 "J8" H 7578 4691 50  0000 L CNN
@@ -656,7 +656,7 @@ $EndComp
 Text Label 7300 4300 2    50   ~ 0
 ADC8
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J7
+L formula:CONN_01X03 J7
 U 1 1 6207A336
 P 7550 4200
 F 0 "J7" H 7578 4241 50  0000 L CNN
@@ -672,7 +672,7 @@ $EndComp
 Text Label 7300 2500 2    50   ~ 0
 ADC4
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J3
+L formula:CONN_01X03 J3
 U 1 1 6207813A
 P 7550 2400
 F 0 "J3" H 7578 2441 50  0000 L CNN
@@ -688,7 +688,7 @@ $EndComp
 Text Label 7300 3850 2    50   ~ 0
 ADC7
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J6
+L formula:CONN_01X03 J6
 U 1 1 62077318
 P 7550 3750
 F 0 "J6" H 7578 3791 50  0000 L CNN
@@ -704,7 +704,7 @@ $EndComp
 Text Label 7300 3400 2    50   ~ 0
 ADC6
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J5
+L formula:CONN_01X03 J5
 U 1 1 62076566
 P 7550 3300
 F 0 "J5" H 7578 3341 50  0000 L CNN
@@ -722,7 +722,7 @@ ADC5
 Text Label 7300 2750 2    50   ~ 0
 PB2
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J4
+L formula:CONN_01X03 J4
 U 1 1 6203A778
 P 7550 2850
 F 0 "J4" H 7578 2891 50  0000 L CNN
@@ -922,7 +922,7 @@ ADC10
 Text Label 7300 6250 2    50   ~ 0
 ADC9_ADC10
 $Comp
-L firmware_tester_board-rescue:CONN_01X03-formula J10
+L formula:CONN_01X03 J10
 U 1 1 62348E99
 P 7550 6250
 F 0 "J10" H 7578 6291 50  0000 L CNN
@@ -1003,7 +1003,7 @@ DIG-RESET
 Text Notes 3250 6050 0    89   ~ 0
 DIGITAL RESET: LOW SIDE DRIVE
 $Comp
-L firmware_tester_board-rescue:AP7370-formula U2
+L formula:AP7370 U2
 U 1 1 6229592D
 P 2700 8700
 F 0 "U2" H 2700 8942 50  0000 C CNN
@@ -1202,7 +1202,7 @@ Connection ~ 8150 9150
 Wire Wire Line
 	8150 9150 8300 9150
 $Comp
-L firmware_tester_board-rescue:CONN_01x02-formula J14
+L formula:CONN_01x02 J14
 U 1 1 6236304D
 P 8350 8550
 F 0 "J14" H 8430 8542 50  0000 L CNN
@@ -1320,7 +1320,7 @@ F 3 "" H 1250 8450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L firmware_tester_board-rescue:ATMEGA64M1-formula U0
+L formula:ATMEGA64M1 U0
 U 1 1 623EB33A
 P 2900 3150
 F 0 "U0" H 2900 5117 50  0000 C CNN
