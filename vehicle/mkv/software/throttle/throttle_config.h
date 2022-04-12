@@ -3,13 +3,12 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
 
-
 /*
  * Pin definitions
  */
-gpio_t BRAKE_IMPLAUSIBILTIY_LED = PC6;
-gpio_t DEVIATION_IMPLAUSIBILITY_LED = PB3;
-gpio_t OUT_OF_RANGE_IMPLAUSIBILITY_LED = PB4;
+gpio_t BRAKE_IMPLAUSIBILTIY_LED = PD0;
+gpio_t DEVIATION_IMPLAUSIBILITY_LED = PD5;
+gpio_t OUT_OF_RANGE_IMPLAUSIBILITY_LED = PD6;
 
 gpio_t RJ45_LED1 = PD6; // orange
 gpio_t RJ45_LED2 = PD5; // green
@@ -24,16 +23,16 @@ gpio_t SS_BOTS = PB7;
  */
 typedef struct {
     adc_pin_e adc_pin;
-    uint16_t throttle_min; // Minimum position (0%) in raw ADC
-    uint16_t throttle_max; // Maximum position (100%) in raw ADC
+    int16_t throttle_min; // Minimum position (0%) in raw ADC
+    int16_t throttle_max; // Maximum position (100%) in raw ADC
 } throttle_potentiometer_s;
 
 // Minimum and maximum ADC counts representing 0% and 100% pedal travel
 // TODO: Recheck/set these values
-#define THROTTLE_R_MIN_COUNTS (uint16_t)(218)
-#define THROTTLE_R_MAX_COUNTS (uint16_t)(654)
-#define THROTTLE_L_MIN_COUNTS (uint16_t)(298)
-#define THROTTLE_L_MAX_COUNTS (uint16_t)(1016)
+#define THROTTLE_R_MIN_COUNTS (int16_t)(100)
+#define THROTTLE_R_MAX_COUNTS (int16_t)(900)
+#define THROTTLE_L_MIN_COUNTS (int16_t)(100)
+#define THROTTLE_L_MAX_COUNTS (int16_t)(900)
 
 const throttle_potentiometer_s throttle_r = {
     .adc_pin = ADC9,

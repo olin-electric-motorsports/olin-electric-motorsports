@@ -26,17 +26,17 @@ publish:
       - name: throttle_l_pos
         slice: 8 + 16
         unit:
-          type: uint16_t
-          name: deg
+          type: int16_t
+          name: '%' 
           offset: 0
-          scale: 1
+          scale: 100/256
       - name: throttle_r_pos
         slice: 24 + 16
         unit:
-          type: uint16_t
-          name: deg
+          type: int16_t
+          name: '%'
           offset: 0
-          scale: 1
+          scale: 100/256
       - name: BOTS_sense
         slice: 40 + 1
         unit:
