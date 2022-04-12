@@ -72,15 +72,15 @@ void pcint0_isr(void) {
  *
  * Returns an int16_t that represents the pedal travel
  */
-// static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
-//     int16_t throttle_raw = adc_read(throttle->adc_pin);
-// 
-//     // Voltage range between 0% and 100% pedal travel
-//     int16_t range = throttle->throttle_max - throttle->throttle_min;
-//     int32_t position = (throttle_raw - throttle->throttle_min) * 255 / range;
-// 
-//     return position;
-// }
+static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
+    int16_t throttle_raw = adc_read(throttle->adc_pin);
+
+    // Voltage range between 0% and 100% pedal travel
+    int16_t range = throttle->throttle_max - throttle->throttle_min;
+    int16_t position = (throttle_raw - throttle->throttle_min) * 255 / range;
+
+    return position;
+}
 
 /*
  * Checks whether either throttle sensor reads an out-of-range value.
@@ -224,8 +224,8 @@ int main(void) {
 //                 }
 //             }
 
-            uint16_t pos_l = adc_read(ADC8);
-            uint16_t pos_r = adc_read(ADC9);
+            uint16_t pos_l = get_throttle_travel(&throttle_l);
+            uint16_t pos_r = get_throttle_travel(&throttle_r);
 
             throttle.throttle_l_pos = pos_l;
             throttle.throttle_r_pos = pos_r;

@@ -15,6 +15,7 @@ ISR(ADC_vect) {
 void adc_init(void) {
     // Enables ADC
     ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS0);
+    ADCSRB &= (1 << AREFEN);
 
     // Sets voltage reference to AVCC with external capacitor connected (page
     // 321 of complete datasheet, table 22-4)
@@ -23,6 +24,7 @@ void adc_init(void) {
 
 void adc_start_convert(adc_pin_e pin) {
     // Set the correct pin in the multiplexer
+    ADMUX &= ~0x1F; // Clear mux bits first
     ADMUX |= (pin & 0x1F);
 
     // Enable conversion
@@ -50,10 +52,9 @@ void adc_interrupt_enable(void (*callback)(void)) {
 }
 
 uint16_t adc_read(adc_pin_e pin) {
-    // adc_start_convert(pin);
-    // while (adc_poll_complete(&ret) == -1) {};
-    ADMUX |= pin;
-    ADCSRA |= (1 << ADSC);
-    while (ADCSRA & (1 << ADSC)) {};
-    return ADC;
+    adc_start_convert(pin);
+    uint16_t ret = 0;
+    while (adc_poll_complete(&ret) == -1) {};
+
+    return ret;
 }
