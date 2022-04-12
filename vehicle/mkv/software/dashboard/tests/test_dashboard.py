@@ -12,7 +12,7 @@ def reset(iocontroller):
 
 
 """
-Tests
+Tests Dashboard
 """
 
 
@@ -130,6 +130,9 @@ def test_rtd_reenter(canbus, iocontroller):
     test_enter_drive_mode(canbus, iocontroller)
 
 def test_steering(canbus, iocontroller):
+    """
+    Test the steering pin and verify can messages are sent.
+    """
     positions = [0,90,180]
     for _ in range(10):
         positions.append(random.uniform(0, 180)) # TODO find real steering range
