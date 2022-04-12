@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [linux-x86_64 16m1 328p 64m1]
+        platform: [linux-x86_64, 16m1, 328p, 64m1]
 
     steps:
     - uses: actions/checkout@v2
