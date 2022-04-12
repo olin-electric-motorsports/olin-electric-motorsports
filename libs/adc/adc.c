@@ -30,9 +30,11 @@ void adc_start_convert(adc_pin_e pin) {
 }
 
 int adc_poll_complete(uint16_t* result) {
-    if (ADCSRA & (1 << ADSC)) {
+    if (!(ADCSRA & (1 << ADIF))) {
         return -1;
     } else {
+        // ADCSRA &= ~1 << ADIF;
+        ADCSRA |= 1 << ADIF;
         *result = ADC;
         return 0;
     }
@@ -48,10 +50,10 @@ void adc_interrupt_enable(void (*callback)(void)) {
 }
 
 uint16_t adc_read(adc_pin_e pin) {
-    adc_start_convert(pin);
-
-    uint16_t ret = 0;
-    while (adc_poll_complete(&ret) == -1) {};
-
-    return ret;
+    // adc_start_convert(pin);
+    // while (adc_poll_complete(&ret) == -1) {};
+    ADMUX |= pin;
+    ADCSRA |= (1 << ADSC);
+    while (ADCSRA & (1 << ADSC)) {};
+    return ADC;
 }

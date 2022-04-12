@@ -52,6 +52,8 @@ int can_mob_has_interrupt(uint8_t mob) {
 }
 
 int can_send(can_frame_t* frame) {
+    while (CANGSTA & (1 << TXBSY))
+    ;
     select_mob(frame->mob);
     mob_reset();
 
