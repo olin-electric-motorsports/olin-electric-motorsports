@@ -23,36 +23,36 @@ publish:
             - THROTTLE_OUT_OF_RANGE_LOWER
             - THROTTLE_POSITION_IMPLAUSIBILITY
             - THROTTLE_BRAKE_PRESSED
-      - name: throttle_r_pos
-        slice: 8 + 8
+      - name: throttle_l_pos
+        slice: 8 + 16
         unit:
-          type: uint8_t
+          type: uint16_t
           name: deg
           offset: 0
           scale: 1
-      - name: throttle_l_pos
-        slice: 16 + 8
+      - name: throttle_r_pos
+        slice: 24 + 16
         unit:
-          type: uint8_t
+          type: uint16_t
           name: deg
           offset: 0
           scale: 1
       - name: BOTS_sense
-        slice: 24 + 1
+        slice: 40 + 1
         unit:
           type: bool
           values:
             t: BOTS shutdown node closed
             f: BOTS shutdown node open
       - name: inertia_switch_sense
-        slice: 25 + 1
+        slice: 41 + 1
         unit:
           type: bool
           values:
             t: inertia switch shutdown node closed
             f: inertia switch shutdown node open
       - name: E_stop_sense
-        slice: 26 + 1
+        slice: 42 + 1
         unit:
           type: bool
           values:

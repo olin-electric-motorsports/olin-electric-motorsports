@@ -36,13 +36,13 @@ typedef struct {
 #define THROTTLE_L_MAX_COUNTS (uint16_t)(1016)
 
 const throttle_potentiometer_s throttle_r = {
-    .adc_pin = ADC8,
+    .adc_pin = ADC9,
     .throttle_min = THROTTLE_R_MIN_COUNTS,
     .throttle_max = THROTTLE_R_MAX_COUNTS,
 };
 
 const throttle_potentiometer_s throttle_l = {
-    .adc_pin = ADC9,
+    .adc_pin = ADC8,
     .throttle_min = THROTTLE_L_MIN_COUNTS,
     .throttle_max = THROTTLE_L_MAX_COUNTS,
 };
