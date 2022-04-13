@@ -10,8 +10,15 @@ build:16m1 --config=m16m1-avr
 build:m328p-avr --platforms=//bazel/platforms:atmega328p_avr
 build:328p --config=m328p-avr
 
+build:64m1-avr --platforms=//bazel/platforms:atmega64m1_avr
+build:64m1 --config=64m1-avr
+
 # Test target
 build:avr-test-sim --platforms=//bazel/platforms:avr_test_sim
+
+build:hitl-firmware-test --platforms=//bazel/platforms:hitl_firmware_test
+
+build:hackerboard --platforms=//bazel/platforms:hackerboard
 
 # Host target
 build:linux-x86_64 --platforms=//bazel/platforms:linux-x86_64
@@ -23,3 +30,6 @@ build:docker-kicad --experimental_docker_verbose
 build:docker-kicad --experimental_enable_docker_sandbox
 build:docker-kicad --incompatible_strict_action_env=true
 build:docker-kicad --experimental_docker_image=setsoft/kicad_auto
+
+# Because I can never remember the order...
+build:kicad-docker --config=docker-kicad

@@ -7,16 +7,8 @@
  * GPIO pin definitions
  */
 
-// #define BOARD_16M1_HACKER
-#define BOARD_SERVICE_SECTION_CONTROLLER
-
-#ifdef BOARD_SERVICE_SECTION_CONTROLLER
-// Outputs
 gpio_t PRECHARGE_CTL = PB2;
 gpio_t AIR_N_LSD = PC6;
-
-gpio_t FAULT_LED = PD6;
-gpio_t GENERAL_LED = PD7;
 
 // Inputs
 gpio_t SS_TSMS = PB3;
@@ -27,30 +19,21 @@ gpio_t SS_HVD = PB7;
 
 gpio_t BMS_SENSE = PC0;
 gpio_t AIR_P_WELD_DETECT = PC4;
-gpio_t AIR_N_WELD_DETECT = PC5;
 
 gpio_t IMD_SENSE = PD0;
 
-#elif defined(BOARD_16M1_HACKER)
-// Outputs
-gpio_t PRECHARGE_CTL = PB2;
-gpio_t AIR_N_LSD = PC6;
+#ifdef BOARD_HACKERBOARD
+
+gpio_t FAULT_LED = PD6;
+gpio_t GENERAL_LED = PD7;
+gpio_t AIR_N_WELD_DETECT = PC5;
+
+#else
 
 gpio_t FAULT_LED = PB7;
 gpio_t GENERAL_LED = PD6;
-
-// Inputs
-gpio_t SS_TSMS = PB3;
-gpio_t SS_IMD_LATCH = PB4;
-gpio_t SS_MPC = PB5;
-gpio_t SS_HVD_CONN = PB6;
-gpio_t SS_HVD = PD7;
-
-gpio_t BMS_SENSE = PC0;
-gpio_t AIR_P_WELD_DETECT = PC4;
 gpio_t AIR_N_WELD_DETECT = PC7;
 
-gpio_t IMD_SENSE = PD0;
 #endif
 
 #define BMS_VOLTAGE_THRESHOLD_LOW_daV     (20) // 20 decavolts (200 volts)
