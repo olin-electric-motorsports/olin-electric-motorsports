@@ -109,7 +109,7 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW_daV) {
+    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
         set_fault(AIR_FAULT_BMS_VOLTAGE);
         rc = 1;
         goto bail;
@@ -224,7 +224,7 @@ static void state_machine_run(void) {
             }
 
             // Set correct scale for pack voltage
-            pack_voltage = pack_voltage * 10;
+            pack_voltage = (pack_voltage << 4) * 0.0001; // (x << 4 == x * 16)
 
             /*
              * This pattern ensures that we only call get_time() once because we
