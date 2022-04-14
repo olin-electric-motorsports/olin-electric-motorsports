@@ -1,16 +1,16 @@
 cc_binary(
-    name = "btldr-client",
+    name = "client",
     srcs = [
         "main.c",
     ],
     deps = [
-        ":btldr-client-libs",
+        ":btldr_client_libs",
         "@log//:log",
     ],
 )
 
 cc_library(
-    name = "btldr-client-libs",
+    name = "btldr_client_libs",
     srcs = [
         "can_client.c",
         "commands.c",

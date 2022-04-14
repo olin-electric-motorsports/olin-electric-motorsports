@@ -239,7 +239,7 @@ def cc_firmware(name, **kwargs):
             "//scripts/ldscripts:atmega16m1.ld",
             "//scripts/ldscripts:atmega64m1.ld",
         ],
-        copts = select({
+        copts = kwargs.pop("copts") + select({
             "//bazel/constraints:hitl": ["-DBOARD_FIRMWARE_TEST"],
             "//bazel/constraints:hackerboard": ["-DBOARD_HACKERBOARD"],
             "//conditions:default": [],
