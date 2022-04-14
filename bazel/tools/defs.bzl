@@ -70,3 +70,30 @@ def can_api_files(name, yaml, dbc):
         ],
         visibility = ["//visibility:public"],
     )
+
+# def btldr_updater(name, btldr_id, image):
+# cc_firmware(
+#     name = name,
+#     srcs = [
+#         "btldr.c",
+#     ],
+#     deps = [
+#         "//libs/can",
+#         "//projects/btldr/libs/image",
+#         "//projects/btldr/libs/shmem",
+#         ":can_isp",
+#     ],
+#     copts = [
+#         "-nostartfiles",
+#         "-static",
+#         "-Wl,--section-start=.text=0x3000", # Start at the boot start address
+#         "-Wl,-u,vfprintf -lprintf_min",
+#         "-ffunction-sections",
+#     ],
+#     target_compatible_with = select({
+#         "//bazel/constraints:atmega16m1": [],
+#         "//bazel/constraints:atmega64m1": [],
+#         "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+#     }),
+#     visibility = ["//visibility:public"],
+# )

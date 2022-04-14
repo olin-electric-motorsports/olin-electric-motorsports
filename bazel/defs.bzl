@@ -19,9 +19,9 @@ def _eep_file_impl(ctx):
     args = ctx.actions.args()
     args.add(input_file)
     args.add(output_file)
-    args.add("-O", "ihex")  # Output a binary
-    args.add("-j", ".eeprom")  # Don't include .eeprom
-    args.add("--change-section-lma", ".eeprom=0")
+    args.add("-O", "ihex")  # Output a hex file
+    args.add("-j", ".eeprom")  # Only include eeprom
+    args.add("--change-section-lma", ".eeprom=0")  # Reset load address to zero
     args.add("--set-section-flags=.eeprom=alloc,load")
 
     ctx.actions.run(
@@ -152,7 +152,7 @@ _bin_file = rule(
         ),
         # TODO: (@jack-greenberg) Integrate btldr
         # "_patch_header": attr.label(
-        #     default = Label("//tools:patch_image_header"),
+        #     default = Label("//projects/btldr/tools:patch_image_header"),
         # )
     },
     executable = False,
@@ -179,13 +179,18 @@ def _flash_impl(ctx):
         },
     )
 
+    runfiles = ctx.runfiles(files = [
+        ctx.file.binary,
+        ctx.file.avr_config,
+    ])
+
+    if ctx.file.btldr:
+        runfiles.merge(ctx.runfiles(files = [ctx.file.btldr]))
+
     return [
         DefaultInfo(
             executable = script,
-            runfiles = ctx.runfiles(files = [
-                ctx.file.binary,
-                ctx.file.avr_config,
-            ]),
+            runfiles = runfiles,
         ),
     ]
 
@@ -200,6 +205,11 @@ _flash = rule(
         "binary": attr.label(
             doc = "Binary file for flashing",
             mandatory = True,
+            allow_single_file = True,
+        ),
+        "btldr": attr.label(
+            doc = "Hex file for btldr",
+            mandatory = False,
             allow_single_file = True,
         ),
         "method": attr.string(
@@ -227,9 +237,31 @@ _flash = rule(
 # Macro to generate all the proper files
 def cc_firmware(name, **kwargs):
     # Generates .elf file
+
+    data = []
+    if kwargs.get("data"):
+        data = kwargs.pop("data")
+
+    defines = []
+    if kwargs.get("defines"):
+        defines = kwargs.pop("defines")
+
+    btldr = None
+    if kwargs.get("btldr"):
+        btldr = kwargs.pop("btldr")
+        data.append(btldr + ".hex")
+
+    copts = []
+    if kwargs.get("copts"):
+        copts = kwargs.pop("copts")
+
+    linkopts = []
+    if kwargs.get("linkopts"):
+        linkopts = kwargs.pop("linkopts")
+
     cc_binary(
         name = "{}.elf".format(name),
-        linkopts = select({
+        linkopts = linkopts + select({
             "//bazel/constraints:atmega16m1": ["-T $(location //scripts/ldscripts:atmega16m1.ld)"],
             "//bazel/constraints:atmega64m1": ["-T $(location //scripts/ldscripts:atmega64m1.ld)"],
             # Add more ldscripts here
@@ -239,11 +271,13 @@ def cc_firmware(name, **kwargs):
             "//scripts/ldscripts:atmega16m1.ld",
             "//scripts/ldscripts:atmega64m1.ld",
         ],
-        copts = kwargs.pop("copts") + select({
+        copts = copts + select({
             "//bazel/constraints:hitl": ["-DBOARD_FIRMWARE_TEST"],
             "//bazel/constraints:hackerboard": ["-DBOARD_HACKERBOARD"],
             "//conditions:default": [],
         }),
+        defines = defines,
+        data = data,
         **kwargs
     )
 
@@ -251,18 +285,21 @@ def cc_firmware(name, **kwargs):
     _bin_file(
         name = "{}.bin".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates .hex file
     _hex_file(
         name = "{}.hex".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates .eep file
     _eep_file(
         name = "{}.eep".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates tarball file with all
@@ -278,10 +315,16 @@ def cc_firmware(name, **kwargs):
     )
 
     # Generates flash script
-    # Invoke with `bazel build --config=16m1 //path/to:target -- -c usbasp`
+    # Invoke with `bazel run --config=16m1 //path/to:target -- -c usbasp`
+
+    btldr_hex = None
+    if btldr:
+        btldr_hex = "//projects/btldr:{}_btldr.hex".format(name)
+
     _flash(
         name = name,
         binary = "{}.bin".format(name),
+        btldr = btldr_hex,
         method = select({
             "//bazel/constraints:avr": "avrdude",
             "//conditions:default": "",

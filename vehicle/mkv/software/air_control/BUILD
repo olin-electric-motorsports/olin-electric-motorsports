@@ -14,6 +14,11 @@ cc_firmware(
     srcs = [
         "air.c",
         "air_config.h",
+        "//projects/btldr:git_sha_header",
+    ],
+    btldr = "//projects/btldr:air_control_btldr",
+    data = [
+        "//projects/btldr:image_hdr.c",
     ],
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
@@ -25,6 +30,8 @@ cc_firmware(
         ":utils",
         "//libs/gpio",
         "//libs/timer",
+        "//projects/btldr:btldr_lib",
+        "//projects/btldr/libs/image",
     ],
 )
 

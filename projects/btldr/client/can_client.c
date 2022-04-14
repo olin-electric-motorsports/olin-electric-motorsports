@@ -17,7 +17,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include "log.h"
+#include "third_party/log/log.h"
 
 extern char* device;
 
@@ -83,16 +83,15 @@ int can_send(struct CanClient* client, uint16_t id, uint8_t* data,
     return 0;
 }
 
-int can_receive(struct CanClient* client, struct can_filter *filter,
-                uint16_t* can_id, uint8_t* can_dlc,
-                uint8_t* data, int timeout) {
+int can_receive(struct CanClient* client, struct can_filter* filter,
+                uint16_t* can_id, uint8_t* can_dlc, uint8_t* data,
+                int timeout) {
     struct pollfd fds = {
         .fd = client->s,
         .events = POLLIN,
     };
 
-    setsockopt(client->s, SOL_CAN_RAW, CAN_RAW_FILTER, filter,
-               sizeof(filter));
+    setsockopt(client->s, SOL_CAN_RAW, CAN_RAW_FILTER, filter, sizeof(filter));
 
     log_trace("Polling receive...");
 

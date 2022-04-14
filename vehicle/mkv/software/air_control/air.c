@@ -6,9 +6,16 @@
 #include "libs/timer/api.h"
 
 #include "air_config.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
 #include "utils/timer.h"
 #include "utils/utils.h"
 #include "vehicle/mkv/software/air_control/can_api.h"
+
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
 
 enum State {
     INIT = 0,

@@ -24,3 +24,8 @@ void flash_write(uint8_t* data, uint8_t length, uint16_t* current_addr);
  * @param [in]  size     Amount of data
  */
 void flash_read(uint16_t address, uint8_t* data, uint8_t size);
+
+/*
+ * Used to reset the internal buf_address for the flash writer
+ */
+void flash_reset_buf_address(void);

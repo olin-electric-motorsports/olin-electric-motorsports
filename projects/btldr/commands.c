@@ -6,24 +6,23 @@
 #include <string.h>
 
 #include "can_isp.h"
-#include "can_lib.h"
-#include "debug.h"
-#include "flash.h"
-#include "image.h"
-#include "shmem.h"
+#include "libs/can/api.h"
+#include "projects/btldr/libs/flash/api.h"
+#include "projects/btldr/libs/image/api.h"
+#include "projects/btldr/libs/shmem/api.h"
 
 static struct session_data session = {
     .is_active = false,
     .type = 0,
-    .current_addr = {0},
-    .remaining_size = {0},
+    .current_addr = { 0 },
+    .remaining_size = { 0 },
 };
 
 /***************************************************
  * Handler functions defined in can_isp_commands.c *
  ***************************************************/
 
-uint8_t handle_query(uint8_t* data, uint8_t length) {
+uint8_t handle_query(uint16_t btldr_id, uint8_t* data, uint8_t length) {
     uint8_t version = shmem_get_version();
 
     // TODO: Use getter function?
@@ -34,12 +33,12 @@ uint8_t handle_query(uint8_t* data, uint8_t length) {
     uint64_t delta = timestamp - flash_timestamp;
     uint32_t delta_32 = (uint32_t)delta & 0xFFFF;
 
-    uint8_t response_data[8] = {version, chip, CURRENT_IMAGE_UPDATER, 0};
+    uint8_t response_data[8] = { version, chip, CURRENT_IMAGE_UPDATER, 0 };
 
     memcpy((response_data + 4), &delta_32, sizeof(delta_32));
 
     can_frame_t response = {
-        .id = (BTLDR_ID << 4) | CAN_ID_QUERY_RESPONSE,
+        .id = (btldr_id << 4) | CAN_ID_QUERY_RESPONSE,
         .mob = 0,
         .data = response_data,
         .dlc = 8,
@@ -48,7 +47,7 @@ uint8_t handle_query(uint8_t* data, uint8_t length) {
     return can_send(&response);
 }
 
-uint8_t handle_reset(uint8_t* data, uint8_t length) {
+uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
     uint8_t st = 0;
 
     boot_rww_enable();
@@ -62,23 +61,23 @@ uint8_t handle_reset(uint8_t* data, uint8_t length) {
     }
 
     // Validate image
-    const image_hdr_t* image_hdr = image_get_header();
-    uint8_t valid = image_validate(image_hdr);
+    const image_hdr_t image_hdr = image_get_header();
+    uint8_t valid = image_validate(&image_hdr);
 
     if (valid == IMAGE_VALID) {
         bootflag_clear(UPDATE_REQUESTED);
         bootflag_set(IMAGE_IS_VALID);
 
         // Back to bootloader
-        asm("jmp 0x3000");  // TODO How to get bootstart address?
+        asm("jmp 0x3000"); // TODO How to get bootstart address?
     } else {
         bootflag_clear(IMAGE_IS_VALID);
 
         // Transmit error with invalid image and reason for invalid
-        uint8_t err_data[2] = {ERR_IMAGE_INVALID, valid};
+        uint8_t err_data[2] = { ERR_IMAGE_INVALID, valid };
         can_frame_t response = {
             .mob = 0,
-            .id = (BTLDR_ID << 4) | CAN_ID_STATUS,
+            .id = (btldr_id << 4) | CAN_ID_STATUS,
             .data = err_data,
             .dlc = 2,
         };
@@ -90,7 +89,7 @@ uint8_t handle_reset(uint8_t* data, uint8_t length) {
     return st;
 }
 
-uint8_t handle_request(uint8_t* data, uint8_t length) {
+uint8_t handle_request(uint16_t btldr_id, uint8_t* data, uint8_t length) {
     session.is_active = true;
     session.type = data[0];
     flash_reset_buf_address();
@@ -103,11 +102,11 @@ uint8_t handle_request(uint8_t* data, uint8_t length) {
         session.current_addr.word = 0;
         session.remaining_size.word = image_get_size();
     } else {
-        uint8_t err_data[1] = {ERR_INVALID_COMMAND};
+        uint8_t err_data[1] = { ERR_INVALID_COMMAND };
 
         can_frame_t msg = {
             .mob = 0,
-            .id = (BTLDR_ID << 4) | CAN_ID_STATUS,
+            .id = (btldr_id << 4) | CAN_ID_STATUS,
             .data = err_data,
             .dlc = 1,
         };
@@ -124,7 +123,7 @@ uint8_t handle_request(uint8_t* data, uint8_t length) {
 
     can_frame_t msg = {
         .mob = 0,
-        .id = (BTLDR_ID << 4) | CAN_ID_STATUS,
+        .id = (btldr_id << 4) | CAN_ID_STATUS,
         .data = status_data,
         .dlc = 5,
     };
@@ -132,7 +131,7 @@ uint8_t handle_request(uint8_t* data, uint8_t length) {
     return can_send(&msg);
 }
 
-uint8_t handle_data(uint8_t* data, uint8_t length) {
+uint8_t handle_data(uint16_t btldr_id, uint8_t* data, uint8_t length) {
     // Write data to temporary buffer
     flash_write(data, length, &(session.current_addr.word));
 
@@ -149,7 +148,7 @@ uint8_t handle_data(uint8_t* data, uint8_t length) {
 
     can_frame_t msg = {
         .mob = 0,
-        .id = (BTLDR_ID << 4) | CAN_ID_STATUS,
+        .id = (btldr_id << 4) | CAN_ID_STATUS,
         .data = status_data,
         .dlc = 5,
     };

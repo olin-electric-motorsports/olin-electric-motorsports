@@ -20,5 +20,7 @@ refresh_compile_commands(
     name = "refresh_compile_commands",
     targets = {
         "//vehicle/mkv/software/...": "--platforms=//bazel/platforms:atmega16m1_avr -c opt",
+        # "//vehicle/mkv/software/dashboard": "--platforms=//bazel/platforms:atmega16m1_avr -c opt",
+        # "//projects/btdlr/...": "--platforms=//bazel/platforms:atmega16m1_avr -c opt",
     },
 )

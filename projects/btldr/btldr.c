@@ -11,10 +11,9 @@
 #include <util/delay.h>
 
 #include "can_isp.h"
-#include "can_lib.h"
-#include "debug.h"
-#include "image.h"
-#include "shmem.h"
+#include "libs/can/api.h"
+#include "projects/btldr/libs/image/api.h"
+#include "projects/btldr/libs/shmem/api.h"
 
 /*
  * MCUSR := MCU Status Register
@@ -23,11 +22,11 @@
 // extern uint32_t bootflags;
 
 int main(void) {
-    cli();  // Disable interrupts in the btldr
+    cli(); // Disable interrupts in the btldr
 
-    log_init();
-
-    log_uart("-- Bootloader --");
+    // log_init();
+    //
+    // log_uart("-- Bootloader --");
 
     bool image_is_valid = bootflag_get(IMAGE_IS_VALID);
     bool update_requested = bootflag_get(UPDATE_REQUESTED);
@@ -37,10 +36,11 @@ int main(void) {
             // Jump to application with offset of image header size
             asm("jmp %0" ::"I"(sizeof(image_hdr_t)));
 
-            log_uart("Jump failed, entering loop");
-            while (1) continue;
+            // log_uart("Jump failed, entering loop");
+            while (1)
+                continue;
         } else {
-            log_uart("Image is corrupted or invalid, going into updater");
+            // log_uart("Image is corrupted or invalid, going into updater");
         }
     }
 
@@ -62,5 +62,7 @@ int main(void) {
     // message objects
     (void)can_receive(&msg, filter);
 
-    while (1) { (void)can_isp_task(); }
+    while (1) {
+        (void)can_isp_task(BTLDR_ID);
+    }
 }

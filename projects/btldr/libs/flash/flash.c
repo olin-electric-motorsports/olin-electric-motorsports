@@ -4,8 +4,10 @@
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 
+static uint16_t buf_address = 0;
+
 void flash_write(uint8_t* data, uint8_t length, uint16_t* current_addr) {
-    static uint16_t buf_address = 0;
+    // static uint16_t buf_address = 0;
     uint8_t sreg = SREG;
 
     uint16_t wr_data = 0xFFFF;
@@ -46,4 +48,8 @@ void flash_read(uint16_t address, uint8_t* data, uint8_t size) {
         *data = pgm_read_byte(address + i);
         data++;
     }
+}
+
+void flash_reset_buf_address(void) {
+    buf_address = 0;
 }

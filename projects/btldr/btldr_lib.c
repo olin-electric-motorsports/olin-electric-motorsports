@@ -1,20 +1,27 @@
-#include "lib.h"
+#include "btldr_lib.h"
 
 #include <string.h>
 
-#include "can_isp.h"
-#include "can_lib.h"
-#include "debug.h"
-#include "image.h"
-#include "shmem.h"
+#include "libs/can/api.h"
+
+#include "projects/btldr/can_isp.h"
+// #include "debug.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+#include "projects/btldr/libs/shmem/api.h"
 
 static can_frame_t can_msg;
+
+// Save btldr_id
+static uint16_t btldr_id = 0x00;
 
 void updater_init(uint16_t ecu_id, uint8_t mob) {
     can_msg.mob = mob;
 
+    btldr_id = ecu_id;
+
     can_filter_t filter = {
-        .id = BTLDR_ID << 4,
+        .id = ecu_id << 4,
         .mask = 0x7f0,
     };
 
@@ -40,11 +47,11 @@ static void do_query(uint8_t* data, uint8_t dlc) {
     uint64_t delta = timestamp - flash_timestamp;
     uint32_t delta_32 = (uint32_t)delta & 0xFFFF;
 
-    uint8_t resp_data[8] = {version, chip, CURRENT_IMAGE_APP, 0};
+    uint8_t resp_data[8] = { version, chip, CURRENT_IMAGE_APP, 0 };
 
     memcpy((resp_data + 4), &delta_32, sizeof(delta_32));
 
-    can_msg.id = (BTLDR_ID << 4) | CAN_ID_QUERY_RESPONSE;
+    can_msg.id = (btldr_id << 4) | CAN_ID_QUERY_RESPONSE;
     can_msg.data = resp_data;
     can_msg.dlc = 8;
 
@@ -57,7 +64,7 @@ void updater_loop(void) {
     if (rc == -1) {
         return;
     } else if (rc == 1) {
-        log_uart("Error in updater loop!");
+        // log_uart("Error in updater loop!");
         return;
     }
 
@@ -75,7 +82,7 @@ void updater_loop(void) {
     }
 
     can_filter_t filter = {
-        .id = BTLDR_ID << 4,
+        .id = btldr_id << 4,
         .mask = 0x7f0,
     };
 

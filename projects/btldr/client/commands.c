@@ -11,12 +11,12 @@
 #include <time.h>
 
 #include "can_client.h"
-#include "can_isp.h"
-#include "image.h"
-#include "log.h"
+#include "external/log/log.h"
+#include "projects/btldr/can_isp.h"
+#include "projects/btldr/image/image.h"
 
-#define POLLTIMEOUT (1000)
-#define MAX_RETRIES (5)
+#define POLLTIMEOUT    (1000)
+#define MAX_RETRIES    (5)
 #define PING_BROADCAST (0xFF)
 
 char* chip_id_to_name[4] = {
@@ -103,7 +103,7 @@ int cmd_flash(struct CanClient* client, uint8_t ecu_id, char* binary_path) {
     can_msg_id = (ecu_id << 4) | CAN_ID_DATA;
 
     rfilter[0].can_id = (ecu_id << 4) | CAN_ID_STATUS;
-    rfilter[0].can_mask = 0x7FF;  // Exact match
+    rfilter[0].can_mask = 0x7FF; // Exact match
 
     while ((nbytes = fread(can_data, 1, 8, fp)) != 0) {
         can_send(client, can_msg_id, can_data, nbytes);
@@ -130,14 +130,15 @@ int cmd_flash(struct CanClient* client, uint8_t ecu_id, char* binary_path) {
         // All is good
         // update status in log
         uint16_t remaining_data;
-        memcpy(&remaining_data, can_data+3, sizeof(uint16_t));
+        memcpy(&remaining_data, can_data + 3, sizeof(uint16_t));
 
         uint16_t file_remaining_data = ftell(fp);
 
         if (file_remaining_data != remaining_data) {
             log_warn("Mismatch in amount of data remaining, flash may fail");
         } else {
-            double percent_complete = (image_size - remaining_data) / image_size;
+            double percent_complete
+                = (image_size - remaining_data) / image_size;
             printf("%.2f%% complete", percent_complete);
         }
     }
@@ -180,14 +181,14 @@ int cmd_ping(struct CanClient* client, uint8_t ecu_id, uint8_t* current_image) {
             goto bail;
         }
 
-        rc = can_receive(client, rfilter, &recv_can_id,
-                         &recv_can_dlc, (uint8_t*)recv_can_data, POLLTIMEOUT);
+        rc = can_receive(client, rfilter, &recv_can_id, &recv_can_dlc,
+                         (uint8_t*)recv_can_data, POLLTIMEOUT);
         num_tries++;
     } while ((rc == -1) && (num_tries < MAX_RETRIES));
 
     if ((num_tries == MAX_RETRIES) && (rc == -1)) {
         printf("Failed to receive ping response. Device unreachable.\n");
-        rc = 2;  // timeout
+        rc = 2; // timeout
         goto bail;
     }
 
@@ -204,7 +205,7 @@ int cmd_ping(struct CanClient* client, uint8_t ecu_id, uint8_t* current_image) {
     char* image_name = (current_image == CURRENT_IMAGE_APP) ? "app" : "updater";
 
     uint32_t time_delta;
-    memcpy(&time_delta, recv_can_data+4, sizeof(uint32_t));
+    memcpy(&time_delta, recv_can_data + 4, sizeof(uint32_t));
 
     const time_t timer = current_time - time_delta;
     struct tm flash_time;
@@ -214,7 +215,7 @@ int cmd_ping(struct CanClient* client, uint8_t ecu_id, uint8_t* current_image) {
     (void)strftime(flash_time_str, 64, "%x %H:%M", &flash_time);
 
     printf("8 bytes from 0x%X: chip=%s version=%i.%i image=%s flashed=%s\n",
-            ecu_id, chip, version_maj, version_min, image_name, flash_time_str);
+           ecu_id, chip, version_maj, version_min, image_name, flash_time_str);
 
 bail:
     return rc;

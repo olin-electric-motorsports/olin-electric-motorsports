@@ -3,9 +3,12 @@ cc_binary(
     srcs = [
         "main.c",
     ],
+    target_compatible_with = [
+        "@platforms//os:linux",
+    ],
     deps = [
         ":btldr_client_libs",
-        "@log//:log",
+        "@log",
     ],
 )
 
@@ -19,5 +22,12 @@ cc_library(
         "can_client.h",
         "commands.h",
     ],
+    target_compatible_with = [
+        "@platforms//os:linux",
+    ],
     visibility = ["//visibility:private"],
+    deps = [
+        "//projects/btldr:can_isp",
+        "//projects/btldr/libs/image",
+    ],
 )
