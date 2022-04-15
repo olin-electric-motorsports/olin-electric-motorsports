@@ -332,7 +332,7 @@ def cc_firmware(name, **kwargs):
         tools = [
             "//projects/btldr/tools:patch_header",
         ],
-        cmd = "$(location //projects/btldr/tools:patch_header) $(SRCS) $(OUTS)"
+        cmd = "$(location //projects/btldr/tools:patch_header) $(SRCS) $(OUTS)",
     )
 
     bin_file = ":{}.bin".format(name)

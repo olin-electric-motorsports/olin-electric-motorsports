@@ -3,15 +3,15 @@ cc_binary(
     srcs = [
         "patch_header.c",
     ],
-    visibility = ["//visibility:public"],
-    target_compatible_with = [
-        "@platforms//os:linux",
-    ],
     defines = [
         "DEBUG",
     ],
+    target_compatible_with = [
+        "@platforms//os:linux",
+    ],
+    visibility = ["//visibility:public"],
     deps = [
-        "//projects/btldr/libs/image:hdrs",
         "//projects/btldr/libs/crc32",
+        "//projects/btldr/libs/image:hdrs",
     ],
 )
