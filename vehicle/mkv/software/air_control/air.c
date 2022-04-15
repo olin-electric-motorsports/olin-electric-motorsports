@@ -12,6 +12,9 @@
 #include "utils/utils.h"
 #include "vehicle/mkv/software/air_control/can_api.h"
 
+/*
+ * Required for btldr
+ */
 image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .image_magic = IMAGE_MAGIC,
     .git_sha = STABLE_GIT_COMMIT,

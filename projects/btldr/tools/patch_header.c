@@ -5,25 +5,25 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/stat.h>
 #include <time.h>
+#include <errno.h>
 
-#include "crc32.h"
-#include "image.h"
+#include "projects/btldr/libs/crc32/api.h"
+#include "projects/btldr/libs/image/api.h"
 
 const size_t image_hdr_size = sizeof(image_hdr_t);
 
-int patch_verify_image_magic(FILE* fp, image_hdr_t* image_hdr) {
+int patch_verify_image_magic(FILE* old_file, image_hdr_t* image_hdr) {
     if (image_hdr->image_magic != IMAGE_MAGIC) {
         fprintf(stderr, "Incorrect image magic: 0x%X\n",
-                image_hdr->image_magic);
-        fclose(fp);
+                (int)image_hdr->image_magic);
+        fclose(old_file);
         return 1;
     }
     return 0;
 }
 
-int patch_write_timestamp(FILE* fp, image_hdr_t* image_hdr) {
+int patch_write_timestamp(FILE* old_file, image_hdr_t* image_hdr) {
     // Timestamp
     time_t timestamp = time(NULL);
     image_hdr->flash_timestamp = (uint64_t)timestamp;
@@ -31,104 +31,119 @@ int patch_write_timestamp(FILE* fp, image_hdr_t* image_hdr) {
     return 0;
 }
 
-int patch_write_image_size(FILE* fp, image_hdr_t* image_hdr) {
+int patch_write_image_size(FILE* old_file, image_hdr_t* image_hdr) {
     // Image size
-    fseek(fp, 0, SEEK_END);
-    size_t image_size_total = ftell(fp);
+    fseek(old_file, 0, SEEK_END);
+    size_t image_size_total = ftell(old_file);
     image_hdr->image_size = image_size_total - image_hdr_size;
-    fseek(fp, 0, SEEK_SET);
+    fseek(old_file, 0, SEEK_SET);
 
     return 0;
 }
 
-int patch_calc_write_crc(FILE* fp, image_hdr_t* image_hdr,
+int patch_calc_write_crc(FILE* old_file, image_hdr_t* image_hdr,
                          uint16_t image_size) {
     // Seek to the beginning of the image
-    fseek(fp, image_hdr_size, SEEK_SET);
+    fseek(old_file, image_hdr_size, SEEK_SET);
 
     uint8_t* image = (uint8_t*)malloc(image_size);
     if (image == NULL) {
         fprintf(stderr, "Failed to malloc image_size %i", image_size);
         exit(1);
     }
-    fread(image, image_size, 1, fp);
+    size_t num_read = fread(image, image_size, 1, old_file);
+    (void)num_read;
 
     uint32_t crc;
     crc32(image, image_size, &crc);
     image_hdr->crc = crc;
 
     free(image);
-    fseek(fp, 0, SEEK_SET);
+    fseek(old_file, 0, SEEK_SET);
 
-    return 0;
-}
-
-int patch_write_git_sha(FILE* fp) {
     return 0;
 }
 
 int main(int argc, char** argv) {
-    if (argc != 2) {
-        fprintf(stderr, "Usage: patch_header BINARY\n");
+    if (argc != 3) {
+        fprintf(stderr, "Usage: patch_header BINARY OUTPUT\n");
         return 1;
     }
 
-    char* file = argv[1];
-    FILE* fp = fopen(file, "r+b");
+    char* binary = argv[1];
+    char* output = argv[2];
+    FILE* old_file = fopen(binary, "rb");
+    FILE* new_file = fopen(output, "w+b");
 
-    if (fp == NULL) {
-        fprintf(stderr, "File not found: %s\n", file);
-        return 1;
+    if (old_file == NULL) {
+        perror("binary: ");
+        return errno;
+    }
+
+    if (new_file == NULL) {
+        perror("patched file: ");
+        return errno;
     }
 
 #ifdef DEBUG
-    printf("Patching %s\n", file);
+    printf("Patching %s\n", binary);
 #endif
 
     image_hdr_t image_hdr;
-    fread(&image_hdr, image_hdr_size, 1, fp);
+    size_t num_read = fread(&image_hdr, image_hdr_size, 1, old_file);
+    (void)num_read;
+
+    int rc;
+
+    rc = patch_verify_image_magic(old_file, &image_hdr);
+    if (rc != 0) {
+        return rc;
+    }
+
+    rc = patch_write_timestamp(old_file, &image_hdr);
+    if (rc != 0) {
+        return rc;
+    }
+
+    rc = patch_write_image_size(old_file, &image_hdr);
+    if (rc != 0) {
+        return rc;
+    }
+
+    rc = patch_calc_write_crc(old_file, &image_hdr, image_hdr.image_size);
+    if (rc != 0) {
+        return rc;
+    }
 
 #ifdef DEBUG
-    printf("Found data: {\n");
-    printf("    .image_magic = %x\n", image_hdr.image_magic);
-    printf("    .crc = %x\n", image_hdr.crc);
-    printf("    .image_size = %d\n", image_hdr.image_size);
-    printf("    .flash_timestamp = %ld\n", image_hdr.flash_timestamp);
-    printf("    .reserved = %x\n", image_hdr.reserved);
+    printf("Writing: {\n");
+    printf("    .image_magic = %x,\n", image_hdr.image_magic);
+    printf("    .crc = %x,\n", image_hdr.crc);
+    printf("    .image_size = %d,\n", image_hdr.image_size);
+    printf("    .flash_timestamp = %ld,\n", image_hdr.flash_timestamp);
+    printf("    .reserved = %x,\n", image_hdr.reserved);
     printf("    .git_sha = %s\n", image_hdr.git_sha);
     printf("}\n");
 #endif
 
-    int rc;
-
-    rc = patch_verify_image_magic(fp, &image_hdr);
-    if (rc != 0) {
-        exit(1);
+    /*
+     * Copy old to new
+     */
+    char c = fgetc(old_file);
+    while (c != EOF) {
+        fputc(c, new_file);
+        c = fgetc(old_file);
     }
-
-    rc = patch_write_timestamp(fp, &image_hdr);
-    if (rc != 0) {
-        exit(1);
-    }
-
-    rc = patch_write_image_size(fp, &image_hdr);
-    if (rc != 0) {
-        exit(1);
-    }
-
-    rc = patch_calc_write_crc(fp, &image_hdr, image_hdr.image_size);
-    if (rc != 0) {
-        exit(1);
-    }
+    fclose(old_file);
 
     // Write image_hdr back to binary file
-    fseek(fp, 0, SEEK_SET);
-    if (fwrite(&image_hdr, image_hdr_size, 1, fp) == 0) {
-        fprintf(stderr, "Write failed.\n");
+    fseek(new_file, 0, SEEK_SET);
+    if (fwrite(&image_hdr, image_hdr_size, 1, new_file) == 0) {
+        perror("Failed to write image header: ");
     }
 
     printf("Image data written.\n");
 
-    fclose(fp);
+    fclose(new_file);
     return 0;
 }

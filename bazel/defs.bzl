@@ -207,6 +207,11 @@ _flash = rule(
             mandatory = True,
             allow_single_file = True,
         ),
+        "eeprom": attr.label(
+            doc = "EEPROM file",
+            mandatory = False,
+            allow_single_file = True,
+        ),
         "btldr": attr.label(
             doc = "Hex file for btldr",
             mandatory = False,
@@ -316,19 +321,38 @@ def cc_firmware(name, **kwargs):
 
     # Generates flash script
     # Invoke with `bazel run --config=16m1 //path/to:target -- -c usbasp`
+    native.genrule(
+        name = "{}_patched_bin".format(name),
+        srcs = [
+            "{}.bin".format(name),
+        ],
+        outs = [
+            "{}_patched.bin".format(name),
+        ],
+        tools = [
+            "//projects/btldr/tools:patch_header",
+        ],
+        cmd = "$(location //projects/btldr/tools:patch_header) $(SRCS) $(OUTS)"
+    )
 
+    bin_file = ":{}.bin".format(name)
     btldr_hex = None
+    template = "//bazel/tools:avrdude.sh.tmpl"
     if btldr:
+        bin_file = ":{}_patched.bin".format(name)
         btldr_hex = "//projects/btldr:{}_btldr.hex".format(name)
+        template = "//bazel/tools:avrdude-btldr.sh.tmpl"
 
     _flash(
         name = name,
-        binary = "{}.bin".format(name),
+        binary = bin_file,
+        eeprom = ":{}.eep".format(name),
         btldr = btldr_hex,
         method = select({
             "//bazel/constraints:avr": "avrdude",
             "//conditions:default": "",
         }),
+        template = template,
         part = select({
             "//bazel/constraints:atmega16m1": "16m1",
             "//bazel/constraints:atmega328p": "m328p",
