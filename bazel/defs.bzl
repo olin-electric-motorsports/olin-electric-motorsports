@@ -321,24 +321,24 @@ def cc_firmware(name, **kwargs):
 
     # Generates flash script
     # Invoke with `bazel run --config=16m1 //path/to:target -- -c usbasp`
-    native.genrule(
-        name = "{}_patched_bin".format(name),
-        srcs = [
-            "{}.bin".format(name),
-        ],
-        outs = [
-            "{}_patched.bin".format(name),
-        ],
-        tools = [
-            "//projects/btldr/tools:patch_header",
-        ],
-        cmd = "$(location //projects/btldr/tools:patch_header) $(SRCS) $(OUTS)",
-    )
 
     bin_file = ":{}.bin".format(name)
     btldr_hex = None
     template = "//bazel/tools:avrdude.sh.tmpl"
     if btldr:
+        native.genrule(
+            name = "{}_patched_bin".format(name),
+            srcs = [
+                "{}.bin".format(name),
+            ],
+            outs = [
+                "{}_patched.bin".format(name),
+            ],
+            tools = [
+                "//projects/btldr/tools:patch_header",
+            ],
+            cmd = "$(location //projects/btldr/tools:patch_header) $(SRCS) $(OUTS)",
+        )
         bin_file = ":{}_patched.bin".format(name)
         btldr_hex = "//projects/btldr:{}_btldr.hex".format(name)
         template = "//bazel/tools:avrdude-btldr.sh.tmpl"
