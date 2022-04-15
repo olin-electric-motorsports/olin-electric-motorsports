@@ -17,7 +17,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include "third_party/log/log.h"
+#include "log.h"
 
 extern char* device;
 

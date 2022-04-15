@@ -80,16 +80,21 @@ cc_library(
 )
 
 cc_library(
+    name = "can_isp_hdrs",
+    hdrs = [
+        "can_isp.h",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
     name = "can_isp",
     srcs = [
         "can_isp.c",
         "commands.c",
     ],
-    hdrs = [
-        "can_isp.h",
-    ],
-    visibility = ["//visibility:public"],
     deps = [
+        ":can_isp_hdrs",
         "//libs/can",
         "//projects/btldr/libs/flash",
         "//projects/btldr/libs/image",

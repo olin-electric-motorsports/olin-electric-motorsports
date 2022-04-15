@@ -6,6 +6,10 @@ cc_library(
     hdrs = [
         "src/log.h",
     ],
+    defines = [
+        "LOG_USE_COLOR",
+    ],
+    includes = ["src"],
     strip_include_prefix = "src",
     tags = ["manual"],
     target_compatible_with = [

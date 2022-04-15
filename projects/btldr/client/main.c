@@ -29,7 +29,7 @@ static void print_usage(char* prg, FILE* stream) {
     fprintf(stream, "Options:\n");
     fprintf(stream, "    -h,--help     (display this text and exit)\n");
     fprintf(stream, "    -v,--verbose  (be verbose)\n");
-    fprintf(stream, "    -V,--version  (show version)\n");
+    // fprintf(stream, "    -V,--version  (show version)\n");
     fprintf(stream, "    -d,--device   (can device: can0, vcan0)\n\n");
     fprintf(stream, "Commands:\n");
     fprintf(stream, "  flash <node_id> <binary>\n");

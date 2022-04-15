@@ -27,7 +27,8 @@ cc_library(
     ],
     visibility = ["//visibility:private"],
     deps = [
-        "//projects/btldr:can_isp",
-        "//projects/btldr/libs/image",
+        "//projects/btldr:can_isp_hdrs",
+        "//projects/btldr/libs/image:hdrs",
+        "@log",
     ],
 )

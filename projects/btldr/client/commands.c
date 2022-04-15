@@ -11,9 +11,9 @@
 #include <time.h>
 
 #include "can_client.h"
-#include "external/log/log.h"
+#include "log.h"
 #include "projects/btldr/can_isp.h"
-#include "projects/btldr/image/image.h"
+#include "projects/btldr/libs/image/api.h"
 
 #define POLLTIMEOUT    (1000)
 #define MAX_RETRIES    (5)
