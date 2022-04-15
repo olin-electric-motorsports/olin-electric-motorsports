@@ -1,0 +1,26 @@
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h2 style="text-align:center">{{ board_name }}</h2>
+        <table style="width:80%">
+        <tr>
+            <th>Version</th>
+            <th>Image of Schematic</th>
+            <th>Layout</th>
+            <th>BoM</th>
+        </tr>
+        <br>
+        <tr>
+            <th>{{ commit }}</th>
+            <th><a href="{{ schematic }}">Image Link</a></th>
+            <th><a href="{{ layout }}">Layout Link</a></th>
+            <th><a href="{{ bom }}">BoM Link</a></th>
+        </tr>
+        </table>
+	<div class="portrait">
+	    <img src="{{ layout  }}">
+	</div>
+    </body>
+</html>

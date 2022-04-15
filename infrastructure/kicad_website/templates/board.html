@@ -1,0 +1,15 @@
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h2>{{ board_name }}</h2>
+        <table>
+        {% for commit in commits %}
+        <tr><a href="{{ commit }}">{{ commit }}</a></tr>
+        <!-- Fix the link later. It should be linking to the specific commit page.-->
+        <br>
+        {% endfor %}
+        </table>
+    </body>
+</html>

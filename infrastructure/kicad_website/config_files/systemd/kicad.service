@@ -1,0 +1,16 @@
+[Unit]
+Description=uWSGI instance to serve kicad
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/olin-electric-motorsports/infrastructure/kicad_website
+Environment="PATH=/root/.cache/pypoetry/virtualenvs/kicad-website-*-py3.8/bin"
+#Environment="PATH=/home/manu/olin-electric-motorsports/infrastructure/kicad_website/kicadenv/bin"
+ExecStart=/bin/bash -c 'pushd /olin-electric-motorsports/infrastructure/kicad_website/; /bin/poetry shell; popd; /root/.cache/pypoetry/virtualenvs/kicad-website-*-py3.8/bin/uwsgi --ini /olin-electric-motorsports/infrastructure/kicad_website/kicad.ini'
+
+[Install]
+WantedBy=multi-user.target
+
+
