@@ -2,11 +2,11 @@
  * Run right before flashing
  */
 
+#include <errno.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <errno.h>
 
 #include "projects/btldr/libs/crc32/api.h"
 #include "projects/btldr/libs/image/api.h"
