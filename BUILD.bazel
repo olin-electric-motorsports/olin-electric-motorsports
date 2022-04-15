@@ -21,6 +21,5 @@ refresh_compile_commands(
     targets = {
         "//vehicle/mkv/software/...": "--platforms=//bazel/platforms:atmega16m1_avr -c opt",
         "//projects/btldr/tools:patch_header": "--platforms=//bazel/platforms:linux-x86_64 -c opt",
-        # "//projects/btdlr/...": "--platforms=//bazel/platforms:atmega16m1_avr -c opt",
     },
 )

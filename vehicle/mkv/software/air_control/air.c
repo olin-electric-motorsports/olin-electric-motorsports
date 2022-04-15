@@ -6,6 +6,7 @@
 #include "libs/timer/api.h"
 
 #include "air_config.h"
+#include "projects/btldr/btldr_lib.h"
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 #include "utils/timer.h"
@@ -402,6 +403,8 @@ int main(void) {
     // Set LED to indicate initial checks will be run
     gpio_set_pin(GENERAL_LED);
 
+    while (1);
+
     // Send message once before checks
     can_send_air_control_critical();
 
@@ -414,7 +417,7 @@ int main(void) {
     pcint2_callback();
 
     // Clear LED to indicate that initial checks passed
-    gpio_clear_pin(GENERAL_LED);
+    // gpio_clear_pin(GENERAL_LED);
 
     // Send message again after initial checks are run
     can_send_air_control_critical();
@@ -424,6 +427,9 @@ int main(void) {
     while (1) {
         // Run state machine every 1ms
         if (run_1ms) {
+            if (air_control_critical.air_state == IDLE) {
+                updater_loop();
+            }
             state_machine_run();
             run_1ms = false;
         }

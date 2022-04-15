@@ -18,7 +18,10 @@ cc_firmware(
     ],
     btldr = "//projects/btldr:air_control_btldr",
     data = [
-        "//projects/btldr:image_hdr.c",
+        "//projects/btldr:air_control_btldr",
+    ],
+    defines = [
+        "BTLDR_ID=0x700",
     ],
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],

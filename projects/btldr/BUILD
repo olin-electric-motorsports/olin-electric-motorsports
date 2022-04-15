@@ -2,22 +2,13 @@ load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 load("//bazel:defs.bzl", "cc_firmware")
 load("//vehicle/mkv:ecus.bzl", "ECUS")
 
-exports_files(
-    srcs = ["image_hdr.c"],
-)
+package(default_visibility = ["//visibility:public"])
 
 [
     cc_firmware(
         name = ecu["name"] + "_btldr",
         srcs = [
             "btldr.c",
-        ],
-        copts = [
-            "-nostartfiles",
-            "-static",
-            "-Wl,--section-start=.text=0x3000",  # Start at the boot start address
-            "-Wl,-u,vfprintf -lprintf_min",
-            "-ffunction-sections",
         ],
         defines = [
             "BTLDR_ID=" + ecu["btldr_id"],
@@ -26,6 +17,7 @@ exports_files(
             "-static",
             "-nostartfiles",
             "-Wl,-u,vfprintf -lprintf_min",
+            "-Wl,--section-start=.text=0x3000",  # Start at the boot start address
         ],
         target_compatible_with = select({
             "//bazel/constraints:atmega16m1": [],
@@ -36,6 +28,7 @@ exports_files(
         deps = [
             ":can_isp",
             "//libs/can",
+            "//libs/uart",
             "//projects/btldr/libs/image",
             "//projects/btldr/libs/shmem",
         ],
@@ -66,12 +59,6 @@ cc_library(
         ":git_sha_header",
     ],
     visibility = ["//visibility:public"],
-    # copts = [
-    #     "-static",
-    #     "-nostartfiles",
-    #     "-ffunction-sections",
-    #     "-Wl,-u,vfprintf -lprintf_min",
-    # ],
     deps = [
         ":can_isp",
         "//projects/btldr/libs/image",

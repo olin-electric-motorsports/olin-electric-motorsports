@@ -63,7 +63,7 @@ int cmd_flash(struct CanClient* client, uint8_t ecu_id, char* binary_path) {
     // Deal with file
     fp = fopen(binary_path, "rb");
     if (fp == NULL) {
-        printf("File not found: %s\n", binary_path);
+        perror("fopen(binary_path, \"rb\")");
         rc = 2;
         goto bail;
     }

@@ -168,24 +168,42 @@ def _flash_impl(ctx):
     input_file = ctx.file.binary
     script = ctx.actions.declare_file("{}.sh".format(ctx.label.name))
 
-    ctx.actions.expand_template(
-        template = template,
-        output = script,
-        is_executable = True,
-        substitutions = {
-            "{part}": ctx.attr.part,
-            "{binary}": input_file.short_path,
-            "{config}": ctx.file.avr_config.path,
-        },
-    )
-
-    runfiles = ctx.runfiles(files = [
-        ctx.file.binary,
-        ctx.file.avr_config,
-    ])
-
     if ctx.file.btldr:
-        runfiles.merge(ctx.runfiles(files = [ctx.file.btldr]))
+        runfiles = ctx.runfiles(files = [
+            ctx.file.binary,
+            ctx.file.avr_config,
+            ctx.file.btldr,
+            ctx.file.eeprom,
+        ])
+
+        ctx.actions.expand_template(
+            template = template,
+            output = script,
+            is_executable = True,
+            substitutions = {
+                "{part}": ctx.attr.part,
+                "{binary}": input_file.short_path,
+                "{config}": ctx.file.avr_config.path,
+                "{eeprom}": ctx.file.eeprom.short_path,
+                "{btldr}": ctx.file.btldr.short_path,
+            },
+        )
+    else:
+        runfiles = ctx.runfiles(files = [
+            ctx.file.binary,
+            ctx.file.avr_config,
+        ])
+
+        ctx.actions.expand_template(
+            template = template,
+            output = script,
+            is_executable = True,
+            substitutions = {
+                "{part}": ctx.attr.part,
+                "{binary}": input_file.short_path,
+                "{config}": ctx.file.avr_config.path,
+            },
+        )
 
     return [
         DefaultInfo(

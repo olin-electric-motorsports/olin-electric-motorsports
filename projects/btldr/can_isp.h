@@ -112,7 +112,7 @@ struct session_data {
  *   0 - success
  *   1 - Unrecoverable error
  */
-uint8_t can_isp_task(uint16_t btldr_id);
+int can_isp_task(uint16_t btldr_id);
 
 /*************************************************
  * Handler functions defined in can_isp_commands.c

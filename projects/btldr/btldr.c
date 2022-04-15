@@ -12,21 +12,20 @@
 
 #include "can_isp.h"
 #include "libs/can/api.h"
+#include "libs/uart/api.h"
 #include "projects/btldr/libs/image/api.h"
 #include "projects/btldr/libs/shmem/api.h"
 
-/*
- * MCUSR := MCU Status Register
- */
-
-// extern uint32_t bootflags;
-
 int main(void) {
     cli(); // Disable interrupts in the btldr
+           //
+    DDRD |= _BV(PD5);
+    PORTD |= _BV(PD5);
 
-    // log_init();
-    //
-    // log_uart("-- Bootloader --");
+    asm("jmp %0" ::"I"(sizeof(image_hdr_t)));
+
+    uart_init(9600);
+    uart_puts("-- BOOTLOADER --\n");
 
     bool image_is_valid = bootflag_get(IMAGE_IS_VALID);
     bool update_requested = bootflag_get(UPDATE_REQUESTED);
@@ -36,31 +35,20 @@ int main(void) {
             // Jump to application with offset of image header size
             asm("jmp %0" ::"I"(sizeof(image_hdr_t)));
 
-            // log_uart("Jump failed, entering loop");
+            uart_puts("FATAL: Jump failed, entering loop\n");
             while (1)
                 continue;
         } else {
             // log_uart("Image is corrupted or invalid, going into updater");
+            uart_puts(
+                "ERROR: Image is corrupted or invalid, going into updater\n");
         }
     }
 
+    uart_puts("-- UPDATER --\n");
+
     // Updater
     can_init(BAUD_500KBPS);
-
-    uint8_t data[CAN_MAX_MSG_LENGTH];
-    can_frame_t msg = {
-        .mob = 0,
-        .data = data,
-    };
-
-    can_filter_t filter = {
-        .mask = 0x7F0,
-        .id = BTLDR_ID << 4,
-    };
-
-    // Receive CAN message. This shouldn't error because we always restore our
-    // message objects
-    (void)can_receive(&msg, filter);
 
     while (1) {
         (void)can_isp_task(BTLDR_ID);

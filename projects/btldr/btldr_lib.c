@@ -5,7 +5,6 @@
 #include "libs/can/api.h"
 
 #include "projects/btldr/can_isp.h"
-// #include "debug.h"
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 #include "projects/btldr/libs/shmem/api.h"
