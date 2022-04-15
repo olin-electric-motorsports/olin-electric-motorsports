@@ -16,7 +16,7 @@
 #include <math.h>
 #include <util/delay.h>
 
-#define IMPLAUSIBILITY_TIMEOUT_MS (100)
+#define IMPLAUSIBILITY_TIMEOUT_MS (1000)
 #define MOTOR_ANTICLOCKWISE       (1)
 
 // Set this to lower than 10 to limit torque request (i.e. 5 limits to half of
@@ -61,7 +61,7 @@ void timer0_isr(void) {
     throttle_state.send_can = true;
 }
 
-void pcint0_isr(void) {
+void pcint0_callback(void) {
     throttle.e_stop_sense = !gpio_get_pin(SS_ESTOP);
     throttle.inertia_switch_sense = !gpio_get_pin(SS_IS);
     throttle.bots_sense = !gpio_get_pin(SS_BOTS);
@@ -97,28 +97,34 @@ static bool check_out_of_range(int16_t* pos_r, int16_t* pos_l) {
         // Out of range upper
         *pos_r = 255;
         gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_OUT_OF_RANGE_UPPER;
         implausibility = true;
     } else if (*pos_r < 0) {
         // Out of range lower
         *pos_r = 0;
         gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_OUT_OF_RANGE_LOWER;
         implausibility = true;
     } else {
         gpio_clear_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_RUN;
     }
 
     if (*pos_l > 255) {
         // Out of range upper
         *pos_l = 255;
         gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_OUT_OF_RANGE_UPPER;
         implausibility = true;
     } else if (*pos_l < 0) {
         // Out of range lower
         *pos_l = 0;
         gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_OUT_OF_RANGE_LOWER;
         implausibility = true;
     } else {
         gpio_clear_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_RUN;
     }
 
     return implausibility;
@@ -134,9 +140,11 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
     // Check implausibility between pedal values (T.4.2.4/5)
     if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
         gpio_set_pin(DEVIATION_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_POSITION_PLAUSIBILITY;
         return true;
     } else {
         gpio_clear_pin(DEVIATION_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_RUN;
         return false;
     }
 }
@@ -154,6 +162,7 @@ static bool check_brake(int16_t pos_min) {
     static bool brake_implausibility_occured = false;
 
     if (throttle_state.brake_pressed) {
+        throttle.state = THROTTLE_BRAKE_PRESSED;
         if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
             brake_implausibility_occured = true;
             gpio_set_pin(BRAKE_IMPLAUSIBILTIY_LED);
@@ -173,6 +182,7 @@ static bool check_brake(int16_t pos_min) {
             return false;
         }
     } else {
+        throttle.state = THROTTLE_RUN;
         if (brake_implausibility_occured) {
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 brake_implausibility_occured = false;
@@ -189,6 +199,8 @@ static bool check_brake(int16_t pos_min) {
 }
 
 int main(void) {
+    sei();
+
     can_init_throttle();
     adc_init();
     timer_init(&timer0_cfg);
@@ -208,11 +220,11 @@ int main(void) {
     gpio_enable_interrupt(SS_IS);
     gpio_enable_interrupt(SS_BOTS);
 
-    sei();
-
     // Initialize motor controller direction
     m192_command_message.direction_command = MOTOR_ANTICLOCKWISE;
     throttle.state = THROTTLE_IDLE;
+    
+    pcint0_callback();
 
     /*
      * This feature is added so that the inverter cannot be accidentally enabled
@@ -249,6 +261,9 @@ int main(void) {
                 }
             }
 
+            // throttle_debug.throttle_l_raw = adc_read(throttle_l.adc_pin);
+            // throttle_debug.throttle_r_raw = adc_read(throttle_r.adc_pin);
+
             int16_t pos_l = get_throttle_travel(&throttle_l);
             int16_t pos_r = get_throttle_travel(&throttle_r);
 
@@ -269,15 +284,19 @@ int main(void) {
 
             if (!dashboard.ready_to_drive) {
                 SET_TORQUE_REQUEST(0);
+                throttle.state = THROTTLE_IDLE;
                 continue;
             }
 
             if (ready_to_drive_changed && (pos_min > 13)) {
                 SET_TORQUE_REQUEST(0);
+                throttle.state = THROTTLE_IDLE;
                 continue;
             } else {
                 ready_to_drive_changed = false;
             }
+
+            throttle.state = THROTTLE_RUN;
 
             if (implausibility) {
                 throttle_state.implausibility_fault_counter++;
@@ -301,6 +320,7 @@ int main(void) {
         }
         if (throttle_state.send_can) {
             can_send_throttle();
+            can_send_throttle_debug();
             can_send_m192_command_message();
             throttle_state.send_can = false;
         }
