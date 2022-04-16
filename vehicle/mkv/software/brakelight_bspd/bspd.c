@@ -21,6 +21,12 @@ void pcint1_callback(void) {
     brakelight.brake_gate = !!gpio_get_pin(BRAKELIGHT_GATE);
     brakelight.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_SENSE);
     brakelight.status = !!gpio_get_pin(SHUTDOWN_SENSE_BSPD);
+
+    if (brakelight.brake_gate) {
+        gpio_set_pin(DEBUG_LED_1);
+    } else {
+        gpio_clear_pin(DEBUG_LED_1);
+    }
 }
 
 int main(void) {
