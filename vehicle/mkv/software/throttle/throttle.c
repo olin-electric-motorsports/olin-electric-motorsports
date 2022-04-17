@@ -80,7 +80,6 @@ static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
     int16_t range = throttle->throttle_max - throttle->throttle_min;
     float position_pct
         = (float)(throttle_raw - throttle->throttle_min) / (float)range;
-    // int16_t position = round(position_pct * 100);
 
     return floor(position_pct * 255);
 }
