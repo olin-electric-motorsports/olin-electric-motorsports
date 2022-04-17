@@ -16,8 +16,6 @@
 #include "projects/btldr/libs/image/api.h"
 #include "projects/btldr/libs/shmem/api.h"
 
-extern void* __app_main;
-
 int main(void) {
     cli(); // Disable interrupts in the btldr
 
@@ -34,9 +32,7 @@ int main(void) {
         if (image_is_valid) {
 
             // Jump to application with offset of image header size
-            asm("jmp %0" ::"M" (__app_main));
-            // asm("jmp %0" ::"I"(__dtors_start));
-            // asm("jmp 00000260");
+            asm("jmp %0" ::"I"(sizeof(image_hdr_t)));
 
             uart_puts("FATAL: Jump failed, entering loop\n");
             while (1)
