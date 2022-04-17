@@ -441,7 +441,6 @@ void LTC681x_adcvax(uint8_t MD, // ADC Mode
     md_bits = (MD & 0x02) >> 1;
     cmd[0] = md_bits | 0x04;
     md_bits = (MD & 0x01) << 7;
-    // TODO: are the parenthases in the right place??
     cmd[1] = (md_bits | ((DCP & 0x01) << 4)) + 0x6F;
 
     cmd_68(cmd);
@@ -1378,8 +1377,6 @@ void LTC681x_run_openwire_single(
             ic[cic].system_open_wire = N_CHANNELS;
         }
     }
-    (void)error; // TODO use error?
-    (void)conv_time; // TODO use conv_time?
 }
 
 /* Runs the data sheet algorithm for open wire for multiple cell and two
@@ -1527,8 +1524,6 @@ void LTC681x_run_openwire_multi(
         // }
     }
     // Serial.println("\n");
-    (void)error; // TODO use?
-    (void)conv_time; // TODO use?
 }
 
 /* Runs open wire for GPIOs */
@@ -1604,8 +1599,6 @@ void LTC681x_run_gpio_openwire(
             }
         }
     }
-    (void)conv_time; // TODO: use?
-    (void)error; // TODO: use?
 }
 
 /* Clears all of the DCC bits in the configuration registers */

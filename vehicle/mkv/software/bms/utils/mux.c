@@ -6,7 +6,7 @@
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
-// #define MUX_DATALENGTH (3) // 3 bytes of data for 3 muxes each
+#define MUX_DATALENGTH (3) // 3 bytes of data for 3 muxes each
 
 // ICOMn bits
 #define START       (0b0110 << 4)
@@ -20,6 +20,11 @@
 #define NACK_STOP (0b1001)
 
 #define CMD_LEN (6)
+
+/*
+ * All values are taken directly from the LTC6811 datasheet for I2C
+ * communication
+ */
 
 void enable_mux(uint8_t num_ics, uint8_t address, bool enable,
                 uint8_t channel) {
@@ -52,5 +57,5 @@ void enable_mux(uint8_t num_ics, uint8_t address, bool enable,
     write_68(NUM_ICS, wrcomm_cmd, tx_data);
 
     wakeup_idle(num_ics);
-    LTC6811_stcomm(3); // two bytes of data
+    LTC6811_stcomm(MUX_DATALENGTH); // two bytes of data
 }

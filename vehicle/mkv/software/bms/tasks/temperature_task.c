@@ -9,7 +9,13 @@
 // Array of mux addresses
 const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
 
-#define NUM_TEMPS_PER_IC (NUM_MUXES * NUM_MUX_CHANNELS)
+#define NUM_TEMPS_PER_IC        (NUM_MUXES * NUM_MUX_CHANNELS)
+#define NUM_TEMPS_PER_MESSAGE   (4)
+#define NUM_CAN_TEMP_MSG_PER_IC (6)
+
+#define CAN_TEMP_MESSAGE_BASE (CAN_TOOLS_BMS_SEGMENT1_TEMPERATURE1_FRAME_ID)
+#define CAN_TEMP_DLC          (CAN_TOOLS_BMS_SEGMENT1_TEMPERATURE1_LENGTH)
+
 static uint16_t temperatures[NUM_TEMPERATURE_ICS][NUM_TEMPS_PER_IC] = { 0 };
 
 /*
@@ -65,7 +71,8 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                 uint16_t data_counter = (ic)*NUM_RX_BYT;
                 uint16_t temperature_idx = mux * NUM_MUX_CHANNELS + ch;
 
-                // Data is zeroth byte of response TODO update comment
+                // The voltage value from the ADC is in the zeroth "word" (two
+                // bytes) of the response data
                 uint16_t temperature = raw_data[data_counter]
                                        | (raw_data[data_counter + 1] << 8);
 
@@ -84,15 +91,16 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                     *ot += 1;
                 }
 
-                // If temperatures are getting a bit too high, we turn on the
-                // fan
+                /*
+                 * If temperatures are getting a bit too high, we turn on the
+                 * fan
+                 */
                 if (temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
                     fan_enable(true);
                 }
 
                 if (temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
-                    // fan_enable(false);
-                    fan_enable(true);
+                    fan_enable(false);
                 }
 
                 if (temperature > UNDERTEMPERATURE_THRESHOLD) {
@@ -120,14 +128,9 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
     return pec_errors;
 }
 
-#define CAN_ID_TEMPERATURE_BASE (0x430)
-#define CAN_TEMP_DLC            (8)
-#define NUM_TEMPS_PER_MESSAGE   (4)
-#define NUM_CAN_TEMP_MSG_PER_IC (6)
-
 void can_send_bms_temperatures(void) {
     can_frame_t temperature_frame = {
-        .id = CAN_ID_TEMPERATURE_BASE,
+        .id = CAN_TEMP_MESSAGE_BASE,
         .mob = 0,
         .dlc = CAN_TEMP_DLC,
     };

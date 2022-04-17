@@ -4,23 +4,13 @@
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 
-/*
- * TODO: Get from elsewhere?
- */
 #define NUM_CELLS_IN_REG (3)
 #define NUM_CELL_REG     (4)
 #define NUM_BYTES_IN_REG (6)
 #define NUM_CELLS_PER_IC (8)
 
-#define UNDERVOLTAGE_MASK (0x55)
-#define OVERVOLTAGE_MASK  (0xAA)
-
-#define CAN_ID_VOLTAGE_BASE     (0x410)
-#define CAN_ID_TEMPERATURE_BASE (CAN_ID_VOLTAGE_BASE + 32)
-#define CAN_ID_OPEN_WIRE_BASE   (CAN_ID_VOLTAGE_BASE + 64)
-
 #define CELL_GROUP_1_OFFSET (0) // Cells 1-4
-#define CELL_GROUP_2_OFFSET (8) // Cells 7-10
+#define CELL_GROUP_2_OFFSET (4) // Cells 7-10
 
 uint16_t cell_voltages[NUM_ICS][NUM_CELLS_PER_IC];
 
@@ -44,10 +34,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
      */
     uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
 
-    // uint16_t cell_storage_index = 0;
-
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
-        // 0 1 2 3
         // Executes once for each of the LTC681x cell voltage
 
         // + 1 because of the way _rdcv_reg is written
@@ -58,12 +45,10 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
             for (uint8_t cell_counter = 0; cell_counter < NUM_CELLS_IN_REG;
                  cell_counter++) {
-                // 0 1 2
-
-                // Skip certain cells
                 uint8_t cell_idx
                     = cell_reg * NUM_CELLS_IN_REG + cell_counter; // 0-11
 
+                // Skip certain cells
                 if ((cell_idx == 4) || (cell_idx == 5) || (cell_idx == 10)
                     || (cell_idx == 11)) {
                     data_counter += 2;
@@ -88,16 +73,14 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 *pack_voltage += cell_voltage >> 4;
 
                 // Check under/over voltage
-                // if (cell_voltage >= OVERVOLTAGE_THRESHOLD) {
-                //     *ov += 1;
-                // } else if (cell_voltage <= UNDERVOLTAGE_THRESHOLD) {
-                //     *uv += 1;
-                // }
+                if (cell_voltage >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_voltage <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
 
                 data_counter += 2;
             }
-
-            // cell_storage_index -= 3;
 
             /*
              * The received PEC for the current_ic
@@ -122,7 +105,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
 void can_send_bms_voltages(void) {
     can_frame_t voltage_frame = {
-        .id = CAN_ID_VOLTAGE_BASE,
+        .id = CAN_TOOLS_BMS_VOLTAGE_0_FRAME_ID,
         .mob = 0,
         .dlc = 8,
     };
@@ -136,11 +119,13 @@ void can_send_bms_voltages(void) {
          * array with some offset. That way, we can reuse memory and avoid
          * memcpy-ing.
          */
-        voltage_frame.data = (uint8_t*)(cell_voltages[ic] + 0);
+        voltage_frame.data
+            = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_1_OFFSET);
         can_send(&voltage_frame);
         voltage_frame.id++;
 
-        voltage_frame.data = (uint8_t*)(cell_voltages[ic] + 4);
+        voltage_frame.data
+            = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_2_OFFSET);
         can_send(&voltage_frame);
         voltage_frame.id++;
     }

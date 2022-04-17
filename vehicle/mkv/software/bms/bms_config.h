@@ -23,6 +23,12 @@
 #define OVERVOLTAGE_THRESHOLD  (42000) // 4.2V
 #define UNDERVOLTAGE_THRESHOLD (30000) // 3.0V
 
+/*
+ * We can handle missing around 5 temperatures, since we know there will be some
+ * temperatures that we can't read properly
+ */
+#define MAX_EXTRANEOUS_TEMPERATURES (5)
+
 #define OVERTEMPERATURE_THRESHOLD      (728) // 60 degC
 #define SOFT_OVERTEMPERATURE_THRESHOLD (1255) // 45 degC
 #define SOFT_OVERTEMPERATURE_THRESHOLD_LOW \

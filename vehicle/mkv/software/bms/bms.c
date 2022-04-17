@@ -12,7 +12,6 @@
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/tasks/tasks.h"
-#include "vehicle/mkv/software/bms/utils/can.h"
 #include "vehicle/mkv/software/bms/utils/fault.h"
 #include "vehicle/mkv/software/bms/utils/mux.h"
 
@@ -206,11 +205,11 @@ static void state_machine_run(void) {
     rc = temperature_task(&pack_temperature, &ot, &ut);
     bms_core.pack_temperature = pack_temperature;
 
-    if (ut > 0) {
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
         bms_core.bms_state = FAULT;
         return;
-    } else if (ot > 0) {
+    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_OVERTEMPERATURE);
         bms_core.bms_state = FAULT;
         return;
@@ -301,8 +300,7 @@ static void state_machine_run(void) {
             gpio_set_pin(FAULT_LED);
 
             /*
-             * We can ONLY exit fault state if the fault is under-voltage,
-             and
+             * We can ONLY exit fault state if the fault is under-voltage, and
              * we do so by entering CHARGING. Charging begins once we receive
              * the bms_charging message with charge_enable set to true.
              */
@@ -376,8 +374,7 @@ int main(void) {
 
     while (true) {
         // Listen for and save tractive system state
-        int err = can_poll_receive_air_control_critical();
-        if (err == 0) {
+        if (can_poll_receive_air_control_critical() == 0) {
             air_state = air_control_critical.air_state;
             can_receive_air_control_critical();
         }

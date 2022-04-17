@@ -3,12 +3,10 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 cc_library(
     name = "utils",
     srcs = [
-        "can.c",
         "fault.c",
         "mux.c",
     ],
     hdrs = [
-        "can.h",
         "fault.h",
         "mux.h",
     ],
