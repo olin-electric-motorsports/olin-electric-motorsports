@@ -159,7 +159,6 @@ static bool check_brake(int16_t pos_min) {
 
     // If the brake is pressed...
     if (throttle_state.brake_pressed) {
-
         // ...and pedal travel is greater than 25%
         if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
             // A brake implausibility occured
@@ -170,7 +169,6 @@ static bool check_brake(int16_t pos_min) {
 
         // If a brake implausibility previously occured...
         if (brake_implausibility_occured) {
-
             // But now the pedal is less than 5% travel
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 // No more implausibility
