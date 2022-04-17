@@ -18,9 +18,7 @@ publish:
           values:
             - THROTTLE_IDLE
             - THROTTLE_RUN
-            - THROTTLE_FAULT
-            - THROTTLE_OUT_OF_RANGE_UPPER
-            - THROTTLE_OUT_OF_RANGE_LOWER
+            - THROTTLE_OUT_OF_RANGE
             - THROTTLE_POSITION_IMPLAUSIBILITY
             - THROTTLE_BRAKE_PRESSED
       - name: throttle_l_pos
@@ -29,14 +27,14 @@ publish:
           type: int16_t
           name: '%' 
           offset: 0
-          scale: 100/256
+          scale: 100/255
       - name: throttle_r_pos
         slice: 24 + 16
         unit:
           type: int16_t
           name: '%'
           offset: 0
-          scale: 100/256
+          scale: 100/255
       - name: BOTS_sense
         slice: 40 + 1
         unit:
@@ -66,13 +64,13 @@ publish:
         slice: 0 + 16
         unit:
           type: int16_t
-          name: 'counts'
+          name: ''
           offset: 0
           scale: 1
       - name: throttle_l_raw
         slice: 16 + 16
         unit:
           type: int16_t
-          name: 'counts'
+          name: ''
           offset: 0
           scale: 1

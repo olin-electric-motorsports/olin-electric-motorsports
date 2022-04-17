@@ -23,8 +23,9 @@
 #define AIR_STATE_TS_ACTIVE (4)
 
 volatile bool START_BUTTON_STATE;
-volatile bool HV_STATE;
-volatile bool BRAKE_PRESSED;
+bool HV_STATE;
+bool BRAKE_PRESSED;
+bool THROTTLE_PRESSED;
 
 volatile bool send_can;
 volatile int buzzer_counter = 0;
@@ -69,6 +70,7 @@ int main(void) {
     can_receive_brakelight();
     can_receive_bms_core();
     can_receive_air_control_critical();
+    can_receive_throttle();
 
     for (;;) {
         if (can_poll_receive_brakelight() == 0) {
@@ -81,6 +83,17 @@ int main(void) {
             }
 
             can_receive_brakelight();
+        }
+
+        if (can_poll_receive_throttle() == 0) {
+            if ((throttle.throttle_l_pos >= 12)
+                || (throttle.throttle_r_pos >= 12)) {
+                THROTTLE_PRESSED = true;
+            } else {
+                THROTTLE_PRESSED = false;
+            }
+
+            can_receive_throttle();
         }
 
         // BMS Core message for BMS Status LED
@@ -116,13 +129,15 @@ int main(void) {
             can_receive_air_control_critical();
         }
 
-        if (BRAKE_PRESSED && HV_STATE && !dashboard.ready_to_drive) {
+        if (BRAKE_PRESSED && HV_STATE && !THROTTLE_PRESSED
+            && !dashboard.ready_to_drive) {
             gpio_set_pin(START_LED);
         } else {
             gpio_clear_pin(START_LED);
         }
 
-        if (START_BUTTON_STATE && HV_STATE && BRAKE_PRESSED) {
+        if (START_BUTTON_STATE && HV_STATE && BRAKE_PRESSED
+            && !THROTTLE_PRESSED) {
             gpio_clear_pin(START_LED);
             dashboard.ready_to_drive = true;
             gpio_set_pin(RTD_BUZZER_LSD); // turn on RTD Buzzer
