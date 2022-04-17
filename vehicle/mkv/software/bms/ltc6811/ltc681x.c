@@ -1310,9 +1310,7 @@ void LTC681x_run_openwire_single(
     uint16_t pullUp[total_ic][N_CHANNELS];
     uint16_t pullDwn[total_ic][N_CHANNELS];
     int16_t openWire_delta[total_ic][N_CHANNELS];
-    uint32_t conv_time;
 
-    int8_t error;
     int8_t i;
 
     wakeup_sleep(total_ic);
@@ -1322,11 +1320,11 @@ void LTC681x_run_openwire_single(
     for (i = 0; i < 3; i++) {
         wakeup_idle(total_ic);
         LTC681x_adow(MD_26HZ_2KHZ, PULL_UP_CURRENT, CELL_CH_ALL, DCP_DISABLED);
-        conv_time = LTC681x_pollAdc();
+        LTC681x_pollAdc();
     }
 
     wakeup_idle(total_ic);
-    error = LTC681x_rdcv(0, total_ic, ic);
+    LTC681x_rdcv(0, total_ic, ic);
 
     for (int cic = 0; cic < total_ic; cic++) {
         for (int cell = 0; cell < N_CHANNELS; cell++) {
@@ -1339,11 +1337,11 @@ void LTC681x_run_openwire_single(
         wakeup_idle(total_ic);
         LTC681x_adow(MD_26HZ_2KHZ, PULL_DOWN_CURRENT, CELL_CH_ALL,
                      DCP_DISABLED);
-        conv_time = LTC681x_pollAdc();
+        LTC681x_pollAdc();
     }
 
     wakeup_idle(total_ic);
-    error = LTC681x_rdcv(0, total_ic, ic);
+    LTC681x_rdcv(0, total_ic, ic);
 
     for (int cic = 0; cic < total_ic; cic++) {
         for (int cell = 0; cell < N_CHANNELS; cell++) {
@@ -1392,11 +1390,9 @@ void LTC681x_run_openwire_multi(
     uint16_t pullDwn[total_ic][N_CHANNELS];
     uint16_t openWire_delta[total_ic][N_CHANNELS];
 
-    int8_t error;
     int8_t opencells[N_CHANNELS];
     int8_t n = 0;
     int8_t i, j, k;
-    uint32_t conv_time = 0;
 
     wakeup_sleep(total_ic);
     LTC681x_clrcell();
@@ -1405,11 +1401,11 @@ void LTC681x_run_openwire_multi(
     for (i = 0; i < 5; i++) {
         wakeup_idle(total_ic);
         LTC681x_adow(MD_26HZ_2KHZ, PULL_UP_CURRENT, CELL_CH_ALL, DCP_DISABLED);
-        conv_time = LTC681x_pollAdc();
+        LTC681x_pollAdc();
     }
 
     wakeup_idle(total_ic);
-    error = LTC681x_rdcv(0, total_ic, ic);
+    LTC681x_rdcv(0, total_ic, ic);
 
     for (int cic = 0; cic < total_ic; cic++) {
         for (int cell = 0; cell < N_CHANNELS; cell++) {
@@ -1422,11 +1418,11 @@ void LTC681x_run_openwire_multi(
         wakeup_idle(total_ic);
         LTC681x_adow(MD_26HZ_2KHZ, PULL_DOWN_CURRENT, CELL_CH_ALL,
                      DCP_DISABLED);
-        conv_time = LTC681x_pollAdc();
+        LTC681x_pollAdc();
     }
 
     wakeup_idle(total_ic);
-    error = LTC681x_rdcv(0, total_ic, ic);
+    LTC681x_rdcv(0, total_ic, ic);
 
     for (int cic = 0; cic < total_ic; cic++) {
         for (int cell = 0; cell < N_CHANNELS; cell++) {
@@ -1538,9 +1534,7 @@ void LTC681x_run_gpio_openwire(
     uint16_t pDwn[total_ic][N_CHANNELS];
     uint16_t ow_delta[total_ic][N_CHANNELS];
 
-    int8_t error;
     int8_t i;
-    uint32_t conv_time = 0;
 
     wakeup_sleep(total_ic);
     LTC681x_clraux();
@@ -1548,11 +1542,11 @@ void LTC681x_run_gpio_openwire(
     for (i = 0; i < 3; i++) {
         wakeup_idle(total_ic);
         LTC681x_adax(MD_7KHZ_3KHZ, AUX_CH_ALL);
-        conv_time = LTC681x_pollAdc();
+        LTC681x_pollAdc();
     }
 
     wakeup_idle(total_ic);
-    error = LTC681x_rdaux(0, total_ic, ic);
+    LTC681x_rdaux(0, total_ic, ic);
 
     for (int cic = 0; cic < total_ic; cic++) {
         for (int channel = 0; channel < N_CHANNELS; channel++) {
@@ -1565,11 +1559,11 @@ void LTC681x_run_gpio_openwire(
     for (i = 0; i < 3; i++) {
         wakeup_idle(total_ic);
         LTC681x_axow(MD_7KHZ_3KHZ, PULL_DOWN_CURRENT);
-        conv_time = LTC681x_pollAdc();
+        LTC681x_pollAdc();
     }
 
     wakeup_idle(total_ic);
-    error = LTC681x_rdaux(0, total_ic, ic);
+    LTC681x_rdaux(0, total_ic, ic);
 
     for (int cic = 0; cic < total_ic; cic++) {
         for (int channel = 0; channel < N_CHANNELS; channel++) {
