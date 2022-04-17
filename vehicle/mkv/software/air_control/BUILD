@@ -20,8 +20,11 @@ cc_firmware(
     data = [
         "//projects/btldr:air_control_btldr",
     ],
+    linkopts = [
+        "-flto", "-Wl,--gc-sections"
+    ],
     defines = [
-        "BTLDR_ID=0x700",
+        "BTLDR_ID=0x70",
     ],
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],

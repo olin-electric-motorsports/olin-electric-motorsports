@@ -16,13 +16,10 @@
 #include "projects/btldr/libs/image/api.h"
 #include "projects/btldr/libs/shmem/api.h"
 
+extern void* __app_main;
+
 int main(void) {
     cli(); // Disable interrupts in the btldr
-           //
-    DDRD |= _BV(PD5);
-    PORTD |= _BV(PD5);
-
-    asm("jmp %0" ::"I"(sizeof(image_hdr_t)));
 
     uart_init(9600);
     uart_puts("-- BOOTLOADER --\n");
@@ -30,10 +27,16 @@ int main(void) {
     bool image_is_valid = bootflag_get(IMAGE_IS_VALID);
     bool update_requested = bootflag_get(UPDATE_REQUESTED);
 
+    DDRD |= _BV(PD5);
+    PORTD |= _BV(PD5);
+
     if (!update_requested) {
         if (image_is_valid) {
+
             // Jump to application with offset of image header size
-            asm("jmp %0" ::"I"(sizeof(image_hdr_t)));
+            asm("jmp %0" ::"M" (__app_main));
+            // asm("jmp %0" ::"I"(__dtors_start));
+            // asm("jmp 00000260");
 
             uart_puts("FATAL: Jump failed, entering loop\n");
             while (1)

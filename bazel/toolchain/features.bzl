@@ -71,7 +71,7 @@ _OPT_FEATURE = feature(
         flag_set(
             actions = _LD_ALL_ACTIONS,
             flag_groups = [
-                flag_group(flags = ["-flto", "-Wl,--gc-sections"]),
+                # flag_group(flags = ["-flto", "-Wl,--gc-sections"]),
             ],
         ),
     ],

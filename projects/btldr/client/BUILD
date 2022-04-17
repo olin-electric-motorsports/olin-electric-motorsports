@@ -8,19 +8,20 @@ cc_binary(
     ],
     deps = [
         ":btldr_client_libs",
-        "@log",
+        "@log//:log",
     ],
 )
 
 cc_library(
     name = "btldr_client_libs",
     srcs = [
-        "can_client.c",
-        "commands.c",
+        "can.c",
+        "flash.c",
+        "ping.c",
     ],
     hdrs = [
-        "can_client.h",
-        "commands.h",
+        "can.h",
+        "client.h",
     ],
     target_compatible_with = [
         "@platforms//os:linux",
@@ -29,6 +30,6 @@ cc_library(
     deps = [
         "//projects/btldr:can_isp_hdrs",
         "//projects/btldr/libs/image:hdrs",
-        "@log",
+        "@log//:log",
     ],
 )

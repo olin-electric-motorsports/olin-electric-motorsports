@@ -1,7 +1,7 @@
 ECUS = [
     {
         "name": "air_control",
-        "btldr_id": "0x700",
+        "btldr_id": "0x70",
     },
     {
         "name": "bms",

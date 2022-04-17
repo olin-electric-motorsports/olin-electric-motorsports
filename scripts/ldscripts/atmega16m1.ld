@@ -145,6 +145,7 @@ SECTIONS
     KEEP (*(.init8))
     *(.init9)  /* Call main().  */
     KEEP (*(.init9))
+    __app_main = .;
     *(.text)
     . = ALIGN(2);
      *(.text.*)

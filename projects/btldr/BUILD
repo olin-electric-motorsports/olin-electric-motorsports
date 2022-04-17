@@ -13,10 +13,12 @@ package(default_visibility = ["//visibility:public"])
         defines = [
             "BTLDR_ID=" + ecu["btldr_id"],
         ],
+        copts = [
+            "-fdata-sections",
+        ],
         linkopts = [
             "-static",
             "-nostartfiles",
-            "-Wl,-u,vfprintf -lprintf_min",
             "-Wl,--section-start=.text=0x3000",  # Start at the boot start address
         ],
         target_compatible_with = select({

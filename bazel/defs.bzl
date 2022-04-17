@@ -19,10 +19,10 @@ def _eep_file_impl(ctx):
     args = ctx.actions.args()
     args.add(input_file)
     args.add(output_file)
-    args.add("-O", "ihex")  # Output a hex file
     args.add("-j", ".eeprom")  # Only include eeprom
     args.add("--change-section-lma", ".eeprom=0")  # Reset load address to zero
     args.add("--set-section-flags=.eeprom=alloc,load")
+    args.add("-O", "ihex")  # Output a hex file
 
     ctx.actions.run(
         mnemonic = "GenerateEEP",
@@ -364,7 +364,7 @@ def cc_firmware(name, **kwargs):
     _flash(
         name = name,
         binary = bin_file,
-        eeprom = ":{}.eep".format(name),
+        eeprom = "//projects/btldr:{}_btldr.eep".format(name),
         btldr = btldr_hex,
         method = select({
             "//bazel/constraints:avr": "avrdude",
