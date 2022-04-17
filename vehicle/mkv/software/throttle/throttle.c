@@ -223,7 +223,7 @@ int main(void) {
     // Initialize motor controller direction
     m192_command_message.direction_command = MOTOR_ANTICLOCKWISE;
     throttle.state = THROTTLE_IDLE;
-    
+
     pcint0_callback();
 
     /*
