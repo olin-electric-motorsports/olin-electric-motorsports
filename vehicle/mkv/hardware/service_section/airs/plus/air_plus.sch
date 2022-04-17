@@ -16,21 +16,17 @@ $EndDescr
 $Comp
 L Formula:SS110LW D1
 U 1 1 5DAE7FAE
-P 1900 2325
-F 0 "D1" H 1900 2541 50  0000 C CNN
-F 1 "SS110LW" H 1900 2450 50  0000 C CNN
-F 2 "footprints:D_SOD-123W_OEM" H 1800 2325 50  0001 C CNN
-F 3 "http://www.taiwansemi.com/products/datasheet/SS14LW%20SERIES_A1511.pdf" H 1900 2425 50  0001 C CNN
-F 4 "DK" H 2100 2625 60  0001 C CNN "MFN"
-F 5 "SS110LWRVGCT-ND" H 2000 2525 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/taiwan-semiconductor-corporation/SS110LW-RVG/SS110LWRVGCT-ND/7359346" H 2200 2725 60  0001 C CNN "PurchasingLink"
-	1    1900 2325
+P 1900 2300
+F 0 "D1" H 1900 2516 50  0000 C CNN
+F 1 "SS110LW" H 1900 2425 50  0000 C CNN
+F 2 "footprints:D_SOD-123W_OEM" H 1800 2300 50  0001 C CNN
+F 3 "http://www.taiwansemi.com/products/datasheet/SS14LW%20SERIES_A1511.pdf" H 1900 2400 50  0001 C CNN
+F 4 "DK" H 2100 2600 60  0001 C CNN "MFN"
+F 5 "SS110LWRVGCT-ND" H 2000 2500 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/taiwan-semiconductor-corporation/SS110LW-RVG/SS110LWRVGCT-ND/7359346" H 2200 2700 60  0001 C CNN "PurchasingLink"
+	1    1900 2300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2200 2325 2050 2325
-Wire Wire Line
-	1750 2325 1600 2325
 Text Label 1075 3100 2    50   ~ 0
 HV_TS-
 $Comp
@@ -75,8 +71,6 @@ F 3 "we-online.de/katalog/datasheet/7461166.pdf" H 5175 2600 50  0001 C CNN
 $EndComp
 Text Label 5325 2700 0    50   ~ 0
 HV_BAT-
-Wire Wire Line
-	1600 1825 1600 2325
 $Comp
 L Formula:F_1A_600V F1
 U 1 1 5E58C68C
@@ -89,31 +83,13 @@ F 4 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ADAP1000-RE/507-222
 	1    1375 3100
 	1    0    0    -1  
 $EndComp
-$Comp
-L Formula:R_3K_HS R1
-U 1 1 5E59D5EA
-P 1450 1525
-F 0 "R1" V 1675 1525 50  0000 C CNN
-F 1 "R_3K_HS" V 1584 1525 50  0000 C CNN
-F 2 "footprints:R_3k_HS_TO247" H 1380 1525 50  0001 C CNN
-F 3 "http://dpk3n3gg92jwt.cloudfront.net/domains/ohmite/pdf/acl_ap101.pdf" H 1530 1525 50  0001 C CNN
-F 4 "DK" H 1450 1525 60  0001 C CNN "MFN"
-F 5 "AP1013KJ-ND" H 1450 1525 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/ohmite/AP101-3K-J/AP101-3K-J-ND/5878525" H 1930 1925 60  0001 C CNN "PurchasingLink"
-F 7 "345-1223-ND" V 2030 2025 60  0001 C CNN "MPN2"
-F 8 "https://www.digikey.com/product-detail/en/wakefield-vette/657-15ABPEN/345-1223-ND/3945700" V 2130 2125 60  0001 C CNN "PurchasingLink2"
-	1    1450 1525
-	0    -1   -1   0   
-$EndComp
-Text Label 1300 1525 2    50   ~ 0
+Text Label 2500 1500 0    50   ~ 0
 HV_BAT-
-Text Label 2200 1525 0    50   ~ 0
+Text Label 1600 1500 2    50   ~ 0
 HV_TS-
-Wire Wire Line
-	2200 1825 2200 2325
-Text Label 2200 1825 0    50   ~ 0
+Text Label 2200 1800 0    50   ~ 0
 GND
-Text Label 1600 1825 2    50   ~ 0
+Text Label 1600 1800 2    50   ~ 0
 Coil+
 Text Label 3650 1525 0    50   ~ 0
 AUX-
@@ -158,20 +134,6 @@ Text Label 1675 3100 0    50   ~ 0
 HV_TS_Fused-
 Text Notes 2000 625  0    50   ~ 0
 NEW AIR PLUS\n
-$Comp
-L Formula:DBR71210(NC) K1
-U 1 1 5E5D8E84
-P 1900 1625
-F 0 "K1" V 2367 1625 50  0000 C CNN
-F 1 "DBR71210(NC)" V 2276 1625 50  0000 C CNN
-F 2 "footprints:D-Series_Cynergy_Relay" H 2350 1575 50  0001 L CNN
-F 3 "https://www.cynergy3.com/sites/default/files/D%20series%202016_5.pdf" H 2350 1275 50  0001 L CNN
-F 4 "DK" H 2750 2175 60  0001 C CNN "MFN"
-F 5 "725-1049-ND" H 2650 2075 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/cynergy-3/DBR71210/725-1049-ND/752025" H 2850 2275 60  0001 C CNN "PurchasingLink"
-	1    1900 1625
-	0    -1   -1   0   
-$EndComp
 Text Notes 925  1025 0    50   ~ 0
 Discharge Relay. High Side Driven by AIR Control
 Text Notes 1250 2700 0    50   ~ 0
@@ -248,20 +210,6 @@ Wire Notes Line
 	3600 3600 2275 3600
 Wire Notes Line
 	2275 3600 2275 2925
-$Comp
-L Formula:R_10K_HV R2
-U 1 1 5E57A605
-P 2900 3450
-F 0 "R2" V 2693 3450 50  0000 C CNN
-F 1 "R_10K_HV" V 2784 3450 50  0000 C CNN
-F 2 "footprints:R_TSMP_SMD_5329" H 2830 3450 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/28731/pacserie.pdf" H 2980 3450 50  0001 C CNN
-F 4 "DK" H 2900 3450 60  0001 C CNN "MFN"
-F 5 "PPC5D10.0KCT-ND " H 2900 3450 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=PPC5D10.0KCT-ND" H 3380 3850 60  0001 C CNN "PurchasingLink"
-	1    2900 3450
-	0    1    1    0   
-$EndComp
 Text Label 2750 3450 2    50   ~ 0
 HV_TS-
 Wire Notes Line
@@ -272,4 +220,62 @@ Wire Notes Line
 	5650 2850 4075 2850
 Wire Notes Line
 	4075 2850 4075 2175
+$Comp
+L formula:3350-4275-126(NC) K1
+U 1 1 6258A753
+P 1900 1600
+F 0 "K1" V 2367 1600 50  0000 C CNN
+F 1 "3350-4275-126(NC)" V 2276 1600 50  0000 C CNN
+F 2 "footprints:Relay_Comus_3350" H 2350 1550 50  0001 L CNN
+F 3 "https://www.comus-intl.com/wp-content/uploads/2017/01/High-Voltage-Reed-Relays.pdf" H 2350 1250 50  0001 L CNN
+F 4 "DK" H 2750 2150 60  0001 C CNN "MFN"
+F 5 "3350-4275-126" H 2650 2050 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/comus-international/3350-4275-126/7515922" H 2850 2250 60  0001 C CNN "PurchasingLink"
+	1    1900 1600
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1750 2300 1600 2300
+Wire Wire Line
+	1600 2300 1600 1800
+Wire Wire Line
+	2050 2300 2200 2300
+Wire Wire Line
+	2200 2300 2200 1800
+$Comp
+L formula:R_15K_HV R2
+U 1 1 625A23A2
+P 2900 3450
+F 0 "R2" V 2693 3450 50  0000 C CNN
+F 1 "R_15K_HV" V 2784 3450 50  0000 C CNN
+F 2 "footprints:R_TSMP_SMD_5329" H 2830 3450 50  0001 C CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773242&DocType=DS&DocLang=English" H 2980 3450 50  0001 C CNN
+F 4 "DK" H 2900 3450 60  0001 C CNN "MFN"
+F 5 "SMF515KJT" H 2900 3450 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/SMF515KJT/2367113" H 3380 3850 60  0001 C CNN "PurchasingLink"
+	1    2900 3450
+	0    1    1    0   
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 62595E8A
+P 2200 1400
+F 0 "H1" H 2300 1403 50  0000 L CNN
+F 1 "MountingHole_Pad" H 2300 1358 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 2200 1400 50  0001 C CNN
+F 3 "~" H 2200 1400 50  0001 C CNN
+	1    2200 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 6259B2C1
+P 2500 1400
+F 0 "H2" H 2600 1403 50  0000 L CNN
+F 1 "MountingHole_Pad" H 2600 1358 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 2500 1400 50  0001 C CNN
+F 3 "~" H 2500 1400 50  0001 C CNN
+	1    2500 1400
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

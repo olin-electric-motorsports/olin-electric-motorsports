@@ -13,9 +13,9 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 1300 1350 2    50   ~ 0
+Text Label 2600 1350 2    50   ~ 0
 HV_BAT+
-Text Label 2200 1350 0    50   ~ 0
+Text Label 1600 1350 2    50   ~ 0
 HV_TS+
 Text Label 2200 1650 0    50   ~ 0
 PRECHARGE_LSD
@@ -29,17 +29,6 @@ Wire Wire Line
 	2050 2350 2200 2350
 Wire Wire Line
 	2200 2350 2200 1650
-$Comp
-L Device:R R2
-U 1 1 5DC5DF1A
-P 3800 3400
-F 0 "R2" V 3593 3400 50  0000 C CNN
-F 1 "R_10K" V 3684 3400 50  0000 C CNN
-F 2 "footprints:R_TSMP_SMD_5329" V 3730 3400 50  0001 C CNN
-F 3 "~" H 3800 3400 50  0001 C CNN
-	1    3800 3400
-	0    1    1    0   
-$EndComp
 Text Label 3650 3400 2    50   ~ 0
 HV_TS+
 Text Label 1100 3250 2    50   ~ 0
@@ -108,36 +97,6 @@ F 3 "https://media.digikey.com/pdf/Data%20Sheets/Bel%20Fuse%20PDFs/0ADAC_0ADAP_S
 F 4 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ADAP1000-RE/507-2220-ND/8028479" H 1600 3600 50  0001 C CNN "PurchasingLink"
 	1    1400 3250
 	1    0    0    -1  
-$EndComp
-$Comp
-L Formula:LI12-1A85(NO) K1
-U 1 1 5E5BEE09
-P 1900 1450
-F 0 "K1" V 2367 1450 50  0000 C CNN
-F 1 "LI12-1A85(NO)" V 2276 1450 50  0000 C CNN
-F 2 "footprints:Meder-LI12" H 2350 1400 50  0001 L CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Meder%20PDFs/LI12-1A85_Spec.pdf" H 2350 1100 50  0001 L CNN
-F 4 "DK" H 2750 2000 60  0001 C CNN "MFN"
-F 5 "374-1110-ND" H 2650 1900 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/LI12-1A85/374-1110-ND/655844" H 2850 2100 60  0001 C CNN "PurchasingLink"
-	1    1900 1450
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Formula:R_3K_HS R1
-U 1 1 5E5C0844
-P 1450 1350
-F 0 "R1" V 1675 1350 50  0000 C CNN
-F 1 "R_3K_HS" V 1584 1350 50  0000 C CNN
-F 2 "footprints:R_3k_HS_TO247" H 1380 1350 50  0001 C CNN
-F 3 "http://dpk3n3gg92jwt.cloudfront.net/domains/ohmite/pdf/acl_ap101.pdf" H 1530 1350 50  0001 C CNN
-F 4 "DK" H 1450 1350 60  0001 C CNN "MFN"
-F 5 "AP1013KJ-ND" H 1450 1350 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/ohmite/AP101-3K-J/AP101-3K-J-ND/5878525" H 1930 1750 60  0001 C CNN "PurchasingLink"
-F 7 "345-1223-ND" V 2030 1850 60  0001 C CNN "MPN2"
-F 8 "https://www.digikey.com/product-detail/en/wakefield-vette/657-15ABPEN/345-1223-ND/3945700" V 2130 1950 60  0001 C CNN "PurchasingLink2"
-	1    1450 1350
-	0    -1   -1   0   
 $EndComp
 $Comp
 L Formula:SS110LW D1
@@ -352,4 +311,56 @@ Wire Notes Line
 	4550 600  5700 600 
 Text Label 3950 3400 0    50   ~ 0
 HV_TSMP+
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 625856BE
+P 2600 1250
+F 0 "H1" H 2600 1150 50  0000 L CNN
+F 1 "HOLE" H 2700 1208 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 2600 1250 50  0001 C CNN
+F 3 "~" H 2600 1250 50  0001 C CNN
+	1    2600 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 6258FFD3
+P 2200 1250
+F 0 "H2" H 2100 1150 50  0000 L CNN
+F 1 "HOLE" H 2300 1208 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.5mm_Pad" H 2200 1250 50  0001 C CNN
+F 3 "~" H 2200 1250 50  0001 C CNN
+	1    2200 1250
+	1    0    0    -1  
+$EndComp
+Text Notes 900  1500 0    50   ~ 0
+HV wire to resistors
+$Comp
+L formula:5503-12-1(NO) K1
+U 1 1 6259F9BF
+P 1900 1450
+F 0 "K1" V 2367 1450 50  0000 C CNN
+F 1 "5503-12-1(NO)" V 2276 1450 50  0000 C CNN
+F 2 "footprints:Relay_Coto_5500" H 2350 1400 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/89/5500_series_reed_relay_datasheet-1667093.pdf" H 2350 1100 50  0001 L CNN
+F 4 "COTO" H 2750 2000 60  0001 C CNN "MFN"
+F 5 "5503-12-1" H 2650 1900 60  0001 C CNN "MPN"
+F 6 "https://www.mouser.com/ProductDetail/Coto-Technology/5503-12-1?qs=PSXJKkD%2FXAS95qerU0wiiQ%3D%3D" H 2850 2100 60  0001 C CNN "PurchasingLink"
+	1    1900 1450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:R_15K_HV R1
+U 1 1 6258EE79
+P 3800 3400
+F 0 "R1" V 3593 3400 50  0000 C CNN
+F 1 "R_15K_HV" V 3684 3400 50  0000 C CNN
+F 2 "footprints:R_TSMP_SMD_5329" H 3730 3400 50  0001 C CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773242&DocType=DS&DocLang=English" H 3880 3400 50  0001 C CNN
+F 4 "DK" H 3800 3400 60  0001 C CNN "MFN"
+F 5 "SMF515KJT" H 3800 3400 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/SMF515KJT/2367113" H 4280 3800 60  0001 C CNN "PurchasingLink"
+	1    3800 3400
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC

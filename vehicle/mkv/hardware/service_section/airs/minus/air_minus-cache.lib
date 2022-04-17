@@ -1,23 +1,6 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Device_R
-#
-DEF Device_R R 0 0 N Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "Device_R" 0 0 50 V V C CNN
-F2 "" -70 0 50 V I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- R_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # Formula_F_1A_600V
 #
 DEF Formula_F_1A_600V F 0 40 Y Y 1 F N
@@ -56,42 +39,6 @@ X 8 8 250 -750 100 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
-# Formula_LI12-1A85(NO)
-#
-DEF Formula_LI12-1A85(NO) K 0 40 Y Y 1 F N
-F0 "K" 350 150 50 H V L CNN
-F1 "Formula_LI12-1A85(NO)" 400 -150 50 H V L CNN
-F2 "footprints:Meder-LI12" 450 -50 50 H I L CNN
-F3 "https://media.digikey.com/pdf/Data%20Sheets/Meder%20PDFs/LI12-1A85_Spec.pdf" 450 -350 50 H I L CNN
-F4 "DK" 850 550 60 H I C CNN "MFN"
-F5 "374-1110-ND" 750 450 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/LI12-1A85/374-1110-ND/655844" 950 650 60 H I C CNN "PurchasingLink"
-$FPLIST
- Relay?SPDT?OMRON?G5Q*
-$ENDFPLIST
-DRAW
-S -400 200 300 -200 0 1 10 f
-S -325 75 -75 -75 0 1 10 N
-P 2 0 0 0 100 150 100 200 N
-P 2 0 1 10 -300 -75 -100 75 N
-P 2 0 1 0 -200 -200 -200 -75 N
-P 2 0 1 0 -200 200 -200 75 N
-P 2 0 1 10 -75 0 -50 0 N
-P 2 0 1 10 -25 0 0 0 N
-P 2 0 1 10 25 0 50 0 N
-P 2 0 1 10 25 0 50 0 N
-P 2 0 1 10 75 0 100 0 N
-P 2 0 1 0 100 -100 100 -200 N
-P 2 0 1 20 100 -100 200 100 N
-P 2 0 1 10 125 0 150 0 N
-P 3 0 1 0 100 100 125 125 100 150 F
-X ~ 1 100 -300 100 U 50 50 1 1 P
-X ~ 2 100 300 100 D 50 50 1 1 P
-X ~ 3 -200 -300 100 U 50 50 1 1 P
-X ~ 4 -200 300 100 D 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # Formula_MicroFit_VT_4
 #
 DEF Formula_MicroFit_VT_4 J 0 40 Y Y 1 F N
@@ -127,29 +74,6 @@ X ~ 3 200 50 100 L 50 50 1 1 I
 X ~ 4 200 -50 100 L 50 50 1 1 I
 X ~ 5 200 -150 100 L 50 50 1 1 I
 X ~ 6 200 -250 100 L 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# Formula_R_3K_HS
-#
-DEF Formula_R_3K_HS R 0 0 Y Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "Formula_R_3K_HS" -100 0 50 V V C CNN
-F2 "footprints:R_3k_HS_TO247" -70 0 50 H I C CNN
-F3 "http://dpk3n3gg92jwt.cloudfront.net/domains/ohmite/pdf/acl_ap101.pdf" 80 0 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "AP1013KJ-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/ohmite/AP101-3K-J/AP101-3K-J-ND/5878525" 480 400 60 H I C CNN "PurchasingLink"
-F7 "345-1223-ND" 580 500 60 V I C CNN "MPN2"
-F8 "https://www.digikey.com/product-detail/en/wakefield-vette/657-15ABPEN/345-1223-ND/3945700" 680 600 60 V I C CNN "PurchasingLink2"
-$FPLIST
- R_*
- Resistor_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -208,6 +132,79 @@ F3 "we-online.de/katalog/datasheet/7461166.pdf" 0 -100 50 H I C CNN
 DRAW
 S -50 50 50 -50 0 1 0 f
 X ~ 1 150 0 100 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# Mechanical_MountingHole_Pad
+#
+DEF Mechanical_MountingHole_Pad H 0 40 N N 1 F N
+F0 "H" 0 250 50 H V C CNN
+F1 "Mechanical_MountingHole_Pad" 0 175 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ MountingHole*Pad*
+$ENDFPLIST
+DRAW
+C 0 50 50 0 1 50 N
+X 1 1 0 -100 100 U 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# formula_5503-12-1(NO)
+#
+DEF formula_5503-12-1(NO) K 0 40 Y Y 1 F N
+F0 "K" 350 150 50 H V L CNN
+F1 "formula_5503-12-1(NO)" 400 -150 50 H V L CNN
+F2 "footprints:Relay_Coto_5500" 450 -50 50 H I L CNN
+F3 "" 450 -350 50 H I L CNN
+F4 "COTO" 850 550 60 H I C CNN "MFN"
+F5 "5503-12-1" 750 450 60 H I C CNN "MPN"
+F6 "https://www.mouser.com/ProductDetail/Coto-Technology/5503-12-1?qs=PSXJKkD%2FXAS95qerU0wiiQ%3D%3D" 950 650 60 H I C CNN "PurchasingLink"
+$FPLIST
+ Relay?SPDT?OMRON?G5Q*
+$ENDFPLIST
+DRAW
+S -400 200 300 -200 0 1 10 f
+S -325 75 -75 -75 0 1 10 N
+P 2 0 0 0 100 150 100 200 N
+P 2 0 1 10 -300 -75 -100 75 N
+P 2 0 1 0 -200 -200 -200 -75 N
+P 2 0 1 0 -200 200 -200 75 N
+P 2 0 1 10 -75 0 -50 0 N
+P 2 0 1 10 -25 0 0 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 75 0 100 0 N
+P 2 0 1 0 100 -100 100 -200 N
+P 2 0 1 20 100 -100 200 100 N
+P 2 0 1 10 125 0 150 0 N
+P 3 0 1 0 100 100 125 125 100 150 F
+X ~ 1 100 -300 100 U 50 50 1 1 P
+X ~ 2 -200 300 100 D 50 50 1 1 P
+X ~ 3 -200 -300 100 U 50 50 1 1 P
+X ~ 4 100 300 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_15K_HV
+#
+DEF formula_R_15K_HV R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_15K_HV" -100 0 50 V V C CNN
+F2 "footprints:R_TSMP_SMD_5329" -70 0 50 H I C CNN
+F3 "" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "SMF515KJT" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/SMF515KJT/2367113" 480 400 60 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
