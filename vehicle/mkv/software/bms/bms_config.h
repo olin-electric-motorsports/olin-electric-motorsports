@@ -13,8 +13,8 @@
 /*
  * Macros
  */
-#define NUM_ICS             (2)
-#define NUM_TEMPERATURE_ICS (1) // Only half the ICs monitor temperatures
+#define NUM_ICS             (12)
+#define NUM_TEMPERATURE_ICS (6) // Only half the ICs monitor temperatures
 
 // Number of cells that can be measured
 #define NUM_CELLS (12)
