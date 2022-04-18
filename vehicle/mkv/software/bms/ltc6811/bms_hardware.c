@@ -50,12 +50,15 @@ Copyright 2017 Linear Technology Corp. (LTC)
 
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
  * Writes an array of bytes out of the SPI port
  */
 void spi_write_array(uint8_t len, uint8_t* data) {
-    spi_transceive(data, NULL, len);
+    uint8_t _read[len];
+    spi_transceive(data, _read, len);
+    (void)_read;
 }
 
 /*
@@ -69,12 +72,16 @@ void spi_write_read(
         rx_data, // Input: array that will store the data read by the SPI port
     uint8_t rx_len // Option: number of bytes to be read from the SPI port
 ) {
-    spi_transceive(tx_Data, NULL, tx_len);
-    spi_receive(rx_data, rx_len);
+    uint8_t tx_read[tx_len];
+    memset(tx_read, 0xff, tx_len);
+    spi_transceive(tx_Data, tx_read, tx_len);
+    uint8_t rx_send[rx_len];
+    memset(rx_send, 0, rx_len);
+    spi_transceive(rx_send, rx_data, rx_len);
 }
 
 uint8_t spi_read_byte(uint8_t tx_dat) {
     uint8_t data;
-    spi_receive(&data, 1);
+    spi_transceive(&tx_dat, &data, 1);
     return data;
 }
