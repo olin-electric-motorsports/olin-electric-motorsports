@@ -12,7 +12,6 @@
 #include "vehicle/mkv/software/bms/can_api.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
 #include "vehicle/mkv/software/bms/tasks/tasks.h"
-#include "vehicle/mkv/software/bms/utils/can.h"
 #include "vehicle/mkv/software/bms/utils/fault.h"
 #include "vehicle/mkv/software/bms/utils/mux.h"
 

@@ -12,7 +12,7 @@
 #define CELL_GROUP_1_OFFSET (0) // Cells 1-4
 #define CELL_GROUP_2_OFFSET (4) // Cells 7-10
 
-uint16_t cell_voltages[NUM_ICS][NUM_CELLS_PER_IC];
+// uint16_t cell_voltages[NUM_ICS][NUM_CELLS_PER_IC];
 
 int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     int pec_errors = 0;
@@ -43,15 +43,24 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
         for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach LTC6811
             uint16_t data_counter = ic * NUM_RX_BYT;
 
+            can_frame_t voltage_frame = {
+                .id = CAN_TOOLS_BMS_VOLTAGE_FRAME_ID,
+                .mob = 0,
+                .dlc
+                = CAN_TOOLS_BMS_VOLTAGE_LENGTH, // Only send 3 cells at a time
+            };
+
+            uint8_t can_data[8] = { 0 };
+            can_data[0] = ic;
+            can_data[1] = cell_reg;
+            uint16_t* reg_voltages = (uint16_t*)&(can_data[2]);
+
+            voltage_frame.data = (uint8_t*)can_data;
+
             for (uint8_t cell_counter = 0; cell_counter < NUM_CELLS_IN_REG;
                  cell_counter++) {
-                uint8_t cell_idx
-                    = cell_reg * NUM_CELLS_IN_REG + cell_counter; // 0-11
-
-                // Skip certain cells
-                if ((cell_idx == 4) || (cell_idx == 5) || (cell_idx == 10)
-                    || (cell_idx == 11)) {
-                    data_counter += 2;
+                if (((cell_reg == 1) || (cell_reg == 3))
+                    && (cell_counter >= 1)) {
                     continue;
                 }
 
@@ -59,18 +68,10 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 uint16_t cell_voltage = raw_data[data_counter]
                                         + (raw_data[data_counter + 1] << 8);
 
-                // Store cell voltage
-                uint16_t cell_storage_index
-                    = cell_reg * NUM_CELLS_IN_REG + cell_counter;
-
-                if (cell_reg >= 2) {
-                    cell_storage_index -= 2;
-                }
-
-                cell_voltages[ic][cell_storage_index] = cell_voltage;
+                reg_voltages[cell_counter] = cell_voltage;
 
                 // Accumulate!
-                *pack_voltage += cell_voltage >> 4;
+                *pack_voltage += cell_voltage >> 8;
 
                 // Check under/over voltage
                 if (cell_voltage >= OVERVOLTAGE_THRESHOLD) {
@@ -81,6 +82,8 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
                 data_counter += 2;
             }
+
+            can_send(&voltage_frame);
 
             /*
              * The received PEC for the current_ic
@@ -103,30 +106,33 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     return pec_errors;
 }
 
-void can_send_bms_voltages(void) {
-    can_frame_t voltage_frame = {
-        .id = CAN_TOOLS_BMS_VOLTAGE_0_FRAME_ID,
-        .mob = 0,
-        .dlc = 8,
-    };
-
-    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-        // For every chip, send the lower and upper cell voltages in CAN frames
-
-        /*
-         * Trick: instead of creating our own data array, we just set the
-         * pointer to the array to be the pointer to the cell voltages in giant
-         * array with some offset. That way, we can reuse memory and avoid
-         * memcpy-ing.
-         */
-        voltage_frame.data
-            = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_1_OFFSET);
-        can_send(&voltage_frame);
-        voltage_frame.id++;
-
-        voltage_frame.data
-            = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_2_OFFSET);
-        can_send(&voltage_frame);
-        voltage_frame.id++;
-    }
-}
+// void can_send_bms_voltages(void) {
+//     can_frame_t voltage_frame = {
+//         //
+//         // .id = CAN_TOOLS_BMS_VOLTAGE_0_FRAME_ID,
+//         .mob = 0,
+//         .dlc = 8,
+//     };
+//
+//     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+//         // For every chip, send the lower and upper cell voltages in CAN
+//         frames
+//
+//         /*
+//          * Trick: instead of creating our own data array, we just set the
+//          * pointer to the array to be the pointer to the cell voltages in
+//          giant
+//          * array with some offset. That way, we can reuse memory and avoid
+//          * memcpy-ing.
+//          */
+//         voltage_frame.data
+//             = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_1_OFFSET);
+//         can_send(&voltage_frame);
+//         voltage_frame.id++;
+//
+//         voltage_frame.data
+//             = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_2_OFFSET);
+//         can_send(&voltage_frame);
+//         voltage_frame.id++;
+//     }
+// }

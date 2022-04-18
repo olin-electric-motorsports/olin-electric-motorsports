@@ -386,8 +386,8 @@ int main(void) {
             // Every 500ms send sensing and debug data
             if (loop_counter == 50) {
                 can_send_bms_debug();
-                can_send_bms_voltages();
-                can_send_bms_temperatures();
+                // can_send_bms_voltages();
+                // can_send_bms_temperatures();
                 can_send_bms_metrics();
 
                 loop_counter = 0;
