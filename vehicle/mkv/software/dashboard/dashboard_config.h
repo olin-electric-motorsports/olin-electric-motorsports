@@ -18,9 +18,6 @@ gpio_t LV_LED = PD6;
 gpio_t BRAKE_LED = PB2;
 gpio_t RTD_BUZZER_LSD = PC5;
 
-// ADC PIN
-adc_pin_e STEERING_POS = ADC2;
-
 // Timer setup
 void timer0_callback(void);
 
