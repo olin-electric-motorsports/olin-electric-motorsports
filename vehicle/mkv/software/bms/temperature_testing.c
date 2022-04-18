@@ -83,8 +83,6 @@ int main(void) {
             voltage_task(&pack_voltage, &ov, &uv);
             bms_core.pack_voltage = pack_voltage;
 
-            can_send_bms_voltages();
-
             uint32_t ot = 0;
             uint32_t ut = 0;
 
@@ -93,7 +91,6 @@ int main(void) {
 
             can_send_bms_core();
             can_send_bms_debug();
-            can_send_bms_temperatures();
 
             run_10ms = false;
         }
