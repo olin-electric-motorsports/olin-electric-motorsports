@@ -112,6 +112,7 @@ static int initial_checks(void) {
         bms_metrics.voltage_pec_error_count += rc;
 
         if (retry >= MAX_PEC_RETRY) {
+            rc = 1;
             set_fault(BMS_FAULT_PEC);
             goto bail;
         } else {
@@ -142,6 +143,7 @@ static int initial_checks(void) {
 
         if (retry >= MAX_PEC_RETRY) {
             set_fault(BMS_FAULT_PEC);
+            rc = 1;
             goto bail;
         } else {
             retry++;
@@ -191,6 +193,7 @@ static void state_machine_run(void) {
             set_fault(BMS_FAULT_PEC);
             bms_core.bms_state = FAULT;
         }
+        return;
     } else {
         bms_metrics.voltage_pec_error_count = 0;
     }
@@ -315,6 +318,7 @@ static void state_machine_run(void) {
         } break;
         default: {
             // Just to be safe. This shouldn't happen
+            bms_core.bms_fault_state = BMS_FAULT_DIAGNOSTICS_FAIL;
             bms_core.bms_state = FAULT;
         } break;
     }
@@ -353,7 +357,7 @@ int main(void) {
     gpio_set_pin(GENERAL_LED);
 
     // Check state of cells
-    if (!initial_checks()) {
+    if (initial_checks() != 0) {
         bms_core.bms_state = FAULT;
         gpio_set_pin(FAULT_LED);
     } else {
@@ -361,6 +365,8 @@ int main(void) {
         bms_core.bms_state = IDLE;
         gpio_set_pin(BMS_RELAY_LSD);
     }
+
+    can_send_bms_core();
 
     // Turn off GENERAL_LED to indicate checks passed
     gpio_clear_pin(GENERAL_LED);
@@ -381,6 +387,7 @@ int main(void) {
 
         if (run_10ms) {
             can_send_bms_core();
+            can_send_bms_metrics();
             state_machine_run();
 
             // Every 500ms send sensing and debug data

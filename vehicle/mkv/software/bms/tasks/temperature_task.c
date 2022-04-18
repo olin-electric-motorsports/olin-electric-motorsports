@@ -22,12 +22,12 @@ const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
  * Enables or disables the accumulator fans by turning on or off the PWM pin
  * connected to timer 1.
  */
-static void fan_enable(bool enable) {
-    timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
-
-    // No way to update a single part of the config so we just re-init the timer
-    timer_init(&timer1_fan_cfg);
-}
+// static void fan_enable(bool enable) {
+//     timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
+//
+//     // No way to update a single part of the config so we just re-init the
+//     timer timer_init(&timer1_fan_cfg);
+// }
 
 int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                      uint32_t* ut) {
@@ -113,25 +113,25 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                  * Using negative-temperature-coefficient (NTC) thermistors, so
                  * comparisons are reversed (i.e. less than over-temp threshold)
                  */
-                if (temperature < OVERTEMPERATURE_THRESHOLD) {
-                    *ot += 1;
-                }
-
-                /*
-                 * If temperatures are getting a bit too high, we turn on the
-                 * fan
-                 */
-                if (temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
-                    fan_enable(true);
-                }
-
-                if (temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
-                    fan_enable(false);
-                }
-
-                if (temperature > UNDERTEMPERATURE_THRESHOLD) {
-                    *ut += 1;
-                }
+                // if (temperature < OVERTEMPERATURE_THRESHOLD) {
+                //     *ot += 1;
+                // }
+                //
+                // /*
+                //  * If temperatures are getting a bit too high, we turn on the
+                //  * fan
+                //  */
+                // if (temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
+                //     fan_enable(true);
+                // }
+                //
+                // if (temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
+                //     fan_enable(false);
+                // }
+                //
+                // if (temperature > UNDERTEMPERATURE_THRESHOLD) {
+                //     *ut += 1;
+                // }
             }
 
             /*

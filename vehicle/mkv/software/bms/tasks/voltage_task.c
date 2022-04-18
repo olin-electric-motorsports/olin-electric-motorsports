@@ -15,6 +15,7 @@
 // uint16_t cell_voltages[NUM_ICS][NUM_CELLS_PER_IC];
 
 int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
+    *pack_voltage = 0;
     int pec_errors = 0;
 
     wakeup_sleep(NUM_ICS);
@@ -61,6 +62,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                  cell_counter++) {
                 if (((cell_reg == 1) || (cell_reg == 3))
                     && (cell_counter >= 1)) {
+                    data_counter += 2;
                     continue;
                 }
 

@@ -21,7 +21,7 @@
 
 // TODO verify over/under voltage/temperature thresholds
 #define OVERVOLTAGE_THRESHOLD  (42000) // 4.2V
-#define UNDERVOLTAGE_THRESHOLD (30000) // 3.0V
+#define UNDERVOLTAGE_THRESHOLD (29000) // 3.0V
 
 /*
  * We can handle missing around 5 temperatures, since we know there will be some
