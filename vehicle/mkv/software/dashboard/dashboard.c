@@ -110,7 +110,7 @@ int main(void) {
         }
 
         if (can_poll_receive_air_control_critical() == 0) {
-            if (air_control_critical.state == AIR_STATE_TS_ACTIVE) {
+            if (air_control_critical.air_state == AIR_STATE_TS_ACTIVE) {
                 HV_STATE = true;
                 gpio_set_pin(HV_LED); // set HV LED
             } else {
