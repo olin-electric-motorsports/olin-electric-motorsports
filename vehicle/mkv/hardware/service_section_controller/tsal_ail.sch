@@ -14,22 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L formula:NanoFit_RA_TH_02 J?
-U 1 1 61125034
-P 4700 5350
-AR Path="/60A3B236/61125034" Ref="J?"  Part="1" 
-AR Path="/60A3B41E/61125034" Ref="J601"  Part="1" 
-F 0 "J601" H 5200 5300 60  0000 C CNN
-F 1 "NanoFit_2" H 5200 5400 60  0000 C CNN
-F 2 "footprints:NanoFit_Molex_1x02x2.50mm_Angled_OEM" H 4950 5200 60  0001 C CNN
-F 3 "https://www.molex.com/pdm_docs/sd/1053131102_sd.pdf" H 5050 5300 60  0001 C CNN
-F 4 "DK" H 5150 5400 50  0001 C CNN "MFN"
-F 5 "WM14972-ND" H 5250 5500 50  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en/connectors-interconnects/rectangular-connectors-headers-male-pins/314?k=nanofit+2&k=&pkeyword=nanofit+2&pv88=2&pv69=367&sf=0&FV=ffe0013a&quantity=&ColumnSort=0&page=1&pageSize=25" H 5350 5600 50  0001 C CNN "PurchasingLink"
-	1    4700 5350
-	-1   0    0    1   
-$EndComp
-$Comp
 L formula:MCP6001 U?
 U 1 1 6112503F
 P 4100 4000
@@ -198,28 +182,7 @@ Connection ~ 4000 3000
 Wire Wire Line
 	4400 4000 4550 4000
 Wire Wire Line
-	4950 4000 4950 4250
-Connection ~ 4950 4000
-Wire Wire Line
-	4950 4000 5800 4000
-Wire Wire Line
 	5800 4000 5800 4300
-$Comp
-L formula:R_1.43K R?
-U 1 1 611250AB
-P 4950 4400
-AR Path="/60A3B236/611250AB" Ref="R?"  Part="1" 
-AR Path="/60A3B41E/611250AB" Ref="R608"  Part="1" 
-F 0 "R608" H 5020 4446 50  0000 L CNN
-F 1 "R_1.43K" H 5020 4355 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 4750 4700 50  0001 C CNN
-F 3 "https://media.digikey.com/pdf/Data%20Sheets/Tyco%20Electonics%20AMP%20PDFs/RN73_Series_2011.pdf" H 5000 4100 50  0001 C CNN
-F 4 "DK" H 4950 3900 60  0001 C CNN "MFN"
-F 5 "A103351CT-ND" H 4950 4000 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/te-connectivity-passive-product/RN73C2A1K43BTDF/A103351CT-ND/2730566" H 5430 4800 60  0001 C CNN "PurchasingLink"
-	1    4950 4400
-	1    0    0    -1  
-$EndComp
 $Comp
 L formula:LED_0805 D?
 U 1 1 611250B4
@@ -270,8 +233,6 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 $EndComp
 Wire Wire Line
 	5800 4600 5800 4900
-Wire Wire Line
-	4950 4550 4950 5000
 Wire Wire Line
 	5800 5200 5800 5350
 Wire Wire Line
@@ -329,8 +290,8 @@ L power:GND #PWR?
 U 1 1 61125105
 P 7550 4950
 AR Path="/60A3B236/61125105" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/61125105" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 7550 4700 50  0001 C CNN
+AR Path="/60A3B41E/61125105" Ref="#PWR0149"  Part="1" 
+F 0 "#PWR0149" H 7550 4700 50  0001 C CNN
 F 1 "GND" H 7555 4777 50  0000 C CNN
 F 2 "" H 7550 4950 50  0001 C CNN
 F 3 "" H 7550 4950 50  0001 C CNN
@@ -344,8 +305,8 @@ L power:GND #PWR?
 U 1 1 6112510C
 P 8550 4600
 AR Path="/60A3B236/6112510C" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/6112510C" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 8550 4350 50  0001 C CNN
+AR Path="/60A3B41E/6112510C" Ref="#PWR0150"  Part="1" 
+F 0 "#PWR0150" H 8550 4350 50  0001 C CNN
 F 1 "GND" H 8555 4427 50  0000 C CNN
 F 2 "" H 8550 4600 50  0001 C CNN
 F 3 "" H 8550 4600 50  0001 C CNN
@@ -380,42 +341,12 @@ HV
 Text Notes 7350 3400 0    200  ~ 0
 LV\n\n
 $Comp
-L formula:R_51.1K R?
-U 1 1 61125165
-P 1900 4550
-AR Path="/60A3B236/61125165" Ref="R?"  Part="1" 
-AR Path="/60A3B41E/61125165" Ref="R602"  Part="1" 
-F 0 "R602" V 1800 4450 50  0000 L CNN
-F 1 "R_51.1K" V 1700 4450 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 800 4850 50  0001 L CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 800 4950 50  0001 L CNN
-F 4 "DK" H 1900 4550 60  0001 C CNN "MFN"
-F 5 "P51.1KCCT-ND" H 800 4750 60  0001 L CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF5112V/P51.1KCCT-ND/119466" H 800 5050 60  0001 L CNN "PurchasingLink"
-	1    1900 4550
-	0    1    1    0   
-$EndComp
-$Comp
-L formula:R_1.91K R?
-U 1 1 6112516C
-P 2200 5000
-AR Path="/60A3B236/6112516C" Ref="R?"  Part="1" 
-AR Path="/60A3B41E/6112516C" Ref="R603"  Part="1" 
-F 0 "R603" H 2050 5050 50  0000 C CNN
-F 1 "R_1.91K" H 2000 4950 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 2130 5000 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf" H 2280 5000 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PB6D1911V/P21049CT-ND/6215304" H 2680 5400 60  0001 C CNN "PurchasingLink"
-	1    2200 5000
-	-1   0    0    1   
-$EndComp
-$Comp
 L power:GND #PWR?
 U 1 1 61125176
 P 10200 2450
 AR Path="/60A3B236/61125176" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/61125176" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 10200 2200 50  0001 C CNN
+AR Path="/60A3B41E/61125176" Ref="#PWR0151"  Part="1" 
+F 0 "#PWR0151" H 10200 2200 50  0001 C CNN
 F 1 "GND" H 10205 2277 50  0000 C CNN
 F 2 "" H 10200 2450 50  0001 C CNN
 F 3 "" H 10200 2450 50  0001 C CNN
@@ -427,8 +358,8 @@ L power:GND #PWR?
 U 1 1 6112517C
 P 9650 2700
 AR Path="/60A3B236/6112517C" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/6112517C" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 9650 2450 50  0001 C CNN
+AR Path="/60A3B41E/6112517C" Ref="#PWR0152"  Part="1" 
+F 0 "#PWR0152" H 9650 2450 50  0001 C CNN
 F 1 "GND" H 9655 2527 50  0000 C CNN
 F 2 "" H 9650 2700 50  0001 C CNN
 F 3 "" H 9650 2700 50  0001 C CNN
@@ -471,36 +402,14 @@ F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage
 	1    10100 2150
 	1    0    0    -1  
 $EndComp
-Text GLabel 4700 5750 2    50   Input ~ 0
+Text GLabel 3800 5950 2    50   Input ~ 0
 AIL-
-Text GLabel 4900 5000 0    50   Input ~ 0
+Text GLabel 3800 5800 2    50   Input ~ 0
 AIL+
-Wire Wire Line
-	4950 5000 4900 5000
-Wire Wire Line
-	3950 5750 4650 5750
-Wire Wire Line
-	5250 5400 5150 5400
-Connection ~ 4950 5000
-Wire Wire Line
-	5250 5250 5250 5000
-Wire Wire Line
-	5150 5250 5250 5250
-Wire Wire Line
-	5250 5950 4650 5950
-Wire Wire Line
-	4650 5950 4650 5750
-Connection ~ 4650 5750
-Wire Wire Line
-	4650 5750 4700 5750
-Wire Wire Line
-	5250 5400 5250 5950
-Text Notes 4500 5400 0    50   ~ 0
+Text Notes 2650 5950 0    50   ~ 0
 To \nAIL LED
 Wire Wire Line
 	7800 3450 8550 3450
-Wire Wire Line
-	4950 5000 5250 5000
 Wire Wire Line
 	9650 2150 9900 2150
 $Comp
@@ -516,10 +425,10 @@ F 4 "https://www.digikey.com/product-detail/en/yageo/CC0805ZKY5V9BB105/311-1909-
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0153
 U 1 1 60BF1A77
 P 9350 1700
-F 0 "#PWR?" H 9350 1450 50  0001 C CNN
+F 0 "#PWR0153" H 9350 1450 50  0001 C CNN
 F 1 "GND" H 9355 1527 50  0000 C CNN
 F 2 "" H 9350 1700 50  0001 C CNN
 F 3 "" H 9350 1700 50  0001 C CNN
@@ -580,18 +489,18 @@ L power:GND #PWR?
 U 1 1 60EA29EB
 P 8750 2500
 AR Path="/60A3B236/60EA29EB" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B41E/60EA29EB" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 8750 2250 50  0001 C CNN
+AR Path="/60A3B41E/60EA29EB" Ref="#PWR0154"  Part="1" 
+F 0 "#PWR0154" H 8750 2250 50  0001 C CNN
 F 1 "GND" H 8755 2327 50  0000 C CNN
 F 2 "" H 8750 2500 50  0001 C CNN
 F 3 "" H 8750 2500 50  0001 C CNN
 	1    8750 2500
 	1    0    0    -1  
 $EndComp
-Text Notes 3400 3900 0    50   ~ 0
-3.67V
+Text Notes 2750 3950 0    50   ~ 0
+0.55V - 3.67V
 Text Notes 2250 4550 0    50   ~ 0
-0.54V
+0.536V
 Text Notes 7150 6200 0    50   ~ 0
 LAYOUT NOTE: HV and LV need to be separated by at least 12.7mm
 $Comp
@@ -599,7 +508,7 @@ L formula:Test_Point_SMD TP603
 U 1 1 616069D9
 P 3650 3650
 F 0 "TP603" H 3550 3950 50  0000 L CNN
-F 1 "VREF" H 3550 3850 50  0000 L CNN
+F 1 "VIN" H 3550 3850 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 3650 3500 50  0001 C CNN
 F 3 "" H 3650 3650 50  0001 C CNN
 	1    3650 3650
@@ -624,14 +533,12 @@ $EndComp
 Wire Wire Line
 	4550 4000 4550 4250
 Connection ~ 4550 4000
-Wire Wire Line
-	4550 4000 4950 4000
 $Comp
 L formula:Test_Point_SMD TP601
 U 1 1 61613E89
 P 2800 4750
 F 0 "TP601" H 2750 4750 50  0000 R CNN
-F 1 "VIN" H 2712 4837 50  0000 R CNN
+F 1 "VREF" H 2712 4837 50  0000 R CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2800 4600 50  0001 C CNN
 F 3 "" H 2800 4750 50  0001 C CNN
 	1    2800 4750
@@ -642,8 +549,6 @@ Wire Wire Line
 Connection ~ 2800 4550
 Wire Wire Line
 	2800 4550 3800 4550
-Text Notes 2050 2900 0    50   ~ 0
-do i need this test point?\n
 Text Label 9500 5050 2    50   ~ 0
 TSAL_FLAG
 Wire Wire Line
@@ -674,16 +579,12 @@ Text GLabel 2200 5300 0    50   Input ~ 0
 -TS
 Text GLabel 1400 4100 0    50   Input ~ 0
 -TS
-Text GLabel 3950 5750 0    50   Input ~ 0
--TS
 Text GLabel 4000 4700 0    50   Input ~ 0
 -TS
 Text GLabel 6500 5500 0    50   Input ~ 0
 -TS
 Text GLabel 1400 3700 0    50   Input ~ 0
 TS+_FUSED
-Text GLabel 4000 2650 0    50   Input ~ 0
-+15V_FUSED
 Text GLabel 7800 3450 0    50   Input ~ 0
 +12V_TSAL
 Text GLabel 7650 3850 2    50   Input ~ 0
@@ -708,25 +609,12 @@ L formula:Test_Point_SMD TP602
 U 1 1 61601E3D
 P 3650 2900
 F 0 "TP602" V 3750 3200 50  0000 C CNN
-F 1 "15V+" V 3650 3200 50  0000 C CNN
+F 1 "5V+" V 3650 3200 50  0000 C CNN
 F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 3650 2750 50  0001 C CNN
 F 3 "" H 3650 2900 50  0001 C CNN
 	1    3650 2900
 	0    -1   -1   0   
 $EndComp
-Text GLabel 1400 3850 0    50   Input ~ 0
-TS+_FUSED_LIN_REG
-Wire Wire Line
-	1400 3700 1500 3700
-Wire Wire Line
-	1400 3850 1500 3850
-Wire Wire Line
-	1500 3850 1500 3700
-Connection ~ 1500 3700
-Wire Wire Line
-	1500 3700 1600 3700
-Text GLabel 1550 4550 0    50   Input ~ 0
-+15V_FUSED
 Text GLabel 4650 3650 2    50   Input ~ 0
 -TS
 $Comp
@@ -740,4 +628,124 @@ F 3 "https://toshiba.semicon-storage.com/info/docget.jsp?did=10569&prodName=TLP7
 	1    7100 4100
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	1400 3700 1600 3700
+$Comp
+L formula:SSM3K333R Q603
+U 1 1 6288BB38
+P 3525 6475
+F 0 "Q603" H 3731 6521 50  0000 L CNN
+F 1 "SSM3K333R" H 3731 6430 50  0000 L CNN
+F 2 "footprints:SOT-23F" H 3725 6400 50  0001 L CIN
+F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 3725 6550 50  0001 L CNN
+F 4 "DK" H 4025 6850 60  0001 C CNN "MFN"
+F 5 "SSM3K333RLFCT-ND" H 3925 6750 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 3825 6650 60  0001 C CNN "PurchasingLink"
+	1    3525 6475
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 6475 3100 6475
+$Comp
+L formula:R_10K R608
+U 1 1 628A3E54
+P 3100 6800
+F 0 "R608" H 3170 6846 50  0000 L CNN
+F 1 "R_10K" H 3170 6755 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 3030 6800 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 3180 6800 50  0001 C CNN
+F 4 "DK" H 3100 6800 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 3100 6800 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 3580 7200 60  0001 C CNN "PurchasingLink"
+	1    3100 6800
+	1    0    0    -1  
+$EndComp
+Text GLabel 3625 7250 0    50   Input ~ 0
+-TS
+Wire Wire Line
+	3625 6675 3625 7075
+Wire Wire Line
+	3100 6475 3100 6650
+Connection ~ 3100 6475
+Wire Wire Line
+	3100 6475 3325 6475
+Wire Wire Line
+	3100 6950 3100 7075
+Wire Wire Line
+	3100 7075 3625 7075
+Connection ~ 3625 7075
+Wire Wire Line
+	3625 7075 3625 7250
+Wire Wire Line
+	3800 5950 3625 5950
+Wire Wire Line
+	3625 5950 3625 6275
+Connection ~ 3625 5950
+Text GLabel 3800 5675 2    50   Input ~ 0
++15V_FUSED
+Wire Wire Line
+	4550 4000 5800 4000
+$Comp
+L formula:R_1K R602
+U 1 1 62914E42
+P 1900 4550
+F 0 "R602" V 1693 4550 50  0000 C CNN
+F 1 "R_1K" V 1784 4550 50  0000 C CNN
+F 2 "footprints:R_0805_OEM" H 1830 4550 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 1980 4550 50  0001 C CNN
+F 4 "DK" H 1900 4550 60  0001 C CNN "MFN"
+F 5 "RNCP0805FTD1K00CT-ND" H 1900 4550 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" H 2380 4950 60  0001 C CNN "PurchasingLink"
+	1    1900 4550
+	0    1    1    0   
+$EndComp
+$Comp
+L formula:R_120 R603
+U 1 1 62915B6C
+P 2200 5000
+F 0 "R603" H 2270 5046 50  0000 L CNN
+F 1 "R_120" H 2270 4955 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 1000 5150 50  0001 L CNN
+F 3 "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" H 1000 5450 50  0001 L CNN
+F 4 "DK" H 2200 5000 60  0001 C CNN "MFN"
+F 5 "667-ERJ-6ENF1200V" H 1000 5250 60  0001 L CNN "MPN"
+F 6 "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" H 1000 5350 60  0001 L CNN "PurchasingLink"
+	1    2200 5000
+	1    0    0    -1  
+$EndComp
+Text Notes 900  3325 0    50   ~ 0
+Vout can range between .55V and 3.67V \ndepending on pack voltage. \nOne segment is 60V, \nmax TS voltage is 403.2V
+Text GLabel 4000 2650 0    50   Input ~ 0
++5V__TSAL_FUSED
+Text GLabel 1550 4550 0    50   Input ~ 0
++5V__TSAL_FUSED
+Text GLabel 2800 6475 0    50   Input ~ 0
++5V__TSAL_FUSED
+$Comp
+L formula:NanoFit_RA_TH_02 J?
+U 1 1 61125034
+P 2800 5850
+AR Path="/60A3B236/61125034" Ref="J?"  Part="1" 
+AR Path="/60A3B41E/61125034" Ref="J601"  Part="1" 
+F 0 "J601" H 3300 5800 60  0000 C CNN
+F 1 "NanoFit_2" H 3300 5900 60  0000 C CNN
+F 2 "footprints:NanoFit_Molex_1x02x2.50mm_Angled_OEM" H 3050 5700 60  0001 C CNN
+F 3 "https://www.molex.com/pdm_docs/sd/1053131102_sd.pdf" H 3150 5800 60  0001 C CNN
+F 4 "DK" H 3250 5900 50  0001 C CNN "MFN"
+F 5 "WM14972-ND" H 3350 6000 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en/connectors-interconnects/rectangular-connectors-headers-male-pins/314?k=nanofit+2&k=&pkeyword=nanofit+2&pv88=2&pv69=367&sf=0&FV=ffe0013a&quantity=&ColumnSort=0&page=1&pageSize=25" H 3450 6100 50  0001 C CNN "PurchasingLink"
+	1    2800 5850
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3250 5950 3625 5950
+Wire Wire Line
+	3800 5800 3625 5800
+Wire Wire Line
+	3800 5675 3625 5675
+Wire Wire Line
+	3625 5675 3625 5800
+Connection ~ 3625 5800
+Wire Wire Line
+	3625 5800 3250 5800
 $EndSCHEMATC

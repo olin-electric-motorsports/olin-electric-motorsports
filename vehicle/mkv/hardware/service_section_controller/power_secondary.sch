@@ -154,7 +154,6 @@ Wire Wire Line
 Connection ~ 6550 2350
 Wire Wire Line
 	6550 2750 6550 2850
-Connection ~ 6550 2850
 Wire Wire Line
 	4100 2350 4100 2425
 Connection ~ 4100 2350
@@ -192,56 +191,6 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 348
 	1    3000 1275
 	0    1    1    0   
 $EndComp
-Connection ~ 3400 5650
-Wire Wire Line
-	3400 5650 3400 5750
-Wire Wire Line
-	2900 5650 3400 5650
-$Comp
-L formula:C_1uF C?
-U 1 1 60AA1BA7
-P 3400 5950
-AR Path="/60A99934/60AA1BA7" Ref="C?"  Part="1" 
-AR Path="/60A3B0AB/60AA1BA7" Ref="C704"  Part="1" 
-F 0 "C704" H 3515 5996 50  0000 L CNN
-F 1 "C_1uF" H 3515 5905 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 3438 5800 50  0001 C CNN
-F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A105KAFNNNE.pdf" H 3425 6050 50  0001 C CNN
-F 4 "DK" H 3400 5950 60  0001 C CNN "MFN"
-F 5 "1276-2887-1-ND" H 3400 5950 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A105KAFNNNE/1276-2887-1-ND/3890973" H 3825 6450 60  0001 C CNN "PurchasingLink"
-	1    3400 5950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2900 6050 2900 6100
-Wire Wire Line
-	2900 5750 2900 5650
-Connection ~ 2350 6100
-Wire Wire Line
-	2350 6100 2350 6250
-Wire Wire Line
-	2350 5950 2350 6100
-Wire Wire Line
-	2900 6100 2350 6100
-$Comp
-L formula:LR8K4-G U?
-U 1 1 60AA1B77
-P 2350 5650
-AR Path="/60A99934/60AA1B77" Ref="U?"  Part="1" 
-AR Path="/60A3B0AB/60AA1B77" Ref="U701"  Part="1" 
-F 0 "U701" H 2350 5917 50  0000 C CNN
-F 1 "LR8K4-G" H 2350 5826 50  0000 C CNN
-F 2 "footprints:TO-252-2" H 2350 6150 50  0001 C CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20005399B.pdf" H 2350 5950 50  0001 C CNN
-F 4 "Mouser" H 2350 6050 60  0001 C CNN "MFN"
-F 5 "689-LR8K4-G" H 2300 6250 60  0001 C CNN "MPN"
-F 6 "https://www.mouser.com/productdetail/?qs=jWmFlM7coATgElKtQd9PRA%3D%3D" H 2150 6350 60  0001 C CNN "Webpage"
-	1    2350 5650
-	1    0    0    -1  
-$EndComp
-Text Notes 1450 5100 0    98   ~ 0
-400V - 15V Linear Regulator
 Text Label 2825 2425 3    50   ~ 0
 SW
 Text Label 3150 1875 0    50   ~ 0
@@ -327,23 +276,9 @@ F 7 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-178
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6550 2850 7450 2850
-Wire Wire Line
 	4100 2850 5400 2850
 Connection ~ 4100 2850
 Connection ~ 5400 2850
-$Comp
-L formula:R_6.04K R703
-U 1 1 60D39EBC
-P 2900 5900
-F 0 "R703" H 2970 5946 50  0000 L CNN
-F 1 "R_6.04K" H 2970 5855 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 2830 6450 50  0001 C CNN
-F 3 "" H 2980 6450 50  0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF6041V/P6.04KCCT-ND/119185" H 3380 6300 60  0001 C CNN "PurchasingLink"
-	1    2900 5900
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1400 1975 2275 1975
 $Comp
@@ -1028,20 +963,6 @@ Wire Wire Line
 	3300 2350 3850 2350
 Wire Wire Line
 	3775 1275 3850 1275
-$Comp
-L formula:R_23.7K R705
-U 1 1 60E84E0C
-P 3850 1525
-F 0 "R705" H 3920 1571 50  0000 L CNN
-F 1 "R_23.7K" H 3920 1480 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 3780 1525 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf" H 3930 1525 50  0001 C CNN
-F 4 "DK" H 3850 1525 60  0001 C CNN "MFN"
-F 5 "P21173CT-ND " H 3850 1525 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-PB6D2372V/6213956" H 4330 1925 60  0001 C CNN "PurchasingLink"
-	1    3850 1525
-	1    0    0    -1  
-$EndComp
 Connection ~ 3850 1275
 Wire Wire Line
 	3850 1275 4400 1275
@@ -1050,61 +971,10 @@ Wire Wire Line
 Wire Wire Line
 	3850 1675 3850 1875
 Connection ~ 3850 1875
-Text Notes 3950 6600 0    50   ~ 0
-66.2k resistor costs $14, \ngoing to put 2 resistors in series instead to make up approx 66.13k
-Text Notes 3950 6350 0    50   ~ 0
-Vout = 1.2V (1 + R2/R1) + IADJ(R2)\n\nVout = 14.5V \nIADJ = 10uA\nR1 = 6.04kOhm\nR2 = 63.7kOhm
-$Comp
-L formula:R_43k R701
-U 1 1 60DFB352
-P 2350 6400
-F 0 "R701" H 2420 6446 50  0000 L CNN
-F 1 "R_43k" H 2420 6355 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 2280 6400 50  0001 C CNN
-F 3 "" H 2430 6400 50  0001 C CNN
-	1    2350 6400
-	1    0    0    -1  
-$EndComp
-$Comp
-L formula:R_23.7K R702
-U 1 1 60DFBCEC
-P 2350 6800
-F 0 "R702" H 2420 6846 50  0000 L CNN
-F 1 "R_23.7K" H 2420 6755 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 2280 6800 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf" H 2430 6800 50  0001 C CNN
-F 4 "DK" H 2350 6800 60  0001 C CNN "MFN"
-F 5 "P21173CT-ND " H 2350 6800 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-PB6D2372V/6213956" H 2830 7200 60  0001 C CNN "PurchasingLink"
-	1    2350 6800
-	1    0    0    -1  
-$EndComp
-Text Notes 2300 7500 0    50   ~ 0
-going to need the 23.7k resistor for the buck anyway (might as well buy enough for the lin reg) \n--> initial calculations showed that approx. 63.13kOhm resistor was needed
-Wire Wire Line
-	3400 6050 3400 7000
-Wire Wire Line
-	2350 6550 2350 6650
-Wire Wire Line
-	2350 6950 2350 7000
 Text Notes 1700 3200 0    50   ~ 0
 LAYOUT NOTE: place R704 (R2 from the datasheet application schematic, which is the 4.99kOhm resistor) as close to SW as possible
 Text Notes 1700 3100 0    50   ~ 0
 LAYOUT NOTE: place feedback resistors as close to the FB pin as possible
-$Comp
-L formula:Test_Point_SMD TP702
-U 1 1 6144CF5F
-P 7450 3100
-F 0 "TP702" H 7362 3096 50  0000 R CNN
-F 1 "15V_RETURN" H 7362 3187 50  0000 R CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 7450 2950 50  0001 C CNN
-F 3 "" H 7450 3100 50  0001 C CNN
-	1    7450 3100
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	7450 2850 7450 3050
-Connection ~ 7450 2850
 $Comp
 L formula:Test_Point_SMD TP701
 U 1 1 61648897
@@ -1608,8 +1478,6 @@ AA 00 41 C6 ED 76 9F 3C 79 F2 DD 77 DF 45 08 95 96 96 86 3B 1C 80 15 60 A8 02 04
 7F 77 FF E5 02 B5 4F A4 77 00 00 00 00 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
-Wire Wire Line
-	7450 2850 8250 2850
 Text Notes 9500 2250 0    98   ~ 0
 POWER FLAGS
 Wire Notes Line
@@ -1621,14 +1489,6 @@ Wire Notes Line
 Wire Notes Line
 	10700 1950 9300 1950
 Wire Notes Line
-	900  4800 900  7650
-Wire Notes Line
-	900  7650 6800 7650
-Wire Notes Line
-	6800 7650 6800 4800
-Wire Notes Line
-	6800 4800 900  4800
-Wire Notes Line
 	8900 600  700  600 
 Wire Notes Line
 	700  600  700  4650
@@ -1636,40 +1496,26 @@ Wire Notes Line
 	700  4650 8900 4650
 Wire Notes Line
 	8900 4650 8900 600 
-Text Notes 3800 5150 0    50   ~ 0
-DNP the Linear Regulator\nUse if the buck converter does not work
 $Comp
 L formula:Test_Point_SMD TP703
 U 1 1 614355D7
-P 10350 1500
-F 0 "TP703" H 11000 1600 50  0000 L CNN
-F 1 "15V+_OUTPUT" H 10450 1600 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 10350 1350 50  0001 C CNN
-F 3 "" H 10350 1500 50  0001 C CNN
-	1    10350 1500
-	-1   0    0    1   
+P 7450 2050
+F 0 "TP703" H 8100 2150 50  0000 L CNN
+F 1 "15V+_OUTPUT" H 7550 2150 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 7450 1900 50  0001 C CNN
+F 3 "" H 7450 2050 50  0001 C CNN
+	1    7450 2050
+	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	10350 1200 10350 1450
-Wire Wire Line
-	3400 5650 4450 5650
-Wire Notes Line
-	9350 850  9350 1800
-Wire Notes Line
-	9350 1800 10650 1800
-Wire Notes Line
-	10650 1800 10650 850 
-Wire Notes Line
-	10650 850  9350 850 
 Wire Wire Line
 	10200 2700 10200 3000
 Wire Wire Line
 	9750 2700 9750 3000
 $Comp
-L power:PWR_FLAG #FLG?
+L power:PWR_FLAG #FLG0107
 U 1 1 619BB9E9
 P 10200 3000
-F 0 "#FLG?" H 10200 3075 50  0001 C CNN
+F 0 "#FLG0107" H 10200 3075 50  0001 C CNN
 F 1 "PWR_FLAG" H 10200 3173 50  0000 C CNN
 F 2 "" H 10200 3000 50  0001 C CNN
 F 3 "~" H 10200 3000 50  0001 C CNN
@@ -1677,42 +1523,26 @@ F 3 "~" H 10200 3000 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG?
+L power:PWR_FLAG #FLG0108
 U 1 1 619BB695
 P 9750 3000
-F 0 "#FLG?" H 9750 3075 50  0001 C CNN
+F 0 "#FLG0108" H 9750 3075 50  0001 C CNN
 F 1 "PWR_FLAG" H 9750 3173 50  0000 C CNN
 F 2 "" H 9750 3000 50  0001 C CNN
 F 3 "~" H 9750 3000 50  0001 C CNN
 	1    9750 3000
 	-1   0    0    1   
 $EndComp
-Text GLabel 2850 7100 0    50   Input ~ 0
-15V_RETURN
-Text GLabel 8250 2850 2    50   Input ~ 0
+Text GLabel 8275 3125 2    50   Input ~ 0
 15V_RETURN
 Text GLabel 1200 2850 0    50   Input ~ 0
 -TS
 Text GLabel 8250 2350 2    50   Input ~ 0
 +15V
-Text GLabel 4450 5650 2    50   Input ~ 0
-+15V
-Text GLabel 10350 1200 0    50   Input ~ 0
-+15V
 Text GLabel 10200 2700 2    50   Input ~ 0
 +15V
 Text GLabel 9750 2700 2    50   Input ~ 0
 +TS
-Wire Wire Line
-	2750 5650 2900 5650
-Connection ~ 2900 5650
-Wire Wire Line
-	2350 7000 2850 7000
-Wire Wire Line
-	2850 7000 2850 7100
-Connection ~ 2850 7000
-Wire Wire Line
-	2850 7000 3400 7000
 Text GLabel 1250 1800 0    50   Input ~ 0
 TS+_FUSED
 Wire Wire Line
@@ -1747,7 +1577,7 @@ F 6 "https://www.digikey.com/product-detail/en/epcos-tdk/B59884C0120A070/495-753
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6550 2350 8250 2350
+	6550 2350 7150 2350
 Text GLabel 10300 4850 2    50   Input ~ 0
 +15V_FUSED
 Text GLabel 9450 4850 0    50   Input ~ 0
@@ -1756,8 +1586,302 @@ Wire Wire Line
 	9450 4850 9700 4850
 Wire Wire Line
 	10000 4850 10300 4850
-Text GLabel 1550 5650 0    50   Input ~ 0
-TS+_FUSED
+$Comp
+L formula:R_0_2512 R708
+U 1 1 627B9F75
+P 7950 2350
+F 0 "R708" V 7743 2350 50  0000 C CNN
+F 1 "R_0_2512" V 7834 2350 50  0000 C CNN
+F 2 "footprints:R_2512_OEM" H 7880 2350 50  0001 C CNN
+F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 8030 2350 50  0001 C CNN
+F 4 "DK" H 7950 2350 60  0001 C CNN "MFN"
+F 5 "A121322CT-ND" H 7950 2350 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" H 8430 2750 60  0001 C CNN "PurchasingLink"
+	1    7950 2350
+	0    1    1    0   
+$EndComp
 Wire Wire Line
-	1550 5650 1950 5650
+	8100 2350 8250 2350
+$Comp
+L formula:LED_0805 D705
+U 1 1 627BD1B4
+P 7150 2925
+F 0 "D705" V 7189 2808 50  0000 R CNN
+F 1 "LED_0805" V 7098 2808 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 7050 2925 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 7150 3025 50  0001 C CNN
+F 4 "DK" H 7150 2925 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 7150 2925 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 7550 3425 60  0001 C CNN "PurchasingLink"
+	1    7150 2925
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:R_23.7K R705
+U 1 1 60E84E0C
+P 3850 1525
+F 0 "R705" H 3920 1571 50  0000 L CNN
+F 1 "R_23.7K" H 3920 1480 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 3780 1525 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf" H 3930 1525 50  0001 C CNN
+F 4 "DK" H 3850 1525 60  0001 C CNN "MFN"
+F 5 "P21173CT-ND " H 3850 1525 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-PB6D2372V/6213956" H 4330 1925 60  0001 C CNN "PurchasingLink"
+	1    3850 1525
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:R_1K R703
+U 1 1 627C37C6
+P 7150 2575
+F 0 "R703" H 7220 2621 50  0000 L CNN
+F 1 "R_1K" H 7220 2530 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 7080 2575 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 7230 2575 50  0001 C CNN
+F 4 "DK" H 7150 2575 60  0001 C CNN "MFN"
+F 5 "RNCP0805FTD1K00CT-ND" H 7150 2575 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" H 7630 2975 60  0001 C CNN "PurchasingLink"
+	1    7150 2575
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7150 2350 7150 2425
+Connection ~ 7150 2350
+Wire Wire Line
+	7150 2350 7450 2350
+Wire Wire Line
+	7150 2775 7150 2725
+Wire Wire Line
+	6550 2850 6875 2850
+Wire Wire Line
+	6875 2850 6875 3125
+Wire Wire Line
+	6875 3125 7150 3125
+Wire Wire Line
+	7150 3125 7150 3075
+Connection ~ 6550 2850
+Connection ~ 7150 3125
+Text Notes 7800 2750 2    50   ~ 0
+15V LED
+$Comp
+L formula:F_500mA_16V F?
+U 1 1 62818372
+P 9850 5200
+AR Path="/5C6B723E/62818372" Ref="F?"  Part="1" 
+AR Path="/62818372" Ref="F?"  Part="1" 
+AR Path="/5C702479/62818372" Ref="F?"  Part="1" 
+AR Path="/60A3B220/62818372" Ref="F?"  Part="1" 
+AR Path="/60A3B080/62818372" Ref="F?"  Part="1" 
+AR Path="/60A3B0AB/62818372" Ref="F703"  Part="1" 
+F 0 "F703" V 9950 5200 50  0000 C CNN
+F 1 "500mA" V 9750 5200 50  0000 C CNN
+F 2 "footprints:Fuse_1210" V 9780 5200 50  0001 C CNN
+F 3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" V 9930 5200 50  0001 C CNN
+F 4 "Digi-Key" H 9850 5200 60  0001 C CNN "MFN"
+F 5 "507-1786-1-ND" H 9850 5200 60  0001 C CNN "MPN"
+F 6 "Value" H 9850 5200 60  0001 C CNN "Package"
+F 7 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" V 10330 5600 60  0001 C CNN "PurchasingLink"
+	1    9850 5200
+	0    -1   -1   0   
+$EndComp
+Text GLabel 9425 5200 0    50   Input ~ 0
++5V_TSAL
+Wire Wire Line
+	9425 5200 9700 5200
+Text GLabel 10300 5200 2    50   Input ~ 0
++5V__TSAL_FUSED
+Wire Wire Line
+	10000 5200 10300 5200
+Connection ~ 7450 2350
+Wire Wire Line
+	7450 2350 7800 2350
+Wire Wire Line
+	7450 2100 7450 2350
+Wire Wire Line
+	7150 3125 8275 3125
+$Comp
+L formula:Test_Point_SMD TP704
+U 1 1 62974C1E
+P 7900 3925
+F 0 "TP704" H 7975 4150 50  0000 L CNN
+F 1 "TS-" H 8000 4025 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 7900 3775 50  0001 C CNN
+F 3 "" H 7900 3925 50  0001 C CNN
+	1    7900 3925
+	1    0    0    -1  
+$EndComp
+Text GLabel 7900 4275 0    50   Input ~ 0
+-TS
+Wire Wire Line
+	7900 3975 7900 4275
+Text Notes 4175 6500 0    50   ~ 0
+5V Lin Reg Output LED
+Wire Notes Line
+	5275 5100 1625 5100
+Wire Notes Line
+	5275 7375 5275 5100
+Wire Notes Line
+	1625 7375 5275 7375
+Wire Notes Line
+	1625 5100 1625 7375
+Wire Wire Line
+	3825 5800 3825 5925
+$Comp
+L formula:Test_Point_SMD TP702
+U 1 1 6283DC18
+P 3825 5750
+F 0 "TP702" H 3737 5746 50  0000 R CNN
+F 1 "5V_TSAL" H 3737 5837 50  0000 R CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 3825 5600 50  0001 C CNN
+F 3 "" H 3825 5750 50  0001 C CNN
+	1    3825 5750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 6775 4050 7000
+Text GLabel 4050 7000 2    50   Input ~ 0
+5V_RETURN
+Wire Wire Line
+	4050 6350 4050 6475
+Wire Wire Line
+	3825 5925 4050 5925
+Wire Wire Line
+	4050 5925 4250 5925
+Connection ~ 4050 5925
+Wire Wire Line
+	4050 5925 4050 6050
+$Comp
+L formula:LED_0805 D704
+U 1 1 62826C13
+P 4050 6625
+F 0 "D704" V 4089 6508 50  0000 R CNN
+F 1 "LED_0805" V 3998 6508 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 3950 6625 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 4050 6725 50  0001 C CNN
+F 4 "DK" H 4050 6625 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 4050 6625 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 4450 7125 60  0001 C CNN "PurchasingLink"
+	1    4050 6625
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:R_200 R701
+U 1 1 62826598
+P 4050 6200
+F 0 "R701" H 4120 6246 50  0000 L CNN
+F 1 "R_200" H 4120 6155 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 3980 6200 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 4130 6200 50  0001 C CNN
+F 4 "DK" H 4050 6200 60  0001 C CNN "MFN"
+F 5 "RMCF0805JT200RCT-ND" H 4050 6200 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 4530 6600 60  0001 C CNN "PurchasingLink"
+	1    4050 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4550 5925 4725 5925
+$Comp
+L formula:R_0_2512 R702
+U 1 1 628250D5
+P 4400 5925
+F 0 "R702" V 4607 5925 50  0000 C CNN
+F 1 "R_0_2512" V 4516 5925 50  0000 C CNN
+F 2 "footprints:R_2512_OEM" H 4330 5925 50  0001 C CNN
+F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 4480 5925 50  0001 C CNN
+F 4 "DK" H 4400 5925 60  0001 C CNN "MFN"
+F 5 "A121322CT-ND" H 4400 5925 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" H 4880 6325 60  0001 C CNN "PurchasingLink"
+	1    4400 5925
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3025 6825 3125 6825
+Text GLabel 3125 6825 2    50   Input ~ 0
+5V_RETURN
+Wire Wire Line
+	2500 6375 2500 6600
+Wire Wire Line
+	3450 6525 3450 6375
+Wire Wire Line
+	3025 6525 3450 6525
+Wire Wire Line
+	3025 6525 3025 6600
+Connection ~ 3025 6600
+Wire Wire Line
+	2500 6600 3025 6600
+Wire Wire Line
+	2500 5925 2725 5925
+Wire Wire Line
+	2500 5925 2500 6075
+Connection ~ 3825 5925
+Wire Wire Line
+	3450 5925 3825 5925
+Wire Wire Line
+	3450 5925 3450 6075
+$Comp
+L formula:C_0.1uF C708
+U 1 1 627F6B27
+P 3450 6225
+F 0 "C708" H 3565 6271 50  0000 L CNN
+F 1 "C_0.1uF" H 3565 6180 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 3488 6075 50  0001 C CNN
+F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 3475 6325 50  0001 C CNN
+F 4 "DK" H 3450 6225 60  0001 C CNN "MFN"
+F 5 "478-3352-1-ND" H 3450 6225 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 3875 6725 60  0001 C CNN "PurchasingLink"
+	1    3450 6225
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:C_33uF C704
+U 1 1 627F631E
+P 2500 6225
+F 0 "C704" H 2615 6271 50  0000 L CNN
+F 1 "C_33uF" H 2615 6180 50  0000 L CNN
+F 2 "footprints:Fuse_1812" H 2550 5825 50  0001 C CNN
+F 3 "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf" H 2500 6875 50  0001 C CNN
+F 4 "DK" H 2550 5725 60  0001 C CNN "MFN"
+F 5 "445-3924-1-ND" H 2500 6575 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250KC/445-3924-1-ND/1923431" H 2750 6725 60  0001 C CNN "PurchasingLink"
+	1    2500 6225
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3025 6675 3025 6825
+Wire Wire Line
+	3025 6600 3025 6675
+Connection ~ 3025 6675
+Wire Wire Line
+	3025 6675 3125 6675
+Connection ~ 3025 6525
+Wire Wire Line
+	3025 6225 3025 6525
+Text GLabel 3125 6675 2    50   Input ~ 0
+15V_RETURN
+Connection ~ 3450 5925
+Wire Wire Line
+	3325 5925 3450 5925
+Text GLabel 4725 5925 2    50   Input ~ 0
++5V_TSAL
+Connection ~ 2500 5925
+Wire Wire Line
+	2325 5925 2500 5925
+Text GLabel 2325 5925 0    50   Input ~ 0
++15V_FUSED
+Text Notes 2750 5350 0    98   ~ 0
+15V - 5V Lin Reg
+$Comp
+L formula:AP7370 U701
+U 1 1 627B59FE
+P 3025 5925
+F 0 "U701" H 3025 6167 50  0000 C CNN
+F 1 "AP7370" H 3025 6076 50  0000 C CNN
+F 2 "footprints:SOT-23-5" H 2975 6125 50  0001 C CNN
+F 3 "" H 3125 5675 50  0001 C CNN
+F 4 "DK" H 3075 6250 60  0001 C CNN "MFN"
+F 5 "AP7370-50W5-7DICT-ND" H 3175 6350 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/diodes-incorporated/AP7370-50W5-7/10235827" H 3175 6350 60  0001 C CNN "PurchasingLink"
+	1    3025 5925
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
