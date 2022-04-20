@@ -61,7 +61,7 @@ gpio_t CAN_STBY         = PB3;
 gpio_t LED_2            = PB4; 
 gpio_t ON_STATE_FET_DRV = PC0; 
 gpio_t LOAD_SW_FET_DRV  = PC7; // toggles PMOS load switch for entire LV system 
-gpio_t SPI_CSB          = PD7; // TODO / FIX: should this be a GPIO or part of SPI lib? 
+gpio_t SPI_CSB          = PD7; 
 
 // PWM
 gpio_t FAN_PWM          = PC1; 
@@ -74,8 +74,7 @@ adc_pin_e adc_pins[] = {THERM_0, THERM_1, THERM_2, THERM_3, THERM_4, THERM_5, CU
 
 
 /* config timer0 for IDLE timer */
-// IDLE --> STANDBY timer0 config 
-// TODO: config for 1Hz
+// 10ms
 
 void timer0_IDLE_callback(void); 
 
@@ -91,33 +90,51 @@ timer_cfg_s timer0_IDLE_ctc_cfg = {
     },
 };
 
-/* TODO: how tf does PWM config work? tested? config timer1 for PWM */
-// timer_cfg_s timer1_PWM_ctc_cfg = {
+
+
+// // Fan PWM config (FROM BMS CODE)
+// timer_cfg_s timer1_fan_cfg = {
 //     .timer = TIMER1,
-//     .timer0_mode = TIMER1_MODE_FAST_PWM_8_BIT,
-//     .prescalar = ,
-//     .channel_a = {
-//         .output_compare_match = 249,
-//         .pin_behavior = DISCONNECTED,
-//         .interrupt_enable = true,
-//         .interrupt_callback = timer0_callback,
+//     .timer1_mode = TIMER1_MODE_FAST_PWM_8_BIT,
+//     .prescalar = CLKIO_DIV_1, // TODO
+//     .channel_b = {
+//         .channel = CHANNEL_B,
+//         .output_compare_match = 10, // TODO
+//         .pin_behavior = FAN_PWM,
+//         .interrupt_enable = false,
 //     },
 // };
 
 /*
  * SPI
- * TODO verify if this is the correct SPI setup 
+ * OLD SPI CONFIG
+ */
+// spi_cfg_s spi_cfg = {
+//     .interrupt_enable = false,  // good 
+//     .data_order = LSB,          // was LSB?? 
+//     .mode = MAIN,               // good 
+//     .polarity = RISING_FALLING, // ?? was FALLING_RISING 
+//     .phase = SAMPLE_SETUP,      // was SAMPLE_SETUP?? 
+//     .clock_rate = F_OSC_DIV_32,  // 16M/32 = 500K
+//     .cs_pin_overide = &SPI_CSB, // good 
+//     .pin_redirect = false,      // good
+// };
+
+
+/*
+ * SPI
  */
 spi_cfg_s spi_cfg = {
-    .interrupt_enable = false,  // good 
-    .data_order = LSB,          // was LSB?? 
-    .mode = MAIN,               // good 
-    .polarity = RISING_FALLING, // ?? was FALLING_RISING 
-    .phase = SAMPLE_SETUP,      // was SAMPLE_SETUP?? 
-    .clock_rate = F_OSC_DIV_32,  // 16M/32 = 500K
-    .cs_pin_overide = &SPI_CSB, // good 
-    .pin_redirect = false,      // good
+    .interrupt_enable = false,
+    .data_order = LSB,
+    .mode = MAIN,
+    .polarity = FALLING_RISING,
+    .phase = SETUP_SAMPLE,
+    .clock_rate = F_OSC_DIV_4,
+    .cs_pin_overide = &SPI_CSB,
+    .pin_redirect = false,
 };
+
 
 /*
  * CAN message (at GLV monitor rn )

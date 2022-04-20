@@ -20,38 +20,49 @@ publish:
       unit:
         type: enum
         values:
-          NO_FAULT
-
+          - FAULT_NONE
+          - THERM_0_FAULT
+          - THERM_1_FAULT
+          - THERM_2_FAULT
+          - THERM_3_FAULT
+          - THERM_4_FAULT
+          - THERM_5_FAULT
+          - OV_FAULT
+          - UV_FAULT
+          - OC_FAULT
+          - OPEN_CIRCUIT_FAULT
+          - PEC_FAULT
+          - COMPARATOR_FAULT
     - name: pack_soc
       slice: 8 + 16
       unit: 
         type: uint16_t
-        name: V
+        name: Volts
         offset: 0
         scale: 1
-
     - name: pec_error_count
       slice: 24 + 8
       unit: 
         type: uint8_t
-        name: C
+        name: PEC_errors
         offset: 0
         scale: 1
-
-
-    # - name: pack_temp_1
-    #   slice: 16 + 8
+  # # - name: lvbms_aux_1
+  #   id: 0x71
+  #   freq_hz: 1
+  #   signals:
+    - name: temp_0
+      slice: 32 + 16
+      unit:
+        type: uint16_t
+        name: V
+        offset: 0 
+        scale: .00488
+    # - name: temp_1
+    #   slice: 16 + 16
     #   unit: 
-    #     type: uint8_t
-    #     name: C
+    #     type: uint16_t
+    #     name: V
     #     offset: 0
     #     scale: 1
-
-    # - name: pack_temp_2
-    #   slice: 24 + 8
-    #   unit: 
-    #     type: uint8_t
-    #     name: C
-    #     offset: 0
-    #     scale: 1
-        
+# will need more aux for THERM2-5, CURR_SNS, other data? 

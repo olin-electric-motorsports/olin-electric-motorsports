@@ -91,15 +91,24 @@ void timer0_IDLE_callback(void){
 
 void adc_callback(void){
     // read value
-    adc_poll_complete(&adc_data[adc_ptr]); 
+    adc_read_results(&adc_data[adc_ptr]);
+    lvbms.temp_0 = adc_data[adc_ptr];  
+    
+    /* TODO: FIX ADC CHAINING ISSUES */
 
-    // check adc_ptr & accordingly start next conversion 
-    if (adc_ptr==6){
-        adc_ptr = 0; // reset to 0
-    } else {
-        adc_ptr += 1; 
-        adc_start_convert(adc_pins[adc_ptr]); 
-    }
+    // // check adc_ptr & accordingly start next conversion 
+    // if (adc_ptr==1){ // should be up to 6
+    //     // reset ptr to 0
+    //     adc_ptr = 0; 
+    //     // write to CAN struct
+    //     lvbms.temp_0 = adc_data[0]; 
+    //     // lvbms_aux_1.TEMP_1 = adc_data[1]; 
+    //     // todo populate rest of CAN struct writes
+
+    // } else {
+    //     adc_ptr += 1; 
+    //     adc_start_convert(adc_pins[adc_ptr]); 
+    // }
 }
 
 /* fault handling */
@@ -211,7 +220,8 @@ void LTC_voltage_task(){
 /* sample thermistor ADC's, sample current sensor ADC, !LTC! */
 void collect_telem(){
     // begin lvbms ADC conversion chain 
-    adc_start_convert(adc_pins[adc_ptr]); 
+    adc_start_convert(adc_pins[adc_ptr]);
+    // adc_start_convert(ADC7);  
     // ltc_voltage_task(); 
 }
 
@@ -310,6 +320,8 @@ void system_OFF(){
     gpio_clear_pin(LED_1); 
     gpio_clear_pin(LED_2); 
     // enter STANDBY
+    enable_external_interrupts(); // TODO TEST????  
+
     enable_STANDBY_mode(); 
 }
 
@@ -319,14 +331,22 @@ int main(void){
     // SYSTEM_STATE should be IDLE
     // this code is called only on first power up
     sei(); 
-    // adc_init(); 
-    // adc_interrupt_enable(adc_callback); 
+    adc_init(); 
+    adc_interrupt_enable(adc_callback); 
     gpio_init(); 
-    timer_init(&timer0_IDLE_ctc_cfg); 
-    enable_external_interrupts(); 
-    can_init(BAUD_500KBPS);
-    system_ON();
 
+
+
+
+
+    timer_init(&timer0_IDLE_ctc_cfg); 
+
+
+    can_init(BAUD_500KBPS);
+    // spi_init(&spi_cfg);     
+    
+    system_ON();
+    
     while(1){
 
         // regardless of state, always: 
@@ -336,6 +356,7 @@ int main(void){
         if ((ms_counter / 100)%2 != one_second_passed) {
             can_send_lvbms(); 
             collect_telem(); 
+            // can_send_lvb ms_aux_1(); 
             one_second_passed = (ms_counter / 100)%2; 
         }
 
