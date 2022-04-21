@@ -36,9 +36,9 @@ gpio_t AIR_N_WELD_DETECT = PC7;
 
 #endif
 
-// BMS voltage is reported as 100uV * 16 * voltage. We do the (<< 4) elsewhere
-// to get rid of the factor of 16, so this value is in 100s of uV
-#define BMS_VOLTAGE_THRESHOLD_LOW         (20000)
+// This is the raw value we compare. This is the real voltage divided by 256 and
+// multiplied by 10000.
+#define BMS_VOLTAGE_THRESHOLD_LOW         (7813)
 #define MOTOR_CONTROLLER_THRESHOLD_LOW_dV (50) // 50 decivolts (5 volts)
 #define PRECHARGE_THRESHOLD               (0.95) // 95% of pack voltage
 
