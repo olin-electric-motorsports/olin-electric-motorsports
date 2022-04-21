@@ -315,10 +315,10 @@ NoConn ~ 3550 3400
 Text Notes 850  2150 0    50   ~ 0
 drop Vmax 16V \nto 15V (coil max)\nRcoil = 175
 $Comp
-L formula:R_12 R?
+L formula:R_12 R1
 U 1 1 6262A6E0
 P 1600 1950
-F 0 "R?" H 1450 2200 50  0000 L CNN
+F 0 "R1" H 1450 2200 50  0000 L CNN
 F 1 "R_12" H 1350 2100 50  0000 L CNN
 F 2 "footprints:R_0805_OEM" V 1530 1950 50  0001 C CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773200-1&DocType=DS&DocLang=English" V 1680 1950 50  0001 C CNN
