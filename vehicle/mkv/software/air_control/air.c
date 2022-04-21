@@ -197,7 +197,7 @@ static void state_machine_run(void) {
             }
 
             if (get_time() - start_time < 200) {
-                if (air_control_critical.air_n_status) {
+                if (air_control_critical.air_p_status) {
                     air_control_critical.air_state = PRECHARGE;
                     once = true;
                 }
