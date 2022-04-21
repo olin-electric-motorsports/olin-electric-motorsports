@@ -66,10 +66,9 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
             };
 
             uint8_t can_data[8] = { 0 };
-            uint16_t* temperatures = (uint16_t*)can_data + 2;
+            uint16_t* temperatures = (uint16_t*)&(can_data[2]);
 
-            can_data[1] = (mux & 0xF) | (ch & 0xF << 4);
-
+            can_data[1] = (mux & 0xF) | ((ch & 0xF) << 4);
             temperature_frame.data = can_data;
 
             uint8_t temperature_idx_counter = 0;
