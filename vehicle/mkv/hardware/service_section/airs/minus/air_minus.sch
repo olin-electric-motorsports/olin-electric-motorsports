@@ -82,7 +82,7 @@ Text Notes 1750 2925 0    50   ~ 0
 TS- Fusing 
 Text Notes 975  900  0    50   ~ 0
 Precharge Relay. Low Side Driven by AIR Control\n
-Text Label 4425 2300 0    50   ~ 0
+Text Label 3650 2300 0    50   ~ 0
 HV_BAT-
 $Comp
 L Formula:F_1A_600V F1
@@ -113,12 +113,12 @@ $EndComp
 $Comp
 L Formula:redcude_7461166 J2
 U 1 1 5E5C38E6
-P 4275 2300
-F 0 "J2" H 4333 2525 50  0000 C CNN
-F 1 "redcude_7461166" H 4333 2434 50  0000 C CNN
-F 2 "footprints:redcube_7461166" H 4275 2100 50  0001 C CNN
-F 3 "we-online.de/katalog/datasheet/7461166.pdf" H 4275 2200 50  0001 C CNN
-	1    4275 2300
+P 4300 2300
+F 0 "J2" H 4358 2525 50  0000 C CNN
+F 1 "redcude_7461166" H 4358 2434 50  0000 C CNN
+F 2 "footprints:redcube_7461166" H 4300 2100 50  0001 C CNN
+F 3 "we-online.de/katalog/datasheet/7461166.pdf" H 4300 2200 50  0001 C CNN
+	1    4300 2300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -132,7 +132,7 @@ F 3 "we-online.de/katalog/datasheet/7461166.pdf" H 3500 2200 50  0001 C CNN
 	1    3500 2300
 	1    0    0    -1  
 $EndComp
-Text Label 3650 2300 0    50   ~ 0
+Text Label 4450 2300 0    50   ~ 0
 HV_TS-
 $Comp
 L Formula:MicroFit_VT_6 U1
