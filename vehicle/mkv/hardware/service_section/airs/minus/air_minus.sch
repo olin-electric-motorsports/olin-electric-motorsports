@@ -19,10 +19,8 @@ Text Label 1600 1350 2    50   ~ 0
 HV_TS-
 Text Label 2200 1650 0    50   ~ 0
 PRECHARGE_LSD
-Text Label 1600 1650 2    50   ~ 0
+Text Label 1600 2350 2    50   ~ 0
 FINAL_SHUTDOWN
-Wire Wire Line
-	1600 1650 1600 2350
 Wire Wire Line
 	1600 2350 1750 2350
 Wire Wire Line
@@ -401,4 +399,22 @@ Text Notes 950  1250 0    113  ~ 23
 TS
 Text Notes 3450 2450 0    50   ~ 0
 Supporting connector 7461129 
+Wire Wire Line
+	1600 1950 1600 2350
+Text Notes 900  2200 0    50   ~ 0
+drop Vmax 16V \nto 15V (coil max)\nRcoil = 175
+$Comp
+L formula:R_12 R2
+U 1 1 6262F26D
+P 1600 1800
+F 0 "R2" H 1450 1850 50  0000 L CNN
+F 1 "R_12" H 1350 1750 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" V 1530 1800 50  0001 C CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773200-1&DocType=DS&DocLang=English" V 1680 1800 50  0001 C CNN
+F 4 "TE" V 1780 1900 60  0001 C CNN "MFN"
+F 5 "CPF-A-0805B12RE" V 1880 2000 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/CPF-A-0805B12RE/5583863" V 1880 2000 60  0001 C CNN "PurchasingLink"
+	1    1600 1800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

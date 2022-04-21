@@ -83,7 +83,7 @@ Text Label 1600 1500 2    50   ~ 0
 HV_TS+
 Text Label 2200 1800 0    50   ~ 0
 GND
-Text Label 1600 1800 2    50   ~ 0
+Text Label 1600 2300 2    50   ~ 0
 FINAL_SHUTDOWN
 Text Label 4000 1525 0    50   ~ 0
 AIR+_AUX-
@@ -194,8 +194,6 @@ F 6 "https://www.digikey.com/en/products/detail/comus-international/3350-4275-12
 $EndComp
 Wire Wire Line
 	1750 2300 1600 2300
-Wire Wire Line
-	1600 2300 1600 1800
 Wire Wire Line
 	2050 2300 2200 2300
 Wire Wire Line
@@ -314,4 +312,22 @@ EV.7.5.7:\nIf Tractive System and GLV are on the same circuit board: \n- They mu
 Text Notes 6575 975  0    113  ~ 23
 SPACING RULES:
 NoConn ~ 3550 3400
+Text Notes 850  2150 0    50   ~ 0
+drop Vmax 16V \nto 15V (coil max)\nRcoil = 175
+$Comp
+L formula:R_12 R?
+U 1 1 6262A6E0
+P 1600 1950
+F 0 "R?" H 1450 2200 50  0000 L CNN
+F 1 "R_12" H 1350 2100 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" V 1530 1950 50  0001 C CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773200-1&DocType=DS&DocLang=English" V 1680 1950 50  0001 C CNN
+F 4 "TE" V 1780 2050 60  0001 C CNN "MFN"
+F 5 "CPF-A-0805B12RE" V 1880 2150 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/CPF-A-0805B12RE/5583863" V 1880 2150 60  0001 C CNN "PurchasingLink"
+	1    1600 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 2100 1600 2300
 $EndSCHEMATC
