@@ -16,22 +16,6 @@
 #include <math.h>
 #include <util/delay.h>
 
-#define IMPLAUSIBILITY_TIMEOUT_MS (1000)
-#define MOTOR_ANTICLOCKWISE       (1)
-
-// Set this to lower than 10 to limit torque request (i.e. 5 limits to half of
-// max torque)
-#define TORQUE_REQUEST_SCALE (10)
-
-// Represents value for 25% pedal travel to check for brake implausibility
-#define APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD (63)
-
-// Represents value for 5% pedal travel to check for brake implausibility
-#define APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW (12)
-
-// Represents value for 10% deviation between throttle sensors
-#define APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD (25)
-
 /*
  * Sets the torque request in the motor controller command message
  */
@@ -44,7 +28,6 @@
 enum State {
     THROTTLE_IDLE,
     THROTTLE_RUN,
-    THROTTLE_FAULT,
     THROTTLE_OUT_OF_RANGE,
     THROTTLE_POSITION_IMPLAUSIBILITY,
     THROTTLE_BRAKE_PRESSED
@@ -121,6 +104,8 @@ static bool check_out_of_range(int16_t* pos_r, int16_t* pos_l) {
         implausibility = true;
     } else {
         gpio_clear_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        // Will be reset if Ready to Drive is not on
+        throttle.state = THROTTLE_RUN;
     }
 
     return implausibility;
@@ -136,9 +121,11 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
     // Check implausibility between pedal values (T.4.2.4/5)
     if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
         gpio_set_pin(DEVIATION_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_POSITION_IMPLAUSIBILITY;
         return true;
     } else {
         gpio_clear_pin(DEVIATION_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_RUN;
         return false;
     }
 }
@@ -153,6 +140,8 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
  *
  * If there is an implausibility, torque request is set to zero by the caller
  * (see the `main` function)
+ *
+ * Returns true if implausibility occurs
  */
 static bool check_brake(int16_t pos_min) {
     static bool brake_implausibility_occured = false;
@@ -163,8 +152,12 @@ static bool check_brake(int16_t pos_min) {
         if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
             // A brake implausibility occured
             brake_implausibility_occured = true;
+            throttle.state = THROTTLE_BRAKE_PRESSED;
             gpio_set_pin(BRAKE_IMPLAUSIBILTIY_LED);
             return true;
+        } else {
+            // If brake is pressed but pedal is less than 25%, we can continue
+            return false;
         }
 
         // If a brake implausibility previously occured...
@@ -173,6 +166,7 @@ static bool check_brake(int16_t pos_min) {
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 // No more implausibility
                 brake_implausibility_occured = false;
+                throttle.state = THROTTLE_RUN;
                 gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
                 return false;
             } else {
@@ -183,6 +177,7 @@ static bool check_brake(int16_t pos_min) {
         } else {
             // If an implausibility didn't previously occur, we're good
             gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+            throttle.state = THROTTLE_RUN;
             return false;
         }
     } else {
@@ -198,12 +193,14 @@ static bool check_brake(int16_t pos_min) {
                 // is no longer pressed and the throttle is also not pressed
                 brake_implausibility_occured = false;
                 gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+                throttle.state = THROTTLE_RUN;
                 return false;
             }
         } else {
             // If the brake isn't pressed, and we didn't previously have an
             // implausibility, we're good
             gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+            throttle.state = THROTTLE_RUN;
             return false;
         }
     }
@@ -213,7 +210,9 @@ int main(void) {
     sei();
 
     can_init_throttle();
+
     adc_init();
+
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
 
@@ -248,14 +247,6 @@ int main(void) {
     can_receive_brakelight();
     can_receive_dashboard();
 
-    // /*
-    //  * We use these two values for the event that we enter ReadyToDrive while
-    //  * the throttle pedal is being pressed. We don't want to instantly start
-    //  * requesting torque,
-    //  */
-    // bool ready_to_drive = false;
-    // bool ready_to_drive_changed = false;
-
     while (true) {
         if (run_1ms) {
             run_1ms = false;
@@ -275,9 +266,6 @@ int main(void) {
                 }
             }
 
-            // throttle_debug.throttle_l_raw = adc_read(throttle_l.adc_pin);
-            // throttle_debug.throttle_r_raw = adc_read(throttle_r.adc_pin);
-
             int16_t pos_l = get_throttle_travel(&throttle_l);
             int16_t pos_r = get_throttle_travel(&throttle_r);
 
@@ -292,7 +280,6 @@ int main(void) {
 
             if (check_brake(pos_min)) {
                 SET_TORQUE_REQUEST(0);
-                throttle.state = THROTTLE_BRAKE_PRESSED;
                 continue;
             }
 
@@ -308,14 +295,10 @@ int main(void) {
                 throttle_state.implausibility_fault_counter++;
 
                 // If the timer-counter reaches IMPLAUSIBILITY_TIMEOUT_MS
+                // (i.e. we have an implausibility for 100ms
                 if (throttle_state.implausibility_fault_counter
                     >= IMPLAUSIBILITY_TIMEOUT_MS) {
                     // Set appropriate state
-                    if (oor_implausibility) {
-                        throttle.state = THROTTLE_OUT_OF_RANGE;
-                    } else {
-                        throttle.state = THROTTLE_POSITION_IMPLAUSIBILITY;
-                    }
 
                     SET_TORQUE_REQUEST(0);
                     throttle_state.implausibility_fault_counter = 0;
@@ -327,7 +310,6 @@ int main(void) {
             } else {
                 // With no implausibility...
                 throttle.state = THROTTLE_RUN;
-
                 throttle_state.implausibility_fault_counter = 0;
 
                 // NOTE: If we decide to do a non-linear map, that would go here
@@ -338,7 +320,6 @@ int main(void) {
         }
         if (throttle_state.send_can) {
             can_send_throttle();
-            can_send_throttle_debug();
             can_send_m192_command_message();
             throttle_state.send_can = false;
         }
