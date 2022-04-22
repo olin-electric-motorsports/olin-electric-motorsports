@@ -54,13 +54,13 @@ Text Label 7600 1600 0    50   ~ 0
 AIR-_AUX-
 Text Label 7600 1500 0    50   ~ 0
 AIR-_LSD
-Text Label 3750 1200 0    50   ~ 0
+Text Label 3700 1200 0    50   ~ 0
 AIR-_AUX-
-Text Label 3750 1300 0    50   ~ 0
+Text Label 3700 1300 0    50   ~ 0
 AIR-_AUX+
-Text Label 3750 1400 0    50   ~ 0
+Text Label 3700 1400 0    50   ~ 0
 AIR-_LSD
-Text Label 3750 1500 0    50   ~ 0
+Text Label 3700 1500 0    50   ~ 0
 FINAL_SHUTDOWN
 NoConn ~ 7600 1700
 Wire Wire Line
@@ -145,20 +145,6 @@ F 3 "" H 7400 1450 50  0001 C CNN
 F 4 "0430450614" H 7458 1925 50  0001 C CNN "MPN"
 F 5 "https://www.digikey.com/product-detail/en/molex/0430450614/WM1797-ND/252510" H 7458 1834 50  0001 C CNN "PurchasingLink"
 	1    7400 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Formula:UF_4_VT J1
-U 1 1 5E5CB56C
-P 3400 1400
-F 0 "J1" H 3508 1837 60  0000 C CNN
-F 1 "UF_4_VT" H 3508 1731 60  0000 C CNN
-F 2 "footprints:Ultrafit_4" H 3300 1650 60  0001 C CNN
-F 3 "http://www.literature.molex.com/SQLImages/kelmscott/Molex/PDF_Images/987651-1008.pdf" H 3400 1750 60  0001 C CNN
-F 4 "DK" H 3400 1400 60  0001 C CNN "MFN"
-F 5 "WM11574-ND" H 3400 1400 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=WM11574-ND" H 3900 2250 60  0001 C CNN "PurchasingLink"
-	1    3400 1400
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -259,7 +245,7 @@ Text Label 1400 4400 0    50   ~ 0
 HV_ENERGY_METER
 Text Label 1400 4300 0    50   ~ 0
 HV_BSPD_CURRENT_SENSOR
-Text Notes 3575 850  0    50   ~ 0
+Text Notes 3650 850  0    50   ~ 0
 To AIR
 Text Notes 1375 3950 0    50   ~ 0
 Fuse Connector
@@ -415,6 +401,19 @@ F 4 "TE" V 1780 1900 60  0001 C CNN "MFN"
 F 5 "CPF-A-0805B12RE" V 1880 2000 60  0001 C CNN "MPN"
 F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/CPF-A-0805B12RE/5583863" V 1880 2000 60  0001 C CNN "PurchasingLink"
 	1    1600 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:MicroFit_VT_4 J1
+U 1 1 62629110
+P 3500 1350
+F 0 "J1" H 3558 1725 50  0000 C CNN
+F 1 "MicroFit_VT_4" H 3558 1634 50  0000 C CNN
+F 2 "footprints:MicroFit_VT_4" H 3500 1050 50  0001 C CNN
+F 3 "" H 3500 1300 50  0001 C CNN
+F 4 "430450414" H 3558 1633 50  0001 C CNN "MPN"
+F 5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" H 3558 1634 50  0001 C CNN "PurchasingLink"
+	1    3500 1350
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

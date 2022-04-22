@@ -103,25 +103,6 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Formula_UF_4_VT
-#
-DEF Formula_UF_4_VT J 0 40 Y N 1 F N
-F0 "J" 0 300 60 H V C CNN
-F1 "Formula_UF_4_VT" 0 -200 60 H V C CNN
-F2 "footprints:Ultrafit_4" -100 250 60 H I C CNN
-F3 "http://www.literature.molex.com/SQLImages/kelmscott/Molex/PDF_Images/987651-1008.pdf" 0 350 60 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "WM11574-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=WM11574-ND" 500 850 60 H I C CNN "PurchasingLink"
-DRAW
-S 150 250 -150 -150 0 1 0 f
-X 1 1 350 200 200 L 50 50 1 1 P
-X 2 2 350 100 200 L 50 50 1 1 P
-X 3 3 350 0 200 L 50 50 1 1 P
-X 4 4 350 -100 200 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # Formula_redcude_7461166
 #
 DEF Formula_redcude_7461166 J 0 40 Y Y 1 F N
@@ -184,6 +165,24 @@ X ~ 1 100 -300 100 U 50 50 1 1 P
 X ~ 2 -200 300 100 D 50 50 1 1 P
 X ~ 3 -200 -300 100 U 50 50 1 1 P
 X ~ 4 100 300 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_MicroFit_VT_4
+#
+DEF formula_MicroFit_VT_4 J 0 40 Y Y 1 F N
+F0 "J" 0 400 50 H V C CNN
+F1 "formula_MicroFit_VT_4" 0 300 50 H V C CNN
+F2 "footprints:MicroFit_VT_4" 0 -300 50 H I C CNN
+F3 "" 0 -50 50 H I C CNN
+F4 "430450414" -200 450 50 H V C CNN "MPN"
+F5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" -300 550 50 H V C CNN "PurchasingLink"
+DRAW
+S -100 200 100 -200 0 1 0 f
+X ~ 1 200 150 100 L 50 50 1 1 I
+X ~ 2 200 50 100 L 50 50 1 1 I
+X ~ 3 200 -50 100 L 50 50 1 1 I
+X ~ 4 200 -150 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #

@@ -30,20 +30,6 @@ $EndComp
 Text Label 1175 4325 2    50   ~ 0
 HV_TS+
 $Comp
-L Formula:UF_4_VT J1
-U 1 1 5DB02E97
-P 3650 1625
-F 0 "J1" H 3758 2062 60  0000 C CNN
-F 1 "UF_4_VT" H 3758 1956 60  0000 C CNN
-F 2 "footprints:Ultrafit_4" H 3550 1875 60  0001 C CNN
-F 3 "http://www.literature.molex.com/SQLImages/kelmscott/Molex/PDF_Images/987651-1008.pdf" H 3650 1975 60  0001 C CNN
-F 4 "DK" H 3650 1625 60  0001 C CNN "MFN"
-F 5 "WM11574-ND" H 3650 1625 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=WM11574-ND" H 4150 2475 60  0001 C CNN "PurchasingLink"
-	1    3650 1625
-	1    0    0    -1  
-$EndComp
-$Comp
 L Formula:redcude_7461166 J4
 U 1 1 5E2F97D2
 P 2700 3400
@@ -85,42 +71,27 @@ Text Label 2200 1800 0    50   ~ 0
 GND
 Text Label 1600 2300 2    50   ~ 0
 FINAL_SHUTDOWN
-Text Label 4000 1525 0    50   ~ 0
+Text Label 3900 1650 0    50   ~ 0
 AIR+_AUX-
-Text Label 4000 1425 0    50   ~ 0
+Text Label 3900 1550 0    50   ~ 0
 AIR+_AUX+
 Text Label 1625 3475 0    50   ~ 0
 HV_TSMP+
-Text Label 4000 1625 0    50   ~ 0
+Text Label 3900 1450 0    50   ~ 0
 FINAL_SHUTDOWN
-Text Label 4600 3725 0    50   ~ 0
-HV_TS+
-Text Label 4600 3625 0    50   ~ 0
+Text Label 4600 3700 0    50   ~ 0
 HV_TSMP+
-Text Label 4600 3425 0    50   ~ 0
+Text Label 4600 3400 0    50   ~ 0
 TSAL+
-$Comp
-L Formula:MicroFit_RA_4 J3
-U 1 1 5DF102AC
-P 4400 3575
-F 0 "J3" H 4458 3950 50  0000 C CNN
-F 1 "MicroFit_RA_4" H 4458 3859 50  0000 C CNN
-F 2 "footprints:MicroFit_RA_4" H 4400 3275 50  0001 C CNN
-F 3 "" H 4400 3575 100 0001 C CNN
-F 4 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" H 4400 3575 50  0001 C CNN "Purchasing Link"
-	1    4400 3575
-	1    0    0    -1  
-$EndComp
-Text Label 4600 3525 0    50   ~ 0
+Text Label 4600 3500 0    50   ~ 0
 HV_TS_Fused+
-NoConn ~ 5525 1925
-Text Label 5525 1525 0    50   ~ 0
+Text Label 5450 1500 0    50   ~ 0
 FINAL_SHUTDOWN
-Text Label 5525 1425 0    50   ~ 0
+Text Label 5450 1400 0    50   ~ 0
 GND
-Text Label 5525 1725 0    50   ~ 0
+Text Label 5450 1700 0    50   ~ 0
 AIR+_AUX-
-Text Label 5525 1625 0    50   ~ 0
+Text Label 5450 1600 0    50   ~ 0
 AIR+_AUX+
 Text Label 1950 4325 0    50   ~ 0
 HV_TS_Fused+
@@ -130,9 +101,9 @@ Text Notes 1350 3925 0    50   ~ 0
 TS+ Fusing
 Text Notes 925  3100 0    50   ~ 0
 TSMP Body Protection Resistor
-Text Notes 3650 1025 0    50   ~ 0
+Text Notes 3900 1050 0    50   ~ 0
 To AIR\n
-Text Notes 5100 1025 0    50   ~ 0
+Text Notes 5250 1050 0    50   ~ 0
 To AIR Control\n
 Text Notes 4300 3075 0    50   ~ 0
 Fuse Connector
@@ -142,20 +113,6 @@ Wire Notes Line
 	825  2475 825  925 
 Wire Notes Line
 	4900 2075 4900 925 
-$Comp
-L Formula:MicroFit_RA_06 J2
-U 1 1 5DB019DF
-P 5275 1675
-F 0 "J2" H 5333 2172 60  0000 C CNN
-F 1 "MicroFit_RA_06" H 5333 2066 60  0000 C CNN
-F 2 "footprints:MicroFit_RA_06" H 5175 1925 60  0001 C CNN
-F 3 "https://www.molex.com/pdm_docs/sd/430450601_sd.pdf" H 5275 2025 60  0001 C CNN
-F 4 "Molex" H 5375 3075 60  0001 C CNN "MFN"
-F 5 "WM4037-ND" H 5475 3175 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/molex/0430450601/WM4037-ND/2421555" H 5275 2975 60  0001 C CNN "PurchasingLink"
-	1    5275 1675
-	1    0    0    -1  
-$EndComp
 Wire Notes Line
 	3350 1875 3350 900 
 Wire Notes Line
@@ -225,9 +182,8 @@ F 3 "~" H 2200 1400 50  0001 C CNN
 $EndComp
 Text Notes 2350 1325 0    50   ~ 0
 HV wire to resistor\nconnect to \nHVD->MPC busbar
-Text Label 4000 1725 0    50   ~ 0
+Text Label 3900 1350 0    50   ~ 0
 GND
-NoConn ~ 5525 1825
 Text Label 1950 4125 0    50   ~ 0
 TSAL+
 Wire Wire Line
@@ -330,4 +286,45 @@ F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/
 $EndComp
 Wire Wire Line
 	1600 2100 1600 2300
+$Comp
+L formula:MicroFit_VT_4 J1
+U 1 1 626397F4
+P 3700 1500
+F 0 "J1" H 3758 1875 50  0000 C CNN
+F 1 "MicroFit_VT_4" H 3758 1784 50  0000 C CNN
+F 2 "footprints:MicroFit_VT_4" H 3700 1200 50  0001 C CNN
+F 3 "" H 3700 1450 50  0001 C CNN
+F 4 "430450414" H 3758 1783 50  0001 C CNN "MPN"
+F 5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" H 3758 1784 50  0001 C CNN "PurchasingLink"
+	1    3700 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:MicroFit_VT_4 J2
+U 1 1 62642CF5
+P 5250 1550
+F 0 "J2" H 5308 1925 50  0000 C CNN
+F 1 "MicroFit_VT_4" H 5308 1834 50  0000 C CNN
+F 2 "footprints:MicroFit_VT_4" H 5250 1250 50  0001 C CNN
+F 3 "" H 5250 1500 50  0001 C CNN
+F 4 "430450414" H 5308 1833 50  0001 C CNN "MPN"
+F 5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" H 5308 1834 50  0001 C CNN "PurchasingLink"
+	1    5250 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:MicroFit_VT_4 J3
+U 1 1 6264B27B
+P 4400 3550
+F 0 "J3" H 4458 3925 50  0000 C CNN
+F 1 "MicroFit_VT_4" H 4458 3834 50  0000 C CNN
+F 2 "footprints:MicroFit_VT_4" H 4400 3250 50  0001 C CNN
+F 3 "" H 4400 3500 50  0001 C CNN
+F 4 "430450414" H 4458 3833 50  0001 C CNN "MPN"
+F 5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" H 4458 3834 50  0001 C CNN "PurchasingLink"
+	1    4400 3550
+	1    0    0    -1  
+$EndComp
+Text Label 4600 3600 0    50   ~ 0
+HV_TS_Fused+
 $EndSCHEMATC
