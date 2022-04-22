@@ -12,8 +12,6 @@
 #define CELL_GROUP_1_OFFSET (0) // Cells 1-4
 #define CELL_GROUP_2_OFFSET (4) // Cells 7-10
 
-// uint16_t cell_voltages[NUM_ICS][NUM_CELLS_PER_IC];
-
 int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     *pack_voltage = 0;
     int pec_errors = 0;
@@ -107,34 +105,3 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
 
     return pec_errors;
 }
-
-// void can_send_bms_voltages(void) {
-//     can_frame_t voltage_frame = {
-//         //
-//         // .id = CAN_TOOLS_BMS_VOLTAGE_0_FRAME_ID,
-//         .mob = 0,
-//         .dlc = 8,
-//     };
-//
-//     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-//         // For every chip, send the lower and upper cell voltages in CAN
-//         frames
-//
-//         /*
-//          * Trick: instead of creating our own data array, we just set the
-//          * pointer to the array to be the pointer to the cell voltages in
-//          giant
-//          * array with some offset. That way, we can reuse memory and avoid
-//          * memcpy-ing.
-//          */
-//         voltage_frame.data
-//             = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_1_OFFSET);
-//         can_send(&voltage_frame);
-//         voltage_frame.id++;
-//
-//         voltage_frame.data
-//             = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_2_OFFSET);
-//         can_send(&voltage_frame);
-//         voltage_frame.id++;
-//     }
-// }

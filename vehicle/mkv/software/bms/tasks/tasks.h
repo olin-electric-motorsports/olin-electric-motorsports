@@ -44,6 +44,3 @@ int openwire_task(void);
  * Task to read current from current sensor
  */
 void current_task(int16_t* current);
-
-void can_send_bms_voltages(void);
-void can_send_bms_temperatures(void);

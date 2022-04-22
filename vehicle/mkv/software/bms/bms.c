@@ -59,46 +59,10 @@ void pcint2_callback(void) {
 /*
  * Perform initial startup checks on the BMS.
  *
- * - Runs BIST (built-in self test) in all the ICs
  * - Checks all temperatures and voltages and ensures they are in range
  */
 static int initial_checks(void) {
     int rc = 0;
-
-    // wakeup_idle(NUM_ICS);
-    // wakeup_sleep(NUM_ICS);
-    /* LTC6811_diagn(); */
-    /*  */
-    /* for (uint8_t ic = 0; ic < NUM_ICS; ic++) { */
-    /*     if (ICS[ic].stat.mux_fail[0] == 1) { */
-    /*         set_fault(BMS_FAULT_DIAGNOSTICS_FAIL); */
-    /*         rc = 1; */
-    /*         goto bail; */
-    /*     } */
-    /* } */
-
-    /*
-     * Run all LTC6811 self-tests
-     *
-     * TODO: not working
-     */
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(CELL, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(AUX, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(STAT, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    //
-    // if (rc != 0) {
-    //     set_fault(BMS_FAULT_DIAGNOSTICS_FAIL);
-    //     goto bail;
-    // }
 
     // read all voltages
     uint32_t ov = 0;
@@ -393,8 +357,6 @@ int main(void) {
             // Every 500ms send sensing and debug data
             if (loop_counter == 50) {
                 can_send_bms_debug();
-                // can_send_bms_voltages();
-                // can_send_bms_temperatures();
                 can_send_bms_metrics();
 
                 loop_counter = 0;

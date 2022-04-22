@@ -13,11 +13,6 @@ const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
 #define NUM_TEMPS_PER_MESSAGE   (4)
 #define NUM_CAN_TEMP_MSG_PER_IC (6)
 
-// #define CAN_TEMP_MESSAGE_BASE (CAN_TOOLS_BMS_SEGMENT1_TEMPERATURE1_FRAME_ID)
-// #define CAN_TEMP_DLC          (CAN_TOOLS_BMS_SEGMENT1_TEMPERATURE1_LENGTH)
-
-// static uint16_t temperatures[NUM_TEMPERATURE_ICS][NUM_TEMPS_PER_IC] = { 0 };
-
 /*
  * Enables or disables the accumulator fans by turning on or off the PWM pin
  * connected to timer 1.
@@ -41,18 +36,15 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
         for (uint8_t ch = 0; ch < NUM_MUX_CHANNELS; ch++) {
             // For each mux channel (ch)
 
-            // enable_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, ch-1);
             enable_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, ch);
 
-            // read aux gpio voltage (this is what the tmperature sensor is
+            // Read aux gpio voltage (this is what the tmperature sensor is
             // connected to) for temperature
             wakeup_idle(NUM_ICS);
             LTC6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1);
 
             // Wait for conversions to finish
             (void)LTC6811_pollAdc();
-
-            // Read voltage from auxiliary pin (connected to the mux)
 
             uint8_t raw_data[NUM_RX_BYT * NUM_ICS]; // raw data read back
 
@@ -85,10 +77,7 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
                     can_data[0] = 1;
                 }
 
-                // Executes for every other chip (0, 2, 4, etc)
-
                 uint16_t data_counter = (ic)*NUM_RX_BYT;
-                // uint16_t temperature_idx = mux * NUM_MUX_CHANNELS + ch;
 
                 // The voltage value from the ADC is in the zeroth "word" (two
                 // bytes) of the response data
@@ -152,43 +141,3 @@ int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
 
     return pec_errors;
 }
-
-// void can_send_bms_temperatures(void) {
-//     can_frame_t temperature_frame = {
-//         .id = CAN_TOOLS_BMS_TEMPERATURE_FRAME_ID,
-//         .mob = 0,
-//         .dlc = CAN_TOOLS_BMS_TEMPERATURE_LENGTH,
-//     };
-//
-//     for (uint8_t temp_ic = 0; temp_ic < NUM_TEMPERATURE_ICS; temp_ic++) {
-//         /*
-//          * NUM_MUXES = 3
-//          * NUM_MUX_CHANNELS = 8
-//          * 3 * 8 = 24 total channels per peripheral board
-//          *
-//          * Each CAN message can send 8 bytes, or 4 temperatures (each temp is
-//          2
-//          *     bytes)
-//          *
-//          * Need 6 CAN messages per board (per iteration of ic)
-//          */
-//         for (uint8_t message = 0; message < NUM_CAN_TEMP_MSG_PER_IC;
-//              message++) {
-//             // For each group of temperatures
-//
-//             /*
-//              * Trick: instead of creating our own data array, we just set the
-//              * pointer to the array to be the pointer to the cell temps in
-//              * giant array with some offset. That way, we can reuse memory
-//              and
-//              * avoid memcpy-ing.
-//              */
-//             temperature_frame.data
-//                 = ((uint8_t*)temperatures[temp_ic]) + (message *
-//                 CAN_TEMP_DLC);
-//
-//             can_send(&temperature_frame);
-//             temperature_frame.id++;
-//         }
-//     }
-// }
