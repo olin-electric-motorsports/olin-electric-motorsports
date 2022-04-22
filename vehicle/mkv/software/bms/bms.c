@@ -94,25 +94,15 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    // read all temperatures
-    uint32_t ot = 0;
-    uint32_t ut = 0;
-    retry = 0;
+    // Read all temperatures
+    uint32_t ot = 0; // Over-temperature
+    uint32_t ut = 0; // Under-temperature
+    int16_t min_temp, max_temp;
 
-    do {
-        uint16_t pack_temperature = 0;
-        rc = temperature_task(&pack_temperature, &ot, &ut);
-        bms_core.pack_temperature = pack_temperature;
+    for (uint16_t i = 0; i < NUM_MUXES * NUM_MUX_CHANNELS; i++) {
+        rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
         bms_metrics.temperature_pec_error_count += rc;
-
-        if (retry >= MAX_PEC_RETRY) {
-            set_fault(BMS_FAULT_PEC);
-            rc = 1;
-            goto bail;
-        } else {
-            retry++;
-        }
-    } while (rc != 0);
+    }
 
     if (ut > 0) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
@@ -124,8 +114,8 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    // check for open-circuit
     // TODO: openwire_task();
+    // TODO: current_task();
 
 bail:
     return rc;
@@ -167,21 +157,25 @@ static void state_machine_run(void) {
      */
     uint32_t ot = 0;
     uint32_t ut = 0;
+    int16_t min_temp, max_temp;
 
-    uint16_t pack_temperature;
-    rc = temperature_task(&pack_temperature, &ot, &ut);
-    bms_core.pack_temperature = pack_temperature;
+    // uint16_t pack_temperature;
+    rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+    // bms_core.pack_temperature = pack_temperature;
 
-    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_UNDERTEMPERATURE);
-        bms_core.bms_state = FAULT;
-        return;
-    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_OVERTEMPERATURE);
-        bms_core.bms_state = FAULT;
-        return;
-    }
+    // if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+    //     set_fault(BMS_FAULT_UNDERTEMPERATURE);
+    //     bms_core.bms_state = FAULT;
+    //     return;
+    // } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+    //     set_fault(BMS_FAULT_OVERTEMPERATURE);
+    //     bms_core.bms_state = FAULT;
+    //     return;
+    // }
 
+    /*
+     * Check for PEC errors
+     */
     if (rc) {
         bms_metrics.temperature_pec_error_count += rc;
 

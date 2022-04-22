@@ -40,10 +40,17 @@ publish:
           name: V
           offset: 0
           scale: 0.0001 * 256
-      - name: pack_temperature
-        slice: 24 + 16
+      - name: min_temperature
+        slice: 24 + 8
         unit:
-          type: int16_t
+          type: uint8_t
+          name: degC
+          offset: 0
+          scale: 0.0001
+      - name: max_temperature
+        slice: 32 + 8
+        unit:
+          type: uint8_t
           name: degC
           offset: 0
           scale: 0.0001
