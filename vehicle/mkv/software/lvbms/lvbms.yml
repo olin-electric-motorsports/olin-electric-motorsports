@@ -43,7 +43,7 @@ publish:
     - name: pec_error_count
       slice: 24 + 8
       unit: 
-        type: uint8_t
+        type: int8_t
         name: PEC_errors
         offset: 0
         scale: 1
@@ -58,6 +58,13 @@ publish:
         name: V
         offset: 0 
         scale: .00488
+    # - name: pec
+    #   slice: 32 + 8
+    #     unit:
+    #       type: int8_t
+    #       name: err_code
+    #       offset: 0 
+    #       scale: 1
     # - name: temp_1
     #   slice: 16 + 16
     #   unit: 

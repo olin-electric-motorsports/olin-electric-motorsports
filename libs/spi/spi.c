@@ -18,16 +18,13 @@ uint8_t txdata_receive = 0xFF;
 gpio_t miso = PB0;
 gpio_t mosi = PB1;
 gpio_t sck = PB7;
+gpio_t miso_a = PD2;
+gpio_t mosi_a = PD3;
+gpio_t sck_a = PD4;
 gpio_t cs;
 
 spi_mode_e mode = MAIN;
 
-typedef struct {
-    gpio_t mosi;
-    gpio_t miso;
-    gpio_t sck;
-    gpio_t* cs;
-} spi_pins_s;
 
 static bool spi_interrupt_enabled = false;
 static void (*spi_callback)(void);
@@ -39,14 +36,22 @@ ISR(SPI_STC_vect) {
 }
 
 void spi_init(spi_cfg_s* spi_cfg) {
+    MCUCR |= spi_cfg->peripheral << SPIPS; 
     cs = *spi_cfg->cs_pin;
     mode = spi_cfg->mode;
 
     uint8_t main_direction = (mode == MAIN) ? OUTPUT : INPUT;
+    uint8_t secondary_direction = (mode == MAIN) ? INPUT : OUTPUT;
 
-    gpio_set_mode(mosi, main_direction);
-    gpio_set_mode(miso, main_direction);
-    gpio_set_mode(sck, main_direction);
+    if (spi_cfg->peripheral == SPI) {
+        gpio_set_mode(mosi, main_direction);
+        gpio_set_mode(miso, secondary_direction);
+        gpio_set_mode(sck, main_direction);
+    } else {
+        gpio_set_mode(mosi_a, main_direction);
+        gpio_set_mode(miso_a, secondary_direction);
+        gpio_set_mode(sck_a, main_direction);
+    }
 
     gpio_t ss = PD3;
     gpio_set_mode(ss, OUTPUT);

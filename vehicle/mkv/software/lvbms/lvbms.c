@@ -63,6 +63,10 @@ void enable_external_interrupts(){
     EIMSK |= 0b000000110; // enable interrupt INT2 and INT1 
 } // peek the EIFR to check which INT triggered your wakeup 
 
+void disable_external_interrupts(){
+    EICRA &= 0x00; // set that low level of INT1,2,3 generates an interrupt request
+    EIMSK &= 0x00; // enable interrupt INT2 and INT1 
+}
 
 // Do gpios stay set and cleared in STBY?? 
 // does code still run in STBY? 
@@ -177,42 +181,68 @@ void LTC_voltage_task(){
 
     wakeup_sleep(NUM_ICS); 
 
+    // wakeup_idle(NUM_ICS);
+
+
+
+    // TESTING - simply read config and check PEC 
+
+    LTC6810_rdcfg(NUM_ICS, ICS); 
+    // int8_t pec_ct = LTC6810_rdcfg(NUM_ICS, ICS); 
+
+    // lvbms.pec_error_count = pec_ct; 
+
+    gpio_toggle_pin(LED_1); 
+    // if (pec_ct == 0){
+    // } 
+    // else {
+    //     gpio_set_pin(LED_2);
+    // }
+    // lvbms.pec = pec_ct; 
+
+
+
+
+
     // start ADC conversion on LTC chip for cells 1-6, & SoC 
-    LTC6810_adcvsc(MD_7KHZ_3KHZ, DCP_DISABLED); 
+    // LTC6810_adcvsc(MD_7KHZ_3KHZ, DCP_DISABLED); 
     
-    (void)LTC6810_pollAdc(); 
 
-    uint8_t num_pec_errors = LTC6810_rdcv(REG_ALL, NUM_ICS, ICS); // ensure ICS are initialized to store data
+    // // blocks until ADC has finished conversions
+    // LTC6810_pollAdc(); 
 
-    lvbms.pec_error_count += num_pec_errors; 
+    // // reads cell voltage registers
+    // uint8_t num_pec_errors = LTC6810_rdcv(REG_ALL, NUM_ICS, ICS); // ensure ICS are initialized to store data
 
-    num_pec_errors = LTC6810_rdstat(STAT_CH_SOC, NUM_ICS, ICS); // ensure ICS are initialized to store data
+    // lvbms.pec_error_count += num_pec_errors; 
 
-    lvbms.pec_error_count += num_pec_errors; 
+    // num_pec_errors = LTC6810_rdstat(STAT_CH_SOC, NUM_ICS, ICS); // ensure ICS are initialized to store data
 
-    uint16_t pack_voltage = 0;
-    uint32_t uv = 0;
-    uint32_t ov = 0;
+    // lvbms.pec_error_count += num_pec_errors; 
 
-    // data should be stored in mV 
-    pack_voltage += ICS[0].stat.stat_codes[0] //* 10 ** -6
-            - ICS[0].cells.c_codes[4]
-            - ICS[0].cells.c_codes[5]; 
+    // uint16_t pack_voltage = 0;
+    // uint32_t uv = 0;
+    // uint32_t ov = 0;
 
-    uv = (ICS[0].stat.flags[0] & 0x55) | (ICS[0].stat.flags[1] & 0x55)
-            | (ICS[0].stat.flags[2] & 0x55);
+    // // data should be stored in mV 
+    // pack_voltage += ICS[0].stat.stat_codes[0] //* 10 ** -6
+    //         - ICS[0].cells.c_codes[4]
+    //         - ICS[0].cells.c_codes[5]; 
 
-    // Even bits of the ST register are used for overvoltage flags
-    ov = (ICS[0].stat.flags[0] & 0xAA) | (ICS[0].stat.flags[1] & 0xAA)
-            | (ICS[0].stat.flags[2] & 0xAA);
+    // uv = (ICS[0].stat.flags[0] & 0x55) | (ICS[0].stat.flags[1] & 0x55)
+    //         | (ICS[0].stat.flags[2] & 0x55);
 
-    if (uv > 0) {
-        enter_fault_state(UV_FAULT);
-    } else if (ov > 0) {
-        enter_fault_state(OV_FAULT);
-    }
+    // // Even bits of the ST register are used for overvoltage flags
+    // ov = (ICS[0].stat.flags[0] & 0xAA) | (ICS[0].stat.flags[1] & 0xAA)
+    //         | (ICS[0].stat.flags[2] & 0xAA);
 
-    lvbms.pack_soc = pack_voltage; 
+    // if (uv > 0) {
+    //     enter_fault_state(UV_FAULT);
+    // } else if (ov > 0) {
+    //     enter_fault_state(OV_FAULT);
+    // }
+
+    // lvbms.pack_soc = pack_voltage; 
 
 /* TODO: look into datasheet on balancing code? something discharge registers */    
 }
@@ -221,8 +251,13 @@ void LTC_voltage_task(){
 void collect_telem(){
     // begin lvbms ADC conversion chain 
     adc_start_convert(adc_pins[adc_ptr]);
-    // adc_start_convert(ADC7);  
-    // ltc_voltage_task(); 
+
+    // step through all ADCs in a blocking fashion, doesn't chain async
+    // for (int i = 0; i <7; i ++){
+    //     adc_data[i] = adc_read(adc_pins[i]); 
+    // }
+
+    LTC_voltage_task(); 
 }
 
 /* check for OT, UT, OV, UV, comparator error */ 
@@ -307,6 +342,8 @@ void system_ON(){
     gpio_clear_pin(CAN_STBY); 
     // enable onstate cmpnts
     gpio_set_pin(ON_STATE_FET_DRV); 
+    
+    disable_external_interrupts(); 
 }
 
 /* called on transition to STANDBY */
@@ -343,7 +380,7 @@ int main(void){
 
 
     can_init(BAUD_500KBPS);
-    // spi_init(&spi_cfg);     
+    spi_init(&spi_cfg);     
     
     system_ON();
     

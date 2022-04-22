@@ -5,6 +5,13 @@
 
 #include "libs/gpio/api.h"
 
+
+typedef enum {
+    SPI = 0,
+    SPI_A,
+} spi_peripheral_e;
+
+
 typedef enum {
     MSB = 0,
     LSB,
@@ -38,6 +45,7 @@ typedef enum {
 
 typedef struct {
     bool interrupt_enable;
+    spi_peripheral_e peripheral; 
     spi_data_order_e data_order;
     spi_mode_e mode;
     spi_clock_polarity_e polarity;

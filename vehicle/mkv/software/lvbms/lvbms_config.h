@@ -125,14 +125,14 @@ timer_cfg_s timer0_IDLE_ctc_cfg = {
  * SPI
  */
 spi_cfg_s spi_cfg = {
+    .peripheral = SPI_A,
     .interrupt_enable = false,
-    .data_order = LSB,
+    .data_order = MSB,
     .mode = MAIN,
     .polarity = FALLING_RISING,
     .phase = SETUP_SAMPLE,
     .clock_rate = F_OSC_DIV_4,
-    .cs_pin_overide = &SPI_CSB,
-    .pin_redirect = false,
+    .cs_pin = &SPI_CSB,
 };
 
 

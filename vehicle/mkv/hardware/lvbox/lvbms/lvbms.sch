@@ -249,24 +249,24 @@ Text Notes 4950 4700 1    89   ~ 0
 $Comp
 L formula:CONN_02X03 J1
 U 1 1 5D628C9D
-P 14350 3400
-F 0 "J1" H 14350 3610 50  0000 C CNN
-F 1 "CONN_02X03" H 14240 3200 50  0000 C CNN
-F 2 "footprints:Pin_Header_Straight_2x03" H 14350 2200 50  0001 C CNN
-F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 14350 2200 50  0001 C CNN
-F 4 "DK" H 14350 3400 60  0001 C CNN "MFN"
-F 5 "609-3234-ND" H 14350 3400 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 14750 4000 60  0001 C CNN "PurchasingLink"
-	1    14350 3400
+P 14800 3400
+F 0 "J1" H 14800 3610 50  0000 C CNN
+F 1 "CONN_02X03" H 14690 3200 50  0000 C CNN
+F 2 "footprints:Pin_Header_Straight_2x03" H 14800 2200 50  0001 C CNN
+F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 14800 2200 50  0001 C CNN
+F 4 "DK" H 14800 3400 60  0001 C CNN "MFN"
+F 5 "609-3234-ND" H 14800 3400 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 15200 4000 60  0001 C CNN "PurchasingLink"
+	1    14800 3400
 	1    0    0    -1  
 $EndComp
-Text Label 14100 3300 2    50   ~ 0
+Text Label 14025 3300 2    50   ~ 0
 MISO
-Text Label 14100 3400 2    50   ~ 0
+Text Label 14250 3400 2    50   ~ 0
 SCK
-Text Label 14100 3500 2    50   ~ 0
+Text Label 14550 3500 2    50   ~ 0
 RESET
-Text Label 14600 3400 0    50   ~ 0
+Text Label 15400 3400 0    50   ~ 0
 MOSI
 Text Notes 13775 3050 0    89   ~ 0
 16M1 PROGRAMMING HEADER\n
@@ -1565,12 +1565,6 @@ Wire Notes Line
 Wire Notes Line
 	550  4775 550  550 
 Wire Notes Line
-	13775 3075 14900 3075
-Wire Notes Line
-	14900 3075 14900 3800
-Wire Notes Line
-	14900 3800 13775 3800
-Wire Notes Line
 	13775 3800 13775 3075
 Wire Notes Line
 	13775 1075 16200 1075
@@ -1960,7 +1954,7 @@ $EndComp
 Text Label 9075 7150 2    50   ~ 0
 PACK_SIDE_CURRENT_PATH
 Wire Wire Line
-	8850 7450 9075 7450
+	8850 7450 8975 7450
 Connection ~ 9075 7450
 Wire Wire Line
 	9075 7450 9250 7450
@@ -1979,7 +1973,7 @@ Wire Notes Line
 	12850 5650 15475 5650
 Text Notes 8025 7000 0    89   ~ 0
 HIGH CURRENT PATH\n
-Text Notes 9225 9325 0    39   ~ 0
+Text Notes 9400 9350 0    39   ~ 0
 Bidirectional Discrete \nDual-PMOS Load switch
 $Comp
 L formula:Test_Point_SMD TP14
@@ -2148,12 +2142,12 @@ $EndComp
 $Comp
 L power:+5V #PWR?
 U 1 1 61977052
-P 14600 3300
-F 0 "#PWR?" H 14600 3150 50  0001 C CNN
-F 1 "+5V" H 14615 3473 50  0000 C CNN
-F 2 "" H 14600 3300 50  0001 C CNN
-F 3 "" H 14600 3300 50  0001 C CNN
-	1    14600 3300
+P 15050 3300
+F 0 "#PWR?" H 15050 3150 50  0001 C CNN
+F 1 "+5V" H 15065 3473 50  0000 C CNN
+F 2 "" H 15050 3300 50  0001 C CNN
+F 3 "" H 15050 3300 50  0001 C CNN
+	1    15050 3300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -2429,12 +2423,12 @@ $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61BB84B2
-P 14600 3500
-F 0 "#PWR?" H 14600 3250 50  0001 C CNN
-F 1 "GND" H 14605 3327 50  0000 C CNN
-F 2 "" H 14600 3500 50  0001 C CNN
-F 3 "" H 14600 3500 50  0001 C CNN
-	1    14600 3500
+P 15050 3500
+F 0 "#PWR?" H 15050 3250 50  0001 C CNN
+F 1 "GND" H 15055 3327 50  0000 C CNN
+F 2 "" H 15050 3500 50  0001 C CNN
+F 3 "" H 15050 3500 50  0001 C CNN
+	1    15050 3500
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -2605,7 +2599,7 @@ F 3 "" H 10300 10125 50  0001 C CNN
 	1    10300 10125
 	1    0    0    -1  
 $EndComp
-Text Notes 8025 9175 0    47   ~ 0
+Text Notes 8000 9325 0    47   ~ 0
 The high current path on this \nPCB will see 20A continuous, \n30A peak for 1 hour with the \ncooling pack, and 5A continuous \nwith the GLV pack. Our high \ncurrent path features a current \nsensor, bidirectional load switch, \nand fuse.  \n\nThe fuse and current sensor are \ndifferent between GLV system \nand cooling pack system. \n\nThe bidirectional load switch was \ntested with the LV BMS Tester \nBoard. As a switch, it functionally \nworks, but thermals still need to \nbe tested on this PCB.  
 Wire Notes Line
 	15475 5650 15475 7875
@@ -3496,4 +3490,79 @@ Wire Notes Line
 	8050 775  13625 775 
 Wire Notes Line
 	8050 3175 13625 3175
+Wire Wire Line
+	8975 7450 8975 7550
+Connection ~ 8975 7450
+Wire Wire Line
+	8975 7450 9075 7450
+$Comp
+L formula:R_0 R?
+U 1 1 62672ADF
+P 8975 7700
+F 0 "R?" H 9045 7746 50  0000 L CNN
+F 1 "R_0" H 9045 7655 50  0000 L CNN
+F 2 "footprints:R_0603_1608Metric" H 8905 7700 50  0001 C CNN
+F 3 "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" H 9055 7700 50  0001 C CNN
+F 4 "DK" H 8975 7700 60  0001 C CNN "MFN"
+F 5 "P0.0GCT-ND" H 8975 7700 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEY0R00V/P0.0GCT-ND/134711" H 9455 8100 60  0001 C CNN "PurchasingLink"
+	1    8975 7700
+	1    0    0    -1  
+$EndComp
+Text Label 8825 7850 2    50   ~ 0
+BATT_4
+Wire Wire Line
+	8825 7850 8975 7850
+Wire Wire Line
+	15050 3400 15325 3400
+Wire Wire Line
+	14550 3400 14250 3400
+Wire Wire Line
+	14025 3300 14250 3300
+$Comp
+L formula:Test_Point_SMD TP?
+U 1 1 62705BA6
+P 14250 3250
+F 0 "TP?" H 14300 3350 50  0000 L CNN
+F 1 "Test_Point_SMD" H 15225 2775 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 14250 3100 50  0001 C CNN
+F 3 "" H 14250 3250 50  0001 C CNN
+	1    14250 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP?
+U 1 1 6271D460
+P 14250 3450
+F 0 "TP?" H 14175 3650 50  0000 L CNN
+F 1 "Test_Point_SMD" H 12700 3650 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 14250 3300 50  0001 C CNN
+F 3 "" H 14250 3450 50  0001 C CNN
+	1    14250 3450
+	-1   0    0    1   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP?
+U 1 1 62734A65
+P 15325 3350
+F 0 "TP?" H 15350 3550 50  0000 L CNN
+F 1 "Test_Point_SMD" H 15225 3125 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 15325 3200 50  0001 C CNN
+F 3 "" H 15325 3350 50  0001 C CNN
+	1    15325 3350
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	15975 3075 15975 3800
+Wire Notes Line
+	13775 3075 15975 3075
+Wire Notes Line
+	13775 3800 15975 3800
+Connection ~ 15325 3400
+Wire Wire Line
+	15325 3400 15400 3400
+Connection ~ 14250 3300
+Wire Wire Line
+	14250 3300 14550 3300
+Connection ~ 14250 3400
 $EndSCHEMATC
