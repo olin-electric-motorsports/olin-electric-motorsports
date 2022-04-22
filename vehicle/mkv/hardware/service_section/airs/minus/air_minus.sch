@@ -46,21 +46,21 @@ Text Label 2150 3175 0    50   ~ 0
 HV_BSPD_CURRENT_SENSOR
 Text Label 7600 1200 0    50   ~ 0
 PRECHARGE_LSD
-Text Label 7600 1400 0    50   ~ 0
-FINAL_SHUTDOWN
 Text Label 7600 1300 0    50   ~ 0
+FINAL_SHUTDOWN
+Text Label 7600 1400 0    50   ~ 0
 AIR-_AUX+
-Text Label 7600 1600 0    50   ~ 0
-AIR-_AUX-
 Text Label 7600 1500 0    50   ~ 0
-AIR-_LSD
-Text Label 3700 1200 0    50   ~ 0
 AIR-_AUX-
-Text Label 3700 1300 0    50   ~ 0
-AIR-_AUX+
-Text Label 3700 1400 0    50   ~ 0
+Text Label 7600 1600 0    50   ~ 0
 AIR-_LSD
+Text Label 3700 1400 0    50   ~ 0
+AIR-_AUX-
 Text Label 3700 1500 0    50   ~ 0
+AIR-_AUX+
+Text Label 3700 1200 0    50   ~ 0
+AIR-_LSD
+Text Label 3700 1300 0    50   ~ 0
 FINAL_SHUTDOWN
 NoConn ~ 7600 1700
 Wire Wire Line
@@ -321,7 +321,7 @@ F 6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/
 	1    3400 4300
 	0    1    1    0   
 $EndComp
-Text Notes 8350 1500 0    50   ~ 0
+Text Notes 8350 1600 0    50   ~ 0
 COIL- is LSD from AIR control
 Wire Notes Line
 	3100 2500 4900 2500
