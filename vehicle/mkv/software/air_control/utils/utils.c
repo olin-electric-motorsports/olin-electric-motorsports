@@ -44,7 +44,7 @@ int get_bms_voltage(int16_t* voltage) {
         }
     } while (rc != 0);
 
-    *voltage = bms_core.pack_voltage << 4;
+    *voltage = bms_core.pack_voltage;
 
 bail:
     return rc;
