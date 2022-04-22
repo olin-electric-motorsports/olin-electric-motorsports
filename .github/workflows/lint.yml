@@ -34,7 +34,7 @@ jobs:
       run: git fetch origin main && ./scripts/clang-format.sh check
 
     - name: Install black
-      run: sudo apt install black 
+      run: pip install black
 
     - name: Run black on changed python files
-      run: git diff --name-only origin/$GITHUB_BASE_REF..$(git rev-parse --short "$GITHUB_SHA") | grep ".py$" | xargs black --check
+      run: git diff --name-only origin/$GITHUB_BASE_REF..$(git rev-parse --short "$GITHUB_SHA") | grep ".py$" | xargs black --check --diff

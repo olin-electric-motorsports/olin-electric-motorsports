@@ -1,424 +1,407 @@
+#include "bms_config.h"
+
+#include "libs/adc/api.h"
+#include "libs/gpio/api.h"
+#include "libs/gpio/pin_defs.h"
+#include "libs/spi/api.h"
+#include "libs/timer/api.h"
+
+#include <avr/interrupt.h>
+#include <stdbool.h>
+
+#include "vehicle/mkv/software/bms/can_api.h"
+#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
+#include "vehicle/mkv/software/bms/tasks/tasks.h"
+#include "vehicle/mkv/software/bms/utils/fault.h"
+#include "vehicle/mkv/software/bms/utils/mux.h"
+
+enum State {
+    INIT = 0,
+    IDLE,
+    DISCHARGING,
+    CHARGING,
+    FAULT,
+};
+
+enum AIR_State {
+    AIR_STATE_IDLE,
+    AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED,
+    AIR_STATE_PRECHARGE,
+    AIR_STATE_TS_ACTIVE,
+    AIR_STATE_DISCHARGE,
+    AIR_STATE_FAULT,
+} air_state
+    = AIR_STATE_IDLE;
+
 /*
- *  2019 BMS code
+ * Interrupts
+ */
+static volatile bool run_10ms = false;
+
+void timer0_isr(void) {
+    run_10ms = true;
+}
+
+/*
+ * Interrupt for nOCD
+ */
+void pcint0_callback(void) {
+    bms_core.overcurrent_detect = !gpio_get_pin(nOCD);
+}
+
+/*
+ * Interrupt for BSPD_CURRENT_SENSE
+ */
+void pcint2_callback(void) {
+    bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_SENSE);
+}
+
+/*
+ * Perform initial startup checks on the BMS.
  *
- * @author Alex Hoppe '19
- * @author Vienna Scheyer '21
- * @author Corey Cochran-Lepiz '21
+ * - Runs BIST (built-in self test) in all the ICs
+ * - Checks all temperatures and voltages and ensures they are in range
  */
+static int initial_checks(void) {
+    int rc = 0;
 
-#include <avr/io.h>
-#include <util/delay.h>
-#include <stdio.h>
-#include <string.h>
-#include "can_api.h"
-#include "log_uart.h"
-#include "ltc6811.h"
+    // wakeup_idle(NUM_ICS);
+    // wakeup_sleep(NUM_ICS);
+    /* LTC6811_diagn(); */
+    /*  */
+    /* for (uint8_t ic = 0; ic < NUM_ICS; ic++) { */
+    /*     if (ICS[ic].stat.mux_fail[0] == 1) { */
+    /*         set_fault(BMS_FAULT_DIAGNOSTICS_FAIL); */
+    /*         rc = 1; */
+    /*         goto bail; */
+    /*     } */
+    /* } */
 
-// BMS core hardware defines
-#define LED1_PIN    PD5
-#define LED2_PIN    PD6
-#define LED3_PIN    PD7
+    /*
+     * Run all LTC6811 self-tests
+     *
+     * TODO: not working
+     */
+    // wakeup_sleep(NUM_ICS);
+    // rc += LTC6811_run_cell_adc_st(CELL, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
+    // can_send_bms_debug();
+    //
+    // wakeup_sleep(NUM_ICS);
+    // rc += LTC6811_run_cell_adc_st(AUX, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
+    // can_send_bms_debug();
+    //
+    // wakeup_sleep(NUM_ICS);
+    // rc += LTC6811_run_cell_adc_st(STAT, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
+    // can_send_bms_debug();
+    //
+    //
+    // if (rc != 0) {
+    //     set_fault(BMS_FAULT_DIAGNOSTICS_FAIL);
+    //     goto bail;
+    // }
 
-#define LED_PORT    PORTD
-#define LED_DDR     DDRD
+    // read all voltages
+    uint32_t ov = 0;
+    uint32_t uv = 0;
+    uint8_t retry = 0;
 
-#define RELAY_PIN   PC7
-#define RELAY_PORT  PORTC
-#define RELAY_DDR   DDRC
+    do {
+        uint16_t pack_voltage = 0;
+        rc = voltage_task(&pack_voltage, &ov, &uv);
+        bms_core.pack_voltage = pack_voltage;
+        bms_metrics.voltage_pec_error_count += rc;
 
-#define EXT_LED1_PIN    PB3
-#define EXT_LED2_PIN    PB4
-#define EXT_LED_PORT    PORTB
+        if (retry >= MAX_PEC_RETRY) {
+            rc = 1;
+            set_fault(BMS_FAULT_PEC);
+            goto bail;
+        } else {
+            retry++;
+        }
+    } while (rc != 0);
 
-// gFlag register pre-defines
-#define TRANSMIT_STATUS     0b00000001
-#define UNDER_VOLTAGE       0b00000010
-#define OVER_VOLTAGE        0b00000100
-#define UNDER_TEMP          0b00001000
-#define OVER_TEMP           0b00010000
-#define SOFT_OVER_TEMP      0b00100000
+    if (uv > 0) {
+        set_fault(BMS_FAULT_UNDERVOLTAGE);
+        rc = 1;
+        goto bail;
+    } else if (ov > 0) {
+        set_fault(BMS_FAULT_OVERVOLTAGE);
+        rc = 1;
+        goto bail;
+    }
 
-// controls whether or not we UART anything
-#define VERBOSE 1  // this will print PEC error count each cycle, any temperature and voltage cells that fault, 
-//                    the voltages of a whole segment if it has an overvoltage fault
-#define PRINT_TEMPS 0 // this will UART all temperatures
+    // read all temperatures
+    uint32_t ot = 0;
+    uint32_t ut = 0;
+    retry = 0;
 
-volatile uint8_t gFlag = 0;
-uint8_t gStatusMessage[7];
+    do {
+        uint16_t pack_temperature = 0;
+        rc = temperature_task(&pack_temperature, &ot, &ut);
+        bms_core.pack_temperature = pack_temperature;
+        bms_metrics.temperature_pec_error_count += rc;
 
-//global BMS status indicator
-uint8_t gBMSStatus = 0;
+        if (retry >= MAX_PEC_RETRY) {
+            set_fault(BMS_FAULT_PEC);
+            rc = 1;
+            goto bail;
+        } else {
+            retry++;
+        }
+    } while (rc != 0);
 
-// Timer prescale vars and constants
-uint8_t gCounterTransmit = 0;
-const uint8_t transmit_match =100;
+    if (ut > 0) {
+        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        rc = 1;
+        goto bail;
+    } else if (ot > 0) {
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
+        rc = 1;
+        goto bail;
+    }
 
-// UART buffer
-char temp_msg[6*20+4+5] = "";
+    // check for open-circuit
+    // TODO: openwire_task();
 
-//Under Voltage and Over Voltage Thresholds
-// TODO: Verify these numbers
-const uint16_t OV_THRESHOLD = 42000;//35900; // Over voltage threshold ADC Code
-const uint16_t UV_THRESHOLD = 30000; //20000;// Under voltage threshold ADC Code
+bail:
+    return rc;
+}
 
-//Temperature sensor voltage thresholds
-const uint16_t OT_THRESHOLD = 728; // 60 deg. C
-const uint16_t SOFT_OT_THRESHOLD = 1255; //45 deg. C
-const uint16_t UT_THRESHOLD = 7384; //0 deg. C TODO: Confirm this is the case
+/*
+ * Primary state machine function
+ */
+static void state_machine_run(void) {
+    if (bms_core.bms_fault_state != BMS_FAULT_NONE) {
+        bms_core.bms_state = FAULT;
+        gpio_clear_pin(BMS_RELAY_LSD);
+    }
 
-// I2C MUX addresses from peripheral board
-const uint8_t MUX1_ADDR = 0x90;
-const uint8_t MUX2_ADDR = 0x92;
-const uint8_t MUX3_ADDR = 0x94;
+    /*
+     * Read voltages
+     */
+    uint32_t ov = 0;
+    uint32_t uv = 0;
 
-// BMS comms error gCounterTransmit
-uint8_t missed_cycle_count = 0;
-const uint8_t MAX_MISSED_CYCLES = 3;
+    uint16_t pack_voltage = 0;
+    int rc = voltage_task(&pack_voltage, &ov, &uv);
+    bms_core.pack_voltage = pack_voltage;
 
-// Scale down transmit task
-ISR(TIMER0_COMPA_vect) {
-    if (gCounterTransmit == transmit_match) {
-        gCounterTransmit = 0;
+    if (rc) {
+        bms_metrics.voltage_pec_error_count += rc;
 
-        gFlag |= TRANSMIT_STATUS;
-        LED_PORT ^= _BV(LED1_PIN);
-        LED_PORT ^= _BV(LED2_PIN);
-
-        // Set EXT LED1 high for start of cycle
-        EXT_LED_PORT |= _BV(EXT_LED1_PIN);
-
+        if (bms_metrics.voltage_pec_error_count >= MAX_PEC_IN_A_ROW) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = FAULT;
+        }
+        return;
     } else {
-        gCounterTransmit++;
+        bms_metrics.voltage_pec_error_count = 0;
     }
-}
 
-void setup_timer_100Hz(void) {
-    /* Set up TC0 in ctc mode, with OCR0A interrupt enabled and at 2 Hz */
-    TCCR0A |= _BV(WGM01);       /* Set WGM[2:0] to 0b010: CTC mode (WGM2 is
-                                 * TCCR0B) */
-    TCCR0B |= _BV(CS02) | _BV(CS00);    /* Set up prescaler for TC0 to clk_io
-                                         * divided by 1024:
-                                         * 4MHz/1024 = 3.90625 kHz
-                                         * CS0[2:0] = 0b101
-                                         * (table 15-10) in datasheet */
-    TIMSK0 |= _BV(OCIE0A);      /* Set interrupt enable for output channel A
-                                 * interrupt on compare match */
-    OCR0A = 39;                /* Set the match register to 195 (maximum
-                                 * period), 3.90625 kHz / 39 = 100.16 Hz */
-}
+    /*
+     * Read temperatures
+     */
+    uint32_t ot = 0;
+    uint32_t ut = 0;
 
-// READ VOLTAGES /////////////////////////////////////////////////////////////////////////////////////////
-int8_t read_all_voltages(void) // Start Cell ADC Measurement
-{
-    int8_t error = 0;
+    uint16_t pack_temperature;
+    rc = temperature_task(&pack_temperature, &ot, &ut);
+    bms_core.pack_temperature = pack_temperature;
 
-    wakeup_sleep(TOTAL_IC);
-    // Start a cell conversion on all cells
-    ltc6811_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL);
-    // wait until ADC is finished(SEE LTC 6804 Datasheet Pg. 24)
-    // Trefup is 4.4 mS max, plus 2.3mS conversion time for 7kHz mode
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        bms_core.bms_state = FAULT;
+        return;
+    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
+        bms_core.bms_state = FAULT;
+        return;
+    }
 
-    //_delay_ms(7);
-    ltc6811_pollAdc();
+    if (rc) {
+        bms_metrics.temperature_pec_error_count += rc;
 
-    //Read back and parse out ADC measurements
-    wakeup_idle(TOTAL_IC); // Wake up the LTC6804 from idle after the delay
-    error = ltc6811_rdcv(TOTAL_IC, cell_voltages);
+        if (bms_metrics.temperature_pec_error_count >= MAX_PEC_IN_A_ROW) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = FAULT;
+        }
+    } else {
+        bms_metrics.temperature_pec_error_count = 0;
+    }
 
-    if (error == 0) {
-        // Do value checking
-        gFlag &= ~(OVER_VOLTAGE | UNDER_VOLTAGE);
+    /*
+     * Check for open-wires
+     */
+    // TODO: rc = openwire_task();
 
+    int16_t current = 0;
+    current_task(&current);
+    bms_core.pack_current = current;
 
+    switch (bms_core.bms_state) {
+        case IDLE: {
+            gpio_set_pin(BMS_RELAY_LSD);
 
-        for (uint8_t ic = 0; ic < TOTAL_IC; ic++) {
-            for (uint8_t cell = 0; cell < NUM_CELLS; cell++) {
+            if (uv > 0) {
+                set_fault(BMS_FAULT_UNDERVOLTAGE);
+                bms_core.bms_state = FAULT;
+            } else if (ov > 0) {
+                set_fault(BMS_FAULT_OVERVOLTAGE);
+                bms_core.bms_state = FAULT;
+            }
 
-                //Skip cells that are 0, i.e. cell 5,6 and 11,12
-                if ((cell == 4) || (cell == 5) || (cell == 10) || (cell == 11)) continue;
+            if (air_state != AIR_STATE_IDLE) {
+                bms_core.bms_state = DISCHARGING;
+            }
 
-                uint16_t cell_value = cell_voltages[ic][cell];
-
-                if (cell_value > OV_THRESHOLD) {
-                    gFlag |= OVER_VOLTAGE; // left out for now to prevent shutdown on overvolted cell
-                    #if(VERBOSE==1)
-                    sprintf( temp_msg, "OV ic: %u cell: %u v: %u", ic, cell, cell_value);
-                    LOG_println(temp_msg, strlen(temp_msg));
-                    #endif
-                }
-                else if (cell_value < UV_THRESHOLD) {
-                    gFlag |= UNDER_VOLTAGE;
-                    #if(VERBOSE==1)
-                    sprintf( temp_msg, "UV ic: %u cell: %u v: %u", ic, cell, cell_value);
-                    LOG_println(temp_msg, strlen(temp_msg));
-                    #endif
+            if (can_poll_receive_bms_charging() == 0) {
+                can_receive_bms_charging();
+                if (bms_charging.charge_enable == true) {
+                    bms_core.bms_state = CHARGING;
                 }
             }
-        }
-    }
+        } break;
+        case DISCHARGING: {
+            gpio_set_pin(BMS_RELAY_LSD);
 
-    #if(VERBOSE==1)
-        for (int i = 0; i < TOTAL_IC; i++) {
-        sprintf(temp_msg, "v%d,%3d,%u,%u,%u,%u,"
-                            "%u,%u,"
-                            "%u,%u",
-                                i,
-                                error,
-                                cell_voltages[i][0],
-                                cell_voltages[i][1],
-                                cell_voltages[i][2],
-                                cell_voltages[i][3],
-                                cell_voltages[i][6],
-                                cell_voltages[i][7],
-                                cell_voltages[i][8],
-                                cell_voltages[i][9]);
+            if (air_state == AIR_STATE_IDLE) {
+                bms_core.bms_state = IDLE;
+            }
 
-        LOG_println(temp_msg, strlen(temp_msg));
-        }
-    #endif
+            if (uv > 0) {
+                set_fault(BMS_FAULT_UNDERVOLTAGE);
+                bms_core.bms_state = FAULT;
+            } else if (ov > 0) {
+                set_fault(BMS_FAULT_OVERVOLTAGE);
+                bms_core.bms_state = FAULT;
+            }
+        } break;
+        case CHARGING: {
+            gpio_set_pin(BMS_RELAY_LSD);
+            gpio_set_pin(CHARGE_ENABLE1);
+            gpio_set_pin(CHARGE_ENABLE2);
 
-    return error;
-}
+            if (ov > 0) {
+                gpio_clear_pin(CHARGE_ENABLE1);
+                gpio_clear_pin(CHARGE_ENABLE2);
+                bms_core.bms_state = IDLE;
+            }
 
-/* On each peripheral board, this function sets the MUX channel over I2C, then
- * starts an ADC conversion for aux voltage 1, GPIO1.
- * Then it reads back the aux voltage data for all of the boards
- * Then it parses those into the temp_sensor_voltages array.
- */
-int8_t read_all_temperatures(void)
-{
-    int8_t error = 0;
-
-    const uint8_t MUX_CHANNELS = 8;
-
-    wakeup_sleep(TOTAL_IC);
-
-    // Disable all MUXes
-    mux_disable(TOTAL_IC, MUX1_ADDR);
-    _delay_us(10);
-    mux_disable(TOTAL_IC, MUX2_ADDR);
-    _delay_us(10);
-    mux_disable(TOTAL_IC, MUX3_ADDR);
-    _delay_us(10);
-
-    // First four thermistors are in MUX3
-    for (uint8_t i = 0; i < 4; i++) {
-
-        mux_set_channel(TOTAL_IC, MUX3_ADDR, i);
-        _delay_us(10);                             //Spec is 1600ns from stop cond.
-        ltc6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1); //start ADC measurement for GPIO CH 1
-        ltc6811_pollAdc();
-        error = ltc6811_rdaux(0,TOTAL_IC, _aux_voltages); //Parse all ADC measurements back
-
-        // Grab aux voltages into the temp voltages array
-        for (uint8_t ic = 0; ic < TOTAL_IC; ic++) {
-            //First four are out of order, 0123 are 2_2, 2_1, 1_2, and 1_1 respectively
-            temp_sensor_voltages[ic][3-i] = _aux_voltages[ic][0]; //Store temperatures
-        }
-
-    }
-
-    // Disable MUX3, now iterate through MUX2 (for modules 3-6)
-    mux_disable(TOTAL_IC, MUX3_ADDR);
-    _delay_us(10);
-
-    for (uint8_t i = 0; i < MUX_CHANNELS; i++) {
-
-        mux_set_channel(TOTAL_IC, MUX2_ADDR, i);
-        _delay_us(10);                             //Spec is 1600ns from stop cond.
-        ltc6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1); //start ADC measurement for GPIO CH 1
-        ltc6811_pollAdc();//only need to delay 500uS for GPIO1 conversion
-        error = ltc6811_rdaux(0, TOTAL_IC, _aux_voltages); //Parse all ADC measurements back
-
-        // Grab aux voltages into the temp voltages array
-        for (uint8_t ic = 0; ic < TOTAL_IC; ic++) {
-            //Sensors are in reverse order
-            temp_sensor_voltages[ic][NUM_TEMPS-9-i] = _aux_voltages[ic][0]; //Store temperatures
-        }
-
-    }
-    // Disable MUX2, now iterate through MUX1 (for modules 7-10)
-    mux_disable(TOTAL_IC, MUX2_ADDR);
-    _delay_us(10);
-
-    for (uint8_t i = 0; i < MUX_CHANNELS; i++) {
-
-        mux_set_channel(TOTAL_IC, MUX1_ADDR, i);
-        _delay_us(10);                             //Spec is 1600ns from stop cond.
-        ltc6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1); //start ADC measurement for GPIO CH 1
-        ltc6811_pollAdc();                           //only need to delay 500uS for GPIO1 conversion
-        error = ltc6811_rdaux(0, TOTAL_IC, _aux_voltages); //Parse all ADC measurements back
-
-        // Grab aux voltages into the temp voltages array
-        for (uint8_t ic = 0; ic < TOTAL_IC; ic++) {
-            //Sensors are in reverse order, 0123 are 2_2, 2_1, 1_2, and 1_1 respectively
-            temp_sensor_voltages[ic][NUM_TEMPS-1-i] = _aux_voltages[ic][0]; //Store temperatures
-        }
-    }
-
-    mux_disable(TOTAL_IC, MUX1_ADDR);
-    _delay_us(10);
-
-    #if(PRINT_TEMPS==1)
-    for(int ic = 0; ic < TOTAL_IC; ic++) {
-        sprintf(temp_msg, "t%d,%3d,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u,%5u", ic, error,
-                        temp_sensor_voltages[ic][0],
-                        temp_sensor_voltages[ic][1],
-                        temp_sensor_voltages[ic][2],
-                        temp_sensor_voltages[ic][3],
-                        temp_sensor_voltages[ic][4],
-                        temp_sensor_voltages[ic][5],
-                        temp_sensor_voltages[ic][6],
-                        temp_sensor_voltages[ic][7],
-                        temp_sensor_voltages[ic][8],
-                        temp_sensor_voltages[ic][9],
-                        temp_sensor_voltages[ic][10],
-                        temp_sensor_voltages[ic][11],
-                        temp_sensor_voltages[ic][12],
-                        temp_sensor_voltages[ic][13],
-                        temp_sensor_voltages[ic][14],
-                        temp_sensor_voltages[ic][15],
-                        temp_sensor_voltages[ic][16],
-                        temp_sensor_voltages[ic][17],
-                        temp_sensor_voltages[ic][18],
-                        temp_sensor_voltages[ic][19]
-                        );
-
-        LOG_println(temp_msg, strlen(temp_msg));
-    }
-    #endif
-
-    if (error == 0) {
-        // Check temperature values for in-range ness
-        gFlag &= ~(OVER_TEMP | SOFT_OVER_TEMP | UNDER_TEMP);
-
-        for (uint8_t ic = 0; ic < TOTAL_IC; ic ++) {
-            for (uint8_t sensor = 0; sensor < NUM_TEMPS; sensor ++) {
-                uint16_t sensor_value = temp_sensor_voltages[ic][sensor];
-                if (sensor_value < SOFT_OT_THRESHOLD) {
-                    gFlag |= SOFT_OVER_TEMP;
-                    #if(VERBOSE==2)
-                    sprintf( temp_msg, "SOT ic: %u cell: %u v: %u", ic, sensor, sensor_value);
-                    LOG_println(temp_msg, strlen(temp_msg));
-                    #endif
-                }
-                else if (sensor_value < OT_THRESHOLD) {
-                    gFlag |= OVER_TEMP;
-                    #if(VERBOSE==2)
-                    sprintf( temp_msg, "OT ic: %u cell: %u v: %u", ic, sensor, sensor_value);
-                    LOG_println(temp_msg, strlen(temp_msg));
-                    #endif
-                }
-                else if (sensor_value > UT_THRESHOLD) {
-                    gFlag |= UNDER_TEMP;
-                    #if(VERBOSE==2)
-                    sprintf( temp_msg, "UT ic: %u cell: %u t: %u", ic, sensor, sensor_value);
-                    LOG_println(temp_msg, strlen(temp_msg));
-                    #endif
+            if (can_poll_receive_bms_charging() == 0) {
+                can_receive_bms_charging();
+                if (bms_charging.charge_enable == false) {
+                    bms_core.bms_state = IDLE;
+                    gpio_clear_pin(CHARGE_ENABLE1);
+                    gpio_clear_pin(CHARGE_ENABLE2);
                 }
             }
-        }
-    }
+        } break;
+        case FAULT: {
+            gpio_clear_pin(CHARGE_ENABLE1);
+            gpio_clear_pin(CHARGE_ENABLE2);
+            gpio_clear_pin(BMS_RELAY_LSD);
+            gpio_set_pin(FAULT_LED);
 
-    return error;
+            /*
+             * We can ONLY exit fault state if the fault is under-voltage, and
+             * we do so by entering CHARGING. Charging begins once we receive
+             * the bms_charging message with charge_enable set to true.
+             */
+            if (bms_core.bms_fault_state == BMS_FAULT_UNDERVOLTAGE) {
+                if (can_poll_receive_bms_charging() == 0) {
+                    if (bms_charging.charge_enable == true) {
+                        bms_core.bms_state = CHARGING;
+                    }
+                    can_receive_bms_charging();
+                }
+            }
+        } break;
+        default: {
+            // Just to be safe. This shouldn't happen
+            bms_core.bms_fault_state = BMS_FAULT_DIAGNOSTICS_FAIL;
+            bms_core.bms_state = FAULT;
+        } break;
+    }
 }
 
-int main (void) {
-
-    /* Set the data direction register so the led pin is output */
-    LED_DDR |= _BV(LED1_PIN) | _BV(LED2_PIN) | _BV(LED3_PIN);
-    DDRB |= _BV(EXT_LED1_PIN) | _BV(EXT_LED2_PIN);
-
-    LED_PORT ^= _BV(LED3_PIN);
-
+int main(void) {
     sei();
-    /* Initialize CAN */
-    CAN_init(CAN_ENABLED);
 
-    setup_timer_100Hz();
+    can_init_bms();
 
-    LOG_init();
+    gpio_set_mode(BMS_RELAY_LSD, OUTPUT);
+    gpio_set_mode(RJ45_LEDO, OUTPUT);
+    gpio_set_mode(RJ45_LEDG, OUTPUT);
+    gpio_set_mode(CHARGE_ENABLE1, OUTPUT);
+    gpio_set_mode(CHARGE_ENABLE2, OUTPUT);
+    gpio_set_mode(GENERAL_LED, OUTPUT);
+    gpio_set_mode(FAULT_LED, OUTPUT);
+    gpio_set_mode(FAN_PWM, OUTPUT);
 
-    SPI_init(SPI_FOSC_DIV_4, SPI_MODE_1_1, &PORTB, PB6);
-    // MISO_iso pin is input because of SPI module. Write high for pull-up
-    PORTB |= _BV(PB0);
+    gpio_set_mode(nOCD, INPUT);
+    gpio_set_mode(BSPD_CURRENT_SENSE, INPUT);
 
-    //Perform an initial check before we set the relay
-    RELAY_DDR |= _BV(RELAY_PIN);
-    read_all_voltages();
-    read_all_temperatures();
-    // If we've got no faults
-    if (!(gFlag & (OVER_TEMP | UNDER_TEMP | OVER_VOLTAGE | UNDER_VOLTAGE))) {
-        RELAY_PORT |= _BV(RELAY_PIN);
-        gBMSStatus = 0xFF;
-        LED_PORT |= _BV(LED3_PIN);
-        EXT_LED_PORT |= _BV(EXT_LED2_PIN);
+    gpio_set_pin(BMS_RELAY_LSD);
+
+    gpio_enable_interrupt(nOCD);
+    gpio_enable_interrupt(BSPD_CURRENT_SENSE);
+
+    adc_init();
+
+    spi_init(&spi_cfg);
+
+    timer_init(&timer0_cfg);
+    timer_init(&timer1_fan_cfg);
+
+    // Turn on GENERAL_LED to indicate checks will run
+    gpio_set_pin(GENERAL_LED);
+
+    // Check state of cells
+    if (initial_checks() != 0) {
+        bms_core.bms_state = FAULT;
+        gpio_set_pin(FAULT_LED);
+    } else {
+        // Close the BMS shutdown circuit relay
+        bms_core.bms_state = IDLE;
+        gpio_set_pin(BMS_RELAY_LSD);
     }
 
-    while (1) {
-        // LED_PORT ^= _BV(LED3_PIN);
-        // Transmit status task
-        if (gFlag & TRANSMIT_STATUS) {
-            gFlag &= ~TRANSMIT_STATUS;
+    can_send_bms_core();
 
-            int8_t error = 0;
-            error += read_all_voltages();
-            error += read_all_temperatures();
+    // Turn off GENERAL_LED to indicate checks passed
+    gpio_clear_pin(GENERAL_LED);
 
-            #if(VERBOSE==1)
-            sprintf( temp_msg, "e %d", error);
-            LOG_println(temp_msg, strlen(temp_msg));
-            #endif
+    // Set up first receive of AIR Control and BMS charging messages
+    can_receive_air_control_critical();
+    can_receive_bms_charging();
 
-            // If we got a PEC error from any of those
-            if (error != 0) {
-                missed_cycle_count += 1;
-            } else {
-                missed_cycle_count = 0;
-            }
+    // Tracks the number of times the 10ms loop has been run
+    uint8_t loop_counter = 0;
 
-            LED_PORT ^= _BV(LED2_PIN);
-            EXT_LED_PORT &= ~_BV(EXT_LED1_PIN);
-
-            // Actually build up a CAN message
-            //Report relay status
-            gStatusMessage[0] = bit_is_set(RELAY_PORT, RELAY_PIN) ? 0xFF : 0;
-            // TODO: temperature
-            gStatusMessage[1] = 100;
-            // TODO: state of charge
-            gStatusMessage[2] = 12;
-            // Report BMS ok for BMS light
-            gStatusMessage[3] = gBMSStatus;
-            // Report regen status
-            gStatusMessage[4] = 0;
-            // Report current limiting
-            gStatusMessage[5] = 0;
-            // Report cell balancing status
-            gStatusMessage[6] = 0;
-            for(int j=0;j<32;j++){
-                CAN_transmit(0, CAN_ID_BMS_CORE, CAN_LEN_BMS_CORE, gStatusMessage);
-            }
-            
-
-        
-
-            if ((gFlag & OVER_VOLTAGE) || (gFlag & UNDER_VOLTAGE) ||
-                        (gFlag & OVER_TEMP) || (gFlag & UNDER_TEMP) ||
-                        (missed_cycle_count >= MAX_MISSED_CYCLES)) {
-
-                RELAY_PORT &= ~_BV(RELAY_PIN);// Commented out to prevent Shutdown of car.
-                gBMSStatus = 0x00;
-                LED_PORT &= ~_BV(LED3_PIN);
-                EXT_LED_PORT &= ~_BV(EXT_LED2_PIN);
-
-                // if (gFlag & OVER_VOLTAGE) {char flagmsg[]= "Over Voltage"; LOG_println(flagmsg, strlen(flagmsg));}
-                // if (gFlag & UNDER_VOLTAGE) {char flagmsg[] = "Under Voltage"; LOG_println(flagmsg, strlen(flagmsg));}
-                // if (gFlag & OVER_TEMP) {char flagmsg[] = "Over Temp"; LOG_println(flagmsg, strlen(flagmsg));}
-                // if (gFlag & UNDER_TEMP) {char flagmsg[] = "Under Temp"; LOG_println(flagmsg, strlen(flagmsg));}
-                // if (missed_cycle_count >= MAX_MISSED_CYCLES) {char flagmsg[] = "Missed more than `MAX_MISSED_CYCLES`"; LOG_println(flagmsg, strlen(flagmsg));}
-
-            }
+    while (true) {
+        // Listen for and save tractive system state
+        if (can_poll_receive_air_control_critical() == 0) {
+            air_state = air_control_critical.air_state;
+            can_receive_air_control_critical();
         }
 
+        if (run_10ms) {
+            can_send_bms_core();
+            can_send_bms_metrics();
+            state_machine_run();
+
+            // Every 500ms send sensing and debug data
+            if (loop_counter == 50) {
+                can_send_bms_debug();
+                // can_send_bms_voltages();
+                // can_send_bms_temperatures();
+                can_send_bms_metrics();
+
+                loop_counter = 0;
+            }
+
+            loop_counter++;
+            run_10ms = false;
+        }
     }
 }

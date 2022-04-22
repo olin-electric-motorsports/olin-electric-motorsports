@@ -38,7 +38,7 @@ int get_bms_voltage(int16_t* voltage) {
 
         if (rc == 1) {
             goto bail;
-        } else if (get_time() - start_time > 1000) {
+        } else if (get_time() - start_time > 2000) {
             rc = 2;
             goto bail;
         }
