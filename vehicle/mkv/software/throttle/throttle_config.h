@@ -29,10 +29,11 @@ typedef struct {
 
 // Minimum and maximum ADC counts representing 0% and 100% pedal travel
 // TODO: Recheck/set these values
-#define THROTTLE_R_MIN_COUNTS (int16_t)(100)
-#define THROTTLE_R_MAX_COUNTS (int16_t)(900)
-#define THROTTLE_L_MIN_COUNTS (int16_t)(100)
-#define THROTTLE_L_MAX_COUNTS (int16_t)(900)
+#define THROTTLE_BUFFER (5)
+#define THROTTLE_R_MIN_COUNTS (int16_t)(126+THROTTLE_BUFFER)
+#define THROTTLE_R_MAX_COUNTS (int16_t)(690-THROTTLE_BUFFER)
+#define THROTTLE_L_MIN_COUNTS (int16_t)(178+THROTTLE_BUFFER)
+#define THROTTLE_L_MAX_COUNTS (int16_t)(1000-THROTTLE_BUFFER)
 
 const throttle_potentiometer_s throttle_r = {
     .adc_pin = ADC9,

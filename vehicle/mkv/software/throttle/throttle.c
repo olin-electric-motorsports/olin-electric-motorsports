@@ -44,7 +44,6 @@
 enum State {
     THROTTLE_IDLE,
     THROTTLE_RUN,
-    THROTTLE_FAULT,
     THROTTLE_OUT_OF_RANGE,
     THROTTLE_POSITION_IMPLAUSIBILITY,
     THROTTLE_BRAKE_PRESSED
@@ -80,7 +79,7 @@ static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
     float position_pct
         = (float)(throttle_raw - throttle->throttle_min) / (float)range;
 
-    return floor(position_pct * 255);
+    return floor(position_pct*255);
 }
 
 /*
@@ -121,6 +120,8 @@ static bool check_out_of_range(int16_t* pos_r, int16_t* pos_l) {
         implausibility = true;
     } else {
         gpio_clear_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        // Will be reset if Ready to Drive is not on
+        throttle.state = THROTTLE_RUN;
     }
 
     return implausibility;
@@ -136,9 +137,11 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
     // Check implausibility between pedal values (T.4.2.4/5)
     if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
         gpio_set_pin(DEVIATION_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_POSITION_IMPLAUSIBILITY;
         return true;
     } else {
         gpio_clear_pin(DEVIATION_IMPLAUSIBILITY_LED);
+        throttle.state = THROTTLE_RUN;
         return false;
     }
 }
@@ -163,6 +166,7 @@ static bool check_brake(int16_t pos_min) {
         if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
             // A brake implausibility occured
             brake_implausibility_occured = true;
+            throttle.state = THROTTLE_BRAKE_PRESSED;
             gpio_set_pin(BRAKE_IMPLAUSIBILTIY_LED);
             return true;
         }
@@ -173,6 +177,7 @@ static bool check_brake(int16_t pos_min) {
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 // No more implausibility
                 brake_implausibility_occured = false;
+                throttle.state = THROTTLE_RUN;
                 gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
                 return false;
             } else {
@@ -183,6 +188,7 @@ static bool check_brake(int16_t pos_min) {
         } else {
             // If an implausibility didn't previously occur, we're good
             gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+            throttle.state = THROTTLE_RUN;
             return false;
         }
     } else {
@@ -198,12 +204,14 @@ static bool check_brake(int16_t pos_min) {
                 // is no longer pressed and the throttle is also not pressed
                 brake_implausibility_occured = false;
                 gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+                throttle.state = THROTTLE_RUN;
                 return false;
             }
         } else {
             // If the brake isn't pressed, and we didn't previously have an
             // implausibility, we're good
             gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+            throttle.state = THROTTLE_RUN;
             return false;
         }
     }
@@ -292,7 +300,6 @@ int main(void) {
 
             if (check_brake(pos_min)) {
                 SET_TORQUE_REQUEST(0);
-                throttle.state = THROTTLE_BRAKE_PRESSED;
                 continue;
             }
 
@@ -311,11 +318,6 @@ int main(void) {
                 if (throttle_state.implausibility_fault_counter
                     >= IMPLAUSIBILITY_TIMEOUT_MS) {
                     // Set appropriate state
-                    if (oor_implausibility) {
-                        throttle.state = THROTTLE_OUT_OF_RANGE;
-                    } else {
-                        throttle.state = THROTTLE_POSITION_IMPLAUSIBILITY;
-                    }
 
                     SET_TORQUE_REQUEST(0);
                     throttle_state.implausibility_fault_counter = 0;
@@ -338,7 +340,7 @@ int main(void) {
         }
         if (throttle_state.send_can) {
             can_send_throttle();
-            can_send_throttle_debug();
+            // can_send_throttle_debug();
             can_send_m192_command_message();
             throttle_state.send_can = false;
         }
