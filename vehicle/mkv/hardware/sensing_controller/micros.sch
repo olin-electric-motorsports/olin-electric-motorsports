@@ -240,7 +240,7 @@ Text Label 3640 2550 0    50   ~ 0
 MUX_SELECT_S0
 Text Label 3640 2650 0    50   ~ 0
 MUX_SELECT_S1
-Text Label 3640 2750 0    50   ~ 0
+Text Label 3600 2150 0    50   ~ 0
 MUX_SELECT_S2
 Wire Wire Line
 	3600 3950 4700 3950
@@ -296,7 +296,6 @@ F 6 "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" H 4580 16
 $EndComp
 NoConn ~ 3600 3050
 NoConn ~ 3600 3650
-NoConn ~ 3600 2150
 Wire Wire Line
 	750  1150 1100 1150
 $Comp
@@ -511,7 +510,7 @@ Text GLabel 3640 1650 2    50   Input ~ 0
 STRAIN_MUX2_OUT
 Text GLabel 3640 1550 2    50   Input ~ 0
 nSTRAIN_MUX1_EN
-Text GLabel 3640 2050 2    50   Input ~ 0
+Text GLabel 3690 2000 2    50   Input ~ 0
 nSTRAIN_MUX2_EN
 Text GLabel 3640 2950 2    50   Output ~ 0
 STRAIN_S0
@@ -628,6 +627,8 @@ $Comp
 L formula:ATmega328P-AU U301
 U 1 1 614D600E
 P 8450 2450
+AR Path="/614D600E" Ref="U301"  Part="1" 
+AR Path="/60A3D93E/614D600E" Ref="U301"  Part="1" 
 F 0 "U301" H 8250 4017 50  0000 C CNN
 F 1 "ATmega328P-AU" H 8250 3926 50  0000 C CNN
 F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 8250 4000 50  0001 C CIN
@@ -955,6 +956,7 @@ U 1 1 6176402D
 P 8400 4850
 AR Path="/60A3DA8B/6176402D" Ref="U?"  Part="1" 
 AR Path="/60A3D93E/6176402D" Ref="U303"  Part="1" 
+AR Path="/6176402D" Ref="U303"  Part="1" 
 F 0 "U303" H 8450 4925 50  0000 C CNN
 F 1 "TXB0104" H 8450 4834 50  0000 C CNN
 F 2 "Package_SO:TSSOP-14_4.4x5mm_P0.65mm" H 8300 4750 50  0001 C CNN
@@ -1313,4 +1315,10 @@ Wire Wire Line
 	9275 5600 9275 5975
 Wire Wire Line
 	9275 5975 9325 5975
+Wire Wire Line
+	3690 2000 3640 2000
+Wire Wire Line
+	3640 2000 3640 2050
+Text GLabel 3640 2750 2    50   Input ~ 0
+STRAIN_VOLTAGE_REF_2BUFFER
 $EndSCHEMATC

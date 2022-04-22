@@ -15,7 +15,17 @@ constraint_value(
 )
 
 constraint_value(
+    name = "atmega64m1",
+    constraint_setting = ":mcu",
+)
+
+constraint_value(
     name = "atmega328p",
+    constraint_setting = ":mcu",
+)
+
+constraint_value(
+    name = "incompatible_mcu",
     constraint_setting = ":mcu",
 )
 
@@ -34,6 +44,11 @@ constraint_value(
 
 constraint_value(
     name = "mkv",
+    constraint_setting = ":environment",
+)
+
+constraint_value(
+    name = "hackerboard",
     constraint_setting = ":environment",
 )
 

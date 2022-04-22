@@ -5,6 +5,8 @@
 
 #include "libs/spi/api.h"
 
+gpio_t SPI_CS = PB6;
+
 spi_cfg_s spi_cfg = {
     .interrupt_enable = false,
     .data_order = MSB,
@@ -12,6 +14,5 @@ spi_cfg_s spi_cfg = {
     .polarity = RISING_FALLING,
     .phase = SAMPLE_SETUP,
     .clock_rate = F_OSC_DIV_16,
-    .cs_pin_overide = 0, // Set as null: 0 to use default pins
-    .pin_redirect = false,
+    .cs_pin = &SPI_CS,
 };

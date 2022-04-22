@@ -1,3 +1,4 @@
+load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
 load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
 
 exports_files([
@@ -13,4 +14,11 @@ buildifier(
     name = "buildifier_check",
     mode = "check",
     tags = ["manual"],
+)
+
+refresh_compile_commands(
+    name = "refresh_compile_commands",
+    targets = {
+        "//vehicle/mkv/software/...": "--platforms=//bazel/platforms:atmega16m1_avr -c opt",
+    },
 )

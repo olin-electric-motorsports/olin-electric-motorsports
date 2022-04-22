@@ -162,4 +162,34 @@ X 9 9 150 300 100 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
+# formula_UF_2_RA
+#
+DEF formula_UF_2_RA J 0 40 Y Y 1 F N
+F0 "J" 0 150 60 H V C CNN
+F1 "formula_UF_2_RA" 100 -200 60 H V C CNN
+F2 "footprints:Ultrafit_2_RA" -100 50 60 H I C CNN
+F3 "https://www.molex.com/pdm_docs/sd/1723101302_sd.pdf" 0 150 60 H I C CNN
+F4 "DK" 200 350 60 H I C CNN "MFN"
+F5 "WM11825-ND" 300 450 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/molex-llc/1723101302/WM11825-ND/5360290" 100 250 60 H I C CNN "PurchasingLink"
+DRAW
+S 150 -100 -150 100 0 1 0 f
+X 1 1 250 50 100 L 50 50 1 1 B
+X 2 2 250 -50 100 L 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
+# power_GND
+#
+DEF power_GND #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "power_GND" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
 #End Library

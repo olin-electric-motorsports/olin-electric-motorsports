@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [linux-x86_64, 16m1, 328p, 64m1]
 
     steps:
     - uses: actions/checkout@v2
@@ -29,11 +32,7 @@ jobs:
       run: sudo apt install gcc-avr avr-libc binutils-avr
 
     - name: Build all host
-      run: bazelisk build -c opt --build_tag_filters="-kicad" //...
-    - name: Build all ATMega16m1
-      run: bazelisk build --config=m16m1-avr --build_tag_filters="-kicad" -c opt //...
-    - name: Build all ATMega328p
-      run: bazelisk build --config=m328p-avr --build_tag_filters="-kicad" -c opt //...
+      run: bazelisk build --config=${{ matrix.platform }} -c opt --build_tag_filters="-kicad" //...
 
   test:
     needs: build
