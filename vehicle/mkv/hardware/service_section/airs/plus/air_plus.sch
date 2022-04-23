@@ -327,4 +327,6 @@ F 5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509
 $EndComp
 Text Label 4600 3600 0    50   ~ 0
 HV_TS_Fused+
+Text Notes 10200 1000 0    197  ~ 39
+AIR+
 $EndSCHEMATC

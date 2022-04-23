@@ -416,4 +416,6 @@ F 5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509
 	1    3500 1350
 	1    0    0    -1  
 $EndComp
+Text Notes 10050 1000 0    197  ~ 39
+AIR-
 $EndSCHEMATC
