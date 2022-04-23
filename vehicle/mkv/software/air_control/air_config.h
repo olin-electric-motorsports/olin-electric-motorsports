@@ -42,6 +42,9 @@ gpio_t AIR_N_WELD_DETECT = PC7;
 #define MOTOR_CONTROLLER_THRESHOLD_LOW_dV (50) // 50 decivolts (5 volts)
 #define PRECHARGE_THRESHOLD               (0.95) // 95% of pack voltage
 
+// Time delay during discharge before checking state of AIRs
+#define WELD_CHECK_DELAY_MS (100) // milliseconds
+
 /*
  * Timer
  */
