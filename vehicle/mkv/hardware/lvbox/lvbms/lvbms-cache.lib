@@ -1107,6 +1107,30 @@ X D 3 100 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# formula_Switch_NO
+#
+DEF formula_Switch_NO S 0 40 N N 1 F N
+F0 "S" -300 200 50 H V L BNN
+F1 "formula_Switch_NO" -300 -200 50 H V L BNN
+F2 "SW_TL3315NF100Q" 0 0 50 H I L BNN
+F3 "" 0 0 50 H I L BNN
+F4 "TL3315NF100Q" 0 0 50 H I L BNN "MFN"
+F5 "https://www.digikey.com/en/products/detail/e-switch/TL3315NF100Q/1870394" 0 0 50 H I L BNN "Purchasing Link"
+DRAW
+C -100 0 20 0 0 6 N
+C 100 0 20 0 0 6 N
+P 2 0 0 6 -200 0 -120 0 N
+P 2 0 0 6 -100 63 0 63 N
+P 2 0 0 6 0 63 0 138 N
+P 2 0 0 6 0 63 100 63 N
+P 2 0 0 6 200 0 120 0 N
+X ~ 1 -300 0 100 R 40 40 0 0 P
+X ~ 2 -300 0 100 R 40 40 0 0 P
+X ~ 3 300 0 100 L 40 40 0 0 P
+X ~ 4 300 0 100 L 40 40 0 0 P
+ENDDRAW
+ENDDEF
+#
 # formula_Test_Point_SMD
 #
 DEF formula_Test_Point_SMD TP 0 40 Y Y 1 F N

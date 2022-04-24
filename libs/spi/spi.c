@@ -66,8 +66,12 @@ void spi_init(spi_cfg_s* spi_cfg) {
 
     gpio_set_mode(cs, main_direction);
     gpio_set_pin(cs);
-
-    gpio_set_pin(miso);
+    
+    if (spi_cfg->peripheral == SPI) {
+        gpio_set_pin(miso);
+    } else {
+        gpio_set_pin(miso_a);
+    }
 }
 
 static void spi_transceive_private(uint8_t txdata, uint8_t* rxdata) {

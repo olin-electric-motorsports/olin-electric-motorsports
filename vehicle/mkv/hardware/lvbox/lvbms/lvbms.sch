@@ -490,7 +490,7 @@ F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 157
 	1    0    0    -1  
 $EndComp
 Text Notes 8050 6750 0    39   ~ 0
-Comparator logic chart \n\n|             | No Load | Charging | Discharging | FAULT |\n|--------|------|------|---------|-----|\n| comp_1_out | 1       | 1        | 0           | 0     |\n| comp_2_out | 1       | 0        | 1           | 0     |\n\nThe outputs of both comparators are fed into \nLOW Level Triggered External interrupts on the Atemga\nwhere C1 LOW indicates Discharge state & C2 LOW \nindicates Charge state. \n\nBoth C1 and C2 low triggers a WAKEUP Logic Fault \nas this state should be impossible to achieve with \ncorrect logic.
+Comparator logic chart \n\n|             | No Load | Charging | Discharging | FAULT |\n|--------|------|------|---------|-----|\n| comp_1_sig | 1       | 1        | 0           | 0     |\n| comp_2_sig | 1       | 0        | 1           | 0     |\n\nThe outputs of both comparators are fed into \nLOW Level Triggered External interrupts on the Atemga\nwhere C1 LOW indicates Discharge state & C2 LOW \nindicates Charge state. \n\nBoth C1 and C2 low triggers a WAKEUP Logic Fault \nas this state should be impossible to achieve with \ncorrect logic.
 Wire Wire Line
 	6100 7025 6600 7025
 $Comp
@@ -810,13 +810,13 @@ PACK_SIDE_CURRENT_PATH
 $Comp
 L formula:Test_Point_SMD TP4
 U 1 1 613EC47A
-P 10575 5325
-F 0 "TP4" V 10675 5500 50  0000 L CNN
-F 1 "Test_Point_SMD" V 10575 5500 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10575 5175 50  0001 C CNN
-F 3 "" H 10575 5325 50  0001 C CNN
-	1    10575 5325
-	0    1    1    0   
+P 10125 5275
+F 0 "TP4" H 10175 5425 50  0000 L CNN
+F 1 "Test_Point_SMD" H 10125 4525 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10125 5125 50  0001 C CNN
+F 3 "" H 10125 5275 50  0001 C CNN
+	1    10125 5275
+	1    0    0    -1  
 $EndComp
 Wire Notes Line
 	16200 2875 13775 2875
@@ -850,57 +850,57 @@ LOAD_SWITCH_FET_DRIVE
 $Comp
 L formula:LED_0805_Red D1
 U 1 1 617D5575
-P 6625 2075
-F 0 "D1" V 6625 2000 50  0000 R CNN
-F 1 "LED_0805_Red" H 6875 2200 50  0000 R CNN
-F 2 "footprints:LED_0805_OEM" H 6525 2075 50  0001 C CNN
-F 3 "http://www.osram-os.com/Graphics/XPic8/00078869_0.pdf" H 6625 2175 50  0001 C CNN
-F 4 "DK" H 6625 2075 60  0001 C CNN "MFN"
-F 5 "475-1415-1-ND" H 6625 2075 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/LH-R974-LP-1/475-1415-1-ND/1802604" H 7025 2575 60  0001 C CNN "PurchasingLink"
-	1    6625 2075
+P 6850 1550
+F 0 "D1" V 6850 1475 50  0000 R CNN
+F 1 "LED_0805_Red" H 7100 1675 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 6750 1550 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic8/00078869_0.pdf" H 6850 1650 50  0001 C CNN
+F 4 "DK" H 6850 1550 60  0001 C CNN "MFN"
+F 5 "475-1415-1-ND" H 6850 1550 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/LH-R974-LP-1/475-1415-1-ND/1802604" H 7250 2050 60  0001 C CNN "PurchasingLink"
+	1    6850 1550
 	0    -1   -1   0   
 $EndComp
 $Comp
 L formula:LED_0805_Red D2
 U 1 1 617D947A
-P 6975 2075
-F 0 "D2" V 6975 2000 50  0000 R CNN
-F 1 "LED_0805_Red" H 7225 2175 50  0000 R CNN
-F 2 "footprints:LED_0805_OEM" H 6875 2075 50  0001 C CNN
-F 3 "http://www.osram-os.com/Graphics/XPic8/00078869_0.pdf" H 6975 2175 50  0001 C CNN
-F 4 "DK" H 6975 2075 60  0001 C CNN "MFN"
-F 5 "475-1415-1-ND" H 6975 2075 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/LH-R974-LP-1/475-1415-1-ND/1802604" H 7375 2575 60  0001 C CNN "PurchasingLink"
-	1    6975 2075
+P 7200 1550
+F 0 "D2" V 7200 1475 50  0000 R CNN
+F 1 "LED_0805_Red" H 7450 1650 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 7100 1550 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic8/00078869_0.pdf" H 7200 1650 50  0001 C CNN
+F 4 "DK" H 7200 1550 60  0001 C CNN "MFN"
+F 5 "475-1415-1-ND" H 7200 1550 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/LH-R974-LP-1/475-1415-1-ND/1802604" H 7600 2050 60  0001 C CNN "PurchasingLink"
+	1    7200 1550
 	0    -1   -1   0   
 $EndComp
 $Comp
 L formula:LED_0805 D3
 U 1 1 617DB227
-P 7300 2075
-F 0 "D3" V 7300 2000 50  0000 R CNN
-F 1 "LED_0805" H 7450 2175 50  0000 R CNN
-F 2 "footprints:LED_0805_OEM" H 7200 2075 50  0001 C CNN
-F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 7300 2175 50  0001 C CNN
-F 4 "DK" H 7300 2075 60  0001 C CNN "MFN"
-F 5 "475-1410-1-ND" H 7300 2075 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 7700 2575 60  0001 C CNN "PurchasingLink"
-	1    7300 2075
+P 7525 1550
+F 0 "D3" V 7525 1475 50  0000 R CNN
+F 1 "LED_0805" H 7675 1650 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 7425 1550 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 7525 1650 50  0001 C CNN
+F 4 "DK" H 7525 1550 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 7525 1550 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 7925 2050 60  0001 C CNN "PurchasingLink"
+	1    7525 1550
 	0    -1   -1   0   
 $EndComp
 $Comp
 L formula:LED_0805 D4
 U 1 1 617DC0FC
-P 7625 2075
-F 0 "D4" V 7625 2000 50  0000 R CNN
-F 1 "LED_0805" H 7775 2150 50  0000 R CNN
-F 2 "footprints:LED_0805_OEM" H 7525 2075 50  0001 C CNN
-F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 7625 2175 50  0001 C CNN
-F 4 "DK" H 7625 2075 60  0001 C CNN "MFN"
-F 5 "475-1410-1-ND" H 7625 2075 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 8025 2575 60  0001 C CNN "PurchasingLink"
-	1    7625 2075
+P 14050 6525
+F 0 "D4" V 14050 6450 50  0000 R CNN
+F 1 "LED_0805" H 14200 6600 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 13950 6525 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" H 14050 6625 50  0001 C CNN
+F 4 "DK" H 14050 6525 60  0001 C CNN "MFN"
+F 5 "475-1410-1-ND" H 14050 6525 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" H 14450 7025 60  0001 C CNN "PurchasingLink"
+	1    14050 6525
 	0    -1   -1   0   
 $EndComp
 Text Label 3650 1000 0    50   ~ 0
@@ -909,25 +909,20 @@ Text Label 3650 1100 0    50   ~ 0
 LED_1_+
 Text Label 3650 1400 0    50   ~ 0
 LED_2_+
-Text Label 3650 1900 0    50   ~ 0
+Text Label 3650 2800 0    50   ~ 0
 ON_STATE_CMPNTS_FET_DRIVE
-Text Label 6625 1625 1    50   ~ 0
+Text Label 6850 1100 1    50   ~ 0
 LED_0_+
-Text Label 6975 1625 1    50   ~ 0
+Text Label 7200 1100 1    50   ~ 0
 LED_1_+
-Text Label 7300 1625 1    50   ~ 0
+Text Label 7525 1100 1    50   ~ 0
 LED_2_+
-Text Label 7625 1625 1    50   ~ 0
-ON_STATE_CMPNTS_FET_DRIVE
-Wire Notes Line
-	7925 1300 7925 2525
-Text Notes 6350 1275 0    89   ~ 0
-LEDS
+Text Notes 6300 750  0    89   ~ 0
+LEDS & Button
 Wire Notes Line
 	7850 5050 7850 8175
 Text Notes 1250 5025 0    89   ~ 0
 LTC6810 BMS CHIP
-NoConn ~ 3650 2800
 NoConn ~ 3650 2900
 $Comp
 L formula:R_100K R37
@@ -1202,20 +1197,20 @@ Text Notes 3250 8650 0    39   ~ 0
 Wire Wire Line
 	14400 4300 14400 4250
 Connection ~ 14400 4300
-Text Label 14450 5900 0    50   ~ 0
+Text Label 14650 5850 0    50   ~ 0
 ON_STATE_CMPNTS_-
 $Comp
 L formula:Test_Point_SMD TP11
 U 1 1 61614904
-P 14400 5850
-F 0 "TP11" V 14500 6100 50  0000 C CNN
-F 1 "Test_Point_SMD" V 14400 6325 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 14400 5700 50  0001 C CNN
-F 3 "" H 14400 5850 50  0001 C CNN
-	1    14400 5850
+P 14600 5800
+F 0 "TP11" V 14700 6050 50  0000 C CNN
+F 1 "Test_Point_SMD" V 14600 6275 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 14600 5650 50  0001 C CNN
+F 3 "" H 14600 5800 50  0001 C CNN
+	1    14600 5800
 	0    -1   -1   0   
 $EndComp
-Text Label 14000 6125 2    50   ~ 0
+Text Label 14200 6075 2    50   ~ 0
 ON_STATE_CMPNTS_FET_DRIVE
 Text Label 12925 5325 0    50   ~ 0
 ON_STATE_CMPNTS_-
@@ -1267,7 +1262,7 @@ Wire Wire Line
 Connection ~ 9275 3950
 Text Notes 11425 3875 0    39   ~ 0
 Wakeup shunt resistor between top \ncell in pack and top of system load. \nRuns in parallel to load switch &\ncurrent sensor. Used to determine\nstate of BMS system - Charging, \nDischarging, or No Load. 
-Text Notes 10150 5925 0    50   ~ 0
+Text Notes 10125 6625 0    50   ~ 0
 Wakeup Dual Comparator chosen for\nHV-capable inputs & low quiescent current of 30uA
 Wire Wire Line
 	9275 4250 9150 4250
@@ -1392,26 +1387,26 @@ F 6 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A10
 $EndComp
 Text Notes 5050 8650 0    39   ~ 0
 SENSE pin must be connected directly \nto load according to datasheet  
-Text Label 8975 5275 2    50   ~ 0
-LOAD_SIDE_CURRENT_PATH
-Text Label 8975 5575 2    50   ~ 0
-LOAD_SIDE_DIV_SIG
-Text Label 8975 5475 2    50   ~ 0
-PACK_SIDE_CURRENT_PATH
 Text Label 8975 5375 2    50   ~ 0
+LOAD_SIDE_CURRENT_PATH
+Text Label 8975 5475 2    50   ~ 0
+LOAD_SIDE_DIV_SIG
+Text Label 8975 5575 2    50   ~ 0
+PACK_SIDE_CURRENT_PATH
+Text Label 8975 5275 2    50   ~ 0
 BATT_SIDE_DIV_SIG
 Text Label 9150 4250 2    50   ~ 0
 BATT_SIDE_DIV_SIG
 $Comp
 L formula:Test_Point_SMD TP10
 U 1 1 61697B40
-P 10575 5525
-F 0 "TP10" V 10675 5700 50  0000 L CNN
-F 1 "Test_Point_SMD" V 10575 5700 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10575 5375 50  0001 C CNN
-F 3 "" H 10575 5525 50  0001 C CNN
-	1    10575 5525
-	0    1    1    0   
+P 10125 5575
+F 0 "TP10" H 9875 5775 50  0000 L CNN
+F 1 "Test_Point_SMD" H 9550 5950 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10125 5425 50  0001 C CNN
+F 3 "" H 10125 5575 50  0001 C CNN
+	1    10125 5575
+	-1   0    0    1   
 $EndComp
 NoConn ~ 3675 9725
 Wire Wire Line
@@ -1444,11 +1439,7 @@ Connection ~ 10150 4300
 Wire Wire Line
 	10150 4300 10150 4350
 Wire Wire Line
-	9975 5525 10525 5525
-Text Label 10025 5325 0    50   ~ 0
-COMP_1_OUT
-Text Label 10025 5525 0    50   ~ 0
-COMP_2_OUT
+	9975 5525 10125 5525
 Text Label 11350 1450 0    50   ~ 0
 BATT_3
 Text Label 11350 1550 0    50   ~ 0
@@ -1544,24 +1535,18 @@ THERMISTORS
 Text Notes 6725 5800 0    39   ~ 0
 Drive pin used to drive NPN linear \nregulator to supply LTC chip 5V \nregulated power. Features low pass \nfilter on input.  
 Wire Wire Line
-	14450 5925 14450 5850
+	14650 5875 14650 5800
 Text Notes 12875 4275 0    39   ~ 0
 10K NTC thermistor \nresistor dividers, \nonly powered on \nafter Wakeup - \nexpect 2.5V @ 25C
 Text Notes 9150 2900 0    39   ~ 0
 5 individual nanofit connectors for thermistors \nto be distributed around the edges of the PCB\nhttps://www.digikey.com/en/products/detail\n/epcos-tdk/B57861S0103F040/739889
-Text Notes 12925 6550 0    39   ~ 0
+Text Notes 12900 6950 0    39   ~ 0
 Low side driven FET to toggle \nthermistors & current sensor that\nonly need power after system state wakeup
 Text Notes 12300 9425 0    39   ~ 0
 ~I will get shafted on this design review.~ -Adi R.
 Wire Wire Line
 	6850 7425 6900 7425
 Connection ~ 6850 7425
-Wire Notes Line
-	550  550  5725 550 
-Wire Notes Line
-	5725 550  5725 4775
-Wire Notes Line
-	5725 4775 550  4775
 Wire Notes Line
 	550  4775 550  550 
 Wire Notes Line
@@ -1708,29 +1693,27 @@ Text Label 8475 2725 2    50   ~ 0
 CAN_N
 Text Notes 8950 3000 1    39   ~ 0
 CAN connector
-Wire Wire Line
-	14000 6125 14100 6125
 $Comp
 L formula:R_100K R39
 U 1 1 616204FC
-P 14100 6275
-F 0 "R39" H 14170 6321 50  0000 L CNN
-F 1 "R_100K" H 14170 6230 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 14030 6275 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 14180 6275 50  0001 C CNN
-F 4 "DK" H 14100 6275 60  0001 C CNN "MFN"
-F 5 "P100KCCT-ND" H 14100 6275 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" H 14580 6675 60  0001 C CNN "PurchasingLink"
-	1    14100 6275
+P 14300 6225
+F 0 "R39" H 14370 6271 50  0000 L CNN
+F 1 "R_100K" H 14370 6180 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 14230 6225 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 14380 6225 50  0001 C CNN
+F 4 "DK" H 14300 6225 60  0001 C CNN "MFN"
+F 5 "P100KCCT-ND" H 14300 6225 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" H 14780 6625 60  0001 C CNN "PurchasingLink"
+	1    14300 6225
 	1    0    0    -1  
 $EndComp
-Connection ~ 14100 6125
+Connection ~ 14300 6075
 Wire Wire Line
-	14100 6125 14150 6125
+	14300 6075 14350 6075
 Wire Wire Line
-	14100 6425 14450 6425
+	14300 6375 14650 6375
 Wire Wire Line
-	14450 6325 14450 6425
+	14650 6275 14650 6375
 Text Label 8475 2825 2    50   ~ 0
 SHIELD
 $Comp
@@ -2065,52 +2048,52 @@ F 3 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 10200 9825 50  0001 L
 	1    10200 9825
 	1    0    0    -1  
 $EndComp
-Text Notes 4450 2850 0    50   ~ 0
+Text Notes 4625 2500 0    50   ~ 0
 MOSI, MISO, and SCK must\nstay connected to the _A pins\nfor programming.\n\nBecause ISP uses same SPI bus \nas LTC chip comms, we place \nresistors to limit current 
 Text Label 3650 2000 0    50   ~ 0
 FAN_PWM
-Text Label 14450 6875 0    50   ~ 0
+Text Label 14850 7100 0    50   ~ 0
 FAN_PWM_LSD
 $Comp
 L formula:Test_Point_SMD TP17
 U 1 1 61815579
-P 14400 6825
-F 0 "TP17" V 14500 7075 50  0000 C CNN
-F 1 "Test_Point_SMD" V 14400 7300 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 14400 6675 50  0001 C CNN
-F 3 "" H 14400 6825 50  0001 C CNN
-	1    14400 6825
+P 14800 7050
+F 0 "TP17" V 14900 7300 50  0000 C CNN
+F 1 "Test_Point_SMD" V 14800 7525 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 14800 6900 50  0001 C CNN
+F 3 "" H 14800 7050 50  0001 C CNN
+	1    14800 7050
 	0    -1   -1   0   
 $EndComp
-Text Label 14000 7100 2    50   ~ 0
+Text Label 14400 7325 2    50   ~ 0
 FAN_PWM
 Wire Wire Line
-	14450 6900 14450 6825
-Text Notes 12925 7775 0    39   ~ 0
+	14850 7125 14850 7050
+Text Notes 12925 7700 0    39   ~ 0
 Low side driven FET to toggle external \nrelay for FAN PWM. Likely won't use\nthis feature, backup incase of poor\nPCB thermal performance in Cooling \nPack
 Wire Wire Line
-	14000 7100 14100 7100
+	14400 7325 14500 7325
 $Comp
 L formula:R_100K R42
 U 1 1 61815586
-P 14100 7250
-F 0 "R42" H 14170 7296 50  0000 L CNN
-F 1 "R_100K" H 14170 7205 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 14030 7250 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 14180 7250 50  0001 C CNN
-F 4 "DK" H 14100 7250 60  0001 C CNN "MFN"
-F 5 "P100KCCT-ND" H 14100 7250 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" H 14580 7650 60  0001 C CNN "PurchasingLink"
-	1    14100 7250
+P 14500 7475
+F 0 "R42" H 14570 7521 50  0000 L CNN
+F 1 "R_100K" H 14570 7430 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 14430 7475 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 14580 7475 50  0001 C CNN
+F 4 "DK" H 14500 7475 60  0001 C CNN "MFN"
+F 5 "P100KCCT-ND" H 14500 7475 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" H 14980 7875 60  0001 C CNN "PurchasingLink"
+	1    14500 7475
 	1    0    0    -1  
 $EndComp
-Connection ~ 14100 7100
+Connection ~ 14500 7325
 Wire Wire Line
-	14100 7100 14150 7100
+	14500 7325 14550 7325
 Wire Wire Line
-	14100 7400 14450 7400
+	14500 7625 14850 7625
 Wire Wire Line
-	14450 7300 14450 7400
+	14850 7525 14850 7625
 Text Label 11500 2300 0    50   ~ 0
 FAN_PWM_LSD
 Wire Notes Line
@@ -2492,56 +2475,56 @@ Wire Wire Line
 $Comp
 L power:GND #PWR?
 U 1 1 61C58BFB
-P 7625 2225
-F 0 "#PWR?" H 7625 1975 50  0001 C CNN
-F 1 "GND" H 7630 2052 50  0000 C CNN
-F 2 "" H 7625 2225 50  0001 C CNN
-F 3 "" H 7625 2225 50  0001 C CNN
-	1    7625 2225
+P 14050 6675
+F 0 "#PWR?" H 14050 6425 50  0001 C CNN
+F 1 "GND" H 14055 6502 50  0000 C CNN
+F 2 "" H 14050 6675 50  0001 C CNN
+F 3 "" H 14050 6675 50  0001 C CNN
+	1    14050 6675
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61C6CB76
-P 7300 2225
-F 0 "#PWR?" H 7300 1975 50  0001 C CNN
-F 1 "GND" H 7305 2052 50  0000 C CNN
-F 2 "" H 7300 2225 50  0001 C CNN
-F 3 "" H 7300 2225 50  0001 C CNN
-	1    7300 2225
+P 7525 1700
+F 0 "#PWR?" H 7525 1450 50  0001 C CNN
+F 1 "GND" H 7530 1527 50  0000 C CNN
+F 2 "" H 7525 1700 50  0001 C CNN
+F 3 "" H 7525 1700 50  0001 C CNN
+	1    7525 1700
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61C80B43
-P 6975 2225
-F 0 "#PWR?" H 6975 1975 50  0001 C CNN
-F 1 "GND" H 6980 2052 50  0000 C CNN
-F 2 "" H 6975 2225 50  0001 C CNN
-F 3 "" H 6975 2225 50  0001 C CNN
-	1    6975 2225
+P 7200 1700
+F 0 "#PWR?" H 7200 1450 50  0001 C CNN
+F 1 "GND" H 7205 1527 50  0000 C CNN
+F 2 "" H 7200 1700 50  0001 C CNN
+F 3 "" H 7200 1700 50  0001 C CNN
+	1    7200 1700
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61C94A4E
-P 6625 2225
-F 0 "#PWR?" H 6625 1975 50  0001 C CNN
-F 1 "GND" H 6630 2052 50  0000 C CNN
-F 2 "" H 6625 2225 50  0001 C CNN
-F 3 "" H 6625 2225 50  0001 C CNN
-	1    6625 2225
+P 6850 1700
+F 0 "#PWR?" H 6850 1450 50  0001 C CNN
+F 1 "GND" H 6855 1527 50  0000 C CNN
+F 2 "" H 6850 1700 50  0001 C CNN
+F 3 "" H 6850 1700 50  0001 C CNN
+	1    6850 1700
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61CAB32C
-P 14450 7400
-F 0 "#PWR?" H 14450 7150 50  0001 C CNN
-F 1 "GND" H 14455 7227 50  0000 C CNN
-F 2 "" H 14450 7400 50  0001 C CNN
-F 3 "" H 14450 7400 50  0001 C CNN
-	1    14450 7400
+P 14850 7625
+F 0 "#PWR?" H 14850 7375 50  0001 C CNN
+F 1 "GND" H 14855 7452 50  0000 C CNN
+F 2 "" H 14850 7625 50  0001 C CNN
+F 3 "" H 14850 7625 50  0001 C CNN
+	1    14850 7625
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -2606,30 +2589,30 @@ Wire Notes Line
 $Comp
 L formula:R_499 R34
 U 1 1 61F1075A
-P 6625 1775
-F 0 "R34" V 6525 1750 50  0000 L CNN
-F 1 "R_499" V 6725 1675 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 6555 1775 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 6705 1775 50  0001 C CNN
-F 4 "DK" H 6625 1775 60  0001 C CNN "MFN"
-F 5 "P499CCT-ND" H 6625 1775 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 7105 2175 60  0001 C CNN "PurchasingLink"
-	1    6625 1775
+P 6850 1250
+F 0 "R34" V 6750 1225 50  0000 L CNN
+F 1 "R_499" V 6950 1150 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 6780 1250 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 6930 1250 50  0001 C CNN
+F 4 "DK" H 6850 1250 60  0001 C CNN "MFN"
+F 5 "P499CCT-ND" H 6850 1250 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 7330 1650 60  0001 C CNN "PurchasingLink"
+	1    6850 1250
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 61F144A3
-P 14450 6425
-F 0 "#PWR?" H 14450 6175 50  0001 C CNN
-F 1 "GND" H 14455 6252 50  0000 C CNN
-F 2 "" H 14450 6425 50  0001 C CNN
-F 3 "" H 14450 6425 50  0001 C CNN
-	1    14450 6425
+P 14650 6375
+F 0 "#PWR?" H 14650 6125 50  0001 C CNN
+F 1 "GND" H 14655 6202 50  0000 C CNN
+F 2 "" H 14650 6375 50  0001 C CNN
+F 3 "" H 14650 6375 50  0001 C CNN
+	1    14650 6375
 	1    0    0    -1  
 $EndComp
-Connection ~ 14450 6425
-Connection ~ 14450 7400
+Connection ~ 14650 6375
+Connection ~ 14850 7625
 Text Notes 3150 8875 0    50   ~ 0
 10V - 16.8V \nInput Voltage
 Text Notes 6900 9450 0    39   ~ 0
@@ -2780,94 +2763,86 @@ Wire Notes Line
 $Comp
 L formula:R_499 R35
 U 1 1 61F8E921
-P 6975 1775
-F 0 "R35" V 6875 1750 50  0000 L CNN
-F 1 "R_499" V 7075 1675 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 6905 1775 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 7055 1775 50  0001 C CNN
-F 4 "DK" H 6975 1775 60  0001 C CNN "MFN"
-F 5 "P499CCT-ND" H 6975 1775 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 7455 2175 60  0001 C CNN "PurchasingLink"
-	1    6975 1775
+P 7200 1250
+F 0 "R35" V 7100 1225 50  0000 L CNN
+F 1 "R_499" V 7300 1150 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 7130 1250 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 7280 1250 50  0001 C CNN
+F 4 "DK" H 7200 1250 60  0001 C CNN "MFN"
+F 5 "P499CCT-ND" H 7200 1250 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 7680 1650 60  0001 C CNN "PurchasingLink"
+	1    7200 1250
 	1    0    0    -1  
 $EndComp
 $Comp
 L formula:R_499 R36
 U 1 1 61FA3A49
-P 7300 1775
-F 0 "R36" V 7200 1750 50  0000 L CNN
-F 1 "R_499" V 7400 1675 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 7230 1775 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 7380 1775 50  0001 C CNN
-F 4 "DK" H 7300 1775 60  0001 C CNN "MFN"
-F 5 "P499CCT-ND" H 7300 1775 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 7780 2175 60  0001 C CNN "PurchasingLink"
-	1    7300 1775
+P 7525 1250
+F 0 "R36" V 7425 1225 50  0000 L CNN
+F 1 "R_499" V 7625 1150 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 7455 1250 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 7605 1250 50  0001 C CNN
+F 4 "DK" H 7525 1250 60  0001 C CNN "MFN"
+F 5 "P499CCT-ND" H 7525 1250 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 8005 1650 60  0001 C CNN "PurchasingLink"
+	1    7525 1250
 	1    0    0    -1  
 $EndComp
 $Comp
 L formula:R_499 R43
 U 1 1 61FB8CC9
-P 7625 1775
-F 0 "R43" V 7525 1750 50  0000 L CNN
-F 1 "R_499" V 7725 1675 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 7555 1775 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 7705 1775 50  0001 C CNN
-F 4 "DK" H 7625 1775 60  0001 C CNN "MFN"
-F 5 "P499CCT-ND" H 7625 1775 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 8105 2175 60  0001 C CNN "PurchasingLink"
-	1    7625 1775
+P 14050 6225
+F 0 "R43" V 13950 6200 50  0000 L CNN
+F 1 "R_499" V 14150 6125 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 13980 6225 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 14130 6225 50  0001 C CNN
+F 4 "DK" H 14050 6225 60  0001 C CNN "MFN"
+F 5 "P499CCT-ND" H 14050 6225 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 14530 6625 60  0001 C CNN "PurchasingLink"
+	1    14050 6225
 	1    0    0    -1  
 $EndComp
 $Comp
 L formula:LED_0805_Red D5
 U 1 1 61FCFB99
-P 6300 2075
-F 0 "D5" V 6300 2000 50  0000 R CNN
-F 1 "LED_0805_Red" H 6550 2200 50  0000 R CNN
-F 2 "footprints:LED_0805_OEM" H 6200 2075 50  0001 C CNN
-F 3 "http://www.osram-os.com/Graphics/XPic8/00078869_0.pdf" H 6300 2175 50  0001 C CNN
-F 4 "DK" H 6300 2075 60  0001 C CNN "MFN"
-F 5 "475-1415-1-ND" H 6300 2075 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/LH-R974-LP-1/475-1415-1-ND/1802604" H 6700 2575 60  0001 C CNN "PurchasingLink"
-	1    6300 2075
+P 6525 1550
+F 0 "D5" V 6525 1475 50  0000 R CNN
+F 1 "LED_0805_Red" H 6775 1675 50  0000 R CNN
+F 2 "footprints:LED_0805_OEM" H 6425 1550 50  0001 C CNN
+F 3 "http://www.osram-os.com/Graphics/XPic8/00078869_0.pdf" H 6525 1650 50  0001 C CNN
+F 4 "DK" H 6525 1550 60  0001 C CNN "MFN"
+F 5 "475-1415-1-ND" H 6525 1550 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/osram-opto-semiconductors-inc/LH-R974-LP-1/475-1415-1-ND/1802604" H 6925 2050 60  0001 C CNN "PurchasingLink"
+	1    6525 1550
 	0    -1   -1   0   
 $EndComp
-Text Label 6300 1625 1    50   ~ 0
+Text Label 6525 1100 1    50   ~ 0
 VREG
 $Comp
 L power:GND #PWR?
 U 1 1 61FCFBA0
-P 6300 2225
-F 0 "#PWR?" H 6300 1975 50  0001 C CNN
-F 1 "GND" H 6305 2052 50  0000 C CNN
-F 2 "" H 6300 2225 50  0001 C CNN
-F 3 "" H 6300 2225 50  0001 C CNN
-	1    6300 2225
+P 6525 1700
+F 0 "#PWR?" H 6525 1450 50  0001 C CNN
+F 1 "GND" H 6530 1527 50  0000 C CNN
+F 2 "" H 6525 1700 50  0001 C CNN
+F 3 "" H 6525 1700 50  0001 C CNN
+	1    6525 1700
 	1    0    0    -1  
 $EndComp
 $Comp
 L formula:R_499 R32
 U 1 1 61FCFBA9
-P 6300 1775
-F 0 "R32" V 6200 1750 50  0000 L CNN
-F 1 "R_499" V 6400 1675 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 6230 1775 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 6380 1775 50  0001 C CNN
-F 4 "DK" H 6300 1775 60  0001 C CNN "MFN"
-F 5 "P499CCT-ND" H 6300 1775 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 6780 2175 60  0001 C CNN "PurchasingLink"
-	1    6300 1775
+P 6525 1250
+F 0 "R32" V 6425 1225 50  0000 L CNN
+F 1 "R_499" V 6625 1150 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 6455 1250 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" H 6605 1250 50  0001 C CNN
+F 4 "DK" H 6525 1250 60  0001 C CNN "MFN"
+F 5 "P499CCT-ND" H 6525 1250 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF4990V/P499CCT-ND/118870" H 7005 1650 60  0001 C CNN "PurchasingLink"
+	1    6525 1250
 	1    0    0    -1  
 $EndComp
-Wire Notes Line
-	6100 1300 6100 2525
-Wire Notes Line
-	6100 2525 7925 2525
-Wire Notes Line
-	6100 1300 7925 1300
-Wire Wire Line
-	9975 5325 10525 5325
 Wire Wire Line
 	1000 8575 1000 8775
 $Comp
@@ -2885,18 +2860,6 @@ Wire Wire Line
 	9625 4750 9625 5075
 Wire Wire Line
 	9625 4750 9850 4750
-$Comp
-L power:+5V #PWR?
-U 1 1 620F687A
-P 9625 4750
-F 0 "#PWR?" H 9625 4600 50  0001 C CNN
-F 1 "+5V" H 9640 4923 50  0000 C CNN
-F 2 "" H 9625 4750 50  0001 C CNN
-F 3 "" H 9625 4750 50  0001 C CNN
-	1    9625 4750
-	1    0    0    -1  
-$EndComp
-Connection ~ 9625 4750
 $Comp
 L formula:R_5K R33
 U 1 1 62119C18
@@ -2925,7 +2888,7 @@ $EndComp
 Wire Wire Line
 	8475 2925 8475 3000
 Connection ~ 8475 2925
-Text Notes 10525 4450 0    50   ~ 0
+Text Notes 11025 4200 0    50   ~ 0
 Resistor dividers set at ~~90% to \nact as inputs for comparators 
 $Comp
 L formula:NanoFit_RA_SMT_02 J3
@@ -3165,8 +3128,8 @@ $Comp
 L formula:R_500 R29
 U 1 1 621CC2E1
 P 4075 3000
-F 0 "R29" H 4025 3000 50  0000 C CNN
-F 1 "R_500" H 4075 3125 50  0000 C CNN
+F 0 "R29" H 5050 3025 50  0000 C CNN
+F 1 "R_500" H 4800 3025 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 4075 3000 50  0001 C CNN
 F 3 "" H 4075 3000 50  0001 C CNN
 	1    4075 3000
@@ -3176,8 +3139,8 @@ $Comp
 L formula:R_500 R45
 U 1 1 621CD37D
 P 4075 3100
-F 0 "R45" H 4025 3100 50  0000 C CNN
-F 1 "R_500" H 4075 3475 50  0000 C CNN
+F 0 "R45" H 5050 3125 50  0000 C CNN
+F 1 "R_500" H 4800 3125 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 4075 3100 50  0001 C CNN
 F 3 "" H 4075 3100 50  0001 C CNN
 	1    4075 3100
@@ -3187,8 +3150,8 @@ $Comp
 L formula:R_500 R46
 U 1 1 621CE438
 P 4075 3200
-F 0 "R46" H 4025 3200 50  0000 C CNN
-F 1 "R_500" H 4075 3600 50  0000 C CNN
+F 0 "R46" H 5050 3225 50  0000 C CNN
+F 1 "R_500" H 4800 3225 50  0000 C CNN
 F 2 "footprints:R_0805_OEM" H 4075 3200 50  0001 C CNN
 F 3 "" H 4075 3200 50  0001 C CNN
 	1    4075 3200
@@ -3247,29 +3210,29 @@ Connection ~ 6475 7625
 $Comp
 L formula:SSM3K333R Q4
 U 1 1 622C2DA5
-P 14350 7100
-F 0 "Q4" H 14556 7146 50  0000 L CNN
-F 1 "SSM3K333R" H 14556 7055 50  0000 L CNN
-F 2 "footprints:SOT-23F" H 14550 7025 50  0001 L CIN
-F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 14550 7175 50  0001 L CNN
-F 4 "DK" H 14850 7475 60  0001 C CNN "MFN"
-F 5 "SSM3K333RLFCT-ND" H 14750 7375 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 14650 7275 60  0001 C CNN "PurchasingLink"
-	1    14350 7100
+P 14750 7325
+F 0 "Q4" H 14956 7371 50  0000 L CNN
+F 1 "SSM3K333R" H 14956 7280 50  0000 L CNN
+F 2 "footprints:SOT-23F" H 14950 7250 50  0001 L CIN
+F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 14950 7400 50  0001 L CNN
+F 4 "DK" H 15250 7700 60  0001 C CNN "MFN"
+F 5 "SSM3K333RLFCT-ND" H 15150 7600 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 15050 7500 60  0001 C CNN "PurchasingLink"
+	1    14750 7325
 	1    0    0    -1  
 $EndComp
 $Comp
 L formula:SSM3K333R Q3
 U 1 1 622C76D2
-P 14350 6125
-F 0 "Q3" H 14556 6171 50  0000 L CNN
-F 1 "SSM3K333R" H 14556 6080 50  0000 L CNN
-F 2 "footprints:SOT-23F" H 14550 6050 50  0001 L CIN
-F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 14550 6200 50  0001 L CNN
-F 4 "DK" H 14850 6500 60  0001 C CNN "MFN"
-F 5 "SSM3K333RLFCT-ND" H 14750 6400 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 14650 6300 60  0001 C CNN "PurchasingLink"
-	1    14350 6125
+P 14550 6075
+F 0 "Q3" H 14756 6121 50  0000 L CNN
+F 1 "SSM3K333R" H 14756 6030 50  0000 L CNN
+F 2 "footprints:SOT-23F" H 14750 6000 50  0001 L CIN
+F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 14750 6150 50  0001 L CNN
+F 4 "DK" H 15050 6450 60  0001 C CNN "MFN"
+F 5 "SSM3K333RLFCT-ND" H 14950 6350 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 14850 6250 60  0001 C CNN "PurchasingLink"
+	1    14550 6075
 	1    0    0    -1  
 $EndComp
 Text Label 11500 2200 0    50   ~ 0
@@ -3496,10 +3459,10 @@ Connection ~ 8975 7450
 Wire Wire Line
 	8975 7450 9075 7450
 $Comp
-L formula:R_0 R?
+L formula:R_0 R47
 U 1 1 62672ADF
 P 8975 7700
-F 0 "R?" H 9045 7746 50  0000 L CNN
+F 0 "R47" H 9045 7746 50  0000 L CNN
 F 1 "R_0" H 9045 7655 50  0000 L CNN
 F 2 "footprints:R_0603_1608Metric" H 8905 7700 50  0001 C CNN
 F 3 "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" H 9055 7700 50  0001 C CNN
@@ -3520,10 +3483,10 @@ Wire Wire Line
 Wire Wire Line
 	14025 3300 14250 3300
 $Comp
-L formula:Test_Point_SMD TP?
+L formula:Test_Point_SMD TP31
 U 1 1 62705BA6
 P 14250 3250
-F 0 "TP?" H 14300 3350 50  0000 L CNN
+F 0 "TP31" H 14300 3350 50  0000 L CNN
 F 1 "Test_Point_SMD" H 15225 2775 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 14250 3100 50  0001 C CNN
 F 3 "" H 14250 3250 50  0001 C CNN
@@ -3531,10 +3494,10 @@ F 3 "" H 14250 3250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:Test_Point_SMD TP?
+L formula:Test_Point_SMD TP32
 U 1 1 6271D460
 P 14250 3450
-F 0 "TP?" H 14175 3650 50  0000 L CNN
+F 0 "TP32" H 14175 3650 50  0000 L CNN
 F 1 "Test_Point_SMD" H 12700 3650 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 14250 3300 50  0001 C CNN
 F 3 "" H 14250 3450 50  0001 C CNN
@@ -3542,10 +3505,10 @@ F 3 "" H 14250 3450 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L formula:Test_Point_SMD TP?
+L formula:Test_Point_SMD TP33
 U 1 1 62734A65
 P 15325 3350
-F 0 "TP?" H 15350 3550 50  0000 L CNN
+F 0 "TP33" H 15350 3550 50  0000 L CNN
 F 1 "Test_Point_SMD" H 15225 3125 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 15325 3200 50  0001 C CNN
 F 3 "" H 15325 3350 50  0001 C CNN
@@ -3564,5 +3527,243 @@ Wire Wire Line
 Connection ~ 14250 3300
 Wire Wire Line
 	14250 3300 14550 3300
-Connection ~ 14250 3400
+Text Label 3650 1900 0    50   ~ 0
+BTN
+Wire Wire Line
+	14050 6075 14300 6075
+$Comp
+L formula:Switch_NO S1
+U 1 1 62714C70
+P 7000 2325
+F 0 "S1" H 7000 2628 50  0000 C CNN
+F 1 "Switch_NO" H 7000 2537 50  0000 C CNN
+F 2 "SW_TL3315NF100Q" H 7000 2325 50  0001 L BNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/E-Switch%20PDFs/TL3315.pdf" H 7000 2325 50  0001 L BNN
+F 4 "TL3315NF100Q" H 7000 2325 50  0001 L BNN "MFN"
+F 5 "https://www.digikey.com/en/products/detail/e-switch/TL3315NF100Q/1870394" H 7000 2325 50  0001 L BNN "Purchasing Link"
+	1    7000 2325
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 62717530
+P 6600 2325
+F 0 "#PWR?" H 6600 2175 50  0001 C CNN
+F 1 "+5V" H 6615 2498 50  0000 C CNN
+F 2 "" H 6600 2325 50  0001 C CNN
+F 3 "" H 6600 2325 50  0001 C CNN
+	1    6600 2325
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:R_10K R31
+U 1 1 6271884C
+P 7425 2475
+F 0 "R31" H 7495 2521 50  0000 L CNN
+F 1 "R_10K" H 7495 2430 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 7355 2475 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 7505 2475 50  0001 C CNN
+F 4 "DK" H 7425 2475 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 7425 2475 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 7905 2875 60  0001 C CNN "PurchasingLink"
+	1    7425 2475
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6271A872
+P 7425 2625
+F 0 "#PWR?" H 7425 2375 50  0001 C CNN
+F 1 "GND" H 7430 2452 50  0000 C CNN
+F 2 "" H 7425 2625 50  0001 C CNN
+F 3 "" H 7425 2625 50  0001 C CNN
+	1    7425 2625
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6600 2325 6700 2325
+Wire Wire Line
+	7300 2325 7425 2325
+Wire Wire Line
+	7425 2325 7500 2325
+Connection ~ 7425 2325
+Text Label 7500 2325 0    50   ~ 0
+BTN
+Wire Notes Line
+	6325 2875 7875 2875
+Wire Notes Line
+	6325 775  6325 2875
+Wire Notes Line
+	6325 775  7875 775 
+Wire Notes Line
+	7875 775  7875 2875
+Text Notes 6350 2800 0    50   ~ 0
+Manual Reset Button on \nexternal interrupt / GPIO \nin case wakeup circuitry \ndoesn't work
+Wire Wire Line
+	9625 4750 9625 4700
+Connection ~ 9625 4750
+Text Label 9625 4700 0    50   ~ 0
+BATT_4
+$Comp
+L formula:SSM3K333R Q9
+U 1 1 6280A63F
+P 10675 5325
+F 0 "Q9" V 10925 5250 50  0000 L CNN
+F 1 "SSM3K333R" V 11000 4950 50  0000 L CNN
+F 2 "footprints:SOT-23F" H 10875 5250 50  0001 L CIN
+F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 10875 5400 50  0001 L CNN
+F 4 "DK" H 11175 5700 60  0001 C CNN "MFN"
+F 5 "SSM3K333RLFCT-ND" H 11075 5600 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 10975 5500 60  0001 C CNN "PurchasingLink"
+	1    10675 5325
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62829624
+P 10775 5525
+F 0 "#PWR?" H 10775 5275 50  0001 C CNN
+F 1 "GND" H 10780 5352 50  0000 C CNN
+F 2 "" H 10775 5525 50  0001 C CNN
+F 3 "" H 10775 5525 50  0001 C CNN
+	1    10775 5525
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9975 5325 10125 5325
+$Comp
+L formula:R_10K R48
+U 1 1 6285E317
+P 10775 4900
+F 0 "R48" H 10845 4946 50  0000 L CNN
+F 1 "R_10K" H 10845 4855 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 10705 4900 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 10855 4900 50  0001 C CNN
+F 4 "DK" H 10775 4900 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 10775 4900 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 11255 5300 60  0001 C CNN "PurchasingLink"
+	1    10775 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10775 5050 10775 5075
+Wire Wire Line
+	10775 4750 10775 4725
+$Comp
+L formula:SSM3K333R Q10
+U 1 1 628E8222
+P 11575 5325
+F 0 "Q10" V 11850 5275 50  0000 L CNN
+F 1 "SSM3K333R" V 11925 4950 50  0000 L CNN
+F 2 "footprints:SOT-23F" H 11775 5250 50  0001 L CIN
+F 3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" H 11775 5400 50  0001 L CNN
+F 4 "DK" H 12075 5700 60  0001 C CNN "MFN"
+F 5 "SSM3K333RLFCT-ND" H 11975 5600 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" H 11875 5500 60  0001 C CNN "PurchasingLink"
+	1    11575 5325
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 628E822E
+P 11675 5525
+F 0 "#PWR?" H 11675 5275 50  0001 C CNN
+F 1 "GND" H 11680 5352 50  0000 C CNN
+F 2 "" H 11675 5525 50  0001 C CNN
+F 3 "" H 11675 5525 50  0001 C CNN
+	1    11675 5525
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:R_10K R49
+U 1 1 628E8237
+P 11675 4900
+F 0 "R49" H 11745 4946 50  0000 L CNN
+F 1 "R_10K" H 11745 4855 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 11605 4900 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 11755 4900 50  0001 C CNN
+F 4 "DK" H 11675 4900 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 11675 4900 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 12155 5300 60  0001 C CNN "PurchasingLink"
+	1    11675 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11675 5050 11675 5075
+Wire Wire Line
+	11675 4750 11675 4725
+Connection ~ 10125 5325
+Connection ~ 10125 5525
+Wire Wire Line
+	10775 4725 11225 4725
+$Comp
+L power:+5V #PWR?
+U 1 1 6296CDB9
+P 11225 4725
+F 0 "#PWR?" H 11225 4575 50  0001 C CNN
+F 1 "+5V" H 11240 4898 50  0000 C CNN
+F 2 "" H 11225 4725 50  0001 C CNN
+F 3 "" H 11225 4725 50  0001 C CNN
+	1    11225 4725
+	1    0    0    -1  
+$EndComp
+Connection ~ 11225 4725
+Wire Wire Line
+	11225 4725 11675 4725
+Wire Wire Line
+	10125 5325 10475 5325
+Wire Wire Line
+	10500 5525 10500 5825
+Wire Wire Line
+	10500 5825 11300 5825
+Wire Wire Line
+	11300 5825 11300 5325
+Wire Wire Line
+	11300 5325 11375 5325
+Wire Wire Line
+	10125 5525 10500 5525
+Text Label 10825 5125 0    50   ~ 0
+COMP_1_SIG
+Wire Wire Line
+	11675 5125 11725 5125
+Connection ~ 11675 5125
+Text Label 11725 5125 0    50   ~ 0
+COMP_2_SIG
+Wire Wire Line
+	10775 5125 10825 5125
+Connection ~ 10775 5125
+$Comp
+L formula:Test_Point_SMD TP29
+U 1 1 62A513B5
+P 10725 5075
+F 0 "TP29" H 10775 5175 50  0000 L CNN
+F 1 "Test_Point_SMD" V 9625 5100 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 10725 4925 50  0001 C CNN
+F 3 "" H 10725 5075 50  0001 C CNN
+	1    10725 5075
+	0    -1   -1   0   
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP30
+U 1 1 62A6B69E
+P 11625 5075
+F 0 "TP30" H 11675 5175 50  0000 L CNN
+F 1 "Test_Point_SMD" V 10600 6000 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 11625 4925 50  0001 C CNN
+F 3 "" H 11625 5075 50  0001 C CNN
+	1    11625 5075
+	0    -1   -1   0   
+$EndComp
+Connection ~ 11675 5075
+Wire Wire Line
+	11675 5075 11675 5125
+Connection ~ 10775 5075
+Wire Wire Line
+	10775 5075 10775 5125
+Wire Notes Line
+	6050 550  6050 4775
+Wire Notes Line
+	550  4775 6050 4775
+Wire Notes Line
+	550  550  6050 550 
 $EndSCHEMATC
