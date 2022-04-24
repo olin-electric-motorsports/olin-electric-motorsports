@@ -20,7 +20,7 @@ const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
 static void fan_enable(bool enable) {
     timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
 
-    // No way to update a single part of the config so we just re-init the 
+    // No way to update a single part of the config so we just re-init the
     // timer
     timer_init(&timer1_fan_cfg);
 }
@@ -34,9 +34,11 @@ static void fan_enable(bool enable) {
  * We initialize the min_temp to the MAXIMUM value for an int16_t so that the
  * first time it runs, the min voltage will always be smaller. We do the same
  * for the max_temp.
+ *
+ * TODO: Need to invert logic when we write about it
  */
-int16_t min_temperature = INT16_MAX;
-int16_t max_temperature = INT16_MIN;
+int16_t min_temperature = INT16_MIN;
+int16_t max_temperature = INT16_MAX;
 
 uint8_t can_data[8] = { 0 };
 
@@ -47,28 +49,23 @@ can_frame_t temperature_frame = {
     .data = can_data,
 };
 
-int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max_temp) {
+int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
+                     int16_t* max_temp) {
     int pec_errors = 0;
 
     static uint8_t mux = 0;
     static uint8_t channel = 0;
 
     if ((mux == 0) && (channel == 0)) {
-        /*
-         * Reset the min and max temperatures each time we start over
-         *
-         * See the commment about regarding why we set min to MAX and vice 
-         * versa
-         */
-        min_temperature = INT16_MAX;
-        max_temperature = INT16_MIN;
+        min_temperature = INT16_MIN;
+        max_temperature = INT16_MAX;
     }
 
     // Set mux and channel in CAN message
     can_data[1] = (mux & 0xF) | ((channel & 0xF) << 4);
 
     // We store temperatures within the CAN data array starting at index 2
-    uint16_t* temperatures = (uint16_t *)&can_data[2];
+    uint16_t* temperatures = (uint16_t*)&can_data[2];
 
     /*
      * Wake up the LTC6811s
@@ -93,7 +90,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
         LTC681x_rdaux_reg(AUX_CH_GPIO1, NUM_ICS, raw_data);
 
         // Stores the current temperatures index in the CAN message Used to
-        // indicate when a CAN message should be sent: When this number 
+        // indicate when a CAN message should be sent: When this number
         // reaches 3, we send the CAN message and reset it to zero
         uint8_t can_temperature_index = 0;
 
@@ -115,10 +112,11 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
 
             // The voltage value from the ADC is in the zeroth "word" (two
             // bytes) of the response data
-            uint16_t temperature = raw_data[data_counter]
-                                   | (raw_data[data_counter + 1] << 8);
+            uint16_t temperature
+                = raw_data[data_counter] | (raw_data[data_counter + 1] << 8);
 
             temperatures[can_temperature_index] = temperature;
+            can_temperature_index++;
 
             if (can_temperature_index == 3) {
                 can_send(&temperature_frame);
@@ -127,13 +125,15 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
 
             /*
              * Update temperature mins and maxes
+             *
+             * Note: inverted logic
              */
-            if (temperature < min_temperature) {
+            if (temperature > min_temperature) {
                 min_temperature = temperature;
                 *min_temp = min_temperature;
             }
 
-            if (temperature > max_temperature) {
+            if (temperature < max_temperature) {
                 max_temperature = temperature;
                 *max_temp = max_temperature;
             }
@@ -154,23 +154,23 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
      * Using negative-temperature-coefficient (NTC) thermistors, so
      * comparisons are reversed (i.e. less than over-temp threshold)
      */
-    if (min_temperature < OVERTEMPERATURE_THRESHOLD) {
+    if (max_temperature < OVERTEMPERATURE_THRESHOLD) {
         *ot += 1;
     }
-    
+
     /*
      * If temperatures are getting a bit too high, we turn on the
      * fan
      */
-    if (min_temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
+    if (max_temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
         fan_enable(true);
     }
-    
-    if (max_temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
+
+    if (min_temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
         fan_enable(false);
     }
-    
-    if (max_temperature > UNDERTEMPERATURE_THRESHOLD) {
+
+    if (min_temperature > UNDERTEMPERATURE_THRESHOLD) {
         *ut += 1;
     }
 

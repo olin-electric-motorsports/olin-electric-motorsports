@@ -104,6 +104,9 @@ static int initial_checks(void) {
         bms_metrics.temperature_pec_error_count += rc;
     }
 
+    bms_sense.min_temperature = min_temp;
+    bms_sense.max_temperature = max_temp;
+
     if (ut > 0) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
         rc = 1;
@@ -161,6 +164,10 @@ static void state_machine_run(void) {
 
     // uint16_t pack_temperature;
     rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+
+    bms_sense.min_temperature = min_temp;
+    bms_sense.max_temperature = max_temp;
+
     // bms_core.pack_temperature = pack_temperature;
 
     // if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
@@ -325,6 +332,7 @@ int main(void) {
     }
 
     can_send_bms_core();
+    can_send_bms_sense();
 
     // Turn off GENERAL_LED to indicate checks passed
     gpio_clear_pin(GENERAL_LED);
@@ -345,6 +353,7 @@ int main(void) {
 
         if (run_10ms) {
             can_send_bms_core();
+            can_send_bms_sense();
             can_send_bms_metrics();
             state_machine_run();
 
