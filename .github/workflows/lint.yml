@@ -37,4 +37,4 @@ jobs:
       run: pip install black
 
     - name: Run black on changed python files
-      run: git diff --name-only origin/$GITHUB_BASE_REF..$(git rev-parse --short "$GITHUB_SHA") | grep ".py$" | xargs black --check --diff
+      run: ./.github/python-black.sh
