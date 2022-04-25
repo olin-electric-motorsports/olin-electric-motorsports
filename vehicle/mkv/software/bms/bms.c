@@ -107,11 +107,11 @@ static int initial_checks(void) {
     bms_sense.min_temperature = min_temp;
     bms_sense.max_temperature = max_temp;
 
-    if (ut > 0) {
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
         rc = 1;
         goto bail;
-    } else if (ot > 0) {
+    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_OVERTEMPERATURE);
         rc = 1;
         goto bail;
@@ -168,17 +168,15 @@ static void state_machine_run(void) {
     bms_sense.min_temperature = min_temp;
     bms_sense.max_temperature = max_temp;
 
-    // bms_core.pack_temperature = pack_temperature;
-
-    // if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-    //     set_fault(BMS_FAULT_UNDERTEMPERATURE);
-    //     bms_core.bms_state = FAULT;
-    //     return;
-    // } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-    //     set_fault(BMS_FAULT_OVERTEMPERATURE);
-    //     bms_core.bms_state = FAULT;
-    //     return;
-    // }
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        bms_core.bms_state = FAULT;
+        return;
+    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
+        bms_core.bms_state = FAULT;
+        return;
+    }
 
     /*
      * Check for PEC errors
