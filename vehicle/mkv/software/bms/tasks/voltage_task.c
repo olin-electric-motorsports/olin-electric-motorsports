@@ -70,7 +70,9 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
              * report the average instead
              */
             if ((cell_reg == 2) && (ic == 5)) {
-                uint32_t average = (cell_1 + cell_2 + cell_3) / 3;
+                uint16_t average
+                    = ((cell_1 >> 8) + (cell_2 >> 8) + (cell_3 >> 8)) / 3;
+                average <<= 8;
                 cell_1 = (uint16_t)average;
                 cell_2 = (uint16_t)average;
                 cell_3 = (uint16_t)average;

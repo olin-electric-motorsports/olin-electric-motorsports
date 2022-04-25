@@ -104,14 +104,14 @@ publish:
       - name: min_temperature
         slice: 0 + 16
         unit:
-          type: int16_t
+          type: uint16_t
           name: V
           offset: 0
           scale: 0.0001
       - name: max_temperature
         slice: 16 + 16
         unit:
-          type: int16_t
+          type: uint16_t
           name: V
           offset: 0
           scale: 0.0001
