@@ -24,15 +24,15 @@ gpio_t IMD_SENSE = PD0;
 
 #ifdef BOARD_HACKERBOARD
 
-gpio_t FAULT_LED = PD6;
-gpio_t GENERAL_LED = PD7;
-gpio_t AIR_N_WELD_DETECT = PC5;
-
-#else
-
 gpio_t FAULT_LED = PB7;
 gpio_t GENERAL_LED = PD6;
 gpio_t AIR_N_WELD_DETECT = PC7;
+
+#else
+
+gpio_t GENERAL_LED = PD6;
+gpio_t FAULT_LED = PD7;
+gpio_t AIR_N_WELD_DETECT = PC5;
 
 #endif
 

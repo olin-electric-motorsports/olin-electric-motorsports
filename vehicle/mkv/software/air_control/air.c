@@ -1,4 +1,5 @@
 #include <avr/interrupt.h>
+#include <util/delay.h>
 #include <stdlib.h>
 
 #include "libs/gpio/api.h"
@@ -8,13 +9,6 @@
 #include "utils/timer.h"
 #include "utils/utils.h"
 #include "vehicle/mkv/software/air_control/can_api.h"
-
-/* TODO
- *
- * - Verify initial conditions and correct/fault conditions of all GPIOs
- * - In FAULT state, should we clear PRECHARGE_CTL and AIR_N_LSD?
- * - Should we be able to recover from any faults? Which ones? How?
- */
 
 enum State {
     INIT = 0,
@@ -75,10 +69,10 @@ void pcint1_callback(void) {
 }
 
 void pcint2_callback(void) {
-    if (!gpio_get_pin(IMD_SENSE)) {
-        set_fault(AIR_FAULT_IMD_STATUS);
-        air_control_critical.imd_status = false;
-    }
+    // if (!gpio_get_pin(IMD_SENSE)) {
+    //     set_fault(AIR_FAULT_IMD_STATUS);
+    //     air_control_critical.imd_status = false;
+    // }
 }
 
 /*
@@ -158,15 +152,18 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (!gpio_get_pin(IMD_SENSE)) {
-        // IMD_SENSE pin should start high
-        air_control_critical.imd_status = false;
-        set_fault(AIR_FAULT_IMD_STATUS);
-        rc = 1;
-        goto bail;
-    } else {
-        air_control_critical.imd_status = true;
-    }
+    // Wait for IMD to stabilize
+    _delay_ms(4500);
+
+    // if (!gpio_get_pin(IMD_SENSE)) {
+    //     // IMD_SENSE pin should start high
+    //     air_control_critical.imd_status = false;
+    //     set_fault(AIR_FAULT_IMD_STATUS);
+    //     rc = 1;
+    //     goto bail;
+    // } else {
+    //     air_control_critical.imd_status = true;
+    // }
 
 bail:
     return rc;
@@ -287,27 +284,22 @@ static void state_machine_run(void) {
                 once = false;
             }
 
-            /*
-             * Wait WELD_CHECK_DELAY_MS before checking for welded AIRs
-             */
-            static bool check_weld_once = true;
-
-            if ((get_time() - start_time > WELD_CHECK_DELAY_MS) && check_weld_once) {
-                check_weld_once = false;
-
-                // If either AIR is still closed, it is welded
+            if (get_time() - start_time > 100) {
                 if (air_control_critical.air_p_status
                     && air_control_critical.air_n_status) {
                     air_control_critical.air_state = FAULT;
                     set_fault(AIR_FAULT_BOTH_AIRS_WELD);
+                    once = true;
                     return;
                 } else if (air_control_critical.air_p_status) {
                     air_control_critical.air_state = FAULT;
                     set_fault(AIR_FAULT_AIR_P_WELD);
+                    once = true;
                     return;
                 } else if (air_control_critical.air_n_status) {
                     air_control_critical.air_state = FAULT;
                     set_fault(AIR_FAULT_AIR_N_WELD);
+                    once = true;
                     return;
                 }
             }
@@ -323,7 +315,6 @@ static void state_machine_run(void) {
                     // Timeout
                     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
                     once = true;
-                    check_weld_once = true;
                 }
                 return;
             }
@@ -333,19 +324,16 @@ static void state_machine_run(void) {
             if (rc != 0) {
                 set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
                 once = true;
-                check_weld_once = true;
                 return;
             }
 
             if (motor_controller_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
                 once = true;
-                check_weld_once = true;
                 air_control_critical.air_state = IDLE;
                 return;
             } else {
                 set_fault(AIR_FAULT_DISCHARGE_FAIL);
                 once = true;
-                check_weld_once = true;
                 return;
             }
         } break;
