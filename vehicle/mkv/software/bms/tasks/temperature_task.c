@@ -124,6 +124,22 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
             }
 
             /*
+             * Hack: There are some broken thermistors, so we skip bounds
+             * checking on them here
+             */
+            if ((mux == 0) && (channel == 5) && (can_temperature_index == 1)) {
+                continue;
+            }
+
+            if ((mux == 2) && (channel == 7) && (can_temperature_index == 1)) {
+                continue;
+            }
+
+            if ((mux == 1) && (channel == 3) && (can_temperature_index == 1)) {
+                continue;
+            }
+
+            /*
              * Update temperature mins and maxes
              *
              * Note: inverted logic
