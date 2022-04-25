@@ -748,4 +748,6 @@ Wire Wire Line
 Connection ~ 3625 5800
 Wire Wire Line
 	3625 5800 3250 5800
+Text Notes 875  2450 0    50   ~ 0
+R601/604/606/607 each dissipate 0.0432W at TS+=400V --> temperature rise of
 $EndSCHEMATC
