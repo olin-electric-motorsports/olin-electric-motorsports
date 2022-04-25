@@ -24,6 +24,7 @@ enum State {
 };
 
 enum AIR_State {
+    AIR_STATE_INIT,
     AIR_STATE_IDLE,
     AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED,
     AIR_STATE_PRECHARGE,
@@ -213,7 +214,7 @@ static void state_machine_run(void) {
                 bms_core.bms_state = FAULT;
             }
 
-            if (air_state != AIR_STATE_IDLE) {
+            if ((air_state != AIR_STATE_IDLE) && (air_state != AIR_STATE_INIT) && (air_state != AIR_STATE_FAULT)) {
                 bms_core.bms_state = DISCHARGING;
             }
 
