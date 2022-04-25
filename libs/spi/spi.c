@@ -36,20 +36,20 @@ ISR(SPI_STC_vect) {
 }
 
 void spi_init(spi_cfg_s* spi_cfg) {
-    MCUCR |= spi_cfg->peripheral << SPIPS; 
+    MCUCR |= (1 << SPIPS); 
     cs = *spi_cfg->cs_pin;
     mode = spi_cfg->mode;
 
     uint8_t main_direction = (mode == MAIN) ? OUTPUT : INPUT;
-    uint8_t secondary_direction = (mode == MAIN) ? INPUT : OUTPUT;
+    // uint8_t secondary_direction = (mode == MAIN) ? INPUT : OUTPUT;
 
     if (spi_cfg->peripheral == SPI) {
         gpio_set_mode(mosi, main_direction);
-        gpio_set_mode(miso, secondary_direction);
+        gpio_set_mode(miso, main_direction);
         gpio_set_mode(sck, main_direction);
     } else {
         gpio_set_mode(mosi_a, main_direction);
-        gpio_set_mode(miso_a, secondary_direction);
+        gpio_set_mode(miso_a, main_direction);
         gpio_set_mode(sck_a, main_direction);
     }
 
@@ -63,6 +63,9 @@ void spi_init(spi_cfg_s* spi_cfg) {
     SPSR |= (((uint8_t)spi_cfg->clock_rate & 0x4) >> 2);
 
     SPCR |= 1 << SPE; // Enable SPI
+
+    MCUCR |= spi_cfg->peripheral << SPIPS; 
+
 
     gpio_set_mode(cs, main_direction);
     gpio_set_pin(cs);

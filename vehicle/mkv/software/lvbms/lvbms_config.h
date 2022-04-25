@@ -10,7 +10,7 @@
 #define LTC_UV_THRESHOLD        (1875) // 3.0V / (16*100*10**-6)
 #define LTC_ITEMP_THRESHOLD     
 #define OC_THRESHOLD
-#define IDLE_TIMEOUT    5900 // 59 seconds
+#define IDLE_TIMEOUT    1000 // 59 seconds
 
 
 

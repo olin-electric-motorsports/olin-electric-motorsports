@@ -33,7 +33,7 @@ can we wakeup from IDLE to STANDBY
 volatile lvbms_state SYSTEM_STATE = IDLE; 
 volatile uint8_t    adc_ptr     = 0; 
 uint16_t            adc_data[7] = { 0 }; // todo used to be voltatile
-uint64_t            ms_counter         = 0; 
+uint16_t            ms_counter         = 0; 
 volatile uint8_t    fault_flag  = 0x00; 
 uint8_t             one_second_passed = true; 
 
@@ -130,6 +130,8 @@ void enter_fault_state(fault_flags fault){
 */
 ISR(INT2_vect){
     system_ON(); 
+    gpio_set_pin(LED_2); 
+
    
 }
 
@@ -140,6 +142,7 @@ ISR(INT2_vect){
 */
 ISR(INT1_vect){
     system_ON(); 
+    gpio_set_pin(LED_1); 
 
 }
 
@@ -187,7 +190,10 @@ void LTC_voltage_task(){
 
     // TESTING - simply read config and check PEC 
 
-    LTC6810_rdcfg(NUM_ICS, ICS); 
+    // LTC6810_rdcfg(NUM_ICS, ICS); 
+    // uint8_t tx = 0x55; 
+    // uint8_t rx = 0; 
+    // spi_transceive(&tx,&rx,1); 
     // int8_t pec_ct = LTC6810_rdcfg(NUM_ICS, ICS); 
 
     // lvbms.pec_error_count = pec_ct; 
@@ -257,7 +263,7 @@ void collect_telem(){
     //     adc_data[i] = adc_read(adc_pins[i]); 
     // }
 
-    LTC_voltage_task(); 
+    // LTC_voltage_task(); 
 }
 
 /* check for OT, UT, OV, UV, comparator error */ 
@@ -344,6 +350,10 @@ void system_ON(){
     gpio_set_pin(ON_STATE_FET_DRV); 
     
     disable_external_interrupts(); 
+    
+    // reset counter 
+    ms_counter = 0; 
+
 }
 
 /* called on transition to STANDBY */
@@ -357,9 +367,11 @@ void system_OFF(){
     gpio_clear_pin(LED_1); 
     gpio_clear_pin(LED_2); 
     // enter STANDBY
-    enable_external_interrupts(); // TODO TEST????  
+    enable_external_interrupts(); 
+    // works - doesn't work unless COMP_1_INPUT and COMP_2_INPUT are tied HIGH since comparator is broken. 
 
     enable_STANDBY_mode(); 
+    // superloop continues running
 }
 
 
@@ -386,8 +398,7 @@ int main(void){
     
     while(1){
 
-        // regardless of state, always: 
-        drive_leds(); 
+            // regardless of state, always: 
 
         // 1 second task 
         if ((ms_counter / 100)%2 != one_second_passed) {
@@ -398,15 +409,24 @@ int main(void){
         }
 
 
+        
+
+
         switch(SYSTEM_STATE){
             case STANDBY: 
+                gpio_clear_pin(LOAD_SW_FET_DRV); 
                 system_OFF(); 
                 break; 
             case IDLE:
+               drive_leds(); 
+               gpio_set_pin(LOAD_SW_FET_DRV); 
+
+                
                 if (ms_counter > IDLE_TIMEOUT){ 
                     // once 59 seconds have passed in IDLE mode, send system from IDLE into STANDBY state
                     SYSTEM_STATE = STANDBY; 
                 }
+                
                 
                 
                 
