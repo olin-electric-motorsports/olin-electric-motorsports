@@ -8,8 +8,6 @@ def get_rx_messages(subs, messages):
 
     mobs = {}
 
-    print("HI")
-
     for m in subs:
         mobs[m["name"]] = m["mob"]
 
