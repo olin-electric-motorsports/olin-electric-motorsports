@@ -1,42 +1,6 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Formula_DBR71210(NC)
-#
-DEF Formula_DBR71210(NC) K 0 40 Y Y 1 F N
-F0 "K" 350 150 50 H V L CNN
-F1 "Formula_DBR71210(NC)" 400 -150 50 H V L CNN
-F2 "footprints:D-Series_Cynergy_Relay" 450 -50 50 H I L CNN
-F3 "https://www.cynergy3.com/sites/default/files/D%20series%202016_5.pdf" 450 -350 50 H I L CNN
-F4 "DK" 850 550 60 H I C CNN "MFN"
-F5 "725-1049-ND" 750 450 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/cynergy-3/DBR71210/725-1049-ND/752025" 950 650 60 H I C CNN "PurchasingLink"
-$FPLIST
- Relay?SPDT?OMRON?G5Q*
-$ENDFPLIST
-DRAW
-S -400 200 300 -200 0 1 10 f
-S -325 75 -75 -75 0 1 10 N
-P 2 0 0 0 100 150 100 200 N
-P 2 0 1 10 -300 -75 -100 75 N
-P 2 0 1 0 -200 -200 -200 -75 N
-P 2 0 1 0 -200 200 -200 75 N
-P 2 0 1 10 -75 0 -50 0 N
-P 2 0 1 10 -25 0 0 0 N
-P 2 0 1 10 25 0 50 0 N
-P 2 0 1 10 25 0 50 0 N
-P 2 0 1 10 75 0 100 0 N
-P 2 0 1 0 100 -100 100 -200 N
-P 2 0 1 10 100 -100 100 100 N
-P 2 0 1 10 125 0 150 0 N
-P 3 0 1 0 100 100 125 125 100 150 F
-X ~ 1 100 -300 100 U 50 50 1 1 P
-X ~ 2 100 300 100 D 50 50 1 1 P
-X - 3 -200 -300 100 U 50 50 1 1 P
-X + 4 -200 300 100 D 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # Formula_F_1A_600V
 #
 DEF Formula_F_1A_600V F 0 40 Y Y 1 F N
@@ -51,89 +15,6 @@ A 49 0 49 1800 889 0 1 0 N 0 0 50 50
 A 50 1 49 900 -11 0 1 0 N 50 50 100 0
 X 1 1 -300 0 200 R 50 50 1 1 I
 X 2 2 300 0 200 L 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# Formula_MicroFit_RA_06
-#
-DEF Formula_MicroFit_RA_06 J 0 40 Y Y 1 F N
-F0 "J" 0 350 60 H V C CNN
-F1 "Formula_MicroFit_RA_06" 100 -400 60 H V C CNN
-F2 "footprints:MicroFit_RA_6" -100 250 60 H I C CNN
-F3 "https://www.molex.com/pdm_docs/sd/430450601_sd.pdf" 0 350 60 H I C CNN
-F4 "Molex" 100 1400 60 H I C CNN "MFN"
-F5 "WM4037-ND" 200 1500 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/molex/0430450601/WM4037-ND/2421555" 0 1300 60 H I C CNN "PurchasingLink"
-DRAW
-S 150 -300 -150 300 0 1 0 f
-X 1 1 250 250 100 L 50 50 1 1 B
-X 2 2 250 150 100 L 50 50 1 1 B
-X 3 3 250 50 100 L 50 50 1 1 B
-X 4 4 250 -50 100 L 50 50 1 1 B
-X 5 5 250 -150 100 L 50 50 1 1 B
-X 6 6 250 -250 100 L 50 50 1 1 B
-ENDDRAW
-ENDDEF
-#
-# Formula_MicroFit_RA_4
-#
-DEF Formula_MicroFit_RA_4 J 0 40 Y Y 1 F N
-F0 "J" 0 400 50 H V C CNN
-F1 "Formula_MicroFit_RA_4" 0 300 50 H V C CNN
-F2 "footprints:MicroFit_RA_4" 0 -300 50 H I C CNN
-F3 "" 0 0 100 H I C CNN
-F4 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" 0 0 50 H I C CNN "Purchasing Link"
-F5 "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" 0 0 50 H I C CNN "PurchasingLink"
-DRAW
-S -100 200 100 -200 1 1 0 f
-X ~ 1 200 150 100 L 50 50 1 1 I
-X ~ 2 200 50 100 L 50 50 1 1 I
-X ~ 3 200 -50 100 L 50 50 1 1 I
-X ~ 4 200 -150 100 L 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# Formula_R_10K_HV
-#
-DEF Formula_R_10K_HV R 0 0 N Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "Formula_R_10K_HV" -100 0 50 V V C CNN
-F2 "footprints:R_1K_HV" -70 0 50 H I C CNN
-F3 "http://www.vishay.com/docs/28731/pacserie.pdf" 80 0 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "PPC5D10.0KCT-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=PPC5D10.0KCT-ND" 480 400 60 H I C CNN "PurchasingLink"
-$FPLIST
- R_*
- Resistor_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# Formula_R_3K_HS
-#
-DEF Formula_R_3K_HS R 0 0 Y Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "Formula_R_3K_HS" -100 0 50 V V C CNN
-F2 "footprints:R_3k_HS_TO247" -70 0 50 H I C CNN
-F3 "http://dpk3n3gg92jwt.cloudfront.net/domains/ohmite/pdf/acl_ap101.pdf" 80 0 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "AP1013KJ-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/ohmite/AP101-3K-J/AP101-3K-J-ND/5878525" 480 400 60 H I C CNN "PurchasingLink"
-F7 "345-1223-ND" 580 500 60 V I C CNN "MPN2"
-F8 "https://www.digikey.com/product-detail/en/wakefield-vette/657-15ABPEN/345-1223-ND/3945700" 680 600 60 V I C CNN "PurchasingLink2"
-$FPLIST
- R_*
- Resistor_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -163,25 +44,6 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Formula_UF_4_VT
-#
-DEF Formula_UF_4_VT J 0 40 Y N 1 F N
-F0 "J" 0 300 60 H V C CNN
-F1 "Formula_UF_4_VT" 0 -200 60 H V C CNN
-F2 "footprints:Ultrafit_4" -100 250 60 H I C CNN
-F3 "http://www.literature.molex.com/SQLImages/kelmscott/Molex/PDF_Images/987651-1008.pdf" 0 350 60 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "WM11574-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=WM11574-ND" 500 850 60 H I C CNN "PurchasingLink"
-DRAW
-S 150 250 -150 -150 0 1 0 f
-X 1 1 350 200 200 L 50 50 1 1 P
-X 2 2 350 100 200 L 50 50 1 1 P
-X 3 3 350 0 200 L 50 50 1 1 P
-X 4 4 350 -100 200 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # Formula_redcude_7461166
 #
 DEF Formula_redcude_7461166 J 0 40 Y Y 1 F N
@@ -192,6 +54,118 @@ F3 "we-online.de/katalog/datasheet/7461166.pdf" 0 -100 50 H I C CNN
 DRAW
 S -50 50 50 -50 0 1 0 f
 X ~ 1 150 0 100 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# Mechanical_MountingHole_Pad
+#
+DEF Mechanical_MountingHole_Pad H 0 40 N N 1 F N
+F0 "H" 0 250 50 H V C CNN
+F1 "Mechanical_MountingHole_Pad" 0 175 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ MountingHole*Pad*
+$ENDFPLIST
+DRAW
+C 0 50 50 0 1 50 N
+X 1 1 0 -100 100 U 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# formula_3350-4275-126(NC)
+#
+DEF formula_3350-4275-126(NC) K 0 40 Y Y 1 F N
+F0 "K" 350 150 50 H V L CNN
+F1 "formula_3350-4275-126(NC)" 400 -150 50 H V L CNN
+F2 "footprints:Relay_Comus_3350" 450 -50 50 H I L CNN
+F3 "" 450 -350 50 H I L CNN
+F4 "DK" 850 550 60 H I C CNN "MFN"
+F5 "3350-4275-126" 750 450 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/comus-international/3350-4275-126/7515922" 950 650 60 H I C CNN "PurchasingLink"
+$FPLIST
+ Relay?SPDT?OMRON?G5Q*
+$ENDFPLIST
+DRAW
+S -400 200 300 -200 0 1 10 f
+S -325 75 -75 -75 0 1 10 N
+P 2 0 0 0 100 150 100 200 N
+P 2 0 1 10 -300 -75 -100 75 N
+P 2 0 1 0 -200 -200 -200 -75 N
+P 2 0 1 0 -200 200 -200 75 N
+P 2 0 1 10 -75 0 -50 0 N
+P 2 0 1 10 -25 0 0 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 75 0 100 0 N
+P 2 0 1 0 100 -100 100 -200 N
+P 2 0 1 10 100 -100 100 100 N
+P 2 0 1 10 125 0 150 0 N
+P 3 0 1 0 100 100 125 125 100 150 F
+X ~ 1 100 -300 100 U 50 50 1 1 P
+X + 2 -200 300 100 D 50 50 1 1 P
+X - 3 -200 -300 100 U 50 50 1 1 P
+X ~ 4 100 300 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_MicroFit_VT_4
+#
+DEF formula_MicroFit_VT_4 J 0 40 Y Y 1 F N
+F0 "J" 0 400 50 H V C CNN
+F1 "formula_MicroFit_VT_4" 0 300 50 H V C CNN
+F2 "footprints:MicroFit_VT_4" 0 -300 50 H I C CNN
+F3 "" 0 -50 50 H I C CNN
+F4 "430450414" -200 450 50 H V C CNN "MPN"
+F5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" -300 550 50 H V C CNN "PurchasingLink"
+DRAW
+S -100 200 100 -200 0 1 0 f
+X ~ 1 200 150 100 L 50 50 1 1 I
+X ~ 2 200 50 100 L 50 50 1 1 I
+X ~ 3 200 -50 100 L 50 50 1 1 I
+X ~ 4 200 -150 100 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# formula_R_12
+#
+DEF formula_R_12 R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_12" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 0 50 V I C CNN
+F3 "" 80 0 50 V I C CNN
+F4 "TE" 180 100 60 V I C CNN "MFN"
+F5 "CPF-A-0805B12RE" 280 200 60 V I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/CPF-A-0805B12RE/5583863" 280 200 60 V I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_R_15K_HV
+#
+DEF formula_R_15K_HV R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "formula_R_15K_HV" -100 0 50 V V C CNN
+F2 "footprints:R_TSMP_SMD_5329" -70 0 50 H I C CNN
+F3 "" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "SMF515KJT" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/SMF515KJT/2367113" 480 400 60 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #

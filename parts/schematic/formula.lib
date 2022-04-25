@@ -190,6 +190,78 @@ X WP 5 400 100 200 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+# 3350-4275-126(NC)
+#
+DEF 3350-4275-126(NC) K 0 40 Y Y 1 F N
+F0 "K" 350 150 50 H V L CNN
+F1 "3350-4275-126(NC)" 400 -150 50 H V L CNN
+F2 "footprints:Relay_Comus_3350" 450 -50 50 H I L CNN
+F3 "" 450 -350 50 H I L CNN
+F4 "DK" 850 550 60 H I C CNN "MFN"
+F5 "3350-4275-126" 750 450 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/comus-international/3350-4275-126/7515922" 950 650 60 H I C CNN "PurchasingLink"
+$FPLIST
+ Relay?SPDT?OMRON?G5Q*
+$ENDFPLIST
+DRAW
+S -400 200 300 -200 0 1 10 f
+S -325 75 -75 -75 0 1 10 N
+P 2 0 0 0 100 150 100 200 N
+P 2 0 1 10 -300 -75 -100 75 N
+P 2 0 1 0 -200 -200 -200 -75 N
+P 2 0 1 0 -200 200 -200 75 N
+P 2 0 1 10 -75 0 -50 0 N
+P 2 0 1 10 -25 0 0 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 75 0 100 0 N
+P 2 0 1 0 100 -100 100 -200 N
+P 2 0 1 10 100 -100 100 100 N
+P 2 0 1 10 125 0 150 0 N
+P 3 0 1 0 100 100 125 125 100 150 F
+X ~ 1 100 -300 100 U 50 50 1 1 P
+X + 2 -200 300 100 D 50 50 1 1 P
+X - 3 -200 -300 100 U 50 50 1 1 P
+X ~ 4 100 300 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# 5503-12-1(NO)
+#
+DEF 5503-12-1(NO) K 0 40 Y Y 1 F N
+F0 "K" 350 150 50 H V L CNN
+F1 "5503-12-1(NO)" 400 -150 50 H V L CNN
+F2 "footprints:Relay_Coto_5500" 450 -50 50 H I L CNN
+F3 "" 450 -350 50 H I L CNN
+F4 "COTO" 850 550 60 H I C CNN "MFN"
+F5 "5503-12-1" 750 450 60 H I C CNN "MPN"
+F6 "https://www.mouser.com/ProductDetail/Coto-Technology/5503-12-1?qs=PSXJKkD%2FXAS95qerU0wiiQ%3D%3D" 950 650 60 H I C CNN "PurchasingLink"
+$FPLIST
+ Relay?SPDT?OMRON?G5Q*
+$ENDFPLIST
+DRAW
+S -400 200 300 -200 0 1 10 f
+S -325 75 -75 -75 0 1 10 N
+P 2 0 0 0 100 150 100 200 N
+P 2 0 1 10 -300 -75 -100 75 N
+P 2 0 1 0 -200 -200 -200 -75 N
+P 2 0 1 0 -200 200 -200 75 N
+P 2 0 1 10 -75 0 -50 0 N
+P 2 0 1 10 -25 0 0 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 25 0 50 0 N
+P 2 0 1 10 75 0 100 0 N
+P 2 0 1 0 100 -100 100 -200 N
+P 2 0 1 20 100 -100 200 100 N
+P 2 0 1 10 125 0 150 0 N
+P 3 0 1 0 100 100 125 125 100 150 F
+X ~ 1 100 -300 100 U 50 50 1 1 P
+X ~ 2 -200 300 100 D 50 50 1 1 P
+X ~ 3 -200 -300 100 U 50 50 1 1 P
+X ~ 4 100 300 100 D 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # 74HC4051
 #
 DEF 74HC4051 U 0 20 Y Y 1 F N
@@ -5426,6 +5498,27 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# R_12
+#
+DEF R_12 R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "R_12" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -70 0 50 V I C CNN
+F3 "" 80 0 50 V I C CNN
+F4 "TE" 180 100 60 V I C CNN "MFN"
+F5 "CPF-A-0805B12RE" 280 200 60 V I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/CPF-A-0805B12RE/5583863" 280 200 60 V I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # R_120
 #
 DEF R_120 R 0 0 N Y 1 F N
@@ -5517,6 +5610,27 @@ F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/C
 $FPLIST
  R_*
  R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# R_15K_HV
+#
+DEF R_15K_HV R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "R_15K_HV" -100 0 50 V V C CNN
+F2 "footprints:R_TSMP_SMD_5329" -70 0 50 H I C CNN
+F3 "" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "SMF515KJT" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/te-connectivity-passive-product/SMF515KJT/2367113" 480 400 60 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
 $ENDFPLIST
 DRAW
 S -40 -100 40 100 0 1 10 N
@@ -6154,6 +6268,27 @@ F3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" 
 F4 "DK" 0 0 60 H I C CNN "MFN"
 F5 "311-54.9KCRCT-ND" 0 0 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/product-detail/en/yageo/RC0805FR-0754K9L/311-54.9KCRCT-ND/730976" 480 400 60 H I C CNN "PurchasingLink"
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# R_560_HS
+#
+DEF R_560_HS R 0 0 Y Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "R_560_HS" -100 0 50 V V C CNN
+F2 "footprints:R_3k_HS_TO247" -70 0 50 H I C CNN
+F3 "" 80 0 50 H I C CNN
+F4 "DK" 0 0 60 H I C CNN "MFN"
+F5 "AP101 560R J" 0 0 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/en/products/detail/ohmite/AP101-560R-J/5878514" 480 400 60 H I C CNN "PurchasingLink"
 $FPLIST
  R_*
  Resistor_*
