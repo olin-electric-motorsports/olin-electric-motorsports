@@ -472,32 +472,32 @@ PROGRAMMING HEADERS
 $Comp
 L formula:CONN_02X03 J?
 U 1 1 60B4AE14
-P 8000 5900
+P 7675 5575
 AR Path="/60A3B20D/60B4AE14" Ref="J?"  Part="1" 
 AR Path="/60AB52CF/60B4AE14" Ref="J1001"  Part="1" 
-F 0 "J1001" H 8000 6215 50  0000 C CNN
-F 1 "CONN_02X03" H 8000 6124 50  0000 C CNN
-F 2 "footprints:Pin_Header_Straight_2x03" H 8000 4700 50  0001 C CNN
-F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 8000 4700 50  0001 C CNN
-F 4 "DK" H 8000 5900 60  0001 C CNN "MFN"
-F 5 "609-3234-ND" H 8000 5900 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 8400 6500 60  0001 C CNN "PurchasingLink"
-	1    8000 5900
+F 0 "J1001" H 7675 5890 50  0000 C CNN
+F 1 "CONN_02X03" H 7675 5799 50  0000 C CNN
+F 2 "footprints:Pin_Header_Straight_2x03" H 7675 4375 50  0001 C CNN
+F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 7675 4375 50  0001 C CNN
+F 4 "DK" H 7675 5575 60  0001 C CNN "MFN"
+F 5 "609-3234-ND" H 7675 5575 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 8075 6175 60  0001 C CNN "PurchasingLink"
+	1    7675 5575
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8250 5800 8400 5800
+	7925 5475 8075 5475
 $Comp
 L power:GND #PWR?
 U 1 1 60B4AE21
-P 8400 6050
+P 8075 5725
 AR Path="/60A3B20D/60B4AE21" Ref="#PWR?"  Part="1" 
 AR Path="/60AB52CF/60B4AE21" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 8400 5800 50  0001 C CNN
-F 1 "GND" H 8405 5877 50  0000 C CNN
-F 2 "" H 8400 6050 50  0001 C CNN
-F 3 "" H 8400 6050 50  0001 C CNN
-	1    8400 6050
+F 0 "#PWR?" H 8075 5475 50  0001 C CNN
+F 1 "GND" H 8080 5552 50  0000 C CNN
+F 2 "" H 8075 5725 50  0001 C CNN
+F 3 "" H 8075 5725 50  0001 C CNN
+	1    8075 5725
 	1    0    0    -1  
 $EndComp
 Text Notes 2200 700  0    98   ~ 0
@@ -1008,42 +1008,42 @@ NoConn ~ 9500 3500
 Wire Wire Line
 	3850 3950 4150 3950
 Wire Wire Line
-	8400 6050 8400 6000
+	8075 5725 8075 5675
 Wire Wire Line
-	8400 6000 8250 6000
+	8075 5675 7925 5675
 $Comp
 L formula:CONN_02X03 J?
 U 1 1 60CB5C82
-P 10000 5900
+P 10000 5550
 AR Path="/60A3B20D/60CB5C82" Ref="J?"  Part="1" 
 AR Path="/60AB52CF/60CB5C82" Ref="J1002"  Part="1" 
-F 0 "J1002" H 10000 6215 50  0000 C CNN
-F 1 "CONN_02X03" H 10000 6124 50  0000 C CNN
-F 2 "footprints:Pin_Header_Straight_2x03" H 10000 4700 50  0001 C CNN
-F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 10000 4700 50  0001 C CNN
-F 4 "DK" H 10000 5900 60  0001 C CNN "MFN"
-F 5 "609-3234-ND" H 10000 5900 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 10400 6500 60  0001 C CNN "PurchasingLink"
-	1    10000 5900
+F 0 "J1002" H 10000 5865 50  0000 C CNN
+F 1 "CONN_02X03" H 10000 5774 50  0000 C CNN
+F 2 "footprints:Pin_Header_Straight_2x03" H 10000 4350 50  0001 C CNN
+F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 10000 4350 50  0001 C CNN
+F 4 "DK" H 10000 5550 60  0001 C CNN "MFN"
+F 5 "609-3234-ND" H 10000 5550 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 10400 6150 60  0001 C CNN "PurchasingLink"
+	1    10000 5550
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 60CB5C8F
-P 10400 6050
+P 10400 5700
 AR Path="/60A3B20D/60CB5C8F" Ref="#PWR?"  Part="1" 
 AR Path="/60AB52CF/60CB5C8F" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 10400 5800 50  0001 C CNN
-F 1 "GND" H 10405 5877 50  0000 C CNN
-F 2 "" H 10400 6050 50  0001 C CNN
-F 3 "" H 10400 6050 50  0001 C CNN
-	1    10400 6050
+F 0 "#PWR?" H 10400 5450 50  0001 C CNN
+F 1 "GND" H 10405 5527 50  0000 C CNN
+F 2 "" H 10400 5700 50  0001 C CNN
+F 3 "" H 10400 5700 50  0001 C CNN
+	1    10400 5700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10400 6050 10400 6000
+	10400 5700 10400 5650
 Wire Wire Line
-	10400 6000 10250 6000
+	10400 5650 10250 5650
 Text GLabel 2500 5600 2    50   Input ~ 0
 CANH
 Text GLabel 2500 5900 2    50   Input ~ 0
@@ -1055,11 +1055,11 @@ CANL
 Wire Wire Line
 	6750 1050 6750 1200
 Connection ~ 6750 1200
-Text GLabel 8400 5800 2    50   Input ~ 0
+Text GLabel 8075 5475 2    50   Input ~ 0
 +5V_BMS
 Wire Wire Line
-	10250 5800 10400 5800
-Text GLabel 10400 5800 2    50   Input ~ 0
+	10250 5450 10400 5450
+Text GLabel 10400 5450 2    50   Input ~ 0
 +5V_AIR_CONTROL
 Connection ~ 1650 5300
 Connection ~ 1650 6700
@@ -1087,17 +1087,17 @@ Text Label 3950 2350 0    50   ~ 0
 PM_RXCAN
 Text Label 3950 2250 0    50   ~ 0
 PM_TXCAN
-Text GLabel 9750 5900 0    50   Input ~ 0
+Text GLabel 9750 5550 0    50   Input ~ 0
 SM_SCK
-Text GLabel 10250 5900 2    50   Input ~ 0
+Text GLabel 10250 5550 2    50   Input ~ 0
 SM_MOSI
-Text GLabel 9750 5800 0    50   Input ~ 0
+Text GLabel 9750 5450 0    50   Input ~ 0
 SM_MISO
-Text GLabel 7750 5900 0    50   Input ~ 0
+Text GLabel 7425 5575 0    50   Input ~ 0
 PM_SCK
-Text GLabel 8250 5900 2    50   Input ~ 0
+Text GLabel 7925 5575 2    50   Input ~ 0
 PM_MOSI
-Text GLabel 7750 5800 0    50   Input ~ 0
+Text GLabel 7425 5475 0    50   Input ~ 0
 PM_MISO
 Text GLabel 9500 3400 2    50   Input ~ 0
 SM_SCK
@@ -1111,9 +1111,9 @@ Text GLabel 3950 3250 2    50   Input ~ 0
 PM_MOSI
 Text GLabel 3950 3150 2    50   Input ~ 0
 PM_MISO
-Text GLabel 9750 6000 0    50   Input ~ 0
+Text GLabel 9750 5650 0    50   Input ~ 0
 SM_RESET
-Text GLabel 7750 6000 0    50   Input ~ 0
+Text GLabel 7425 5675 0    50   Input ~ 0
 PM_RESET
 Text GLabel 10400 3900 2    50   Input ~ 0
 SM_RESET
@@ -1259,9 +1259,9 @@ Wire Notes Line
 	5850 4850 5850 500 
 Wire Notes Line
 	6950 4850 6950 7800
-Text Notes 7250 5450 0    50   ~ 0
+Text Notes 7250 5200 0    50   ~ 0
 PRIMARY PROGRAMMING HEADER
-Text Notes 9300 5450 0    50   ~ 0
+Text Notes 9300 5200 0    50   ~ 0
 SECONDARY PROGRAMMING HEADER
 Text Notes 4500 5450 0    50   ~ 0
 PRIMARY MICRO LEDS
@@ -1349,4 +1349,93 @@ Text GLabel 10200 3400 2    50   Input ~ 0
 +5V_AIR_CONTROL
 Wire Wire Line
 	10200 3400 10200 3500
+$Comp
+L formula:Test_Point_SMD TP?
+U 1 1 62933E7D
+P 3450 6375
+AR Path="/60A3B129/62933E7D" Ref="TP?"  Part="1" 
+AR Path="/60AB52CF/62933E7D" Ref="TP1001"  Part="1" 
+F 0 "TP1001" H 3350 6525 50  0000 R CNN
+F 1 "CAN_L" H 3350 6425 50  0000 R CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 3450 6225 50  0001 C CNN
+F 3 "" H 3450 6375 50  0001 C CNN
+	1    3450 6375
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:Test_Point_SMD TP?
+U 1 1 62938250
+P 3725 6225
+AR Path="/60A3B129/62938250" Ref="TP?"  Part="1" 
+AR Path="/60AB52CF/62938250" Ref="TP1002"  Part="1" 
+F 0 "TP1002" H 3950 6425 50  0000 R CNN
+F 1 "CANH" H 4000 6325 50  0000 R CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 3725 6075 50  0001 C CNN
+F 3 "" H 3725 6225 50  0001 C CNN
+	1    3725 6225
+	1    0    0    -1  
+$EndComp
+Text GLabel 3450 6525 2    50   Input ~ 0
+CANL
+Text GLabel 3725 6350 2    50   Input ~ 0
+CANH
+Wire Wire Line
+	3725 6275 3725 6350
+Wire Wire Line
+	3450 6425 3450 6525
+$Comp
+L formula:CONN_02X03 J?
+U 1 1 629B1138
+P 8900 6075
+AR Path="/60A3B20D/629B1138" Ref="J?"  Part="1" 
+AR Path="/60AB52CF/629B1138" Ref="J1003"  Part="1" 
+F 0 "J1003" H 8900 6390 50  0000 C CNN
+F 1 "CONN_02X03" H 8900 6299 50  0000 C CNN
+F 2 "footprints:Pin_Header_Straight_2x03" H 8900 4875 50  0001 C CNN
+F 3 "http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf" H 8900 4875 50  0001 C CNN
+F 4 "DK" H 8900 6075 60  0001 C CNN "MFN"
+F 5 "609-3234-ND" H 8900 6075 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491" H 9300 6675 60  0001 C CNN "PurchasingLink"
+	1    8900 6075
+	1    0    0    -1  
+$EndComp
+Text Notes 7700 6400 0    50   ~ 0
+PRIMARY ISOSPI PROGRAMMING HEADER
+$Comp
+L power:GND #PWR?
+U 1 1 629CDE27
+P 9350 6200
+AR Path="/60A3B20D/629CDE27" Ref="#PWR?"  Part="1" 
+AR Path="/60AB52CF/629CDE27" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9350 5950 50  0001 C CNN
+F 1 "GND" H 9355 6027 50  0000 C CNN
+F 2 "" H 9350 6200 50  0001 C CNN
+F 3 "" H 9350 6200 50  0001 C CNN
+	1    9350 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 6175 9350 6200
+Wire Wire Line
+	9150 6175 9350 6175
+Text GLabel 9300 5975 2    50   Input ~ 0
++5V_BMS
+Wire Wire Line
+	9150 5975 9300 5975
+Text GLabel 8550 6175 0    50   Input ~ 0
+CS_ISO
+Wire Wire Line
+	8500 6075 8650 6075
+Text GLabel 8500 6075 0    50   Input ~ 0
+SCK_ISO
+Text GLabel 8600 5975 0    50   Input ~ 0
+MISO_ISO
+Wire Wire Line
+	8600 5975 8650 5975
+Text GLabel 9225 6075 2    50   Input ~ 0
+MOSI_ISO
+Wire Wire Line
+	9150 6075 9225 6075
+Wire Wire Line
+	8550 6175 8650 6175
 $EndSCHEMATC

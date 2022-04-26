@@ -13,10 +13,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 1150 5850 0    98   ~ 0
-FAN PWM BUFFER
-Wire Notes Line
-	600  5650 600  7450
+Text Notes 1400 5850 0    98   ~ 0
+FAN PWM
 Wire Notes Line
 	600  5650 2900 5650
 $Comp
@@ -150,22 +148,6 @@ F 5 "MCP6001T-I/OTCT-ND" H 3300 4800 60  0001 C CNN "MPN"
 F 6 "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158" H 3400 4900 60  0001 C CNN "PurchasingLink"
 	1    3100 4400
 	1    0    0    -1  
-$EndComp
-$Comp
-L formula:B5B-PH-K-S J?
-U 1 1 60CD7459
-P 750 4350
-AR Path="/60A3B220/60CD7459" Ref="J?"  Part="1" 
-AR Path="/60A3BC90/60CD7459" Ref="J801"  Part="1" 
-F 0 "J801" H 750 4700 50  0000 C CNN
-F 1 "B5B-PH-K-S" H 750 4100 50  0000 C CNN
-F 2 "footprints:B5B-PH-K-S" H 650 4600 50  0001 C CNN
-F 3 "http://www.jst-mfg.com/product/pdf/eng/ePH.pdf" H 750 4700 50  0001 C CNN
-F 4 "DK" H -4700 -300 50  0001 C CNN "MFN"
-F 5 "455-1707-ND" H -4700 -300 50  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/jst-sales-america-inc/B5B-PH-K-S-LF-SN/455-1707-ND/926614" H -4700 -300 50  0001 C CNN "PurchasingLink"
-	1    750  4350
-	-1   0    0    -1  
 $EndComp
 Text Notes 600  5440 0    50   ~ 0
 HO 50S-0100\nhttps://www.lem.com/sites/default/files/products_datasheets/ho_50_250-s-0100_series.pdf
@@ -1039,94 +1021,8 @@ BSPD_CURRENT_SENSE
 Wire Wire Line
 	8800 1950 8800 2000
 Connection ~ 8800 1950
-Wire Wire Line
-	1350 6150 1350 6350
-Text GLabel 2400 6600 2    50   Input ~ 0
-FAN_PWM
-Text GLabel 1250 6700 0    50   Input ~ 0
-FAN_PWM_RAW
-$Comp
-L formula:C_0.1uF C?
-U 1 1 60C2FC86
-P 1100 6350
-AR Path="/60A3B220/60C2FC86" Ref="C?"  Part="1" 
-AR Path="/60A3BC90/60C2FC86" Ref="C802"  Part="1" 
-F 0 "C802" V 1352 6199 50  0000 L CNN
-F 1 "C_0.1uF" V 1261 6199 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 1138 6200 50  0001 C CNN
-F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 1125 6450 50  0001 C CNN
-F 4 "DK" H 1100 6350 60  0001 C CNN "MFN"
-F 5 "478-3352-1-ND" H 1100 6350 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 1525 6850 60  0001 C CNN "PurchasingLink"
-	1    1100 6350
-	0    -1   -1   0   
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 60C2FC7D
-P 900 6400
-AR Path="/60A3B220/60C2FC7D" Ref="#PWR?"  Part="1" 
-AR Path="/60A3BC90/60C2FC7D" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 900 6150 50  0001 C CNN
-F 1 "GND" H 900 6250 50  0000 C CNN
-F 2 "" H 900 6400 50  0001 C CNN
-F 3 "" H 900 6400 50  0001 C CNN
-	1    900  6400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	900  6350 900  6400
-Wire Wire Line
-	950  6350 900  6350
-Wire Wire Line
-	1350 6350 1350 6500
-Connection ~ 1350 6350
-Wire Wire Line
-	1350 6350 1250 6350
 Wire Notes Line
-	600  7450 2900 7450
-Wire Notes Line
-	2900 5650 2900 7450
-Wire Wire Line
-	2300 6600 2400 6600
-Wire Wire Line
-	1250 6700 1400 6700
-NoConn ~ 2300 6500
-$Comp
-L power:GND #PWR?
-U 1 1 60C2FC67
-P 2350 6750
-AR Path="/60A3B220/60C2FC67" Ref="#PWR?"  Part="1" 
-AR Path="/60A3BC90/60C2FC67" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 2350 6500 50  0001 C CNN
-F 1 "GND" H 2350 6600 50  0000 C CNN
-F 2 "" H 2350 6750 50  0001 C CNN
-F 3 "" H 2350 6750 50  0001 C CNN
-	1    2350 6750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2350 6700 2300 6700
-Wire Wire Line
-	2350 6750 2350 6700
-Wire Wire Line
-	1350 6500 1400 6500
-$Comp
-L formula:SN74LVC1G17 U?
-U 1 1 60C2FC58
-P 1250 6450
-AR Path="/60A3B220/60C2FC58" Ref="U?"  Part="1" 
-AR Path="/60A3BC90/60C2FC58" Ref="U801"  Part="1" 
-F 0 "U801" H 1650 6550 60  0000 C CNN
-F 1 "SN74LVC1G17" H 1900 6050 60  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23-5" H 1250 6450 60  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf" H 1250 6450 60  0001 C CNN
-F 4 "DK" H 1200 6850 60  0001 C CNN "MFN"
-F 5 "296-11933-1-ND" H 1100 6750 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/texas-instruments/SN74LVC1G17DBVR/296-11933-1-ND/389050" H 1300 6950 60  0001 C CNN "PurchasingLink"
-	1    1250 6450
-	1    0    0    -1  
-$EndComp
+	600  6150 2900 6150
 Wire Notes Line
 	7400 2950 10050 2950
 Wire Notes Line
@@ -1504,8 +1400,41 @@ Text GLabel 5225 6425 0    50   Input ~ 0
 +5V_BMS
 Text GLabel 8675 4100 0    50   Input ~ 0
 +5V_BMS
-Text GLabel 1350 6150 2    50   Input ~ 0
-+5V_BMS
 Text GLabel 8800 1000 2    50   Input ~ 0
 +12V_SHUTDOWN
+Text GLabel 9200 2100 2    50   Input ~ 0
+DETECT_BMS
+Text GLabel 9200 2100 2    50   Input ~ 0
+DETECT_BMS
+Wire Wire Line
+	9100 2000 9100 2100
+Wire Wire Line
+	9100 2100 9200 2100
+Connection ~ 9100 2000
+Text GLabel 1725 6000 0    50   Input ~ 0
+FAN_PWM_RAW
+Text GLabel 1850 6000 2    50   Input ~ 0
+FAN_PWM
+Wire Wire Line
+	1725 6000 1850 6000
+Wire Notes Line
+	600  5650 600  6150
+Wire Notes Line
+	2900 5650 2900 6150
+$Comp
+L formula:B5B-PH-K-S J?
+U 1 1 60CD7459
+P 750 4350
+AR Path="/60A3B220/60CD7459" Ref="J?"  Part="1" 
+AR Path="/60A3BC90/60CD7459" Ref="J801"  Part="1" 
+F 0 "J801" H 750 4700 50  0000 C CNN
+F 1 "B5B-PH-K-S" H 750 4100 50  0000 C CNN
+F 2 "footprints:B5B-PH-K-S" H 650 4600 50  0001 C CNN
+F 3 "http://www.jst-mfg.com/product/pdf/eng/ePH.pdf" H 750 4700 50  0001 C CNN
+F 4 "DK" H -4700 -300 50  0001 C CNN "MFN"
+F 5 "455-1707-ND" H -4700 -300 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/jst-sales-america-inc/B5B-PH-K-S-LF-SN/455-1707-ND/926614" H -4700 -300 50  0001 C CNN "PurchasingLink"
+	1    750  4350
+	-1   0    0    -1  
+$EndComp
 $EndSCHEMATC

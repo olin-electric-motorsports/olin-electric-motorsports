@@ -64,7 +64,7 @@ F0 "air_controls" 50
 F1 "air_control.sch" 50
 $EndSheet
 Text Notes 3400 4050 0    276  ~ 0
-Service Section Controller\nRev 1.0
+Service Section Controller\nRev 2.0
 $Sheet
 S 750  1750 2150 275 
 U 60AB52CF
@@ -77,6 +77,4 @@ U 60AEF08C
 F0 "shutdown" 50
 F1 "shutdown.sch" 50
 $EndSheet
-Text Notes 3450 4400 0    50   ~ 0
-TODO\nadd test point footprint (circular) to the formula footprint library\nrename the test points on the bms page \nmake sure no labels overlap
 $EndSCHEMATC

@@ -18,21 +18,6 @@ TO ACCUMULATOR INTERFACE (INTERNAL)
 Text Notes 6300 2750 1    50   ~ 0
 For Signals
 $Comp
-L power:GND #PWR?
-U 1 1 60E61A8C
-P 9900 3400
-AR Path="/60A3B20D/60E61A8C" Ref="#PWR?"  Part="1" 
-AR Path="/60A3B1F8/60E61A8C" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 9900 3150 50  0001 C CNN
-F 1 "GND" H 9905 3227 50  0000 C CNN
-F 2 "" H 9900 3400 50  0001 C CNN
-F 3 "" H 9900 3400 50  0001 C CNN
-	1    9900 3400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9900 3400 9900 3250
-$Comp
 L formula:MicroFit_VT_12 J?
 U 1 1 60E61ABA
 P 8850 2250
@@ -69,32 +54,13 @@ F 6 "http://www.te.com/global-en/product-1-338068-6.html" H 4850 3850 60  0001 C
 	1    4850 2550
 	1    0    0    -1  
 $EndComp
-$Comp
-L formula:Ultrafit_4_RA J?
-U 1 1 60B785AF
-P 8875 4175
-AR Path="/60A3B236/60B785AF" Ref="J?"  Part="1" 
-AR Path="/60A3B41E/60B785AF" Ref="J?"  Part="1" 
-AR Path="/60A3B1F8/60B785AF" Ref="J404"  Part="1" 
-F 0 "J404" H 8983 4612 60  0000 C CNN
-F 1 "Ultrafit_4_RA" H 8983 4506 60  0000 C CNN
-F 2 "footprints:Ultrafit_4_RA" H 8375 4825 60  0001 C CNN
-F 3 "https://www.molex.com/pdm_docs/sd/1723101104_sd.pdf" H 9325 5275 60  0001 C CNN
-F 4 "Digi-Key" H 8175 5425 60  0001 C CNN "MFN"
-F 5 "Value" H 8025 4575 60  0001 C CNN "Package"
-F 6 "WM11574-ND" H 8225 4675 60  0001 C CNN "MPN"
-F 7 "WM11564-ND" H 9275 4925 60  0001 C CNN "MPN2"
-F 8 "https://www.digikey.com/products/en?keywords=1723101304" H 9375 5025 60  0001 C CNN "PurchasingLink"
-	1    8875 4175
-	1    0    0    -1  
-$EndComp
-Text GLabel 9225 3975 2    50   Input ~ 0
+Text GLabel 8950 4025 2    50   Input ~ 0
 +TS
-Text GLabel 9225 4075 2    50   Input ~ 0
+Text GLabel 8950 4125 2    50   Input ~ 0
 -TS
-Text GLabel 9225 4175 2    50   Input ~ 0
+Text GLabel 8950 4225 2    50   Input ~ 0
 +TS
-Text GLabel 9225 4275 2    50   Input ~ 0
+Text GLabel 8950 4325 2    50   Input ~ 0
 -TS
 Text Notes 1250 2600 0    50   ~ 0
 BMS isoSPI cutout on ‘BMS Core’ page for clarity
@@ -115,8 +81,6 @@ Text GLabel 9050 2600 2    50   Input ~ 0
 Text GLabel 9050 1900 2    50   Input ~ 0
 +AIR_AUX+
 Text GLabel 9050 2800 2    50   Input ~ 0
-FINAL_SHUTDOWN
-Text GLabel 9150 3350 2    50   Input ~ 0
 FINAL_SHUTDOWN
 Wire Wire Line
 	9800 2700 9050 2700
@@ -288,21 +252,16 @@ Wire Wire Line
 Text Notes 6250 3250 0    50   ~ 0
 This needs to be a right angle connector
 $Comp
-L formula:MicroFit_RA_V_2 J405
-U 1 1 62060F67
-P 8850 3300
-F 0 "J405" H 8908 3575 50  0000 C CNN
-F 1 "MicroFit_RA_V_2" H 8908 3484 50  0000 C CNN
-F 2 "footprints:MicroFit_RA_V_2" H 8800 3500 50  0001 C CNN
-F 3 "https://www.molex.com/pdm_docs/sd/430450200_sd.pdf" H 8800 3500 50  0001 C CNN
-F 4 "MFN" H 8950 3550 50  0001 C CNN "DK"
-F 5 "WM1865-ND" H 9050 3650 50  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/molex/0430450200/WM1813-ND/252526" H 8850 3450 50  0001 C CNN "PurchasingLink"
-	1    8850 3300
+L formula:MicroFit_VT_4 J404
+U 1 1 6267E8D8
+P 8750 4175
+F 0 "J404" H 8808 4732 50  0000 C CNN
+F 1 "MicroFit_VT_4" H 8808 4641 50  0000 C CNN
+F 2 "footprints:MicroFit_VT_4" H 8750 3875 50  0001 C CNN
+F 3 "" H 8750 4125 50  0001 C CNN
+F 4 "430450414" H 8808 4550 50  0000 C CNN "MPN"
+F 5 "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" H 8808 4459 50  0000 C CNN "PurchasingLink"
+	1    8750 4175
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	9100 3250 9900 3250
-Wire Wire Line
-	9100 3350 9150 3350
 $EndSCHEMATC
