@@ -214,7 +214,8 @@ static void state_machine_run(void) {
                 bms_core.bms_state = FAULT;
             }
 
-            if ((air_state != AIR_STATE_IDLE) && (air_state != AIR_STATE_INIT) && (air_state != AIR_STATE_FAULT)) {
+            if ((air_state != AIR_STATE_IDLE) && (air_state != AIR_STATE_INIT)
+                && (air_state != AIR_STATE_FAULT)) {
                 bms_core.bms_state = DISCHARGING;
             }
 
