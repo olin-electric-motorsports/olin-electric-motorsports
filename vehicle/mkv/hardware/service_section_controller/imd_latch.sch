@@ -325,7 +325,7 @@ F 3 "" H 5550 2600 50  0001 C CNN
 $EndComp
 Text Notes 2125 3400 0    50   ~ 0
 Vout = 1.667V
-Text GLabel 1650 4225 2    50   Input ~ 0
+Text GLabel 1400 4225 2    50   Input ~ 0
 IMD_Output
 Connection ~ 2150 3450
 Wire Wire Line
@@ -403,20 +403,6 @@ F 1 "GND" H 2080 4727 50  0000 C CNN
 F 2 "" H 2075 4900 50  0001 C CNN
 F 3 "" H 2075 4900 50  0001 C CNN
 	1    2075 4900
-	1    0    0    -1  
-$EndComp
-$Comp
-L formula:R_2.2K R307
-U 1 1 610EBAED
-P 2225 4875
-F 0 "R307" H 2295 4921 50  0000 L CNN
-F 1 "R_2.2K" H 2295 4830 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 2155 4875 50  0001 C CNN
-F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 2305 4875 50  0001 C CNN
-F 4 "DK" H 2225 4875 60  0001 C CNN "MFN"
-F 5 "RMCF0805FT2K20CT-ND" H 2225 4875 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT2K20/RMCF0805FT2K20CT-ND/1942387" H 2705 5275 60  0001 C CNN "PurchasingLink"
-	1    2225 4875
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -878,28 +864,12 @@ Wire Wire Line
 Wire Wire Line
 	3050 3900 3050 4575
 Wire Wire Line
-	1325 4575 1650 4575
-$Comp
-L formula:R_3K R312
-U 1 1 626D4614
-P 1900 4575
-F 0 "R312" V 1693 4575 50  0000 C CNN
-F 1 "R_3K" V 1784 4575 50  0000 C CNN
-F 2 "footprints:R_0805_OEM" H 1830 4575 50  0001 C CNN
-F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 1980 4575 50  0001 C CNN
-F 4 "DK" H 1900 4575 60  0001 C CNN "MFN"
-F 5 "RMCF0805FT3K00CT-ND" H 1900 4575 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389" H 2380 4975 60  0001 C CNN "PurchasingLink"
-	1    1900 4575
-	0    1    1    0   
-$EndComp
+	1325 4575 1400 4575
 Wire Wire Line
-	2050 4575 2225 4575
+	1400 4225 1400 4575
+Connection ~ 1400 4575
 Wire Wire Line
-	1650 4225 1650 4575
-Connection ~ 1650 4575
-Wire Wire Line
-	1650 4575 1750 4575
+	1400 4575 1675 4575
 Wire Wire Line
 	8600 4500 8775 4500
 Wire Wire Line
@@ -1053,4 +1023,34 @@ Text Notes 575  4600 0    50   ~ 0
 to pin 8
 Text Notes 550  4500 0    50   ~ 0
 IMD PINS
+Wire Wire Line
+	1975 4575 2225 4575
+$Comp
+L formula:R_1K R307
+U 1 1 6276D48E
+P 2225 4875
+F 0 "R307" H 2295 4921 50  0000 L CNN
+F 1 "R_1K" H 2295 4830 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 2155 4875 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" H 2305 4875 50  0001 C CNN
+F 4 "DK" H 2225 4875 60  0001 C CNN "MFN"
+F 5 "RNCP0805FTD1K00CT-ND" H 2225 4875 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" H 2705 5275 60  0001 C CNN "PurchasingLink"
+	1    2225 4875
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:R_3K R312
+U 1 1 62776FAA
+P 1825 4575
+F 0 "R312" V 1618 4575 50  0000 C CNN
+F 1 "R_3K" V 1709 4575 50  0000 C CNN
+F 2 "footprints:R_0805_OEM" H 1755 4575 50  0001 C CNN
+F 3 "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" H 1905 4575 50  0001 C CNN
+F 4 "DK" H 1825 4575 60  0001 C CNN "MFN"
+F 5 "RMCF0805FT3K00CT-ND" H 1825 4575 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT3K00/RMCF0805FT3K00CT-ND/2418389" H 2305 4975 60  0001 C CNN "PurchasingLink"
+	1    1825 4575
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
