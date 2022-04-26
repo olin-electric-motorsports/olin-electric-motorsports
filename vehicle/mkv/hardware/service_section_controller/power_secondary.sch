@@ -257,22 +257,22 @@ Connection ~ 2900 2350
 $Comp
 L formula:F_500mA_16V F?
 U 1 1 60C180ED
-P 9850 4850
+P 9750 4950
 AR Path="/5C6B723E/60C180ED" Ref="F?"  Part="1" 
 AR Path="/60C180ED" Ref="F?"  Part="1" 
 AR Path="/5C702479/60C180ED" Ref="F?"  Part="1" 
 AR Path="/60A3B220/60C180ED" Ref="F?"  Part="1" 
 AR Path="/60A3B080/60C180ED" Ref="F?"  Part="1" 
 AR Path="/60A3B0AB/60C180ED" Ref="F702"  Part="1" 
-F 0 "F702" V 9950 4850 50  0000 C CNN
-F 1 "500mA" V 9750 4850 50  0000 C CNN
-F 2 "footprints:Fuse_1210" V 9780 4850 50  0001 C CNN
-F 3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" V 9930 4850 50  0001 C CNN
-F 4 "Digi-Key" H 9850 4850 60  0001 C CNN "MFN"
-F 5 "507-1786-1-ND" H 9850 4850 60  0001 C CNN "MPN"
-F 6 "Value" H 9850 4850 60  0001 C CNN "Package"
-F 7 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" V 10330 5250 60  0001 C CNN "PurchasingLink"
-	1    9850 4850
+F 0 "F702" V 9850 4950 50  0000 C CNN
+F 1 "500mA" V 9650 4950 50  0000 C CNN
+F 2 "footprints:Fuse_1210" V 9680 4950 50  0001 C CNN
+F 3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" V 9830 4950 50  0001 C CNN
+F 4 "Digi-Key" H 9750 4950 60  0001 C CNN "MFN"
+F 5 "507-1786-1-ND" H 9750 4950 60  0001 C CNN "MPN"
+F 6 "Value" H 9750 4950 60  0001 C CNN "Package"
+F 7 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" V 10230 5350 60  0001 C CNN "PurchasingLink"
+	1    9750 4950
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
@@ -1578,14 +1578,12 @@ F 6 "https://www.digikey.com/product-detail/en/epcos-tdk/B59884C0120A070/495-753
 $EndComp
 Wire Wire Line
 	6550 2350 7150 2350
-Text GLabel 10300 4850 2    50   Input ~ 0
+Text GLabel 10375 4950 2    50   Input ~ 0
 +15V_FUSED
-Text GLabel 9450 4850 0    50   Input ~ 0
+Text GLabel 9475 4950 0    50   Input ~ 0
 +15V
 Wire Wire Line
-	9450 4850 9700 4850
-Wire Wire Line
-	10000 4850 10300 4850
+	9475 4950 9600 4950
 $Comp
 L formula:R_0_2512 R708
 U 1 1 627B9F75
@@ -1666,32 +1664,32 @@ Text Notes 7800 2750 2    50   ~ 0
 $Comp
 L formula:F_500mA_16V F?
 U 1 1 62818372
-P 9850 5200
+P 9925 4475
 AR Path="/5C6B723E/62818372" Ref="F?"  Part="1" 
 AR Path="/62818372" Ref="F?"  Part="1" 
 AR Path="/5C702479/62818372" Ref="F?"  Part="1" 
 AR Path="/60A3B220/62818372" Ref="F?"  Part="1" 
 AR Path="/60A3B080/62818372" Ref="F?"  Part="1" 
 AR Path="/60A3B0AB/62818372" Ref="F703"  Part="1" 
-F 0 "F703" V 9950 5200 50  0000 C CNN
-F 1 "500mA" V 9750 5200 50  0000 C CNN
-F 2 "footprints:Fuse_1210" V 9780 5200 50  0001 C CNN
-F 3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" V 9930 5200 50  0001 C CNN
-F 4 "Digi-Key" H 9850 5200 60  0001 C CNN "MFN"
-F 5 "507-1786-1-ND" H 9850 5200 60  0001 C CNN "MPN"
-F 6 "Value" H 9850 5200 60  0001 C CNN "Package"
-F 7 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" V 10330 5600 60  0001 C CNN "PurchasingLink"
-	1    9850 5200
+F 0 "F703" V 10025 4475 50  0000 C CNN
+F 1 "500mA" V 9825 4475 50  0000 C CNN
+F 2 "footprints:Fuse_1210" V 9855 4475 50  0001 C CNN
+F 3 "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" V 10005 4475 50  0001 C CNN
+F 4 "Digi-Key" H 9925 4475 60  0001 C CNN "MFN"
+F 5 "507-1786-1-ND" H 9925 4475 60  0001 C CNN "MPN"
+F 6 "Value" H 9925 4475 60  0001 C CNN "Package"
+F 7 "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" V 10405 4875 60  0001 C CNN "PurchasingLink"
+	1    9925 4475
 	0    -1   -1   0   
 $EndComp
-Text GLabel 9425 5200 0    50   Input ~ 0
+Text GLabel 9500 4475 0    50   Input ~ 0
 +5V_TSAL
 Wire Wire Line
-	9425 5200 9700 5200
-Text GLabel 10300 5200 2    50   Input ~ 0
+	9500 4475 9775 4475
+Text GLabel 10375 4475 2    50   Input ~ 0
 +5V__TSAL_FUSED
 Wire Wire Line
-	10000 5200 10300 5200
+	10075 4475 10375 4475
 Connection ~ 7450 2350
 Wire Wire Line
 	7450 2350 7800 2350
@@ -1722,8 +1720,6 @@ Wire Notes Line
 	5275 7375 5275 5100
 Wire Notes Line
 	1625 7375 5275 7375
-Wire Notes Line
-	1625 5100 1625 7375
 Wire Wire Line
 	3825 5800 3825 5925
 $Comp
@@ -1818,34 +1814,6 @@ Wire Wire Line
 	3450 5925 3825 5925
 Wire Wire Line
 	3450 5925 3450 6075
-$Comp
-L formula:C_0.1uF C708
-U 1 1 627F6B27
-P 3450 6225
-F 0 "C708" H 3565 6271 50  0000 L CNN
-F 1 "C_0.1uF" H 3565 6180 50  0000 L CNN
-F 2 "footprints:C_0805_OEM" H 3488 6075 50  0001 C CNN
-F 3 "http://datasheets.avx.com/X7RDielectric.pdf" H 3475 6325 50  0001 C CNN
-F 4 "DK" H 3450 6225 60  0001 C CNN "MFN"
-F 5 "478-3352-1-ND" H 3450 6225 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" H 3875 6725 60  0001 C CNN "PurchasingLink"
-	1    3450 6225
-	1    0    0    -1  
-$EndComp
-$Comp
-L formula:C_33uF C704
-U 1 1 627F631E
-P 2500 6225
-F 0 "C704" H 2615 6271 50  0000 L CNN
-F 1 "C_33uF" H 2615 6180 50  0000 L CNN
-F 2 "footprints:Fuse_1812" H 2550 5825 50  0001 C CNN
-F 3 "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf" H 2500 6875 50  0001 C CNN
-F 4 "DK" H 2550 5725 60  0001 C CNN "MFN"
-F 5 "445-3924-1-ND" H 2500 6575 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250KC/445-3924-1-ND/1923431" H 2750 6725 60  0001 C CNN "PurchasingLink"
-	1    2500 6225
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3025 6675 3025 6825
 Wire Wire Line
@@ -1884,4 +1852,90 @@ F 6 "https://www.digikey.com/en/products/detail/diodes-incorporated/AP7370-50W5-
 	1    3025 5925
 	1    0    0    -1  
 $EndComp
+$Comp
+L formula:C_1uF C708
+U 1 1 62693E79
+P 3450 6275
+F 0 "C708" H 3565 6371 50  0000 L CNN
+F 1 "C_1uF" H 3565 6280 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 3488 6875 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf" H 3475 7125 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467" H 3875 6775 60  0001 C CNN "PurchasingLink"
+F 5 "DK" H 3450 6275 50  0001 C CNN "MFN"
+F 6 "1276-6470-1-ND" H 3450 6275 50  0001 C CNN "MPN"
+	1    3450 6275
+	1    0    0    -1  
+$EndComp
+$Comp
+L formula:C_1uF C704
+U 1 1 62695C2A
+P 2500 6275
+F 0 "C704" H 2615 6371 50  0000 L CNN
+F 1 "C_1uF" H 2615 6280 50  0000 L CNN
+F 2 "footprints:C_0805_OEM" H 2538 6875 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf" H 2525 7125 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467" H 2925 6775 60  0001 C CNN "PurchasingLink"
+F 5 "DK" H 2500 6275 50  0001 C CNN "MFN"
+F 6 "1276-6470-1-ND" H 2500 6275 50  0001 C CNN "MPN"
+	1    2500 6275
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	1625 5100 1625 7375
+$Comp
+L formula:D_Zener_18V D?
+U 1 1 626AE824
+P 10100 5400
+AR Path="/5C6B723E/626AE824" Ref="D?"  Part="1" 
+AR Path="/626AE824" Ref="D?"  Part="1" 
+AR Path="/5C702479/626AE824" Ref="D?"  Part="1" 
+AR Path="/60A3B220/626AE824" Ref="D?"  Part="1" 
+AR Path="/60A3B080/626AE824" Ref="D?"  Part="1" 
+AR Path="/60A3B0AB/626AE824" Ref="D706"  Part="1" 
+F 0 "D706" H 10100 5500 50  0000 C CNN
+F 1 "D_Zener_18V" H 10100 5300 50  0000 C CNN
+F 2 "footprints:DO-214AA" H 10000 5400 50  0001 C CNN
+F 3 "http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf" H 10100 5500 50  0001 C CNN
+F 4 "SMBJ5355B-TPMSCT-ND" H 10200 5600 60  0001 C CNN "MPN"
+F 5 "Digi-Key" H 10300 5700 60  0001 C CNN "MFN"
+F 6 "DO-214AA (SMB)" H 10400 5800 60  0001 C CNN "Package"
+F 7 "https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND" H 10500 5900 60  0001 C CNN "PurchasingLink"
+	1    10100 5400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	10100 5550 10100 5650
+Text Notes 11050 5325 2    50   ~ 0
+Overvoltage Protection
+Wire Wire Line
+	10100 4950 10100 5250
+Connection ~ 10100 4950
+Wire Wire Line
+	9900 4950 10100 4950
+Wire Wire Line
+	10100 4950 10375 4950
+Text GLabel 8175 5125 2    50   Input ~ 0
++15V
+Text GLabel 7425 5125 0    50   Input ~ 0
++5V_TSAL
+$Comp
+L formula:R_0_2512 R709
+U 1 1 627129C7
+P 7800 5125
+F 0 "R709" V 7593 5125 50  0000 C CNN
+F 1 "R_0_2512" V 7684 5125 50  0000 C CNN
+F 2 "footprints:R_2512_OEM" H 7730 5125 50  0001 C CNN
+F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 7880 5125 50  0001 C CNN
+F 4 "DK" H 7800 5125 60  0001 C CNN "MFN"
+F 5 "A121322CT-ND" H 7800 5125 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" H 8280 5525 60  0001 C CNN "PurchasingLink"
+	1    7800 5125
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7650 5125 7425 5125
+Wire Wire Line
+	7950 5125 8175 5125
+Text GLabel 10100 5650 2    50   Input ~ 0
+15V_RETURN
 $EndSCHEMATC

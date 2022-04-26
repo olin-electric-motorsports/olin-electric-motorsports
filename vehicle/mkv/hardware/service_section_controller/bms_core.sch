@@ -149,22 +149,6 @@ F 6 "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-O
 	1    3100 4400
 	1    0    0    -1  
 $EndComp
-$Comp
-L formula:B5B-PH-K-S J?
-U 1 1 60CD7459
-P 750 4350
-AR Path="/60A3B220/60CD7459" Ref="J?"  Part="1" 
-AR Path="/60A3BC90/60CD7459" Ref="J801"  Part="1" 
-F 0 "J801" H 750 4700 50  0000 C CNN
-F 1 "B5B-PH-K-S" H 750 4100 50  0000 C CNN
-F 2 "footprints:B5B-PH-K-S" H 650 4600 50  0001 C CNN
-F 3 "http://www.jst-mfg.com/product/pdf/eng/ePH.pdf" H 750 4700 50  0001 C CNN
-F 4 "DK" H -4700 -300 50  0001 C CNN "MFN"
-F 5 "455-1707-ND" H -4700 -300 50  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/jst-sales-america-inc/B5B-PH-K-S-LF-SN/455-1707-ND/926614" H -4700 -300 50  0001 C CNN "PurchasingLink"
-	1    750  4350
-	-1   0    0    -1  
-$EndComp
 Text Notes 600  5440 0    50   ~ 0
 HO 50S-0100\nhttps://www.lem.com/sites/default/files/products_datasheets/ho_50_250-s-0100_series.pdf
 $Comp
@@ -1437,4 +1421,20 @@ Wire Notes Line
 	600  5650 600  6150
 Wire Notes Line
 	2900 5650 2900 6150
+$Comp
+L formula:B5B-PH-K-S J?
+U 1 1 60CD7459
+P 750 4350
+AR Path="/60A3B220/60CD7459" Ref="J?"  Part="1" 
+AR Path="/60A3BC90/60CD7459" Ref="J801"  Part="1" 
+F 0 "J801" H 750 4700 50  0000 C CNN
+F 1 "B5B-PH-K-S" H 750 4100 50  0000 C CNN
+F 2 "footprints:B5B-PH-K-S" H 650 4600 50  0001 C CNN
+F 3 "http://www.jst-mfg.com/product/pdf/eng/ePH.pdf" H 750 4700 50  0001 C CNN
+F 4 "DK" H -4700 -300 50  0001 C CNN "MFN"
+F 5 "455-1707-ND" H -4700 -300 50  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/product-detail/en/jst-sales-america-inc/B5B-PH-K-S-LF-SN/455-1707-ND/926614" H -4700 -300 50  0001 C CNN "PurchasingLink"
+	1    750  4350
+	-1   0    0    -1  
+$EndComp
 $EndSCHEMATC
