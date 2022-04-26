@@ -76,8 +76,8 @@ void enable_STANDBY_mode(){
 }
 
 void gpio_init(){
-    gpio_set_mode(LED_0,            OUTPUT); 
-    gpio_set_mode(LED_1,            OUTPUT); 
+    // gpio_set_mode(LED_0,            OUTPUT); 
+    // gpio_set_mode(LED_1,            OUTPUT); 
     gpio_set_mode(LED_2,            OUTPUT); 
     gpio_set_mode(CAN_STBY,         OUTPUT); 
     gpio_set_mode(ON_STATE_FET_DRV, OUTPUT);
@@ -95,10 +95,12 @@ void timer0_IDLE_callback(void){
 
 void adc_callback(void){
     // read value
+    // uint16_t temp = 0;  
     adc_read_results(&adc_data[adc_ptr]);
+    // adc_read_results(&temp);
     lvbms.temp_0 = adc_data[adc_ptr];  
     
-    /* TODO: FIX ADC CHAINING ISSUES */
+    /* TODO: FIX ADC CHAINING ISSUES - FREE RUN MODE */
 
     // // check adc_ptr & accordingly start next conversion 
     // if (adc_ptr==1){ // should be up to 6
@@ -130,7 +132,7 @@ void enter_fault_state(fault_flags fault){
 */
 ISR(INT2_vect){
     system_ON(); 
-    gpio_set_pin(LED_2); 
+    // gpio_set_pin(LED_2); 
 
    
 }
@@ -142,7 +144,7 @@ ISR(INT2_vect){
 */
 ISR(INT1_vect){
     system_ON(); 
-    gpio_set_pin(LED_1); 
+    // gpio_set_pin(LED_1); 
 
 }
 
@@ -190,7 +192,7 @@ void LTC_voltage_task(){
 
     // TESTING - simply read config and check PEC 
 
-    // LTC6810_rdcfg(NUM_ICS, ICS); 
+    LTC6810_rdcfg(NUM_ICS, ICS); 
     // uint8_t tx = 0x55; 
     // uint8_t rx = 0; 
     // spi_transceive(&tx,&rx,1); 
@@ -198,7 +200,7 @@ void LTC_voltage_task(){
 
     // lvbms.pec_error_count = pec_ct; 
 
-    gpio_toggle_pin(LED_1); 
+    // gpio_toggle_pin(LED_1); 
     // if (pec_ct == 0){
     // } 
     // else {
@@ -257,13 +259,14 @@ void LTC_voltage_task(){
 void collect_telem(){
     // begin lvbms ADC conversion chain 
     adc_start_convert(adc_pins[adc_ptr]);
+    // adc_start_convert(CURRENT_SNS);
 
     // step through all ADCs in a blocking fashion, doesn't chain async
     // for (int i = 0; i <7; i ++){
     //     adc_data[i] = adc_read(adc_pins[i]); 
     // }
 
-    // LTC_voltage_task(); 
+    LTC_voltage_task(); 
 }
 
 /* check for OT, UT, OV, UV, comparator error */ 
@@ -295,24 +298,24 @@ void collect_telem(){
 void drive_leds(){
     // always flash LED_0
     if ((ms_counter / 50)%2 == 0){
-        gpio_clear_pin(LED_0); 
-    } else {
-        gpio_set_pin(LED_0); 
-    }
-
-    // drive LED_1 based on charge / discharge 
-    if (SYSTEM_STATE == CHARGING || SYSTEM_STATE == DISCHARING){
-        gpio_set_pin(LED_1); 
-    }else {
-        gpio_clear_pin(LED_1); 
-    }
-
-    // drive LED_2 based on fault state  
-    if (SYSTEM_STATE == FAULT){
-        gpio_set_pin(LED_2); 
-    } else {
         gpio_clear_pin(LED_2); 
+    } else {
+        gpio_set_pin(LED_2); 
     }
+
+    // // drive LED_1 based on charge / discharge 
+    // if (SYSTEM_STATE == CHARGING || SYSTEM_STATE == DISCHARING){
+    //     gpio_set_pin(LED_1); 
+    // }else {
+    //     gpio_clear_pin(LED_1); 
+    // }
+
+    // // drive LED_2 based on fault state  
+    // if (SYSTEM_STATE == FAULT){
+    //     gpio_set_pin(LED_2); 
+    // } else {
+    //     gpio_clear_pin(LED_2); 
+    // }
 }
 
 // TODO: is this semantically correct? 
@@ -363,12 +366,11 @@ void system_OFF(){
     // disable onstate cmpnts
     gpio_clear_pin(ON_STATE_FET_DRV); 
     // ensure all LED's are off
-    gpio_clear_pin(LED_0); 
-    gpio_clear_pin(LED_1); 
+    // gpio_clear_pin(LED_0); 
+    // gpio_clear_pin(LED_1); 
     gpio_clear_pin(LED_2); 
-    // enter STANDBY
     enable_external_interrupts(); 
-    // works - doesn't work unless COMP_1_INPUT and COMP_2_INPUT are tied HIGH since comparator is broken. 
+    // works - doesn't work unless COMP_1_INPUT and COMP_2_INPUT are tied HIGH in hardware since comparator is broken. 
 
     enable_STANDBY_mode(); 
     // superloop continues running
@@ -383,14 +385,7 @@ int main(void){
     adc_init(); 
     adc_interrupt_enable(adc_callback); 
     gpio_init(); 
-
-
-
-
-
     timer_init(&timer0_IDLE_ctc_cfg); 
-
-
     can_init(BAUD_500KBPS);
     spi_init(&spi_cfg);     
     
@@ -407,10 +402,6 @@ int main(void){
             // can_send_lvb ms_aux_1(); 
             one_second_passed = (ms_counter / 100)%2; 
         }
-
-
-        
-
 
         switch(SYSTEM_STATE){
             case STANDBY: 

@@ -10,7 +10,7 @@
 #define LTC_UV_THRESHOLD        (1875) // 3.0V / (16*100*10**-6)
 #define LTC_ITEMP_THRESHOLD     
 #define OC_THRESHOLD
-#define IDLE_TIMEOUT    1000 // 59 seconds
+#define IDLE_TIMEOUT    5900 // 59 seconds
 
 
 
@@ -23,7 +23,7 @@
 #define THERM_3         ADC10 
 #define THERM_4         ADC2
 #define THERM_5         ADC3
-#define CURRENT_SNS     ADC4
+// #define CURRENT_SNS     ADC4
 
 
 // state machine enum 
@@ -55,8 +55,8 @@ typedef enum {
 /* define GPIOS, ADCs, pin consts*/
 
 // generic gpios
-gpio_t LED_0            = PB0; 
-gpio_t LED_1            = PB1;
+// gpio_t LED_0            = PB0; 
+// gpio_t LED_1            = PB1;
 gpio_t CAN_STBY         = PB3; 
 gpio_t LED_2            = PB4; 
 gpio_t ON_STATE_FET_DRV = PC0; 
@@ -70,7 +70,8 @@ gpio_t FAN_PWM          = PC1;
 gpio_t COMP_1_IN        = PB2; 
 gpio_t COMP_2_IN        = PB5; 
 
-adc_pin_e adc_pins[] = {THERM_0, THERM_1, THERM_2, THERM_3, THERM_4, THERM_5, CURRENT_SNS}; 
+// adc_pin_e adc_pins[] = {THERM_0, THERM_1, THERM_2, THERM_3, THERM_4, THERM_5, CURRENT_SNS}; 
+adc_pin_e adc_pins[] = {THERM_0, THERM_1, THERM_2, THERM_3, THERM_4, THERM_5}; 
 
 
 /* config timer0 for IDLE timer */
@@ -125,7 +126,7 @@ timer_cfg_s timer0_IDLE_ctc_cfg = {
  * SPI
  */
 spi_cfg_s spi_cfg = {
-    .peripheral = SPI_A,
+    .peripheral = SPI,
     .interrupt_enable = false,
     .data_order = MSB,
     .mode = MAIN,

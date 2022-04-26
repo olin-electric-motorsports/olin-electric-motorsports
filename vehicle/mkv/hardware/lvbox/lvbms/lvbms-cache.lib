@@ -482,39 +482,21 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# formula_LT1017IS8
+# formula_LT1716
 #
-DEF formula_LT1017IS8 U 0 40 Y Y 1 F N
-F0 "U" 300 250 50 H V L BNN
-F1 "formula_LT1017IS8" 300 150 50 H V L BNN
-F2 "SO-8_S" 300 -800 50 H I L BNN
-F3 "" 0 0 50 H I L BNN
-F4 "lt1017is8#pbf" 300 -700 50 H I L BNN "MPN"
-F5 "Linear Technology" 300 -600 50 H I L BNN "VENDOR"
+DEF formula_LT1716 U 0 40 Y Y 1 F N
+F0 "U" 0 -200 50 H V C CNN
+F1 "formula_LT1716" 100 200 50 H V C CNN
+F2 "Package_TO_SOT_SMD:SOT-23-5" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+F4 "https://www.digikey.com/en/products/detail/analog-devices-inc/LT1716HS5-TRMPBF/962293" 0 0 50 H I C CNN "Purchasing Link"
 DRAW
-T 0 700 -200 50 0 0 0 + Normal 0 C C
-T 0 700 0 50 0 0 0 + Normal 0 C C
-T 0 700 -300 50 0 0 0 - Normal 0 C C
-T 0 700 -100 50 0 0 0 - Normal 0 C C
-T 0 750 -50 50 0 0 0 A Normal 0 C C
-T 0 750 -250 50 0 0 0 B Normal 0 C C
-S 300 100 1100 -400 0 0 6 f
-P 6 0 1 4 300 -300 350 -300 350 -250 550 -250 550 -300 650 -300 N
-P 6 0 1 4 300 -100 350 -100 350 -50 550 -50 550 -100 650 -100 N
-P 6 0 1 4 850 -250 900 -250 900 -200 1050 -200 1050 -250 1100 -250 N
-P 6 0 1 4 850 -50 900 -50 900 0 1050 0 1050 -50 1100 -50 N
-P 4 1 1 10 850 -250 650 -150 650 -350 850 -250 N
-P 4 1 1 10 850 -50 650 50 650 -150 850 -50 N
-P 6 1 1 4 300 -200 350 -200 350 -150 550 -150 550 -200 650 -200 N
-P 6 1 1 4 300 0 350 0 350 50 550 50 550 0 650 0 N
-X +INA 1 200 0 100 R 40 40 0 0 I
-X V- 2 850 -500 100 U 40 40 0 0 W
-X +INB 3 200 -200 100 R 40 40 0 0 I
-X -INB 4 200 -300 100 R 40 40 0 0 I
-X OUTB 5 1200 -250 100 L 40 40 0 0 O
-X V+ 6 850 200 100 D 40 40 0 0 W
-X OUTA 7 1200 -50 100 L 40 40 0 0 O
-X -INA 8 200 -100 100 R 40 40 0 0 I
+P 4 1 1 10 -200 200 200 0 -200 -200 -200 200 f
+X ~ 1 300 0 100 L 50 50 1 1 O
+X V- 2 -100 -300 150 U 50 50 1 1 W
+X + 3 -300 100 100 R 50 50 1 1 I
+X - 4 -300 -100 100 R 50 50 1 1 I
+X V+ 5 -100 300 150 D 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
@@ -962,16 +944,14 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# formula_R_402K
+# formula_R_49.9K
 #
-DEF formula_R_402K R 0 0 N Y 1 F N
+DEF formula_R_49.9K R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "formula_R_402K" -100 0 50 V V C CNN
-F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
-F3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf" 80 0 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "RMCF0805FT402KCT-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805FT402K/RMCF0805FT402KCT-ND/2418398" 480 400 60 H I C CNN "PurchasingLink"
+F1 "formula_R_49.9K" -100 0 50 V V C CNN
+F2 "footprints:R_0805_OEM" -1100 300 50 H I L CNN
+F3 "" -1100 400 50 H I L CNN
+F4 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERA-6AEB4992V/P49-9KDACT-ND/3075162" -1100 500 60 H I L CNN "PurchasingLink"
 $FPLIST
  R_*
  Resistor_*
@@ -1001,23 +981,6 @@ DRAW
 S -40 -100 40 100 0 1 10 N
 X ~ 1 0 150 50 D 50 50 1 1 P
 X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# formula_R_500
-#
-DEF formula_R_500 R 0 40 Y Y 1 F N
-F0 "R" 0 200 50 H V C CNN
-F1 "formula_R_500" 0 100 50 H V C CNN
-F2 "footprints:R_0805_OEM" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-F4 "https://www.digikey.com/en/products/detail/vishay-dale/TNPU0805500RAZEN00/6615940" 0 0 50 H I C CNN "PurchasingLink"
-F5 "541-3305-1-ND" 0 0 50 H I C CNN "MPN"
-F6 "DK" 0 0 50 H I C CNN "MFN"
-DRAW
-S 100 -40 -100 40 1 1 10 N
-X ~ 1 -150 0 50 R 50 50 1 1 P
-X ~ 2 150 0 50 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
