@@ -19,9 +19,8 @@
 // Number of cells that can be measured
 #define NUM_CELLS (12)
 
-// TODO verify over/under voltage/temperature thresholds
 #define OVERVOLTAGE_THRESHOLD  (42000) // 4.2V
-#define UNDERVOLTAGE_THRESHOLD (29000) // 3.0V
+#define UNDERVOLTAGE_THRESHOLD (30000) // 3.0V
 
 /*
  * We can handle missing around 5 temperatures, since we know there will be some
@@ -29,11 +28,10 @@
  */
 #define MAX_EXTRANEOUS_TEMPERATURES (5)
 
-#define OVERTEMPERATURE_THRESHOLD      (728) // 60 degC
-#define SOFT_OVERTEMPERATURE_THRESHOLD (1255) // 45 degC
-#define SOFT_OVERTEMPERATURE_THRESHOLD_LOW \
-    (SOFT_OVERTEMPERATURE_THRESHOLD + 500) // TODO degC
-#define UNDERTEMPERATURE_THRESHOLD (7384) // 0 degC
+#define OVERTEMPERATURE_THRESHOLD          ((int16_t)714) // 60 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)1233) // 45 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)1814) // 35 degC
+#define UNDERTEMPERATURE_THRESHOLD         ((int16_t)15513) // -20 degC
 
 #define MAX_PEC_RETRY    (10) // Arbitrary for now
 #define MAX_PEC_IN_A_ROW (32) // Arbitrary for now

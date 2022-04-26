@@ -12,8 +12,6 @@
 #define CELL_GROUP_1_OFFSET (0) // Cells 1-4
 #define CELL_GROUP_2_OFFSET (4) // Cells 7-10
 
-// uint16_t cell_voltages[NUM_ICS][NUM_CELLS_PER_IC];
-
 int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     *pack_voltage = 0;
     int pec_errors = 0;
@@ -42,8 +40,6 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
         LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
 
         for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach LTC6811
-            uint16_t data_counter = ic * NUM_RX_BYT;
-
             can_frame_t voltage_frame = {
                 .id = CAN_TOOLS_BMS_VOLTAGE_FRAME_ID,
                 .mob = 0,
@@ -55,35 +51,66 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
             can_data[0] = ic;
             can_data[1] = cell_reg;
             uint16_t* reg_voltages = (uint16_t*)&(can_data[2]);
-
             voltage_frame.data = (uint8_t*)can_data;
 
-            for (uint8_t cell_counter = 0; cell_counter < NUM_CELLS_IN_REG;
-                 cell_counter++) {
-                if (((cell_reg == 1) || (cell_reg == 3))
-                    && (cell_counter >= 1)) {
-                    data_counter += 2;
-                    continue;
-                }
+            uint8_t raw_idx = ic * NUM_RX_BYT;
 
-                // Parse cell voltage
-                uint16_t cell_voltage = raw_data[data_counter]
-                                        + (raw_data[data_counter + 1] << 8);
+            // Get cell voltages
+            uint16_t cell_1
+                = raw_data[raw_idx + 0] + (raw_data[raw_idx + 1] << 8);
+            uint16_t cell_2
+                = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
+            uint16_t cell_3
+                = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
 
-                reg_voltages[cell_counter] = cell_voltage;
+            /*
+             * HACK: There is a bad solder joint somewhere that makes one of our
+             * voltage groups misbehave. Two of the cells read too high and one
+             * reads too low. Until this is fixed, we just average them and
+             * report the average instead
+             */
+            if ((cell_reg == 2) && (ic == 5)) {
+                uint16_t average
+                    = ((cell_1 >> 8) + (cell_2 >> 8) + (cell_3 >> 8)) / 3;
+                average <<= 8;
+                cell_1 = (uint16_t)average;
+                cell_2 = (uint16_t)average;
+                cell_3 = (uint16_t)average;
+            }
 
-                // Accumulate!
-                *pack_voltage += cell_voltage >> 8;
+            reg_voltages[0] = cell_1;
+            *pack_voltage += cell_1 >> 8;
 
-                // Check under/over voltage
-                if (cell_voltage >= OVERVOLTAGE_THRESHOLD) {
+            if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
+                *ov += 1;
+            } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
+                *uv += 1;
+            }
+
+            // Skip REG_B and REG_D cells 2 and 3 since we don't use them on the
+            // chip
+            if (!((cell_reg == 1) || (cell_reg == 3))) {
+                reg_voltages[1] = cell_2;
+                *pack_voltage += cell_2 >> 8;
+
+                if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
                     *ov += 1;
-                } else if (cell_voltage <= UNDERVOLTAGE_THRESHOLD) {
+                } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
                     *uv += 1;
                 }
 
-                data_counter += 2;
+                reg_voltages[2] = cell_3;
+                *pack_voltage += cell_3 >> 8;
+
+                if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
             }
+
+            uint16_t received_pec
+                = (raw_data[raw_idx + 6] << 8) + raw_data[raw_idx + 7];
 
             can_send(&voltage_frame);
 
@@ -92,49 +119,14 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
              * is transmitted as the 7th and 8th
              * after the 6 cell voltage data bytes
              */
-            uint16_t received_pec
-                = (raw_data[data_counter] << 8) | raw_data[data_counter + 1];
-
             uint16_t data_pec
                 = pec15_calc(NUM_BYTES_IN_REG, &raw_data[(ic)*NUM_RX_BYT]);
 
             if (received_pec != data_pec) {
                 pec_errors++;
             }
-            data_counter = data_counter + 2;
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D)
 
     return pec_errors;
 }
-
-// void can_send_bms_voltages(void) {
-//     can_frame_t voltage_frame = {
-//         //
-//         // .id = CAN_TOOLS_BMS_VOLTAGE_0_FRAME_ID,
-//         .mob = 0,
-//         .dlc = 8,
-//     };
-//
-//     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-//         // For every chip, send the lower and upper cell voltages in CAN
-//         frames
-//
-//         /*
-//          * Trick: instead of creating our own data array, we just set the
-//          * pointer to the array to be the pointer to the cell voltages in
-//          giant
-//          * array with some offset. That way, we can reuse memory and avoid
-//          * memcpy-ing.
-//          */
-//         voltage_frame.data
-//             = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_1_OFFSET);
-//         can_send(&voltage_frame);
-//         voltage_frame.id++;
-//
-//         voltage_frame.data
-//             = (uint8_t*)(cell_voltages[ic] + CELL_GROUP_2_OFFSET);
-//         can_send(&voltage_frame);
-//         voltage_frame.id++;
-//     }
-// }

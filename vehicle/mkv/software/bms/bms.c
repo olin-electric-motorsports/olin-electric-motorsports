@@ -24,6 +24,7 @@ enum State {
 };
 
 enum AIR_State {
+    AIR_STATE_INIT,
     AIR_STATE_IDLE,
     AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED,
     AIR_STATE_PRECHARGE,
@@ -59,46 +60,10 @@ void pcint2_callback(void) {
 /*
  * Perform initial startup checks on the BMS.
  *
- * - Runs BIST (built-in self test) in all the ICs
  * - Checks all temperatures and voltages and ensures they are in range
  */
 static int initial_checks(void) {
     int rc = 0;
-
-    // wakeup_idle(NUM_ICS);
-    // wakeup_sleep(NUM_ICS);
-    /* LTC6811_diagn(); */
-    /*  */
-    /* for (uint8_t ic = 0; ic < NUM_ICS; ic++) { */
-    /*     if (ICS[ic].stat.mux_fail[0] == 1) { */
-    /*         set_fault(BMS_FAULT_DIAGNOSTICS_FAIL); */
-    /*         rc = 1; */
-    /*         goto bail; */
-    /*     } */
-    /* } */
-
-    /*
-     * Run all LTC6811 self-tests
-     *
-     * TODO: not working
-     */
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(CELL, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(AUX, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    // wakeup_sleep(NUM_ICS);
-    // rc += LTC6811_run_cell_adc_st(STAT, NUM_ICS, ICS, MD_7KHZ_3KHZ, 0);
-    // can_send_bms_debug();
-    //
-    //
-    // if (rc != 0) {
-    //     set_fault(BMS_FAULT_DIAGNOSTICS_FAIL);
-    //     goto bail;
-    // }
 
     // read all voltages
     uint32_t ov = 0;
@@ -130,38 +95,31 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    // read all temperatures
-    uint32_t ot = 0;
-    uint32_t ut = 0;
-    retry = 0;
+    // Read all temperatures
+    uint32_t ot = 0; // Over-temperature
+    uint32_t ut = 0; // Under-temperature
+    int16_t min_temp, max_temp;
 
-    do {
-        uint16_t pack_temperature = 0;
-        rc = temperature_task(&pack_temperature, &ot, &ut);
-        bms_core.pack_temperature = pack_temperature;
+    for (uint16_t i = 0; i < NUM_MUXES * NUM_MUX_CHANNELS; i++) {
+        rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
         bms_metrics.temperature_pec_error_count += rc;
+    }
 
-        if (retry >= MAX_PEC_RETRY) {
-            set_fault(BMS_FAULT_PEC);
-            rc = 1;
-            goto bail;
-        } else {
-            retry++;
-        }
-    } while (rc != 0);
+    bms_sense.min_temperature = min_temp;
+    bms_sense.max_temperature = max_temp;
 
-    if (ut > 0) {
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
         rc = 1;
         goto bail;
-    } else if (ot > 0) {
+    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_OVERTEMPERATURE);
         rc = 1;
         goto bail;
     }
 
-    // check for open-circuit
     // TODO: openwire_task();
+    // TODO: current_task();
 
 bail:
     return rc;
@@ -203,10 +161,13 @@ static void state_machine_run(void) {
      */
     uint32_t ot = 0;
     uint32_t ut = 0;
+    int16_t min_temp, max_temp;
 
-    uint16_t pack_temperature;
-    rc = temperature_task(&pack_temperature, &ot, &ut);
-    bms_core.pack_temperature = pack_temperature;
+    // uint16_t pack_temperature;
+    rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+
+    bms_sense.min_temperature = min_temp;
+    bms_sense.max_temperature = max_temp;
 
     if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
@@ -218,6 +179,9 @@ static void state_machine_run(void) {
         return;
     }
 
+    /*
+     * Check for PEC errors
+     */
     if (rc) {
         bms_metrics.temperature_pec_error_count += rc;
 
@@ -250,7 +214,7 @@ static void state_machine_run(void) {
                 bms_core.bms_state = FAULT;
             }
 
-            if (air_state != AIR_STATE_IDLE) {
+            if ((air_state != AIR_STATE_IDLE) && (air_state != AIR_STATE_INIT) && (air_state != AIR_STATE_FAULT)) {
                 bms_core.bms_state = DISCHARGING;
             }
 
@@ -367,6 +331,7 @@ int main(void) {
     }
 
     can_send_bms_core();
+    can_send_bms_sense();
 
     // Turn off GENERAL_LED to indicate checks passed
     gpio_clear_pin(GENERAL_LED);
@@ -387,14 +352,13 @@ int main(void) {
 
         if (run_10ms) {
             can_send_bms_core();
+            can_send_bms_sense();
             can_send_bms_metrics();
             state_machine_run();
 
             // Every 500ms send sensing and debug data
             if (loop_counter == 50) {
                 can_send_bms_debug();
-                // can_send_bms_voltages();
-                // can_send_bms_temperatures();
                 can_send_bms_metrics();
 
                 loop_counter = 0;

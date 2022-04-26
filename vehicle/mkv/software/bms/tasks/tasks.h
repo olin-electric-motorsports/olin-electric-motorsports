@@ -30,8 +30,8 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv);
  * This function handles communication with multiplexers, ADC reading, and
  * temperature accumulating
  */
-int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
-                     uint32_t* ut);
+int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
+                     int16_t* max_temp);
 
 /*
  * Task to check for open-wires between the BMS peipherals and the cells
@@ -44,6 +44,3 @@ int openwire_task(void);
  * Task to read current from current sensor
  */
 void current_task(int16_t* current);
-
-void can_send_bms_voltages(void);
-void can_send_bms_temperatures(void);
