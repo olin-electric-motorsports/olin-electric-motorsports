@@ -1,4 +1,7 @@
 name: brakelight_bspd
+subscribe:
+  - name: air_control_critical
+    mob: 1
 publish:
   - name: brakelight
     id: 0xb
