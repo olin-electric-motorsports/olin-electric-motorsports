@@ -368,6 +368,8 @@ int main(void) {
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
+    gpio_set_mode(IMD_SENSE, INPUT);
+
     air_control_critical.air_state = INIT;
 
     // Initialize interrupts
