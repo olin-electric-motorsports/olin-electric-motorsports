@@ -192,7 +192,10 @@ void LTC_voltage_task(){
 
     // TESTING - simply read config and check PEC 
 
-    LTC6810_rdcfg(NUM_ICS, ICS); 
+    // LTC6810_rdcfg(NUM_ICS, ICS); 
+
+    // attempt to start an ADC conversion
+    LTC6810_adcv(MD_7KHZ_3KHZ, DCP_DISABLED, CELL_CH_ALL); 
     // uint8_t tx = 0x55; 
     // uint8_t rx = 0; 
     // spi_transceive(&tx,&rx,1); 
@@ -266,7 +269,11 @@ void collect_telem(){
     //     adc_data[i] = adc_read(adc_pins[i]); 
     // }
 
-    LTC_voltage_task(); 
+    // LTC_voltage_task(); 
+    uint8_t tx = 0xff; 
+    uint8_t rx; 
+    
+    spi_transceive(&tx, &rx, 1); 
 }
 
 /* check for OT, UT, OV, UV, comparator error */ 
