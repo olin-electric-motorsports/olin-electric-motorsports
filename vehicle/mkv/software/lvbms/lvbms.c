@@ -26,6 +26,8 @@ int main(void){
     spi_init(&spi_cfg);     
     
     gpio_set_mode(LED2, OUTPUT);
+    gpio_set_mode(CAN_STBY,         OUTPUT); 
+    gpio_clear_pin(CAN_STBY); 
     
     
     while(1){
@@ -36,12 +38,27 @@ int main(void){
         
 
         // // test 1
-        spi_transceive(&txdata, &rxdata, LEN);
+        // spi_transceive(&txdata, &rxdata, LEN);
 
 
         // // test 2
-        // wakeup_sleep(NUM_ICS); 
+        wakeup_sleep(NUM_ICS); 
+        LTC6810_adcv(MD_7KHZ_3KHZ, DCP_DISABLED, CELL_CH_ALL); 
+        LTC6810_pollAdc(); // Ignore return value because we don't care how long it
+                       // took
+
+        // _delay_ms(2); 
         // LTC6810_adcv(MD_7KHZ_3KHZ, DCP_DISABLED, CELL_CH_ALL); 
+
+        // wakeup_idle(NUM_ICS);
+        // LTC6810_adcv(MD_7KHZ_3KHZ, DCP_DISABLED, CELL_CH_ALL); 
+
+        // LTC6810_rdcv(REG_ALL, NUM_ICS, ICS); 
+        LTC681x_rdcv(0, NUM_ICS, ICS);
+
+        // LTC6810_rdaux(AUX_CH_ALL, NUM_ICS, ICS);
+        // lvbms.pec_error_count = pec_ct; 
+        // can_send_lvbms(); 
 
         _delay_ms(50); 
 

@@ -10,6 +10,7 @@
 
 gpio_t SPI_CS           = PD7; 
 gpio_t LED2             = PB4; 
+gpio_t CAN_STBY         = PB3; 
 
 
 

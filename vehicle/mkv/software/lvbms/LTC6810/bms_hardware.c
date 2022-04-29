@@ -72,12 +72,21 @@ void spi_write_read(
         rx_data, // Input: array that will store the data read by the SPI port
     uint8_t rx_len // Option: number of bytes to be read from the SPI port
 ) {
+
+    spi_cs_low();
+    
     uint8_t tx_read[tx_len];
     memset(tx_read, 0xff, tx_len);
     spi_transceive(tx_Data, tx_read, tx_len);
+    spi_cs_high();
+    _delay_ms(1); 
+    spi_cs_low(); 
     uint8_t rx_send[rx_len];
     memset(rx_send, 0, rx_len);
     spi_transceive(rx_send, rx_data, rx_len);
+    
+    spi_cs_high();
+
 }
 
 uint8_t spi_read_byte(uint8_t tx_dat) {

@@ -47,6 +47,8 @@
 #include <stdint.h>
 #include <util/delay.h>
 
+uint8_t address = 1<<7; 
+
 const uint16_t crc15Table[256] PROGMEM
     = { 0x0,    0xc599, 0xceab, 0xb32,  0xd8cf, 0x1d56, 0x1664, 0xd3fd, 0xf407,
         0x319e, 0x3aac, // precomputed CRC15 Table
@@ -383,7 +385,27 @@ void LTC681x_adcv(uint8_t MD, // ADC Mode
     md_bits = (MD & 0x01) << 7;
     cmd[1] = md_bits + 0x60 + (DCP << 4) + CH;
 
-    cmd_68(cmd);
+
+    uint8_t temp[4];
+    uint16_t cmd_pec;
+
+    temp[0] = cmd[0];
+    temp[1] = cmd[1];
+    cmd_pec = pec15_calc(2, cmd);
+    temp[2] = (uint8_t)(cmd_pec >> 8);
+    temp[3] = (uint8_t)(cmd_pec);
+
+
+    uint8_t rx_data_temp[4]; 
+    // spi_cs_low();
+
+    spi_write_read(temp, 4, rx_data_temp, 4); 
+    // spi_cs_high();
+
+
+
+
+    // cmd_68(cmd);
 }
 
 /* Start ADC Conversion for GPIO and Vref2  */
@@ -730,30 +752,32 @@ void LTC681x_rdcv_reg(
     uint8_t cmd[4];
     uint16_t cmd_pec;
 
+    
+
     if (reg == 1) // 1: RDCVA
     {
         cmd[1] = 0x04;
-        cmd[0] = 0x00;
+        cmd[0] = address;
     } else if (reg == 2) // 2: RDCVB
     {
         cmd[1] = 0x06;
-        cmd[0] = 0x00;
+        cmd[0] = address;
     } else if (reg == 3) // 3: RDCVC
     {
         cmd[1] = 0x08;
-        cmd[0] = 0x00;
+        cmd[0] = address;
     } else if (reg == 4) // 4: RDCVD
     {
         cmd[1] = 0x0A;
-        cmd[0] = 0x00;
+        cmd[0] = address;
     } else if (reg == 5) // 4: RDCVE
     {
         cmd[1] = 0x09;
-        cmd[0] = 0x00;
+        cmd[0] = address;
     } else if (reg == 6) // 4: RDCVF
     {
         cmd[1] = 0x0B;
-        cmd[0] = 0x00;
+        cmd[0] = address;
     }
 
     cmd_pec = pec15_calc(2, cmd);
