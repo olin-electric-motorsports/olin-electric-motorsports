@@ -764,9 +764,9 @@ $EndComp
 Wire Wire Line
 	6600 7025 6600 7125
 Text Label 6100 6025 0    50   ~ 0
-MOSI_LIM
+MOSI
 Text Label 6100 6425 0    50   ~ 0
-SCK_LIM
+SCK
 Text Label 6100 6525 0    50   ~ 0
 CSB
 NoConn ~ 4100 7525
@@ -907,7 +907,7 @@ $EndComp
 Wire Wire Line
 	13925 2250 14300 2250
 Text Label 6100 6125 0    50   ~ 0
-MISO_LIM
+MISO
 Wire Wire Line
 	2700 5825 2800 5825
 Wire Wire Line
@@ -1049,10 +1049,6 @@ Text Label 3650 3300 0    50   ~ 0
 THERM_4_+
 Text Label 3650 3400 0    50   ~ 0
 THERM_5_+
-Text Label 10250 975  0    50   ~ 0
-THERM_0_+
-Text Label 10250 1075 0    50   ~ 0
-THERM_0_-
 Text Label 10250 1475 0    50   ~ 0
 THERM_1_+
 Text Label 10250 1575 0    50   ~ 0
@@ -2317,12 +2313,12 @@ Connection ~ 4100 7825
 $Comp
 L power:GND #PWR?
 U 1 1 61C1271C
-P 1875 7275
-F 0 "#PWR?" H 1875 7025 50  0001 C CNN
-F 1 "GND" H 1880 7102 50  0000 C CNN
-F 2 "" H 1875 7275 50  0001 C CNN
-F 3 "" H 1875 7275 50  0001 C CNN
-	1    1875 7275
+P 1500 7400
+F 0 "#PWR?" H 1500 7150 50  0001 C CNN
+F 1 "GND" H 1625 7350 50  0000 C CNN
+F 2 "" H 1500 7400 50  0001 C CNN
+F 3 "" H 1500 7400 50  0001 C CNN
+	1    1500 7400
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -2437,7 +2433,7 @@ F 3 "" H 10300 10125 50  0001 C CNN
 	1    10300 10125
 	1    0    0    -1  
 $EndComp
-Text Notes 8000 9325 0    47   ~ 0
+Text Notes 8000 9625 0    47   ~ 0
 The high current path on this \nPCB will see 20A continuous, \n30A peak for 1 hour with the \ncooling pack, and 5A continuous \nwith the GLV pack. Our high \ncurrent path features a current \nsensor, bidirectional load switch, \nand fuse.  \n\nThe fuse and current sensor are \ndifferent between GLV system \nand cooling pack system. \n\nThe bidirectional load switch was \ntested with the LV BMS Tester \nBoard. As a switch, it functionally \nworks, but thermals still need to \nbe tested on this PCB.  
 Wire Notes Line
 	15475 5650 15475 7875
@@ -2472,14 +2468,6 @@ Text Notes 3150 8875 0    50   ~ 0
 10V - 16.8V \nInput Voltage
 Text Notes 6900 9450 0    39   ~ 0
 Linreg will dissipate 2.35W \nnominally continuously w/\nsystem in ON state. \nWith 400mm Cu, an Rth J-A \nof 37C/W, Junction temp \n=86.95C
-Wire Wire Line
-	2150 7325 2150 7375
-Wire Wire Line
-	2150 7375 4000 7375
-Wire Wire Line
-	4000 7375 4000 7325
-Wire Wire Line
-	4000 7325 4100 7325
 $Comp
 L power:GND #PWR?
 U 1 1 61F71E38
@@ -2497,8 +2485,8 @@ $Comp
 L formula:R_15_1W_.5% R8
 U 1 1 61FA96DC
 P 2150 7175
-F 0 "R8" V 2200 7350 50  0000 R CNN
-F 1 "R_15_1W_.5%" V 2125 7750 50  0000 R CNN
+F 0 "R8" V 2125 7350 50  0000 R CNN
+F 1 "R_15_1W_.5%" V 2200 7750 50  0000 R CNN
 F 2 "footprints:Fuse_1206" H 2150 7425 50  0001 C CNN
 F 3 "https://www.susumu.co.jp/common/pdf/n_catalog_partition24_en.pdf" H 2150 7275 50  0001 C CNN
 F 4 "https://www.digikey.com/en/products/detail/susumu/HRG3216Q-15R0-D-T1/5762555" H 1650 7025 50  0001 C CNN "Purchasing Link"
@@ -2751,19 +2739,6 @@ F 5 "https://www.digikey.com/en/products/detail/molex/1054301102/9959376" H 8875
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:NanoFit_RA_SMT_02 J5
-U 1 1 61F6DB51
-P 10250 975
-F 0 "J5" H 10550 1075 60  0000 L CNN
-F 1 "NanoFit_RA_SMT_02" V 10750 275 60  0000 L CNN
-F 2 "footprints:NanoFit_RA_SMT_02" H 10650 475 60  0001 C CNN
-F 3 "http://www.literature.molex.com/SQLImages/kelmscott/Molex/PDF_Images/987651-1223.PDF" H 10250 975 60  0001 C CNN
-F 4 "1054301102" H 10450 275 50  0001 C CNN "MPN"
-F 5 "https://www.digikey.com/en/products/detail/molex/1054301102/9959376" H 10300 375 50  0001 C CNN "Purchasing Link"
-	1    10250 975 
-	-1   0    0    -1  
-$EndComp
-$Comp
 L formula:NanoFit_RA_SMT_02 J6
 U 1 1 61FE69F9
 P 10250 1475
@@ -2819,8 +2794,6 @@ Connection ~ 10250 2275
 Wire Wire Line
 	10250 1675 10250 1775
 Wire Wire Line
-	10250 1175 10250 1275
-Wire Wire Line
 	8825 1675 8825 1775
 Wire Wire Line
 	8825 2175 8825 2275
@@ -2848,17 +2821,6 @@ F 3 "" H 8825 1775 50  0001 C CNN
 $EndComp
 $Comp
 L power:GND #PWR?
-U 1 1 620F6E21
-P 10250 1275
-F 0 "#PWR?" H 10250 1025 50  0001 C CNN
-F 1 "GND" H 10400 1200 50  0000 C CNN
-F 2 "" H 10250 1275 50  0001 C CNN
-F 3 "" H 10250 1275 50  0001 C CNN
-	1    10250 1275
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
 U 1 1 6210B498
 P 10250 1775
 F 0 "#PWR?" H 10250 1525 50  0001 C CNN
@@ -2869,7 +2831,6 @@ F 3 "" H 10250 1775 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 10250 1775
-Connection ~ 10250 1275
 Connection ~ 8825 1775
 Connection ~ 8825 2275
 $Comp
@@ -2899,24 +2860,6 @@ F 3 "" H 11350 1750 50  0001 C CNN
 $EndComp
 Wire Notes Line
 	8050 775  8050 3175
-$Comp
-L formula:R_0 R44
-U 1 1 6223F8F7
-P 1650 7275
-F 0 "R44" V 1725 7225 50  0000 C CNN
-F 1 "R_0" V 1800 7250 50  0000 C CNN
-F 2 "footprints:R_0603_1608Metric" H 1580 7275 50  0001 C CNN
-F 3 "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" H 1730 7275 50  0001 C CNN
-F 4 "DK" H 1650 7275 60  0001 C CNN "MFN"
-F 5 "P0.0GCT-ND" H 1650 7275 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEY0R00V/P0.0GCT-ND/134711" H 2130 7675 60  0001 C CNN "PurchasingLink"
-	1    1650 7275
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	1500 7025 1500 7275
-Wire Wire Line
-	1800 7275 1875 7275
 Text Notes 11750 1000 0    39   ~ 0
 Optional Battery (-)\nGND Power Lead \nwire connection
 Connection ~ 11350 1750
@@ -3251,20 +3194,6 @@ Wire Wire Line
 Connection ~ 8975 7450
 Wire Wire Line
 	8975 7450 9075 7450
-$Comp
-L formula:R_0 R47
-U 1 1 62672ADF
-P 8975 7700
-F 0 "R47" H 9045 7746 50  0000 L CNN
-F 1 "R_0" H 9045 7655 50  0000 L CNN
-F 2 "footprints:R_0603_1608Metric" H 8905 7700 50  0001 C CNN
-F 3 "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" H 9055 7700 50  0001 C CNN
-F 4 "DK" H 8975 7700 60  0001 C CNN "MFN"
-F 5 "P0.0GCT-ND" H 8975 7700 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEY0R00V/P0.0GCT-ND/134711" H 9455 8100 60  0001 C CNN "PurchasingLink"
-	1    8975 7700
-	1    0    0    -1  
-$EndComp
 Text Label 8825 7850 2    50   ~ 0
 BATT_4
 Wire Wire Line
@@ -3272,12 +3201,12 @@ Wire Wire Line
 $Comp
 L formula:Test_Point_SMD TP31
 U 1 1 62705BA6
-P 3875 950
-F 0 "TP31" H 3925 1050 50  0000 L CNN
-F 1 "Test_Point_SMD" H 4300 150 50  0000 L CNN
-F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 3875 800 50  0001 C CNN
-F 3 "" H 3875 950 50  0001 C CNN
-	1    3875 950 
+P 3925 950
+F 0 "TP31" H 3975 1050 50  0000 L CNN
+F 1 "Test_Point_SMD" H 4350 150 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 3925 800 50  0001 C CNN
+F 3 "" H 3925 950 50  0001 C CNN
+	1    3925 950 
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -3326,49 +3255,31 @@ F 5 "https://www.digikey.com/en/products/detail/e-switch/TL3315NF100Q/1870394" H
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
-U 1 1 62717530
-P 6600 2325
-F 0 "#PWR?" H 6600 2175 50  0001 C CNN
-F 1 "+5V" H 6615 2498 50  0000 C CNN
-F 2 "" H 6600 2325 50  0001 C CNN
-F 3 "" H 6600 2325 50  0001 C CNN
-	1    6600 2325
-	1    0    0    -1  
-$EndComp
-$Comp
 L formula:R_10K R31
 U 1 1 6271884C
-P 7425 2475
-F 0 "R31" H 7495 2521 50  0000 L CNN
-F 1 "R_10K" H 7495 2430 50  0000 L CNN
-F 2 "footprints:R_0805_OEM" H 7355 2475 50  0001 C CNN
-F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 7505 2475 50  0001 C CNN
-F 4 "DK" H 7425 2475 60  0001 C CNN "MFN"
-F 5 "CRS0805-FX-1002ELFCT-ND" H 7425 2475 60  0001 C CNN "MPN"
-F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 7905 2875 60  0001 C CNN "PurchasingLink"
-	1    7425 2475
+P 6575 2175
+F 0 "R31" H 6645 2221 50  0000 L CNN
+F 1 "R_10K" H 6645 2130 50  0000 L CNN
+F 2 "footprints:R_0805_OEM" H 6505 2175 50  0001 C CNN
+F 3 "http://www.bourns.com/data/global/pdfs/CRS.pdf" H 6655 2175 50  0001 C CNN
+F 4 "DK" H 6575 2175 60  0001 C CNN "MFN"
+F 5 "CRS0805-FX-1002ELFCT-ND" H 6575 2175 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 7055 2575 60  0001 C CNN "PurchasingLink"
+	1    6575 2175
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 6271A872
-P 7425 2625
-F 0 "#PWR?" H 7425 2375 50  0001 C CNN
-F 1 "GND" H 7430 2452 50  0000 C CNN
-F 2 "" H 7425 2625 50  0001 C CNN
-F 3 "" H 7425 2625 50  0001 C CNN
-	1    7425 2625
+P 7500 2325
+F 0 "#PWR?" H 7500 2075 50  0001 C CNN
+F 1 "GND" H 7505 2152 50  0000 C CNN
+F 2 "" H 7500 2325 50  0001 C CNN
+F 3 "" H 7500 2325 50  0001 C CNN
+	1    7500 2325
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6600 2325 6700 2325
-Wire Wire Line
-	7300 2325 7425 2325
-Wire Wire Line
-	7425 2325 7500 2325
-Connection ~ 7425 2325
-Text Label 7500 2325 0    50   ~ 0
+Text Label 6500 2325 2    50   ~ 0
 BTN
 Wire Notes Line
 	6325 2875 7875 2875
@@ -3379,7 +3290,7 @@ Wire Notes Line
 Wire Notes Line
 	7875 775  7875 2875
 Text Notes 6350 2800 0    50   ~ 0
-Manual Reset Button on \nexternal interrupt / GPIO \nin case wakeup circuitry \ndoesn't work
+Manual Reset Button on \nexternal interrupt / GPIO \nin case wakeup circuitry \ndoesn't work, default HIGH
 Wire Notes Line
 	6050 550  6050 4775
 Wire Notes Line
@@ -3508,7 +3419,7 @@ $Comp
 L formula:Test_Point_SMD TP10
 U 1 1 628CBBA9
 P 12025 5325
-F 0 "TP10" H 11825 5425 50  0000 L CNN
+F 0 "TP10" H 11775 5425 50  0000 L CNN
 F 1 "Test_Point_SMD" H 11750 5550 50  0000 L CNN
 F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 12025 5175 50  0001 C CNN
 F 3 "" H 12025 5325 50  0001 C CNN
@@ -3531,8 +3442,6 @@ Text Label 3650 1000 0    50   ~ 0
 MISO
 Text Label 3650 1100 0    50   ~ 0
 MOSI
-Wire Wire Line
-	3650 1000 3875 1000
 Wire Wire Line
 	3650 1100 4150 1100
 Wire Wire Line
@@ -3588,5 +3497,49 @@ F 5 "CRS0805-FX-1002ELFCT-ND" H 9700 3775 60  0001 C CNN "MPN"
 F 6 "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND" H 10180 4175 60  0001 C CNN "PurchasingLink"
 	1    9700 3775
 	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1500 7400 2700 7400
+Connection ~ 2700 7400
+Wire Wire Line
+	1500 7025 1500 7400
+Connection ~ 1500 7400
+Wire Wire Line
+	2150 7325 4100 7325
+$Comp
+L formula:R_0_2512 R29
+U 1 1 627191D8
+P 8975 7700
+F 0 "R29" H 8800 7750 50  0000 L CNN
+F 1 "R_0_2512" H 8550 7675 50  0000 L CNN
+F 2 "footprints:R_2512_OEM" H 8905 7700 50  0001 C CNN
+F 3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" H 9055 7700 50  0001 C CNN
+F 4 "DK" H 8975 7700 60  0001 C CNN "MFN"
+F 5 "A121322CT-ND" H 8975 7700 60  0001 C CNN "MPN"
+F 6 "https://www.digikey.com/products/en?keywords=A121322CT-ND" H 9455 8100 60  0001 C CNN "PurchasingLink"
+	1    8975 7700
+	1    0    0    -1  
+$EndComp
+Text Notes 8175 8050 0    47   ~ 0
+Jumper for testing only! \nDNP before use!
+Wire Wire Line
+	3650 1000 3925 1000
+Wire Wire Line
+	6500 2325 6575 2325
+Wire Wire Line
+	7300 2325 7500 2325
+Connection ~ 6575 2325
+Wire Wire Line
+	6575 2325 6700 2325
+$Comp
+L power:+5V #PWR?
+U 1 1 626E83E7
+P 6575 2025
+F 0 "#PWR?" H 6575 1875 50  0001 C CNN
+F 1 "+5V" H 6700 2100 50  0000 C CNN
+F 2 "" H 6575 2025 50  0001 C CNN
+F 3 "" H 6575 2025 50  0001 C CNN
+	1    6575 2025
+	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
