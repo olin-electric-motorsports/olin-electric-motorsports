@@ -1435,8 +1435,6 @@ Text Notes 9150 2900 0    39   ~ 0
 5 individual nanofit connectors for thermistors \nto be distributed around the edges of the PCB\nhttps://www.digikey.com/en/products/detail\n/epcos-tdk/B57861S0103F040/739889
 Text Notes 12900 6950 0    39   ~ 0
 Low side driven FET to toggle \nthermistors & current sensor that\nonly need power after system state wakeup
-Text Notes 12300 9425 0    39   ~ 0
-~I will get shafted on this design review.~ -Adi R.
 Wire Wire Line
 	6850 7425 6900 7425
 Connection ~ 6850 7425
