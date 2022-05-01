@@ -24,15 +24,15 @@ gpio_t IMD_SENSE = PD0;
 
 #ifdef BOARD_HACKERBOARD
 
-gpio_t FAULT_LED = PD6;
-gpio_t GENERAL_LED = PD7;
-gpio_t AIR_N_WELD_DETECT = PC5;
-
-#else
-
 gpio_t FAULT_LED = PB7;
 gpio_t GENERAL_LED = PD6;
 gpio_t AIR_N_WELD_DETECT = PC7;
+
+#else
+
+gpio_t GENERAL_LED = PD6;
+gpio_t FAULT_LED = PD7;
+gpio_t AIR_N_WELD_DETECT = PC5;
 
 #endif
 
@@ -41,6 +41,13 @@ gpio_t AIR_N_WELD_DETECT = PC7;
 #define BMS_VOLTAGE_THRESHOLD_LOW         (7813)
 #define MOTOR_CONTROLLER_THRESHOLD_LOW_dV (50) // 50 decivolts (5 volts)
 #define PRECHARGE_THRESHOLD               (0.95) // 95% of pack voltage
+
+// Time delay during discharge before checking state of AIRs
+#define WELD_CHECK_DELAY_MS (100) // milliseconds
+
+// Milliseconds to wait while the IMD output stabilizes before reading the
+// output
+#define IMD_STABILITY_CHECK_DELAY_MS (4500)
 
 /*
  * Timer

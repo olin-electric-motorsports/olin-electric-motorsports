@@ -1,5 +1,6 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
+#include <util/delay.h>
 
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
@@ -8,13 +9,6 @@
 #include "utils/timer.h"
 #include "utils/utils.h"
 #include "vehicle/mkv/software/air_control/can_api.h"
-
-/* TODO
- *
- * - Verify initial conditions and correct/fault conditions of all GPIOs
- * - In FAULT state, should we clear PRECHARGE_CTL and AIR_N_LSD?
- * - Should we be able to recover from any faults? Which ones? How?
- */
 
 enum State {
     INIT = 0,
@@ -33,7 +27,7 @@ enum FaultCode {
     AIR_FAULT_BOTH_AIRS_WELD,
     AIR_FAULT_PRECHARGE_FAIL,
     AIR_FAULT_DISCHARGE_FAIL,
-    AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // voltage divider
+    AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // TODO?
     AIR_FAULT_CAN_ERROR,
     AIR_FAULT_CAN_BMS_TIMEOUT,
     AIR_FAULT_CAN_MC_TIMEOUT,
@@ -158,6 +152,9 @@ static int initial_checks(void) {
         goto bail;
     }
 
+    // Wait for IMD to stabilize
+    _delay_ms(IMD_STABILITY_CHECK_DELAY_MS);
+
     if (!gpio_get_pin(IMD_SENSE)) {
         // IMD_SENSE pin should start high
         air_control_critical.imd_status = false;
@@ -276,22 +273,6 @@ static void state_machine_run(void) {
         case DISCHARGE: {
             gpio_clear_pin(AIR_N_LSD);
 
-            // If either AIR is still closed, it is welded
-            if (air_control_critical.air_p_status
-                && air_control_critical.air_n_status) {
-                air_control_critical.air_state = FAULT;
-                set_fault(AIR_FAULT_BOTH_AIRS_WELD);
-                return;
-            } else if (air_control_critical.air_p_status) {
-                air_control_critical.air_state = FAULT;
-                set_fault(AIR_FAULT_AIR_P_WELD);
-                return;
-            } else if (air_control_critical.air_n_status) {
-                air_control_critical.air_state = FAULT;
-                set_fault(AIR_FAULT_AIR_N_WELD);
-                return;
-            }
-
             /*
              * This pattern ensures that we only call get_time() once because we
              * only want to capture the time that PRECHARGE starts
@@ -301,6 +282,26 @@ static void state_machine_run(void) {
             if (once) {
                 start_time = get_time();
                 once = false;
+            }
+
+            if (get_time() - start_time > 100) {
+                if (air_control_critical.air_p_status
+                    && air_control_critical.air_n_status) {
+                    air_control_critical.air_state = FAULT;
+                    set_fault(AIR_FAULT_BOTH_AIRS_WELD);
+                    once = true;
+                    return;
+                } else if (air_control_critical.air_p_status) {
+                    air_control_critical.air_state = FAULT;
+                    set_fault(AIR_FAULT_AIR_P_WELD);
+                    once = true;
+                    return;
+                } else if (air_control_critical.air_n_status) {
+                    air_control_critical.air_state = FAULT;
+                    set_fault(AIR_FAULT_AIR_N_WELD);
+                    once = true;
+                    return;
+                }
             }
 
             int16_t motor_controller_voltage = 0;
@@ -313,6 +314,7 @@ static void state_machine_run(void) {
                 if (rc == 2) {
                     // Timeout
                     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
+                    once = true;
                 }
                 return;
             }
@@ -365,6 +367,8 @@ int main(void) {
     gpio_enable_interrupt(IMD_SENSE);
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
+
+    gpio_set_mode(IMD_SENSE, INPUT);
 
     air_control_critical.air_state = INIT;
 
