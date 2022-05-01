@@ -45,6 +45,10 @@ gpio_t AIR_N_WELD_DETECT = PC5;
 // Time delay during discharge before checking state of AIRs
 #define WELD_CHECK_DELAY_MS (100) // milliseconds
 
+// Milliseconds to wait while the IMD output stabilizes before reading the
+// output
+#define IMD_STABILITY_CHECK_DELAY_MS (4500)
+
 /*
  * Timer
  */

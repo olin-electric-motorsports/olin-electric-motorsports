@@ -1,6 +1,6 @@
 #include <avr/interrupt.h>
-#include <util/delay.h>
 #include <stdlib.h>
+#include <util/delay.h>
 
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
@@ -27,7 +27,7 @@ enum FaultCode {
     AIR_FAULT_BOTH_AIRS_WELD,
     AIR_FAULT_PRECHARGE_FAIL,
     AIR_FAULT_DISCHARGE_FAIL,
-    AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // voltage divider
+    AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // TODO?
     AIR_FAULT_CAN_ERROR,
     AIR_FAULT_CAN_BMS_TIMEOUT,
     AIR_FAULT_CAN_MC_TIMEOUT,
@@ -69,10 +69,10 @@ void pcint1_callback(void) {
 }
 
 void pcint2_callback(void) {
-    // if (!gpio_get_pin(IMD_SENSE)) {
-    //     set_fault(AIR_FAULT_IMD_STATUS);
-    //     air_control_critical.imd_status = false;
-    // }
+    if (!gpio_get_pin(IMD_SENSE)) {
+        set_fault(AIR_FAULT_IMD_STATUS);
+        air_control_critical.imd_status = false;
+    }
 }
 
 /*
@@ -153,17 +153,17 @@ static int initial_checks(void) {
     }
 
     // Wait for IMD to stabilize
-    _delay_ms(4500);
+    _delay_ms(IMD_STABILITY_CHECK_DELAY_MS);
 
-    // if (!gpio_get_pin(IMD_SENSE)) {
-    //     // IMD_SENSE pin should start high
-    //     air_control_critical.imd_status = false;
-    //     set_fault(AIR_FAULT_IMD_STATUS);
-    //     rc = 1;
-    //     goto bail;
-    // } else {
-    //     air_control_critical.imd_status = true;
-    // }
+    if (!gpio_get_pin(IMD_SENSE)) {
+        // IMD_SENSE pin should start high
+        air_control_critical.imd_status = false;
+        set_fault(AIR_FAULT_IMD_STATUS);
+        rc = 1;
+        goto bail;
+    } else {
+        air_control_critical.imd_status = true;
+    }
 
 bail:
     return rc;
