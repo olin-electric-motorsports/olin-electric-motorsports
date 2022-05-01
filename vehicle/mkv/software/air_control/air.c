@@ -354,6 +354,12 @@ int main(void) {
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
 
+    gpio_clear_pin(SS_TSMS); 	
+    gpio_clear_pin(SS_IMD_LATCH); 
+    gpio_clear_pin(SS_MPC); 
+    gpio_clear_pin(SS_HVD_CONN); 
+    gpio_clear_pin(SS_HVD);
+
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_N_LSD, OUTPUT);
     gpio_set_mode(GENERAL_LED, OUTPUT);
@@ -369,7 +375,13 @@ int main(void) {
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
     gpio_set_mode(IMD_SENSE, INPUT);
-
+  
+    gpio_set_mode(SS_TSMS, INPUT);
+    gpio_set_mode(SS_IMD_LATCH, INPUT);
+    gpio_set_mode(SS_MPC, INPUT);
+    gpio_set_mode(SS_HVD_CONN, INPUT);
+    gpio_set_mode(SS_HVD, INPUT);
+    
     air_control_critical.air_state = INIT;
 
     // Initialize interrupts
