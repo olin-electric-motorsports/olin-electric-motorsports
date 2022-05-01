@@ -18,7 +18,7 @@ const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
  * connected to timer 1.
  */
 static void fan_enable(bool enable) {
-    timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
+    timer1_fan_cfg.channel_b.pin_behavior = enable ? SET : DISCONNECTED;
 
     // No way to update a single part of the config so we just re-init the
     // timer
