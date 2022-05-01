@@ -62,6 +62,7 @@ timer_cfg_s timer1_fan_cfg = {
     .prescalar = CLKIO_DIV_8,
     .channel_a = {
         .output_compare_match = 0x50,
+    },
     .channel_b = {
         .channel = CHANNEL_B,
         .output_compare_match = 0x20, // 40% duty cycle
