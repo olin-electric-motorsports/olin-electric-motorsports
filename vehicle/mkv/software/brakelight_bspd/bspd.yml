@@ -4,13 +4,13 @@ publish:
     id: 0xb
     freq_hz: 100
     signals:
-      - name: status
+      - name: ss_bspd
         slice: 0 + 8
         unit:
           type: bool
           values:
-            t: BSPD CLOSED
-            f: BSPD OPEN
+            t: CLOSED
+            f: OPEN
       - name: brake_pressure
         slice: 8 + 16
         unit:

@@ -44,9 +44,9 @@ void timer0_isr(void) {
 }
 
 void pcint0_callback(void) {
-    throttle.e_stop_sense = !gpio_get_pin(SS_ESTOP);
-    throttle.inertia_switch_sense = !gpio_get_pin(SS_IS);
-    throttle.bots_sense = !gpio_get_pin(SS_BOTS);
+    throttle.ss_estop_driver = !gpio_get_pin(SS_ESTOP);
+    throttle.ss_is = !gpio_get_pin(SS_IS);
+    throttle.ss_bots = !gpio_get_pin(SS_BOTS);
 }
 
 /*
