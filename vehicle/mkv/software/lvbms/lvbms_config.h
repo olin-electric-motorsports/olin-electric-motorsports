@@ -137,6 +137,7 @@ spi_cfg_s spi_cfg = {
 };
 
 
+
 /*
  * CAN message (at GLV monitor rn )
  * data format: FAULT code, SoC Estimation, pack voltage, pack voltage, pack current, pack current, pack temp, board temp
