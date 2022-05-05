@@ -3,46 +3,40 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
-static bool timer0_compa_interrupt_enabled = false;
-static void (*timer0_compa_callback)(void);
+__attribute__((weak)) void timer0_compa_callback(void) {};
 
-static bool timer0_compb_interrupt_enabled = false;
-static void (*timer0_compb_callback)(void);
+__attribute__((weak)) void timer0_compb_callback(void) {};
 
-static bool timer0_ovf_interrupt_enabled = false;
-static void (*timer0_ovf_callback)(void);
+__attribute__((weak)) void timer0_ovf_callback(void) {};
 
-static bool timer1_compa_interrupt_enabled = false;
-static void (*timer1_compa_callback)(void);
+__attribute__((weak)) void timer1_compa_callback(void) {};
 
-static bool timer1_compb_interrupt_enabled = false;
-static void (*timer1_compb_callback)(void);
+__attribute__((weak)) void timer1_compb_callback(void) {};
 
-static bool timer1_ovf_interrupt_enabled = false;
-static void (*timer1_ovf_callback)(void);
+__attribute__((weak)) void timer1_ovf_callback(void) {};
 
 ISR(TIMER0_COMPA_vect) {
-    if (timer0_compa_interrupt_enabled) {
-        (*timer0_compa_callback)();
-    }
+    timer0_compa_callback();
 }
 
 ISR(TIMER0_COMPB_vect) {
-    if (timer0_compb_interrupt_enabled) {
-        (*timer0_compb_callback)();
-    }
+    timer0_compb_callback();
+}
+
+ISR(TIMER0_OVF_vect) {
+    timer0_ovf_callback();
 }
 
 ISR(TIMER1_COMPA_vect) {
-    if (timer1_compa_interrupt_enabled) {
-        (*timer1_compa_callback)();
-    }
+    timer1_compa_callback();
 }
 
 ISR(TIMER1_COMPB_vect) {
-    if (timer1_compb_interrupt_enabled) {
-        (*timer1_compb_callback)();
-    }
+    timer1_compb_callback();
+}
+
+ISR(TIMER1_OVF_vect) {
+    timer1_ovf_callback();
 }
 
 static void timer_0_init(timer_cfg_s* timer_cfg) {
@@ -58,21 +52,21 @@ static void timer_0_init(timer_cfg_s* timer_cfg) {
 
     if (timer_cfg->channel_a.interrupt_enable) {
         TIMSK0 |= (1 << OCIE0A);
-        timer0_compa_interrupt_enabled = true;
-        timer0_compa_callback = timer_cfg->channel_a.interrupt_callback;
+        // timer0_compa_interrupt_enabled = true;
+        // timer0_compa_callback = timer_cfg->channel_a.interrupt_callback;
     }
 
     if (timer_cfg->channel_b.interrupt_enable) {
         TIMSK0 |= (1 << OCIE0B);
-        timer0_compb_interrupt_enabled = true;
-        timer0_compb_callback = timer_cfg->channel_b.interrupt_callback;
+        // timer0_compb_interrupt_enabled = true;
+        // timer0_compb_callback = timer_cfg->channel_b.interrupt_callback;
     }
 
     if (timer_cfg->timer_overflow_interrupt_enable) {
         TIMSK0 |= (1 << TOIE0);
-        timer0_ovf_interrupt_enabled = true;
-        timer0_ovf_callback
-            = timer_cfg->timer_overflow_interrupt_enable_callback;
+        // timer0_ovf_interrupt_enabled = true;
+        // timer0_ovf_callback
+        //     = timer_cfg->timer_overflow_interrupt_enable_callback;
     }
 }
 
@@ -89,21 +83,21 @@ static void timer_1_init(timer_cfg_s* timer_cfg) {
 
     if (timer_cfg->channel_a.interrupt_enable) {
         TIMSK1 |= (1 << OCIE1A); // Enable interrupt
-        timer1_compa_interrupt_enabled = true;
-        timer1_compa_callback = timer_cfg->channel_a.interrupt_callback;
+        // timer1_compa_interrupt_enabled = true;
+        // timer1_compa_callback = timer_cfg->channel_a.interrupt_callback;
     }
 
     if (timer_cfg->channel_b.interrupt_enable) {
         TIMSK1 |= (1 << OCIE1B); // Enable interrupt
-        timer1_compb_interrupt_enabled = true;
-        timer1_compb_callback = timer_cfg->channel_b.interrupt_callback;
+        // timer1_compb_interrupt_enabled = true;
+        // timer1_compb_callback = timer_cfg->channel_b.interrupt_callback;
     }
 
     if (timer_cfg->timer_overflow_interrupt_enable) {
         TIMSK1 |= (1 << TOIE1); // Enable overflow interrupt
-        timer1_ovf_interrupt_enabled = true;
-        timer1_ovf_callback
-            = timer_cfg->timer_overflow_interrupt_enable_callback;
+        // timer1_ovf_interrupt_enabled = true;
+        // timer1_ovf_callback
+        //     = timer_cfg->timer_overflow_interrupt_enable_callback;
     }
 }
 
@@ -140,16 +134,16 @@ void timer_get_raw_value(timer_cfg_s* timer_cfg, uint16_t* value) {
     }
 }
 
-void timer_register_callback(timer_cfg_s* timer_cfg, timer_channel_e ch,
-                             void (*callback)(void)) {
-    switch (ch) {
-        case CHANNEL_A: {
-            timer_cfg->channel_a.interrupt_enable = true;
-            timer_cfg->channel_a.interrupt_callback = callback;
-        } break;
-        case CHANNEL_B: {
-            timer_cfg->channel_b.interrupt_enable = true;
-            timer_cfg->channel_b.interrupt_callback = callback;
-        } break;
-    }
-}
+// void timer_register_callback(timer_cfg_s* timer_cfg, timer_channel_e ch,
+//                              void (*callback)(void)) {
+//     switch (ch) {
+//         case CHANNEL_A: {
+//             timer_cfg->channel_a.interrupt_enable = true;
+//             timer_cfg->channel_a.interrupt_callback = callback;
+//         } break;
+//         case CHANNEL_B: {
+//             timer_cfg->channel_b.interrupt_enable = true;
+//             timer_cfg->channel_b.interrupt_callback = callback;
+//         } break;
+//     }
+// }

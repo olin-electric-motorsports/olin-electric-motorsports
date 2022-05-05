@@ -2,10 +2,13 @@
  * Run right before flashing
  */
 
+#define _GNU_SOURCE
+
 #include <errno.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 #include "projects/btldr/libs/crc32/api.h"
@@ -34,7 +37,7 @@ int patch_write_timestamp(FILE* old_file, image_hdr_t* image_hdr) {
 int patch_write_image_size(FILE* old_file, image_hdr_t* image_hdr) {
     // Image size
     fseek(old_file, 0, SEEK_END);
-    size_t image_size_total = ftell(old_file);
+    size_t image_size_total = ftell(old_file) - 0x7c;
     image_hdr->image_size = image_size_total - image_hdr_size;
     fseek(old_file, 0, SEEK_SET);
 
@@ -44,7 +47,7 @@ int patch_write_image_size(FILE* old_file, image_hdr_t* image_hdr) {
 int patch_calc_write_crc(FILE* old_file, image_hdr_t* image_hdr,
                          uint16_t image_size) {
     // Seek to the beginning of the image
-    fseek(old_file, image_hdr_size, SEEK_SET);
+    fseek(old_file, 0x7c + sizeof(image_hdr_t), SEEK_SET);
 
     uint8_t* image = (uint8_t*)malloc(image_size);
     if (image == NULL) {
@@ -89,6 +92,17 @@ int main(int argc, char** argv) {
     printf("Patching %s\n", binary);
 #endif
 
+    // fseek(old_file, 0, SEEK_END);
+    // size_t file_size = ftell(old_file);
+    // fseek(old_file, 0, SEEK_SET);
+    //
+    // uint32_t search_pattern = IMAGE_MAGIC;
+    //
+    // int* hdr_start = memmem(old_file, file_size, &search_pattern, 1);
+    //
+    // printf("hdr_start: %p\n", hdr_start);
+    //
+    fseek(old_file, 0x7c, SEEK_SET);
     image_hdr_t image_hdr;
     size_t num_read = fread(&image_hdr, image_hdr_size, 1, old_file);
     (void)num_read;
@@ -129,15 +143,17 @@ int main(int argc, char** argv) {
     /*
      * Copy old to new
      */
-    char c = fgetc(old_file);
-    while (c != EOF) {
-        fputc(c, new_file);
-        c = fgetc(old_file);
+    char copy_buffer[1024];
+    size_t n_bytes_read = 0;
+
+    while ((n_bytes_read = fread(copy_buffer, 1, 1024, old_file)) != 0) {
+        fwrite(copy_buffer, 1, n_bytes_read, new_file);
     }
+
     fclose(old_file);
 
     // Write image_hdr back to binary file
-    fseek(new_file, 0, SEEK_SET);
+    fseek(new_file, 0x7c, SEEK_SET);
     if (fwrite(&image_hdr, image_hdr_size, 1, new_file) == 0) {
         perror("Failed to write image header: ");
     }

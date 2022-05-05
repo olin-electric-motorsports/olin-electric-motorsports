@@ -9,7 +9,7 @@
 #include "projects/btldr/libs/image/api.h"
 #include "projects/btldr/libs/shmem/api.h"
 
-static can_frame_t can_msg;
+static can_frame_t can_msg = { 0 };
 
 // Save btldr_id
 static uint16_t btldr_id = 0x00;

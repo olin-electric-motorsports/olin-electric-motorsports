@@ -25,20 +25,15 @@ int main(void) {
     bool image_is_valid = bootflag_get(IMAGE_IS_VALID);
     bool update_requested = bootflag_get(UPDATE_REQUESTED);
 
-    DDRD |= _BV(PD5);
-    PORTD |= _BV(PD5);
-
     if (!update_requested) {
         if (image_is_valid) {
-
-            // Jump to application with offset of image header size
-            asm("jmp %0" ::"I"(sizeof(image_hdr_t)));
+            // Jump to application
+            asm volatile("jmp 0x0000");
 
             uart_puts("FATAL: Jump failed, entering loop\n");
-            while (1)
-                continue;
+
+            while (1) {}
         } else {
-            // log_uart("Image is corrupted or invalid, going into updater");
             uart_puts(
                 "ERROR: Image is corrupted or invalid, going into updater\n");
         }

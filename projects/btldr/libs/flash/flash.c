@@ -7,35 +7,29 @@
 static uint16_t buf_address = 0;
 
 void flash_write(uint8_t* data, uint8_t length, uint16_t* current_addr) {
-    // static uint16_t buf_address = 0;
     uint8_t sreg = SREG;
 
-    uint16_t wr_data = 0xFFFF;
+    for (int i = 0; i < length; i += 2) {
+        uint16_t wr_data = data[i];
 
-    uint8_t even_length = (length % 2 == 0) ? length : length + 1;
-
-    for (int i = 0; i < even_length; i++) {
-        if (i % 2 == 0) {
-            wr_data = data[i];
-        } else {
-            if (i == length) {
-                wr_data |= 0xFF00;
-            } else {
-                wr_data |= data[i + 1] << 8;
-            }
-            boot_page_fill_safe(buf_address, wr_data);
+        // Accounts for odd number of data bytes. Only use i+1 if it exists
+        if (i + 1 < length) {
+            wr_data += data[i + 1] << 8;
         }
-    }
 
-    buf_address += length;
+        boot_page_fill_safe(buf_address, wr_data);
+        buf_address += 2;
+    }
 
     // If the buffer is full
     if (buf_address % SPM_PAGESIZE == 0) {
         // Must erase the page before writing
         boot_page_erase_safe(*current_addr);
+        boot_spm_busy_wait();
 
         // Write the memory stored in the temp buffer
         boot_page_write_safe(*current_addr);
+        boot_spm_busy_wait();
 
         *current_addr += SPM_PAGESIZE;
     }

@@ -5,25 +5,27 @@
 
 #include "projects/btldr/libs/crc32/api.h"
 
-// Address of image header
+// Address of image header. To use, cast as void *
 extern void* __image_hdr;
+
+#define APP_IMAGE_HEADER_ADDRESS ((void*) 0x7c)
 
 // Static variable to store image header in memory
 // static image_hdr_t prv_hdr;
 
-image_hdr_t image_get_header(void) {
+const image_hdr_t image_get_header(void) {
     image_hdr_t hdr;
-    memcpy_P(&hdr, (void*)__image_hdr, sizeof(image_hdr_t));
+    memcpy_P(&hdr, APP_IMAGE_HEADER_ADDRESS, sizeof(image_hdr_t));
     return hdr;
 }
 
-uint8_t image_validate(const image_hdr_t* hdr) {
+uint8_t image_validate(const image_hdr_t hdr) {
     // Get image start address (after header) and size
-    uint16_t image_addr = sizeof(image_hdr_t);
-    uint16_t image_size = hdr->image_size;
+    uint16_t image_addr = ((uintptr_t)APP_IMAGE_HEADER_ADDRESS) + sizeof(image_hdr_t);
+    uint16_t image_size = hdr.image_size;
 
     // Image must start with `OEM!`
-    if (hdr->image_magic != IMAGE_MAGIC) {
+    if (hdr.image_magic != IMAGE_MAGIC) {
         return IMAGE_INVALID_MAGIC;
     }
 
@@ -37,7 +39,7 @@ uint8_t image_validate(const image_hdr_t* hdr) {
     crc = ~crc;
 
     // Calculated CRC is not the same as the stored CRC
-    if (crc != hdr->crc) {
+    if (crc != hdr.crc) {
         return IMAGE_INVALID_CRC;
     }
 
@@ -45,11 +47,11 @@ uint8_t image_validate(const image_hdr_t* hdr) {
 }
 
 uint64_t image_get_timestamp(void) {
-    image_hdr_t img = image_get_header();
+    const image_hdr_t img = image_get_header();
     return (uint64_t)img.flash_timestamp;
 }
 
 uint16_t image_get_size(void) {
-    image_hdr_t img = image_get_header();
+    const image_hdr_t img = image_get_header();
     return (uint16_t)img.image_size;
 }

@@ -62,14 +62,14 @@ uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
 
     // Validate image
     const image_hdr_t image_hdr = image_get_header();
-    uint8_t valid = image_validate(&image_hdr);
+    uint8_t valid = image_validate(image_hdr);
 
     if (valid == IMAGE_VALID) {
         bootflag_clear(UPDATE_REQUESTED);
         bootflag_set(IMAGE_IS_VALID);
 
         // Back to bootloader
-        asm("jmp 0x3000"); // TODO How to get bootstart address?
+        asm("jmp 0x3000");
     } else {
         bootflag_clear(IMAGE_IS_VALID);
 

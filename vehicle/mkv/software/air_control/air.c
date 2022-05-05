@@ -62,7 +62,7 @@ static void set_fault(enum FaultCode the_fault) {
  */
 volatile bool send_can = false;
 
-void timer0_isr(void) {
+void timer0_compa_callback(void) {
     send_can = true;
 }
 
@@ -361,7 +361,12 @@ static void state_machine_run(void) {
 }
 
 int main(void) {
+    MCUCR |= (1 << IVCE);
+    MCUCR &= ~(1 << IVSEL);
+    sei();
+
     can_init_air_control();
+
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
 
@@ -395,22 +400,24 @@ int main(void) {
     gpio_clear_pin(SS_HVD_CONN);
     gpio_clear_pin(SS_HVD);
 
-    air_control_critical.air_state = INIT;
+    gpio_set_pin(GENERAL_LED);
 
-    // Initialize interrupts
-    sei();
+    updater_init(BTLDR_ID, 5);
+
+    air_control_critical.air_state = INIT;
 
     // Set LED to indicate initial checks will be run
     gpio_set_pin(GENERAL_LED);
-
-    while (1);
+    gpio_clear_pin(FAULT_LED);
 
     // Send message once before checks
     can_send_air_control_critical();
 
-    if (initial_checks() == 1) {
-        goto fault;
-    }
+    // if (initial_checks() == 1) {
+    //     goto fault;
+    // }
+
+    air_control_critical.air_state = IDLE;
 
     pcint0_callback();
     pcint1_callback();
@@ -426,10 +433,11 @@ int main(void) {
 
     while (1) {
         // Run state machine every 1ms
+        if (air_control_critical.air_state == IDLE) {
+            updater_loop();
+        }
+
         if (run_1ms) {
-            if (air_control_critical.air_state == IDLE) {
-                updater_loop();
-            }
             state_machine_run();
             run_1ms = false;
         }
@@ -440,16 +448,18 @@ int main(void) {
         }
     }
 
-fault:
-    gpio_set_pin(FAULT_LED);
-
-    while (1) {
-        /*
-         * Continue senging CAN messages
-         */
-        if (send_can) {
-            can_send_air_control_critical();
-            send_can = false;
-        }
-    };
+// fault:
+//     gpio_set_pin(FAULT_LED);
+//
+//     while (1) {
+//         updater_loop();
+//         /*
+//          * Continue senging CAN messages
+//          */
+//         if (send_can) {
+//             gpio_toggle_pin(GENERAL_LED);
+//             can_send_air_control_critical();
+//             send_can = false;
+//         }
+//     };
 }

@@ -22,9 +22,8 @@ avrdude -v -P usb -p {part} \
         -U lfuse:${FUSE_OP}:${_LFUSE}:m \
         -U hfuse:${FUSE_OP}:${_HFUSE}:m \
         -U efuse:${FUSE_OP}:${_EFUSE}:m \
-        -U lock:w:0xFF:m \
         -U eeprom:w:{eeprom}:i \
         -U flash:w:{btldr}:i \
-        -U lock:w:0xCF:m \
+        -U lock:w:0xFF:m \
         -U flash:w:{binary}:r \
         $@
