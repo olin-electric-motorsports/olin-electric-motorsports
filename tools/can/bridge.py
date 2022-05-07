@@ -13,19 +13,11 @@ virt = can.interface.Bus(
 def seeed_to_virt():
     for message in seeedbus:
         virt.send(message)
-        time.sleep(0.001)
-
-    while True:
-        sleep(1)
 
 
 def virt_to_seeed():
     for message in virt:
         seeedbus.send(message)
-        time.sleep(0.001)
-
-    while True:
-        sleep(1)
 
 
 if __name__ == "__main__":
