@@ -108,16 +108,6 @@ static int initial_checks(void) {
     bms_sense.min_temperature = min_temp;
     bms_sense.max_temperature = max_temp;
 
-    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_UNDERTEMPERATURE);
-        rc = 1;
-        goto bail;
-    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_OVERTEMPERATURE);
-        rc = 1;
-        goto bail;
-    }
-
     // TODO: openwire_task();
     // TODO: current_task();
 
