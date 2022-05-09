@@ -8,7 +8,7 @@
 /*
  * Generate CRC32
  */
-void crc32(uint8_t *data, size_t n_bytes, uint32_t *crc);
+void crc32(uint8_t* data, size_t n_bytes, uint32_t* crc);
 
 /*
  * One step of CRC32 function
@@ -22,4 +22,4 @@ void crc32(uint8_t *data, size_t n_bytes, uint32_t *crc);
  * }
  * crc = ~crc;
  */
-void crc32_step(uint8_t data, uint32_t *crc);
+void crc32_step(uint8_t data, uint32_t* crc);

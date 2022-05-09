@@ -44,7 +44,7 @@ int cmd_flash(uint8_t ecu_id, FILE* fp) {
     can_send(can_msg_id, can_data, 3);
 
     // Wait for session response
-    struct can_filter rfilter[1] = {0};
+    struct can_filter rfilter[1] = { 0 };
     rfilter[0].can_id = (ecu_id << 4) | CAN_ID_STATUS;
     rfilter[0].can_mask = 0x7FF;
 
@@ -67,7 +67,7 @@ int cmd_flash(uint8_t ecu_id, FILE* fp) {
     size_t nbytes;
 
     rfilter[0].can_id = (ecu_id << 4) | CAN_ID_STATUS;
-    rfilter[0].can_mask = 0x7FF;  // Exact match
+    rfilter[0].can_mask = 0x7FF; // Exact match
 
     while ((nbytes = fread(can_data, 1, 8, fp)) != 0) {
         can_msg_id = (ecu_id << 4) | CAN_ID_DATA;
@@ -75,7 +75,7 @@ int cmd_flash(uint8_t ecu_id, FILE* fp) {
         can_send(can_msg_id, can_data, nbytes);
 
         rc = can_receive(rfilter, &can_msg_id, &can_dlc, can_data,
-                         1000);  // Timeout 1000ms
+                         1000); // Timeout 1000ms
 
         if (rc == 1) {
             log_error("Fatal error in receiving CAN message");

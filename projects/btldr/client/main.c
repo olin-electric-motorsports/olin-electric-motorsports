@@ -13,9 +13,9 @@
 #include <time.h>
 #include <unistd.h>
 
+#include "log.h"
 #include "projects/btldr/client/can.h"
 #include "projects/btldr/client/client.h"
-#include "log.h"
 
 #define VERSION_MAJ 0
 #define VERSION_MIN 1

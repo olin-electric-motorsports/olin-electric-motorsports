@@ -7,9 +7,8 @@ char* chip_id_to_name[4] = {
     [CHIP_ARM_STM32F103C8T6] = "stm32f103c8t6",
 };
 
-static struct ping_response ping_unpack_response(uint64_t current_time,
-                                                 uint8_t ecu_id,
-                                                 uint8_t* data) {
+static struct ping_response
+ping_unpack_response(uint64_t current_time, uint8_t ecu_id, uint8_t* data) {
     struct ping_response pr;
 
     pr.version = data[0];
@@ -57,11 +56,11 @@ int cmd_ping(uint8_t ecu_id, struct ping_response* response) {
 
     uint64_t current_time = 0;
 
-    struct can_filter rfilter[1] = {0};
+    struct can_filter rfilter[1] = { 0 };
 
     if (ecu_id == PING_BROADCAST) {
         rfilter[0].can_id = CAN_ID_QUERY_RESPONSE;
-        rfilter[0].can_mask = 0x00F;  // 0bxxxxxxx0001 to match ping responses
+        rfilter[0].can_mask = 0x00F; // 0bxxxxxxx0001 to match ping responses
     } else {
         rfilter[0].can_id = (ecu_id << 4) | CAN_ID_QUERY_RESPONSE;
         rfilter[0].can_mask = 0x7FF;
@@ -90,15 +89,15 @@ int cmd_ping(uint8_t ecu_id, struct ping_response* response) {
     } while ((rc == -1) && (num_tries < MAX_RETRIES));
 
     if ((num_tries == MAX_RETRIES) && (rc == -1)) {
-        fprintf(stderr, "Failed to receive ping response. Device unreachable.\n");
-        rc = 2;  // timeout
+        fprintf(stderr,
+                "Failed to receive ping response. Device unreachable.\n");
+        rc = 2; // timeout
         goto bail;
     }
 
     if (rc == 0) {
         *response = ping_unpack_response(current_time, ecu_id, recv_can_data);
     }
-
 
 bail:
     return rc;

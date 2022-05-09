@@ -10,13 +10,13 @@
 #include <string.h>
 #include <time.h>
 
-#include "projects/btldr/client/can.h"
-#include "projects/btldr/can_isp.h"
-#include "projects/btldr/libs/image/api.h"
 #include "log.h"
+#include "projects/btldr/can_isp.h"
+#include "projects/btldr/client/can.h"
+#include "projects/btldr/libs/image/api.h"
 
-#define POLLTIMEOUT (1000)
-#define MAX_RETRIES (5)
+#define POLLTIMEOUT    (1000)
+#define MAX_RETRIES    (5)
 #define PING_BROADCAST (0xFF)
 
 extern char* chip_id_to_name[];

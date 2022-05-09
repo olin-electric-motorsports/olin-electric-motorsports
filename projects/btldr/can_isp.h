@@ -78,7 +78,8 @@
 /*
  * Other defines
  */
-#define CAN_ISP_MASK       (0x000) // No filtering TODO: update this to be more efficient
+#define CAN_ISP_MASK \
+    (0x000) // No filtering TODO: update this to be more efficient
 #define CAN_MAX_MSG_LENGTH (8) // Always accept up to 8 bytes
 
 union Address {
