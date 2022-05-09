@@ -67,6 +67,10 @@ int can_send(can_frame_t* frame) {
 
     mob_enable_tx();
 
+    // Wait for TX to finish
+    while (!(CANSTMOB & (1 << TXOK)));
+    CANSTMOB &= ~(1 << TXOK);
+
     return 0;
 }
 

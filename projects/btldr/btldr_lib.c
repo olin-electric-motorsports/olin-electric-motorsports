@@ -11,12 +11,12 @@
 
 static can_frame_t can_msg = { 0 };
 
-// Save btldr_id
 static uint16_t btldr_id = 0x00;
 
 void updater_init(uint16_t ecu_id, uint8_t mob) {
     can_msg.mob = mob;
 
+    // Save btldr_id
     btldr_id = ecu_id;
 
     can_filter_t filter = {
@@ -44,7 +44,7 @@ static void do_query(uint8_t* data, uint8_t dlc) {
     uint64_t timestamp = (uint64_t)*data;
     uint64_t flash_timestamp = image_get_timestamp();
     uint64_t delta = timestamp - flash_timestamp;
-    uint32_t delta_32 = (uint32_t)delta & 0xFFFF;
+    uint32_t delta_32 = (uint32_t)delta;
 
     uint8_t resp_data[8] = { version, chip, CURRENT_IMAGE_APP, 0 };
 
