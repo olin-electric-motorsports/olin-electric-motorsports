@@ -43,4 +43,4 @@ int openwire_task(void);
 /*
  * Task to read current from current sensor
  */
-void current_task(int16_t* current);
+void current_task(int16_t* current, uint16_t* vref, uint16_t* vout);

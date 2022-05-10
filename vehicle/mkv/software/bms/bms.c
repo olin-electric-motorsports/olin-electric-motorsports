@@ -189,8 +189,12 @@ static void state_machine_run(void) {
     // TODO: rc = openwire_task();
 
     int16_t current = 0;
-    current_task(&current);
+    uint16_t vref = 0;
+    uint16_t vout = 0;
+    current_task(&current, &vref, &vout);
     bms_core.pack_current = current;
+    bms_sense.current_vref = vref;
+    bms_sense.current_vout = vout;
 
     switch (bms_core.bms_state) {
         case IDLE: {
@@ -310,6 +314,9 @@ int main(void) {
 
     // Turn on GENERAL_LED to indicate checks will run
     gpio_set_pin(GENERAL_LED);
+
+    pcint0_callback();
+    pcint2_callback();
 
     // Check state of cells
     if (initial_checks() != 0) {

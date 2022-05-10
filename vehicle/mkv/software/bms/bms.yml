@@ -46,7 +46,7 @@ publish:
           type: int16_t
           name: A
           offset: 0
-          scale: 1
+          scale: 0.004
       - name: cell_balancing_status
         slice: 36 + 1
         unit:
@@ -101,6 +101,20 @@ publish:
           name: V
           offset: 0
           scale: 0.0001
+      - name: current_vref
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 5 / 1024
+      - name: current_vout
+        slice: 48 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 5 / 1024
 
   - name: bms_metrics
     id: 0x510
