@@ -234,7 +234,7 @@ static void state_machine_run(void) {
                 once = false;
             }
 
-            if (get_time() - start_time < 2000) {
+            if (get_time() - start_time < PRECHARGE_TIMEOUT) {
                 rc = get_motor_controller_voltage(&motor_controller_voltage);
                 if (rc != 0) {
                     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
@@ -308,7 +308,7 @@ static void state_machine_run(void) {
             int16_t motor_controller_voltage = 0;
 
             // Wait for 10 seconds while the motor controller discharges
-            if (get_time() - start_time < 10000) {
+            if (get_time() - start_time < DISCHARGE_TIMEOUT) {
                 int rc
                     = get_motor_controller_voltage(&motor_controller_voltage);
 

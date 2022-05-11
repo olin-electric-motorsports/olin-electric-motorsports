@@ -39,6 +39,9 @@ gpio_t AIR_N_WELD_DETECT = PC5;
 // output
 #define IMD_STABILITY_CHECK_DELAY_MS (4000)
 
+#define PRECHARGE_TIMEOUT (3000)
+#define DISCHARGE_TIMEOUT (10000)
+
 /*
  * Timer
  */
