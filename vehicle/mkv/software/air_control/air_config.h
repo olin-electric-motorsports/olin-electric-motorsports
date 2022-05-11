@@ -37,7 +37,7 @@ gpio_t AIR_N_WELD_DETECT = PC5;
 
 // Milliseconds to wait while the IMD output stabilizes before reading the
 // output
-#define IMD_STABILITY_CHECK_DELAY_MS (4500)
+#define IMD_STABILITY_CHECK_DELAY_MS (4000)
 
 /*
  * Timer

@@ -393,16 +393,16 @@ int main(void) {
     // Set LED to indicate initial checks will be run
     gpio_set_pin(GENERAL_LED);
 
-    pcint0_callback();
-    pcint1_callback();
-    pcint2_callback();
-
     // Send message once before checks
     can_send_air_control_critical();
 
     if (initial_checks() == 1) {
         goto fault;
     }
+
+    pcint0_callback();
+    pcint1_callback();
+    pcint2_callback();
 
     // Clear LED to indicate that initial checks passed
     gpio_clear_pin(GENERAL_LED);
