@@ -8,7 +8,7 @@
     (100) // 100 milliseconds
           //
 
-#define MOTOR_CLOCKWISE (0)
+#define MOTOR_CLOCKWISE     (0)
 #define MOTOR_ANTICLOCKWISE (1)
 
 // Set this to lower than 10 to limit torque request (i.e. 5 limits to half of
