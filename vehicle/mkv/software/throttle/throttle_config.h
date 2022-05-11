@@ -7,11 +7,13 @@
 #define IMPLAUSIBILITY_TIMEOUT_MS \
     (100) // 100 milliseconds
           //
+
+#define MOTOR_CLOCKWISE (0)
 #define MOTOR_ANTICLOCKWISE (1)
 
 // Set this to lower than 10 to limit torque request (i.e. 5 limits to half of
 // max torque)
-#define TORQUE_REQUEST_SCALE (10)
+#define TORQUE_REQUEST_SCALE (5)
 
 // Represents value for 25% pedal travel to check for brake implausibility
 // Set as 25% of 255
@@ -59,10 +61,10 @@ typedef struct {
 
 // Minimum and maximum ADC counts representing 0% and 100% pedal travel
 // Last calibrated 4-21
-#define THROTTLE_R_MIN_COUNTS (int16_t)(126 + THROTTLE_BUFFER)
-#define THROTTLE_R_MAX_COUNTS (int16_t)(690 - THROTTLE_BUFFER)
-#define THROTTLE_L_MIN_COUNTS (int16_t)(178 + THROTTLE_BUFFER)
-#define THROTTLE_L_MAX_COUNTS (int16_t)(1000 - THROTTLE_BUFFER)
+#define THROTTLE_R_MIN_COUNTS (int16_t)((126 + THROTTLE_BUFFER) >> 2)
+#define THROTTLE_R_MAX_COUNTS (int16_t)((690 - THROTTLE_BUFFER) >> 2)
+#define THROTTLE_L_MIN_COUNTS (int16_t)((178 + THROTTLE_BUFFER) >> 2)
+#define THROTTLE_L_MAX_COUNTS (int16_t)((1000 - THROTTLE_BUFFER) >> 2)
 
 const throttle_potentiometer_s throttle_r = {
     .adc_pin = ADC9,

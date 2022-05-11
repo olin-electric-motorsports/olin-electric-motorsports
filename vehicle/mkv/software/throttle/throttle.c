@@ -58,6 +58,8 @@ void pcint0_callback(void) {
 static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
     int16_t throttle_raw = adc_read(throttle->adc_pin);
 
+    throttle_raw >>= 2;
+
     // Voltage range between 0% and 100% pedal travel
     int16_t range = throttle->throttle_max - throttle->throttle_min;
     float position_pct
@@ -260,9 +262,9 @@ int main(void) {
 
                 bool ready_to_drive = dashboard.ready_to_drive;
                 if (ready_to_drive) {
-                    m192_command_message.inverter_enable = false;
-                } else {
                     m192_command_message.inverter_enable = true;
+                } else {
+                    m192_command_message.inverter_enable = false;
                 }
             }
 
