@@ -16,25 +16,15 @@ gpio_t SS_IMD_LATCH = PB4;
 gpio_t SS_MPC = PB5;
 gpio_t SS_HVD_CONN = PB6;
 gpio_t SS_HVD = PB7;
+gpio_t SS_BMS = PC7;
 
-gpio_t BMS_SENSE = PC0;
 gpio_t AIR_P_WELD_DETECT = PC4;
 
 gpio_t IMD_SENSE = PD0;
 
-#ifdef BOARD_HACKERBOARD
-
-gpio_t FAULT_LED = PB7;
-gpio_t GENERAL_LED = PD6;
-gpio_t AIR_N_WELD_DETECT = PC7;
-
-#else
-
 gpio_t GENERAL_LED = PD6;
 gpio_t FAULT_LED = PD7;
 gpio_t AIR_N_WELD_DETECT = PC5;
-
-#endif
 
 // This is the raw value we compare. This is the real voltage divided by 256 and
 // multiplied by 10000.

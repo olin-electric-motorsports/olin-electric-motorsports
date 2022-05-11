@@ -64,6 +64,7 @@ void pcint0_callback(void) {
 }
 
 void pcint1_callback(void) {
+    air_control_critical.ss_bms = !gpio_get_pin(SS_BMS);
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
     air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 }
@@ -306,8 +307,8 @@ static void state_machine_run(void) {
 
             int16_t motor_controller_voltage = 0;
 
-            // Wait for 2 seconds while the motor controller discharges
-            if (get_time() - start_time < 2000) {
+            // Wait for 10 seconds while the motor controller discharges
+            if (get_time() - start_time < 10000) {
                 int rc
                     = get_motor_controller_voltage(&motor_controller_voltage);
 
@@ -362,6 +363,7 @@ int main(void) {
     gpio_set_mode(IMD_SENSE, INPUT);
     gpio_set_mode(SS_TSMS, INPUT);
     gpio_set_mode(SS_IMD_LATCH, INPUT);
+    gpio_set_mode(SS_BMS, INPUT);
     gpio_set_mode(SS_MPC, INPUT);
     gpio_set_mode(SS_HVD_CONN, INPUT);
     gpio_set_mode(SS_HVD, INPUT);
@@ -371,6 +373,7 @@ int main(void) {
     gpio_enable_interrupt(SS_MPC);
     gpio_enable_interrupt(SS_HVD_CONN);
     gpio_enable_interrupt(SS_HVD);
+    gpio_enable_interrupt(SS_BMS);
     gpio_enable_interrupt(IMD_SENSE);
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
@@ -389,6 +392,10 @@ int main(void) {
 
     // Set LED to indicate initial checks will be run
     gpio_set_pin(GENERAL_LED);
+
+    pcint0_callback();
+    pcint1_callback();
+    pcint2_callback();
 
     // Send message once before checks
     can_send_air_control_critical();
