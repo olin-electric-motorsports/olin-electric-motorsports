@@ -222,7 +222,7 @@ static void state_machine_run(void) {
             }
 
             // Set correct scale for pack voltage
-            pack_voltage = (pack_voltage << 8) * 0.0001; // (x << 4 == x * 256)
+            pack_voltage = (pack_voltage << 8) * 0.0001; // (x << 8 == x * 256)
 
             /*
              * This pattern ensures that we only call get_time() once because we
@@ -234,7 +234,7 @@ static void state_machine_run(void) {
                 once = false;
             }
 
-            if (get_time() - start_time < PRECHARGE_TIMEOUT) {
+            if (get_time() - start_time >= PRECHARGE_DELAY_MS) {
                 rc = get_motor_controller_voltage(&motor_controller_voltage);
                 if (rc != 0) {
                     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
@@ -243,7 +243,7 @@ static void state_machine_run(void) {
                 }
 
                 // Set correct scale for MC voltage
-                motor_controller_voltage = motor_controller_voltage / 10;
+                motor_controller_voltage = motor_controller_voltage * 0.1;
 
                 if (motor_controller_voltage
                     > (PRECHARGE_THRESHOLD * pack_voltage)) {
@@ -253,13 +253,12 @@ static void state_machine_run(void) {
                     air_control_critical.air_state = TS_ACTIVE;
                     return;
                 } else {
+                    once = true;
+                    set_fault(AIR_FAULT_PRECHARGE_FAIL);
                     return;
                 }
             } else {
-                // 2000 ms (2sec) have elapsed and the motor controller hasn't
-                // reached the appropriate voltage, so precharge failed
-                once = true;
-                set_fault(AIR_FAULT_PRECHARGE_FAIL);
+                // Yield for timer to complete
                 return;
             }
         } break;
