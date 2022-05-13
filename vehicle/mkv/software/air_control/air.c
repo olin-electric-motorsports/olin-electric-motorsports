@@ -222,7 +222,7 @@ static void state_machine_run(void) {
             }
 
             // Set correct scale for pack voltage
-            pack_voltage = (pack_voltage << 4) * 0.0001; // (x << 4 == x * 16)
+            pack_voltage = (pack_voltage << 8) * 0.0001; // (x << 4 == x * 256)
 
             /*
              * This pattern ensures that we only call get_time() once because we
