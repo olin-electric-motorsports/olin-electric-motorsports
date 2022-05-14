@@ -244,8 +244,9 @@ int main(void) {
      * command. Once the inverter sees a Disable command, the lockout is removed
      * and controller can receive the Inverter Enable command
      */
-    m192_command_message.direction_command = MOTOR_ANTICLOCKWISE;
     can_send_m192_command_message();
+
+    m192_command_message.direction_command = MOTOR_CLOCKWISE;
 
     can_receive_brakelight();
     can_receive_dashboard();
