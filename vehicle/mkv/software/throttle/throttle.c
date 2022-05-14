@@ -58,7 +58,8 @@ void pcint0_callback(void) {
 static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
     int16_t throttle_raw = adc_read(throttle->adc_pin);
 
-    throttle_raw >>= 2;
+    throttle_raw >>= 2; // This was in the old code, and I don't know why. I
+                        // can't seem to explain it yet...
 
     // Voltage range between 0% and 100% pedal travel
     int16_t range = throttle->throttle_max - throttle->throttle_min;
