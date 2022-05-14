@@ -238,7 +238,7 @@ Text Label 14300 1950 2    50   ~ 0
 CAN_RX
 Text Label 15750 1900 0    50   ~ 0
 CAN_P
-Text Label 15750 2200 0    50   ~ 0
+Text Label 14800 2250 0    50   ~ 0
 CAN_N
 Text Notes 13750 1050 0    89   ~ 0
 CAN TRANSCEIVER\n
@@ -1222,7 +1222,7 @@ ON_STATE_CMPNTS_-
 Wire Wire Line
 	12925 4700 12925 5325
 $Comp
-L formula:R_402K R25
+L lvbms-rescue:R_402K-formula R25
 U 1 1 6169E370
 P 9700 3950
 F 0 "R25" V 9493 3950 50  0000 C CNN
@@ -1285,7 +1285,7 @@ F 3 "" H 5800 8925 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_1.5k R19
+L lvbms-rescue:R_1.5k-formula R19
 U 1 1 6188163E
 P 3200 9425
 F 0 "R19" H 3275 9425 50  0000 L CNN
@@ -1559,7 +1559,7 @@ Connection ~ 6850 7425
 Wire Notes Line
 	550  550  5725 550 
 Wire Notes Line
-	5725 550  5725 4775
+	6375 750  6375 4975
 Wire Notes Line
 	5725 4775 550  4775
 Wire Notes Line
@@ -1579,7 +1579,7 @@ Wire Notes Line
 Wire Notes Line
 	13775 2875 13775 1075
 $Comp
-L formula:LT3066IMSE-5 U4
+L lvbms-rescue:LT3066IMSE-5-formula U4
 U 1 1 61380A59
 P 4225 9425
 F 0 "U4" H 4275 10140 50  0000 C CNN
@@ -1686,7 +1686,7 @@ Connection ~ 1000 8775
 Wire Wire Line
 	1000 8775 1000 8975
 $Comp
-L formula:LT1017IS8 U5
+L lvbms-rescue:LT1017IS8-formula U5
 U 1 1 6145B5F2
 P 8775 5275
 F 0 "U5" H 9125 5500 50  0000 C CNN
@@ -1763,7 +1763,7 @@ Connection ~ 6100 8975
 Wire Wire Line
 	6100 8975 6475 8975
 $Comp
-L formula:redcube-7461057 U11
+L lvbms-rescue:redcube-7461057-formula U11
 U 1 1 6141885F
 P 11325 8700
 F 0 "U11" H 11342 8825 50  0000 C CNN
@@ -1775,7 +1775,7 @@ F 4 "7461057" H 11325 8700 50  0001 C CNN "MPN"
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:ACHS-7124 U10
+L lvbms-rescue:ACHS-7124-formula U10
 U 1 1 61447EAA
 P 9700 7250
 F 0 "U10" H 9725 7315 50  0000 C CNN
@@ -1822,7 +1822,7 @@ Wire Wire Line
 	9250 7650 9250 7750
 Connection ~ 9250 7750
 $Comp
-L formula:C_1nf C20
+L lvbms-rescue:C_1nf-formula C20
 U 1 1 6157E14C
 P 10425 7800
 F 0 "C20" H 10540 7846 50  0000 L CNN
@@ -1837,7 +1837,7 @@ Connection ~ 10425 7950
 Wire Wire Line
 	10425 7950 10775 7950
 $Comp
-L formula:SQM110P06 Q2
+L lvbms-rescue:SQM110P06-formula Q2
 U 1 1 61487F0F
 P 9975 8850
 F 0 "Q2" V 10150 8850 50  0000 C CNN
@@ -1850,7 +1850,7 @@ F 5 "SQM110P06-8m9L" H 10025 9550 50  0001 C CNN "MPN"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:SQM110P06 Q5
+L lvbms-rescue:SQM110P06-formula Q5
 U 1 1 6148C0A4
 P 10625 8850
 F 0 "Q5" V 10800 8850 50  0000 C CNN
@@ -1890,7 +1890,7 @@ Connection ~ 10250 9200
 Wire Wire Line
 	10250 9200 10300 9200
 $Comp
-L formula:R_10 R41
+L lvbms-rescue:R_10-formula R41
 U 1 1 6150E131
 P 10300 9475
 F 0 "R41" H 10370 9521 50  0000 L CNN
@@ -2006,7 +2006,7 @@ $EndComp
 Text Notes 8375 950  0    39   ~ 0
 Thermistor on Board
 $Comp
-L formula:redcube-7461057 U9
+L lvbms-rescue:redcube-7461057-formula U9
 U 1 1 614200A6
 P 8100 7550
 F 0 "U9" H 8100 7675 50  0000 C CNN
@@ -2022,7 +2022,7 @@ Wire Notes Line
 Wire Wire Line
 	9075 7150 9075 7450
 $Comp
-L formula:LTC6810HG-2 U3
+L lvbms-rescue:LTC6810HG-2-formula U3
 U 1 1 617F09B1
 P 5100 6875
 F 0 "U3" H 5100 8290 50  0000 C CNN
@@ -2061,7 +2061,7 @@ Wire Wire Line
 Text Notes 5525 5375 0    39   ~ 0
 Since we are using an LTC6810-2 chip, we have to use the address pins.\nWe've tied all address pins to V- (LTC GND) and can use 0000 when\nselecting address in commands.
 $Comp
-L Transistor_FET:BSS138 Q6
+L lvbms-rescue:BSS138-Transistor_FET Q6
 U 1 1 617DAFFB
 P 10200 9825
 F 0 "Q6" H 10404 9871 50  0000 L CNN
@@ -2071,7 +2071,7 @@ F 3 "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF" H 10200 9825 50  0001 L
 	1    10200 9825
 	1    0    0    -1  
 $EndComp
-Text Notes 4450 2850 0    50   ~ 0
+Text Notes 5100 3050 0    50   ~ 0
 MOSI, MISO, and SCK must\nstay connected to the _A pins\nfor programming.\n\nBecause ISP uses same SPI bus \nas LTC chip comms, we place \nresistors to limit current 
 Text Label 3650 2000 0    50   ~ 0
 FAN_PWM
@@ -2124,7 +2124,7 @@ Wire Notes Line
 Wire Notes Line
 	12850 5650 12850 7875
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 6193AA5F
 P 800 850
 F 0 "#PWR?" H 800 700 50  0001 C CNN
@@ -2135,7 +2135,7 @@ F 3 "" H 800 850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 61962B80
 P 14800 1300
 F 0 "#PWR?" H 14800 1150 50  0001 C CNN
@@ -2146,7 +2146,7 @@ F 3 "" H 14800 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 61977052
 P 14600 3300
 F 0 "#PWR?" H 14600 3150 50  0001 C CNN
@@ -2157,7 +2157,7 @@ F 3 "" H 14600 3300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 6198AEF9
 P 4675 3450
 F 0 "#PWR?" H 4675 3300 50  0001 C CNN
@@ -2168,7 +2168,7 @@ F 3 "" H 4675 3450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 6199EDFF
 P 6575 5825
 F 0 "#PWR?" H 6575 5675 50  0001 C CNN
@@ -2179,7 +2179,7 @@ F 3 "" H 6575 5825 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 619C68FC
 P 14400 4250
 F 0 "#PWR?" H 14400 4100 50  0001 C CNN
@@ -2190,7 +2190,7 @@ F 3 "" H 14400 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 619EE823
 P 4150 3500
 F 0 "#PWR?" H 4150 3350 50  0001 C CNN
@@ -2201,7 +2201,7 @@ F 3 "" H 4150 3500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 61A028B2
 P 13925 1950
 F 0 "#PWR?" H 13925 1800 50  0001 C CNN
@@ -2212,7 +2212,7 @@ F 3 "" H 13925 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 61A166FA
 P 7025 8975
 F 0 "#PWR?" H 7025 8825 50  0001 C CNN
@@ -2223,7 +2223,7 @@ F 3 "" H 7025 8975 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 61A3E0AC
 P 10775 7550
 F 0 "#PWR?" H 10775 7400 50  0001 C CNN
@@ -2234,7 +2234,7 @@ F 3 "" H 10775 7550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61A6D154
 P 1850 9525
 F 0 "#PWR?" H 1850 9275 50  0001 C CNN
@@ -2245,7 +2245,7 @@ F 3 "" H 1850 9525 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61A82CB6
 P 2950 9275
 F 0 "#PWR?" H 2950 9025 50  0001 C CNN
@@ -2256,7 +2256,7 @@ F 3 "" H 2950 9275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61A96DC6
 P 2650 9275
 F 0 "#PWR?" H 2650 9025 50  0001 C CNN
@@ -2267,7 +2267,7 @@ F 3 "" H 2650 9275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61AAAC98
 P 3200 9875
 F 0 "#PWR?" H 3200 9625 50  0001 C CNN
@@ -2278,7 +2278,7 @@ F 3 "" H 3200 9875 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61ABEC41
 P 4250 10150
 F 0 "#PWR?" H 4250 9900 50  0001 C CNN
@@ -2292,7 +2292,7 @@ Connection ~ 4250 10150
 Wire Wire Line
 	4250 10150 4325 10150
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61AD3199
 P 2250 9825
 F 0 "#PWR?" H 2250 9575 50  0001 C CNN
@@ -2303,7 +2303,7 @@ F 3 "" H 2250 9825 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61AEB36F
 P 6100 9575
 F 0 "#PWR?" H 6100 9325 50  0001 C CNN
@@ -2314,7 +2314,7 @@ F 3 "" H 6100 9575 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61AFFAA9
 P 1150 1600
 F 0 "#PWR?" H 1150 1350 50  0001 C CNN
@@ -2325,7 +2325,7 @@ F 3 "" H 1150 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61B13CBB
 P 800 1300
 F 0 "#PWR?" H 800 1050 50  0001 C CNN
@@ -2336,7 +2336,7 @@ F 3 "" H 800 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61B2879C
 P 4300 4500
 F 0 "#PWR?" H 4300 4250 50  0001 C CNN
@@ -2347,7 +2347,7 @@ F 3 "" H 4300 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61B3CC16
 P 3900 4500
 F 0 "#PWR?" H 3900 4250 50  0001 C CNN
@@ -2358,7 +2358,7 @@ F 3 "" H 3900 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61B5169C
 P 4100 4250
 F 0 "#PWR?" H 4100 4000 50  0001 C CNN
@@ -2369,7 +2369,7 @@ F 3 "" H 4100 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61B66157
 P 4450 3950
 F 0 "#PWR?" H 4450 3700 50  0001 C CNN
@@ -2380,7 +2380,7 @@ F 3 "" H 4450 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61B7AC85
 P 1300 4050
 F 0 "#PWR?" H 1300 3800 50  0001 C CNN
@@ -2405,7 +2405,7 @@ F 6 "https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn" H 14800 2800 6
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61B8F832
 P 14800 2450
 F 0 "#PWR?" H 14800 2200 50  0001 C CNN
@@ -2416,7 +2416,7 @@ F 3 "" H 14800 2450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61BA3A82
 P 14500 1600
 F 0 "#PWR?" H 14500 1350 50  0001 C CNN
@@ -2427,7 +2427,7 @@ F 3 "" H 14500 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61BB84B2
 P 14600 3500
 F 0 "#PWR?" H 14600 3250 50  0001 C CNN
@@ -2438,7 +2438,7 @@ F 3 "" H 14600 3500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61BCE195
 P 7300 6750
 F 0 "#PWR?" H 7300 6500 50  0001 C CNN
@@ -2449,7 +2449,7 @@ F 3 "" H 7300 6750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61BE306E
 P 6900 7425
 F 0 "#PWR?" H 6900 7175 50  0001 C CNN
@@ -2460,7 +2460,7 @@ F 3 "" H 6900 7425 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61BFA98B
 P 4100 7825
 F 0 "#PWR?" H 4100 7575 50  0001 C CNN
@@ -2472,7 +2472,7 @@ F 3 "" H 4100 7825 50  0001 C CNN
 $EndComp
 Connection ~ 4100 7825
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61C1271C
 P 1875 7275
 F 0 "#PWR?" H 1875 7025 50  0001 C CNN
@@ -2483,7 +2483,7 @@ F 3 "" H 1875 7275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61C288EA
 P 3800 6225
 F 0 "#PWR?" H 3800 5975 50  0001 C CNN
@@ -2496,7 +2496,7 @@ $EndComp
 Wire Wire Line
 	3900 6025 3900 6425
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61C58BFB
 P 7625 2225
 F 0 "#PWR?" H 7625 1975 50  0001 C CNN
@@ -2507,7 +2507,7 @@ F 3 "" H 7625 2225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61C6CB76
 P 7300 2225
 F 0 "#PWR?" H 7300 1975 50  0001 C CNN
@@ -2518,7 +2518,7 @@ F 3 "" H 7300 2225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61C80B43
 P 6975 2225
 F 0 "#PWR?" H 6975 1975 50  0001 C CNN
@@ -2529,7 +2529,7 @@ F 3 "" H 6975 2225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61C94A4E
 P 6625 2225
 F 0 "#PWR?" H 6625 1975 50  0001 C CNN
@@ -2540,7 +2540,7 @@ F 3 "" H 6625 2225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61CAB32C
 P 14450 7400
 F 0 "#PWR?" H 14450 7150 50  0001 C CNN
@@ -2551,7 +2551,7 @@ F 3 "" H 14450 7400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61CBF45F
 P 9275 4650
 F 0 "#PWR?" H 9275 4400 50  0001 C CNN
@@ -2562,7 +2562,7 @@ F 3 "" H 9275 4650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61CD3D80
 P 10150 4650
 F 0 "#PWR?" H 10150 4400 50  0001 C CNN
@@ -2573,7 +2573,7 @@ F 3 "" H 10150 4650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61CE7F07
 P 9850 5050
 F 0 "#PWR?" H 9850 4800 50  0001 C CNN
@@ -2584,7 +2584,7 @@ F 3 "" H 9850 5050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61D19C8C
 P 8475 3000
 F 0 "#PWR?" H 8475 2750 50  0001 C CNN
@@ -2595,7 +2595,7 @@ F 3 "" H 8475 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61D2E0F0
 P 10300 10125
 F 0 "#PWR?" H 10300 9875 50  0001 C CNN
@@ -2624,7 +2624,7 @@ F 6 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/E
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61F144A3
 P 14450 6425
 F 0 "#PWR?" H 14450 6175 50  0001 C CNN
@@ -2649,7 +2649,7 @@ Wire Wire Line
 Wire Wire Line
 	4000 7325 4100 7325
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61F71E38
 P 2700 7400
 F 0 "#PWR?" H 2700 7150 50  0001 C CNN
@@ -2662,7 +2662,7 @@ $EndComp
 Wire Wire Line
 	2700 7400 2700 7325
 $Comp
-L formula:R_15_1W_.5% R8
+L lvbms-rescue:R_15_1W_.5%-formula R8
 U 1 1 61FA96DC
 P 2150 7175
 F 0 "R8" V 2200 7350 50  0000 R CNN
@@ -2686,7 +2686,7 @@ Connection ~ 2150 7025
 Wire Wire Line
 	2150 7025 2325 7025
 $Comp
-L formula:R_15_1W_.5% R7
+L lvbms-rescue:R_15_1W_.5%-formula R7
 U 1 1 61FABA7D
 P 2150 6775
 F 0 "R7" V 2200 6950 50  0000 R CNN
@@ -2699,7 +2699,7 @@ F 5 "HRG3216Q-15R0-D-T1" H 2150 6525 50  0001 C CNN "MPN"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:R_15_1W_.5% R6
+L lvbms-rescue:R_15_1W_.5%-formula R6
 U 1 1 61FBFA1B
 P 2150 6375
 F 0 "R6" V 2200 6550 50  0000 R CNN
@@ -2712,7 +2712,7 @@ F 5 "HRG3216Q-15R0-D-T1" H 2150 6125 50  0001 C CNN "MPN"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:R_15_1W_.5% R5
+L lvbms-rescue:R_15_1W_.5%-formula R5
 U 1 1 61FD3C36
 P 2150 5975
 F 0 "R5" V 2200 6150 50  0000 R CNN
@@ -2725,7 +2725,7 @@ F 5 "HRG3216Q-15R0-D-T1" H 2150 5725 50  0001 C CNN "MPN"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:R_15_1W_.5% R4
+L lvbms-rescue:R_15_1W_.5%-formula R4
 U 1 1 61FE7E3A
 P 2150 5575
 F 0 "R4" V 2200 5750 50  0000 R CNN
@@ -2752,7 +2752,7 @@ Wire Wire Line
 Wire Wire Line
 	1500 7025 2150 7025
 $Comp
-L formula:F_50A_32V F2
+L lvbms-rescue:F_50A_32V-formula F2
 U 1 1 61F0CFDC
 P 8550 7450
 F 0 "F2" H 8550 7675 50  0000 C CNN
@@ -2765,7 +2765,7 @@ F 5 "https://www.digikey.com/en/products/detail/bel-fuse-inc/0685P9500-01/100573
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:F_500mA_60V F1
+L lvbms-rescue:F_500mA_60V-formula F1
 U 1 1 61F32446
 P 1450 8975
 F 0 "F1" H 1425 9075 50  0000 C CNN
@@ -2842,7 +2842,7 @@ $EndComp
 Text Label 6300 1625 1    50   ~ 0
 VREG
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 61FCFBA0
 P 6300 2225
 F 0 "#PWR?" H 6300 1975 50  0001 C CNN
@@ -2877,7 +2877,7 @@ Wire Wire Line
 Wire Wire Line
 	1000 8575 1000 8775
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 620CB857
 P 9625 5775
 F 0 "#PWR?" H 9625 5525 50  0001 C CNN
@@ -2892,7 +2892,7 @@ Wire Wire Line
 Wire Wire Line
 	9625 4750 9850 4750
 $Comp
-L power:+5V #PWR?
+L lvbms-rescue:+5V-power #PWR?
 U 1 1 620F687A
 P 9625 4750
 F 0 "#PWR?" H 9625 4600 50  0001 C CNN
@@ -2904,7 +2904,7 @@ F 3 "" H 9625 4750 50  0001 C CNN
 $EndComp
 Connection ~ 9625 4750
 $Comp
-L formula:R_5K R33
+L lvbms-rescue:R_5K-formula R33
 U 1 1 62119C18
 P 6575 5975
 F 0 "R33" H 6645 6021 50  0000 L CNN
@@ -2931,10 +2931,10 @@ $EndComp
 Wire Wire Line
 	8475 2925 8475 3000
 Connection ~ 8475 2925
-Text Notes 10525 4450 0    50   ~ 0
+Text Notes 9775 3700 0    50   ~ 0
 Resistor dividers set at ~~90% to \nact as inputs for comparators 
 $Comp
-L formula:NanoFit_RA_SMT_02 J3
+L lvbms-rescue:NanoFit_RA_SMT_02-formula J3
 U 1 1 62184A03
 P 8825 1475
 F 0 "J3" H 9075 1575 60  0000 L CNN
@@ -2955,7 +2955,7 @@ THERM_3_-
 Text Label 8825 1975 2    50   ~ 0
 THERM_3_+
 $Comp
-L formula:NanoFit_RA_SMT_02 J4
+L lvbms-rescue:NanoFit_RA_SMT_02-formula J4
 U 1 1 61F58B45
 P 8825 1975
 F 0 "J4" H 9100 2075 60  0000 L CNN
@@ -2968,7 +2968,7 @@ F 5 "https://www.digikey.com/en/products/detail/molex/1054301102/9959376" H 8875
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:NanoFit_RA_SMT_02 J5
+L lvbms-rescue:NanoFit_RA_SMT_02-formula J5
 U 1 1 61F6DB51
 P 10250 975
 F 0 "J5" H 10550 1075 60  0000 L CNN
@@ -2981,7 +2981,7 @@ F 5 "https://www.digikey.com/en/products/detail/molex/1054301102/9959376" H 1030
 	-1   0    0    -1  
 $EndComp
 $Comp
-L formula:NanoFit_RA_SMT_02 J6
+L lvbms-rescue:NanoFit_RA_SMT_02-formula J6
 U 1 1 61FE69F9
 P 10250 1475
 F 0 "J6" H 10550 1575 60  0000 L CNN
@@ -2994,7 +2994,7 @@ F 5 "https://www.digikey.com/en/products/detail/molex/1054301102/9959376" H 1030
 	-1   0    0    -1  
 $EndComp
 $Comp
-L formula:NanoFit_RA_SMT_02 J7
+L lvbms-rescue:NanoFit_RA_SMT_02-formula J7
 U 1 1 61FFB14C
 P 10250 1975
 F 0 "J7" H 10550 2075 60  0000 L CNN
@@ -3007,7 +3007,7 @@ F 5 "https://www.digikey.com/en/products/detail/molex/1054301102/9959376" H 1030
 	-1   0    0    -1  
 $EndComp
 $Comp
-L formula:NanoFit_RA_SMT_02 J9
+L lvbms-rescue:NanoFit_RA_SMT_02-formula J9
 U 1 1 62039588
 P 11500 2200
 F 0 "J9" H 11775 2300 60  0000 L CNN
@@ -3020,7 +3020,7 @@ F 5 "https://www.digikey.com/en/products/detail/molex/1054301102/9959376" H 1155
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 62064BF9
 P 10250 2275
 F 0 "#PWR?" H 10250 2025 50  0001 C CNN
@@ -3042,7 +3042,7 @@ Wire Wire Line
 Wire Wire Line
 	8825 2175 8825 2275
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 620CDFDC
 P 8825 2275
 F 0 "#PWR?" H 8825 2025 50  0001 C CNN
@@ -3053,7 +3053,7 @@ F 3 "" H 8825 2275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 620E26A6
 P 8825 1775
 F 0 "#PWR?" H 8825 1525 50  0001 C CNN
@@ -3064,7 +3064,7 @@ F 3 "" H 8825 1775 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 620F6E21
 P 10250 1275
 F 0 "#PWR?" H 10250 1025 50  0001 C CNN
@@ -3075,7 +3075,7 @@ F 3 "" H 10250 1275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 6210B498
 P 10250 1775
 F 0 "#PWR?" H 10250 1525 50  0001 C CNN
@@ -3090,7 +3090,7 @@ Connection ~ 10250 1275
 Connection ~ 8825 1775
 Connection ~ 8825 2275
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 621264E1
 P 11500 2500
 F 0 "#PWR?" H 11500 2250 50  0001 C CNN
@@ -3104,7 +3104,7 @@ Wire Wire Line
 	11500 2500 11500 2400
 Connection ~ 11500 2500
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 621C5CF4
 P 11350 1750
 F 0 "#PWR?" H 11350 1500 50  0001 C CNN
@@ -3140,7 +3140,7 @@ Connection ~ 11350 1750
 Wire Wire Line
 	11350 1650 11350 1750
 $Comp
-L formula:NanoFit_RA_SMT_06_A J8
+L lvbms-rescue:NanoFit_RA_SMT_06_A-formula J8
 U 1 1 621AEB66
 P 11150 1400
 F 0 "J8" H 11150 950 60  0000 C CNN
@@ -3157,7 +3157,7 @@ Wire Wire Line
 Wire Wire Line
 	11350 875  11525 875 
 $Comp
-L power:GND #PWR?
+L lvbms-rescue:GND-power #PWR?
 U 1 1 62074885
 P 11525 875
 F 0 "#PWR?" H 11525 625 50  0001 C CNN
@@ -3168,7 +3168,7 @@ F 3 "" H 11525 875 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_500 R29
+L lvbms-rescue:R_500-formula R29
 U 1 1 621CC2E1
 P 4075 3000
 F 0 "R29" H 4025 3000 50  0000 C CNN
@@ -3179,7 +3179,7 @@ F 3 "" H 4075 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_500 R45
+L lvbms-rescue:R_500-formula R45
 U 1 1 621CD37D
 P 4075 3100
 F 0 "R45" H 4025 3100 50  0000 C CNN
@@ -3190,7 +3190,7 @@ F 3 "" H 4075 3100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L formula:R_500 R46
+L lvbms-rescue:R_500-formula R46
 U 1 1 621CE438
 P 4075 3200
 F 0 "R46" H 4025 3200 50  0000 C CNN
@@ -3408,7 +3408,7 @@ F 3 "" H 13025 1500 50  0001 C CNN
 $EndComp
 Connection ~ 10300 10125
 $Comp
-L formula:SQM110P06 Q7
+L lvbms-rescue:SQM110P06-formula Q7
 U 1 1 61FD94D4
 P 9975 8375
 F 0 "Q7" V 10268 8375 50  0000 C CNN
@@ -3421,7 +3421,7 @@ F 5 "SQM110P06-8m9L" H 10025 9075 50  0001 C CNN "MPN"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L formula:SQM110P06 Q8
+L lvbms-rescue:SQM110P06-formula Q8
 U 1 1 61FD94DC
 P 10625 8375
 F 0 "Q8" V 10918 8375 50  0000 C CNN
