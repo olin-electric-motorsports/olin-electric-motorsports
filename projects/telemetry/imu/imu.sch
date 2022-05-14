@@ -656,7 +656,7 @@ Connection ~ 6600 6300
 Wire Wire Line
 	6600 6300 6850 6300
 $Comp
-L Sensor_Motion:ICM-20948 U3
+L formula:ICM-20948 U3
 U 1 1 618EE847
 P 6200 2300
 F 0 "U3" H 6750 3100 50  0000 C CNN
