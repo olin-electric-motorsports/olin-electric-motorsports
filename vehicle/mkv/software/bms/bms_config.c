@@ -58,25 +58,15 @@ timer_cfg_s timer0_cfg = {
 // Fan PWM config (25 kHz)
 timer_cfg_s timer1_fan_cfg = {
     .timer = TIMER1,
-    .timer1_mode = TIMER1_MODE_PHASE_CORRECT_PWM_OCRA,
-    .prescalar = CLKIO_DIV_1,
+    .timer1_mode = TIMER1_MODE_PHASE_CORRECT_PWM_10_BIT,
+    .prescalar = CLKIO_DIV_8,
+    .channel_a = {
+        .output_compare_match = 0x50,
+    },
     .channel_b = {
         .channel = CHANNEL_B,
-        .output_compare_match = 160,
+        .output_compare_match = 0x20, // 40% duty cycle
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = false,
     },
 };
-
-// TODO: This is in the timer test, and I think it worked
-// timer_cfg_s timer0_pwm_cfg = {
-//     .timer = TIMER0,
-//     .timer0_mode = TIMER0_MODE_FAST_PWM,
-//     .prescalar = CLKIO_DIV_1024,
-//     .channel_a = {
-//         .output_compare_match = 64,
-//         .pin_behavior = CLEAR,
-//     },
-//     // .output_compare_match_value_channel_a = 64,
-//     // .pin_behavior_channel_a = CLEAR,
-// };

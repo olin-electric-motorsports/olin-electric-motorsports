@@ -1,35 +1,6 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# LV-Interface-rescue_RJ45_VT-formula
-#
-DEF LV-Interface-rescue_RJ45_VT-formula U 0 40 Y Y 1 F N
-F0 "U" 0 -590 60 H V C CNN
-F1 "LV-Interface-rescue_RJ45_VT-formula" 10 660 60 H V C CNN
-F2 "footprints:RJ45-Vertical" -100 -690 60 H I C CNN
-F3 "https://www.amphenolcanada.com/ProductSearch/drawings/AC/MRJ548XX1.pdf" 0 -590 60 H I C CNN
-F4 "DK" 300 -290 60 H V C CNN "MFN"
-F5 "MRJ-5481-01-ND" 200 -390 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=MRJ-5481-01" 400 -190 60 H I C CNN "PurchasingLink"
-DRAW
-S -280 570 650 -190 0 1 0 N
-X CANL 1 -480 430 200 R 50 50 1 1 B
-X LED_1 10 -70 -390 200 U 50 50 1 1 B
-X GND 11 100 -390 200 U 50 50 1 1 B
-X LED_2 12 210 -390 200 U 50 50 1 1 B
-X GND 13 400 -390 200 U 50 50 1 1 B
-X GND 14 510 -390 200 U 50 50 1 1 B
-X CANH 2 -480 330 200 R 50 50 1 1 B
-X RESET 3 -480 230 200 R 50 50 1 1 B
-X SCK 4 -480 130 200 R 50 50 1 1 B
-X MISO 5 850 430 200 L 50 50 1 1 B
-X MOSI 6 850 330 200 L 50 50 1 1 B
-X 5V 7 850 230 200 L 50 50 1 1 B
-X GND 8 850 130 200 L 50 50 1 1 B
-X GND 9 -180 -390 200 U 50 50 1 1 B
-ENDDRAW
-ENDDEF
-#
 # formula_Ampseal_14_VT
 #
 DEF formula_Ampseal_14_VT J 0 40 Y Y 1 F N
@@ -38,7 +9,7 @@ F1 "formula_Ampseal_14_VT" -300 -750 60 H V L CNN
 F2 "footprints:Ampseal_14" -200 300 60 H I C CNN
 F3 "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F776261%7FA7%7Fpdf%7FEnglish%7FENG_CD_776261_A7.pdf%7F1-776261-1" -200 300 60 H I C CNN
 F4 "TE" -150 850 60 H I C CNN "MFN"
-F5 " 1-776261-1" -50 950 60 H I C CNN "MPN"
+F5 "1-776261-1" -50 950 60 H I C CNN "MPN"
 F6 "http://www.te.com/usa-en/product-1-776261-1.html" 50 1050 60 H I C CNN "PurchasingLink"
 DRAW
 S 0 700 -300 -700 0 1 0 f
@@ -106,31 +77,6 @@ X 6 6 200 1200 200 L 50 50 1 1 P
 X 7 7 200 1100 200 L 50 50 1 1 P
 X 8 8 200 1000 200 L 50 50 1 1 P
 X 9 9 200 900 200 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# formula_C_0.1uF
-#
-DEF formula_C_0.1uF C 0 10 N Y 1 F N
-F0 "C" 25 100 50 H V L CNN
-F1 "formula_C_0.1uF" 25 -100 50 H V L CNN
-F2 "footprints:C_0805_OEM" 38 -150 50 H I C CNN
-F3 "http://datasheets.avx.com/X7RDielectric.pdf" 25 100 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "478-3352-1-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=478-3352-1-ND" 425 500 60 H I C CNN "PurchasingLink"
-$FPLIST
- C?
- C_????_*
- C_????
- SMD*_c
- Capacitor*
-$ENDFPLIST
-DRAW
-P 2 0 1 20 -80 -30 80 -30 N
-P 2 0 1 20 -80 30 80 30 N
-X ~ 1 0 150 110 D 50 50 1 1 P
-X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -207,64 +153,6 @@ X ~ 5 -200 300 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# formula_INA260
-#
-DEF formula_INA260 U 0 20 Y Y 1 F N
-F0 "U" -250 350 50 H V C CNN
-F1 "formula_INA260" 100 350 50 H V L CNN
-F2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" 0 -600 50 H I C CNN
-F3 "" 0 -100 50 H I C CNN
-F4 "https://www.digikey.com/product-detail/en/texas-instruments/INA260AIPWR/296-47777-1-ND/8133126" 0 0 50 H I C CNN "PurchasingLink"
-F5 "296-47777-1-ND" 0 0 50 H I C CNN "MPN"
-F6 "DK" 0 0 50 H I C CNN "MFN"
-$FPLIST
- TSSOP*4.4x5mm*P0.65mm*
-$ENDFPLIST
-DRAW
-S -300 300 300 -300 0 1 10 f
-X IN+ 1 -400 200 100 R 50 50 1 1 P
-X VS 10 0 400 100 D 50 50 1 1 W
-X GND 11 0 -400 100 U 50 50 1 1 P N
-X VBUS 12 -400 100 100 R 50 50 1 1 P
-X NC 13 100 -300 100 U 50 50 1 1 N N
-X IN- 14 -400 -200 100 R 50 50 1 1 P
-X IN- 15 -400 -200 100 R 50 50 1 1 P N
-X IN- 16 -400 -200 100 R 50 50 1 1 P N
-X IN+ 2 -400 200 100 R 50 50 1 1 P N
-X IN+ 3 -400 200 100 R 50 50 1 1 P N
-X A1 4 400 -200 100 L 50 50 1 1 I
-X A0 5 400 -100 100 L 50 50 1 1 I
-X GND 6 0 -400 100 U 50 50 1 1 W
-X ALERT 7 400 200 100 L 50 50 1 1 C
-X SDA 8 400 0 100 L 50 50 1 1 B
-X SCL 9 400 100 100 L 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# formula_LED_0805
-#
-DEF formula_LED_0805 D 0 40 N N 1 F N
-F0 "D" 0 -100 50 H V C CNN
-F1 "formula_LED_0805" 0 100 50 H V C CNN
-F2 "footprints:LED_0805_OEM" -100 0 50 H I C CNN
-F3 "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" 0 100 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "475-1410-1-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=475-1410-1-ND" 400 500 60 H I C CNN "PurchasingLink"
-$FPLIST
- LED*
-$ENDFPLIST
-DRAW
-P 2 0 1 8 -50 -50 -50 50 N
-P 2 0 1 0 -50 0 50 0 N
-P 4 0 1 8 50 -50 50 50 -50 0 50 -50 N
-P 5 0 1 0 -120 -30 -180 -90 -150 -90 -180 -90 -180 -60 N
-P 5 0 1 0 -70 -30 -130 -90 -100 -90 -130 -90 -130 -60 N
-X K 1 -150 0 100 R 50 50 1 1 P
-X A 2 150 0 100 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # formula_MM_M_VT_20
 #
 DEF formula_MM_M_VT_20 J 0 40 Y Y 1 F N
@@ -318,6 +206,35 @@ X ~ 4 200 -150 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+# formula_RJ45_VT
+#
+DEF formula_RJ45_VT U 0 40 Y Y 1 F N
+F0 "U" 0 -590 60 H V C CNN
+F1 "formula_RJ45_VT" -140 860 60 H V C CNN
+F2 "footprints:RJ45-Vertical" -250 -1050 60 H I C CNN
+F3 "https://www.amphenolcanada.com/ProductSearch/drawings/AC/MRJ548XX1.pdf" -100 -1590 60 H I C CNN
+F4 "DK" 150 -90 60 H V C CNN "MFN"
+F5 "MRJ-5481-01-ND" 100 -1390 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/products/en?keywords=MRJ-5481-01" 300 -1190 60 H I C CNN "PurchasingLink"
+DRAW
+S 450 750 -450 0 0 1 0 N
+X CANL 1 -650 650 200 R 50 50 1 1 B
+X LED_1 10 -250 -200 200 U 50 50 1 1 B
+X GND 11 -50 -200 200 U 50 50 1 1 B
+X LED_2 12 50 -200 200 U 50 50 1 1 B
+X GND 13 250 -200 200 U 50 50 1 1 B
+X GND 14 350 -200 200 U 50 50 1 1 B
+X CANH 2 -650 550 200 R 50 50 1 1 B
+X RESET 3 -650 450 200 R 50 50 1 1 B
+X SCK 4 -650 350 200 R 50 50 1 1 B
+X MISO 5 650 650 200 L 50 50 1 1 B
+X MOSI 6 650 550 200 L 50 50 1 1 B
+X 5V 7 650 450 200 L 50 50 1 1 B
+X GND 8 650 350 200 L 50 50 1 1 B
+X GND 9 -350 -200 200 U 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
 # formula_R_10K
 #
 DEF formula_R_10K R 0 0 N Y 1 F N
@@ -339,34 +256,13 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# formula_R_1K
-#
-DEF formula_R_1K R 0 0 N Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "formula_R_1K" -100 0 50 V V C CNN
-F2 "footprints:R_0805_OEM" -70 0 50 H I C CNN
-F3 "https://www.seielect.com/Catalog/SEI-rncp.pdf" 80 0 50 H I C CNN
-F4 "DK" 0 0 60 H I C CNN "MFN"
-F5 "RNCP0805FTD1K00CT-ND" 0 0 60 H I C CNN "MPN"
-F6 "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" 480 400 60 H I C CNN "PurchasingLink"
-$FPLIST
- R_*
- Resistor_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # formula_SS110LW
 #
 DEF formula_SS110LW D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
 F1 "formula_SS110LW" 0 -100 50 H V C CNN
 F2 "footprints:D_SOD-123W_OEM" -100 0 50 H I C CNN
-F3 "http://www.taiwansemi.com/products/datasheet/SS14LW%20SERIES_A1511.pdf" 0 100 50 H I C CNN
+F3 "" 0 100 50 H I C CNN
 F4 "DK" 200 300 60 H I C CNN "MFN"
 F5 "SS110LWRVGCT-ND" 100 200 60 H I C CNN "MPN"
 F6 "https://www.digikey.com/product-detail/en/taiwan-semiconductor-corporation/SS110LW-RVG/SS110LWRVGCT-ND/7359346" 300 400 60 H I C CNN "PurchasingLink"
@@ -383,6 +279,43 @@ P 4 0 1 8 50 50 50 -50 -50 0 50 50 N
 P 6 0 1 8 -75 25 -75 50 -50 50 -50 -50 -25 -50 -25 -25 N
 X K 1 -150 0 100 R 50 50 1 1 P
 X A 2 150 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# formula_SSM3K333R
+#
+DEF formula_SSM3K333R Q 0 0 Y N 1 F N
+F0 "Q" 200 75 50 H V L CNN
+F1 "formula_SSM3K333R" 200 0 50 H V L CNN
+F2 "footprints:SOT-23F" 200 -75 50 H I L CIN
+F3 "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk" 200 75 50 H I L CNN
+F4 "DK" 500 375 60 H I C CNN "MFN"
+F5 "SSM3K333RLFCT-ND" 400 275 60 H I C CNN "MPN"
+F6 "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" 300 175 60 H I C CNN "PurchasingLink"
+$FPLIST
+ SOT?23*
+$ENDFPLIST
+DRAW
+C 65 0 111 0 1 10 N
+C 100 -70 11 0 1 0 F
+C 100 70 11 0 1 0 F
+P 2 0 1 0 30 -70 100 -70 N
+P 2 0 1 10 30 -50 30 -90 N
+P 2 0 1 0 30 0 100 0 N
+P 2 0 1 10 30 20 30 -20 N
+P 2 0 1 0 30 70 100 70 N
+P 2 0 1 10 30 90 30 50 N
+P 2 0 1 0 100 -70 100 -100 N
+P 2 0 1 0 100 -70 100 0 N
+P 2 0 1 0 100 100 100 70 N
+P 3 0 1 10 10 75 10 -75 10 -75 N
+P 4 0 1 0 40 0 80 15 80 -15 40 0 F
+P 4 0 1 0 100 -70 130 -70 130 70 100 70 N
+P 4 0 1 0 110 20 115 15 145 15 150 10 N
+P 4 0 1 0 130 15 115 -10 145 -10 130 15 N
+X G 1 -200 0 210 R 50 50 1 1 I
+X S 2 100 -200 100 U 50 50 1 1 P
+X D 3 100 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #

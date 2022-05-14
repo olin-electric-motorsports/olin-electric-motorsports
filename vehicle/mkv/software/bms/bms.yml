@@ -40,62 +40,81 @@ publish:
           name: V
           offset: 0
           scale: 0.0001 * 256
-      - name: pack_temperature
-        slice: 24 + 16
-        unit:
-          type: int16_t
-          name: degC
-          offset: 0
-          scale: 0.0001
       - name: pack_current
-        slice: 40 + 12
+        slice: 24 + 12
         unit:
           type: int16_t
           name: A
           offset: 0
-          scale: 1
+          scale: 0.004
       - name: cell_balancing_status
-        slice: 52 + 1
+        slice: 36 + 1
         unit:
           type: bool
           values:
             t: Cell balancing enabled
             f: Cell balancing disabled
       - name: regen_enabled
-        slice: 53 + 1
+        slice: 37 + 1
         unit:
           type: bool
           values:
             t: Regenerative braking enabled
             f: Regenerative braking disabled
       - name: current_limiting_enabled
-        slice: 54 + 1
+        slice: 38 + 1
         unit:
           type: bool
           values:
             t: Current limiting enabled
             f: Current limiting disabled
-      - name: relay_status
-        slice: 55 + 1
-        unit:
-          type: bool
-          values:
-            t: BMS relay closed
-            f: BMS relay open
       - name: bspd_current_sense
-        slice: 56 + 1
+        slice: 39 + 1
         unit:
           type: bool
           values:
             t: Current sensed
             f: No current sensed
       - name: overcurrent_detect
-        slice: 57 + 1
+        slice: 40 + 1
         unit:
           type: bool
           values:
             t: Over-current detected
             f: No over-current detected
+
+  - name: bms_sense
+    id: 0x011
+    freq_hz: 100
+    signals:
+      - name: min_temperature
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 0.0001
+      - name: max_temperature
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 0.0001
+      - name: current_vref
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 5 / 1024
+      - name: current_vout
+        slice: 48 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 5 / 1024
 
   - name: bms_metrics
     id: 0x510

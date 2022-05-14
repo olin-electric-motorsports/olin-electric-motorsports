@@ -10,6 +10,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#define AIR_STATE_TS_ACTIVE (4)
+
 volatile uint16_t brake_pressure = 0;
 volatile bool send_can = false;
 
@@ -20,7 +22,13 @@ void timer0_callback(void) {
 void pcint1_callback(void) {
     brakelight.brake_gate = !!gpio_get_pin(BRAKELIGHT_GATE);
     brakelight.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_SENSE);
-    brakelight.status = !!gpio_get_pin(SHUTDOWN_SENSE_BSPD);
+    brakelight.ss_bspd = !gpio_get_pin(SHUTDOWN_SENSE_BSPD);
+
+    if (brakelight.brake_gate) {
+        gpio_set_pin(DEBUG_LED_1);
+    } else {
+        gpio_clear_pin(DEBUG_LED_1);
+    }
 }
 
 int main(void) {
@@ -33,7 +41,7 @@ int main(void) {
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(DEBUG_LED_3, OUTPUT);
     gpio_set_mode(RJ45_LED_G, OUTPUT);
-    gpio_set_mode(RJ45_LED_O, OUTPUT);
+    gpio_set_mode(COOLING_PUMP_LSD, OUTPUT);
     gpio_set_mode(BSPD_CURRENT_SENSE, INPUT);
     gpio_set_mode(SHUTDOWN_SENSE_BSPD, INPUT);
 
@@ -43,7 +51,15 @@ int main(void) {
 
     pcint1_callback();
 
+    can_receive_air_control_critical();
+
     for (;;) {
+        if (can_poll_receive_air_control_critical() == 0) {
+            if (air_control_critical.air_n_status == AIR_STATE_TS_ACTIVE) {
+                gpio_set_pin(COOLING_PUMP_LSD);
+            }
+        }
+
         if (send_can) {
             brake_pressure = adc_read(BRAKE_PRESSURE_SENSE);
             brakelight.brake_pressure = brake_pressure;

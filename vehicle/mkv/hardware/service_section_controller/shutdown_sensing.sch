@@ -891,4 +891,6 @@ Text GLabel 6050 5050 0    50   Input ~ 0
 +5V_AIR_CONTROL
 Text GLabel 3250 4950 0    50   Input ~ 0
 +5V_AIR_CONTROL
+Text GLabel 5150 1850 0    50   Input ~ 0
+DETECT_BMS
 $EndSCHEMATC

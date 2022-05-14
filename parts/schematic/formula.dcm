@@ -15,6 +15,16 @@ D IC EEPROM 1K I2C 400KHZ 8DIP
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21711J.pdf
 $ENDCMP
 #
+$CMP 3350-4275-126(NC)
+D Relay, SPST-NC, Switch 3A/3.5kV, Coil 68.6mA/12V
+F https://www.comus-intl.com/wp-content/uploads/2017/01/High-Voltage-Reed-Relays.pdf
+$ENDCMP
+#
+$CMP 5503-12-1(NO)
+D Relay, SPST-NO, Switch 10A/30V, Coil 40mA/5V
+F https://www.mouser.com/datasheet/2/89/5500_series_reed_relay_datasheet-1667093.pdf
+$ENDCMP
+#
 $CMP 74HC4051
 D 8-channel analog multiplexer/demultiplexer, DIP-16/SOIC-16/TSSOP-16
 K HCMOS Multiplexer Demultiplexer Analog
@@ -659,10 +669,12 @@ $ENDCMP
 #
 $CMP MicroFit_RA_06
 D Micro-MaTch connector 6 pin female right angle
+F https://www.molex.com/pdm_docs/sd/430450601_sd.pdf
 $ENDCMP
 #
 $CMP MicroFit_RA_08
 D Micro-MaTch connector 8 pin female right angle
+F https://www.molex.com/pdm_docs/sd/430450601_sd.pdf
 $ENDCMP
 #
 $CMP MicroFit_RA_R_2
@@ -747,6 +759,11 @@ $CMP R_10K_HV
 D Resistor, 10K, 5W, 1%, Axial
 $ENDCMP
 #
+$CMP R_12
+D 12 0805 .1% 1/10W
+F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773200-1&DocType=DS&DocLang=English
+$ENDCMP
+#
 $CMP R_120
 D Resistor, 120, 0.125W, 1%, 0805
 $ENDCMP
@@ -770,6 +787,11 @@ D 12K 0805 1% 1/3W
 F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-9&DocType=DS&DocLang=English
 $ENDCMP
 #
+$CMP R_15K_HV
+D Resistor, 15K, 5W, 5%, SMD, TSMP
+F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773242&DocType=DS&DocLang=English
+$ENDCMP
+#
 $CMP R_15k
 F https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RE_105_RoHS_L_6.pdf
 $ENDCMP
@@ -788,6 +810,10 @@ $ENDCMP
 #
 $CMP R_2.2K
 D Resistor, 2.2K, 0.125W, 1%, 0805
+$ENDCMP
+#
+$CMP R_560_HS
+F http://www.ohmite.com/assets/docs/acl_ap101.pdf?r=false
 $ENDCMP
 #
 #End Doc Library

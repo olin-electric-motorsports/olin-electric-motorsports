@@ -13,183 +13,182 @@ const uint8_t MUXES[NUM_MUXES] = { LTC1380_MUX1, LTC1380_MUX2, LTC1380_MUX3 };
 #define NUM_TEMPS_PER_MESSAGE   (4)
 #define NUM_CAN_TEMP_MSG_PER_IC (6)
 
-// #define CAN_TEMP_MESSAGE_BASE (CAN_TOOLS_BMS_SEGMENT1_TEMPERATURE1_FRAME_ID)
-// #define CAN_TEMP_DLC          (CAN_TOOLS_BMS_SEGMENT1_TEMPERATURE1_LENGTH)
-
-// static uint16_t temperatures[NUM_TEMPERATURE_ICS][NUM_TEMPS_PER_IC] = { 0 };
-
 /*
  * Enables or disables the accumulator fans by turning on or off the PWM pin
  * connected to timer 1.
  */
-// static void fan_enable(bool enable) {
-//     timer1_fan_cfg.channel_b.pin_behavior = enable ? TOGGLE : DISCONNECTED;
-//
-//     // No way to update a single part of the config so we just re-init the
-//     timer timer_init(&timer1_fan_cfg);
-// }
+static void fan_enable(bool enable) {
+    timer1_fan_cfg.channel_b.pin_behavior = enable ? SET : DISCONNECTED;
 
-int temperature_task(uint16_t* avg_pack_temperature, uint32_t* ot,
-                     uint32_t* ut) {
+    // No way to update a single part of the config so we just re-init the
+    // timer
+    timer_init(&timer1_fan_cfg);
+}
+
+/*
+ * Here, min and max refer to the voltages of the divider, NOT the actual
+ * temperatures. We are using negative-temperature-coefficient thermistors, so
+ * the lower the voltage, the higher the temperature. Keep this in mind when
+ * reading through the code.
+ *
+ * We initialize the min_temp to the MAXIMUM value for an int16_t so that the
+ * first time it runs, the min voltage will always be smaller. We do the same
+ * for the max_temp.
+ *
+ * TODO: Need to invert logic when we write about it
+ */
+int16_t min_temperature = INT16_MIN;
+int16_t max_temperature = INT16_MAX;
+
+uint8_t can_data[8] = { 0 };
+
+can_frame_t temperature_frame = {
+    .id = CAN_TOOLS_BMS_TEMPERATURE_FRAME_ID,
+    .mob = 0,
+    .dlc = CAN_TOOLS_BMS_TEMPERATURE_LENGTH,
+    .data = can_data,
+};
+
+int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
+                     int16_t* max_temp) {
     int pec_errors = 0;
-    int32_t cumulative_temperature = 0;
 
+    static uint8_t mux = 0;
+    static uint8_t channel = 0;
+
+    if ((mux == 0) && (channel == 0)) {
+        min_temperature = INT16_MIN;
+        max_temperature = INT16_MAX;
+    }
+
+    // Set mux and channel in CAN message
+    can_data[1] = (mux & 0xF) | ((channel & 0xF) << 4);
+
+    // We store temperatures within the CAN data array starting at index 2
+    uint16_t* temperatures = (uint16_t*)&can_data[2];
+
+    /*
+     * Wake up the LTC6811s
+     */
     wakeup_sleep(NUM_ICS);
 
-    for (uint8_t mux = 0; mux < NUM_MUXES; mux++) {
-        // For each mux,
-        for (uint8_t ch = 0; ch < NUM_MUX_CHANNELS; ch++) {
-            // For each mux channel (ch)
+    {
+        enable_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
 
-            // enable_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, ch-1);
-            enable_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, ch);
+        // Read aux gpio voltage (this is what the tmperature sensor is
+        // connected to) for temperature
+        wakeup_idle(NUM_ICS);
+        LTC6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1);
 
-            // read aux gpio voltage (this is what the tmperature sensor is
-            // connected to) for temperature
-            wakeup_idle(NUM_ICS);
-            LTC6811_adax(MD_7KHZ_3KHZ, AUX_CH_GPIO1);
+        // Wait for conversions to finish
+        (void)LTC6811_pollAdc();
 
-            // Wait for conversions to finish
-            (void)LTC6811_pollAdc();
+        // Raw (iso)SPI data
+        uint8_t raw_data[NUM_RX_BYT * NUM_ICS];
 
-            // Read voltage from auxiliary pin (connected to the mux)
+        wakeup_idle(NUM_ICS);
+        LTC681x_rdaux_reg(AUX_CH_GPIO1, NUM_ICS, raw_data);
 
-            uint8_t raw_data[NUM_RX_BYT * NUM_ICS]; // raw data read back
+        // Stores the current temperatures index in the CAN message Used to
+        // indicate when a CAN message should be sent: When this number
+        // reaches 3, we send the CAN message and reset it to zero
+        uint8_t can_temperature_index = 0;
 
-            wakeup_idle(NUM_ICS);
-            LTC681x_rdaux_reg(AUX_CH_GPIO1, NUM_ICS, raw_data);
+        for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+            if (ic % 2 == 1) {
+                // Skip all odd ICs
+                continue;
+            }
 
-            can_frame_t temperature_frame = {
-                .id = CAN_TOOLS_BMS_TEMPERATURE_FRAME_ID,
-                .mob = 0,
-                .dlc = CAN_TOOLS_BMS_TEMPERATURE_LENGTH,
-            };
+            if (ic < 5) {
+                can_data[0] = 0;
+            } else {
+                can_data[0] = 1;
+            }
 
-            uint8_t can_data[8] = { 0 };
-            uint16_t* temperatures = (uint16_t*)can_data + 2;
+            // Used to get the value of the ADC from the raw data, since data
+            // contains the voltages from all of the LTC6811s
+            uint16_t data_counter = ic * NUM_RX_BYT;
 
-            can_data[1] = (mux & 0xF) | (ch & 0xF << 4);
+            // The voltage value from the ADC is in the zeroth "word" (two
+            // bytes) of the response data
+            uint16_t temperature
+                = raw_data[data_counter] | (raw_data[data_counter + 1] << 8);
 
-            temperature_frame.data = can_data;
+            temperatures[can_temperature_index] = temperature;
+            can_temperature_index++;
 
-            uint8_t temperature_idx_counter = 0;
-
-            for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-                if (ic % 2 == 1) {
-                    // Skip all odd ICs
-                    continue;
-                }
-
-                if (ic < 5) {
-                    can_data[0] = 0;
-                } else {
-                    can_data[0] = 1;
-                }
-
-                // Executes for every other chip (0, 2, 4, etc)
-
-                uint16_t data_counter = (ic)*NUM_RX_BYT;
-                // uint16_t temperature_idx = mux * NUM_MUX_CHANNELS + ch;
-
-                // The voltage value from the ADC is in the zeroth "word" (two
-                // bytes) of the response data
-                uint16_t temperature = raw_data[data_counter]
-                                       | (raw_data[data_counter + 1] << 8);
-
-                temperatures[temperature_idx_counter] = temperature;
-
-                temperature_idx_counter++;
-
-                if (temperature_idx_counter == 3) {
-                    can_send(&temperature_frame); // TODO: use cantools?
-                    temperature_idx_counter = 0;
-                }
-
-                // TODO: calc PEC
-
-                cumulative_temperature += temperature;
-
-                /*
-                 * Using negative-temperature-coefficient (NTC) thermistors, so
-                 * comparisons are reversed (i.e. less than over-temp threshold)
-                 */
-                // if (temperature < OVERTEMPERATURE_THRESHOLD) {
-                //     *ot += 1;
-                // }
-                //
-                // /*
-                //  * If temperatures are getting a bit too high, we turn on the
-                //  * fan
-                //  */
-                // if (temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
-                //     fan_enable(true);
-                // }
-                //
-                // if (temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
-                //     fan_enable(false);
-                // }
-                //
-                // if (temperature > UNDERTEMPERATURE_THRESHOLD) {
-                //     *ut += 1;
-                // }
+            if (can_temperature_index == 3) {
+                can_send(&temperature_frame);
+                can_temperature_index = 0;
             }
 
             /*
-             * Compute average temperature. This truncates a 32 bit number
-             * into a 16 bit number. This shouldn't be a problem because the
-             * average temperature won't be larger than 16-bits, but the reader
-             * should be aware that this is intentional. A 32 bit number is
-             * needed to store the cumulative sum, and it can be shown that this
-             * is sufficient to store the sum of all the temperature sensor
-             * voltages
+             * Hack: There are some broken thermistors, so we skip bounds
+             * checking on them here
              */
-            *avg_pack_temperature
-                = (cumulative_temperature
-                   / (NUM_MUXES * NUM_MUX_CHANNELS * NUM_TEMPERATURE_ICS));
+            if ((mux == 0) && (channel == 5) && (can_temperature_index == 1)) {
+                continue;
+            }
 
-            enable_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, ch);
-        } // End for each mux channel
-    } // End for each mux
+            if ((mux == 2) && (channel == 7) && (can_temperature_index == 1)) {
+                continue;
+            }
+
+            if ((mux == 1) && (channel == 3) && (can_temperature_index == 1)) {
+                continue;
+            }
+
+            /*
+             * Update temperature mins and maxes
+             *
+             * Note: inverted logic
+             */
+            if (temperature > min_temperature) {
+                min_temperature = temperature;
+                *min_temp = min_temperature;
+            }
+
+            if (temperature < max_temperature) {
+                max_temperature = temperature;
+                *max_temp = max_temperature;
+            }
+
+            // TODO: calc PEC
+        }
+    }
+
+    // Increment mux and channel as necessary
+    channel = (channel + 1) % NUM_MUX_CHANNELS;
+
+    if (channel == 0) {
+        enable_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, channel);
+        mux = (mux + 1) % NUM_MUXES;
+    }
+
+    /*
+     * Using negative-temperature-coefficient (NTC) thermistors, so
+     * comparisons are reversed (i.e. less than over-temp threshold)
+     */
+    if (max_temperature < OVERTEMPERATURE_THRESHOLD) {
+        *ot += 1;
+    }
+
+    /*
+     * If temperatures are getting a bit too high, we turn on the
+     * fan
+     */
+    if (max_temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
+        fan_enable(true);
+    }
+
+    if (min_temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
+        fan_enable(false);
+    }
+
+    if (min_temperature > UNDERTEMPERATURE_THRESHOLD) {
+        *ut += 1;
+    }
 
     return pec_errors;
 }
-
-// void can_send_bms_temperatures(void) {
-//     can_frame_t temperature_frame = {
-//         .id = CAN_TOOLS_BMS_TEMPERATURE_FRAME_ID,
-//         .mob = 0,
-//         .dlc = CAN_TOOLS_BMS_TEMPERATURE_LENGTH,
-//     };
-//
-//     for (uint8_t temp_ic = 0; temp_ic < NUM_TEMPERATURE_ICS; temp_ic++) {
-//         /*
-//          * NUM_MUXES = 3
-//          * NUM_MUX_CHANNELS = 8
-//          * 3 * 8 = 24 total channels per peripheral board
-//          *
-//          * Each CAN message can send 8 bytes, or 4 temperatures (each temp is
-//          2
-//          *     bytes)
-//          *
-//          * Need 6 CAN messages per board (per iteration of ic)
-//          */
-//         for (uint8_t message = 0; message < NUM_CAN_TEMP_MSG_PER_IC;
-//              message++) {
-//             // For each group of temperatures
-//
-//             /*
-//              * Trick: instead of creating our own data array, we just set the
-//              * pointer to the array to be the pointer to the cell temps in
-//              * giant array with some offset. That way, we can reuse memory
-//              and
-//              * avoid memcpy-ing.
-//              */
-//             temperature_frame.data
-//                 = ((uint8_t*)temperatures[temp_ic]) + (message *
-//                 CAN_TEMP_DLC);
-//
-//             can_send(&temperature_frame);
-//             temperature_frame.id++;
-//         }
-//     }
-// }
