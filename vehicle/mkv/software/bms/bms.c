@@ -15,6 +15,18 @@
 #include "vehicle/mkv/software/bms/utils/fault.h"
 #include "vehicle/mkv/software/bms/utils/mux.h"
 
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
+
 enum State {
     INIT = 0,
     IDLE,
@@ -287,6 +299,7 @@ int main(void) {
     sei();
 
     can_init_bms();
+    updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(BMS_RELAY_LSD, OUTPUT);
     gpio_set_mode(RJ45_LEDO, OUTPUT);
@@ -347,6 +360,8 @@ int main(void) {
             air_state = air_control_critical.air_state;
             can_receive_air_control_critical();
         }
+
+        updater_loop(); // TODO: Can we always update BMS?
 
         if (run_10ms) {
             can_send_bms_core();
