@@ -3,6 +3,7 @@
 #include <avr/eeprom.h>
 #include <avr/pgmspace.h>
 #include <stdint.h>
+#include <util/delay.h>
 
 #include "projects/btldr/libs/crc32/api.h"
 

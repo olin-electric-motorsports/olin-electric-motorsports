@@ -83,7 +83,7 @@ uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
             .data = resp_data,
             .dlc = 1,
         };
-        
+
         st = can_send(&response);
 
         // Back to bootloader
@@ -96,7 +96,7 @@ uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
             ERR_IMAGE_INVALID,
             valid,
         };
-        memcpy(err_data+2, &crc, 4);
+        memcpy(err_data + 2, &crc, 4);
         can_frame_t response = {
             .mob = 0,
             .id = (btldr_id << 4) | CAN_ID_STATUS,
