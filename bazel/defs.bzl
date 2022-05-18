@@ -342,7 +342,9 @@ def cc_firmware(name, **kwargs):
 
     bin_file = ":{}.bin".format(name)
     btldr_hex = None
+    eeprom = None
     template = "//bazel/tools:avrdude.sh.tmpl"
+
     if btldr:
         native.genrule(
             name = "{}_patched_bin".format(name),
@@ -359,12 +361,13 @@ def cc_firmware(name, **kwargs):
         )
         bin_file = ":{}_patched.bin".format(name)
         btldr_hex = "//projects/btldr:{}_btldr.hex".format(name)
+        eeprom = "projects/btldr:{}_btldr.eep".format(name)
         template = "//bazel/tools:avrdude-btldr.sh.tmpl"
 
     _flash(
         name = name,
         binary = bin_file,
-        eeprom = "//projects/btldr:{}_btldr.eep".format(name),
+        eeprom = eeprom,
         btldr = btldr_hex,
         method = select({
             "//bazel/constraints:avr": "avrdude",
