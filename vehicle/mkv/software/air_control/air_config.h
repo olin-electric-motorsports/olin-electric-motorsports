@@ -1,5 +1,4 @@
-#pragma once
-
+#include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
@@ -45,9 +44,32 @@ gpio_t AIR_N_WELD_DETECT = PC5;
 /*
  * Timer
  */
-// void timer0_isr(void);
-//
-// void timer1_isr(void);
+void timer0_isr(void);
 
-extern timer_cfg_s timer0_cfg;
-extern timer_cfg_s timer1_cfg;
+timer_cfg_s timer0_cfg = {
+    .timer = TIMER0,
+    .timer0_mode = TIMER0_MODE_CTC,
+    .prescalar = CLKIO_DIV_1024,
+    .channel_a = {
+        .channel = CHANNEL_A,
+        .output_compare_match = 244, // 16 Hz
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer0_isr,
+    },
+};
+
+void timer1_isr(void);
+
+timer_cfg_s timer1_cfg = {
+    .timer = TIMER1,
+    .timer1_mode = TIMER1_MODE_CTC,
+    .prescalar = CLKIO_DIV_1,
+    .channel_a = {
+        .channel = CHANNEL_A,
+        .output_compare_match = 4000,
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer1_isr,
+    },
+};

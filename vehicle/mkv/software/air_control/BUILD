@@ -13,7 +13,6 @@ cc_firmware(
     name = "air_control",
     srcs = [
         "air.c",
-        "air_config.c",
         "air_config.h",
         "//projects/btldr:git_sha_header",
     ],

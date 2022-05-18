@@ -10,6 +10,18 @@
 #include "utils/utils.h"
 #include "vehicle/mkv/software/air_control/can_api.h"
 
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
+
 enum State {
     INIT = 0,
     IDLE,
@@ -353,6 +365,7 @@ int main(void) {
     can_init_air_control();
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
+    updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_N_LSD, OUTPUT);
@@ -384,6 +397,7 @@ int main(void) {
     gpio_clear_pin(SS_HVD_CONN);
     gpio_clear_pin(SS_HVD);
 
+    updater_init(BTLDR_ID, 5);
     air_control_critical.air_state = INIT;
 
     // Initialize interrupts
@@ -398,6 +412,10 @@ int main(void) {
     if (initial_checks() == 1) {
         goto fault;
     }
+
+    pcint0_callback();
+    pcint1_callback();
+    pcint2_callback();
 
     pcint0_callback();
     pcint1_callback();
@@ -418,6 +436,10 @@ int main(void) {
             run_1ms = false;
         }
 
+        if (air_control_critical.air_state == IDLE) {
+            updater_loop();
+        }
+
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
@@ -431,6 +453,9 @@ fault:
         /*
          * Continue senging CAN messages
          */
+
+        updater_loop();
+
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
