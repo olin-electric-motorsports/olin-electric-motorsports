@@ -17,16 +17,6 @@ cc_firmware(
         "//projects/btldr:git_sha_header",
     ],
     btldr = "//projects/btldr:air_control_btldr",
-    data = [
-        "//projects/btldr:air_control_btldr",
-    ],
-    defines = [
-        "BTLDR_ID=0x70",
-    ],
-    linkopts = [
-        "-flto",
-        "-Wl,--gc-sections",
-    ],
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
         "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
@@ -37,7 +27,6 @@ cc_firmware(
         "//libs/gpio",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
-        "//projects/btldr/libs/image",
     ],
 )
 

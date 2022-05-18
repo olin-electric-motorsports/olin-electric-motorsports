@@ -6,7 +6,7 @@ package(default_visibility = ["//visibility:public"])
 
 [
     cc_firmware(
-        name = ecu["name"] + "_btldr",
+        name = ecu + "_btldr",
         srcs = [
             "btldr.c",
         ],
@@ -14,7 +14,7 @@ package(default_visibility = ["//visibility:public"])
             "-fdata-sections",
         ],
         defines = [
-            "BTLDR_ID=" + ecu["btldr_id"],
+            "BTLDR_ID=" + data["btldr_id"],
         ],
         linkopts = [
             "-static",
@@ -35,7 +35,7 @@ package(default_visibility = ["//visibility:public"])
             "//projects/btldr/libs/shmem",
         ],
     )
-    for ecu in ECUS
+    for ecu, data in ECUS.items()
 ]
 
 # https://kchodorow.com/2017/03/27/stamping-your-builds/

@@ -1,6 +1,7 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("//vehicle/mkv:ecus.bzl", "ECUS")
 
 ### cc_firmware
 
@@ -269,11 +270,6 @@ def cc_firmware(name, **kwargs):
     if kwargs.get("defines"):
         defines = kwargs.pop("defines")
 
-    btldr = None
-    if kwargs.get("btldr"):
-        btldr = kwargs.pop("btldr")
-        data.append(btldr + ".hex")
-
     copts = []
     if kwargs.get("copts"):
         copts = kwargs.pop("copts")
@@ -281,6 +277,14 @@ def cc_firmware(name, **kwargs):
     linkopts = []
     if kwargs.get("linkopts"):
         linkopts = kwargs.pop("linkopts")
+
+    btldr = None
+    if kwargs.get("btldr"):
+        btldr = kwargs.pop("btldr")
+        linkopts.append("-flto")
+        linkopts.append("-Wl,--gc-sections")
+        data.append(btldr + ".hex")
+        defines.append("BTLDR_ID=" + ECUS["air_control"]["btldr_id"])
 
     cc_binary(
         name = "{}.elf".format(name),
