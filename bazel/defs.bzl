@@ -361,7 +361,7 @@ def cc_firmware(name, **kwargs):
         )
         bin_file = ":{}_patched.bin".format(name)
         btldr_hex = "//projects/btldr:{}_btldr.hex".format(name)
-        eeprom = "projects/btldr:{}_btldr.eep".format(name)
+        eeprom = "//projects/btldr:{}_btldr.eep".format(name)
         template = "//bazel/tools:avrdude-btldr.sh.tmpl"
 
     _flash(
