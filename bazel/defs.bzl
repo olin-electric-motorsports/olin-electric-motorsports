@@ -284,7 +284,7 @@ def cc_firmware(name, **kwargs):
         linkopts.append("-flto")
         linkopts.append("-Wl,--gc-sections")
         data.append(btldr + ".hex")
-        defines.append("BTLDR_ID=" + ECUS["air_control"]["btldr_id"])
+        defines.append("BTLDR_ID=" + ECUS[name]["btldr_id"])
 
     cc_binary(
         name = "{}.elf".format(name),
