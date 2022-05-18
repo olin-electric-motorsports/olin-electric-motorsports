@@ -67,8 +67,8 @@
  * [3..4] => Remaining data
  */
 #define CAN_ID_REQUEST_RESPONSE (0x006U)
-#define STATUS_NO_ERROR     (0x00)
-#define ERR_INVALID_COMMAND (0x01)
+#define STATUS_NO_ERROR         (0x00)
+#define ERR_INVALID_COMMAND     (0x01)
 
 /*
  * client -> target
@@ -86,9 +86,9 @@
  * [1..2] => Last programmed address
  * [3..4] => Remaining data
  */
-#define CAN_ID_DATA_RESPONSE       (0x007U) // Sends status messages during update
-#define STATUS_NO_ERROR     (0x00)
-#define ERR_IMAGE_INVALID (0x02)
+#define CAN_ID_DATA_RESPONSE (0x007U) // Sends status messages during update
+#define STATUS_NO_ERROR      (0x00)
+#define ERR_IMAGE_INVALID    (0x02)
 
 /*
  * Other defines
