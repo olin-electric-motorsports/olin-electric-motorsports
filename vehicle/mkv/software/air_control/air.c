@@ -382,16 +382,17 @@ int main(void) {
 
     gpio_enable_interrupt(SS_TSMS);
     gpio_enable_interrupt(SS_IMD_LATCH);
+    gpio_enable_interrupt(SS_BMS);
     gpio_enable_interrupt(SS_MPC);
     gpio_enable_interrupt(SS_HVD_CONN);
     gpio_enable_interrupt(SS_HVD);
-    gpio_enable_interrupt(SS_BMS);
     gpio_enable_interrupt(IMD_SENSE);
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
     // Ensure pull-ups are disabled
     gpio_clear_pin(SS_TSMS);
+    gpio_clear_pin(SS_BMS);
     gpio_clear_pin(SS_IMD_LATCH);
     gpio_clear_pin(SS_MPC);
     gpio_clear_pin(SS_HVD_CONN);
@@ -412,10 +413,6 @@ int main(void) {
     if (initial_checks() == 1) {
         goto fault;
     }
-
-    pcint0_callback();
-    pcint1_callback();
-    pcint2_callback();
 
     pcint0_callback();
     pcint1_callback();
