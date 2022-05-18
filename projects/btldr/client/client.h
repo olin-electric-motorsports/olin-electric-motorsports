@@ -23,7 +23,7 @@ extern char* chip_id_to_name[];
 
 struct ping_response {
     uint8_t version;
-    uint8_t ecu_id;
+    uint16_t ecu_id;
     uint8_t mcu;
     uint8_t current_image;
     struct tm flash_time;
@@ -37,9 +37,9 @@ void ping_print_response(struct ping_response resp);
 /*
  * Pings a CAN device
  */
-int cmd_ping(uint8_t ecu_id, struct ping_response* response);
+int cmd_ping(uint16_t ecu_id, struct ping_response* response);
 
 /*
  * Flashes a binary
  */
-int cmd_flash(uint8_t ecu_id, FILE* fp);
+int cmd_flash(uint16_t ecu_id, FILE* fp);

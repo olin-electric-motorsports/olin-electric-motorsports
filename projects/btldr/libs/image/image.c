@@ -49,11 +49,11 @@ uint8_t image_validate(image_hdr_t hdr, uint32_t* calc_crc) {
 }
 
 uint64_t image_get_timestamp(void) {
-    const image_hdr_t img = image_get_header();
-    return (uint64_t)img.flash_timestamp;
+    const image_hdr_t hdr = image_get_header();
+    return (uint64_t)hdr.flash_timestamp;
 }
 
 uint16_t image_get_size(void) {
-    const image_hdr_t img = image_get_header();
-    return (uint16_t)img.image_size;
+    const image_hdr_t hdr = image_get_header();
+    return (uint16_t)hdr.image_size;
 }

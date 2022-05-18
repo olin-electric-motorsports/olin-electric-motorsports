@@ -15,38 +15,6 @@
 #define CAN_ID_QUERY (0x000U)
 
 /*
- * client -> target
- *
- * DLC=1
- * [0] => 0x1 to request update
- */
-#define CAN_ID_RESET         (0x002U)
-#define RESET_REQUEST_UPDATE (0x1)
-
-/*
- * client -> target
- *
- * DLC = (upload) 3, (download) 1
- * [0]    => 0x0 for download, 0x1 for upload (upload == flash)
- * [1..2] => (upload-only) 16 bit image size
- */
-#define CAN_ID_REQUEST   (0x004U) // Upload or download
-#define REQUEST_DOWNLOAD (0x000U)
-#define REQUEST_UPLOAD   (0x001U)
-
-/*
- * client -> target
- *
- * DLC = 1-8
- * [0..dlc] => Program data to be flashed
- */
-#define CAN_ID_DATA (0x006U)
-
-/*************
- * Responses *
- *************/
-
-/*
  * target -> client
  *
  * DLC = 8
@@ -57,10 +25,58 @@
  * [3]    => reserved
  * [4..7] => Time delta from query unix timestamp and flash timestamp
  */
-#define CAN_ID_QUERY_RESPONSE (0x001U)
-
+#define CAN_ID_QUERY_RESPONSE (0x004U)
 #define CURRENT_IMAGE_APP     (0x00)
 #define CURRENT_IMAGE_UPDATER (0x01)
+
+/*
+ * client -> target
+ *
+ * DLC=1
+ * [0] => 0x1 to request update
+ */
+#define CAN_ID_RESET         (0x001U)
+#define RESET_REQUEST_UPDATE (0x1)
+
+/*
+ * target -> client
+ *
+ * DLC = 2
+ * [0] => Status (0: OK, 1: err)
+ * [1] => Error reason (0: OK, else: err_code)
+ */
+#define CAN_ID_RESET_RESPONSE (0x005U)
+
+/*
+ * client -> target
+ *
+ * DLC = (upload) 3, (download) 1
+ * [0]    => 0x0 for download, 0x1 for upload (upload == flash)
+ * [1..2] => (upload-only) 16 bit image size
+ */
+#define CAN_ID_REQUEST   (0x002U) // Upload or download
+#define REQUEST_DOWNLOAD (0x000U)
+#define REQUEST_UPLOAD   (0x001U)
+
+/*
+ * target -> client
+ *
+ * DLC = 5
+ * [0]    => Err code
+ * [1..2] => Last programmed address
+ * [3..4] => Remaining data
+ */
+#define CAN_ID_REQUEST_RESPONSE (0x006U)
+#define STATUS_NO_ERROR     (0x00)
+#define ERR_INVALID_COMMAND (0x01)
+
+/*
+ * client -> target
+ *
+ * DLC = 1-8
+ * [0..dlc] => Program data to be flashed
+ */
+#define CAN_ID_DATA (0x003U)
 
 /*
  * client -> target
@@ -70,10 +86,9 @@
  * [1..2] => Last programmed address
  * [3..4] => Remaining data
  */
-#define CAN_ID_STATUS       (0x003U) // Sends status messages during update
+#define CAN_ID_DATA_RESPONSE       (0x007U) // Sends status messages during update
 #define STATUS_NO_ERROR     (0x00)
-#define ERR_INVALID_COMMAND (0x01)
-#define ERR_IMAGE_INVALID   (0x02)
+#define ERR_IMAGE_INVALID (0x02)
 
 /*
  * Other defines
@@ -82,7 +97,7 @@
     (0x000) // No filtering TODO: update this to be more efficient
 #define CAN_MAX_MSG_LENGTH (8) // Always accept up to 8 bytes
 
-union Address {
+union word {
     uint16_t word;
     uint8_t bytes[2];
 };
@@ -90,16 +105,8 @@ union Address {
 struct session_data {
     bool is_active; // Is in a session (upld or dwld)
     uint8_t type; // 0 for download, 1 for upload
-    union {
-        // Current unprogrammed address
-        uint16_t word;
-        uint8_t bytes[2];
-    } current_addr;
-    union {
-        uint16_t word;
-        uint8_t bytes[2];
-        // Remaining size to download or upload
-    } remaining_size;
+    union word current_addr;
+    union word remaining_size;
 };
 
 /**

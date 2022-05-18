@@ -8,7 +8,7 @@ char* chip_id_to_name[4] = {
 };
 
 static struct ping_response
-ping_unpack_response(uint64_t current_time, uint8_t ecu_id, uint8_t* data) {
+ping_unpack_response(uint64_t current_time, uint16_t ecu_id, uint8_t* data) {
     struct ping_response pr;
 
     pr.version = data[0];
@@ -44,7 +44,7 @@ void ping_print_response(struct ping_response resp) {
         resp.ecu_id, mcu, version_maj, version_min, current_image, flash_time);
 }
 
-int cmd_ping(uint8_t ecu_id, struct ping_response* response) {
+int cmd_ping(uint16_t ecu_id, struct ping_response* response) {
     int rc = 0;
 
     // Receive response
@@ -62,13 +62,13 @@ int cmd_ping(uint8_t ecu_id, struct ping_response* response) {
         rfilter[0].can_id = CAN_ID_QUERY_RESPONSE;
         rfilter[0].can_mask = 0x00F; // 0bxxxxxxx0001 to match ping responses
     } else {
-        rfilter[0].can_id = (ecu_id << 4) | CAN_ID_QUERY_RESPONSE;
+        rfilter[0].can_id = (ecu_id) | CAN_ID_QUERY_RESPONSE;
         rfilter[0].can_mask = 0x7FF;
     }
 
     do {
         // Send ping command
-        uint16_t can_id = (ecu_id << 4) | CAN_ID_QUERY;
+        uint16_t can_id = (ecu_id) | CAN_ID_QUERY;
 
         // Get current time to transmit in ping
         current_time = time(NULL);

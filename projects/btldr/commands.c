@@ -25,20 +25,19 @@ static struct session_data session = {
 uint8_t handle_query(uint16_t btldr_id, uint8_t* data, uint8_t length) {
     uint8_t version = shmem_get_version();
 
-    // TODO: Use getter function?
     uint8_t chip = CHIP_AVR_ATMEGA16M1;
 
     uint64_t timestamp = (uint64_t)*data;
     uint64_t flash_timestamp = image_get_timestamp();
     uint64_t delta = timestamp - flash_timestamp;
-    uint32_t delta_32 = (uint32_t)delta & 0xFFFF;
+    uint32_t delta_32 = (uint32_t)delta;
 
     uint8_t response_data[8] = { version, chip, CURRENT_IMAGE_UPDATER, 0 };
 
     memcpy((response_data + 4), &delta_32, sizeof(delta_32));
 
     can_frame_t response = {
-        .id = (btldr_id << 4) | CAN_ID_QUERY_RESPONSE,
+        .id = (btldr_id) | CAN_ID_QUERY_RESPONSE,
         .mob = 0,
         .data = response_data,
         .dlc = 8,
@@ -74,14 +73,12 @@ uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
         bootflag_clear(UPDATE_REQUESTED);
         bootflag_set(IMAGE_IS_VALID);
 
-        uint8_t resp_data[1] = {
-            IMAGE_VALID,
-        };
+        uint8_t resp_data[2] = { IMAGE_VALID, valid };
         can_frame_t response = {
             .mob = 0,
-            .id = (btldr_id << 4) | CAN_ID_STATUS,
+            .id = (btldr_id) | CAN_ID_RESET_RESPONSE,
             .data = resp_data,
-            .dlc = 1,
+            .dlc = 2,
         };
 
         st = can_send(&response);
@@ -92,16 +89,16 @@ uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
         bootflag_clear(IMAGE_IS_VALID);
 
         // Transmit error with invalid image and reason for invalid
-        uint8_t err_data[6] = {
+        uint8_t err_data[2] = {
             ERR_IMAGE_INVALID,
             valid,
         };
-        memcpy(err_data + 2, &crc, 4);
+
         can_frame_t response = {
             .mob = 0,
-            .id = (btldr_id << 4) | CAN_ID_STATUS,
+            .id = (btldr_id) | CAN_ID_RESET_RESPONSE,
             .data = err_data,
-            .dlc = 6,
+            .dlc = 2,
         };
 
         st = can_send(&response);
@@ -124,13 +121,13 @@ uint8_t handle_request(uint16_t btldr_id, uint8_t* data, uint8_t length) {
         session.current_addr.word = 0;
         session.remaining_size.word = image_get_size();
     } else {
-        uint8_t err_data[1] = { ERR_INVALID_COMMAND };
+        uint8_t err_data[5] = { ERR_INVALID_COMMAND };
 
         can_frame_t msg = {
             .mob = 0,
-            .id = (btldr_id << 4) | CAN_ID_STATUS,
+            .id = (btldr_id) | CAN_ID_REQUEST_RESPONSE,
             .data = err_data,
-            .dlc = 1,
+            .dlc = 5,
         };
         return can_send(&msg);
     }
@@ -145,7 +142,7 @@ uint8_t handle_request(uint16_t btldr_id, uint8_t* data, uint8_t length) {
 
     can_frame_t msg = {
         .mob = 0,
-        .id = (btldr_id << 4) | CAN_ID_STATUS,
+        .id = (btldr_id) | CAN_ID_REQUEST_RESPONSE,
         .data = status_data,
         .dlc = 5,
     };
@@ -170,7 +167,7 @@ uint8_t handle_data(uint16_t btldr_id, uint8_t* data, uint8_t length) {
 
     can_frame_t msg = {
         .mob = 0,
-        .id = (btldr_id << 4) | CAN_ID_STATUS,
+        .id = (btldr_id) | CAN_ID_DATA_RESPONSE,
         .data = status_data,
         .dlc = 5,
     };

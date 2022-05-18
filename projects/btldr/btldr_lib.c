@@ -20,7 +20,7 @@ void updater_init(uint16_t ecu_id, uint8_t mob) {
     btldr_id = ecu_id;
 
     can_filter_t filter = {
-        .id = ecu_id << 4,
+        .id = ecu_id,
         .mask = 0x7f0,
     };
 
@@ -50,7 +50,7 @@ static void do_query(uint8_t* data, uint8_t dlc) {
 
     memcpy((resp_data + 4), &delta_32, sizeof(delta_32));
 
-    can_msg.id = (btldr_id << 4) | CAN_ID_QUERY_RESPONSE;
+    can_msg.id = (btldr_id) | CAN_ID_QUERY_RESPONSE;
     can_msg.data = resp_data;
     can_msg.dlc = 8;
 
@@ -81,7 +81,7 @@ void updater_loop(void) {
     }
 
     can_filter_t filter = {
-        .id = btldr_id << 4,
+        .id = btldr_id,
         .mask = 0x7f0,
     };
 

@@ -116,7 +116,7 @@ int main(int argc, char** argv) {
             exit(1);
         }
 
-        uint8_t ecu_id = strtoul(argv[1], NULL, 16);
+        uint16_t ecu_id = strtoul(argv[1], NULL, 16);
         char* binary_path = argv[2];
 
         // Deal with file
@@ -135,7 +135,7 @@ int main(int argc, char** argv) {
             exit(1);
         }
 
-        uint8_t ecu_id;
+        uint16_t ecu_id;
         if (!strcmp(argv[1], "-a")) {
             ecu_id = 0xFF;
         } else {

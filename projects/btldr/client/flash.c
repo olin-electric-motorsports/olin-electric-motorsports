@@ -1,6 +1,6 @@
 #include "client.h"
 
-int cmd_flash(uint8_t ecu_id, FILE* fp) {
+int cmd_flash(uint16_t ecu_id, FILE* fp) {
     int rc = 0;
 
     uint16_t can_msg_id;
@@ -16,7 +16,7 @@ int cmd_flash(uint8_t ecu_id, FILE* fp) {
 
     log_trace("Resetting target device");
 
-    can_msg_id = (ecu_id << 4) | CAN_ID_RESET;
+    can_msg_id = (ecu_id) | CAN_ID_RESET;
     can_data[0] = RESET_REQUEST_UPDATE;
     can_send(can_msg_id, can_data, 1);
 
@@ -38,14 +38,14 @@ int cmd_flash(uint8_t ecu_id, FILE* fp) {
     size_t image_size = ftell(fp);
     fseek(fp, 0, SEEK_SET);
 
-    can_msg_id = (ecu_id << 4) | CAN_ID_REQUEST;
+    can_msg_id = (ecu_id) | CAN_ID_REQUEST;
     can_data[0] = REQUEST_UPLOAD;
     memcpy(can_data + 1, &image_size, 2);
     can_send(can_msg_id, can_data, 3);
 
     // Wait for session response
     struct can_filter rfilter[1] = { 0 };
-    rfilter[0].can_id = (ecu_id << 4) | CAN_ID_STATUS;
+    rfilter[0].can_id = (ecu_id) | CAN_ID_REQUEST_RESPONSE;
     rfilter[0].can_mask = 0x7FF;
 
     rc = can_receive(rfilter, &can_msg_id, &can_dlc, can_data, 1000);
@@ -66,11 +66,11 @@ int cmd_flash(uint8_t ecu_id, FILE* fp) {
 
     size_t nbytes;
 
-    rfilter[0].can_id = (ecu_id << 4) | CAN_ID_STATUS;
+    rfilter[0].can_id = (ecu_id) | CAN_ID_DATA_RESPONSE;
     rfilter[0].can_mask = 0x7FF; // Exact match
 
     while ((nbytes = fread(can_data, 1, 8, fp)) != 0) {
-        can_msg_id = (ecu_id << 4) | CAN_ID_DATA;
+        can_msg_id = (ecu_id) | CAN_ID_DATA;
 
         can_send(can_msg_id, can_data, nbytes);
 
@@ -119,9 +119,19 @@ int cmd_flash(uint8_t ecu_id, FILE* fp) {
     // Do reset
     log_trace("Resetting target device");
 
-    can_msg_id = (ecu_id << 4) | CAN_ID_RESET;
+    can_msg_id = (ecu_id) | CAN_ID_RESET;
     can_data[0] = 0x00;
     can_send(can_msg_id, can_data, 1);
+
+    // Receive OK response
+    rfilter[0].can_id = (ecu_id) | CAN_ID_RESET_RESPONSE;
+    rfilter[0].can_mask = 0x7FF;
+
+    rc = can_receive(rfilter, &can_msg_id, &can_dlc, can_data, 1000);
+
+    if (can_data[0] != 0) {
+        log_error("Update failed: %s", can_data[1]);
+    }
 
     // TODO need to implement "reset success message" or something
     rc = cmd_ping(ecu_id, &ping);

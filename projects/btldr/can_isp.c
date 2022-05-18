@@ -16,7 +16,7 @@ int can_isp_task(uint16_t btldr_id) {
 
     can_filter_t filter = {
         .mask = 0x7F0,
-        .id = btldr_id << 4,
+        .id = btldr_id,
     };
 
     can_receive(&msg, filter);
@@ -37,9 +37,6 @@ int can_isp_task(uint16_t btldr_id) {
         } break;
         case CAN_ID_RESET: {
             rc = handle_reset(btldr_id, msg.data, msg.dlc);
-            if (rc != 0) {
-                // TODO: Image is invalid
-            }
         } break;
         case CAN_ID_REQUEST: {
             rc = handle_request(btldr_id, msg.data, msg.dlc);
@@ -53,10 +50,10 @@ int can_isp_task(uint16_t btldr_id) {
             };
 
             can_frame_t msg = {
-                .mob = 0, // TODO
-                .id = (btldr_id << 4) | CAN_ID_STATUS,
+                .mob = 0,
+                .id = (btldr_id) | CAN_ID_REQUEST_RESPONSE,
                 .data = data,
-                .dlc = 4,
+                .dlc = 5,
             };
             rc = can_send(&msg);
         } break;
