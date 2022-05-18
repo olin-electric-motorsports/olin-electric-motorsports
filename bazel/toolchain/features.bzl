@@ -65,9 +65,9 @@ _OPT_FEATURE = feature(
             flag_groups = [
                 flag_group(
                     flags = ["-Os", "-ffunction-sections", "-fdata-sections"],
-                )
-            ]
-        )
+                ),
+            ],
+        ),
     ],
     provides = ["compilation_mode"],
 )
