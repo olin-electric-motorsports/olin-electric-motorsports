@@ -92,16 +92,6 @@ int main(int argc, char** argv) {
     printf("Patching %s\n", binary);
 #endif
 
-    // fseek(old_file, 0, SEEK_END);
-    // size_t file_size = ftell(old_file);
-    // fseek(old_file, 0, SEEK_SET);
-    //
-    // uint32_t search_pattern = IMAGE_MAGIC;
-    //
-    // int* hdr_start = memmem(old_file, file_size, &search_pattern, 1);
-    //
-    // printf("hdr_start: %p\n", hdr_start);
-    //
     fseek(old_file, 0x7c, SEEK_SET);
     image_hdr_t image_hdr;
     size_t num_read = fread(&image_hdr, image_hdr_size, 1, old_file);

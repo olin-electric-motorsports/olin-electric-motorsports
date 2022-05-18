@@ -65,15 +65,9 @@ _OPT_FEATURE = feature(
             flag_groups = [
                 flag_group(
                     flags = ["-Os", "-ffunction-sections", "-fdata-sections"],
-                ),
-            ],
-        ),
-        flag_set(
-            actions = _LD_ALL_ACTIONS,
-            flag_groups = [
-                # flag_group(flags = ["-flto", "-Wl,--gc-sections"]),
-            ],
-        ),
+                )
+            ]
+        )
     ],
     provides = ["compilation_mode"],
 )

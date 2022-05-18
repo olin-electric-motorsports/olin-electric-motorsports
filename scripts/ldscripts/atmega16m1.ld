@@ -90,11 +90,8 @@ SECTIONS
     *(.vectors)
     KEEP(*(.vectors))
 
-    /* .image_hdr : */
-    /* { */
     PROVIDE(__image_hdr = .);
     KEEP(*(.image_hdr))
-    /* } > text; */
 
     /* For data that needs to reside in the lower 64k of progmem.  */
      *(.progmem.gcc*)

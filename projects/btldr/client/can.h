@@ -5,20 +5,6 @@
 #include <stdint.h>
 #include <sys/socket.h>
 
-// typedef struct {
-//     // socket instance
-//     int s;
-//
-//     // CAN address
-//     struct sockaddr_can addr;
-//
-//     // CAN frame
-//     struct can_frame frame;
-//
-//     // IF device instance
-//     struct ifreq ifr;
-// } can_client_t;
-
 /*
  * Initializes the CAN client and sockets
  *
