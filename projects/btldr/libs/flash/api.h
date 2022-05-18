@@ -16,6 +16,8 @@
  */
 void flash_write(uint8_t* data, uint8_t length, uint16_t* current_addr);
 
+void flash_force_write_page(uint16_t* current_addr);
+
 /*
  * Reads a section of flash memory
  *

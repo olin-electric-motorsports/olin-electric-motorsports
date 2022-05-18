@@ -37,6 +37,20 @@ void flash_write(uint8_t* data, uint8_t length, uint16_t* current_addr) {
     SREG = sreg;
 }
 
+void flash_force_write_page(uint16_t* current_addr) {
+    uint8_t sreg = SREG;
+
+    boot_page_erase_safe(*current_addr);
+    boot_spm_busy_wait();
+
+    // Write the memory stored in the temp buffer
+    boot_page_write_safe(*current_addr);
+    boot_spm_busy_wait();
+    *current_addr += SPM_PAGESIZE;
+
+    SREG = sreg;
+}
+
 void flash_read(uint16_t address, uint8_t* data, uint8_t size) {
     for (uint8_t i = 0; i < size; i++) {
         *data = pgm_read_byte(address + i);

@@ -37,8 +37,8 @@ int patch_write_timestamp(FILE* old_file, image_hdr_t* image_hdr) {
 int patch_write_image_size(FILE* old_file, image_hdr_t* image_hdr) {
     // Image size
     fseek(old_file, 0, SEEK_END);
-    size_t image_size_total = ftell(old_file) - 0x7c;
-    image_hdr->image_size = image_size_total - image_hdr_size;
+    size_t image_size_total = ftell(old_file);
+    image_hdr->image_size = image_size_total - 0x7c - image_hdr_size;
     fseek(old_file, 0, SEEK_SET);
 
     return 0;

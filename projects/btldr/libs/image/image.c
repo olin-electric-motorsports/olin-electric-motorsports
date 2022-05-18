@@ -6,10 +6,7 @@
 
 #include "projects/btldr/libs/crc32/api.h"
 
-// Address of image header. To use, cast as void *
-extern void* __image_hdr;
-
-#define APP_IMAGE_HEADER_ADDRESS ((void*)0x7c)
+#define APP_IMAGE_HEADER_ADDRESS ((const void*)0x7c)
 
 // Static variable to store image header in memory
 // static image_hdr_t prv_hdr;
@@ -20,7 +17,7 @@ const image_hdr_t image_get_header(void) {
     return hdr;
 }
 
-uint8_t image_validate(const image_hdr_t hdr) {
+uint8_t image_validate(image_hdr_t hdr, uint32_t* calc_crc) {
     // Get image start address (after header) and size
     uint16_t image_addr
         = ((uintptr_t)APP_IMAGE_HEADER_ADDRESS) + sizeof(image_hdr_t);
@@ -33,12 +30,14 @@ uint8_t image_validate(const image_hdr_t hdr) {
 
     // Calculate CRC32 of image
     uint32_t crc = ~0x0;
-    uint8_t data = 0x00;
-    for (; image_size > 0; image_size--, image_addr++) {
-        data = pgm_read_byte(image_addr);
+    for (uint16_t i = 0; i < image_size; i++) {
+        uint8_t data = pgm_read_byte(image_addr);
         crc32_step(data, &crc);
+        image_addr++;
     }
     crc = ~crc;
+
+    *calc_crc = image_size;
 
     // Calculated CRC is not the same as the stored CRC
     if (crc != hdr.crc) {
