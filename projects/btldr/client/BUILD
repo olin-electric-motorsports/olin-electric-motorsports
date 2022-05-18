@@ -8,7 +8,7 @@ cc_binary(
     ],
     deps = [
         ":btldr_client_libs",
-        "@log//:log",
+        "@log",
     ],
 )
 
@@ -30,6 +30,6 @@ cc_library(
     deps = [
         "//projects/btldr:can_isp_hdrs",
         "//projects/btldr/libs/image:hdrs",
-        "@log//:log",
+        "@log",
     ],
 )

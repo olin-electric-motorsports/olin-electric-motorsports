@@ -10,11 +10,11 @@ package(default_visibility = ["//visibility:public"])
         srcs = [
             "btldr.c",
         ],
-        defines = [
-            "BTLDR_ID=" + ecu["btldr_id"],
-        ],
         copts = [
             "-fdata-sections",
+        ],
+        defines = [
+            "BTLDR_ID=" + ecu["btldr_id"],
         ],
         linkopts = [
             "-static",
