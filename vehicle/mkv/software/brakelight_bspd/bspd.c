@@ -73,6 +73,7 @@ int main(void) {
             if (air_control_critical.air_n_status == AIR_STATE_TS_ACTIVE) {
                 gpio_set_pin(COOLING_PUMP_LSD);
             }
+            can_receive_air_control_critical();
         }
 
         if (send_can) {

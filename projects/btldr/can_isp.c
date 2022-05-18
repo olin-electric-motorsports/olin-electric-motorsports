@@ -15,7 +15,7 @@ int can_isp_task(uint16_t btldr_id) {
     };
 
     can_filter_t filter = {
-        .mask = 0x7F0,
+        .mask = 0x7F8,
         .id = btldr_id,
     };
 
@@ -31,7 +31,7 @@ int can_isp_task(uint16_t btldr_id) {
         }
     } while (rc != 0);
 
-    switch (msg.id & 0xF) {
+    switch (msg.id & 0x7) {
         case CAN_ID_QUERY: {
             rc = handle_query(btldr_id, msg.data, msg.dlc);
         } break;

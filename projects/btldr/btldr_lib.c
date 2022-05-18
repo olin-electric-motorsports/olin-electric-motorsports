@@ -21,7 +21,7 @@ void updater_init(uint16_t ecu_id, uint8_t mob) {
 
     can_filter_t filter = {
         .id = ecu_id,
-        .mask = 0x7f0,
+        .mask = 0x7f8,
     };
 
     can_receive(&can_msg, filter);
@@ -68,7 +68,7 @@ void updater_loop(void) {
     }
 
     // What CAN ID was received
-    switch (can_msg.id & 0xF) {
+    switch (can_msg.id & 0x7) {
         case CAN_ID_QUERY: {
             do_query(can_msg.data, can_msg.dlc);
         } break;
@@ -82,7 +82,7 @@ void updater_loop(void) {
 
     can_filter_t filter = {
         .id = btldr_id,
-        .mask = 0x7f0,
+        .mask = 0x7f8,
     };
 
     can_receive(&can_msg, filter);
