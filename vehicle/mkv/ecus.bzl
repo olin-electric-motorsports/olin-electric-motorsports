@@ -8,7 +8,7 @@ ECUS = {
     "dashboard": {
         "btldr_id": "0x710",
     },
-    "bspd": {
+    "brakelight_bspd": {
         "btldr_id": "0x718",
     },
     "lvbms": {

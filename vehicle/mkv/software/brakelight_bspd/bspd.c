@@ -10,6 +10,18 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
+
 #define AIR_STATE_TS_ACTIVE (4)
 
 volatile uint16_t brake_pressure = 0;
@@ -35,6 +47,7 @@ int main(void) {
     sei();
     can_init_brakelight_bspd();
     adc_init();
+    updater_init(BTLDR_ID, 5);
     timer_init(&timer0_cfg);
 
     gpio_set_mode(DEBUG_LED_1, OUTPUT);
@@ -54,6 +67,8 @@ int main(void) {
     can_receive_air_control_critical();
 
     for (;;) {
+        updater_loop();
+
         if (can_poll_receive_air_control_critical() == 0) {
             if (air_control_critical.air_n_status == AIR_STATE_TS_ACTIVE) {
                 gpio_set_pin(COOLING_PUMP_LSD);
