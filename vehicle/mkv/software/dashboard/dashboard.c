@@ -57,6 +57,8 @@ int main(void) {
     can_init(BAUD_500KBPS);
     timer_init(&timer0_cfg);
 
+    updater_init(BTLDR_ID, 5);
+
     // Set pin modes
     gpio_set_mode(IMD_LED, OUTPUT);
     gpio_set_mode(BMS_LED, OUTPUT);
@@ -153,6 +155,10 @@ int main(void) {
             gpio_clear_pin(START_LED);
             dashboard.ready_to_drive = true;
             gpio_set_pin(RTD_BUZZER_LSD); // turn on RTD Buzzer
+        }
+
+        if (!dashboard.ready_to_drive) {
+            updater_loop();
         }
 
         if (send_can) {
