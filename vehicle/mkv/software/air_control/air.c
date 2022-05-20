@@ -167,6 +167,10 @@ static void state_machine_run(void) {
                 air_control_critical.air_state
                     = AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED;
             }
+
+            // If receive charging CAN message, go into charging
+            // Hm, but if SS closes, it will think it should go to the next
+            // state. Maybe we need to send the CAN message before we charge?
         } break;
         case AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED: {
             /*
