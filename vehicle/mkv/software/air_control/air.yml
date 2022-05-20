@@ -21,20 +21,20 @@ publish:
         unit:
           type: enum
           values:
-            - FAULT_NONE
-            - FAULT_AIR_N_WELD
-            - FAULT_AIR_P_WELD
-            - FAULT_BOTH_AIRS_WELD
-            - FAULT_PRECHARGE_FAIL
-            - FAULT_DISCHARGE_FAIL
-            - FAULT_PRECHARGE_FAIL_RELAY_WELDED
-            - FAULT_CAN_ERROR
-            - FAULT_CAN_BMS_TIMEOUT
-            - FAULT_CAN_MC_TIMEOUT
-            - FAULT_SHUTDOWN_IMPLAUSIBILITY
-            - FAULT_MOTOR_CONTROLLER_VOLTAGE
-            - FAULT_BMS_VOLTAGE
-            - FAULT_IMD_STATUS
+            - NONE
+            - AIR_N_WELD
+            - AIR_P_WELD
+            - BOTH_AIRS_WELD
+            - PRECHARGE_FAIL
+            - DISCHARGE_FAIL
+            - PRECHARGE_FAIL_RELAY_WELDED
+            - CAN_ERROR
+            - CAN_BMS_TIMEOUT
+            - CAN_MC_TIMEOUT
+            - SHUTDOWN_IMPLAUSIBILITY
+            - MOTOR_CONTROLLER_VOLTAGE
+            - BMS_VOLTAGE
+            - IMD_STATUS
       - name: air_state
         slice: 8 + 8
         unit:

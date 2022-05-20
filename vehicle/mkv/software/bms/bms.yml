@@ -9,20 +9,20 @@ publish:
     id: 0x10
     freq_hz: 100
     signals:
-      - name: bms_fault_state
+      - name: bms_fault
         slice: 0 + 4
         unit:
           type: enum
           values:
-            - BMS_FAULT_NONE
-            - BMS_FAULT_UNDERVOLTAGE
-            - BMS_FAULT_OVERVOLTAGE
-            - BMS_FAULT_UNDERTEMPERATURE
-            - BMS_FAULT_OVERTEMPERATURE
-            - BMS_FAULT_DIAGNOSTICS_FAIL
-            - BMS_FAULT_OPEN_WIRE
-            - BMS_FAULT_OVERCURRENT
-            - BMS_FAULT_PEC
+            - NONE
+            - UNDERVOLTAGE
+            - OVERVOLTAGE
+            - UNDERTEMPERATURE
+            - OVERTEMPERATURE
+            - DIAGNOSTICS_FAIL
+            - OPEN_WIRE
+            - OVERCURRENT
+            - PEC
       - name: bms_state
         slice: 4 + 4
         unit:
