@@ -30,6 +30,7 @@ enum State {
     TS_ACTIVE,
     DISCHARGE,
     FAULT,
+    CHARGING,
 };
 
 enum FaultCode {
@@ -193,6 +194,10 @@ static void state_machine_run(void) {
             if (air_control_critical.ss_tsms) {
                 air_control_critical.air_state = SHUTDOWN_CIRCUIT_CLOSED;
             }
+
+            // If receive charging CAN message, go into charging
+            // Hm, but if SS closes, it will think it should go to the next
+            // state. Maybe we need to send the CAN message before we charge?
         } break;
         case SHUTDOWN_CIRCUIT_CLOSED: {
             /*
@@ -353,6 +358,14 @@ static void state_machine_run(void) {
             gpio_set_pin(FAULT_LED);
             gpio_clear_pin(PRECHARGE_CTL);
             gpio_clear_pin(AIR_N_LSD);
+        } break;
+        case CHARGING: {
+            gpio_set_pin(AIR_N_LSD);
+            // Signal to go back to IDLE?
+            //  BMS
+            //  SS Opening
+            //  CAN message
+            return;
         } break;
         default: {
             // Shouldn't happen, but just in case
