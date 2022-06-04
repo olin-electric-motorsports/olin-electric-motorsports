@@ -5,6 +5,11 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+enum can_id_mode_e {
+    ID_MODE_STANDARD,
+    ID_MODE_EXTENDED,
+};
+
 typedef enum {
     BAUD_250KBPS,
     BAUD_500KBPS,
@@ -82,3 +87,5 @@ int can_receive(can_frame_t* frame, can_filter_t filter);
  *   1: Message error
  */
 int can_poll_receive(can_frame_t* frame);
+
+void can_set_id_mode(enum can_id_mode_e mode);
