@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+    kicad-backend:
+        build: ./backend 
+        image: oem/kicad-backend:latest
+        container_name: kicad-backend
+        expose:
+            - 8000
+        volumes:
+            - ./backend:/web/
+        networks:
+            - kicad-net
+
+    kicad-nginx:
+        container_name: kicad_nginx
+        build: ./nginx
+        image: oem/kicad-nginx:latest
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+            - /etc/letsencrypt/:/etc/letsencrypt/
+        ports:
+            - "80:80"
+            - "443:443"
+        networks:
+            - kicad-net 
+#    letsencrypt:
+#        image: jrcs/letsencrypt-nginx-proxy-companion
+#        container_name: tools-letsencrypt
+#        volumes_from:
+#            - nginx-proxy
+#        #depends_on:
+#        #   - tools-proxy
+#        volumes:
+#            - tools-certs:/etc/nginx/certs:rw
+#            - /var/run/docker.sock:/var/run/docker.sock:ro
+#        network_mode: bridge
+
+networks:
+    kicad-net:
+        name: kicad-net

@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "kicad_website"
+version = "0.1.0"
+description = "Kicad Artifacts for Olin Electric Motorsports Team"
+authors = ["mpatil"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^2.1.1"
+uWSGI = "^2.0.20"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
