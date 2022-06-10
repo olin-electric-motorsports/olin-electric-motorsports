@@ -40,8 +40,8 @@
 extern gpio_t BMS_RELAY_LSD;
 extern gpio_t RJ45_LEDG;
 extern gpio_t RJ45_LEDO;
-extern gpio_t CHARGE_ENABLE1;
-extern gpio_t CHARGE_ENABLE2;
+extern gpio_t CHARGER_DETECT_OUT;
+extern gpio_t CHARGER_DETECT_IN;
 extern gpio_t GENERAL_LED;
 extern gpio_t FAULT_LED;
 extern gpio_t SPI_CS;

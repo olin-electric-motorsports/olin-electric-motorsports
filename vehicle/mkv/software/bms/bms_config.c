@@ -14,8 +14,8 @@
 gpio_t BMS_RELAY_LSD = PC7; // Shutdown circuit relay
 gpio_t RJ45_LEDG = PB3; // Unused
 gpio_t RJ45_LEDO = PB4; // Unused
-gpio_t CHARGE_ENABLE1 = PD0;
-gpio_t CHARGE_ENABLE2 = PC0;
+gpio_t CHARGER_DETECT_OUT = PD0;
+gpio_t CHARGER_DETECT_IN = PC0;
 gpio_t GENERAL_LED = PD6;
 gpio_t FAULT_LED = PD7;
 gpio_t SPI_CS = PB6;

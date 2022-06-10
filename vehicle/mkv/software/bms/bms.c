@@ -192,35 +192,8 @@ static void state_machine_run(void) {
     bms_sense.current_vout = vout;
 
     switch (bms_core.bms_state) {
-        case BMS_STATE_IDLE: {
+        case BMS_STATE_ACTIVE: {
             gpio_set_pin(BMS_RELAY_LSD);
-
-            if (uv > 0) {
-                set_fault(BMS_FAULT_UNDERVOLTAGE);
-                bms_core.bms_state = BMS_STATE_FAULT;
-            } else if (ov > 0) {
-                set_fault(BMS_FAULT_OVERVOLTAGE);
-                bms_core.bms_state = BMS_STATE_FAULT;
-            }
-
-            if ((air_state != AIR_STATE_IDLE) && (air_state != AIR_STATE_INIT)
-                && (air_state != AIR_STATE_FAULT)) {
-                bms_core.bms_state = BMS_STATE_DISCHARGING;
-            }
-
-            if (can_poll_receive_bms_charging() == 0) {
-                can_receive_bms_charging();
-                if (bms_charging.charge_enable == true) {
-                    bms_core.bms_state = BMS_STATE_CHARGING;
-                }
-            }
-        } break;
-        case BMS_STATE_DISCHARGING: {
-            gpio_set_pin(BMS_RELAY_LSD);
-
-            if (air_state == AIR_STATE_IDLE) {
-                bms_core.bms_state = BMS_STATE_IDLE;
-            }
 
             if (uv > 0) {
                 set_fault(BMS_FAULT_UNDERVOLTAGE);
@@ -232,27 +205,19 @@ static void state_machine_run(void) {
         } break;
         case BMS_STATE_CHARGING: {
             gpio_set_pin(BMS_RELAY_LSD);
-            gpio_set_pin(CHARGE_ENABLE1);
-            gpio_set_pin(CHARGE_ENABLE2);
 
             if (ov > 0) {
-                gpio_clear_pin(CHARGE_ENABLE1);
-                gpio_clear_pin(CHARGE_ENABLE2);
-                bms_core.bms_state = BMS_STATE_IDLE;
+                bms_core.bms_state = BMS_STATE_ACTIVE;
             }
 
             if (can_poll_receive_bms_charging() == 0) {
                 can_receive_bms_charging();
                 if (bms_charging.charge_enable == false) {
-                    bms_core.bms_state = BMS_STATE_IDLE;
-                    gpio_clear_pin(CHARGE_ENABLE1);
-                    gpio_clear_pin(CHARGE_ENABLE2);
+                    bms_core.bms_state = BMS_STATE_ACTIVE;
                 }
             }
         } break;
         case BMS_STATE_FAULT: {
-            gpio_clear_pin(CHARGE_ENABLE1);
-            gpio_clear_pin(CHARGE_ENABLE2);
             gpio_clear_pin(BMS_RELAY_LSD);
             gpio_set_pin(FAULT_LED);
 
@@ -287,11 +252,15 @@ int main(void) {
     gpio_set_mode(BMS_RELAY_LSD, OUTPUT);
     gpio_set_mode(RJ45_LEDO, OUTPUT);
     gpio_set_mode(RJ45_LEDG, OUTPUT);
-    gpio_set_mode(CHARGE_ENABLE1, OUTPUT);
-    gpio_set_mode(CHARGE_ENABLE2, OUTPUT);
     gpio_set_mode(GENERAL_LED, OUTPUT);
     gpio_set_mode(FAULT_LED, OUTPUT);
     gpio_set_mode(FAN_PWM, OUTPUT);
+
+    gpio_set_mode(CHARGER_DETECT_OUT, OUTPUT);
+    gpio_clear_pin(CHARGER_DETECT_OUT);
+
+    gpio_set_mode(CHARGER_DETECT_IN, INPUT);
+    gpio_set_pin(CHARGER_DETECT_IN); // Enable pullup
 
     gpio_set_mode(nOCD, INPUT);
     gpio_set_mode(BSPD_CURRENT_SENSE, INPUT);
@@ -320,7 +289,7 @@ int main(void) {
         gpio_set_pin(FAULT_LED);
     } else {
         // Close the BMS shutdown circuit relay
-        bms_core.bms_state = BMS_STATE_IDLE;
+        bms_core.bms_state = BMS_STATE_ACTIVE;
         gpio_set_pin(BMS_RELAY_LSD);
     }
 
@@ -332,7 +301,6 @@ int main(void) {
 
     // Set up first receive of AIR Control and BMS charging messages
     can_receive_air_control_critical();
-    can_receive_bms_charging();
 
     // Tracks the number of times the 10ms loop has been run
     uint8_t loop_counter = 0;
