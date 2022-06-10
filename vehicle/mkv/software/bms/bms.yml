@@ -81,6 +81,13 @@ publish:
           values:
             t: Over-current detected
             f: No over-current detected
+      - name: charger_connected
+        slice: 41 + 1
+        unit:
+          type: bool
+          values:
+            t: Connected
+            f: Disconnected
 
   - name: bms_sense
     id: 0x011

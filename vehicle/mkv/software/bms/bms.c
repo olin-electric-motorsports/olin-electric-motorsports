@@ -207,14 +207,9 @@ static void state_machine_run(void) {
             gpio_set_pin(BMS_RELAY_LSD);
 
             if (ov > 0) {
-                bms_core.bms_state = BMS_STATE_ACTIVE;
-            }
-
-            if (can_poll_receive_bms_charging() == 0) {
-                can_receive_bms_charging();
-                if (bms_charging.charge_enable == false) {
-                    bms_core.bms_state = BMS_STATE_ACTIVE;
-                }
+                gpio_clear_pin(BMS_RELAY_LSD);
+                set_fault(BMS_FAULT_OVERVOLTAGE);
+                bms_core.bms_state = BMS_STATE_FAULT;
             }
         } break;
         case BMS_STATE_FAULT: {
@@ -283,10 +278,21 @@ int main(void) {
     pcint0_callback();
     pcint2_callback();
 
+    if (!!gpio_get_pin(CHARGER_DETECT_IN) == 0) {
+        bms_core.bms_state = BMS_STATE_CHARGING;
+        bms_core.charger_connected = true;
+    }
+
     // Check state of cells
     if (initial_checks() != 0) {
-        bms_core.bms_state = BMS_STATE_FAULT;
-        gpio_set_pin(FAULT_LED);
+        if ((bms_core.bms_fault == BMS_FAULT_UNDERVOLTAGE)
+            && (!!gpio_get_pin(CHARGER_DETECT_IN) == 0)) {
+            bms_core.bms_state = BMS_STATE_CHARGING;
+            gpio_set_pin(BMS_RELAY_LSD);
+        } else {
+            bms_core.bms_state = BMS_STATE_FAULT;
+            gpio_set_pin(FAULT_LED);
+        }
     } else {
         // Close the BMS shutdown circuit relay
         bms_core.bms_state = BMS_STATE_ACTIVE;
