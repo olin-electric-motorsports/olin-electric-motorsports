@@ -23,6 +23,40 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
 };
 
 static void set_fault(enum air_fault_e the_fault) {
+// =======
+// enum State {
+//     INIT = 0,
+//     IDLE,
+//     SHDN_CLOSED,
+//     PRECHARGE,
+//     TS_ACTIVE,
+//     DISCHARGE,
+//     FAULT,
+//
+//     CHARGING_IDLE,
+//     CHARGING_SHDN_CLOSED,
+//     CHARGING_ACTIVE,
+// };
+//
+// enum FaultCode {
+//     AIR_FAULT_NONE = 0x00,
+//     AIR_FAULT_AIR_N_WELD,
+//     AIR_FAULT_AIR_P_WELD,
+//     AIR_FAULT_BOTH_AIRS_WELD,
+//     AIR_FAULT_PRECHARGE_FAIL,
+//     AIR_FAULT_DISCHARGE_FAIL,
+//     AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // TODO?
+//     AIR_FAULT_CAN_ERROR,
+//     AIR_FAULT_CAN_BMS_TIMEOUT,
+//     AIR_FAULT_CAN_MC_TIMEOUT,
+//     AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY,
+//     AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE,
+//     AIR_FAULT_BMS_VOLTAGE,
+//     AIR_FAULT_IMD_STATUS,
+// };
+//
+// static void set_fault(enum FaultCode the_fault) {
+// >>>>>>> 44e4e794 (Add charging support to AIR controller)
     gpio_set_pin(FAULT_LED);
 
     if (air_control_critical.air_fault == AIR_FAULT_NONE) {
@@ -168,9 +202,16 @@ static void state_machine_run(void) {
                     = AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED;
             }
 
-            // If receive charging CAN message, go into charging
-            // Hm, but if SS closes, it will think it should go to the next
-            // state. Maybe we need to send the CAN message before we charge?
+            /*
+             * BMS emits a "charger_connected" signal that instructs the AIR
+             * controller to go into charging
+             */
+            if (can_poll_receive_bms_charging() == 0) {
+                if (bms_charging.charger_connected) {
+                    air_control_critical.air_state = AIR_STATE_CHARGING_IDLE;
+                }
+                can_receive_bms_charging();
+            }
         } break;
         case AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED: {
             /*
@@ -332,6 +373,48 @@ static void state_machine_run(void) {
             gpio_clear_pin(PRECHARGE_CTL);
             gpio_clear_pin(AIR_N_LSD);
         } break;
+
+        /// CHARGING
+
+        case AIR_STATE_CHARGING_IDLE: {
+            if (air_control_critical.ss_tsms) {
+                air_control_critical.air_state = AIR_STATE_CHARGING_SHDN_CLOSED;
+            }
+
+            return;
+        } break;
+        case AIR_STATE_CHARGING_SHDN_CLOSED: {
+            static bool once = true;
+
+            if (once) {
+                start_time = get_time();
+                once = false;
+            }
+
+            if (get_time() - start_time < 200) {
+                if (air_control_critical.air_p_status) {
+                    air_control_critical.air_state = AIR_STATE_CHARGING_ACTIVE;
+                    once = true;
+                }
+            } else {
+                set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                once = true;
+            }
+            return;
+        } break;
+        case AIR_STATE_CHARGING_ACTIVE: {
+            gpio_set_pin(AIR_N_LSD);
+
+            if (can_poll_receive_bms_charging() == 0) {
+                if (bms_charging.charger_connected == false) {
+                    gpio_clear_pin(AIR_N_LSD);
+                    air_control_critical.air_state = AIR_STATE_CHARGING_IDLE;
+                }
+            }
+
+            // If charger disconnected, back to CHARGING_IDLE
+            return;
+        } break;
         default: {
             // Shouldn't happen, but just in case
             air_control_critical.air_state = AIR_STATE_FAULT;
@@ -387,6 +470,7 @@ int main(void) {
 
     // Send message once before checks
     can_send_air_control_critical();
+    can_receive_bms_charging();
 
     if (initial_checks() == 1) {
         goto fault;

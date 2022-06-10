@@ -11,3 +11,11 @@ publish:
           values:
             t: Start charging
             f: Stop charging
+    signals:
+      - name: charger_connected
+        slice: 1 + 1
+        unit:
+          type: bool
+          values:
+            t: Charger connected
+            f: Charger disconnected
