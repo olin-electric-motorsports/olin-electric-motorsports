@@ -202,12 +202,12 @@ static void state_machine_run(void) {
              * BMS emits a "charger_connected" signal that instructs the AIR
              * controller to go into charging
              */
-            if (can_poll_receive_bms_charging() == 0) {
-                if (bms_charging.charger_connected) {
-                    air_control_critical.air_state = CHARGING_IDLE;
-                }
-                can_receive_bms_charging();
-            }
+            // if (can_poll_receive_bms_charging() == 0) {
+            //     if (bms_charging.charger_connected) {
+            //         air_control_critical.air_state = CHARGING_IDLE;
+            //     }
+            //     can_receive_bms_charging();
+            // }
         } break;
         case SHDN_CLOSED: {
             /*
@@ -370,7 +370,7 @@ static void state_machine_run(void) {
             gpio_clear_pin(AIR_N_LSD);
         } break;
 
-        /// CHARGING
+            /// CHARGING
 
         case CHARGING_IDLE: {
             if (air_control_critical.ss_tsms) {
@@ -401,14 +401,10 @@ static void state_machine_run(void) {
         case CHARGING_ACTIVE: {
             gpio_set_pin(AIR_N_LSD);
 
-            if (can_poll_receive_bms_charging() == 0) {
-                if (bms_charging.charger_connected == false) {
-                    gpio_clear_pin(AIR_N_LSD);
-                    air_control_critical.air_state = CHARGING_IDLE;
-                }
+            if (air_control_critical.ss_tsms != true) {
+                gpio_clear_pin(AIR_N_LSD);
+                air_control_critical.air_state = CHARGING_SHDN_CLOSED;
             }
-
-            // If charger disconnected, back to CHARGING_IDLE
             return;
         } break;
         default: {
@@ -466,7 +462,6 @@ int main(void) {
 
     // Send message once before checks
     can_send_air_control_critical();
-    can_receive_bms_charging();
 
     if (initial_checks() == 1) {
         goto fault;

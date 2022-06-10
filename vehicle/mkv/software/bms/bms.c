@@ -223,24 +223,14 @@ static void state_machine_run(void) {
                 set_fault(BMS_FAULT_OVERVOLTAGE);
                 bms_core.bms_state = FAULT;
             }
-
-            if (!!gpio_get_pin(CHARGER_DETECT_IN) == 0) {
-                bms_core.bms_state = CHARGING;
-                bms_charging.charger_connected = true;
-            }
         } break;
         case CHARGING: {
             gpio_set_pin(BMS_RELAY_LSD);
 
             if (ov > 0) {
+                gpio_clear_pin(BMS_RELAY_LSD);
                 set_fault(BMS_FAULT_OVERVOLTAGE);
-                // gpio_clear_pin(BMS_RELAY_LSD);
                 bms_core.bms_state = FAULT;
-            }
-
-            if (!!gpio_get_pin(CHARGER_DETECT_IN) == 1) {
-                // Pull-up pulls pin high
-                bms_charging.charger_connected = false;
             }
         } break;
         case FAULT: {
@@ -295,10 +285,21 @@ int main(void) {
     pcint0_callback();
     pcint2_callback();
 
+    // if (!!gpio_get_pin(CHARGER_DETECT_IN) == 0) {
+    //     bms_core.bms_state = CHARGING;
+    //     bms_core.charger_connected = true;
+    // }
+
     // Check state of cells
     if (initial_checks() != 0) {
-        bms_core.bms_state = FAULT;
-        gpio_set_pin(FAULT_LED);
+        if ((bms_core.bms_fault_state == BMS_FAULT_UNDERVOLTAGE)
+            && (!!gpio_get_pin(CHARGER_DETECT_IN) == 0)) {
+            bms_core.bms_state = CHARGING;
+            gpio_set_pin(BMS_RELAY_LSD);
+        } else {
+            bms_core.bms_state = FAULT;
+            gpio_set_pin(FAULT_LED);
+        }
     } else {
         // Close the BMS shutdown circuit relay
         bms_core.bms_state = ACTIVE;
@@ -330,7 +331,6 @@ int main(void) {
             can_send_bms_core();
             can_send_bms_sense();
             can_send_bms_metrics();
-            can_send_bms_charging();
             state_machine_run();
 
             // Every 500ms send sensing and debug data
