@@ -2,8 +2,8 @@ name: bms
 subscribe:
   - name: air_control_critical
     mob: 1
-  - name: bms_charging
-    mob: 2
+  # - name: bms_charging
+  #   mob: 2
 publish:
   - name: bms_core
     id: 0x10
@@ -29,8 +29,7 @@ publish:
           type: enum
           values:
             - INIT
-            - IDLE
-            - DISCHARGING
+            - ACTIVE
             - CHARGING
             - FAULT
       - name: pack_voltage
@@ -256,3 +255,15 @@ publish:
           name: "volts"
           scale: 0.0001
           offset: 0
+
+  - name: bms_charging
+    id: 0x101
+    freq_hz: 1
+    signals:
+      - name: charger_connected
+        slice: 0 + 1
+        unit:
+          type: bool
+          values:
+            t: Connected
+            f: Disconnected
