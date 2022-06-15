@@ -16,15 +16,15 @@ typedef enum {
 } baud_rate_t;
 
 typedef struct {
-    uint16_t id;
+    uint32_t id;
     uint8_t dlc;
     uint8_t* data;
     uint8_t mob; // This can be unused for non AVR? or remove?
 } can_frame_t;
 
 typedef struct {
-    uint16_t id;
-    uint16_t mask;
+    uint32_t id;
+    uint32_t mask;
 } can_filter_t;
 
 #define MAX_DLC (8)
