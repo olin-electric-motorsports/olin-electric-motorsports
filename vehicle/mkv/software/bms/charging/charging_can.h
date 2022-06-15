@@ -37,8 +37,10 @@ void charging_send_command(void);
  */
 int charging_recv_feedback(void);
 
-uint16_t charger_get_voltage(void);
+int charging_poll_recv_feedback(void);
 
-uint16_t charger_get_current(void);
+uint16_t charging_get_voltage(void);
 
-uint16_t charger_get_status_flags(void);
+uint16_t charging_get_current(void);
+
+uint16_t charging_get_status_flags(void);

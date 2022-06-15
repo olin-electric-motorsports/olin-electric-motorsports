@@ -53,18 +53,18 @@ int charging_recv_feedback(void) {
     return can_poll_receive(&charging_fbk);
 }
 
-uint16_t charger_get_voltage(void) {
+uint16_t charging_get_voltage(void) {
     uint16_t voltage = (charging_fbk_data[0] << 8) | (charging_fbk_data[1]);
 
     return voltage * 0.1;
 }
 
-uint16_t charger_get_current(void) {
+uint16_t charging_get_current(void) {
     uint16_t current = (charging_fbk_data[2] << 8) | (charging_fbk_data[3]);
 
     return current * 0.1;
 }
 
-uint16_t charger_get_status_flags(void) {
+uint16_t charging_get_status_flags(void) {
     return charging_fbk_data[4];
 }

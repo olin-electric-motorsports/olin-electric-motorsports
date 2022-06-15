@@ -46,6 +46,11 @@ enum FaultCode {
      * Received too many packet encoding errors from LTC6811s
      */
     BMS_FAULT_PEC,
+
+    /*
+     * Issue in the status flags of the charger
+     */
+    BMS_FAULT_CHARGER_FAULT,
 };
 
 void set_fault(enum FaultCode the_fault);

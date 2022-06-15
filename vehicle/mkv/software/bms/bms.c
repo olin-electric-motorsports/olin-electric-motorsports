@@ -14,6 +14,7 @@
 #include "vehicle/mkv/software/bms/tasks/tasks.h"
 #include "vehicle/mkv/software/bms/utils/fault.h"
 #include "vehicle/mkv/software/bms/utils/mux.h"
+#include "vehicle/mkv/software/bms/charging/charging_can.h"
 
 #include "projects/btldr/btldr_lib.h"
 #include "projects/btldr/git_sha.h"
@@ -28,9 +29,7 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
 };
 
 enum State {
-    INIT = 0,
-    ACTIVE,
-    DISCHARGING,
+    ACTIVE = 0,
     CHARGING,
     FAULT,
 };
@@ -78,7 +77,7 @@ void pcint2_callback(void) {
  *
  * - Checks all temperatures and voltages and ensures they are in range
  */
-static int initial_checks(void) {
+static enum FaultCode initial_checks(void) {
     int rc = 0;
 
     // read all voltages
@@ -101,14 +100,18 @@ static int initial_checks(void) {
         }
     } while (rc != 0);
 
-    if (uv > 0) {
-        set_fault(BMS_FAULT_UNDERVOLTAGE);
-        rc = 1;
-        goto bail;
-    } else if (ov > 0) {
+    if (ov > 0) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
-        rc = 1;
+        rc = BMS_FAULT_OVERVOLTAGE;
         goto bail;
+    }
+
+    if (bms_core.bms_state == ACTIVE) {
+        if (uv > 0) {
+            set_fault(BMS_FAULT_UNDERVOLTAGE);
+            rc = BMS_FAULT_UNDERVOLTAGE;
+            goto bail;
+        }
     }
 
     // Read all temperatures
@@ -214,37 +217,43 @@ static void monitor_cells(void) {
     bms_sense.current_vref = vref;
     bms_sense.current_vout = vout;
 
-    if (uv > 0) {
-        set_fault(BMS_FAULT_UNDERVOLTAGE);
-        bms_core.bms_state = FAULT;
-    } else if (ov > 0) {
+    if (ov > 0) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
         bms_core.bms_state = FAULT;
     }
 
-    // switch (bms_core.bms_state) {
-    //     case ACTIVE: {
-    //         gpio_set_pin(BMS_RELAY_LSD);
-    //     } break;
-    //     case CHARGING: {
-    //         gpio_set_pin(BMS_RELAY_LSD);
-    //
-    //         if (ov > 0) {
-    //             gpio_clear_pin(BMS_RELAY_LSD);
-    //             set_fault(BMS_FAULT_OVERVOLTAGE);
-    //             bms_core.bms_state = FAULT;
-    //         }
-    //     } break;
-    //     case FAULT: {
-    //         gpio_clear_pin(BMS_RELAY_LSD);
-    //         gpio_set_pin(FAULT_LED);
-    //     } break;
-    //     default: {
-    //         // Just to be safe. This shouldn't happen
-    //         bms_core.bms_fault_state = BMS_FAULT_DIAGNOSTICS_FAIL;
-    //         bms_core.bms_state = FAULT;
-    //     } break;
-    // }
+    switch (bms_core.bms_state) {
+        case ACTIVE: {
+            if (uv > 0) {
+                set_fault(BMS_FAULT_UNDERVOLTAGE);
+                bms_core.bms_state = FAULT;
+            }
+        } break;
+        case CHARGING: {
+            if (charging_poll_recv_feedback() == 0) {
+                uint8_t charger_status = charging_get_status_flags();
+                bms_debug_data[8] = charger_status;
+
+                if (charger_status != 0) {
+                    if ((charger_status & (1 << 3)) == 0) {
+                        // Not a starting state fault
+                    } else {
+                        set_fault(BMS_FAULT_CHARGER_FAULT);
+                    }
+                }
+            }
+        } break;
+        case FAULT: {
+            gpio_clear_pin(BMS_RELAY_LSD);
+            charging_set_enable(false);
+            charging_set_max_voltage(0);
+            charging_set_max_current(0);
+        } break;
+        default: {
+            bms_core.bms_fault_state = BMS_FAULT_DIAGNOSTICS_FAIL;
+            bms_core.bms_state = FAULT;
+        } break;
+    }
 }
 
 int main(void) {
@@ -287,20 +296,23 @@ int main(void) {
     pcint0_callback();
     pcint2_callback();
 
+    if (!!gpio_get_pin(CHARGER_DETECT_IN) == 0) {
+        bms_core.bms_state = CHARGING;
+        can_set_id_mode(ID_MODE_EXTENDED);
+        charging_set_enable(true);
+        charging_set_max_voltage(MAX_CHARGING_VOLTAGE);
+        charging_set_max_current(MAX_CHARGING_CURRENT);
+        charging_recv_feedback();
+    } else {
+        bms_core.bms_state = ACTIVE;
+    }
+
     // Check state of cells
     if (initial_checks() != 0) {
-        if ((bms_core.bms_fault_state == BMS_FAULT_UNDERVOLTAGE)
-            && (!!gpio_get_pin(CHARGER_DETECT_IN) == 0)) {
-            bms_core.bms_state = CHARGING;
-            can_set_id_mode(ID_MODE_EXTENDED);
-            gpio_set_pin(BMS_RELAY_LSD);
-        } else {
-            bms_core.bms_state = FAULT;
-            gpio_set_pin(FAULT_LED);
-        }
+        bms_core.bms_state = FAULT;
+        gpio_set_pin(FAULT_LED);
     } else {
         // Close the BMS shutdown circuit relay
-        bms_core.bms_state = ACTIVE;
         gpio_set_pin(BMS_RELAY_LSD);
     }
 
@@ -320,17 +332,29 @@ int main(void) {
             can_send_bms_core();
             can_send_bms_sense();
             can_send_bms_metrics();
-            monitor_cells();
 
             // Every 500ms send sensing and debug data
-            if (loop_counter == 50) {
+            if (loop_counter % 50 == 0) {
                 can_send_bms_debug();
                 can_send_bms_metrics();
 
                 loop_counter = 0;
             }
 
+            if (bms_core.bms_state == CHARGING) {
+                if (loop_counter % 100 == 0) {
+                    charging_send_command();
+                }
+            }
+
             loop_counter++;
+
+            if (loop_counter == 1000) {
+                loop_counter = 0;
+            }
+
+            monitor_cells();
+
             run_10ms = false;
         }
     }

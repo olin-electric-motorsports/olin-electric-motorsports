@@ -19,8 +19,11 @@
 // Number of cells that can be measured
 #define NUM_CELLS (12)
 
-#define OVERVOLTAGE_THRESHOLD  (42000) // 4.2V
-#define UNDERVOLTAGE_THRESHOLD (30000) // 3.0V
+#define OVERVOLTAGE_THRESHOLD  (41500) // 4.15V
+#define UNDERVOLTAGE_THRESHOLD (30000) // 3.00V
+
+#define MAX_CHARGING_VOLTAGE (400)
+#define MAX_CHARGING_CURRENT (1)
 
 /*
  * We can handle missing around 5 temperatures, since we know there will be some
