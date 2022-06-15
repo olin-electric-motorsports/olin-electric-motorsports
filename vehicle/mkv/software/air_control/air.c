@@ -23,40 +23,6 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
 };
 
 static void set_fault(enum air_fault_e the_fault) {
-// =======
-// enum State {
-//     INIT = 0,
-//     IDLE,
-//     SHDN_CLOSED,
-//     PRECHARGE,
-//     TS_ACTIVE,
-//     DISCHARGE,
-//     FAULT,
-//
-//     CHARGING_IDLE,
-//     CHARGING_SHDN_CLOSED,
-//     CHARGING_ACTIVE,
-// };
-//
-// enum FaultCode {
-//     AIR_FAULT_NONE = 0x00,
-//     AIR_FAULT_AIR_N_WELD,
-//     AIR_FAULT_AIR_P_WELD,
-//     AIR_FAULT_BOTH_AIRS_WELD,
-//     AIR_FAULT_PRECHARGE_FAIL,
-//     AIR_FAULT_DISCHARGE_FAIL,
-//     AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // TODO?
-//     AIR_FAULT_CAN_ERROR,
-//     AIR_FAULT_CAN_BMS_TIMEOUT,
-//     AIR_FAULT_CAN_MC_TIMEOUT,
-//     AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY,
-//     AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE,
-//     AIR_FAULT_BMS_VOLTAGE,
-//     AIR_FAULT_IMD_STATUS,
-// };
-//
-// static void set_fault(enum FaultCode the_fault) {
-// >>>>>>> 44e4e794 (Add charging support to AIR controller)
     gpio_set_pin(FAULT_LED);
 
     if (air_control_critical.air_fault == AIR_FAULT_NONE) {
@@ -200,6 +166,12 @@ static void state_machine_run(void) {
             if (air_control_critical.ss_tsms) {
                 air_control_critical.air_state
                     = AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED;
+            }
+
+            if (can_poll_receive_bms_core() == 0) {
+                if (bms_core.bms_state == BMS_STATE_CHARGING) {
+                    air_control_critical.air_state = CHARGING_IDLE;
+                }
             }
 
             /*
@@ -407,7 +379,7 @@ static void state_machine_run(void) {
 
             if (air_control_critical.ss_tsms != true) {
                 gpio_clear_pin(AIR_N_LSD);
-                air_control_critical.air_state = CHARGING_SHDN_CLOSED;
+                air_control_critical.air_state = CHARGING_IDLE;
             }
             return;
         } break;
