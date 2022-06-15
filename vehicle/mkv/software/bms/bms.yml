@@ -23,7 +23,6 @@ publish:
         unit:
           type: enum
           values:
-            - INIT
             - ACTIVE
             - CHARGING
             - FAULT
@@ -162,12 +161,47 @@ publish:
           scale: 1
           offset: 0
       - name: dbg_4
-        slice: 48 + 16
+        slice: 48 + 8
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
+      - name: charger_hardware_fault
+        slice: 56 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_temperature_protection
+        slice: 57 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_input_voltage
+        slice: 58 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_starting_state
+        slice: 59 + 1
+        unit:
+          type: bool
+          values:
+            t: OFF
+            f: On
+      - name: charger_communication
+        slice: 60 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
 
   - name: bms_voltage
     id: 0x401
