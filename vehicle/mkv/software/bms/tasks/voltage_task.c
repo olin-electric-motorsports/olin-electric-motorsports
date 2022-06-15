@@ -78,6 +78,9 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 cell_3 = (uint16_t)average;
             }
 
+            reg_voltages[0] = cell_1;
+            *pack_voltage += cell_1 >> 8;
+
             /*
              * HACK: There is a hardware issue in the BMS where this cell reads
              * too high and the following cell reads too low, but their average
@@ -85,15 +88,8 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
              * the issue.
              */
             if ((cell_reg == 3) && (ic == 10)) {
-                cell_3 = 35000;
+                cell_1 = 35000;
             }
-
-            if ((cell_reg == 2) && (ic == 10)) {
-                cell_3 = cell_2;
-            }
-
-            reg_voltages[0] = cell_1;
-            *pack_voltage += cell_1 >> 8;
 
             if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
                 *ov += 1;
@@ -111,6 +107,10 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                     *ov += 1;
                 } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
                     *uv += 1;
+                }
+
+                if ((cell_reg == 2) && (ic == 10)) {
+                    cell_3 = cell_2;
                 }
 
                 reg_voltages[2] = cell_3;

@@ -126,28 +126,32 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
-        set_fault(AIR_FAULT_BMS_VOLTAGE);
-        rc = 1;
-        goto bail;
-    }
+    if (bms_core.bms_state == BMS_STATE_CHARGING) {
+        air_control_critical.air_state = CHARGING_IDLE;
+    } else {
+        if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
+            set_fault(AIR_FAULT_BMS_VOLTAGE);
+            rc = 1;
+            goto bail;
+        }
 
-    int16_t mc_voltage = 0;
-    rc = get_motor_controller_voltage(&mc_voltage);
+        int16_t mc_voltage = 0;
+        rc = get_motor_controller_voltage(&mc_voltage);
 
-    if (rc == 1) {
-        set_fault(AIR_FAULT_CAN_ERROR);
-        goto bail;
-    } else if (rc == 2) {
-        set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
-        rc = 1;
-        goto bail;
-    }
+        if (rc == 1) {
+            set_fault(AIR_FAULT_CAN_ERROR);
+            goto bail;
+        } else if (rc == 2) {
+            set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
+            rc = 1;
+            goto bail;
+        }
 
-    if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
-        set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
-        rc = 1;
-        goto bail;
+        if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
+            set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
+            rc = 1;
+            goto bail;
+        }
     }
 
     // The following checks ensure that the hardware is in the correct initial
@@ -203,23 +207,6 @@ static void state_machine_run(void) {
             if (air_control_critical.ss_tsms) {
                 air_control_critical.air_state = SHDN_CLOSED;
             }
-
-            if (can_poll_receive_bms_core() == 0) {
-                if (bms_core.bms_state == BMS_STATE_CHARGING) {
-                    air_control_critical.air_state = CHARGING_IDLE;
-                }
-            }
-
-            /*
-             * BMS emits a "charger_connected" signal that instructs the AIR
-             * controller to go into charging
-             */
-            // if (can_poll_receive_bms_charging() == 0) {
-            //     if (bms_charging.charger_connected) {
-            //         air_control_critical.air_state = CHARGING_IDLE;
-            //     }
-            //     can_receive_bms_charging();
-            // }
         } break;
         case SHDN_CLOSED: {
             /*
@@ -489,7 +476,13 @@ int main(void) {
     // Send message again after initial checks are run
     can_send_air_control_critical();
 
-    air_control_critical.air_state = IDLE;
+
+    /*
+     * CHARGING_IDLE is set in initial_checks()
+     */
+    if (air_control_critical.air_state != CHARGING_IDLE) {
+        air_control_critical.air_state = IDLE;
+    }
 
     while (1) {
         // Run state machine every 1ms

@@ -349,7 +349,7 @@ int main(void) {
 
             loop_counter++;
 
-            if (loop_counter == 1000) {
+            if (loop_counter == 100) {
                 loop_counter = 0;
             }
 
