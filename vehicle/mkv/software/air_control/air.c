@@ -36,6 +36,12 @@ enum State {
     CHARGING_ACTIVE,
 };
 
+enum {
+    BMS_STATE_ACTIVE = 0x00,
+    BMS_STATE_CHARGING,
+    BMS_STATE_FAULT,
+};
+
 enum FaultCode {
     AIR_FAULT_NONE = 0x00,
     AIR_FAULT_AIR_N_WELD,
@@ -196,6 +202,12 @@ static void state_machine_run(void) {
             // Idle until shutdown circuit is closed
             if (air_control_critical.ss_tsms) {
                 air_control_critical.air_state = SHDN_CLOSED;
+            }
+
+            if (can_poll_receive_bms_core() == 0) {
+                if (bms_core.bms_state == BMS_STATE_CHARGING) {
+                    air_control_critical.air_state = CHARGING_IDLE;
+                }
             }
 
             /*
@@ -403,7 +415,7 @@ static void state_machine_run(void) {
 
             if (air_control_critical.ss_tsms != true) {
                 gpio_clear_pin(AIR_N_LSD);
-                air_control_critical.air_state = CHARGING_SHDN_CLOSED;
+                air_control_critical.air_state = CHARGING_IDLE;
             }
             return;
         } break;
