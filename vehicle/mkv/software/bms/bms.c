@@ -134,7 +134,7 @@ bail:
 /*
  * Primary state machine function
  */
-static void state_machine_run(void) {
+static void monitor_cells(void) {
     if (bms_core.bms_fault_state != BMS_FAULT_NONE) {
         bms_core.bms_state = FAULT;
         gpio_clear_pin(BMS_RELAY_LSD);
@@ -207,42 +207,44 @@ static void state_machine_run(void) {
     int16_t current = 0;
     uint16_t vref = 0;
     uint16_t vout = 0;
+
     current_task(&current, &vref, &vout);
+
     bms_core.pack_current = current;
     bms_sense.current_vref = vref;
     bms_sense.current_vout = vout;
 
-    switch (bms_core.bms_state) {
-        case ACTIVE: {
-            gpio_set_pin(BMS_RELAY_LSD);
-
-            if (uv > 0) {
-                set_fault(BMS_FAULT_UNDERVOLTAGE);
-                bms_core.bms_state = FAULT;
-            } else if (ov > 0) {
-                set_fault(BMS_FAULT_OVERVOLTAGE);
-                bms_core.bms_state = FAULT;
-            }
-        } break;
-        case CHARGING: {
-            gpio_set_pin(BMS_RELAY_LSD);
-
-            if (ov > 0) {
-                gpio_clear_pin(BMS_RELAY_LSD);
-                set_fault(BMS_FAULT_OVERVOLTAGE);
-                bms_core.bms_state = FAULT;
-            }
-        } break;
-        case FAULT: {
-            gpio_clear_pin(BMS_RELAY_LSD);
-            gpio_set_pin(FAULT_LED);
-        } break;
-        default: {
-            // Just to be safe. This shouldn't happen
-            bms_core.bms_fault_state = BMS_FAULT_DIAGNOSTICS_FAIL;
-            bms_core.bms_state = FAULT;
-        } break;
+    if (uv > 0) {
+        set_fault(BMS_FAULT_UNDERVOLTAGE);
+        bms_core.bms_state = FAULT;
+    } else if (ov > 0) {
+        set_fault(BMS_FAULT_OVERVOLTAGE);
+        bms_core.bms_state = FAULT;
     }
+
+    // switch (bms_core.bms_state) {
+    //     case ACTIVE: {
+    //         gpio_set_pin(BMS_RELAY_LSD);
+    //     } break;
+    //     case CHARGING: {
+    //         gpio_set_pin(BMS_RELAY_LSD);
+    //
+    //         if (ov > 0) {
+    //             gpio_clear_pin(BMS_RELAY_LSD);
+    //             set_fault(BMS_FAULT_OVERVOLTAGE);
+    //             bms_core.bms_state = FAULT;
+    //         }
+    //     } break;
+    //     case FAULT: {
+    //         gpio_clear_pin(BMS_RELAY_LSD);
+    //         gpio_set_pin(FAULT_LED);
+    //     } break;
+    //     default: {
+    //         // Just to be safe. This shouldn't happen
+    //         bms_core.bms_fault_state = BMS_FAULT_DIAGNOSTICS_FAIL;
+    //         bms_core.bms_state = FAULT;
+    //     } break;
+    // }
 }
 
 int main(void) {
@@ -285,16 +287,12 @@ int main(void) {
     pcint0_callback();
     pcint2_callback();
 
-    // if (!!gpio_get_pin(CHARGER_DETECT_IN) == 0) {
-    //     bms_core.bms_state = CHARGING;
-    //     bms_core.charger_connected = true;
-    // }
-
     // Check state of cells
     if (initial_checks() != 0) {
         if ((bms_core.bms_fault_state == BMS_FAULT_UNDERVOLTAGE)
             && (!!gpio_get_pin(CHARGER_DETECT_IN) == 0)) {
             bms_core.bms_state = CHARGING;
+            can_set_id_mode(ID_MODE_EXTENDED);
             gpio_set_pin(BMS_RELAY_LSD);
         } else {
             bms_core.bms_state = FAULT;
@@ -312,26 +310,17 @@ int main(void) {
     // Turn off GENERAL_LED to indicate checks passed
     gpio_clear_pin(GENERAL_LED);
 
-    // Set up first receive of AIR Control and BMS charging messages
-    can_receive_air_control_critical();
-
     // Tracks the number of times the 10ms loop has been run
     uint8_t loop_counter = 0;
 
     while (true) {
-        // Listen for and save tractive system state
-        if (can_poll_receive_air_control_critical() == 0) {
-            air_state = air_control_critical.air_state;
-            can_receive_air_control_critical();
-        }
-
         updater_loop(); // TODO: Can we always update BMS?
 
         if (run_10ms) {
             can_send_bms_core();
             can_send_bms_sense();
             can_send_bms_metrics();
-            state_machine_run();
+            monitor_cells();
 
             // Every 500ms send sensing and debug data
             if (loop_counter == 50) {
