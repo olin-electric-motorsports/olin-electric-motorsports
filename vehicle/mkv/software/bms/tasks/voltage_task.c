@@ -78,6 +78,20 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 cell_3 = (uint16_t)average;
             }
 
+            /*
+             * HACK: There is a hardware issue in the BMS where this cell reads
+             * too high and the following cell reads too low, but their average
+             * is correct. We aren't sure why, so for now we are just ignoring
+             * the issue.
+             */
+            if ((cell_reg == 3) && (ic == 10)) {
+                cell_3 = 35000;
+            }
+
+            if ((cell_reg == 2) && (ic == 10)) {
+                cell_3 = cell_2;
+            }
+
             reg_voltages[0] = cell_1;
             *pack_voltage += cell_1 >> 8;
 
@@ -109,10 +123,10 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 }
             }
 
+            can_send(&voltage_frame);
+
             uint16_t received_pec
                 = (raw_data[raw_idx + 6] << 8) + raw_data[raw_idx + 7];
-
-            can_send(&voltage_frame);
 
             /*
              * The received PEC for the current_ic
