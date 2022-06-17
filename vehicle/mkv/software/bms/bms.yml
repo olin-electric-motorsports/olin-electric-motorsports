@@ -1,5 +1,9 @@
 name: bms
+subscribe:
+  - name: charging_fbk
+    mob: 1
 publish:
+  - name: charging_cmd
   - name: bms_core
     id: 0x10
     freq_hz: 100

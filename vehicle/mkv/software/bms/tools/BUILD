@@ -1,27 +1,9 @@
-load("@rules_python//python:defs.bzl", "py_binary", "py_library")
+load("@rules_python//python:defs.bzl", "py_binary")
 
 py_binary(
-    name = "sensing_yml_generator",
+    name = "bridge",
     srcs = [
-        "sensing_yml_generator.py",
+        "charger_can_bridge.py",
     ],
-    data = [
-        "//vehicle/mkv/software/bms:bms_config.h",
-    ],
-    visibility = ["//visibility:public"],
-)
-
-genrule(
-    name = "bms_sensing_yml",
-    srcs = [
-        "//vehicle/mkv/software/bms:bms_config.h",
-    ],
-    outs = [
-        "bms_sensing.yml",
-    ],
-    cmd = "$(location :sensing_yml_generator) -c $(location //vehicle/mkv/software/bms:bms_config.h) -o $(OUTS)",
-    tools = [
-        ":sensing_yml_generator",
-    ],
-    visibility = ["//visibility:public"],
+    main = "charger_can_bridge.py",
 )
