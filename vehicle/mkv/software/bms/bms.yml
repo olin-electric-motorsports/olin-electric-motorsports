@@ -1,5 +1,9 @@
 name: bms
+subscribe:
+  - name: charging_fbk
+    mob: 1
 publish:
+  - name: charging_cmd
   - name: bms_core
     id: 0x10
     freq_hz: 100
@@ -18,6 +22,7 @@ publish:
             - BMS_FAULT_OPEN_WIRE
             - BMS_FAULT_OVERCURRENT
             - BMS_FAULT_PEC
+            - BMS_FAULT_CHARGER
       - name: bms_state
         slice: 4 + 4
         unit:

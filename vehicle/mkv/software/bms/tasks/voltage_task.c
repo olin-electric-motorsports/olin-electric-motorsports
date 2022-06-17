@@ -123,10 +123,10 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 }
             }
 
-            can_send(&voltage_frame);
-
             uint16_t received_pec
                 = (raw_data[raw_idx + 6] << 8) + raw_data[raw_idx + 7];
+
+            can_send(&voltage_frame);
 
             /*
              * The received PEC for the current_ic
