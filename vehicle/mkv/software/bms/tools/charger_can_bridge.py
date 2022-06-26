@@ -6,8 +6,8 @@ charger_fbk_filter = [
     {"can_id": 0x18ff50e5, "can_mask": 0x7FFFFFFF, "extended": True},
 ]
 
-charging_bus = can.interface.Bus(
-    bustype="seeedstudio", channel="/dev/ttyUSB2", bitrate=250000
+vehicle_bus = can.interface.Bus(
+    bustype="socketcan", channel="can0", bitrate=500000
     # can_filters = charger_fbk_filter
 )
 
@@ -19,8 +19,8 @@ virt = can.interface.Bus(
 #     {"can_id": 0x80, "can_mask": 0x7FF, "extended": False},
 # ]
 
-vehicle_bus = can.interface.Bus(
-    bustype="seeedstudio", channel="/dev/ttyUSB1", bitrate=500000
+charging_bus = can.interface.Bus(
+    bustype="seeedstudio", channel="/dev/ttyUSB0", bitrate=250000
     # can_filters = vehicle_charging_cmd_filter
 )
 
