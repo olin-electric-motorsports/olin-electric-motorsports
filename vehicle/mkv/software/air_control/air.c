@@ -51,7 +51,7 @@ void pcint0_callback(void) {
 void pcint1_callback(void) {
     air_control_critical.ss_bms = !gpio_get_pin(SS_BMS);
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
-    air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
+    // air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 }
 
 void pcint2_callback(void) {
@@ -120,7 +120,7 @@ static int initial_checks(void) {
     // The following checks ensure that the hardware is in the correct initial
     // state.
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
-    air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
+    // air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 
     if (air_control_critical.air_p_status) {
         set_fault(AIR_FAULT_AIR_P_WELD);
@@ -128,11 +128,11 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (air_control_critical.air_n_status) {
-        set_fault(AIR_FAULT_AIR_N_WELD);
-        rc = 1;
-        goto bail;
-    }
+    // if (air_control_critical.air_n_status) {
+    //     set_fault(AIR_FAULT_AIR_N_WELD);
+    //     rc = 1;
+    //     goto bail;
+    // }
 
     if (!gpio_get_pin(SS_TSMS)) {
         // SS_TSMS should start high
