@@ -11,8 +11,9 @@ services:
     depends_on:
       - redis
     # pass in both likely USB ports
-    devices:
-      - "/dev/ttyUSB0:/dev/ttyUSB0" # need to handle just mapped USB ports
+    # devices:
+      # changes based upon which USB port is being used
+      # - "/dev/ttyUSB0:/dev/ttyUSB0" # need to handle just mapped USB ports
       #- "/dev/ttyACM0:/dev/ttyACM0"
     links:
       - redis:redis_host

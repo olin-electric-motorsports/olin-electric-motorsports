@@ -2,15 +2,16 @@
 objective - grab data from serial, parse, pass into redis
 timeseries database in realtime
 """
-
+import ast
 import serial
 import time
 from redis import Redis
 from redistimeseries.client import Client
 
-
 # Data stream parent class with main pass_data() method call
 # 2-3 data stream children - serial stream, logfile stream, custom pass_data() methods
+
+
 class DataStream(object):
     def __init__(self, data_channels):
         # self.start_stream = True
@@ -31,6 +32,9 @@ class ArduinoSerialIn(DataStream):
     def __init__(
         self, baudrate=9600, port_name="/dev/ttyUSB0", data_channels=["arduino_data"]
     ):
+        # baud rate is the rate at which information is transferred (9600 bits/second)
+        # port name is the port the arduino is connected to 
+        # data channels is the tag attached to the data being sent (used to visualize)
         DataStream.__init__(self, data_channels)
         self.ser = serial.Serial(port_name, baudrate)
 
@@ -43,21 +47,68 @@ class ArduinoSerialIn(DataStream):
         return (flt,)
 
     def parse_line(self, value):
+        
+        # try except// catch the error but don't break down please
+        # return 19.0 if there is an error.
         try:
-            val_strn = value.decode() #try except// catch the error but don't break down please
-        except Exception as e: 
-            print(e)
+            val_strn = value.decode()  
+        except Exception as error:
+            print(error)
             return 19.0
-    
+
         val_str = val_strn.rstrip()
-        
-        try: 
+
+        try:
             flt = float(val_str)
-        except Exception as e: 
+        except Exception as error:
+            print(error)
+            return 19.0
+
+        return flt
+
+
+class LogFile(DataStream):
+    """
+    Class to represent logfile datastream object where data can be grabbed with a single function
+    TODO: Handle logfile formatting 
+    """
+    count = 0
+    path = ""
+
+    def __init__(self, path, data_channels=["test_data"]):
+        DataStream.__init__(self, data_channels)
+        self.path = path
+
+    def read_line(self):
+        with open(self.path, "r") as f:
+            for position, line in enumerate(f):
+                # Iterate over each line and its index
+                if position in [self.count]:
+                    next_line = line
+
+        next_line = ast.literal_eval(next_line)
+
+        self.count += 1
+        time.sleep(1)
+        # print(self.count)
+        return next_line
+
+    def parse_line(self, data):
+        try:
+            val_strn = data.decode()  # try except// catch the error but don't break down please
+        except Exception as e:
             print(e)
             return 19.0
-        
-        return flt
+
+        val_str = val_strn.rstrip()
+
+        try:
+            msg = str(val_str)
+        except Exception as e:
+            print(e)
+            return 19.0
+
+        return msg
 
 
 class RadioSerialIn(DataStream):
@@ -66,35 +117,45 @@ class RadioSerialIn(DataStream):
     TODO: Handle radio serial formatting
     """
 
-    def __init__(self, path, data_channels=["test_data"]):
-        DataStream.__init__(self, data_channels)
-
-    def read_line(self):
-        pass
-
-    def parse_line(self):
-        pass
-
-
-class LogFile(DataStream):
-    """
-    Class to represent logfile datastream object where data can be grabbed with a single function
-    TODO: Handle logfile formatting 
-    """
+    path = ""
 
     def __init__(self, path, data_channels=["test_data"]):
         DataStream.__init__(self, data_channels)
         self.path = path
 
     def read_line(self):
-        # walk through csv logfile and read each line, and read each data value in the line
-        # for channel in self.data_channels:
-        #     # delimit with spaces, spit out data in tuple
 
-        pass
+        # This needs to read new lines as it's logged to the logfile.
+        with open(self.path, "r") as f:
+            next_line = f.readline()
 
-    def parse_line(self, value):
-        pass
+        next_line = ast.literal_eval(next_line)
+
+        time.sleep(1)
+        # print(self.count)
+        return next_line
+
+        # next_line = ast.literal_eval(next_line)
+        # time.sleep(1) shouldn't need to sleep because we should be reading data as it's fed in.
+        # print(self.count)
+        # return next_line
+
+    def parse_line(self, data):
+        try:
+            val_strn = data.decode()  # try except// catch the error but don't break down please
+        except Exception as error:
+            print(error)
+            return 19.0
+
+        val_str = val_strn.rstrip()
+
+        try:
+            msg = str(val_str)
+        except Exception as error:
+            print(error)
+            return 19.0
+
+        return msg
 
 
 class RedisDataSender(object):
@@ -104,13 +165,21 @@ class RedisDataSender(object):
         self.data_channels = self.data_stream_object.return_data_channels()
 
         # initialize redis connection
-        redis_instance = Redis(host="127.0.0.1", port="6379")
+        try:
+            redis_instance = Redis(host="127.0.0.1", port="6379")
+        except Exception as error:
+            print(error)
+            return ("redis not connected")
 
         # initialize redis timeseries client connection
-        self.rts = Client(conn=redis_instance)
-        for data_channel in self.data_channels:
+        try:
+            self.rts = Client(conn=redis_instance)
+        except Exception as error:
+            print(error)
+            return ("redis timeseries client not connected")
 
-            #create a data channel unless it already exists
+        for data_channel in self.data_channels:
+            # create a data channel unless it already exists
             try:
                 self.rts.create(data_channel)
             except:
@@ -120,13 +189,22 @@ class RedisDataSender(object):
         while True:
             # grab data tuple from line
             tup = self.data_stream_object.read_line()
-            
-            # walk through all the data channels  
-            for (index, data_channel) in enumerate(self.data_channels):
-                # pass float into database under correct name
-                self.send_to_redis_timeseries(tup[index], data_channel)
-                
-            time.sleep(1 / self.read_frequency_hz)  # should operate
+            signals = tup["signals"]
+            print(signals)
+            for (key, value) in signals.items():
+                self.send_to_redis_timeseries(value, key)
+
+            # should operate
+            time.sleep(1 / self.read_frequency_hz)
 
     def send_to_redis_timeseries(self, flt, data_channel):
         self.rts.add(data_channel, "*", flt)
+
+# radio = RadioSerialIn("data/nextmessage.txt")
+# # print(radio.parse_line)
+# print(radio.read_line())
+# print(radio.read_line())
+# print(radio.read_line())
+# print(radio.read_line())
+# redis_data = RedisDataSender(radio)
+# print(redis_data.grab_serial_data())

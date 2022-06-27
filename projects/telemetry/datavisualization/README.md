@@ -1,5 +1,22 @@
-# software
-Current: we can take data in from an arduino spitting out random numbers and graph that in Graphana over time. 
+[Email me](mailto:rli@olin.edu) if you need any clarification (rli@olin.edu)
+
+Current: telemetry system up and running with sample radio messages!
+
+## Dependencies:
+
+- pyserial
+- cantools
+- redis
+- redistimeseries
+- redisserver
+- grafana
+
+## How to use:
+[FULL DOCUMENTATION HERE](https://docs.olinelectricmotorsports.com/doc/real-time-visualization-P59eM2Ypk0)
+1. sudo docker-compose up
+2. python3 decoder.py
+3. python3 app.py
+4. go to localhost: 3000 (or 3001, whichever works)
 
 
 ## todo
@@ -14,12 +31,6 @@ Current: we can take data in from an arduino spitting out random numbers and gra
 pip install pyserial 
 
 check serial ports, check code, TODO: include args 
-
-- install grafana
-- install redis 
-- run makes and tests and stuff
-- install redis time series
-
 
 need a config file for redis? 
 - loadmodule? 
