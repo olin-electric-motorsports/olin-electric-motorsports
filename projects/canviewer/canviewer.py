@@ -2,29 +2,14 @@ from canserver import init_can
 from ui import render_dashboard
 
 import argparse
-from os import listdir
 import time
 import signal
-import sys
 import numpy as np
 
 from rich.layout import Layout
 from rich.live import Live
 
 db = None
-
-FILTERS = [
-    {
-        "can_id": 0x000,
-        "can_mask": 0x7E0,
-        "extended": False,
-    },
-    {
-        "can_id": 0x0A0,
-        "can_mask": 0x7FF,
-        "extended": False,
-    },
-]
 
 SHUTDOWN_NODES = {
     "ss_bspd": None,  # BSPD
@@ -39,12 +24,28 @@ SHUTDOWN_NODES = {
     "ss_tsms": None,  # AIR
 }
 
-VEHICLE_VALUES = {}
+VEHICLE_VALUES = {
+    "air_p_status": None,
+    "air_n_status": None,
+    "ready_to_drive": None,
+    "pack_voltage": None,
+    "max_temperature": None,
+    "min_temperature": None,
+    "D1_DC_Bus_Voltage": None,
+}
 
 VEHICLE_STATES = {
     "AIR Control": [None, None],
     "BMS": [None, None],
     "Throttle": [None, None],
+}
+
+VEHICLE_STATE_SIGNALS = { "state", "air_state", "air_fault", "bms_state", "bms_fault" }
+
+MESSAGE_IDS = {
+    0x00C: "THROTTLE",
+    0x00D: "AIR",
+    0x010: "BMS"
 }
 
 
@@ -67,22 +68,17 @@ def convertVtoT(x, Vin=3, R1=10000, R2=100000, T2=348.15, beta=3988):
 def get_val(signal, data):
     val = data.get(signal)
 
-    if val != None:
+    if val is not None:
         return str(val)
-    else:
-        return None
 
 
 def get_ss_val(signal, data):
     val = data.get(signal)
 
-    if val:
-        if val == "OPEN":
-            return "[red]OPEN"
-        elif val == "CLOSED":
-            return "[green]CLOSED"
-        else:
-            return None
+    if val == "OPEN":
+        return "[red]OPEN"
+    elif val == "CLOSED":
+        return "[green]CLOSED"
 
 
 def rx_callback(msg, db):
@@ -94,40 +90,25 @@ def rx_callback(msg, db):
     except Exception as e:
         return
 
-    if msg.arbitration_id == 0x00B:  # BSPD
-        SHUTDOWN_NODES["ss_bspd"] = get_ss_val("ss_bspd", message)
-    elif msg.arbitration_id == 0x00C:  # Throttle
-        SHUTDOWN_NODES["ss_is"] = get_ss_val("ss_is", message)
-        SHUTDOWN_NODES["ss_bots"] = get_ss_val("ss_bots", message)
-        SHUTDOWN_NODES["ss_estop_driver"] = get_ss_val("ss_estop_driver", message)
-        VEHICLE_STATES["Throttle"][0] = get_val("state", message)
-    elif msg.arbitration_id == 0x00D:  # AIR
-        SHUTDOWN_NODES["ss_hvd"] = get_ss_val("ss_hvd", message)
-        SHUTDOWN_NODES["ss_hvd_conn"] = get_ss_val("ss_hvd_conn", message)
-        SHUTDOWN_NODES["ss_mpc"] = get_ss_val("ss_mpc", message)
-        SHUTDOWN_NODES["ss_bms"] = get_ss_val("ss_bms", message)
-        SHUTDOWN_NODES["ss_imd"] = get_ss_val("ss_imd", message)
-        SHUTDOWN_NODES["ss_tsms"] = get_ss_val("ss_tsms", message)
-        VEHICLE_STATES["AIR Control"][0] = get_val("air_state", message)
-        VEHICLE_STATES["AIR Control"][1] = get_val("air_fault", message)
-        VEHICLE_VALUES["AIR Plus"] = get_val("air_p_status", message)
-        VEHICLE_VALUES["AIR Minus"] = get_val("air_n_status", message)
-    elif msg.arbitration_id == 0x00F:  # Dashboard
-        VEHICLE_VALUES["Ready to Drive"] = get_val("ready_to_drive", message)
-    elif msg.arbitration_id == 0x010:  # BMS
-        VEHICLE_VALUES["pack_voltage"] = get_val("pack_voltage", message)
-        VEHICLE_STATES["BMS"][0] = get_val("bms_state", message)
-        VEHICLE_STATES["BMS"][1] = get_val("bms_fault_state", message)
-    elif msg.arbitration_id == 0x011:  # BMS sense
-        max_temp = convertVtoT(get_val("max_temperature", message)) - 273.15
-        min_temp = convertVtoT(get_val("min_temperature", message)) - 273.15
-
-        VEHICLE_VALUES["pack_max_temp"] = str(max_temp)
-        VEHICLE_VALUES["pack_min_temp"] = str(min_temp)
-    elif msg.arbitration_id == 0x0A7:  # Motor controller voltage
-        VEHICLE_VALUES["motor_controller_voltage"] = get_val(
-            "D1_DC_Bus_Voltage", message
-        )
+    for signal_name in message:
+        if signal_name in SHUTDOWN_NODES:
+            SHUTDOWN_NODES[signal_name] = get_ss_val(signal_name, message)
+        elif signal_name in VEHICLE_VALUES:
+            if signal_name in ['max_temperature', 'min_temperature']:
+                temp = convertVtoT(get_val(signal_name, message)) - 273.15
+                VEHICLE_VALUES[signal_name] =  str(temp)
+            else:
+                VEHICLE_VALUES[signal_name] = get_val(signal_name, message)
+        elif signal_name in VEHICLE_STATE_SIGNALS:
+            match MESSAGE_IDS[msg.arbitration_id]:
+                case "THROTTLE":
+                    VEHICLE_STATES["Throttle"][0] = get_val("state", message)
+                case "AIR":
+                    VEHICLE_STATES["AIR Control"][0] = get_val("air_state", message)
+                    VEHICLE_STATES["AIR Control"][1] = get_val("air_fault", message)
+                case "BMS":
+                    VEHICLE_STATES["BMS"][0] = get_val("bms_state", message)
+                    VEHICLE_STATES["BMS"][1] = get_val("bms_fault_state", message)
 
 
 if __name__ == "__main__":
@@ -143,7 +124,7 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, sigint)
 
     can_bus, db = init_can(
-        args.canbus, 500000, rx_callback, "vehicle/mkv/mkv.dbc", FILTERS
+        args.canbus, 500000, rx_callback, "vehicle/mkv/mkv.dbc" 
     )
 
     data = {
