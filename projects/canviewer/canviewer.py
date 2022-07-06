@@ -5,48 +5,22 @@ import argparse
 import time
 import signal
 import numpy as np
+import yaml
 
 from rich.layout import Layout
 from rich.live import Live
 
 db = None
 
-SHUTDOWN_NODES = {
-    "ss_bspd": None,  # BSPD
-    "ss_is": None,  # THROTTLE
-    "ss_bots": None,  # THROTTLE
-    "ss_estop_driver": None,  # THROTTLE
-    "ss_hvd": None,  # AIR
-    "ss_hvd_conn": None,  # AIR
-    "ss_mpc": None,  # AIR
-    "ss_bms": None,  # AIR
-    "ss_imd": None,  # AIR
-    "ss_tsms": None,  # AIR
-}
-
-VEHICLE_VALUES = {
-    "air_p_status": None,
-    "air_n_status": None,
-    "ready_to_drive": None,
-    "pack_voltage": None,
-    "max_temperature": None,
-    "min_temperature": None,
-    "D1_DC_Bus_Voltage": None,
-}
-
-VEHICLE_STATES = {
-    "AIR Control": [None, None],
-    "BMS": [None, None],
-    "Throttle": [None, None],
-}
-
-VEHICLE_STATE_SIGNALS = { "state", "air_state", "air_fault", "bms_state", "bms_fault" }
-
-MESSAGE_IDS = {
-    0x00C: "THROTTLE",
-    0x00D: "AIR",
-    0x010: "BMS"
-}
+with open("projects/canviewer/config.yml", "r") as config_file:
+    (
+        SHUTDOWN_NODES,
+        VEHICLE_VALUES,
+        VEHICLE_STATES,
+        VEHICLE_STATE_SIGNALS,
+        MESSAGE_IDS,
+    ) = yaml.safe_load_all(config_file)
+VEHICLE_STATE_SIGNALS = set(VEHICLE_STATE_SIGNALS)
 
 
 def sigint(signal_received, frame):
@@ -94,9 +68,9 @@ def rx_callback(msg, db):
         if signal_name in SHUTDOWN_NODES:
             SHUTDOWN_NODES[signal_name] = get_ss_val(signal_name, message)
         elif signal_name in VEHICLE_VALUES:
-            if signal_name in ['max_temperature', 'min_temperature']:
+            if signal_name in ["max_temperature", "min_temperature"]:
                 temp = convertVtoT(get_val(signal_name, message)) - 273.15
-                VEHICLE_VALUES[signal_name] =  str(temp)
+                VEHICLE_VALUES[signal_name] = str(temp)
             else:
                 VEHICLE_VALUES[signal_name] = get_val(signal_name, message)
         elif signal_name in VEHICLE_STATE_SIGNALS:
@@ -123,9 +97,7 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, sigint)
 
-    can_bus, db = init_can(
-        args.canbus, 500000, rx_callback, "vehicle/mkv/mkv.dbc" 
-    )
+    can_bus, db = init_can(args.canbus, 500000, rx_callback, "vehicle/mkv/mkv.dbc")
 
     data = {
         "VEHICLE_VALUES": VEHICLE_VALUES,
