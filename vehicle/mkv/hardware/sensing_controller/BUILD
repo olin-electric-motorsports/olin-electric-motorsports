@@ -1,9 +1,9 @@
 load("//bazel:defs.bzl", "kicad_hardware")
 
 kicad_hardware(
-    name = "sensing_controller",
+    name = "sensing_controller1",
     schematic_files = [
-        "sensing_controller.kicad_sch",
+        "sensing_controller1.kicad_sch",
         "connectors.kicad_sch",
         "micros.kicad_sch",
         "power.kicad_sch",

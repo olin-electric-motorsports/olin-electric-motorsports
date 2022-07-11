@@ -340,7 +340,7 @@ kibot = rule(
             mandatory = True,
         ),
         "pcb_file": attr.label(
-            doc = "*.kicad-pcb file with layout",
+            doc = "*.kicad_pcb file with layout",
             allow_single_file = True,
             mandatory = True,
         ),
@@ -355,7 +355,7 @@ def kicad_hardware(
     """
     Generates KiCad file artifacts using KiBot.
 
-    Currently, `name` __must__ be the same name as your `.pro` file that KiCad
+    Currently, `name` __must__ be the same name as your `.kicad_pro` file that KiCad
     generates due to a limitation of the software. This may be resolved in a
     future commit.
 
