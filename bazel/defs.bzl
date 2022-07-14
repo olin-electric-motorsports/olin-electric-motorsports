@@ -300,14 +300,13 @@ def _kibot_impl(ctx):
     cfg_file = ctx.file.config_file
     sch = ctx.files.schematic_files
     pcb = ctx.file.pcb_file
-    lib_cache = ctx.file.lib_cache
 
     output = ctx.actions.declare_file("{}".format(ctx.attr.name))
 
     ctx.actions.run_shell(
         mnemonic = "kibot",
         outputs = [output],
-        inputs = [cfg_file, pcb, lib_cache] + sch,
+        inputs = [cfg_file, pcb] + sch,
         command = "kibot -e {} -b {} -c {} -d {} {}".format(
             sch[0].short_path,
             pcb.short_path,
@@ -341,12 +340,7 @@ kibot = rule(
             mandatory = True,
         ),
         "pcb_file": attr.label(
-            doc = "*.kicad-pcb file with layout",
-            allow_single_file = True,
-            mandatory = True,
-        ),
-        "lib_cache": attr.label(
-            doc = "*-cache.lib file with the library cache",
+            doc = "*.kicad_pcb file with layout",
             allow_single_file = True,
             mandatory = True,
         ),
@@ -357,12 +351,11 @@ def kicad_hardware(
         name,
         project_file = "",
         schematic_files = [],
-        lib_cache = "",
         pcb_file = ""):
     """
     Generates KiCad file artifacts using KiBot.
 
-    Currently, `name` __must__ be the same name as your `.pro` file that KiCad
+    Currently, `name` __must__ be the same name as your `.kicad_pro` file that KiCad
     generates due to a limitation of the software. This may be resolved in a
     future commit.
 
@@ -390,16 +383,13 @@ def kicad_hardware(
     """
 
     if not project_file:
-        project_file = ":{}.pro".format(name)
+        project_file = ":{}.kicad_pro".format(name)
 
     if not schematic_files:
-        schematic_files = [":{}.sch".format(name)]
+        schematic_files = [":{}.kicad_sch".format(name)]
 
     if not pcb_file:
         pcb_file = ":{}.kicad_pcb".format(name)
-
-    if not lib_cache:
-        lib_cache = ":{}-cache.lib".format(name)
 
     pkg_tar(
         name = "{}".format(name),
@@ -422,7 +412,6 @@ def kicad_hardware(
         output_name = ["pcb_svg_top"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -432,7 +421,6 @@ def kicad_hardware(
         output_name = ["pcb_svg_bottom"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -442,7 +430,6 @@ def kicad_hardware(
         output_name = ["sch_svg"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -452,7 +439,6 @@ def kicad_hardware(
         output_name = ["sch_pdf"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -462,7 +448,6 @@ def kicad_hardware(
         output_name = ["bom"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -473,6 +458,5 @@ def kicad_hardware(
     #     output_name = ["step"],
     #     pcb_file = pcb_file,
     #     schematic_files = schematic_files,
-    #     lib_cache = lib_cache,
     #     tags = ["kicad"],
     # )

@@ -31,7 +31,7 @@ $ ./scripts/install_kicad_git_filters.sh
 Next, install the AVR toolchain:
 
 ```shell
-sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
+$ sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
 ```
 
 ### Installing Bazel
@@ -72,7 +72,7 @@ $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brake
 To install KiCad on Ubuntu, run the following:
 
 ```shell
-$ sudo add-apt-repository --yes ppa:kicad/kicad-5.1-releases
+$ sudo add-apt-repository --yes ppa:kicad/kicad-6.0-releases
 $ sudo apt update
 $ sudo apt install --install-recommends kicad
 ```
@@ -85,7 +85,7 @@ new row to the table:
 
 Name | Path
 -----|-----
-OEM\_MONOREPO|`/home/your-username/olin-electric-motorsports`
+OEM\_DIR|`/home/your-username/olin-electric-motorsports`
 
 where `your-username` is the username on your computer.
 
