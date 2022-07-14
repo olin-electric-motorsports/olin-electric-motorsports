@@ -19,4 +19,3 @@ void power_off_all() {
     gpio_clear_pin(SERVICE_SECTION_POWER);
     gpio_clear_pin(THROTTLE_POWER);
 }
-
