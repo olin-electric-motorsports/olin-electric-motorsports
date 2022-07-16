@@ -40,7 +40,9 @@ class Window(QWidget):
         titles.addWidget(createLabel("Vehicle Values", "subtitle"))
         titles.addWidget(createLabel("Vehicle States", "subtitle"))
 
-        self.main_layout.addWidget(createLabel("Olin Electric Motorsports CAN Dashboard", "title"))
+        self.main_layout.addWidget(
+            createLabel("Olin Electric Motorsports CAN Dashboard", "title")
+        )
 
         return titles
 

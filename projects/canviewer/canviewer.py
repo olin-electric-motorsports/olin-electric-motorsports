@@ -92,7 +92,9 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, sigint)
 
-    can_bus, db = init_can(args.canbus, args.bustype, 500000, rx_callback, "vehicle/mkv/mkv.dbc")
+    can_bus, db = init_can(
+        args.canbus, args.bustype, 500000, rx_callback, "vehicle/mkv/mkv.dbc"
+    )
 
     def update_ui():
         window.setData(SHUTDOWN_NODES, VEHICLE_VALUES, VEHICLE_STATES)
