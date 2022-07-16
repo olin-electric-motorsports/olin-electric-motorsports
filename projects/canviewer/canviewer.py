@@ -1,12 +1,16 @@
 from canserver import init_can
 from ui import render_dashboard
+from gui import Window
 
 import argparse
+import sys
 import time
 import signal
 import numpy as np
 import yaml
 
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtCore import QTimer
 from rich.layout import Layout
 from rich.live import Live
 
@@ -46,13 +50,13 @@ def get_val(signal, data):
         return str(val)
 
 
-def get_ss_val(signal, data):
-    val = data.get(signal)
-
-    if val == "OPEN":
-        return "[red]OPEN"
-    elif val == "CLOSED":
-        return "[green]CLOSED"
+# def get_ss_val(signal, data):
+#     val = data.get(signal)
+# 
+#     if val == "OPEN":
+#         return "[red]OPEN"
+#     elif val == "CLOSED":
+#         return "[green]CLOSED"
 
 
 def rx_callback(msg, db):
@@ -66,7 +70,7 @@ def rx_callback(msg, db):
 
     for signal_name in message:
         if signal_name in SHUTDOWN_NODES:
-            SHUTDOWN_NODES[signal_name] = get_ss_val(signal_name, message)
+            SHUTDOWN_NODES[signal_name] = get_val(signal_name, message)
         elif signal_name in VEHICLE_VALUES:
             if signal_name in ["max_temperature", "min_temperature"]:
                 temp = convertVtoT(get_val(signal_name, message)) - 273.15
@@ -99,18 +103,30 @@ if __name__ == "__main__":
 
     can_bus, db = init_can(args.canbus, 500000, rx_callback, "vehicle/mkv/mkv.dbc")
 
-    data = {
-        "VEHICLE_VALUES": VEHICLE_VALUES,
-        "SHUTDOWN_NODES": SHUTDOWN_NODES,
-        "VEHICLE_STATES": VEHICLE_STATES,
-    }
+    # data = {
+    #     "VEHICLE_VALUES": VEHICLE_VALUES,
+    #     "SHUTDOWN_NODES": SHUTDOWN_NODES,
+    #     "VEHICLE_STATES": VEHICLE_STATES,
+    # }
 
-    with Live(render_dashboard(data), refresh_per_second=5, screen=False) as live:
-        while True:
-            time.sleep(0.1)
-            data = {
-                "VEHICLE_VALUES": VEHICLE_VALUES,
-                "SHUTDOWN_NODES": SHUTDOWN_NODES,
-                "VEHICLE_STATES": VEHICLE_STATES,
-            }
-            live.update(render_dashboard(data))
+    def update_ui():
+        window.setData(SHUTDOWN_NODES, VEHICLE_VALUES, VEHICLE_STATES)
+
+    app = QApplication([])
+    window=Window()
+    window.show()
+
+    timer = QTimer()
+    timer.timeout.connect(update_ui)
+    timer.setInterval(100)
+    timer.start()
+
+    sys.exit(app.exec_())
+
+    # with Live(render_dashboard(data), refresh_per_second=5, screen=False) as live:
+    #     while True:
+    #         time.sleep(0.1)
+    #         data = {
+    #             "VEHICLE_VALUES": VEHICLE_VALUES,
+    #             "SHUTDOWN_NODES": SHUTDOWN_NODES,
+    #             "VEHICLE_STATES": VEHICLE_STATES,

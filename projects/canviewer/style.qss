@@ -1,0 +1,33 @@
+*[cssClass="title"] {
+    font: normal 600  36pt "Josefin Sans";
+    qproperty-alignment: AlignCenter;
+    color: #edf2f4;
+}
+
+*[cssClass="subtitle"] {
+    font: italic 500 24pt "Josefin Sans";
+    qproperty-alignment: AlignCenter;
+    color: #edf2f4;
+}
+
+QTableWidget {
+    font: normal 400 13pt "Josefin Sans";
+    color: #edf2f4;
+    background-color: #768296;
+    border: 12px solid #8d99ae;
+}
+
+QHeaderView::section {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ef233c, stop: 0.5 #ff5363,
+                                      stop:1 #ef233c);
+    color: white;
+    padding-left: 4px;
+    border: 1px solid #6c6c6c;
+    font: normal 500 18pt "Josefin Sans";
+}
+
+*[cssClass="app"] {
+    background-color: #2b2d42;
+}
+
