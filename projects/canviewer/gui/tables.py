@@ -2,11 +2,11 @@ from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QHeaderView
 from PyQt5 import QtCore
 from PyQt5.QtGui import QColor
 
-RED = QColor('#ef233c')
-GREEN = QColor('#18c63d')
+RED = QColor("#ef233c")
+GREEN = QColor("#18c63d")
+
 
 class VehicleTable(QTableWidget):
-
     def __init__(self, headers, initial_data, col_num=2):
         super().__init__(len(initial_data), col_num)
         self.headers = headers
@@ -23,8 +23,8 @@ class VehicleTable(QTableWidget):
             self.setItem(i, 0, createTableItem(signal))
             self.setItem(i, 1, createTableItem(val))
 
-class StatesTable(VehicleTable):
 
+class StatesTable(VehicleTable):
     def __init__(self, headers, initial_data):
         super().__init__(headers, initial_data, 3)
 
@@ -34,13 +34,13 @@ class StatesTable(VehicleTable):
             self.setItem(i, 1, createTableItem(val[0]))
             self.setItem(i, 2, createTableItem(val[1]))
 
+
 def createTableItem(contents):
     cell = QTableWidgetItem(contents)
     cell.setFlags(QtCore.Qt.ItemIsEnabled)
     cell.setTextAlignment(QtCore.Qt.AlignCenter)
-    if contents == 'OPEN':
+    if contents == "OPEN":
         cell.setBackground(RED)
-    elif contents == 'CLOSED':
+    elif contents == "CLOSED":
         cell.setBackground(GREEN)
     return cell
-

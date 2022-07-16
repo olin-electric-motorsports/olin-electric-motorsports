@@ -7,8 +7,8 @@ py_binary(
         "canviewer.py",
     ],
     data = [
-        "//vehicle/mkv:mkv.dbc",
         ":config.yml",
+        "//vehicle/mkv:mkv.dbc",
     ],
     main = "canviewer.py",
     visibility = ["//visibility:public"],
