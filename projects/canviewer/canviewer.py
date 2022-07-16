@@ -1,6 +1,6 @@
 from canserver import init_can
 from ui import render_dashboard
-from gui import Window
+from gui.gui import Window
 
 import argparse
 import sys
