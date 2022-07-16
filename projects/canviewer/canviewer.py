@@ -86,12 +86,13 @@ if __name__ == "__main__":
     )
 
     parser.add_argument("-c", "--canbus", default="vcan0")
+    parser.add_argument("-b", "--bustype", default="socketcan")
 
     args = parser.parse_args()
 
     signal.signal(signal.SIGINT, sigint)
 
-    can_bus, db = init_can(args.canbus, 500000, rx_callback, "vehicle/mkv/mkv.dbc")
+    can_bus, db = init_can(args.canbus, args.bustype, 500000, rx_callback, "vehicle/mkv/mkv.dbc")
 
     def update_ui():
         window.setData(SHUTDOWN_NODES, VEHICLE_VALUES, VEHICLE_STATES)

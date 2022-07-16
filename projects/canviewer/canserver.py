@@ -18,7 +18,7 @@ def listener_fn(can_bus, callback):
             callback(msg, db)
 
 
-def init_can(channel, bitrate, rx_callback, dbc):
+def init_can(channel, bustype, bitrate, rx_callback, dbc):
     global db
     can_bus = can.interface.Bus(
         channel=channel,
