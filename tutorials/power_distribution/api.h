@@ -9,7 +9,8 @@ gpio_t THROTTLE_POWER = PB2;
 
 /* Power ON a device
  *
- * warning: board may exhibit unexpected behavior if DEVICE is not DASHBOARD_POWER, SERVICE_SECTION_POWER, or THROTTLE_POWER
+ * warning: board may exhibit unexpected behavior if DEVICE is not
+ * DASHBOARD_POWER, SERVICE_SECTION_POWER, or THROTTLE_POWER
  */
 void power_device(gpio_t device);
 
@@ -19,7 +20,8 @@ void power_all();
 
 /* Power OFF a device
  *
- * warning: board may exhibit unexpected behavior if DEVICE is not DASHBOARD_POWER, SERVICE_SECTION_POWER, or THROTTLE_POWER
+ * warning: board may exhibit unexpected behavior if DEVICE is not
+ * DASHBOARD_POWER, SERVICE_SECTION_POWER, or THROTTLE_POWER
  */
 void power_off_device(gpio_t device);
 

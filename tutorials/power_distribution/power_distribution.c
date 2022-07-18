@@ -1,6 +1,5 @@
 #include "tutorials/power_distribution/api.h"
 
-
 void power_device(gpio_t device) {
     gpio_set_pin(device);
 }
