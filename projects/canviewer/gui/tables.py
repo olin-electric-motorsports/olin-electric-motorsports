@@ -5,6 +5,12 @@ from PyQt5.QtGui import QColor
 RED = QColor("#ef233c")
 GREEN = QColor("#18c63d")
 
+DISPLAY_NAMES = {
+    "air_control_critical": "AIR Control",
+    "bms_core": "BMS Core",
+    "throttle": "Throttle",
+}
+
 
 class VehicleTable(QTableWidget):
     def __init__(self, headers, initial_data, col_num=2):
@@ -35,7 +41,9 @@ class StatesTable(VehicleTable):
             # Pad with nones if we can't fill all three columns
             values += [None] * (max(2 - len(values), 0))
 
-            self.setItem(i, 0, createTableItem(message_name))
+            self.setItem(
+                i, 0, createTableItem(DISPLAY_NAMES.get(message_name, message_name))
+            )
             self.setItem(i, 1, createTableItem(values[0]))
             self.setItem(i, 2, createTableItem(values[1]))
 

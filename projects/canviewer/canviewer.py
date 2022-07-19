@@ -25,7 +25,6 @@ with open("projects/canviewer/config.yml", "r") as config_file:
 VEHICLE_STATE_SIGNALS = [
     signal for message in VEHICLE_STATES.values() for signal in message.keys()
 ]
-print(VEHICLE_STATE_SIGNALS)
 
 
 def sigint(signal_received, frame):
@@ -91,11 +90,6 @@ if __name__ == "__main__":
     can_bus, db = init_can(
         args.canbus, args.bustype, 500000, rx_callback, "vehicle/mkv/mkv.dbc"
     )
-
-    MESSAGE_IDS = {}
-    for message in VEHICLE_STATES:
-        msg_obj = db.get_message_by_name(message)
-        MESSAGE_IDS[message] = msg_obj.frame_id
 
     def update_ui():
         window.setData(SHUTDOWN_NODES, VEHICLE_VALUES, VEHICLE_STATES)
