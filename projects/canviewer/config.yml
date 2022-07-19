@@ -21,24 +21,11 @@ min_temperature:
 D1_DC_Bus_Voltage:
 ---
 # Vehicle States (state and fault)
-AIR Control:
--
--
-BMS:
--
--
-Throttle:
--
--
----
-# Vehicle State Messages
-- state
-- air_state
-- air_fault
-- bms_state
-- bms_fault
----
-# Message IDs
-0x00C: 'THROTTLE'
-0x00D: 'AIR'
-0x010: 'BMS'
+air_control_critical:
+  air_state:
+  air_fault:
+bms_core:
+  bms_state:
+  bms_fault_state:
+throttle:
+  state:

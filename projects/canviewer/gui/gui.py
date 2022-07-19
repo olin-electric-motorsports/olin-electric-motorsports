@@ -11,8 +11,6 @@ with open("projects/canviewer/config.yml", "r") as config_file:
         INIT_SHUTDOWN_NODES,
         INIT_VEHICLE_VALUES,
         INIT_VEHICLE_STATES,
-        _,
-        __,
     ) = yaml.safe_load_all(config_file)
 
 

@@ -7,6 +7,7 @@ import time
 import signal
 import numpy as np
 import yaml
+import cantools
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import QTimer
@@ -20,10 +21,11 @@ with open("projects/canviewer/config.yml", "r") as config_file:
         SHUTDOWN_NODES,
         VEHICLE_VALUES,
         VEHICLE_STATES,
-        VEHICLE_STATE_SIGNALS,
-        MESSAGE_IDS,
     ) = yaml.safe_load_all(config_file)
-VEHICLE_STATE_SIGNALS = set(VEHICLE_STATE_SIGNALS)
+VEHICLE_STATE_SIGNALS = [
+    signal for message in VEHICLE_STATES.values() for signal in message.keys()
+]
+print(VEHICLE_STATE_SIGNALS)
 
 
 def sigint(signal_received, frame):
@@ -68,15 +70,9 @@ def rx_callback(msg, db):
             else:
                 VEHICLE_VALUES[signal_name] = get_val(signal_name, message)
         elif signal_name in VEHICLE_STATE_SIGNALS:
-            match MESSAGE_IDS[msg.arbitration_id]:
-                case "THROTTLE":
-                    VEHICLE_STATES["Throttle"][0] = get_val("state", message)
-                case "AIR":
-                    VEHICLE_STATES["AIR Control"][0] = get_val("air_state", message)
-                    VEHICLE_STATES["AIR Control"][1] = get_val("air_fault", message)
-                case "BMS":
-                    VEHICLE_STATES["BMS"][0] = get_val("bms_state", message)
-                    VEHICLE_STATES["BMS"][1] = get_val("bms_fault_state", message)
+            VEHICLE_STATES[db.get_message_by_frame_id(msg.arbitration_id).name][
+                signal_name
+            ] = get_val(signal_name, message)
 
 
 if __name__ == "__main__":
@@ -95,6 +91,11 @@ if __name__ == "__main__":
     can_bus, db = init_can(
         args.canbus, args.bustype, 500000, rx_callback, "vehicle/mkv/mkv.dbc"
     )
+
+    MESSAGE_IDS = {}
+    for message in VEHICLE_STATES:
+        msg_obj = db.get_message_by_name(message)
+        MESSAGE_IDS[message] = msg_obj.frame_id
 
     def update_ui():
         window.setData(SHUTDOWN_NODES, VEHICLE_VALUES, VEHICLE_STATES)

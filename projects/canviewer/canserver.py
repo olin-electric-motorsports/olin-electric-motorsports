@@ -22,7 +22,7 @@ def init_can(channel, bustype, bitrate, rx_callback, dbc):
     global db
     can_bus = can.interface.Bus(
         channel=channel,
-        bustype="socketcan",
+        bustype=bustype,
         bitrate=bitrate,
     )
 
