@@ -5,6 +5,7 @@ from PyQt5.QtGui import QColor
 RED = QColor("#ef233c")
 GREEN = QColor("#18c63d")
 
+# Purely aesthetic, changes titles from raw message names to nicelt capitalized ones
 DISPLAY_NAMES = {
     "air_control_critical": "AIR Control",
     "bms_core": "BMS Core",
@@ -17,10 +18,12 @@ class VehicleTable(QTableWidget):
         super().__init__(len(initial_data), col_num)
         self.headers = headers
 
+        # Headers (labels and evenly spacing them)
         self.setHorizontalHeaderLabels(self.headers)
         self.horizontalHeader().setStretchLastSection(True)
         self.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
+        # Hide the left index labels and the table grid
         self.verticalHeader().setVisible(False)
         self.setShowGrid(False)
 
@@ -50,7 +53,7 @@ class StatesTable(VehicleTable):
 
 def createTableItem(contents):
     cell = QTableWidgetItem(contents)
-    cell.setFlags(QtCore.Qt.ItemIsEnabled)
+    cell.setFlags(QtCore.Qt.ItemIsEnabled)  # disables item editing
     cell.setTextAlignment(QtCore.Qt.AlignCenter)
     if contents == "OPEN":
         cell.setBackground(RED)

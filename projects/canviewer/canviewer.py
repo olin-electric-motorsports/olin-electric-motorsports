@@ -22,6 +22,7 @@ with open("projects/canviewer/config.yml", "r") as config_file:
         VEHICLE_VALUES,
         VEHICLE_STATES,
     ) = yaml.safe_load_all(config_file)
+# Messages that correspond to vehicle states/faults
 VEHICLE_STATE_SIGNALS = [
     signal for message in VEHICLE_STATES.values() for signal in message.keys()
 ]
@@ -76,12 +77,22 @@ def rx_callback(msg, db):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Monitor shutdown nodes",
+        description="Monitor CAN Bus",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
-    parser.add_argument("-c", "--canbus", default="vcan0")
-    parser.add_argument("-b", "--bustype", default="socketcan")
+    parser.add_argument(
+        "-b",
+        "--bustype",
+        default="socketcan",
+        help="Typically either 'socketcan' or 'seeedstudio' on our team",
+    )
+    parser.add_argument(
+        "-c",
+        "--canbus",
+        default="vcan0",
+        help="Either a network interface name for socketcan, or the path of the USB device for seeedstudio",
+    )
 
     args = parser.parse_args()
 
@@ -100,7 +111,7 @@ if __name__ == "__main__":
 
     timer = QTimer()
     timer.timeout.connect(update_ui)
-    timer.setInterval(100)
+    timer.setInterval(100)  # Update GUI every 100ms, or 10hz
     timer.start()
 
     sys.exit(app.exec_())
