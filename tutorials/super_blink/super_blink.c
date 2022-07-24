@@ -18,12 +18,11 @@ int main(void) {
     sei(); // globally enable interrupts
 
     for (;;) {
-        if (run_blink_30Hz){
+        if (run_blink_30Hz) {
             gpio_toggle_pin(LED_30Hz);
             counter++; // count up
-
         }
-        if ((counter % 6) == 0){
+        if ((counter % 6) == 0) {
             // 5Hz is every 6th of 30Hz
             gpio_toggle_pin(LED_5Hz);
             counter = 0;

@@ -1,6 +1,6 @@
-#include "libs/timer/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
+#include "libs/timer/api.h"
 
 gpio_t LED_5Hz = PB3;
 gpio_t LED_30Hz = PB4;
