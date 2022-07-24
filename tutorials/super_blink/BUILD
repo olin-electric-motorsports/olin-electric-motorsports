@@ -9,5 +9,6 @@ cc_library(
     deps = [
         "//libs/gpio",
         "//libs/timer",
+        "//libs/can",
     ],
 )

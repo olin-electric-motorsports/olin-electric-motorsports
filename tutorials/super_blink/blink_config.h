@@ -1,6 +1,7 @@
 #include "libs/timer/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
+// #include "libs/can/api.h"
 
 /*
  * LED_1 should blink at 30 hz
@@ -24,4 +25,13 @@ timer_cfg_s timer0_cfg = {
         .interrupt_enable = true,
         .interrupt_callback = timer0_callback,
     },
+};
+
+uint8_t can_data[] = { 0xF };
+
+can_frame_t can_msg = {
+    .id = 0,
+    .dlc = 1,
+    .mob = 0,
+    .data = can_data,
 };
