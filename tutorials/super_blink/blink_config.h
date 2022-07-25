@@ -3,20 +3,20 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
 
-void timer0_callback(void);
+void timer1_callback(void);
 
 gpio_t LED1 = PB0;
 gpio_t LED2 = PB1;
 
-timer_cfg_s timer0_cfg = {
-    .timer = TIMER0,
+timer_cfg_s timer1_cfg = {
+    .timer = TIMER1,
     .timer0_mode = TIMER0_MODE_CTC,
     .prescalar = CLKIO_DIV_64,
     .channel_a = {
         .output_compare_match = 0x822,
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
-        .interrupt_callback = timer0_callback,
+        .interrupt_callback = timer1_callback,
     },
 };
 

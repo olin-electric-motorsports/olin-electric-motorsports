@@ -7,14 +7,14 @@
 
 volatile bool run_blink = false;
 
-void timer0_callback(void) {
+void timer1_callback(void) {
     run_blink = true;
 }
 
 int main(void) {
     sei();
     can_init(BAUD_500KBPS);
-    timer_init(&timer0_cfg);
+    timer_init(&timer1_cfg);
 
     gpio_set_mode(LED1, OUTPUT);
     gpio_set_mode(LED2, OUTPUT);
@@ -30,7 +30,7 @@ int main(void) {
 
             // Blink LED1 at 5 hz, once every 6/30 of a second
             if (timer_counter % 6 == 0) {
-                gpio_toggle_pin(LED2);
+                gpio_toggle_pin(LED1);
             }
 
             // Send CAN message at 10hz, once every 3/30 of a second
