@@ -1,11 +1,10 @@
 from canserver import init_can
 from gui.gui import Window
+from utils import convertVtoT, get_val
 
 import argparse
 import sys
 import time
-import signal
-import numpy as np
 import yaml
 import cantools
 
@@ -28,33 +27,14 @@ VEHICLE_STATE_SIGNALS = [
 ]
 
 
-def sigint(signal_received, frame):
-    exit(0)
-
-
-def convertVtoT(x, Vin=3, R1=10000, R2=100000, T2=348.15, beta=3988):
-    """
-    converts voltage drop data to temperature
-    x: array containing only the voltages
-    """
-    Vout = float(x)
-    thermistor_R1 = (Vout * R1) / (Vin - Vout)
-    temperature = 1 / ((np.log(thermistor_R1 / R2) / beta) + (1 / T2)) - 273.15
-
-    return temperature
-
-
-def get_val(signal, data):
-    val = data.get(signal)
-
-    if val is not None:
-        return str(val)
-
-
 def rx_callback(msg, db):
-    global SHUTDOWN_NODES
-    global VEHICLE_VALUES
+    """
+    Callback when a CAN message is received, updates appropriate vehicle dictionaries
 
+    Args:
+        msg (can.Message): CAN message that was received
+        db (cantools.database): Database generated from our DBC
+    """
     try:
         message = db.decode_message(msg.arbitration_id, msg.data)
     except Exception as e:
@@ -96,9 +76,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    signal.signal(signal.SIGINT, sigint)
-
-    can_bus, db = init_can(
+    can_bus, db, kill_flag = init_can(
         args.canbus, args.bustype, 500000, rx_callback, "vehicle/mkv/mkv.dbc"
     )
 
@@ -114,4 +92,6 @@ if __name__ == "__main__":
     timer.setInterval(100)  # Update GUI every 100ms, or 10hz
     timer.start()
 
-    sys.exit(app.exec_())
+    run = app.exec_()
+    kill_flag.set()
+    sys.exit(run)

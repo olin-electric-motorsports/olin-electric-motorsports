@@ -5,6 +5,7 @@ py_binary(
     name = "canviewer",
     srcs = [
         "canviewer.py",
+        "utils.py",
     ],
     data = [
         ":config.yml",
