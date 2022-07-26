@@ -1,4 +1,5 @@
 import numpy as np
+from canviewer import PROCESSING_FUNCTIONS
 
 
 def convertVtoT(x, Vin=3, R1=10000, R2=100000, T2=348.15, beta=3988):
@@ -14,7 +15,25 @@ def convertVtoT(x, Vin=3, R1=10000, R2=100000, T2=348.15, beta=3988):
 
 
 def get_val(signal, data):
-    val = data.get(signal)
+    """
+    Retrieves signal from the message data and applies a processing function if
+    one is found in the PROCESSING_FUNCTIONS dictionary
 
-    if val is not None:
+    Args:
+        signal (str): signal name to retrieve
+        message (dict): message data returned by cantools.database.decode_message
+
+    Returns:
+        str: value of the signal
+    """
+
+    if val := data.get(signal):
+        if func := PROCESSING_FUNCTIONS.get(signal):
+            val = globals()[func](val)
+
         return str(val)
+
+
+def get_message_name(msg, db):
+    """Given a can.Message and a cantools.database, return the message name"""
+    return db.get_message_by_frame_id(msg.arbitration_id).name

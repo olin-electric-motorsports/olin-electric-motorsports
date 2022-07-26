@@ -33,6 +33,7 @@ class Window(QWidget):
             self.setStyleSheet(stylesheet.read())
 
     def _createTitles(self):
+        """Create main title as table titles"""
         titles = QHBoxLayout()
         titles.addWidget(createLabel("Shutdown Nodes", "subtitle"))
         titles.addWidget(createLabel("Vehicle Values", "subtitle"))
@@ -45,6 +46,7 @@ class Window(QWidget):
         return titles
 
     def _createTables(self):
+        """Create three tables and add them to the layout"""
         self.shdn = self._createShutdownTable()
         self.values = self._createValuesTable()
         self.states = self._createStatesTable()
@@ -67,6 +69,7 @@ class Window(QWidget):
         return StatesTable(["Name", "State", "Fault"], INIT_VEHICLE_STATES)
 
     def setData(self, shdnData, valuesData, statesData):
+        """Update the three tables' data"""
         self.shdn.setData(shdnData)
         self.values.setData(valuesData)
         self.states.setData(statesData)

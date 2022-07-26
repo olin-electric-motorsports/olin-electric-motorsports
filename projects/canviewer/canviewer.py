@@ -1,6 +1,9 @@
+"""
+Callback function when receiving a CAN message, launch and update GUI
+"""
 from canserver import init_can
 from gui.gui import Window
-from utils import convertVtoT, get_val
+from utils import *
 
 import argparse
 import sys
@@ -13,7 +16,7 @@ from PyQt5.QtCore import QTimer
 from rich.layout import Layout
 from rich.live import Live
 
-db = None
+REFRESH_RATE = 100  # GUI refresh rate in ms
 
 with open("projects/canviewer/config.yml", "r") as config_file:
     (
@@ -21,10 +24,19 @@ with open("projects/canviewer/config.yml", "r") as config_file:
         VEHICLE_VALUES,
         VEHICLE_STATES,
     ) = yaml.safe_load_all(config_file)
+
 # Messages that correspond to vehicle states/faults
 VEHICLE_STATE_SIGNALS = [
     signal for message in VEHICLE_STATES.values() for signal in message.keys()
 ]
+
+# Build dictionary of processing functions
+PROCESSING_FUNCTIONS = {}
+for signal, value in VEHICLE_VALUES.items():
+    if isinstance(value, dict):
+        if func := value.get("processing_function"):
+            PROCESSING_FUNCTIONS[signal] = func
+            VEHICLE_VALUES[signal] = None
 
 
 def rx_callback(msg, db):
@@ -44,15 +56,11 @@ def rx_callback(msg, db):
         if signal_name in SHUTDOWN_NODES:
             SHUTDOWN_NODES[signal_name] = get_val(signal_name, message)
         elif signal_name in VEHICLE_VALUES:
-            if signal_name in ["max_temperature", "min_temperature"]:
-                temp = convertVtoT(get_val(signal_name, message)) - 273.15
-                VEHICLE_VALUES[signal_name] = str(temp)
-            else:
-                VEHICLE_VALUES[signal_name] = get_val(signal_name, message)
+            VEHICLE_VALUES[signal_name] = get_val(signal_name, message)
         elif signal_name in VEHICLE_STATE_SIGNALS:
-            VEHICLE_STATES[db.get_message_by_frame_id(msg.arbitration_id).name][
-                signal_name
-            ] = get_val(signal_name, message)
+            VEHICLE_STATES[get_message_name(msg, db)][signal_name] = get_val(
+                signal_name, message
+            )
 
 
 if __name__ == "__main__":
@@ -89,7 +97,7 @@ if __name__ == "__main__":
 
     timer = QTimer()
     timer.timeout.connect(update_ui)
-    timer.setInterval(100)  # Update GUI every 100ms, or 10hz
+    timer.setInterval(REFRESH_RATE)
     timer.start()
 
     run = app.exec_()

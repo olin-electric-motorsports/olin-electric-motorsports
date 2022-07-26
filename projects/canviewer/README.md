@@ -13,7 +13,7 @@ It also is fully configurable via YAML.
     - `-b` - Either `seeedstudio` or `socketcan` 
     - `-c` - Channel
         - Socketcan: this is the network interface name you created when setting up your device (usually can0 for real hardware or vcan0 for a virtual CAN bus)
-        - Seeedstudio: this is the _device path_ for your CAN dongle. Typically this will be something like `/dev/ttyUSB0`. The best way to find it is to run `ls /dev/ttyUSB*`, which lists all the USB device paths, before and after you plug in your dongle to find the one that was added. The number starts at 0 and increments everyttime something is plugged in, so if you unplug and replug your CAN dongle, the number will change!
+        - Seeedstudio: this is the _device path_ for your CAN dongle. Typically this will be something like `/dev/ttyUSB0`. The best way to find it is to run `ls /dev/ttyUSB*`, which lists all the USB device paths, before and after you plug in your dongle to find the one that was added. The number starts at 0 and increments every time something is plugged in, so if you unplug and replug your CAN dongle, the number will change!
     - These arguments would be passed like so for a bustype of seeedstudio and a USB device at /dev/tty/USB0: 
         ```
         bazel run //projects/canviewer -- -b seeedstudio -c /dev/tty/USB0
@@ -35,3 +35,18 @@ air_control_critical: # Message name
   air_fault: # Fault Signal
 ```
 Again, note the indentation and the colon - they are part of the YAML format.
+
+If you would like to apply a processing function to process the value one of the signals in the vehicle values column before displaying it:
+1. Define the function in the `projects/canviewer/utils.py` file
+2. Specify it in the YAML by setting the signal's value to a dictionary with `processing_function` as a key and the function name as its value, like so:
+```
+# Vehicle Values
+max_temperature:
+  processing_function: convertVtoT
+min_temperature:
+  processing_function: convertVtoT
+pack_voltage:
+air_p_status:
+...
+```
+  

@@ -17,7 +17,9 @@ air_n_status:
 ready_to_drive:
 pack_voltage:
 max_temperature:
+  processing_function: convertVtoT
 min_temperature:
+  processing_function: convertVtoT
 D1_DC_Bus_Voltage:
 ---
 # Vehicle States (state and fault)

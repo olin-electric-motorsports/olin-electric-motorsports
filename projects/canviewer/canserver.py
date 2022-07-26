@@ -1,3 +1,6 @@
+""" 
+Initialize CAN hardware and create thread that listens for and receives all CAN messages
+"""
 import cantools
 import can
 import threading
@@ -22,6 +25,7 @@ def listener_fn(can_bus, callback, kill_flag):
 
 
 def init_can(channel, bustype, bitrate, rx_callback, dbc):
+    """Initialize CAN hardware and create CAN database from DBC"""
     global db
     can_bus = can.interface.Bus(
         channel=channel,
