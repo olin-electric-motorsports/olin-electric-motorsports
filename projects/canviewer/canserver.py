@@ -18,7 +18,7 @@ def listener_fn(can_bus, callback, kill_flag):
             callback(msg, db)
 
     can_bus.shutdown()
-    print('Exited gracefully')
+    print("Exited gracefully")
 
 
 def init_can(channel, bustype, bitrate, rx_callback, dbc):
