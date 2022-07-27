@@ -1,0 +1,33 @@
+---
+# Shutdown Nodes
+ss_bspd:
+ss_is:
+ss_bots:
+ss_estop_driver:
+ss_hvd:
+ss_hvd_conn:
+ss_mpc:
+ss_bms:
+ss_imd:
+ss_tsms:
+---
+# Vehicle Values
+air_p_status:
+air_n_status:
+ready_to_drive:
+pack_voltage:
+max_temperature:
+  processing_function: convertVtoT
+min_temperature:
+  processing_function: convertVtoT
+D1_DC_Bus_Voltage:
+---
+# Vehicle States (state and fault)
+air_control_critical:
+  air_state:
+  air_fault:
+bms_core:
+  bms_state:
+  bms_fault_state:
+throttle:
+  throttle_state:

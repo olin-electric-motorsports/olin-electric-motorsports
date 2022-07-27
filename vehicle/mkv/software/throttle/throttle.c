@@ -81,13 +81,13 @@ static bool check_out_of_range(int16_t* pos_r, int16_t* pos_l) {
         // Out of range upper
         *pos_r = 255;
         gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
-        throttle.state = THROTTLE_OUT_OF_RANGE;
+        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
         implausibility = true;
     } else if (*pos_r < 0) {
         // Out of range lower
         *pos_r = 0;
         gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
-        throttle.state = THROTTLE_OUT_OF_RANGE;
+        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
         implausibility = true;
     } else {
         gpio_clear_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
@@ -97,18 +97,18 @@ static bool check_out_of_range(int16_t* pos_r, int16_t* pos_l) {
         // Out of range upper
         *pos_l = 255;
         gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
-        throttle.state = THROTTLE_OUT_OF_RANGE;
+        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
         implausibility = true;
     } else if (*pos_l < 0) {
         // Out of range lower
         *pos_l = 0;
         gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
-        throttle.state = THROTTLE_OUT_OF_RANGE;
+        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
         implausibility = true;
     } else {
         gpio_clear_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
         // Will be reset if Ready to Drive is not on
-        throttle.state = THROTTLE_RUN;
+        throttle.throttle_state = THROTTLE_RUN;
     }
 
     return implausibility;
@@ -124,11 +124,11 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
     // Check implausibility between pedal values (T.4.2.4/5)
     if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
         gpio_set_pin(DEVIATION_IMPLAUSIBILITY_LED);
-        throttle.state = THROTTLE_POSITION_IMPLAUSIBILITY;
+        throttle.throttle_state = THROTTLE_POSITION_IMPLAUSIBILITY;
         return true;
     } else {
         gpio_clear_pin(DEVIATION_IMPLAUSIBILITY_LED);
-        throttle.state = THROTTLE_RUN;
+        throttle.throttle_state = THROTTLE_RUN;
         return false;
     }
 }
@@ -155,7 +155,7 @@ static bool check_brake(int16_t pos_min) {
         if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
             // A brake implausibility occured
             brake_implausibility_occured = true;
-            throttle.state = THROTTLE_BRAKE_PRESSED;
+            throttle.throttle_state = THROTTLE_BRAKE_PRESSED;
             gpio_set_pin(BRAKE_IMPLAUSIBILTIY_LED);
             return true;
         } else {
@@ -169,7 +169,7 @@ static bool check_brake(int16_t pos_min) {
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 // No more implausibility
                 brake_implausibility_occured = false;
-                throttle.state = THROTTLE_RUN;
+                throttle.throttle_state = THROTTLE_RUN;
                 gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
                 return false;
             } else {
@@ -180,7 +180,7 @@ static bool check_brake(int16_t pos_min) {
         } else {
             // If an implausibility didn't previously occur, we're good
             gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
-            throttle.state = THROTTLE_RUN;
+            throttle.throttle_state = THROTTLE_RUN;
             return false;
         }
     } else {
@@ -196,14 +196,14 @@ static bool check_brake(int16_t pos_min) {
                 // is no longer pressed and the throttle is also not pressed
                 brake_implausibility_occured = false;
                 gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
-                throttle.state = THROTTLE_RUN;
+                throttle.throttle_state = THROTTLE_RUN;
                 return false;
             }
         } else {
             // If the brake isn't pressed, and we didn't previously have an
             // implausibility, we're good
             gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
-            throttle.state = THROTTLE_RUN;
+            throttle.throttle_state = THROTTLE_RUN;
             return false;
         }
     }
@@ -233,7 +233,7 @@ int main(void) {
     gpio_enable_interrupt(SS_IS);
     gpio_enable_interrupt(SS_BOTS);
 
-    throttle.state = THROTTLE_IDLE;
+    throttle.throttle_state = THROTTLE_IDLE;
 
     pcint0_callback();
 
@@ -289,7 +289,7 @@ int main(void) {
 
             if (!dashboard.ready_to_drive) {
                 SET_TORQUE_REQUEST(0);
-                throttle.state = THROTTLE_IDLE;
+                throttle.throttle_state = THROTTLE_IDLE;
                 continue;
             }
 
@@ -313,7 +313,7 @@ int main(void) {
                 continue;
             } else {
                 // With no implausibility...
-                throttle.state = THROTTLE_RUN;
+                throttle.throttle_state = THROTTLE_RUN;
                 throttle_state.implausibility_fault_counter = 0;
 
                 // NOTE: If we decide to do a non-linear map, that would go here
