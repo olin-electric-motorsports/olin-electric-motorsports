@@ -1,11 +1,11 @@
 #include "fmc.h"
-#include "libs/timer/api.h"
 #include "libs/adc/api.h"
+#include "libs/timer/api.h"
 #include "tutorials/fmc/can_api.h"
 
-#include <stdio.h>
-#include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/io.h>
+#include <stdio.h>
 
 volatile bool run_50hz = false;
 
@@ -22,7 +22,7 @@ int main(void) {
     can_init(BAUD_500KBPS);
     timer_init(&timer0_cfg);
     adc_init();
-    
+
     sei();
     int adc_counter = 0;
 
@@ -31,7 +31,6 @@ int main(void) {
         fmc.adc_value = adc_read(adc_pin);
 
         if (run_50hz) {
-
             if (fmc.adc_value > 512) {
                 adc_counter++;
 
@@ -46,7 +45,6 @@ int main(void) {
                         adc_counter = 0;
                     }
                 }
-
             }
 
             if (can_poll_receive_motor_command() == 0) {

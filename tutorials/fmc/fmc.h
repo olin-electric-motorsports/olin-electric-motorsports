@@ -1,5 +1,5 @@
-#include "libs/timer/api.h"
 #include "libs/adc/api.h"
+#include "libs/timer/api.h"
 
 adc_pin_e adc_pin = ADC4;
 

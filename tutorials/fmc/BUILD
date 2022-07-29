@@ -10,8 +10,8 @@ cc_firmware(
     visibility = ["//visibility:public"],
     deps = [
         ":can_api",
-        "//libs/timer",
         "//libs/adc",
+        "//libs/timer",
     ],
 )
 
@@ -25,5 +25,3 @@ can_api_files(
     dbc = "//vehicle/mkv:mkv.dbc",
     yaml = ":fmc.yml",
 )
-
-    
