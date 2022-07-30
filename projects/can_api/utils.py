@@ -5,10 +5,7 @@ def get_rx_messages(subs, messages):
     """
     rx_message_names = [d["name"] for d in subs]
     rx_messages = list(filter(lambda m: m.name in rx_message_names, messages))
-    masks = {
-        subscriber["name"]: subscriber["mask"] if "mask" in subscriber.keys() else 0x7FF
-        for subscriber in subs
-    }
+    masks = {subscriber["name"]: subscriber.get("mask", 0x7FF) for subscriber in subs}
 
     mobs = {}
 
