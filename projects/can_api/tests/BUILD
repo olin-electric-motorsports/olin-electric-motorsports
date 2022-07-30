@@ -9,9 +9,9 @@ pytest_test(
     ],
     data = [
         "rx_fail.yml",
+        "rx_mask.yml",
         "rx_only.yml",
         "tx_only.yml",
-        "rx_mask.yml",
     ],
     deps = [
         "//projects/can_api:c_generator",
