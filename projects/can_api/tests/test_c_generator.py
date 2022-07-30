@@ -21,7 +21,7 @@ def test_get_rx_messages_custom_mask(db, rx_mask_yaml):
     messages, mobs, masks = get_rx_messages(rx_mask_yaml["subscribe"], db.messages)
 
     assert messages[0].name == "test_tx"
-    assert mobs[messages[0].name] == 0
+    assert mobs[messages[0].name] == 1
     assert masks[messages[0].name] == 0x7F0
 
 
