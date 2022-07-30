@@ -1,5 +1,5 @@
-name: rx_only
+name: rx_mask
 subscribe:
   - name: test_tx
-    mob: 0
+    mob: 1
     mask: 0x7F0
