@@ -1,6 +1,3 @@
-from multiprocessing.sharedctypes import Value
-
-
 def get_rx_messages(subs, messages):
     """
     Gets the received Messages from the list of messages, based on the subs
