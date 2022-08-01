@@ -24,27 +24,31 @@ int main(void) {
     adc_init();
 
     sei();
-    int adc_counter = 0;
+    int implausibility_timer = 0;
+    bool implausibility = false;
 
     can_receive_motor_command();
     while (1) {
         fmc.adc_value = adc_read(adc_pin);
 
         if (run_50hz) {
+            // Over 2.5V for over one second but less than two
+            if (implausibility && implausibility_timer < 100) {
+                set_duty_cycle(0);
+                implausibility_timer++;
+                continue;
+            }
+
             if (fmc.adc_value > 512) {
-                adc_counter++;
-
-                if (adc_counter >= 50) { // Over 2.5V for more than 1 second
-                    set_duty_cycle(0);
-
-                    // Haven't passed one second clearance threshold
-                    if (adc_counter < 100) {
-                        continue;
-                    } else if (fmc.adc_value <= 512) {
-                        // Voltage is below threshold and we've waited 1 second
-                        adc_counter = 0;
-                    }
+                implausibility_timer++;
+                if (implausibility_timer >= 50) {
+                    // Over 2.5V for more than 1 second
+                    implausibility = true;
+                    continue; // if there's implausibility, don't set duty cycle
                 }
+            } else {
+                implausibility_timer = 0;
+                implausibility = false;
             }
 
             if (can_poll_receive_motor_command() == 0) {
