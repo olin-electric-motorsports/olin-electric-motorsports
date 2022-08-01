@@ -15,7 +15,7 @@ void timer0_callback(void) {
 
 void set_duty_cycle(int torque_request) {
     float duty_cycle = (float)torque_request / MAX_TORQUE_REQUEST;
-    OCR1B = (int16_t)(duty_cycle * 80.0); // 80 represents maximum duty cycle
+    OCR1B = (int16_t)(duty_cycle * MAX_DUTY_CYCLE);
 }
 
 int main(void) {
@@ -25,6 +25,7 @@ int main(void) {
     adc_init();
 
     sei();
+
     int implausibility_timer = 0;
     bool implausibility = false;
 
@@ -34,7 +35,7 @@ int main(void) {
 
         if (run_50hz) {
             // Over 2.5V for over one second but less than two
-            if (implausibility && implausibility_timer < 100) {
+            if (implausibility && implausibility_timer < TWO_SECONDS) {
                 set_duty_cycle(0);
                 implausibility_timer++;
                 continue;
@@ -42,7 +43,7 @@ int main(void) {
 
             if (fmc.temperature > OVERTEMPERATURE_THRESHOLD) {
                 implausibility_timer++;
-                if (implausibility_timer >= 50) {
+                if (implausibility_timer >= ONE_SECOND) {
                     // Over 2.5V for more than 1 second
                     implausibility = true;
                     continue; // if there's implausibility, don't set duty cycle
