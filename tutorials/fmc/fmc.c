@@ -1,7 +1,7 @@
-#include "libs/timer/api.h"
 #include "fmc_config.h"
-#include "tutorials/fmc/can_api.h"
 #include "libs/adc/api.h"
+#include "libs/timer/api.h"
+#include "tutorials/fmc/can_api.h"
 
 #include <avr/interrupt.h>
 #include <avr/io.h>
@@ -29,27 +29,25 @@ int main(void) {
 
     can_receive_motor_command();
 
-    while(1) {
-        if(timer_50hz) {
+    while (1) {
+        if (timer_50hz) {
             adc_value = adc_read(adc_pin);
             fmc_data[0] = adc_value & 0xFF;
             fmc_data[1] = (adc_value >> 8);
             can_send_fmc();
 
-            if(high_voltage_counter > 49) {
+            if (high_voltage_counter > 49) {
                 change_duty_cycle(0);
                 buffer_counter++;
-                if(buffer_counter > 49) {
+                if (buffer_counter > 49) {
                     high_voltage_counter = 0;
                 }
-            }
-            else if(adc_value > 2.5) {
+            } else if (adc_value > 2.5) {
                 change_duty_cycle(0);
-                if(buffer_counter == 0) {
+                if (buffer_counter == 0) {
                     high_voltage_counter++;
                 }
-            }
-            else if(can_poll_receive_motor_command() == 0) {
+            } else if (can_poll_receive_motor_command() == 0) {
                 change_duty_cycle(motor_command.torque_request);
                 can_receive_motor_command();
                 high_voltage_counter = 0;
