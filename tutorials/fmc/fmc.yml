@@ -1,0 +1,16 @@
+name: fmc
+subscribe:
+- name: motor_command
+  mob: 1
+publish:
+- name: fmc
+  id: 0xC
+  freq_hz: 50
+  signals:
+    - name: adc_value
+      slice: 0 + 16
+      unit:
+        type: uint16_t
+        name: V
+        offset: 0
+        scale: 1

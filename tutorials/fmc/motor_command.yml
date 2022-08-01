@@ -1,0 +1,13 @@
+name: motor_command
+publish:
+- name: motor_command
+  id: 0x3
+  freq_hz: 100
+  signals:
+    - name: torque_request
+      slice: 0 + 8
+      unit:
+        type: uint8_t
+        name: Nm
+        offset: 0
+        scale: 1
