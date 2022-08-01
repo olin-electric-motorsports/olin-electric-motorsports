@@ -1,10 +1,14 @@
 #include "libs/adc/api.h"
 #include "libs/timer/api.h"
 
-adc_pin_e adc_pin = ADC4;
+#define MAX_TORQUE_REQUEST 255.0
+#define OVERTEMPERATURE_THRESHOLD 512
+
+adc_pin_e TEMPERATURE_SENSOR = ADC4;
 
 void timer0_callback(void);
 
+// 50hz timer for running main loop
 timer_cfg_s timer0_cfg = {
     .timer = TIMER0,
     .timer0_mode = TIMER0_MODE_CTC,
@@ -17,6 +21,7 @@ timer_cfg_s timer0_cfg = {
     },
 };
 
+// PWM timer at 25kHZ for running motor
 timer_cfg_s timer1_pwm_cfg  = {
     .timer = TIMER1,
     .timer1_mode = TIMER1_MODE_PHASE_CORRECT_PWM_OCRA,

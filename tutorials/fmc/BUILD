@@ -5,9 +5,12 @@ cc_firmware(
     name = "fmc",
     srcs = [
         "fmc.c",
-        "fmc.h",
+        "fmc_config.h",
     ],
     visibility = ["//visibility:public"],
+    target_compatible_with = [
+        "//bazel/constraints:atmega16m1",
+    ],
     deps = [
         ":can_api",
         "//libs/adc",
