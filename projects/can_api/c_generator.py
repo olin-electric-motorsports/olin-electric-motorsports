@@ -1,6 +1,7 @@
 import yaml
 from cantools.database.can import Database as CANDatabase
 import argparse
+
 # from yaml_handler import YamlParser
 from utils import get_rx_messages
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -48,10 +49,12 @@ def main():
 
         for sig in message["signals"]:
             if sig["unit"]["type"] == "enum":
-                choices.append({
-                    "name": sig["name"],
-                    "values": sig["unit"]["values"],
-                })
+                choices.append(
+                    {
+                        "name": sig["name"],
+                        "values": sig["unit"]["values"],
+                    }
+                )
 
     if "subscribe" in yaml_data.keys():
         rx_messages, mobs, masks = get_rx_messages(yaml_data["subscribe"], db.messages)
@@ -60,10 +63,12 @@ def main():
             for sig in msg.signals:
                 if sig.choices:
                     if len(sig.choices) > 2:
-                        choices.append({
-                            "name": sig.name,
-                            "values": list(sig.choices.values()),
-                        })
+                        choices.append(
+                            {
+                                "name": sig.name,
+                                "values": list(sig.choices.values()),
+                            }
+                        )
     else:
         rx_messages = []
         mobs = {}
