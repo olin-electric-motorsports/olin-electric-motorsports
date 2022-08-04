@@ -28,7 +28,7 @@ def test_get_rx_messages_custom_mask(db, rx_mask_yaml):
 def test_missing_rx_message(db, rx_fail_yaml):
     assert "subscribe" in rx_fail_yaml
 
-    messages, mobs, masks = get_rx_messages(rx_fail_yaml["subscribe"], db.messages)
-
-    assert messages == []
-    assert masks == {}
+    # This should raise a ValueError as the yaml has a rx_message that is not defined
+    # in the dbc.
+    with pytest.raises(ValueError):
+        get_rx_messages(rx_fail_yaml["subscribe"], db.messages)
