@@ -14,7 +14,7 @@ def get_rx_messages(subs, messages):
                 f"Subscription message {message['name']} was not found in the dbc messages."
             )
 
-    rx_message_names = [d["name"] for d in subs]
+    rx_message_names = [d['name'] for d in subs]
     rx_messages = list(filter(lambda m: m.name in rx_message_names, messages))
     filtered_rx_message_names = [rx_message.name for rx_message in rx_messages]
 
