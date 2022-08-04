@@ -14,7 +14,7 @@ def get_rx_messages(subs, messages):
                 "Found subscription message that is not in database messages."
             )
 
-    rx_message_names = [d['name'] for d in subs]
+    rx_message_names = [d["name"] for d in subs]
     rx_messages = list(filter(lambda m: m.name in rx_message_names, messages))
     masks = {message["name"]: message.get("mask", 0x7FF) for message in subs}
 
