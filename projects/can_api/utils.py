@@ -1,4 +1,4 @@
-import pdb
+import warnings
 
 
 def get_rx_messages(subs, messages):
@@ -10,13 +10,18 @@ def get_rx_messages(subs, messages):
     dbc_message_names = [dbc_message.name for dbc_message in messages]
     for message in subs:
         if message["name"] not in dbc_message_names:
-            raise ValueError(
-                "Found subscription message that is not in database messages."
+            warnings.warn(
+                f"Subscription message {message['name']} was not found in the dbc messages."
             )
 
     rx_message_names = [d["name"] for d in subs]
     rx_messages = list(filter(lambda m: m.name in rx_message_names, messages))
-    masks = {message["name"]: message.get("mask", 0x7FF) for message in subs}
+    filtered_rx_message_names = [rx_message.name for rx_message in rx_messages]
+
+    masks = {}
+    for message in subs:
+        if message["name"] in filtered_rx_message_names:
+            masks[message["name"]] = message.get("mask", 0x7FF)
 
     mobs = {}
     for m in subs:
