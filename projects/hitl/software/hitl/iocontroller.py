@@ -12,7 +12,7 @@ except ModuleNotFoundError:
     # See https://awenstrup.github.io/setup.html
     ft4222 = None
 
-# Project Imports 
+# Project Imports
 from .utils import artifacts_path
 
 # CONSTANTS
@@ -50,21 +50,23 @@ class IOController:
     is configured using a ``.csv`` file, documented below. It allows a user to interact
     with our custom hardware by getting and setting digital and analog states.
 
+    TODO: Switch from CSV to pytest fixtures for our boards
+
     :param str pin_info_path: The path to the pin_info file (should be stored in ``artifacts``).
     :param str device_description: The description of the device; used to connect.
     """
 
-    def __init__(self, 
-    pin_info_path: str = config.get("PATH", "pin_info_path", fallback=os.path.join(artifacts_path, "pin_info.csv")),
-     device_description: str = "FT4222 A",
-     real: bool = True
+    def __init__(
+        self,
+        pin_info: dict,
+        device_description: str = "FT4222 A",
     ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
         self.pin_info = self._read_pin_info(path=pin_info_path)
 
-        if ft4222 and real:
+        if ft4222:
             try:
                 self.dev = ft4222.openByDescription(device_description)
                 self.dev.i2cMaster_Init(400_000)
@@ -113,7 +115,10 @@ class IOController:
         address = self.pin_info[name]["address"]
 
         if self.pin_info[name]["type"] == "ANALOG":
-            byte1 = DAC_COMMANDS["output_now"] & DAC_CHANNEL_TO_ADD_BITS[self.pin_info[name]["pin"]]
+            byte1 = (
+                DAC_COMMANDS["output_now"]
+                & DAC_CHANNEL_TO_ADD_BITS[self.pin_info[name]["pin"]]
+            )
             byte2, byte3 = self._map_to_machine(
                 value=value,
                 low=self.pin_info[name]["min"],
@@ -121,7 +126,10 @@ class IOController:
             )
             data = bytes([byte1, byte2, byte3])
         else:
-            byte1 = GPIO_COMMANDS["single port"] & GPIO_CHANNEL_TO_ADD_BITS[self.pin.pin_info[name]["pin"]]
+            byte1 = (
+                GPIO_COMMANDS["single port"]
+                & GPIO_CHANNEL_TO_ADD_BITS[self.pin.pin_info[name]["pin"]]
+            )
             byte2 = 1 if value else 0
             data = bytes([byte1, byte2])
 
@@ -182,10 +190,15 @@ class IOController:
             # Wait for response
             response = self.dev.i2cMaster_Read(address, ADC_RETURN_SIZE_BYTES)
             self.log.debug(f"Received {response}")
-            out = self._map_to_human(response, self.pin_info[name]["min"], self.pin_info[name]["max"])
+            out = self._map_to_human(
+                response, self.pin_info[name]["min"], self.pin_info[name]["max"]
+            )
         else:
             # Request data
-            data = GPIO_COMMANDS["single port"] & GPIO_CHANNEL_TO_ADD_BITS[self.pin.pin_info[name]["pin"]]
+            data = (
+                GPIO_COMMANDS["single port"]
+                & GPIO_CHANNEL_TO_ADD_BITS[self.pin.pin_info[name]["pin"]]
+            )
             self.dev.i2cMaster_Write(address, data)
 
             # Wait for response
@@ -197,7 +210,10 @@ class IOController:
         return out
 
     def _read_pin_info(self, path: str) -> dict:
-        """Read in the pin address information, given a path to a .csv file
+        """
+        DEPRECATED: we have moved to pytest fixtures for defining our pins
+
+        Read in the pin address information, given a path to a .csv file
 
         Args:
             path (str): The path to the .csv file containing pin information (see
@@ -224,9 +240,13 @@ class IOController:
 
                 # Check for typos
                 if int(address) > 127 or int(address) < 0:
-                    raise Exception(f"I2C address of {address} for signal {name} is invalid!")
+                    raise Exception(
+                        f"I2C address of {address} for signal {name} is invalid!"
+                    )
                 if type not in ["ANALOG", "DIGITAL"]:
-                    raise Exception(f"Type {type} of signal {name} is invalid! Please use ANALOG or DIGITAL")
+                    raise Exception(
+                        f"Type {type} of signal {name} is invalid! Please use ANALOG or DIGITAL"
+                    )
                 if read_write not in ["READ", "WRITE", "BOTH"]:
                     raise Exception(
                         f"Read/write value {read_write} of signal {name} is invalid! Please use READ, WRITE, or BOTH"
@@ -262,7 +282,9 @@ class IOController:
             Tuple[int, int]: the two int values (0-255) that represent the scaled value
         """
         if not (low < value < high):
-            raise Exception(f"Value {value} not in range [{low}-{high}]! Cannot set value.")
+            raise Exception(
+                f"Value {value} not in range [{low}-{high}]! Cannot set value."
+            )
         mapped = int((value - low) * (0xFFFF - 0x0000) / (high - low))
         byte0 = mapped >> 8
         byte1 = mapped & 0x00FF
@@ -285,7 +307,9 @@ class IOController:
         mapped = (response - 0x0000) * (high - low) / (0xFFFF - 0x0000) + low
 
         if not (low < mapped < high):
-            raise Exception(f"Value {mapped} not in range [{low}-{high}]! Invalid response received.")
+            raise Exception(
+                f"Value {mapped} not in range [{low}-{high}]! Invalid response received."
+            )
         if (value[0] & 0b10000000 == 0) and low > 0:
             raise Exception(
                 f"Return value from ADC of {value} indicates the voltage was negative. See https://www.analog.com/media/en/technical-documentation/data-sheets/2489fb.pdf for details."

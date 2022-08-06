@@ -55,20 +55,6 @@ def test_set_and_get_state(can, can2, logger):
 
 @pytest.mark.soft
 @pytest.mark.unit
-def test_playback(can, can2, logger):
-    logger.info('Testing drive log playback')
-    
-    path = os.path.abspath(os.path.dirname(__file__) + "/can_test_log.csv")
-    start_time = time.time_ns()
-    can.playback(path)
-    end_time = (time.time_ns() - start_time)/1000000
-    time.sleep(1)
-    assert can2.get_state('StartButton') == 33
-    assert can2.get_state('Temperature') == 145
-    assert end_time == pytest.approx(109, rel=.01)
-
-@pytest.mark.soft
-@pytest.mark.unit
 def test_periodic_sending(can, can2, logger):
     logger.info('Testing periodic sending of CAN messages')
 

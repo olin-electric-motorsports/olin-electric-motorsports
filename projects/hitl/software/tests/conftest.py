@@ -1,5 +1,5 @@
 import pytest
-from hitl.roadkillharness import RoadkillHarness
+from RoadkillHarness import RoadkillHarness
 
 
 @pytest.fixture

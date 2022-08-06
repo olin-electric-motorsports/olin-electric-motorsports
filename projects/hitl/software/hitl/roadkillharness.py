@@ -23,7 +23,7 @@ class RoadkillHarness:
     this system.
     """
 
-    def __init__(self, real: bool = True):
+    def __init__(self, pin_info):
         # Read config
         config = configparser.ConfigParser(interpolation=None)
         config.read(os.path.join(artifacts_path, "config.ini"))
@@ -35,10 +35,7 @@ class RoadkillHarness:
         # Create IOController
         self.log.info("Creating IOController...")
         self.io = IOController(
-            pin_info_path=os.path.join(
-                artifacts_path,
-                config.get("PATHS", "pin_config", fallback="pin_info.csv"),
-            ),
+            pin_info=pin_info,
             real=real,
         )
 
