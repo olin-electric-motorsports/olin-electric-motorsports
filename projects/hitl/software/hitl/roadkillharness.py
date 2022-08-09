@@ -36,7 +36,6 @@ class RoadkillHarness:
         self.log.info("Creating IOController...")
         self.io = IOController(
             pin_info=pin_info,
-            real=real,
         )
 
         # Create CANController
@@ -45,5 +44,4 @@ class RoadkillHarness:
             can_spec_path="vehicle/mkv/mkv.dbc",
             channel=config.get("HARDWARE", "can_channel", fallback="vcan0"),
             bitrate=config.get("HARDWARE", "can_bitrate", fallback="500000"),
-            real=real,
         )
