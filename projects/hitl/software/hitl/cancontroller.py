@@ -52,27 +52,35 @@ class CANController:
             can_spec_path
         )
 
-        if "linux" in sys.platform:
+        try:
             self.can_bus = can.interface.Bus(
-                channel=channel, bustype=bus_type, bitrate=bitrate
+                channel=channel, bustype=bustype, bitrate=bitrate
             )
-            kill_flag = threading.Event()
+            self.kill_flag = threading.Event()
             listener = threading.Thread(
                 target=self._listen,
                 name="listener",
-                kwargs={"can_bus": self.can_bus, "callback": self._rx_callback, "kill_flag": kill_flag},
+                kwargs={"can_bus": self.can_bus, "callback": self._rx_callback, "kill_flag": self.kill_flag},
             )
             listener.start()
-        else:
-            self.log.error("Invalid operating system detected. Please use Linux")
-            raise Exception("Not on Linux")
+        except OSError as e:
+            self.log.error("CAN Hardware not detected - initializing to none")
+            self.can_bus = None
+
+    def release(self):
+        self.kill_flag.set()
 
     def get_state(self, signal):
         """
         Get the state of a can signal on the car
         """
+        if self.can_bus is None:
+            self.log.error("Could not get state: CAN hardware not connected")
+            return
+
         try:
             msg = self.message_of_signal[signal]
+            self.log.info(f"Fetched signal {signal} as {self.signals[msg][signal]}")
             return self.signals[msg][signal]
         except KeyError:
             raise Exception(f"Cannot get state of signal '{signal}'. It wasn't found.")
@@ -81,6 +89,10 @@ class CANController:
         """
         Set the state of a can signal on the car
         """
+        if self.can_bus is None:
+            self.log.error("Could not set state: CAN hardware not connected")
+            return
+
         try:
             msg_name = self.message_of_signal[signal]
             msg = self.db.get_message_by_name(msg_name)
@@ -102,7 +114,7 @@ class CANController:
 
             self.log.info(f"Set signal {signal} to {value}")
         except KeyError:
-            raise Exception(f"Cannot set state of signal '{signal}'. It wasn't found.")
+            raise KeyError(f"Cannot set state of signal '{signal}'. It wasn't found.")
 
     def set_periodic(self, msg_name, period):
         """
@@ -111,6 +123,10 @@ class CANController:
         All states in the message should be set before starting a periodic broadcast,
         though they can be changed without interrupting the periodic broadcast.
         """
+        if self.can_bus is None:
+            self.log.error("Could not set periodic: CAN hardware not connected")
+            return
+
         if msg_name not in self.signals:
             raise Exception(f"Message {msg_name} not found in messages.")
 
@@ -135,15 +151,28 @@ class CANController:
         """
         Stop a periodic message task
         """
-        self.periodic_messages[msg_name].stop()
-        del self.periodic_messages[msg_name]
+        if self.can is None:
+            self.log.error("Could not stop periodic task: CAN hardware not connected")
+            return
+
+        if msg_name in self.periodic_messages:
+            self.periodic_messages[msg_name].stop()
+            del self.periodic_messages[msg_name]
+            self.log.info(f"Stopped periodic sending of {msg_name}")
+        else:
+            self.log.error(f"Message {msg_name} is not being sent periodically")
 
 
     def stop_all_periodic(self):
         """
         Stop all periodic message tasks
         """
+        if self.can_bus is None:
+            self.log.error("Could not stop all periodic tasks: CAN hardware not connected")
+            return
+
         self.can_bus.stop_all_periodic_tasks()
+        self.log.info("Stopped all periodic tasks")
 
 
     def _create_state_dictionary(self, path: str):
@@ -178,7 +207,7 @@ class CANController:
         # Update the state dictionary
         self.signals[msg_name].update(data)
 
-    def _listen(self, can_bus: can.Bus, callback: Callable) -> None:
+    def _listen(self, can_bus: can.Bus, callback: Callable, kill_flag: threading.Event) -> None:
         """Thread that runs all the time to listen to CAN messages
 
         References:

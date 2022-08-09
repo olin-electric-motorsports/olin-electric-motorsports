@@ -6,7 +6,6 @@ py_library(
     srcs = ["utils.py"],
     data = [
         "//projects/hitl/software/artifacts:config.ini",
-        "//projects/hitl/software/artifacts:pin_info.csv",
     ],
     visibility = ["//visibility:private"],
     deps = [
@@ -21,6 +20,7 @@ py_library(
         "cancontroller.py",
         "hitl.py",
         "iocontroller.py",
+        "ft4222_proxy.py",
         "roadkillharness.py",
     ],
     imports = ["."],

@@ -16,15 +16,15 @@ config.read(os.path.join(artifacts_path, "config.ini"))
 
 @pytest.fixture
 def can():
-    path = os.path.abspath(os.path.dirname(__file__) + "/veh.dbc")
-
     out = CANController(
-        can_spec_path=path,
+        can_spec_path="tests/mkv.dbc",
+        bustype=config.get("HARDWARE", "can_bustype", fallback="socketcan"),
         channel=config.get("HARDWARE", "can_channel", fallback="vcan0"),
         bitrate=config.get("HARDWARE", "can_bitrate", fallback="500000"),
     )
 
-    return out
+    yield out
+    out.release()
 
 can2 = can
 
@@ -49,9 +49,9 @@ def test_create_state_dictionary(can, logger):
 def test_set_and_get_state(can, can2, logger):
     logger.info("Testing set_state and get_state...")
 
-    can.set_state("ThrottlePos", 50)
+    can.set_state("air_state", "IDLE")
     time.sleep(.1)
-    assert can2.get_state("ThrottlePos") == 50 
+    assert can2.get_state("air_state") == "IDLE"
 
 @pytest.mark.soft
 @pytest.mark.unit
@@ -59,16 +59,16 @@ def test_periodic_sending(can, can2, logger):
     logger.info('Testing periodic sending of CAN messages')
 
     #Setting to 1 and adding message to periodic sending with period = 1, then asserting that it was set to 1  
-    can.set_state('InertiaSwitchSense', 1)
-    can.set_periodic('Throttle', 1)
+    can.set_state('ss_bots', "CLOSED")
+    can.set_periodic('throttle', 1)
     time.sleep(.1)
-    assert can2.get_state('InertiaSwitchSense') == 1
+    assert can2.get_state('ss_bots') == "CLOSED"
 
     #Setting signal to 0 and making sure it is still 1 after .5 seconds
-    can.set_state('InertiaSwitchSense', 0)
+    can.set_state('ss_bots', "OPEN")
     time.sleep(.5)
-    assert can2.get_state('InertiaSwitchSense') == 1
+    assert can2.get_state('ss_bots') == "CLOSED"
 
     #Let the periodic message send and verify that it changed to 0
-    time.sleep(2)
-    assert can2.get_state('InertiaSwitchSense') == 0
+    time.sleep(1)
+    assert can2.get_state('ss_bots') == "OPEN"
