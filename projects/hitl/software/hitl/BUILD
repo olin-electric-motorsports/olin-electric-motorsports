@@ -4,9 +4,6 @@ load("@hitl_deps//:requirements.bzl", "requirement")
 py_library(
     name = "utils",
     srcs = ["utils.py"],
-    data = [
-        "//projects/hitl/software/artifacts:config.ini",
-    ],
     visibility = ["//visibility:private"],
     deps = [
         requirement("pyusb"),
@@ -16,11 +13,10 @@ py_library(
 py_library(
     name = "hitl",
     srcs = [
-        "__init__.py",
         "cancontroller.py",
+        "ft4222_proxy.py",
         "hitl.py",
         "iocontroller.py",
-        "ft4222_proxy.py",
     ],
     imports = ["."],
     srcs_version = "PY3",
