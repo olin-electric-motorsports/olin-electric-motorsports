@@ -7,6 +7,7 @@ from .utils import get_logging_config, root_path, artifacts_path
 from .iocontroller import IOController
 from .cancontroller import CANController
 
+
 class Hitl:
     """Class to represent the entire tester
 
@@ -35,9 +36,7 @@ class Hitl:
         # Create CANController
         self.log.info("Creating CANController...")
         self.can = CANController(
-            can_spec_path="vehicle/mkv/mkv.dbc",
-            channel="vcan0",
-            bitrate=500000
+            can_spec_path="vehicle/mkv/mkv.dbc", channel="vcan0", bitrate=500000
         )
 
     def close():

@@ -8,14 +8,17 @@ from enum import Enum, auto
 from .utils import artifacts_path
 from .ft4222_proxy import FT4222Proxy
 
+
 class PinType(Enum):
     ANALOG = auto()
-    DIGITAL= auto()
+    DIGITAL = auto()
+
 
 class PinMode(Enum):
     READ = auto()
     WRITE = auto()
     BOTH = auto()
+
 
 class IOController:
     """High level python object to interface with hardware.
@@ -38,10 +41,9 @@ class IOController:
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
 
-        self.pin_info =  pin_info
+        self.pin_info = pin_info
 
         self.ft4222 = FT4222Proxy(device_description)
-
 
     def set_state(self, name: str, value) -> None:
         """Set the value of an IO pin in the HitL system
@@ -137,5 +139,4 @@ class IOController:
         """
         if self.ft4222.dev:
             self.ft4222.dev.close()
-        self.log.info('Shutdown IO gracefully')
-
+        self.log.info("Shutdown IO gracefully")

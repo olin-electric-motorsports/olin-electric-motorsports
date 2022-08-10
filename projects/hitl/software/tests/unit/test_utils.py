@@ -7,7 +7,13 @@ from configparser import ConfigParser
 
 # Project Imports
 from hitl.iocontroller import IOController
-from hitl.utils import get_logging_config, pad_with_zeros, artifacts_path, map_to_machine, map_to_human
+from hitl.utils import (
+    get_logging_config,
+    pad_with_zeros,
+    artifacts_path,
+    map_to_machine,
+    map_to_human,
+)
 
 config = ConfigParser(interpolation=None)
 config.read(os.path.join(artifacts_path, "config.ini"))
@@ -27,6 +33,7 @@ def test_pad_zeros(logger):
 
     assert pad_with_zeros("42", 4) == "0042"
     assert pad_with_zeros("1234", 4) == "1234"
+
 
 @pytest.mark.soft
 @pytest.mark.unit

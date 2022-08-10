@@ -38,6 +38,7 @@ GPIO_CHANNEL_TO_ADD_BITS = {i: i for i in range(4, 32)}
 GPIO_COMMANDS = {"single port": 0b00100000}
 GPIO_RETURN_SIZE_BYTES = 1
 
+
 class FT4222Proxy:
     """
     Proxy class to intergace with FT4222 chip
@@ -80,10 +81,7 @@ class FT4222Proxy:
             self.log.error("Could not set state; no hardware connection")
             return
 
-        byte1 = (
-            DAC_COMMANDS["output_now"]
-            & DAC_CHANNEL_TO_ADD_BITS[pin_number]
-        )
+        byte1 = DAC_COMMANDS["output_now"] & DAC_CHANNEL_TO_ADD_BITS[pin_number]
         byte2, byte3 = map_to_machine(
             value=value,
             low=min,
@@ -114,10 +112,7 @@ class FT4222Proxy:
             self.log.error("Could not set state; no hardware connection")
             return
 
-        byte1 = (
-            GPIO_COMMANDS["single port"]
-            & GPIO_CHANNEL_TO_ADD_BITS[pin_number]
-        )
+        byte1 = GPIO_COMMANDS["single port"] & GPIO_CHANNEL_TO_ADD_BITS[pin_number]
         byte2 = 1 if value else 0
         data = bytes([byte1, byte2])
 
@@ -202,7 +197,3 @@ class FT4222Proxy:
         out = 1 if response else 0
 
         return out
-        
-
-
-

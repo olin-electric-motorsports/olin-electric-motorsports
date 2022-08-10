@@ -4,6 +4,7 @@ import datetime
 import configparser
 import os
 import sys
+
 # import usb.core
 from typing import Tuple, Optional
 
@@ -87,13 +88,12 @@ def map_to_machine(value: float, low: float, high: float) -> Tuple[int, int]:
         Tuple[int, int]: the two int values (0-255) that represent the scaled value
     """
     if not (low < value < high):
-        raise Exception(
-            f"Value {value} not in range [{low}-{high}]! Cannot set value."
-        )
+        raise Exception(f"Value {value} not in range [{low}-{high}]! Cannot set value.")
     mapped = int((value - low) * (0xFFFF - 0x0000) / (high - low))
     byte0 = mapped >> 8
     byte1 = mapped & 0x00FF
     return byte0, byte1
+
 
 def map_to_human(value: bytes, low: float, high: float) -> float:
     """Convert from 2 bytes returned from an ADC to a float (voltage)
@@ -126,6 +126,7 @@ def map_to_human(value: bytes, low: float, high: float) -> float:
 
     return mapped
 
+
 def build_pin(address, num, type, visibility, min, max):
     return {
         "address": address,
@@ -135,4 +136,3 @@ def build_pin(address, num, type, visibility, min, max):
         "min": min,
         "max": max,
     }
-

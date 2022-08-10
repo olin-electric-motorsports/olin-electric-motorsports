@@ -13,6 +13,7 @@ import can
 # Project Imports
 from .utils import artifacts_path
 
+
 class CANController:
     """High level python object to interface with hardware.
 
@@ -32,7 +33,7 @@ class CANController:
         can_spec_path: str = "vehicle/mkv/mkv/dbc",
         bustype: str = "socketcan",
         channel: str = "vcan0",
-        bitrate: int = 500000
+        bitrate: int = 500000,
     ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
@@ -53,7 +54,11 @@ class CANController:
             listener = threading.Thread(
                 target=self._listen,
                 name="listener",
-                kwargs={"can_bus": self.can_bus, "callback": self._rx_callback, "kill_flag": self.kill_flag},
+                kwargs={
+                    "can_bus": self.can_bus,
+                    "callback": self._rx_callback,
+                    "kill_flag": self.kill_flag,
+                },
             )
             listener.start()
         except OSError as e:
@@ -156,18 +161,18 @@ class CANController:
         else:
             self.log.error(f"Message {msg_name} is not being sent periodically")
 
-
     def stop_all_periodic(self):
         """
         Stop all periodic message tasks
         """
         if self.can_bus is None:
-            self.log.error("Could not stop all periodic tasks: CAN hardware not connected")
+            self.log.error(
+                "Could not stop all periodic tasks: CAN hardware not connected"
+            )
             return
 
         self.can_bus.stop_all_periodic_tasks()
         self.log.info("Stopped all periodic tasks")
-
 
     def _create_state_dictionary(self, path: str):
         """Generate self.message_of_signal and self.signals
@@ -180,7 +185,7 @@ class CANController:
 
         # Iterates through messages to create state dictionaries
         message_of_signal = {}
-        signals = defaultdict(lambda: dict()) # doublecheck this
+        signals = defaultdict(lambda: dict())  # doublecheck this
         for msg in self.db.messages:
             for sig in msg.signals:
                 signals[msg.name][sig.name] = 0
@@ -201,7 +206,9 @@ class CANController:
         # Update the state dictionary
         self.signals[msg_name].update(data)
 
-    def _listen(self, can_bus: can.Bus, callback: Callable, kill_flag: threading.Event) -> None:
+    def _listen(
+        self, can_bus: can.Bus, callback: Callable, kill_flag: threading.Event
+    ) -> None:
         """Thread that runs all the time to listen to CAN messages
 
         References:
@@ -214,9 +221,7 @@ class CANController:
                 callback(msg)
 
         can_bus.shutdown()
-        self.log.info('Shut down CAN hardware gracefully')
+        self.log.info("Shut down CAN hardware gracefully")
 
     def close(self):
         self.kill_flag.set()
-
-

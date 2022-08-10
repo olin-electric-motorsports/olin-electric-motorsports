@@ -35,5 +35,3 @@ def test_connected(io, logger):
     # Create an IOController to make sure it can connect to hardware!
     logger.info("Testing hardware connection...")
     assert io.ft4222.dev
-
-
