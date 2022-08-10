@@ -1,7 +1,7 @@
 # Base Python
 import os
 import logging
-from typing import Tuple, Union
+from typing import Union
 from enum import Enum, auto
 
 # Project Imports
@@ -38,7 +38,7 @@ class IOController:
         pin_info: dict,
         device_description: str = "FT4222 A",
     ):
-        # Create logger (all config should already be set by RoadkillHarness)
+        # Create logger (all config should already be set by Hitl)
         self.log = logging.getLogger(name=__name__)
 
         self.pin_info = pin_info
@@ -67,7 +67,7 @@ class IOController:
         else:
             self.ft4222.set_digital(address, pin_number, value)
 
-        self.log.info(f"Set state of {name} to {value}")
+        self.log.debug(f"Set state of {name} to {value}")
 
     def get_state(self, name: str) -> Union[int, float]:
         """Request a hardware state from the HitL system.
@@ -94,7 +94,7 @@ class IOController:
         else:
             out = self.ft4222.get_digital(address, pin_number)
 
-        self.log.info(f"Got state of {name}: {out}")
+        self.log.debug(f"Got state of {name}: {out}")
         return out
 
     def __enter__(self) -> None:

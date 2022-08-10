@@ -27,32 +27,6 @@ def get_logging_config(filename=None) -> None:
     )
 
 
-def find_arduino() -> Tuple[Optional[str], Optional[str]]:
-    """DEPRECATED.
-
-    We no longer use this function in our setup script, but if you want, you can
-    un-comment the ``create_udev_rule()`` line in the setup script, which relies
-    on this function, to create a symbolic link at ``/dev/arduino`` that will
-    always redirect to an arduino that is plugged in.
-
-    Use ``pyusb`` to find an arduino, if it is plugged in.
-
-    :rtype: Tuple[Optional[str], Optional[str]]
-    :returns: (idProduct, idVendor). If no arduino found, return ``(None, None)``
-    """
-    # find USB devices
-    devices = usb.core.find(find_all=True)
-    # loop through devices, printing vendor and product ids in decimal and hex
-    for device in devices:
-        if device.manufacturer and "Arduino" in device.manufacturer:
-            return (
-                pad_with_zeros(hex(device.idVendor).strip("0x"), 4),
-                pad_with_zeros(hex(device.idProduct).strip("0x"), 4),
-            )
-
-    return (None, None)
-
-
 def pad_with_zeros(s: str, length: int) -> str:
     """Given a string, add 0s to the front until it reaches the specified length
 
@@ -128,6 +102,17 @@ def map_to_human(value: bytes, low: float, high: float) -> float:
 
 
 def build_pin(address, num, type, visibility, min, max):
+    """
+    Wrapper to build a dictionary representing a pin.
+
+    Args:
+        address (int): I2C address of the board the pin is on
+        pin (int): Pin number
+        type (hitl.iocontroller.PinType): ANALOG or DIGITAL
+        read_write (hitl.iocontroller.PinMode): READ, WRITE, or BOTH
+        min (int): Minimum value. Usually 0 for both analog and digital
+        max (int): Maximum value. Usually 5 for analog and 1 for digital
+    """
     return {
         "address": address,
         "pin": num,
@@ -136,3 +121,29 @@ def build_pin(address, num, type, visibility, min, max):
         "min": min,
         "max": max,
     }
+
+
+def find_arduino() -> Tuple[Optional[str], Optional[str]]:
+    """DEPRECATED.
+
+    We no longer use this function in our setup script, but if you want, you can
+    un-comment the ``create_udev_rule()`` line in the setup script, which relies
+    on this function, to create a symbolic link at ``/dev/arduino`` that will
+    always redirect to an arduino that is plugged in.
+
+    Use ``pyusb`` to find an arduino, if it is plugged in.
+
+    :rtype: Tuple[Optional[str], Optional[str]]
+    :returns: (idProduct, idVendor). If no arduino found, return ``(None, None)``
+    """
+    # find USB devices
+    devices = usb.core.find(find_all=True)
+    # loop through devices, printing vendor and product ids in decimal and hex
+    for device in devices:
+        if device.manufacturer and "Arduino" in device.manufacturer:
+            return (
+                pad_with_zeros(hex(device.idVendor).strip("0x"), 4),
+                pad_with_zeros(hex(device.idProduct).strip("0x"), 4),
+            )
+
+    return (None, None)

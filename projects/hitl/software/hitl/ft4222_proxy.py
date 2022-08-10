@@ -90,7 +90,7 @@ class FT4222Proxy:
         data = bytes([byte1, byte2, byte3])
 
         self.dev.i2cMaster_Write(address, data)
-        self.log.info(f"Set state of {name} to {value}")
+        self.log.debug(f"Set state of {name} to {value}")
 
     def set_digital(address, pin_number, value):
         """
@@ -117,7 +117,7 @@ class FT4222Proxy:
         data = bytes([byte1, byte2])
 
         self.dev.i2cMaster_Write(address, data)
-        self.log.info(f"Set state of {name} to {value}")
+        self.log.debug(f"Set state of {name} to {value}")
 
     def get_analog(address, pin_number, min, max):
         """

@@ -11,18 +11,23 @@ from .cancontroller import CANController
 class Hitl:
     """Class to represent the entire tester
 
-    `Confluence <https://docs.olinelectricmotorsports.com/display/AE/Roadkill+Harness>`_
+    This class makes it easy to bring-up a Hitl tester with a very short pytest fixture, for example:
 
-    This class makes it easy to bring-up an entire tester with one line of python::
-
-        harness = RoadkillHarness()
-
-    Notice that this object isn't parameterized at all; it looks in the ``config.ini`` file
-    for information. It exposes all the functionality you need to write and run tests with
-    this system.
+        @pytest.fixture(scope="session")
+        def hitl(pin_dict):
+            hitl = Hitl(pin_dict, "vehicle/mkv/mkv/dbc", can_channel="can0")
+            yield hitl
+            hitl.close()
     """
 
-    def __init__(self, pin_info, can_spec_path="vehicle/mkv/mkv.dbc"):
+    def __init__(
+        self,
+        pin_info,
+        can_spec_path="vehicle/mkv/mkv.dbc",
+        can_channel="vcan0",
+        can_bustype="socketcan",
+        can_bitrate=500000,
+    ):
         # Create logger
         get_logging_config()
         self.log = logging.getLogger(name=__name__)
@@ -36,7 +41,10 @@ class Hitl:
         # Create CANController
         self.log.info("Creating CANController...")
         self.can = CANController(
-            can_spec_path="vehicle/mkv/mkv.dbc", channel="vcan0", bitrate=500000
+            can_spec_path=can_spec_path,
+            bustype=can_bustype,
+            channel=can_channel,
+            bitrate=can_bitrate,
         )
 
     def close():

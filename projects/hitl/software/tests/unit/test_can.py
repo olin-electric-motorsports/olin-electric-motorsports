@@ -2,13 +2,11 @@
 import pytest
 import os
 import time
-import logging
 from configparser import ConfigParser
 from can import Message
 
 # Project Imports
 from hitl.cancontroller import CANController
-from hitl.utils import get_logging_config, artifacts_path
 
 
 @pytest.fixture
@@ -25,13 +23,6 @@ def can():
 
 
 can2 = can
-
-
-@pytest.fixture
-def logger():
-    get_logging_config()
-    l = logging.getLogger(name=__name__)
-    return l
 
 
 @pytest.mark.soft

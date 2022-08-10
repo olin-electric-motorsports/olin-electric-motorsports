@@ -1,8 +1,6 @@
 # Base python
-import os
-import sys
 import threading
-from typing import Callable, Tuple
+from typing import Callable
 import logging
 from collections import defaultdict
 
@@ -35,10 +33,10 @@ class CANController:
         channel: str = "vcan0",
         bitrate: int = 500000,
     ):
-        # Create logger (all config should already be set by RoadkillHarness)
+        # Create logger (all config should already be set by HitL)
         self.log = logging.getLogger(name=__name__)
 
-        # Create empty list of periodic messages
+        # Create empty set of periodic messages
         self.periodic_messages = {}
 
         # Set up dictionary of messages
@@ -75,7 +73,7 @@ class CANController:
 
         try:
             msg = self.message_of_signal[signal]
-            self.log.info(f"Fetched signal {signal} as {self.signals[msg][signal]}")
+            self.log.debug(f"Fetched signal {signal} as {self.signals[msg][signal]}")
             return self.signals[msg][signal]
         except KeyError:
             raise Exception(f"Cannot get state of signal '{signal}'. It wasn't found.")
@@ -107,7 +105,7 @@ class CANController:
             else:
                 self.can_bus.send(message)
 
-            self.log.info(f"Set signal {signal} to {value}")
+            self.log.debug(f"Set signal {signal} to {value}")
         except KeyError:
             raise KeyError(f"Cannot set state of signal '{signal}'. It wasn't found.")
 
@@ -123,7 +121,7 @@ class CANController:
             period (float): Period of seconds between each message
         """
         if self.can_bus is None:
-            self.log.error("Could not set periodic: CAN hardware not connected")
+            self.log.error("Could not start periodic task: CAN hardware not connected")
             return
 
         if msg_name not in self.signals:
@@ -144,7 +142,7 @@ class CANController:
         send_task = self.can_bus.send_periodic(message, period)
         self.periodic_messages[msg_name] = send_task
 
-        self.log.info(f"Set {msg_name} to be sent periodically every {period} ms")
+        self.log.debug(f"Set {msg_name} to be sent periodically every {period} ms")
 
     def stop_periodic(msg_name: str):
         """
@@ -157,7 +155,7 @@ class CANController:
         if msg_name in self.periodic_messages:
             self.periodic_messages[msg_name].stop()
             del self.periodic_messages[msg_name]
-            self.log.info(f"Stopped periodic sending of {msg_name}")
+            self.log.debug(f"Stopped periodic sending of {msg_name}")
         else:
             self.log.error(f"Message {msg_name} is not being sent periodically")
 
@@ -172,7 +170,7 @@ class CANController:
             return
 
         self.can_bus.stop_all_periodic_tasks()
-        self.log.info("Stopped all periodic tasks")
+        self.log.debug("Stopped all periodic tasks")
 
     def _create_state_dictionary(self, path: str):
         """Generate self.message_of_signal and self.signals
@@ -185,7 +183,7 @@ class CANController:
 
         # Iterates through messages to create state dictionaries
         message_of_signal = {}
-        signals = defaultdict(lambda: dict())  # doublecheck this
+        signals = defaultdict(lambda: dict())
         for msg in self.db.messages:
             for sig in msg.signals:
                 signals[msg.name][sig.name] = 0
