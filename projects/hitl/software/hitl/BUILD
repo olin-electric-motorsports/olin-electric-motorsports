@@ -21,7 +21,6 @@ py_library(
         "hitl.py",
         "iocontroller.py",
         "ft4222_proxy.py",
-        "roadkillharness.py",
     ],
     imports = ["."],
     srcs_version = "PY3",

@@ -10,21 +10,17 @@ from can import Message
 from hitl.cancontroller import CANController
 from hitl.utils import get_logging_config, artifacts_path
 
-config = ConfigParser(interpolation=None)
-config.read(os.path.join(artifacts_path, "config.ini"))
-
-
 @pytest.fixture
 def can():
     out = CANController(
         can_spec_path="tests/mkv.dbc",
-        bustype=config.get("HARDWARE", "can_bustype", fallback="socketcan"),
-        channel=config.get("HARDWARE", "can_channel", fallback="vcan0"),
-        bitrate=config.get("HARDWARE", "can_bitrate", fallback="500000"),
+        bustype="socketcan",
+        channel="vcan0",
+        bitrate=500000
     )
 
     yield out
-    out.release()
+    out.close()
 
 can2 = can
 

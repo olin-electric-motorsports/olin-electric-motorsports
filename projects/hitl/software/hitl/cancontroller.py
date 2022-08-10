@@ -4,7 +4,6 @@ import sys
 import threading
 from typing import Callable, Tuple
 import logging
-from configparser import ConfigParser
 from collections import defaultdict
 
 # Extended python
@@ -13,10 +12,6 @@ import can
 
 # Project Imports
 from .utils import artifacts_path
-
-config = ConfigParser(interpolation=None)
-config.read(os.path.join(artifacts_path, "config.ini"))
-
 
 class CANController:
     """High level python object to interface with hardware.
@@ -34,12 +29,10 @@ class CANController:
 
     def __init__(
         self,
-        can_spec_path: str = config.get(
-            "PATH", "dbc_path", fallback="vehicle/mkv/mkv.dbc"
-        ),
-        bustype: str = config.get("HARDWARE", "can_bustype", fallback="socketcan"),
-        channel: str = config.get("HARDWARE", "can_channel", fallback="vcan0"),
-        bitrate: int = config.get("HARDWARE", "can_bitrate", fallback=500000),
+        can_spec_path: str = "vehicle/mkv/mkv/dbc",
+        bustype: str = "socketcan",
+        channel: str = "vcan0",
+        bitrate: int = 500000
     ):
         # Create logger (all config should already be set by RoadkillHarness)
         self.log = logging.getLogger(name=__name__)
@@ -66,9 +59,6 @@ class CANController:
         except OSError as e:
             self.log.error("CAN Hardware not detected - initializing to none")
             self.can_bus = None
-
-    def release(self):
-        self.kill_flag.set()
 
     def get_state(self, signal):
         """
@@ -118,10 +108,14 @@ class CANController:
 
     def set_periodic(self, msg_name, period):
         """
-        Set a message to be send periodically, at a specified period in ms
+        Set a message to be send periodically, at a specified period in seconds
 
         All states in the message should be set before starting a periodic broadcast,
         though they can be changed without interrupting the periodic broadcast.
+
+        Args:
+            msg_name (str): The name of the message to send periodically
+            period (float): Period of seconds between each message
         """
         if self.can_bus is None:
             self.log.error("Could not set periodic: CAN hardware not connected")
@@ -221,4 +215,8 @@ class CANController:
 
         can_bus.shutdown()
         self.log.info('Shut down CAN hardware gracefully')
+
+    def close(self):
+        self.kill_flag.set()
+
 

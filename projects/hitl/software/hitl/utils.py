@@ -15,40 +15,14 @@ root_path = os.path.abspath(
 artifacts_path = os.path.join(root_path, "artifacts")
 
 
-def get_logging_config() -> None:
-    """Get the logging config options from ``config.ini``, and apply them.
-
-    Look for ``artifacts/config.ini`` and check the logging section for config options. If they are found, apply them.
-    If interpolation is required, interpolate. For example, if the line::
-
-        log_path=$LOGS/$DATETIME.log
-
-    is found, replace ``$LOGS`` and ``$DATETIME`` with the absolute path to ``artifacts/logs`` and the current datetime,
-    respectively. The datetime format used is ``%Y_%m_%d_%H_%M_%S``
+def get_logging_config(filename=None) -> None:
     """
-    # Read config
-    config = configparser.ConfigParser(interpolation=None)
-    config.read(os.path.join(artifacts_path, "config.ini"))
-
-    log_path = config.get("LOGGING", "log_path")
-
-    if "None" in log_path:
-        log_path = None
-
-    if log_path:
-        log_path = log_path.replace(
-            "$DATETIME", datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-        )
-        log_path = log_path.replace("$LOGS", os.path.join(artifacts_path, "logs"))
-
+    Return logging config used for HitL
+    """
     logging.basicConfig(
-        format=config.get(
-            "LOGGING",
-            "log_format",
-            fallback="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        ),
-        level=config.get("LOGGING", "log_level", fallback="INFO"),
-        filename=log_path,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        level="INFO",
+        filename=filename,
     )
 
 

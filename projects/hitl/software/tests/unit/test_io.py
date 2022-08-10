@@ -17,7 +17,9 @@ config.read(os.path.join(artifacts_path, "config.ini"))
 def io(bspd):
     out = IOController(bspd)
     time.sleep(2)  # Was seeing weird errors without this
-    return out
+    yield out
+
+    out.close()
 
 
 @pytest.fixture
@@ -32,20 +34,6 @@ def logger():
 def test_connected(io, logger):
     # Create an IOController to make sure it can connect to hardware!
     logger.info("Testing hardware connection...")
-    assert io.dev
-
-
-# @pytest.mark.soft
-# @pytest.mark.unit
-# def test_read_io_file(io, logger):
-#     logger.info("Testing pin_info parser...")
-# 
-#     analog = io.pin_info["EXAMPLE_ANALOG_SIGNAL"]
-#     assert analog["type"] == "ANALOG"
-#     assert analog["max"] == 5
-# 
-#     digital = io.pin_info["EXAMPLE_DIGITAL_SIGNAL"]
-#     assert digital["min"] == 0
-#     assert digital["pin"] == 0
+    assert io.ft4222.dev
 
 

@@ -2,24 +2,32 @@
 import os
 import logging
 from typing import Tuple, Union
-from configparser import ConfigParser
+from enum import Enum, auto
 
 # Project Imports
 from .utils import artifacts_path
 from .ft4222_proxy import FT4222Proxy
 
-config = ConfigParser(interpolation=None)
-config.read(os.path.join(artifacts_path, "config.ini"))
+class PinType(Enum):
+    ANALOG = auto()
+    DIGITAL= auto()
+
+class PinMode(Enum):
+    READ = auto()
+    WRITE = auto()
+    BOTH = auto()
 
 class IOController:
     """High level python object to interface with hardware.
 
     The ``IOController`` is used to set analog and digital pins for simulation. It
-    is configured using a ``.csv`` file, documented below. It allows a user to interact
+    is configured using a dictionary, described below. It allows a user to interact
     with our custom hardware by getting and setting digital and analog states.
 
-    :param str pin_info_path: The path to the pin_info file (should be stored in ``artifacts``).
-    :param str device_description: The description of the device; used to connect.
+    Args:
+        pin_info (dict): Dicionary defining all of the pin info, normally defined in a
+            pytest file and passed in to the HitL object as a ficture
+        device_description (str): The description of the device; used to connect
     """
 
     def __init__(
@@ -44,13 +52,13 @@ class IOController:
                 Use 0 or 1 for digital, or float for analog
         """
         # Raise an exception if the signal is read only
-        if self.pin_info[name]["read_write"] == "READ":
+        if self.pin_info[name]["read_write"] == PinMode.READ:
             raise Exception(f"{name} is a read-only signal, you cannot set it!")
 
         address = self.pin_info[name]["address"]
         pin_number = self.pin_info[name]["pin"]
 
-        if self.pin_info[name]["type"] == "ANALOG":
+        if self.pin_info[name]["type"] == PinType.ANALOG:
             min = self.pin_info[name]["min"]
             max = self.pin_info[name]["max"]
             self.ft4222.set_analog(address, pin_number, value, min, max)
@@ -62,20 +70,22 @@ class IOController:
     def get_state(self, name: str) -> Union[int, float]:
         """Request a hardware state from the HitL system.
 
-        :param str name: The name of the state we want to get (e.x. "THROTTLE_POT_1", NOT 11)
+        Args:
+            name (str): The name of the state to fetch (ex. "throttle_l_pos")
 
-        :rtype:  Union[int, float]
-        :returns: The value of the requested state. If the signal is analog, returns a ``float``, otherwise an ``int``.
+        Returns:
+            (int/float): Value of the requested state - float for an analog, either
+                0 or 1 for digital
 
         """
         # Raise an exception if the signal is write only
-        if self.pin[name]["read_write"] == "WRITE":
+        if self.pin[name]["read_write"] == PinMode.WRITE:
             raise Exception(f"{name} is a write-only signal, you cannot read it!")
 
         address = self.pin_info[name]["address"]
         pin_number = self.pin_info[name]["pin"]
 
-        if self.pin_info[name]["type"] == "ANALOG":
+        if self.pin_info[name]["type"] == PinType.ANALOG:
             min = self.pin_info[name]["min"]
             max = self.pin_info[name]["max"]
             out = self.ft4222.get_analog(address, pin_number, min, max)
@@ -83,65 +93,6 @@ class IOController:
             out = self.ft4222.get_digital(address, pin_number)
 
         self.log.info(f"Got state of {name}: {out}")
-        return out
-
-    def _read_pin_info(self, path: str) -> dict:
-        """
-
-        Read in the pin address information, given a path to a .csv file
-
-        Args:
-            path (str): The path to the .csv file containing pin information (see
-            `software readme <https://github.com/olin-electric-motorsports/olin-electric-motorsports/tree/main/projects/hitl/software>`_
-
-        Returns:
-            dict: A dictionary of (str: dict) pairs
-        """
-        out = {}
-        with open(path, "r") as f:
-            line = f.readline()  # clear the header line
-            line = f.readline()  # get the first data line ready
-            while line != "":  # keep reading until we hit the end
-                data = line.split(",")
-
-                # Parse a line of data
-                address = data[0].strip()  # i2c address
-                pin = data[1].strip()  # channel/pin number on chip
-                name = data[2].strip()  # human-readable name of signal
-                type = data[3].strip()  # analog or digital
-                read_write = data[4].strip()  # readable, writeable, or both
-                sig_min = data[5].strip()  # min value of signal
-                sig_max = data[6].strip()  # max value of signal
-
-                # Check for typos
-                if int(address) > 127 or int(address) < 0:
-                    raise Exception(
-                        f"I2C address of {address} for signal {name} is invalid!"
-                    )
-                if type not in ["ANALOG", "DIGITAL"]:
-                    raise Exception(
-                        f"Type {type} of signal {name} is invalid! Please use ANALOG or DIGITAL"
-                    )
-                if read_write not in ["READ", "WRITE", "BOTH"]:
-                    raise Exception(
-                        f"Read/write value {read_write} of signal {name} is invalid! Please use READ, WRITE, or BOTH"
-                    )
-
-                # Add data to dictionary
-                sig_dict = {}
-
-                sig_dict["address"] = int(address)
-                sig_dict["pin"] = int(pin)
-                sig_dict["type"] = type
-                sig_dict["read_write"] = read_write
-                sig_dict["min"] = float(sig_min)
-                sig_dict["max"] = float(sig_max)
-
-                out[name] = sig_dict
-
-                # read new line
-                line = f.readline()
-
         return out
 
     def __enter__(self) -> None:
@@ -179,10 +130,12 @@ class IOController:
         """
         raise Exception("Not implemented")
 
-    def __del__(self) -> None:
+    def close(self) -> None:
         """Destructor (called when the program ends)
 
         Close the serial port for a clean teardown
         """
         if self.ft4222.dev:
             self.ft4222.dev.close()
+        self.log.info('Shutdown IO gracefully')
+

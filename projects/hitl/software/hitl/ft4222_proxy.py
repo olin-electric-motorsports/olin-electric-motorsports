@@ -124,7 +124,7 @@ class FT4222Proxy:
         self.dev.i2cMaster_Write(address, data)
         self.log.info(f"Set state of {name} to {value}")
 
-    def get_analog(address, pin_number, min=0, max=5):
+    def get_analog(address, pin_number, min, max):
         """
         Get the value of an analog pin in the HitL system
 
