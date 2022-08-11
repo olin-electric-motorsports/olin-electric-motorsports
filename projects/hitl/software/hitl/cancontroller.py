@@ -9,7 +9,7 @@ import cantools
 import can
 
 # Project Imports
-from .utils import artifacts_path
+from utils import artifacts_path
 
 
 class CANController:
@@ -66,6 +66,9 @@ class CANController:
     def get_state(self, signal):
         """
         Get the state of a can signal on the car
+
+        Args:
+            signal (str): signal name to get
         """
         if self.can_bus is None:
             self.log.error("Could not get state: CAN hardware not connected")
@@ -73,14 +76,26 @@ class CANController:
 
         try:
             msg = self.message_of_signal[signal]
-            self.log.debug(f"Fetched signal {signal} as {self.signals[msg][signal]}")
-            return self.signals[msg][signal]
         except KeyError:
             raise Exception(f"Cannot get state of signal '{signal}'. It wasn't found.")
+
+        self.log.debug(f"Fetched signal {signal} as {self.signals[msg][signal]}")
+        return self.signals[msg][signal]
 
     def set_state(self, signal, value):
         """
         Set the state of a can signal on the car
+
+        Args:
+            signal (str): Signal name to set
+            value (varying types): Decoded value to set signal to
+
+            Note: Decoded includes all of the decoding instructions in the DBC
+            So any fault/state enum signals would use the actual name, like "PRECHARGE"
+            Shutdown Sense signals would be "OPEN" or "CLOSED"
+            Any values that have offsets or scales should have those applied, 
+                so for example for throttle potentiometers we would use the percentages,
+                not the raw values
         """
         if self.can_bus is None:
             self.log.error("Could not set state: CAN hardware not connected")
@@ -88,26 +103,27 @@ class CANController:
 
         try:
             msg_name = self.message_of_signal[signal]
-            msg = self.db.get_message_by_name(msg_name)
-
-            # Update internal dictionary
-            self.signals[msg_name][signal] = value
-
-            # Encode data and create message
-            data = msg.encode(self.signals[msg_name])
-            message = can.Message(
-                arbitration_id=msg.frame_id, data=data, is_extended_id=False
-            )
-
-            # Send message
-            if msg_name in self.periodic_messages:
-                self.periodic_messages[msg_name].modify_data(message)
-            else:
-                self.can_bus.send(message)
-
-            self.log.debug(f"Set signal {signal} to {value}")
         except KeyError:
             raise KeyError(f"Cannot set state of signal '{signal}'. It wasn't found.")
+
+        msg = self.db.get_message_by_name(msg_name)
+
+        # Update internal dictionary
+        self.signals[msg_name][signal] = value
+
+        # Encode data and create message
+        data = msg.encode(self.signals[msg_name])
+        message = can.Message(
+            arbitration_id=msg.frame_id, data=data, is_extended_id=False
+        )
+
+        # Send message
+        if msg_name in self.periodic_messages:
+            self.periodic_messages[msg_name].modify_data(message)
+        else:
+            self.can_bus.send(message)
+
+        self.log.debug(f"Set signal {signal} to {value}")
 
     def set_periodic(self, msg_name, period):
         """
@@ -125,7 +141,7 @@ class CANController:
             return
 
         if msg_name not in self.signals:
-            raise Exception(f"Message {msg_name} not found in messages.")
+            raise KeyError(f"Message {msg_name} not found in messages.")
 
         if msg_name in self.periodic_messages:
             raise Exception(f"Message {msg_name} is already being sent periodically.")

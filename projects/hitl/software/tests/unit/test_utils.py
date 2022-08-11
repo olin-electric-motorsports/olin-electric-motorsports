@@ -6,8 +6,7 @@ import logging
 from configparser import ConfigParser
 
 # Project Imports
-from hitl.iocontroller import IOController
-from hitl.utils import (
+from projects.hitl.software.hitl.utils import (
     get_logging_config,
     pad_with_zeros,
     artifacts_path,

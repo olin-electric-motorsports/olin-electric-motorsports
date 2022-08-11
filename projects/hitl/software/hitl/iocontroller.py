@@ -5,8 +5,8 @@ from typing import Union
 from enum import Enum, auto
 
 # Project Imports
-from .utils import artifacts_path
-from .ft4222_proxy import FT4222Proxy
+from utils import artifacts_path
+from ft4222_proxy import FT4222Proxy
 
 
 class PinType(Enum):
@@ -59,13 +59,16 @@ class IOController:
 
         address = self.pin_info[name]["address"]
         pin_number = self.pin_info[name]["pin"]
+        pin_type = self.pin_info[name]["type"]
 
-        if self.pin_info[name]["type"] == PinType.ANALOG:
+        if pin_type == PinType.ANALOG:
             min = self.pin_info[name]["min"]
             max = self.pin_info[name]["max"]
             self.ft4222.set_analog(address, pin_number, value, min, max)
-        else:
+        elif pin_type == PinType.DIGITAL:
             self.ft4222.set_digital(address, pin_number, value)
+        else:
+            raise Exception("Invalid PinType! PinType must be ANALOG or DIGITAL")
 
         self.log.debug(f"Set state of {name} to {value}")
 
@@ -86,13 +89,16 @@ class IOController:
 
         address = self.pin_info[name]["address"]
         pin_number = self.pin_info[name]["pin"]
+        pin_type = self.pin_info[name]["type"]
 
-        if self.pin_info[name]["type"] == PinType.ANALOG:
+        if pin_type == PinType.ANALOG:
             min = self.pin_info[name]["min"]
             max = self.pin_info[name]["max"]
             out = self.ft4222.get_analog(address, pin_number, min, max)
-        else:
+        elif pin_type == PinType.DIGITAL:
             out = self.ft4222.get_digital(address, pin_number)
+        else:
+            raise Exception("Invalid PinType! PinType must be ANALOG or DIGITAL")
 
         self.log.debug(f"Got state of {name}: {out}")
         return out

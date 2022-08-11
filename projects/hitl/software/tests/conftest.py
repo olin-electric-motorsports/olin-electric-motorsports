@@ -1,8 +1,8 @@
 import pytest
 import logging
-from hitl.hitl import Hitl
-from hitl.utils import build_pin, get_logging_config
-from hitl.iocontroller import PinMode, PinType
+from projects.hitl.software.hitl.hitl import Hitl
+from projects.hitl.software.hitl.utils import build_pin, get_logging_config
+from projects.hitl.software.hitl.iocontroller import PinMode, PinType
 
 
 @pytest.fixture(scope="session")

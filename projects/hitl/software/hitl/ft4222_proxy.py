@@ -5,7 +5,7 @@ accessed directly, but instead through the IOController
 import logging
 import os
 
-from .utils import map_to_human, map_to_machine
+from utils import map_to_human, map_to_machine
 
 try:
     import ft4222
@@ -149,7 +149,7 @@ class FT4222Proxy:
             * bits 8-23: 16 bit voltage reading
         """
         if not self.dev:
-            self.log.error("Could not set state; no hardware connection")
+            self.log.error("Could not get state; no hardware connection")
             return
 
         # Request data
@@ -159,7 +159,7 @@ class FT4222Proxy:
         # Wait for response
         response = self.dev.i2cMaster_Read(address, ADC_RETURN_SIZE_BYTES)
         self.log.debug(f"Received {response}")
-        out = self._map_to_human(
+        out = map_to_human(
             response, self.pin_info[name]["min"], self.pin_info[name]["max"]
         )
 
@@ -181,7 +181,7 @@ class FT4222Proxy:
             * bit 15: Value to write
         """
         if not self.dev:
-            self.log.error("Could not set state; no hardware connection")
+            self.log.error("Could not get state; no hardware connection")
             return
 
         # Request data

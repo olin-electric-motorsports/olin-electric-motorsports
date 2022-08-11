@@ -5,7 +5,7 @@ import time
 from configparser import ConfigParser
 
 # Project Imports
-from hitl.iocontroller import IOController
+from projects.hitl.software.hitl.iocontroller import IOController
 
 
 @pytest.fixture

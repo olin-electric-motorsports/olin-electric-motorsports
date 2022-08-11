@@ -6,13 +6,13 @@ from configparser import ConfigParser
 from can import Message
 
 # Project Imports
-from hitl.cancontroller import CANController
+from projects.hitl.software.hitl.cancontroller import CANController
 
 
 @pytest.fixture
 def can():
     out = CANController(
-        can_spec_path="tests/mkv.dbc",
+        can_spec_path="vehicle/mkv/mkv.dbc",
         bustype="socketcan",
         channel="vcan0",
         bitrate=500000,

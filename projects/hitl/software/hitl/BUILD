@@ -5,9 +5,6 @@ py_library(
     name = "utils",
     srcs = ["utils.py"],
     visibility = ["//visibility:private"],
-    deps = [
-        requirement("pyusb"),
-    ],
 )
 
 py_library(

@@ -122,28 +122,3 @@ def build_pin(address, num, type, visibility, min, max):
         "max": max,
     }
 
-
-def find_arduino() -> Tuple[Optional[str], Optional[str]]:
-    """DEPRECATED.
-
-    We no longer use this function in our setup script, but if you want, you can
-    un-comment the ``create_udev_rule()`` line in the setup script, which relies
-    on this function, to create a symbolic link at ``/dev/arduino`` that will
-    always redirect to an arduino that is plugged in.
-
-    Use ``pyusb`` to find an arduino, if it is plugged in.
-
-    :rtype: Tuple[Optional[str], Optional[str]]
-    :returns: (idProduct, idVendor). If no arduino found, return ``(None, None)``
-    """
-    # find USB devices
-    devices = usb.core.find(find_all=True)
-    # loop through devices, printing vendor and product ids in decimal and hex
-    for device in devices:
-        if device.manufacturer and "Arduino" in device.manufacturer:
-            return (
-                pad_with_zeros(hex(device.idVendor).strip("0x"), 4),
-                pad_with_zeros(hex(device.idProduct).strip("0x"), 4),
-            )
-
-    return (None, None)
