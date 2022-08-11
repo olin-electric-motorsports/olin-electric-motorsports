@@ -14,5 +14,6 @@ dbc_gen(
         "//vehicle/common/emeter:emeter.dbc",
         "//vehicle/common/motor_controller:motor_controller.dbc",
         "//vehicle/mkv/software/throttle:throttle.yml",
+        "//projects/btldr/tools:updatr_dbc",
     ],
 )
