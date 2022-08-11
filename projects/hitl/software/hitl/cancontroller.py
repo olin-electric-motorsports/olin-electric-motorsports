@@ -199,7 +199,7 @@ class CANController:
 
         # Iterates through messages to create state dictionaries
         message_of_signal = {}
-        signals = defaultdict(lambda: dict())
+        signals = defaultdict(dict)
         for msg in self.db.messages:
             for sig in msg.signals:
                 signals[msg.name][sig.name] = 0
