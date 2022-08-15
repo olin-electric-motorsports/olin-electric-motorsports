@@ -21,14 +21,16 @@ load("@rules_python//python:pip.bzl", "pip_install")
 
 # STM32 Workspace setup
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
 http_archive(
     name = "arm_none_eabi",
-    url = "https://github.com/d-asnaghi/bazel-arm-none-eabi/archive/v1.2.0.tar.gz",
     sha256 = "34487973fd09f655a0b4531fb48cec5795bec303de30223aef43606b01fcb161",
-    strip_prefix = "bazel-arm-none-eabi-1.2.0"
+    strip_prefix = "bazel-arm-none-eabi-1.2.0",
+    url = "https://github.com/d-asnaghi/bazel-arm-none-eabi/archive/v1.2.0.tar.gz",
 )
 
 load("@arm_none_eabi//:deps.bzl", "arm_none_eabi_deps")
+
 arm_none_eabi_deps()
 
 # Buildifier formatter for Bazel
