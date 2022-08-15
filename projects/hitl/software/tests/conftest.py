@@ -15,7 +15,7 @@ def hitl(bspd, dbc):
 
 @pytest.fixture
 def dbc():
-    return "tests/mkv.dbc"
+    return "vehicle/mkv/mkv.dbc"
 
 
 @pytest.fixture
