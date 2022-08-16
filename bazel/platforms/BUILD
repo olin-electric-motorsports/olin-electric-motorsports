@@ -33,7 +33,7 @@ platform(
 )
 
 platform(
-    name = "stm32f103c8t6",
+    name = "stm32f103_arm",
     constraint_values = [
         "//bazel/constraints:stm32f103c8t6",
     ],

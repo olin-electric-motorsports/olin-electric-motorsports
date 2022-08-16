@@ -232,6 +232,7 @@ def cc_firmware(name, **kwargs):
         linkopts = select({
             "//bazel/constraints:atmega16m1": ["-T $(location //scripts/ldscripts:atmega16m1.ld)"],
             "//bazel/constraints:atmega64m1": ["-T $(location //scripts/ldscripts:atmega64m1.ld)"],
+            "//bazel/constraints:stm32f103c8t6": [],
             # Add more ldscripts here
             "//conditions:default": [],
         }),
@@ -284,12 +285,14 @@ def cc_firmware(name, **kwargs):
         binary = "{}.bin".format(name),
         method = select({
             "//bazel/constraints:avr": "avrdude",
+            "@platforms//cpu:arm": "openocd",
             "//conditions:default": "",
         }),
         part = select({
             "//bazel/constraints:atmega16m1": "16m1",
             "//bazel/constraints:atmega328p": "m328p",
             "//bazel/constraints:atmega64m1": "64m1",
+            "//bazel/constraints:stm32f103c8t6": "stm32f103",
             "//conditions:default": "",
         }),
     )
