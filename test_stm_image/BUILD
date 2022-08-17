@@ -9,4 +9,5 @@ cc_firmware(
         "//bazel/constraints:stm32f103c8t6",
     ],
     visibility = ["//visibility:public"],
+    deps = ["@libopencm3//:libopencm3"],
 )
