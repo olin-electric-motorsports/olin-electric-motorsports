@@ -41,7 +41,7 @@ GPIO_RETURN_SIZE_BYTES = 1
 
 class FT4222Proxy:
     """
-    Proxy class to intergace with FT4222 chip
+    Proxy class to interface with FT4222 chip
     """
 
     def __init__(self, device_description):
