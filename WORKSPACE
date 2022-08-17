@@ -37,14 +37,10 @@ arm_none_eabi_deps()
 http_archive(
     name = "libopencm3",
     build_file = "@//third_party/libopencm3:BUILD",
+    sha256 = "0acbc805d2c1450591412a109290cec2b3fb7c302a57ade34f2247d632c405a3",
     strip_prefix = "libopencm3-0.8.0",
     urls = ["https://github.com/libopencm3/libopencm3/archive/refs/tags/v0.8.0.tar.gz"],
 )
-# new_git_repository(
-#     name = "libopencm3",
-#     remote = "https://github.com/libopencm3/libopencm3.git",
-#     build_file = "@//third_party/libopencm3:BUILD",
-# )
 
 # Buildifier formatter for Bazel
 
