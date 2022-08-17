@@ -38,7 +38,7 @@ http_archive(
     name = "libopencm3",
     build_file = "@//third_party/libopencm3:BUILD",
     strip_prefix = "libopencm3-0.8.0",
-    urls = ["https://github.com/libopencm3/libopencm3/archive/refs/tags/v0.8.0.tar.gz"]
+    urls = ["https://github.com/libopencm3/libopencm3/archive/refs/tags/v0.8.0.tar.gz"],
 )
 # new_git_repository(
 #     name = "libopencm3",
