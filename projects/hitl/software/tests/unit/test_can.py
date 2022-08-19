@@ -8,23 +8,6 @@ from can import Message
 # Project Imports
 from projects.hitl.software.hitl.cancontroller import CANController
 
-
-@pytest.fixture
-def can(dbc):
-    out = CANController(
-        can_spec_path=dbc,
-        bustype="socketcan",
-        channel="vcan0",
-        bitrate=500000,
-    )
-
-    yield out
-    out.close()
-
-
-can2 = can
-
-
 @pytest.mark.soft
 @pytest.mark.unit
 def test_create_state_dictionary(can, logger):

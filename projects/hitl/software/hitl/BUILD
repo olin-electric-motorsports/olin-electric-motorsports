@@ -12,7 +12,6 @@ py_library(
     srcs = [
         "cancontroller.py",
         "ft4222_proxy.py",
-        "hitl.py",
         "iocontroller.py",
     ],
     imports = ["."],

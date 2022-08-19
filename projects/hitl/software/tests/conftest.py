@@ -1,22 +1,24 @@
 import pytest
 import logging
-from projects.hitl.software.hitl.hitl import Hitl
+from projects.hitl.software.hitl.cancontroller import CANController
+from projects.hitl.software.hitl.iocontroller import IOController
 from projects.hitl.software.hitl.utils import build_pin, get_logging_config
 from projects.hitl.software.hitl.iocontroller import PinMode, PinType
 
 
 @pytest.fixture(scope="session")
-def hitl(bspd, dbc):
-    hitl = Hitl(bspd, dbc)
-    yield hitl
+def can():
+    can = CANController() 
+    yield can
+    can.close()
 
-    hitl.close()
+can2 = can
 
-
-@pytest.fixture
-def dbc():
-    return "vehicle/mkv/mkv.dbc"
-
+@pytest.fixture(scope="session")
+def io():
+    io = IOController() 
+    yield io
+    io.close()
 
 @pytest.fixture
 def bspd():

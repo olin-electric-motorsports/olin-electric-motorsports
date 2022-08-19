@@ -9,7 +9,7 @@ import cantools
 import can
 
 # Project Imports
-from utils import artifacts_path
+from utils import artifacts_path, get_logging_config
 
 
 class CANController:
@@ -28,12 +28,13 @@ class CANController:
 
     def __init__(
         self,
-        can_spec_path: str = "vehicle/mkv/mkv/dbc",
+        can_spec_path: str = "vehicle/mkv/mkv.dbc",
         bustype: str = "socketcan",
         channel: str = "vcan0",
         bitrate: int = 500000,
     ):
-        # Create logger (all config should already be set by HitL)
+        # Create logger
+        get_logging_config() 
         self.log = logging.getLogger(name=__name__)
 
         # Create empty set of periodic messages

@@ -5,7 +5,7 @@ from typing import Union
 from enum import Enum, auto
 
 # Project Imports
-from utils import artifacts_path
+from utils import artifacts_path, get_logging_config
 from ft4222_proxy import FT4222Proxy
 
 
@@ -38,7 +38,8 @@ class IOController:
         pin_info: dict,
         device_description: str = "FT4222 A",
     ):
-        # Create logger (all config should already be set by Hitl)
+        # Create logger
+        get_logging_config()
         self.log = logging.getLogger(name=__name__)
 
         self.pin_info = pin_info
