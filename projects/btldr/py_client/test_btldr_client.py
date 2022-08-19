@@ -5,12 +5,11 @@ from unittest.mock import patch
 from can import Message as CANMessage
 from can.interface import Bus as CANBus
 
-from formula.projects.btldr.py_client.btldr import BtldrClient
+from formula.projects.btldr.py_client.btldr import BtldrManager
 
 
-@pytest.fixture
-def ping_resp(dbc):
-    _ping_response = dbc.get_message_by_name("btldr_air_control_query_response")
+def fake_ping_resp(db):
+    _ping_response = db.get_message_by_name("btldr_air_control_query_response")
 
     msg = CANMessage(
         arbitration_id = _ping_response.frame_id,
@@ -27,17 +26,17 @@ def ping_resp(dbc):
 
 
 def test_ping_failure(dbc_file):
-    client = BtldrClient(bustype="virtual", source="vcan0", dbc=dbc_file)
+    client = BtldrManager(bustype="virtual", source="vcan0")
 
     # No ping response
     success, response = client.ping(0x0700, 1)
     check.is_false(success)
 
 
-def test_ping_success(dbc_file, ping_resp):
-    client = BtldrClient(bustype="virtual", source="vcan0", dbc=dbc_file)
+def test_ping_success(dbc_file):
+    client = BtldrManager(bustype="virtual", source="vcan0")
 
-    with patch.object(client.canbus, 'recv', return_value=ping_resp) as mock_recv:
+    with patch.object(client.canbus, 'recv', return_value=fake_ping_resp(client.db)) as mock_recv:
         success, response = client.ping(0x0700, 1)
         check.is_true(success)
 

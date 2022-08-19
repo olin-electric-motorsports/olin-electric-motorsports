@@ -4,6 +4,7 @@ py_library(
     name = "btldr",
     srcs = [
         "btldr.py",
+        "btldr_database.py",
         "__init__.py",
     ],
 )
