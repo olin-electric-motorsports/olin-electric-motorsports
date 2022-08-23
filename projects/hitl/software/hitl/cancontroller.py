@@ -61,8 +61,7 @@ class CANController:
             )
             listener.start()
         except OSError as e:
-            self.log.error("CAN Hardware not detected - initializing to none")
-            self.can_bus = None
+            raise
 
     def get_state(self, signal):
         """
@@ -71,10 +70,6 @@ class CANController:
         Args:
             signal (str): signal name to get
         """
-        if self.can_bus is None:
-            self.log.error("Could not get state: CAN hardware not connected")
-            return
-
         try:
             msg = self.message_of_signal[signal]
         except KeyError:
@@ -98,10 +93,6 @@ class CANController:
                 so for example for throttle potentiometers we would use the percentages,
                 not the raw values
         """
-        if self.can_bus is None:
-            self.log.error("Could not set state: CAN hardware not connected")
-            return
-
         try:
             msg_name = self.message_of_signal[signal]
         except KeyError:
@@ -137,10 +128,6 @@ class CANController:
             msg_name (str): The name of the message to send periodically
             period (float): Period of seconds between each message
         """
-        if self.can_bus is None:
-            self.log.error("Could not start periodic task: CAN hardware not connected")
-            return
-
         if msg_name not in self.signals:
             raise KeyError(f"Message {msg_name} not found in messages.")
 
@@ -165,10 +152,6 @@ class CANController:
         """
         Stop a periodic message task
         """
-        if self.can is None:
-            self.log.error("Could not stop periodic task: CAN hardware not connected")
-            return
-
         if msg_name in self.periodic_messages:
             self.periodic_messages[msg_name].stop()
             del self.periodic_messages[msg_name]
@@ -180,12 +163,6 @@ class CANController:
         """
         Stop all periodic message tasks
         """
-        if self.can_bus is None:
-            self.log.error(
-                "Could not stop all periodic tasks: CAN hardware not connected"
-            )
-            return
-
         self.can_bus.stop_all_periodic_tasks()
         self.log.debug("Stopped all periodic tasks")
 

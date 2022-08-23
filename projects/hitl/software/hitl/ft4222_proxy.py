@@ -54,11 +54,9 @@ class FT4222Proxy:
                 self.dev.i2cMaster_Init(400_000)
             except ft4222.FT2XXDeviceError as e:
                 self.log.error(f"Failed to connect to device {device_description}")
-                self.log.error(e)
-                self.dev = None
+                raise
         else:
-            self.log.warning("ft4222 could not be imported, cannot connect to hardware")
-            self.dev = None
+            raise ImportError("ft4222 could not be imported, cannot connect to hardware")
 
     def set_analog(address, pin_number, value, min=0, max=5):
         """
@@ -77,10 +75,6 @@ class FT4222Proxy:
             * bits 4-7: DAC number
             * bits 8-23: Value to write
         """
-        if not self.dev:
-            self.log.error("Could not set state; no hardware connection")
-            return
-
         byte1 = DAC_COMMANDS["output_now"] & DAC_CHANNEL_TO_ADD_BITS[pin_number]
         byte2, byte3 = map_to_machine(
             value=value,
@@ -108,10 +102,6 @@ class FT4222Proxy:
             * bits 8-14: Ignored
             * bit 15: Value to write
         """
-        if not self.dev:
-            self.log.error("Could not set state; no hardware connection")
-            return
-
         byte1 = GPIO_COMMANDS["single port"] & GPIO_CHANNEL_TO_ADD_BITS[pin_number]
         byte2 = 1 if value else 0
         data = bytes([byte1, byte2])
@@ -148,10 +138,6 @@ class FT4222Proxy:
             * bits 2-7: 0
             * bits 8-23: 16 bit voltage reading
         """
-        if not self.dev:
-            self.log.error("Could not get state; no hardware connection")
-            return
-
         # Request data
         data = ADC_PREFIX & ADC_CHANNEL_TO_ADD_BITS[pin_number]
         self.dev.i2cMaster_Write(address, data)
@@ -180,10 +166,6 @@ class FT4222Proxy:
             * bits 8-14: Ignored
             * bit 15: Value to write
         """
-        if not self.dev:
-            self.log.error("Could not get state; no hardware connection")
-            return
-
         # Request data
         data = (
             GPIO_COMMANDS["single port"]
