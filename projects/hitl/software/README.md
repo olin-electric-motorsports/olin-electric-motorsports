@@ -18,7 +18,7 @@ The hitl directory contains all python classes that represent real hardware, as 
 
 ### Tests
 
-All tests go here! That includes both unit tests (that test this code itself), and vehicle tests (that test our firmware on the car). All tests are written using the [pytest](https://docs.pytest.org/en/stable/) framework.
+Unit tests go here! These are the tests that test this code itself. All tests are written using the [pytest](https://docs.pytest.org/en/stable/) framework.
 
 ### Scripts
 
@@ -30,7 +30,7 @@ This is where our documentation lives (sort of)! We use [sphinx](https://www.sph
 
 ### Artifacts
 
-This is where all other files live. That includes our `config.ini` file, our can spec, all pin information, and logs, among other things.
+This is where all other files live. Right now, it is the primary home for any log files we generate
 
 ## Scope
 
