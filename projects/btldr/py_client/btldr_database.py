@@ -21,24 +21,6 @@ class BtldrDatabase(DBC):
         self.refresh()
 
 
-    """
-    Sets the base ID for the messages
-    """
-    def add_target(self):
-        assert(base % 8 == 0)
-
-        self._messages.append(self._make_query_msg(base))
-        self._messages.append(self._make_query_response_msg(base))
-        self._messages.append(self._make_reset_msg(base))
-        self._messages.append(self._make_reset_response_msg(base))
-        self._messages.append(self._make_request_msg(base))
-        self._messages.append(self._make_request_response_msg(base))
-        self._messages.append(self._make_data_msg(base))
-        self._messages.append(self._make_data_response_msg(base))
-
-        self.refresh()
-
-
     def _make_query_msg(self: int) -> CANMessage:
         timestamp = MessageSignal(
             "timestamp",
@@ -49,7 +31,7 @@ class BtldrDatabase(DBC):
 
         query = CANMessage(
             frame_id = 0,
-            name = f"btldr_query",
+            name = "btldr_query",
             length = 8,
             signals = [timestamp],
             senders = ["updatr"]
@@ -107,7 +89,7 @@ class BtldrDatabase(DBC):
 
         query_response = CANMessage(
             frame_id = 4,
-            name = f"btldr_query_response",
+            name = "btldr_query_response",
             length = 8,
             signals = [bootloader_version, chip_id, current_image, _reserved, time_delta],
             senders = ["updatr"]
@@ -129,7 +111,7 @@ class BtldrDatabase(DBC):
 
         reset = CANMessage(
             frame_id = 1,
-            name = f"btldr_reset",
+            name = "btldr_reset",
             length = 1,
             signals = [request],
             senders = ["updatr"],
@@ -160,7 +142,7 @@ class BtldrDatabase(DBC):
         reset_response = CANMessage(
             frame_id = 5,
             length = 2,
-            name = f"btldr_reset_response",
+            name = "btldr_reset_response",
             signals = [status, error_code],
         )
 
@@ -187,7 +169,7 @@ class BtldrDatabase(DBC):
         request = CANMessage(
             frame_id = 2,
             length = 3,
-            name = f"btldr_request",
+            name = "btldr_request",
             signals = [type, image_size],
             senders = ["updatr"],
         )
@@ -224,7 +206,7 @@ class BtldrDatabase(DBC):
         request_response = CANMessage(
             frame_id = 6,
             length = 5,
-            name = f"btldr_request_response",
+            name = "btldr_request_response",
             signals = [error_code, last_programmed_address, remaining_size],
         )
 
@@ -240,7 +222,7 @@ class BtldrDatabase(DBC):
 
         data_msg = CANMessage(
             frame_id = 3,
-            name = f"btldr_data",
+            name = "btldr_data",
             length = 8,
             signals = [data],
         )
@@ -276,7 +258,7 @@ class BtldrDatabase(DBC):
         data_response = CANMessage(
             frame_id = 7,
             length = 5,
-            name = f"btldr_data_response",
+            name = "btldr_data_response",
             signals = [error_code, last_programmed_address, remaining_size],
         )
 

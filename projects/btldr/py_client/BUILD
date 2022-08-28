@@ -15,8 +15,8 @@ pytest_test(
         "test_btldr_client.py",
         "conftest.py",
     ],
-    data = ["//projects/btldr/tools:updatr_dbc"],
     deps = [
         ":btldr",
     ],
+    visibility = ["//visibility:public"],
 )
