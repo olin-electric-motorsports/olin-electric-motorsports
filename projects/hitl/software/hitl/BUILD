@@ -4,24 +4,15 @@ load("@hitl_deps//:requirements.bzl", "requirement")
 py_library(
     name = "utils",
     srcs = ["utils.py"],
-    data = [
-        "//projects/hitl/software/artifacts:config.ini",
-        "//projects/hitl/software/artifacts:pin_info.csv",
-    ],
     visibility = ["//visibility:private"],
-    deps = [
-        requirement("pyusb"),
-    ],
 )
 
 py_library(
     name = "hitl",
     srcs = [
-        "__init__.py",
         "cancontroller.py",
-        "hitl.py",
+        "ft4222_proxy.py",
         "iocontroller.py",
-        "roadkillharness.py",
     ],
     imports = ["."],
     srcs_version = "PY3",
