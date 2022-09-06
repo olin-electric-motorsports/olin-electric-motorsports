@@ -232,13 +232,14 @@ def cc_firmware(name, **kwargs):
         linkopts = select({
             "//bazel/constraints:atmega16m1": ["-T $(location //scripts/ldscripts:atmega16m1.ld)"],
             "//bazel/constraints:atmega64m1": ["-T $(location //scripts/ldscripts:atmega64m1.ld)"],
-            "//bazel/constraints:stm32f103c8t6": [],
+            "//bazel/constraints:stm32f103c8t6": ["-T $(location //scripts/ldscripts:stm32f103c8t6.ld)"],
             # Add more ldscripts here
             "//conditions:default": [],
         }),
         additional_linker_inputs = [
             "//scripts/ldscripts:atmega16m1.ld",
             "//scripts/ldscripts:atmega64m1.ld",
+            "//scripts/ldscripts:stm32f103c8t6.ld",
         ],
         copts = select({
             "//bazel/constraints:hitl": ["-DBOARD_FIRMWARE_TEST"],
