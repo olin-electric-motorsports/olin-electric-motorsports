@@ -9,8 +9,8 @@ pytest_test(
         "unit/test_utils.py",
     ],
     data = [
-        "//vehicle/mkv:mkv.dbc",
         "pytest.ini",
+        "//vehicle/mkv:mkv.dbc",
     ],
     imports = ["."],
     tags = [
