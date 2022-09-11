@@ -33,21 +33,6 @@ enum State {
     FAULT,
 };
 
-enum AIR_State {
-    AIR_STATE_INIT = 0,
-    AIR_STATE_IDLE,
-    AIR_STATE_SHDN_CLOSED,
-    AIR_STATE_PRECHARGE,
-    AIR_STATE_TS_ACTIVE,
-    AIR_STATE_DISCHARGE,
-    AIR_STATE_FAULT,
-
-    AIR_STATE_CHARGING_IDLE,
-    AIR_STATE_CHARGING_SHDN_CLOSED,
-    AIR_STATE_CHARGING_ACTIVE,
-} air_state
-    = AIR_STATE_IDLE;
-
 /*
  * Interrupts
  */
@@ -260,21 +245,19 @@ int main(void) {
             can_send_bms_core();
             can_send_bms_sense();
             can_send_bms_metrics();
-            can_send_charging_cmd();
             monitor_cells();
 
             // Every 500ms send sensing and debug data
             if (loop_counter == 50) {
                 can_send_bms_debug();
                 can_send_bms_metrics();
-                can_send_charging_cmd();
             }
 
-            // if (bms_core.bms_state == CHARGING) {
-            //     if (loop_counter % 80 == 0) {
-            //         can_send_charging_cmd();
-            //     }
-            // }
+            if (bms_core.bms_state == CHARGING) {
+                if (loop_counter % 80 == 0) {
+                    can_send_charging_cmd();
+                }
+            }
 
             loop_counter++;
 
