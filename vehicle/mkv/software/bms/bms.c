@@ -174,9 +174,7 @@ static void monitor_cells(void) {
                 uint8_t charger_status = charging_fbk_data[4];
                 if (charger_status != 0) {
                     if ((charger_status & (1 << 3)) == 0) {
-
                     } else if ((charger_status & (1 << 2)) == 0) {
-
                     } else {
                         set_fault(BMS_FAULT_CHARGER_FAULT);
                     }
@@ -264,7 +262,6 @@ int main(void) {
             can_send_bms_metrics();
             can_send_charging_cmd();
             monitor_cells();
-
 
             // Every 500ms send sensing and debug data
             if (loop_counter == 50) {

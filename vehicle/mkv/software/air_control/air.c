@@ -470,7 +470,6 @@ int main(void) {
     // Send message again after initial checks are run
     can_send_air_control_critical();
 
-
     /*
      * CHARGING_IDLE is set in initial_checks()
      */
