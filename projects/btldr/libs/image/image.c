@@ -18,7 +18,7 @@ const image_hdr_t image_get_header(void) {
     return hdr;
 }
 
-uint8_t image_validate(image_hdr_t hdr, uint32_t* calc_crc) {
+uint8_t image_validate(image_hdr_t hdr) {
     // Get image start address (after header) and size
     uint16_t image_addr
         = ((uintptr_t)APP_IMAGE_HEADER_ADDRESS) + sizeof(image_hdr_t);
@@ -37,8 +37,6 @@ uint8_t image_validate(image_hdr_t hdr, uint32_t* calc_crc) {
         image_addr++;
     }
     crc = ~crc;
-
-    *calc_crc = image_size;
 
     // Calculated CRC is not the same as the stored CRC
     if (crc != hdr.crc) {

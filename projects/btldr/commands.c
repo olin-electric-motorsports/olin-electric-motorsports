@@ -67,7 +67,7 @@ uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
 
     // Validate image
     volatile image_hdr_t image_hdr = image_get_header();
-    uint8_t valid = image_validate(image_hdr, &crc);
+    uint8_t valid = image_validate(image_hdr);
 
     if (valid == IMAGE_VALID) {
         bootflag_clear(UPDATE_REQUESTED);
