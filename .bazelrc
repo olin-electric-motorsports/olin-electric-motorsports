@@ -3,6 +3,8 @@ try-import %workspace%/user.bazelrc
 build --incompatible_enable_cc_toolchain_resolution
 build --incompatible_use_cc_configure_from_rules_cc
 
+build --workspace_status_command=scripts/workspace_status.sh
+
 # AVR target
 build:m16m1-avr --platforms=//bazel/platforms:atmega16m1_avr
 build:16m1 --config=m16m1-avr

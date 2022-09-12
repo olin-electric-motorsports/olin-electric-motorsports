@@ -10,6 +10,18 @@
 #include "utils/utils.h"
 #include "vehicle/mkv/software/air_control/can_api.h"
 
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
+
 enum State {
     INIT = 0,
     IDLE,
@@ -353,6 +365,7 @@ int main(void) {
     can_init_air_control();
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
+    updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_N_LSD, OUTPUT);
@@ -369,21 +382,23 @@ int main(void) {
 
     gpio_enable_interrupt(SS_TSMS);
     gpio_enable_interrupt(SS_IMD_LATCH);
+    gpio_enable_interrupt(SS_BMS);
     gpio_enable_interrupt(SS_MPC);
     gpio_enable_interrupt(SS_HVD_CONN);
     gpio_enable_interrupt(SS_HVD);
-    gpio_enable_interrupt(SS_BMS);
     gpio_enable_interrupt(IMD_SENSE);
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
     // Ensure pull-ups are disabled
     gpio_clear_pin(SS_TSMS);
+    gpio_clear_pin(SS_BMS);
     gpio_clear_pin(SS_IMD_LATCH);
     gpio_clear_pin(SS_MPC);
     gpio_clear_pin(SS_HVD_CONN);
     gpio_clear_pin(SS_HVD);
 
+    updater_init(BTLDR_ID, 5);
     air_control_critical.air_state = INIT;
 
     // Initialize interrupts
@@ -418,6 +433,10 @@ int main(void) {
             run_1ms = false;
         }
 
+        if (air_control_critical.air_state == IDLE) {
+            updater_loop();
+        }
+
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
@@ -431,6 +450,9 @@ fault:
         /*
          * Continue senging CAN messages
          */
+
+        updater_loop();
+
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
