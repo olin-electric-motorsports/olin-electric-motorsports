@@ -1,7 +1,7 @@
+#include "vehicle/mkv/software/air_control/air_config.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
-#include "vehicle/mkv/software/air_control/air_config.h"
 
 /*
  * GPIO pin definitions
