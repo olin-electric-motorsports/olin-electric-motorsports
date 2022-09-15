@@ -1,7 +1,8 @@
-# import cantools
+import math
 import os
 import time
 import logging
+import tqdm
 
 from cantools.database import load_file
 from can import Message as CANMessage
@@ -15,7 +16,7 @@ def _btldr_offset(frame_id):
 
 
 class BtldrManager:
-    def __init__(self, bustype: str, source: str, bitrate: int = 500000):
+    def __init__(self):
         self.db = BtldrDatabase()
         logging.info("CAN DBC Initialized")
 
@@ -29,10 +30,10 @@ class BtldrManager:
         maybe_response = self._receive_query_response(ecu_id, timeout)
 
         if maybe_response != None:
-            ping_response = maybe_response
+            ping_resp = maybe_response
 
             end = time.time_ns()
-            ping_resp["elapsed_time"] = end - start
+            ping_resp["elapsed_time_ns"] = end - start
 
             return ping_resp
         else:
@@ -46,6 +47,8 @@ class BtldrManager:
 
         # Reset device into the bootloader
         self.software_reset(ecu_id, request_update=True)
+
+        time.sleep(1)
 
         # Query to make sure device is in bootloader
         ping_resp = self.ping(ecu_id, timeout)
@@ -76,7 +79,7 @@ class BtldrManager:
         # Ok, we received an OK from the target to start sending data
 
         with open(file, "rb") as bin:
-            for chunk_idx in tqdm(range(image_size_octets)):
+            for chunk_idx in range(image_size_octets):
                 data = list(bin.read(8))
 
                 if not data:
@@ -91,7 +94,7 @@ class BtldrManager:
                 assert len(data) == 8
 
                 self._send_data(ecu_id, data)
-                data_response = self._receive_data_response(self, ecu_id, timeout)
+                data_response = self._receive_data_response(ecu_id, timeout)
 
                 if not data_response:
                     raise Exception("Failed to receive data response from target")
@@ -102,16 +105,18 @@ class BtldrManager:
                             + data_response["error_code"]
                         )
 
-                remaining_size = image_size_octets - chunk_idx
+                remaining_size = (image_size_octets - chunk_idx - 1) * 8
 
                 if remaining_size != data_response["remaining_size"]:
                     logging.warning(
                         "Mismatch in amount of data remaining, flash may fail: Local is %i, remote is %i"
-                        % remaining_size,
-                        data_response["remaining_size"],
+                        % (remaining_size,
+                        data_response["remaining_size"]),
                     )
 
         self.software_reset(ecu_id, False)
+
+        time.sleep(1)
 
         ping_resp = self.ping(ecu_id, timeout)
 
@@ -146,6 +151,7 @@ class BtldrManager:
         query_frame = CANMessage(
             arbitration_id=ecu_id + query_msg.frame_id,
             data=query_data,
+            is_extended_id=False,
         )
 
         self.canbus.send(query_frame)
@@ -162,6 +168,7 @@ class BtldrManager:
         reset_frame = CANMessage(
             arbitration_id=ecu_id + reset_msg.frame_id,
             data=reset_data,
+            is_extended_id=False,
         )
 
         self.canbus.send(reset_frame)
@@ -189,6 +196,7 @@ class BtldrManager:
         request_frame = CANMessage(
             arbitration_id=ecu_id + request_msg.frame_id,
             data=request_data,
+            is_extended_id=False,
         )
 
         self.canbus.send(request_frame)
@@ -198,6 +206,7 @@ class BtldrManager:
         data_frame = CANMessage(
             arbitration_id=ecu_id + data_msg.frame_id,
             data=data,
+            is_extended_id=False,
         )
 
         self.canbus.send(data_frame)

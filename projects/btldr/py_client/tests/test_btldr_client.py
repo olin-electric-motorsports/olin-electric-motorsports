@@ -63,14 +63,3 @@ def test_ping_success(canbus, ecu_id, ping_resp):
         check.is_not_none(response)
 
     check.is_true(mock_recv.called)
-
-
-# def test_flash(canbus, ecu_id, ping_resp):
-#     client = BtldrManager(bustype="virtual", source="vcan0")
-#     client.canbus = canbus
-#
-#     with patch.object(client.canbus, 'recv', return_value=ping_resp) as mock_recv:
-#         response = client.flash(ecu_id, "examples/blinky/blinky.bin", 1)
-#         check.is_not_none(response)
-#
-#     check.is_true(mock_recv.called)

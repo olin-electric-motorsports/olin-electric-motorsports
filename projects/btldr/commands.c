@@ -11,6 +11,8 @@
 #include "projects/btldr/libs/image/api.h"
 #include "projects/btldr/libs/shmem/api.h"
 
+#define ERR_IMAGE_INVALID (1) // HACK: need to formalize
+
 static struct session_data session = {
     .is_active = false,
     .type = 0,
