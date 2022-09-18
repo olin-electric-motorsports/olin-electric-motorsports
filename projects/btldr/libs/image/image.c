@@ -48,7 +48,7 @@ uint8_t image_validate(image_hdr_t hdr) {
 
 uint64_t image_get_timestamp(void) {
     const image_hdr_t hdr = image_get_header();
-    return (uint64_t)hdr.flash_timestamp;
+    return hdr.flash_timestamp;
 }
 
 uint16_t image_get_size(void) {

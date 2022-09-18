@@ -138,7 +138,7 @@ class BtldrManager:
     ### PRIVATE METHODS
 
     def _send_query(self, ecu_id):
-        now = time.time()
+        now = int(time.time())
 
         query_msg = self.db.get_message_by_name("btldr_query")
 
