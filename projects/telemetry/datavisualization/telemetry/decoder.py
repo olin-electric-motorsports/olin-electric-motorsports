@@ -125,5 +125,5 @@ def decode_csv(dbc, can_csv):
 
 
 if __name__ == "__main__":
-    # decode_csv("data/dash.dbc", "data/can5.csv")
-    decode_live("data/dash.dbc")
+    decode_csv("data/dash.dbc", "data/can5.csv")
+    # decode_live("data/dash.dbc")

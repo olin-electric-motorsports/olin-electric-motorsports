@@ -14,8 +14,7 @@ Current: telemetry system up and running with sample radio messages!
 ## How to use:
 [FULL DOCUMENTATION HERE](https://docs.olinelectricmotorsports.com/doc/real-time-visualization-P59eM2Ypk0)
 1. sudo docker-compose up
-2. python3 decoder.py
-3. python3 app.py
+2. python3 main.py
 4. go to localhost: 3000 (or 3001, whichever works)
 
 
@@ -27,6 +26,22 @@ Current: telemetry system up and running with sample radio messages!
 - setup RDB and grafana config files
 
 
+- Organization: multiple layers (physical -> data-link -> transport -> app) 
+- can we create a transport file that is ONLY responsible for reading from somewhere and giving it to redis.
+
+
+VCAN--
+
+Send data from the vcan network to the transport layer. 
+
+
+Script reading from vcan and writing to redis.
+Build the dbc for the wheelspinning data + get the wheelspinning data and use that to test data.
+
+Final deliverable:
+A torque request graph. 
+
+Take the radio data and w
 ## [Work in Progress] installation instructions
 pip install pyserial 
 
