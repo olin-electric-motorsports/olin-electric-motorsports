@@ -1,3 +1,5 @@
+# This file is the ultimate source of truth for the bootloader IDs for each ECU
+
 ECUS = {
     "air_control": {
         "btldr_id": "0x700",
