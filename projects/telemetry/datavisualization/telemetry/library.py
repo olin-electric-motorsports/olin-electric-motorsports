@@ -33,7 +33,7 @@ class ArduinoSerialIn(DataStream):
         self, baudrate=9600, port_name="/dev/ttyUSB0", data_channels=["arduino_data"]
     ):
         # baud rate is the rate at which information is transferred (9600 bits/second)
-        # port name is the port the arduino is connected to 
+        # port name is the port the arduino is connected to
         # data channels is the tag attached to the data being sent (used to visualize)
         DataStream.__init__(self, data_channels)
         self.ser = serial.Serial(port_name, baudrate)
@@ -47,11 +47,11 @@ class ArduinoSerialIn(DataStream):
         return (flt,)
 
     def parse_line(self, value):
-        
+
         # try except// catch the error but don't break down please
         # return 19.0 if there is an error.
         try:
-            val_strn = value.decode()  
+            val_strn = value.decode()
         except Exception as error:
             print(error)
             return 19.0
@@ -70,8 +70,9 @@ class ArduinoSerialIn(DataStream):
 class LogFile(DataStream):
     """
     Class to represent logfile datastream object where data can be grabbed with a single function
-    TODO: Handle logfile formatting 
+    TODO: Handle logfile formatting
     """
+
     count = 0
     path = ""
 
@@ -95,7 +96,9 @@ class LogFile(DataStream):
 
     def parse_line(self, data):
         try:
-            val_strn = data.decode()  # try except// catch the error but don't break down please
+            val_strn = (
+                data.decode()
+            )  # try except// catch the error but don't break down please
         except Exception as e:
             print(e)
             return 19.0
@@ -113,7 +116,7 @@ class LogFile(DataStream):
 
 class RadioSerialIn(DataStream):
     """
-    Class to represent Radio serial datastream object 
+    Class to represent Radio serial datastream object
     TODO: Handle radio serial formatting
     """
 
@@ -142,7 +145,9 @@ class RadioSerialIn(DataStream):
 
     def parse_line(self, data):
         try:
-            val_strn = data.decode()  # try except// catch the error but don't break down please
+            val_strn = (
+                data.decode()
+            )  # try except// catch the error but don't break down please
         except Exception as error:
             print(error)
             return 19.0
@@ -169,14 +174,14 @@ class RedisDataSender(object):
             redis_instance = Redis(host="127.0.0.1", port="6379")
         except Exception as error:
             print(error)
-            return ("redis not connected")
+            return "redis not connected"
 
         # initialize redis timeseries client connection
         try:
             self.rts = Client(conn=redis_instance)
         except Exception as error:
             print(error)
-            return ("redis timeseries client not connected")
+            return "redis timeseries client not connected"
 
         for data_channel in self.data_channels:
             # create a data channel unless it already exists
@@ -199,6 +204,7 @@ class RedisDataSender(object):
 
     def send_to_redis_timeseries(self, flt, data_channel):
         self.rts.add(data_channel, "*", flt)
+
 
 # radio = RadioSerialIn("data/nextmessage.txt")
 # # print(radio.parse_line)

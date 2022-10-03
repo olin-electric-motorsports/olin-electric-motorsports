@@ -40,6 +40,7 @@ def decode_live(dbc):
             dec_msg = int.from_bytes(bin_msg, "big")
             next_can_msg.append(dec_msg)
 
+        # print(next_can_msg)
         # gets db file used to decode messages
         db = cantools.database.load_file(dbc)
 
@@ -56,7 +57,6 @@ def decode_live(dbc):
         decoded_signals = db.decode_message(can_id, next_can_msg)
         # gets all the information about the signal like name, length ect
         x = db.get_message_by_frame_id(can_id)
-        
         decoded_dict = {
             'id': can_id,
             'name': x.name,
@@ -71,6 +71,7 @@ def decode_live(dbc):
         with open("data/logfile.txt", "a") as logf:
             logf.write(f"{decoded_dict}\n")
 
+        # print what's being written to the file
         print(decoded_dict)
 
 def decode_csv(dbc, can_csv):

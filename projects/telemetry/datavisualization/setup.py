@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+"""
+Detailing the necessary packages for our RTD system to work.
+"""
 from setuptools import setup, find_packages
 
 setup(

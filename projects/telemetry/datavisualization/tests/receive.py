@@ -1,7 +1,7 @@
 import serial
 
 while True:
-    s = serial.Serial('/dev/ttyUSB0', 57600)
+    s = serial.Serial("/dev/ttyUSB0", 57600)
     data = str(s.read_until(size=64))
     print(f"this is data {data}")
     print(data[1])
