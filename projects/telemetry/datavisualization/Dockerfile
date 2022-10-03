@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-LABEL author="Jack Greenberg"
+LABEL author="Richard Li"
 
 RUN mkdir -p /root/.cache/pip/wheels && \
     cd /root/.cache/pip/wheels && \
