@@ -12,14 +12,11 @@ Returns:
     In other words, the data that we want to display. 
 """
 
-# import sys
-# import ast
+
 import csv
-# import can
 import cantools
 import json
 import serial
-# import time
 from redis import Redis
 from redistimeseries.client import Client
 import yaml
@@ -43,7 +40,6 @@ def decode_live(dbc):
             dec_msg = int.from_bytes(bin_msg, "big")
             next_can_msg.append(dec_msg)
 
-        # print(next_can_msg)
         # gets db file used to decode messages
         db = cantools.database.load_file(dbc)
 
@@ -60,6 +56,7 @@ def decode_live(dbc):
         decoded_signals = db.decode_message(can_id, next_can_msg)
         # gets all the information about the signal like name, length ect
         x = db.get_message_by_frame_id(can_id)
+        
         decoded_dict = {
             'id': can_id,
             'name': x.name,
@@ -74,9 +71,7 @@ def decode_live(dbc):
         with open("data/logfile.txt", "a") as logf:
             logf.write(f"{decoded_dict}\n")
 
-        # print what's being written to the file
         print(decoded_dict)
-
 
 def decode_csv(dbc, can_csv):
     # gets db file used to decode messages
@@ -98,8 +93,6 @@ def decode_csv(dbc, can_csv):
                     int_list.append(x)
                 final_list.append(int_list)
 
-    # print(f"final list {final_list[0]}")
-
     for data in final_list:  # takes each list inside this list
         i += 1
         # removes id and assigns it to can_id
@@ -112,8 +105,6 @@ def decode_csv(dbc, can_csv):
         x = db.get_message_by_frame_id(can_id)
 
         decoded_dict = {
-            "time_start": i,
-            "time_end": i + 0.1,
             "id": can_id,
             "name": x.name,
             "length": x.length,
