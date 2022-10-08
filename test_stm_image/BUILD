@@ -10,7 +10,6 @@ cc_firmware(
     ],
     visibility = ["//visibility:public"],
     deps = [
-        "//scripts/ldscripts:stm32f103c8t6.ld",
         "@libopencm3//:export",
         "@libopencm3//:libopencm3_stm32f1",
     ],

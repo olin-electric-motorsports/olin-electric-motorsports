@@ -244,20 +244,6 @@ def cc_firmware(name, **kwargs):
         copts = select({
             "//bazel/constraints:hitl": ["-DBOARD_FIRMWARE_TEST"],
             "//bazel/constraints:hackerboard": ["-DBOARD_HACKERBOARD"],
-            "//bazel/constraints:stm32f103c8t6": [
-                "-Wall",
-                "-Werror",
-                "-Wextra",
-                "-Wimplicit-function-declaration",
-                "-Wmissing-prototypes",
-                "-Wno-unused-variable",
-                "-Wredundant-decls",
-                "-Wshadow",
-                "-Wstrict-prototypes",
-                "-fdata-sections",
-                "-ffunction-sections",
-                "-fno-common",
-            ],
             "//conditions:default": [],
         }),
         **kwargs
