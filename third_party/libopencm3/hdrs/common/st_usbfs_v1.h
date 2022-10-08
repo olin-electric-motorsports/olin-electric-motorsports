@@ -39,24 +39,24 @@
 /* --- USB BTABLE Registers ------------------------------------------------ */
 
 #define USB_EP_TX_ADDR(EP) \
-	((uint32_t *)(USB_PMA_BASE + (USB_GET_BTABLE + EP * 8 + 0) * 2))
+    ((uint32_t*)(USB_PMA_BASE + (USB_GET_BTABLE + EP * 8 + 0) * 2))
 
 #define USB_EP_TX_COUNT(EP) \
-	((uint32_t *)(USB_PMA_BASE + (USB_GET_BTABLE + EP * 8 + 2) * 2))
+    ((uint32_t*)(USB_PMA_BASE + (USB_GET_BTABLE + EP * 8 + 2) * 2))
 
 #define USB_EP_RX_ADDR(EP) \
-	((uint32_t *)(USB_PMA_BASE + (USB_GET_BTABLE + EP * 8 + 4) * 2))
+    ((uint32_t*)(USB_PMA_BASE + (USB_GET_BTABLE + EP * 8 + 4) * 2))
 
 #define USB_EP_RX_COUNT(EP) \
-	((uint32_t *)(USB_PMA_BASE + (USB_GET_BTABLE + EP * 8 + 6) * 2))
+    ((uint32_t*)(USB_PMA_BASE + (USB_GET_BTABLE + EP * 8 + 6) * 2))
 
 /* --- USB BTABLE manipulators --------------------------------------------- */
 
 #define USB_GET_EP_TX_BUFF(EP) \
-	(USB_PMA_BASE + (uint8_t *)(USB_GET_EP_TX_ADDR(EP) * 2))
+    (USB_PMA_BASE + (uint8_t*)(USB_GET_EP_TX_ADDR(EP) * 2))
 
 #define USB_GET_EP_RX_BUFF(EP) \
-	(USB_PMA_BASE + (uint8_t *)(USB_GET_EP_RX_ADDR(EP) * 2))
+    (USB_PMA_BASE + (uint8_t*)(USB_GET_EP_RX_ADDR(EP) * 2))
 
 #endif
 /** @cond */
@@ -64,4 +64,3 @@
 #error "st_usbfs_v1.h should not be included directly, only via st_usbfs.h"
 #endif
 /** @endcond */
-

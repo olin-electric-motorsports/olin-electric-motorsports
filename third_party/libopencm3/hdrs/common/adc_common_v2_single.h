@@ -46,7 +46,7 @@ specific memorymap.h header before including this header file.*/
  *@{*/
 /* ----- ADC registers  -----------------------------------------------------*/
 /** Channel Select Register */
-#define ADC_CHSELR(adc)		MMIO32((adc) + 0x28)
+#define ADC_CHSELR(adc) MMIO32((adc) + 0x28)
 /**@}*/
 
 /* ----- ADC registers values -----------------------------------------------*/
@@ -54,18 +54,18 @@ specific memorymap.h header before including this header file.*/
 /** @addtogroup adc_cfgr1
 @{*/
 /** Wait conversion mode */
-#define ADC_CFGR1_WAIT		(1<<14)
+#define ADC_CFGR1_WAIT (1 << 14)
 /** Auto off mode */
-#define ADC_CFGR1_AUTOFF		(1 << 15)
+#define ADC_CFGR1_AUTOFF (1 << 15)
 
 /** SCANDIR: Scan Sequence Direction: Upwards Scan (0), Downwards(1) */
-#define ADC_CFGR1_SCANDIR		(1 << 2)
+#define ADC_CFGR1_SCANDIR (1 << 2)
 /**@}*/
 
 /* ADC_CHSELR Values --------------------------------------------------------*/
 /** @defgroup adc_chselr CHSELR ADC Channel Selection register
 @{*/
-#define ADC_CHSELR_CHSEL(x)		(1 << (x))
+#define ADC_CHSELR_CHSEL(x) (1 << (x))
 /**@}*/
 
 /* --- Function prototypes ------------------------------------------------- */

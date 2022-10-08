@@ -55,15 +55,15 @@
 #ifndef LIBOPENCM3_SYSTICK_H
 #define LIBOPENCM3_SYSTICK_H
 
-#include <libopencm3/cm3/memorymap.h>
 #include <libopencm3/cm3/common.h>
+#include <libopencm3/cm3/memorymap.h>
 
 /** SysTick Control and Status Register (CSR).
  * Controls the system timer and provides status data.
  * Usage constraints: There are no usage constraints.
  * Configurations Always implemented.
  */
-#define STK_CSR				MMIO32(SYS_TICK_BASE + 0x00)
+#define STK_CSR MMIO32(SYS_TICK_BASE + 0x00)
 
 /** SysTick Reload Value Register (RVR).
  * Reads or clears the value that will be loaded to the counter.
@@ -73,21 +73,21 @@
  * - Unsupported bits are read as zero
  * Configurations Always implemented.
  */
-#define STK_RVR				MMIO32(SYS_TICK_BASE + 0x04)
+#define STK_RVR MMIO32(SYS_TICK_BASE + 0x04)
 
 /** SysTick Current Value Register (CVR).
  * Holds the current value of the counter.
  * Usage constraints: There are no usage constraints.
  * Configurations Always implemented.
  */
-#define STK_CVR				MMIO32(SYS_TICK_BASE + 0x08)
+#define STK_CVR MMIO32(SYS_TICK_BASE + 0x08)
 
 /** SysTick Calibration Value Register(Read Only) (CALIB)
  * Reads the calibration value and parameters for SysTick.
  * Usage constraints: There are no usage constraints.
  * Configurations Always implemented.
  */
-#define STK_CALIB			MMIO32(SYS_TICK_BASE + 0x0C)
+#define STK_CALIB MMIO32(SYS_TICK_BASE + 0x0C)
 
 /** @defgroup STK_CSR_VALUES STK_CSR Values
  * @{
@@ -98,51 +98,49 @@
  *  0 = Timer has not counted to 0
  *  1 = Timer has counted to 0.
  */
-#define STK_CSR_COUNTFLAG		(1 << 16)
+#define STK_CSR_COUNTFLAG (1 << 16)
 
-#define STK_CSR_CLKSOURCE_LSB		2
+#define STK_CSR_CLKSOURCE_LSB 2
 /** CLKSOURCE: Clock source selection
  * for 0, SysTick uses the IMPLEMENTATION DEFINED external reference clock.
  * for 1, SysTick uses the processor clock.
  * If no external clock is provided, this bit reads as 1 and ignores writes.
  */
-#define STK_CSR_CLKSOURCE		(1 << STK_CSR_CLKSOURCE_LSB)
+#define STK_CSR_CLKSOURCE (1 << STK_CSR_CLKSOURCE_LSB)
 
 /** @defgroup systick_clksource Clock source selection
 @ingroup CM3_systick_defines
 
 @{*/
 #if defined(__ARM_ARCH_6M__)
-#define STK_CSR_CLKSOURCE_EXT		(0 << STK_CSR_CLKSOURCE_LSB)
-#define STK_CSR_CLKSOURCE_AHB		(1 << STK_CSR_CLKSOURCE_LSB)
+#define STK_CSR_CLKSOURCE_EXT (0 << STK_CSR_CLKSOURCE_LSB)
+#define STK_CSR_CLKSOURCE_AHB (1 << STK_CSR_CLKSOURCE_LSB)
 #else
-#define STK_CSR_CLKSOURCE_AHB_DIV8	(0 << STK_CSR_CLKSOURCE_LSB)
-#define STK_CSR_CLKSOURCE_AHB		(1 << STK_CSR_CLKSOURCE_LSB)
+#define STK_CSR_CLKSOURCE_AHB_DIV8 (0 << STK_CSR_CLKSOURCE_LSB)
+#define STK_CSR_CLKSOURCE_AHB      (1 << STK_CSR_CLKSOURCE_LSB)
 #endif
 /**@}*/
 
 /** TICKINT: SysTick exception request enable */
-#define STK_CSR_TICKINT			(1 << 1)
+#define STK_CSR_TICKINT (1 << 1)
 /** ENABLE: Counter enable */
-#define STK_CSR_ENABLE			(1 << 0)
+#define STK_CSR_ENABLE (1 << 0)
 /**@}*/
 
 /** @defgroup STK_RVR_VALUES STK_RVR Values
  * @{
  */
 /** RELOAD[23:0]: RELOAD value */
-#define STK_RVR_RELOAD			0x00FFFFFF
+#define STK_RVR_RELOAD 0x00FFFFFF
 
 /**@}*/
-
 
 /** @defgroup STK_RVR_VALUES STK_RVR Values
  * @{
  */
 /** CURRENT[23:0]: Current counter value */
-#define STK_CVR_CURRENT			0x00FFFFFF
+#define STK_CVR_CURRENT 0x00FFFFFF
 /**@}*/
-
 
 /** @defgroup STK_CALIB_VALUES STK_CALIB Values
  * @{
@@ -155,14 +153,14 @@
  * When this bit is 1, the CLKSOURCE bit of the SYST_CSR register is forced to
  * 1 and cannot be cleared to 0.
  */
-#define STK_CALIB_NOREF			(1 << 31)
+#define STK_CALIB_NOREF (1 << 31)
 
 /** SKEW: SKEW flag
  * Bit30 => SKEW Indicates whether the 10ms calibration value is exact:
  * 0 = 10ms calibration value is exact.
  * 1 = 10ms calibration value is inexact, because of the clock frequency
  */
-#define STK_CALIB_SKEW			(1 << 30)
+#define STK_CALIB_SKEW (1 << 30)
 
 /* Bits [29:24] Reserved, must be kept cleared. */
 /** TENMS Calibration value for 10ms.
@@ -170,7 +168,7 @@
  * (100Hz) timing, subject to system clock skew errors. If this field is zero,
  * the calibration value is not known.
  */
-#define STK_CALIB_TENMS			0x00FFFFFF
+#define STK_CALIB_TENMS 0x00FFFFFF
 /**@}*/
 
 /* --- Function Prototypes ------------------------------------------------- */
@@ -195,4 +193,3 @@ END_DECLS
 
 #endif
 /**@}*/
-

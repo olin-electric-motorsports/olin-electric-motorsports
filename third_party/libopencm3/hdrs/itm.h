@@ -34,23 +34,23 @@
 /* --- ITM registers ------------------------------------------------------- */
 
 /* Stimulus Port x (ITM_STIM<sz>(x)) */
-#define ITM_STIM8(n)			(MMIO8(ITM_BASE + ((n)*4)))
-#define ITM_STIM16(n)			(MMIO16(ITM_BASE + ((n)*4)))
-#define ITM_STIM32(n)			(MMIO32(ITM_BASE + ((n)*4)))
+#define ITM_STIM8(n)  (MMIO8(ITM_BASE + ((n)*4)))
+#define ITM_STIM16(n) (MMIO16(ITM_BASE + ((n)*4)))
+#define ITM_STIM32(n) (MMIO32(ITM_BASE + ((n)*4)))
 
 /* Trace Enable ports (ITM_TER[x]) */
-#define ITM_TER				(&MMIO32(ITM_BASE + 0xE00))
+#define ITM_TER (&MMIO32(ITM_BASE + 0xE00))
 
 /* Trace Privilege (ITM_TPR) */
-#define ITM_TPR				MMIO32(ITM_BASE + 0xE40)
+#define ITM_TPR MMIO32(ITM_BASE + 0xE40)
 
 /* Trace Control (ITM_TCR) */
-#define ITM_TCR				MMIO32(ITM_BASE + 0xE80)
+#define ITM_TCR MMIO32(ITM_BASE + 0xE80)
 
 /* CoreSight Lock Status Register for this peripheral */
-#define ITM_LSR			MMIO32(ITM_BASE + CORESIGHT_LSR_OFFSET)
+#define ITM_LSR MMIO32(ITM_BASE + CORESIGHT_LSR_OFFSET)
 /* CoreSight Lock Access Register for this peripheral */
-#define ITM_LAR			MMIO32(ITM_BASE + CORESIGHT_LAR_OFFSET)
+#define ITM_LAR MMIO32(ITM_BASE + CORESIGHT_LAR_OFFSET)
 
 /* TODO: PID, CID */
 
@@ -58,7 +58,7 @@
 
 /* Bits 31:0 - Write to port FIFO for forwarding as software event packet */
 /* Bits 31:1 - RAZ */
-#define ITM_STIM_FIFOREADY		(1 << 0)
+#define ITM_STIM_FIFOREADY (1 << 0)
 
 /* --- ITM_TER values ------------------------------------------------------ */
 
@@ -74,20 +74,20 @@
 /* --- ITM_TCR values ------------------------------------------------------ */
 
 /* Bits 31:24 - Reserved */
-#define ITM_TCR_BUSY			(1 << 23)
-#define ITM_TCR_TRACE_BUS_ID_MASK	(0x3f << 16)
+#define ITM_TCR_BUSY              (1 << 23)
+#define ITM_TCR_TRACE_BUS_ID_MASK (0x3f << 16)
 /* Bits 15:10 - Reserved */
-#define ITM_TCR_TSPRESCALE_NONE		(0 << 8)
-#define ITM_TCR_TSPRESCALE_DIV4		(1 << 8)
-#define ITM_TCR_TSPRESCALE_DIV16	(2 << 8)
-#define ITM_TCR_TSPRESCALE_DIV64	(3 << 8)
-#define ITM_TCR_TSPRESCALE_MASK		(3 << 8)
+#define ITM_TCR_TSPRESCALE_NONE  (0 << 8)
+#define ITM_TCR_TSPRESCALE_DIV4  (1 << 8)
+#define ITM_TCR_TSPRESCALE_DIV16 (2 << 8)
+#define ITM_TCR_TSPRESCALE_DIV64 (3 << 8)
+#define ITM_TCR_TSPRESCALE_MASK  (3 << 8)
 /* Bits 7:5 - Reserved */
-#define ITM_TCR_SWOENA			(1 << 4)
-#define ITM_TCR_TXENA			(1 << 3)
-#define ITM_TCR_SYNCENA			(1 << 2)
-#define ITM_TCR_TSENA			(1 << 1)
-#define ITM_TCR_ITMENA			(1 << 0)
+#define ITM_TCR_SWOENA  (1 << 4)
+#define ITM_TCR_TXENA   (1 << 3)
+#define ITM_TCR_SYNCENA (1 << 2)
+#define ITM_TCR_TSENA   (1 << 1)
+#define ITM_TCR_ITMENA  (1 << 0)
 
 /**@}*/
 

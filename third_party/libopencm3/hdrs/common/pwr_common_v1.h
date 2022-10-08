@@ -38,67 +38,67 @@ specific memorymap.h header before including this header file.*/
 /* --- PWR registers ------------------------------------------------------- */
 
 /** Power control register (PWR_CR) */
-#define PWR_CR				MMIO32(POWER_CONTROL_BASE + 0x00)
+#define PWR_CR MMIO32(POWER_CONTROL_BASE + 0x00)
 
 /** Power control/status register (PWR_CSR) */
-#define PWR_CSR				MMIO32(POWER_CONTROL_BASE + 0x04)
+#define PWR_CSR MMIO32(POWER_CONTROL_BASE + 0x04)
 
 /* --- PWR_CR values ------------------------------------------------------- */
 
 /* Bits [31:9]: Reserved, must be kept at reset value. */
 
 /** DBP: Disable backup domain write protection */
-#define PWR_CR_DBP			(1 << 8)
+#define PWR_CR_DBP (1 << 8)
 
 /* PLS[7:5]: PVD level selection */
-#define PWR_CR_PLS_LSB			5
+#define PWR_CR_PLS_LSB 5
 /** @defgroup pwr_pls PVD level selection
 @ingroup STM32F_pwr_defines
 
 @{*/
-#define PWR_CR_PLS_2V2			(0x0 << PWR_CR_PLS_LSB)
-#define PWR_CR_PLS_2V3			(0x1 << PWR_CR_PLS_LSB)
-#define PWR_CR_PLS_2V4			(0x2 << PWR_CR_PLS_LSB)
-#define PWR_CR_PLS_2V5			(0x3 << PWR_CR_PLS_LSB)
-#define PWR_CR_PLS_2V6			(0x4 << PWR_CR_PLS_LSB)
-#define PWR_CR_PLS_2V7			(0x5 << PWR_CR_PLS_LSB)
-#define PWR_CR_PLS_2V8			(0x6 << PWR_CR_PLS_LSB)
-#define PWR_CR_PLS_2V9			(0x7 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_2V2 (0x0 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_2V3 (0x1 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_2V4 (0x2 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_2V5 (0x3 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_2V6 (0x4 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_2V7 (0x5 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_2V8 (0x6 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_2V9 (0x7 << PWR_CR_PLS_LSB)
 /**@}*/
-#define PWR_CR_PLS_MASK			(0x7 << PWR_CR_PLS_LSB)
+#define PWR_CR_PLS_MASK (0x7 << PWR_CR_PLS_LSB)
 
 /** PVDE: Power voltage detector enable */
-#define PWR_CR_PVDE			(1 << 4)
+#define PWR_CR_PVDE (1 << 4)
 
 /** CSBF: Clear standby flag */
-#define PWR_CR_CSBF			(1 << 3)
+#define PWR_CR_CSBF (1 << 3)
 
 /** CWUF: Clear wakeup flag */
-#define PWR_CR_CWUF			(1 << 2)
+#define PWR_CR_CWUF (1 << 2)
 
 /** PDDS: Power down deepsleep */
-#define PWR_CR_PDDS			(1 << 1)
+#define PWR_CR_PDDS (1 << 1)
 
 /** LPDS: Low-power deepsleep */
-#define PWR_CR_LPDS			(1 << 0)
+#define PWR_CR_LPDS (1 << 0)
 
 /* --- PWR_CSR values ------------------------------------------------------ */
 
 /* Bits [31:9]: Reserved, must be kept at reset value. */
 
 /** EWUP: Enable WKUP pin */
-#define PWR_CSR_EWUP			(1 << 8)
+#define PWR_CSR_EWUP (1 << 8)
 
 /* Bits [7:3]: Reserved, must be kept at reset value. */
 
 /** PVDO: PVD output */
-#define PWR_CSR_PVDO			(1 << 2)
+#define PWR_CSR_PVDO (1 << 2)
 
 /** SBF: Standby flag */
-#define PWR_CSR_SBF			(1 << 1)
+#define PWR_CSR_SBF (1 << 1)
 
 /** WUF: Wakeup flag */
-#define PWR_CSR_WUF			(1 << 0)
+#define PWR_CSR_WUF (1 << 0)
 
 /* --- PWR function prototypes ------------------------------------------- */
 
@@ -129,4 +129,3 @@ END_DECLS
 #warning "pwr_common_v1.h should not be included explicitly, only via pwr.h"
 #endif
 /** @endcond */
-

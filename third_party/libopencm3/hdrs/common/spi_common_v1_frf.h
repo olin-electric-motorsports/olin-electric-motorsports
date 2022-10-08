@@ -39,15 +39,15 @@ specific memorymap.h header before including this header file.*/
 
 /* FRF: Frame format */
 /* Note: Not used in I2S mode. */
-#define SPI_CR2_FRF				(1 << 4)
-#define SPI_CR2_FRF_MOTOROLA_MODE	(0 << 4)
-#define SPI_CR2_FRF_TI_MODE		(1 << 4)
+#define SPI_CR2_FRF               (1 << 4)
+#define SPI_CR2_FRF_MOTOROLA_MODE (0 << 4)
+#define SPI_CR2_FRF_TI_MODE       (1 << 4)
 
 /* --- SPI_SR values ------------------------------------------------------- */
 
 /* FRE / TIFRFE: TI frame format error */
-#define SPI_SR_TIFRFE			(1 << 8) //F2
-#define SPI_SR_FRE				(1 << 8) //others
+#define SPI_SR_TIFRFE (1 << 8) // F2
+#define SPI_SR_FRE    (1 << 8) // others
 
 /* --- Function prototypes ------------------------------------------------- */
 
@@ -64,4 +64,3 @@ END_DECLS
 #endif
 /** @endcond */
 /**@}*/
-

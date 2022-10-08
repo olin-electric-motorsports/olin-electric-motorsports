@@ -41,13 +41,13 @@ specific memorymap.h header before including this header file.*/
 /**@defgroup crc_registers CRC Registers
  @{*/
 /** CRC_DR Data register */
-#define CRC_DR				MMIO32(CRC_BASE + 0x00)
+#define CRC_DR MMIO32(CRC_BASE + 0x00)
 
 /** CRC_IDR Independent data register */
-#define CRC_IDR				MMIO32(CRC_BASE + 0x04)
+#define CRC_IDR MMIO32(CRC_BASE + 0x04)
 
 /** CRC_CR Control register */
-#define CRC_CR				MMIO32(CRC_BASE + 0x08)
+#define CRC_CR MMIO32(CRC_BASE + 0x08)
 /**@}*/
 
 /*****************************************************************************/
@@ -64,15 +64,13 @@ specific memorymap.h header before including this header file.*/
 
 /* Bits [7:0]: General-purpose 8-bit data register bits */
 
-
 /** @defgroup crc_cr_values CRC_CR values
  @{*/
 /** CRC_CR_RESET reset the CRC peripheral */
-#define CRC_CR_RESET			(1 << 0)
+#define CRC_CR_RESET (1 << 0)
 /**@}*/
 
 BEGIN_DECLS
-
 
 /**
  * Reset the CRC calculator to initial values.
@@ -96,7 +94,7 @@ uint32_t crc_calculate(uint32_t data);
  * @param[in] size length of data, in 32bit increments
  * @return final CRC calculator value
  */
-uint32_t crc_calculate_block(uint32_t *datap, int size);
+uint32_t crc_calculate_block(uint32_t* datap, int size);
 
 END_DECLS
 

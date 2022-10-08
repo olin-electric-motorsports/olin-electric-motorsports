@@ -46,61 +46,61 @@
 /* --- RTC registers ------------------------------------------------------- */
 
 /* RTC control register high (RTC_CRH) */
-#define RTC_CRH				MMIO32(RTC_BASE + 0x00)
+#define RTC_CRH MMIO32(RTC_BASE + 0x00)
 
 /* RTC control register low (RTC_CRL) */
-#define RTC_CRL				MMIO32(RTC_BASE + 0x04)
+#define RTC_CRL MMIO32(RTC_BASE + 0x04)
 
 /* RTC prescaler load register (RTC_PRLH / RTC_PRLL) */
-#define RTC_PRLH			MMIO32(RTC_BASE + 0x08)
-#define RTC_PRLL			MMIO32(RTC_BASE + 0x0c)
+#define RTC_PRLH MMIO32(RTC_BASE + 0x08)
+#define RTC_PRLL MMIO32(RTC_BASE + 0x0c)
 
 /* RTC prescaler divider register (RTC_DIVH / RTC_DIVL) */
-#define RTC_DIVH			MMIO32(RTC_BASE + 0x10)
-#define RTC_DIVL			MMIO32(RTC_BASE + 0x14)
+#define RTC_DIVH MMIO32(RTC_BASE + 0x10)
+#define RTC_DIVL MMIO32(RTC_BASE + 0x14)
 
 /* RTC counter register (RTC_CNTH / RTC_CNTL) */
-#define RTC_CNTH			MMIO32(RTC_BASE + 0x18)
-#define RTC_CNTL			MMIO32(RTC_BASE + 0x1c)
+#define RTC_CNTH MMIO32(RTC_BASE + 0x18)
+#define RTC_CNTL MMIO32(RTC_BASE + 0x1c)
 
 /* RTC alarm register high (RTC_ALRH / RTC_ALRL) */
-#define RTC_ALRH			MMIO32(RTC_BASE + 0x20)
-#define RTC_ALRL			MMIO32(RTC_BASE + 0x24)
+#define RTC_ALRH MMIO32(RTC_BASE + 0x20)
+#define RTC_ALRL MMIO32(RTC_BASE + 0x24)
 
 /* --- RTC_CRH values -------------------------------------------------------*/
 
 /* Note: Bits [15:3] are reserved, and forced to 0 by hardware. */
 
 /* OWIE: Overflow interrupt enable */
-#define RTC_CRH_OWIE			(1 << 2)
+#define RTC_CRH_OWIE (1 << 2)
 
 /* ALRIE: Alarm interrupt enable */
-#define RTC_CRH_ALRIE			(1 << 1)
+#define RTC_CRH_ALRIE (1 << 1)
 
 /* SECIE: Second interrupt enable */
-#define RTC_CRH_SECIE			(1 << 0)
+#define RTC_CRH_SECIE (1 << 0)
 
 /* --- RTC_CRL values -------------------------------------------------------*/
 
 /* Note: Bits [15:6] are reserved, and forced to 0 by hardware. */
 
 /* RTOFF: RTC operation OFF */
-#define RTC_CRL_RTOFF			(1 << 5)
+#define RTC_CRL_RTOFF (1 << 5)
 
 /* CNF: Configuration flag */
-#define RTC_CRL_CNF			(1 << 4)
+#define RTC_CRL_CNF (1 << 4)
 
 /* RSF: Registers synchronized flag */
-#define RTC_CRL_RSF			(1 << 3)
+#define RTC_CRL_RSF (1 << 3)
 
 /* OWF: Overflow flag */
-#define RTC_CRL_OWF			(1 << 2)
+#define RTC_CRL_OWF (1 << 2)
 
 /* ALRF: Alarm flag */
-#define RTC_CRL_ALRF			(1 << 1)
+#define RTC_CRL_ALRF (1 << 1)
 
 /* SECF: Second flag */
-#define RTC_CRL_SECF			(1 << 0)
+#define RTC_CRL_SECF (1 << 0)
 
 /* --- RTC_PRLH values ------------------------------------------------------*/
 
@@ -140,12 +140,12 @@
 
 /** RTC Interrupt Flags */
 typedef enum {
-	/** Counter Second Flag */
-	RTC_SEC,
-	/** Alarm Event Flag */
-	RTC_ALR,
-	/** Counter Overflow Flag */
-	RTC_OW,
+    /** Counter Second Flag */
+    RTC_SEC,
+    /** Alarm Event Flag */
+    RTC_ALR,
+    /** Counter Overflow Flag */
+    RTC_OW,
 } rtcflag_t;
 
 /* --- Function prototypes --------------------------------------------------*/

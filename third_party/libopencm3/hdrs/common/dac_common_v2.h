@@ -42,31 +42,31 @@ specific memorymap.h header before including this header file.*/
  @{*/
 
 /** DAC calibration control register (DAC_CCR) */
-#define DAC_CCR(dac)			MMIO32((dac) + 0x38)
+#define DAC_CCR(dac) MMIO32((dac) + 0x38)
 
 /** DAC mode control register (DAC_MCR) */
-#define DAC_MCR(dac)			MMIO32((dac) + 0x3C)
+#define DAC_MCR(dac) MMIO32((dac) + 0x3C)
 
 /** DAC channel1 sample and hold sample time register (DAC_SHSR1) */
-#define DAC_SHSR1(dac)			MMIO32((dac) + 0x40)
+#define DAC_SHSR1(dac) MMIO32((dac) + 0x40)
 
 /** DAC channel2 sample and hold sample time register (DAC_SHSR2) */
-#define DAC_SHSR2(dac)			MMIO32((dac) + 0x44)
+#define DAC_SHSR2(dac) MMIO32((dac) + 0x44)
 
 /** DAC sample and hold time register (DAC_SHHR) */
-#define DAC_SHHR(dac)			MMIO32((dac) + 0x48)
+#define DAC_SHHR(dac) MMIO32((dac) + 0x48)
 
 /** DAC sample and hold refresh time register (DAC_SHRR) */
-#define DAC_SHRR(dac)			MMIO32((dac) + 0x4C)
+#define DAC_SHRR(dac) MMIO32((dac) + 0x4C)
 
 /** DAC channel1 sawtooth register (DAC_STR1) */
-#define DAC_STR1(dac)			MMIO32((dac) + 0x58)
+#define DAC_STR1(dac) MMIO32((dac) + 0x58)
 
 /** DAC channel2 sawtooth register (DAC_STR2) */
-#define DAC_STR2(dac)			MMIO32((dac) + 0x5C)
+#define DAC_STR2(dac) MMIO32((dac) + 0x5C)
 
 /** DAC sawtooth mode register (DAC_STMODR) */
-#define DAC_STMODR(dac)			MMIO32((dac) + 0x60)
+#define DAC_STMODR(dac) MMIO32((dac) + 0x60)
 /**@}*/
 
 /**@addtogroup dac_cr_values
@@ -74,10 +74,10 @@ specific memorymap.h header before including this header file.*/
  */
 
 /** CEN2: DAC channel2 calibration enable */
-#define DAC_CR_CEN2			(1 << 30)
+#define DAC_CR_CEN2 (1 << 30)
 
 /* TSEL2[3:0]: DAC channel2 trigger selection */
-#define DAC_CR_TSEL2_SHIFT		18
+#define DAC_CR_TSEL2_SHIFT 18
 /** @defgroup dac_trig2_sel DAC Channel 2 Trigger Source Selection
 @ingroup dac_defines
 
@@ -100,32 +100,32 @@ specific memorymap.h header before including this header file.*/
 
 @note: only used if bit TEN2 is set (DAC channel 2 trigger enabled)
 @{*/
-#define DAC_CR_TSEL2_SW			(0x0 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T8			(0x1 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T7			(0x2 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T15		(0x3 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T2			(0x4 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T4			(0x5 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_E9			(0x6 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T6			(0x7 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T3			(0x8 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_HRR1		(0x9 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_HRR2		(0xA << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_HRR3		(0xB << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_HRR4		(0xC << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_HRR5		(0xD << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_HRR6		(0xE << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_HR2		(0xF << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_SW   (0x0 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T8   (0x1 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T7   (0x2 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T15  (0x3 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T2   (0x4 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T4   (0x5 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_E9   (0x6 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T6   (0x7 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T3   (0x8 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_HRR1 (0x9 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_HRR2 (0xA << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_HRR3 (0xB << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_HRR4 (0xC << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_HRR5 (0xD << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_HRR6 (0xE << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_HR2  (0xF << DAC_CR_TSEL2_SHIFT)
 /**@}*/
 
 /* TEN2: DAC channel2 trigger enable */
-#define DAC_CR_TEN2			(1 << 17)
+#define DAC_CR_TEN2 (1 << 17)
 
 /* CEN1: DAC channel1 calibration enable */
-#define DAC_CR_CEN1			(1 << 14)
+#define DAC_CR_CEN1 (1 << 14)
 
 /* TSEL1[3:0]: DAC channel1 trigger selection */
-#define DAC_CR_TSEL1_SHIFT		2
+#define DAC_CR_TSEL1_SHIFT 2
 /** @defgroup dac_trig1_sel DAC Channel 1 Trigger Source Selection
 @ingroup dac_defines
 
@@ -148,97 +148,94 @@ specific memorymap.h header before including this header file.*/
 
 @note: only used if bit TEN1 is set (DAC channel 1 trigger enabled).
 @{*/
-#define DAC_CR_TSEL1_CK			(0x0 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T8			(0x1 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T7			(0x2 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T15		(0x3 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T2			(0x4 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T4			(0x5 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_E9			(0x6 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T6			(0x7 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T3			(0x8 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_HRR1		(0x9 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_HRR2		(0xA << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_HRR3		(0xB << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_HRR4		(0xC << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_HRR5		(0xD << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_HRR6		(0xE << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_HR3		(0xF << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_CK   (0x0 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T8   (0x1 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T7   (0x2 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T15  (0x3 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T2   (0x4 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T4   (0x5 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_E9   (0x6 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T6   (0x7 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T3   (0x8 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_HRR1 (0x9 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_HRR2 (0xA << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_HRR3 (0xB << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_HRR4 (0xC << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_HRR5 (0xD << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_HRR6 (0xE << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_HR3  (0xF << DAC_CR_TSEL1_SHIFT)
 /**@}*/
 
 /** TEN1: DAC channel1 trigger enable */
-#define DAC_CR_TEN1			(1 << 1)
+#define DAC_CR_TEN1 (1 << 1)
 /**@}*/
-
 
 /** @addtogroup dac_swtrigr_values
  * @{
  */
 /** SWTRIG2: DAC channel2 software trigger B */
-#define DAC_SWTRIGR_SWTRIGB2		(1 << 17)
+#define DAC_SWTRIGR_SWTRIGB2 (1 << 17)
 
 /** SWTRIG1: DAC channel1 software trigger B */
-#define DAC_SWTRIGR_SWTRIGB1		(1 << 16)
+#define DAC_SWTRIGR_SWTRIGB1 (1 << 16)
 /**@}*/
 
 /** @addtogroup dac_dorx_values
  * @{
  */
 /* --- DAC_DOR1 values ----------------------------------------------------- */
-#define DAC_DOR1_DACC1DORB_SHIFT	16
-#define DAC_DOR1_DACC1DORB_MASK		0xFFF
-
+#define DAC_DOR1_DACC1DORB_SHIFT 16
+#define DAC_DOR1_DACC1DORB_MASK  0xFFF
 
 /* --- DAC_DOR2 values ----------------------------------------------------- */
-#define DAC_DOR2_DACC2DORB_SHIFT	16
-#define DAC_DOR2_DACC2DORB_MASK		0xFFF
+#define DAC_DOR2_DACC2DORB_SHIFT 16
+#define DAC_DOR2_DACC2DORB_MASK  0xFFF
 /**@}*/
 
 /** @addtogroup dac_sr_values
  * @{
  */
 /** DAC channel2 busy writing sample time flag */
-#define DAC_SR_BWST2			(1 << 31)
+#define DAC_SR_BWST2 (1 << 31)
 
 /** DAC channel2 calibration offset status */
-#define DAC_SR_CAL_FLAG2		(1 << 30)
+#define DAC_SR_CAL_FLAG2 (1 << 30)
 
 /** DAC channel2 DMA underrun flag */
-#define DAC_SR_DMAUDR2			(1 << 29)
+#define DAC_SR_DMAUDR2 (1 << 29)
 
 /** DAC channel2 output register status bit */
-#define DAC_SR_DORSTAT2			(1 << 28)
+#define DAC_SR_DORSTAT2 (1 << 28)
 
 /** DAC channel2 ready status bit */
-#define DAC_SR_DAC2RDY			(1 << 27)
+#define DAC_SR_DAC2RDY (1 << 27)
 
 /** DAC channel1 busy writing sample time flag */
-#define DAC_SR_BWST1			(1 << 15)
+#define DAC_SR_BWST1 (1 << 15)
 
 /** DAC channel1 calibration offset status */
-#define DAC_SR_CAL_FLAG1		(1 << 14)
+#define DAC_SR_CAL_FLAG1 (1 << 14)
 
 /** DAC channel1 DMA underrun flag */
-#define DAC_SR_DMAUDR1			(1 << 13)
+#define DAC_SR_DMAUDR1 (1 << 13)
 
 /** DAC channel1 output register status bit */
-#define DAC_SR_DORSTAT1			(1 << 12)
+#define DAC_SR_DORSTAT1 (1 << 12)
 
 /** DAC channel1 ready status bit */
-#define DAC_SR_DAC1RDY			(1 << 11)
+#define DAC_SR_DAC1RDY (1 << 11)
 /**@}*/
-
 
 /**@defgroup dac_ccr_values DAC_CCR values
  * @{
  */
 /* DAC channel2 offset trimming value */
-#define DAC_CCR_OTRIM2_SHIFT		16
-#define DAC_CCR_OTRIM2_MASK		0x1F
+#define DAC_CCR_OTRIM2_SHIFT 16
+#define DAC_CCR_OTRIM2_MASK  0x1F
 
 /* DAC channel1 offset trimming value */
-#define DAC_CCR_OTRIM1_SHIFT		0
-#define DAC_CCR_OTRIM1_MASK		0x1F
+#define DAC_CCR_OTRIM1_SHIFT 0
+#define DAC_CCR_OTRIM1_MASK  0x1F
 /**@}*/
 
 /* --- DAC_MCR values ----------------------------------------------------- */
@@ -247,13 +244,13 @@ specific memorymap.h header before including this header file.*/
  * @{
  */
 /** Enable signed format for DAC channel2 */
-#define DAC_MCR_SINFORMAT2		(1 << 25)
+#define DAC_MCR_SINFORMAT2 (1 << 25)
 
 /** DAC channel2 DMA double data mode */
-#define DAC_MCR_DMADOUBLE2		(1 << 24)
+#define DAC_MCR_DMADOUBLE2 (1 << 24)
 
 /** MODE2[2:0]: DAC channel2 mode */
-#define DAC_MCR_MODE2_SHIFT		16
+#define DAC_MCR_MODE2_SHIFT 16
 /** @defgroup dac_mode2_sel DAC Channel 2 Mode Selection
 @ingroup dac_defines
 
@@ -266,23 +263,23 @@ specific memorymap.h header before including this header file.*/
 @li SH_E: Sample & Hold, External pin without buffer
 @li SH_EP: Sample & Hold, External pin and on-chip peripherals without buffer
 @{*/
-#define DAC_MCR_MODE2_E_BUFF		(0x0 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_EP_BUFF		(0x1 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_E			(0x2 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_EP		(0x3 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_SH_E_BUFF		(0x4 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_SH_EP_BUFF	(0x5 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_SH_E		(0x6 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_SH_EP		(0x7 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_E_BUFF     (0x0 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_EP_BUFF    (0x1 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_E          (0x2 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_EP         (0x3 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_SH_E_BUFF  (0x4 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_SH_EP_BUFF (0x5 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_SH_E       (0x6 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_SH_EP      (0x7 << DAC_MCR_MODE2_SHIFT)
 /**@}*/
 
-#define DAC_MCR_MODE2_PERIPHERAL	(0x1 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_UNBUFFERED	(0x2 << DAC_MCR_MODE2_SHIFT)
-#define DAC_MCR_MODE2_SAMPLEHOLD	(0x4 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_PERIPHERAL (0x1 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_UNBUFFERED (0x2 << DAC_MCR_MODE2_SHIFT)
+#define DAC_MCR_MODE2_SAMPLEHOLD (0x4 << DAC_MCR_MODE2_SHIFT)
 
 /* HFSEL[1:0]: High frequency interface mode selection */
-#define DAC_MCR_HFSEL_SHIFT		14
-#define DAC_MCR_HFSEL_MASK		0x3
+#define DAC_MCR_HFSEL_SHIFT 14
+#define DAC_MCR_HFSEL_MASK  0x3
 /** @defgroup dac_hfsel High frequency interface mode selection
 @ingroup dac_defines
 
@@ -290,19 +287,19 @@ specific memorymap.h header before including this header file.*/
 @li AHB80: High frequency interface mode compatible to AHB>80MHz enabled
 @li AHB160: High frequency interface mode compatible to AHB>160MHz enabled
 @{*/
-#define DAC_MCR_HFSEL_DIS		(0x0 << DAC_MCR_HFSEL_SHIFT)
-#define DAC_MCR_HFSEL_AHB80		(0x1 << DAC_MCR_HFSEL_SHIFT)
-#define DAC_MCR_HFSEL_AHB160		(0x2 << DAC_MCR_HFSEL_SHIFT)
+#define DAC_MCR_HFSEL_DIS    (0x0 << DAC_MCR_HFSEL_SHIFT)
+#define DAC_MCR_HFSEL_AHB80  (0x1 << DAC_MCR_HFSEL_SHIFT)
+#define DAC_MCR_HFSEL_AHB160 (0x2 << DAC_MCR_HFSEL_SHIFT)
 /**@}*/
 
 /** Enable signed format for DAC channel1 */
-#define DAC_MCR_SINFORMAT1		(1 << 9)
+#define DAC_MCR_SINFORMAT1 (1 << 9)
 
 /** DAC channel1 DMA double data mode */
-#define DAC_MCR_DMADOUBLE1		(1 << 8)
+#define DAC_MCR_DMADOUBLE1 (1 << 8)
 
 /* MODE1[2:0]: DAC channel1 mode */
-#define DAC_MCR_MODE1_SHIFT		0
+#define DAC_MCR_MODE1_SHIFT 0
 /** @defgroup dac_mode1_sel DAC Channel 1 Mode Selection
 @ingroup dac_defines
 
@@ -315,91 +312,92 @@ specific memorymap.h header before including this header file.*/
 @li SH_E: Sample & Hold, External pin without buffer
 @li SH_EP: Sample & Hold , External pin and on-chip peripherals without buffer
 @{*/
-#define DAC_MCR_MODE1_E_BUFF		(0x0 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_EP_BUFF		(0x1 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_E			(0x2 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_EP		(0x3 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_SH_E_BUFF		(0x4 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_SH_EP_BUFF	(0x5 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_SH_E		(0x6 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_SH_EP		(0x7 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_E_BUFF     (0x0 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_EP_BUFF    (0x1 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_E          (0x2 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_EP         (0x3 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_SH_E_BUFF  (0x4 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_SH_EP_BUFF (0x5 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_SH_E       (0x6 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_SH_EP      (0x7 << DAC_MCR_MODE1_SHIFT)
 /**@}*/
 
-#define DAC_MCR_MODE1_PERIPHERAL	(0x1 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_UNBUFFERED	(0x2 << DAC_MCR_MODE1_SHIFT)
-#define DAC_MCR_MODE1_SAMPLEHOLD	(0x4 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_PERIPHERAL (0x1 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_UNBUFFERED (0x2 << DAC_MCR_MODE1_SHIFT)
+#define DAC_MCR_MODE1_SAMPLEHOLD (0x4 << DAC_MCR_MODE1_SHIFT)
 /**@}*/
 
 /* --- DAC_SHSR1 values ----------------------------------------------------- */
 
 /* DAC channel1 sample time (only valid in Sample and hold mode) */
-#define DAC_SHSR1_TSAMPLE1_SHIFT	0
-#define DAC_SHSR1_TSAMPLE1_MASK		0x1FF
+#define DAC_SHSR1_TSAMPLE1_SHIFT 0
+#define DAC_SHSR1_TSAMPLE1_MASK  0x1FF
 
 /* --- DAC_SHSR2 values ----------------------------------------------------- */
 
 /* DAC channel2 sample time (only valid in Sample and hold mode) */
-#define DAC_SHSR2_TSAMPLE2_SHIFT	0
-#define DAC_SHSR2_TSAMPLE2_MASK		0x1FF
+#define DAC_SHSR2_TSAMPLE2_SHIFT 0
+#define DAC_SHSR2_TSAMPLE2_MASK  0x1FF
 
 /* --- DAC_SHHR values ----------------------------------------------------- */
 
 /* DAC channel2 hold time (only valid in Sample and hold mode) */
-#define DAC_SHHSR_THOLD2_SHIFT		16
-#define DAC_SHHSR_THOLD2_MASK		0x1FF
+#define DAC_SHHSR_THOLD2_SHIFT 16
+#define DAC_SHHSR_THOLD2_MASK  0x1FF
 
 /* DAC channel1 hold time (only valid in Sample and hold mode) */
-#define DAC_SHHSR_THOLD1_SHIFT		0
-#define DAC_SHHSR_THOLD1_MASK		0x1FF
+#define DAC_SHHSR_THOLD1_SHIFT 0
+#define DAC_SHHSR_THOLD1_MASK  0x1FF
 
 /* --- DAC_STR1 values ----------------------------------------------------- */
 
 /* DAC channel1 sawtooth increment value (12.4 bit format) */
-#define DAC_STR1_STINCDATA1_SHIFT	16
-#define DAC_STR1_STINCDATA1_MASK	0xFFFF
+#define DAC_STR1_STINCDATA1_SHIFT 16
+#define DAC_STR1_STINCDATA1_MASK  0xFFFF
 
 /* STDIR1: DAC channel1 sawtooth direction setting */
-#define DAC_STR1_STDIR1_SHIFT		12
+#define DAC_STR1_STDIR1_SHIFT 12
 /** @defgroup dac_stdir1 DAC Channel 1 Sawtooth Direction Setting
 @ingroup dac_defines
 
 @li DEC: Decrement
 @li INC: Increment
 @{*/
-#define DAC_STR1_STDIR1_DEC		(0x0 << DAC_STR_STDIR1_SHIFT)
-#define DAC_STR1_STDIR1_INC		(0x1 << DAC_STR_STDIR1_SHIFT)
+#define DAC_STR1_STDIR1_DEC (0x0 << DAC_STR_STDIR1_SHIFT)
+#define DAC_STR1_STDIR1_INC (0x1 << DAC_STR_STDIR1_SHIFT)
 /**@}*/
 
 /* DAC channel1 sawtooth reset value */
-#define DAC_STR1_STRSTDATA1_SHIFT	0
-#define DAC_STR1_STRSTDATA1_MASK	0xFFF
+#define DAC_STR1_STRSTDATA1_SHIFT 0
+#define DAC_STR1_STRSTDATA1_MASK  0xFFF
 
 /* --- DAC_STR2 values ----------------------------------------------------- */
 
 /* DAC channel2 sawtooth increment value (12.4 bit format) */
-#define DAC_STR2_STINCDATA2_SHIFT	16
-#define DAC_STR2_STINCDATA2_MASK	0xFFFF
+#define DAC_STR2_STINCDATA2_SHIFT 16
+#define DAC_STR2_STINCDATA2_MASK  0xFFFF
 
 /* STDIR1: DAC channel2 sawtooth direction setting */
-#define DAC_STR2_STDIR2_SHIFT		12
+#define DAC_STR2_STDIR2_SHIFT 12
 /** @defgroup dac_stdir2 DAC Channel 2 Sawtooth Direction Setting
 @ingroup dac_defines
 
 @li DEC: Decrement
 @li INC: Increment
 @{*/
-#define DAC_STR2_STDIR2_DEC		(0x0 << DAC_STR_STDIR2_SHIFT)
-#define DAC_STR2_STDIR2_INC		(0x1 << DAC_STR_STDIR2_SHIFT)
+#define DAC_STR2_STDIR2_DEC (0x0 << DAC_STR_STDIR2_SHIFT)
+#define DAC_STR2_STDIR2_INC (0x1 << DAC_STR_STDIR2_SHIFT)
 /**@}*/
 
 /* DAC channel1 sawtooth reset value */
-#define DAC_STR2_STRSTDATA2_SHIFT	0
-#define DAC_STR2_STRSTDATA2_MASK	0xFFF
+#define DAC_STR2_STRSTDATA2_SHIFT 0
+#define DAC_STR2_STRSTDATA2_MASK  0xFFF
 
-/* --- DAC_STMODR values ----------------------------------------------------- */
+/* --- DAC_STMODR values -----------------------------------------------------
+ */
 
 /* STINCTRIGSEL2[3:0]: DAC channel2 sawtooth increment trigger selection */
-#define DAC_STMODR_STINCTRIGSEL2_SHIFT	24
+#define DAC_STMODR_STINCTRIGSEL2_SHIFT 24
 /** @defgroup dac_sawtooth2_inc DAC Channel 2 Sawtooth Increment Trigger
 @ingroup dac_defines
 
@@ -422,26 +420,26 @@ specific memorymap.h header before including this header file.*/
 
 @note: These bits are only available only on dual-channel DACs.
 @{*/
-#define DAC_STMODR_STINCTRIGSEL2_SW	(0x0 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T1	(0x1 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T2	(0x2 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T3	(0x3 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T4	(0x4 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T5	(0x5 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T6	(0x6 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T7	(0x7 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T8	(0x8 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T9	(0x9 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T10	(0xA << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T11	(0xB << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T12	(0xC << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T13	(0xD << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T14	(0xE << DAC_STMODR_STINCTRIGSEL2_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL2_T15	(0xF << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_SW  (0x0 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T1  (0x1 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T2  (0x2 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T3  (0x3 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T4  (0x4 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T5  (0x5 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T6  (0x6 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T7  (0x7 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T8  (0x8 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T9  (0x9 << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T10 (0xA << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T11 (0xB << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T12 (0xC << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T13 (0xD << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T14 (0xE << DAC_STMODR_STINCTRIGSEL2_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL2_T15 (0xF << DAC_STMODR_STINCTRIGSEL2_SHIFT)
 /**@}*/
 
 /* STRSTTRIGSEL2[3:0]: DAC channel2 sawtooth reset trigger selection */
-#define DAC_STMODR_STRSTTRIGSEL2_SHIFT	16
+#define DAC_STMODR_STRSTTRIGSEL2_SHIFT 16
 /** @defgroup dac_sawtooth2_rst DAC Channel 2 Sawtooth Reset Trigger
 @ingroup dac_defines
 
@@ -464,27 +462,26 @@ specific memorymap.h header before including this header file.*/
 
 @note: These bits are only available only on dual-channel DACs.
 @{*/
-#define DAC_STMODR_STRSTTRIGSEL2_SW	(0x0 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T1	(0x1 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T2	(0x2 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T3	(0x3 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T4	(0x4 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T5	(0x5 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T6	(0x6 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T7	(0x7 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T8	(0x8 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T9	(0x9 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T10	(0xA << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T11	(0xB << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T12	(0xC << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T13	(0xD << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T14	(0xE << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL2_T15	(0xF << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_SW  (0x0 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T1  (0x1 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T2  (0x2 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T3  (0x3 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T4  (0x4 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T5  (0x5 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T6  (0x6 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T7  (0x7 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T8  (0x8 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T9  (0x9 << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T10 (0xA << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T11 (0xB << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T12 (0xC << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T13 (0xD << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T14 (0xE << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL2_T15 (0xF << DAC_STMODR_STRSTTRIGSEL2_SHIFT)
 /**@}*/
 
-
 /* STINCTRIGSEL1[3:0]: DAC channel1 sawtooth increment trigger selection */
-#define DAC_STMODR_STINCTRIGSEL1_SHIFT	8
+#define DAC_STMODR_STINCTRIGSEL1_SHIFT 8
 /** @defgroup dac_sawtooth1_inc DAC Channel 1 Sawtooth Increment Trigger
 @ingroup dac_defines
 
@@ -507,26 +504,26 @@ specific memorymap.h header before including this header file.*/
 
 @note: These bits are only available only on dual-channel DACs.
 @{*/
-#define DAC_STMODR_STINCTRIGSEL1_SW	(0x0 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T1	(0x1 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T2	(0x2 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T3	(0x3 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T4	(0x4 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T5	(0x5 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T6	(0x6 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T7	(0x7 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T8	(0x8 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T9	(0x9 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T10	(0xA << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T11	(0xB << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T12	(0xC << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T13	(0xD << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T14	(0xE << DAC_STMODR_STINCTRIGSEL1_SHIFT)
-#define DAC_STMODR_STINCTRIGSEL1_T15	(0xF << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_SW  (0x0 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T1  (0x1 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T2  (0x2 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T3  (0x3 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T4  (0x4 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T5  (0x5 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T6  (0x6 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T7  (0x7 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T8  (0x8 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T9  (0x9 << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T10 (0xA << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T11 (0xB << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T12 (0xC << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T13 (0xD << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T14 (0xE << DAC_STMODR_STINCTRIGSEL1_SHIFT)
+#define DAC_STMODR_STINCTRIGSEL1_T15 (0xF << DAC_STMODR_STINCTRIGSEL1_SHIFT)
 /**@}*/
 
 /* STRSTTRIGSEL1[3:0]: DAC channel1 sawtooth reset trigger selection */
-#define DAC_STMODR_STRSTTRIGSEL1_SHIFT	0
+#define DAC_STMODR_STRSTTRIGSEL1_SHIFT 0
 /** @defgroup dac_sawtooth1_rst DAC Channel 1 Sawtooth Reset Trigger
 @ingroup dac_defines
 
@@ -549,22 +546,22 @@ specific memorymap.h header before including this header file.*/
 
 @note: These bits are only available only on dual-channel DACs.
 @{*/
-#define DAC_STMODR_STRSTTRIGSEL1_SW	(0x0 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T1	(0x1 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T2	(0x2 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T3	(0x3 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T4	(0x4 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T5	(0x5 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T6	(0x6 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T7	(0x7 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T8	(0x8 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T9	(0x9 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T10	(0xA << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T11	(0xB << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T12	(0xC << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T13	(0xD << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T14	(0xE << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
-#define DAC_STMODR_STRSTTRIGSEL1_T15	(0xF << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_SW  (0x0 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T1  (0x1 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T2  (0x2 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T3  (0x3 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T4  (0x4 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T5  (0x5 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T6  (0x6 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T7  (0x7 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T8  (0x8 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T9  (0x9 << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T10 (0xA << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T11 (0xB << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T12 (0xC << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T13 (0xD << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T14 (0xE << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
+#define DAC_STMODR_STRSTTRIGSEL1_T15 (0xF << DAC_STMODR_STRSTTRIGSEL1_SHIFT)
 /**@}*/
 
 /* --- Function prototypes ------------------------------------------------- */
@@ -586,4 +583,3 @@ END_DECLS
 /** @endcond */
 
 /**@}*/
-

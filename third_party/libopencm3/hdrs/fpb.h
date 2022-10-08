@@ -36,19 +36,18 @@
 /* --- FPB registers ------------------------------------------------------- */
 
 /* Flash Patch Control (FPB_CTRL) */
-#define FPB_CTRL			MMIO32(FPB_BASE + 0)
+#define FPB_CTRL MMIO32(FPB_BASE + 0)
 
 /* Flash Patch Remap (FPB_REMAP) */
-#define FPB_REMAP			MMIO32(FPB_BASE + 4)
+#define FPB_REMAP MMIO32(FPB_BASE + 4)
 
 /* Flash Patch Comparator (FPB_COMPx) */
-#define FPB_COMP			(&MMIO32(FPB_BASE + 8))
+#define FPB_COMP (&MMIO32(FPB_BASE + 8))
 
 /* CoreSight Lock Status Register for this peripheral */
-#define FPB_LSR				MMIO32(FPB_BASE + CORESIGHT_LSR_OFFSET)
+#define FPB_LSR MMIO32(FPB_BASE + CORESIGHT_LSR_OFFSET)
 /* CoreSight Lock Access Register for this peripheral */
-#define FPB_LAR				MMIO32(FPB_BASE + CORESIGHT_LAR_OFFSET)
-
+#define FPB_LAR MMIO32(FPB_BASE + CORESIGHT_LAR_OFFSET)
 
 /* TODO: PID, CID */
 
@@ -56,17 +55,17 @@
 
 /* Bits [31:15]: Reserved, read as zero, writes ignored */
 
-#define FPB_CTRL_NUM_CODE2_MASK		(0x7 << 12)
+#define FPB_CTRL_NUM_CODE2_MASK (0x7 << 12)
 
-#define FPB_CTRL_NUM_LIT_MASK		(0xf << 8)
+#define FPB_CTRL_NUM_LIT_MASK (0xf << 8)
 
-#define FPB_CTRL_NUM_CODE1_MASK		(0xf << 4)
+#define FPB_CTRL_NUM_CODE1_MASK (0xf << 4)
 
 /* Bits [3:2]: Reserved */
 
-#define FPB_CTRL_KEY			(1 << 1)
+#define FPB_CTRL_KEY (1 << 1)
 
-#define FPB_CTRL_ENABLE			(1 << 0)
+#define FPB_CTRL_ENABLE (1 << 0)
 
 /* --- FPB_REMAP values ---------------------------------------------------- */
 
@@ -74,11 +73,11 @@
 
 /* --- FPB_COMPx values ---------------------------------------------------- */
 
-#define FPB_COMP_REPLACE_REMAP		(0x0 << 30)
-#define FPB_COMP_REPLACE_BREAK_LOWER	(0x1 << 30)
-#define FPB_COMP_REPLACE_BREAK_UPPER	(0x2 << 30)
-#define FPB_COMP_REPLACE_BREAK_BOTH	(0x3 << 30)
-#define FPB_COMP_REPLACE_MASK		(0x3 << 30)
+#define FPB_COMP_REPLACE_REMAP       (0x0 << 30)
+#define FPB_COMP_REPLACE_BREAK_LOWER (0x1 << 30)
+#define FPB_COMP_REPLACE_BREAK_UPPER (0x2 << 30)
+#define FPB_COMP_REPLACE_BREAK_BOTH  (0x3 << 30)
+#define FPB_COMP_REPLACE_MASK        (0x3 << 30)
 
 /* Bit 29: Reserved */
 
@@ -86,7 +85,7 @@
 
 /* Bit 1: Reserved */
 
-#define FPB_COMP_ENABLE			(1 << 0)
+#define FPB_COMP_ENABLE (1 << 0)
 
 /**@}*/
 

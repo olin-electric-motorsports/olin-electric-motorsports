@@ -38,10 +38,10 @@
 
 BEGIN_DECLS
 
-void rcc_peripheral_enable_clock(volatile uint32_t *reg, uint32_t en);
-void rcc_peripheral_disable_clock(volatile uint32_t *reg, uint32_t en);
-void rcc_peripheral_reset(volatile uint32_t *reg, uint32_t reset);
-void rcc_peripheral_clear_reset(volatile uint32_t *reg, uint32_t clear_reset);
+void rcc_peripheral_enable_clock(volatile uint32_t* reg, uint32_t en);
+void rcc_peripheral_disable_clock(volatile uint32_t* reg, uint32_t en);
+void rcc_peripheral_reset(volatile uint32_t* reg, uint32_t reset);
+void rcc_peripheral_clear_reset(volatile uint32_t* reg, uint32_t clear_reset);
 
 void rcc_periph_clock_enable(enum rcc_periph_clken clken);
 void rcc_periph_clock_disable(enum rcc_periph_clken clken);
@@ -70,7 +70,8 @@ void rcc_wait_for_osc_ready(enum rcc_osc osc);
 /**
  * This will return the divisor 1/2/4/8/16/64/128/256/512 which is set as a
  * 4-bit value, typically used for hpre and other prescalers.
- * @param div_val  Masked and shifted divider value from register (e.g. RCC_CFGR)
+ * @param div_val  Masked and shifted divider value from register (e.g.
+ * RCC_CFGR)
  */
 uint16_t rcc_get_div_from_hpre(uint8_t div_val);
 
@@ -83,4 +84,3 @@ END_DECLS
 #warning "rcc_common_all.h should not be included explicitly, only via rcc.h"
 #endif
 /** @endcond */
-

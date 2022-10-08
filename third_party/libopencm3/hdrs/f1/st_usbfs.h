@@ -19,7 +19,7 @@
  */
 
 #ifndef LIBOPENCM3_ST_USBFS_H
-#	error Do not include directly !
+#error Do not include directly !
 #else
 
 #include <libopencm3/stm32/common/st_usbfs_v1.h>

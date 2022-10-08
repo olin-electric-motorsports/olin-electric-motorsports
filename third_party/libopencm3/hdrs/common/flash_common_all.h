@@ -27,7 +27,7 @@ BEGIN_DECLS
 /**
  * This buffer is used for instruction fetches and is enabled by default after
  * reset.
- * 
+ *
  * Note carefully the clock restrictions under which the prefetch buffer may be
  * enabled or disabled. Changes are normally made while the clock is running in
  * the power-on low frequency mode before being set to a higher speed mode.
@@ -41,7 +41,6 @@ void flash_prefetch_enable(void);
  * set to disabled. See the reference manual for details.
  */
 void flash_prefetch_disable(void);
-
 
 /** Set the Number of Wait States.
 

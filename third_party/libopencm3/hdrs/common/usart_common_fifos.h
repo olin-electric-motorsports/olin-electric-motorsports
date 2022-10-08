@@ -44,14 +44,14 @@
 @{*/
 /** FIFO Threshold definitions. */
 typedef enum {
-  USART_FIFO_THRESH_EIGTH = 0x0,
-  USART_FIFO_THRESH_QUARTER = 0x1,
-  USART_FIFO_THRESH_HALF = 0x2,
-  USART_FIFO_THRESH_THREEQTR = 0x3,
-  USART_FIFO_THRESH_SEVENEIGTH = 0x4,
-  USART_FIFO_THRESH_TX_EMPTY = 0x5,
-  USART_FIFO_THRESH_RX_FULL = 0x5,
-  USART_FIFO_THRESH_MASK = 0x7
+    USART_FIFO_THRESH_EIGTH = 0x0,
+    USART_FIFO_THRESH_QUARTER = 0x1,
+    USART_FIFO_THRESH_HALF = 0x2,
+    USART_FIFO_THRESH_THREEQTR = 0x3,
+    USART_FIFO_THRESH_SEVENEIGTH = 0x4,
+    USART_FIFO_THRESH_TX_EMPTY = 0x5,
+    USART_FIFO_THRESH_RX_FULL = 0x5,
+    USART_FIFO_THRESH_MASK = 0x7
 } usart_fifo_threshold_t;
 
 /** TX FIFO Threshold Configuration bits. */
@@ -132,7 +132,7 @@ void usart_disable_tx_fifo_threshold_interrupt(uint32_t usart);
  * @param[in] threshold  Threshold value to set for TX FIFO.
  */
 void usart_set_tx_fifo_threshold(uint32_t usart,
-         usart_fifo_threshold_t threshold);
+                                 usart_fifo_threshold_t threshold);
 /**
  * Enable RX FIFO full interrupt on the specified USART.
  * @param[in] usart  Base address of USART to configure FIFO interrupt.
@@ -159,8 +159,8 @@ void usart_disable_rx_fifo_threshold_interrupt(uint32_t usart);
  * @param[in] threshold  Threshold value to set for RX FIFO.
  */
 void usart_set_rx_fifo_threshold(uint32_t usart,
-         usart_fifo_threshold_t threshold);
+                                 usart_fifo_threshold_t threshold);
 /**@}*/
 END_DECLS
 
-#endif  /* LIBOPENCM3_STM32_COMMON_USART_COMMON_FIFOS_H_ */
+#endif /* LIBOPENCM3_STM32_COMMON_USART_COMMON_FIFOS_H_ */

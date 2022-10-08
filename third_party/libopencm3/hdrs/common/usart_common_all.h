@@ -34,7 +34,6 @@ specific memorymap.h header before including this header file.*/
 #ifndef LIBOPENCM3_USART_COMMON_ALL_H
 #define LIBOPENCM3_USART_COMMON_ALL_H
 
-
 /* --- Convenience defines ------------------------------------------------- */
 
 /* CR1_PCE / CR1_PS combined values */
@@ -43,11 +42,11 @@ specific memorymap.h header before including this header file.*/
 @ingroup STM32F_usart_defines
 
 @{*/
-#define USART_PARITY_NONE		0x00
-#define USART_PARITY_EVEN		USART_CR1_PCE
-#define USART_PARITY_ODD		(USART_CR1_PS | USART_CR1_PCE)
+#define USART_PARITY_NONE 0x00
+#define USART_PARITY_EVEN USART_CR1_PCE
+#define USART_PARITY_ODD  (USART_CR1_PS | USART_CR1_PCE)
 /**@}*/
-#define USART_PARITY_MASK		(USART_CR1_PS | USART_CR1_PCE)
+#define USART_PARITY_MASK (USART_CR1_PS | USART_CR1_PCE)
 
 /* CR1_TE/CR1_RE combined values */
 /****************************************************************************/
@@ -55,31 +54,30 @@ specific memorymap.h header before including this header file.*/
 @ingroup STM32F_usart_defines
 
 @{*/
-#define USART_MODE_RX                   USART_CR1_RE
-#define USART_MODE_TX		        USART_CR1_TE
-#define USART_MODE_TX_RX		(USART_CR1_RE | USART_CR1_TE)
+#define USART_MODE_RX    USART_CR1_RE
+#define USART_MODE_TX    USART_CR1_TE
+#define USART_MODE_TX_RX (USART_CR1_RE | USART_CR1_TE)
 /**@}*/
-#define USART_MODE_MASK		        (USART_CR1_RE | USART_CR1_TE)
+#define USART_MODE_MASK (USART_CR1_RE | USART_CR1_TE)
 
 /****************************************************************************/
 /** @defgroup usart_cr2_stopbits USART Stop Bit Selection
 @ingroup STM32F_usart_defines
 
 @{*/
-#define USART_STOPBITS_1		USART_CR2_STOPBITS_1   /* 1 stop bit */
-#define USART_STOPBITS_0_5		USART_CR2_STOPBITS_0_5 /* .5 stop bit */
-#define USART_STOPBITS_2		USART_CR2_STOPBITS_2   /* 2 stop bits */
-#define USART_STOPBITS_1_5		USART_CR2_STOPBITS_1_5 /* 1.5 stop bit*/
+#define USART_STOPBITS_1   USART_CR2_STOPBITS_1 /* 1 stop bit */
+#define USART_STOPBITS_0_5 USART_CR2_STOPBITS_0_5 /* .5 stop bit */
+#define USART_STOPBITS_2   USART_CR2_STOPBITS_2 /* 2 stop bits */
+#define USART_STOPBITS_1_5 USART_CR2_STOPBITS_1_5 /* 1.5 stop bit*/
 /**@}*/
 
 /* STOP[13:12]: STOP bits */
-#define USART_CR2_STOPBITS_1		(0x00 << 12)     /* 1 stop bit */
-#define USART_CR2_STOPBITS_0_5		(0x01 << 12)     /* 0.5 stop bits */
-#define USART_CR2_STOPBITS_2		(0x02 << 12)     /* 2 stop bits */
-#define USART_CR2_STOPBITS_1_5		(0x03 << 12)     /* 1.5 stop bits */
-#define USART_CR2_STOPBITS_MASK		(0x03 << 12)
-#define USART_CR2_STOPBITS_SHIFT	12
-
+#define USART_CR2_STOPBITS_1     (0x00 << 12) /* 1 stop bit */
+#define USART_CR2_STOPBITS_0_5   (0x01 << 12) /* 0.5 stop bits */
+#define USART_CR2_STOPBITS_2     (0x02 << 12) /* 2 stop bits */
+#define USART_CR2_STOPBITS_1_5   (0x03 << 12) /* 1.5 stop bits */
+#define USART_CR2_STOPBITS_MASK  (0x03 << 12)
+#define USART_CR2_STOPBITS_SHIFT 12
 
 /* CR3_CTSE/CR3_RTSE combined values */
 /****************************************************************************/
@@ -87,12 +85,12 @@ specific memorymap.h header before including this header file.*/
 @ingroup STM32F_usart_defines
 
 @{*/
-#define USART_FLOWCONTROL_NONE	        0x00
-#define USART_FLOWCONTROL_RTS	        USART_CR3_RTSE
-#define USART_FLOWCONTROL_CTS	        USART_CR3_CTSE
-#define USART_FLOWCONTROL_RTS_CTS	(USART_CR3_RTSE | USART_CR3_CTSE)
+#define USART_FLOWCONTROL_NONE    0x00
+#define USART_FLOWCONTROL_RTS     USART_CR3_RTSE
+#define USART_FLOWCONTROL_CTS     USART_CR3_CTSE
+#define USART_FLOWCONTROL_RTS_CTS (USART_CR3_RTSE | USART_CR3_CTSE)
 /**@}*/
-#define USART_FLOWCONTROL_MASK	        (USART_CR3_RTSE | USART_CR3_CTSE)
+#define USART_FLOWCONTROL_MASK (USART_CR3_RTSE | USART_CR3_CTSE)
 
 /* --- Function prototypes ------------------------------------------------- */
 
@@ -137,4 +135,3 @@ END_DECLS
 #endif
 /** @endcond */
 /**@}*/
-

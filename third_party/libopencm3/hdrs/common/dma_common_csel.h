@@ -1,5 +1,5 @@
 /** @addtogroup dma_defines
-*/
+ */
 /*
  * This file is part of the libopencm3 project.
  *
@@ -28,16 +28,15 @@ specific memorymap.h header before including this header file.*/
 /** @endcond */
 #pragma once
 
-
 /* DMA channel selection register (DMAx_CSELR) */
-#define DMA_CSELR(dma_base)		MMIO32((dma_base) + 0xA8)
-#define DMA1_CSELR			DMA_CSELR(DMA1)
-#define DMA2_CSELR			DMA_CSELR(DMA2)
+#define DMA_CSELR(dma_base) MMIO32((dma_base) + 0xA8)
+#define DMA1_CSELR          DMA_CSELR(DMA1)
+#define DMA2_CSELR          DMA_CSELR(DMA2)
 
 /* --- DMA_CSELR values -------------------------------------------- */
 
-#define DMA_CSELR_CxS_SHIFT(channel)	(4 * ((channel) - 1))
-#define DMA_CSELR_CxS_MASK				(0x0f)
+#define DMA_CSELR_CxS_SHIFT(channel) (4 * ((channel)-1))
+#define DMA_CSELR_CxS_MASK           (0x0f)
 
 /* --- Function prototypes ------------------------------------------------- */
 

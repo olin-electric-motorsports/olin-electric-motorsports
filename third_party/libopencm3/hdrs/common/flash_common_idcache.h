@@ -26,12 +26,11 @@
 /** @addtogroup flash_acr_values
  * @{
  */
-#define FLASH_ACR_DCRST			(1 << 12)
-#define FLASH_ACR_ICRST			(1 << 11)
-#define FLASH_ACR_DCEN			(1 << 10)
-#define FLASH_ACR_ICEN			(1 << 9)
+#define FLASH_ACR_DCRST (1 << 12)
+#define FLASH_ACR_ICRST (1 << 11)
+#define FLASH_ACR_DCEN  (1 << 10)
+#define FLASH_ACR_ICEN  (1 << 9)
 /**@}*/
-
 
 BEGIN_DECLS
 
@@ -59,4 +58,3 @@ void flash_icache_reset(void);
 
 END_DECLS
 /**@}*/
-

@@ -31,38 +31,37 @@
 /* OpAmp registers */
 
 /* Control and status register (OPAMPx_CSR) */
-#define OPAMP_CSR(opamp_base)		MMIO32((opamp_base) + 0x00)
+#define OPAMP_CSR(opamp_base) MMIO32((opamp_base) + 0x00)
 
 /* OPAMPx_CSR values */
 
-#define OPAMP_CSR_LOCK			(0x1 << 31)
+#define OPAMP_CSR_LOCK (0x1 << 31)
 
-#define OPAMP_CSR_TSTREF		(0x1 << 29)
+#define OPAMP_CSR_TSTREF (0x1 << 29)
 
-#define OPAMP_CSR_TRIMOFFSETN_MASK	(0x1f)
-#define OPAMP_CSR_TRIMOFFSETN_SHIFT	(24)
+#define OPAMP_CSR_TRIMOFFSETN_MASK  (0x1f)
+#define OPAMP_CSR_TRIMOFFSETN_SHIFT (24)
 
-#define OPAMP_CSR_TRIMOFFSETP_MASK	(0x1f)
-#define OPAMP_CSR_TRIMOFFSETP_SHIFT	(19)
+#define OPAMP_CSR_TRIMOFFSETP_MASK  (0x1f)
+#define OPAMP_CSR_TRIMOFFSETP_SHIFT (19)
 
-#define OPAMP_CSR_CALSEL_MASK		(0x3)
-#define OPAMP_CSR_CALSEL_SHIFT		(12)
-#define OPAMP_CSR_CALSEL_3P3_PERCENT	(0x0)
-#define OPAMP_CSR_CALSEL_10_PERCENT	(0x1)
-#define OPAMP_CSR_CALSEL_50_PERCENT	(0x2)
-#define OPAMP_CSR_CALSEL_90_PERCENT	(0x3)
+#define OPAMP_CSR_CALSEL_MASK        (0x3)
+#define OPAMP_CSR_CALSEL_SHIFT       (12)
+#define OPAMP_CSR_CALSEL_3P3_PERCENT (0x0)
+#define OPAMP_CSR_CALSEL_10_PERCENT  (0x1)
+#define OPAMP_CSR_CALSEL_50_PERCENT  (0x2)
+#define OPAMP_CSR_CALSEL_90_PERCENT  (0x3)
 
-#define OPAMP_CSR_CALON			(0x1 << 11)
+#define OPAMP_CSR_CALON (0x1 << 11)
 
-#define OPAMP_CSR_VM_SEL_MASK		(0x3)
-#define OPAMP_CSR_VM_SEL_SHIFT		(5)
+#define OPAMP_CSR_VM_SEL_MASK  (0x3)
+#define OPAMP_CSR_VM_SEL_SHIFT (5)
 
-#define OPAMP_CSR_VP_SEL_MASK		(0x3)
-#define OPAMP_CSR_VP_SEL_SHIFT		(2)
+#define OPAMP_CSR_VP_SEL_MASK  (0x3)
+#define OPAMP_CSR_VP_SEL_SHIFT (2)
 
-#define OPAMP_CSR_FORCE_VP		(0x1 << 1)
-#define OPAMP_CSR_EN			(0x1 << 0)
-
+#define OPAMP_CSR_FORCE_VP (0x1 << 1)
+#define OPAMP_CSR_EN       (0x1 << 0)
 
 BEGIN_DECLS
 

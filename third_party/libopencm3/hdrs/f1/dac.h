@@ -36,10 +36,9 @@ LGPL License Terms @ref lgpl_license
 
 /** @defgroup dac_reg_base DAC register base addresses
 @{*/
-#define DAC1				DAC_BASE
+#define DAC1 DAC_BASE
 /**@}*/
 
 /**@}*/
 
 #endif
-

@@ -43,7 +43,7 @@ specific memorymap.h header before including this header file.*/
  */
 
 /** TSEL2[2:0]: DAC channel2 trigger selection */
-#define DAC_CR_TSEL2_SHIFT		19
+#define DAC_CR_TSEL2_SHIFT 19
 /** @defgroup dac_trig2_sel DAC Channel 2 Trigger Source Selection
 @ingroup dac_defines
 
@@ -63,26 +63,26 @@ specific memorymap.h header before including this header file.*/
 @note: this is <b>not</b> valid for the STM32L1 family.
 @note: only used if bit TEN2 is set (DAC channel 2 trigger enabled)
 @{*/
-#define DAC_CR_TSEL2_T6			(0x0 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T3			(0x1 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T8			(0x1 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T7			(0x2 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T5			(0x3 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T15		(0x3 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T2			(0x4 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_T4			(0x5 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_E9			(0x6 << DAC_CR_TSEL2_SHIFT)
-#define DAC_CR_TSEL2_SW			(0x7 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T6  (0x0 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T3  (0x1 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T8  (0x1 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T7  (0x2 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T5  (0x3 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T15 (0x3 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T2  (0x4 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_T4  (0x5 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_E9  (0x6 << DAC_CR_TSEL2_SHIFT)
+#define DAC_CR_TSEL2_SW  (0x7 << DAC_CR_TSEL2_SHIFT)
 /**@}*/
 
 /* TEN2: DAC channel2 trigger enable */
-#define DAC_CR_TEN2			(1 << 18)
+#define DAC_CR_TEN2 (1 << 18)
 
 /* BOFF2: DAC channel2 output buffer disable */
-#define DAC_CR_BOFF2			(1 << 17)
+#define DAC_CR_BOFF2 (1 << 17)
 
 /* TSEL1[2:0]: DAC channel1 trigger selection */
-#define DAC_CR_TSEL1_SHIFT		3
+#define DAC_CR_TSEL1_SHIFT 3
 /** @defgroup dac_trig1_sel DAC Channel 1 Trigger Source Selection
 @ingroup dac_defines
 
@@ -102,23 +102,23 @@ specific memorymap.h header before including this header file.*/
 @note: this is <b>not</b> valid for the STM32L1 family.
 @note: only used if bit TEN1 is set (DAC channel 1 trigger enabled).
 @{*/
-#define DAC_CR_TSEL1_T6			(0x0 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T3			(0x1 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T8			(0x1 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T7			(0x2 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T5			(0x3 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T15		(0x3 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T2			(0x4 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_T4			(0x5 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_E9			(0x6 << DAC_CR_TSEL1_SHIFT)
-#define DAC_CR_TSEL1_SW			(0x7 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T6  (0x0 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T3  (0x1 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T8  (0x1 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T7  (0x2 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T5  (0x3 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T15 (0x3 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T2  (0x4 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_T4  (0x5 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_E9  (0x6 << DAC_CR_TSEL1_SHIFT)
+#define DAC_CR_TSEL1_SW  (0x7 << DAC_CR_TSEL1_SHIFT)
 /**@}*/
 
 /* TEN1: DAC channel1 trigger enable */
-#define DAC_CR_TEN1			(1 << 2)
+#define DAC_CR_TEN1 (1 << 2)
 
 /* BOFF1: DAC channel1 output buffer disable */
-#define DAC_CR_BOFF1			(1 << 1)
+#define DAC_CR_BOFF1 (1 << 1)
 
 /**@}*/
 
@@ -136,4 +136,3 @@ END_DECLS
 /** @endcond */
 
 /**@}*/
-

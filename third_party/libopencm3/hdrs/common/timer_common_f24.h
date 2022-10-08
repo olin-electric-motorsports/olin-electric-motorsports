@@ -36,9 +36,9 @@ specific memorymap.h header before including this header file.*/
  */
 
 /* Timer 2/5 option register (TIMx_OR) */
-#define TIM_OR(tim_base)		MMIO32((tim_base) + 0x50)
-#define TIM2_OR				TIM_OR(TIM2)
-#define TIM5_OR				TIM_OR(TIM5)
+#define TIM_OR(tim_base) MMIO32((tim_base) + 0x50)
+#define TIM2_OR          TIM_OR(TIM2)
+#define TIM5_OR          TIM_OR(TIM5)
 
 /* --- TIM2_OR values ---------------------------------------------------- */
 
@@ -52,42 +52,43 @@ Only available in F2 and F4 series.
 
 @{*/
 /** Internal Trigger 1 remapped to timer 8 trigger out */
-#define TIM2_OR_ITR1_RMP_TIM8_TRGOU	(0x0 << 10)
+#define TIM2_OR_ITR1_RMP_TIM8_TRGOU (0x0 << 10)
 /** Internal Trigger 1 remapped to PTP trigger out */
-#define TIM2_OR_ITR1_RMP_PTP		(0x1 << 10)
+#define TIM2_OR_ITR1_RMP_PTP (0x1 << 10)
 /** Internal Trigger 1 remapped to USB OTG FS SOF */
-#define TIM2_OR_ITR1_RMP_OTG_FS_SOF	(0x2 << 10)
+#define TIM2_OR_ITR1_RMP_OTG_FS_SOF (0x2 << 10)
 /** Internal Trigger 1 remapped to USB OTG HS SOF */
-#define TIM2_OR_ITR1_RMP_OTG_HS_SOF	(0x3 << 10)
+#define TIM2_OR_ITR1_RMP_OTG_HS_SOF (0x3 << 10)
 /**@}*/
-#define TIM2_OR_ITR1_RMP_MASK		(0x3 << 10)
+#define TIM2_OR_ITR1_RMP_MASK (0x3 << 10)
 
 /* --- TIM5_OR values ---------------------------------------------------- */
 
 /* ITR4_RMP */
 /****************************************************************************/
-/** @defgroup tim5_opt_trigger_remap TIM5_OR Timer 5 Option Register Internal Trigger 4 Remap
+/** @defgroup tim5_opt_trigger_remap TIM5_OR Timer 5 Option Register Internal
+Trigger 4 Remap
 
 Only available in F2 and F4 series.
 @ingroup timer_defines
 
 @{*/
 /** Internal Trigger 4 remapped to GPIO (see reference manual) */
-#define TIM5_OR_TI4_RMP_GPIO		(0x0 << 6)
+#define TIM5_OR_TI4_RMP_GPIO (0x0 << 6)
 /** Internal Trigger 4 remapped to LSI internal clock */
-#define TIM5_OR_TI4_RMP_LSI		(0x1 << 6)
+#define TIM5_OR_TI4_RMP_LSI (0x1 << 6)
 /** Internal Trigger 4 remapped to LSE internal clock */
-#define TIM5_OR_TI4_RMP_LSE		(0x2 << 6)
+#define TIM5_OR_TI4_RMP_LSE (0x2 << 6)
 /** Internal Trigger 4 remapped to RTC output event */
-#define TIM5_OR_TI4_RMP_RTC		(0x3 << 6)
+#define TIM5_OR_TI4_RMP_RTC (0x3 << 6)
 /**@}*/
-#define TIM5_OR_TI4_RMP_MASK		(0x3 << 6)
+#define TIM5_OR_TI4_RMP_MASK (0x3 << 6)
 
 /** Input Capture input polarity */
 enum tim_ic_pol {
-	TIM_IC_RISING,
-	TIM_IC_FALLING,
-	TIM_IC_BOTH,
+    TIM_IC_RISING,
+    TIM_IC_FALLING,
+    TIM_IC_BOTH,
 };
 
 /* --- Function prototypes ------------------------------------------------- */
@@ -96,6 +97,6 @@ BEGIN_DECLS
 
 void timer_set_option(uint32_t timer_peripheral, uint32_t option);
 void timer_ic_set_polarity(uint32_t timer, enum tim_ic_id ic,
-			   enum tim_ic_pol pol);
+                           enum tim_ic_pol pol);
 
 END_DECLS

@@ -52,14 +52,14 @@
 /** @defgroup flash_options Option Byte Addresses
 @ingroup flash_defines
 @{*/
-#define FLASH_OPTION_BYTE_0             FLASH_OPTION_BYTE(0)
-#define FLASH_OPTION_BYTE_1             FLASH_OPTION_BYTE(1)
-#define FLASH_OPTION_BYTE_2             FLASH_OPTION_BYTE(2)
-#define FLASH_OPTION_BYTE_3             FLASH_OPTION_BYTE(3)
-#define FLASH_OPTION_BYTE_4             FLASH_OPTION_BYTE(4)
-#define FLASH_OPTION_BYTE_5             FLASH_OPTION_BYTE(5)
-#define FLASH_OPTION_BYTE_6             FLASH_OPTION_BYTE(6)
-#define FLASH_OPTION_BYTE_7             FLASH_OPTION_BYTE(7)
+#define FLASH_OPTION_BYTE_0 FLASH_OPTION_BYTE(0)
+#define FLASH_OPTION_BYTE_1 FLASH_OPTION_BYTE(1)
+#define FLASH_OPTION_BYTE_2 FLASH_OPTION_BYTE(2)
+#define FLASH_OPTION_BYTE_3 FLASH_OPTION_BYTE(3)
+#define FLASH_OPTION_BYTE_4 FLASH_OPTION_BYTE(4)
+#define FLASH_OPTION_BYTE_5 FLASH_OPTION_BYTE(5)
+#define FLASH_OPTION_BYTE_6 FLASH_OPTION_BYTE(6)
+#define FLASH_OPTION_BYTE_7 FLASH_OPTION_BYTE(7)
 /**@}*/
 
 /*****************************************************************************/
@@ -71,18 +71,18 @@
 /** @defgroup flash_latency FLASH Wait States
 @ingroup flash_defines
 @{*/
-#define FLASH_ACR_LATENCY_0WS		0x00
-#define FLASH_ACR_LATENCY_1WS		0x01
-#define FLASH_ACR_LATENCY_2WS		0x02
+#define FLASH_ACR_LATENCY_0WS 0x00
+#define FLASH_ACR_LATENCY_1WS 0x01
+#define FLASH_ACR_LATENCY_2WS 0x02
 /**@}*/
-#define FLASH_ACR_HLFCYA		(1 << 3)
+#define FLASH_ACR_HLFCYA (1 << 3)
 
 /* --- FLASH_SR values ----------------------------------------------------- */
 
-#define FLASH_SR_EOP			(1 << 5)
-#define FLASH_SR_WRPRTERR		(1 << 4)
-#define FLASH_SR_PGERR			(1 << 2)
-#define FLASH_SR_BSY			(1 << 0)
+#define FLASH_SR_EOP      (1 << 5)
+#define FLASH_SR_WRPRTERR (1 << 4)
+#define FLASH_SR_PGERR    (1 << 2)
+#define FLASH_SR_BSY      (1 << 0)
 
 /* --- FLASH_CR values ----------------------------------------------------- */
 
@@ -90,17 +90,17 @@
 
 /* FLASH_OBR[25:18]: Data1 */
 /* FLASH_OBR[17:10]: Data0 */
-#define FLASH_OBR_NRST_STDBY		(1 << 4)
-#define FLASH_OBR_NRST_STOP		(1 << 3)
-#define FLASH_OBR_WDG_SW		(1 << 2)
-#define FLASH_OBR_RDPRT_EN		(1 << FLASH_OBR_RDPRT_SHIFT)
+#define FLASH_OBR_NRST_STDBY (1 << 4)
+#define FLASH_OBR_NRST_STOP  (1 << 3)
+#define FLASH_OBR_WDG_SW     (1 << 2)
+#define FLASH_OBR_RDPRT_EN   (1 << FLASH_OBR_RDPRT_SHIFT)
 
 /*****************************************************************************/
 /* API definitions                                                           */
 /*****************************************************************************/
 
 /* Read protection option byte protection enable key */
-#define FLASH_RDP_KEY			((uint16_t)0x00a5)
+#define FLASH_RDP_KEY ((uint16_t)0x00a5)
 
 /* --- Function prototypes ------------------------------------------------- */
 

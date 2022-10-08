@@ -45,62 +45,62 @@ specific memorymap.h header before including this header file.*/
 @ingroup gpio_defines
 
 @{*/
-#define GPIOI				GPIO_PORT_I_BASE
-#define GPIOJ				GPIO_PORT_J_BASE
-#define GPIOK				GPIO_PORT_K_BASE
+#define GPIOI GPIO_PORT_I_BASE
+#define GPIOJ GPIO_PORT_J_BASE
+#define GPIOK GPIO_PORT_K_BASE
 /**@}*/
 
 /* --- GPIO registers for STM32F2, STM32F3 and STM32F4 --------------------- */
 
 /* Port mode register (GPIOx_MODER) */
-#define GPIOI_MODER			GPIO_MODER(GPIOI)
-#define GPIOJ_MODER			GPIO_MODER(GPIOJ)
-#define GPIOK_MODER			GPIO_MODER(GPIOK)
+#define GPIOI_MODER GPIO_MODER(GPIOI)
+#define GPIOJ_MODER GPIO_MODER(GPIOJ)
+#define GPIOK_MODER GPIO_MODER(GPIOK)
 
 /* Port output type register (GPIOx_OTYPER) */
-#define GPIOI_OTYPER			GPIO_OTYPER(GPIOI)
-#define GPIOJ_OTYPER			GPIO_OTYPER(GPIOJ)
-#define GPIOK_OTYPER			GPIO_OTYPER(GPIOK)
+#define GPIOI_OTYPER GPIO_OTYPER(GPIOI)
+#define GPIOJ_OTYPER GPIO_OTYPER(GPIOJ)
+#define GPIOK_OTYPER GPIO_OTYPER(GPIOK)
 
 /* Port output speed register (GPIOx_OSPEEDR) */
-#define GPIOI_OSPEEDR			GPIO_OSPEEDR(GPIOI)
-#define GPIOJ_OSPEEDR			GPIO_OSPEEDR(GPIOJ)
-#define GPIOK_OSPEEDR			GPIO_OSPEEDR(GPIOK)
+#define GPIOI_OSPEEDR GPIO_OSPEEDR(GPIOI)
+#define GPIOJ_OSPEEDR GPIO_OSPEEDR(GPIOJ)
+#define GPIOK_OSPEEDR GPIO_OSPEEDR(GPIOK)
 
 /* Port pull-up/pull-down register (GPIOx_PUPDR) */
-#define GPIOI_PUPDR			GPIO_PUPDR(GPIOI)
-#define GPIOJ_PUPDR			GPIO_PUPDR(GPIOJ)
-#define GPIOK_PUPDR			GPIO_PUPDR(GPIOK)
+#define GPIOI_PUPDR GPIO_PUPDR(GPIOI)
+#define GPIOJ_PUPDR GPIO_PUPDR(GPIOJ)
+#define GPIOK_PUPDR GPIO_PUPDR(GPIOK)
 
 /* Port input data register (GPIOx_IDR) */
-#define GPIOI_IDR			GPIO_IDR(GPIOI)
-#define GPIOJ_IDR			GPIO_IDR(GPIOJ)
-#define GPIOK_IDR			GPIO_IDR(GPIOK)
+#define GPIOI_IDR GPIO_IDR(GPIOI)
+#define GPIOJ_IDR GPIO_IDR(GPIOJ)
+#define GPIOK_IDR GPIO_IDR(GPIOK)
 
 /* Port output data register (GPIOx_ODR) */
-#define GPIOI_ODR			GPIO_ODR(GPIOI)
-#define GPIOJ_ODR			GPIO_ODR(GPIOJ)
-#define GPIOK_ODR			GPIO_ODR(GPIOK)
+#define GPIOI_ODR GPIO_ODR(GPIOI)
+#define GPIOJ_ODR GPIO_ODR(GPIOJ)
+#define GPIOK_ODR GPIO_ODR(GPIOK)
 
 /* Port bit set/reset register (GPIOx_BSRR) */
-#define GPIOI_BSRR			GPIO_BSRR(GPIOI)
-#define GPIOJ_BSRR			GPIO_BSRR(GPIOJ)
-#define GPIOK_BSRR			GPIO_BSRR(GPIOK)
+#define GPIOI_BSRR GPIO_BSRR(GPIOI)
+#define GPIOJ_BSRR GPIO_BSRR(GPIOJ)
+#define GPIOK_BSRR GPIO_BSRR(GPIOK)
 
 /* Port configuration lock register (GPIOx_LCKR) */
-#define GPIOI_LCKR			GPIO_LCKR(GPIOI)
-#define GPIOJ_LCKR			GPIO_LCKR(GPIOJ)
-#define GPIOK_LCKR			GPIO_LCKR(GPIOK)
+#define GPIOI_LCKR GPIO_LCKR(GPIOI)
+#define GPIOJ_LCKR GPIO_LCKR(GPIOJ)
+#define GPIOK_LCKR GPIO_LCKR(GPIOK)
 
 /* Alternate function low register (GPIOx_AFRL) */
-#define GPIOI_AFRL			GPIO_AFRL(GPIOI)
-#define GPIOJ_AFRL			GPIO_AFRL(GPIOJ)
-#define GPIOK_AFRL			GPIO_AFRL(GPIOK)
+#define GPIOI_AFRL GPIO_AFRL(GPIOI)
+#define GPIOJ_AFRL GPIO_AFRL(GPIOJ)
+#define GPIOK_AFRL GPIO_AFRL(GPIOK)
 
 /* Alternate function high register (GPIOx_AFRH) */
-#define GPIOI_AFRH			GPIO_AFRH(GPIOI)
-#define GPIOJ_AFRH			GPIO_AFRH(GPIOJ)
-#define GPIOK_AFRH			GPIO_AFRH(GPIOK)
+#define GPIOI_AFRH GPIO_AFRH(GPIOI)
+#define GPIOJ_AFRH GPIO_AFRH(GPIOJ)
+#define GPIOK_AFRH GPIO_AFRH(GPIOK)
 
 /**@}*/
 #endif

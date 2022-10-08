@@ -42,19 +42,19 @@ specific memorymap.h header before including this header file.*/
 
 @{*/
 
-#define SPI_CR1_DFF_8BIT			(0 << 11)
-#define SPI_CR1_DFF_16BIT			(1 << 11)
+#define SPI_CR1_DFF_8BIT  (0 << 11)
+#define SPI_CR1_DFF_16BIT (1 << 11)
 
 /**@}*/
 
-#define SPI_CR1_DFF					(1 << 11)
+#define SPI_CR1_DFF (1 << 11)
 
 /* --- Function prototypes ------------------------------------------------- */
 
 BEGIN_DECLS
 
 int spi_init_master(uint32_t spi, uint32_t br, uint32_t cpol, uint32_t cpha,
-		uint32_t dff, uint32_t lsbfirst);
+                    uint32_t dff, uint32_t lsbfirst);
 void spi_set_dff_8bit(uint32_t spi);
 void spi_set_dff_16bit(uint32_t spi);
 
@@ -66,4 +66,3 @@ END_DECLS
 #endif
 /** @endcond */
 /**@}*/
-

@@ -37,16 +37,16 @@ specific memorymap.h header before including this header file.*/
 /* --- IWDG registers ------------------------------------------------------ */
 
 /** Key Register (IWDG_KR) */
-#define IWDG_KR				MMIO32(IWDG_BASE + 0x00)
+#define IWDG_KR MMIO32(IWDG_BASE + 0x00)
 
 /** Prescaler register (IWDG_PR) */
-#define IWDG_PR				MMIO32(IWDG_BASE + 0x04)
+#define IWDG_PR MMIO32(IWDG_BASE + 0x04)
 
 /** Reload register (IWDG_RLR) */
-#define IWDG_RLR			MMIO32(IWDG_BASE + 0x08)
+#define IWDG_RLR MMIO32(IWDG_BASE + 0x08)
 
 /** Status register (IWDG_SR) */
-#define IWDG_SR				MMIO32(IWDG_BASE + 0x0c)
+#define IWDG_SR MMIO32(IWDG_BASE + 0x0c)
 
 /* --- IWDG_KR values ------------------------------------------------------ */
 
@@ -57,9 +57,9 @@ specific memorymap.h header before including this header file.*/
 @ingroup iwdg_defines
 
 @{*/
-#define IWDG_KR_RESET			0xaaaa
-#define IWDG_KR_UNLOCK			0x5555
-#define IWDG_KR_START			0xcccc
+#define IWDG_KR_RESET  0xaaaa
+#define IWDG_KR_UNLOCK 0x5555
+#define IWDG_KR_START  0xcccc
 /**@}*/
 
 /* --- IWDG_PR values ------------------------------------------------------ */
@@ -67,18 +67,18 @@ specific memorymap.h header before including this header file.*/
 /* Bits [31:3]: Reserved. */
 
 /* PR[2:0]: Prescaler divider */
-#define IWDG_PR_LSB			0
+#define IWDG_PR_LSB 0
 /** @defgroup iwdg_prediv IWDG prescaler divider
 @ingroup iwdg_defines
 
 @{*/
-#define IWDG_PR_DIV4			0x0
-#define IWDG_PR_DIV8			0x1
-#define IWDG_PR_DIV16			0x2
-#define IWDG_PR_DIV32			0x3
-#define IWDG_PR_DIV64			0x4
-#define IWDG_PR_DIV128			0x5
-#define IWDG_PR_DIV256			0x6
+#define IWDG_PR_DIV4   0x0
+#define IWDG_PR_DIV8   0x1
+#define IWDG_PR_DIV16  0x2
+#define IWDG_PR_DIV32  0x3
+#define IWDG_PR_DIV64  0x4
+#define IWDG_PR_DIV128 0x5
+#define IWDG_PR_DIV256 0x6
 /**@}*/
 /* Double definition: 0x06 and 0x07 both mean DIV256 as per datasheet. */
 /* #define IWDG_PR_DIV256			0x7 */
@@ -93,10 +93,10 @@ specific memorymap.h header before including this header file.*/
 @ingroup iwdg_defines
 @{*/
 /** RVU: Watchdog counter reload value update */
-#define IWDG_SR_RVU			(1 << 1)
+#define IWDG_SR_RVU (1 << 1)
 
 /** PVU: Watchdog prescaler value update */
-#define IWDG_SR_PVU			(1 << 0)
+#define IWDG_SR_PVU (1 << 0)
 /**@}*/
 
 /* --- IWDG function prototypes---------------------------------------------- */
@@ -118,4 +118,3 @@ END_DECLS
 #endif
 /** @endcond */
 /**@}*/
-

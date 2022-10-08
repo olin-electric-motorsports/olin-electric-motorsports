@@ -43,48 +43,48 @@ specific memorymap.h header before including this header file.*/
  @{*/
 
 /** DAC control register (DAC_CR) */
-#define DAC_CR(dac)			MMIO32((dac) + 0x00)
+#define DAC_CR(dac) MMIO32((dac) + 0x00)
 
 /** DAC software trigger register (DAC_SWTRIGR) */
-#define DAC_SWTRIGR(dac)		MMIO32((dac) + 0x04)
+#define DAC_SWTRIGR(dac) MMIO32((dac) + 0x04)
 
 /** DAC channel1 12-bit right-aligned data holding register (DAC_DHR12R1) */
-#define DAC_DHR12R1(dac)		MMIO32((dac) + 0x08)
+#define DAC_DHR12R1(dac) MMIO32((dac) + 0x08)
 
 /** DAC channel1 12-bit left aligned data holding register (DAC_DHR12L1) */
-#define DAC_DHR12L1(dac)		MMIO32((dac) + 0x0C)
+#define DAC_DHR12L1(dac) MMIO32((dac) + 0x0C)
 
 /** DAC channel1 8-bit right aligned data holding register (DAC_DHR8R1) */
-#define DAC_DHR8R1(dac)			MMIO32((dac) + 0x10)
+#define DAC_DHR8R1(dac) MMIO32((dac) + 0x10)
 
 /** DAC channel2 12-bit right aligned data holding register (DAC_DHR12R2) */
-#define DAC_DHR12R2(dac)		MMIO32((dac) + 0x14)
+#define DAC_DHR12R2(dac) MMIO32((dac) + 0x14)
 
 /** DAC channel2 12-bit left aligned data holding register (DAC_DHR12L2) */
-#define DAC_DHR12L2(dac)		MMIO32((dac) + 0x18)
+#define DAC_DHR12L2(dac) MMIO32((dac) + 0x18)
 
 /** DAC channel2 8-bit right-aligned data holding register (DAC_DHR8R2) */
-#define DAC_DHR8R2(dac)			MMIO32((dac) + 0x1C)
+#define DAC_DHR8R2(dac) MMIO32((dac) + 0x1C)
 
 /** Dual DAC 12-bit right-aligned data holding register (DAC_DHR12RD) */
-#define DAC_DHR12RD(dac)		MMIO32((dac) + 0x20)
+#define DAC_DHR12RD(dac) MMIO32((dac) + 0x20)
 
 /** DUAL DAC 12-bit left aligned data holding register (DAC_DHR12LD) */
-#define DAC_DHR12LD(dac)		MMIO32((dac) + 0x24)
+#define DAC_DHR12LD(dac) MMIO32((dac) + 0x24)
 
 /** DUAL DAC 8-bit right aligned data holding register (DAC_DHR8RD) */
-#define DAC_DHR8RD(dac)			MMIO32((dac) + 0x28)
+#define DAC_DHR8RD(dac) MMIO32((dac) + 0x28)
 
 /** DAC channel1 data output register (DAC_DOR1) */
-#define DAC_DOR1(dac)			MMIO32((dac) + 0x2C)
+#define DAC_DOR1(dac) MMIO32((dac) + 0x2C)
 
 /** DAC channel2 data output register (DAC_DOR2) */
-#define DAC_DOR2(dac)			MMIO32((dac) + 0x30)
+#define DAC_DOR2(dac) MMIO32((dac) + 0x30)
 
 /** DAC status register.
  * @note not available on F1
  */
-#define DAC_SR(dac)			MMIO32((dac) + 0x34)
+#define DAC_SR(dac) MMIO32((dac) + 0x34)
 
 /**@}*/
 
@@ -95,120 +95,109 @@ specific memorymap.h header before including this header file.*/
 /** DMAUDRIE2: DAC channel2 DMA underrun interrupt enable
  * @note doesn't exist in most members of the STM32F1 family
  */
-#define DAC_CR_DMAUDRIE2		(1 << 29)
+#define DAC_CR_DMAUDRIE2 (1 << 29)
 
 /** DMAEN2: DAC channel2 DMA enable */
-#define DAC_CR_DMAEN2			(1 << 28)
+#define DAC_CR_DMAEN2 (1 << 28)
 
 /** MAMP2[3:0]: DAC channel2 mask/amplitude selector field position */
-#define DAC_CR_MAMP2_SHIFT		24
+#define DAC_CR_MAMP2_SHIFT 24
 
 /** Wave generation mode mask size */
-#define DAC_CR_WAVEx_MASK		0x3
+#define DAC_CR_WAVEx_MASK 0x3
 
 /** WAVE2[1:0]: DAC channel2 wave generation mode*/
-#define DAC_CR_WAVE2_SHIFT		22
+#define DAC_CR_WAVE2_SHIFT 22
 
 /** EN2: DAC channel2 enable */
-#define DAC_CR_EN2			(1 << 16)
+#define DAC_CR_EN2 (1 << 16)
 
 /** DMAUDRIE1: DAC channel1 DMA underrun interrupt enable
  * @note doesn't exist in most members of the STM32F1 family
  */
-#define DAC_CR_DMAUDRIE1		(1 << 13)
+#define DAC_CR_DMAUDRIE1 (1 << 13)
 
 /** DMAEN1: DAC channel1 DMA enable */
-#define DAC_CR_DMAEN1			(1 << 12)
+#define DAC_CR_DMAEN1 (1 << 12)
 
 /** MAMP1[3:0]: DAC channel1 mask/amplitude selector field position */
-#define DAC_CR_MAMP1_SHIFT		8
+#define DAC_CR_MAMP1_SHIFT 8
 /** MAMP Mask/Amplitude selector field size */
-#define DAC_CR_MAMPx_MASK		0xf
+#define DAC_CR_MAMPx_MASK 0xf
 
 /** WAVE1[1:0]: DAC channel1 wave generation mode */
-#define DAC_CR_WAVE1_SHIFT		6
+#define DAC_CR_WAVE1_SHIFT 6
 
 /** EN1: DAC channel1 enable */
-#define DAC_CR_EN1			(1 << 0)
+#define DAC_CR_EN1 (1 << 0)
 /**@}*/
 
 /**@defgroup dac_swtrigr_values DAC_SWTRIGR Values
  * @{
  */
 /** SWTRIG2: DAC channel2 software trigger */
-#define DAC_SWTRIGR_SWTRIG2		(1 << 1)
+#define DAC_SWTRIGR_SWTRIG2 (1 << 1)
 
 /** SWTRIG1: DAC channel1 software trigger */
-#define DAC_SWTRIGR_SWTRIG1		(1 << 0)
+#define DAC_SWTRIGR_SWTRIG1 (1 << 0)
 /**@}*/
-
 
 /**@defgroup dac_dhrxxx_values DAC_DHRxxx Values
  * @{
  */
 /* --- DAC_DHR12R1 values -------------------------------------------------- */
-#define DAC_DHR12R1_DACC1DHR_SHIFT	0
-#define DAC_DHR12R1_DACC1DHR_MASK	0xFFF
-
+#define DAC_DHR12R1_DACC1DHR_SHIFT 0
+#define DAC_DHR12R1_DACC1DHR_MASK  0xFFF
 
 /* --- DAC_DHR12L1 values -------------------------------------------------- */
-#define DAC_DHR12L1_DACC1DHR_SHIFT	4
-#define DAC_DHR12L1_DACC1DHR_MASK	0xFFF
-
+#define DAC_DHR12L1_DACC1DHR_SHIFT 4
+#define DAC_DHR12L1_DACC1DHR_MASK  0xFFF
 
 /* --- DAC_DHR8R1 values --------------------------------------------------- */
-#define DAC_DHR8R1_DACC1DHR_SHIFT	0
-#define DAC_DHR8R1_DACC1DHR_MASK	0xFF
-
+#define DAC_DHR8R1_DACC1DHR_SHIFT 0
+#define DAC_DHR8R1_DACC1DHR_MASK  0xFF
 
 /* --- DAC_DHR12R2 values -------------------------------------------------- */
-#define DAC_DHR12R2_DACC2DHR_SHIFT	0
-#define DAC_DHR12R2_DACC2DHR_MASK	0xFFF
-
+#define DAC_DHR12R2_DACC2DHR_SHIFT 0
+#define DAC_DHR12R2_DACC2DHR_MASK  0xFFF
 
 /* --- DAC_DHR12L2 values -------------------------------------------------- */
-#define DAC_DHR12L2_DACC2DHR_SHIFT	4
-#define DAC_DHR12L2_DACC2DHR_MASK	0xFFF
-
+#define DAC_DHR12L2_DACC2DHR_SHIFT 4
+#define DAC_DHR12L2_DACC2DHR_MASK  0xFFF
 
 /* --- DAC_DHR8R2 values --------------------------------------------------- */
-#define DAC_DHR8R2_DACC2DHR_SHIFT	0
-#define DAC_DHR8R2_DACC2DHR_MASK	0xFF
-
+#define DAC_DHR8R2_DACC2DHR_SHIFT 0
+#define DAC_DHR8R2_DACC2DHR_MASK  0xFF
 
 /* --- DAC_DHR12RD values -------------------------------------------------- */
-#define DAC_DHR12RD_DACC2DHR_SHIFT	16
-#define DAC_DHR12RD_DACC2DHR_MASK	0xFFF
-#define DAC_DHR12RD_DACC1DHR_SHIFT	0
-#define DAC_DHR12RD_DACC1DHR_MSK	0xFFF
-
+#define DAC_DHR12RD_DACC2DHR_SHIFT 16
+#define DAC_DHR12RD_DACC2DHR_MASK  0xFFF
+#define DAC_DHR12RD_DACC1DHR_SHIFT 0
+#define DAC_DHR12RD_DACC1DHR_MSK   0xFFF
 
 /* --- DAC_DHR12LD values -------------------------------------------------- */
-#define DAC_DHR12LD_DACC2DHR_SHIFT	16
-#define DAC_DHR12LD_DACC2DHR_MSK	0xFFF
-#define DAC_DHR12LD_DACC1DHR_SHIFT	0
-#define DAC_DHR12LD_DACC1DHR_MSK	0xFFF
-
+#define DAC_DHR12LD_DACC2DHR_SHIFT 16
+#define DAC_DHR12LD_DACC2DHR_MSK   0xFFF
+#define DAC_DHR12LD_DACC1DHR_SHIFT 0
+#define DAC_DHR12LD_DACC1DHR_MSK   0xFFF
 
 /* --- DAC_DHR8RD values --------------------------------------------------- */
-#define DAC_DHR8RD_DACC2DHR_SHIFT	8
-#define DAC_DHR8RD_DACC2DHR_MSK		0xFF
-#define DAC_DHR8RD_DACC1DHR_SHIFT	0
-#define DAC_DHR8RD_DACC1DHR_MSK		0xFF
+#define DAC_DHR8RD_DACC2DHR_SHIFT 8
+#define DAC_DHR8RD_DACC2DHR_MSK   0xFF
+#define DAC_DHR8RD_DACC1DHR_SHIFT 0
+#define DAC_DHR8RD_DACC1DHR_MSK   0xFF
 /**@}*/
-
 
 /**@defgroup dac_dorx_values DAC_DORx Values
  * @{
  */
 /* --- DAC_DOR1 values ----------------------------------------------------- */
-#define DAC_DOR1_DACC1DOR_SHIFT		0
-#define DAC_DOR1_DACC1DOR_MSK		0xFFF
-
+#define DAC_DOR1_DACC1DOR_SHIFT 0
+#define DAC_DOR1_DACC1DOR_MSK   0xFFF
 
 /* --- DAC_DOR2 values ----------------------------------------------------- */
-#define DAC_DOR2_DACC2DOR_SHIFT		0
-#define DAC_DOR2_DACC2DOR_MSK		0xFFF
+#define DAC_DOR2_DACC2DOR_SHIFT 0
+#define DAC_DOR2_DACC2DOR_MSK   0xFFF
 
 /**@}*/
 
@@ -216,10 +205,10 @@ specific memorymap.h header before including this header file.*/
  * @{
  */
 /** DAC channel 1 DMA underrun flag */
-#define DAC_SR_DMAUDR1			(1 << 13)
+#define DAC_SR_DMAUDR1 (1 << 13)
 
 /** DAC channel 2 DMA underrun flag */
-#define DAC_SR_DMAUDR2			(1 << 29)
+#define DAC_SR_DMAUDR2 (1 << 29)
 /**@}*/
 
 /* --- Function prototypes ------------------------------------------------- */
@@ -228,26 +217,26 @@ specific memorymap.h header before including this header file.*/
  * @note Not all parts have two channels, notably, some of the smaller F0's
  * @{
  */
-#define DAC_CHANNEL1		(1 << 0)
-#define DAC_CHANNEL2		(1 << 1)
-#define DAC_CHANNEL_BOTH	(DAC_CHANNEL1 | DAC_CHANNEL2)
+#define DAC_CHANNEL1     (1 << 0)
+#define DAC_CHANNEL2     (1 << 1)
+#define DAC_CHANNEL_BOTH (DAC_CHANNEL1 | DAC_CHANNEL2)
 /**@}*/
 
 /** DAC data size (8/12 bits), alignment (right/left) */
 enum dac_align {
-	DAC_ALIGN_RIGHT8,
-	DAC_ALIGN_RIGHT12,
-	DAC_ALIGN_LEFT12,
+    DAC_ALIGN_RIGHT8,
+    DAC_ALIGN_RIGHT12,
+    DAC_ALIGN_LEFT12,
 };
 
 /** DAC waveform generation options.
  * Not all wave shapes are available on all parts.
  */
 enum dac_wave {
-	DAC_WAVE_DISABLE  = 0,
-	DAC_WAVE_NOISE    = 1,
-	DAC_WAVE_TRIANGLE = 2,
-	DAC_WAVE_SAWTOOTH = 3,
+    DAC_WAVE_DISABLE = 0,
+    DAC_WAVE_NOISE = 1,
+    DAC_WAVE_TRIANGLE = 2,
+    DAC_WAVE_SAWTOOTH = 3,
 };
 
 BEGIN_DECLS
@@ -267,7 +256,7 @@ void dac_set_waveform_characteristics(uint32_t dac, int channel, int mamp);
 void dac_load_data_buffer_single(uint32_t dac, uint16_t data,
                                  enum dac_align align, int channel);
 void dac_load_data_buffer_dual(uint32_t dac, uint16_t data1, uint16_t data2,
-			       enum dac_align align);
+                               enum dac_align align);
 void dac_software_trigger(uint32_t dac, int channel);
 
 END_DECLS
@@ -280,4 +269,3 @@ END_DECLS
 /** @endcond */
 
 /**@}*/
-

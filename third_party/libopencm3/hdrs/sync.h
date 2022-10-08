@@ -29,15 +29,15 @@ void __dmb(void);
 /* Implements synchronisation primitives as discussed in the ARM document
  * DHT0008A (ID081709) "ARM Synchronization Primitives" and the ARM v7-M
  * Architecture Reference Manual.
-*/
+ */
 
 /* --- Exclusive load and store instructions ------------------------------- */
 
 /* Those are defined only on CM3 or CM4 */
 #if defined(__ARM_ARCH_7M__) || defined(__ARM_ARCH_7EM__)
 
-uint32_t __ldrex(volatile uint32_t *addr);
-uint32_t __strex(uint32_t val, volatile uint32_t *addr);
+uint32_t __ldrex(volatile uint32_t* addr);
+uint32_t __strex(uint32_t val, volatile uint32_t* addr);
 
 /* --- Convenience functions ----------------------------------------------- */
 
@@ -46,11 +46,11 @@ uint32_t __strex(uint32_t val, volatile uint32_t *addr);
 typedef uint32_t mutex_t;
 
 #define MUTEX_UNLOCKED 0
-#define MUTEX_LOCKED	 1
+#define MUTEX_LOCKED   1
 
-void mutex_lock(mutex_t *m);
-uint32_t mutex_trylock(mutex_t *m);
-void mutex_unlock(mutex_t *m);
+void mutex_lock(mutex_t* m);
+uint32_t mutex_trylock(mutex_t* m);
+void mutex_unlock(mutex_t* m);
 
 #endif
 

@@ -36,38 +36,38 @@ specific memorymap.h header before including this header file.*/
 /* --- Random number generator registers ----------------------------------- */
 
 /* Control register */
-#define RNG_CR			MMIO32(RNG_BASE + 0x00)
+#define RNG_CR MMIO32(RNG_BASE + 0x00)
 
 /* Status register */
-#define RNG_SR			MMIO32(RNG_BASE + 0x04)
+#define RNG_SR MMIO32(RNG_BASE + 0x04)
 
 /* Data register */
-#define RNG_DR			MMIO32(RNG_BASE + 0x08)
+#define RNG_DR MMIO32(RNG_BASE + 0x08)
 
 /* --- RNG_CR values ------------------------------------------------------- */
 
 /* RNG ENABLE */
-#define RNG_CR_RNGEN		(1 << 2)
+#define RNG_CR_RNGEN (1 << 2)
 
 /* RNG interrupt enable */
-#define RNG_CR_IE			(1 << 3)
+#define RNG_CR_IE (1 << 3)
 
 /* --- RNG_SR values ------------------------------------------------------- */
 
 /* Data ready */
-#define RNG_SR_DRDY		(1 << 0)
+#define RNG_SR_DRDY (1 << 0)
 
 /* Clock error current status */
-#define RNG_SR_CECS		(1 << 1)
+#define RNG_SR_CECS (1 << 1)
 
 /* Seed error current status */
-#define RNG_SR_SECS		(1 << 2)
+#define RNG_SR_SECS (1 << 2)
 
 /* Clock error interrupt status */
-#define RNG_SR_CEIS		(1 << 5)
+#define RNG_SR_CEIS (1 << 5)
 
 /* Seed error interrupt status */
-#define RNG_SR_SEIS		(1 << 6)
+#define RNG_SR_SEIS (1 << 6)
 
 /* --- Function prototypes ------------------------------------------------- */
 
@@ -77,7 +77,7 @@ void rng_enable(void);
 void rng_disable(void);
 void rng_interrupt_enable(void);
 void rng_interrupt_disable(void);
-bool rng_get_random(uint32_t *rand_nr);
+bool rng_get_random(uint32_t* rand_nr);
 uint32_t rng_get_random_blocking(void);
 
 END_DECLS
@@ -90,4 +90,3 @@ END_DECLS
 #warning "rng_common_v1.h should not be included explicitly, only via rng.h"
 #endif
 /** @endcond */
-

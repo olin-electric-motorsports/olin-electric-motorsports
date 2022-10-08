@@ -37,22 +37,22 @@ specific memorymap.h header before including this header file.*/
 
 /* --- SYSCFG registers ---------------------------------------------------- */
 
-#define SYSCFG_MEMRM			MMIO32(SYSCFG_BASE + 0x00)
+#define SYSCFG_MEMRM MMIO32(SYSCFG_BASE + 0x00)
 
-#define SYSCFG_PMC			MMIO32(SYSCFG_BASE + 0x04)
+#define SYSCFG_PMC MMIO32(SYSCFG_BASE + 0x04)
 
 /* External interrupt configuration registers [0..3] (SYSCFG_EXTICR[1..4]) */
-#define SYSCFG_EXTICR(i)		MMIO32(SYSCFG_BASE + 0x08 + (i)*4)
-#define SYSCFG_EXTICR1			SYSCFG_EXTICR(0)
-#define SYSCFG_EXTICR2			SYSCFG_EXTICR(1)
-#define SYSCFG_EXTICR3			SYSCFG_EXTICR(2)
-#define SYSCFG_EXTICR4			SYSCFG_EXTICR(3)
+#define SYSCFG_EXTICR(i) MMIO32(SYSCFG_BASE + 0x08 + (i)*4)
+#define SYSCFG_EXTICR1   SYSCFG_EXTICR(0)
+#define SYSCFG_EXTICR2   SYSCFG_EXTICR(1)
+#define SYSCFG_EXTICR3   SYSCFG_EXTICR(2)
+#define SYSCFG_EXTICR4   SYSCFG_EXTICR(3)
 
-#define SYSCFG_CMPCR			MMIO32(SYSCFG_BASE + 0x20)
+#define SYSCFG_CMPCR MMIO32(SYSCFG_BASE + 0x20)
 
 /* --- SYSCFG_EXTICR Values -------------------------------------------------*/
 
-#define SYSCFG_EXTICR_FIELDSIZE		4
+#define SYSCFG_EXTICR_FIELDSIZE 4
 
 #endif
 /**@}*/

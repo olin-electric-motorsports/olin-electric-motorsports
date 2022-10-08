@@ -37,66 +37,66 @@
 
 /* --- FLASH registers ----------------------------------------------------- */
 
-#define FLASH_ACR			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x00)
-#define FLASH_KEYR			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x04)
-#define FLASH_OPTKEYR			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x08)
-#define FLASH_SR			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x0C)
-#define FLASH_CR			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x10)
-#define FLASH_AR			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x14)
-#define FLASH_OBR			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x1C)
-#define FLASH_WRPR			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x20)
+#define FLASH_ACR     MMIO32(FLASH_MEM_INTERFACE_BASE + 0x00)
+#define FLASH_KEYR    MMIO32(FLASH_MEM_INTERFACE_BASE + 0x04)
+#define FLASH_OPTKEYR MMIO32(FLASH_MEM_INTERFACE_BASE + 0x08)
+#define FLASH_SR      MMIO32(FLASH_MEM_INTERFACE_BASE + 0x0C)
+#define FLASH_CR      MMIO32(FLASH_MEM_INTERFACE_BASE + 0x10)
+#define FLASH_AR      MMIO32(FLASH_MEM_INTERFACE_BASE + 0x14)
+#define FLASH_OBR     MMIO32(FLASH_MEM_INTERFACE_BASE + 0x1C)
+#define FLASH_WRPR    MMIO32(FLASH_MEM_INTERFACE_BASE + 0x20)
 /* Only present in STM32F10x XL series */
-#define FLASH_KEYR2			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x44)
-#define FLASH_SR2			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x4C)
-#define FLASH_CR2			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x50)
-#define FLASH_AR2			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x54)
+#define FLASH_KEYR2 MMIO32(FLASH_MEM_INTERFACE_BASE + 0x44)
+#define FLASH_SR2   MMIO32(FLASH_MEM_INTERFACE_BASE + 0x4C)
+#define FLASH_CR2   MMIO32(FLASH_MEM_INTERFACE_BASE + 0x50)
+#define FLASH_AR2   MMIO32(FLASH_MEM_INTERFACE_BASE + 0x54)
 
 /* --- FLASH_OPTION bytes ------------------------------------------------- */
 
-#define FLASH_OPTION_BYTE(i)		MMIO16(INFO_BASE+0x0800 + (i)*2)
+#define FLASH_OPTION_BYTE(i) MMIO16(INFO_BASE + 0x0800 + (i)*2)
 
 /* --- FLASH_ACR values ---------------------------------------------------- */
 
-#define FLASH_ACR_LATENCY_SHIFT		0
-#define FLASH_ACR_LATENCY_MASK		7
+#define FLASH_ACR_LATENCY_SHIFT 0
+#define FLASH_ACR_LATENCY_MASK  7
 
-#define FLASH_ACR_PRFTBS		(1 << 5)
-#define FLASH_ACR_PRFTBE		(1 << 4)
+#define FLASH_ACR_PRFTBS (1 << 5)
+#define FLASH_ACR_PRFTBE (1 << 4)
 /** Compatibility define */
-#define FLASH_ACR_PRFTEN		FLASH_ACR_PRFTBE
+#define FLASH_ACR_PRFTEN FLASH_ACR_PRFTBE
 
 /* --- FLASH_SR values ----------------------------------------------------- */
 
-#define FLASH_SR_EOP			(1 << 5)
-#define FLASH_SR_WRPRTERR		(1 << 4)
-#define FLASH_SR_PGERR			(1 << 2)
-#define FLASH_SR_BSY			(1 << 0)
+#define FLASH_SR_EOP      (1 << 5)
+#define FLASH_SR_WRPRTERR (1 << 4)
+#define FLASH_SR_PGERR    (1 << 2)
+#define FLASH_SR_BSY      (1 << 0)
 
 /* --- FLASH_CR values ----------------------------------------------------- */
 
-#define FLASH_CR_EOPIE			(1 << 12)
-#define FLASH_CR_ERRIE			(1 << 10)
-#define FLASH_CR_OPTWRE			(1 << 9)
-#define FLASH_CR_LOCK			(1 << 7)
-#define FLASH_CR_STRT			(1 << 6)
-#define FLASH_CR_OPTER			(1 << 5)
-#define FLASH_CR_OPTPG			(1 << 4)
-#define FLASH_CR_MER			(1 << 2)
-#define FLASH_CR_PER			(1 << 1)
-#define FLASH_CR_PG			(1 << 0)
+#define FLASH_CR_EOPIE  (1 << 12)
+#define FLASH_CR_ERRIE  (1 << 10)
+#define FLASH_CR_OPTWRE (1 << 9)
+#define FLASH_CR_LOCK   (1 << 7)
+#define FLASH_CR_STRT   (1 << 6)
+#define FLASH_CR_OPTER  (1 << 5)
+#define FLASH_CR_OPTPG  (1 << 4)
+#define FLASH_CR_MER    (1 << 2)
+#define FLASH_CR_PER    (1 << 1)
+#define FLASH_CR_PG     (1 << 0)
 
 /* --- FLASH_OBR values ---------------------------------------------------- */
 
-#define FLASH_OBR_RDPRT_SHIFT		1
-#define FLASH_OBR_OPTERR		(1 << 0)
+#define FLASH_OBR_RDPRT_SHIFT 1
+#define FLASH_OBR_OPTERR      (1 << 0)
 
 /* --- FLASH Keys -----------------------------------------------------------*/
 
-#define FLASH_KEYR_KEY1			((uint32_t)0x45670123)
-#define FLASH_KEYR_KEY2			((uint32_t)0xcdef89ab)
+#define FLASH_KEYR_KEY1 ((uint32_t)0x45670123)
+#define FLASH_KEYR_KEY2 ((uint32_t)0xcdef89ab)
 
-#define FLASH_OPTKEYR_KEY1		FLASH_KEYR_KEY1
-#define FLASH_OPTKEYR_KEY2		FLASH_KEYR_KEY2
+#define FLASH_OPTKEYR_KEY1 FLASH_KEYR_KEY1
+#define FLASH_OPTKEYR_KEY2 FLASH_KEYR_KEY2
 
 /* --- Function prototypes ------------------------------------------------- */
 
@@ -122,4 +122,3 @@ END_DECLS
 #warning "only via flash.h"
 #endif
 /** @endcond */
-

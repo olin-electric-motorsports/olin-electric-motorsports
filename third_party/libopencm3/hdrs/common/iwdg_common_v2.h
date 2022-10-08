@@ -1,6 +1,7 @@
 /** @addtogroup iwdg_defines
 
- @author @htmlonly &copy; @endhtmlonly 2018 Guillame Revaillot <revaillot@archos.com>
+ @author @htmlonly &copy; @endhtmlonly 2018 Guillame Revaillot
+ <revaillot@archos.com>
 
  */
 /*
@@ -45,7 +46,7 @@ specific memorymap.h header before including this header file.*/
 /*****************************************************************************/
 
 /** Window Register (IWDG_WINR) */
-#define IWDG_WINR				MMIO32(IWDG_BASE + 0x10)
+#define IWDG_WINR MMIO32(IWDG_BASE + 0x10)
 
 /*****************************************************************************/
 /* Register values                                                           */
@@ -54,7 +55,7 @@ specific memorymap.h header before including this header file.*/
 /** @addtogroup iwdg_sr_values
 @{*/
 /** WVU: Watchdog counter window value update */
-#define IWDG_SR_WVU			(1 << 2)
+#define IWDG_SR_WVU (1 << 2)
 /**@}*/
 
 /*****************************************************************************/
@@ -64,7 +65,6 @@ specific memorymap.h header before including this header file.*/
 /*****************************************************************************/
 /* API Functions                                                             */
 /*****************************************************************************/
-
 
 BEGIN_DECLS
 
@@ -77,4 +77,3 @@ END_DECLS
 #warning "iwdg_common_v2.h should not be included explicitly, only via iwdg.h"
 #endif
 /** @endcond */
-
