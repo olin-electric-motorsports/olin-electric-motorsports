@@ -2,7 +2,7 @@
 
   (uuid 393e067c-764f-4be2-9bd5-9bc5dad520eb)
 
-  (paper "A2")
+  (paper "A4")
 
   (lib_symbols
     (symbol "formula:C_10nF" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
@@ -1337,10 +1337,6 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 47b7ca38-96d6-4c72-b41a-fcb763d71f94)
   )
-  (text "Mux data out -> GPIO2" (at 13.97 21.59 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 697651af-647e-4281-9376-17b93640867d)
-  )
   (text "A0 = 0, A1 = 1  Address 0x94" (at 130.81 134.62 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b182a4fa-8cde-49e5-b1cc-7a81757bc207)
@@ -1499,10 +1495,10 @@
     (uuid fde78a2e-6d89-42a6-8ea9-c1ca4cf2040b)
   )
 
-  (global_label "one_mux" (shape input) (at 172.72 113.03 0) (fields_autoplaced)
+  (global_label "SMBUS_Mux" (shape input) (at 172.72 113.03 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid bdf4ecd5-9256-4a1d-a2d3-1c0598ddf4d0)
-    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 183.3579 112.9506 0)
+    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 186.2002 112.9506 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
