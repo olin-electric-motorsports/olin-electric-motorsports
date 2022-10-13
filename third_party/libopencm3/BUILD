@@ -15,11 +15,17 @@
 
 cc_library(
     name = "export",
-    srcs = ["libopencm3_stm32f1.a"],
     hdrs = glob(["**/*.h"]),
     include_prefix = "libopencm3/stm32",
     strip_include_prefix = "hdrs/",
     # strip_include_prefix = "include",
+    visibility = ["//visibility:public"],
+    deps = [':compiled_library']
+)
+
+cc_library(
+    name = 'compiled_library',
+    hdrs = ['libopencm3_stm32f1.a'],
     visibility = ["//visibility:public"],
 )
 
