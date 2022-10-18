@@ -75,10 +75,12 @@ SECTIONS
 	_data_loadaddr = LOADADDR(.data);
 
 	.bss : {
+        PROVIDE (__bss_start__ = .) ;
 		*(.bss*)	/* Read-write zero initialized data */
 		*(COMMON)
 		. = ALIGN(4);
 		_ebss = .;
+        PROVIDE (__bss_end__ = .) ;
 	} >ram
 
 	. = ALIGN(4);
