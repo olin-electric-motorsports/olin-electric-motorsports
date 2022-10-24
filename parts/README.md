@@ -98,6 +98,8 @@ Do not create footprints for specific components, create footprints for packages
 
 In the rare case that a component does not have a package name, the symbol name must be matched exactly.
 
+When possible, use KiCad's built-in footprints and save a copy to the OEM library. This ensures our library is stable and updates to built in packages do not unexpectedly break anything.
+
 ### Naming
 
 We loosely follow the [KiCad Library Conventions for footprint names](https://klc.kicad.org/footprint/f3/). Generally, we err on the side of slightly simpler, easier to remember footprint names.
@@ -132,13 +134,15 @@ Getting footprints online is encouraged, but sometimes they aren't perfect.
 1. On ICs, Pin 1 must be marked with two dots and an extended line over the pin. The dots must have a radius of 0.3mm.
 
     ![screenshot of properly marked footprint](./docs/pin1_marking.png)
-1. The polarity of components must be indicated with a parallel line placed outside the component body near the cathode. The component outline must not extend around the anode.
+1. For polar components, the component outline must not extend around the anode. Additional markings should not be used.
 
     ![screenshot of diode with marking](./docs/diode_marking.png)
 1. Through hole components must indicate pin 1 with a square pad.
 
     ![screenshot of properly marked footprint](./docs/tht_marking.png)
 1. Silksreen designs in component footprints must be drawn with a line width of 0.12mm.
+
+1. The reference designator should be set to the `User.Comments` layer to avoid cluttering the silkscreen.
 
 ## 3DModels
 
