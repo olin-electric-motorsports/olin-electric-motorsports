@@ -92,6 +92,11 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 15ca9f1e-3ce6-461b-8cae-8733ea89bfaa)
   )
+  (polyline (pts (xy 33.02 160.02) (xy 55.88 160.02))
+    (stroke (width 0) (type default) (color 0 0 0 0))
+    (uuid 15fa7d4f-6e9a-48f5-a2de-fce8f7344370)
+  )
+
   (wire (pts (xy 35.56 107.95) (xy 31.75 107.95))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 173d884e-afc7-42d2-85fe-58f8adf4faa7)
@@ -444,6 +449,11 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid d14fd7ba-c2bf-46e4-b747-d9b59b93dacb)
   )
+  (polyline (pts (xy 111.76 27.94) (xy 88.9 27.94))
+    (stroke (width 0) (type default) (color 0 0 0 0))
+    (uuid d1c436be-15df-4b18-a252-31dfe5f18616)
+  )
+
   (wire (pts (xy 114.3 129.54) (xy 116.84 129.54))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid d5bb3b09-5cd7-4c96-b993-37e178c0f36a)
@@ -569,14 +579,22 @@
     (uuid ff19e2c6-427e-4105-949c-f5be6e3ea926)
   )
 
+  (text "cont." (at 41.91 162.56 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 22d2daf4-5976-4fb0-adf7-675e9cb6c243)
+  )
   (text "Connecting each cell to filter and balance circuits"
     (at 13.97 15.24 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 649caeb0-4729-42d8-b380-8f92114abb91)
   )
+  (text "cont." (at 104.14 26.67 180)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 7a6ce4cb-6dc7-4566-b002-ee2cd90b16cf)
+  )
   (text "Filtering RC circuit as depicted on\nADBMS1818 datasheet pg. 72"
     (at 134.62 19.05 0)
-    (effects (font (size 1.27 1.27) (thickness 0.254) bold italic) (justify right bottom))
+    (effects (font (size 1.27 1.27) (thickness 0.254) bold) (justify right bottom))
     (uuid 97f96df4-5697-4ac7-954b-08280a257e81)
   )
   (text "Split into Hierarchical Sheet (Boxes)\nKiCAD duplicates for you, but each requires\nsame connections"
@@ -873,7 +891,7 @@
 
   (sheet (at 92.71 60.96) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid 05303cd6-45f0-4c9d-b56c-19ac3d9eb5cf)
     (property "Sheet name" "Filter and Balance12" (id 0) (at 92.71 60.2484 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -901,7 +919,7 @@
 
   (sheet (at 92.71 102.87) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid 05a0b11e-1573-450d-9c85-f91e6ad536d8)
     (property "Sheet name" "Filter and Balance15" (id 0) (at 92.71 102.1584 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -957,7 +975,7 @@
 
   (sheet (at 35.56 74.93) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid 5d055248-23e8-457d-a11d-0f2f4bc1437d)
     (property "Sheet name" "Filter and Balance4" (id 0) (at 35.56 74.2184 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -985,7 +1003,7 @@
 
   (sheet (at 35.56 130.81) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid 608064bf-95a5-4e66-b873-23bd08fa2c9b)
     (property "Sheet name" "Filter and Balance8" (id 0) (at 35.56 130.0984 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1013,7 +1031,7 @@
 
   (sheet (at 92.71 116.84) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid 84cf2a70-1dd6-46ba-9080-8ba28728f42c)
     (property "Sheet name" "Filter and Balance16" (id 0) (at 92.71 116.1284 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1041,7 +1059,7 @@
 
   (sheet (at 35.56 46.99) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid 95363671-1e4f-47b3-a13c-3a11b4945185)
     (property "Sheet name" "Filter and Balance2" (id 0) (at 35.56 46.2784 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1069,7 +1087,7 @@
 
   (sheet (at 92.71 46.99) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid 95a9eb73-c4a0-4161-8d95-18501a1cc472)
     (property "Sheet name" "Filter and Balance11" (id 0) (at 92.71 46.2784 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1097,7 +1115,7 @@
 
   (sheet (at 92.71 74.93) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid 9ab8469c-892c-4de6-be51-fcacbff02257)
     (property "Sheet name" "Filter and Balance13" (id 0) (at 92.71 74.2184 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1125,7 +1143,7 @@
 
   (sheet (at 92.71 88.9) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid a11b622f-8a26-4953-884a-617848048207)
     (property "Sheet name" "Filter and Balance14" (id 0) (at 92.71 88.1884 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1153,7 +1171,7 @@
 
   (sheet (at 35.56 144.78) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid a9423f5a-b803-42f0-b9e6-44476b37def5)
     (property "Sheet name" "Filter and Balance9" (id 0) (at 35.56 144.0684 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1181,7 +1199,7 @@
 
   (sheet (at 35.56 60.96) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid c46d69ea-457f-4a0e-a21e-f06bf0e43350)
     (property "Sheet name" "Filter and Balance3" (id 0) (at 35.56 60.2484 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1209,7 +1227,7 @@
 
   (sheet (at 35.56 88.9) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid c7cd5396-db14-45fd-97ac-936e1a611de2)
     (property "Sheet name" "Filter and Balance5" (id 0) (at 35.56 88.1884 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1237,7 +1255,7 @@
 
   (sheet (at 92.71 130.81) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid cdab79c2-161b-48e8-b637-f4ea4003bfb2)
     (property "Sheet name" "Filter and Balance17" (id 0) (at 92.71 130.0984 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1293,7 +1311,7 @@
 
   (sheet (at 35.56 116.84) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid e8683418-f51b-4080-b808-dfecea373f8e)
     (property "Sheet name" "Filter and Balance7" (id 0) (at 35.56 116.1284 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1321,7 +1339,7 @@
 
   (sheet (at 35.56 102.87) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid eff77bdb-4952-413d-a725-6b2bee52c13c)
     (property "Sheet name" "Filter and Balance6" (id 0) (at 35.56 102.1584 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -1349,7 +1367,7 @@
 
   (sheet (at 92.71 144.78) (size 17.78 10.16) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 1))
-    (fill (color 255 255 194 1.0000))
+    (fill (color 255 229 191 1.0000))
     (uuid f04a8152-fed4-44c1-9de9-8b38b2e09f3c)
     (property "Sheet name" "Filter and Balance18" (id 0) (at 92.71 144.0684 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
