@@ -1,7 +1,24 @@
-# OEM_Preferred_Parts
+# KiCad Parts
 KiCad library employed by Olin Electric Motorsports electrical team.
 
-### Guidelines
+## Libraries
+
+We are starting a fresh KiCad libraries for Mk. 6. The goal is to ensure that we do not incorporate components that are not stocked and to increase the quality and consistency of our libraries. The new library allows us to better track the status of components and support multiple purchasing options.
+
+| Path | Description |
+| ---- | ----------- |
+| `/parts/3DModels/` | 3D Models for Mk. 5 era |
+| `/parts/footprints.pretty/` | Footprints library for Mk. 5 era |
+| `/parts/schematic/formula.kicad_sym` | Schematic symbol library for Mk. 5 era |
+| `/parts/mk6.3dshapes/` | 3D Models for Mk. 6 |
+| `/parts/mk6.pretty/` | Footprints library for Mk. 6 |
+| `/parts/schematic/mk6.kicad_sym` | Schematic symbol library for Mk. 6|
+
+
+## Guidelines
+
+> Note: Some older parts do not follow this guidelines completely. For this reason, double check when copying over any legacy components.
+
 1. General symbol naming guidelines
 
     * Fields that must be included (Example for _STM32F439BI_)
@@ -93,4 +110,8 @@ KiCad library employed by Olin Electric Motorsports electrical team.
          
     * You can find some of the standard footprints already made [here](https://github.com/KiCad/kicad-footprints).
 
-Guidelines are based off [KiCad Library Convention](http://kicad-pcb.org/libraries/klc/).
+* 3D Model Naming Guidlines
+
+    The name of the folder for 3D Models should match the footprint name.
+
+Guidelines are based off [KiCad Library Convention](https://klc.kicad.org/).
