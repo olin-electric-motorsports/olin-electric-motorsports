@@ -1,6 +1,7 @@
 #include "libs/timer/api.h"
 #include "tester_board_config.h"
 #include "projects/can_test_platform/tester_board/can_api.h"
+#include <avr/interrupt.h>
 
 volatile bool send_can;
 
