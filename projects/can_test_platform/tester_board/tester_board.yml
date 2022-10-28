@@ -1,10 +1,10 @@
-name: firmware_tester_board
+name: can_test_platform
 subscribe:
-  - name: laptop
+  - name: throttle
     mob: 1
 publish:
-  - name: test
-  - id: 0xFFF
+  - name: can_test_platform
+    id: 0xff
     freq_hz: 100
     signals:
       - name: first
