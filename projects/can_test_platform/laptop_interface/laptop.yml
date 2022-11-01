@@ -1,0 +1,23 @@
+name: laptop
+subscribe:
+  - name: can_test_platform
+  - mob: 1
+publish:
+  - name: laptop
+    id: 0xfe
+    freq_hz: 100
+    signals:
+      - name: third
+        slice: 0 + 16
+        unit:
+          type: int16_t
+          name: ''
+          offset: 0
+          scale: 1
+      -name: second
+        slice: 16 + 16
+        unit:
+          type: int16_t
+          name: ''
+          offset: 0
+          scale: 1
