@@ -5,7 +5,7 @@ void timer0_isr(void);
 timer_cfg_s timer0_cfg = {
     .timer = TIMER0,
     .timer0_mode = TIMER0_MODE_CTC,
-    .prescalar = CLKIO_DIV_1024, // 100 Hz
+    .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
         .output_compare_match = 0x9b,
