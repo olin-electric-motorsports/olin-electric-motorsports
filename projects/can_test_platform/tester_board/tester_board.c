@@ -6,26 +6,31 @@
 #include "libs/gpio/pin_defs.h"
 
 volatile bool send_can;
-gpio_t LED = PD5;
 
 void timer0_isr(void) {
     send_can = true;
+    // gpio_toggle_pin(LED);
 }
 
 int main(void) {
-    sei();
-    can_init_can_test_platform();
+    can_init(BAUD_500KBPS);
+    // can_init_can_test_platform();
     timer_init(&timer0_cfg);
-    can_receive_throttle();
+    // can_receive_throttle();
     gpio_set_mode(LED, OUTPUT);
+    gpio_set_pin(LED);
+    sei();
+    // gpio_set_mode(TEST, OUTPUT);
+    // gpio_set_pin(TEST);
+    for (;;) {
+        // if (can_poll_receive_throttle() == 0) {
+        //     can_receive_throttle();
+        // }   
+        if (send_can) {
+            // can_send_can_test_platform();
+            gpio_toggle_pin(LED);
+            send_can = false;
+        }
+    }
 
-    if (can_poll_receive_throttle() == 0) {
-        can_receive_throttle();
-    }
-    
-    if (send_can) {
-        can_send_can_test_platform();
-        gpio_toggle_pin(LED);
-        send_can = false;
-    }
 }
