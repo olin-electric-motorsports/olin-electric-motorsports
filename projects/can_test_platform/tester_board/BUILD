@@ -12,7 +12,7 @@ can_api_files(
 )
 
 cc_firmware(
-    name = "can_tester_board",
+    name = "tester_board",
     srcs = [
         "tester_board_config.h",
         "tester_board.c",
@@ -27,5 +27,6 @@ cc_firmware(
         ":can_api",
         "//libs/timer",
         "//libs/gpio",
+        "//libs/can",
     ]
 )

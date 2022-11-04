@@ -4,6 +4,7 @@
 #include <avr/interrupt.h>
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
+#include "libs/can/api.h"
 
 volatile bool send_can;
 
@@ -27,8 +28,9 @@ int main(void) {
         //     can_receive_throttle();
         // }   
         if (send_can) {
-            // can_send_can_test_platform();
             gpio_toggle_pin(LED);
+            // can_send_test_message();
+            can_send(&test_msg);
             send_can = false;
         }
     }
