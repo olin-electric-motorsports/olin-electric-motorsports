@@ -6,7 +6,6 @@
 /*
  * GPIO pin definitions
  */
-
 gpio_t PRECHARGE_CTL = PB2;
 gpio_t AIR_N_LSD = PC6;
 

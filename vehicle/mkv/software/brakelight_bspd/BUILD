@@ -6,11 +6,12 @@ exports_files([
 ])
 
 cc_firmware(
-    name = "bspd",
+    name = "brakelight_bspd",
     srcs = [
         "bspd.c",
         "bspd_config.h",
     ],
+    btldr = "//projects/btldr:brakelight_bspd_btldr",
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
@@ -20,6 +21,7 @@ cc_firmware(
         "//libs/adc",
         "//libs/gpio",
         "//libs/timer",
+        "//projects/btldr:btldr_lib",
     ],
 )
 

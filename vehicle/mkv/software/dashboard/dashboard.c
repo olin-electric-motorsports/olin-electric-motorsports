@@ -19,6 +19,18 @@
 #include "libs/timer/api.h"
 #include "vehicle/mkv/software/dashboard/can_api.h"
 
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
+
 #define BMS_FAULT_NONE (0)
 #define AIR_STATE_TS_ACTIVE (4)
 
@@ -44,6 +56,8 @@ int main(void) {
     // Initialization
     can_init(BAUD_500KBPS);
     timer_init(&timer0_cfg);
+
+    updater_init(BTLDR_ID, 5);
 
     // Set pin modes
     gpio_set_mode(IMD_LED, OUTPUT);
@@ -141,6 +155,10 @@ int main(void) {
             gpio_clear_pin(START_LED);
             dashboard.ready_to_drive = true;
             gpio_set_pin(RTD_BUZZER_LSD); // turn on RTD Buzzer
+        }
+
+        if (!dashboard.ready_to_drive) {
+            updater_loop();
         }
 
         if (send_can) {

@@ -45,7 +45,7 @@ def main():
         tx_messages.append(db.get_message_by_name(message["name"]))
 
     if "subscribe" in yaml_data.keys():
-        rx_messages, mobs = get_rx_messages(yaml_data["subscribe"], db.messages)
+        rx_messages, mobs, masks = get_rx_messages(yaml_data["subscribe"], db.messages)
     else:
         rx_messages = []
         mobs = {}
@@ -70,6 +70,7 @@ def main():
             node=node,
             tx_messages=tx_messages,
             rx_messages=rx_messages,
+            masks=masks,
             mobs=mobs,
             header_file="can_api.h",
         )

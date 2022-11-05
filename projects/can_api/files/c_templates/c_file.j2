@@ -51,11 +51,7 @@ can_frame_t {{ message.name|lower }}_msg = {
 
 can_filter_t {{ message.name|lower }}_filter = {
     .id = {{ message.frame_id }},
-
-    /*
-     * TODO: It would be nice if this was configurable...
-     */
-    .mask = 0x7FF, // Exact match
+    .mask = {{ masks[message.name] }}
 };
 
 struct can_tools_{{ message.name|lower }}_t {{ message.name|lower }} = {0};

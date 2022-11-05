@@ -16,6 +16,18 @@
 #include <math.h>
 #include <util/delay.h>
 
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
+
 /*
  * Sets the torque request in the motor controller command message
  */
@@ -213,11 +225,12 @@ int main(void) {
     sei();
 
     can_init_throttle();
-
     adc_init();
 
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
+
+    updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(BRAKE_IMPLAUSIBILTIY_LED, OUTPUT);
     gpio_set_mode(DEVIATION_IMPLAUSIBILITY_LED, OUTPUT);
@@ -252,6 +265,8 @@ int main(void) {
     can_receive_dashboard();
 
     while (true) {
+        updater_loop();
+
         if (run_1ms) {
             run_1ms = false;
             if (can_poll_receive_brakelight() == 0) {

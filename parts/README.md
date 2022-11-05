@@ -1,7 +1,25 @@
-# OEM Parts
-KiCad libraries employed by Olin Electric Motorsports electrical team.
+# KiCad Parts
+KiCad library employed by Olin Electric Motorsports electrical team.
 
-# Setup
+## Libraries
+
+We are starting a fresh KiCad libraries for Mk. 6. The goal is to ensure that we do not incorporate components that are not stocked and to increase the quality and consistency of our libraries. The new library allows us to better track the status of components and support multiple purchasing options.
+
+| Path | Description |
+| ---- | ----------- |
+| `/parts/3DModels/` | 3D Models for Mk. 5 era |
+| `/parts/footprints.pretty/` | Footprints library for Mk. 5 era |
+| `/parts/schematic/formula.kicad_sym` | Schematic symbol library for Mk. 5 era |
+| `/parts/mk6.3dshapes/` | 3D Models for Mk. 6 |
+| `/parts/mk6.pretty/` | Footprints library for Mk. 6 |
+| `/parts/schematic/mk6.kicad_sym` | Schematic symbol library for Mk. 6|
+
+
+## Guidelines
+
+> Note: Some older parts do not follow this guidelines completely. For this reason, double check when copying over any legacy components.
+
+1. General symbol naming guidelines
 
 > Prior to Mk. VI we used a global library, however it was poorly maintained and many of the components are no longer available for purchase. New projects must use the OEM libraries.
 
@@ -152,3 +170,8 @@ All 3D Models must be placed in the `OEM.3dshapes`. Do not create subdirectories
 
 If possible, models should not require positioning or scaling to match the footprint.
 
+* 3D Model Naming Guidlines
+
+    The name of the folder for 3D Models should match the footprint name.
+
+Guidelines are based off [KiCad Library Convention](https://klc.kicad.org/).
