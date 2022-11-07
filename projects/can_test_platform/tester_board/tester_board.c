@@ -14,8 +14,8 @@ void timer0_isr(void) {
 }
 
 int main(void) {
-    can_init(BAUD_500KBPS);
-    // can_init_can_test_platform();
+    // can_init(BAUD_500KBPS);
+    can_init_can_test_platform();
     timer_init(&timer0_cfg);
     // can_receive_throttle();
     gpio_set_mode(LED, OUTPUT);
@@ -30,7 +30,7 @@ int main(void) {
         if (send_can) {
             gpio_toggle_pin(LED);
             // can_send_test_message();
-            can_send(&test_msg);
+            // can_send(&test_msg);
             send_can = false;
         }
     }
