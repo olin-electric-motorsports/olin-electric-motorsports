@@ -21,94 +21,154 @@ We are starting a fresh KiCad libraries for Mk. 6. The goal is to ensure that we
 
 1. General symbol naming guidelines
 
-    * Fields that must be included (Example for _STM32F439BI_)
-         * Reference (e.g., `U`)
-         * Value (e.g., `STM32F439BI`)
-         * Footprint (e.g., `Housings_QFP:LQFP-208_28x28mm_Pitch0.5mm`)
-         * Datasheet (e.g., `https://www.st.com/content/ccc/resource/technical/document/datasheet/fd/8c/0a/19/13/8f/41/99/DM00077036.pdf/files/DM00077036.pdf/jcr:content/translations/en.DM00077036.pdf`)
-         * MFN, or Manufacturer Name (e.g., `ST`)
-         * MPN, or Manufacturer Part Number (e.g., `STM32F439BIT6`)
-         * PurchasingLink (e.g, `https://www.digikey.com/product-detail/en/stmicroelectronics/STM32F439BIT6/497-17468-ND/5268309`)
+> Prior to Mk. VI we used a global library, however it was poorly maintained and many of the components are no longer available for purchase. New projects must use the OEM libraries.
 
-    * Library naming should not be duplicated in footprint name
+Open KiCad. From the top bar, open up _Preferences > Manage Symbol Libraries..._. Add new rows to the table:
 
-    * If symbol with same name exists for multiple manufacturers, the manufacturer name is written first
+Nickname | Library Path
+---|---
+formula |`${OEM_DIR}/parts/schematic/formula.kicad_sym`
+OEM | `${OEM_DIR}/parts/schematic/oem.kicad_sym`
 
-    * Specific manufacturer name (for atomic parts)
-    
-    * Type of symbol (for generic parts)
-    
-    * May be shortened for common components (e.g. `Conn` for Connector)
+From the top bar, open up _Preferences > Manage Footprint Libraries..._. Add new rows to the table:
 
-    * Reference designator may be substituted for common components (e.g. `D`, `C`, `LED`)
+Nickname | Library Path
+---|---
+footprints |`${OEM_DIR}/parts/footprints.pretty`
+OEM | `${OEM_DIR}/parts/oem.pretty`
 
-    * Part name should include extension for specific footprint if required (e.g. `SOIC`)
 
-    * Any modification of the original symbol, indicated by appending the reason (e.g. different pin ordering - `Q_NPN_CBE`, `Q_NPN_BCE`)
+# Guidelines
 
-    * Indicate quantity of elements for symbol arrays (e.g. resistor array with 8 elements - `Resistor_x8`)
+## Symbols
 
-2. General footprint naming guidelines
+Applies to all symbols in the `OEM` library. When a new schematic symbol is added it must be checked against these guidlines.
 
-    Each footprint is a `.kicad_mod` file (stored within a `.pretty` directory). The naming convention for a given footprint depends largely on the type of footprint, however a general guide is presented below:
+### Naming
 
-    * Specific package type is written first, e.g.
+For specific parts such as ICs, use the general part number (e.g. `ADBMS1818` not `ADBMS1818-WASZ-RL`). For passives and other generic components, a descriptive (e.g. `R_200`) name is suitable.
 
-        * `QFN` - Quad Flat No-Lead package
+### Required Fields
 
-        * `C` - Capacitor
+Field | Example | Show |  Description
+--- | --- | --- | ---
+Reference | `R` | Y | [Letter corresponding to component type](https://klc.kicad.org/symbol/s6/s6.1/)
+Value | `10K` | Y |  Value of component or part name
+Footprint | `OEM:R_0805` | N | Reference to footprint for component
+Datasheet | `https://www.example.com/.../datasheet.pdf` | N | Link to datasheet
+MPN | `RCA080510K0FKEA` | N | Manufacturer Part Number for ordering
+MFN | `Vishay` | N | Manufacturer (not to be confused with distributors like digikey)
+ReorderAt | `50` | N | Approximate quantity at which to order more, 0 if additional units should not be ordered
+SuggestedQuantity `100` | N | Suggestion for quantity to order when running low
+Location | `Bin 7, A12` | N | Set once components arrive, location in storage
+NewDesigns | `Yes` | N | If the component should be used in new designs. If a component should not be used set to `DO NOT USE` and enable `Show`.
 
-    * Package name and number of pins are separated by a hyphen
+### Required Metadata
 
-        * `TO-90`
+Property | Notes
+--- | ---
+Symbol Name | Do not include formula, OEM, MkVI, etc.
+Description | Part description for search
+Keywords | Comma separated list of search terms
 
-        * `QFN-48`
+### Component Specific Fields
 
-        * `DIP-20`
+In addition to the required fields, some component types have additional required fields to help with design reviews. If there is any specification you think is important to the component, add it as a field in addition to the required fields.
 
-    * Unique fields (parameters) in the footprint name are separated by _ character.
+#### ICs
 
-    * Package dimensions are specified as length x width (and optionally height)
+Field | Example | Show |  Description
+--- | --- | --- | --- | 
+SupplyVoltage | `2.5-5.5V` | N | The supply voltage for the IC
+LogicLevel | `5V` | N | If applicable, the logic level for IO
 
-        * `3.5x3.5x0.2mm`
+#### Connectors
 
-        * `1x1in`
+Field | Example | Show |  Description
+--- | --- | --- | --- | 
+RatedVoltage | `600VDC` | N | Rated voltage - must be documented in datasheet or link source
+ContactCurrent | `.8A` | N | Rated current per contact
+MatesWith | `MPNABCD` | N | Symbol name of mating connector. If there are multiple mating connectors `MatesWithAltX` fields may be added.
 
-        * If necessary for clarity, footprint body dimensions may be prefixed with a leading `B`
 
-    * Pin layout
+#### Passives
 
-        * `1x10`
+The relevant specifications vary for different passives. Make sure any specifications that were relevnt to your selection are included as fields and listed in the description. This makes finding suitable alternatives easier if there are supply issues.
 
-        * `2x15`
+### Symbol Design
 
-    * Pitch is specified with a leading P:
+1. If multiple pins should **always** be connected together, use [pin stacking](https://klc.kicad.org/symbol/s4/s4.3/).
+    - Do not stack power pins if they require seprate decoupling capacitors
+1. Pin orientation
+    * Power pins must be placed on the top of the symbol
+    * GND pins must be placed on the bottom of the symbol
+    * Input pins must be placed on the left of the symbol
+    * Output pins must be placed on thr right of the symbol
+    * For some components, pins can function as inputs or outputs. In this case they should be placed on the right of the component.
+1. Pins should be grouped functionally, not based on pin order
 
-        * `P1.27mm` - 1.27mm pitch
 
-        * `P5.0mm` - 5.0mm pitch
+## Footprints
 
-    * Modifiers to standard footprint values (Required only when there is a modification)
+Applies to all footprints in the `OEM` library. When a new footprint is added it must be checked against these guidlines.
 
-        * `Drill1.25mm`
+Do not create footprints for specific components, create footprints for packages so that they can be reused. Add alternate package names to the description.
 
-        * `Pad2.4x5.2mm`
+In the rare case that a component does not have a package name, the symbol name must be matched exactly.
 
-    * Orientation e.g. `Horizontal`, `Vertical`
+When possible, use KiCad's built-in footprints and save a copy to the OEM library. This ensures our library is stable and updates to built in packages do not unexpectedly break anything.
 
-    * Any modification to the original footprint, indicated by appending the reason
-   
-        * `_HandSoldering`
+### Naming
 
-        * `_ThermalVias`
+We loosely follow the [KiCad Library Conventions for footprint names](https://klc.kicad.org/footprint/f3/). Generally, we err on the side of slightly simpler, easier to remember footprint names.
 
-    * Examples from the library.
-         * `LQFP-208_28x28mm_P0.5mm`
-         * `DFN-6-1EP_2x2mm_P0.5mm`
-         * `Samtec_LSHM-110-xx.x-x-DV-S_2x10-1SH_P0.50mm_Vertical`
-         * `Molex_PicoBlade_53261-0271_1x02-1MP_P1.25mm_Horizontal`
-         
-    * You can find some of the standard footprints already made [here](https://github.com/KiCad/kicad-footprints).
+For example, we omit the metric sizing in SMT passives (i.e. `R_0805` instead of `R_0805_2012Metric`).
+
+For connectors, we follow `[Series]_[PinLayout]_[Orientation]`. For example, `MicroFit_2x4_RA`.
+
+Orientation | Shorthand
+--- | ---
+Vertical | VT
+Horizontal | RA
+45 degree | 45
+
+### Required Fields
+
+Field | Example | Show |  Description
+--- | --- | --- | --- | 
+Source `https://example.com/.../mpn.pdf` | N | Datasheet with footprint drawing.
+
+### Required Metadata
+
+Property | Notes
+--- | ---
+Symbol Name | Do not include formula, OEM, MkVI, etc.
+Description | Part description for search. Include alternate package names
+Keywords | Comma separated list of search terms
+
+### Footprint Design
+Getting footprints online is encouraged, but sometimes they aren't perfect.
+
+1. On ICs, Pin 1 must be marked with two dots and an extended line over the pin. The dots must have a radius of 0.3mm.
+
+    ![screenshot of properly marked footprint](./docs/pin1_marking.png)
+1. For polar components, the component outline must not extend around the anode. Additional markings should not be used.
+
+    ![screenshot of diode with marking](./docs/diode_marking.png)
+1. Through hole components must indicate pin 1 with a square pad.
+
+    ![screenshot of properly marked footprint](./docs/tht_marking.png)
+1. Silksreen designs in component footprints must be drawn with a line width of 0.12mm.
+
+1. The reference designator should be set to the `User.Comments` layer to avoid cluttering the silkscreen.
+
+## 3DModels
+
+All footprints must include a 3D Model.
+
+All 3D Models must be placed in the `OEM.3dshapes`. Do not create subdirectories for individual 3D models. Add only the 3D model files required for each component. The name of each file must match the associated footprint. If multiple footprints use the same 3D model, the name should match the most generic footprint.
+
+If possible, models should not require positioning or scaling to match the footprint.
 
 * 3D Model Naming Guidlines
 
