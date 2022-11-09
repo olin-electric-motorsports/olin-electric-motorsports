@@ -48,7 +48,13 @@
           "min_clearance": 0.508
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -115,10 +121,16 @@
       },
       "track_widths": [
         0.0,
+        0.1524,
         0.254,
         0.762
       ],
-      "via_dimensions": [],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        }
+      ],
       "zones_allow_external_fillets": false,
       "zones_use_no_outline": true
     },
@@ -427,6 +439,22 @@
     [
       "00000000-0000-0000-0000-00006143ee2a",
       "ADC Circuitry"
+    ],
+    [
+      "267d04a0-9b65-462e-8478-83d923b6e15c",
+      "USB->I2C"
+    ],
+    [
+      "b520df0b-d039-4f54-a1c0-6c4c2ebc3fa8",
+      "Connectors"
+    ],
+    [
+      "85f54d73-b79c-40eb-8d72-d90218fc50cb",
+      "GPIO"
+    ],
+    [
+      "c9290be4-0dea-45fd-9676-c949a96b90ce",
+      "DAC"
     ]
   ],
   "text_variables": {}
