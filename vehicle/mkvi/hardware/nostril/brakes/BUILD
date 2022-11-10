@@ -1,5 +1,8 @@
 load("//bazel:defs.bzl", "kicad_hardware")
 
 kicad_hardware(
-    name = "template_board",
+	name = "brakes",
+	schematic_files = ["brakes.kicad_sch"] + glob(
+		["*.kicad_sch"],
+	),
 )
