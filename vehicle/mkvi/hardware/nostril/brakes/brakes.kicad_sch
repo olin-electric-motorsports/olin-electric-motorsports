@@ -45,6 +45,10 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 05609d81-9d3c-4038-85bf-a10ee546cbc6)
   )
+  (wire (pts (xy 155.829 52.832) (xy 160.02 52.832))
+    (stroke (width 0) (type default) (color 0 0 0 0))
+    (uuid 07689f77-4856-481d-a7db-2bbcee8e3b8f)
+  )
   (wire (pts (xy 231.14 156.21) (xy 255.27 156.21))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 11475dfe-428f-40e4-ad79-f1640330e447)
@@ -146,6 +150,40 @@
     (uuid fe8e9b16-0195-4516-b822-4b0013a06ec4)
   )
 
+  (text "Buck converter downregulates\n+12V to +5v @ max 500mA"
+    (at 311.15 54.102 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 09f60cf0-759c-4874-af90-8fb392b0e7fc)
+  )
+  (text "Logic + timer circuit to\ncontrol BSPD Shutdown state"
+    (at 310.261 127.889 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 531daa7d-8c35-4ce2-b848-a2018d7efd5b)
+  )
+  (text "Analog Brakelight output\ncircuitry - toggles brakelight\nbased on brake pressure"
+    (at 311.404 90.17 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 5f47dac9-57ee-4f09-b956-03f248610671)
+  )
+  (text "Driver for upstream\nmodeule-by-module fault \ndetection"
+    (at 286.639 161.798 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 7a4022b2-875e-4a0f-965e-3cdeafcd722d)
+  )
+  (text "CAN, Status LEDS,\nmicrocontroller,\nprogramming pins"
+    (at 158.877 108.331 0)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid c9aa6468-1140-44ad-bc28-026683e161fe)
+  )
+
+  (global_label "V_BATT" (shape input) (at 155.829 52.832 90) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid 3772e6aa-34cc-48c5-96ed-f850d054b41c)
+    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 155.9084 44.1578 90)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+  )
+
   (sheet (at 160.02 71.12) (size 39.37 71.12) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 0))
     (fill (color 0 0 0 0.0000))
@@ -192,6 +230,10 @@
     (property "Sheet file" "power.kicad_sch" (id 1) (at 160.02 62.8146 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
+    (pin "+BATT" input (at 160.02 52.832 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid fa97f86b-f00c-4dd7-a508-711e94500638)
+    )
   )
 
   (sheet (at 255.27 71.12) (size 54.61 31.75) (fields_autoplaced)
@@ -228,7 +270,7 @@
     (property "Sheet file" "shtdwn_LSD.kicad_sch" (id 1) (at 255.27 168.2246 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
-    (pin "BSPD_LL_OUT" input (at 255.27 156.21 180)
+    (pin "BSPD_LL" input (at 255.27 156.21 180)
       (effects (font (size 1.27 1.27)) (justify left))
       (uuid 12dcc7b1-80b7-4632-ac3e-09cdf1164522)
     )
@@ -238,14 +280,14 @@
     )
   )
 
-  (sheet (at 191.77 173.99) (size 71.12 26.67) (fields_autoplaced)
+  (sheet (at 185.8518 173.99) (size 77.0382 26.1366)
     (stroke (width 0.1524) (type solid) (color 0 0 0 0))
     (fill (color 0 0 0 0.0000))
     (uuid 718fe271-d81c-4ddf-8baf-ccfb6ae290e3)
-    (property "Sheet name" "M.2 Connector" (id 0) (at 191.0584 200.66 90)
+    (property "Sheet name" "M.2 Connector" (id 0) (at 185.8518 173.3296 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Sheet file" "Connector.kicad_sch" (id 1) (at 263.4746 200.66 90)
+    (property "Sheet file" "Connector.kicad_sch" (id 1) (at 185.8518 201.3204 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (pin "SHDN_IN" output (at 243.84 173.99 90)
@@ -463,9 +505,6 @@
     (path "/e279e344-9058-4851-bdde-ca605e652c75/c724dc79-7807-41f3-8b52-7fedc45e8512"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
-    (path "/185b9e35-936e-4231-b044-c2356c1f5f5e/d45a5b6e-6862-4c98-8ce0-88025572e7cb"
-      (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
-    )
     (path "/185b9e35-936e-4231-b044-c2356c1f5f5e/65087877-5d0d-4e11-9297-9cfa67fb9169"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
@@ -574,9 +613,6 @@
     (path "/718fe271-d81c-4ddf-8baf-ccfb6ae290e3/1dfbc6d6-507f-4b38-add5-5a9126a7528a"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
-    (path "/718fe271-d81c-4ddf-8baf-ccfb6ae290e3/7a1ef4d7-9c90-40ba-b6ae-c305632a144f"
-      (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
-    )
     (path "/063f9baa-9e7f-4e30-8189-9b7cdc546808/9537f014-8338-4794-972d-42d8e54f702f"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
@@ -655,8 +691,8 @@
     (path "/e279e344-9058-4851-bdde-ca605e652c75/e5cae3c3-c1f5-4894-9983-997b2eba91d6"
       (reference "D1") (unit 1) (value "BSPD_GATE_TRIP") (footprint "footprints:LED_0805_OEM")
     )
-    (path "/e279e344-9058-4851-bdde-ca605e652c75/50124339-49ac-4499-9ca0-4f55703537d9"
-      (reference "D2") (unit 1) (value "Diode_600V_1A_SM") (footprint "footprints:Diode_600V_1A_SM")
+    (path "/e279e344-9058-4851-bdde-ca605e652c75/3c1c5502-98f9-4a36-bdc3-0984dc10ac80"
+      (reference "D2") (unit 1) (value "D_Zener_18V") (footprint "footprints:DO-214AA")
     )
     (path "/e279e344-9058-4851-bdde-ca605e652c75/9a0bfd90-3ac1-4a4a-816a-053629045328"
       (reference "D3") (unit 1) (value "BSPD_TRIP_LED") (footprint "footprints:LED_0805_OEM")
@@ -682,11 +718,11 @@
     (path "/69578ef1-8102-4794-908a-f711a97b447d/e265bd06-621e-4917-916a-bd2f635489e1"
       (reference "D10") (unit 1) (value "Shutdown_LED") (footprint "footprints:LED_0805_OEM")
     )
-    (path "/063f9baa-9e7f-4e30-8189-9b7cdc546808/0998b122-48e6-475b-8840-b9517e6eb4ce"
-      (reference "D?") (unit 1) (value "MOSI_PROG_LED") (footprint "footprints:LED_0805_OEM")
-    )
     (path "/063f9baa-9e7f-4e30-8189-9b7cdc546808/73c1f970-e896-4a19-8d33-45ba269222b6"
-      (reference "D?") (unit 1) (value "MISO_PROG_LED") (footprint "footprints:LED_0805_OEM")
+      (reference "D11") (unit 1) (value "MISO_PROG_LED") (footprint "footprints:LED_0805_OEM")
+    )
+    (path "/063f9baa-9e7f-4e30-8189-9b7cdc546808/0998b122-48e6-475b-8840-b9517e6eb4ce"
+      (reference "D12") (unit 1) (value "MOSI_PROG_LED") (footprint "footprints:LED_0805_OEM")
     )
     (path "/185b9e35-936e-4231-b044-c2356c1f5f5e/188c9ed8-cc0a-4815-8ae7-63298e8f61e8"
       (reference "F1") (unit 1) (value "F_500mA_16V") (footprint "footprints:Fuse_1210")
@@ -811,11 +847,11 @@
     (path "/69578ef1-8102-4794-908a-f711a97b447d/e5b7e396-d177-4506-93d0-b759c7c1a993"
       (reference "R32") (unit 1) (value "R_10K") (footprint "footprints:R_0805_OEM")
     )
-    (path "/063f9baa-9e7f-4e30-8189-9b7cdc546808/c17afb13-5c5c-49fa-bd34-544c7f61c97b"
-      (reference "R?") (unit 1) (value "R_200") (footprint "footprints:R_0805_OEM")
-    )
     (path "/063f9baa-9e7f-4e30-8189-9b7cdc546808/ff97ae9f-bbf0-4529-9240-769c48934eaf"
-      (reference "R?") (unit 1) (value "R_200") (footprint "footprints:R_0805_OEM")
+      (reference "R33") (unit 1) (value "R_200") (footprint "footprints:R_0805_OEM")
+    )
+    (path "/063f9baa-9e7f-4e30-8189-9b7cdc546808/c17afb13-5c5c-49fa-bd34-544c7f61c97b"
+      (reference "R34") (unit 1) (value "R_200") (footprint "footprints:R_0805_OEM")
     )
     (path "/e279e344-9058-4851-bdde-ca605e652c75/9608e81f-cbe0-462b-8a9a-2b8ab6c02948"
       (reference "SW1") (unit 1) (value "SW_Push_SPST_NO") (footprint "footprints:SW_B3U-1000P_4.2x1.7mm")

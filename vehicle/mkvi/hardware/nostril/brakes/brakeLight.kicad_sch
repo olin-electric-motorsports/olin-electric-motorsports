@@ -1133,7 +1133,7 @@
   )
 
   (text "		    VCC * R3\n    V_out = --------\n		    (R3 + R2)\n\n\n5 * 1k / (10k + 1k) = 0.45V"
-    (at 58.42 72.39 0)
+    (at 56.007 78.74 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 1aad9c7f-d13d-44e9-abc9-51200f19b232)
   )
@@ -1142,11 +1142,12 @@
     (uuid 2dbdeabf-6e59-4d6a-a974-d960fe81e524)
   )
   (text "		    VCC * R5\n    V_out = --------\n		    (R5 + R4)\n\n\n5 * 499 / (499 + 2.2k) = 0.92V"
-    (at 57.15 142.24 0)
+    (at 54.356 135.636 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 3de82745-5716-4d25-b582-4d9497faea4f)
   )
-  (text "Triggers brake light when Vbp is \nabove set value" (at 123.19 151.13 0)
+  (text "Triggers brake light when brake\npressure voltage is above set value"
+    (at 123.19 151.13 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 5aaf4acb-f893-41e2-9b00-c03609224d31)
   )
@@ -1170,7 +1171,8 @@
     (effects (font (size 2 2)) (justify left bottom))
     (uuid b61abef2-636f-49f4-b498-c9aebe4b4599)
   )
-  (text "If Vbp is below threshold, trigger \nbrake light." (at 124.46 54.61 0)
+  (text "If brake pressure voltage is below\nthreshold, trigger brake light."
+    (at 124.46 54.61 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid d2a2755a-f858-4a30-b524-ebd085f0b0b3)
   )
