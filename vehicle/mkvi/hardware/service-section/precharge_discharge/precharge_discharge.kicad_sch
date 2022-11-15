@@ -1343,7 +1343,6 @@
     )
   )
 
-
   (junction (at 242.57 31.75) (diameter 0) (color 0 0 0 0)
     (uuid f3a9b385-2580-4916-9a47-757f18422f9b)
   )
@@ -1801,7 +1800,7 @@
     (uuid 06e0ac0e-a0c5-4a6c-9061-994da59b167d)
     (property "Reference" "K1" (id 0) (at 71.12 43.18 0))
     (property "Value" "G2RG-2A-X_DC12" (id 1) (at 71.12 45.72 0))
-    (property "Footprint" "OEM:G2RG-2A-X" (id 2) (at 71.12 57.15 0)
+    (property "Footprint" "OEM:G2RG-X" (id 2) (at 71.12 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://drive.google.com/file/d/13LdDR--Yvslhss_TQHLPQ6JglJe9NfuL/view?usp=share_link" (id 3) (at 71.12 57.15 0)
@@ -2304,14 +2303,14 @@
     (path "/f42ceb10-3a39-4caa-a323-2ed850359949/3b9fedc3-8004-49ad-a3fe-28afa1ea394b"
       (reference "#PWR0118") (unit 1) (value "GND") (footprint "")
     )
-    (path "/1d3603a0-934c-404e-9b38-4b65044f588c/607af4f2-91e7-418d-a7ac-4d54e191778d"
-      (reference "C1") (unit 1) (value "10nF") (footprint "")
+    (path "/1d3603a0-934c-404e-9b38-4b65044f588c/6dc3a5a5-6ba7-45ee-890e-2b247ac5cbfa"
+      (reference "C1") (unit 1) (value "C_10nF") (footprint "footprints:C_1206_OEM")
     )
-    (path "/aae00dc5-0627-4ce2-bb50-5359aef1b906/607af4f2-91e7-418d-a7ac-4d54e191778d"
-      (reference "C2") (unit 1) (value "10nF") (footprint "")
+    (path "/aae00dc5-0627-4ce2-bb50-5359aef1b906/6dc3a5a5-6ba7-45ee-890e-2b247ac5cbfa"
+      (reference "C2") (unit 1) (value "C_10nF") (footprint "footprints:C_1206_OEM")
     )
-    (path "/f42ceb10-3a39-4caa-a323-2ed850359949/607af4f2-91e7-418d-a7ac-4d54e191778d"
-      (reference "C3") (unit 1) (value "10nF") (footprint "")
+    (path "/f42ceb10-3a39-4caa-a323-2ed850359949/6dc3a5a5-6ba7-45ee-890e-2b247ac5cbfa"
+      (reference "C3") (unit 1) (value "C_10nF") (footprint "footprints:C_1206_OEM")
     )
     (path "/13199f4f-49d4-4127-8a75-8da39b0b7cb9"
       (reference "D1") (unit 1) (value "SS110LW") (footprint "OEM:D_SOD-123")
@@ -2329,7 +2328,7 @@
       (reference "J2") (unit 1) (value "Automotive_M.2_Edge_Connector") (footprint "footprints:Automotive_M.2_Edge_Connector")
     )
     (path "/06e0ac0e-a0c5-4a6c-9061-994da59b167d"
-      (reference "K1") (unit 1) (value "G2RG-2A-X_DC12") (footprint "OEM:G2RG-2A-X")
+      (reference "K1") (unit 1) (value "G2RG-2A-X_DC12") (footprint "OEM:G2RG-X")
     )
     (path "/1c839dd3-e0c7-4808-b8be-0e8fc2ef2cdb"
       (reference "K2") (unit 1) (value "3350-4275-126") (footprint "OEM:Relay_Comus_3350")
@@ -2371,13 +2370,13 @@
       (reference "R12") (unit 1) (value "100R") (footprint "OEM:R_0603")
     )
     (path "/1d3603a0-934c-404e-9b38-4b65044f588c/ca7852e4-64fa-4c30-bad9-fbe9a1ffbb05"
-      (reference "TH1") (unit 1) (value "Thermistor") (footprint "")
+      (reference "TH1") (unit 1) (value "Thermistor") (footprint "footprints:Thermistor")
     )
     (path "/aae00dc5-0627-4ce2-bb50-5359aef1b906/ca7852e4-64fa-4c30-bad9-fbe9a1ffbb05"
-      (reference "TH2") (unit 1) (value "Thermistor") (footprint "")
+      (reference "TH2") (unit 1) (value "Thermistor") (footprint "footprints:Thermistor")
     )
     (path "/f42ceb10-3a39-4caa-a323-2ed850359949/ca7852e4-64fa-4c30-bad9-fbe9a1ffbb05"
-      (reference "TH3") (unit 1) (value "Thermistor") (footprint "")
+      (reference "TH3") (unit 1) (value "Thermistor") (footprint "footprints:Thermistor")
     )
     (path "/1d3603a0-934c-404e-9b38-4b65044f588c/1d731957-08e8-4a84-bf4b-f84aa0692269"
       (reference "U1") (unit 1) (value "MCP6001") (footprint "OEM:SOT-23-5")
