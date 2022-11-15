@@ -1407,6 +1407,7 @@
     )
   )
 
+
   (junction (at 39.37 223.52) (diameter 0) (color 0 0 0 0)
     (uuid 0da55362-76e3-41d6-ad4e-fdc99b77c88c)
   )
@@ -1635,7 +1636,7 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 9fab46b8-d7da-4869-8cdd-41fac2882825)
   )
-  (wire (pts (xy 129.54 109.22) (xy 149.86 109.22))
+  (wire (pts (xy 130.81 109.22) (xy 149.86 109.22))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid a1291110-75c4-412f-8d12-e6ec195ae352)
   )
@@ -1805,7 +1806,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 103c2cb4-5085-41a0-8b97-988610d24515)
   )
-  (label "5V" (at 364.49 161.29 180)
+  (label "+5V" (at 364.49 161.29 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 44ec4f3b-272a-4bda-85e9-b57bdd5a4d8e)
   )
@@ -1817,7 +1818,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 86d23899-df6e-4b39-8faa-427eb9d9f7ef)
   )
-  (label "5V" (at 364.49 158.75 180)
+  (label "+5V" (at 364.49 158.75 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 95e8f2a3-f0cc-4ca5-9102-b2aae6b3ba47)
   )
@@ -1845,7 +1846,7 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid bc51e7e2-93b4-44ec-b6e0-70204ffc48fb)
   )
-  (label "5V" (at 364.49 163.83 180)
+  (label "+5V" (at 364.49 163.83 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid ca62e6c5-b239-4530-a910-515dc8413a82)
   )
@@ -1903,7 +1904,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 5a1a1963-978c-40cd-a6c0-b3a38378dcdf)
   )
-  (hierarchical_label "SS_INERTIA_OUTPUT" (shape output) (at 129.54 109.22 180)
+  (hierarchical_label "SS_INERTIA_OUTPUT" (shape output) (at 130.81 109.22 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 623e9961-af09-4cad-b6a6-6cd09cbc99d8)
   )
@@ -3067,11 +3068,11 @@
     (path "/b82bfe64-8b08-4369-bdfd-bb0735cc965d/d31533e2-902e-469b-a967-0448ef0e4bea"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
-    (path "/71125cb7-c9cb-4712-a3dc-19d75e1079bc"
-      (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
-    )
     (path "/81106b62-e833-452b-a041-939c657612b7"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/71125cb7-c9cb-4712-a3dc-19d75e1079bc"
+      (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
     )
     (path "/282a0ecd-53f2-4afc-a37e-b39c6ecba16f/905757fe-e8d0-4f38-bb78-25d26483d7d1"
       (reference "C1") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0805_OEM")
