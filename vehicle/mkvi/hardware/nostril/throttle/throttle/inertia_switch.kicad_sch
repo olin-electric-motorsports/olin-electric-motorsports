@@ -492,6 +492,7 @@
     )
   )
 
+
   (junction (at 132.08 48.26) (diameter 0) (color 0 0 0 0)
     (uuid 2373b5a1-ccce-46ff-9433-aad7bdf61d65)
   )
@@ -584,6 +585,15 @@
     (uuid ebe1503a-d07c-40a9-984d-99ed875bc366)
   )
 
+  (label "SHUTDOWN_IN" (at 105.41 48.26 180)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 06bdb7cc-a13b-44a7-adb0-f47cdffebda4)
+  )
+  (label "SHUTDOWN_OUT" (at 181.61 48.26 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 4b72bef9-c593-4a07-a2ad-fcae5c070da5)
+  )
+
   (hierarchical_label "SS_INERTIA_SWITCH" (shape input) (at 132.08 90.17 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 04f5a3ce-4807-4e0d-a38f-310075c1ffed)
@@ -591,14 +601,6 @@
   (hierarchical_label "SS_INERTIA_OUTPUT" (shape output) (at 166.37 83.82 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 7267c296-afa6-4226-ba36-6ffcfd3c54b2)
-  )
-  (hierarchical_label "SHUTDOWN_IN" (shape input) (at 105.41 48.26 180)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid c4bf6f2c-933d-411f-81b4-b882dc9e6c3c)
-  )
-  (hierarchical_label "SHUTDOWN_OUT" (shape output) (at 181.61 48.26 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid e66011d2-eec4-4cb4-bab8-019226d263a6)
   )
 
   (symbol (lib_id "Device:LED") (at 142.24 104.14 90) (unit 1)
