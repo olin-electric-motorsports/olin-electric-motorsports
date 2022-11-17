@@ -492,7 +492,6 @@
     )
   )
 
-
   (junction (at 146.685 138.43) (diameter 0) (color 0 0 0 0)
     (uuid 0b8fcdf8-54aa-465d-bea2-bb459ddf50e8)
   )
@@ -509,10 +508,6 @@
     (uuid faf3cb5c-8b1e-43be-add3-8f94a2dfe5e0)
   )
 
-  (wire (pts (xy 161.29 90.805) (xy 123.825 90.805))
-    (stroke (width 0) (type default) (color 0 0 0 0))
-    (uuid 15b30069-c845-4714-8b8d-1771d1397743)
-  )
   (wire (pts (xy 146.685 115.57) (xy 154.305 115.57))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 18775347-46f0-43ad-aa8a-19060cbf6701)
@@ -561,18 +556,10 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid d52e23b8-ae22-4e6d-8def-870fec38eb37)
   )
-  (wire (pts (xy 123.825 90.805) (xy 123.825 123.825))
-    (stroke (width 0) (type default) (color 0 0 0 0))
-    (uuid eb2990c8-dc52-4948-8b56-e27f25f1847f)
-  )
 
-  (hierarchical_label "SHDN_IN" (shape input) (at 123.825 90.805 180)
+  (hierarchical_label "SS_ESTOP_DRIVER" (shape input) (at 123.825 123.825 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 46130acf-bc8b-46e1-b875-2c39a4fe226e)
-  )
-  (hierarchical_label "SHDN_OUT" (shape input) (at 161.29 90.805 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid acecf6d8-9ccf-417f-aa36-4c28c30f91b2)
   )
   (hierarchical_label "E_STOP_SHDN_SENSE" (shape input) (at 154.305 115.57 0)
     (effects (font (size 1.27 1.27)) (justify left))
