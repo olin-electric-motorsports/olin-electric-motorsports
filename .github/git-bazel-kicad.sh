@@ -46,8 +46,9 @@ if [[ ! -z $buildables ]]; then
     echo "first"
     echo $(ls)
 
-    echo $(ll -a InteractiveHtmlBom/InteractiveHtmlBom/)
-    
+    echo $(ls InteractiveHtmlBom/InteractiveHtmlBom/)
+    echo $(pwd)
+    echo $(ls InteractiveHtml)
 
     for layout in $boms_to_generate; do
         python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $file --no-browser
@@ -56,15 +57,15 @@ if [[ ! -z $buildables ]]; then
         cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
     done
 
-    echo "second"
-    echo $(ls build/$parentdir/)
-
     # Copy all the built files from their Bazel folder to the `build/` folder
     for file in $buildables; do
         file="${file//://}"
         mkdir -p build/$(dirname ${file:2})
         cp $(bazel info bazel-genfiles)/${file:2} build/${file:2}
     done
+
+    echo "second"
+    echo $(ls build/$parentdir/)
 
     # Create a Markdown file that will be uploaded as a GitHub PR comment
     echo "Creating GH comment"
