@@ -31,7 +31,7 @@ $ ./scripts/install_kicad_git_filters.sh
 Next, install the AVR toolchain:
 
 ```shell
-sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
+$ sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
 ```
 
 ### Installing Bazel
@@ -44,11 +44,19 @@ following to install:
 ```shell
 $ cp bazelisk-linux-amd64 /usr/local/bin/bazel
 ```
-
+Next, run the following file to ensure that bazel is executable:
+```shell
+chmod u+x /usr/local/bin/bazel
+```
 You should now be able to run the following without error:
 
 ```shell
 $ bazel build --config=16m1 //examples/blinky
+```
+If you get an error message stating 'env: python: No such file or directory', ensure that the PATH environment variable is properly established. This can be done by adding the file to your .bashrc file:
+
+```
+export PATH=$PATH:/usr/local/bin
 ```
 
 ### Install Docker
@@ -72,7 +80,7 @@ $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brake
 To install KiCad on Ubuntu, run the following:
 
 ```shell
-$ sudo add-apt-repository --yes ppa:kicad/kicad-5.1-releases
+$ sudo add-apt-repository --yes ppa:kicad/kicad-6.0-releases
 $ sudo apt update
 $ sudo apt install --install-recommends kicad
 ```
@@ -85,7 +93,7 @@ new row to the table:
 
 Name | Path
 -----|-----
-OEM\_MONOREPO|`/home/your-username/olin-electric-motorsports`
+OEM\_DIR|`/home/your-username/olin-electric-motorsports`
 
 where `your-username` is the username on your computer.
 

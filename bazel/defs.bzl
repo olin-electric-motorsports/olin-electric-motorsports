@@ -1,6 +1,7 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("//vehicle/mkv:ecus.bzl", "ECUS")
 
 ### cc_firmware
 
@@ -19,10 +20,10 @@ def _eep_file_impl(ctx):
     args = ctx.actions.args()
     args.add(input_file)
     args.add(output_file)
-    args.add("-O", "ihex")  # Output a binary
-    args.add("-j", ".eeprom")  # Don't include .eeprom
-    args.add("--change-section-lma", ".eeprom=0")
+    args.add("-j", ".eeprom")  # Only include eeprom
+    args.add("--change-section-lma", ".eeprom=0")  # Reset load address to zero
     args.add("--set-section-flags=.eeprom=alloc,load")
+    args.add("-O", "ihex")  # Output a hex file
 
     ctx.actions.run(
         mnemonic = "GenerateEEP",
@@ -152,7 +153,7 @@ _bin_file = rule(
         ),
         # TODO: (@jack-greenberg) Integrate btldr
         # "_patch_header": attr.label(
-        #     default = Label("//tools:patch_image_header"),
+        #     default = Label("//projects/btldr/tools:patch_image_header"),
         # )
     },
     executable = False,
@@ -168,24 +169,47 @@ def _flash_impl(ctx):
     input_file = ctx.file.binary
     script = ctx.actions.declare_file("{}.sh".format(ctx.label.name))
 
-    ctx.actions.expand_template(
-        template = template,
-        output = script,
-        is_executable = True,
-        substitutions = {
-            "{part}": ctx.attr.part,
-            "{binary}": input_file.short_path,
-            "{config}": ctx.file.avr_config.path,
-        },
-    )
+    if ctx.file.btldr:
+        runfiles = ctx.runfiles(files = [
+            ctx.file.binary,
+            ctx.file.avr_config,
+            ctx.file.btldr,
+            ctx.file.eeprom,
+        ])
+
+        ctx.actions.expand_template(
+            template = template,
+            output = script,
+            is_executable = True,
+            substitutions = {
+                "{part}": ctx.attr.part,
+                "{binary}": input_file.short_path,
+                "{config}": ctx.file.avr_config.path,
+                "{eeprom}": ctx.file.eeprom.short_path,
+                "{btldr}": ctx.file.btldr.short_path,
+            },
+        )
+    else:
+        runfiles = ctx.runfiles(files = [
+            ctx.file.binary,
+            ctx.file.avr_config,
+        ])
+
+        ctx.actions.expand_template(
+            template = template,
+            output = script,
+            is_executable = True,
+            substitutions = {
+                "{part}": ctx.attr.part,
+                "{binary}": input_file.short_path,
+                "{config}": ctx.file.avr_config.path,
+            },
+        )
 
     return [
         DefaultInfo(
             executable = script,
-            runfiles = ctx.runfiles(files = [
-                ctx.file.binary,
-                ctx.file.avr_config,
-            ]),
+            runfiles = runfiles,
         ),
     ]
 
@@ -200,6 +224,16 @@ _flash = rule(
         "binary": attr.label(
             doc = "Binary file for flashing",
             mandatory = True,
+            allow_single_file = True,
+        ),
+        "eeprom": attr.label(
+            doc = "EEPROM file",
+            mandatory = False,
+            allow_single_file = True,
+        ),
+        "btldr": attr.label(
+            doc = "Hex file for btldr",
+            mandatory = False,
             allow_single_file = True,
         ),
         "method": attr.string(
@@ -227,9 +261,34 @@ _flash = rule(
 # Macro to generate all the proper files
 def cc_firmware(name, **kwargs):
     # Generates .elf file
+
+    data = []
+    if kwargs.get("data"):
+        data = kwargs.pop("data")
+
+    defines = []
+    if kwargs.get("defines"):
+        defines = kwargs.pop("defines")
+
+    copts = []
+    if kwargs.get("copts"):
+        copts = kwargs.pop("copts")
+
+    linkopts = []
+    if kwargs.get("linkopts"):
+        linkopts = kwargs.pop("linkopts")
+
+    btldr = None
+    if kwargs.get("btldr"):
+        btldr = kwargs.pop("btldr")
+        linkopts.append("-flto")
+        linkopts.append("-Wl,--gc-sections")
+        data.append(btldr + ".hex")
+        defines.append("BTLDR_ID=" + ECUS[name]["btldr_id"])
+
     cc_binary(
         name = "{}.elf".format(name),
-        linkopts = select({
+        linkopts = linkopts + select({
             "//bazel/constraints:atmega16m1": ["-T $(location //scripts/ldscripts:atmega16m1.ld)"],
             "//bazel/constraints:atmega64m1": ["-T $(location //scripts/ldscripts:atmega64m1.ld)"],
             # Add more ldscripts here
@@ -239,11 +298,13 @@ def cc_firmware(name, **kwargs):
             "//scripts/ldscripts:atmega16m1.ld",
             "//scripts/ldscripts:atmega64m1.ld",
         ],
-        copts = select({
+        copts = copts + select({
             "//bazel/constraints:hitl": ["-DBOARD_FIRMWARE_TEST"],
             "//bazel/constraints:hackerboard": ["-DBOARD_HACKERBOARD"],
             "//conditions:default": [],
         }),
+        defines = defines,
+        data = data,
         **kwargs
     )
 
@@ -251,18 +312,21 @@ def cc_firmware(name, **kwargs):
     _bin_file(
         name = "{}.bin".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates .hex file
     _hex_file(
         name = "{}.hex".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates .eep file
     _eep_file(
         name = "{}.eep".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates tarball file with all
@@ -278,14 +342,42 @@ def cc_firmware(name, **kwargs):
     )
 
     # Generates flash script
-    # Invoke with `bazel build --config=16m1 //path/to:target -- -c usbasp`
+    # Invoke with `bazel run --config=16m1 //path/to:target -- -c usbasp`
+
+    bin_file = ":{}.bin".format(name)
+    btldr_hex = None
+    eeprom = None
+    template = "//bazel/tools:avrdude.sh.tmpl"
+
+    if btldr:
+        native.genrule(
+            name = "{}_patched_bin".format(name),
+            srcs = [
+                "{}.bin".format(name),
+            ],
+            outs = [
+                "{}_patched.bin".format(name),
+            ],
+            tools = [
+                "//projects/btldr/tools:patch_header",
+            ],
+            cmd = "$(location //projects/btldr/tools:patch_header) $(SRCS) $(OUTS)",
+        )
+        bin_file = ":{}_patched.bin".format(name)
+        btldr_hex = "//projects/btldr:{}_btldr.hex".format(name)
+        eeprom = "//projects/btldr:{}_btldr.eep".format(name)
+        template = "//bazel/tools:avrdude-btldr.sh.tmpl"
+
     _flash(
         name = name,
-        binary = "{}.bin".format(name),
+        binary = bin_file,
+        eeprom = eeprom,
+        btldr = btldr_hex,
         method = select({
             "//bazel/constraints:avr": "avrdude",
             "//conditions:default": "",
         }),
+        template = template,
         part = select({
             "//bazel/constraints:atmega16m1": "16m1",
             "//bazel/constraints:atmega328p": "m328p",
@@ -300,14 +392,13 @@ def _kibot_impl(ctx):
     cfg_file = ctx.file.config_file
     sch = ctx.files.schematic_files
     pcb = ctx.file.pcb_file
-    lib_cache = ctx.file.lib_cache
 
     output = ctx.actions.declare_file("{}".format(ctx.attr.name))
 
     ctx.actions.run_shell(
         mnemonic = "kibot",
         outputs = [output],
-        inputs = [cfg_file, pcb, lib_cache] + sch,
+        inputs = [cfg_file, pcb] + sch,
         command = "kibot -e {} -b {} -c {} -d {} {}".format(
             sch[0].short_path,
             pcb.short_path,
@@ -341,12 +432,7 @@ kibot = rule(
             mandatory = True,
         ),
         "pcb_file": attr.label(
-            doc = "*.kicad-pcb file with layout",
-            allow_single_file = True,
-            mandatory = True,
-        ),
-        "lib_cache": attr.label(
-            doc = "*-cache.lib file with the library cache",
+            doc = "*.kicad_pcb file with layout",
             allow_single_file = True,
             mandatory = True,
         ),
@@ -357,12 +443,11 @@ def kicad_hardware(
         name,
         project_file = "",
         schematic_files = [],
-        lib_cache = "",
         pcb_file = ""):
     """
     Generates KiCad file artifacts using KiBot.
 
-    Currently, `name` __must__ be the same name as your `.pro` file that KiCad
+    Currently, `name` __must__ be the same name as your `.kicad_pro` file that KiCad
     generates due to a limitation of the software. This may be resolved in a
     future commit.
 
@@ -390,16 +475,13 @@ def kicad_hardware(
     """
 
     if not project_file:
-        project_file = ":{}.pro".format(name)
+        project_file = ":{}.kicad_pro".format(name)
 
     if not schematic_files:
-        schematic_files = [":{}.sch".format(name)]
+        schematic_files = [":{}.kicad_sch".format(name)]
 
     if not pcb_file:
         pcb_file = ":{}.kicad_pcb".format(name)
-
-    if not lib_cache:
-        lib_cache = ":{}-cache.lib".format(name)
 
     pkg_tar(
         name = "{}".format(name),
@@ -422,7 +504,6 @@ def kicad_hardware(
         output_name = ["pcb_svg_top"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -432,7 +513,6 @@ def kicad_hardware(
         output_name = ["pcb_svg_bottom"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -442,7 +522,6 @@ def kicad_hardware(
         output_name = ["sch_svg"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -452,7 +531,6 @@ def kicad_hardware(
         output_name = ["sch_pdf"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -462,7 +540,6 @@ def kicad_hardware(
         output_name = ["bom"],
         pcb_file = pcb_file,
         schematic_files = schematic_files,
-        lib_cache = lib_cache,
         tags = ["kicad"],
     )
 
@@ -473,6 +550,5 @@ def kicad_hardware(
     #     output_name = ["step"],
     #     pcb_file = pcb_file,
     #     schematic_files = schematic_files,
-    #     lib_cache = lib_cache,
     #     tags = ["kicad"],
     # )

@@ -1,16 +1,19 @@
 name: brakelight_bspd
+subscribe:
+  - name: air_control_critical
+    mob: 1
 publish:
   - name: brakelight
     id: 0xb
     freq_hz: 100
     signals:
-      - name: status
+      - name: ss_bspd
         slice: 0 + 8
         unit:
           type: bool
           values:
-            t: SHUTDOWN
-            f: OK
+            t: CLOSED
+            f: OPEN
       - name: brake_pressure
         slice: 8 + 16
         unit:

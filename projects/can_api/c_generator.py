@@ -6,61 +6,46 @@ from utils import get_rx_messages
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import os
 
+
 def main():
     """
     CLI to generate C files from DBC
     """
     parser = argparse.ArgumentParser(
-        description = "Generate C API from a DBC",
+        description="Generate C API from a DBC",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
     parser.add_argument(
-        '-o', '--output_dir',
-        default='.',
-        help='Output directory (default is `.`)'
+        "-o", "--output_dir", default=".", help="Output directory (default is `.`)"
     )
 
-    parser.add_argument(
-        '-y', '--yaml',
-        required=True,
-        help='YAML file for the node'
-    )
+    parser.add_argument("-y", "--yaml", required=True, help="YAML file for the node")
 
-    parser.add_argument(
-        '-d', '--dbc',
-        required=True,
-        help='Input dbc file',
-    )
+    parser.add_argument("-d", "--dbc", required=True, help="Input dbc file")
 
-    parser.add_argument(
-        '-c', '--c-file',
-        required=True,
-        help='Input dbc file',
-    )
+    parser.add_argument("-c", "--c-file", required=True, help="Input dbc file")
 
-    parser.add_argument(
-        '-H', '--h-file',
-        required=True,
-        help='Input dbc file',
-    )
+    parser.add_argument("-H", "--h-file", required=True, help="Input dbc file")
 
     args = parser.parse_args()
 
     db = CANDatabase()
     db.add_dbc_file(args.dbc)
 
-    with open(args.yaml, 'r') as y:
+    with open(args.yaml, "r") as y:
         yaml_data = yaml.load(y, Loader=yaml.FullLoader)
 
     # Get the Node that we want
     node = db.get_node_by_name(yaml_data["name"])
 
     # Filter messages to get only the ones our Node sends
-    tx_messages = list(filter(lambda m: node.name in m.senders, db.messages))
+    tx_messages = []
+    for message in yaml_data["publish"]:
+        tx_messages.append(db.get_message_by_name(message["name"]))
 
     if "subscribe" in yaml_data.keys():
-        rx_messages, mobs = get_rx_messages(yaml_data["subscribe"], db.messages)
+        rx_messages, mobs, masks = get_rx_messages(yaml_data["subscribe"], db.messages)
     else:
         rx_messages = []
         mobs = {}
@@ -68,7 +53,7 @@ def main():
     # Create the Jinja2 environment that contains the template info
     env = Environment(
         loader=FileSystemLoader(os.path.dirname(args.c_file)),
-        autoescape=select_autoescape()
+        autoescape=select_autoescape(),
     )
 
     # Retrieve the templates
@@ -80,25 +65,25 @@ def main():
     h_out = "{}/can_api.h".format(args.output_dir)
 
     # Render templates and write the output to the file
-    with open(c_out, 'w+') as f:
+    with open(c_out, "w+") as f:
         contents = c_template.render(
-            node = node,
+            node=node,
             tx_messages=tx_messages,
             rx_messages=rx_messages,
+            masks=masks,
             mobs=mobs,
-            header_file='can_api.h',
+            header_file="can_api.h",
         )
 
         f.write(contents)
 
-    with open(h_out, 'w+') as f:
+    with open(h_out, "w+") as f:
         contents = h_template.render(
-            node = node,
-            tx_messages=tx_messages,
-            rx_messages=rx_messages,
+            node=node, tx_messages=tx_messages, rx_messages=rx_messages
         )
 
         f.write(contents)
+
 
 if __name__ == "__main__":
     main()

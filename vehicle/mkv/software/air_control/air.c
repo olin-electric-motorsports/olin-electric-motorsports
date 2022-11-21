@@ -1,5 +1,6 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
+#include <util/delay.h>
 
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
@@ -9,12 +10,17 @@
 #include "utils/utils.h"
 #include "vehicle/mkv/software/air_control/can_api.h"
 
-/* TODO
- *
- * - Verify initial conditions and correct/fault conditions of all GPIOs
- * - In FAULT state, should we clear PRECHARGE_CTL and AIR_N_LSD?
- * - Should we be able to recover from any faults? Which ones? How?
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+
+/*
+ * Required for btldr
  */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
 
 enum State {
     INIT = 0,
@@ -33,7 +39,7 @@ enum FaultCode {
     AIR_FAULT_BOTH_AIRS_WELD,
     AIR_FAULT_PRECHARGE_FAIL,
     AIR_FAULT_DISCHARGE_FAIL,
-    AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // voltage divider
+    AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // TODO?
     AIR_FAULT_CAN_ERROR,
     AIR_FAULT_CAN_BMS_TIMEOUT,
     AIR_FAULT_CAN_MC_TIMEOUT,
@@ -41,7 +47,6 @@ enum FaultCode {
     AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE,
     AIR_FAULT_BMS_VOLTAGE,
     AIR_FAULT_IMD_STATUS,
-    AIR_FAULT_BMS_STATUS,
 };
 
 static void set_fault(enum FaultCode the_fault) {
@@ -71,11 +76,7 @@ void pcint0_callback(void) {
 }
 
 void pcint1_callback(void) {
-    if (!gpio_get_pin(BMS_SENSE)) {
-        set_fault(AIR_FAULT_BMS_STATUS);
-        air_control_critical.bms_status = false;
-    }
-
+    air_control_critical.ss_bms = !gpio_get_pin(SS_BMS);
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
     air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 }
@@ -115,7 +116,7 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW_daV) {
+    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
         set_fault(AIR_FAULT_BMS_VOLTAGE);
         rc = 1;
         goto bail;
@@ -164,6 +165,9 @@ static int initial_checks(void) {
         goto bail;
     }
 
+    // Wait for IMD to stabilize
+    _delay_ms(IMD_STABILITY_CHECK_DELAY_MS);
+
     if (!gpio_get_pin(IMD_SENSE)) {
         // IMD_SENSE pin should start high
         air_control_critical.imd_status = false;
@@ -172,17 +176,6 @@ static int initial_checks(void) {
         goto bail;
     } else {
         air_control_critical.imd_status = true;
-    }
-
-    // TODO implement hitl test
-    if (!gpio_get_pin(BMS_SENSE)) {
-        // IMD_SENSE pin should start high
-        air_control_critical.bms_status = false;
-        set_fault(AIR_FAULT_BMS_STATUS);
-        rc = 1;
-        goto bail;
-    } else {
-        air_control_critical.bms_status = true;
     }
 
 bail:
@@ -214,7 +207,7 @@ static void state_machine_run(void) {
             }
 
             if (get_time() - start_time < 200) {
-                if (air_control_critical.air_n_status) {
+                if (air_control_critical.air_p_status) {
                     air_control_critical.air_state = PRECHARGE;
                     once = true;
                 }
@@ -241,7 +234,7 @@ static void state_machine_run(void) {
             }
 
             // Set correct scale for pack voltage
-            pack_voltage = pack_voltage * 10;
+            pack_voltage = (pack_voltage << 8) * 0.0001; // (x << 8 == x * 256)
 
             /*
              * This pattern ensures that we only call get_time() once because we
@@ -253,7 +246,7 @@ static void state_machine_run(void) {
                 once = false;
             }
 
-            if (get_time() - start_time < 2000) {
+            if (get_time() - start_time >= PRECHARGE_DELAY_MS) {
                 rc = get_motor_controller_voltage(&motor_controller_voltage);
                 if (rc != 0) {
                     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
@@ -262,7 +255,7 @@ static void state_machine_run(void) {
                 }
 
                 // Set correct scale for MC voltage
-                motor_controller_voltage = motor_controller_voltage / 10;
+                motor_controller_voltage = motor_controller_voltage * 0.1;
 
                 if (motor_controller_voltage
                     > (PRECHARGE_THRESHOLD * pack_voltage)) {
@@ -272,13 +265,12 @@ static void state_machine_run(void) {
                     air_control_critical.air_state = TS_ACTIVE;
                     return;
                 } else {
+                    once = true;
+                    set_fault(AIR_FAULT_PRECHARGE_FAIL);
                     return;
                 }
             } else {
-                // 2000 ms (2sec) have elapsed and the motor controller hasn't
-                // reached the appropriate voltage, so precharge failed
-                once = true;
-                set_fault(AIR_FAULT_PRECHARGE_FAIL);
+                // Yield for timer to complete
                 return;
             }
         } break;
@@ -293,22 +285,6 @@ static void state_machine_run(void) {
         case DISCHARGE: {
             gpio_clear_pin(AIR_N_LSD);
 
-            // If either AIR is still closed, it is welded
-            if (air_control_critical.air_p_status
-                && air_control_critical.air_n_status) {
-                air_control_critical.air_state = FAULT;
-                set_fault(AIR_FAULT_BOTH_AIRS_WELD);
-                return;
-            } else if (air_control_critical.air_p_status) {
-                air_control_critical.air_state = FAULT;
-                set_fault(AIR_FAULT_AIR_P_WELD);
-                return;
-            } else if (air_control_critical.air_n_status) {
-                air_control_critical.air_state = FAULT;
-                set_fault(AIR_FAULT_AIR_N_WELD);
-                return;
-            }
-
             /*
              * This pattern ensures that we only call get_time() once because we
              * only want to capture the time that PRECHARGE starts
@@ -320,16 +296,37 @@ static void state_machine_run(void) {
                 once = false;
             }
 
+            if (get_time() - start_time > 100) {
+                if (air_control_critical.air_p_status
+                    && air_control_critical.air_n_status) {
+                    air_control_critical.air_state = FAULT;
+                    set_fault(AIR_FAULT_BOTH_AIRS_WELD);
+                    once = true;
+                    return;
+                } else if (air_control_critical.air_p_status) {
+                    air_control_critical.air_state = FAULT;
+                    set_fault(AIR_FAULT_AIR_P_WELD);
+                    once = true;
+                    return;
+                } else if (air_control_critical.air_n_status) {
+                    air_control_critical.air_state = FAULT;
+                    set_fault(AIR_FAULT_AIR_N_WELD);
+                    once = true;
+                    return;
+                }
+            }
+
             int16_t motor_controller_voltage = 0;
 
-            // Wait for 2 seconds while the motor controller discharges
-            if (get_time() - start_time < 2000) {
+            // Wait for 10 seconds while the motor controller discharges
+            if (get_time() - start_time < DISCHARGE_TIMEOUT) {
                 int rc
                     = get_motor_controller_voltage(&motor_controller_voltage);
 
                 if (rc == 2) {
                     // Timeout
                     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
+                    once = true;
                 }
                 return;
             }
@@ -368,22 +365,40 @@ int main(void) {
     can_init_air_control();
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
+    updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_N_LSD, OUTPUT);
     gpio_set_mode(GENERAL_LED, OUTPUT);
     gpio_set_mode(FAULT_LED, OUTPUT);
 
+    gpio_set_mode(IMD_SENSE, INPUT);
+    gpio_set_mode(SS_TSMS, INPUT);
+    gpio_set_mode(SS_IMD_LATCH, INPUT);
+    gpio_set_mode(SS_BMS, INPUT);
+    gpio_set_mode(SS_MPC, INPUT);
+    gpio_set_mode(SS_HVD_CONN, INPUT);
+    gpio_set_mode(SS_HVD, INPUT);
+
     gpio_enable_interrupt(SS_TSMS);
     gpio_enable_interrupt(SS_IMD_LATCH);
+    gpio_enable_interrupt(SS_BMS);
     gpio_enable_interrupt(SS_MPC);
     gpio_enable_interrupt(SS_HVD_CONN);
     gpio_enable_interrupt(SS_HVD);
-    gpio_enable_interrupt(BMS_SENSE);
     gpio_enable_interrupt(IMD_SENSE);
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
+    // Ensure pull-ups are disabled
+    gpio_clear_pin(SS_TSMS);
+    gpio_clear_pin(SS_BMS);
+    gpio_clear_pin(SS_IMD_LATCH);
+    gpio_clear_pin(SS_MPC);
+    gpio_clear_pin(SS_HVD_CONN);
+    gpio_clear_pin(SS_HVD);
+
+    updater_init(BTLDR_ID, 5);
     air_control_critical.air_state = INIT;
 
     // Initialize interrupts
@@ -398,6 +413,10 @@ int main(void) {
     if (initial_checks() == 1) {
         goto fault;
     }
+
+    pcint0_callback();
+    pcint1_callback();
+    pcint2_callback();
 
     // Clear LED to indicate that initial checks passed
     gpio_clear_pin(GENERAL_LED);
@@ -414,6 +433,10 @@ int main(void) {
             run_1ms = false;
         }
 
+        if (air_control_critical.air_state == IDLE) {
+            updater_loop();
+        }
+
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
@@ -427,6 +450,9 @@ fault:
         /*
          * Continue senging CAN messages
          */
+
+        updater_loop();
+
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;

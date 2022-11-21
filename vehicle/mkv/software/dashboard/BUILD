@@ -6,7 +6,9 @@ cc_firmware(
     srcs = [
         "dashboard.c",
         "dashboard_config.h",
+        "//projects/btldr:git_sha_header",
     ],
+    btldr = "//projects/btldr:dashboard_btldr",
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
@@ -16,6 +18,7 @@ cc_firmware(
         "//libs/adc",
         "//libs/gpio",
         "//libs/timer",
+        "//projects/btldr:btldr_lib",
     ],
 )
 

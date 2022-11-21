@@ -6,22 +6,22 @@
 #include "libs/gpio/api.h"
 
 typedef enum {
-    MSB,
+    MSB = 0,
     LSB,
 } spi_data_order_e;
 
 typedef enum {
-    SECONDARY,
+    SECONDARY = 0,
     MAIN,
 } spi_mode_e;
 
 typedef enum {
-    RISING_FALLING,
+    RISING_FALLING = 0,
     FALLING_RISING,
 } spi_clock_polarity_e;
 
 typedef enum {
-    SAMPLE_SETUP,
+    SAMPLE_SETUP = 0,
     SETUP_SAMPLE,
 } spi_clock_phase_e;
 
@@ -43,8 +43,7 @@ typedef struct {
     spi_clock_polarity_e polarity;
     spi_clock_phase_e phase;
     spi_clock_rate_e clock_rate;
-    gpio_t* cs_pin_overide; // Set as void to use default pins
-    bool pin_redirect;
+    gpio_t* cs_pin;
 } spi_cfg_s;
 
 /*
@@ -58,6 +57,8 @@ void spi_init(spi_cfg_s* cfg);
  * Rxdata can be ignored if a null pointer is provided
  */
 void spi_transceive(uint8_t* txdata, uint8_t* rxdata, uint8_t len);
+void spi_transceive_chip_select(uint8_t* txdata, uint8_t* rxdata, uint8_t len,
+                                bool chip_select_control);
 
 void spi_receive(uint8_t* rxdata, uint8_t len);
 

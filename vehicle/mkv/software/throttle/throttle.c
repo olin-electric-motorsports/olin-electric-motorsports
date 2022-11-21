@@ -1,738 +1,346 @@
-/*
-   Code for the OEM MKIV Throttle Board
-   Author: awenstrup
- */
-
-//Includes
-#include <stdio.h>
-#include <string.h>
-#include <avr/io.h>
+#include "libs/adc/api.h"
+#include "libs/can/api.h"
+#include "libs/timer/api.h"
 #include <avr/interrupt.h>
+
+#include "libs/gpio/api.h"
+#include "throttle_config.h"
+#include "utils/timer.h"
+#include "vehicle/mkv/software/throttle/can_api.h"
+
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <sys/types.h>
+
+#include <math.h>
 #include <util/delay.h>
-#include "can_api.h"
-#include "log_uart.h"
 
-#include <util/delay.h>
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
 
-//Macro Definitinos
-
-//Pin and Port Macros
-#define THROTTLE_1 PC4
-#define THROTTLE_2 PC5
-#define THROTTLE_PORT PORTC
-
-#define THROTTLE1_ADC_NUM 0b01000 //ADC8
-#define THROTTLE2_ADC_NUM 0b01001 //ADC9
-#define DRIVE_MODE_ADC    0b00010 //ADC2
-
-#define DRIVE_MODE PD5
-#define DRIVE_MODE_PORT PORTD
-
-#define SS_ESTOP PB5
-#define SS_IS PB6
-#define SS_BOTS PB7
-#define SS_PORT PORTB
-
-#define PLED1 PC6
-#define PLED1_PORT PORTC
-#define PLED2 PB3
-#define PLED2_PORT PORTB
-#define PLED3 PB4
-#define PLED3_PORT PORTB
-
-#define LED1 PB0 //orange
-#define LED2 PB1 //green
-#define EXT_LED_PORT PORTB
-
-//CAN Macros
-#define CAN_THROTTLE 0
-#define CAN_BOTS 1
-#define CAN_IS 2
-#define CAN_ESTOP 3
-// #define CAN_DRIVE_MODE 1
-
-
-
-
-//Mailbox Macros
-//Input
-#define MOB_BRAKELIGHT 0
-#define MOB_DASHBOARD 1
-#define MOB_PANIC 2
-//Output
-#define MOB_BROADCAST 3
-#define MOB_MOTORCONTROLLER 4
-
-//Flags
-#define FLAG_BRAKE 0
-#define FLAG_THROTTLE_BRAKE 1
-#define FLAG_ESTOP 2
-#define FLAG_IS 3
-#define FLAG_BOTS 4
-#define FLAG_MOTOR_ON 5
-#define FLAG_THROTTLE_10 6
-#define FLAG_PANIC 7
-
-//Voltage Reference for Drive Mode Select
-#define STANDARD_LOWER_BOUND 0
-#define ACCELERATION_LOWER_BOUND 0
-#define SKIDPAD_LOWER_BOUND 0
-#define AUTOCROSS_LOWER_BOUND 0
-#define ENDURANCE_LOWER_BOUND 0
-
-#define ROLLING_AVG_SIZE 8
-
-#define UPDATE_STATUS 1
-
-#define ADC_ERROR 6
-#define DEAD_ZONE 64
-
-//********************Global variables***************
-uint8_t gFlag = 0;
-uint8_t gTimerFlag = 0;
-
-uint16_t gDriveModeVoltage = 0;
-uint8_t gDriveMode = 0;
-/* Drive modes:
-   0 = error (no signal recieved, default to standard)
-   1 = standard (linear torque request)
-   2 = acceleration
-   3 = skid pad
-   4 = autocross
-   5 = endurance
+/*
+ * Required for btldr
  */
-char uart_buf[64];
-uint8_t gError = 0b00000000;
-/* Error definitions:
-   0 = No errors
-   1 = Drive mode error
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
+
+/*
+ * Sets the torque request in the motor controller command message
  */
+#define SET_TORQUE_REQUEST(torque) \
+    (m192_command_message.torque_command = (torque))
 
-uint16_t gThrottle1Voltage = 0;
-uint16_t gThrottle2Voltage = 0;
-uint16_t gThrottle1In = 0;
-uint16_t gThrottle2In = 0;
-uint8_t gThrottle1Out = 0;
-uint8_t gThrottle2Out = 0;
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
-uint8_t gThrottleArrayIndex = 0;
-//uint8_t gAverageSize = 8;
-uint8_t gThrottleArray[ROLLING_AVG_SIZE];
-uint16_t gRollingSum = 0;
-uint8_t gThrottleOut = 0;
-volatile uint8_t msg;
+enum State {
+    THROTTLE_IDLE,
+    THROTTLE_RUN,
+    THROTTLE_OUT_OF_RANGE,
+    THROTTLE_POSITION_IMPLAUSIBILITY,
+    THROTTLE_BRAKE_PRESSED
+};
 
-// Throttle mapping values
-//Values set last on Oct 12 by Alex Wenstrup
-const uint16_t throttle1_HIGH = 654;
-const uint16_t throttle1_LOW = 154 + DEAD_ZONE;
-const uint16_t throttle2_HIGH = 1016;
-const uint16_t throttle2_LOW = 234 + DEAD_ZONE;
+struct throttle_state_s {
+    volatile bool send_can;
+    uint16_t implausibility_fault_counter;
+    bool brake_pressed;
+} throttle_state = { 0 };
 
-uint8_t throttle10Counter = 0;
-const uint8_t throttle10Ticks = 6; //number of measurements that corespond to an implausibility error
-
-uint8_t gCANMessage[4] = {0, 0, 0, 0};
-uint8_t gCANMotorController[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-
-uint8_t gBrakeLightCan[7] = {0, 0, 0, 0, 0, 0, 0};
-
-uint8_t clock_prescale = 0;
-
-uint8_t timer_max = 0; //SET TO 0 BEFORE GOING HV
-
-//********************Functions*************************
-
-//*************ISRs*****************
-
-ISR(TIMER0_COMPA_vect) {
-	/*
-	   Use the internal timer to control how quickly code is executed
-	   by setting a flag used in the main loop
-	 */
-
-	clock_prescale++;
-	if(clock_prescale>timer_max) {
-		gTimerFlag |= _BV(UPDATE_STATUS);
-		clock_prescale = 0;
-	}
+void timer0_isr(void) {
+    throttle_state.send_can = true;
 }
 
-ISR(CAN_INT_vect) {
-	/*
-	   CAN Interupt
-	   Listens for CAN messages from the brakes,
-	   start button (through the dashboard), and panic
-	 */
-
-	// Brakelight
-	CANPAGE = (MOB_BRAKELIGHT << MOBNB0);
-	if (bit_is_set(CANSTMOB,RXOK)) {
-
-		//Gets the third value of of the message
-		gBrakeLightCan[0] = CANMSG;
-		gBrakeLightCan[1] = CANMSG;
-		gBrakeLightCan[2] = CANMSG;
-		gBrakeLightCan[3] = CANMSG;
-		gBrakeLightCan[4] = CANMSG;
-		gBrakeLightCan[5] = CANMSG;
-		gBrakeLightCan[6] = CANMSG;
-
-		if(gBrakeLightCan[2] == 0xFF) {
-			gFlag |= _BV(FLAG_BRAKE);
-		}
-
-		else if ((gThrottle1Out == 0x00 || gThrottle2Out == 0x00) && gBrakeLightCan[2] == 0x00) {
-			gFlag &= ~_BV(FLAG_BRAKE);
-		}
-
-		CANSTMOB = 0x00;
-		CAN_wait_on_receive(MOB_BRAKELIGHT,
-		                    CAN_ID_BRAKE_LIGHT,
-		                    CAN_LEN_BRAKE_LIGHT,
-		                    0xFF);
-	}
-
-	//Start button
-	CANPAGE = (MOB_DASHBOARD << MOBNB0);
-	if (bit_is_set(CANSTMOB,RXOK)) {
-		volatile uint8_t msg = CANMSG;
-
-		if (msg == 0xFF) {
-			gFlag |= _BV(FLAG_MOTOR_ON);
-			// PLED1_PORT |= _BV(PLED1);
-			PLED2_PORT ^= _BV(PLED2);
-		} else {
-			gFlag &= ~_BV(FLAG_MOTOR_ON);
-			PLED1_PORT ^= _BV(PLED1);
-		}
-
-		CANSTMOB = 0x00;
-		CAN_wait_on_receive(MOB_DASHBOARD,
-		                    CAN_ID_DASHBOARD,
-		                    CAN_LEN_DASHBOARD,
-		                    0xFF);
-	}
-
-	//Panic
-	CANPAGE = (MOB_PANIC << MOBNB0);
-	if (bit_is_set(CANSTMOB,RXOK)) {
-		volatile uint8_t msg = CANMSG;
-
-		if(msg == 0xFF) {
-			gFlag |= _BV(FLAG_PANIC);
-
-		} else {
-			gFlag &= ~_BV(FLAG_PANIC);
-		}
-
-		CANSTMOB = 0x00;
-		CAN_wait_on_receive(MOB_PANIC,
-		                    CAN_ID_PANIC,
-		                    CAN_LEN_PANIC,
-		                    0xFF);
-	}
+void pcint0_callback(void) {
+    throttle.ss_estop_driver = !gpio_get_pin(SS_ESTOP);
+    throttle.ss_is = !gpio_get_pin(SS_IS);
+    throttle.ss_bots = !gpio_get_pin(SS_BOTS);
 }
 
-ISR(PCINT0_vect) {
-	/*
-	   Checks if the shutdown circuit
-	   nodes are open or closed, and sets flags accordingly
-	 */
-	if(bit_is_clear(PINB,SS_IS)) {
-		gFlag |= _BV(FLAG_IS);
-	} else {
-		gFlag &= ~_BV(FLAG_IS);
-	}
+/*
+ * Reads value from throttle potentiometer and maps it to a position where 0%
+ * travel corresponds to 0 and 100% travel corresponds to 255.
+ *
+ * Returns an int16_t that represents the pedal travel
+ */
+static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
+    int16_t throttle_raw = adc_read(throttle->adc_pin);
 
-	if(bit_is_clear(PINB,SS_ESTOP)) {
-		gFlag |= _BV(FLAG_ESTOP);
-	} else {
-		gFlag &= ~_BV(FLAG_ESTOP);
-	}
+    throttle_raw >>= 2; // This was in the old code, and I don't know why. I
+                        // can't seem to explain it yet...
 
-	if(bit_is_clear(PINB,SS_BOTS)) {
-		gFlag |= _BV(FLAG_BOTS);
-	} else {
-		gFlag &= ~_BV(FLAG_BOTS);
-	}
+    // Voltage range between 0% and 100% pedal travel
+    int16_t range = throttle->throttle_max - throttle->throttle_min;
+    float position_pct
+        = (float)(throttle_raw - throttle->throttle_min) / (float)range;
+
+    return floor(position_pct * 255);
 }
 
-//****************Initializers*****************
-void initTimer(void) {
-	// Set up 8-bit timer in CTC mode
-	TCCR0A = _BV(WGM01);
+/*
+ * Checks whether either throttle sensor reads an out-of-range value.
+ *
+ * See 2022 Rules T.4.2.10 and T.4.2.9.
+ */
+static bool check_out_of_range(int16_t* pos_r, int16_t* pos_l) {
+    bool implausibility = false;
+    // Check range of positions
+    if (*pos_r > 255) {
+        // Out of range upper
+        *pos_r = 255;
+        gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
+        implausibility = true;
+    } else if (*pos_r < 0) {
+        // Out of range lower
+        *pos_r = 0;
+        gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
+        implausibility = true;
+    } else {
+        gpio_clear_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+    }
 
-	// Set clock prescaler to (1/1024) - page 89
-	TCCR0B = 0b101;
+    if (*pos_l > 255) {
+        // Out of range upper
+        *pos_l = 255;
+        gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
+        implausibility = true;
+    } else if (*pos_l < 0) {
+        // Out of range lower
+        *pos_l = 0;
+        gpio_set_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
+        implausibility = true;
+    } else {
+        gpio_clear_pin(OUT_OF_RANGE_IMPLAUSIBILITY_LED);
+        // Will be reset if Ready to Drive is not on
+        throttle.throttle_state = THROTTLE_RUN;
+    }
 
-	// Enable Match A interupts - page 90
-	TIMSK0 |= _BV(OCIE0A);
-
-	//Makes the timer reset everytime it hits 39 (~100 Hz)
-	// - page 90
-	OCR0A = 39;
+    return implausibility;
 }
 
-void initADC(void) {
-	// Enable Analog Digital Converter with
-	// frequency (1/32) * system clock - page 212
-	ADCSRA |= _BV(ADEN) | _BV(ADPS2) | _BV(ADPS0);
-
-	//Enable interal reference voltage
-	ADCSRB &= _BV(AREFEN);
-
-	//Set internal reference voltage as AVcc
-	ADMUX |= _BV(REFS0);
-
-	//Reads by default from ADC0 (pin 11)
-	//This line is redundant. The timer
-	ADMUX |= _BV(0x00);
+/*
+ * Checks for deviation between the two positions reported by the throttle
+ * sensors. Deviation greater than 10% is defined as an implausibility.
+ *
+ * See 2022 Rules T.4.2.4 and T.4.2.5.
+ */
+static bool check_deviation(int16_t pos_max, int16_t pos_min) {
+    // Check implausibility between pedal values (T.4.2.4/5)
+    if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
+        gpio_set_pin(DEVIATION_IMPLAUSIBILITY_LED);
+        throttle.throttle_state = THROTTLE_POSITION_IMPLAUSIBILITY;
+        return true;
+    } else {
+        gpio_clear_pin(DEVIATION_IMPLAUSIBILITY_LED);
+        throttle.throttle_state = THROTTLE_RUN;
+        return false;
+    }
 }
 
-void initMC(void) {
-	gCANMotorController[0] = 0;
-	gCANMotorController[1] = 0;
-	gCANMotorController[2] = 0;
-	gCANMotorController[3] = 0;
-	gCANMotorController[4] = 1;
-	gCANMotorController[5] = 0;
-	gCANMotorController[6] = 0;
-	gCANMotorController[7] = 0;
+/*
+ * Checks for plausibility with brake being pressed while throttle is also
+ * pressed.
+ *
+ * See 2022 Rules EV.5.7. When the brake is pressed and the throttle pedal is
+ * pressed beyond 25% pedal travel, we immediately set the torque request to
+ * zero and maintain that until throttle pedal is pressed less than 5%.
+ *
+ * If there is an implausibility, torque request is set to zero by the caller
+ * (see the `main` function)
+ *
+ * Returns true if implausibility occurs
+ */
+static bool check_brake(int16_t pos_min) {
+    static bool brake_implausibility_occured = false;
 
-	CAN_transmit(MOB_MOTORCONTROLLER,
-	             CAN_ID_MC_COMMAND,
-	             CAN_LEN_MC_COMMAND,
-	             gCANMotorController);
+    // If the brake is pressed...
+    if (throttle_state.brake_pressed) {
+        // ...and pedal travel is greater than 25%
+        if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
+            // A brake implausibility occured
+            brake_implausibility_occured = true;
+            throttle.throttle_state = THROTTLE_BRAKE_PRESSED;
+            gpio_set_pin(BRAKE_IMPLAUSIBILTIY_LED);
+            return true;
+        } else {
+            // If brake is pressed but pedal is less than 25%, we can continue
+            return false;
+        }
+
+        // If a brake implausibility previously occured...
+        if (brake_implausibility_occured) {
+            // But now the pedal is less than 5% travel
+            if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
+                // No more implausibility
+                brake_implausibility_occured = false;
+                throttle.throttle_state = THROTTLE_RUN;
+                gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+                return false;
+            } else {
+                // But if the pedal IS greater than 5% travel, still
+                // implausibility
+                return true;
+            }
+        } else {
+            // If an implausibility didn't previously occur, we're good
+            gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+            throttle.throttle_state = THROTTLE_RUN;
+            return false;
+        }
+    } else {
+        // If the brake is NOT pressed, but a brake implausibility previously
+        // occured...
+        if (brake_implausibility_occured) {
+            // AND the pedal is further than 5% travel, we still have an
+            // implausibility
+            if (pos_min > APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
+                return true;
+            } else {
+                // We finally can get rid of the implausibility once the brake
+                // is no longer pressed and the throttle is also not pressed
+                brake_implausibility_occured = false;
+                gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+                throttle.throttle_state = THROTTLE_RUN;
+                return false;
+            }
+        } else {
+            // If the brake isn't pressed, and we didn't previously have an
+            // implausibility, we're good
+            gpio_clear_pin(BRAKE_IMPLAUSIBILTIY_LED);
+            throttle.throttle_state = THROTTLE_RUN;
+            return false;
+        }
+    }
 }
 
-void setPledOut(void) {
-	//Sets the programming LEDs as output
-	DDRC |= _BV(PLED1);
-	DDRB |= _BV(PLED2);
-	DDRB |= _BV(PLED3);
-
-	DDRB |= _BV(LED1);
-	DDRB |= _BV(LED2);
-}
-
-void enablePCINT(void) {
-	//Enables interupts on shutdown sense pins
-	PCICR |= _BV(PCIE0);
-	PCMSK0 |= _BV(PCINT5) | _BV(PCINT6) | _BV(PCINT7);
-}
-
-void initDriveMode(void) {
-	//Sets the drive mode (only call once, when RTD)
-	ADMUX = _BV(REFS0);
-	ADMUX |= DRIVE_MODE_ADC;
-	ADCSRA |= _BV(ADSC);
-	loop_until_bit_is_clear(ADCSRA, ADSC);
-	uint16_t dm = ADC;
-
-	if(dm < STANDARD_LOWER_BOUND) {
-		gDriveMode = 0;
-		gError = 1;
-	}
-	else if(dm < ACCELERATION_LOWER_BOUND) {
-		gDriveMode = 1;
-	}
-	else if(dm < SKIDPAD_LOWER_BOUND) {
-		gDriveMode = 2;
-	}
-	else if(dm < AUTOCROSS_LOWER_BOUND) {
-		gDriveMode = 3;
-	}
-	else if(dm < ENDURANCE_LOWER_BOUND) {
-		gDriveMode = 4;
-	}
-	else {
-		gDriveMode = 5;
-	}
-}
-
-//***************Error Checking*************
-
-void checkShutdownState(void)   {
-	//Sets the value of the CANMessage array
-	//at the correct position
-	//to 255 if the shutdown sense is triggered
-	if(bit_is_set(gFlag,FLAG_ESTOP)) {
-		gCANMessage[CAN_ESTOP] = 0xFF;
-	} else {
-		gCANMessage[CAN_ESTOP] = 0x00;
-	}
-
-	if(bit_is_set(gFlag,FLAG_IS)) {
-		gCANMessage[CAN_IS]= 0xFF;
-	} else {
-		gCANMessage[CAN_IS] = 0x00;
-	}
-
-	if(bit_is_set(gFlag,FLAG_BOTS)) {
-		gCANMessage[CAN_BOTS] = 0xFF;
-	} else {
-		gCANMessage[CAN_BOTS] = 0x00;
-	}
-}
-
-void checkPanic(void) {
-	if(bit_is_set(gFlag,FLAG_PANIC)) {
-		gThrottle1Out = 0;
-		gThrottle2Out = 0;
-		gThrottleOut = 0;
-		// PLED1_PORT ^= _BV(PLED1);
-		// PLED2_PORT ^= _BV(PLED2);
-		// PLED3_PORT ^= _BV(PLED3);
-	}
-}
-
-void checkPlausibility(void) {
-	if (gThrottle1Voltage * 50 > gThrottle2Voltage * 35 || gThrottle1Voltage * 55 < gThrottle2Voltage * 32) {
-		throttle10Counter += 1;
-	}
-	//else if ((gThrottle1Voltage > (throttle1_HIGH + ADC_ERROR)) || gThrottle1Voltage < throttle1_LOW - ADC_ERROR) {
-	else if (gThrottle1Voltage > 1022 || gThrottle1Voltage < 16) {
-		throttle10Counter += 1;
-	}
-	//else if ((gThrottle2Voltage > (throttle2_HIGH + ADC_ERROR)) || gThrottle2Voltage < throttle2_LOW - ADC_ERROR) {
-	else if (gThrottle2Voltage > 1022 || gThrottle2Voltage < 16) {
-		throttle10Counter += 1;
-	}
-	else {
-		throttle10Counter = 0;
-	}
-
-	if (throttle10Counter > throttle10Ticks) {
-		gFlag |= _BV(FLAG_THROTTLE_10);
-	}
-	else {
-		gFlag &= ~_BV(FLAG_THROTTLE_10);
-	}
-}
-
-//***************Read and map throttle***********
-
-void readPots(void) {
-	/*
-	   Read values from ADC and store them
-	   in their appropriate variables
-	   Reads: throttle1 and throttle2
-	 */
-
-	ADMUX = _BV(REFS0);
-	ADMUX |= THROTTLE1_ADC_NUM;
-	ADCSRA |= _BV(ADSC);
-	loop_until_bit_is_clear(ADCSRA, ADSC);
-	uint16_t t1 = ADC;
-
-	ADMUX = _BV(REFS0);
-	ADMUX |= THROTTLE2_ADC_NUM;
-	ADCSRA |= _BV(ADSC);
-	loop_until_bit_is_clear(ADCSRA, ADSC);
-	uint16_t t2 = ADC;
-
-	gThrottle1Voltage = t1;
-	gThrottle2Voltage = t2;
-	// sprintf(uart_buf, "TV: %u, %u", t1, t2);
-	// LOG_println(uart_buf, strlen(uart_buf));
-
-}
-
-void mapThrottle(void) {
-	//Map ADC to 0-255
-	uint32_t map1;
-	uint32_t map2;
-
-	uint16_t v1 = gThrottle1Voltage >> 2;
-	uint16_t v2 = gThrottle2Voltage >> 2;
-
-	uint16_t t1h = throttle1_HIGH >> 2;
-	uint16_t t1l = throttle1_LOW >> 2;
-	uint16_t t2h = throttle2_HIGH >> 2;
-	uint16_t t2l = throttle2_LOW >> 2;
-
-	//If the voltage is out of range, set to min or max
-	if (v1 < t1l) {
-		v1 = t1l;
-	}
-	else if (v1 > t1h) {
-		v1 = t1h;
-	}
-
-	if (v2 < t2l) {
-		v2 = t2l;
-	}
-	else if (v2 > t2h) {
-		v2 = t2h;
-	}
-
-	//Map from 0-255
-	map1 = ((v1 - t1l) * 255) / (t1h - t1l);
-	map2 = ((v2 - t2l) * 255) / (t2h - t2l);
-	gThrottle1In = map1;
-	gThrottle2In = map2;
-
-	gThrottle1Out = gThrottle1In;
-	gThrottle2Out = gThrottle2In;
-
-	/*
-	   //---------Map based on drive mode------------
-	   if (gDriveMode == 0) { //error, default to standard
-	   gThrottle1Out = gThrottle1In;
-	   gThrottle2Out = gThrottle2In;
-	   }
-	   else if (gDriveMode == 1) { //standard
-	   gThrottle1Out = gThrottle1In;
-	   gThrottle2Out = gThrottle2In;
-	   }
-	   else if (gDriveMode == 2) { //acceleration
-	   gThrottle1Out = gThrottle1In;
-	   gThrottle2Out = gThrottle2In;
-	   }
-	   else if (gDriveMode == 3) { //skid pad
-	   if (gThrottle1In < 128) {
-	    gThrottle1Out = gThrottle1In;
-	    gThrottle2Out = gThrottle2In;
-	   }
-	   else {
-	    gThrottle1Out = 128 + ((gThrottle1In - 128) >> 1);
-	    gThrottle2Out = 128 + ((gThrottle2In - 128) >> 1);
-	   }
-	   }
-	   else if (gDriveMode == 4) { //autocross
-	   gThrottle1Out = gThrottle1In;
-	   gThrottle2Out = gThrottle2In;
-	   }
-	   else if (gDriveMode == 5) { //endurance
-	   gThrottle1Out = gThrottle1In;
-	   gThrottle2Out = gThrottle2In;
-	   }
-	 */
-}
-
-void storeThrottle(void) {
-	readPots();
-	mapThrottle();
-	checkPlausibility();
-
-	uint16_t new = (gThrottle1Out + gThrottle2Out) >> 1;
-	uint8_t old = gThrottleArray[gThrottleArrayIndex];
-
-	gRollingSum -= old;
-	gRollingSum += new;
-
-	gThrottleArray[gThrottleArrayIndex] = new;
-
-	gThrottleArrayIndex = gThrottleArrayIndex + 1;
-
-	if (gThrottleArrayIndex == ROLLING_AVG_SIZE) {
-		gThrottleArrayIndex = 0;
-	}
-
-	// sprintf(uart_buf, "NEW: %u", new);
-	// LOG_println(uart_buf, strlen(uart_buf));
-	// sprintf(uart_buf, "OLD: %u", old);
-	// LOG_println(uart_buf, strlen(uart_buf));
-}
-
-void getAverage(void) {
-	uint32_t temp = gRollingSum;
-	temp /= ROLLING_AVG_SIZE;
-	gThrottleOut = temp;
-}
-
-
-//*************Testing*****************
-void printThrottle1(void) {
-	char uart_buf[64];
-	sprintf(uart_buf, "tout: %d", gThrottleOut);
-	LOG_println(uart_buf, strlen(uart_buf));
-
-	sprintf(uart_buf, "v1: %d", gThrottle1Voltage);
-	LOG_println(uart_buf, strlen(uart_buf));
-
-	sprintf(uart_buf, "v2: %d", gThrottle2Voltage);
-	LOG_println(uart_buf, strlen(uart_buf));
-
-	sprintf(uart_buf, " ");
-	LOG_println(uart_buf, strlen(uart_buf));
-}
-
-void printThrottle(void) {
-	char uart_buf[32];
-	sprintf(uart_buf, "t10ticks: %d", throttle10Counter);
-	LOG_println(uart_buf, strlen(uart_buf));
-}
-
-void testStartup(void) {
-	if (bit_is_set(gFlag, FLAG_MOTOR_ON)) {
-		// PLED1_PORT |= _BV(PLED1);
-		// PLED2_PORT |= _BV(PLED2);
-		// PLED3_PORT |= _BV(PLED3);
-	}
-	else {
-		// PLED1_PORT &= ~_BV(PLED1);
-		// PLED2_PORT &= ~_BV(PLED2);
-		// PLED3_PORT &= ~_BV(PLED3);
-	}
-}
-
-void throttleLights(void) {
-	// if (gThrottleOut > 64) {
-	//  PLED1_PORT |= _BV(PLED1);
-	// }
-	// else {
-	//  PLED1_PORT &= ~_BV(PLED1);
-	// }
-
-	// if (gThrottleOut > 128) {
-	//  PLED2_PORT |= _BV(PLED2);
-	// }
-	// else {
-	//  PLED2_PORT &= ~_BV(PLED2);
-	// }
-
-	// if (gThrottleOut > 192) {
-	//  PLED3_PORT |= _BV(PLED3);
-	// }
-	// else {
-	//  PLED3_PORT &= ~_BV(PLED3);
-	// }
-}
-
-void showError(void) {
-	// uint8_t temp = gError;
-
-	// if (temp % 2 == 1) {
-	//  PLED1_PORT |= _BV(PLED1);
-	// }
-	// else {
-	//  PLED1_PORT &= ~_BV(PLED1);
-	// }
-
-	// temp /= 2;
-	//
-	// if (temp % 2 == 1) {
-	//  PLED2_PORT |= _BV(PLED2);
-	// }
-	// else {
-	//  PLED2_PORT &= ~_BV(PLED2);
-	// }
-
-	// temp /= 2;
-	//
-	// if (temp % 2 == 1) {
-	//  PLED3_PORT |= _BV(PLED3);
-	// }
-	// else {
-	//  PLED3_PORT &= ~_BV(PLED3);
-	// }
-}
-
-//******************Send CAN Messages************
-void sendCanMessages(int viewCan){
-	//FOR TESTING ONLY
-	//gFlag |= _BV(FLAG_MOTOR_ON);
-
-	gCANMessage[0] = bit_is_set(gFlag, FLAG_MOTOR_ON) ? gThrottleOut : 0;
-	gCANMessage[1] = bit_is_set(gFlag,FLAG_BOTS) ? 0xFF : 0x00;
-	gCANMessage[2] = bit_is_set(gFlag,FLAG_IS) ? 0xFF : 0x00;
-	gCANMessage[3] = bit_is_set(gFlag,FLAG_ESTOP) ? 0xFF : 0x00;
-
-	if (bit_is_set(gFlag, FLAG_THROTTLE_10) || bit_is_set(gFlag, FLAG_BRAKE)) {
-		gCANMessage[0] = 0;
-	}
-
-	CAN_transmit(MOB_BROADCAST,
-	             CAN_ID_THROTTLE,
-	             CAN_LEN_THROTTLE,
-	             gCANMessage);
-
-	// Send out Motor controller info
-	// REMAP
-
-	uint16_t thrott = bit_is_clear(gFlag, FLAG_THROTTLE_10) ? (uint16_t) gThrottleOut : 0;
-	uint16_t mc_remap = (uint16_t)(thrott * 9);
-	gCANMotorController[0] = mc_remap;      //torque command
-	gCANMotorController[1] = mc_remap >> 8; //torque command
-	gCANMotorController[2] = 0x00;      //speed command (unused)
-	gCANMotorController[3] = 0x00;      //speed command (unused)
-	gCANMotorController[4] = 0x00;      //direction command (0=reverse,,,1=forward)
-	gCANMotorController[5] = bit_is_set(gFlag,FLAG_MOTOR_ON) ? 0x01 : 0x00; //inverter on or off
-	gCANMotorController[6] = 0x00;      // commanded torque limit, if 0, uses EEPROM set value
-	gCANMotorController[7] = 0x00;      // commanded torque limit, ^
-
-	if (bit_is_set(gFlag, FLAG_THROTTLE_10) || bit_is_set(gFlag, FLAG_BRAKE) || bit_is_clear(gFlag, FLAG_MOTOR_ON)) {
-		gCANMotorController[0] = 0x00;
-		gCANMotorController[1] = 0x00;
-		gCANMotorController[5] = 0x00;
-	}
-
-	CAN_transmit(MOB_MOTORCONTROLLER,
-	             CAN_ID_MC_COMMAND,
-	             CAN_LEN_MC_COMMAND,
-	             gCANMotorController);
-
-
-
-
-	if(viewCan) {
-		// char msg1[128];
-		// char msg2[128];
-		// sprintf(msg1,"CAN message one to all:\nThrottle:%d\nSteering:%d\nBOTS:%d\nInertia:%d\nEstop:%d",
-		//         gCANMessage[0],gCANMessage[1],gCANMessage[2],gCANMessage[3],gCANMessage[4]);
-		// LOG_println(msg1,strlen(msg1));
-		// sprintf(msg2,"CAN message to motorcontroller:\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d",
-		//         gCANMotorController[0],gCANMotorController[1],gCANMotorController[2],gCANMotorController[3],
-		//         gCANMotorController[4],gCANMotorController[5],gCANMotorController[6],gCANMotorController[7]);
-		// LOG_println(msg2,strlen(msg2));
-
-	}
-}
-
-//******************Main Loop*****************
 int main(void) {
-	initTimer();
-	initADC();
-	sei();
-	CAN_init(CAN_ENABLED);
-	setPledOut();
-	LOG_init();
-	enablePCINT();
-	initMC();
+    sei();
 
-	CAN_wait_on_receive(MOB_DASHBOARD,
-	                    CAN_ID_DASHBOARD,
-	                    CAN_LEN_DASHBOARD,
-	                    0xFF);
+    can_init_throttle();
+    adc_init();
 
-	CAN_wait_on_receive(MOB_BRAKELIGHT,
-	                    CAN_ID_BRAKE_LIGHT,
-	                    CAN_LEN_BRAKE_LIGHT,
-	                    0xFF);
+    timer_init(&timer0_cfg);
+    timer_init(&timer1_cfg);
 
-	CAN_wait_on_receive(MOB_PANIC,
-	                    CAN_ID_PANIC,
-	                    CAN_LEN_PANIC,
-	                    0xFF);
+    updater_init(BTLDR_ID, 5);
 
-	// PLED3_PORT |= _BV(PLED3);
+    gpio_set_mode(BRAKE_IMPLAUSIBILTIY_LED, OUTPUT);
+    gpio_set_mode(DEVIATION_IMPLAUSIBILITY_LED, OUTPUT);
+    gpio_set_mode(OUT_OF_RANGE_IMPLAUSIBILITY_LED, OUTPUT);
+    gpio_set_mode(RJ45_LED1, OUTPUT);
+    gpio_set_mode(RJ45_LED2, OUTPUT);
 
+    gpio_set_mode(SS_ESTOP, INPUT);
+    gpio_set_mode(SS_IS, INPUT);
+    gpio_set_mode(SS_BOTS, INPUT);
 
-	while(1) {
-		if(bit_is_set(gTimerFlag,UPDATE_STATUS)) {
-			gTimerFlag &= ~_BV(UPDATE_STATUS);
-			storeThrottle();
-			getAverage();
-			checkPanic();
-			// checkShutdownState();
-			// testStartup();
-			printThrottle1();
-			sendCanMessages(0);
+    gpio_enable_interrupt(SS_ESTOP);
+    gpio_enable_interrupt(SS_IS);
+    gpio_enable_interrupt(SS_BOTS);
 
-			// gError = 5;
-			// showError();
-		}
-	}
+    throttle.throttle_state = THROTTLE_IDLE;
+
+    pcint0_callback();
+
+    /*
+     * This feature is added so that the inverter cannot be accidentally enabled
+     * when first powered up. This feature requires that before sending out an
+     * Inverter Enable command, the user must send out an Inverter Disable
+     * command. Once the inverter sees a Disable command, the lockout is removed
+     * and controller can receive the Inverter Enable command
+     */
+    can_send_m192_command_message();
+
+    m192_command_message.direction_command = MOTOR_CLOCKWISE;
+
+    can_receive_brakelight();
+    can_receive_dashboard();
+
+    while (true) {
+        updater_loop();
+
+        if (run_1ms) {
+            run_1ms = false;
+            if (can_poll_receive_brakelight() == 0) {
+                throttle_state.brake_pressed = brakelight.brake_gate;
+                can_receive_brakelight();
+            }
+
+            if (can_poll_receive_dashboard() == 0) {
+                can_receive_dashboard();
+
+                bool ready_to_drive = dashboard.ready_to_drive;
+                if (ready_to_drive) {
+                    m192_command_message.inverter_enable = true;
+                } else {
+                    m192_command_message.inverter_enable = false;
+                }
+            }
+
+            int16_t pos_l = get_throttle_travel(&throttle_l);
+            int16_t pos_r = get_throttle_travel(&throttle_r);
+
+            int16_t pos_min = MIN(pos_r, pos_l);
+            int16_t pos_max = MAX(pos_r, pos_l);
+
+            bool oor_implausibility = check_out_of_range(&pos_r, &pos_l);
+            bool deviation_implausibility = check_deviation(pos_max, pos_min);
+
+            throttle.throttle_l_pos = pos_l;
+            throttle.throttle_r_pos = pos_r;
+
+            if (check_brake(pos_min)) {
+                SET_TORQUE_REQUEST(0);
+                continue;
+            }
+
+            if (!dashboard.ready_to_drive) {
+                SET_TORQUE_REQUEST(0);
+                throttle.throttle_state = THROTTLE_IDLE;
+                continue;
+            }
+
+            // If we get an implausibility
+            if (oor_implausibility || deviation_implausibility) {
+                // Increment the timer-counter
+                throttle_state.implausibility_fault_counter++;
+
+                // If the timer-counter reaches IMPLAUSIBILITY_TIMEOUT_MS
+                // (i.e. we have an implausibility for 100ms
+                if (throttle_state.implausibility_fault_counter
+                    >= IMPLAUSIBILITY_TIMEOUT_MS) {
+                    // Set appropriate state
+
+                    SET_TORQUE_REQUEST(0);
+                    throttle_state.implausibility_fault_counter = 0;
+                } else {
+                    // Maintain previous throttle request
+                }
+
+                continue;
+            } else {
+                // With no implausibility...
+                throttle.throttle_state = THROTTLE_RUN;
+                throttle_state.implausibility_fault_counter = 0;
+
+                // NOTE: If we decide to do a non-linear map, that would go here
+                int16_t torque_request = pos_min * TORQUE_REQUEST_SCALE;
+
+                SET_TORQUE_REQUEST(torque_request);
+            }
+        }
+        if (throttle_state.send_can) {
+            can_send_throttle();
+            can_send_m192_command_message();
+            throttle_state.send_can = false;
+        }
+    }
 }

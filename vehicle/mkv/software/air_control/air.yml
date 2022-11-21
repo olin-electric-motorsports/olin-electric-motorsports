@@ -9,8 +9,8 @@ subscribe:
     mob: 2
 
     # TODO: How are we handling this? Maybe we don't handle it here...
-  - name: air_control_updater
-    mob: 5
+  # - name: air_control_updater
+  #   mob: 5
 publish:
   - name: air_control_critical
     id: 0xd
@@ -35,7 +35,6 @@ publish:
             - FAULT_MOTOR_CONTROLLER_VOLTAGE
             - FAULT_BMS_VOLTAGE
             - FAULT_IMD_STATUS
-            - FAULT_BMS_STATUS
       - name: air_state
         slice: 8 + 8
         unit:
@@ -53,57 +52,57 @@ publish:
         unit:
           type: bool
           values:
-            t: AIR plus is CLOSED
-            f: AIR plus is OPEN
+            t: CLOSED
+            f: OPEN
       - name: air_n_status
         slice: 17 + 1
         unit:
           type: bool
           values:
-            t: AIR minus is CLOSED
-            f: AIR minus is OPEN
+            t: CLOSED
+            f: OPEN
       - name: ss_tsms
         slice: 18 + 1
         unit:
           type: bool
           values:
-            t: TSMS shutdown node closed
-            f: TSMS shutdown node opened
+            t: CLOSED
+            f: OPEN
       - name: ss_imd
         slice: 19 + 1
         unit:
           type: bool
           values:
-            t: IMD shutdown node closed
-            f: IMD shutdown node open
+            t: CLOSED
+            f: OPEN
       - name: ss_mpc
         slice: 20 + 1
         unit:
           type: bool
           values:
-            t: Main Pack Connector node closed
-            f: Main Pack Connector node open
+            t: CLOSED
+            f: OPEN
       - name: ss_hvd_conn
         slice: 21 + 1
         unit:
           type: bool
           values:
-            t: HVD Connector node closed
-            f: HVD Connector node open
+            t: CLOSED
+            f: OPEN
       - name: ss_hvd
         slice: 22 + 1
         unit:
           type: bool
           values:
-            t: HVD node closed
-            f: HVD node open
+            t: CLOSED
+            f: OPEN
       - name: ss_bms
         slice: 23 + 1
         unit:
           type: bool
           values:
-            t: BMS node closed
-            f: BMS node open
+            t: CLOSED
+            f: OPEN
 
       - name: imd_status
         slice: 24 + 1
