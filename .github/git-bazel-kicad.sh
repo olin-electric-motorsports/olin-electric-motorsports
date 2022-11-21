@@ -43,6 +43,8 @@ if [[ ! -z $buildables ]]; then
     rm -rf build
     mkdir -p build
 
+    echo $(ls)
+
     for layout in $boms_to_generate; do
         python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $file --no-browser
         parentdir="$(dirname "$file")"
