@@ -43,7 +43,11 @@ if [[ ! -z $buildables ]]; then
     rm -rf build
     mkdir -p build
 
+    echo "first"
     echo $(ls)
+
+    echo $(ll -a InteractiveHtmlBom/InteractiveHtmlBom/)
+    
 
     for layout in $boms_to_generate; do
         python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $file --no-browser
@@ -52,6 +56,7 @@ if [[ ! -z $buildables ]]; then
         cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
     done
 
+    echo "second"
     echo $(ls build/$parentdir/)
 
     # Copy all the built files from their Bazel folder to the `build/` folder
@@ -61,38 +66,36 @@ if [[ ! -z $buildables ]]; then
         cp $(bazel info bazel-genfiles)/${file:2} build/${file:2}
     done
 
-    
+    # Create a Markdown file that will be uploaded as a GitHub PR comment
+    echo "Creating GH comment"
+    echo "# KiCad Artifacts" >> build/comment.md
 
-#     # Create a Markdown file that will be uploaded as a GitHub PR comment
-#     echo "Creating GH comment"
-#     echo "# KiCad Artifacts" >> build/comment.md
+    # List of files that were generated
+    for file in $(find build -type f); do
+        chmod 777 $file
+        if [[ ! $file == "build/comment.md" ]]; then
+            url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}"
+            echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
+        fi
+    done
 
-#     # List of files that were generated
-#     for file in $(find build -type f); do
-#         chmod 777 $file
-#         if [[ ! $file == "build/comment.md" ]]; then
-#             url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}"
-#             echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
-#         fi
-#     done
+    # By default, SVGs are have transparent backgrounds, which makes things hard
+    # to read when using dark-mode on Github. This converts them to have white
+    # backgrounds
+    echo "Converting SVGs to use white backgrounds"
+    for file in $(find build -name '*.svg' -type f); do
+        cp ${file} ${file}_old
+        rsvg-convert -b white -f svg ${file}_old > ${file}
+        rm -rf ${file}_old
+    done
 
-#     # By default, SVGs are have transparent backgrounds, which makes things hard
-#     # to read when using dark-mode on Github. This converts them to have white
-#     # backgrounds
-#     echo "Converting SVGs to use white backgrounds"
-#     for file in $(find build -name '*.svg' -type f); do
-#         cp ${file} ${file}_old
-#         rsvg-convert -b white -f svg ${file}_old > ${file}
-#         rm -rf ${file}_old
-#     done
-
-#     # Adds SVGs of the layouts as images (uses the same caching principles as
-#     # above).
-#     for file in $(find build -name "*_pcb.svg" -type f); do
-#         echo "<p align=\"center\">" >> build/comment.md
-#         echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
-#         echo "</p>" >> build/comment.md
-#     done
-# else
-#     echo "Nothing to build"
+    # Adds SVGs of the layouts as images (uses the same caching principles as
+    # above).
+    for file in $(find build -name "*_pcb.svg" -type f); do
+        echo "<p align=\"center\">" >> build/comment.md
+        echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
+        echo "</p>" >> build/comment.md
+    done
+else
+    echo "Nothing to build"
 fi
