@@ -13,13 +13,16 @@ GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 
 # Creates a list of .kicad_pcb and .kicad_sch files that have changed since the
 # GITHUB_BASE_REF
-files=()
+boms_to_generate=()
 for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|kicad_sch$"); do
-    files+=($(bazelisk query --keep_going --noshow_progress $file))
+    if [ "${file: -3}" == pcb ]; then
+        boms_to_generate+=$file
+    fi
+    files+=($(bazel query --keep_going --noshow_progress $file))
 done
 
 # Gets a list of Bazel targets that include the files from above
-buildables=$(bazelisk query \
+buildables=$(bazel query \
     --keep_going \
     --noshow_progress \
     "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
@@ -30,7 +33,7 @@ if [[ ! -z $buildables ]]; then
     echo "${buildables}"
 
     # Build all of the targets that have changed
-    bazelisk build \
+    bazel build \
         --config=docker-kicad \
         --noshow_progress \
         --build_tag_filters=kicad \
@@ -40,6 +43,13 @@ if [[ ! -z $buildables ]]; then
     rm -rf build
     mkdir -p build
 
+    for layout in $boms_to_generate; do
+        python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $file --no-browser
+        parentdir="$(dirname "$file")"
+        mkdir -p "build/$parentdir/"
+        cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
+    done
+
     # Copy all the built files from their Bazel folder to the `build/` folder
     for file in $buildables; do
         file="${file//://}"
@@ -47,36 +57,39 @@ if [[ ! -z $buildables ]]; then
         cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
     done
 
-    # Create a Markdown file that will be uploaded as a GitHub PR comment
-    echo "Creating GH comment"
-    echo "# KiCad Artifacts" >> build/comment.md
+#     echo 'here'
+#     echo $buildables
 
-    # List of files that were generated
-    for file in $(find build -type f); do
-        chmod 777 $file
-        if [[ ! $file == "build/comment.md" ]]; then
-            url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}"
-            echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
-        fi
-    done
+#     # Create a Markdown file that will be uploaded as a GitHub PR comment
+#     echo "Creating GH comment"
+#     echo "# KiCad Artifacts" >> build/comment.md
 
-    # By default, SVGs are have transparent backgrounds, which makes things hard
-    # to read when using dark-mode on Github. This converts them to have white
-    # backgrounds
-    echo "Converting SVGs to use white backgrounds"
-    for file in $(find build -name '*.svg' -type f); do
-        cp ${file} ${file}_old
-        rsvg-convert -b white -f svg ${file}_old > ${file}
-        rm -rf ${file}_old
-    done
+#     # List of files that were generated
+#     for file in $(find build -type f); do
+#         chmod 777 $file
+#         if [[ ! $file == "build/comment.md" ]]; then
+#             url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}"
+#             echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
+#         fi
+#     done
 
-    # Adds SVGs of the layouts as images (uses the same caching principles as
-    # above).
-    for file in $(find build -name "*_pcb.svg" -type f); do
-        echo "<p align=\"center\">" >> build/comment.md
-        echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
-        echo "</p>" >> build/comment.md
-    done
-else
-    echo "Nothing to build"
+#     # By default, SVGs are have transparent backgrounds, which makes things hard
+#     # to read when using dark-mode on Github. This converts them to have white
+#     # backgrounds
+#     echo "Converting SVGs to use white backgrounds"
+#     for file in $(find build -name '*.svg' -type f); do
+#         cp ${file} ${file}_old
+#         rsvg-convert -b white -f svg ${file}_old > ${file}
+#         rm -rf ${file}_old
+#     done
+
+#     # Adds SVGs of the layouts as images (uses the same caching principles as
+#     # above).
+#     for file in $(find build -name "*_pcb.svg" -type f); do
+#         echo "<p align=\"center\">" >> build/comment.md
+#         echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
+#         echo "</p>" >> build/comment.md
+#     done
+# else
+#     echo "Nothing to build"
 fi
