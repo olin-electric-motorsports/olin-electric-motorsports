@@ -61,9 +61,6 @@ if [[ ! -z $buildables ]]; then
 
     
 
-#     echo 'here'
-#     echo $buildables
-
 #     # Create a Markdown file that will be uploaded as a GitHub PR comment
 #     echo "Creating GH comment"
 #     echo "# KiCad Artifacts" >> build/comment.md
