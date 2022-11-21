@@ -50,12 +50,16 @@ if [[ ! -z $buildables ]]; then
         cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
     done
 
+    echo $(ls build/$parentdir/)
+
     # Copy all the built files from their Bazel folder to the `build/` folder
     for file in $buildables; do
         file="${file//://}"
         mkdir -p build/$(dirname ${file:2})
-        cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
+        cp $(bazel info bazel-genfiles)/${file:2} build/${file:2}
     done
+
+    
 
 #     echo 'here'
 #     echo $buildables
