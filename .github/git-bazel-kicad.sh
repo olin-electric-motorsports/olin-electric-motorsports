@@ -13,7 +13,6 @@ GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 
 # Creates a list of .kicad_pcb and .kicad_sch files that have changed since the
 # GITHUB_BASE_REF
-boms_to_generate=()
 for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|kicad_sch$"); do
     if [ "${file: -3}" == pcb ]; then
         boms_to_generate+=$file
@@ -43,18 +42,13 @@ if [[ ! -z $buildables ]]; then
     rm -rf build
     mkdir -p build
 
-    echo "first"
-    echo $(ls)
-
-    echo $(ls InteractiveHtmlBom/InteractiveHtmlBom/)
-    echo $(pwd)
-    echo $(ls InteractiveHtml)
-
+    site_update_data=()
     for layout in $boms_to_generate; do
         python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $file --no-browser
         parentdir="$(dirname "$file")"
         mkdir -p "build/$parentdir/"
         cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
+        site_update_data+="//$parentdir/ibom.html"
     done
 
     # Copy all the built files from their Bazel folder to the `build/` folder
@@ -62,10 +56,10 @@ if [[ ! -z $buildables ]]; then
         file="${file//://}"
         mkdir -p build/$(dirname ${file:2})
         cp $(bazel info bazel-genfiles)/${file:2} build/${file:2}
+        if [ "${file: -3}" == pdf ]; then
+            site_update_data+=$file
+        fi
     done
-
-    echo "second"
-    echo $(ls build/$parentdir/)
 
     # Create a Markdown file that will be uploaded as a GitHub PR comment
     echo "Creating GH comment"
@@ -97,6 +91,11 @@ if [[ ! -z $buildables ]]; then
         echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
         echo "</p>" >> build/comment.md
     done
+
+    echo "Sending POST request to artifacts site to trigger update"
+    echo "Post Request Result:"
+    curl -X POST -H "Content-type: application/json" -d "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": ${site_update_data}}" "https://kicad.olinelectricmotorsports.com"
+
 else
     echo "Nothing to build"
 fi

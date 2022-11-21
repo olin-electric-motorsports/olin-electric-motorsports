@@ -39,7 +39,7 @@ def TableOfContents():
     if request.method == 'POST':
         if not os.path.exists("database.db"):
             conn = sqlite3.connect('database.db')
-            conn.execute("CREATE TABLE kicad_artifacts (board_name TEXT, commits TEXT, schematic TEXT, layout TEXT, bom TEXT)")
+            conn.execute("CREATE TABLE kicad_artifacts (board_name TEXT, commits TEXT, schematic TEXT, ibom TEXT)")
             conn.close()
         postRequest = request.get_json()
         buildable_list = postRequest['buildable_list'][0].split(" ")
