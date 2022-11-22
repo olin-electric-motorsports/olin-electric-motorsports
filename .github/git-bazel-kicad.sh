@@ -92,6 +92,9 @@ if [[ ! -z $buildables ]]; then
         echo "</p>" >> build/comment.md
     done
 
+    echo "post data for debugging:"
+    echo "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": \"${site_update_data}\"}"
+
     echo "Sending POST request to artifacts site to trigger update"
     echo "Post Request Result:"
     curl -X POST -H "Content-type: application/json" -d "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": ${site_update_data}}" "https://kicad.olinelectricmotorsports.com"
