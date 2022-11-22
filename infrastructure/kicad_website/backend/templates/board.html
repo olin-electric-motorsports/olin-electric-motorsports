@@ -1,15 +1,70 @@
 <html lang="en">
     <head> 
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" content="width=device-width, initial-scale=1">
+        <style>
+            .collapsible {
+                background-color: #4367b1;
+                color: white;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 30px;
+            }
+            .active, .collapsible:hover {
+                background-color: #f8b01d;
+            }
+            .content {
+                padding: 0 18px;
+                display: none;
+                overflow: hidden;
+                background-color: #FFFFFF;
+            }
+        </style>
     </head>
+    <body style="background-color:white;">
+        <h2 style="text-align:center;font-size:42px;">{{ board_name }}</h2>
+    </body>
     <body>
-        <h2>{{ board_name }}</h2>
-        <table>
-        {% for commit in commits %}
-        <tr><a href="{{ commit }}">{{ commit }}</a></tr>
-        <!-- Fix the link later. It should be linking to the specific commit page.-->
-        <br>
-        {% endfor %}
-        </table>
+    {% for commit, files in files_by_commit.items() %}
+
+    {% if files[0] == 0 %}
+    <button type="button" class="collapsible"><a href = "{{ commit }}" style="color: black">{{ commit[:10] }} (Current Version)</a></button>
+    {% else %}
+    <button type="button" class="collapsible"><a href = "{{ commit }}" style="color: black">{{ commit[:10] }}</a></button>
+    {% endif %}
+        <div class="content">
+            <button type="button" class="collapsible"><a href="{{ files[1] }}" style="color: black">Schematic</a></button>
+            <div style="text-align:center" class="content">
+                <embed src="{{ files[1] }}" width="100%" height="600px" />
+            </div>
+            <button type="button" class="collapsible"><a href="{{ files[2] }}" style="color: black">Interactive BOM</a></button>
+            <div class="content">
+                <div style="text-align:center" class="portrait">
+                    <embed src="{{ files[2] }}" width="100%" height=600px />
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        for (i=0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() 
+            {
+                this.classList.toggle("active")
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
     </body>
 </html>
+

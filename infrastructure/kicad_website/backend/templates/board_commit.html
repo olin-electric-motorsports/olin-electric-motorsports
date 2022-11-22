@@ -1,26 +1,60 @@
 <html lang="en">
     <head> 
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" content="width=device-width, initial-scale=1">
+        <style>
+            .collapsible {
+                background-color: #4367b1;
+                color: white;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 30px;
+            }
+            .active, .collapsible:hover {
+                background-color: #f8b01d;
+            }
+            .content {
+                padding: 0 18px;
+                display: none;
+                overflow: hidden;
+                background-color: #FFFFFF;
+            }
+        </style>
     </head>
+    <body style="background-color:white;">
+        <h2 style="text-align:center;font-size:42px;">{{ board_name }} Commit #{{ commit[:10] }}</h2>
+    </body>
     <body>
-        <h2 style="text-align:center">{{ board_name }}</h2>
-        <table style="width:80%">
-        <tr>
-            <th>Version</th>
-            <th>Image of Schematic</th>
-            <th>Layout</th>
-            <th>BoM</th>
-        </tr>
-        <br>
-        <tr>
-            <th>{{ commit }}</th>
-            <th><a href="{{ schematic }}">Image Link</a></th>
-            <th><a href="{{ layout }}">Layout Link</a></th>
-            <th><a href="{{ bom }}">BoM Link</a></th>
-        </tr>
-        </table>
-	<div class="portrait">
-	    <img src="{{ layout  }}">
-	</div>
+    <button type="button" class="collapsible"><a href="{{ schematic }}" style="color: black">Schematic</a></button>
+    <div style="text-align:center" class="content">
+        <embed src="{{ schematic }}#zoom=100" width="100%" height="600px" />
+    </div>
+    <button type="button" class="collapsible"><a href="{{ bom }}" style="color: black">Interactive BOM</a></button>
+    <div class="content">
+        <div style="text-align:center" class="portrait">
+            <embed src="{{ bom }}" width="100%" height=600px />
+        </div>
+    </div>
+    
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        for (i=0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() 
+            {
+                this.classList.toggle("active")
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
     </body>
 </html>
+

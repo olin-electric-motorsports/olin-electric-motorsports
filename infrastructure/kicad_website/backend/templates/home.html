@@ -35,21 +35,22 @@
             {% for list in value %}
 
             {% for key, value in list.items() %}
-            <button type="button" class="collapsible"><a href = "{{ key_board }}/{{ key }}" style="color: black">{{ key }}</a></button>
+
+            {% if key[-1] == ')' %}
+            <button type="button" class="collapsible"><a href = "{{ key_board }}/{{ key[:-17] }}" style="color: black">{{ key[:10] + key[-18:] }}</a></button>
+            {% else %}
+            <button type="button" class="collapsible"><a href = "{{ key_board }}/{{ key }}" style="color: black">{{ key[:10] }}</a></button>
+            {% endif %}
                 <div class="content">
                     <button type="button" class="collapsible"><a href="{{ value[0] }}" style="color: black">Schematic</a></button>
                     <div style="text-align:center" class="content">
                         <embed src="{{ value[0] }}" width="100%" height="600px" />
                     </div>
-                    <button type="button" class="collapsible"><a href="{{ value[1] }}" style="color: black">Layout</a></button>
+                    <button type="button" class="collapsible"><a href="{{ value[1] }}" style="color: black">Interactive BOM</a></button>
                     <div class="content">
                         <div style="text-align:center" class="portrait">
-                            <img src="{{ value[1] }}" width="100%">
+                            <embed src="{{ value[1] }}" width="100%" height=600px />
                         </div>
-                    </div>
-                    <button type="button" class="collapsible"><a href="{{ value[2] }}" style="color: black">BoM</a></button>
-                    <div class="content">
-                        <h1><a href="{{ value[2] }}">BoM Link</a></h1>
                     </div>
                 </div>
             {% endfor %}
