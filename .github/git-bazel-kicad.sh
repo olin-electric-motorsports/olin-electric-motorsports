@@ -13,15 +13,15 @@ GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 
 # Creates a list of .kicad_pcb and .kicad_sch files that have changed since the
 # GITHUB_BASE_REF
-for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|kicad_sch$"); do
+for file in $(find vehicle/mkv -type f | grep "kicad_pcb$\|kicad_sch$"); do
     if [ "${file: -3}" == pcb ]; then
         boms_to_generate+=$file
     fi
-    files+=($(bazel query --keep_going --noshow_progress $file))
+    files+=($(bazelisk query --keep_going --noshow_progress $file))
 done
 
 # Gets a list of Bazel targets that include the files from above
-buildables=$(bazel query \
+buildables=$(bazelisk query \
     --keep_going \
     --noshow_progress \
     "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
@@ -32,7 +32,7 @@ if [[ ! -z $buildables ]]; then
     echo "${buildables}"
 
     # Build all of the targets that have changed
-    bazel build \
+    bazelisk build \
         --config=docker-kicad \
         --noshow_progress \
         --build_tag_filters=kicad \
@@ -55,7 +55,7 @@ if [[ ! -z $buildables ]]; then
     for file in $buildables; do
         file="${file//://}"
         mkdir -p build/$(dirname ${file:2})
-        cp $(bazel info bazel-genfiles)/${file:2} build/${file:2}
+        cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
         if [ "${file: -3}" == pdf ]; then
             site_update_data+=$file
         fi
@@ -91,9 +91,6 @@ if [[ ! -z $buildables ]]; then
         echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
         echo "</p>" >> build/comment.md
     done
-
-    echo "post data for debugging:"
-    echo "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": \"${site_update_data}\"}"
 
     echo "Sending POST request to artifacts site to trigger update"
     echo "Post Request Result:"
