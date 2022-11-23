@@ -1,10 +1,8 @@
 import os
 from flask import Flask, render_template, request
 from jinja2 import Template
-import re
 import sqlite3
 import numpy as np
-import pdb
 
 """
 USER GUIDE:
@@ -23,10 +21,6 @@ and then navigate to the localhost:5000/ site on your machine's browser
 
 #Initializes Flask App
 app = Flask(__name__)
-
-#Nested Dictionary that stores information on every commit for a board
-#Each commit includes a link to a schematic, layout, and bom
-data = {}
 
 #Defines each route of the flask app
 #Home page lists each OEM PCB with a commit in github, links to the specific 
