@@ -43,66 +43,60 @@ if [[ ! -z $buildables ]]; then
     rm -rf build
     mkdir -p build
 
-    for value in "${boms_to_generate[@]}"
-    do
-        echo $value
-    done
-    site_update_data=()
-    for layout in ${boms_to_generate[@]}; do
-        python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $layout --no-browser
-        parentdir="$(dirname "$layout")"
-        mkdir -p "build/$parentdir/"
-        # cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
-        site_update_data+="//$parentdir/ibom.html"
-    done
-
     # Copy all the built files from their Bazel folder to the `build/` folder
+    site_update_data=()
     for file in $buildables; do
         file="${file//://}"
         mkdir -p build/$(dirname ${file:2})
-        # cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
+        cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
         if [ "${file: -3}" == pdf ]; then
             site_update_data+=$file
+            layout=${file:2:-3}"kicad_pcb"
+            if test -f "$layout" && [ -s $layout ]; then
+                python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $layout --no-browser
+                parentdir="$(dirname "$layout")"
+                cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
+                site_update_data+="//$parentdir/ibom.html"
+            else
+                site_update_data+="//none"
+            fi
         fi
     done
 
     # Create a Markdown file that will be uploaded as a GitHub PR comment
-    # echo "Creating GH comment"
-    # echo "# KiCad Artifacts" >> build/comment.md
+    echo "Creating GH comment"
+    echo "# KiCad Artifacts" >> build/comment.md
 
     # List of files that were generated
-    # for file in $(find build -type f); do
-    #     chmod 777 $file
-    #     if [[ ! $file == "build/comment.md" ]]; then
-    #         url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}"
-    #         echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
-    #     fi
-    # done
+    for file in $(find build -type f); do
+        chmod 777 $file
+        if [[ ! $file == "build/comment.md" ]]; then
+            url="https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}"
+            echo "<li><a href=\"$url\">$(basename $file)</a></li>" >> build/comment.md
+        fi
+    done
 
     # By default, SVGs are have transparent backgrounds, which makes things hard
     # to read when using dark-mode on Github. This converts them to have white
     # backgrounds
-    # echo "Converting SVGs to use white backgrounds"
-    # for file in $(find build -name '*.svg' -type f); do
-    #     cp ${file} ${file}_old
-    #     rsvg-convert -b white -f svg ${file}_old > ${file}
-    #     rm -rf ${file}_old
-    # done
+    echo "Converting SVGs to use white backgrounds"
+    for file in $(find build -name '*.svg' -type f); do
+        cp ${file} ${file}_old
+        rsvg-convert -b white -f svg ${file}_old > ${file}
+        rm -rf ${file}_old
+    done
 
     # Adds SVGs of the layouts as images (uses the same caching principles as
     # above).
-    # for file in $(find build -name "*_pcb.svg" -type f); do
-    #     echo "<p align=\"center\">" >> build/comment.md
-    #     echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
-    #     echo "</p>" >> build/comment.md
-    # done
-
-    echo "post data for debugging:"
-    echo "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": \"${site_update_data}\"}"
+    for file in $(find build -name "*_pcb.svg" -type f); do
+        echo "<p align=\"center\">" >> build/comment.md
+        echo "<img src=\"https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/${file#build/}?ref=${GITHUB_SHA}\" width=\"60%\"/>" >> build/comment.md
+        echo "</p>" >> build/comment.md
+    done
 
     echo "Sending POST request to artifacts site to trigger update"
     echo "Post Request Result:"
-    # curl -X POST -H "Content-type: application/json" -d "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": ${site_update_data}}" "https://kicad.olinelectricmotorsports.com"
+    curl -X POST -H "Content-type: application/json" -d "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": \"${site_update_data}\"}" "https://kicad.olinelectricmotorsports.com"
 
 else
     echo "Nothing to build"

@@ -32,7 +32,7 @@ def dropdown():
 
 
 @app.route("/", methods=["POST", "GET"])
-def Home():
+def home():
     if request.method == "POST":
         if not os.path.exists("database.db"):
             conn = sqlite3.connect("database.db")
@@ -46,8 +46,13 @@ def Home():
         updated_board_files = np.reshape(
             sorted(updated_board_files), [int(len(updated_board_files) / 2), 2]
         )
-
-        for curr_ibom, curr_schematic in updated_board_files:
+        for file_pair in updated_board_files:
+            if file_pair[0][-4:] == ".pdf":
+                curr_schematic = file_pair[0]
+                curr_ibom = file_pair[1]
+            else:
+                curr_schematic = file_pair[1]
+                curr_ibom = file_pair[0]
             curr_board_name = ".".join((curr_ibom.split("/")[3:-1]))
             curr_schematic_link = (
                 "https://oem-outline.nyc3.digitaloceanspaces.com/kicad-artifacts/"
