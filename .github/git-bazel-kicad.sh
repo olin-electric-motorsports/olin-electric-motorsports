@@ -11,15 +11,20 @@ fi
 # Set the HEAD Git commit (the current commit)
 GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 
+# Creates a list of all layouts and schematics in the vehicle/mkv folder
+# files=()
+# for file in $(find vehicle/mkv -type f | grep "kicad_pcb$\|kicad_sch$"); do
+#     files+=($(bazel query --keep_going --noshow_progress $file))
+# done
 # Creates a list of .kicad_pcb and .kicad_sch files that have changed since the
 # GITHUB_BASE_REF
 files=()
-for file in $(find vehicle/mkv -type f | grep "kicad_pcb$\|kicad_sch$"); do
-    files+=($(bazel query --keep_going --noshow_progress $file))
+for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|kicad_sch$"); do
+    files+=($(bazelisk query --keep_going --noshow_progress $file))
 done
 
 # Gets a list of Bazel targets that include the files from above
-buildables=$(bazel query \
+buildables=$(bazelisk query \
     --keep_going \
     --noshow_progress \
     "kind(kibot, rdeps(//..., set(${files[*]})))" 2>/dev/null)
