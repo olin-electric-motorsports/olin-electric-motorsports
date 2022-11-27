@@ -19,6 +19,7 @@ def adjust_width(file_path):
         if ".bom .value" in line:
             data[index + 1] = "  width: 100px;\n"
             print(data[index + 1])
+            print(index)
 
             with open(file_path, "w") as updated_ibom_html:
                 updated_ibom_html.writelines(data)
