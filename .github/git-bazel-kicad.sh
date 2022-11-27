@@ -51,10 +51,10 @@ if [[ ! -z $buildables ]]; then
         file="${file//://}"
         mkdir -p build/$(dirname ${file:2})
         cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
-        if [ "${file: -4}" == html ]; then
-            site_update_data+=${file:0:-5}.pdf
+        if [ "${file: -3}" == pdf ]; then
             site_update_data+=$file
-            python3 .github/test.py build/${file:2}
+            site_update_data+=${file:0:-4}.html
+            python3 .github/test.py ${file:2:-4}.html
         fi
     done
 
