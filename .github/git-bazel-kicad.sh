@@ -12,16 +12,16 @@ fi
 GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 
 # Creates a list of all layouts and schematics in the vehicle/mkv folder
-files=()
-for file in $(find vehicle/mkv -type f | grep "kicad_pcb$\|kicad_sch$"); do
-    files+=($(bazel query --keep_going --noshow_progress $file))
-done
+# files=()
+# for file in $(find vehicle/mkv -type f | grep "kicad_pcb$\|kicad_sch$"); do
+#     files+=($(bazel query --keep_going --noshow_progress $file))
+# done
 # Creates a list of .kicad_pcb and .kicad_sch files that have changed since the
 # GITHUB_BASE_REF
-# files=()
-# for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|kicad_sch$"); do
-#     files+=($(bazelisk query --keep_going --noshow_progress $file))
-# done
+files=()
+for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|kicad_sch$"); do
+    files+=($(bazelisk query --keep_going --noshow_progress $file))
+done
 
 # Gets a list of Bazel targets that include the files from above
 buildables=$(bazelisk query \
@@ -54,6 +54,7 @@ if [[ ! -z $buildables ]]; then
         if [ "${file: -3}" == pdf ]; then
             site_update_data+=$file
             site_update_data+=${file:0:-4}.html
+            python3 .github/test.py build/${file:2:-4}.html
         fi
     done
 
