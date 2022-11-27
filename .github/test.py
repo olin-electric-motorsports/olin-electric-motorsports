@@ -1,4 +1,5 @@
 import argparse
+import os
 
 def make_parser():
     parser = argparse.ArgumentParser(
@@ -22,6 +23,7 @@ def adjust_width(file_path):
             break
 
 if __name__ == "__main__":
+    print(os.listdir())
     cl_parser = make_parser()
     file_path = cl_parser.parse_args().file
     adjust_width(file_path)
