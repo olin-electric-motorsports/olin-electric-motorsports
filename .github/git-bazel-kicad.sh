@@ -54,6 +54,7 @@ if [[ ! -z $buildables ]]; then
         if [ "${file: -4}" == html ]; then
             site_update_data+=${file:0:-5}.pdf
             site_update_data+=$file
+            python3 .github/test.py build/${file:2}
         fi
     done
 
