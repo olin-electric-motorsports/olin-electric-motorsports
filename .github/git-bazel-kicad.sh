@@ -55,7 +55,7 @@ if [[ ! -z $buildables ]]; then
             site_update_data+=$file
             layout=${file:2:-3}"kicad_pcb"
             if test -f "$layout" && [ -s $layout ]; then
-                python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $layout --no-browser
+                # python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $layout --no-browser
                 parentdir="$(dirname "$layout")"
                 cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
                 site_update_data+="//$parentdir/ibom.html"
@@ -98,7 +98,7 @@ if [[ ! -z $buildables ]]; then
 
     echo "Sending POST request to artifacts site to trigger update"
     echo "Post Request Result:"
-    curl -X POST -H "Content-type: application/json" -d "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": \"${site_update_data}\"}" "https://kicad.olinelectricmotorsports.com"
+    # curl -X POST -H "Content-type: application/json" -d "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": \"${site_update_data}\"}" "https://kicad.olinelectricmotorsports.com"
 
 else
     echo "Nothing to build"

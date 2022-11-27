@@ -30,6 +30,11 @@ outputs:
     type: bom
     options:
       output: "%f.csv"
+  
+  - name: "ibom"
+    type: ibom
+    options:
+      output: "%f.html"
 
   - name: gerbers
     type: gerber
