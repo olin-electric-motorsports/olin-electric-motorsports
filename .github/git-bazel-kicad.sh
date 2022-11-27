@@ -12,16 +12,16 @@ fi
 GITHUB_SHA=${GITHUB_SHA:=$(git rev-parse HEAD)}
 
 # Creates a list of all layouts and schematics in the vehicle/mkv folder
-# files=()
-# for file in $(find vehicle/mkv -type f | grep "kicad_pcb$\|kicad_sch$"); do
-#     files+=($(bazel query --keep_going --noshow_progress $file))
-# done
+files=()
+for file in $(find vehicle/mkv -type f | grep "kicad_pcb$\|kicad_sch$"); do
+    files+=($(bazel query --keep_going --noshow_progress $file))
+done
 # Creates a list of .kicad_pcb and .kicad_sch files that have changed since the
 # GITHUB_BASE_REF
-files=()
-for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|kicad_sch$"); do
-    files+=($(bazelisk query --keep_going --noshow_progress $file))
-done
+# files=()
+# for file in $(git diff --name-only --diff-filter=ACMRT ${GITHUB_BASE_SHA:-"origin/main"} ${GITHUB_SHA:-$(git rev-parse HEAD)} | grep "kicad_pcb$\|kicad_sch$"); do
+#     files+=($(bazelisk query --keep_going --noshow_progress $file))
+# done
 
 # Gets a list of Bazel targets that include the files from above
 buildables=$(bazelisk query \
@@ -53,15 +53,7 @@ if [[ ! -z $buildables ]]; then
         cp $(bazelisk info bazel-genfiles)/${file:2} build/${file:2}
         if [ "${file: -3}" == pdf ]; then
             site_update_data+=$file
-            layout=${file:2:-3}"kicad_pcb"
-            if test -f "$layout" && [ -s $layout ]; then
-                # python3 InteractiveHtmlBom/InteractiveHtmlBom/generate_interactive_bom.py $layout --no-browser
-                parentdir="$(dirname "$layout")"
-                cp "$parentdir/bom/ibom.html" "build/$parentdir/ibom.html"
-                site_update_data+="//$parentdir/ibom.html"
-            else
-                site_update_data+="//none"
-            fi
+            site_update_data+=${file:0:-4}.html
         fi
     done
 
@@ -98,7 +90,7 @@ if [[ ! -z $buildables ]]; then
 
     echo "Sending POST request to artifacts site to trigger update"
     echo "Post Request Result:"
-    # curl -X POST -H "Content-type: application/json" -d "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": \"${site_update_data}\"}" "https://kicad.olinelectricmotorsports.com"
+    curl -X POST -H "Content-type: application/json" -d "{\"commit_hash\": \""${GITHUB_SHA}"\", \"updated_board_files\": \"${site_update_data}\"}" "https://kicad.olinelectricmotorsports.com"
 
 else
     echo "Nothing to build"
