@@ -55,7 +55,6 @@ if [[ ! -z $buildables ]]; then
         if [ "${file: -3}" == pdf ]; then
             site_update_data+=$file
             site_update_data+=${file:0:-4}.html
-            python3 $(bazelisk info bazel-genfiles)/${file:2:-4}.html
         fi
     done
 
