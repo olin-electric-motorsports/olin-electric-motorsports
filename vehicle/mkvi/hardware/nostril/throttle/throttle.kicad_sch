@@ -618,6 +618,7 @@
   )
 
 
+
   (no_connect (at 364.49 139.7) (uuid 03af45ea-bb8a-43f6-87f0-b0c07dc67bc1))
   (no_connect (at 389.89 140.97) (uuid 050efe0e-50ef-4e34-87a5-3e55ecc211b3))
   (no_connect (at 389.89 78.74) (uuid 054a45fa-fbc4-4c3d-b79e-3f332913f1c7))
@@ -1012,34 +1013,6 @@
     (pin "1" (uuid 6795a6bc-41d9-4f0e-b470-261049098f41))
   )
 
-  (symbol (lib_id "formula:R_0") (at 284.48 55.88 0) (unit 1)
-    (in_bom yes) (on_board yes) (fields_autoplaced)
-    (uuid 0d6a734d-794e-45b7-aaee-33d440bf6027)
-    (property "Reference" "R10" (id 0) (at 287.02 54.6099 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_0" (id 1) (at 287.02 57.1499 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0603_1608Metric" (id 2) (at 282.702 55.88 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" (id 3) (at 286.512 55.88 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (id 4) (at 284.48 55.88 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "P0.0GCT-ND" (id 5) (at 284.48 55.88 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEY0R00V/P0.0GCT-ND/134711" (id 6) (at 296.672 45.72 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 5a20a012-a6d3-487f-96ac-82db181592a0))
-    (pin "2" (uuid 9d4e2728-bd5e-417a-9c39-8ddff12c723e))
-  )
-
   (symbol (lib_id "formula:Automotive_M.2_Edge_Connector") (at 377.19 99.06 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 59884235-f0aa-45e6-9e56-fa1799d75d89)
@@ -1130,6 +1103,34 @@
     (pin "P40" (uuid 1abaa825-ed8f-4f95-b0a2-1fda6fc254de))
   )
 
+  (symbol (lib_id "formula:R_0") (at 284.48 55.88 0) (unit 1)
+    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (uuid 677ee2d3-3d21-4183-b35c-a3a86ced9d6b)
+    (property "Reference" "R10" (id 0) (at 287.02 54.6099 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "~" (id 1) (at 287.02 57.1499 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "" (id 2) (at 282.702 55.88 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" (id 3) (at 286.512 55.88 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (id 4) (at 284.48 55.88 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "MPN" "P0.0GCT-ND" (id 5) (at 284.48 55.88 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEY0R00V/P0.0GCT-ND/134711" (id 6) (at 296.672 45.72 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (pin "1" (uuid 499b72e8-1ba2-41a2-96f8-4b65e9ce2030))
+    (pin "2" (uuid f280a392-03a5-44c3-b29a-3f2524241d0e))
+  )
+
   (symbol (lib_id "power:+5V") (at 359.41 214.63 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 71125cb7-c9cb-4712-a3dc-19d75e1079bc)
@@ -1196,14 +1197,14 @@
 
   (symbol (lib_id "formula:R_0") (at 303.53 55.88 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
-    (uuid f2a0ec4d-71aa-4f33-88b0-63d94050ddf2)
+    (uuid adfe7586-5b0e-498d-83f0-8f58cbdbefeb)
     (property "Reference" "R11" (id 0) (at 306.07 54.6099 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "R_0" (id 1) (at 306.07 57.1499 0)
+    (property "Value" "~" (id 1) (at 306.07 57.1499 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0603_1608Metric" (id 2) (at 301.752 55.88 0)
+    (property "Footprint" "" (id 2) (at 301.752 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0001+ERJ3GEY0R00V+7+WW" (id 3) (at 305.562 55.88 0)
@@ -1218,8 +1219,8 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEY0R00V/P0.0GCT-ND/134711" (id 6) (at 315.722 45.72 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "1" (uuid 91590980-e9c7-419c-b59c-02b64dcbcd76))
-    (pin "2" (uuid dbf09e59-21f9-44ee-80ec-f583614f672c))
+    (pin "1" (uuid 872a83f5-989e-46ee-91a2-1f84b609600d))
+    (pin "2" (uuid c42754c4-7824-4d71-bd37-cd17a9be294a))
   )
 
   (sheet (at 151.13 53.34) (size 66.04 36.83) (fields_autoplaced)
@@ -1442,8 +1443,8 @@
     (path "/b82bfe64-8b08-4369-bdfd-bb0735cc965d/b1b2f173-fff6-4d24-ab80-ccedc1818e99"
       (reference "C7") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0805_OEM")
     )
-    (path "/c949b430-f717-4232-8ab8-87a20d1265a7/a0452b01-b975-4d75-aaef-f7dda939a690"
-      (reference "D1") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
+    (path "/c949b430-f717-4232-8ab8-87a20d1265a7/1bd74cad-e634-437f-a178-0fe5462362e3"
+      (reference "D4") (unit 1) (value "LED_0805") (footprint "")
     )
     (path "/59884235-f0aa-45e6-9e56-fa1799d75d89"
       (reference "J1") (unit 1) (value "Automotive_M.2_Edge_Connector") (footprint "footprints:Automotive_M.2_Edge_Connector")
@@ -1481,11 +1482,11 @@
     (path "/c949b430-f717-4232-8ab8-87a20d1265a7/dc78a360-53bc-40a0-b0d1-d5fd7364982e"
       (reference "R9") (unit 1) (value "R_10K") (footprint "footprints:R_0805_OEM")
     )
-    (path "/0d6a734d-794e-45b7-aaee-33d440bf6027"
-      (reference "R10") (unit 1) (value "R_0") (footprint "footprints:R_0603_1608Metric")
+    (path "/677ee2d3-3d21-4183-b35c-a3a86ced9d6b"
+      (reference "R10") (unit 1) (value "~") (footprint "")
     )
-    (path "/f2a0ec4d-71aa-4f33-88b0-63d94050ddf2"
-      (reference "R11") (unit 1) (value "R_0") (footprint "footprints:R_0603_1608Metric")
+    (path "/adfe7586-5b0e-498d-83f0-8f58cbdbefeb"
+      (reference "R11") (unit 1) (value "~") (footprint "")
     )
     (path "/b82bfe64-8b08-4369-bdfd-bb0735cc965d/574422ad-5c15-44e1-8185-c4df3ee4d844"
       (reference "R12") (unit 1) (value "R_100") (footprint "footprints:R_0805_OEM")
