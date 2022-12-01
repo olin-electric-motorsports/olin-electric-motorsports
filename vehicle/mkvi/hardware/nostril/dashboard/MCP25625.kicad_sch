@@ -891,7 +891,7 @@
     (uuid f78191ad-30ce-45c9-8187-8e5a8ab752cb)
   )
 
-  (text "Crystal: 12pF, 8 MHz\nPin Load Capacitance (assumed: 5pF)\n\nCL= C7*C8/(C7+C8)\nC7=C8\n(C7^2)/2C7 + 5pF = 12 pF\nC7 = 14 pF\n\nTo do: Add footprint for 14 pF capacitor"
+  (text "Crystal: 12pF, 8 MHz\nPin Load Capacitance (assumed: 5pF)\n\nCL= C7*C8/(C7+C8)\nC7=C8\n(C7^2)/2C7 + 5pF = 12 pF\nC7 = 14 pF\n\nTo do: Add footprint for capacitor (used 12 pF despite 14 pF calculation)"
     (at 174.625 121.92 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid ddd2b2b5-0ab1-44e1-a331-7d738a79624b)
@@ -1071,8 +1071,8 @@
     (in_bom yes) (on_board yes)
     (uuid 3c1f16b2-fc3c-4e75-9107-ef10e77b4d8f)
     (property "Reference" "Y1" (id 0) (at 156.21 116.205 0))
-    (property "Value" "" (id 1) (at 161.29 126.365 0))
-    (property "Footprint" "" (id 2) (at 221.615 99.695 0)
+    (property "Value" "Crystal_8MHz_12pF" (id 1) (at 161.29 126.365 0))
+    (property "Footprint" "XTAL_ECS-240-8-33-AGN-TR" (id 2) (at 221.615 99.695 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
     (property "Datasheet" "https://ecsxtal.com/store/pdf/ecx-32.pdf" (id 3) (at 160.655 120.015 0)
