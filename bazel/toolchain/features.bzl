@@ -68,6 +68,14 @@ _OPT_FEATURE = feature(
                 ),
             ],
         ),
+        flag_set(
+            actions = _LD_ALL_ACTIONS,
+            flag_groups = [
+                flag_group(
+                    flags = ["-Wl,--gc-sections"],
+                ),
+            ],
+        ),
     ],
     provides = ["compilation_mode"],
 )
