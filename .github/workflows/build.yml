@@ -31,6 +31,9 @@ jobs:
     - name: Install gcc-avr
       run: sudo apt install gcc-avr avr-libc binutils-avr
 
+    - name: Build this shit
+      run: bazel build --config=${{ matrix.platform }} -c opt //projects/can_test_platform/tester_board -- -c usbasp
+
     - name: Build all host
       run: bazelisk build --config=${{ matrix.platform }} -c opt --build_tag_filters="-kicad" //...
 
