@@ -407,7 +407,7 @@ int main(void) {
             run_1ms = false;
         }
 
-        if (air_control_critical.air_state == IDLE) {
+        if (air_control_critical.air_state == AIR_STATE_IDLE) {
             updater_loop();
         }
 

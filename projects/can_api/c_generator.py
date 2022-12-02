@@ -46,15 +46,16 @@ def main():
     for message in yaml_data["publish"]:
         msg = db.get_message_by_name(message["name"])
         tx_messages.append(msg)
-
-        for sig in message["signals"]:
-            if sig["unit"]["type"] == "enum":
-                choices.append(
-                    {
-                        "name": sig["name"],
-                        "values": sig["unit"]["values"],
-                    }
-                )
+        
+        if "signals" in message.keys():
+            for sig in message["signals"]:
+                if sig["unit"]["type"] == "enum":
+                    choices.append(
+                        {
+                            "name": sig["name"],
+                            "values": sig["unit"]["values"],
+                        }
+                    )
 
     if "subscribe" in yaml_data.keys():
         rx_messages, mobs, masks = get_rx_messages(yaml_data["subscribe"], db.messages)
