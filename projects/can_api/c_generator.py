@@ -46,7 +46,7 @@ def main():
     for message in yaml_data["publish"]:
         msg = db.get_message_by_name(message["name"])
         tx_messages.append(msg)
-        
+
         if "signals" in message.keys():
             for sig in message["signals"]:
                 if sig["unit"]["type"] == "enum":
