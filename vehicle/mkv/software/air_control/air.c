@@ -164,7 +164,8 @@ static void state_machine_run(void) {
         case AIR_STATE_IDLE: {
             // Idle until shutdown circuit is closed
             if (air_control_critical.ss_tsms) {
-                air_control_critical.air_state = AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED;
+                air_control_critical.air_state
+                    = AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED;
             }
         } break;
         case AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED: {
