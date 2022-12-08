@@ -14,5 +14,7 @@ dbc_gen(
         "//vehicle/mkv/software/emeter:emeter.dbc",
         "//vehicle/mkv/software/motor_controller:motor_controller.dbc",
         "//vehicle/mkv/software/throttle:throttle.yml",
+        "//libs/tunables:tester.yml",
+        "//libs/tunables:test_recieving.yml"
     ],
 )

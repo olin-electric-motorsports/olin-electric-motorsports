@@ -1,4 +1,5 @@
-load("//bazel:defs.bzl", "cc_library")
+load("@rules_cc//cc:defs.bzl", "cc_library")
+load("//bazel/tools:defs.bzl", "can_api_files")
 
 cc_library(
     name = "tunables",
@@ -9,4 +10,19 @@ cc_library(
     deps = [
         "//libs/can",
     ],
+)
+
+exports_files([ 
+
+    "tester.yml",
+    "test_recieving.yml"
+])
+
+can_api_files(
+
+    name = "can_api",
+    dbc = "//vehicle/mkv:mkv.dbc",
+    yaml = ":tester.yml"
+
+
 )
