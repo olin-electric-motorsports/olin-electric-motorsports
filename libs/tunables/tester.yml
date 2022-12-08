@@ -1,12 +1,18 @@
-name: test_CAN
+#Sending from Computer to MCU
+
+name: test_Comp
 publish:
   - name: test_msg
-  id: 0x10
-  freq_hz: 0
-  signals:
-  - msg_bit
-  slice: 0+8
-  unit: 
+    id: 6E0
+    freq_hz: 0
+    signals:
+    - msg_bit
+    slice: 0+8
+    unit: 
       type: boolean
-      - t: ON
-      - f: OFF
+        t: ON
+        f: OFF
+        
+subscribe: 
+  - name: test_listen
+   mob: 1 

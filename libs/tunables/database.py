@@ -19,6 +19,7 @@ from cantools.database.can import (
 
 
 db = cantools.database.load_file('bazel-bin/vehicle/mkv/mkv.dbc')
+
 vehicle_bus = can.interface.Bus(
     bustype="slcan",
     channel="/dev/tty/ACM0",
