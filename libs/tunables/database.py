@@ -1,6 +1,12 @@
 #Cantools used to read DBC files
 
 
+#Uses can to communicate via CAN from computer to car
+import cantools 
+import can
+from pprint import pprint
+
+
 from cantools.database.can import (
     Message as CANMessage,
     Signal as MessageSignal,
@@ -11,9 +17,6 @@ from cantools.database.can import (
 #CAN section
 
 
-class tunablesDatabase(DBC):
-    def _init_(self):
-        super().__init__()
 
 db = cantools.database.load_file('bazel-bin/vehicle/mkv/mkv.dbc')
 vehicle_bus = can.interface.Bus(
