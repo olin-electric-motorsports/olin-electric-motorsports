@@ -1,0 +1,23 @@
+#Sending from MCU to Computer
+
+
+name: test_MCU
+publish:
+  - name: test_listen
+    id: 6E0
+    freq_hz: 0
+    signals:
+      - msg_reply
+        slice: 0 +1
+        unit: 
+          type: bool
+             t: ON
+             f: OFF
+
+subscribe:
+  - name: test_msg
+    mob: 1
+
+
+
+

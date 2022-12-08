@@ -21,16 +21,13 @@ def setter(ParaN, ParaV):
     send()
 
 
-class tunablesCAN():
-    def _init_(self):
-        super.__init__()
-        db = cantools.database.load_file('bazel-bin/vehicle/mkv/mkv.dbc')
+db = cantools.database.load_file('bazel-bin/vehicle/mkv/mkv.dbc')
 
-        vehicle_bus = can.interface.Bus(
-        bustype="slcan",
-        channel="/dev/tty/ACM0",
-        bitrate=500000
-        )
+vehicle_bus = can.interface.Bus(
+bustype="slcan",
+channel="/dev/tty/ACM0",
+bitrate=500000
+)
     
     def _send(funcType, paraName, paraVal=0):
 
