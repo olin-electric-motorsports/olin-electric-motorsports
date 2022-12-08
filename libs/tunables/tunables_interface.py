@@ -1,7 +1,4 @@
-import cantools 
-import can
-from pprint import pprint
-
+#This is the file that pulls everything together. This will run on the host computer's terminal and will help guide the user through the different options. 
 
 
 
