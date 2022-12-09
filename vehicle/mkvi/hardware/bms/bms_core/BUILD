@@ -7,5 +7,5 @@ kicad_hardware(
         "bspd_current_sense.kicad_sch",
         "isospi-interface.kicad_sch",
         "m_2_connector.kicad_sch",
-    ]
+    ],
 )
