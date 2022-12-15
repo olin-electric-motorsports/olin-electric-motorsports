@@ -3087,6 +3087,22 @@
     (pin "1" (uuid 73e6e942-c319-4345-bfc4-dc1b2c2b97bf))
   )
 
+  (symbol (lib_id "power:GND") (at 251.46 144.78 0) (unit 1)
+    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (uuid 726c0c8e-9299-4716-b5ab-871cb3126ffa)
+    (property "Reference" "#PWR?" (id 0) (at 251.46 151.13 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (id 1) (at 251.46 149.86 0))
+    (property "Footprint" "" (id 2) (at 251.46 144.78 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 251.46 144.78 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid f63a8b0c-7cd8-4ef8-be37-3c148f541795))
+  )
+
   (symbol (lib_id "formula:R_1K") (at 167.64 38.1 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 72dcf56a-272e-4207-9db7-164834deb094)
@@ -4106,6 +4122,24 @@
     (pin "2" (uuid 9b1902fb-6f7a-4fd2-8a92-f4e6ceb2e720))
   )
 
+  (symbol (lib_id "formula:Test_Point_SMD") (at 251.46 143.51 0) (unit 1)
+    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (uuid f9ccac74-3b6e-45bc-846a-f5b037930ab7)
+    (property "Reference" "TP6" (id 0) (at 254 139.6999 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "Test_Point_SMD" (id 1) (at 254 142.2399 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:Test_Point_SMD" (id 2) (at 251.46 147.32 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 251.46 143.51 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 8c9e7c42-6b9b-4bd0-b36d-a103b66b7c5d))
+  )
+
   (symbol (lib_id "formula:MicroFit_V_2") (at 182.88 132.08 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid fb0e84d9-08d9-49f3-9ee0-a2f7337ad421)
@@ -4315,6 +4349,9 @@
       (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
     )
     (path "/1c9f02a7-0827-4a36-9ebf-4a4f922c6b0a"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/726c0c8e-9299-4716-b5ab-871cb3126ffa"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/967587e3-baeb-4366-abb0-4a142d56dded"
@@ -4556,6 +4593,9 @@
     )
     (path "/93b8c070-57f5-4814-b0ef-79eb31bfb99a"
       (reference "TP5") (unit 1) (value "Test_Point_SMD") (footprint "footprints:Test_Point_SMD")
+    )
+    (path "/f9ccac74-3b6e-45bc-846a-f5b037930ab7"
+      (reference "TP6") (unit 1) (value "Test_Point_SMD") (footprint "footprints:Test_Point_SMD")
     )
     (path "/99e29ff0-59cb-481f-bb5a-b5e6e964fa64"
       (reference "U1") (unit 1) (value "ATmega328P-AU") (footprint "Package_QFP:TQFP-32_7x7mm_P0.8mm")
