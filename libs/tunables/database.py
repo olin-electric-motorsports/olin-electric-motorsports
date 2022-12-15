@@ -22,7 +22,7 @@ db = cantools.database.load_file('bazel-bin/vehicle/mkv/mkv.dbc')
 
 vehicle_bus = can.interface.Bus(
     bustype="slcan",
-    channel="/dev/tty/ACM0",
+    channel="/dev/ttyACM0",
     bitrate=500000
 )
     
@@ -34,13 +34,13 @@ def send(funcType, paraName, paraVal=0):
     # funcType = 1 means Setter
 
     if funcType == 0:
-        message = [funcType, db.get_message_by_name(paraName)]
-    elif 
+        message = [funcType]
+
 
 
     with vehicle_bus as bus:
         msg = can.Message(
-           arbitration_id=0xC0FFEE, data=message.encode(), is_extended_id=True
+           arbitration_id=0x6E0, data=message, is_extended_id=True
         )
 
         try:
@@ -56,3 +56,9 @@ def recieve():
 
 
 
+#send(0, 0)
+
+def readDbc(msgName):
+    return db.get_message_by_name(msgName)
+
+readDbc("test_listen")

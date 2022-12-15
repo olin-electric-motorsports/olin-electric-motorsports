@@ -1,9 +1,13 @@
+import database
 #This is the file that pulls everything together. This will run on the host computer's terminal and will help guide the user through the different options. 
 
 
 
 def tunables_main():
+
+    #attributes
     isRunning = True
+    paraValue =0
     
 
     print(" \n This is the Tunables Parameters program")
@@ -48,6 +52,7 @@ def tunables_main():
 
             #Step 3. Submit the values to CAN
             #Example Code for Cantools: cantools(paraName)
+            database.send(choice, paraName, paraValue)
 
         
 
