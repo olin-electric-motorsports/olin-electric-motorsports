@@ -370,7 +370,7 @@
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.00381,
+        "track_width": 0.15,
         "via_diameter": 0.6096,
         "via_drill": 0.3048,
         "wire_width": 6.0
@@ -386,7 +386,13 @@
         "microvia_drill": 0.1,
         "name": "HV",
         "nets": [
-          "/FB"
+          "/+5V_RETURN",
+          "/+5V_TSAL_FUSED",
+          "/+5V__TSAL_FUSED",
+          "/AIL-",
+          "/FB",
+          "/TS+_FUSED",
+          "/VCC"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
@@ -406,7 +412,10 @@
         "microvia_drill": 0.1,
         "name": "LV",
         "nets": [
+          "/+12V_TSAL",
           "/TSAL_FLAG",
+          "/TSAL_GREEN-",
+          "/TSAL_RED-",
           "GND"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
