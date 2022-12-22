@@ -113,9 +113,9 @@ int main(void) {
         // BMS Core message for BMS Status LED
         if (can_poll_receive_bms_core() == 0) {
             if (bms_core.bms_fault != BMS_FAULT_NONE) { // check BMS status
-                gpio_set_pin(BMS_LED); // set BMS light high
+                gpio_set_pin(BMS_LED); // BMS ON means ERROR
             } else {
-                gpio_clear_pin(BMS_LED); // BMS OFF means NOT OK
+                gpio_clear_pin(BMS_LED); // BMS OFF means OK
             }
 
             // Receive again

@@ -233,7 +233,7 @@ static void state_machine_run(void) {
 
                 if (motor_controller_voltage
                     > (PRECHARGE_THRESHOLD * pack_voltage)) {
-                    gpio_set_pin(AIR_N_LSD); // Close AIR_N
+                    gpio_set_pin(AIR_N_LSD); // Close AIR negative
                     gpio_clear_pin(PRECHARGE_CTL); // Close precharge relay
                     once = true;
                     air_control_critical.air_state = AIR_STATE_TS_ACTIVE;
@@ -261,7 +261,7 @@ static void state_machine_run(void) {
 
             /*
              * This pattern ensures that we only call get_time() once because we
-             * only want to capture the time that PRECHARGE starts
+             * only want to capture the time that DISCHARGE starts
              */
             static bool once = true;
 
