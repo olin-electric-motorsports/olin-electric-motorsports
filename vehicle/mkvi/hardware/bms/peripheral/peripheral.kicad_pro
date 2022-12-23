@@ -103,7 +103,7 @@
         "allow_blind_buried_vias": false,
         "allow_microvias": false,
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.15,
         "min_copper_edge_clearance": 0.0,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
@@ -111,7 +111,7 @@
         "min_microvia_drill": 0.09999999999999999,
         "min_silk_clearance": 0.0,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.19999999999999998,
+        "min_track_width": 0.15,
         "min_via_annular_width": 0.049999999999999996,
         "min_via_diameter": 0.39999999999999997,
         "solder_mask_clearance": 0.0,
@@ -119,7 +119,10 @@
         "use_height_for_length_calcs": true
       },
       "track_widths": [
-        0.0
+        0.0,
+        0.1524,
+        0.254,
+        0.381
       ],
       "via_dimensions": [
         {
@@ -353,7 +356,7 @@
     "classes": [
       {
         "bus_width": 12.0,
-        "clearance": 0.1524,
+        "clearance": 0.15,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -363,9 +366,72 @@
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.1524,
+        "track_width": 0.15,
         "via_diameter": 0.6096,
         "via_drill": 0.3048,
+        "wire_width": 6.0
+      },
+      {
+        "bus_width": 12.0,
+        "clearance": 0.1524,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "nets": [
+          "/CELL1",
+          "/CELL10",
+          "/CELL11",
+          "/CELL12",
+          "/CELL13",
+          "/CELL14",
+          "/CELL15",
+          "/CELL16",
+          "/CELL17",
+          "/CELL18",
+          "/CELL2",
+          "/CELL3",
+          "/CELL4",
+          "/CELL5",
+          "/CELL6",
+          "/CELL7",
+          "/CELL8",
+          "/CELL9",
+          "/Main Mux to Thermistor Muxes/Address Jump0/VREG",
+          "/Main Mux to Thermistor Muxes/Address Jump1/VREG",
+          "/Main Mux to Thermistor Muxes/VREG",
+          "/Power_Board_M_2_Connection/VREF2",
+          "/Power_Board_M_2_Connection/VREG",
+          "/S1",
+          "/S10",
+          "/S11",
+          "/S12",
+          "/S13",
+          "/S14",
+          "/S15",
+          "/S16",
+          "/S17",
+          "/S18",
+          "/S2",
+          "/S3",
+          "/S4",
+          "/S5",
+          "/S6",
+          "/S7",
+          "/S8",
+          "/S9",
+          "/VDRIVE",
+          "/VREF2",
+          "/VREG"
+        ],
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.381,
+        "via_diameter": 0.762,
+        "via_drill": 0.381,
         "wire_width": 6.0
       }
     ],
@@ -523,6 +589,22 @@
     [
       "d127e34d-aed7-432d-bc05-2a0055913879",
       "Power_Board_M_2_Connection"
+    ],
+    [
+      "ab1bd182-e504-45ad-86aa-eac1b2abd3dc",
+      "DA I2C Pull-Up Resistors4"
+    ],
+    [
+      "7eb7fcf8-02c8-4599-991f-26faa8ac2340",
+      "DA I2C Pull-Up Resistors1"
+    ],
+    [
+      "995d10c8-1089-475e-96fc-f26dd5113769",
+      "DA I2C Pull-Up Resistors2"
+    ],
+    [
+      "68880947-4b8f-47db-96c9-a418a429dd44",
+      "DA I2C Pull-Up Resistors3"
     ]
   ],
   "text_variables": {}
