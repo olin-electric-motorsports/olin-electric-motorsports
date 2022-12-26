@@ -5,32 +5,31 @@ from yaml_handler import YamlParser
 
 __version__ = "2021.12.28"
 
+
 def main():
     """
     CLI to generate a DBC file from YAML files
     """
     parser = argparse.ArgumentParser(
-        description = "Generate DBC from YAML and DBC files",
+        description="Generate DBC from YAML and DBC files",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
     parser.add_argument(
-        '-o', '--output',
-        default='out.dbc',
-        help='Output filename (default is out.dbc)'
+        "-o", "--output", default="out.dbc", help="Output filename (default is out.dbc)"
     )
 
     parser.add_argument(
-        'inputs',
-        help='Input YAML and DBC files',
+        "inputs",
+        help="Input YAML and DBC files",
         nargs="+",
     )
 
     args = parser.parse_args()
 
     db = CANDatabase(
-        strict = True,
-        version = __version__,
+        strict=True,
+        version=__version__,
     )
 
     # Add in extra DBC files
@@ -45,5 +44,6 @@ def main():
 
     dump_file(db, args.output)
 
+
 if __name__ == "__main__":
-  main()
+    main()

@@ -22,34 +22,7 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .git_sha = STABLE_GIT_COMMIT,
 };
 
-enum State {
-    INIT = 0,
-    IDLE,
-    SHUTDOWN_CIRCUIT_CLOSED,
-    PRECHARGE,
-    TS_ACTIVE,
-    DISCHARGE,
-    FAULT,
-};
-
-enum FaultCode {
-    AIR_FAULT_NONE = 0x00,
-    AIR_FAULT_AIR_N_WELD,
-    AIR_FAULT_AIR_P_WELD,
-    AIR_FAULT_BOTH_AIRS_WELD,
-    AIR_FAULT_PRECHARGE_FAIL,
-    AIR_FAULT_DISCHARGE_FAIL,
-    AIR_FAULT_PRECHARGE_FAIL_RELAY_WELDED, // TODO?
-    AIR_FAULT_CAN_ERROR,
-    AIR_FAULT_CAN_BMS_TIMEOUT,
-    AIR_FAULT_CAN_MC_TIMEOUT,
-    AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY,
-    AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE,
-    AIR_FAULT_BMS_VOLTAGE,
-    AIR_FAULT_IMD_STATUS,
-};
-
-static void set_fault(enum FaultCode the_fault) {
+static void set_fault(enum air_fault_e the_fault) {
     gpio_set_pin(FAULT_LED);
 
     if (air_control_critical.air_fault == AIR_FAULT_NONE) {
@@ -184,17 +157,18 @@ bail:
 
 static void state_machine_run(void) {
     if (air_control_critical.air_fault != AIR_FAULT_NONE) {
-        air_control_critical.air_state = FAULT;
+        air_control_critical.air_state = AIR_STATE_FAULT;
     }
 
     switch (air_control_critical.air_state) {
-        case IDLE: {
+        case AIR_STATE_IDLE: {
             // Idle until shutdown circuit is closed
             if (air_control_critical.ss_tsms) {
-                air_control_critical.air_state = SHUTDOWN_CIRCUIT_CLOSED;
+                air_control_critical.air_state
+                    = AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED;
             }
         } break;
-        case SHUTDOWN_CIRCUIT_CLOSED: {
+        case AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED: {
             /*
              * This pattern ensures that we only call get_time() once because we
              * only want to capture the time that PRECHARGE starts
@@ -208,7 +182,7 @@ static void state_machine_run(void) {
 
             if (get_time() - start_time < 200) {
                 if (air_control_critical.air_p_status) {
-                    air_control_critical.air_state = PRECHARGE;
+                    air_control_critical.air_state = AIR_STATE_PRECHARGE;
                     once = true;
                 }
             } else {
@@ -217,7 +191,7 @@ static void state_machine_run(void) {
             }
             return;
         } break;
-        case PRECHARGE: {
+        case AIR_STATE_PRECHARGE: {
             // Start precharge
             gpio_set_pin(PRECHARGE_CTL);
 
@@ -259,10 +233,10 @@ static void state_machine_run(void) {
 
                 if (motor_controller_voltage
                     > (PRECHARGE_THRESHOLD * pack_voltage)) {
-                    gpio_set_pin(AIR_N_LSD); // Close AIR_N
+                    gpio_set_pin(AIR_N_LSD); // Close AIR negative
                     gpio_clear_pin(PRECHARGE_CTL); // Close precharge relay
                     once = true;
-                    air_control_critical.air_state = TS_ACTIVE;
+                    air_control_critical.air_state = AIR_STATE_TS_ACTIVE;
                     return;
                 } else {
                     once = true;
@@ -274,20 +248,20 @@ static void state_machine_run(void) {
                 return;
             }
         } break;
-        case TS_ACTIVE: {
+        case AIR_STATE_TS_ACTIVE: {
             // If any of the shutdown nodes open, the SS_TSMS will trigger as
             // well, so we can just read that one (it is the last node in the
             // shutdown circuit.
             if (!air_control_critical.ss_tsms) {
-                air_control_critical.air_state = DISCHARGE;
+                air_control_critical.air_state = AIR_STATE_DISCHARGE;
             }
         } break;
-        case DISCHARGE: {
+        case AIR_STATE_DISCHARGE: {
             gpio_clear_pin(AIR_N_LSD);
 
             /*
              * This pattern ensures that we only call get_time() once because we
-             * only want to capture the time that PRECHARGE starts
+             * only want to capture the time that DISCHARGE starts
              */
             static bool once = true;
 
@@ -299,17 +273,17 @@ static void state_machine_run(void) {
             if (get_time() - start_time > 100) {
                 if (air_control_critical.air_p_status
                     && air_control_critical.air_n_status) {
-                    air_control_critical.air_state = FAULT;
+                    air_control_critical.air_state = AIR_STATE_FAULT;
                     set_fault(AIR_FAULT_BOTH_AIRS_WELD);
                     once = true;
                     return;
                 } else if (air_control_critical.air_p_status) {
-                    air_control_critical.air_state = FAULT;
+                    air_control_critical.air_state = AIR_STATE_FAULT;
                     set_fault(AIR_FAULT_AIR_P_WELD);
                     once = true;
                     return;
                 } else if (air_control_critical.air_n_status) {
-                    air_control_critical.air_state = FAULT;
+                    air_control_critical.air_state = AIR_STATE_FAULT;
                     set_fault(AIR_FAULT_AIR_N_WELD);
                     once = true;
                     return;
@@ -341,7 +315,7 @@ static void state_machine_run(void) {
 
             if (motor_controller_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
                 once = true;
-                air_control_critical.air_state = IDLE;
+                air_control_critical.air_state = AIR_STATE_IDLE;
                 return;
             } else {
                 set_fault(AIR_FAULT_DISCHARGE_FAIL);
@@ -349,14 +323,14 @@ static void state_machine_run(void) {
                 return;
             }
         } break;
-        case FAULT: {
+        case AIR_STATE_FAULT: {
             gpio_set_pin(FAULT_LED);
             gpio_clear_pin(PRECHARGE_CTL);
             gpio_clear_pin(AIR_N_LSD);
         } break;
         default: {
             // Shouldn't happen, but just in case
-            air_control_critical.air_state = FAULT;
+            air_control_critical.air_state = AIR_STATE_FAULT;
         } break;
     }
 }
@@ -399,7 +373,7 @@ int main(void) {
     gpio_clear_pin(SS_HVD);
 
     updater_init(BTLDR_ID, 5);
-    air_control_critical.air_state = INIT;
+    air_control_critical.air_state = AIR_STATE_INIT;
 
     // Initialize interrupts
     sei();
@@ -424,7 +398,7 @@ int main(void) {
     // Send message again after initial checks are run
     can_send_air_control_critical();
 
-    air_control_critical.air_state = IDLE;
+    air_control_critical.air_state = AIR_STATE_IDLE;
 
     while (1) {
         // Run state machine every 1ms
@@ -433,7 +407,7 @@ int main(void) {
             run_1ms = false;
         }
 
-        if (air_control_critical.air_state == IDLE) {
+        if (air_control_critical.air_state == AIR_STATE_IDLE) {
             updater_loop();
         }
 
