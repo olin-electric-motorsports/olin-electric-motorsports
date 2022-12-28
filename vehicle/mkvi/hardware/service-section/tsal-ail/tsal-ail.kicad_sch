@@ -2632,9 +2632,6 @@
   (junction (at 163.83 220.98) (diameter 0) (color 0 0 0 0)
     (uuid 21b6c7aa-5206-459c-a970-8b3d604f889e)
   )
-  (junction (at 113.03 40.64) (diameter 0) (color 0 0 0 0)
-    (uuid 24d7a542-9140-401c-a42d-f8d790075c7f)
-  )
   (junction (at 222.25 73.66) (diameter 0) (color 0 0 0 0)
     (uuid 294900c5-a162-47b1-9eb7-87c3b476e416)
   )
@@ -2730,6 +2727,9 @@
   )
   (junction (at 71.12 220.98) (diameter 0) (color 0 0 0 0)
     (uuid cd4acf4f-125d-49b8-ba2c-e90ac51e193c)
+  )
+  (junction (at 213.36 220.98) (diameter 0) (color 0 0 0 0)
+    (uuid ce0c4d85-218b-4cb4-bcee-1110e276d631)
   )
   (junction (at 101.6 233.68) (diameter 0) (color 0 0 0 0)
     (uuid d0a4d9ea-6421-493f-8161-baa8df18f341)
@@ -2838,6 +2838,10 @@
   (wire (pts (xy 48.26 82.55) (xy 55.88 82.55))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 029c533a-e76c-46a4-ab75-ff51673ee89c)
+  )
+  (wire (pts (xy 213.36 214.63) (xy 213.36 220.98))
+    (stroke (width 0) (type default) (color 0 0 0 0))
+    (uuid 06315e15-bc9a-4950-881a-6c78b594fa51)
   )
   (wire (pts (xy 130.175 193.675) (xy 130.175 220.98))
     (stroke (width 0) (type default) (color 0 0 0 0))
@@ -3076,7 +3080,7 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 3ca4a526-10f3-40f9-aa8e-8d3ac1b3f841)
   )
-  (wire (pts (xy 113.03 43.18) (xy 113.03 40.64))
+  (wire (pts (xy 113.03 34.29) (xy 113.03 43.18))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 3dae55c9-27e5-46e3-a0ba-531379c1ae0d)
   )
@@ -3265,17 +3269,9 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 7bb2c685-c314-4ad3-a89f-cc553b47095b)
   )
-  (wire (pts (xy 113.03 40.64) (xy 113.03 34.29))
-    (stroke (width 0) (type default) (color 0 0 0 0))
-    (uuid 7c851cfb-169f-4521-a320-f9003569492f)
-  )
   (wire (pts (xy 55.245 208.915) (xy 55.245 211.455))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 7d406983-25b7-4e59-b5f9-eab38723659c)
-  )
-  (wire (pts (xy 105.41 40.64) (xy 113.03 40.64))
-    (stroke (width 0) (type default) (color 0 0 0 0))
-    (uuid 7f4aa083-667c-40a9-a77b-fd0ce3733f71)
   )
   (wire (pts (xy 33.02 203.2) (xy 33.02 211.455))
     (stroke (width 0) (type default) (color 0 0 0 0))
@@ -3285,7 +3281,7 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 7fd921ef-8075-472e-8944-3a82f9d7fd04)
   )
-  (wire (pts (xy 210.82 220.98) (xy 214.63 220.98))
+  (wire (pts (xy 210.82 220.98) (xy 213.36 220.98))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 8172b492-2c20-4785-bbcf-e7b976a88294)
   )
@@ -3438,6 +3434,10 @@
     (uuid b18d38af-5371-4291-a3d0-8c2161f0a2a0)
   )
 
+  (wire (pts (xy 213.36 220.98) (xy 214.63 220.98))
+    (stroke (width 0) (type default) (color 0 0 0 0))
+    (uuid b1ecd849-c0dd-49e4-92ba-cb79816f9a14)
+  )
   (wire (pts (xy 217.17 54.61) (xy 217.17 57.15))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid b3155354-eebc-47fb-ba5a-747c62e47e3e)
@@ -4760,6 +4760,24 @@
     (pin "2" (uuid 554590c6-a9b5-48b5-8834-2063889e71b1))
   )
 
+  (symbol (lib_id "formula:Test_Point_SMD") (at 213.36 213.36 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid 1ef48f37-0079-4929-9f3b-07dcc29660d7)
+    (property "Reference" "TP3" (id 0) (at 207.01 209.55 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "5V+_OUTPUT_FUSED" (id 1) (at 199.39 207.01 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (id 2) (at 213.36 217.17 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 213.36 213.36 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid b38694f7-f45d-419c-b9f8-4340bb8258d6))
+  )
+
   (symbol (lib_id "formula:R_10K") (at 326.39 86.36 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 23c0763f-38f0-44cd-a168-f780872e3f29)
@@ -6014,20 +6032,6 @@
     (pin "2" (uuid dd87f32e-f6db-47df-904b-b8901f65715d))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 104.14 40.64 90) (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid d6d1fd0f-2c23-4708-b498-6d02d1bf15bf)
-    (property "Reference" "TP3" (id 0) (at 96.52 38.1 90))
-    (property "Value" "5V+" (id 1) (at 96.52 40.64 90))
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (id 2) (at 107.95 40.64 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 104.14 40.64 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 0e9edf6e-4d71-4197-bbe9-f204e45745cf))
-  )
-
   (symbol (lib_id "formula:Test_Point_SMD") (at 82.55 87.63 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid dc870fa2-cb33-4880-a02f-076c6459957e)
@@ -6248,28 +6252,10 @@
   )
 
   (symbol_instances
-    (path "/06b71f87-83ef-4461-b0eb-a6be4ae426bc"
-      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
-    )
-    (path "/51a4717e-3d48-462e-9657-f00387720b21"
-      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
-    )
-    (path "/9a293ce9-13a5-468f-bcff-d1134419cd92"
-      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
-    )
-    (path "/58f6e3df-1307-4c39-b941-5cb462ba2e2e"
-      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
-    )
-    (path "/b66c7c33-92f8-461f-b366-01f0a9f57dc7"
-      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
-    )
-    (path "/7c601bf7-31b0-4db9-b84c-c881b1acc406"
-      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
-    )
     (path "/03e10207-571c-4644-9519-f39bd7614979"
       (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
     )
-    (path "/eeea20ab-4b98-43d1-b471-c621fb1e3116"
+    (path "/58f6e3df-1307-4c39-b941-5cb462ba2e2e"
       (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
     )
     (path "/327626a7-45d7-45c4-9f97-23cbe96c3273"
@@ -6278,11 +6264,23 @@
     (path "/917f5600-52b4-437b-abf7-a874668183d9"
       (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
     )
-    (path "/952a6ae3-a286-49cb-9cdf-65b0e6091308"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    (path "/51a4717e-3d48-462e-9657-f00387720b21"
+      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
     )
-    (path "/c974dc88-cab0-4fd2-b92f-ef569784fe21"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    (path "/06b71f87-83ef-4461-b0eb-a6be4ae426bc"
+      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
+    )
+    (path "/7c601bf7-31b0-4db9-b84c-c881b1acc406"
+      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
+    )
+    (path "/b66c7c33-92f8-461f-b366-01f0a9f57dc7"
+      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
+    )
+    (path "/9a293ce9-13a5-468f-bcff-d1134419cd92"
+      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
+    )
+    (path "/eeea20ab-4b98-43d1-b471-c621fb1e3116"
+      (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
     )
     (path "/f71432f8-b6f4-4ae0-8b5a-a38abe234728"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
@@ -6293,13 +6291,19 @@
     (path "/a9c3b109-08ca-4429-bc3a-6217c30ef22b"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
-    (path "/2dea4887-7398-4d5c-b1ab-d3e5d3b1309c"
+    (path "/59a06987-6128-41c0-8757-c9613f01fb10"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/fb1f53a1-c4fe-4365-86a9-be63fe4b07e2"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
-    (path "/59a06987-6128-41c0-8757-c9613f01fb10"
+    (path "/2dea4887-7398-4d5c-b1ab-d3e5d3b1309c"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/952a6ae3-a286-49cb-9cdf-65b0e6091308"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c974dc88-cab0-4fd2-b92f-ef569784fe21"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/6039fed8-9a49-484b-8076-a4d34ec32342"
@@ -6440,8 +6444,8 @@
     (path "/12367513-7538-49d1-a709-6b30588db36d"
       (reference "TP2") (unit 1) (value "FB") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
-    (path "/d6d1fd0f-2c23-4708-b498-6d02d1bf15bf"
-      (reference "TP3") (unit 1) (value "5V+") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    (path "/1ef48f37-0079-4929-9f3b-07dcc29660d7"
+      (reference "TP3") (unit 1) (value "5V+_OUTPUT_FUSED") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
     (path "/93268821-9faa-4081-a69c-8eaddfecea5f"
       (reference "TP4") (unit 1) (value "VIN") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
