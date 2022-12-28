@@ -7,4 +7,3 @@ kicad_hardware(
         ["tsal-ail.kicad_sch"],
     ),
 )
-
