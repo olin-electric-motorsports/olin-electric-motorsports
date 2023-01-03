@@ -16,5 +16,6 @@ EOF
 
 cat << EOF > ${ROOT}/.git/hooks/pre-commit
 #!/bin/bash
+rm -rf ${ROOT}/parts/schematic/oem
 bazel run //tools/symbols:convert -- library2symbols --source ${ROOT}/parts/schematic/oem.kicad_sym --out ${ROOT}/parts/schematic/oem
 EOF
