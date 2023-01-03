@@ -1,11 +1,11 @@
 load("@rules_python//python:defs.bzl", "py_binary")
-load("@symbol_libraries_deps//:requirements.bzl", "requirement")
+load("@symbol_library_converter_deps//:requirements.bzl", "requirement")
 
 py_binary(
-    name = "libraries",
+    name = "convert",
     srcs = [
-        "libraries.py",
+        "convert.py",
     ],
     python_version = "PY3",
-    main = "libraries.py",
+    main = "convert.py",
 )
