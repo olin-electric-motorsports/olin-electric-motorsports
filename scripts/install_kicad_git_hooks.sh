@@ -8,7 +8,7 @@ ROOT=$(git rev-parse --show-toplevel)
 # the post-checkout hook generates a kicad_sym file from the symbols in parts/schematic/oem
 cat << EOF > ${ROOT}/.git/hooks/post-checkout
 #!/bin/bash
-bazel run //tools/symbols:libraries library --source ${ROOT}/parts/schematic/oem --out ${ROOT}/parts/schematic/oem.kicad_sym
+bazel run //tools/symbols:libraries -- library --source ${ROOT}/parts/schematic/oem --out ${ROOT}/parts/schematic/oem.kicad_sym
 EOF
 
 # install pre-commit hook
@@ -16,5 +16,5 @@ EOF
 
 cat << EOF > ${ROOT}/.git/hooks/pre-commit
 #!/bin/bash
-bazel run //tools/symbols:libraries symbols --source ${ROOT}/parts/schematic/oem.kicad_sym --out ${ROOT}/parts/schematic/oem
+bazel run //tools/symbols:libraries -- symbols --source ${ROOT}/parts/schematic/oem.kicad_sym --out ${ROOT}/parts/schematic/oem
 EOF
