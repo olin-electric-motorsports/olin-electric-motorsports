@@ -15,8 +15,8 @@ def cli():
 def symbols2library(source, out):
     """Converts symbol files into a .kicad_sym library"""
     # library header
-    today = datetime.date.today()
-    header = "(kicad_symbol_lib (version "+today.strftime("%Y%m%d")+") (generator kicad_symbol_editor)\n"
+    fixed_version = '20211014'
+    header = "(kicad_symbol_lib (version " + fixed_version + ") (generator symbol2library)\n"
     out.write(header)
 
     # get a list of all the complete symbol files
@@ -42,7 +42,10 @@ def symbols2library(source, out):
 def library2symbols(source, out):
     """Converts a .kicad_sym library into seprate symbol files"""
     # create output directory if it doesn't exist
-    os.makedirs(out)
+    try:
+        os.makedirs(out)
+    except:
+        click.echo("warning: output directory already exists. Deleted symbols may not be reflected.")
     # read library file in and split into seprate files
     header = source.readline() # ignore header
     # read file line by line
