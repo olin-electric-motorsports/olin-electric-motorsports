@@ -113,7 +113,7 @@ pip_install(
 
 pip_install(
     name = "symbol_library_converter_deps",
-    requirements = "//tools/symbols:requirements.txt"
+    requirements = "//tools/symbols:requirements.txt",
 )
 
 http_archive(

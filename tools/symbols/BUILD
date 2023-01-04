@@ -6,6 +6,6 @@ py_binary(
     srcs = [
         "convert.py",
     ],
-    python_version = "PY3",
     main = "convert.py",
+    python_version = "PY3",
 )
