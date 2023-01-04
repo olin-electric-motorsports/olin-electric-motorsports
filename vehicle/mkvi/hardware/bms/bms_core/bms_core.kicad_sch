@@ -2148,10 +2148,6 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2eb727ff-ad66-4379-aa30-c843da367266)
   )
-  (label "VOUT" (at 187.96 44.45 180)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid 3203314e-51d3-471e-a41f-dc925e3c9b9e)
-  )
   (label "PRE_DIS_TEMP_3" (at 187.96 35.56 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 3a561349-32bd-4eef-ad4c-33e3c72b223e)
@@ -2188,10 +2184,6 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 5a35b111-92cb-4388-a021-924f7bb0c4aa)
   )
-  (label "VREF" (at 187.96 41.91 180)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid 5c01671a-a527-46d3-a705-3fe032ab6a6b)
-  )
   (label "BSPD_CURRENT_THRESH" (at 241.3 44.45 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 5df818a5-31e9-425a-82bf-dd3d1b712075)
@@ -2203,6 +2195,10 @@
   (label "PUMP_PWM" (at 243.84 33.02 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 69401131-12d3-458b-9639-2a5495f89b58)
+  )
+  (label "VREF_CURRENT_SENSE" (at 187.96 41.91 180)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 6e9f6597-610a-4b38-a4ae-517467b23e04)
   )
   (label "BMS_RELAY_DRIVE" (at 171.45 72.39 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
@@ -2219,6 +2215,10 @@
   (label "ISO_CS" (at 41.91 170.18 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 7c6805e4-1686-40a3-b0bd-c4f3fd9815a9)
+  )
+  (label "VOUT_CURRENT_SENSE" (at 187.96 44.45 180)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 7d2a7ec4-019f-47df-8807-29990d3898b2)
   )
   (label "BMS_LSD" (at 187.96 38.1 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
@@ -3757,8 +3757,8 @@
     (path "/dd1ae305-ff4c-4e2b-89e7-19ece71a1228"
       (reference "J2") (unit 1) (value "CONN_02X03") (footprint "footprints:Pin_Header_Straight_2x03")
     )
-    (path "/8f664c14-224d-484d-aa48-689bc3c66186/beb73ed5-9b6b-4982-9a7a-63ab25e5aced"
-      (reference "J3") (unit 1) (value "isoSPI-Cutout") (footprint "footprints:iso_spi_cutout")
+    (path "/8f664c14-224d-484d-aa48-689bc3c66186/d9021b4e-eb7b-4e6d-9203-064fdfecaea9"
+      (reference "J3") (unit 1) (value "MicroFit_RA_R_2") (footprint "footprints:MicroFit_RA_2")
     )
     (path "/8857e594-f9a2-447b-85c9-7fce31d1bf44/b2cb68a1-662b-436e-81b0-5b9711ce7a15"
       (reference "J4") (unit 1) (value "Automotive_M.2_Edge_Connector") (footprint "footprints:Automotive_M.2_Edge_Connector")
@@ -3832,7 +3832,7 @@
     (path "/be343294-bfee-4d49-a85a-b58a37467bda/3ed60409-081a-4d29-98b8-af8fb6c45308"
       (reference "R20") (unit 1) (value "R_576") (footprint "OEM:R_0603")
     )
-    (path "/8f664c14-224d-484d-aa48-689bc3c66186/36077f17-5d0a-42a2-afb8-fe4af2542860"
+    (path "/8f664c14-224d-484d-aa48-689bc3c66186/03c4ec74-5369-4e7e-a97f-c5785475a863"
       (reference "T1") (unit 1) (value "HM2112ZNLT") (footprint "footprints:HM2112ZNLT")
     )
     (path "/b1ffdd51-30fc-4009-9471-1d6f4e6a7ea4"

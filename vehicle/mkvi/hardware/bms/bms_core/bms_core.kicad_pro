@@ -119,12 +119,21 @@
         "use_height_for_length_calcs": true
       },
       "track_widths": [
-        0.0
+        0.0,
+        0.1524
       ],
       "via_dimensions": [
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 0.6096,
+          "drill": 0.3048
+        },
+        {
+          "diameter": 0.762,
+          "drill": 0.381
         }
       ],
       "zones_allow_external_fillets": false,
@@ -386,9 +395,7 @@
           "/BSPD Current Sensor Trigger/VTRIP",
           "/BSPD Current Sensor Trigger/V_GND_THRESHOLD",
           "/BSPD_CURRENT_THRESH",
-          "/VOUT",
           "/VOUT_CURRENT_SENSE",
-          "/VREF",
           "/VREF_CURRENT_SENSE"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
