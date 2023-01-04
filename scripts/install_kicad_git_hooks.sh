@@ -13,8 +13,6 @@ cat << EOF > ${ROOT}/.git/hooks/pre-checkout
 # 2: new HEAD
 # 3: new HEAD is branch
 
-echo \$3
-
 # check for SKIP_PRE_CHECKOUT flag
 if [ ! -z \$SKIP_PRE_CHECKOUT ] && \$SKIP_PRE_CHECKOUT
 then
@@ -35,7 +33,6 @@ fi
 # switch back new HEAD
 if [ "\$3" -eq "1" ];
 then
-    echo "Flag set"
     # switch to previous branch
     git switch --quiet -
 else
