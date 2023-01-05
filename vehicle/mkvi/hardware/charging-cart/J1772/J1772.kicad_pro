@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 3.2,
+          "height": 5.6,
+          "width": 5.6
         },
         "silk_line_width": 0.12,
         "silk_text_italic": false,
@@ -48,7 +48,13 @@
           "min_clearance": 0.508
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "version": 2
@@ -79,8 +85,8 @@
         "padstack": "error",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_over_copper": "warning",
-        "silk_overlap": "warning",
+        "silk_over_copper": "ignore",
+        "silk_overlap": "ignore",
         "skew_out_of_range": "error",
         "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
@@ -97,21 +103,34 @@
         "allow_blind_buried_vias": false,
         "allow_microvias": false,
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.15,
         "min_copper_edge_clearance": 0.01,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.19999999999999998,
         "min_microvia_drill": 0.09999999999999999,
         "min_silk_clearance": 0.0,
-        "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.19999999999999998,
-        "min_via_annular_width": 0.049999999999999996,
-        "min_via_diameter": 0.39999999999999997,
+        "min_through_hole_diameter": 0.30479999999999996,
+        "min_track_width": 0.15,
+        "min_via_annular_width": 0.15239999999999998,
+        "min_via_diameter": 0.35559999999999997,
         "use_height_for_length_calcs": true
       },
-      "track_widths": [],
-      "via_dimensions": [],
+      "track_widths": [
+        0.0,
+        0.1524,
+        0.381
+      ],
+      "via_dimensions": [
+        {
+          "diameter": 0.0,
+          "drill": 0.0
+        },
+        {
+          "diameter": 0.6096,
+          "drill": 0.3048
+        }
+      ],
       "zones_allow_external_fillets": false,
       "zones_use_no_outline": true
     },
@@ -331,7 +350,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "precharge_discharge.kicad_pro",
+    "filename": "J1772.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -410,20 +429,16 @@
   },
   "sheets": [
     [
-      "96f56455-bf31-456c-8371-5b3706690d23",
+      "8bf539d3-f4e7-408b-921d-45351bdd10f3",
       ""
     ],
     [
-      "1d3603a0-934c-404e-9b38-4b65044f588c",
-      "Thermistor1"
+      "a8ec3725-a6bd-4d20-87cb-ab75a6a46eb6",
+      "CAR_CAN_CONTROLLER"
     ],
     [
-      "aae00dc5-0627-4ce2-bb50-5359aef1b906",
-      "Thermistor2"
-    ],
-    [
-      "f42ceb10-3a39-4caa-a323-2ed850359949",
-      "Thermistor"
+      "156f3892-7281-41fd-9b91-7b34c030624e",
+      "CHARGER_CAN_CONTROLLER"
     ]
   ],
   "text_variables": {}
