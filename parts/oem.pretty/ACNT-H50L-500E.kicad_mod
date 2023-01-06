@@ -10,46 +10,12 @@
     (effects (font (size 1 1) (thickness 0.15)))
     (tstamp 0a00f0f9-d126-40b5-befc-5f26f5392178)
   )
-  (fp_text user "*" (at -8.3693 -3.6576) (layer "F.SilkS")
-    (effects (font (size 1 1) (thickness 0.15)))
-    (tstamp e08e52da-39e5-4bf0-a352-3b64b5757c87)
-  )
-  (fp_text user "*" (at -8.3693 -3.6576) (layer "F.SilkS") hide
-    (effects (font (size 1 1) (thickness 0.15)))
-    (tstamp e9b323d2-7396-471b-aa5d-9090a33a5024)
-  )
-  (fp_text user "Copyright 2021 Accelerated Designs. All rights reserved." (at 0 0) (layer "Cmts.User") hide
-    (effects (font (size 0.127 0.127) (thickness 0.002)))
-    (tstamp 08dfc124-969b-4756-81e8-a98ea8fcbdd6)
-  )
-  (fp_text user "0.053in/1.346mm" (at -8.1153 5.6007) (layer "Cmts.User") hide
-    (effects (font (size 1 1) (thickness 0.15)))
-    (tstamp 3fec0b04-cd54-4694-9927-620a2ec791ca)
-  )
-  (fp_text user "0.639in/16.231mm" (at 0 -5.6007) (layer "Cmts.User") hide
-    (effects (font (size 1 1) (thickness 0.15)))
-    (tstamp 58820732-5faa-44b3-aa18-444e63761142)
-  )
-  (fp_text user "0.05in/1.27mm" (at -11.1633 -1.27) (layer "Cmts.User") hide
-    (effects (font (size 1 1) (thickness 0.15)))
-    (tstamp ab78b201-2f76-4e31-989c-0975460dbd2f)
-  )
-  (fp_text user "0.024in/0.61mm" (at 11.1633 -1.905) (layer "Cmts.User") hide
-    (effects (font (size 1 1) (thickness 0.15)))
-    (tstamp fc6cea04-3cc2-4e8b-aa0e-03282bf581f4)
-  )
-  (fp_text user "*" (at -6.477 -3.1115) (layer "F.Fab") hide
-    (effects (font (size 1 1) (thickness 0.15)))
-    (tstamp 002fc530-f23a-40a2-9a55-e5186f0a44b6)
-  )
-  (fp_text user "*" (at -6.477 -3.1115) (layer "F.Fab") hide
-    (effects (font (size 1 1) (thickness 0.15)))
-    (tstamp d2bdd516-7ba2-4448-a024-05a26039764d)
-  )
   (fp_line (start -6.985 3.3147) (end 6.985 3.3147) (layer "F.SilkS") (width 0.12) (tstamp 217d1f7c-b11f-46d5-800e-592863d1f98a))
   (fp_line (start 6.985 3.3147) (end 6.985 -3.3147) (layer "F.SilkS") (width 0.12) (tstamp 3979e2eb-8fb7-4e5f-84e1-ac963af47162))
   (fp_line (start -6.985 -3.3147) (end -6.985 3.3147) (layer "F.SilkS") (width 0.12) (tstamp e2b07dac-d384-454c-a7bc-f0fd977ce77d))
   (fp_line (start 6.985 -3.3147) (end -6.985 -3.3147) (layer "F.SilkS") (width 0.12) (tstamp ff52ad31-996c-4725-95c5-9550b4ded546))
+  (fp_circle (center -8.35 -3.95) (end -8.05 -3.95) (layer "F.SilkS") (width 0) (fill solid) (tstamp a1bccda5-4a43-4601-9382-c4680ee49c4f))
+  (fp_circle (center -6.15 -2.5) (end -5.85 -2.5) (layer "F.SilkS") (width 0) (fill solid) (tstamp e2d96759-3f19-4ba7-a9b2-bf184500284e))
   (fp_line (start 7.112 -2.4638) (end 9.0424 -2.4638) (layer "F.CrtYd") (width 0.05) (tstamp 1c3e532e-fbd3-42a9-ba7e-c2eafa9c12bc))
   (fp_line (start 9.0424 -2.4638) (end 9.0424 2.4638) (layer "F.CrtYd") (width 0.05) (tstamp 2045fca8-36cf-4b0a-bf75-250c98e1d01d))
   (fp_line (start -7.112 -2.4638) (end -7.112 -3.4417) (layer "F.CrtYd") (width 0.05) (tstamp 20be19b2-db73-46d2-ba56-49dd2bf171be))
@@ -107,7 +73,7 @@
   (pad "6" smd rect (at 8.1153 0.635) (size 1.3462 0.6096) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp ac843076-606d-4451-886a-86640a37090b))
   (pad "7" smd rect (at 8.1153 -0.635) (size 1.3462 0.6096) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 0d05cfe7-6583-487e-9bf4-30170cb13a8e))
   (pad "8" smd rect (at 8.1153 -1.905) (size 1.3462 0.6096) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp ddbccb76-59e7-4787-8273-879cbc09787a))
-  (model "${LOCAL_DIR}/3DModels/ACN-H50L-Stretched-SO8_BRA_Optoisolator/ACN-H50L-Stretched-SO8_BRA.step"
+  (model "${OEM_DIR}/parts/3DModels/ACN-H50L-Stretched-SO8_BRA_Optoisolator/ACN-H50L-Stretched-SO8_BRA.step"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

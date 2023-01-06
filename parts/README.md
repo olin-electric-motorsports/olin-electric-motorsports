@@ -58,10 +58,11 @@ Footprint | `OEM:R_0805` | N | Reference to footprint for component
 Datasheet | `https://www.example.com/.../datasheet.pdf` | N | Link to datasheet
 MPN | `RCA080510K0FKEA` | N | Manufacturer Part Number for ordering
 MFN | `Vishay` | N | Manufacturer (not to be confused with distributors like digikey)
-ReorderAt | `50` | N | Approximate quantity at which to order more, 0 if additional units should not be ordered
-SuggestedQuantity `100` | N | Suggestion for quantity to order when running low
-Location | `Bin 7, A12` | N | Set once components arrive, location in storage
+DKPN | `541-2226-2-ND` | N | Digi-Key Part Number for ordering (name of disitributor if not available through DK)
+Package | `0805` | N | Component package (if a common package)
 NewDesigns | `Yes` | N | If the component should be used in new designs. If a component should not be used set to `DO NOT USE` and enable `Show`.
+Stocked | `Tape` | N | Should we keep this part on hand, if so what format
+Style | `SMD` | N | `SMD` or `THT` or `Custom`. Useful for filtering BOMs for assembly service
 
 ### Required Metadata
 
@@ -160,7 +161,7 @@ Getting footprints online is encouraged, but sometimes they aren't perfect.
     ![screenshot of properly marked footprint](./docs/tht_marking.png)
 1. Silksreen designs in component footprints must be drawn with a line width of 0.12mm.
 
-1. The reference designator should be set to the `User.Comments` layer to avoid cluttering the silkscreen.
+1. The reference designator should be set to the `User.Comments` layer or hidden to avoid cluttering the silkscreen.
 
 ## 3DModels
 
@@ -172,6 +173,6 @@ If possible, models should not require positioning or scaling to match the footp
 
 * 3D Model Naming Guidlines
 
-    The name of the folder for 3D Models should match the footprint name.
+    The name of 3D Models should match the footprint name.
 
 Guidelines are based off [KiCad Library Convention](https://klc.kicad.org/).
