@@ -560,11 +560,11 @@
         )
       )
     )
-    (symbol "formula:C_0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "C_0.1uF" (id 1) (at 0.635 -2.54 0)
+      (property "Value" "0.1uF" (id 1) (at 0.635 -2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:C_0805_OEM" (id 2) (at 0.9652 -3.81 0)
@@ -588,7 +588,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "C_0.1uF_0_1"
+      (symbol "0.1uF_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -606,7 +606,7 @@
           (fill (type none))
         )
       )
-      (symbol "C_0.1uF_1_1"
+      (symbol "0.1uF_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -2656,12 +2656,12 @@
     (pin "1" (uuid e358bf65-b5aa-4eb9-a111-81596a4de4c6))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 92.71 95.25 90) (unit 1)
+  (symbol (lib_id "OEM:0.1uF") (at 92.71 95.25 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 0eefdf47-2dba-4cec-8ee4-3d0e1bc88e1f)
     (property "Reference" "C3" (id 0) (at 92.71 87.63 90))
-    (property "Value" "C_0.1uF" (id 1) (at 92.71 90.17 90))
-    (property "Footprint" "footprints:C_0603_1608Metric" (id 2) (at 96.52 94.2848 0)
+    (property "Value" "0.1uF" (id 1) (at 92.71 90.17 90))
+    (property "Footprint" "OEM:C_0603" (id 2) (at 96.52 94.2848 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf" (id 3) (at 90.17 94.615 0)
@@ -3043,12 +3043,12 @@
     (pin "1" (uuid 221bbc4d-02f2-4a85-b65c-3023b85687cf))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 185.42 67.31 90) (unit 1)
+  (symbol (lib_id "OEM:0.1uF") (at 185.42 67.31 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 401299e0-3e60-4765-8adc-0893b99588e6)
     (property "Reference" "C4" (id 0) (at 185.42 59.69 90))
-    (property "Value" "C_0.1uF" (id 1) (at 185.42 62.23 90))
-    (property "Footprint" "footprints:C_0603_1608Metric" (id 2) (at 189.23 66.3448 0)
+    (property "Value" "0.1uF" (id 1) (at 185.42 62.23 90))
+    (property "Footprint" "OEM:C_0603" (id 2) (at 189.23 66.3448 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf" (id 3) (at 182.88 66.675 0)
@@ -3067,12 +3067,12 @@
     (pin "2" (uuid 509b175d-adeb-4517-a5f4-3512c3ff0f6e))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 100.33 34.29 90) (unit 1)
+  (symbol (lib_id "OEM:0.1uF") (at 100.33 34.29 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 451d3ef5-b84a-41a9-92b9-98f8173c48de)
     (property "Reference" "C2" (id 0) (at 100.33 26.67 90))
-    (property "Value" "C_0.1uF" (id 1) (at 100.33 29.21 90))
-    (property "Footprint" "footprints:C_0603_1608Metric" (id 2) (at 104.14 33.3248 0)
+    (property "Value" "0.1uF" (id 1) (at 100.33 29.21 90))
+    (property "Footprint" "OEM:C_0603" (id 2) (at 104.14 33.3248 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf" (id 3) (at 97.79 33.655 0)
@@ -4046,13 +4046,13 @@
       (reference "C1") (unit 1) (value "C_22uF") (footprint "footprints:C_1206_OEM")
     )
     (path "/451d3ef5-b84a-41a9-92b9-98f8173c48de"
-      (reference "C2") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0603_1608Metric")
+      (reference "C2") (unit 1) (value "0.1uF") (footprint "OEM:C_0603")
     )
     (path "/0eefdf47-2dba-4cec-8ee4-3d0e1bc88e1f"
-      (reference "C3") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0603_1608Metric")
+      (reference "C3") (unit 1) (value "0.1uF") (footprint "OEM:C_0603")
     )
     (path "/401299e0-3e60-4765-8adc-0893b99588e6"
-      (reference "C4") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0603_1608Metric")
+      (reference "C4") (unit 1) (value "0.1uF") (footprint "OEM:C_0603")
     )
     (path "/9c988175-1b95-4455-950e-43db96ec469d"
       (reference "D1") (unit 1) (value "BAS40-00") (footprint "Package_TO_SOT_SMD:SOT-23")

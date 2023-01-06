@@ -666,11 +666,11 @@
         )
       )
     )
-    (symbol "formula:C_0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "C_0.1uF" (id 1) (at 0.635 -2.54 0)
+      (property "Value" "0.1uF" (id 1) (at 0.635 -2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:C_0805_OEM" (id 2) (at 0.9652 -3.81 0)
@@ -694,7 +694,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "C_0.1uF_0_1"
+      (symbol "0.1uF_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -712,7 +712,7 @@
           (fill (type none))
         )
       )
-      (symbol "C_0.1uF_1_1"
+      (symbol "0.1uF_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -5783,11 +5783,11 @@
     (pin "1" (uuid 276f7319-5c10-4d3d-810c-b669947f8979))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 120.65 54.61 270) (unit 1)
+  (symbol (lib_id "OEM:0.1uF") (at 120.65 54.61 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid b6ce770d-8a32-4cb2-a820-c92d6ba0bfa3)
     (property "Reference" "C6" (id 0) (at 120.65 48.2092 90))
-    (property "Value" "C_0.1uF" (id 1) (at 120.65 50.5206 90))
+    (property "Value" "0.1uF" (id 1) (at 120.65 50.5206 90))
     (property "Footprint" "OEM:C_0603" (id 2) (at 116.84 55.5752 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -6054,13 +6054,13 @@
     (pin "1" (uuid 7a41500d-9d9e-47e0-aba6-71506fa03523))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 220.98 60.96 0) (unit 1)
+  (symbol (lib_id "OEM:0.1uF") (at 220.98 60.96 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid e105d9ea-aca1-4dcb-b159-8d162029cf7d)
     (property "Reference" "C10" (id 0) (at 223.901 60.1253 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "C_0.1uF" (id 1) (at 223.901 62.6622 0)
+    (property "Value" "0.1uF" (id 1) (at 223.901 62.6622 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "footprints:C_0805_OEM" (id 2) (at 221.9452 64.77 0)
@@ -6326,7 +6326,7 @@
       (reference "C5") (unit 1) (value "C_10uF") (footprint "OEM:C_0603")
     )
     (path "/b6ce770d-8a32-4cb2-a820-c92d6ba0bfa3"
-      (reference "C6") (unit 1) (value "C_0.1uF") (footprint "OEM:C_0603")
+      (reference "C6") (unit 1) (value "0.1uF") (footprint "OEM:C_0603")
     )
     (path "/9d71c2d3-ba3b-4f4b-9a1a-ba2333042177"
       (reference "C7") (unit 1) (value "C_100uF+") (footprint "footprints:C_100uF+")
@@ -6338,7 +6338,7 @@
       (reference "C9") (unit 1) (value "C_1uF") (footprint "OEM:C_0603")
     )
     (path "/e105d9ea-aca1-4dcb-b159-8d162029cf7d"
-      (reference "C10") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0805_OEM")
+      (reference "C10") (unit 1) (value "0.1uF") (footprint "footprints:C_0805_OEM")
     )
     (path "/c789ceb1-aab9-4f42-9124-30c076ad5773"
       (reference "D1") (unit 1) (value "Diode_600V_1A_SM") (footprint "footprints:Diode_600V_1A_SM")

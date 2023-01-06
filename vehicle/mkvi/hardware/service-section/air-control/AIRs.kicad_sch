@@ -628,11 +628,11 @@
         )
       )
     )
-    (symbol "formula:C_0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "C_0.1uF" (id 1) (at 0.635 -2.54 0)
+      (property "Value" "0.1uF" (id 1) (at 0.635 -2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:C_0805_OEM" (id 2) (at 0.9652 -3.81 0)
@@ -656,7 +656,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "C_0.1uF_0_1"
+      (symbol "0.1uF_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -674,7 +674,7 @@
           (fill (type none))
         )
       )
-      (symbol "C_0.1uF_1_1"
+      (symbol "0.1uF_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -3678,13 +3678,13 @@
     (pin "2" (uuid c990472a-dc14-4cd4-b89a-5fc21614e9cf))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 43.18 55.88 0) (unit 1)
+  (symbol (lib_id "OEM:0.1uF") (at 43.18 55.88 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 350645e4-a3f1-4cc3-b233-3d6546dc9889)
     (property "Reference" "C1" (id 0) (at 36.83 59.69 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "C_0.1uF" (id 1) (at 39.37 59.69 90)
+    (property "Value" "0.1uF" (id 1) (at 39.37 59.69 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "OEM:C_0603" (id 2) (at 44.1452 59.69 0)
@@ -4997,7 +4997,7 @@
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/350645e4-a3f1-4cc3-b233-3d6546dc9889"
-      (reference "C1") (unit 1) (value "C_0.1uF") (footprint "OEM:C_0603")
+      (reference "C1") (unit 1) (value "0.1uF") (footprint "OEM:C_0603")
     )
     (path "/7a8f9868-6d2b-42c2-909a-8349e8c8731a"
       (reference "C2") (unit 1) (value "C_100pF") (footprint "OEM:C_0603")
@@ -5009,7 +5009,7 @@
       (reference "C4") (unit 1) (value "C_30pF") (footprint "OEM:C_0603")
     )
     (path "/e3f3d5e1-da9e-46de-bd71-dbc7397de469/e7962417-9830-4a17-8415-f2e439b84b2e"
-      (reference "C7") (unit 1) (value "C_0.1uF") (footprint "OEM:C_0603")
+      (reference "C7") (unit 1) (value "0.1uF") (footprint "OEM:C_0603")
     )
     (path "/85040701-9677-45d4-bea7-af9dc719ff20"
       (reference "D2") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")

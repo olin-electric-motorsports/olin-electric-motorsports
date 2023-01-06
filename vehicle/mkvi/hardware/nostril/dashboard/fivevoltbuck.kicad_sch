@@ -5,11 +5,11 @@
   (paper "A4")
 
   (lib_symbols
-    (symbol "formula:C_0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "C_0.1uF" (id 1) (at 0.635 -2.54 0)
+      (property "Value" "0.1uF" (id 1) (at 0.635 -2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:C_0805_OEM" (id 2) (at 0.9652 -3.81 0)
@@ -33,7 +33,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "C_0.1uF_0_1"
+      (symbol "0.1uF_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -51,7 +51,7 @@
           (fill (type none))
         )
       )
-      (symbol "C_0.1uF_1_1"
+      (symbol "0.1uF_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1206,11 +1206,11 @@
     (pin "1" (uuid 16f7884a-141f-4bc0-b280-4e0e6879ff78))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 157.48 90.17 90) (unit 1)
+  (symbol (lib_id "OEM:0.1uF") (at 157.48 90.17 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 35471649-84a8-44fb-9b2e-26d2be77b0a0)
     (property "Reference" "C3" (id 0) (at 153.924 91.694 90))
-    (property "Value" "C_0.1uF" (id 1) (at 152.4 89.154 90))
+    (property "Value" "0.1uF" (id 1) (at 152.4 89.154 90))
     (property "Footprint" "footprints:C_0805_OEM" (id 2) (at 161.29 89.2048 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1443,7 +1443,7 @@
     (property "Value" "C_2.2uF" (id 1) (at 113.792 90.17 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:C_0603_1608Metric" (id 2) (at 117.8052 100.33 0)
+    (property "Footprint" "OEM:C_0603" (id 2) (at 117.8052 100.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.yageo.com/documents/recent/UPY-GPHC_X5R_4V-to-50V_25.pdf" (id 3) (at 117.475 93.98 0)
@@ -1562,13 +1562,13 @@
     (pin "2" (uuid 428b66b8-f3af-4c4d-8804-d72b2398fa4d))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 109.22 95.25 0) (unit 1)
+  (symbol (lib_id "OEM:0.1uF") (at 109.22 95.25 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid bb1f6eda-7b70-4d28-a060-c0cefbbbd7c7)
     (property "Reference" "C1" (id 0) (at 110.49 99.06 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "C_0.1uF" (id 1) (at 104.902 88.9 0)
+    (property "Value" "0.1uF" (id 1) (at 104.902 88.9 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "footprints:C_0805_OEM" (id 2) (at 110.1852 99.06 0)
