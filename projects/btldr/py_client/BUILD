@@ -6,18 +6,18 @@ py_binary(
         "cli.py",
     ],
     main = "cli.py",
+    visibility = ["//visibility:public"],
     deps = [
         ":btldr",
     ],
-    visibility = ["//visibility:public"],
 )
 
 py_library(
     name = "btldr",
     srcs = [
+        "__init__.py",
         "btldr.py",
         "btldr_database.py",
-        "__init__.py",
     ],
     visibility = ["//visibility:public"],
 )
