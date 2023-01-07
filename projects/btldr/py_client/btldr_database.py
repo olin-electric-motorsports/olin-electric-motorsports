@@ -24,7 +24,7 @@ class BtldrDatabase(DBC):
 
         self.refresh()
 
-    def _make_query_msg(self: int) -> CANMessage:
+    def _make_query_msg(self) -> CANMessage:
         timestamp = MessageSignal("timestamp", start=0, length=64, unit="seconds", scale=1, offset=0)
 
         query = CANMessage(
@@ -37,7 +37,7 @@ class BtldrDatabase(DBC):
 
         return query
 
-    def _make_query_response_msg(self: int) -> CANMessage:
+    def _make_query_response_msg(self) -> CANMessage:
         bootloader_version = MessageSignal(
             "bootloader_version",
             start=0,
@@ -91,7 +91,7 @@ class BtldrDatabase(DBC):
 
         return query_response
 
-    def _make_reset_msg(self: int) -> CANMessage:
+    def _make_reset_msg(self) -> CANMessage:
         request = MessageSignal(
             "update_request",
             start=0,
@@ -109,7 +109,7 @@ class BtldrDatabase(DBC):
 
         return reset
 
-    def _make_reset_response_msg(self: int) -> CANMessage:
+    def _make_reset_response_msg(self) -> CANMessage:
         status = MessageSignal(
             name="status",
             start=0,
@@ -137,7 +137,7 @@ class BtldrDatabase(DBC):
 
         return reset_response
 
-    def _make_request_msg(self: int) -> CANMessage:
+    def _make_request_msg(self) -> CANMessage:
         type = MessageSignal(
             name="type",
             start=0,
@@ -164,7 +164,7 @@ class BtldrDatabase(DBC):
 
         return request
 
-    def _make_request_response_msg(self: int) -> CANMessage:
+    def _make_request_response_msg(self) -> CANMessage:
         error_code = MessageSignal(
             name="error_code",
             start=0,
@@ -199,7 +199,7 @@ class BtldrDatabase(DBC):
 
         return request_response
 
-    def _make_data_msg(self: int) -> CANMessage:
+    def _make_data_msg(self) -> CANMessage:
         data = MessageSignal(
             name="data",
             start=0,
@@ -215,7 +215,7 @@ class BtldrDatabase(DBC):
 
         return data_msg
 
-    def _make_data_response_msg(self: int) -> CANMessage:
+    def _make_data_response_msg(self) -> CANMessage:
         error_code = MessageSignal(
             name="error_code",
             start=0,
