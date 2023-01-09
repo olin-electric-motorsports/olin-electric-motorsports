@@ -126,9 +126,11 @@ def _bin_file_impl(ctx):
     args.add("-O", "binary")  # Output a binary
     args.add("-R", ".eeprom")  # Don't include .eeprom
 
+    print("Objcopy Executable: {}".format(cc_toolchain.objcopy_executable))
+    # print(cc_toolchain)
     ctx.actions.run(
         mnemonic = "GenerateBinary",
-        executable = cc_toolchain.objcopy_executable,
+        executable = "/home/ayush/Documents/formula/olin-electric-motorsports/bazel-olin-electric-motorsports/external/arm_none_eabi/toolchain/arm-none-eabi/linux_x86_64/arm-none-eabi-objcopy",
         arguments = [args],
         inputs = depset([input_file]),
         outputs = [output_file],
