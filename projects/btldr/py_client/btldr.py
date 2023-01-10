@@ -2,7 +2,6 @@ import math
 import os
 import time
 import logging
-import tqdm
 
 from cantools.database import load_file
 from can import Message as CANMessage
