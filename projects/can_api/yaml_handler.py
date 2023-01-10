@@ -91,11 +91,17 @@ class YamlParser:
 
             if sig_type == "enum":
                 choices = dict(enumerate(sig["unit"]["values"]))
-            elif sig_type == "uint8_t" or sig_type == "uint16_t" or sig_type == "uint64_t":
+            elif (
+                sig_type == "uint8_t"
+                or sig_type == "uint16_t"
+                or sig_type == "uint64_t"
+            ):
                 unit = sig["unit"]["name"]
                 offset = eval(str(sig["unit"]["offset"]))
                 scale = eval(str(sig["unit"]["scale"]))
-            elif sig_type == "int8_t" or sig_type == "int16_t" or sig_type == "uint64_t":
+            elif (
+                sig_type == "int8_t" or sig_type == "int16_t" or sig_type == "uint64_t"
+            ):
                 is_signed = True
                 unit = sig["unit"]["name"]
                 offset = eval(str(sig["unit"]["offset"]))
