@@ -36,10 +36,12 @@ def sigint(signum, frame):
         exit_flag = True
         print("\n--- ping statistics ---")
 
-        print("{sent} packets transmitted, {received} received".format(
-            sent=ping_stats["sent"],
-            received=ping_stats["received"],
-        ))
+        print(
+            "{sent} packets transmitted, {received} received".format(
+                sent=ping_stats["sent"],
+                received=ping_stats["received"],
+            )
+        )
 
         exit(0)
 
@@ -55,8 +57,10 @@ The @click.pass_context just means that all of the members of the group (the
 functions below wherever you see @updatr.command()) will get to access the
 context object, which we use to store the bootloader manager.
 """
+
+
 @click.group()
-@click.option('-d', '--device', required=True, help='CAN network device')
+@click.option("-d", "--device", required=True, help="CAN network device")
 @click.pass_context
 def updatr(ctx, device):
     bm = BtldrManager()
@@ -71,12 +75,15 @@ and returns a string that contains the resulting timestamp.
 
 We use this in the ping command to display when the target device was flashed.
 """
+
+
 def flash_time_string(delta):
     flashed_time = time.localtime(time.time() - delta)
     return time.strftime("%Y/%m/%d %H:%M:%S", flashed_time)
 
+
 @updatr.command()
-@click.argument('target_id')
+@click.argument("target_id")
 @pass_btldr_manager
 def ping(btldr_manager, target_id):
     while True:
@@ -85,23 +92,27 @@ def ping(btldr_manager, target_id):
 
         if resp is not None:
             ping_stats["received"] += 1
-            print("64 bytes from {common_name} ({btldr_id}): image={image} chip={chip} flashed={flashed}".format(
-                common_name="bms", # TODO: hardcoded name
-                btldr_id=target_id,
-                image=resp["current_image"],
-                chip=resp["chip_id"],
-                flashed=flash_time_string(resp["time_delta"]),
-            ))
+            print(
+                "64 bytes from {common_name} ({btldr_id}): image={image} chip={chip} flashed={flashed}".format(
+                    common_name="bms",  # TODO: hardcoded name
+                    btldr_id=target_id,
+                    image=resp["current_image"],
+                    chip=resp["chip_id"],
+                    flashed=flash_time_string(resp["time_delta"]),
+                )
+            )
             time.sleep(1 - resp["elapsed_time_ns"] / 1e9)
         else:
             print("No response")
 
+
 @updatr.command()
-@click.argument('target_id')
-@click.argument('image_path')
+@click.argument("target_id")
+@click.argument("image_path")
 @pass_btldr_manager
 def flash(btldr_manager, target_id, image_path):
     btldr_manager.flash(int(target_id, 0), image_path, 1)
+
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, sigint)

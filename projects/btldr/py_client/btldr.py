@@ -110,8 +110,7 @@ class BtldrManager:
                 if remaining_size != data_response["remaining_size"]:
                     logging.warning(
                         "Mismatch in amount of data remaining, flash may fail: Local is %i, remote is %i"
-                        % (remaining_size,
-                        data_response["remaining_size"]),
+                        % (remaining_size, data_response["remaining_size"]),
                     )
 
         self.software_reset(ecu_id, False)

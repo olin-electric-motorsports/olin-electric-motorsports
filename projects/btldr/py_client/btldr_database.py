@@ -25,7 +25,9 @@ class BtldrDatabase(DBC):
         self.refresh()
 
     def _make_query_msg(self) -> CANMessage:
-        timestamp = MessageSignal("timestamp", start=0, length=64, unit="seconds", scale=1, offset=0)
+        timestamp = MessageSignal(
+            "timestamp", start=0, length=64, unit="seconds", scale=1, offset=0
+        )
 
         query = CANMessage(
             frame_id=0,
