@@ -1,5 +1,6 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+load("@bazel_embedded/tools/openocd:defs.bzl", "openocd_flash")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 load("//vehicle/mkv:ecus.bzl", "ECUS")
 
