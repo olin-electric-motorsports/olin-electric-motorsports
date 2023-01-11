@@ -1,6 +1,6 @@
-load("//bazel:defs.bzl", "cc_firmware")
+load("//bazel:defs.bzl", "cc_arm_firmware")
 
-cc_firmware(
+cc_arm_firmware(
     name = "test_stm_image",
     srcs = [
         "test.c",
