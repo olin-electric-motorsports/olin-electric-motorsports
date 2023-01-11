@@ -71,7 +71,9 @@ _OPT_FEATURE = feature(
         flag_set(
             actions = _LD_ALL_ACTIONS,
             flag_groups = [
-                flag_group(flags = ["-flto", "-Wl,--gc-sections"]),
+                flag_group(
+                    flags = ["-Wl,--gc-sections"],
+                ),
             ],
         ),
     ],
@@ -85,7 +87,7 @@ _DEFAULT_FEATURE = feature(
         flag_set(
             actions = _C_ALL_COMPILE_ACTIONS,
             flag_groups = [
-                flag_group(flags = ["-fno-jump-tables", "-std=c99"]),
+                flag_group(flags = ["-fno-jump-tables"]),
             ],
         ),
     ],

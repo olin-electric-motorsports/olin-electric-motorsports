@@ -1,6 +1,7 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("//vehicle/mkv:ecus.bzl", "ECUS")
 
 ### cc_firmware
 
@@ -19,10 +20,10 @@ def _eep_file_impl(ctx):
     args = ctx.actions.args()
     args.add(input_file)
     args.add(output_file)
-    args.add("-O", "ihex")  # Output a binary
-    args.add("-j", ".eeprom")  # Don't include .eeprom
-    args.add("--change-section-lma", ".eeprom=0")
+    args.add("-j", ".eeprom")  # Only include eeprom
+    args.add("--change-section-lma", ".eeprom=0")  # Reset load address to zero
     args.add("--set-section-flags=.eeprom=alloc,load")
+    args.add("-O", "ihex")  # Output a hex file
 
     ctx.actions.run(
         mnemonic = "GenerateEEP",
@@ -154,7 +155,7 @@ _bin_file = rule(
         ),
         # TODO: (@jack-greenberg) Integrate btldr
         # "_patch_header": attr.label(
-        #     default = Label("//tools:patch_image_header"),
+        #     default = Label("//projects/btldr/tools:patch_image_header"),
         # )
     },
     executable = False,
@@ -170,24 +171,47 @@ def _flash_impl(ctx):
     input_file = ctx.file.binary
     script = ctx.actions.declare_file("{}.sh".format(ctx.label.name))
 
-    ctx.actions.expand_template(
-        template = template,
-        output = script,
-        is_executable = True,
-        substitutions = {
-            "{part}": ctx.attr.part,
-            "{binary}": input_file.short_path,
-            "{config}": ctx.file.avr_config.path,
-        },
-    )
+    if ctx.file.btldr:
+        runfiles = ctx.runfiles(files = [
+            ctx.file.binary,
+            ctx.file.avr_config,
+            ctx.file.btldr,
+            ctx.file.eeprom,
+        ])
+
+        ctx.actions.expand_template(
+            template = template,
+            output = script,
+            is_executable = True,
+            substitutions = {
+                "{part}": ctx.attr.part,
+                "{binary}": input_file.short_path,
+                "{config}": ctx.file.avr_config.path,
+                "{eeprom}": ctx.file.eeprom.short_path,
+                "{btldr}": ctx.file.btldr.short_path,
+            },
+        )
+    else:
+        runfiles = ctx.runfiles(files = [
+            ctx.file.binary,
+            ctx.file.avr_config,
+        ])
+
+        ctx.actions.expand_template(
+            template = template,
+            output = script,
+            is_executable = True,
+            substitutions = {
+                "{part}": ctx.attr.part,
+                "{binary}": input_file.short_path,
+                "{config}": ctx.file.avr_config.path,
+            },
+        )
 
     return [
         DefaultInfo(
             executable = script,
-            runfiles = ctx.runfiles(files = [
-                ctx.file.binary,
-                ctx.file.avr_config,
-            ]),
+            runfiles = runfiles,
         ),
     ]
 
@@ -202,6 +226,16 @@ _flash = rule(
         "binary": attr.label(
             doc = "Binary file for flashing",
             mandatory = True,
+            allow_single_file = True,
+        ),
+        "eeprom": attr.label(
+            doc = "EEPROM file",
+            mandatory = False,
+            allow_single_file = True,
+        ),
+        "btldr": attr.label(
+            doc = "Hex file for btldr",
+            mandatory = False,
             allow_single_file = True,
         ),
         "method": attr.string(
@@ -229,9 +263,34 @@ _flash = rule(
 # Macro to generate all the proper files
 def cc_firmware(name, **kwargs):
     # Generates .elf file
+
+    data = []
+    if kwargs.get("data"):
+        data = kwargs.pop("data")
+
+    defines = []
+    if kwargs.get("defines"):
+        defines = kwargs.pop("defines")
+
+    copts = []
+    if kwargs.get("copts"):
+        copts = kwargs.pop("copts")
+
+    linkopts = []
+    if kwargs.get("linkopts"):
+        linkopts = kwargs.pop("linkopts")
+
+    btldr = None
+    if kwargs.get("btldr"):
+        btldr = kwargs.pop("btldr")
+        linkopts.append("-flto")
+        linkopts.append("-Wl,--gc-sections")
+        data.append(btldr + ".hex")
+        defines.append("BTLDR_ID=" + ECUS[name]["btldr_id"])
+
     cc_binary(
         name = "{}.elf".format(name),
-        linkopts = select({
+        linkopts = linkopts + select({
             "//bazel/constraints:atmega16m1": ["-T $(location //scripts/ldscripts:atmega16m1.ld)"],
             "//bazel/constraints:atmega64m1": ["-T $(location //scripts/ldscripts:atmega64m1.ld)"],
             "//bazel/constraints:stm32f103c8t6": ["-T $(location //scripts/ldscripts:stm32f103c8t6.ld)", "--specs=nosys.specs", "-Wl,-Map=linker.map", "-Wl,-cref", "-Wl,--gc-sections"],
@@ -243,12 +302,14 @@ def cc_firmware(name, **kwargs):
             "//scripts/ldscripts:atmega64m1.ld",
             "//scripts/ldscripts:stm32f103c8t6.ld",
         ],
-        copts = select({
+        copts = copts + select({
             "//bazel/constraints:hitl": ["-DBOARD_FIRMWARE_TEST"],
             "//bazel/constraints:hackerboard": ["-DBOARD_HACKERBOARD"],
             "//bazel/constraints:stm32f103c8t6": ["-mthumb", "-mcpu=cortex-m3", "-mlittle-endian", "-mthumb-interwork"],
             "//conditions:default": [],
         }),
+        defines = defines,
+        data = data,
         **kwargs
     )
 
@@ -256,18 +317,21 @@ def cc_firmware(name, **kwargs):
     _bin_file(
         name = "{}.bin".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates .hex file
     _hex_file(
         name = "{}.hex".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates .eep file
     _eep_file(
         name = "{}.eep".format(name),
         elf = ":{}.elf".format(name),
+        visibility = ["//visibility:public"],  # Used for btldr
     )
 
     # Generates tarball file with all
@@ -283,15 +347,43 @@ def cc_firmware(name, **kwargs):
     )
 
     # Generates flash script
-    # Invoke with `bazel build --config=16m1 //path/to:target -- -c usbasp`
+    # Invoke with `bazel run --config=16m1 //path/to:target -- -c usbasp`
+
+    bin_file = ":{}.bin".format(name)
+    btldr_hex = None
+    eeprom = None
+    template = "//bazel/tools:avrdude.sh.tmpl"
+
+    if btldr:
+        native.genrule(
+            name = "{}_patched_bin".format(name),
+            srcs = [
+                "{}.bin".format(name),
+            ],
+            outs = [
+                "{}_patched.bin".format(name),
+            ],
+            tools = [
+                "//projects/btldr/tools:patch_header",
+            ],
+            cmd = "$(location //projects/btldr/tools:patch_header) $(SRCS) $(OUTS)",
+        )
+        bin_file = ":{}_patched.bin".format(name)
+        btldr_hex = "//projects/btldr:{}_btldr.hex".format(name)
+        eeprom = "//projects/btldr:{}_btldr.eep".format(name)
+        template = "//bazel/tools:avrdude-btldr.sh.tmpl"
+
     _flash(
         name = name,
-        binary = "{}.bin".format(name),
+        binary = bin_file,
+        eeprom = eeprom,
+        btldr = btldr_hex,
         method = select({
             "//bazel/constraints:avr": "avrdude",
             "@platforms//cpu:arm": "openocd",
             "//conditions:default": "",
         }),
+        template = template,
         part = select({
             "//bazel/constraints:atmega16m1": "16m1",
             "//bazel/constraints:atmega328p": "m328p",

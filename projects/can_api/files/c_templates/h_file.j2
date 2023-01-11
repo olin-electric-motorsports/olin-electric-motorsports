@@ -1,7 +1,17 @@
+#pragma once
 #include <stdint.h>
 
 #include "libs/can/api.h"
 #include "can_tools.h"
+
+/*
+ * Enums
+ */
+{% for enum in choices %}
+enum {{ enum["name"] }}_e { {% for choice in enum["values"] %}
+    {{ enum["name"]|upper }}_{{ choice|upper }},{% endfor %}
+};
+{% endfor %}
 
 /*
  * Initialize the {{ node.name }} CAN peripheral

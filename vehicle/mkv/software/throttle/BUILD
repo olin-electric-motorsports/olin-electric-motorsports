@@ -11,6 +11,7 @@ cc_firmware(
         "throttle.c",
         "throttle_config.h",
     ],
+    btldr = "//projects/btldr:throttle_btldr",
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
@@ -22,6 +23,7 @@ cc_firmware(
         "//libs/can",
         "//libs/gpio",
         "//libs/timer",
+        "//projects/btldr:btldr_lib",
     ],
 )
 

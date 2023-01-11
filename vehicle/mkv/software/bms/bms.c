@@ -15,24 +15,19 @@
 #include "vehicle/mkv/software/bms/utils/fault.h"
 #include "vehicle/mkv/software/bms/utils/mux.h"
 
-enum State {
-    INIT = 0,
-    IDLE,
-    DISCHARGING,
-    CHARGING,
-    FAULT,
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
+
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
 };
 
-enum AIR_State {
-    AIR_STATE_INIT,
-    AIR_STATE_IDLE,
-    AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED,
-    AIR_STATE_PRECHARGE,
-    AIR_STATE_TS_ACTIVE,
-    AIR_STATE_DISCHARGE,
-    AIR_STATE_FAULT,
-} air_state
-    = AIR_STATE_IDLE;
+enum air_state_e air_state = AIR_STATE_IDLE;
 
 /*
  * Interrupts
@@ -119,8 +114,8 @@ bail:
  * Primary state machine function
  */
 static void state_machine_run(void) {
-    if (bms_core.bms_fault_state != BMS_FAULT_NONE) {
-        bms_core.bms_state = FAULT;
+    if (bms_core.bms_fault != BMS_FAULT_NONE) {
+        bms_core.bms_state = BMS_STATE_FAULT;
         gpio_clear_pin(BMS_RELAY_LSD);
     }
 
@@ -139,7 +134,7 @@ static void state_machine_run(void) {
 
         if (bms_metrics.voltage_pec_error_count >= MAX_PEC_IN_A_ROW) {
             set_fault(BMS_FAULT_PEC);
-            bms_core.bms_state = FAULT;
+            bms_core.bms_state = BMS_STATE_FAULT;
         }
         return;
     } else {
@@ -161,11 +156,11 @@ static void state_machine_run(void) {
 
     if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
-        bms_core.bms_state = FAULT;
+        bms_core.bms_state = BMS_STATE_FAULT;
         return;
     } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_OVERTEMPERATURE);
-        bms_core.bms_state = FAULT;
+        bms_core.bms_state = BMS_STATE_FAULT;
         return;
     }
 
@@ -177,7 +172,7 @@ static void state_machine_run(void) {
 
         if (bms_metrics.temperature_pec_error_count >= MAX_PEC_IN_A_ROW) {
             set_fault(BMS_FAULT_PEC);
-            bms_core.bms_state = FAULT;
+            bms_core.bms_state = BMS_STATE_FAULT;
         }
     } else {
         bms_metrics.temperature_pec_error_count = 0;
@@ -197,45 +192,45 @@ static void state_machine_run(void) {
     bms_sense.current_vout = vout;
 
     switch (bms_core.bms_state) {
-        case IDLE: {
+        case BMS_STATE_IDLE: {
             gpio_set_pin(BMS_RELAY_LSD);
 
             if (uv > 0) {
                 set_fault(BMS_FAULT_UNDERVOLTAGE);
-                bms_core.bms_state = FAULT;
+                bms_core.bms_state = BMS_STATE_FAULT;
             } else if (ov > 0) {
                 set_fault(BMS_FAULT_OVERVOLTAGE);
-                bms_core.bms_state = FAULT;
+                bms_core.bms_state = BMS_STATE_FAULT;
             }
 
             if ((air_state != AIR_STATE_IDLE) && (air_state != AIR_STATE_INIT)
                 && (air_state != AIR_STATE_FAULT)) {
-                bms_core.bms_state = DISCHARGING;
+                bms_core.bms_state = BMS_STATE_DISCHARGING;
             }
 
             if (can_poll_receive_bms_charging() == 0) {
                 can_receive_bms_charging();
                 if (bms_charging.charge_enable == true) {
-                    bms_core.bms_state = CHARGING;
+                    bms_core.bms_state = BMS_STATE_CHARGING;
                 }
             }
         } break;
-        case DISCHARGING: {
+        case BMS_STATE_DISCHARGING: {
             gpio_set_pin(BMS_RELAY_LSD);
 
             if (air_state == AIR_STATE_IDLE) {
-                bms_core.bms_state = IDLE;
+                bms_core.bms_state = BMS_STATE_IDLE;
             }
 
             if (uv > 0) {
                 set_fault(BMS_FAULT_UNDERVOLTAGE);
-                bms_core.bms_state = FAULT;
+                bms_core.bms_state = BMS_STATE_FAULT;
             } else if (ov > 0) {
                 set_fault(BMS_FAULT_OVERVOLTAGE);
-                bms_core.bms_state = FAULT;
+                bms_core.bms_state = BMS_STATE_FAULT;
             }
         } break;
-        case CHARGING: {
+        case BMS_STATE_CHARGING: {
             gpio_set_pin(BMS_RELAY_LSD);
             gpio_set_pin(CHARGE_ENABLE1);
             gpio_set_pin(CHARGE_ENABLE2);
@@ -243,19 +238,19 @@ static void state_machine_run(void) {
             if (ov > 0) {
                 gpio_clear_pin(CHARGE_ENABLE1);
                 gpio_clear_pin(CHARGE_ENABLE2);
-                bms_core.bms_state = IDLE;
+                bms_core.bms_state = BMS_STATE_IDLE;
             }
 
             if (can_poll_receive_bms_charging() == 0) {
                 can_receive_bms_charging();
                 if (bms_charging.charge_enable == false) {
-                    bms_core.bms_state = IDLE;
+                    bms_core.bms_state = BMS_STATE_IDLE;
                     gpio_clear_pin(CHARGE_ENABLE1);
                     gpio_clear_pin(CHARGE_ENABLE2);
                 }
             }
         } break;
-        case FAULT: {
+        case BMS_STATE_FAULT: {
             gpio_clear_pin(CHARGE_ENABLE1);
             gpio_clear_pin(CHARGE_ENABLE2);
             gpio_clear_pin(BMS_RELAY_LSD);
@@ -266,10 +261,10 @@ static void state_machine_run(void) {
              * we do so by entering CHARGING. Charging begins once we receive
              * the bms_charging message with charge_enable set to true.
              */
-            if (bms_core.bms_fault_state == BMS_FAULT_UNDERVOLTAGE) {
+            if (bms_core.bms_fault == BMS_FAULT_UNDERVOLTAGE) {
                 if (can_poll_receive_bms_charging() == 0) {
                     if (bms_charging.charge_enable == true) {
-                        bms_core.bms_state = CHARGING;
+                        bms_core.bms_state = BMS_STATE_CHARGING;
                     }
                     can_receive_bms_charging();
                 }
@@ -277,8 +272,8 @@ static void state_machine_run(void) {
         } break;
         default: {
             // Just to be safe. This shouldn't happen
-            bms_core.bms_fault_state = BMS_FAULT_DIAGNOSTICS_FAIL;
-            bms_core.bms_state = FAULT;
+            bms_core.bms_fault = BMS_FAULT_DIAGNOSTICS_FAIL;
+            bms_core.bms_state = BMS_STATE_FAULT;
         } break;
     }
 }
@@ -287,6 +282,7 @@ int main(void) {
     sei();
 
     can_init_bms();
+    updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(BMS_RELAY_LSD, OUTPUT);
     gpio_set_mode(RJ45_LEDO, OUTPUT);
@@ -320,11 +316,11 @@ int main(void) {
 
     // Check state of cells
     if (initial_checks() != 0) {
-        bms_core.bms_state = FAULT;
+        bms_core.bms_state = BMS_STATE_FAULT;
         gpio_set_pin(FAULT_LED);
     } else {
         // Close the BMS shutdown circuit relay
-        bms_core.bms_state = IDLE;
+        bms_core.bms_state = BMS_STATE_IDLE;
         gpio_set_pin(BMS_RELAY_LSD);
     }
 
@@ -347,6 +343,8 @@ int main(void) {
             air_state = air_control_critical.air_state;
             can_receive_air_control_critical();
         }
+
+        updater_loop(); // TODO: Can we always update BMS?
 
         if (run_10ms) {
             can_send_bms_core();
