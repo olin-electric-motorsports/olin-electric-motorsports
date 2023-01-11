@@ -1,6 +1,6 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
-load("@bazel_embedded/tools/openocd:defs.bzl", "openocd_flash")
+load("@bazel_embedded//tools/openocd:defs.bzl", "openocd_flash")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 load("//vehicle/mkv:ecus.bzl", "ECUS")
 
@@ -288,6 +288,18 @@ def _hex_file_arm(name, srcs):
         ),
     ]
 
+def _flash_arm(name, image):
+    return openocd_flash(
+        name = name,
+        device_configs = [
+            "target/stm32f1x.cfg"
+        ],
+        image = image,
+        interface_configs = [
+            "interface/stlink.cfg",
+        ],
+        transport = "hla_swd",
+    )
 
 # Macro to generate all the proper files
 def cc_firmware(name, **kwargs):
@@ -497,25 +509,30 @@ def cc_arm_firmware(name, **kwargs):
     eeprom = None
     template = "//bazel/tools:avrdude.sh.tmpl"
 
-    _flash(
+    _flash_arm(
         name = name,
-        binary = bin_file,
-        eeprom = eeprom,
-        btldr = btldr_hex,
-        method = select({
-            "//bazel/constraints:avr": "avrdude",
-            "@platforms//cpu:arm": "openocd",
-            "//conditions:default": "",
-        }),
-        template = template,
-        part = select({
-            "//bazel/constraints:atmega16m1": "16m1",
-            "//bazel/constraints:atmega328p": "m328p",
-            "//bazel/constraints:atmega64m1": "64m1",
-            "//bazel/constraints:stm32f103c8t6": "stm32f103",
-            "//conditions:default": "",
-        }),
+        image = bin_file,
     )
+
+    # _flash(
+    #     name = name,
+    #     binary = bin_file,
+    #     eeprom = eeprom,
+    #     btldr = btldr_hex,
+    #     method = select({
+    #         "//bazel/constraints:avr": "avrdude",
+    #         "@platforms//cpu:arm": "openocd",
+    #         "//conditions:default": "",
+    #     }),
+    #     template = template,
+    #     part = select({
+    #         "//bazel/constraints:atmega16m1": "16m1",
+    #         "//bazel/constraints:atmega328p": "m328p",
+    #         "//bazel/constraints:atmega64m1": "64m1",
+    #         "//bazel/constraints:stm32f103c8t6": "stm32f103",
+    #         "//conditions:default": "",
+    #     }),
+    # )
 
 ### kicad
 

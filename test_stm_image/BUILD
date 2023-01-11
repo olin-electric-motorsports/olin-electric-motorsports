@@ -1,5 +1,4 @@
 load("//bazel:defs.bzl", "cc_arm_firmware")
-load("@bazel_embedded//tools/openocd:defs.bzl", "openocd_flash")
 
 cc_arm_firmware(
     name = "test_stm_image",
@@ -13,16 +12,4 @@ cc_arm_firmware(
     deps = [
         "//third_party/libopencm3:export",
     ],
-)
-
-openocd_flash(
-    name = "main_flash",
-    device_configs = [
-        "target/stm32h7x_dual_bank.cfg",
-    ],
-    image = ":main.stripped",
-    interface_configs = [
-        "interface/stlink.cfg",
-    ],
-    transport = "hla_swd",
 )
