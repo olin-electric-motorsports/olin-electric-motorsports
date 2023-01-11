@@ -292,7 +292,7 @@ def _flash_arm(name, image):
     return openocd_flash(
         name = name,
         device_configs = [
-            "target/stm32f1x.cfg"
+            "target/stm32f1x.cfg",
         ],
         image = image,
         interface_configs = [

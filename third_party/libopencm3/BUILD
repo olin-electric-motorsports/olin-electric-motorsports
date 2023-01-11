@@ -20,7 +20,7 @@ cc_library(
     strip_include_prefix = "hdrs/",
     # strip_include_prefix = "include",
     visibility = ["//visibility:public"],
-    deps = [':compiled_library']
+    deps = [":compiled_library"],
 )
 
 # cc_library(
@@ -29,9 +29,9 @@ cc_library(
 #     visibility = ["//visibility:public"],
 # )
 cc_import(
-    name = 'compiled_library',
-    static_library = 'libopencm3_stm32f1.a',
+    name = "compiled_library",
     hdrs = glob(["*.h"]),
+    static_library = "libopencm3_stm32f1.a",
     alwayslink = 1,
 )
 
