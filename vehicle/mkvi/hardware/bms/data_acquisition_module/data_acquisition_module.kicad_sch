@@ -2208,7 +2208,7 @@
     (uuid fff7896e-8aba-478e-b301-5c5a5abbef27)
   )
 
-  (text "Signal sent by MUX on Peripheral Board\nthrough SDA[DA#] and SCL[DA#]"
+  (text "Signal sent by MUX on CSC Board\nthrough SDA[DA#] and SCL[DA#]"
     (at 16.51 25.4 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 0dac6db5-4510-4850-88c5-79ae7403df6e)
@@ -2250,7 +2250,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 7378a504-9ceb-4148-9d44-9a3185e7f361)
   )
-  (text "From Peripheral Board\n(ADBMS1818 Datasheet)" (at 76.2 175.26 0)
+  (text "From CSC Board\n(ADBMS1818 Datasheet)" (at 76.2 175.26 0)
     (effects (font (size 1.27 1.27) (thickness 0.254) bold) (justify left bottom))
     (uuid 777fd9f4-6df7-4500-8467-c4e039e62a36)
   )
@@ -2286,7 +2286,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid a4467522-1d3e-44b4-8782-84a083ad87f9)
   )
-  (text "5 connections Toward Peripheral" (at 187.96 38.1 0)
+  (text "5 connections Toward CSC" (at 187.96 38.1 0)
     (effects (font (size 1.27 1.27) (thickness 0.254) bold) (justify left bottom))
     (uuid ac312d7b-708a-4611-89c2-fd3184b1f015)
   )
@@ -2299,7 +2299,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid df962f3c-f5d1-40a3-be93-209f5d4b4e4e)
   )
-  (text "Thermistor Board to Peripheral connector" (at 187.96 40.64 0)
+  (text "Thermistor Board to CSC connector" (at 187.96 40.64 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid e414d7c1-d7c5-4350-8326-e32702d1640e)
   )
@@ -3927,19 +3927,13 @@
     (path "/b339b9bc-bd6e-40c0-958a-8506faf5c216"
       (reference "#FLG?") (unit 1) (value "PWR_FLAG") (footprint "")
     )
-    (path "/e133a966-cbb5-46ee-9d5d-8b83fda5d94f"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
     (path "/679c6994-3f2d-4945-a7ca-10c0c8ab73c4"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/b8535b7b-f72a-4e5a-a31e-e5134c610467"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/68e1256f-3d59-4002-9fea-191c220a61d5"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
-    (path "/c05f12cc-770d-42a1-9ac6-eff6031ce0d5"
+    (path "/9a2c08b4-f097-490a-911d-43c387eeadf0"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/b6a9b356-865a-43d8-b5e6-631ec1179fb2"
@@ -3948,10 +3942,16 @@
     (path "/b6eb0375-d564-4fba-a9f6-63d770f08faa"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
+    (path "/b8535b7b-f72a-4e5a-a31e-e5134c610467"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
     (path "/bb11d6b0-7782-4d09-93cf-753e045ad1eb"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
-    (path "/9a2c08b4-f097-490a-911d-43c387eeadf0"
+    (path "/c05f12cc-770d-42a1-9ac6-eff6031ce0d5"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/e133a966-cbb5-46ee-9d5d-8b83fda5d94f"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/3689f78c-e4d0-4113-8bde-50e22f1385d0"
