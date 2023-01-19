@@ -545,7 +545,7 @@
       (property "ki_description" "Single op-amp, general purpose, -40-+85 C, SC-70-5" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "MCP6001T-I-LT_0_1"
+      (symbol "MCP6001_0_1"
         (polyline
           (pts
             (xy -5.08 5.08)
@@ -565,7 +565,7 @@
           (number "5" (effects (font (size 1.27 1.27))))
         )
       )
-      (symbol "MCP6001T-I-LT_1_1"
+      (symbol "MCP6001_1_1"
         (pin output line (at 7.62 0 180) (length 2.54)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -608,13 +608,13 @@
       (property "ki_fp_filters" "R_* Resistor_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_100K_0_1"
+      (symbol "100KR_0_1"
         (rectangle (start -1.016 -2.54) (end 1.016 2.54)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
       )
-      (symbol "R_100K_1_1"
+      (symbol "100KR_1_1"
         (pin passive line (at 0 3.81 270) (length 1.27)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -745,7 +745,7 @@
         )
       )
     )
-    (symbol "formula:SN74LVC1G02DBVR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:SN74LVC1G02DBVR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 17.78 0)
         (effects (font (size 1.524 1.524)))
       )
@@ -824,7 +824,7 @@
         )
       )
     )
-    (symbol "formula:SN74LVC1G08DBVR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:SN74LVC1G08DBVR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 12.7 0)
         (effects (font (size 1.524 1.524)))
       )
@@ -1981,7 +1981,7 @@
     (pin "1" (uuid 191993e7-a094-422c-8491-a7b80edf7820))
   )
 
-  (symbol (lib_id "formula:SN74LVC1G02DBVR") (at 223.901 62.484 0) (unit 1)
+  (symbol (lib_id "OEM:SN74LVC1G02DBVR") (at 223.901 62.484 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 05448852-b474-4240-a805-1576a26f5ce3)
     (property "Reference" "U7" (id 0) (at 230.124 55.88 0)
@@ -2531,7 +2531,7 @@
     (pin "1" (uuid 05a33eb7-3357-487d-b2b3-94672c58ae93))
   )
 
-  (symbol (lib_id "formula:SN74LVC1G02DBVR") (at 186.69 62.611 0) (unit 1)
+  (symbol (lib_id "OEM:SN74LVC1G02DBVR") (at 186.69 62.611 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 700b4ebe-a3d2-4f31-85ba-2943c690b100)
     (property "Reference" "U6" (id 0) (at 192.913 56.007 0)
@@ -2562,7 +2562,7 @@
     (pin "5" (uuid 2ba1e2d8-3ff5-4e5d-8af9-9da4d40b1b5e))
   )
 
-  (symbol (lib_id "formula:SN74LVC1G08DBVR") (at 73.66 66.04 0) (unit 1)
+  (symbol (lib_id "OEM:SN74LVC1G08DBVR") (at 73.66 66.04 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 78cebf88-2178-45fa-acae-5c1321080a5f)
     (property "Reference" "U4" (id 0) (at 68.58 60.96 0)

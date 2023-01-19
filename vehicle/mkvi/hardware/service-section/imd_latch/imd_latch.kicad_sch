@@ -825,7 +825,7 @@
       (property "Reference" "D" (id 0) (at 0 -2.54 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "LED_0805_Amber" (id 1) (at 0 2.54 0)
+      (property "Value" "LED_ORANGE" (id 1) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "footprints:LED_0805_OEM" (id 2) (at -2.54 0 0)
@@ -849,7 +849,7 @@
       (property "ki_fp_filters" "LED*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "LED_0805_Amber_0_1"
+      (symbol "LED_ORANGE_0_1"
         (polyline
           (pts
             (xy -1.27 -1.27)
@@ -899,7 +899,7 @@
           (fill (type none))
         )
       )
-      (symbol "LED_0805_Amber_1_1"
+      (symbol "LED_ORANGE_1_1"
         (pin passive line (at -3.81 0 0) (length 2.54)
           (name "K" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1081,13 +1081,13 @@
       (property "ki_fp_filters" "R_* Resistor_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_100K_0_1"
+      (symbol "100KR_0_1"
         (rectangle (start -1.016 -2.54) (end 1.016 2.54)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
       )
-      (symbol "R_100K_1_1"
+      (symbol "100KR_1_1"
         (pin passive line (at 0 3.81 270) (length 1.27)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -2558,7 +2558,7 @@
     (property "Reference" "D2" (id 0) (at 215.9 89.2301 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "LED_0805_Amber" (id 1) (at 215.9 91.7701 90)
+    (property "Value" "LED_ORANGE" (id 1) (at 215.9 91.7701 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "footprints:LED_0805_OEM" (id 2) (at 212.09 91.44 0)
@@ -4058,7 +4058,7 @@
       (reference "D1") (unit 1) (value "BAS40-00") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
     (path "/07278624-c597-4d40-887c-d7dbeb9576cc"
-      (reference "D2") (unit 1) (value "LED_0805_Amber") (footprint "footprints:LED_0805_OEM")
+      (reference "D2") (unit 1) (value "LED_ORANGE") (footprint "footprints:LED_0805_OEM")
     )
     (path "/f2678391-bfec-4b94-9de7-365a49e3d9cd"
       (reference "H1") (unit 1) (value "M.2_MountingHole") (footprint "OEM:M.2_Mount")

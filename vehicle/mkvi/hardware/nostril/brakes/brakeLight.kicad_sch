@@ -151,7 +151,7 @@
       (property "ki_description" "Single op-amp, general purpose, -40-+85 C, SC-70-5" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "MCP6001T-I-LT_0_1"
+      (symbol "MCP6001_0_1"
         (polyline
           (pts
             (xy -5.08 5.08)
@@ -171,7 +171,7 @@
           (number "5" (effects (font (size 1.27 1.27))))
         )
       )
-      (symbol "MCP6001T-I-LT_1_1"
+      (symbol "MCP6001_1_1"
         (pin output line (at 7.62 0 180) (length 2.54)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -363,7 +363,7 @@
         )
       )
     )
-    (symbol "formula:SN74LVC1G32DBVR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:SN74LVC1G32DBVR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 11.43 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -1248,7 +1248,7 @@
     (pin "2" (uuid 9cacfc72-209a-4923-8de8-88b61cc562be))
   )
 
-  (symbol (lib_id "formula:SN74LVC1G32DBVR") (at 177.165 100.33 0) (unit 1)
+  (symbol (lib_id "OEM:SN74LVC1G32DBVR") (at 177.165 100.33 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 17b2cee0-5a5c-4032-9a89-9f70a6364e3c)
     (property "Reference" "U3" (id 0) (at 184.15 96.52 0))

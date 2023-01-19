@@ -519,7 +519,7 @@
       (property "Reference" "D" (id 0) (at 0 -2.54 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "LED_0805_Amber" (id 1) (at 0 2.54 0)
+      (property "Value" "LED_ORANGE" (id 1) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "footprints:LED_0805_OEM" (id 2) (at -2.54 0 0)
@@ -543,7 +543,7 @@
       (property "ki_fp_filters" "LED*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "LED_0805_Amber_0_1"
+      (symbol "LED_ORANGE_0_1"
         (polyline
           (pts
             (xy -1.27 -1.27)
@@ -593,7 +593,7 @@
           (fill (type none))
         )
       )
-      (symbol "LED_0805_Amber_1_1"
+      (symbol "LED_ORANGE_1_1"
         (pin passive line (at -3.81 0 0) (length 2.54)
           (name "K" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -701,13 +701,13 @@
       (property "ki_fp_filters" "R_* Resistor_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_100_0_1"
+      (symbol "100R_0_1"
         (rectangle (start -1.016 -2.54) (end 1.016 2.54)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
       )
-      (symbol "R_100_1_1"
+      (symbol "100R_1_1"
         (pin passive line (at 0 3.81 270) (length 1.27)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
