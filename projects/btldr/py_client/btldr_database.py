@@ -5,13 +5,11 @@ from cantools.database.can import (
 )
 
 
-# Number of messages used by the bootloader
-NUM_MESSAGES = 8
-
-
 class BtldrDatabase(DBC):
-    def __init__(self):
+    def __init__(self, ecu_id=0):
         super().__init__()
+
+        self.ecu_id = ecu_id
 
         self._messages.append(self._make_query_msg())
         self._messages.append(self._make_query_response_msg())
@@ -30,7 +28,7 @@ class BtldrDatabase(DBC):
         )
 
         query = CANMessage(
-            frame_id=0,
+            frame_id=self.ecu_id+0,
             name="btldr_query",
             length=8,
             signals=[timestamp],
@@ -84,7 +82,7 @@ class BtldrDatabase(DBC):
         )
 
         query_response = CANMessage(
-            frame_id=4,
+            frame_id=self.ecu_id+4,
             name="btldr_query_response",
             length=8,
             signals=[bootloader_version, chip_id, current_image, _reserved, time_delta],
@@ -102,7 +100,7 @@ class BtldrDatabase(DBC):
         )
 
         reset = CANMessage(
-            frame_id=1,
+            frame_id=self.ecu_id+1,
             name="btldr_reset",
             length=1,
             signals=[request],
@@ -131,7 +129,7 @@ class BtldrDatabase(DBC):
         )
 
         reset_response = CANMessage(
-            frame_id=5,
+            frame_id=self.ecu_id+5,
             length=2,
             name="btldr_reset_response",
             signals=[status, error_code],
@@ -157,7 +155,7 @@ class BtldrDatabase(DBC):
         )
 
         request = CANMessage(
-            frame_id=2,
+            frame_id=self.ecu_id+2,
             length=3,
             name="btldr_request",
             signals=[type, image_size],
@@ -193,7 +191,7 @@ class BtldrDatabase(DBC):
         )
 
         request_response = CANMessage(
-            frame_id=6,
+            frame_id=self.ecu_id+6,
             length=5,
             name="btldr_request_response",
             signals=[error_code, last_programmed_address, remaining_size],
@@ -209,7 +207,7 @@ class BtldrDatabase(DBC):
         )
 
         data_msg = CANMessage(
-            frame_id=3,
+            frame_id=self.ecu_id+3,
             name="btldr_data",
             length=8,
             signals=[data],
@@ -243,7 +241,7 @@ class BtldrDatabase(DBC):
         )
 
         data_response = CANMessage(
-            frame_id=7,
+            frame_id=self.ecu_id+7,
             length=5,
             name="btldr_data_response",
             signals=[error_code, last_programmed_address, remaining_size],

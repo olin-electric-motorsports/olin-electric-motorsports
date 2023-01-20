@@ -86,8 +86,10 @@ def flash_time_string(delta):
 @click.argument("target_id")
 @pass_btldr_manager
 def ping(btldr_manager, target_id):
+    timeout = 1
+
     while True:
-        resp = btldr_manager.ping(int(target_id, 0), 1)
+        resp = btldr_manager.ping(int(target_id, 0), timeout)
         ping_stats["sent"] += 1
 
         if resp is not None:
@@ -111,7 +113,8 @@ def ping(btldr_manager, target_id):
 @click.argument("image_path")
 @pass_btldr_manager
 def flash(btldr_manager, target_id, image_path):
-    btldr_manager.flash(int(target_id, 0), image_path, 1)
+    timeout = 1
+    btldr_manager.flash(int(target_id, 0), image_path, timeout)
 
 
 if __name__ == "__main__":

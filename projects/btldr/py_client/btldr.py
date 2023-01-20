@@ -7,13 +7,29 @@ from cantools.database import load_file
 from can import Message as CANMessage
 from can.interface import Bus as CANBus
 
-from .btldr_database import BtldrDatabase, NUM_MESSAGES
+from .btldr_database import BtldrDatabase
 
 
-def _btldr_offset(frame_id):
-    return frame_id % NUM_MESSAGES
+"""
+The BtldrManager class is an object that handles using the btldr functionality.
+With the `ping` method, you can query a device for its metadata. With the
+`flash` function, you can update the firmware on the device using CAN.
 
+This class is meant to be used as a single object, so only one needs to be
+created per program.
 
+Example usage:
+
+```python
+btldr = BtldrManager()
+
+btldr.ping(0x700, 1) # Ping the device with ecu_id 0x700
+
+# Flash the AIR Control board (that has ecu_id 0x700) with a binary in the given
+# directory
+btldr.flash(0x700, 'bazel-bin/vehicle/mkvi/software/air_control/air_control_patched.bin', 1)
+```
+"""
 class BtldrManager:
     def __init__(self):
         self.db = BtldrDatabase()
@@ -22,6 +38,14 @@ class BtldrManager:
         # Must be initialized separately
         self.canbus = None
 
+    """
+    The ping function sends a query message to the target and returns the response.
+
+    Arguments:
+    - ecu_id (int): The ID of the target device to be updated
+    - timeout (int): A timeout (in milliseconds TODO) to wait when receiving CAN
+        messages
+    """
     def ping(self, ecu_id: int, timeout: int):
         start = time.time_ns()
 
@@ -38,16 +62,33 @@ class BtldrManager:
         else:
             return None
 
-    def ping_all(self):
-        raise Exception("Not implemented")
+    """
+    The flash function is responsible for flashing new firmware onto the target
+    microcontroller. It handles all of the communication with the target.
 
+    Arguments:
+    - ecu_id (int): The ID of the target device to be updated
+    - file (str): A path to the binary that will be uploaded to the target
+    - timeout (int): A timeout (in milliseconds TODO) to wait when receiving CAN
+        messages
+
+    Returns: A ping response struct of the device after it has been updated
+
+    Raises: Raises an Exception in the event that any stage of the flashing
+        process errored. If this happens, I recommend first retrying, then power
+        cycling the device and retrying, and finally manually updating the device.
+    """
     def flash(self, ecu_id: int, file: str, timeout: int):
         start = time.time_ns()
 
         # Reset device into the bootloader
         self.software_reset(ecu_id, request_update=True)
 
-        time.sleep(1)
+        # TODO: This is inefficient. Ideally, we should start pinging
+        # immediately over and over again until we get a response, but for the
+        # sake of time and completeness, I decided to hardcode a delay.
+        # Hopefully someone will improve upon this one day.
+        time.sleep(1)  # Wait one second after reset before attempting to ping
 
         # Query to make sure device is in bootloader
         ping_resp = self.ping(ecu_id, timeout)
@@ -130,6 +171,12 @@ class BtldrManager:
 
         return ping_resp
 
+    """
+    The software_reset function simply provides an abstraction for sending the
+    reset message to the target ECU. This is left here in case the functionality
+    changes in the future and there are other things that are needed in order
+    for a software reset.
+    """
     def software_reset(self, ecu_id: int, request_update: bool = False):
         self._send_reset(ecu_id, request_update)
 
@@ -225,6 +272,9 @@ class BtldrManager:
         data_response = self.db.get_message_by_name("btldr_data_response")
         return self._receive_message(ecu_id, data_response.frame_id, timeout)
 
+    """
+    This function handles applying the offset of the message to the ECU_ID
+    """
     def _receive_message(self, ecu_id, offset, timeout):
         self.canbus.set_filters(
             [
