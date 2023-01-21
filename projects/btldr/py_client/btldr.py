@@ -155,7 +155,7 @@ class BtldrManager:
 
         self.software_reset(ecu_id, False)
 
-        time.sleep(1)
+        time.sleep(2)
 
         ping_resp = self.ping(ecu_id, timeout)
 
