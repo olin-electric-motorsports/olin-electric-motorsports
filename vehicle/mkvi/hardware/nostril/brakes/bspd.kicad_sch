@@ -180,11 +180,11 @@
         )
       )
     )
-    (symbol "formula:D_Zener_18V" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:SMBJ5355B-TP" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "D" (id 0) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "D_Zener_18V" (id 1) (at 0 -2.54 0)
+      (property "Value" "SMBJ5355B-TP" (id 1) (at 0 -2.54 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "footprints:DO-214AA" (id 2) (at -2.54 0 0)
@@ -208,7 +208,7 @@
       (property "ki_fp_filters" "TO-???* *SingleDiode *_Diode_* *SingleDiode* D_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "D_Zener_18V_0_1"
+      (symbol "SMBJ5355B-TP_0_1"
         (polyline
           (pts
             (xy -1.27 -1.27)
@@ -253,7 +253,7 @@
           (fill (type none))
         )
       )
-      (symbol "D_Zener_18V_1_1"
+      (symbol "SMBJ5355B-TP_1_1"
         (pin passive line (at -3.81 0 0) (length 2.54)
           (name "K" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -264,11 +264,11 @@
         )
       )
     )
-    (symbol "formula:G5Q-1A4-DC5-5V" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:G5Q-1A4-DC5" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "K" (id 0) (at 8.89 3.81 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "G5Q-1A4-DC5-5V" (id 1) (at -10.16 -3.81 0)
+      (property "Value" "G5Q-1A4-DC5" (id 1) (at -10.16 -3.81 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:Relay_SPST_OMRON-G5Q-1A4_OEM" (id 2) (at 11.43 -1.27 0)
@@ -292,7 +292,7 @@
       (property "ki_fp_filters" "Relay?SPDT?OMRON?G5Q*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "G5Q-1A4-DC5-5V_0_0"
+      (symbol "G5Q-1A4-DC5_0_0"
         (polyline
           (pts
             (xy 2.54 3.81)
@@ -302,7 +302,7 @@
           (fill (type none))
         )
       )
-      (symbol "G5Q-1A4-DC5-5V_0_1"
+      (symbol "G5Q-1A4-DC5_0_1"
         (rectangle (start -10.16 5.08) (end 7.62 -5.08)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type background))
@@ -409,7 +409,7 @@
           (fill (type outline))
         )
       )
-      (symbol "G5Q-1A4-DC5-5V_1_1"
+      (symbol "G5Q-1A4-DC5_1_1"
         (pin passive line (at -5.08 -7.62 90) (length 2.54)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1060,7 +1060,7 @@
         )
       )
     )
-    (symbol "formula:SW_Push_SPST_NO" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:SW_Push_SPST_NO" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "SW" (id 0) (at 2.54 3.81 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -2348,11 +2348,11 @@
     (pin "2" (uuid 9ea3e5b7-c9e8-4031-a8ba-eab72796a1b6))
   )
 
-  (symbol (lib_id "formula:D_Zener_18V") (at 188.341 144.9578 0) (unit 1)
+  (symbol (lib_id "OEM:SMBJ5355B-TP") (at 188.341 144.9578 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 3c1c5502-98f9-4a36-bdc3-0984dc10ac80)
     (property "Reference" "D2" (id 0) (at 187.96 149.86 0))
-    (property "Value" "D_Zener_18V" (id 1) (at 187.96 147.32 0))
+    (property "Value" "SMBJ5355B-TP" (id 1) (at 187.96 147.32 0))
     (property "Footprint" "footprints:DO-214AA" (id 2) (at 185.801 144.9578 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2396,7 +2396,7 @@
     (pin "2" (uuid acc0df8e-feeb-4359-9767-656545532aaf))
   )
 
-  (symbol (lib_id "formula:SW_Push_SPST_NO") (at 26.67 50.8 0) (unit 1)
+  (symbol (lib_id "OEM:SW_Push_SPST_NO") (at 26.67 50.8 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 42b22f60-40a3-4b8e-9e11-d0e4ba32e517)
     (property "Reference" "SW2" (id 0) (at 26.67 46.99 0))
@@ -2711,7 +2711,7 @@
     (pin "2" (uuid 69500044-7061-453d-9960-7a5747afed9d))
   )
 
-  (symbol (lib_id "formula:SW_Push_SPST_NO") (at 26.67 76.2 0) (unit 1)
+  (symbol (lib_id "OEM:SW_Push_SPST_NO") (at 26.67 76.2 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 9608e81f-cbe0-462b-8a9a-2b8ab6c02948)
     (property "Reference" "SW1" (id 0) (at 26.67 72.39 0))
@@ -2955,11 +2955,11 @@
     (pin "1" (uuid af4a182f-8399-4353-be71-92fb758c6399))
   )
 
-  (symbol (lib_id "formula:G5Q-1A4-DC5-5V") (at 188.468 130.0988 90) (unit 1)
+  (symbol (lib_id "OEM:G5Q-1A4-DC5") (at 188.468 130.0988 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid c9e46b46-430c-4c49-8a50-c27101e827e3)
     (property "Reference" "K1" (id 0) (at 188.468 119.3038 90))
-    (property "Value" "G5Q-1A4-DC5-5V" (id 1) (at 188.468 121.3358 90))
+    (property "Value" "G5Q-1A4-DC5" (id 1) (at 188.468 121.3358 90))
     (property "Footprint" "footprints:Relay_SPST_OMRON-G5Q-1A4_OEM" (id 2) (at 189.738 118.6688 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )

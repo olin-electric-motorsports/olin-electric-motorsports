@@ -170,11 +170,11 @@
         )
       )
     )
-    (symbol "formula:CONN_02X03" (pin_names (offset 0.0254) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:CONN_02x03" (pin_names (offset 0.0254) hide) (in_bom yes) (on_board yes)
       (property "Reference" "J" (id 0) (at 0 5.08 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "CONN_02X03" (id 1) (at 0 -5.08 0)
+      (property "Value" "CONN_02x03" (id 1) (at 0 -5.08 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "footprints:Pin_Header_Straight_2x03" (id 2) (at 0 -30.48 0)
@@ -198,7 +198,7 @@
       (property "ki_fp_filters" "Pin_Header_Straight_2X03 Pin_Header_Angled_2X03 Socket_Strip_Straight_2X03 Socket_Strip_Angled_2X03" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "CONN_02X03_0_1"
+      (symbol "CONN_02x03_0_1"
         (rectangle (start -2.54 -2.413) (end -1.27 -2.667)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -228,7 +228,7 @@
           (fill (type none))
         )
       )
-      (symbol "CONN_02X03_1_1"
+      (symbol "CONN_02x03_1_1"
         (pin passive line (at -6.35 2.54 0) (length 3.81)
           (name "P1" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -426,11 +426,11 @@
         )
       )
     )
-    (symbol "formula:Crystal_SMD" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:Crystal_SMD" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "Y" (id 0) (at 1.27 4.445 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "Crystal_SMD" (id 1) (at 1.27 2.54 0)
+      (property "Value" "Crystal_16MHz_18pF" (id 1) (at 1.27 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:Crystal_SMD_FA238" (id 2) (at -1.27 1.905 0)
@@ -454,7 +454,7 @@
       (property "ki_fp_filters" "Crystal*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "Crystal_SMD_0_1"
+      (symbol "Crystal_16MHz_18pF_0_1"
         (rectangle (start -0.762 -1.524) (end 0.762 1.524)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -496,7 +496,7 @@
           (fill (type none))
         )
       )
-      (symbol "Crystal_SMD_1_1"
+      (symbol "Crystal_16MHz_18pF_1_1"
         (pin passive line (at -2.54 0 0) (length 1.27)
           (name "1" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1424,11 +1424,11 @@
     (pin "2" (uuid 00991011-6474-4d52-b443-eac37b12c50a))
   )
 
-  (symbol (lib_id "formula:CONN_02X03") (at 209.55 118.11 0) (unit 1)
+  (symbol (lib_id "OEM:CONN_02x03") (at 209.55 118.11 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 9b2e1662-f113-404c-91ad-c17b7d6c4ded)
     (property "Reference" "J2" (id 0) (at 209.55 112.776 0))
-    (property "Value" "CONN_02X03" (id 1) (at 206.756 123.19 0))
+    (property "Value" "CONN_02x03" (id 1) (at 206.756 123.19 0))
     (property "Footprint" "footprints:Pin_Header_Straight_2x03" (id 2) (at 209.55 148.59 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1508,13 +1508,13 @@
     (pin "1" (uuid f4e4af0b-0e6e-4273-9949-27480d9d9272))
   )
 
-  (symbol (lib_id "formula:Crystal_SMD") (at 140.97 129.54 0) (unit 1)
+  (symbol (lib_id "OEM:Crystal_SMD") (at 140.97 129.54 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid cd580421-d279-4fbb-9ea5-4aa87114bd99)
     (property "Reference" "Y1" (id 0) (at 133.604 127.762 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Crystal_SMD" (id 1) (at 123.698 129.54 0)
+    (property "Value" "Crystal_16MHz_18pF" (id 1) (at 123.698 129.54 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "footprints:Crystal_SMD_FA238" (id 2) (at 139.7 127.635 0)

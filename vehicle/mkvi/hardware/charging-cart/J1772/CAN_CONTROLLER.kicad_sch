@@ -62,7 +62,7 @@
         )
       )
     )
-    (symbol "formula:CONN_01x02" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:CONN_01x02" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "J" (id 0) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -170,11 +170,11 @@
         )
       )
     )
-    (symbol "formula:Crystal_SMD" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:Crystal_SMD" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "Y" (id 0) (at 1.27 4.445 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "Crystal_SMD" (id 1) (at 1.27 2.54 0)
+      (property "Value" "Crystal_16MHz_18pF" (id 1) (at 1.27 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:Crystal_SMD_FA238" (id 2) (at -1.27 1.905 0)
@@ -198,7 +198,7 @@
       (property "ki_fp_filters" "Crystal*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "Crystal_SMD_0_1"
+      (symbol "Crystal_16MHz_18pF_0_1"
         (rectangle (start -0.762 -1.524) (end 0.762 1.524)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -240,7 +240,7 @@
           (fill (type none))
         )
       )
-      (symbol "Crystal_SMD_1_1"
+      (symbol "Crystal_16MHz_18pF_1_1"
         (pin passive line (at -2.54 0 0) (length 1.27)
           (name "1" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1123,7 +1123,7 @@
     (pin "1" (uuid 85af9a54-c0a8-4a5c-bdbb-728b28b3ced6))
   )
 
-  (symbol (lib_id "formula:Crystal_SMD") (at 107.95 96.52 0) (unit 1)
+  (symbol (lib_id "OEM:Crystal_SMD") (at 107.95 96.52 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 85221763-1383-428a-ae6e-7d259de01273)
     (property "Reference" "Y2" (id 0) (at 100.584 94.742 0)
@@ -1169,7 +1169,7 @@
     (pin "1" (uuid f5cd94ce-45c0-4c1f-b62b-8e6190836249))
   )
 
-  (symbol (lib_id "formula:CONN_01x02") (at 110.49 54.61 0) (unit 1)
+  (symbol (lib_id "OEM:CONN_01x02") (at 110.49 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid ab79e2ec-d581-4594-aa99-9f8b838901d3)
     (property "Reference" "J4" (id 0) (at 113.03 54.6099 0)

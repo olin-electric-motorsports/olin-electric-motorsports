@@ -536,11 +536,11 @@
         )
       )
     )
-    (symbol "formula:G5Q-1A4-DC5-5V" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:G5Q-1A4-DC5" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "K" (id 0) (at 8.89 3.81 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "G5Q-1A4-DC5-5V" (id 1) (at -10.16 -3.81 0)
+      (property "Value" "G5Q-1A4-DC5" (id 1) (at -10.16 -3.81 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:Relay_SPST_OMRON-G5Q-1A4_OEM" (id 2) (at 11.43 -1.27 0)
@@ -564,7 +564,7 @@
       (property "ki_fp_filters" "Relay?SPDT?OMRON?G5Q*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "G5Q-1A4-DC5-5V_0_0"
+      (symbol "G5Q-1A4-DC5_0_0"
         (polyline
           (pts
             (xy 2.54 3.81)
@@ -574,7 +574,7 @@
           (fill (type none))
         )
       )
-      (symbol "G5Q-1A4-DC5-5V_0_1"
+      (symbol "G5Q-1A4-DC5_0_1"
         (rectangle (start -10.16 5.08) (end 7.62 -5.08)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type background))
@@ -681,7 +681,7 @@
           (fill (type outline))
         )
       )
-      (symbol "G5Q-1A4-DC5-5V_1_1"
+      (symbol "G5Q-1A4-DC5_1_1"
         (pin passive line (at -5.08 -7.62 90) (length 2.54)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1421,11 +1421,11 @@
     (pin "2" (uuid 4a229e83-9660-4320-8a47-2f48b3c18960))
   )
 
-  (symbol (lib_id "formula:G5Q-1A4-DC5-5V") (at 232.41 139.7 270) (unit 1)
+  (symbol (lib_id "OEM:G5Q-1A4-DC5") (at 232.41 139.7 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 56d957ba-f6fb-4d73-992c-d63b7e520737)
     (property "Reference" "K1101" (id 0) (at 228.6 124.46 90))
-    (property "Value" "G5Q-1A4-DC5-5V" (id 1) (at 236.22 127 90))
+    (property "Value" "G5Q-1A4-DC5" (id 1) (at 236.22 127 90))
     (property "Footprint" "footprints:Relay_SPST_OMRON-G5Q-1A4_OEM" (id 2) (at 231.14 151.13 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )

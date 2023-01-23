@@ -517,11 +517,11 @@
         )
       )
     )
-    (symbol "formula:CONN_02X03" (pin_names (offset 0.0254) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:CONN_02x03" (pin_names (offset 0.0254) hide) (in_bom yes) (on_board yes)
       (property "Reference" "J" (id 0) (at 0 5.08 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "CONN_02X03" (id 1) (at 0 -5.08 0)
+      (property "Value" "CONN_02x03" (id 1) (at 0 -5.08 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "footprints:Pin_Header_Straight_2x03" (id 2) (at 0 -30.48 0)
@@ -545,7 +545,7 @@
       (property "ki_fp_filters" "Pin_Header_Straight_2X03 Pin_Header_Angled_2X03 Socket_Strip_Straight_2X03 Socket_Strip_Angled_2X03" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "CONN_02X03_0_1"
+      (symbol "CONN_02x03_0_1"
         (rectangle (start -2.54 -2.413) (end -1.27 -2.667)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -575,7 +575,7 @@
           (fill (type none))
         )
       )
-      (symbol "CONN_02X03_1_1"
+      (symbol "CONN_02x03_1_1"
         (pin passive line (at -6.35 2.54 0) (length 3.81)
           (name "P1" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -716,11 +716,11 @@
         )
       )
     )
-    (symbol "formula:Crystal_SMD" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:Crystal_SMD" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "Y" (id 0) (at 1.27 4.445 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "Crystal_SMD" (id 1) (at 1.27 2.54 0)
+      (property "Value" "Crystal_16MHz_18pF" (id 1) (at 1.27 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:Crystal_SMD_FA238" (id 2) (at -1.27 1.905 0)
@@ -744,7 +744,7 @@
       (property "ki_fp_filters" "Crystal*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "Crystal_SMD_0_1"
+      (symbol "Crystal_16MHz_18pF_0_1"
         (rectangle (start -0.762 -1.524) (end 0.762 1.524)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -786,7 +786,7 @@
           (fill (type none))
         )
       )
-      (symbol "Crystal_SMD_1_1"
+      (symbol "Crystal_16MHz_18pF_1_1"
         (pin passive line (at -2.54 0 0) (length 1.27)
           (name "1" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -805,11 +805,11 @@
         )
       )
     )
-    (symbol "formula:D_Zener_18V" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:SMBJ5355B-TP" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "D" (id 0) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "D_Zener_18V" (id 1) (at 0 -2.54 0)
+      (property "Value" "SMBJ5355B-TP" (id 1) (at 0 -2.54 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "footprints:DO-214AA" (id 2) (at -2.54 0 0)
@@ -833,7 +833,7 @@
       (property "ki_fp_filters" "TO-???* *SingleDiode *_Diode_* *SingleDiode* D_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "D_Zener_18V_0_1"
+      (symbol "SMBJ5355B-TP_0_1"
         (polyline
           (pts
             (xy -1.27 -1.27)
@@ -878,7 +878,7 @@
           (fill (type none))
         )
       )
-      (symbol "D_Zener_18V_1_1"
+      (symbol "SMBJ5355B-TP_1_1"
         (pin passive line (at -3.81 0 0) (length 2.54)
           (name "K" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -942,7 +942,7 @@
         )
       )
     )
-    (symbol "formula:MicroFit_VT_6" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:MicroFit_VT_3x2" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 12.7 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -961,13 +961,13 @@
       (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450614/WM1797-ND/252510" (id 5) (at -6.35 13.97 0)
         (effects (font (size 1.27 1.27)))
       )
-      (symbol "MicroFit_VT_6_0_1"
+      (symbol "MicroFit_VT_3x2_0_1"
         (rectangle (start -2.54 7.62) (end 2.54 -7.62)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type background))
         )
       )
-      (symbol "MicroFit_VT_6_1_1"
+      (symbol "MicroFit_VT_3x2_1_1"
         (pin input line (at 5.08 6.35 180) (length 2.54)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -994,7 +994,7 @@
         )
       )
     )
-    (symbol "formula:MicroFit_V_2" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:MicroFit_VT_2" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (id 0) (at -2.54 1.27 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -1016,7 +1016,7 @@
       (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180" (id 6) (at 0 3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "MicroFit_V_2_1_1"
+      (symbol "MicroFit_VT_2_1_1"
         (rectangle (start 3.81 -2.54) (end -3.81 2.54)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type background))
@@ -2981,13 +2981,13 @@
     (pin "1" (uuid 29e19f5b-5913-4ba2-82ca-001fa1077825))
   )
 
-  (symbol (lib_id "formula:Crystal_SMD") (at 34.29 87.63 270) (unit 1)
+  (symbol (lib_id "OEM:Crystal_SMD") (at 34.29 87.63 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 7dc3f0b1-1d7a-4d2c-b01c-171d7fdbca4c)
     (property "Reference" "Y1" (id 0) (at 36.068 80.264 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Crystal_SMD" (id 1) (at 31.75 77.47 90)
+    (property "Value" "Crystal_16MHz_18pF" (id 1) (at 31.75 77.47 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "footprints:Crystal_SMD_FA238" (id 2) (at 36.195 86.36 0)
@@ -3358,13 +3358,13 @@
     (pin "2" (uuid 678ee316-00f4-4026-83a5-6e3b87043ab8))
   )
 
-  (symbol (lib_id "formula:D_Zener_18V") (at 160.02 40.64 270) (unit 1)
+  (symbol (lib_id "OEM:SMBJ5355B-TP") (at 160.02 40.64 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid c38028d7-62f6-4c56-97fa-1c88fb6a8b17)
     (property "Reference" "D3" (id 0) (at 165.1 39.37 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "D_Zener_18V" (id 1) (at 162.56 35.56 0)
+    (property "Value" "SMBJ5355B-TP" (id 1) (at 162.56 35.56 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "footprints:DO-214AA" (id 2) (at 160.02 38.1 0)
@@ -3545,11 +3545,11 @@
     (pin "1" (uuid 2e5434b7-689b-40e2-af38-f49010d26afc))
   )
 
-  (symbol (lib_id "formula:CONN_02X03") (at 252.73 88.9 0) (unit 1)
+  (symbol (lib_id "OEM:CONN_02x03") (at 252.73 88.9 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid d47bd6ba-6091-4660-bc07-e272a9f50501)
     (property "Reference" "J3" (id 0) (at 252.73 83.566 0))
-    (property "Value" "CONN_02X03" (id 1) (at 249.936 93.98 0))
+    (property "Value" "CONN_02x03" (id 1) (at 249.936 93.98 0))
     (property "Footprint" "footprints:Pin_Header_Straight_2x03" (id 2) (at 252.73 119.38 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3891,7 +3891,7 @@
     (pin "2" (uuid f6941dcf-64a5-4640-aff2-b6df233a83d5))
   )
 
-  (symbol (lib_id "formula:MicroFit_VT_6") (at 247.65 41.91 0) (unit 1)
+  (symbol (lib_id "OEM:MicroFit_VT_3x2") (at 247.65 41.91 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid f45ecf16-ea60-443e-bdd9-f003d1ddf064)
     (property "Reference" "U3" (id 0) (at 247.65 26.67 0))
@@ -3914,7 +3914,7 @@
     (pin "6" (uuid 947fc519-f3b9-44c6-a5e7-825d2c1275f5))
   )
 
-  (symbol (lib_id "formula:MicroFit_V_2") (at 147.32 114.3 0) (unit 1)
+  (symbol (lib_id "OEM:MicroFit_VT_2") (at 147.32 114.3 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid f54e8cbd-b489-45ad-8bbe-bc64f9604648)
     (property "Reference" "J1" (id 0) (at 147.32 106.68 0))
@@ -3956,7 +3956,7 @@
     (pin "1" (uuid 8c9e7c42-6b9b-4bd0-b36d-a103b66b7c5d))
   )
 
-  (symbol (lib_id "formula:MicroFit_V_2") (at 182.88 132.08 0) (unit 1)
+  (symbol (lib_id "OEM:MicroFit_VT_2") (at 182.88 132.08 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid fb0e84d9-08d9-49f3-9ee0-a2f7337ad421)
     (property "Reference" "J2" (id 0) (at 182.88 124.46 0))
@@ -4315,7 +4315,7 @@
       (reference "D2") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
     )
     (path "/c38028d7-62f6-4c56-97fa-1c88fb6a8b17"
-      (reference "D3") (unit 1) (value "D_Zener_18V") (footprint "footprints:DO-214AA")
+      (reference "D3") (unit 1) (value "SMBJ5355B-TP") (footprint "footprints:DO-214AA")
     )
     (path "/40e4988d-a101-4b5f-93a3-4efcf74b7d8e"
       (reference "D4") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
@@ -4333,7 +4333,7 @@
       (reference "J2") (unit 1) (value "MicroFit_V_2") (footprint "footprints:MicroFit_V_2")
     )
     (path "/d47bd6ba-6091-4660-bc07-e272a9f50501"
-      (reference "J3") (unit 1) (value "CONN_02X03") (footprint "footprints:Pin_Header_Straight_2x03")
+      (reference "J3") (unit 1) (value "CONN_02x03") (footprint "footprints:Pin_Header_Straight_2x03")
     )
     (path "/a8ec3725-a6bd-4d20-87cb-ab75a6a46eb6/ab79e2ec-d581-4594-aa99-9f8b838901d3"
       (reference "J4") (unit 1) (value "CONN_01x02") (footprint "footprints:pinheader_1x2")
@@ -4429,7 +4429,7 @@
       (reference "U5") (unit 1) (value "~") (footprint "Package_SO:SSOP-28_5.3x10.2mm_P0.65mm")
     )
     (path "/7dc3f0b1-1d7a-4d2c-b01c-171d7fdbca4c"
-      (reference "Y1") (unit 1) (value "Crystal_SMD") (footprint "footprints:Crystal_SMD_FA238")
+      (reference "Y1") (unit 1) (value "Crystal_16MHz_18pF") (footprint "footprints:Crystal_SMD_FA238")
     )
     (path "/a8ec3725-a6bd-4d20-87cb-ab75a6a46eb6/85221763-1383-428a-ae6e-7d259de01273"
       (reference "Y2") (unit 1) (value "~") (footprint "footprints:Crystal_SMD_FA238")
