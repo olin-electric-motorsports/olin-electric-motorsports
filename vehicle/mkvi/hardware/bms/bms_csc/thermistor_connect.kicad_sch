@@ -66,11 +66,11 @@
         )
       )
     )
-    (symbol "formula:PCA9545APW-118" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
+    (symbol "OEM:PCA9545APW" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
       (property "Reference" "IC" (id 0) (at 29.21 7.62 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "PCA9545APW-118" (id 1) (at 29.21 5.08 0)
+      (property "Value" "PCA9545APW" (id 1) (at 29.21 5.08 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:SOP65P640X110-20N" (id 2) (at 29.21 2.54 0)
@@ -91,13 +91,13 @@
       (property "Manufacturer_Part_Number" "PCA9545APW,118" (id 7) (at 29.21 -10.16 0)
         (effects (font (size 1.27 1.27)) (justify left) hide)
       )
-      (property "Purchasing_Link" "https://www.digikey.com/en/products/detail/nxp-usa-inc/PCA9545APW-118/789954" (id 8) (at 0 0 0)
+      (property "Purchasing_Link" "https://www.digikey.com/en/products/detail/nxp-usa-inc/PCA9545APW/789954" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "ki_description" "4-channel I2C-bus switch with interrupt logic and reset" (id 9) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "PCA9545APW-118_0_0"
+      (symbol "PCA9545APW_0_0"
         (pin passive line (at 0 0 0) (length 5.08)
           (name "A0" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -179,7 +179,7 @@
           (number "9" (effects (font (size 1.27 1.27))))
         )
       )
-      (symbol "PCA9545APW-118_0_1"
+      (symbol "PCA9545APW_0_1"
         (polyline
           (pts
             (xy 5.08 2.54)
@@ -1061,11 +1061,11 @@
     (pin "5" (uuid f2a777cf-6308-4dcf-b307-1f1d101e54ac))
   )
 
-  (symbol (lib_id "formula:PCA9545APW-118") (at 119.38 69.85 0) (unit 1)
+  (symbol (lib_id "OEM:PCA9545APW") (at 119.38 69.85 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 7e79fd01-9343-4fcf-801f-aef87b7cc8f6)
     (property "Reference" "IC1" (id 0) (at 133.35 62.23 0))
-    (property "Value" "PCA9545APW-118" (id 1) (at 133.35 64.77 0))
+    (property "Value" "PCA9545APW" (id 1) (at 133.35 64.77 0))
     (property "Footprint" "footprints:SOP65P640X110-20N" (id 2) (at 148.59 67.31 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
@@ -1084,7 +1084,7 @@
     (property "Manufacturer_Part_Number" "PCA9545APW,118" (id 7) (at 148.59 80.01 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
-    (property "Purchasing_Link" "https://www.digikey.com/en/products/detail/nxp-usa-inc/PCA9545APW-118/789954" (id 8) (at 119.38 69.85 0)
+    (property "Purchasing_Link" "https://www.digikey.com/en/products/detail/nxp-usa-inc/PCA9545APW/789954" (id 8) (at 119.38 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid d6cacbb8-27f9-4229-a255-145a52456d40))

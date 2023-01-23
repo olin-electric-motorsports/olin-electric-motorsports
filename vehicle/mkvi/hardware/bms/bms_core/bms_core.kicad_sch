@@ -690,11 +690,11 @@
         )
       )
     )
-    (symbol "formula:MCP2561-E_SN" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:MAX33011EASA" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at -10.16 8.89 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "MCP2561-E_SN" (id 1) (at 2.54 8.89 0)
+      (property "Value" "MAX33011EASA" (id 1) (at 2.54 8.89 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM" (id 2) (at 0 -12.7 0)
@@ -718,13 +718,13 @@
       (property "ki_fp_filters" "SOIC*Pitch1.27mm*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "MCP2561-E_SN_0_1"
+      (symbol "MAX33011EASA_0_1"
         (rectangle (start -10.16 7.62) (end 10.16 -7.62)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type background))
         )
       )
-      (symbol "MCP2561-E_SN_1_1"
+      (symbol "MAX33011EASA_1_1"
         (pin input line (at -12.7 5.08 0) (length 2.54)
           (name "TXD" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1111,7 +1111,7 @@
         )
       )
     )
-    (symbol "formula:Test_Point_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:TP_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (id 0) (at 0 7.62 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -1124,7 +1124,7 @@
       (property "Datasheet" "" (id 3) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "Test_Point_SMD_1_1"
+      (symbol "TP_SMD_1_1"
         (circle (center 0 2.54) (radius 1.27)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -2735,7 +2735,7 @@
     (pin "2" (uuid 35a91da8-f378-47f1-81bc-eb3e2b1d1844))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 209.55 143.51 270) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 209.55 143.51 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 44bed526-ac8a-4324-aa63-59b4383ce9b5)
     (property "Reference" "IP1" (id 0) (at 216.535 143.51 90))
@@ -2823,7 +2823,7 @@
     (pin "1" (uuid 1c650974-9b4d-440a-a8e8-b0170a07c213))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 209.55 148.59 270) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 209.55 148.59 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 6044dace-04ae-428a-867b-7918401c5082)
     (property "Reference" "IM1" (id 0) (at 216.535 148.59 90))
@@ -2863,11 +2863,11 @@
     (pin "2" (uuid c0cde7e3-b1ac-4bfb-86a7-22aa37fc1925))
   )
 
-  (symbol (lib_id "formula:MCP2561-E_SN") (at 107.95 167.64 0) (unit 1)
+  (symbol (lib_id "OEM:MAX33011EASA") (at 107.95 167.64 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 646ba8e8-5806-4aae-8b4d-f9c312ab63dc)
     (property "Reference" "U2" (id 0) (at 99.695 158.115 0))
-    (property "Value" "MCP2561-E_SN" (id 1) (at 118.745 176.53 0))
+    (property "Value" "MAX33011EASA" (id 1) (at 118.745 176.53 0))
     (property "Footprint" "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM" (id 2) (at 107.95 180.34 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
@@ -3272,7 +3272,7 @@
     (pin "2" (uuid 48541efe-0303-46dc-8e78-3981a11f7ff3))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 209.55 158.75 270) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 209.55 158.75 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid d18df731-7075-43b2-9733-bbd614e31416)
     (property "Reference" "CANH1" (id 0) (at 216.535 158.75 90))
@@ -3364,7 +3364,7 @@
     (pin "1" (uuid f2ffff35-0bc0-4fdf-bb25-fa1b95d377e5))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 209.55 153.67 270) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 209.55 153.67 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid ed3dbf87-f796-42a2-8192-9831758492ca)
     (property "Reference" "CANL1" (id 0) (at 216.535 153.67 90))
@@ -3919,7 +3919,7 @@
       (reference "U1") (unit 1) (value "ATMEGA64M1") (footprint "footprints:TQFP-32_7x7mm_Pitch0.8mm")
     )
     (path "/646ba8e8-5806-4aae-8b4d-f9c312ab63dc"
-      (reference "U2") (unit 1) (value "MCP2561-E_SN") (footprint "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM")
+      (reference "U2") (unit 1) (value "MAX33011EASA") (footprint "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM")
     )
     (path "/8f664c14-224d-484d-aa48-689bc3c66186/b6d4f232-0b45-4cbe-8e57-b73dcd7f9c79"
       (reference "U3") (unit 1) (value "LTC6820HMS") (footprint "Package_SO:MSOP-16_3x4mm_P0.5mm")

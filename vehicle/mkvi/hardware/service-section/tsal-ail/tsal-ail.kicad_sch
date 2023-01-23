@@ -861,7 +861,7 @@
         )
       )
     )
-    (symbol "formula:BU4S11G2-TR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:BU4S11G2-TR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 11.43 3.81 0)
         (effects (font (size 1.524 1.524)))
       )
@@ -886,7 +886,7 @@
       (property "ki_description" "Single channel positive logic NAND gate" (id 7) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "BU4S11G2-TR_0_1"
+      (symbol "BU4S11G2_0_1"
         (polyline
           (pts
             (xy 0 3.81)
@@ -906,7 +906,7 @@
           (fill (type none))
         )
       )
-      (symbol "BU4S11G2-TR_1_1"
+      (symbol "BU4S11G2_1_1"
         (arc (start 0 -3.81) (mid 3.81 0) (end 0 3.81)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -1257,14 +1257,14 @@
         )
       )
     )
-    (symbol "formula:Diode_600V_1A_SM" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:STTH1R06AF" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "D?" (id 0) (at 0 6.35 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "Diode_600V_1A_SM" (id 1) (at 0 8.89 0)
+      (property "Value" "STTH1R06AF" (id 1) (at 0 8.89 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Footprint" "footprints:Diode_600V_1A_SM" (id 2) (at -1.27 3.81 0)
+      (property "Footprint" "footprints:STTH1R06AF" (id 2) (at -1.27 3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "Datasheet" "https://www.st.com/content/ccc/resource/technical/document/datasheet/c7/d5/fe/c4/56/21/41/02/CD00005135.pdf/files/CD00005135.pdf/jcr:content/translations/en.CD00005135.pdf" (id 3) (at -1.27 3.81 0)
@@ -1276,7 +1276,7 @@
       (property "PurchasingLink" "https://www.digikey.com/product-detail/en/stmicroelectronics/STTH1R06A/497-3765-1-ND/691935" (id 5) (at 0 5.08 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "Diode_600V_1A_SM_1_1"
+      (symbol "STTH1R06AF_1_1"
         (polyline
           (pts
             (xy 1.27 0)
@@ -1566,7 +1566,7 @@
         )
       )
     )
-    (symbol "formula:MP9488" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:MP9488" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 19.05 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -2132,7 +2132,7 @@
         )
       )
     )
-    (symbol "formula:Test_Point_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:TP_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (id 0) (at 0 7.62 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -2145,7 +2145,7 @@
       (property "Datasheet" "" (id 3) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "Test_Point_SMD_1_1"
+      (symbol "TP_SMD_1_1"
         (circle (center 0 2.54) (radius 1.27)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -4636,7 +4636,7 @@
     (pin "1" (uuid bcf22c11-6fd7-454e-b6eb-9a4eb3e3e034))
   )
 
-  (symbol (lib_id "formula:BU4S11G2-TR") (at 303.53 78.74 0) (unit 1)
+  (symbol (lib_id "OEM:BU4S11G2-TR") (at 303.53 78.74 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 0c53c24d-135f-4e92-98d8-2d73a18fb53d)
     (property "Reference" "U4" (id 0) (at 312.039 88.9 0)
@@ -4691,7 +4691,7 @@
     (pin "2" (uuid c9e768dd-f7f0-4c37-867b-50051c52e42f))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 87.63 204.47 0) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 87.63 204.47 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 12367513-7538-49d1-a709-6b30588db36d)
     (property "Reference" "TP2" (id 0) (at 82.55 199.39 0)
@@ -4709,7 +4709,7 @@
     (pin "1" (uuid ad01085f-844c-4b6f-869f-609762bba5ab))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 226.06 19.05 270) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 226.06 19.05 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 137b3d69-eef8-45e3-b680-43f8e8e7e065)
     (property "Reference" "TP8" (id 0) (at 230.5812 17.7546 90)
@@ -4795,7 +4795,7 @@
     (pin "2" (uuid 554590c6-a9b5-48b5-8834-2063889e71b1))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 213.36 213.36 0) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 213.36 213.36 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 1ef48f37-0079-4929-9f3b-07dcc29660d7)
     (property "Reference" "TP3" (id 0) (at 207.01 209.55 0)
@@ -4885,7 +4885,7 @@
     (pin "1" (uuid 1b226712-6683-4eb3-a678-98701f741445))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 127 76.2 180) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 127 76.2 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 3215470c-394d-4118-8f13-b157c49bbb08)
     (property "Reference" "TP5" (id 0) (at 119.38 78.74 0)
@@ -4948,16 +4948,16 @@
     (pin "3" (uuid c37fcb13-5c44-4f7f-8678-b91a9bd05564))
   )
 
-  (symbol (lib_id "formula:Diode_600V_1A_SM") (at 101.6 226.695 90) (unit 1)
+  (symbol (lib_id "OEM:STTH1R06AF") (at 101.6 226.695 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 37b8b04c-b587-40a6-8a3e-6f9cc88cfcd3)
     (property "Reference" "D2" (id 0) (at 103.632 225.5266 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "Diode_600V_1A_SM" (id 1) (at 103.632 227.838 90)
+    (property "Value" "STTH1R06AF" (id 1) (at 103.632 227.838 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "footprints:Diode_600V_1A_SM" (id 2) (at 97.79 227.965 0)
+    (property "Footprint" "footprints:STTH1R06AF" (id 2) (at 97.79 227.965 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.st.com/content/ccc/resource/technical/document/datasheet/c7/d5/fe/c4/56/21/41/02/CD00005135.pdf/files/CD00005135.pdf/jcr:content/translations/en.CD00005135.pdf" (id 3) (at 97.79 227.965 0)
@@ -5150,7 +5150,7 @@
     (pin "1" (uuid 19060d6c-0e30-4b11-b39a-6910866e351f))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 182.88 213.36 0) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 182.88 213.36 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 55f6765f-6449-416c-9c09-1a5295b6813b)
     (property "Reference" "TP6" (id 0) (at 176.53 209.55 0)
@@ -5419,7 +5419,7 @@
     (pin "2" (uuid 531e8e95-452a-4382-80e3-290c73c3622d))
   )
 
-  (symbol (lib_id "formula:MP9488") (at 64.77 207.645 0) (unit 1)
+  (symbol (lib_id "OEM:MP9488") (at 64.77 207.645 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 84b9cc59-0b50-43dd-ab57-1c1f44d577da)
     (property "Reference" "U1" (id 0) (at 66.675 228.6 0)
@@ -5541,7 +5541,7 @@
     (pin "1" (uuid 5a5f93e2-bb25-4551-b806-52e0cf378a0e))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 104.14 59.69 0) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 104.14 59.69 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 93268821-9faa-4081-a69c-8eaddfecea5f)
     (property "Reference" "TP4" (id 0) (at 101.6 52.07 0)
@@ -5659,12 +5659,12 @@
     (pin "2" (uuid 01e63a5a-31f7-4660-999d-a0e96d66f6a6))
   )
 
-  (symbol (lib_id "formula:Diode_600V_1A_SM") (at 119.38 193.675 180) (unit 1)
+  (symbol (lib_id "OEM:STTH1R06AF") (at 119.38 193.675 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid a083cce4-53d8-436c-98be-9ad52f06ec3b)
     (property "Reference" "D3" (id 0) (at 119.38 188.1632 0))
-    (property "Value" "Diode_600V_1A_SM" (id 1) (at 119.38 190.4746 0))
-    (property "Footprint" "footprints:Diode_600V_1A_SM" (id 2) (at 120.65 197.485 0)
+    (property "Value" "STTH1R06AF" (id 1) (at 119.38 190.4746 0))
+    (property "Footprint" "footprints:STTH1R06AF" (id 2) (at 120.65 197.485 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.st.com/content/ccc/resource/technical/document/datasheet/c7/d5/fe/c4/56/21/41/02/CD00005135.pdf/files/CD00005135.pdf/jcr:content/translations/en.CD00005135.pdf" (id 3) (at 120.65 197.485 0)
@@ -5887,7 +5887,7 @@
     (pin "8" (uuid 8d8bf868-2542-451d-9271-20a815580449))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 198.12 260.985 0) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 198.12 260.985 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid c04e1d75-52be-4304-b030-d8d380de304d)
     (property "Reference" "TP7" (id 0) (at 200.025 255.27 0)
@@ -5933,12 +5933,12 @@
     (pin "2" (uuid b642cf1c-8170-4581-ac5b-f3112a5eff02))
   )
 
-  (symbol (lib_id "formula:Diode_600V_1A_SM") (at 89.535 193.675 180) (unit 1)
+  (symbol (lib_id "OEM:STTH1R06AF") (at 89.535 193.675 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid c789ceb1-aab9-4f42-9124-30c076ad5773)
     (property "Reference" "D1" (id 0) (at 89.535 188.1632 0))
-    (property "Value" "Diode_600V_1A_SM" (id 1) (at 89.535 190.4746 0))
-    (property "Footprint" "footprints:Diode_600V_1A_SM" (id 2) (at 90.805 197.485 0)
+    (property "Value" "STTH1R06AF" (id 1) (at 89.535 190.4746 0))
+    (property "Footprint" "footprints:STTH1R06AF" (id 2) (at 90.805 197.485 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.st.com/content/ccc/resource/technical/document/datasheet/c7/d5/fe/c4/56/21/41/02/CD00005135.pdf/files/CD00005135.pdf/jcr:content/translations/en.CD00005135.pdf" (id 3) (at 90.805 197.485 0)
@@ -6085,7 +6085,7 @@
     (pin "2" (uuid dd87f32e-f6db-47df-904b-b8901f65715d))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 82.55 87.63 180) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 82.55 87.63 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid dc870fa2-cb33-4880-a02f-076c6459957e)
     (property "Reference" "TP1" (id 0) (at 83.82 87.63 0)
@@ -6390,13 +6390,13 @@
       (reference "C10") (unit 1) (value "0.1uF") (footprint "footprints:C_0805_OEM")
     )
     (path "/c789ceb1-aab9-4f42-9124-30c076ad5773"
-      (reference "D1") (unit 1) (value "Diode_600V_1A_SM") (footprint "footprints:Diode_600V_1A_SM")
+      (reference "D1") (unit 1) (value "STTH1R06AF") (footprint "footprints:STTH1R06AF")
     )
     (path "/37b8b04c-b587-40a6-8a3e-6f9cc88cfcd3"
-      (reference "D2") (unit 1) (value "Diode_600V_1A_SM") (footprint "footprints:Diode_600V_1A_SM")
+      (reference "D2") (unit 1) (value "STTH1R06AF") (footprint "footprints:STTH1R06AF")
     )
     (path "/a083cce4-53d8-436c-98be-9ad52f06ec3b"
-      (reference "D3") (unit 1) (value "Diode_600V_1A_SM") (footprint "footprints:Diode_600V_1A_SM")
+      (reference "D3") (unit 1) (value "STTH1R06AF") (footprint "footprints:STTH1R06AF")
     )
     (path "/ff24026a-f94f-43a6-8ffb-2006dac807a0"
       (reference "D4") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")

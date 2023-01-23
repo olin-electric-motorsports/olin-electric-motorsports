@@ -1337,7 +1337,7 @@
         )
       )
     )
-    (symbol "formula:Test_Point_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:TP_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (id 0) (at 0 7.62 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -1350,7 +1350,7 @@
       (property "Datasheet" "" (id 3) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "Test_Point_SMD_1_1"
+      (symbol "TP_SMD_1_1"
         (circle (center 0 2.54) (radius 1.27)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -3550,7 +3550,7 @@
     (pin "1" (uuid 5e069b3c-fd06-4fc5-9813-db3bb86e9115))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 49.53 59.69 90) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 49.53 59.69 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 14fb2bde-4cf3-44d3-ad53-071335145920)
     (property "Reference" "TP2" (id 0) (at 46.99 62.23 90))
@@ -3706,7 +3706,7 @@
     (pin "2" (uuid c2a47c24-58bf-4c8f-9ad1-2bf9bf641f23))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 119.38 78.74 90) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 119.38 78.74 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 36affe51-6747-411c-ba1a-2d8d627d23e8)
     (property "Reference" "TP3" (id 0) (at 121.92 77.47 90))
@@ -3876,7 +3876,7 @@
     (pin "9" (uuid c4f1370f-bed3-4d54-b5f4-e78377e46bb6))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 339.09 55.88 90) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 339.09 55.88 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 4601b74a-7ed5-4fab-8abf-05a6d11865ef)
     (property "Reference" "TP7" (id 0) (at 335.28 53.34 90))
@@ -4030,7 +4030,7 @@
     (pin "1" (uuid a455def4-61d7-4e75-8537-58a2ffeaf42e))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 49.53 50.8 0) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 49.53 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 6b2f4b3e-1bb3-412a-b0b5-c46e2e1b2815)
     (property "Reference" "TP1" (id 0) (at 52.07 48.2599 0)
@@ -4293,7 +4293,7 @@
     (pin "1" (uuid 523d70ec-2cbf-4072-b1ba-3c89060ba262))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 124.46 81.28 90) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 124.46 81.28 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 8e7fdaac-2036-43c4-9b40-45f09febf356)
     (property "Reference" "TP4" (id 0) (at 127 80.01 90))
@@ -4309,7 +4309,7 @@
     (pin "1" (uuid ad5060e1-e0a4-4b7c-9137-b4694408cd78))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 323.85 143.51 180) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 323.85 143.51 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 8e991905-e01c-4aef-9b7c-db3796aae5fe)
     (property "Reference" "TP5" (id 0) (at 322.58 148.59 0)
@@ -5183,7 +5183,7 @@
       (reference "U1") (unit 1) (value "ATMEGA16M1") (footprint "footprints:TQFP-32_7x7mm_Pitch0.8mm")
     )
     (path "/e3f3d5e1-da9e-46de-bd71-dbc7397de469/1362fa55-0955-4915-a134-de8d1c95eccd"
-      (reference "U2") (unit 1) (value "MCP2561-E_SN") (footprint "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM")
+      (reference "U2") (unit 1) (value "MAX33011EASA") (footprint "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM")
     )
     (path "/904a395d-65cc-43cf-8f6a-2491a71c1f79"
       (reference "Y1") (unit 1) (value "Crystal_SMD") (footprint "footprints:Crystal_SMD_FA238")

@@ -378,11 +378,11 @@
         )
       )
     )
-    (symbol "formula:BAS40-00" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:BAS40" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "D" (id 0) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "BAS40-00" (id 1) (at 0 -2.54 0)
+      (property "Value" "BAS40" (id 1) (at 0 -2.54 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (id 2) (at -2.54 0 0)
@@ -406,7 +406,7 @@
       (property "ki_description" "Schottky Diode, 40V, 120mA, SOT23" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "BAS40-00_1_1"
+      (symbol "BAS40_1_1"
         (polyline
           (pts
             (xy -1.27 1.27)
@@ -443,7 +443,7 @@
         )
       )
     )
-    (symbol "formula:CD4044BDR" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
+    (symbol "OEM:CD4044BDR" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
       (property "Reference" "IC" (id 0) (at 26.67 7.62 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
@@ -1606,7 +1606,7 @@
         )
       )
     )
-    (symbol "formula:Test_Point_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:TP_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "TP" (id 0) (at 0 7.62 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -1619,7 +1619,7 @@
       (property "Datasheet" "" (id 3) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "Test_Point_SMD_1_1"
+      (symbol "TP_SMD_1_1"
         (circle (center 0 2.54) (radius 1.27)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -2752,7 +2752,7 @@
     (pin "2" (uuid 5c0e2f04-17eb-4f52-a14b-74e3077c6e33))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 80.01 31.75 270) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 80.01 31.75 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 23b68e3e-c0f5-4cf1-a108-08010bbf1b1a)
     (property "Reference" "TP3" (id 0) (at 83.8201 34.29 0)
@@ -2807,7 +2807,7 @@
     (pin "1" (uuid e3408d34-0b05-4c10-aa96-f444c0617513))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 95.25 125.73 90) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 95.25 125.73 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 2bfc0eb6-0f9d-4946-ad99-0e60f3b280b5)
     (property "Reference" "TP6" (id 0) (at 96.52 119.38 90))
@@ -2821,7 +2821,7 @@
     (pin "1" (uuid 2a66f676-5ab1-48f6-8e8f-7c07eb92ff64))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 78.74 59.69 180) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 78.74 59.69 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 2d5c4276-95bb-4423-9bf4-7a5a1c29e060)
     (property "Reference" "TP4" (id 0) (at 76.2 64.77 0)
@@ -3256,7 +3256,7 @@
     (pin "1" (uuid 258087cc-d324-4d10-ad41-663ddfae9211))
   )
 
-  (symbol (lib_id "formula:CD4044BDR") (at 143.51 77.47 0) (unit 1)
+  (symbol (lib_id "OEM:CD4044BDR") (at 143.51 77.47 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 6e94a753-c5f8-4d4a-b34c-de68dc5b9419)
     (property "Reference" "IC1" (id 0) (at 158.75 69.85 0))
@@ -3510,13 +3510,13 @@
     (pin "1" (uuid 76a8f222-dd13-4b5a-b7db-fefe56eafa7f))
   )
 
-  (symbol (lib_id "formula:BAS40-00") (at 233.68 58.42 270) (unit 1)
+  (symbol (lib_id "OEM:BAS40") (at 233.68 58.42 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 9c988175-1b95-4455-950e-43db96ec469d)
     (property "Reference" "D1" (id 0) (at 228.6 57.15 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "BAS40-00" (id 1) (at 220.98 59.69 90)
+    (property "Value" "BAS40" (id 1) (at 220.98 59.69 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (id 2) (at 233.68 55.88 0)
@@ -3538,7 +3538,7 @@
     (pin "3" (uuid a5a77188-c3a4-44d6-b80e-3a6fbfd088f4))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 73.66 96.52 180) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 73.66 96.52 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid a6dfe3ba-b068-451e-ab58-2fb9fcf77b0c)
     (property "Reference" "TP1" (id 0) (at 67.31 97.79 0)
@@ -3657,7 +3657,7 @@
     (pin "2" (uuid bfd490f6-7e65-4028-858c-a7c2710ed64e))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 102.87 71.12 90) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 102.87 71.12 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid bde95332-ec28-4bc7-9203-06bf1c035f0f)
     (property "Reference" "TP5" (id 0) (at 100.33 64.77 90))
@@ -3778,7 +3778,7 @@
     (pin "2" (uuid 7043584a-2fbe-477a-a104-c5955cdc454e))
   )
 
-  (symbol (lib_id "formula:Test_Point_SMD") (at 73.66 116.84 180) (unit 1)
+  (symbol (lib_id "OEM:TP_SMD") (at 73.66 116.84 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid de97ac5f-56ea-4e41-8e11-f2303822c250)
     (property "Reference" "TP2" (id 0) (at 67.31 118.11 0)
@@ -4055,7 +4055,7 @@
       (reference "C4") (unit 1) (value "0.1uF") (footprint "OEM:C_0603")
     )
     (path "/9c988175-1b95-4455-950e-43db96ec469d"
-      (reference "D1") (unit 1) (value "BAS40-00") (footprint "Package_TO_SOT_SMD:SOT-23")
+      (reference "D1") (unit 1) (value "BAS40") (footprint "Package_TO_SOT_SMD:SOT-23")
     )
     (path "/07278624-c597-4d40-887c-d7dbeb9576cc"
       (reference "D2") (unit 1) (value "LED_ORANGE") (footprint "footprints:LED_0805_OEM")
