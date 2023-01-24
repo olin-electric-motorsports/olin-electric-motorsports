@@ -103,9 +103,10 @@ def ping(btldr_manager, target_id):
                     flashed=flash_time_string(resp["time_delta"]),
                 )
             )
-            time.sleep(1 - resp["elapsed_time_ns"] / 1e9)
         else:
             print("No response")
+
+        time.sleep(1 - resp["elapsed_time_ns"] / 1e9)
 
 
 @updatr.command()

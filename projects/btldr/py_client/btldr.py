@@ -281,11 +281,13 @@ class BtldrManager:
                 {
                     "can_id": ecu_id + offset,
                     "can_mask": 0x7FF,
+                    "extended": False,
                 }
             ]
         )
 
         maybe_response = self.canbus.recv(timeout)
+        print(maybe_response.is_error_frame)
 
         if maybe_response:
             return self.db.decode_message(offset, maybe_response.data)
