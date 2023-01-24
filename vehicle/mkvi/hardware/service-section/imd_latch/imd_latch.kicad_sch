@@ -617,7 +617,7 @@
         )
       )
     )
-    (symbol "formula:C_22uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:22uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
@@ -645,7 +645,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "C_22uF_0_1"
+      (symbol "22uF_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -663,7 +663,7 @@
           (fill (type none))
         )
       )
-      (symbol "C_22uF_1_1"
+      (symbol "22uF_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -3750,7 +3750,7 @@
     (pin "2" (uuid 9aa3884b-f17c-45fa-948b-aa285a105faa))
   )
 
-  (symbol (lib_id "formula:C_22uF") (at 49.53 38.1 0) (unit 1)
+  (symbol (lib_id "OEM:22uF") (at 49.53 38.1 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid da51bc54-560a-490b-8fc5-d3fe47c1ca81)
     (property "Reference" "C1" (id 0) (at 53.34 36.8299 0)

@@ -413,7 +413,7 @@
         )
       )
     )
-    (symbol "formula:C_10uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:10uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 3.81 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
@@ -441,7 +441,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "C_10uF_0_1"
+      (symbol "10uF_0_1"
         (polyline
           (pts
             (xy -2.032 0.508)
@@ -459,7 +459,7 @@
           (fill (type none))
         )
       )
-      (symbol "C_10uF_1_1"
+      (symbol "10uF_1_1"
         (pin passive line (at 0 5.08 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -993,7 +993,7 @@
     (pin "1" (uuid 4e61df93-d1f0-4ab1-9f4b-3a9cb9153251))
   )
 
-  (symbol (lib_id "formula:C_10uF") (at 88.9 55.88 0) (unit 1)
+  (symbol (lib_id "OEM:10uF") (at 88.9 55.88 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 890d5ab7-23d8-422d-9617-6f135723f7d7)
     (property "Reference" "C13" (id 0) (at 81.28 53.34 0)
