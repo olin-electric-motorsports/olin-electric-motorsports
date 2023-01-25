@@ -5,7 +5,7 @@
   (paper "A4")
 
   (lib_symbols
-    (symbol "OEM:0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0u1F" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
@@ -33,7 +33,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "0.1uF_0_1"
+      (symbol "0u1F_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -51,7 +51,7 @@
           (fill (type none))
         )
       )
-      (symbol "0.1uF_1_1"
+      (symbol "0u1F_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -170,7 +170,7 @@
         )
       )
     )
-    (symbol "OEM:Crystal_SMD" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+    (symbol "OEM:Crystal_16MHz_18pF" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "Y" (id 0) (at 1.27 4.445 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
@@ -411,7 +411,7 @@
         )
       )
     )
-    (symbol "formula:R_120" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "OEM:120R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (id 0) (at 2.032 0 90)
         (effects (font (size 1.27 1.27)))
       )
@@ -439,13 +439,13 @@
       (property "ki_fp_filters" "R_* Resistor_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_120_0_1"
+      (symbol "120R_0_1"
         (rectangle (start -1.016 -2.54) (end 1.016 2.54)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
       )
-      (symbol "R_120_1_1"
+      (symbol "120R_1_1"
         (pin passive line (at 0 3.81 270) (length 1.27)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -456,11 +456,11 @@
         )
       )
     )
-    (symbol "formula:R_500" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:499R" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (id 0) (at 0 5.08 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "R_500" (id 1) (at 0 2.54 0)
+      (property "Value" "R_499" (id 1) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "footprints:R_0805_OEM" (id 2) (at 0 0 0)
@@ -478,7 +478,7 @@
       (property "MFN" "DK" (id 6) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_500_1_1"
+      (symbol "499R_1_1"
         (rectangle (start 2.54 -1.016) (end -2.54 1.016)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -1015,11 +1015,11 @@
     (pin "9" (uuid aa6316e5-29fd-49f3-aa98-24ea071e9a22))
   )
 
-  (symbol (lib_id "formula:R_500") (at 49.53 66.04 0) (unit 1)
+  (symbol (lib_id "OEM:499R") (at 49.53 66.04 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 55aebc00-7753-4d2d-93ea-11cf8e540c43)
     (property "Reference" "R13" (id 0) (at 49.53 60.96 0))
-    (property "Value" "R_500" (id 1) (at 49.53 63.5 0))
+    (property "Value" "R_499" (id 1) (at 49.53 63.5 0))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (id 2) (at 49.53 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -1055,7 +1055,7 @@
     (pin "1" (uuid 00ec335f-5830-42fc-a57c-9caecfe3ffaf))
   )
 
-  (symbol (lib_id "OEM:0.1uF") (at 87.63 48.26 90) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 87.63 48.26 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 62504c5f-0e7b-496f-b44d-95f5e862544e)
     (property "Reference" "C11" (id 0) (at 87.63 41.91 90))
@@ -1079,13 +1079,13 @@
     (pin "2" (uuid 39ac2786-61a6-43ab-99f7-f0c3dd84db40))
   )
 
-  (symbol (lib_id "formula:R_500") (at 46.99 73.66 90) (unit 1)
+  (symbol (lib_id "OEM:499R") (at 46.99 73.66 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 710102f7-2960-4b36-84fc-bffe400a4969)
     (property "Reference" "R12" (id 0) (at 43.18 72.39 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "R_500" (id 1) (at 39.37 74.93 90)
+    (property "Value" "R_499" (id 1) (at 39.37 74.93 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (id 2) (at 46.99 73.66 0)
@@ -1123,7 +1123,7 @@
     (pin "1" (uuid 85af9a54-c0a8-4a5c-bdbb-728b28b3ced6))
   )
 
-  (symbol (lib_id "OEM:Crystal_SMD") (at 107.95 96.52 0) (unit 1)
+  (symbol (lib_id "OEM:Crystal_16MHz_18pF") (at 107.95 96.52 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 85221763-1383-428a-ae6e-7d259de01273)
     (property "Reference" "Y2" (id 0) (at 100.584 94.742 0)
@@ -1194,7 +1194,7 @@
     (pin "2" (uuid e72100ad-4ab7-40d3-94c5-7373ad7b574e))
   )
 
-  (symbol (lib_id "OEM:0.1uF") (at 60.96 41.91 90) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 60.96 41.91 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid b5e1ac71-1ddb-4d3c-8faa-1c6ae7439f22)
     (property "Reference" "C9" (id 0) (at 60.96 35.56 90))
@@ -1278,7 +1278,7 @@
     (pin "1" (uuid 65d2c0bb-6378-4396-8e18-452fbfa94399))
   )
 
-  (symbol (lib_id "OEM:0.1uF") (at 60.96 52.07 270) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 60.96 52.07 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid d5d67576-6aef-4c8d-9b53-c0a4f04557b2)
     (property "Reference" "C10" (id 0) (at 60.96 45.72 90))
@@ -1302,7 +1302,7 @@
     (pin "2" (uuid 2a4b5d6f-dc5c-4f5e-a980-a6b635c58b1d))
   )
 
-  (symbol (lib_id "formula:R_120") (at 105.41 63.5 0) (unit 1)
+  (symbol (lib_id "OEM:120R") (at 105.41 63.5 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid e4278012-273b-4303-aa63-63d32659012f)
     (property "Reference" "R14" (id 0) (at 107.95 62.2299 0)

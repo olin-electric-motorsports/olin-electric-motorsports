@@ -5,7 +5,7 @@
   (paper "A4")
 
   (lib_symbols
-    (symbol "OEM:0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0u1F" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
@@ -33,7 +33,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "0.1uF_0_1"
+      (symbol "0u1F_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -51,7 +51,7 @@
           (fill (type none))
         )
       )
-      (symbol "0.1uF_1_1"
+      (symbol "0u1F_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -125,7 +125,7 @@
         )
       )
     )
-    (symbol "formula:R_0" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (id 0) (at 2.032 0 90)
         (effects (font (size 1.27 1.27)))
       )
@@ -153,13 +153,13 @@
       (property "ki_fp_filters" "R_* Resistor_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_0_0_1"
+      (symbol "0R_0_1"
         (rectangle (start -1.016 -2.54) (end 1.016 2.54)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
       )
-      (symbol "R_0_1_1"
+      (symbol "0R_1_1"
         (pin passive line (at 0 3.81 270) (length 1.27)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -170,7 +170,7 @@
         )
       )
     )
-    (symbol "formula:R_1M" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "OEM:1MR" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (id 0) (at 2.032 0 90)
         (effects (font (size 1.27 1.27)))
       )
@@ -198,13 +198,13 @@
       (property "ki_fp_filters" "R_* Resistor_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_1M_0_1"
+      (symbol "1MR_0_1"
         (rectangle (start -1.016 -2.54) (end 1.016 2.54)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
       )
-      (symbol "R_1M_1_1"
+      (symbol "1MR_1_1"
         (pin passive line (at 0 3.81 270) (length 1.27)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -215,7 +215,7 @@
         )
       )
     )
-    (symbol "formula:R_2.2K" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "OEM:2K2R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (id 0) (at 2.032 0 90)
         (effects (font (size 1.27 1.27)))
       )
@@ -243,13 +243,13 @@
       (property "ki_fp_filters" "R_* Resistor_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_2.2K_0_1"
+      (symbol "2K2R_0_1"
         (rectangle (start -1.016 -2.54) (end 1.016 2.54)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
       )
-      (symbol "R_2.2K_1_1"
+      (symbol "2K2R_1_1"
         (pin passive line (at 0 3.81 270) (length 1.27)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -549,7 +549,7 @@
     (pin "1" (uuid 5244e3c9-843a-4627-b18e-d9ee61c268ca))
   )
 
-  (symbol (lib_id "OEM:0.1uF") (at 175.26 87.63 90) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 175.26 87.63 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 34860710-1617-41ba-a2a8-fda5dbb6672c)
     (property "Reference" "C2" (id 0) (at 175.26 80.01 90))
@@ -573,7 +573,7 @@
     (pin "2" (uuid c472b1de-8489-4cf0-9e91-cefcc067a3b6))
   )
 
-  (symbol (lib_id "formula:R_1M") (at 69.85 82.55 0) (unit 1)
+  (symbol (lib_id "OEM:1MR") (at 69.85 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 41dab7dd-1fd1-4b9c-9222-7aafcf3d8f87)
     (property "Reference" "R1" (id 0) (at 72.39 81.2799 0)
@@ -719,7 +719,7 @@
     (pin "1" (uuid aa8ecf0b-7562-4c7a-b8af-6aaabb01ee25))
   )
 
-  (symbol (lib_id "formula:R_0") (at 96.52 101.6 0) (unit 1)
+  (symbol (lib_id "OEM:0R") (at 96.52 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 79f29d04-d033-4ffc-8122-624ce57ae2fb)
     (property "Reference" "R2" (id 0) (at 99.06 100.3299 0)
@@ -747,7 +747,7 @@
     (pin "2" (uuid fe7767e9-8569-44cc-8ae0-17d49320d724))
   )
 
-  (symbol (lib_id "formula:R_2.2K") (at 181.61 116.84 0) (unit 1)
+  (symbol (lib_id "OEM:2K2R") (at 181.61 116.84 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 89777a25-e3f1-4c73-9ea2-2743d429ae0d)
     (property "Reference" "R6" (id 0) (at 184.15 115.5699 0)
@@ -791,7 +791,7 @@
     (pin "1" (uuid 9601f61c-30f4-46de-bd08-3098931a84fc))
   )
 
-  (symbol (lib_id "OEM:0.1uF") (at 88.9 85.09 90) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 88.9 85.09 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 905757fe-e8d0-4f38-bb78-25d26483d7d1)
     (property "Reference" "C1" (id 0) (at 88.9 77.47 90))
@@ -815,7 +815,7 @@
     (pin "2" (uuid 863953bc-2258-4a55-bdde-e57db020d58d))
   )
 
-  (symbol (lib_id "formula:R_2.2K") (at 96.52 114.3 0) (unit 1)
+  (symbol (lib_id "OEM:2K2R") (at 96.52 114.3 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 976ad36d-9c1f-4915-aace-cfd815f187e6)
     (property "Reference" "R3" (id 0) (at 99.06 113.0299 0)
@@ -843,7 +843,7 @@
     (pin "2" (uuid 1ded88a1-ddcd-4087-bf0b-36e1c88f94be))
   )
 
-  (symbol (lib_id "formula:R_0") (at 181.61 102.87 0) (unit 1)
+  (symbol (lib_id "OEM:0R") (at 181.61 102.87 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid a3bb6b5a-7616-4f27-82e7-0c638b4e1870)
     (property "Reference" "R5" (id 0) (at 184.15 101.5999 0)
@@ -871,7 +871,7 @@
     (pin "2" (uuid d7f1f53f-0ade-458e-8af9-053a5540bec8))
   )
 
-  (symbol (lib_id "formula:R_1M") (at 154.94 85.09 0) (unit 1)
+  (symbol (lib_id "OEM:1MR") (at 154.94 85.09 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid b1cec85e-6cd9-4dfb-beae-68f08fc3012a)
     (property "Reference" "R4" (id 0) (at 157.48 83.8199 0)

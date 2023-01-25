@@ -5,7 +5,7 @@
   (paper "A4")
 
   (lib_symbols
-    (symbol "OEM:0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0u1F" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
@@ -33,7 +33,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "0.1uF_0_1"
+      (symbol "0u1F_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -51,7 +51,7 @@
           (fill (type none))
         )
       )
-      (symbol "0.1uF_1_1"
+      (symbol "0u1F_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -446,7 +446,7 @@
         )
       )
     )
-    (symbol "formula:R_120_DNP" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "OEM:120R_DNP" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (id 0) (at 2.032 0 90)
         (effects (font (size 1.27 1.27)))
       )
@@ -474,13 +474,13 @@
       (property "ki_fp_filters" "R_* Resistor_*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_120_DNP_0_1"
+      (symbol "120R_DNP_0_1"
         (rectangle (start -1.016 -2.54) (end 1.016 2.54)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
       )
-      (symbol "R_120_DNP_1_1"
+      (symbol "120R_DNP_1_1"
         (pin passive line (at 0 3.81 270) (length 1.27)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1020,7 +1020,7 @@
     (uuid dac670a2-01dd-4596-a6c9-39c5db8a2e12)
   )
 
-  (symbol (lib_id "formula:R_120_DNP") (at 153.67 76.835 0) (unit 1)
+  (symbol (lib_id "OEM:120R_DNP") (at 153.67 76.835 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 094b0737-21d7-4b68-87b5-15673824e97a)
     (property "Reference" "R22" (id 0) (at 156.21 75.5649 0)
@@ -1048,7 +1048,7 @@
     (pin "2" (uuid 322d7c3e-2ba6-4a93-9570-829ed9fb1fdb))
   )
 
-  (symbol (lib_id "OEM:0.1uF") (at 115.57 65.405 270) (mirror x) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 115.57 65.405 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 16b839dc-9a8c-4361-9c0c-8829c9162247)
     (property "Reference" "C5" (id 0) (at 115.57 61.595 90))
@@ -1207,7 +1207,7 @@
     (pin "2" (uuid 3a8f44fb-b1c5-48ee-b2dc-0807b6f07b54))
   )
 
-  (symbol (lib_id "OEM:0.1uF") (at 144.78 62.23 270) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 144.78 62.23 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 7c722b0d-7038-4ad0-b273-3f43d2eddb8f)
     (property "Reference" "C6" (id 0) (at 143.51 58.42 90)
@@ -1251,7 +1251,7 @@
     (pin "1" (uuid ce6ada5a-c648-4cf1-9c13-76e6a3daa231))
   )
 
-  (symbol (lib_id "OEM:0.1uF") (at 115.57 53.975 270) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 115.57 53.975 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 8c847c34-32f6-4f27-a1eb-09be03370edf)
     (property "Reference" "C4" (id 0) (at 114.3 50.165 90)

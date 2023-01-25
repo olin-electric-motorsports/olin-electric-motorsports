@@ -386,7 +386,7 @@
         )
       )
     )
-    (symbol "formula:C_0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+    (symbol "OEM:0u1F" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at 0.635 2.54 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
@@ -414,7 +414,7 @@
       (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "C_0.1uF_0_1"
+      (symbol "0u1F_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -432,7 +432,7 @@
           (fill (type none))
         )
       )
-      (symbol "C_0.1uF_1_1"
+      (symbol "0u1F_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -443,7 +443,7 @@
         )
       )
     )
-    (symbol "formula:C_10nF" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:10nF" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "C" (id 0) (at -2.54 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -471,7 +471,7 @@
       (property "ki_description" "Capacitor, 10nF 50V X7R 0805" (id 8) (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "C_10nF_0_1"
+      (symbol "10nF_0_1"
         (polyline
           (pts
             (xy -2.032 -0.762)
@@ -489,7 +489,7 @@
           (fill (type none))
         )
       )
-      (symbol "C_10nF_1_1"
+      (symbol "10nF_1_1"
         (pin passive line (at 0 3.81 270) (length 2.794)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -846,7 +846,7 @@
         )
       )
     )
-    (symbol "formula:R_15k" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "OEM:15KR" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (id 0) (at 0 -2.54 0)
         (effects (font (size 1.27 1.27)))
       )
@@ -862,7 +862,7 @@
       (property "Link" "https://www.digikey.com/en/products/detail/yageo/RE0805FRE0715KL/5923506" (id 4) (at 0 -6.35 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "R_15k_1_1"
+      (symbol "15KR_1_1"
         (rectangle (start 2.54 -1.016) (end -2.54 1.016)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
@@ -3216,7 +3216,7 @@
     (pin "2" (uuid 8083824d-2cc3-4b9d-b1f1-40e2e7f2fec0))
   )
 
-  (symbol (lib_id "formula:C_0.1uF") (at 138.43 100.33 0) (unit 1)
+  (symbol (lib_id "OEM:0u1F") (at 138.43 100.33 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 84eecd6a-3420-4402-a067-fe93ca9aca29)
     (property "Reference" "C5" (id 0) (at 142.24 99.0599 0)
@@ -3244,13 +3244,13 @@
     (pin "2" (uuid 21140fd0-3f47-4030-8a46-6ca1a78bbd32))
   )
 
-  (symbol (lib_id "formula:R_15k") (at 161.29 58.42 90) (unit 1)
+  (symbol (lib_id "OEM:15KR") (at 161.29 58.42 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 853239ff-4a16-46dd-93dc-2e041aa7c820)
     (property "Reference" "R26" (id 0) (at 154.94 57.15 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "R_15k_DNP" (id 1) (at 157.48 53.34 0)
+    (property "Value" "15KR_DNP" (id 1) (at 157.48 53.34 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "footprints:R_0603_1608Metric" (id 2) (at 166.37 60.96 0)
@@ -3290,7 +3290,7 @@
     (pin "2" (uuid 86636795-66e7-416b-87aa-41c05c56ff76))
   )
 
-  (symbol (lib_id "formula:C_10nF") (at 152.4 118.11 0) (unit 1)
+  (symbol (lib_id "OEM:10nF") (at 152.4 118.11 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 8dce4915-4a29-4c8c-8073-8eb4abc614ac)
     (property "Reference" "C3" (id 0) (at 155.321 116.9416 0)
@@ -3733,13 +3733,13 @@
     (pin "2" (uuid 4616615e-5658-449e-81fb-77863a9738e6))
   )
 
-  (symbol (lib_id "formula:R_15k") (at 171.45 58.42 90) (unit 1)
+  (symbol (lib_id "OEM:15KR") (at 171.45 58.42 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid edb451c6-ad16-4bd6-9542-44dcfa286b07)
     (property "Reference" "R27" (id 0) (at 166.37 57.15 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "R_15k_DNP" (id 1) (at 168.91 53.34 0)
+    (property "Value" "15KR_DNP" (id 1) (at 168.91 53.34 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "footprints:R_0603_1608Metric" (id 2) (at 176.53 60.96 0)
@@ -4051,10 +4051,10 @@
       (reference "R25") (unit 1) (value "R_100") (footprint "OEM:R_0603")
     )
     (path "/853239ff-4a16-46dd-93dc-2e041aa7c820"
-      (reference "R26") (unit 1) (value "R_15k_DNP") (footprint "footprints:R_0603_1608Metric")
+      (reference "R26") (unit 1) (value "15KR_DNP") (footprint "footprints:R_0603_1608Metric")
     )
     (path "/edb451c6-ad16-4bd6-9542-44dcfa286b07"
-      (reference "R27") (unit 1) (value "R_15k_DNP") (footprint "footprints:R_0603_1608Metric")
+      (reference "R27") (unit 1) (value "15KR_DNP") (footprint "footprints:R_0603_1608Metric")
     )
     (path "/fd1e1719-00ac-4638-93e0-d151bb4bd839"
       (reference "U1") (unit 1) (value "LTC1380IGN") (footprint "Package_SO:SSOP-16_3.9x4.9mm_P0.635mm")
