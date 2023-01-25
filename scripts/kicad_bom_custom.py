@@ -3,7 +3,7 @@
   Output: CSV (comma-separated)
   Grouped By: Value, Footprint
   Sorted By: Ref
-  Fields: Ref, Qnty, MPN, Footprint
+  Fields: PartName, Ref, Qnty, DKPN, Description, MPN, Package
 
   Command line:
   python "pathToFile/kicad_bom_custom.py" "%I" "%O.csv"
@@ -39,8 +39,8 @@ except IOError:
 # Create a new csv writer object to use as the output formatter
 out = csv.writer(f, delimiter=',', quotechar='\"', quoting=csv.QUOTE_ALL)
 
-# Output a column header
-out.writerow(['Ref', 'Qnty', 'MPN', 'Footprint'])
+# Output a column header for PartName, Ref, Qnty, DKPN, Description, MPN, Package
+out.writerow(['Part', 'Ref', 'Count', 'DKPN', 'MPN', 'Description', 'Package'])
 
 
 def componentEqual(self, other):
@@ -73,7 +73,13 @@ for group in grouped:
       print(f"warning: component missing MPN {component.getPartName()}")
 
   # Fill in the component groups common data
+  #Fields: Value, Ref, Qnty, DKPN, Description, MPN, Package
 
-  out.writerow([", ".join(refs), len(group),
-                fromNetlistText(c.getPartName("MPN")),
-                fromNetlistText(c.getFootprint())])
+  out.writerow([
+                c.getPartName(),
+                ", ".join(refs), 
+                len(group),
+                c.getField("DKPN"),
+                c.getField("MPN"),
+                c.getDescription(),
+                c.getField("Package")])
