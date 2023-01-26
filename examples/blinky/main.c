@@ -1,25 +1,15 @@
-#include "libs/gpio/pin_defs.h"
-
-
-#include "libs/gpio/api.h"
 #include <util/delay.h>
 
+#include "libs/gpio/api.h"
+#include "libs/gpio/pin_defs.h"
 
-// Timer setup
+gpio_t LED0 = PD5;
 
 int main(void) {
-    gpio_t LED = PD5;
-    gpio_set_mode(LED, OUTPUT);
-    while (1) {
+    gpio_set_mode(LED0, OUTPUT);
 
-        gpio_set_pin(LED);
+    for (;;) {
+        gpio_toggle_pin(LED0);
         _delay_ms(500);
-        gpio_clear_pin(LED);
-        _delay_ms(500);
-
-
     }
-
-
-  
 }

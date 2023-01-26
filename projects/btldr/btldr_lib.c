@@ -72,7 +72,7 @@ void updater_loop(void) {
         case CAN_ID_QUERY: {
             do_query(can_msg.data, can_msg.dlc);
         } break;
-        case    : {
+        case CAN_ID_RESET: {
             do_reset(can_msg.data, can_msg.dlc);
         } break;
         default: {
