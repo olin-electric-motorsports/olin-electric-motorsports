@@ -482,6 +482,15 @@
     (path "/00000000-0000-0000-0000-000060a3bc90/00000000-0000-0000-0000-000060ff9c96"
       (reference "BSPD801") (unit 1) (value "Test_Point_SMD") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44350"
+      (reference "C1") (unit 1) (value "C_2.2uF") (footprint "footprints:C_0603_1608Metric")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44347"
+      (reference "C2") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0805_OEM")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44262"
+      (reference "C3") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0805_OEM")
+    )
     (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-00006261a84e"
       (reference "C301") (unit 1) (value "C_22uF") (footprint "footprints:C_1206_OEM")
     )
@@ -578,23 +587,23 @@
     (path "/00000000-0000-0000-0000-000060ab52cf/00000000-0000-0000-0000-000060ae92aa"
       (reference "C1010") (unit 1) (value "C_30pF") (footprint "footprints:C_0805_OEM")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44262"
-      (reference "C?") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0805_OEM")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44347"
-      (reference "C?") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0805_OEM")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44350"
-      (reference "C?") (unit 1) (value "C_2.2uF") (footprint "footprints:C_0603_1608Metric")
-    )
     (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c4426c"
-      (reference "COUT?") (unit 1) (value "C_47uF") (footprint "footprints:C_0805_OEM")
+      (reference "COUT1") (unit 1) (value "C_47uF") (footprint "footprints:C_0805_OEM")
     )
     (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44333"
-      (reference "COUT?") (unit 1) (value "C_22uF") (footprint "footprints:C_1206_OEM")
+      (reference "COUT2") (unit 1) (value "C_22uF") (footprint "footprints:C_1206_OEM")
     )
     (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c4433c"
-      (reference "COUT?") (unit 1) (value "C_33uF") (footprint "footprints:Fuse_1812")
+      (reference "COUT3") (unit 1) (value "C_33uF") (footprint "footprints:Fuse_1812")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442b4"
+      (reference "D1") (unit 1) (value "D_Zener_18V") (footprint "footprints:DO-214AA")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c4424e"
+      (reference "D2") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44258"
+      (reference "D3") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
     )
     (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-000060f1916a"
       (reference "D301") (unit 1) (value "BAS40-00") (footprint "Package_TO_SOT_SMD:SOT-23")
@@ -656,14 +665,26 @@
     (path "/00000000-0000-0000-0000-000060a3bd2b/00000000-0000-0000-0000-000061065fd5"
       (reference "D905") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c4424e"
-      (reference "D?") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060b21368"
+      (reference "F1") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44258"
-      (reference "D?") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060b24ae5"
+      (reference "F2") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442b4"
-      (reference "D?") (unit 1) (value "D_Zener_18V") (footprint "footprints:DO-214AA")
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060b4c38c"
+      (reference "F3") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060b4c37c"
+      (reference "F4") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060bf871b"
+      (reference "F5") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442a0"
+      (reference "F6") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/c79c6581-e01d-474f-8dcc-1a5108d41774"
+      (reference "F7") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
     )
     (path "/00000000-0000-0000-0000-000060a3b0ab/00000000-0000-0000-0000-000060aa1b80"
       (reference "F701") (unit 1) (value "F_21mA_420V") (footprint "footprints:F_21mA_420V")
@@ -674,32 +695,14 @@
     (path "/00000000-0000-0000-0000-000060a3b0ab/00000000-0000-0000-0000-000062818372"
       (reference "F703") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060b21368"
-      (reference "F?") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060b24ae5"
-      (reference "F?") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060b4c37c"
-      (reference "F?") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060b4c38c"
-      (reference "F?") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060bf871b"
-      (reference "F?") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442a0"
-      (reference "F?") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/c79c6581-e01d-474f-8dcc-1a5108d41774"
-      (reference "F?") (unit 1) (value "500mA") (footprint "footprints:Fuse_1210")
-    )
     (path "/00000000-0000-0000-0000-000060a3bc90/00000000-0000-0000-0000-000060fd6dfd"
       (reference "IM801") (unit 1) (value "Test_Point_SMD") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
     (path "/00000000-0000-0000-0000-000060a3bc90/00000000-0000-0000-0000-000060fd6e03"
       (reference "IP801") (unit 1) (value "Test_Point_SMD") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/00000000-0000-0000-0000-000060a3bc90/cc559625-0131-4159-84c7-6c9bf1ceb4ee"
+      (reference "J1") (unit 1) (value "MicroFit_RA_V_2") (footprint "footprints:MicroFit_RA_V_2")
     )
     (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-00006289c736"
       (reference "J301") (unit 1) (value "MicroFit_RA_06") (footprint "footprints:430450602")
@@ -728,20 +731,17 @@
     (path "/00000000-0000-0000-0000-000060aef08c/00000000-0000-0000-0000-00006286ecf2"
       (reference "J1101") (unit 1) (value "MicroFit_RA_08") (footprint "footprints:430450800")
     )
-    (path "/00000000-0000-0000-0000-000060a3bc90/3d2b810a-4d55-4f6b-8ee4-c22aa8ddfac9"
-      (reference "J?") (unit 1) (value "MicroFit_RA_R_2") (footprint "footprints:MicroFit_RA_2")
-    )
     (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-000060f0c2f5"
       (reference "K301") (unit 1) (value "G5Q-1A4-DC12") (footprint "footprints:Relay_SPST_OMRON-G5Q-1A4_OEM")
     )
     (path "/00000000-0000-0000-0000-000060a3bc90/00000000-0000-0000-0000-000060c5d6c5"
       (reference "K801") (unit 1) (value "G5Q-1A4-DC12") (footprint "footprints:Relay_SPST_OMRON-G5Q-1A4_OEM")
     )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c4432a"
+      (reference "L1") (unit 1) (value "L_100uH") (footprint "footprints:L_100uH_OEM")
+    )
     (path "/00000000-0000-0000-0000-000060a3b0ab/00000000-0000-0000-0000-000061108fc4"
       (reference "L701") (unit 1) (value "L_1.2mH") (footprint "footprints:L_1.2mH")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c4432a"
-      (reference "L?") (unit 1) (value "L_100uH") (footprint "footprints:L_100uH_OEM")
     )
     (path "/00000000-0000-0000-0000-000060ab52cf/00000000-0000-0000-0000-000060ab1c94"
       (reference "PD1001") (unit 1) (value "LED_0805") (footprint "footprints:LED_0805_OEM")
@@ -796,6 +796,21 @@
     )
     (path "/00000000-0000-0000-0000-000060a3bd2b/00000000-0000-0000-0000-00006106602c"
       (reference "Q902") (unit 1) (value "SSM3K333R") (footprint "footprints:SOT-23F")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442d9"
+      (reference "R1") (unit 1) (value "R_1K") (footprint "footprints:R_0805_OEM")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442d0"
+      (reference "R2") (unit 1) (value "R_25K") (footprint "footprints:R_0805_OEM")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44310"
+      (reference "R3") (unit 1) (value "R_100K") (footprint "footprints:R_0805_OEM")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44244"
+      (reference "R4") (unit 1) (value "R_200") (footprint "footprints:R_0805_OEM")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442e2"
+      (reference "R5") (unit 1) (value "R_0_2512") (footprint "footprints:R_2512_OEM")
     )
     (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-0000610ebc59"
       (reference "R301") (unit 1) (value "R_1K") (footprint "footprints:R_0805_OEM")
@@ -1046,23 +1061,41 @@
     (path "/00000000-0000-0000-0000-000060ab52cf/00000000-0000-0000-0000-000060ae928f"
       (reference "R1014") (unit 1) (value "R_10K") (footprint "footprints:R_0805_OEM")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44244"
-      (reference "R?") (unit 1) (value "R_200") (footprint "footprints:R_0805_OEM")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442d0"
-      (reference "R?") (unit 1) (value "R_25K") (footprint "footprints:R_0805_OEM")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442d9"
-      (reference "R?") (unit 1) (value "R_1K") (footprint "footprints:R_0805_OEM")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c442e2"
-      (reference "R?") (unit 1) (value "R_0_2512") (footprint "footprints:R_2512_OEM")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44310"
-      (reference "R?") (unit 1) (value "R_100K") (footprint "footprints:R_0805_OEM")
-    )
     (path "/00000000-0000-0000-0000-000060a3bc90/00000000-0000-0000-0000-000060b9aa1e"
       (reference "T801") (unit 1) (value "T_LAN_SM91501ALE") (footprint "footprints:T_LAN_SM91501ALE")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-00006142e745"
+      (reference "TP1") (unit 1) (value "5V_BMS") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-00006142f46a"
+      (reference "TP2") (unit 1) (value "5V_AIR_CONTROL") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-00006143273d"
+      (reference "TP3") (unit 1) (value "5V_IMD") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-0000616409fb"
+      (reference "TP4") (unit 1) (value "FB") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000062956580"
+      (reference "TP5") (unit 1) (value "+Batt") (footprint "TestPoint:TestPoint_Pad_D4.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000061432017"
+      (reference "TP6") (unit 1) (value "12V_TSAL") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000061432d91"
+      (reference "TP7") (unit 1) (value "12V_SHUTDOWN") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-0000614355de"
+      (reference "TP8") (unit 1) (value "12V_IMD") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/7f3a5818-fadf-43ff-affc-c189f1184d2e"
+      (reference "TP9") (unit 1) (value "12V_BUCK") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-0000614402ab"
+      (reference "TP10") (unit 1) (value "BUCK_OUTPUT") (footprint "TestPoint:TestPoint_Pad_D4.0mm")
+    )
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-00006295b540"
+      (reference "TP11") (unit 1) (value "LV_GND") (footprint "TestPoint:TestPoint_Pad_D4.0mm")
     )
     (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-000061492a6e"
       (reference "TP301") (unit 1) (value "IMD_OUTPUT") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
@@ -1199,38 +1232,14 @@
     (path "/00000000-0000-0000-0000-000060ab52cf/00000000-0000-0000-0000-000062938250"
       (reference "TP1002") (unit 1) (value "CANH") (footprint "TestPoint:TestPoint_Pad_D2.0mm")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-00006142e745"
-      (reference "TP?") (unit 1) (value "5V_BMS") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44319"
+      (reference "U1") (unit 1) (value "TPS560430YF") (footprint "footprints:SOT-23-6_OEM")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-00006142f46a"
-      (reference "TP?") (unit 1) (value "5V_AIR_CONTROL") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    (path "/00000000-0000-0000-0000-000060a3bc90/acb28b9c-f8c3-4a53-a486-289a86b190a6"
+      (reference "U2") (unit 1) (value "MicroFit_VT_6") (footprint "footprints:MicroFit_VT_6")
     )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000061432017"
-      (reference "TP?") (unit 1) (value "12V_TSAL") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-00006143273d"
-      (reference "TP?") (unit 1) (value "5V_IMD") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000061432d91"
-      (reference "TP?") (unit 1) (value "12V_SHUTDOWN") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-0000614355de"
-      (reference "TP?") (unit 1) (value "12V_IMD") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-0000614402ab"
-      (reference "TP?") (unit 1) (value "BUCK_OUTPUT") (footprint "TestPoint:TestPoint_Pad_D4.0mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-0000616409fb"
-      (reference "TP?") (unit 1) (value "FB") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000062956580"
-      (reference "TP?") (unit 1) (value "+Batt") (footprint "TestPoint:TestPoint_Pad_D4.0mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-00006295b540"
-      (reference "TP?") (unit 1) (value "LV_GND") (footprint "TestPoint:TestPoint_Pad_D4.0mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/7f3a5818-fadf-43ff-affc-c189f1184d2e"
-      (reference "TP?") (unit 1) (value "12V_BUCK") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+    (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-000060d455ec"
+      (reference "U3") (unit 1) (value "CD4044BDR") (footprint "footprints:SOIC127P600X175-16N")
     )
     (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-0000610ebc0a"
       (reference "U301") (unit 1) (value "TLV3701QDBVRG4Q1") (footprint "footprints:SOT-23-5_OEM")
@@ -1276,15 +1285,6 @@
     )
     (path "/00000000-0000-0000-0000-000060ab52cf/00000000-0000-0000-0000-000060ae926f"
       (reference "U1004") (unit 1) (value "ATMEGA16M1") (footprint "footprints:TQFP-32_7x7mm_Pitch0.8mm")
-    )
-    (path "/0f6ac0e5-1bd5-4bc2-aee4-10f1f8d8796a/00000000-0000-0000-0000-000060c44319"
-      (reference "U?") (unit 1) (value "TPS560430YF") (footprint "footprints:SOT-23-6_OEM")
-    )
-    (path "/00000000-0000-0000-0000-000060a3b129/00000000-0000-0000-0000-000060d455ec"
-      (reference "U?") (unit 1) (value "CD4044BDR") (footprint "footprints:SOIC127P600X175-16N")
-    )
-    (path "/00000000-0000-0000-0000-000060a3bc90/acb28b9c-f8c3-4a53-a486-289a86b190a6"
-      (reference "U?") (unit 1) (value "MicroFit_VT_6") (footprint "footprints:MicroFit_VT_6")
     )
     (path "/00000000-0000-0000-0000-000060ab52cf/00000000-0000-0000-0000-000060ab8d8e"
       (reference "Y1001") (unit 1) (value "Crystal_SMD") (footprint "footprints:Crystal_SMD_FA238")
