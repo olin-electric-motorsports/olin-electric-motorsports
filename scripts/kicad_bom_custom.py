@@ -15,13 +15,6 @@ import kicad_utils
 import csv
 import sys
 
-# A helper function to filter/convert a string read in netlist
-# currently: do nothing
-
-
-def fromNetlistText(aText):
-  return aText
-
 
 # Generate an instance of a generic netlist, and load the netlist tree from
 # the command line option. If the file doesn't exist, execution will stop
@@ -65,7 +58,7 @@ for group in grouped:
   # Add the reference of every component in the group and keep a reference
   # to the component so that the other data can be filled in once per group
   for component in group:
-    refs.append(fromNetlistText(component.getRef()))
+    refs.append(component.getRef())
     c = component
     #if not (c.getPartName() == c.getValue()):
       #print(f"warning: component part name and value do not match {c.getPartName()} - {c.getValue()}")
