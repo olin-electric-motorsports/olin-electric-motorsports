@@ -4,6 +4,7 @@ name: test_Comp
 publish:
   - name: test_msg1
     id: 0x6E0
+    board: "dashboard"
     freq_hz: 100
     signals:
       - name: msg_bit
@@ -15,6 +16,7 @@ publish:
             f: OFF
   - name: test_msg2
     id: 0x6E1
+    board: "bms"
     freq_hz: 100
     signals:
       - name: msg_bit
