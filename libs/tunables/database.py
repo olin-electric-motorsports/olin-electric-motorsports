@@ -40,7 +40,7 @@ def send(funcType, paraName, paraVal=0):
 
     with vehicle_bus as bus:
         msg = can.Message(
-           arbitration_id=0x6E0, data=message, is_extended_id=True
+           arbitration_id=0x6E0, data=message, is_extended_id=False
         )
 
         try:
