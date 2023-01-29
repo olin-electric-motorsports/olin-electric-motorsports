@@ -13,6 +13,18 @@ publish:
           values:
             t: ON
             f: OFF
+  - name: test_msg2
+    id: 0x6E1
+    freq_hz: 100
+    signals:
+      - name: msg_bit
+        slice: 0 + 1
+        unit: 
+          type: bool
+          values:
+            t: ON
+            f: OFF
+
 
 subscribe: 
   - name: test_listen
