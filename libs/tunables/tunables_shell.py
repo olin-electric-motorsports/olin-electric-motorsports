@@ -23,8 +23,11 @@ class tunables(cmd.Cmd):
 
         print(type(*parse(arg)[0]))
 
-    def do_list(self, arg):
+    def do_search(self, arg):
         print(search_yaml(arg))
+
+    def do_list(self, arg):
+        list_yaml()
 
     def do_bye(self, arg):
         print("Thank you for using tunables")
@@ -51,6 +54,27 @@ def search_yaml(arg):
 
                 if message["name"] == arg:
                     return message
+
+        except yaml.YAMLError as exc:
+            print(exc)
+
+
+def list_yaml():
+    with open("olin-electric-motorsports/libs/tunables/tester.yml", "r") as file:
+        try:
+            data = yaml.safe_load(file)
+
+            """
+            Format: data["publish"][Index of different names of messages. test_msg1 =0, test_msg2 = 1]["different parts of the message"]
+
+               
+            """
+            for i in range(len(data["publish"])):
+                message = data["publish"][i]
+                name = message["name"]
+                id = message["id"]
+                board = message["board"]
+                print(f"Name: {name} Id: {id} Board: {board}")
 
         except yaml.YAMLError as exc:
             print(exc)
