@@ -62,8 +62,11 @@ for group in grouped:
     c = component
     #if not (c.getPartName() == c.getValue()):
       #print(f"warning: component part name and value do not match {c.getPartName()} - {c.getValue()}")
-    if not (c.getField("MPN")):
-      print(f"warning: component missing MPN {component.getPartName()}")
+    dkpn = c.getField("DKPN")
+    if not (dkpn):
+      print(f"warning: component missing ordering information {component.getPartName()}")
+      dkpn = f"UNKNOWN:{component.getPartName()}"
+
 
   # Fill in the component groups common data
   #Fields: Value, Ref, Qnty, DKPN, Description, MPN, Package
@@ -72,7 +75,7 @@ for group in grouped:
                 c.getPartName(),
                 ", ".join(refs), 
                 len(group),
-                c.getField("DKPN"),
+                dkpn,
                 c.getField("MPN"),
                 c.getDescription(),
                 c.getField("Package")])

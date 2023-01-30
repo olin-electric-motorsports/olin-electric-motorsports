@@ -27,6 +27,8 @@ def cli(map, out):
     """
     unified_bom = {}
 
+    fields = {}
+
     for row in reader:
         click.echo(f"Processing BOM for {row[name_col]}")
         board_count = int(row[count_col])
@@ -40,22 +42,26 @@ def cli(map, out):
                     part_count = int(bom_row['Count']) * board_count
                     # insert into total count
                     dkpn = bom_row["DKPN"]
-                    if not 'dkpn' in unified_bom:
+                    print(f"{dkpn},{part_count}")
+                    if not dkpn in unified_bom:
                         # initialize to 0
                         bom_row['Count'] = 0 
                         unified_bom[dkpn] = bom_row # keep all fields
+                        for field in bom_row.keys():
+                            fields[field] = True
                     unified_bom[dkpn]['Count'] += part_count
 
         except FileNotFoundError:
             click.echo(f"Missing BOM for {row[name_col]}. Could not open file {row[bom_col]}")
-            print(unified_bom)
             exit(1)
 
-    print(unified_bom)
             
 
     # save bom
-    #csv.writer
+    final_bom = csv.DictWriter(out, fieldnames=fields.keys())
+    final_bom.writeheader()
+    for part in unified_bom.keys():
+        final_bom.writerow(unified_bom[part])
 
 if __name__ == '__main__':
     cli()
