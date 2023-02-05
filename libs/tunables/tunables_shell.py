@@ -15,66 +15,80 @@ class tunables(cmd.Cmd):
     # Commands
 
     def do_get(self, arg):
-        print(*parse(arg)[1])
         # database.send(0, arg[0])
+        print(search_yaml(arg))
 
     def do_set(self, arg):
+        print(parse(arg)[0])
+
         # database.send(0, arg[0], arg[1])
-
-        print(type(*parse(arg)[0]))
-
-    def do_search(self, arg):
-        print(search_yaml(arg))
+        write_yaml(parse(arg))
+        print(search_yaml(parse(arg)[0]))
 
     def do_list(self, arg):
         list_yaml()
 
-    def do_bye(self, arg):
-        print("Thank you for using tunables")
-        return
-
 
 def parse(arg):
-    return tuple(arg.split())
+    return arg.split(" ")
 
 
-# Finds all the informa
 def search_yaml(arg):
-    with open("olin-electric-motorsports/libs/tunables/tester.yml", "r") as file:
+
+    """Finds information of 1 parameter"""
+    with open("tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
 
-            """
-            Format: data["publish"][Index of different names of messages. test_msg1 =0, test_msg2 = 1]["different parts of the message"]
+            for i in range(len(data)):
+                for j in range(len(data[i]["params"])):
 
-               
-            """
-            for i in range(len(data["publish"])):
-                message = data["publish"][i]
+                    message = data[i]["params"][j]
 
-                if message["name"] == arg:
-                    return message
+                    if message["name"] == arg:
+                        return message
 
         except yaml.YAMLError as exc:
             print(exc)
 
 
 def list_yaml():
-    with open("olin-electric-motorsports/libs/tunables/tester.yml", "r") as file:
+    """Lists all parameters & their current value"""
+    with open("tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
 
-            """
-            Format: data["publish"][Index of different names of messages. test_msg1 =0, test_msg2 = 1]["different parts of the message"]
+            for i in range(len(data)):
+                for j in range(len(data[i]["params"])):
 
-               
-            """
-            for i in range(len(data["publish"])):
-                message = data["publish"][i]
-                name = message["name"]
-                id = message["id"]
-                board = message["board"]
-                print(f"Name: {name} Id: {id} Board: {board}")
+                    message = data[i]["params"][j]
+
+                    name = message["name"]
+                    current_value = message["current_value"]
+                    print(f"Name: {name} Current Value: {current_value} ")
+
+        except yaml.YAMLError as exc:
+            print(exc)
+
+
+def write_yaml(arg):
+    """arg format is: name_of_parameter new_value"""
+    with open("tunables.yml", "r") as file:
+        try:
+            data = yaml.safe_load(file)
+            for i in range(len(data)):
+                for j in range(len(data[i]["params"])):
+
+                    message = data[i]["params"][j]
+
+                    if message["name"] == arg[0]:
+                        data[i]["params"][j]["current_value"] = arg[1]
+                        break
+            file.close()
+
+            with open("tunables.yml", "w") as file:
+                yaml.dump(data, file)
+                file.close()
 
         except yaml.YAMLError as exc:
             print(exc)
