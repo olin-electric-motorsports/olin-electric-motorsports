@@ -1,6 +1,7 @@
 import cmd
 import yaml
 
+from ast import literal_eval
 
 # import database
 
@@ -82,12 +83,13 @@ def write_yaml(arg):
                     message = data[i]["params"][j]
 
                     if message["name"] == arg[0]:
-                        data[i]["params"][j]["current_value"] = arg[1]
+                        data[i]["params"][j]["current_value"] = literal_eval(arg[1])
+                        print(type(data[i]["params"][j]["current_value"]))
                         break
             file.close()
 
             with open("tunables.yml", "w") as file:
-                yaml.dump(data, file)
+                yaml.dump(data, file, sort_keys=False)
                 file.close()
 
         except yaml.YAMLError as exc:
