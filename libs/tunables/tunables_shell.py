@@ -2,6 +2,8 @@ import cmd
 import yaml
 
 from ast import literal_eval
+from datetime import date
+
 
 # import database
 
@@ -66,7 +68,12 @@ def list_yaml():
 
                     name = message["name"]
                     current_value = message["current_value"]
-                    print(f"Name: {name} Current Value: {current_value} ")
+                    date_modified = message["date_modified"]
+
+                    editable = message["edit"]
+                    print(
+                        f"Name: {name}, Current Value: {current_value}, Last Date Edited: {date_modified}, Editable: {editable}"
+                    )
 
         except yaml.YAMLError as exc:
             print(exc)
@@ -83,8 +90,14 @@ def write_yaml(arg):
                     message = data[i]["params"][j]
 
                     if message["name"] == arg[0]:
+                        if message["edit"] == False:
+                            print(f" {arg[0]} cannot be edited")
+                            break
+
                         data[i]["params"][j]["current_value"] = literal_eval(arg[1])
-                        print(type(data[i]["params"][j]["current_value"]))
+                        print(date.today())
+                        data[i]["params"][j]["date_modified"] = date.today()
+
                         break
             file.close()
 
