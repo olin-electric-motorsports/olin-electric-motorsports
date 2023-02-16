@@ -2,8 +2,8 @@ load("//bazel/tools:defs.bzl", "dbc_gen")
 
 # Generates DBC
 dbc_gen(
-    name = "mkv.dbc",
-    srcs = [
+    name="mkv.dbc",
+    srcs=[
         "//libs/can/test:test.yml",
         "//vehicle/common/emeter:emeter.dbc",
         "//vehicle/common/motor_controller:motor_controller.dbc",
@@ -13,7 +13,6 @@ dbc_gen(
         "//vehicle/mkv/software/brakelight_bspd:bspd.yml",
         "//vehicle/mkv/software/dashboard:dashboard.yml",
         "//vehicle/mkv/software/throttle:throttle.yml",
-        "//libs/tunables:tester.yml",
-        "//libs/tunables:test_recieving.yml"
+        "//libs/tunables:test_recieving.yml",
     ],
 )
