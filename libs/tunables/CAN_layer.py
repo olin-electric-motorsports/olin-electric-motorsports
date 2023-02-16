@@ -15,6 +15,7 @@ class TunablesCAN:
         self.bus = can.Bus(bustype="slcan", channel="/dev/ttyACM0", bitrate=500000)
 
     def send(self, funcType, parameter_id, new_value=0):
+
         message = [funcType, parameter_id, 0, 0, new_value]
 
         msg = can.Message(arbitration_id=0x6E0, data=message, is_extended_id=False)

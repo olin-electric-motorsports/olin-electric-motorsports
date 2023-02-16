@@ -15,7 +15,7 @@ cc_library(
 
 exports_files([ 
 
-    "tester.yml",
+    "tunables.yml",
     "test_recieving.yml"
 ])
 
@@ -23,16 +23,16 @@ can_api_files(
 
     name = "can_api",
     dbc = "//vehicle/mkv:mkv.dbc",
-    yaml = ":tester.yml"
+    yaml = ":test_recieving.yml"
 
 
 )
 
 cc_firmware(
-    name = "test",
+    name = "tester",
     srcs = [
-        "test.c"
-    ].
+        "tester.c"
+    ],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1"
 

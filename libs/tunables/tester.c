@@ -1,19 +1,17 @@
-#include "libs/tunables/test/can_api.h"
+#include "libs/tunables/can_api.h"
 
-int main(void){
+int main(void) {
     can_init_test_MCU();
 
-    can_recieve_test_msg1();
+    can_receive_dashboard();
 
     for (;;) {
-        if(can_poll_recievie_test_msg1() == 0){
+        if (can_poll_receive_dashboard() == 0) {
+            test_listen.msg_reply = dashboard.ready_to_drive;
 
-            if(test_msg1.msg_reply ==0){
-                
-                can_send_test_listen();
-                can_recieve_test_msg1();
-            }
-            else
+            can_send_test_listen();
+
+            can_receive_dashboard();
         }
     }
 }
