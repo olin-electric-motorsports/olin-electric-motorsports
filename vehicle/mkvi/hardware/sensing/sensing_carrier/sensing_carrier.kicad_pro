@@ -48,7 +48,13 @@
           "min_clearance": 0.15239999999999998
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -115,6 +121,7 @@
       },
       "track_widths": [
         0.0,
+        0.1524,
         0.254,
         0.381
       ],
@@ -124,8 +131,16 @@
           "drill": 0.0
         },
         {
-          "diameter": 0.6096,
-          "drill": 0.3048
+          "diameter": 0.5,
+          "drill": 0.2
+        },
+        {
+          "diameter": 0.6,
+          "drill": 0.25
+        },
+        {
+          "diameter": 0.7,
+          "drill": 0.3
         }
       ],
       "zones_allow_external_fillets": false,
@@ -347,7 +362,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "template_board.kicad_pro",
+    "filename": "sensing_carrier.kicad_pro",
     "version": 1
   },
   "net_settings": {
