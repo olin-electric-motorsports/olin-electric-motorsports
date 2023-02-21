@@ -1,4 +1,3 @@
-
 #
 # Example python script to generate a BOM from a KiCad generic netlist
 #
@@ -27,19 +26,19 @@ net = kicad_netlist_reader.netlist(sys.argv[1])
 # Open a file to write to, if the file cannot be opened output to stdout
 # instead
 try:
-  f_sym = kicad_utils.open_file_writeUTF8(sys.argv[2], 'w')
-  f_foot = kicad_utils.open_file_writeUTF8(sys.argv[3], 'w')
+    f_sym = kicad_utils.open_file_writeUTF8(sys.argv[2], "w")
+    f_foot = kicad_utils.open_file_writeUTF8(sys.argv[3], "w")
 except IOError:
-  e = "Can't open output file for writing: " + sys.argv[2]
-  print(__file__, ":", e, sys.stderr)
-  exit(1)
+    e = "Can't open output file for writing: " + sys.argv[2]
+    print(__file__, ":", e, sys.stderr)
+    exit(1)
 
 
 def componentEqual(self, other):
-  if self.getPartName() == other.getPartName():
-    if self.getFootprint() == other.getFootprint():
-      return True
-  return False
+    if self.getPartName() == other.getPartName():
+        if self.getFootprint() == other.getFootprint():
+            return True
+    return False
 
 
 # override comparison operator used in grouping
@@ -52,15 +51,17 @@ grouped = net.groupComponents()
 
 # Output all of the component information
 for group in grouped:
-  refs = []
+    refs = []
 
-  # Add the reference of every component in the group and keep a reference
-  # to the component so that the other data can be filled in once per group
-  for c in group:
-    if not (c.getPartName() == c.getValue()):
-      print(f"warning: component part name and value do not match {c.getPartName()} - {c.getValue()}")
-    if not (c.getField("MPN")):
-      print(f"warning: component missing MPN {c.getPartName()}")
+    # Add the reference of every component in the group and keep a reference
+    # to the component so that the other data can be filled in once per group
+    for c in group:
+        if not (c.getPartName() == c.getValue()):
+            print(
+                f"warning: component part name and value do not match {c.getPartName()} - {c.getValue()}"
+            )
+        if not (c.getField("MPN")):
+            print(f"warning: component missing MPN {c.getPartName()}")
 
-  f_sym.write(f"{c.getLibName()}:{c.getPartName()}\n")
-  f_foot.write(c.getFootprint() + '\n')
+    f_sym.write(f"{c.getLibName()}:{c.getPartName()}\n")
+    f_foot.write(c.getFootprint() + "\n")
