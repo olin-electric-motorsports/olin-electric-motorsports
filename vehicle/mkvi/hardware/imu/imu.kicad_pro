@@ -48,7 +48,13 @@
           "min_clearance": 0.15239999999999998
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -379,7 +385,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "9-Axis-IMU.net",
+      "netlist": "imu.net",
       "specctra_dsn": "",
       "step": "",
       "vrml": ""
@@ -407,7 +413,7 @@
     "meta": {
       "version": 1
     },
-    "net_format_name": "Pcbnew",
+    "net_format_name": "KiCad",
     "ngspice": {
       "fix_include_paths": true,
       "fix_passive_vals": false,
