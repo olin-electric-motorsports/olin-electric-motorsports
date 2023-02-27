@@ -111,6 +111,16 @@ pip_install(
     requirements = "//projects/hitl/software:requirements.txt",
 )
 
+pip_install(
+    name = "symbol_library_converter_deps",
+    requirements = "//tools/symbols:requirements.txt",
+)
+
+pip_install(
+    name = "bom_join_deps",
+    requirements = "//tools/symbols:requirements.txt",
+)
+
 http_archive(
     name = "hedron_compile_commands",
     sha256 = "ce5714be202e942ba5f404d1c373a2fbb4b88c66737a924491fbd49afa91d48b",
