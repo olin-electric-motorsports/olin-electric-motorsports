@@ -614,30 +614,32 @@
         )
       )
     )
-    (symbol "formula:MicroFit_RA_4" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (symbol "formula:MicroFit_VT_4" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "J" (id 0) (at 0 10.16 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "MicroFit_RA_4" (id 1) (at 0 7.62 0)
+      (property "Value" "MicroFit_VT_4" (id 1) (at 0 7.62 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Footprint" "footprints:MicroFit_RA_4" (id 2) (at 0 -7.62 0)
+      (property "Footprint" "footprints:MicroFit_VT_4" (id 2) (at 0 -7.62 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Datasheet" "" (id 3) (at 0 0 0)
-        (effects (font (size 2.54 2.54)) hide)
-      )
-      (property "Purchasing Link" "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" (id 4) (at 0 0 0)
+      (property "Datasheet" "" (id 3) (at 0 -1.27 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" (id 5) (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
+      (property "MPN" "430450414" (id 4) (at -5.08 11.43 0)
+        (effects (font (size 1.27 1.27)))
       )
-      (symbol "MicroFit_RA_4_1_1"
+      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" (id 5) (at -7.62 13.97 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (symbol "MicroFit_VT_4_0_1"
         (rectangle (start -2.54 5.08) (end 2.54 -5.08)
           (stroke (width 0) (type default) (color 0 0 0 0))
           (fill (type background))
         )
+      )
+      (symbol "MicroFit_VT_4_1_1"
         (pin input line (at 5.08 3.81 180) (length 2.54)
           (name "~" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1986,7 +1988,7 @@
     (property "Value" "Ampseal_23_RA" (id 1) (at 68.58 136.525 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Footprint" "footprints:Ampseal_23" (id 2) (at 67.31 147.955 0)
+    (property "Footprint" "OEM:Ampseal_23_RA" (id 2) (at 67.31 147.955 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (property "Datasheet" "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F776087%7FE11%7Fpdf%7FEnglish%7FENG_CD_776087_E11.pdf%7F776087-1" (id 3) (at 67.31 147.955 0)
@@ -2132,6 +2134,29 @@
     (pin "P40" (uuid 027a084f-178c-4824-ae70-d9b402dd141c))
   )
 
+  (symbol (lib_id "formula:MicroFit_VT_4") (at 22.86 28.575 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid 56d40b27-e830-453c-b1a5-dced8fafcf87)
+    (property "Reference" "J8" (id 0) (at 22.86 12.7 0))
+    (property "Value" "MicroFit_VT_4" (id 1) (at 23.495 21.59 0))
+    (property "Footprint" "footprints:MicroFit_VT_4" (id 2) (at 22.86 36.195 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 22.86 29.845 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "430450414" (id 4) (at 22.86 41.91 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450414/WM1796-ND/252509" (id 5) (at 24.765 38.735 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 3609440a-f007-4fe1-9080-4dc725eb1609))
+    (pin "2" (uuid 06c05092-598c-4ed3-a475-6662e84c788e))
+    (pin "3" (uuid 3707481d-edf6-48f6-98a0-6b183199c27d))
+    (pin "4" (uuid acec70d3-84c9-4bb5-8e56-40b1b761a820))
+  )
+
   (symbol (lib_id "formula:Automotive_M.2") (at 266.065 80.01 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 5994cdd9-641a-4ada-ad70-12b908f67db8)
@@ -2255,15 +2280,15 @@
   )
 
   (symbol (lib_id "formula:Ampseal_23_RA") (at 25.4 167.005 0) (unit 1)
-    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (in_bom yes) (on_board yes)
     (uuid aad99909-8ee6-44c9-80fa-fb7f7cfe7301)
-    (property "Reference" "J1" (id 0) (at 21.59 132.715 0)
+    (property "Reference" "J1" (id 0) (at 21.59 132.08 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Value" "Ampseal_23_RA" (id 1) (at 21.59 136.525 0)
+    (property "Value" "Ampseal_23_RA" (id 1) (at 22.225 135.255 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Footprint" "footprints:Ampseal_23" (id 2) (at 20.32 147.955 0)
+    (property "Footprint" "OEM:Ampseal_23_RA" (id 2) (at 21.59 135.89 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (property "Datasheet" "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F776087%7FE11%7Fpdf%7FEnglish%7FENG_CD_776087_E11.pdf%7F776087-1" (id 3) (at 20.32 147.955 0)
@@ -2345,29 +2370,6 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid c2049687-23e0-48aa-82f0-0a531651c7de))
-  )
-
-  (symbol (lib_id "formula:MicroFit_RA_4") (at 22.86 28.575 0) (unit 1)
-    (in_bom yes) (on_board yes) (fields_autoplaced)
-    (uuid b644db69-5fd5-41ed-8688-21d06911cc9e)
-    (property "Reference" "J8" (id 0) (at 22.86 17.78 0))
-    (property "Value" "MicroFit_RA_4" (id 1) (at 22.86 20.32 0))
-    (property "Footprint" "footprints:MicroFit_RA_4" (id 2) (at 22.86 36.195 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 22.86 28.575 0)
-      (effects (font (size 2.54 2.54)) hide)
-    )
-    (property "Purchasing Link" "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" (id 4) (at 22.86 28.575 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" (id 5) (at 22.86 28.575 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 8a90c077-5065-43f6-af12-1273902ceda3))
-    (pin "2" (uuid a7e78798-b896-460f-ab7b-0289fec650b4))
-    (pin "3" (uuid 67782e6b-057c-4673-bda1-7abef6678fe2))
-    (pin "4" (uuid 1df7ae0e-6520-4e09-8501-a575d36b2e2c))
   )
 
   (symbol (lib_name "+BATT_2") (lib_id "power:+BATT") (at 47.625 89.535 0) (unit 1)
@@ -2499,7 +2501,7 @@
     (property "Value" "Ampseal_23_RA" (id 1) (at 22.225 61.595 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Footprint" "footprints:Ampseal_23" (id 2) (at 20.955 73.025 0)
+    (property "Footprint" "OEM:Ampseal_23_RA" (id 2) (at 20.955 73.025 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (property "Datasheet" "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F776087%7FE11%7Fpdf%7FEnglish%7FENG_CD_776087_E11.pdf%7F776087-1" (id 3) (at 20.955 73.025 0)
@@ -2658,14 +2660,8 @@
     (path "/bb44b98f-41a0-49c0-a095-3a2e7663f726"
       (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
     )
-    (path "/0d1264b9-e4e8-4d41-8f79-9dbb2585d2c9"
-      (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
-    )
-    (path "/a27d827c-3791-4d8e-9f4d-d66d8d925b5b"
+    (path "/6155f93b-623b-474f-85c0-8a77bb4d48b9"
       (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
-    )
-    (path "/2649b15f-3561-41dc-a8a7-c04d8b9d9dfe"
-      (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
     )
     (path "/b48cbc93-b9f7-4424-a367-eeeb077a3046"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
@@ -2673,11 +2669,14 @@
     (path "/4f7a4a15-097b-42c0-a9ec-a8b2fa4e0bf0"
       (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
     )
-    (path "/6155f93b-623b-474f-85c0-8a77bb4d48b9"
+    (path "/2649b15f-3561-41dc-a8a7-c04d8b9d9dfe"
+      (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
+    )
+    (path "/a27d827c-3791-4d8e-9f4d-d66d8d925b5b"
       (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
     )
-    (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/e6cf53d0-3b34-4f0d-92cd-e682a7c1e2b9"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    (path "/0d1264b9-e4e8-4d41-8f79-9dbb2585d2c9"
+      (reference "#PWR?") (unit 1) (value "+BATT") (footprint "")
     )
     (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/5d81d3fc-1407-44cd-ac92-bc86abfabcf5"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
@@ -2685,22 +2684,25 @@
     (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/863f6b57-2be8-401e-bb5a-32598bb5482a"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
+    (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/88607d68-60b3-4114-8472-1f42c8ebfac1"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/059ea2ce-d896-4d78-8a0b-5f59bdd1f5a0"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/e6cf53d0-3b34-4f0d-92cd-e682a7c1e2b9"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
     (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/cc4855f1-ad1f-47b4-a794-6a8e2d9cfbea"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
-    (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/88607d68-60b3-4114-8472-1f42c8ebfac1"
+    (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/f0f32b51-eafc-445a-aa9e-11b1d905f733"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/ad20d687-95bc-4c6f-97cf-06dd76223a0c"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/d776252e-150f-4b4c-b5b0-981160d5661e"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/f0f32b51-eafc-445a-aa9e-11b1d905f733"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/059ea2ce-d896-4d78-8a0b-5f59bdd1f5a0"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/abeb8832-251d-411a-8d59-4b7c80462102"
@@ -2734,13 +2736,13 @@
       (reference "F2") (unit 1) (value "F_500mA_16V") (footprint "footprints:Fuse_1210")
     )
     (path "/aad99909-8ee6-44c9-80fa-fb7f7cfe7301"
-      (reference "J1") (unit 1) (value "Ampseal_23_RA") (footprint "footprints:Ampseal_23")
+      (reference "J1") (unit 1) (value "Ampseal_23_RA") (footprint "OEM:Ampseal_23_RA")
     )
     (path "/e6406240-353f-451e-938a-78ea5a386df2"
-      (reference "J2") (unit 1) (value "Ampseal_23_RA") (footprint "footprints:Ampseal_23")
+      (reference "J2") (unit 1) (value "Ampseal_23_RA") (footprint "OEM:Ampseal_23_RA")
     )
     (path "/49010fa8-dac0-4f83-bf9d-9fe579734e11"
-      (reference "J3") (unit 1) (value "Ampseal_23_RA") (footprint "footprints:Ampseal_23")
+      (reference "J3") (unit 1) (value "Ampseal_23_RA") (footprint "OEM:Ampseal_23_RA")
     )
     (path "/c3fb815e-2cbf-467e-966d-41ca466e29c2"
       (reference "J4") (unit 1) (value "Automotive_M.2") (footprint "footprints:Automotive_M.2")
@@ -2754,8 +2756,8 @@
     (path "/53804e8e-a3a6-44d6-9485-99c5b6839180"
       (reference "J7") (unit 1) (value "Automotive_M.2") (footprint "footprints:Automotive_M.2")
     )
-    (path "/b644db69-5fd5-41ed-8688-21d06911cc9e"
-      (reference "J8") (unit 1) (value "MicroFit_RA_4") (footprint "footprints:MicroFit_RA_4")
+    (path "/56d40b27-e830-453c-b1a5-dced8fafcf87"
+      (reference "J8") (unit 1) (value "MicroFit_VT_4") (footprint "footprints:MicroFit_VT_4")
     )
     (path "/8f4fd665-8eea-46db-ae53-52cc33652b84/b8655af7-c248-44da-9dd7-fccc55832541"
       (reference "L1") (unit 1) (value "2.2uH") (footprint "footprints:IND_SPM6530T-2R2M")
