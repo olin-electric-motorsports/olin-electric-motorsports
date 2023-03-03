@@ -3548,7 +3548,7 @@
     (uuid 00000000-0000-0000-0000-000061c3251d)
     (property "Reference" "D1" (id 0) (at 232.41 157.48 0))
     (property "Value" "LED_WHITE" (id 1) (at 232.41 154.94 0))
-    (property "Footprint" "footprints:LED_0805_OEM" (id 2) (at 234.95 152.4 0)
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (id 2) (at 234.95 152.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://optoelectronics.liteon.com/upload/download/DS22-2006-056/LTW-170ZDC.pdf" (id 3) (at 232.41 154.94 0)
@@ -3868,9 +3868,9 @@
     (property "PurchasingLink" "https://www.digikey.com/en/products/detail/diodes-incorporated/AP7370-18FDC-7/10294988?s=N4IgTCBcDaIDoBcAEBBACgdgMwYAwFoBGADgDEARAYXwxAF0BfIA" (id 6) (at 96.52 154.305 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "6" (uuid b722cdce-4e3b-404e-88b4-0284041d28de))
-    (pin "3" (uuid b54e86c6-126d-40c0-9423-d35b1cd0988e))
     (pin "1" (uuid 28107150-79da-4ad8-9c7d-bb5df96cc84e))
+    (pin "3" (uuid b54e86c6-126d-40c0-9423-d35b1cd0988e))
+    (pin "6" (uuid b722cdce-4e3b-404e-88b4-0284041d28de))
   )
 
   (symbol (lib_id "formula:R_33.2k") (at 282.575 36.195 0) (unit 1)
@@ -5033,7 +5033,7 @@
       (reference "C15") (unit 1) (value "C_0.1uF") (footprint "footprints:C_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000061c3251d"
-      (reference "D1") (unit 1) (value "LED_WHITE") (footprint "footprints:LED_0805_OEM")
+      (reference "D1") (unit 1) (value "LED_WHITE") (footprint "LED_SMD:LED_0603_1608Metric")
     )
     (path "/5b319a73-ff0c-4a6f-b9c7-a98bb428ff44"
       (reference "J1") (unit 1) (value "SMD_WIRE_TO_BOARD") (footprint "footprints:SolderWirePad_1x01_SMD_1.5x1.5mm")
