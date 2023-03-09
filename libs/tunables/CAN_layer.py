@@ -2,7 +2,6 @@
 
 
 # Uses can to communicate via CAN from computer to car
-import cantools
 import can
 from pprint import pprint
 
@@ -12,19 +11,15 @@ from pprint import pprint
 
 class TunablesCAN:
     def __init__(self):
-        self.bus = can.Bus(bustype="slcan", channel="/dev/ttyACM0", bitrate=500000)
+        self.bus = can.Bus(bustype="socketcan", channel="can0", bitrate=500000)
 
     def send(self, funcType, parameter_id, new_value=0):
 
         message = [funcType, parameter_id, 0, 0, new_value]
 
-        msg = can.Message(arbitration_id=0x6E0, data=message, is_extended_id=False)
+        msg = can.Message(arbitration_id=0x6E1, data=message, is_extended_id=False)
 
-        try:
-            self.bus.send(msg)
-            print("Message sent on {}".format(bus.channel_info))
-        except can.CanError:
-            print("Error")
+        self.bus.send(msg)
 
     def recieve(self):
         message = self.bus.recv()

@@ -4,11 +4,13 @@ import yaml
 from ast import literal_eval
 from datetime import date
 
-
-# import database
+import CAN_layer
 
 
 class tunables(cmd.Cmd):
+
+    can_send = CAN_layer.TunablesCAN()
+
     print(
         " \n This is the Tunables Parameters program. \n Type in ? to see the list of commands"
     )
@@ -17,10 +19,13 @@ class tunables(cmd.Cmd):
 
     # Commands
 
+    # Getter Function
     def do_get(self, arg):
-        # database.send(0, arg[0])
+
+        self.can_send.send(0, hex(arg))
         print(search_yaml(arg))
 
+    # Setter Function
     def do_set(self, arg):
         print(parse(arg)[0])
 
@@ -28,6 +33,7 @@ class tunables(cmd.Cmd):
         write_yaml(parse(arg))
         print(search_yaml(parse(arg)[0]))
 
+    # Lists all messages in the Yaml File only
     def do_list(self, arg):
         list_yaml()
 
@@ -39,7 +45,7 @@ def parse(arg):
 def search_yaml(arg):
 
     """Finds information of 1 parameter"""
-    with open("tunables.yml", "r") as file:
+    with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
 
@@ -57,7 +63,7 @@ def search_yaml(arg):
 
 def list_yaml():
     """Lists all parameters & their current value"""
-    with open("tunables.yml", "r") as file:
+    with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
 
@@ -70,9 +76,9 @@ def list_yaml():
                     current_value = message["current_value"]
                     date_modified = message["date_modified"]
 
-                    editable = message["edit"]
+                    editable = message["mutable"]
                     print(
-                        f"Name: {name}, Current Value: {current_value}, Last Date Edited: {date_modified}, Editable: {editable}"
+                        f"Name: {name}, Current Value: {current_value}, Last Date Edited: {date_modified}, Mutable: {editable}"
                     )
 
         except yaml.YAMLError as exc:
@@ -81,7 +87,7 @@ def list_yaml():
 
 def write_yaml(arg):
     """arg format is: name_of_parameter new_value"""
-    with open("tunables.yml", "r") as file:
+    with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
             for i in range(len(data)):
@@ -90,7 +96,7 @@ def write_yaml(arg):
                     message = data[i]["params"][j]
 
                     if message["name"] == arg[0]:
-                        if message["edit"] == False:
+                        if message["mutable"] == False:
                             print(f" {arg[0]} cannot be edited")
                             break
 
@@ -101,7 +107,7 @@ def write_yaml(arg):
                         break
             file.close()
 
-            with open("tunables.yml", "w") as file:
+            with open("libs/tunables/tunables.yml", "w") as file:
                 yaml.dump(data, file, sort_keys=False)
                 file.close()
 
