@@ -29,37 +29,45 @@ void timer0_callback(void) {
 
 volatile uint16_t brake_pressure = 0;
 
-
-void pcint1_callback(void) {
-
+//code to run when a digital sense pin changes state (High->Low or Low->High)
+void pcint0_callback(void) {
     //Update CAN struct with new board logic values
     bspd.brake_gate = !!gpio_get_pin(BRAKELIGHT_LL);
     bspd.bspd_5kw = !!gpio_get_pin(MOTOR_CURRENT_SENSE);
     bspd.ss_bspd = !gpio_get_pin(BSPD_LL);
 
-    //Update Brake Light LED on the PCB
-    if (bspd.brake_gate) {
-        gpio_set_pin(BRAKE_LL_LED);
-    } else {
-        gpio_clear_pin(BRAKE_LL_LED);
-    }
+    updateLEDs = true;
+}
 
-    //Update 5kW LED on the PCB
-    if (bspd.bspd_5kw) {
-        gpio_set_pin(MOTOR_5KW_LED);
-    } else {
-        gpio_clear_pin(MOTOR_5KW_LED);
-    }
+//Check whether an LED needs updating, and if so, change its state
+void updateLEDs(void) {
+    if(updateLEDs == true) {
+        //Update Brake Light LED on the PCB
+        if (bspd.brake_gate) {
+            gpio_set_pin(BRAKE_LL_LED);
+        } else {
+            gpio_clear_pin(BRAKE_LL_LED);
+        }
 
-    //Update Shutdown LED on the PCB
-    if (bspd.ss_bspd) {
-        gpio_set_pin(BSPD_TRIP_LED);
-    } else {
-        gpio_clear_pin(BSPD_TRIP_LED);
+        //Update 5kW LED on the PCB
+        if (bspd.bspd_5kw) {
+            gpio_set_pin(MOTOR_5KW_LED);
+        } else {
+            gpio_clear_pin(MOTOR_5KW_LED);
+        }
+
+        //Update Shutdown LED on the PCB
+        if (bspd.ss_bspd) {
+            gpio_set_pin(BSPD_TRIP_LED);
+        } else {
+            gpio_clear_pin(BSPD_TRIP_LED);
+        }
+        updateLEDs = false;
     }
 }
 
 int main(void) {
+    /////////////////////////////// BSPD STARTUP ///////////////////////////////
     //Not sure what this does
     sei();
 
@@ -83,15 +91,19 @@ int main(void) {
     //Enable digital inputs
     gpio_set_mode(MOTOR_CURRENT_SENSE, INPUT);
     gpio_set_mode(BSPD_LL, INPUT);
+    pio_set_mode(BRAKELIGHT_LL, INPUT);
 
     //Attach Pins to interrupt handler (assuming on rising/falling edge)
+    //These are all PB registers which are mapped to the pcint0_callback function
     gpio_enable_interrupt(BRAKELIGHT_LL);
     gpio_enable_interrupt(MOTOR_CURRENT_SENSE);
     gpio_enable_interrupt(BSPD_LL);
 
     pcint1_callback();
 
+    ////////////////////////////// BSPD LOOP /////////////////////////////
     for (;;) {
+        //BLTDR loop poll function
         updater_loop();
 
         if (send_can) {
@@ -99,5 +111,8 @@ int main(void) {
             can_send_bspd();
             send_can = false;
         }
+
+        //Check whether an LED needs updating, and if so, change its state
+        updateLEDs();
     }
 }
