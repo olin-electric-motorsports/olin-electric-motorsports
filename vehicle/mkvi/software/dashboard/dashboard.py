@@ -1,72 +1,38 @@
-import threading
-import time
 import can
 import cantools
+import yaml
+import time
 import RPi.GPIO as GPIO
-
-BUSTYPE = "socketcan"
-CHANNEL = "can0"
-BITRATE = 500000
-
-# Loading in everyone's compiled config files
-dbc_file = "vehicle/mkvi/mkvi.dbc"
-db = cantools.database.load_file(dbc_file)
-
-# Making variables that store incoming CAN data global
-air_state = None
-imd_status = None
-bms_fault = None
-brake_gate = None
-throttle_pressed = None
+import threading
 
 # Pin Definitions
-AMS_LED_LSD = 36
-# Changed BMS from 27 to reflect hardware updates, also updated to be called AMS
+AMS_LED_LSD = 27
 HV_LED_LSD = 29
 IMD_LED_LSD = 26
-RTD_BUZZER_LSD = 32  # Changed from 28 to reflect hardware updates
+RTD_BUZZER_LSD = 28
 
 RTD_BUTTON_SENSE = 31
-BOTS_SHDN_SENSE = 18
-E_STOP_SHDN_SENSE = 22
+BOTS_SHDN_SENSE = 22
+E_STOP_SHDN_SENSE = 24
 
 RTD_BUTTON_LED = 33
 PROGRAMMING_LED_1 = 40
 PROGRAMMING_LED_2 = 38
 PROGRAMMING_LED_3 = 37
 
-# Number of seconds the buzzer sounds
-RTD_BUZZ_TIME = 2000  # in milliseconds
+db = cantools.database.load_file('mkv.dbc')
+db.messages
+bms_core = db.get_message_by_name('bms_core')
 
-# Initializing the dictionary that holds outgoing CAN data
-dashboard_data = {}
+can_bus = can.interface.Bus('vcan0', bustype='socketcan')
+# data = example_message.encode({'Temperature': 250.1, 'AverageRadius': 3.2, 'Enable': 1})
+# message = can.Message(arbitration_id=example_message.frame_id, data=data)
+# can_bus.send(message)
 
-
-def init_can(channel, bustype, bitrate, callback):
-    """Initialize CAN hardware and create CAN database from DBC
-    Args:
-        channel: port or network interface on the
-                 Raspi the CAN single is connected to
-        bustype: Type of CAN interface/dongle
-        bitrate: Bus speed in Kbps
-
-    """
-    can_bus = can.interface.Bus(
-        channel=channel,
-        bustype=bustype,
-        bitrate=bitrate,
-    )
-
-    kill_flag = threading.Event()
-    listener = threading.Thread(
-        target=dashboard_listener,
-        name="listener",
-        kwargs={"can_bus": can_bus, "callback": callback, "kill_flag": kill_flag},
-    )
-
-    listener.start()
-    return can_bus, kill_flag
-
+with open("vehicle/mkvi/software/dashboard/dashboardpython.yml", "r") as config_file:
+    (
+        STATES_DICTIONARY,
+    ) = yaml.safe_load_all(config_file)
 
 def dashboard_listener(can_bus, callback, kill_flag):
     """Thread that runs all the time to listen to CAN messages
@@ -82,160 +48,81 @@ def dashboard_listener(can_bus, callback, kill_flag):
     can_bus.shutdown()
     print("Exited gracefully")
 
-
-def dashboard_callback(msg, db):
+def get_val(signal, message):
     """
-    Callback when a CAN message is received, updates appropriate vehicle
-    dictionaries
+    Retrieves signal from the message data and applies a processing function if
+    one is found in the PROCESSING_FUNCTIONS dictionary
+    Args:
+        signal (str): signal name to retrieve
+        message (dict): message data returned by cantools.database.decode_message
+    Returns:
+        str: value of the signal
+    """
+
+    if val := message.get(signal):
+        if func := PROCESSING_FUNCTIONS.get(signal):
+            val = globals()[func](val)
+
+        return str(val)
+
+
+def callback(msg, db):
+    """
+    Callback when a CAN message is received, updates appropriate vehicle dictionaries
     Args:
         msg (can.Message): CAN message that was received
         db (cantools.database): Database generated from our DBC
     """
-
     try:
         message = db.decode_message(msg.arbitration_id, msg.data)
-    except Exception as _:
+    except Exception as e:
         return
 
-    message_name = db.get_message_by_frame_id(msg.arbitration_id).name
-
-    if message_name == "air_control_critical":
-        air_state = message.get("air_state")
-        imd_status = message.get("imd_status")
-    if message_name == "bms_core":
-        bms_fault = message.get("bms_fault")
-    if message_name == "brakes":
-        brake_gate = message.get("brake_gate")
-    if message_name == "throttle":
-        throttle_l = message.get("throttle_l_pos")
-        throttle_r = message.get("throttle_r_pos")
-        throttle_pressed = throttle_l >= 12 or throttle_r >= 12
-
-
-# Enabling the start button interrupt
-def button_pressed_callback():
-    """
-    When called, this sets the value of "start_button_state" in the outgoing
-    CAN data dictionary (dashboard_data) to True
-    """
-    dashboard_data["start_button_state"] = GPIO.input(RTD_BUTTON_SENSE)
-
-
-def shutdown_callback(channel):
-    """
-    When called, this updates the values of "ss_bots" and "ss_estop" in the
-    outgoing CAN data dictionary (dashboard_data) to False
-
-    Args:
-        channel: an integer representing a pin number corresponding to either
-        the ss_bots or ss_estop pins
-    """
-    if channel == BOTS_SHDN_SENSE:
-        dashboard_data["ss_bots"] = GPIO.input(BOTS_SHDN_SENSE)
-    if channel == E_STOP_SHDN_SENSE:
-        dashboard_data["ss_estop"] = GPIO.input(E_STOP_SHDN_SENSE)
+    for signal_name in message:
+        if signal_name in STATES_DICTIONARY:
+            STATES_DICTIONARY[signal_name] = get_val(signal_name, message)
 
 
 def main():
-    """
-    Contains the superloop intended to run every 10 milliseconds;
-    Separate thread continually updates relevant variables
-    `dashboard_data` is a dictionary containing all outgoing CAN data.
-    """
     # Set pin numbering system
     GPIO.setmode(GPIO.BOARD)
 
     # Channel Setup/Pin Mode Setup
-    channel_outputs = [
-        AMS_LED_LSD,
-        HV_LED_LSD,
-        IMD_LED_LSD,
-        RTD_BUZZER_LSD,
-        RTD_BUTTON_LED,
-        PROGRAMMING_LED_1,
-        PROGRAMMING_LED_2,
-        PROGRAMMING_LED_3,
-    ]
-
+    channel_outputs = [AMS_LED_LSD, HV_LED_LSD, IMD_LED_LSD, RTD_BUZZER_LSD, 
+    RTD_BUTTON_LED, PROGRAMMING_LED_1, PROGRAMMING_LED_2, PROGRAMMING_LED_3]
     channel_inputs = [RTD_BUTTON_SENSE, BOTS_SHDN_SENSE, E_STOP_SHDN_SENSE]
     GPIO.setup(channel_outputs, GPIO.OUT)
     GPIO.setup(channel_inputs, GPIO.IN)
 
-    # Initialize a thread to constantly update STATES_DICTIONARY from CAN messages
-    can_bus, kill_flag = init_can(CHANNEL, BUSTYPE, BITRATE, dashboard_callback)
+    def init_can(channel, bustype, bitrate, rx_callback, dbc):
+        """Initialize CAN hardware and create CAN database from DBC"""
+        global db
+        can_bus = can.interface.Bus(
+            channel=channel,
+            bustype=bustype,
+            bitrate=bitrate,
+        )
 
-    # Adding start button, bots shutdown, and estop shutdown interrupts
-    GPIO.add_event_detect(
-        RTD_BUTTON_SENSE, GPIO.BOTH, callback=button_pressed_callback, bouncetime=50
-    )
-    GPIO.add_event_detect(BOTS_SHDN_SENSE, GPIO.RISING, callback=shutdown_callback)
-    GPIO.add_event_detect(E_STOP_SHDN_SENSE, GPIO.RISING, callback=shutdown_callback)
+        kill_flag = threading.Event()
+        listener = threading.Thread(
+            target=dashboard_listener,
+            name="listener",
+            kwargs={"can_bus": can_bus, "callback": rx_callback, "kill_flag": kill_flag},
+        )
 
-    buzzer_counter = 0  # buzzer_counter starts at 0
+        listener.start()
 
-    dashboard_message = db.get_message_by_name("dashboard")
+    db = cantools.database.load_file(dbc)
 
-    while True:  # MAKE THIS RUN EVERY 10 MILLISECONDS
-        t_0 = time.perf_counter()
-
-        # Turns on BMS LED if there are any BMS faults
-        GPIO.output(AMS_LED_LSD, bms_fault != "NONE")
-
-        # Turns on HV LED if the tractive system is on
-        GPIO.output(HV_LED_LSD, air_state == "TS_ACTIVE")
-
-        # Turns on IMD LED if there is an IMD fault; imd_status True is good
-        GPIO.output(IMD_LED_LSD, not imd_status)
-
-        # Turns on the button LED if brakes are pressed, tractive system is on,
-        # RTD is not on, and the throttle is not being pressed
-        if (
-            brake_gate
-            and air_state == "TS_ACTIVE"
-            and not dashboard_data["ready_to_drive"]
-            and not throttle_pressed
-        ):
-            GPIO.output(RTD_BUTTON_LED, 1)  # Turn on button LED
-        else:
-            GPIO.output(RTD_BUTTON_LED, 0)
-
-        # Update "ready_to_drive", turn off the button LED and start the buzzer
-        # Set the counter to 0 to start off with
-        if (
-            air_state == "TS_ACTIVE"
-            and brake_gate
-            and dashboard_data["start_button_state"]
-            and not throttle_pressed
-        ):
-            dashboard_data["ready_to_drive"] = True
-            GPIO.output(RTD_BUTTON_LED, 0)
-            GPIO.output(RTD_BUZZER_LSD, 1)
-
-        # Turn off the button LED and RTD false in dicts if tractive system not active
-        # Also reset the buzzer
-        if air_state != "TS_ACTIVE":
-            GPIO.output(RTD_BUTTON_LED, 0)  # Turn off button LED
-            dashboard_data["ready_to_drive"] = False
-            buzzer_counter = 0
-
-        # Add 10 milliseconds to the buzzing timer every loop
-        if dashboard_data["ready_to_drive"] and buzzer_counter < RTD_BUZZ_TIME:
-            buzzer_counter += 10
-
-        if buzzer_counter >= RTD_BUZZ_TIME:
-            GPIO.output(RTD_BUZZER_LSD, 0)
-
-        data = dashboard_message.encode(dashboard_data)
-        message = can.Message(arbitration_id=dashboard_message.frame_id, data=data)
-        can_bus.send(message)  # Send out RTD status over CAN
-
-        # Make the loop run every 10 milliseconds
-        delta = time.perf_counter() - t_0
-        if delta < 0.01:
-            time.sleep(0.01 - delta)
+    return can_bus, db, kill_flag
+    
+    while True:
+        if 
+    #time.sleep(0.01)
 
 
 # Stores code that should only run when dashboard.py is run as a script and not
 # as a module
 if __name__ == "__main__":
     main()
+

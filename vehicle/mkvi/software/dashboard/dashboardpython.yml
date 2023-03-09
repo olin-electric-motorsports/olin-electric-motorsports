@@ -29,19 +29,3 @@ publish:
           values:
             t: PRESSED
             f: NOT PRESSED
-
-      - name: ss_bots
-        slice: 3 + 1
-        unit:
-          type: bool
-          values:
-            t: CLOSED
-            f: OPEN
-      
-      - name: ss_estop
-        slice: 4 + 1
-        unit:
-          type: bool
-          values:
-            t: CLOSED
-            f: OPEN
