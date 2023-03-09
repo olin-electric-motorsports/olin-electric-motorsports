@@ -1,5 +1,11 @@
 #include "libs/tunables/can_api.h"
 
+/*
+
+Basic Echo firmware on CANable setup
+
+*/
+
 int main(void) {
     can_init_test_MCU();
 
