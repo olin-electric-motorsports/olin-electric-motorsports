@@ -34,17 +34,7 @@ in potentiometer happen and we aren't pressing pedal
 #define THROTTLE_L_MIN_COUNTS (int16_t)((178 + THROTTLE_BUFFER) >> 2)
 #define THROTTLE_L_MAX_COUNTS (int16_t)((1000 - THROTTLE_BUFFER) >> 2)
 
-/*
- * Pin definitions
- */
-// gpio_t BRAKE_IMPLAUSIBILTIY_LED = PC6;
-// gpio_t DEVIATION_IMPLAUSIBILITY_LED = PB3;
-// gpio_t OUT_OF_RANGE_IMPLAUSIBILITY_LED = PB4;
-
-// // what are these 2 for???
-// gpio_t RJ45_LED1 = PB0; // orange
-// gpio_t RJ45_LED2 = PB1; // green
-
+/* Pin definitions */
 gpio_t SS_IS = PB6;
 
 typedef struct {
@@ -67,7 +57,6 @@ const throttle_potentiometer_s throttle_2
         .adc_pin = ADC6,
         .throttle_min = THROTTLE_R_MIN_COUNTS,
         .throttle_max = THROTTLE_R_MAX_COUNTS }
-
 
 /*
  * Timer config

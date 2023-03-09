@@ -60,24 +60,24 @@ publish:
           name: ''
           offset: 0
           scale: 1
-      # - name: throttle_out_of_range
-      #   slice: #change to right value
-      #   unit:
-      #     type: bool
-      #     values:
-      #       t: OUT_OF_RANGE
-      #       f: IN_RANGE
-      # - name: throttle_deviation
-      #   slice: #change to right value
-      #   unit:
-      #     type: bool
-      #     values:
-      #       t: DEVIATE
-      #       f: NO_DEVIATE
-      # - name: throttle_brake_pressed
-      #   slice: #change to right value
-      #   unit:
-      #     type: bool
-      #     values:
-      #       t: BRAKE_PRESSED
-      #       f: NO_BRAKE
+      - name: throttle_out_of_range
+        slice: 32 + 1
+        unit:
+          type: bool
+          values:
+            t: OUT_OF_RANGE
+            f: IN_RANGE
+      - name: throttle_deviation
+        slice: 33 + 1
+        unit:
+          type: bool
+          values:
+            t: DEVIATE
+            f: NO_DEVIATE
+      - name: throttle_brake_implaus
+        slice: 34 + 1
+        unit:
+          type: bool
+          values:
+            t: BRAKE_IMPLAUS
+            f: NO_BRAKE_IMPLAUS

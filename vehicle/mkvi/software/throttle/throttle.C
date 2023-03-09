@@ -67,7 +67,7 @@ static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
         travel
     */
     int16_t throttle_raw = adc_read(throttle->adc_pin);
-    throttle_raw >>= 2; // ask why this is here
+    throttle_raw >>= 2; // TODO: ask why this is here
     int16_t range = throttle->throttle_max - throttle->throttle_min;
     float position_pct
         = (float)(throttle_raw - throttle->throttle_min) / (float)range;
@@ -89,32 +89,32 @@ static bool check_out_of_range(int16_t* pos_1, int16_t* pos_2) {
     if (*pos_1 > 255) {
         *pos_1 = 255;
         throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
-        can_send_throttle();
+        throttle_debug.throttle_out_of_range = true;
         implausibility = true;
     } else if (*pos_1 < 0) {
         *pos_1 = 0;
         throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
-        can_send_throttle();
+        throttle_debug.throttle_out_of_range = true;
         implausibility = true;
     } else {
-        // send CAN message in range
+        throttle_debug.throttle_out_of_range = false;
     }
 
     // Check 2nd pot
     if (*pos_2 > 255) {
         *pos_2 = 255;
         throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
-        can_send_throttle();
+        throttle_debug.throttle_out_of_range = true;
         implausibility = true;
     } else if (*pos_2 < 0) {
         *pos_2 = 0;
         throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
-        can_send_throttle();
+        throttle_debug.throttle_out_of_range = true;
         implausibility = true;
     } else {
         // Will be reset if Ready to Drive is not on
         throttle.throttle_state = THROTTLE_RUN;
-        can_send_throttle();
+        throttle_debug.throttle_out_of_range = false;
     }
     return implausibility;
 }
@@ -131,11 +131,11 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
     */
     if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
         throttle.throttle_state = THROTTLE_POSITION_IMPLAUSIBILITY;
-        can_send_throttle();
+        throttle_debug.throttle_deviation = true;
         return true;
     } else {
         throttle.throttle_state = THROTTLE_RUN;
-        can_send_throttle();
+        throttle_debug.throttle_deviation = false;
         return false;
     }
 }
@@ -157,11 +157,12 @@ static bool check_brake(int16_t pos_min) {
             // brake is pressed, pedal travel >= 25%
             brake_implausibility_occurred = true;
             throttle.throttle_state = THROTTLE_BRAKE_PRESSED;
-            can_send_throttle();
+            throttle_debug.throttle_brake_implaus = true;
             return true;
         } else {
             // brake is pressed, pedal travel < 25%
             // no implausibility
+            throttle_debug.throttle_brake_implaus = false;
             return false;
         }
 
@@ -171,16 +172,17 @@ static bool check_brake(int16_t pos_min) {
                 // and pedal travel <= 5%
                 brake_implausibility_occurred = false;
                 throttle.throttle_state = THROTTLE_RUN;
-                can_send_throttle();
+                throttle_debug.throttle_brake_implaus = false;
                 return false;
             } else {
                 // implausibility prev occured, pedal travel > 5%
+                throttle_debug.throttle_brake_implaus = true;
                 return true;
             }
         } else {
             // no implausibility prev occurred then still no implausibility
             throttle.throttle_state = THROTTLE_RUN;
-            can_send_throttle();
+            throttle_debug.throttle_brake_implaus = false;
             return false;
         }
     } else {
@@ -190,19 +192,19 @@ static bool check_brake(int16_t pos_min) {
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 // however pedal is <= 5% travel, no implausibility
                 brake_implausibility_occurred = false;
-                can_send_throttle();
+                throttle_debug.throttle_brake_implaus = false;
                 throttle.throttle_state = THROTTLE_RUN;
                 return false;
             } else {
                 // else pedal travel still >5%
                 throttle.throttle_state = THROTTLE_BRAKE_PRESSED;
-                can_send_throttle();
+                throttle_debug.throttle_brake_implaus = true;
                 return true;
             }
         } else {
             // brake not pressed, no prev implausibility
             throttle.throttle_state = THROTTLE_RUN;
-            can_send_throttle();
+            throttle_debug.throttle_brake_implaus = false;
             return false;
         }
     }
@@ -212,6 +214,7 @@ int main(void) {
     sei();
 
     can_init_throttle();
+    can_init_throttle_debug();
     adc_init();
 
     timer_init(&timer0_cfg);
@@ -307,6 +310,7 @@ int main(void) {
 
         if (throttle_state.send_can) {
             can_send_throttle();
+            can_send_throttle_debug();
             can_send_m192_command_message();
             throttle_state.send_can = false;
         }
