@@ -1,0 +1,43 @@
+name: brakelight_bspd
+subscribe:
+  - name: air_control_critical
+    mob: 1
+publish:
+  - name: bspd
+    id: 0xb
+    freq_hz: 100
+    signals:
+
+      #Shutdown Sense
+      - name: ss_bspd
+        slice: 0 + 8
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+
+      # not sure what the scale is here yet, so going to leave this as - is
+      - name: brake_pressure
+        slice: 8 + 16
+        unit:
+          type: uint16_t
+          name: PSI
+          offset: -1.25
+          scale: 25 * (5 / 4096)
+
+      - name: brake_gate
+        slice: 24 + 1
+        unit:
+          type: bool
+          values:
+            t: Brakelight ON
+            f: Brakelight OFF
+
+      - name: bspd_5kw
+        slice: 25 + 1
+        unit:
+          type: bool
+          values:
+            t: BSPD current over 5kW
+            f: BSPD current under 5kW
