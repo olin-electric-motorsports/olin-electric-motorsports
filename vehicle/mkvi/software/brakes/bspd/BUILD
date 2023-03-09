@@ -1,5 +1,5 @@
-load("//bazel/tools:defs.bzl", "can_api_files")
 load("//bazel:defs.bzl", "cc_firmware")
+load("//bazel/tools:defs.bzl", "can_api_files")
 
 exports_files([
     "bspd.yml",
@@ -9,9 +9,9 @@ cc_firmware(
     name = "bspd",
     srcs = [
         "bspd.c",
-        "bspd_config.h",
+        "bspd.h",
     ],
-    btldr = "//projects/btldr:brakelight_bspd_btldr",
+    btldr = "//projects/btldr:bspd_btldr",
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
