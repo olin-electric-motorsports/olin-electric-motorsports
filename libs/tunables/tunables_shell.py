@@ -1,9 +1,9 @@
+"""The python shell interface that users interact with"""
+
 import cmd
 import yaml
-
 from ast import literal_eval
 from datetime import date
-
 import CAN_layer
 
 
@@ -45,10 +45,13 @@ def parse(arg):
 def search_yaml(arg):
 
     """Finds information of 1 parameter"""
+
     with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
 
+            # Literally just loops through the entire
+            # tunables.yml file to find the parameter name
             for i in range(len(data)):
                 for j in range(len(data[i]["params"])):
 
@@ -67,6 +70,8 @@ def list_yaml():
         try:
             data = yaml.safe_load(file)
 
+            # Loops through tunables.yml and prints out
+            # metadata of the parameter
             for i in range(len(data)):
                 for j in range(len(data[i]["params"])):
 
@@ -86,7 +91,7 @@ def list_yaml():
 
 
 def write_yaml(arg):
-    """arg format is: name_of_parameter new_value"""
+    """update's the tunables.yml file"""
     with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
@@ -95,11 +100,13 @@ def write_yaml(arg):
 
                     message = data[i]["params"][j]
 
+                    # Checks if the parameter can be written over
                     if message["name"] == arg[0]:
                         if message["mutable"] == False:
                             print(f" {arg[0]} cannot be edited")
                             break
 
+                        # Else it update's the parameter's value & updates the time
                         data[i]["params"][j]["current_value"] = literal_eval(arg[1])
                         print(date.today())
                         data[i]["params"][j]["date_modified"] = date.today()
@@ -107,6 +114,7 @@ def write_yaml(arg):
                         break
             file.close()
 
+            # Overwrites tunables.yml
             with open("libs/tunables/tunables.yml", "w") as file:
                 yaml.dump(data, file, sort_keys=False)
                 file.close()
