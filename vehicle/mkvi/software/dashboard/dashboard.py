@@ -1,9 +1,74 @@
+import threading
+import time
+import yaml
 import can
 import cantools
-import yaml
-import time
 import RPi.GPIO as GPIO
-import threading
+
+# bustype = "slcan"          idk lol
+# channel = "/dev/ttyACM1"   which port on the raspi
+# bitrate = 500000           number of bits per second
+
+# Loading in everyone's compiled config files
+dbc_file = "mkv.dbc"
+db = cantools.database.load_file(dbc_file)
+
+# Creating the STATES_DICTIONARY
+STATES_DICTIONARY = {}
+
+
+def init_can(channel, bustype, bitrate, callback, dbc):
+    """Initialize CAN hardware and create CAN database from DBC"""
+    can_bus = can.interface.Bus(
+        channel=channel,
+        bustype=bustype,
+        bitrate=bitrate,
+    )
+
+    kill_flag = threading.Event()
+    listener = threading.Thread(
+        target=dashboard_listener,
+        name="listener",
+        kwargs={"can_bus": can_bus, "callback": callback, "kill_flag": kill_flag},
+    )
+
+    listener.start()
+    return can_bus, db, kill_flag
+
+
+def dashboard_listener(can_bus, callback, kill_flag):
+    """Thread that runs all the time to listen to CAN messages
+    References:
+      - https://python-can.readthedocs.io/en/master/interfaces/socketcan.html
+      - https://python-can.readthedocs.io/en/master/
+    """
+    while not kill_flag.is_set():
+        msg = can_bus.recv(1)  # 1 second receive timeout
+        if msg:
+            callback(msg, db)
+
+    can_bus.shutdown()
+    print("Exited gracefully")
+
+
+def dashboard_callback(msg, db):
+    """
+    Callback when a CAN message is received, updates appropriate vehicle dictionaries
+    Args:
+        msg (can.Message): CAN message that was received
+        db (cantools.database): Database generated from our DBC
+    """
+
+    try:
+        message = db.decode_message(msg.arbitration_id, msg.data)
+
+    except Exception as e:
+        return
+
+    STATES_DICTIONARY = {}
+    for signal_name in message:
+        STATES_DICTIONARY[signal_name] = message.get(signal_name)
+
 
 # Pin Definitions
 AMS_LED_LSD = 27
@@ -20,109 +85,63 @@ PROGRAMMING_LED_1 = 40
 PROGRAMMING_LED_2 = 38
 PROGRAMMING_LED_3 = 37
 
-db = cantools.database.load_file('mkv.dbc')
-db.messages
-bms_core = db.get_message_by_name('bms_core')
-
-can_bus = can.interface.Bus('vcan0', bustype='socketcan')
-# data = example_message.encode({'Temperature': 250.1, 'AverageRadius': 3.2, 'Enable': 1})
-# message = can.Message(arbitration_id=example_message.frame_id, data=data)
-# can_bus.send(message)
-
-with open("vehicle/mkvi/software/dashboard/dashboardpython.yml", "r") as config_file:
-    (
-        STATES_DICTIONARY,
-    ) = yaml.safe_load_all(config_file)
-
-def dashboard_listener(can_bus, callback, kill_flag):
-    """Thread that runs all the time to listen to CAN messages
-    References:
-      - https://python-can.readthedocs.io/en/master/interfaces/socketcan.html
-      - https://python-can.readthedocs.io/en/master/
-    """
-    while not kill_flag.is_set():
-        msg = can_bus.recv(1)  # 1 second receive timeout
-        if msg:
-            callback(msg, db)
-
-    can_bus.shutdown()
-    print("Exited gracefully")
-
-def get_val(signal, message):
-    """
-    Retrieves signal from the message data and applies a processing function if
-    one is found in the PROCESSING_FUNCTIONS dictionary
-    Args:
-        signal (str): signal name to retrieve
-        message (dict): message data returned by cantools.database.decode_message
-    Returns:
-        str: value of the signal
-    """
-
-    if val := message.get(signal):
-        if func := PROCESSING_FUNCTIONS.get(signal):
-            val = globals()[func](val)
-
-        return str(val)
-
-
-def callback(msg, db):
-    """
-    Callback when a CAN message is received, updates appropriate vehicle dictionaries
-    Args:
-        msg (can.Message): CAN message that was received
-        db (cantools.database): Database generated from our DBC
-    """
-    try:
-        message = db.decode_message(msg.arbitration_id, msg.data)
-    except Exception as e:
-        return
-
-    for signal_name in message:
-        if signal_name in STATES_DICTIONARY:
-            STATES_DICTIONARY[signal_name] = get_val(signal_name, message)
-
 
 def main():
     # Set pin numbering system
     GPIO.setmode(GPIO.BOARD)
 
     # Channel Setup/Pin Mode Setup
-    channel_outputs = [AMS_LED_LSD, HV_LED_LSD, IMD_LED_LSD, RTD_BUZZER_LSD, 
-    RTD_BUTTON_LED, PROGRAMMING_LED_1, PROGRAMMING_LED_2, PROGRAMMING_LED_3]
+    channel_outputs = [
+        AMS_LED_LSD,
+        HV_LED_LSD,
+        IMD_LED_LSD,
+        RTD_BUZZER_LSD,
+        RTD_BUTTON_LED,
+        PROGRAMMING_LED_1,
+        PROGRAMMING_LED_2,
+        PROGRAMMING_LED_3,
+    ]
     channel_inputs = [RTD_BUTTON_SENSE, BOTS_SHDN_SENSE, E_STOP_SHDN_SENSE]
     GPIO.setup(channel_outputs, GPIO.OUT)
     GPIO.setup(channel_inputs, GPIO.IN)
 
-    def init_can(channel, bustype, bitrate, rx_callback, dbc):
-        """Initialize CAN hardware and create CAN database from DBC"""
-        global db
-        can_bus = can.interface.Bus(
-            channel=channel,
-            bustype=bustype,
-            bitrate=bitrate,
-        )
+    # Initialize a thread to constantly update STATES_DICTIONARY from CAN messages
+    init_can("/dev/ttyACM1", "slcan", 500000, dashboard_callback, dbc_file)
 
-        kill_flag = threading.Event()
-        listener = threading.Thread(
-            target=dashboard_listener,
-            name="listener",
-            kwargs={"can_bus": can_bus, "callback": rx_callback, "kill_flag": kill_flag},
-        )
+    # Number of seconds the buzzer sounds
+    seconds = 4
 
-        listener.start()
-
-    db = cantools.database.load_file(dbc)
-
-    return can_bus, db, kill_flag
-    
     while True:
-        if 
-    #time.sleep(0.01)
+        # Activates ready to drive
+        if (
+            STATES_DICTIONARY["air_state"] == "TS_ACTIVE"
+            and STATES_DICTIONARY["brake_gate"]
+            is False  ## Am I supposed to use bspd_current_sense?
+            and STATES_DICTIONARY["start_button_state"] is True
+        ):
+            STATES_DICTIONARY["ready_to_drive"] = True
+            # Sounds the buzzer for exactly seconds number of seconds
+            if STATES_DICTIONARY["ready_to_drive"] is True:
+                GPIO.output(RTD_BUTTON_LED, 1)  # Turn on RTD LED
+                GPIO.output(RTD_BUZZER_LSD, 1)  # Start buzzer
+                time.sleep(seconds)
+                GPIO.output(RTD_BUZZER_LSD, 0)  # Stop buzzer after some seconds
+
+        # Turns on AMS LED if there are any AMS faults
+        if STATES_DICTIONARY["bms_fault"] != "NONE":
+            GPIO.output(AMS_LED_LSD, 1)
+
+        # Turns on HV LED if both the air positive and air negative are closed
+        if (
+            STATES_DICTIONARY["air_p_state"]
+            and STATES_DICTIONARY["air_n_state"] is True
+        ):
+            GPIO.output(HV_LED_LSD, 1)
+
+        # Turns on IMD LED if there is an IMD fault
 
 
 # Stores code that should only run when dashboard.py is run as a script and not
 # as a module
 if __name__ == "__main__":
     main()
-
