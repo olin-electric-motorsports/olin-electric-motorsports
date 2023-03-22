@@ -5,7 +5,8 @@ RUN mkdir -p /root/.cache/pip/wheels && \
     cd /root/.cache/pip/wheels && \
     chmod 1777 /tmp && \
     apt-get update && \
-    apt-get install -y --no-install-suggests --no-install-recommends \
+    # Installing all recommended because we don't know what is needed for setuptools to work
+    apt-get install -y\
     build-essential \
     software-properties-common \
     python3.7-dev \
@@ -15,7 +16,9 @@ RUN mkdir -p /root/.cache/pip/wheels && \
     curl \
     vim && \
     ln -sf $(which python3.7) $(which python3) && \
-    pip3 install setuptools wheel
+    pip3 install setuptools wheel && \
+    redis-server
+    
 
 COPY . /src
 WORKDIR /src
