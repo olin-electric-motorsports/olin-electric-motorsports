@@ -5,8 +5,7 @@
 
 #include "libs/gpio/api.h"
 #include "throttle_config.h"
-#include "utils/timer.h"
-#include "vehicle/mkv/software/throttle/can_api.h"
+#include "vehicle/mkvi/software/throttle/can_api.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -54,6 +53,12 @@ struct throttle_state_s {
 
 void timer0_isr(void) {
     throttle_state.send_can = true;
+}
+
+volatile bool run_1ms = false;
+
+void timer1_isr(void) {
+    run_1ms = true;
 }
 
 void pcint0_callback(void) {

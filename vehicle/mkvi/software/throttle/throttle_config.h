@@ -6,6 +6,8 @@
 // implausibility constants according to rule T.4.2
 #define IMPLAUSIBILITY_TIME_LIMIT 100
 
+#define TORQUE_REQUEST_SCALE 5
+
 #define MOTOR_CLOCKWISE     (0)
 #define MOTOR_ANTICLOCKWISE (1)
 
@@ -44,19 +46,18 @@ typedef struct {
     int16_t throttle_max; // Maximum position (100%) in raw ADC
 } throttle_potentiometer_s;
 
-const throttle_potentiometer_s throttle_1
-    = { 
-        // 1st throttle pot
-        .adc_pin = ADC5,
-        .throttle_min = THROTTLE_L_MIN_COUNTS,
-        .throttle_max = THROTTLE_L_MAX_COUNTS }
+const throttle_potentiometer_s throttle_1 = {
+    // 1st throttle pot
+    .adc_pin = ADC5,
+    .throttle_min = THROTTLE_L_MIN_COUNTS,
+    .throttle_max = THROTTLE_L_MAX_COUNTS
+};
 
-
-const throttle_potentiometer_s throttle_2
-    = { // 2nd throttle pot
-        .adc_pin = ADC6,
-        .throttle_min = THROTTLE_R_MIN_COUNTS,
-        .throttle_max = THROTTLE_R_MAX_COUNTS }
+const throttle_potentiometer_s throttle_2 = { // 2nd throttle pot
+    .adc_pin = ADC6,
+    .throttle_min = THROTTLE_R_MIN_COUNTS,
+    .throttle_max = THROTTLE_R_MAX_COUNTS
+};
 
 /*
  * Timer config
