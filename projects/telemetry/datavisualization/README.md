@@ -7,18 +7,18 @@ This folder houses the remote software portion of the real-time data visualizati
 
 ## Current status:
 
-- [x] Battery temperature and voltage
-- [?] IMU
-- - [x] Acceleration
-- - [?] Heading
-- - [?] Rotational movement
-- [x] GPS data (location data)
-- [x] Wheel rotation speed
-- [x] Brake + throttle sensor (how pressed is the pedal)
-- [x] Requested torque for each motor
-- [x] Suspension strain (on each wheel maybe?)
-- [x] Listening for particular errors
-- [x] Transmitting an error code over
+- [ ] Battery temperature and voltage
+- [ ] IMU
+- - [ ] Acceleration
+- - [ ] Heading
+- - [ ] Rotational movement
+- [ ] GPS data (location data)
+- [ ] Wheel rotation speed
+- [ ] Brake + throttle sensor (how pressed is the pedal)
+- [ ] Requested torque for each motor
+- [ ] Suspension strain (on each wheel maybe?)
+- [ ] Listening for particular errors
+- [ ] Transmitting an error code over
 
 
 ## Basic Usage:
