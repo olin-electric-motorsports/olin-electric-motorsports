@@ -6,7 +6,7 @@ exports_files([
 ])
 
 cc_firmware(
-    name = "bspd",
+    name = "brakes",
     srcs = [
         "bspd.c",
         "bspd.h",
@@ -27,6 +27,6 @@ cc_firmware(
 
 can_api_files(
     name = "can_api",
-    dbc = "//vehicle/mkv:mkv.dbc",
+    dbc = "//vehicle/mkvi:mkvi.dbc",
     yaml = ":bspd.yml",
 )
