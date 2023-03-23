@@ -28,6 +28,6 @@ cc_firmware(
 
 can_api_files(
     name = "can_api",
-    dbc = "//vehicle/mkv:mkv.dbc",
+    dbc = "//vehicle/mkvi:mkvi.dbc",
     yaml = ":throttle.yml",
 )
