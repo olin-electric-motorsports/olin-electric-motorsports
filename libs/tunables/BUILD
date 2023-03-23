@@ -5,8 +5,11 @@ load("//bazel:defs.bzl", "cc_firmware")
 cc_library(
     name = "tunables",
     srcs = [
-        "main.c",
+        "tunables.c",
     ],
+    # hdrs = [
+    #     "tunables.h"
+    # ],
     target_compatible_with = ["//bazel/constraints:avr"],
     deps = [
         "//libs/can",
