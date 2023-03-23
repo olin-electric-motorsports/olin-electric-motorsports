@@ -219,7 +219,6 @@ int main(void) {
     sei();
 
     can_init_throttle();
-    can_init_throttle_debug();
     adc_init();
 
     timer_init(&timer0_cfg);
