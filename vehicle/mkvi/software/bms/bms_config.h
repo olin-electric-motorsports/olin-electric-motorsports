@@ -13,15 +13,14 @@
 // Outputs
 gpio_t BMS_RELAY_LSD = PC7;
 gpio_t COOLING_PUMP_LSD = PD3;
-gpio_t FAN_PWM = PC1;
 gpio_t SPI_CS = PB6;
+gpio_t CHARGE_ENABLE_IN = PB4;
+gpio_t CHARGE_ENABLE_OUT = PB3;
 
 gpio_t DEBUG_LED_1 = PD6;
 gpio_t DEBUG_LED_2 = PD7;
 
 // Inputs
-gpio_t CHARGE_ENABLE_IN = PB4;
-gpio_t CHARGE_ENABLE_OUT = PB3;
 gpio_t BSPD_CURRENT_THRESH = PB2;
 adc_pin_e PRE_DIS_TEMP_1 = ADC8;
 adc_pin_e PRE_DIS_TEMP_2 = ADC9;
@@ -52,10 +51,12 @@ timer_cfg_s timer1_cfg = {
     .timer = TIMER1,
     .timer1_mode = TIMER1_MODE_PHASE_CORRECT_PWM_10_BIT,
     .prescalar = CLKIO_DIV_8,
+    .channel_a = {
+        .output_compare_match = 0x50,
+    },
     .channel_b = {
         .channel = CHANNEL_B,
-        .output_compare_match = 0x00,
-        .pin_behavior = DISCONNECTED,
+        .pin_behavior = SET,
         .interrupt_enable = false,
     },
 };
