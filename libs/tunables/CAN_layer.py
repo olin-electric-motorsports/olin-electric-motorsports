@@ -14,12 +14,29 @@ class TunablesCAN:
 
     # Sending CAN msgs
     def send(self, funcType, parameter_id, new_value=0):
+        parameter_id = int(parameter_id)
         # Format for message sent is [get/set, parameter Id, new value/0 if get function]
-        message = [funcType, parameter_id, new_value]
+
+        # Getter
+        if funcType == 0:
+            message = [funcType, parameter_id]
+
+        # Setter
+        elif funcType == 1:
+            message = [funcType, parameter_id, new_value]
+
         msg = can.Message(arbitration_id=0x6E1, data=message, is_extended_id=False)
         self.bus.send(msg)
 
     # Receives CAN msgs
     def receive(self):
-        message = self.bus.recv()
-        return self.bus.decode_message(message.arbitration_id, message.data)
+
+        # Wait 10 seconds to receive message before closing
+        message = self.bus.recv(10)
+
+        # Timeout Problem
+        if message is None:
+            return "Timeout Occurred. No message"
+
+        # Returns message
+        return message
