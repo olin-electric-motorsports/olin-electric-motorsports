@@ -4,7 +4,6 @@ Script to test that the charger is working appropriately
 
 import can
 import cantools
-import os
 import time
 
 def init():
@@ -26,6 +25,9 @@ def init():
 
 
 def test_charging():
+    """
+    Test sending a message to the Charger
+    """
     charging_bus, dbc = init()
    
     msg1 = dbc.get_message_by_name("Message1")
@@ -61,5 +63,10 @@ if __name__ == "__main__":
     for i in range(5):
         test_charging()
 
+
+    # cat log | python3 -m cantools decode ./file.dbc > decoded-log
+    
+    
+    
     # cv = threading.Thread(target=charging_to_vehicle, daemon=True)
     # vc = threading.Thread(target=vehicle_to_charging, daemon=True)
