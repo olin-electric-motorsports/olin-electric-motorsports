@@ -28,6 +28,7 @@ ping_stats = {
     "received": 0,
 }
 
+
 # Sigint (Ctrl-C) handler. This function runs when the user presses Ctrl-C
 def sigint(signum, frame):
     global exit_flag

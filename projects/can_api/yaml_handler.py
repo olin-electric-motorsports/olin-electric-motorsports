@@ -40,7 +40,6 @@ class YamlParser:
             return []
 
         for raw in self.data["publish"]:
-
             if raw.get("id"):
                 # Must check for "id" because there are cases where we are
                 # publishing a message defined elsewhere, like the motor
