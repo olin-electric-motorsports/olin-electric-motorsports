@@ -11,10 +11,10 @@ pytest_test(
     data = [
         "bms_patched.bin",
     ],
+    tags = ["manual"],  # No support for running in CI yet--must be invoked manually
     visibility = ["//visibility:public"],
     deps = [
         "//projects/btldr/py_client:btldr",
         requirement("cantools"),
     ],
-    tags = ["manual"], # No support for running in CI yet--must be invoked manually
 )

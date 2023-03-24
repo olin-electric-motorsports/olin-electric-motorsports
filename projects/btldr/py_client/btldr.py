@@ -30,6 +30,8 @@ btldr.ping(0x700, 1) # Ping the device with ecu_id 0x700
 btldr.flash(0x700, 'bazel-bin/vehicle/mkvi/software/air_control/air_control_patched.bin', 1)
 ```
 """
+
+
 class BtldrManager:
     def __init__(self):
         self.db = BtldrDatabase()
@@ -46,6 +48,7 @@ class BtldrManager:
     - timeout (int): A timeout (in milliseconds TODO) to wait when receiving CAN
         messages
     """
+
     def ping(self, ecu_id: int, timeout: int):
         start = time.time_ns()
 
@@ -78,6 +81,7 @@ class BtldrManager:
         process errored. If this happens, I recommend first retrying, then power
         cycling the device and retrying, and finally manually updating the device.
     """
+
     def flash(self, ecu_id: int, file: str, timeout: int):
         start = time.time_ns()
 
@@ -177,6 +181,7 @@ class BtldrManager:
     changes in the future and there are other things that are needed in order
     for a software reset.
     """
+
     def software_reset(self, ecu_id: int, request_update: bool = False):
         self._send_reset(ecu_id, request_update)
 
@@ -275,6 +280,7 @@ class BtldrManager:
     """
     This function handles applying the offset of the message to the ECU_ID
     """
+
     def _receive_message(self, ecu_id, offset, timeout):
         self.canbus.set_filters(
             [
