@@ -42,7 +42,6 @@ def test_charging():
     
     charging_bus.send(message)
 
-    time.sleep(1)
 
     # Receive Messages
     # msg_to_receive = charging_bus.recv()
@@ -60,13 +59,9 @@ def test_charging():
 
 
 if __name__ == "__main__":
-    for i in range(5):
+    while True:
         test_charging()
-
-
-    # cat log | python3 -m cantools decode ./file.dbc > decoded-log
-    
-    
-    
+        time.sleep(1)
+      
     # cv = threading.Thread(target=charging_to_vehicle, daemon=True)
     # vc = threading.Thread(target=vehicle_to_charging, daemon=True)
