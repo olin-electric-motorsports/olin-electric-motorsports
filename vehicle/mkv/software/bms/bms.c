@@ -27,8 +27,6 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .git_sha = STABLE_GIT_COMMIT,
 };
 
-enum air_state_e air_state = AIR_STATE_IDLE;
-
 /*
  * Interrupts
  */
@@ -56,8 +54,8 @@ void pcint2_callback(void) {
  * Primary state machine function
  */
 static void monitor_cells(void) {
-    if (bms_core.bms_fault_state != BMS_FAULT_NONE) {
-        bms_core.bms_state = FAULT;
+    if (bms_core.bms_fault != BMS_FAULT_NONE) {
+        bms_core.bms_state = BMS_STATE_FAULT;
         gpio_clear_pin(BMS_RELAY_LSD);
     }
 
@@ -137,21 +135,22 @@ static void monitor_cells(void) {
 
     if (ov > 0) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
-        bms_core.bms_state = FAULT;
+        bms_core.bms_state = BMS_STATE_FAULT;
     }
 
     switch (bms_core.bms_state) {
-        case ACTIVE: {
+        case BMS_STATE_ACTIVE: {
             if (uv > 0) {
                 set_fault(BMS_FAULT_UNDERVOLTAGE);
-                bms_core.bms_state = FAULT;
+                bms_core.bms_state = BMS_STATE_FAULT;
             }
         } break;
-        case CHARGING: {
+        case BMS_STATE_CHARGING: {
             if (can_poll_receive_charging_fbk() == 0) {
                 /*
                  * Read status flags
                  */
+                // TODO
                 uint8_t charger_status = charging_fbk_data[4];
                 if (charger_status != 0) {
                     if ((charger_status & (1 << 3)) == 0) {
@@ -164,15 +163,15 @@ static void monitor_cells(void) {
                 can_receive_charging_fbk();
             }
         } break;
-        case FAULT: {
+        case BMS_STATE_FAULT: {
             gpio_clear_pin(BMS_RELAY_LSD);
             charging_cmd.max_voltage = 0;
             charging_cmd.max_current = 0;
             charging_cmd.enable = false;
         } break;
         default: {
-            bms_core.bms_fault_state = BMS_FAULT_DIAGNOSTICS_FAIL;
-            bms_core.bms_state = FAULT;
+            bms_core.bms_fault = BMS_FAULT_DIAGNOSTICS_FAIL;
+            bms_core.bms_state = BMS_STATE_FAULT;
         } break;
     }
 }
@@ -214,31 +213,34 @@ int main(void) {
     pcint2_callback();
 
     if (!!gpio_get_pin(CHARGER_DETECT_IN) == 0) {
-        bms_core.bms_state = CHARGING;
+        bms_core.bms_state = BMS_STATE_CHARGING;
         bms_core.charger_connected = true;
         charging_cmd.max_voltage = 0;
         charging_cmd.max_current = 0;
         charging_cmd.enable = true;
         can_receive_charging_fbk();
     } else {
-        bms_core.bms_state = ACTIVE;
+        bms_core.bms_state = BMS_STATE_ACTIVE;
     }
 
-    // Check state of cells
-    if (initial_checks() != 0) {
-        if ((bms_core.bms_fault == BMS_FAULT_UNDERVOLTAGE)
-            && (!!gpio_get_pin(CHARGER_DETECT_IN) == 0)) {
-            bms_core.bms_state = BMS_STATE_CHARGING;
-            gpio_set_pin(BMS_RELAY_LSD);
-        } else {
-            bms_core.bms_state = BMS_STATE_FAULT;
-            gpio_set_pin(FAULT_LED);
-        }
-    } else {
-        // Close the BMS shutdown circuit relay
-        bms_core.bms_state = BMS_STATE_ACTIVE;
-        gpio_set_pin(BMS_RELAY_LSD);
+    // TODO
+    if (!!gpio_get_pin(CHARGER_DETECT_IN) == 0) {
+        bms_core.bms_state = BMS_STATE_CHARGING;
     }
+
+    //     if ((bms_core.bms_fault == BMS_FAULT_UNDERVOLTAGE)
+    //         && (!!gpio_get_pin(CHARGER_DETECT_IN) == 0)) {
+    //         bms_core.bms_state = BMS_STATE_CHARGING;
+    //         gpio_set_pin(BMS_RELAY_LSD);
+    //     } else {
+    //         bms_core.bms_state = BMS_STATE_FAULT;
+    //         gpio_set_pin(FAULT_LED);
+    //     }
+    // } else {
+    //     // Close the BMS shutdown circuit relay
+    //     bms_core.bms_state = BMS_STATE_ACTIVE;
+    //     gpio_set_pin(BMS_RELAY_LSD);
+    // }
 
     spi_init(&spi_cfg);
 
@@ -265,7 +267,7 @@ int main(void) {
                 can_send_bms_metrics();
             }
 
-            if (bms_core.bms_state == CHARGING) {
+            if (bms_core.bms_state == BMS_STATE_CHARGING) {
                 if (loop_counter % 80 == 0) {
                     can_send_charging_cmd();
                 }
