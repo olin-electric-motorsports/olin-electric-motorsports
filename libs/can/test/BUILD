@@ -24,8 +24,8 @@ cc_firmware(
     deps = [
         ":test_can_api",
         "//libs/can",
-        "//libs/timer",
         "//libs/gpio",
+        "//libs/timer",
     ],
 )
 
