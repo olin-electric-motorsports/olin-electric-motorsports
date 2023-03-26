@@ -90,7 +90,7 @@ static int initial_checks(void) {
     }
 
     if (bms_core.bms_state == BMS_STATE_CHARGING) {
-        air_control_critical.air_state = CHARGING_IDLE;
+        air_control_critical.air_state = AIR_STATE_CHARGING_IDLE;
     } else {
         if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
             set_fault(AIR_FAULT_BMS_VOLTAGE);
@@ -366,7 +366,7 @@ static void state_machine_run(void) {
 
             if (air_control_critical.ss_tsms != true) {
                 gpio_clear_pin(AIR_N_LSD);
-                air_control_critical.air_state = CHARGING_IDLE;
+                air_control_critical.air_state = AIR_STATE_CHARGING_IDLE;
             }
             return;
         } break;
