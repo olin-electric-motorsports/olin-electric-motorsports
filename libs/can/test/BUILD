@@ -25,6 +25,7 @@ cc_firmware(
         ":test_can_api",
         "//libs/can",
         "//libs/timer",
+        "//libs/gpio",
     ],
 )
 

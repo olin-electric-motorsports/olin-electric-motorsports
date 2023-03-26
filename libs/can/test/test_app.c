@@ -5,8 +5,11 @@
 #include <avr/io.h>
 #include <stdbool.h>
 #include <util/delay.h>
+#include "libs/gpio/api.h"
+#include "libs/gpio/pin_defs.h"
 
-#define LED0 (PD6)
+// #define LED0 (PD6)
+gpio_t LED0 = PD6;
 
 void timer0_callback(void);
 
@@ -35,7 +38,6 @@ int main(void) {
     sei();
 
     gpio_set_mode(LED0, OUTPUT);
-    gpio_set_mode(LED1, OUTPUT);
 
     int rc = 0;
 
