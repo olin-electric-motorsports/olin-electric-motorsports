@@ -49,7 +49,6 @@ def vehicle_to_charging():
             virt.send(message)
 
             if message.arbitration_id == 0x80:
-
                 # Repackage (change id and extended bool)
                 message.arbitration_id = 0x1806E5F4
                 message.is_extended_id = True
