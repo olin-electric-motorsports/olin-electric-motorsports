@@ -1,10 +1,9 @@
 name: bms
 subscribe:
-  - name: air_control_critical
+  - name: charging_fbk
     mob: 1
-  - name: bms_charging
-    mob: 2
 publish:
+  - name: charging_cmd
   - name: bms_core
     id: 0x10
     freq_hz: 100
@@ -23,14 +22,13 @@ publish:
             - OPEN_WIRE
             - OVERCURRENT
             - PEC
+            - CHARGER_FAULT
       - name: bms_state
         slice: 4 + 4
         unit:
           type: enum
           values:
-            - INIT
-            - IDLE
-            - DISCHARGING
+            - ACTIVE
             - CHARGING
             - FAULT
       - name: pack_voltage
@@ -82,6 +80,13 @@ publish:
           values:
             t: Over-current detected
             f: No over-current detected
+      - name: charger_connected
+        slice: 41 + 1
+        unit:
+          type: bool
+          values:
+            t: Connected
+            f: Disconnected
 
   - name: bms_sense
     id: 0x011
@@ -161,12 +166,47 @@ publish:
           scale: 1
           offset: 0
       - name: dbg_4
-        slice: 48 + 16
+        slice: 48 + 8
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
+      - name: charger_hardware_fault
+        slice: 56 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_temperature_protection
+        slice: 57 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_input_voltage
+        slice: 58 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_starting_state
+        slice: 59 + 1
+        unit:
+          type: bool
+          values:
+            t: OFF
+            f: On
+      - name: charger_communication
+        slice: 60 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
 
   - name: bms_voltage
     id: 0x401

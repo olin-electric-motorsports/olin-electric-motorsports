@@ -51,7 +51,7 @@ void pcint0_callback(void) {
 void pcint1_callback(void) {
     air_control_critical.ss_bms = !gpio_get_pin(SS_BMS);
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
-    air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
+    // air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 }
 
 void pcint2_callback(void) {
@@ -89,34 +89,38 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
-        set_fault(AIR_FAULT_BMS_VOLTAGE);
-        rc = 1;
-        goto bail;
-    }
+    if (bms_core.bms_state == BMS_STATE_CHARGING) {
+        air_control_critical.air_state = AIR_STATE_CHARGING_IDLE;
+    } else {
+        if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
+            set_fault(AIR_FAULT_BMS_VOLTAGE);
+            rc = 1;
+            goto bail;
+        }
 
-    int16_t mc_voltage = 0;
-    rc = get_motor_controller_voltage(&mc_voltage);
+        int16_t mc_voltage = 0;
+        rc = get_motor_controller_voltage(&mc_voltage);
 
-    if (rc == 1) {
-        set_fault(AIR_FAULT_CAN_ERROR);
-        goto bail;
-    } else if (rc == 2) {
-        set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
-        rc = 1;
-        goto bail;
-    }
+        if (rc == 1) {
+            set_fault(AIR_FAULT_CAN_ERROR);
+            goto bail;
+        } else if (rc == 2) {
+            set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
+            rc = 1;
+            goto bail;
+        }
 
-    if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
-        set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
-        rc = 1;
-        goto bail;
+        if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
+            set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
+            rc = 1;
+            goto bail;
+        }
     }
 
     // The following checks ensure that the hardware is in the correct initial
     // state.
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
-    air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
+    // air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 
     if (air_control_critical.air_p_status) {
         set_fault(AIR_FAULT_AIR_P_WELD);
@@ -124,11 +128,11 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (air_control_critical.air_n_status) {
-        set_fault(AIR_FAULT_AIR_N_WELD);
-        rc = 1;
-        goto bail;
-    }
+    // if (air_control_critical.air_n_status) {
+    //     set_fault(AIR_FAULT_AIR_N_WELD);
+    //     rc = 1;
+    //     goto bail;
+    // }
 
     if (!gpio_get_pin(SS_TSMS)) {
         // SS_TSMS should start high
@@ -327,6 +331,44 @@ static void state_machine_run(void) {
             gpio_set_pin(FAULT_LED);
             gpio_clear_pin(PRECHARGE_CTL);
             gpio_clear_pin(AIR_N_LSD);
+        } break;
+
+            /// CHARGING
+
+        case AIR_STATE_CHARGING_IDLE: {
+            if (air_control_critical.ss_tsms) {
+                air_control_critical.air_state = AIR_STATE_CHARGING_SHDN_CLOSED;
+            }
+
+            return;
+        } break;
+        case AIR_STATE_CHARGING_SHDN_CLOSED: {
+            static bool once = true;
+
+            if (once) {
+                start_time = get_time();
+                once = false;
+            }
+
+            if (get_time() - start_time < 200) {
+                if (air_control_critical.air_p_status) {
+                    air_control_critical.air_state = AIR_STATE_CHARGING_ACTIVE;
+                    once = true;
+                }
+            } else {
+                set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                once = true;
+            }
+            return;
+        } break;
+        case AIR_STATE_CHARGING_ACTIVE: {
+            gpio_set_pin(AIR_N_LSD);
+
+            if (air_control_critical.ss_tsms != true) {
+                gpio_clear_pin(AIR_N_LSD);
+                air_control_critical.air_state = AIR_STATE_CHARGING_IDLE;
+            }
+            return;
         } break;
         default: {
             // Shouldn't happen, but just in case
