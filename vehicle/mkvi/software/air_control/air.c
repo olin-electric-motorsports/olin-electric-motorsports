@@ -1,5 +1,6 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <util/delay.h>
 
 #include "libs/gpio/api.h"
@@ -8,7 +9,7 @@
 #include "air_config.h"
 #include "utils/timer.h"
 #include "utils/utils.h"
-#include "vehicle/mkv/software/air_control/can_api.h"
+#include "vehicle/mkvi/software/air_control/can_api.h"
 
 #include "projects/btldr/btldr_lib.h"
 #include "projects/btldr/git_sha.h"
@@ -22,13 +23,19 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .git_sha = STABLE_GIT_COMMIT,
 };
 
-/*
- * Interrupts
- */
 volatile bool send_can = false;
 
 void timer0_isr(void) {
     send_can = true;
+}
+
+static void set_fault(enum air_fault_e the_fault) {
+    gpio_set_pin(FAULT_LED);
+
+    if (air_control_critical.air_fault == AIR_FAULT_NONE) {
+        // Only update fault state for the first fault to occur
+        air_control_critical.air_fault = the_fault;
+    }
 }
 
 void pcint0_callback(void) {
@@ -42,22 +49,13 @@ void pcint0_callback(void) {
 void pcint1_callback(void) {
     air_control_critical.ss_bms = !gpio_get_pin(SS_BMS);
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
-    // air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
+    air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 }
 
 void pcint2_callback(void) {
     if (!gpio_get_pin(IMD_SENSE)) {
         set_fault(AIR_FAULT_IMD_STATUS);
         air_control_critical.imd_status = false;
-    }
-}
-
-static void set_fault(enum air_fault_e the_fault) {
-    gpio_set_pin(FAULT_LED);
-
-    if (air_control_critical.air_fault == AIR_FAULT_NONE) {
-        // Only update fault state for the first fault to occur
-        air_control_critical.air_fault = the_fault;
     }
 }
 
@@ -90,38 +88,34 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (bms_core.bms_state == BMS_STATE_CHARGING) {
-        air_control_critical.air_state = AIR_STATE_CHARGING_IDLE;
-    } else {
-        if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
-            set_fault(AIR_FAULT_BMS_VOLTAGE);
-            rc = 1;
-            goto bail;
-        }
+    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
+        set_fault(AIR_FAULT_BMS_VOLTAGE);
+        rc = 1;
+        goto bail;
+    }
 
-        int16_t mc_voltage = 0;
-        rc = get_motor_controller_voltage(&mc_voltage);
+    int16_t mc_voltage = 0;
+    rc = get_motor_controller_voltage(&mc_voltage);
 
-        if (rc == 1) {
-            set_fault(AIR_FAULT_CAN_ERROR);
-            goto bail;
-        } else if (rc == 2) {
-            set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
-            rc = 1;
-            goto bail;
-        }
+    if (rc == 1) {
+        set_fault(AIR_FAULT_CAN_ERROR);
+        goto bail;
+    } else if (rc == 2) {
+        set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
+        rc = 1;
+        goto bail;
+    }
 
-        if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
-            set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
-            rc = 1;
-            goto bail;
-        }
+    if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
+        set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
+        rc = 1;
+        goto bail;
     }
 
     // The following checks ensure that the hardware is in the correct initial
     // state.
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
-    // air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
+    air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 
     if (air_control_critical.air_p_status) {
         set_fault(AIR_FAULT_AIR_P_WELD);
@@ -129,11 +123,11 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    // if (air_control_critical.air_n_status) {
-    //     set_fault(AIR_FAULT_AIR_N_WELD);
-    //     rc = 1;
-    //     goto bail;
-    // }
+    if (air_control_critical.air_n_status) {
+        set_fault(AIR_FAULT_AIR_N_WELD);
+        rc = 1;
+        goto bail;
+    }
 
     if (!gpio_get_pin(SS_TSMS)) {
         // SS_TSMS should start high
@@ -333,44 +327,6 @@ static void state_machine_run(void) {
             gpio_clear_pin(PRECHARGE_CTL);
             gpio_clear_pin(AIR_N_LSD);
         } break;
-
-            /// CHARGING
-
-        case AIR_STATE_CHARGING_IDLE: {
-            if (air_control_critical.ss_tsms) {
-                air_control_critical.air_state = AIR_STATE_CHARGING_SHDN_CLOSED;
-            }
-
-            return;
-        } break;
-        case AIR_STATE_CHARGING_SHDN_CLOSED: {
-            static bool once = true;
-
-            if (once) {
-                start_time = get_time();
-                once = false;
-            }
-
-            if (get_time() - start_time < 200) {
-                if (air_control_critical.air_p_status) {
-                    air_control_critical.air_state = AIR_STATE_CHARGING_ACTIVE;
-                    once = true;
-                }
-            } else {
-                set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
-                once = true;
-            }
-            return;
-        } break;
-        case AIR_STATE_CHARGING_ACTIVE: {
-            gpio_set_pin(AIR_N_LSD);
-
-            if (air_control_critical.ss_tsms != true) {
-                gpio_clear_pin(AIR_N_LSD);
-                air_control_critical.air_state = AIR_STATE_CHARGING_IDLE;
-            }
-            return;
-        } break;
         default: {
             // Shouldn't happen, but just in case
             air_control_critical.air_state = AIR_STATE_FAULT;
@@ -415,41 +371,33 @@ int main(void) {
     gpio_clear_pin(SS_HVD_CONN);
     gpio_clear_pin(SS_HVD);
 
-    updater_init(BTLDR_ID, 5);
     air_control_critical.air_state = AIR_STATE_INIT;
 
-    // Initialize interrupts
     sei();
 
-    // Set LED to indicate initial checks will be run
     gpio_set_pin(GENERAL_LED);
 
-    // Send message once before checks
-    can_send_air_control_critical();
-
-    if (initial_checks() == 1) {
+    if (initial_checks() != 0) {
         goto fault;
     }
+
+    gpio_clear_pin(GENERAL_LED);
 
     pcint0_callback();
     pcint1_callback();
     pcint2_callback();
 
-    // Clear LED to indicate that initial checks passed
-    gpio_clear_pin(GENERAL_LED);
-
-    // Send message again after initial checks are run
     can_send_air_control_critical();
 
     air_control_critical.air_state = AIR_STATE_IDLE;
 
     while (1) {
-        // Run state machine every 1ms
         if (run_1ms) {
             state_machine_run();
             run_1ms = false;
         }
 
+        // Updates can only occur when the AIR control state machine is in IDLE
         if (air_control_critical.air_state == AIR_STATE_IDLE) {
             updater_loop();
         }
@@ -458,18 +406,19 @@ int main(void) {
             can_send_air_control_critical();
             send_can = false;
         }
+
     }
 
 fault:
     gpio_set_pin(FAULT_LED);
 
     while (1) {
+        // Allow updates in the event of a fault
+        updater_loop();
+
         /*
          * Continue senging CAN messages
          */
-
-        updater_loop();
-
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
