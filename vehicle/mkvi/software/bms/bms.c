@@ -35,6 +35,10 @@ void timer0_isr() {
     run_10ms = true;
 }
 
+void pcint0_callback() {
+    bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_THRESH);
+}
+
 void hw_init() {
     sei();
 
@@ -100,6 +104,85 @@ static int initial_checks(void) {
     bms_sense.max_temperature = max_temp;
 }
 
+static void run_bms_loop(void) {
+    if (bms_core.bms_fault != BMS_FAULT_NONE) {
+        bms_core.bms_state = BMS_STATE_FAULT;
+        gpio_clear_pin(BMS_RELAY_LSD);
+    }
+
+    // read all voltages
+    uint32_t ov = 0;
+    uint32_t uv = 0;
+
+    uint16_t pack_voltage = 0;
+    int rc = voltage_task(&pack_voltage, &ov, &uv);
+    bms_core.pack_voltage = pack_voltage;
+
+    // Check for PEC errors
+    if (rc != 0) {
+        bms_metrics.voltage_pec_error_count += rc;
+
+        if bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = BMS_STATE_FAULT;
+        }
+        return;
+    } else {
+        bms_metrics.voltage_pec_error_count = 0;
+    }
+
+    // read all temperatures
+    uint32_t ot = 0;
+    uint32_t ut = 0;
+    int16_t min_temp, max_temp;
+
+    rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+    bms_sense.min_temperature = min_temp;
+    bms_sense.max_temperature = max_temp;
+
+    // Check for PEC errors
+    if (rc != 0) {
+        bms_metrics.temperature_pec_error_count += rc;
+
+        if bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = BMS_STATE_FAULT;
+        }
+        return;
+    } else {
+        bms_metrics.temperature_pec_error_count = 0;
+    }
+
+    // TODO: Open wire detection
+    
+    // read current
+    int16_t current = 0;
+    uint16_t vref = 0;
+    uint16_t vout = 0;
+    current_task(&current, &vref, &vout);
+    bms_core.pack_current = current;
+    bms_sense.current_vref = vref;
+    bms_sense.current_vout = vout;
+
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+        return;
+    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+        return;
+    }
+
+    if (uv > 0) {
+        set_fault(BMS_FAULT_UNDERVOLTAGE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+    } else if (ov > 0) {
+        set_fault(BMS_FAULT_OVERVOLTAGE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+    }
+}
+
 int main(void) {
     hw_init();
     can_init_bms();
@@ -116,8 +199,12 @@ int main(void) {
 
     while (true) {
         if (run_10ms) {
+            can_send_bms_core();
+            can_send_bms_sense();
+
+            run_bms_loop();
+
             run_10ms = false;
-            //do stuff
         }
     }
 }
