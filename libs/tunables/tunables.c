@@ -1,21 +1,18 @@
 #include <avr/eeprom.h>
 #include <avr/io.h>
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "libs/can/api.h"
 
 #define MAX_NUM_PARAMS (16)
 
-typedef enum {
-    GET = 0,
-    SET = 1,
-    MEASURE = 2
-} message_type_t;
+typedef enum { GET = 0, SET = 1, MEASURE = 2 } message_type_t;
 
 // A global variable that gives each board maximum of 16 tunable parameters
-uint32_t TUNABLES_MEM[MAX_NUM_PARAMS] __attribute__((section(".eeprom"))) = { 0 };
+uint32_t TUNABLES_MEM[MAX_NUM_PARAMS] __attribute__((section(".eeprom")))
+= { 0 };
 
 // This is a local/in-memory copy of the parameters. In the initialization, we
 // will read the contents of the EEPROM into this variable so that we can read
@@ -75,7 +72,8 @@ void tunables_loop(void) {
                 // Read the tunable from the local memory (much faster than
                 // reading from EEPROM)
                 response_data[0] = tunable_id;
-                *((uint32_t*)response_data + 1) = TUNABLES_MEM_LOCAL[tunable_id];
+                *((uint32_t*)response_data + 1)
+                    = TUNABLES_MEM_LOCAL[tunable_id];
                 can_send(&response);
             } break;
             case SET: {
@@ -85,12 +83,14 @@ void tunables_loop(void) {
 
                 // Update EEPROM
                 eeprom_busy_wait();
-                eeprom_update_dword(&TUNABLES_MEM[tunable_id], TUNABLE_MEM_LOCAL[tunable_id]);
+                eeprom_update_dword(&TUNABLES_MEM[tunable_id],
+                                    TUNABLE_MEM_LOCAL[tunable_id]);
                 _delay_ms(2);
 
                 // Send the data back to the host
                 response_data[0] = tunable_id;
-                *((uint32_t*)response_data + 1) = TUNABLES_MEM_LOCAL[tunable_id];
+                *((uint32_t*)response_data + 1)
+                    = TUNABLES_MEM_LOCAL[tunable_id];
                 can_send(&response);
             } break;
             case MEASURE: {
