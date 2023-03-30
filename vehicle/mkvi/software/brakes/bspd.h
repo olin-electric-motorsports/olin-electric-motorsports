@@ -22,7 +22,7 @@ gpio_t MOTOR_CURRENT_SENSE = PB5;
 //////////////////////// GPIO - ANALOG /////////////////////////
 adc_pin_e BRAKE_PRESSURE_SENSE = ADC7;
 
-//Timer config
+//Timer config (CAN update every 100Hz)
 void timer0_callback(void);
 
 timer_cfg_s timer0_cfg = {

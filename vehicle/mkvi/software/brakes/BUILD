@@ -6,7 +6,7 @@ exports_files([
 ])
 
 cc_firmware(
-    name = "brakes",
+    name = "bspd",
     srcs = [
         "bspd.c",
         "bspd.h",
