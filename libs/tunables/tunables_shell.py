@@ -1,26 +1,32 @@
 """The python shell interface that users interact with"""
 
 import cmd
-import yaml
 from ast import literal_eval
 from datetime import date
-import CAN_layer
+import can_layer as CAN_layer
+import yaml
 
 
-class tunables(cmd.Cmd):
+class Tunables(cmd.Cmd):
+    """A class that generates a terminal shell environment"""
 
     message = CAN_layer.TunablesCAN()
 
     print(
-        " \n This is the Tunables Parameters program. \n Type in ? to see the list of commands"
+        " \n This is the Tunables Parameters program."
+        " \n Type in ? to see the list of commands"
     )
-    prompt = "(tunables) "
+    prompt = "(Tunables) "
     file = None
 
     # Commands
 
     # Getter Function
     def do_get(self, arg):
+        """Getter function which sends a get message through CAN
+
+        Args:
+            arg: The user command line input. By default a string"""
 
         param_id = get_id(parse(arg)[0])
 
@@ -28,7 +34,7 @@ class tunables(cmd.Cmd):
             print(f"Ecu_id of the {arg[0]} cannot be found")
         else:
 
-            self.message.send(0, param_id)
+            self.message.send(0, param_id, 0x6E1)
             parameter_val = search_yaml(arg, "current_value")
             print(f"Parameter Current value in Yml file is {parameter_val}")
 
@@ -36,27 +42,53 @@ class tunables(cmd.Cmd):
 
             received_data = [byte for byte in received_msg.data]
             print(received_data)
-            # real data: Timestamp: 1679611908.605059        ID: 0024    S Rx E        DL:  8    00 00 00 00 00 00 00 00     Channel: can0
+            # real data:
+            # Timestamp: 1679611908.605059 ID: 0024 S Rx E  DL:  8  00 00 00 00 00 00 00 00
+            # Channel: can0
 
     # Setter Function
     def do_set(self, arg):
+        """A setter function that sends a set message through CAN
+
+        Args:
+            arg: The user command line input. By default a string"""
 
         # database.send(0, arg[0], arg[1])
         write_yaml(parse(arg))
         print(search_yaml(parse(arg)[0]))
 
     # Lists all messages in the Yaml File only
-    def do_list(self, arg):
+    def do_list(self):
+        """Lists all the parameters in tunables.yml file"""
         list_yaml()
 
 
 def parse(arg):
+    """A quick parse function
+    that splits everything into a list
+
+    Args:
+        arg: A string
+
+    Return:
+        A list of strings which
+        was the arg split by whitespaces"""
     return arg.split(" ")
 
 
-def search_yaml(arg, parameter):
+def search_yaml(para_name, para_value):
 
-    """Finds information of 1 parameter"""
+    """Finds information from tunables.yml of 1 parameter
+
+    Args:
+        para_name: A string name of the parameter
+        para_value: A string which is the specific
+        part of the parameter.
+
+    Return:
+        A string which is the parameter's specific value
+        that we're interested in or a string which shows an error.
+    """
 
     with open("libs/tunables/tunables.yml", "r") as file:
         try:
@@ -69,17 +101,18 @@ def search_yaml(arg, parameter):
 
                     message = data[i]["params"][j]
 
-                    if message["name"] == arg:
+                    if message["name"] == para_name:
 
-                        return message[parameter]
+                        return message[para_value]
 
         except yaml.YAMLError as exc:
             print(exc)
-            return -1
+            return "Yaml Error"
 
 
 def list_yaml():
-    """Lists all parameters & their current value"""
+    """Lists all parameters in tunables.yml file
+    alongside all their current values"""
     with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
@@ -102,11 +135,17 @@ def list_yaml():
 
         except yaml.YAMLError as exc:
             print(exc)
-            return -1
 
 
-def get_id(arg):
-    """Returns the ecu_id of a tunable parameter"""
+def get_id(para_name):
+    """Returns the ecu_id of a tunable parameter
+
+    Args:
+        para_name: A string parameter name
+
+    Return:
+        an int/hex value which is the ecu_id, or -1
+        for error instances"""
     with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
@@ -118,7 +157,7 @@ def get_id(arg):
 
                     message = data[i]["params"][j]
 
-                    if message["name"] == arg:
+                    if message["name"] == para_name:
                         ecu_id = message["ecu_id"]
                         return int(ecu_id)
 
@@ -128,7 +167,13 @@ def get_id(arg):
 
 
 def write_yaml(arg):
-    """update's the tunables.yml file"""
+    """update's the tunables.yml file
+
+    Args:
+        Arg: A string list where the first index should be the
+        parameter name and the second index should be the new value
+        we want to overwrite the old value with.
+    """
     with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
@@ -158,7 +203,6 @@ def write_yaml(arg):
 
         except yaml.YAMLError as exc:
             print(exc)
-            return -1
 
 
 if __name__ == "__main__":
