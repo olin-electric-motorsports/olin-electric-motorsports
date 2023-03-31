@@ -1,6 +1,11 @@
 #include <stdint.h>
 #include "vehicle/mkvi/software/air_control/can_api.h"
 
+enum tractive_system {
+    MOTOR_CONTROLLER,
+    CHARGER,
+};
+
 /*
  * Polls for CAN message from the motor controller.
  *
@@ -9,7 +14,7 @@
  *   - 1: CAN error, go into fault
  *   - 2: CAN timeout, go into fault
  */
-int get_motor_controller_voltage(int16_t* voltage);
+int get_tractive_voltage(int16_t* voltage, enum tractive_system sys, uint32_t timeout);
 
 /*
  * Polls for CAN message from the BMS

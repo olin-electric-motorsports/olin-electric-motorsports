@@ -15,15 +15,19 @@
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 
-/*
- * Required for btldr
- */
-image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
-    .image_magic = IMAGE_MAGIC,
-    .git_sha = STABLE_GIT_COMMIT,
-};
+// /*
+//  * Required for btldr
+//  */
+// image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+//     .image_magic = IMAGE_MAGIC,
+//     .git_sha = STABLE_GIT_COMMIT,
+// };
 
 volatile bool send_can = false;
+
+// A global variable that is used to tell if we are connected to the vehicle
+// (MOTOR_CONTROLLER) or the charger (CHARGER)
+static enum tractive_system tractive_sys = MOTOR_CONTROLLER;
 
 void timer0_isr(void) {
     send_can = true;
@@ -36,6 +40,32 @@ static void set_fault(enum air_fault_e the_fault) {
         // Only update fault state for the first fault to occur
         air_control_critical.air_fault = the_fault;
     }
+}
+
+static int set_charger_connected() {
+    uint32_t start_time = get_time();
+
+    (void)can_receive_bms_core();
+
+    uint8_t rc = 1;
+
+    do {
+        rc = can_poll_receive_bms_core();
+
+        if (rc == 0) {
+            tractive_sys = (enum tractive_system) bms_core.charger_connected;
+            return 0;
+        } else if (rc == 1) {
+            // CAN error--fault
+            return 1;
+        } else if (get_time() - start_time > 1000) {
+            // Timeout, so use default
+            return 0;
+        }
+    } while (rc != 0);
+    
+    // Catch-all, shouldn't happen
+    return 1;
 }
 
 void pcint0_callback(void) {
@@ -53,12 +83,12 @@ void pcint1_callback(void) {
 }
 
 void pcint2_callback(void) {
-    if (!gpio_get_pin(IMD_SENSE)) {
+    air_control_critical.imd_status = !!gpio_get_pin(IMD_SENSE);
+
+    if (!air_control_critical.imd_status) {
         set_fault(AIR_FAULT_IMD_STATUS);
-        air_control_critical.imd_status = false;
     }
 }
-
 
 /*
  * Run through initial checks to ensure safe operation. Checks are:
@@ -95,7 +125,7 @@ static int initial_checks(void) {
     }
 
     int16_t mc_voltage = 0;
-    rc = get_motor_controller_voltage(&mc_voltage);
+    rc = get_tractive_voltage(&mc_voltage, tractive_sys, 1000);
 
     if (rc == 1) {
         set_fault(AIR_FAULT_CAN_ERROR);
@@ -106,8 +136,8 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (mc_voltage > MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
-        set_fault(AIR_FAULT_MOTOR_CONTROLLER_VOLTAGE);
+    if (mc_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
+        set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
         rc = 1;
         goto bail;
     }
@@ -196,7 +226,7 @@ static void state_machine_run(void) {
 
             // Get pack voltage to compare with MC voltage
             int16_t pack_voltage = 0;
-            int16_t motor_controller_voltage = 0;
+            int16_t tractive_voltage = 0;
             int rc;
 
             rc = get_bms_voltage(&pack_voltage);
@@ -220,7 +250,8 @@ static void state_machine_run(void) {
             }
 
             if (get_time() - start_time >= PRECHARGE_DELAY_MS) {
-                rc = get_motor_controller_voltage(&motor_controller_voltage);
+                rc = get_tractive_voltage(&tractive_voltage, tractive_sys, 500); // 500ms
+                                                                                 // timeout
                 if (rc != 0) {
                     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
                     once = true;
@@ -228,9 +259,9 @@ static void state_machine_run(void) {
                 }
 
                 // Set correct scale for MC voltage
-                motor_controller_voltage = motor_controller_voltage * 0.1;
+                tractive_voltage = tractive_voltage * 0.1;
 
-                if (motor_controller_voltage
+                if (tractive_voltage
                     > (PRECHARGE_THRESHOLD * pack_voltage)) {
                     gpio_set_pin(AIR_N_LSD); // Close AIR negative
                     gpio_clear_pin(PRECHARGE_CTL); // Close precharge relay
@@ -269,6 +300,7 @@ static void state_machine_run(void) {
                 once = false;
             }
 
+            // Wait 100ms and then check to make sure both AIRs are open
             if (get_time() - start_time > 100) {
                 if (air_control_critical.air_p_status
                     && air_control_critical.air_n_status) {
@@ -287,36 +319,36 @@ static void state_machine_run(void) {
                     once = true;
                     return;
                 }
-            }
-
-            int16_t motor_controller_voltage = 0;
-
-            // Wait for 10 seconds while the motor controller discharges
-            if (get_time() - start_time < DISCHARGE_TIMEOUT) {
-                int rc
-                    = get_motor_controller_voltage(&motor_controller_voltage);
-
-                if (rc == 2) {
-                    // Timeout
-                    set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
-                    once = true;
-                }
-                return;
-            }
-
-            int rc = get_motor_controller_voltage(&motor_controller_voltage);
-
-            if (rc != 0) {
-                set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
-                once = true;
-                return;
-            }
-
-            if (motor_controller_voltage < MOTOR_CONTROLLER_THRESHOLD_LOW_dV) {
-                once = true;
-                air_control_critical.air_state = AIR_STATE_IDLE;
-                return;
             } else {
+                // Hasn't been 100ms yet, continue to the next loop
+                return;
+            }
+
+            // Both AIRs should be open here
+
+            // Monitor tractive voltage
+            int16_t tractive_voltage = 0;
+
+            if (get_time() - start_time < DISCHARGE_TIMEOUT) {
+                int rc = get_tractive_voltage(&tractive_voltage, tractive_sys, 500);
+
+                if (rc == 1) {
+                    set_fault(AIR_FAULT_CAN_ERROR);
+                    once = true;
+                    return;
+                }
+
+                if (rc == 0) {
+                    if (tractive_voltage < TRACTIVE_THRESHOLD_LOW_dV) {
+                        // Tractive system voltage has fallen below 5V
+                        once = true;
+                        air_control_critical.air_state = AIR_STATE_IDLE;
+                        return;
+                    }
+                }
+            } else {
+                // 10 seconds have elapsed and we haven't fallen below the
+                // threshold
                 set_fault(AIR_FAULT_DISCHARGE_FAIL);
                 once = true;
                 return;
@@ -338,7 +370,7 @@ int main(void) {
     can_init_air_control();
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
-    updater_init(BTLDR_ID, 5);
+    // updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_N_LSD, OUTPUT);
@@ -373,6 +405,8 @@ int main(void) {
 
     air_control_critical.air_state = AIR_STATE_INIT;
 
+    set_charger_connected();
+
     sei();
 
     gpio_set_pin(GENERAL_LED);
@@ -398,15 +432,14 @@ int main(void) {
         }
 
         // Updates can only occur when the AIR control state machine is in IDLE
-        if (air_control_critical.air_state == AIR_STATE_IDLE) {
-            updater_loop();
-        }
+        // if (air_control_critical.air_state == AIR_STATE_IDLE) {
+        //     updater_loop();
+        // }
 
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
         }
-
     }
 
 fault:
@@ -414,7 +447,7 @@ fault:
 
     while (1) {
         // Allow updates in the event of a fault
-        updater_loop();
+        // updater_loop();
 
         /*
          * Continue senging CAN messages

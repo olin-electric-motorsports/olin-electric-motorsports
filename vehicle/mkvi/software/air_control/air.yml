@@ -4,13 +4,9 @@ subscribe:
   - name: bms_core
     mob: 1
   - name: M167_Voltage_Info
-    # TODO: rename is currently not handled. Name comes from DBC
-    rename: motor_controller_voltage
     mob: 2
-
-    # TODO: How are we handling this? Maybe we don't handle it here...
-  # - name: air_control_updater
-  #   mob: 5
+  - name: charging_fbk
+    mob: 3
 publish:
   - name: air_control_critical
     id: 0xd
@@ -32,7 +28,7 @@ publish:
             - CAN_BMS_TIMEOUT
             - CAN_MC_TIMEOUT
             - SHUTDOWN_IMPLAUSIBILITY
-            - MOTOR_CONTROLLER_VOLTAGE
+            - TRACTIVE_VOLTAGE
             - BMS_VOLTAGE
             - IMD_STATUS
       - name: air_state

@@ -2,8 +2,6 @@ name: bms
 subscribe:
   - name: air_control_critical
     mob: 1
-  - name: bms_charging
-    mob: 2
 publish:
   - name: bms_core
     id: 0x10
@@ -82,6 +80,13 @@ publish:
           values:
             t: Over-current detected
             f: No over-current detected
+      - name: charger_connected
+        slice: 41 + 1
+        unit:
+          type: bool
+          values:
+            t: Charger connected (CHARGER)
+            f: Charger disconnected (MOTOR CONTROLLER)
 
   - name: bms_sense
     id: 0x011
