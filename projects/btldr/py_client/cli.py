@@ -97,7 +97,7 @@ def ping(btldr_manager, target_id):
             ping_stats["received"] += 1
             print(
                 "64 bytes from {common_name} ({btldr_id}): image={image} chip={chip} flashed={flashed}".format(
-                    common_name="bms",  # TODO: hardcoded name
+                    common_name="air_control",  # TODO: hardcoded name
                     btldr_id=target_id,
                     image=resp["current_image"],
                     chip=resp["chip_id"],
@@ -107,7 +107,7 @@ def ping(btldr_manager, target_id):
         else:
             print("No response")
 
-        time.sleep(1 - resp["elapsed_time_ns"] / 1e9)
+        time.sleep(1)
 
 
 @updatr.command()
@@ -115,7 +115,7 @@ def ping(btldr_manager, target_id):
 @click.argument("image_path")
 @pass_btldr_manager
 def flash(btldr_manager, target_id, image_path):
-    timeout = 1
+    timeout = 2
     btldr_manager.flash(int(target_id, 0), image_path, timeout)
 
 

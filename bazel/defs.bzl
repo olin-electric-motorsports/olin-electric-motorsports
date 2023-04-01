@@ -278,11 +278,19 @@ def cc_firmware(name, **kwargs):
     if kwargs.get("linkopts"):
         linkopts = kwargs.pop("linkopts")
 
+    is_btldr = False
+    if kwargs.get("is_btldr"):
+        # This is a btldr binary
+        is_btldr = True
+        kwargs.pop("is_btldr")
+    else:
+        # If not a btldr binary, make sure to garbage collect unused sections
+        linkopts.append("-Wl,--gc-sections")
+
     btldr = None
     if kwargs.get("btldr"):
         btldr = kwargs.pop("btldr")
         linkopts.append("-flto")
-        linkopts.append("-Wl,--gc-sections")
         data.append(btldr + ".hex")
         defines.append("BTLDR_ID=" + ECUS[name]["btldr_id"])
 

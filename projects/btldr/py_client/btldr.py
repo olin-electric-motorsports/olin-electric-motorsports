@@ -95,7 +95,7 @@ class BtldrManager:
         time.sleep(1)  # Wait one second after reset before attempting to ping
 
         # Query to make sure device is in bootloader
-        ping_resp = self.ping(ecu_id, timeout)
+        ping_resp = self.ping(ecu_id, timeout+0.5)
 
         if not ping_resp:
             raise Exception("Failed to ping device")
@@ -286,14 +286,13 @@ class BtldrManager:
             [
                 {
                     "can_id": ecu_id + offset,
-                    "can_mask": 0x7FF,
+                    "can_mask": 0xFFF,
                     "extended": False,
                 }
             ]
         )
 
         maybe_response = self.canbus.recv(timeout)
-        print(maybe_response.is_error_frame)
 
         if maybe_response:
             return self.db.decode_message(offset, maybe_response.data)

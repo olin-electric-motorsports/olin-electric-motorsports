@@ -46,7 +46,7 @@ def ping_resp(ecu_id, dbc):
 
 
 def test_ping_failure(canbus, ecu_id):
-    client = BtldrManager(bustype="virtual", source="vcan0")
+    client = BtldrManager()
     client.canbus = canbus
 
     # No ping response
@@ -55,7 +55,7 @@ def test_ping_failure(canbus, ecu_id):
 
 
 def test_ping_success(canbus, ecu_id, ping_resp):
-    client = BtldrManager(bustype="virtual", source="vcan0")
+    client = BtldrManager()
     client.canbus = canbus
 
     with patch.object(client.canbus, "recv", return_value=ping_resp) as mock_recv:

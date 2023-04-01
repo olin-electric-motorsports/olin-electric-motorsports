@@ -10,4 +10,4 @@ def dbc():
 
 @pytest.fixture()
 def ecu_id():
-    return 0x708
+    return 0x700

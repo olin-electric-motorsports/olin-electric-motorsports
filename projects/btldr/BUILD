@@ -16,6 +16,7 @@ package(default_visibility = ["//visibility:public"])
         defines = [
             "BTLDR_ID=" + data["btldr_id"],
         ],
+        is_btldr = True,
         linkopts = [
             "-static",
             "-nostartfiles",

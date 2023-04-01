@@ -32,7 +32,7 @@ static void do_reset(uint8_t* data, uint8_t dlc) {
         bootflag_set(UPDATE_REQUESTED);
     }
 
-    asm("jmp 0x3000");
+    asm volatile("jmp 0x3000");
 }
 
 static void do_query(uint8_t* data, uint8_t dlc) {
