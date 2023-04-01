@@ -95,7 +95,7 @@ class BtldrManager:
         time.sleep(1)  # Wait one second after reset before attempting to ping
 
         # Query to make sure device is in bootloader
-        ping_resp = self.ping(ecu_id, timeout+0.5)
+        ping_resp = self.ping(ecu_id, timeout + 0.5)
 
         if not ping_resp:
             raise Exception("Failed to ping device")
