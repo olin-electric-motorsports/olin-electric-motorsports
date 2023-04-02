@@ -358,6 +358,23 @@ def cc_firmware(name, **kwargs):
     template = "//bazel/tools:avrdude.sh.tmpl"
 
     if btldr:
+        native.py_binary(
+            name = "can_flash",
+            srcs = [
+                "//bazel/tools:can_flash.py",
+            ],
+            deps = [
+                "//projects/btldr/py_client:updatr",
+            ],
+            env = {
+                "BTLDR_ID": ECUS[name]["btldr_id"],
+                "TARGET_BINARY": "$(location {}_patched_bin)".format(name),
+            },
+            data = [
+                "{}_patched_bin".format(name),
+            ],
+        )
+
         native.genrule(
             name = "{}_patched_bin".format(name),
             srcs = [

@@ -9,7 +9,7 @@ pytest_test(
         "test_btldr_hw.py",
     ],
     data = [
-        "bms_patched.bin",
+        "//vehicle/mkv/software/air_control:air_control_patched.bin",
     ],
     tags = ["manual"],  # No support for running in CI yet--must be invoked manually
     visibility = ["//visibility:public"],

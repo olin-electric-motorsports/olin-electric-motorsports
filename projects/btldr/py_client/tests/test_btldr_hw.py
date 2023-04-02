@@ -26,5 +26,5 @@ def test_flash(canbus, ecu_id):
     client = BtldrManager()
     client.canbus = canbus
 
-    response = client.flash(ecu_id, "projects/btldr/py_client/tests/bms_patched.bin", 1)
+    response = client.flash(ecu_id, "air_control_patched.bin", 1)
     check.is_not_none(response)
