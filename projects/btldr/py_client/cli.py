@@ -9,6 +9,7 @@ A bit of terminology:
 import signal
 import time
 import click
+import logging
 from formula.projects.btldr.py_client.btldr import BtldrManager
 from can.interface import Bus
 
@@ -121,4 +122,6 @@ def flash(btldr_manager, target_id, image_path):
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, sigint)
+    log = logging.getLogger("root")
+    log.setLevel(logging.INFO)
     updatr()

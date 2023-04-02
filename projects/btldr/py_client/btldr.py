@@ -2,6 +2,7 @@ import math
 import os
 import time
 import logging
+from tqdm import trange
 
 from cantools.database import load_file
 from can import Message as CANMessage
@@ -32,10 +33,17 @@ btldr.flash(0x700, 'bazel-bin/vehicle/mkvi/software/air_control/air_control_patc
 """
 
 
+def flash_time_string(delta):
+    flashed_time = time.localtime(time.time() - delta)
+    return time.strftime("%Y/%m/%d %H:%M:%S", flashed_time)
+
+
 class BtldrManager:
     def __init__(self):
         self.db = BtldrDatabase()
-        logging.info("CAN DBC Initialized")
+        log = logging.getLogger("root")
+        self.log = log
+        log.info("CAN DBC Initialized")
 
         # Must be initialized separately
         self.canbus = None
@@ -86,6 +94,7 @@ class BtldrManager:
         start = time.time_ns()
 
         # Reset device into the bootloader
+        logging.info("Resetting target device with ID {}".format(ecu_id))
         self.software_reset(ecu_id, request_update=True)
 
         # TODO: This is inefficient. Ideally, we should start pinging
@@ -98,10 +107,14 @@ class BtldrManager:
         ping_resp = self.ping(ecu_id, timeout + 0.5)
 
         if not ping_resp:
-            raise Exception("Failed to ping device")
+            logging.critical("Failed to ping device after reset")
+            exit(1)
+            # raise Exception("Failed to ping device")
 
         if ping_resp["current_image"] != "Updater":
-            raise Exception("Failed to place device in updater")
+            logging.critical("Failed to place device in updater")
+            exit(1)
+            # raise Exception("Failed to place device in updater")
 
         image_size_bytes = os.path.getsize(file)
 
@@ -110,20 +123,32 @@ class BtldrManager:
 
         # Make image size a multiple of 8
         image_size_bytes = 8 * image_size_octets
+
+        logging.info(
+            "Sending update request to target with {} bytes".format(image_size_bytes)
+        )
         self._send_request(ecu_id, "upload", image_size_bytes)
 
         request_response = self._receive_request_response(ecu_id, timeout)
 
         if request_response:
             if request_response["error_code"] != "OK":
-                raise Exception("Target reported invalid update request type")
+                logging.critical(
+                    "Target reported invalid update request type: {}".format(
+                        request_response["error_code"]
+                    )
+                )
+                exit(1)
+                # raise Exception("Target reported invalid update request type")
         else:
-            raise Exception("Failed to receive response to update request")
+            logging.critical("Failed to receive response to update request")
+            exit(1)
+            # raise Exception("Failed to receive response to update request")
 
         # Ok, we received an OK from the target to start sending data
 
         with open(file, "rb") as bin:
-            for chunk_idx in range(image_size_octets):
+            for chunk_idx in trange(image_size_octets):
                 data = list(bin.read(8))
 
                 if not data:
@@ -157,21 +182,37 @@ class BtldrManager:
                         % (remaining_size, data_response["remaining_size"]),
                     )
 
+        logging.info("Update complete")
+        logging.info("Resetting target device")
         self.software_reset(ecu_id, False)
 
         time.sleep(2)
 
+        logging.info("Pinging updated target")
         ping_resp = self.ping(ecu_id, timeout)
 
         if not ping_resp:
+            logging.error("Failed to receive ping response from target after update.")
+            exit(1)
             raise Exception("Failed to ping device after update")
 
         if not (ping_resp["current_image"] == "Application"):
+            logging.error("Device not in application after update")
+            exit(1)
             raise Exception("Device not in application after update")
 
         end = time.time_ns()
 
         ping_resp["elapsed_time"] = end - start
+
+        logging.info(
+            "Successfully updated ID {} at {} in {}sec.".format(
+                ecu_id,
+                flash_time_string(ping_resp["time_delta"]),
+                (ping_resp["elapsed_time"] / 10**9),
+            )
+        )
+        logging.info("Done")
 
         return ping_resp
 
