@@ -1,4 +1,4 @@
-load("//vehicle/mkv:ecus.bzl", "ECUS")
+load("//projects/btldr:ecus.bzl", "ECUS")
 
 cc_binary(
     name = "patch_header",
