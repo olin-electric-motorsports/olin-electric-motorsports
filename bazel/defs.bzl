@@ -151,10 +151,6 @@ _bin_file = rule(
         "_cc_toolchain": attr.label(
             default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
         ),
-        # TODO: (@jack-greenberg) Integrate btldr
-        # "_patch_header": attr.label(
-        #     default = Label("//projects/btldr/tools:patch_image_header"),
-        # )
     },
     executable = False,
     toolchains = [

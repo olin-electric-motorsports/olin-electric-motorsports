@@ -72,7 +72,7 @@ def updatr(ctx, device):
 
 """
 This is just a helpful function that takes a time delta (bascailly just a number
-of milliseconds (or is it seconds? TODO)), subtracts it from the current time,
+of milliseconds (or is it seconds?)), subtracts it from the current time,
 and returns a string that contains the resulting timestamp.
 
 We use this in the ping command to display when the target device was flashed.

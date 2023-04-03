@@ -11,8 +11,6 @@
  * m := Minor revision
  *
  * CURRENT VERSION: 0.1
- *
- * TODO: Move to a config.h file?
  */
 #define BOOTLOADER_VERSION_MAJ (0)
 #define BOOTLOADER_VERSION_MIN (1)

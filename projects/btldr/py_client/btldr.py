@@ -53,7 +53,7 @@ class BtldrManager:
 
     Arguments:
     - ecu_id (int): The ID of the target device to be updated
-    - timeout (int): A timeout (in milliseconds TODO) to wait when receiving CAN
+    - timeout (int): A timeout (in seconds) to wait when receiving CAN
         messages
     """
 
@@ -80,7 +80,7 @@ class BtldrManager:
     Arguments:
     - ecu_id (int): The ID of the target device to be updated
     - file (str): A path to the binary that will be uploaded to the target
-    - timeout (int): A timeout (in milliseconds TODO) to wait when receiving CAN
+    - timeout (int): A timeout (in seconds) to wait when receiving CAN
         messages
 
     Returns: A ping response struct of the device after it has been updated
@@ -97,7 +97,7 @@ class BtldrManager:
         logging.info("Resetting target device with ID 0x{:02X}".format(ecu_id))
         self.software_reset(ecu_id, request_update=True)
 
-        # TODO: This is inefficient. Ideally, we should start pinging
+        # This is inefficient. Ideally, we should start pinging
         # immediately over and over again until we get a response, but for the
         # sake of time and completeness, I decided to hardcode a delay.
         # Hopefully someone will improve upon this one day.
