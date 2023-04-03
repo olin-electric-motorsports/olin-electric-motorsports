@@ -415,8 +415,10 @@ int main(void) {
         goto fault;
     }
 
+    // Clear general LED to indicate that initialization has completed
     gpio_clear_pin(GENERAL_LED);
 
+    // Get initial states of pins
     pcint0_callback();
     pcint1_callback();
     pcint2_callback();
