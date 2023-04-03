@@ -1,8 +1,8 @@
 import os
 import pytest
 import time
-from formula.projects.hitl.software.hitl import CANController
-from formula.projects.microhitl import MicroHitl, Values as PinValue, PinTypes
+from formula.projects.hitl.software.hitl import CANController, IOController
+# from formula.projects.microhitl import MicroHitl, Values as PinValue, PinTypes
 
 # Allow passing in arguments
 def pytest_addoption(parser):
@@ -29,7 +29,7 @@ def pins():
         "SS_TSMS": [6, PinTypes.OUTPUT],  # PB3
         "SS_IMD_LATCH": [7, PinTypes.OUTPUT],  # PB4
         "SS_MPC": [12, PinTypes.OUTPUT],  # PB5
-        "SS_HVD_CONN": [11, PinTypes.OUTPUT],  # PB6
+        "SS_TSMP": [11, PinTypes.OUTPUT],  # PB6
         "RESET": [2, PinTypes.OUTPUT],
         "BMS_SENSE": [8, PinTypes.OUTPUT],  # PC0
         "AIR_P_WELD_DETECT": [4, PinTypes.OUTPUT],  # PC4
@@ -40,7 +40,7 @@ def pins():
 
 @pytest.fixture
 def iocontroller(hitl_port, pins):
-    ioctrl = MicroHitl(hitl_port)
+    ioctrl = IOController(pins)
     time.sleep(2)
 
     for idx, (name, info) in enumerate(pins.items()):

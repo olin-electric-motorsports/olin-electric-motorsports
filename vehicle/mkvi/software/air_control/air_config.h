@@ -13,7 +13,7 @@ gpio_t AIR_N_LSD = PC6;
 gpio_t SS_TSMS = PB3;
 gpio_t SS_IMD_LATCH = PB4;
 gpio_t SS_MPC = PB5;
-gpio_t SS_HVD_CONN = PB6;
+gpio_t SS_TSMP = PB6;
 gpio_t SS_HVD = PB7;
 gpio_t SS_BMS = PC7;
 

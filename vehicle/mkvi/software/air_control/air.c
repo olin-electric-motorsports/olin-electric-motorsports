@@ -72,7 +72,7 @@ void pcint0_callback(void) {
     air_control_critical.ss_tsms = !gpio_get_pin(SS_TSMS);
     air_control_critical.ss_imd = !gpio_get_pin(SS_IMD_LATCH);
     air_control_critical.ss_mpc = !gpio_get_pin(SS_MPC);
-    air_control_critical.ss_hvd_conn = !gpio_get_pin(SS_HVD_CONN);
+    air_control_critical.ss_hvd_conn = !gpio_get_pin(SS_TSMP);
     air_control_critical.ss_hvd = !gpio_get_pin(SS_HVD);
 }
 
@@ -382,14 +382,14 @@ int main(void) {
     gpio_set_mode(SS_IMD_LATCH, INPUT);
     gpio_set_mode(SS_BMS, INPUT);
     gpio_set_mode(SS_MPC, INPUT);
-    gpio_set_mode(SS_HVD_CONN, INPUT);
+    gpio_set_mode(SS_TSMP, INPUT);
     gpio_set_mode(SS_HVD, INPUT);
 
     gpio_enable_interrupt(SS_TSMS);
     gpio_enable_interrupt(SS_IMD_LATCH);
     gpio_enable_interrupt(SS_BMS);
     gpio_enable_interrupt(SS_MPC);
-    gpio_enable_interrupt(SS_HVD_CONN);
+    gpio_enable_interrupt(SS_TSMP);
     gpio_enable_interrupt(SS_HVD);
     gpio_enable_interrupt(IMD_SENSE);
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
@@ -400,7 +400,7 @@ int main(void) {
     gpio_clear_pin(SS_BMS);
     gpio_clear_pin(SS_IMD_LATCH);
     gpio_clear_pin(SS_MPC);
-    gpio_clear_pin(SS_HVD_CONN);
+    gpio_clear_pin(SS_TSMP);
     gpio_clear_pin(SS_HVD);
 
     air_control_critical.air_state = AIR_STATE_INIT;
