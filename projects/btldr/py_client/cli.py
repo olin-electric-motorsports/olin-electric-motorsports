@@ -97,8 +97,7 @@ def ping(btldr_manager, target_id):
         if resp is not None:
             ping_stats["received"] += 1
             print(
-                "64 bytes from {common_name} ({btldr_id}): image={image} chip={chip} flashed={flashed}".format(
-                    common_name="air_control",  # TODO: hardcoded name
+                "8 bytes from {btldr_id}: image={image} chip={chip} flashed={flashed}".format(
                     btldr_id=target_id,
                     image=resp["current_image"],
                     chip=resp["chip_id"],
@@ -122,6 +121,4 @@ def flash(btldr_manager, target_id, image_path):
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, sigint)
-    log = logging.getLogger("root")
-    log.setLevel(logging.INFO)
     updatr()

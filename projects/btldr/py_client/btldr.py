@@ -94,7 +94,7 @@ class BtldrManager:
         start = time.time_ns()
 
         # Reset device into the bootloader
-        logging.info("Resetting target device with ID {}".format(ecu_id))
+        logging.info("Resetting target device with ID 0x{:02X}".format(ecu_id))
         self.software_reset(ecu_id, request_update=True)
 
         # TODO: This is inefficient. Ideally, we should start pinging
@@ -206,7 +206,7 @@ class BtldrManager:
         ping_resp["elapsed_time"] = end - start
 
         logging.info(
-            "Successfully updated ID {} at {} in {}sec.".format(
+            "Successfully updated ID 0x{:02X} at {} in {}sec.".format(
                 ecu_id,
                 flash_time_string(ping_resp["time_delta"]),
                 (ping_resp["elapsed_time"] / 10**9),
