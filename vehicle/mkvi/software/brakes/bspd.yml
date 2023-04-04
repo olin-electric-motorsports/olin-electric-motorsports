@@ -5,26 +5,26 @@ publish:
     freq_hz: 100
     signals:
 
-      #Shutdown Sense
-      - name: ss_bspd
-        slice: 0 + 8
-        unit:
-          type: bool
-          values:
-            t: CLOSED
-            f: OPEN
-
       # not sure what the scale is here yet, so going to leave this as - is
       - name: brake_pressure
-        slice: 8 + 16
+        slice: 0 + 16
         unit:
           type: uint16_t
           name: PSI
           offset: -1.25
           scale: 25 * (5 / 4096)
 
+      #Shutdown Sense
+      - name: ss_bspd
+        slice: 16 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+
       - name: brake_gate
-        slice: 24 + 1
+        slice: 17 + 1
         unit:
           type: bool
           values:
@@ -32,7 +32,7 @@ publish:
             f: Brakelight OFF
 
       - name: bspd_5kw
-        slice: 25 + 1
+        slice: 18 + 1
         unit:
           type: bool
           values:
