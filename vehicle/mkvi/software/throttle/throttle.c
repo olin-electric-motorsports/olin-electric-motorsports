@@ -93,12 +93,12 @@ static bool check_out_of_range(int16_t* pos_1, int16_t* pos_2) {
     // Check 1st pot
     if (*pos_1 > 255) {
         *pos_1 = 255;
-        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
+        throttle.throttle_status = THROTTLE_OUT_OF_RANGE;
         throttle_debug.throttle_out_of_range = true;
         implausibility = true;
     } else if (*pos_1 < 0) {
         *pos_1 = 0;
-        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
+        throttle.throttle_status = THROTTLE_OUT_OF_RANGE;
         throttle_debug.throttle_out_of_range = true;
         implausibility = true;
     } else {
@@ -108,17 +108,17 @@ static bool check_out_of_range(int16_t* pos_1, int16_t* pos_2) {
     // Check 2nd pot
     if (*pos_2 > 255) {
         *pos_2 = 255;
-        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
+        throttle.throttle_status = THROTTLE_OUT_OF_RANGE;
         throttle_debug.throttle_out_of_range = true;
         implausibility = true;
     } else if (*pos_2 < 0) {
         *pos_2 = 0;
-        throttle.throttle_state = THROTTLE_OUT_OF_RANGE;
+        throttle.throttle_status = THROTTLE_OUT_OF_RANGE;
         throttle_debug.throttle_out_of_range = true;
         implausibility = true;
     } else {
         // Will be reset if Ready to Drive is not on
-        throttle.throttle_state = THROTTLE_RUN;
+        throttle.throttle_status = THROTTLE_RUN;
         throttle_debug.throttle_out_of_range = false;
     }
     return implausibility;
@@ -135,11 +135,11 @@ static bool check_out_of_range(int16_t* pos_1, int16_t* pos_2) {
 */
 static bool check_deviation(int16_t pos_max, int16_t pos_min) {
     if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
-        throttle.throttle_state = THROTTLE_POSITION_IMPLAUSIBILITY;
+        throttle.throttle_status = THROTTLE_POSITION_IMPLAUSIBILITY;
         throttle_debug.throttle_deviation = true;
         return true;
     } else {
-        throttle.throttle_state = THROTTLE_RUN;
+        throttle.throttle_status = THROTTLE_RUN;
         throttle_debug.throttle_deviation = false;
         return false;
     }
@@ -161,7 +161,7 @@ static bool check_brake(int16_t pos_min) {
         if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
             // brake is pressed, pedal travel >= 25%
             brake_implausibility_occurred = true;
-            throttle.throttle_state = THROTTLE_BRAKE_PRESSED;
+            throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
             throttle_debug.throttle_brake_implaus = true;
             return true;
         } else {
@@ -176,7 +176,7 @@ static bool check_brake(int16_t pos_min) {
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 // and pedal travel <= 5%
                 brake_implausibility_occurred = false;
-                throttle.throttle_state = THROTTLE_RUN;
+                throttle.throttle_status = THROTTLE_RUN;
                 throttle_debug.throttle_brake_implaus = false;
                 return false;
             } else {
@@ -186,7 +186,7 @@ static bool check_brake(int16_t pos_min) {
             }
         } else {
             // no implausibility prev occurred then still no implausibility
-            throttle.throttle_state = THROTTLE_RUN;
+            throttle.throttle_status = THROTTLE_RUN;
             throttle_debug.throttle_brake_implaus = false;
             return false;
         }
@@ -198,17 +198,17 @@ static bool check_brake(int16_t pos_min) {
                 // however pedal is <= 5% travel, no implausibility
                 brake_implausibility_occurred = false;
                 throttle_debug.throttle_brake_implaus = false;
-                throttle.throttle_state = THROTTLE_RUN;
+                throttle.throttle_status = THROTTLE_RUN;
                 return false;
             } else {
                 // else pedal travel still >5%
-                throttle.throttle_state = THROTTLE_BRAKE_PRESSED;
+                throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
                 throttle_debug.throttle_brake_implaus = true;
                 return true;
             }
         } else {
             // brake not pressed, no prev implausibility
-            throttle.throttle_state = THROTTLE_RUN;
+            throttle.throttle_status = THROTTLE_RUN;
             throttle_debug.throttle_brake_implaus = false;
             return false;
         }
@@ -228,7 +228,7 @@ int main(void) {
     gpio_set_mode(SS_IS, INPUT);
     gpio_enable_interrupt(SS_IS);
 
-    throttle.throttle_state = THROTTLE_IDLE;
+    throttle.throttle_status = THROTTLE_IDLE;
 
     pcint0_callback();
 
@@ -296,7 +296,7 @@ int main(void) {
                 continue;
 
             } else {
-                throttle.throttle_state = THROTTLE_RUN;
+                throttle.throttle_status = THROTTLE_RUN;
                 throttle_state.implausibility_fault_counter = 0;
 
                 // NOTE: If we decide to do a non-linear map, that would go here
@@ -307,7 +307,7 @@ int main(void) {
 
             if (!dashboard.ready_to_drive) {
                 SET_TORQUE_REQUEST(0);
-                throttle.throttle_state = THROTTLE_IDLE;
+                throttle.throttle_status = THROTTLE_IDLE;
                 continue;
             }
         }

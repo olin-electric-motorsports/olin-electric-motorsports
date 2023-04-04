@@ -11,32 +11,41 @@
 #define MOTOR_CLOCKWISE     (0)
 #define MOTOR_ANTICLOCKWISE (1)
 
-// Represents value for 25% pedal travel to check for brake implausibility
-// Set as 25% of 255
+/*
+Represents value for 25% pedal travel to check for brake implausibility
+Set as 25% of 255
+*/
 #define APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD (63)
 
-// Represents value for 5% pedal travel to check for brake implausibility
-// Set as 5% of 255
+/*
+Represents value for 5% pedal travel to check for brake implausibility
+Set as 5% of 255
+*/
 #define APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW (12)
 
-// Represents value for 10% deviation between throttle sensors
-// Set as 10% of 255
+/*
+Represents value for 10% deviation between throttle sensors
+Set as 10% of 255
+*/
 #define APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD (25)
 
-/*buffer here to make sure we don't request torque when small deviations
+/*
+buffer here to make sure we don't request torque when small deviations
 in potentiometer happen and we aren't pressing pedal
 */
 #define THROTTLE_BUFFER (5)
 
-// Minimum and maximum ADC counts representing 0% and 100% pedal travel
-// Last calibrated 4-21
-// TODO: calibrate for MKVI
+/*
+Minimum and maximum ADC counts representing 0% and 100% pedal travel
+Last calibrated 4-21
+TODO: calibrate for MKVI
+*/
 #define THROTTLE_R_MIN_COUNTS (int16_t)((126 + THROTTLE_BUFFER) >> 2)
 #define THROTTLE_R_MAX_COUNTS (int16_t)((690 - THROTTLE_BUFFER) >> 2)
 #define THROTTLE_L_MIN_COUNTS (int16_t)((178 + THROTTLE_BUFFER) >> 2)
 #define THROTTLE_L_MAX_COUNTS (int16_t)((1000 - THROTTLE_BUFFER) >> 2)
 
-/* Pin definitions */
+// Pin definitions
 gpio_t SS_IS = PB6;
 
 typedef struct {
@@ -53,7 +62,8 @@ const throttle_potentiometer_s throttle_1 = {
     .throttle_max = THROTTLE_L_MAX_COUNTS
 };
 
-const throttle_potentiometer_s throttle_2 = { // 2nd throttle pot
+const throttle_potentiometer_s throttle_2 = {
+    // 2nd throttle pot
     .adc_pin = ADC6,
     .throttle_min = THROTTLE_R_MIN_COUNTS,
     .throttle_max = THROTTLE_R_MAX_COUNTS

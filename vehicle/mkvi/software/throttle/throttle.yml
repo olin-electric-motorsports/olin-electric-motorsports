@@ -11,7 +11,7 @@ publish:
     id: 0xC
     freq_hz: 100
     signals:
-      - name: throttle_state
+      - name: throttle_status
         slice: 0 + 8
         unit:
           type: enum
@@ -43,7 +43,7 @@ publish:
             t: CLOSED
             f: OPEN
   - name: throttle_debug
-    id: 0x5C0
+    id: 0x6C0
     freq_hz: 100
     signals:
       - name: throttle_1_raw
