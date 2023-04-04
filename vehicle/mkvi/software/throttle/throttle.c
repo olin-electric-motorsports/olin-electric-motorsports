@@ -1,18 +1,17 @@
 #include "libs/adc/api.h"
 #include "libs/can/api.h"
-#include "libs/timer/api.h"
-#include <avr/interrupt.h>
-
 #include "libs/gpio/api.h"
+#include "libs/timer/api.h"
+
 #include "throttle_config.h"
 #include "vehicle/mkvi/software/throttle/can_api.h"
 
+#include <avr/interrupt.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <sys/types.h>
-
-#include <math.h>
 #include <util/delay.h>
 
 // commented out temporarily for Jack's testing
@@ -66,12 +65,12 @@ void pcint0_callback(void) {
     throttle.ss_is = !gpio_get_pin(SS_IS);
 }
 
+/*
+    Read value from throttle potentiometer, maps it to value between 0 and
+    255 where 255 = 100% throttle
+    Returns an int16_t representing pedal travel
+*/
 static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
-    /*
-        Read value from throttle potentiometer, maps it to value between 0 and
-        255 where 255 = 100% throttle Returns an int16_t representing pedal
-        travel
-    */
     int16_t throttle_raw = adc_read(throttle->adc_pin);
     throttle_raw >>= 2; // TODO: ask why this is here
     int16_t range = throttle->throttle_max - throttle->throttle_min;
@@ -80,15 +79,15 @@ static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
     return floor(position_pct * 255);
 }
 
+/*
+    Check if sensors return a value out of range (<0 or >255)
+    Args:
+        pos_1: int16_t sensor value of throttle pot 1
+        pos_2: int16_t sensor value of throttle pot 2
+    Returns:
+        implausibility: boolean if throttle out of range or not
+*/
 static bool check_out_of_range(int16_t* pos_1, int16_t* pos_2) {
-    /*
-        Check if sensors return a value out of range (<0 or >255)
-        Args:
-            pos_1: int16_t sensor value of throttle pot 1
-            pos_2: int16_t sensor value of throttle pot 2
-        Returns:
-            implausibility: boolean if throttle out of range or not
-    */
     bool implausibility = false;
 
     // Check 1st pot
@@ -125,16 +124,16 @@ static bool check_out_of_range(int16_t* pos_1, int16_t* pos_2) {
     return implausibility;
 }
 
+/*
+    Check for deviation between 2 throttle sensors, >10% deviation is an
+    implausibility
+    Args:
+        pos_min: int16_t bigger sensor value of the 2 throttle pots
+        pos_max: int16_t smaller sensor value of the 2 throttle pots
+    Returns:
+        boolean if there's deviation or not
+*/
 static bool check_deviation(int16_t pos_max, int16_t pos_min) {
-    /*
-        Check for deviation between 2 throttle sensors, >10% deviation is an
-        implausibility
-        Args:
-            pos_min: int16_t bigger sensor value of the 2 throttle pots
-            pos_max: int16_t smaller sensor value of the 2 throttle pots
-        Returns:
-            boolean if there's deviation or not
-    */
     if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
         throttle.throttle_state = THROTTLE_POSITION_IMPLAUSIBILITY;
         throttle_debug.throttle_deviation = true;
@@ -146,15 +145,15 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
     }
 }
 
+/*
+    Check if brakes are on while pedal travel >= 25%, if so return
+    implausibility If pedal travel becomes <5%, clear implausibility.
+    Args:
+        pos_min: int16_t smaller sensor value of the 2 pots
+    Returns:
+        true if implausibility, false if not
+*/
 static bool check_brake(int16_t pos_min) {
-    /*
-        Check if brakes are on while pedal travel >= 25%, if so return
-        implausibility If pedal travel becomes <5%, clear implausibility.
-        Args:
-            pos_min: int16_t smaller sensor value of the 2 pots
-        Returns:
-            true if implausibility, false if not
-    */
     static bool brake_implausibility_occurred = false;
 
     if (throttle_state.brake_pressed) {
@@ -253,7 +252,7 @@ int main(void) {
             run_1ms = false;
 
             if (can_poll_receive_brakelight() == 0) {
-                // checking brake status??
+                // checking brake status
                 throttle_state.brake_pressed = brakelight.brake_gate;
                 can_receive_brakelight();
             }
