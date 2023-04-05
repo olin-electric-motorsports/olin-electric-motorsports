@@ -1,5 +1,6 @@
 #include <avr/eeprom.h>
 #include <avr/io.h>
+#include <util/delay.h>
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -36,6 +37,8 @@ can_frame_t tunable_msg = {
 can_filter_t tunable_msg_filter = {
     .mask = 0x7FF,
 };
+
+
 
 void tunables_init(uint8_t ecu_id) {
     // Read in memory from EEPROM into RAM for quick reading
@@ -78,13 +81,13 @@ void tunables_loop(void) {
             } break;
             case SET: {
                 // Update in local memory
-                uint32_t new_data = *(tunable_msg_data + 2);
-                TUNABLE_MEM_LOCAL[tunable_id] = new_data;
+                uint32_t new_data = *(tunable_msg_data + 1);
+                TUNABLES_MEM_LOCAL[tunable_id] = new_data;
 
                 // Update EEPROM
                 eeprom_busy_wait();
                 eeprom_update_dword(&TUNABLES_MEM[tunable_id],
-                                    TUNABLE_MEM_LOCAL[tunable_id]);
+                                    TUNABLES_MEM_LOCAL[tunable_id]);
                 _delay_ms(2);
 
                 // Send the data back to the host
