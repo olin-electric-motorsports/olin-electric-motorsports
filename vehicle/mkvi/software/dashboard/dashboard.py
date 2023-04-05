@@ -4,19 +4,42 @@ import can
 import cantools
 import RPi.GPIO as GPIO
 
-# bustype = "slcan"          idk lol
-# channel = "/dev/ttyACM1"   which port on the raspi
-# bitrate = 500000           number of bits per second
+BUSTYPE = "slcan"
+CHANNEL = "/dev/ttyACM1"
+BITRATE = 500000
 
 # Loading in everyone's compiled config files
-dbc_file = "mkv.dbc"
+dbc_file = "vehicle/mkvi/mkvi.dbc"
 db = cantools.database.load_file(dbc_file)
 
-# Creating the STATES_DICTIONARY
-STATES_DICTIONARY = {}
+# Making variables that store incoming CAN data global
+AIR_FAULT = None
+AIR_STATE = None
+IMD_STATUS = None
+BMS_FAULT = None
+BRAKE_GATE = None
+THROTTLE_PRESSED = None
+
+# Pin Definitions
+AMS_LED_LSD = 27
+HV_LED_LSD = 29
+IMD_LED_LSD = 26
+RTD_BUZZER_LSD = 28
+
+RTD_BUTTON_SENSE = 31
+BOTS_SHDN_SENSE = 22
+E_STOP_SHDN_SENSE = 24
+
+RTD_BUTTON_LED = 33
+PROGRAMMING_LED_1 = 40
+PROGRAMMING_LED_2 = 38
+PROGRAMMING_LED_3 = 37
+
+# Number of seconds the buzzer sounds
+RTD_BUZZ_TIME = 2000  # in milliseconds
 
 
-def init_can(channel, bustype, bitrate, callback, dbc):
+def init_can(channel, bustype, bitrate, callback):
     """Initialize CAN hardware and create CAN database from DBC"""
     can_bus = can.interface.Bus(
         channel=channel,
@@ -52,7 +75,8 @@ def dashboard_listener(can_bus, callback, kill_flag):
 
 def dashboard_callback(msg, db):
     """
-    Callback when a CAN message is received, updates appropriate vehicle dictionaries
+    Callback when a CAN message is received, updates appropriate vehicle
+    dictionaries
     Args:
         msg (can.Message): CAN message that was received
         db (cantools.database): Database generated from our DBC
@@ -64,50 +88,54 @@ def dashboard_callback(msg, db):
     except Exception as _:
         return
 
-    for signal_name in message:
-        STATES_DICTIONARY[signal_name] = message.get(signal_name)
+    message_name = db.get_message_by_frame_id(msg.arbitration_id).name
+
+    if message_name == "air_control_critical":
+        AIR_FAULT = message.get("air_fault")
+        AIR_STATE = message.get("air_state")
+        IMD_STATUS = message.get("imd_status")
+    if message_name == "bms_core":
+        BMS_FAULT = message.get("bms_fault")
+    if message_name == "brakes":
+        BRAKE_GATE = message.get("brake_gate")
+    if message_name == "throttle":
+        THROTTLE_L = message.get("throttle_l_pos")
+        THROTTLE_R = message.get("throttle_r_pos")
+        THROTTLE_PRESSED = THROTTLE_L >= 12 or THROTTLE_R >= 12
 
 
-# Pin Definitions
-AMS_LED_LSD = 27
-HV_LED_LSD = 29
-IMD_LED_LSD = 26
-RTD_BUZZER_LSD = 28
-
-RTD_BUTTON_SENSE = 31
-BOTS_SHDN_SENSE = 22
-E_STOP_SHDN_SENSE = 24
-
-RTD_BUTTON_LED = 33
-PROGRAMMING_LED_1 = 40
-PROGRAMMING_LED_2 = 38
-PROGRAMMING_LED_3 = 37
-
-# Initializing the dictionary where dashboard pin readings will be stored
+# Initializing the dictionary that holds outgoing CAN data
 dashboard_data = {}
 
 # Enabling the start button interrupt
 def button_pressed_callback():
-    STATES_DICTIONARY["start_button_state"] = True
+    """
+    When called, this sets the value of "start_button_state" in the outgoing
+    CAN data dictionary (dashboard_data) to True
+    """
     dashboard_data["start_button_state"] = True
 
 
 def shutdown_callback(channel):
+    """
+    When called, this updates the values of "ss_bots" and "ss_estop" in the
+    outgoing CAN data dictionary (dashboard_data) to False
+
+    Args:
+        channel: an integer representing a pin number corresponding to either
+        the ss_bots or ss_estop pins
+    """
     if channel == BOTS_SHDN_SENSE:
-        STATES_DICTIONARY["ss_bots"] = True
-        dashboard_data["ss_bots"] = True
+        dashboard_data["ss_bots"] = False
     if channel == E_STOP_SHDN_SENSE:
-        STATES_DICTIONARY["ss_estop"] = True
-        dashboard_data["ss_estop"] = True
+        dashboard_data["ss_estop"] = False
 
 
 def main():
     """
     Contains the superloop intended to run every 10 milliseconds;
-    Separate thread continually updates STATES_DICTIONARY from the CAN bus
-    The values in STATES_DICTIONARY determine whether certain states/lights
-    should be activated. `dashboard_data` is a dictionary containing info
-    on the various pin readings of my board.
+    Separate thread continually updates relevant variables
+    `dashboard_data` is a dictionary containing all outgoing CAN data.
     """
     # Set pin numbering system
     GPIO.setmode(GPIO.BOARD)
@@ -129,9 +157,7 @@ def main():
     GPIO.setup(channel_inputs, GPIO.IN)
 
     # Initialize a thread to constantly update STATES_DICTIONARY from CAN messages
-    can_bus, kill_flag = init_can(
-        "/dev/ttyACM1", "slcan", 500000, dashboard_callback, dbc_file
-    )
+    can_bus, kill_flag = init_can(CHANNEL, BUSTYPE, BITRATE, dashboard_callback)
 
     # Adding start button, bots shutdown, and estop shutdown interrupts
     GPIO.add_event_detect(
@@ -140,36 +166,28 @@ def main():
     GPIO.add_event_detect(BOTS_SHDN_SENSE, GPIO.FALLING, callback=shutdown_callback)
     GPIO.add_event_detect(E_STOP_SHDN_SENSE, GPIO.FALLING, callback=shutdown_callback)
 
-    # Number of seconds the buzzer sounds
-    RTD_BUZZ_TIME = 2000  # in milliseconds
     buzzer_counter = 0  # buzzer_counter starts at 0
 
     dashboard = db.get_message_by_name("dashboard")
 
     while True:  # MAKE THIS RUN EVERY 10 MILLISECONDS
-        t0 = time.perf_counter()
-
-        THROTTLE_PRESSED = (
-            STATES_DICTIONARY["throttle_l_pos"]
-            >= 12 | STATES_DICTIONARY["throttle_r_pos"]
-            >= 12
-        )
+        t_0 = time.perf_counter()
 
         # Turns on AMS LED if there are any AMS faults
-        GPIO.output(AMS_LED_LSD, STATES_DICTIONARY["bms_fault"] != "NONE")
+        GPIO.output(AMS_LED_LSD, BMS_FAULT != "NONE")
 
         # Turns on HV LED if the tractive system is on
-        GPIO.output(HV_LED_LSD, STATES_DICTIONARY["air_state"] == "TS_ACTIVE")
+        GPIO.output(HV_LED_LSD, AIR_STATE == "TS_ACTIVE")
 
         # Turns on IMD LED if there is an IMD fault; imd_status True is good
-        GPIO.output(IMD_LED_LSD, not STATES_DICTIONARY["imd_status"])
+        GPIO.output(IMD_LED_LSD, not IMD_STATUS)
 
         # Turns on the button LED if brakes are pressed, tractive system is on,
         # RTD is not on, and the throttle is not being pressed
         if (
-            STATES_DICTIONARY["brake_gate"]
-            and STATES_DICTIONARY["air_state"] == "TS_ACTIVE"
-            and not STATES_DICTIONARY["ready_to_drive"]
+            BRAKE_GATE
+            and AIR_STATE == "TS_ACTIVE"
+            and not dashboard_data["ready_to_drive"]
             and not THROTTLE_PRESSED
         ):
             GPIO.output(RTD_BUTTON_LED, 1)  # Turn on button LED
@@ -179,26 +197,24 @@ def main():
         # Update "ready_to_drive", turn off the button LED and start the buzzer
         # Set the counter to 0 to start off with
         if (
-            STATES_DICTIONARY["air_state"] == "TS_ACTIVE"
-            and STATES_DICTIONARY["brake_gate"]
-            and STATES_DICTIONARY["start_button_state"]
+            AIR_STATE == "TS_ACTIVE"
+            and BRAKE_GATE
+            and dashboard_data["start_button_state"]
             and not THROTTLE_PRESSED
         ):
-            STATES_DICTIONARY["ready_to_drive"] = True
             dashboard_data["ready_to_drive"] = True
             GPIO.output(RTD_BUTTON_LED, 0)
             GPIO.output(RTD_BUZZER_LSD, 1)
 
         # Turn off the button LED and RTD false in dicts if tractive system not active
         # Also reset the buzzer
-        if STATES_DICTIONARY["air_state"] != "TS_ACTIVE":
+        if AIR_STATE != "TS_ACTIVE":
             GPIO.output(RTD_BUTTON_LED, 0)  # Turn off button LED
-            STATES_DICTIONARY["ready_to_drive"] = False  # Disable RTD in dictionary
             dashboard_data["ready_to_drive"] = False
             buzzer_counter = 0
 
         # Add 10 milliseconds to the buzzing timer every loop
-        if STATES_DICTIONARY["ready_to_drive"] and buzzer_counter < RTD_BUZZ_TIME:
+        if dashboard_data["ready_to_drive"] and buzzer_counter < RTD_BUZZ_TIME:
             buzzer_counter += 10
 
         if buzzer_counter >= RTD_BUZZ_TIME:
@@ -209,7 +225,7 @@ def main():
         can_bus.send(message)  # Send out RTD status over CAN
 
         # Make the loop run every 10 milliseconds
-        delta = time.perf_counter() - t0
+        delta = time.perf_counter() - t_0
         if delta < 0.01:
             time.sleep(0.01 - delta)
 
