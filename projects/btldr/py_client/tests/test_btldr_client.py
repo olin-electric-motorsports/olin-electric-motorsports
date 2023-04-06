@@ -10,16 +10,6 @@ from formula.projects.btldr.py_client.btldr_database import BtldrDatabase
 
 
 @pytest.fixture()
-def dbc():
-    return BtldrDatabase()
-
-
-@pytest.fixture()
-def ecu_id():
-    return 0x700
-
-
-@pytest.fixture()
 def canbus():
     canbus = CANBus(interface="socketcan", bustype="virtual", channel="vcan0")
     yield canbus

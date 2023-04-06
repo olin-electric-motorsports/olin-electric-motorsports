@@ -9,8 +9,7 @@ you are looking for documentation of the design of the btldr itself, you should
 check on [Coda], or whatever your current documentation platform for the team
 is.
 
-<!-- TODO -->
-[Coda]: https://coda.io
+[Coda]: https://coda.io/d/Documentation_dbuFnC2EA_e/CAN-Software-Update-aka-Bootloader_suPXB#_luxHd
 
 This document might be a bit dense. Read it a couple times, and if there are
 things that are unclear and there's no one that knows, feel free to reach out to
@@ -40,7 +39,7 @@ to the host (the computer) has a message offset of 5. So for AIR Control, which
 has an ECU_ID of 0x700, the `air_control_reset_response` message has a CAN ID of
 `0x700 + 5 = 0x705`.
 
-By default, when you create the BtldrDatabase, if keeps the eight message IDs as
+By default, when you create the BtldrDatabase, it keeps the eight message IDs as
 the numbers 0-7. However, when initializing the class, you can pass in an
 `ecu_id` parameter, which will update the message ids to be `ecu_id + offset`.
 This is useful in the event that you want to use the BtldrDatabase to decode

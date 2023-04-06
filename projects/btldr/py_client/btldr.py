@@ -11,34 +11,33 @@ from can.interface import Bus as CANBus
 from .btldr_database import BtldrDatabase
 
 
-"""
-The BtldrManager class is an object that handles using the btldr functionality.
-With the `ping` method, you can query a device for its metadata. With the
-`flash` function, you can update the firmware on the device using CAN.
-
-This class is meant to be used as a single object, so only one needs to be
-created per program.
-
-Example usage:
-
-```python
-btldr = BtldrManager()
-
-btldr.ping(0x700, 1) # Ping the device with ecu_id 0x700
-
-# Flash the AIR Control board (that has ecu_id 0x700) with a binary in the given
-# directory
-btldr.flash(0x700, 'bazel-bin/vehicle/mkvi/software/air_control/air_control_patched.bin', 1)
-```
-"""
-
-
-def flash_time_string(delta):
+def flash_time_string(delta: int):
     flashed_time = time.localtime(time.time() - delta)
     return time.strftime("%Y/%m/%d %H:%M:%S", flashed_time)
 
 
 class BtldrManager:
+    """
+    The BtldrManager class is an object that handles using the btldr functionality.
+    With the `ping` method, you can query a device for its metadata. With the
+    `flash` function, you can update the firmware on the device using CAN.
+
+    This class is meant to be used as a single object, so only one needs to be
+    created per program.
+
+    Example usage:
+
+    ```python
+    btldr = BtldrManager()
+
+    btldr.ping(0x700, 1) # Ping the device with ecu_id 0x700
+
+    # Flash the AIR Control board (that has ecu_id 0x700) with a binary in the given
+    # directory
+    btldr.flash(0x700, 'bazel-bin/vehicle/mkvi/software/air_control/air_control_patched.bin', 1)
+    ```
+    """
+
     def __init__(self):
         self.db = BtldrDatabase()
         log = logging.getLogger("root")
@@ -48,16 +47,15 @@ class BtldrManager:
         # Must be initialized separately
         self.canbus = None
 
-    """
-    The ping function sends a query message to the target and returns the response.
-
-    Arguments:
-    - ecu_id (int): The ID of the target device to be updated
-    - timeout (int): A timeout (in seconds) to wait when receiving CAN
-        messages
-    """
-
     def ping(self, ecu_id: int, timeout: int):
+        """
+        The ping function sends a query message to the target and returns the response.
+
+        Arguments:
+        - ecu_id (int): The ID of the target device to be updated
+        - timeout (int): A timeout (in seconds) to wait when receiving CAN
+            messages
+        """
         start = time.time_ns()
 
         self._send_query(ecu_id)
@@ -109,12 +107,10 @@ class BtldrManager:
         if not ping_resp:
             logging.critical("Failed to ping device after reset")
             exit(1)
-            # raise Exception("Failed to ping device")
 
         if ping_resp["current_image"] != "Updater":
             logging.critical("Failed to place device in updater")
             exit(1)
-            # raise Exception("Failed to place device in updater")
 
         image_size_bytes = os.path.getsize(file)
 
@@ -139,11 +135,9 @@ class BtldrManager:
                     )
                 )
                 exit(1)
-                # raise Exception("Target reported invalid update request type")
         else:
             logging.critical("Failed to receive response to update request")
             exit(1)
-            # raise Exception("Failed to receive response to update request")
 
         # Ok, we received an OK from the target to start sending data
 
@@ -228,7 +222,7 @@ class BtldrManager:
 
     ### PRIVATE METHODS
 
-    def _send_query(self, ecu_id):
+    def _send_query(self, ecu_id: int):
         now = int(time.time())
 
         query_msg = self.db.get_message_by_name("btldr_query")
@@ -247,7 +241,7 @@ class BtldrManager:
 
         self.canbus.send(query_frame)
 
-    def _send_reset(self, ecu_id, update_requested):
+    def _send_reset(self, ecu_id: int, update_requested: bool):
         reset_msg = self.db.get_message_by_name("btldr_reset")
 
         reset_data = reset_msg.encode(
@@ -264,7 +258,7 @@ class BtldrManager:
 
         self.canbus.send(reset_frame)
 
-    def _send_request(self, ecu_id, type, image_size):
+    def _send_request(self, ecu_id: int, type: str, image_size: int):
         request_msg = self.db.get_message_by_name("btldr_request")
 
         if type == "download":
@@ -302,7 +296,7 @@ class BtldrManager:
 
         self.canbus.send(data_frame)
 
-    def _receive_query_response(self, ecu_id, timeout: int):
+    def _receive_query_response(self, ecu_id: int, timeout: int):
         query_response = self.db.get_message_by_name("btldr_query_response")
         return self._receive_message(ecu_id, query_response.frame_id, timeout)
 
@@ -322,7 +316,7 @@ class BtldrManager:
     This function handles applying the offset of the message to the ECU_ID
     """
 
-    def _receive_message(self, ecu_id, offset, timeout):
+    def _receive_message(self, ecu_id: int, offset: int, timeout: int):
         self.canbus.set_filters(
             [
                 {
