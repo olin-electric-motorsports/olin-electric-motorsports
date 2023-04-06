@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+#include <string.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -25,10 +26,10 @@ uint32_t TUNABLES_MEM[MAX_NUM_PARAMS] __attribute__((section(".eeprom")))
 // A place to store the ECU ID locally in this file
 static uint16_t g_ecu_id = 0;
 
-uint8_t request_message_data[2] = { 0 };
+uint8_t request_message_data[6] = { 0 };
 can_frame_t request_message = {
     // ID initialized in `tunables_init`
-    .dlc = 2,
+    .dlc = 6,
     .data = request_message_data,
     .mob = 4,
 };
@@ -57,12 +58,11 @@ void tunables_init(uint16_t ecu_id, void* tunables_data, size_t num_tunables) {
 }
 
 void tunables_loop(void* tunables_data, size_t num_tunables) {
+    uint32_t* tunables_array = (uint32_t*)tunables_data;
+
     // If there was a can message
     if (can_poll_receive(&request_message) == 0) {
-        message_type_t type = (message_type_t)request_message_data[0];
-        uint8_t tunable_id = request_message_data[1];
-
-        uint8_t response_data[8] = { 0 };
+        uint8_t response_data[5] = { 0 };
         can_frame_t response = {
             .id = g_ecu_id + 1,
             .dlc = 5,
@@ -70,30 +70,32 @@ void tunables_loop(void* tunables_data, size_t num_tunables) {
             .mob = 0,
         };
 
+        uint8_t tunable_id = request_message_data[1];
+        message_type_t type = (message_type_t)request_message_data[0];
+
         switch (type) {
             case GET: {
                 // Read the tunable from the local memory (much faster than
                 // reading from EEPROM)
                 response_data[0] = tunable_id;
-                *((uint32_t*)response_data + 1)
-                    = ((uint32_t*)tunables_data)[tunable_id];
+                memcpy(&response_data[1], &tunables_array[tunable_id], sizeof(uint32_t));
                 can_send(&response);
             } break;
             case SET: {
                 // Update in local memory
-                uint32_t new_data = *(request_message_data + 1);
-                ((uint32_t*) tunables_data)[tunable_id] = new_data;
+                uint32_t new_data = 0;
+                memcpy(&new_data, &request_message_data[2], sizeof(new_data));
+                tunables_array[tunable_id] = new_data;
 
                 // Update EEPROM
                 eeprom_busy_wait();
                 eeprom_update_dword(&TUNABLES_MEM[tunable_id],
-                                    ((uint32_t*)tunables_data)[tunable_id]);
+                                    tunables_array[tunable_id]);
                 _delay_ms(2);
 
                 // Send the data back to the host
                 response_data[0] = tunable_id;
-                *((uint32_t*)response_data + 1)
-                    = ((uint32_t*)tunables_data)[tunable_id];
+                memcpy(&response_data[1], &tunables_array[tunable_id], sizeof(uint32_t));
                 can_send(&response);
             } break;
             case MEASURE: {
