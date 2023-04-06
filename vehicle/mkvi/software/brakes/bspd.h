@@ -19,7 +19,7 @@ gpio_t MOTOR_CURRENT_SENSE = PB5;
 // Input for shutdown sense line
 // gpio_t BSPD_SHUTDOWN_SENSE = PC0;
 
-//////////////////////// GPIO - ANALOG /////////////////////////
+////////////////////////// ADC PINS ////////////////////////////
 adc_pin_e BRAKE_PRESSURE_SENSE = ADC7;
 
 // Timer config (CAN update every 100Hz)

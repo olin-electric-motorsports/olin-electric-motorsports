@@ -27,19 +27,19 @@ void timer0_callback(void) {
 }
 
 // Code to run when a digital sense pin changes state (High->Low or Low->High)
-volatile bool updateLEDsTrigger = false;
+volatile bool update_LED_trigger = false;
 void pcint0_callback(void) {
     // Update CAN struct with new board logic values
     bspd.brake_gate = !!gpio_get_pin(BRAKELIGHT_LL);
     bspd.bspd_5kw = !!gpio_get_pin(MOTOR_CURRENT_SENSE);
     bspd.ss_bspd = !gpio_get_pin(BSPD_LL);
 
-    updateLEDsTrigger = true;
+    update_LED_trigger = true;
 }
 
 // Check whether an LED needs updating, and if so, change its state
-void updateLEDs(void) {
-    if (updateLEDsTrigger == true) {
+void update_LEDs(void) {
+    if (update_LED_trigger == true) {
         // Update Brake Light LED on the PCB
         if (bspd.brake_gate) {
             gpio_set_pin(BRAKE_LL_LED);
@@ -60,7 +60,7 @@ void updateLEDs(void) {
         } else {
             gpio_clear_pin(BSPD_TRIP_LED);
         }
-        updateLEDsTrigger = false;
+        update_LED_trigger = false;
     }
 }
 
@@ -69,7 +69,7 @@ int main(void) {
     // Interrupt Enable
     sei();
 
-    // Auto-generated
+    // Auto-generated CAN feature - sets up software CAN service
     can_init_bspd();
 
     // Set up the internal ADC on the 16M1 - configure it to read analog brake
@@ -79,7 +79,7 @@ int main(void) {
     // Begin bootloader update function
     // updater_init(BTLDR_ID, 5);
 
-    // Start 100Hz CAN update timer
+    // Start 100Hz CAN update timer (print results to can 100 times / sec)
     timer_init(&timer0_cfg);
 
     // Connect Digital output pins to high-current IO logic
@@ -113,6 +113,6 @@ int main(void) {
         }
 
         // Check whether an LED needs updating, and if so, change its state
-        updateLEDs();
+        update_LEDs();
     }
 }
