@@ -24,6 +24,7 @@ cc_firmware(
         "//libs/gpio",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
+        "//libs/tunables",
     ],
 )
 

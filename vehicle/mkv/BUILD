@@ -13,6 +13,6 @@ dbc_gen(
         "//vehicle/mkv/software/brakelight_bspd:bspd.yml",
         "//vehicle/mkv/software/dashboard:dashboard.yml",
         "//vehicle/mkv/software/throttle:throttle.yml",
-        "//libs/tunables:test_recieving.yml",
+        # "//libs/tunables:test_recieving.yml",
     ],
 )

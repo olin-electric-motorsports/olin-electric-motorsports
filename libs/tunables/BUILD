@@ -1,45 +1,46 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
-load("//bazel/tools:defs.bzl", "can_api_files")
-load("//bazel:defs.bzl", "cc_firmware")
+# load("//bazel/tools:defs.bzl", "can_api_files")
+# load("//bazel:defs.bzl", "cc_firmware")
 
 cc_library(
     name = "tunables",
     srcs = [
         "tunables.c",
     ],
-    # hdrs = [
-    #     "tunables.h"
-    # ],
+    hdrs = [
+        "tunables.h"
+    ],
     target_compatible_with = ["//bazel/constraints:avr"],
     deps = [
         "//libs/can",
     ],
+    visibility = ["//visibility:public"],
 )
 
 exports_files([
     "tunables.yml",
-    "test_recieving.yml",
+    # "test_recieving.yml",
 ])
 
-can_api_files(
-    name = "can_api",
-    dbc = "//vehicle/mkv:mkv.dbc",
-    yaml = ":test_recieving.yml",
-)
-
-cc_firmware(
-    name = "tester",
-    srcs = [
-        "tester.c",
-    ],
-    target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
-    ],
-    visibility =
-        [
-            "//visibility:public",
-        ],
-    deps = [
-        ":can_api",
-    ],
-)
+# can_api_files(
+#     name = "can_api",
+#     dbc = "//vehicle/mkv:mkv.dbc",
+#     yaml = ":test_recieving.yml",
+# )
+#
+# cc_firmware(
+#     name = "tester",
+#     srcs = [
+#         "tester.c",
+#     ],
+#     target_compatible_with = [
+#         "//bazel/constraints:atmega16m1",
+#     ],
+#     visibility =
+#         [
+#             "//visibility:public",
+#         ],
+#     deps = [
+#         ":can_api",
+#     ],
+# )
