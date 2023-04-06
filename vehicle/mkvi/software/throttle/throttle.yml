@@ -18,7 +18,8 @@ publish:
           values:
             - THROTTLE_IDLE
             - THROTTLE_RUN
-            - THROTTLE_OUT_OF_RANGE
+            - THROTTLE_1_OUT_OF_RANGE
+            - THROTTLE_2_OUT_OF_RANGE
             - THROTTLE_POSITION_IMPLAUSIBILITY
             - THROTTLE_BRAKE_PRESSED
       - name: throttle_1_pos
@@ -60,22 +61,29 @@ publish:
           name: ''
           offset: 0
           scale: 1
-      - name: throttle_out_of_range
+      - name: throttle_1_out_of_range
         slice: 32 + 1
         unit:
           type: bool
           values:
             t: OUT_OF_RANGE
             f: IN_RANGE
-      - name: throttle_deviation
+      - name: throttle_2_out_of_range
         slice: 33 + 1
+        unit:
+          type: bool
+          values:
+            t: OUT_OF_RANGE
+            f: IN_RANGE
+      - name: throttle_deviation
+        slice: 34 + 1
         unit:
           type: bool
           values:
             t: DEVIATE
             f: NO_DEVIATE
       - name: throttle_brake_implaus
-        slice: 34 + 1
+        slice: 35 + 1
         unit:
           type: bool
           values:
