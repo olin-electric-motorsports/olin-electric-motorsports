@@ -20,6 +20,15 @@
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 
+#include "libs/tunables/tunables.h"
+
+struct tunables {
+    uint32_t throttle_l_min;
+    uint32_t throttle_r_min;
+} tunables;
+
+const int num_tunables = 2;
+
 /*
  * Required for btldr
  */
@@ -231,6 +240,7 @@ int main(void) {
     timer_init(&timer1_cfg);
 
     updater_init(BTLDR_ID, 5);
+    tunables_init(0x6E0, &tunables, num_tunables);
 
     gpio_set_mode(BRAKE_IMPLAUSIBILTIY_LED, OUTPUT);
     gpio_set_mode(DEVIATION_IMPLAUSIBILITY_LED, OUTPUT);
@@ -266,6 +276,7 @@ int main(void) {
 
     while (true) {
         updater_loop();
+        tunables_loop(&tunables, num_tunables);
 
         if (run_1ms) {
             run_1ms = false;
@@ -338,8 +349,8 @@ int main(void) {
             }
         }
         if (throttle_state.send_can) {
-            can_send_throttle();
-            can_send_m192_command_message();
+            // can_send_throttle();
+            // can_send_m192_command_message();
             throttle_state.send_can = false;
         }
     }
