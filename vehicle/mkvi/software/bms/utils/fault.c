@@ -1,6 +1,4 @@
 #include "fault.h"
-
-#include "vehicle/mkv/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 
