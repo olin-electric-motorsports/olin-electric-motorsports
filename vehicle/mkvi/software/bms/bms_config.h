@@ -7,6 +7,12 @@
 #include "libs/timer/api.h"
 
 /*
+ * Macros
+ */
+#define NUM_ICS 6
+#define DA_BOARDS_PER_IC 4
+
+/*
  * PIN DEFINITIONS
  */
 

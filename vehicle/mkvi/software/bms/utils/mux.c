@@ -48,9 +48,9 @@ void enable_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel) 
     tx_data[4] = BLANK; // xxxxBLANK
     tx_data[5] = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
 
-    wakeup_sleep(num_ics); // wake up the ADCs
-    wakeup_idle(num_ics); // wake up the serial comms
+    wakeup_sleep(num_ics); // wake up the IC core
+    wakeup_idle(num_ics); // wake up the isospi comms
 
-    LTC681x_wrcomm(num_ics, tx_data); // why use write_68?
+    LTC681x_wrcomm(num_ics, tx_data); // TODO: switch to write_68
     LTC681x_stcomm(MUX_DATALENGTH); // where does this value come from?
 }
