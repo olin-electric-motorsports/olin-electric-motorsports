@@ -1,25 +1,18 @@
 #include "tasks.h"
 
-#include "vehicle/mkv/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
-#include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/utils/mux.h"
+#include "vehicle/mkvi/software/bms/can_api.h"
+#include "vehicle/common/ltc6811/ltc681x.h"
 #include <string.h>
 #include <stdint.h>
 
 const uint8_t MUXES[NUM_MUXES] = { MUX1_ADDRESS, MUX2_ADDRESS, MUX3_ADDRESS };
-const uint8_t GPIO_CHANNELS[4] = { AUX_CH_GPIO1, AUX_CH_GPIO2, AUX_CH_GPIO3, AUX_CH_GPIO6 }; // TODO: If something breaks, check this number
+const uint8_t GPIO_CHANNELS[4] = { AUX_CH_GPIO1, AUX_CH_GPIO2, AUX_CH_GPIO3, AUX_CH_GPIO6 }; // TODO: If something breaks, check GPIO6
 
 #define NUM_TEMPS_PER_IC        (NUM_MUXES * NUM_MUX_CHANNELS * DA_BOARDS_PER_IC)
 #define NUM_DA_BOARDS (4)
-
-uint8_t can_data[8] = { 0 };
-can_frame_t temperature_frame = {
-    .id = CAN_TOOLS_BMS_TEMPERATURE_FRAME_ID,
-    .mob = 0,
-    .dlc = CAN_TOOLS_BMS_TEMPERATURE_LENGTH,
-    .data = can_data,
-};
+#define NUM_MUX_CHANNELS (8)
 
 static void fan_enable(bool enable) {
     timer1_cfg.channel_b.pin_behavior = enable ? SET : DISCONNECTED;
@@ -27,6 +20,17 @@ static void fan_enable(bool enable) {
     // No way to update a single part of the config so we just re-init the
     // timer
     timer_init(&timer1_cfg);
+}
+
+static void update_min_max_temps(int16_t* min_temp, int16_t* max_temp, int16_t* temps[], uint8_t num_temps) {
+    for (uint8_t i = 0; i < num_temps; i++) {
+        if (*temps[i] < *min_temp) {
+            *min_temp = *temps[i];
+        }
+        if (*temps[i] > *max_temp) {
+            *max_temp = *temps[i];
+        }
+    }
 }
 
 int16_t min_temperature = INT16_MAX; // highest voltage
@@ -43,17 +47,8 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
         max_temperature = INT16_MAX;
     }
     
-    /*
-        * S: Segments 1-3 or 4-6
-        * D: DA Board 1-4
-        * C: Mux and channel 1-24
-        *
-        * SDDCCCCC
-    */
-    can_data[1] = (mux * 8 + channel);
-
-    // We store temperatures within the CAN data array starting at index 2
-    uint16_t* temperatures = (uint16_t*)&can_data[2];
+    bms_temperature.ics = SEGMENTS_1_THRU_3;
+    bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
 
     wakeup_sleep(NUM_ICS);
     configure_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
@@ -69,38 +64,36 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
         wakeup_idle(NUM_ICS);
         LTC681x_rdaux_reg(GPIO_CHANNELS[da], NUM_ICS, raw_data);
 
-        for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+        bms_temperature.da_board = da;
+
+        for (uint8_t ic = 0; ic < NUM_ICS; ic += 3) {
             uint16_t data_counter = ic * NUM_RX_BYT;
-            uint16_t temperature = raw_data[data_counter] | (raw_data[data_counter + 1] << 8);
+            bms_temperature.temperature_1 = raw_data[data_counter] | (raw_data[data_counter + 1] << 8);
 
-            temperatures[can_temperature_index] = temperature;
-            can_temperature_index++;
+            data_counter += NUM_RX_BYT;
+            bms_temperature.temperature_2 = raw_data[data_counter] | (raw_data[data_counter + 1] << 8);
 
-            if (can_temperature_index == 3) {
-                can_temperature_index = 0;
-                can_send(&temperature_frame);
-            }
+            data_counter += NUM_RX_BYT;
+            bms_temperature.temperature_3 = raw_data[data_counter] | (raw_data[data_counter + 1] << 8);
 
-            // coldest, highest voltage
-            if (temperature > min_temperature) {
-                min_temperature = temperature;
-                *min_temp = min_temperature;
-            }
+            can_send_bms_temperature();
+            bms_temperature.ics = SEGMENTS_4_THRU_6; // for second iteration
 
-            // hottest, lowest voltage
-            if (temperature < max_temperature) {
-                max_temperature = temperature;
-                *max_temp = max_temperature;
-            }
+            update_min_max_temps(min_temp, max_temp, (int16_t *[]){
+                &bms_temperature.temperature_1,
+                &bms_temperature.temperature_2,
+                &bms_temperature.temperature_3
+            }, 3);
+
         }
-
     }
 
-    channel = (channel + 1) % NUM_MUX_CHANNELS;
+    channel += 1;
     // Move on to next mux if we are at the last channel
-    if (channel == 0) {
+    if (channel == NUM_MUX_CHANNELS) {
         configure_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, channel);
         mux = (mux + 1) % NUM_MUXES;
+        channel = 0;
     }
 
     // if max is hotter than overtemp threshold, increment overtemp counter
@@ -122,6 +115,4 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
     if (min_temperature > SOFT_OVERTEMPERATURE_THRESHOLD) {
         fan_enable(false);
     }
-
-
 }

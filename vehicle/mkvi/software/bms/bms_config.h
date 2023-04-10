@@ -13,6 +13,11 @@
 #define NUM_ICS 6
 #define DA_BOARDS_PER_IC 4
 
+// copied from MKV
+#define OVERTEMPERATURE_THRESHOLD          ((int16_t)714) // 60 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)1233) // 45 degC
+#define UNDERTEMPERATURE_THRESHOLD         ((int16_t)15513) // -20 degC
+
 /*
  * PIN DEFINITIONS
  */

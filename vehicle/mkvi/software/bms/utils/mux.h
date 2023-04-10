@@ -20,6 +20,6 @@
  * @param enable - enable or disable mux
  * @channel - channel to enable/disable
  */
-void enable_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel);
+void configure_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel);
 
 
