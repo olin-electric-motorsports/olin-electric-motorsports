@@ -17,10 +17,6 @@ the rear sensing box Author:
 #include <string.h>
 #include <util/delay.h>
 
-volatile uint8_t gTimerFlag = 0x01;
-uint8_t gStatusMessage[8] = {};
-volatile uint8_t can_recv_msg[8] = {};
-
 void timer1_isr(void) {
     send_can = true;
 };
@@ -35,7 +31,7 @@ int pcint0_callback(int counter_left) {
 void pcint2_callback(int counter_right) {
     // Right wheel speed sensor is in pin PB2 -> PORTB
     sensing.wsr = !gpio_get_pin(WHEEL_SPEED_RIGHT);
-    if (sensing.wsl) {
+    if (sensing.wsr) {
         counter_right += 1;
     }
 }
@@ -49,8 +45,8 @@ int main(void) {
     gpio_set_mode(WHEEL_SPEED_RIGHT, INPUT);
 
     sei(); // Initializes interrupts
-    gpio_enable_interrupt(WS1);
-    gpio_enable_interrupt(WS2);
+    gpio_enable_interrupt(WHEEL_SPEED_LEFT);
+    gpio_enable_interrupt(WHEEL_SPEED_RIGHT);
 
     timer_init(&timer1_cfg);
 

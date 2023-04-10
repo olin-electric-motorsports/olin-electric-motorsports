@@ -11,22 +11,21 @@ cc_firmware(
         "sensing.c",
         "sensing.h",
     ],
-    btldr = "//projects/btldr:brakelight_bspd_btldr",
+    # btldr = "//projects/btldr:brakelight_bspd_btldr",
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
     visibility = ["//visibility:public"],
     deps = [
         ":can_api",
-        "//libs/adc",
         "//libs/gpio",
         "//libs/timer",
-        "//projects/btldr:btldr_lib",
+        # "//projects/btldr:btldr_lib",
     ],
 )
 
 can_api_files(
     name = "can_api",
-    dbc = "//vehicle/mkv:mkv.dbc",
+    dbc = "//vehicle/mkvi:mkvi.dbc",
     yaml = ":sensing.yml",
 )
