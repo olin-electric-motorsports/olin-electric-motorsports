@@ -18,6 +18,9 @@
 #define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)1233) // 45 degC
 #define UNDERTEMPERATURE_THRESHOLD         ((int16_t)15513) // -20 degC
 
+#define OVERVOLTAGE_THRESHOLD  (41500) // 4.15V - should it be 3.9V?
+#define UNDERVOLTAGE_THRESHOLD (30000) // 3.00V
+
 /*
  * PIN DEFINITIONS
  */

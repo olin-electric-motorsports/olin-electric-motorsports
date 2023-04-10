@@ -1,8 +1,8 @@
 #include "tasks.h"
 
-#include "vehicle/mkv/software/bms/bms_config.h"
-#include "vehicle/mkv/software/bms/can_api.h"
-#include "vehicle/mkv/software/bms/ltc6811/ltc6811.h"
+#include "vehicle/mkvi/software/bms/bms_config.h"
+#include "vehicle/mkvi/software/bms/can_api.h"
+#include "vehicle/common/ltc6811/ltc681x.h"
 
 #define NUM_CELLS_IN_REG (3)
 #define NUM_CELL_REG     (6)
@@ -16,10 +16,10 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     wakeup_sleep(NUM_ICS);
 
     // Start cell voltage ADC conversions
-    LTC6811_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL);
+    LTC681x_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL);
 
     // Blocks until all ADCs are done being read
-    LTC6811_pollAdc(); // Ignore return value because we don't care how long it
+    LTC681x_pollAdc(); // Ignore return value because we don't care how long it
                        // took
 
     wakeup_idle(NUM_ICS);

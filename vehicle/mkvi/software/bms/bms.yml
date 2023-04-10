@@ -256,15 +256,8 @@ publish:
     id: 0x402
     freq_hz: 4
     signals:
-      - name: ics
-        slice: 0 + 1
-        unit:
-          type: enum
-          values:
-            - SEGMENTS_1_THRU_3
-            - SEGMENTS_4_THRU_6
-      - name: da_board
-        slice: 1 + 2
+      - name: ic
+        slice: 0 + 3
         unit:
           type: uint8_t
           name: ""
@@ -277,21 +270,21 @@ publish:
           name: ""
           scale: 1
           offset: 0
-      - name: temperature_1
-        slice: 8 + 16
+      - name: da_boards
+        slice: 8 + 1
         unit:
-          type: uint16_t
-          name: "volts"
-          scale: 0.0001
-          offset: 0
-      - name: temperature_2
+          type: enum
+          values:
+            - DA_BOARDS_12
+            - DA_BOARDS_34
+      - name: temperature_1
         slice: 16 + 16
         unit:
           type: uint16_t
           name: "volts"
           scale: 0.0001
           offset: 0
-      - name: temperature_3
+      - name: temperature_2
         slice: 32 + 16
         unit:
           type: uint16_t

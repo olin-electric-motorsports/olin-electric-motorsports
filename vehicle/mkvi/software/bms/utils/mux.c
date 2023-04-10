@@ -49,8 +49,10 @@ void configure_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channe
     tx_data[5] = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
 
     wakeup_sleep(num_ics); // wake up the IC core
-    wakeup_idle(num_ics); // wake up the isospi comms
 
-    LTC681x_wrcomm(num_ics, tx_data); // TODO: switch to write_68
+    uint8_t wrcomm_cmd[2] = { 0x07, 0x21 }; // command to write to COMM register
+    write_68(NUM_ICS, wrcomm_cmd, tx_data);
+
+    wakeup_idle(num_ics); // wake up the isospi comms
     LTC681x_stcomm(MUX_DATALENGTH); // where does this value come from?
 }
