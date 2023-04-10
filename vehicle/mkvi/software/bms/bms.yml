@@ -255,42 +255,42 @@ publish:
     freq_hz: 4
     signals:
       - name: ics
-        slice: 0 + 8
+        slice: 0 + 1
         unit:
           type: enum
           values:
             - SEGMENTS_1_THRU_3
             - SEGMENTS_4_THRU_6
-      - name: mux
-        slice: 8 + 4
+      - name: da_board
+        slice: 1 + 2
         unit:
           type: uint8_t
           name: ""
           scale: 1
-          offset: 0
+          offest: 0
       - name: channel
-        slice: 12 + 4
+        slice: 3 + 5
         unit:
           type: uint8_t
           name: ""
           scale: 1
           offset: 0
       - name: temperature_1
-        slice: 16 + 16
+        slice: 8 + 16
         unit:
           type: uint16_t
           name: "volts"
           scale: 0.0001
           offset: 0
       - name: temperature_2
-        slice: 32 + 16
+        slice: 16 + 16
         unit:
           type: uint16_t
           name: "volts"
           scale: 0.0001
           offset: 0
       - name: temperature_3
-        slice: 48 + 16
+        slice: 32 + 16
         unit:
           type: uint16_t
           name: "volts"

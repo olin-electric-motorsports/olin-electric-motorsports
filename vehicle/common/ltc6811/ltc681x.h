@@ -70,6 +70,7 @@
 #define AUX_CH_GPIO4 4
 #define AUX_CH_GPIO5 5
 #define AUX_CH_VREF2 6
+#define AUX_CH_GPIO6 7 // only for ADBMS1818
 
 #define STAT_CH_ALL   0
 #define STAT_CH_SOC   1

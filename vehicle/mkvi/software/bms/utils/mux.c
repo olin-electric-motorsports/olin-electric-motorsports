@@ -22,7 +22,7 @@
 #define NACK      (0b1000)
 #define NACK_STOP (0b1001)
 
-void enable_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel) {
+void configure_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel) {
     /*
      * Third byte is command for mux: xxxxECCC
      *   x: don't care
