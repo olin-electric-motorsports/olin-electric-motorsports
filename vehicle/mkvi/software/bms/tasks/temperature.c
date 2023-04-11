@@ -49,8 +49,8 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
     static uint8_t channel = 0;
 
     if (mux == 0 && channel == 0) {
-        min_temperature = INT16_MIN;
-        max_temperature = INT16_MAX;
+        min_temperature = INT16_MAX;
+        max_temperature = INT16_MIN;
     }
     
     bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
@@ -74,8 +74,8 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
 
         uint16_t raw_idx = ic * NUM_RX_BYT;
 
-        bms_temperature.temperature_1 = aux_reg_a_raw[raw_idx+0] | (aux_reg_a_raw[raw_idx+1] << 8)
-        bms_temperature.temperature_2 = aux_reg_a_raw[raw_idx+2] | (aux_reg_a_raw[raw_idx+3] << 8)
+        bms_temperature.temperature_1 = aux_reg_a_raw[raw_idx+0] | (aux_reg_a_raw[raw_idx+1] << 8);
+        bms_temperature.temperature_2 = aux_reg_a_raw[raw_idx+2] | (aux_reg_a_raw[raw_idx+3] << 8);
         can_send_bms_temperature();
 
         update_min_max_temps(min_temp, max_temp, (int16_t *[]){
@@ -84,8 +84,8 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
         }, 2);
 
         bms_temperature.da_boards = DA_BOARDS_34;
-        bms_temperature.temperature_1 = aux_reg_a_raw[raw_idx+4] | (aux_reg_a_raw[raw_idx+5] << 8)
-        bms_temperature.temperature_2 = aux_reg_c_raw[raw_idx+0] | (aux_reg_c_raw[raw_idx+1] << 8)
+        bms_temperature.temperature_1 = aux_reg_a_raw[raw_idx+4] | (aux_reg_a_raw[raw_idx+5] << 8);
+        bms_temperature.temperature_2 = aux_reg_c_raw[raw_idx+0] | (aux_reg_c_raw[raw_idx+1] << 8);
         can_send_bms_temperature();
 
         update_min_max_temps(min_temp, max_temp, (int16_t *[]){
@@ -137,7 +137,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
     }
 
     // if min is cooler than soft threshold, disable fan
-    if (min_temperature > SOFT_OVERTEMPERATURE_THRESHOLD) {
+    if (min_temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
         fan_enable(false);
     }
     return pec_errors;

@@ -13,12 +13,13 @@
 #define NUM_ICS 6
 #define DA_BOARDS_PER_IC 4
 
-// copied from MKV
+// copied from MKV - need ro be updated
 #define OVERTEMPERATURE_THRESHOLD          ((int16_t)714) // 60 degC
 #define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)1233) // 45 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)1814) // 35 degC
 #define UNDERTEMPERATURE_THRESHOLD         ((int16_t)15513) // -20 degC
 
-#define OVERVOLTAGE_THRESHOLD  (41500) // 4.15V - should it be 3.9V?
+#define OVERVOLTAGE_THRESHOLD  (39000) // 4.15V - should it be 3.9V?
 #define UNDERVOLTAGE_THRESHOLD (30000) // 3.00V
 
 /*
