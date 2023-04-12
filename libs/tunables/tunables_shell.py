@@ -20,20 +20,15 @@ class Tunables(cmd.Cmd):
     file = None
 
     # Commands
-
-    # Getter Function
     def do_get(self, arg):
+
         """Getter function which sends a get message through CAN
 
         Args:
             arg: The user command line input. By default a string"""
 
-        param_id = get_id(parse(arg)[0])
-
-        if param_id == -1:
-            print(f"Ecu_id of the {arg[0]} cannot be found")
-        else:
-
+        try:
+            param_id = get_id(parse(arg)[0])
             self.message.send(0, param_id, 0x6E1)
             parameter_val = search_yaml(arg, "current_value")
             print(f"Parameter Current value in Yml file is {parameter_val}")
@@ -46,7 +41,9 @@ class Tunables(cmd.Cmd):
             # Timestamp: 1679611908.605059 ID: 0024 S Rx E  DL:  8  00 00 00 00 00 00 00 00
             # Channel: can0
 
-    # Setter Function
+        except yaml.YAMLError:
+            print(f"Ecu_id of the {arg[0]} cannot be found")
+
     def do_set(self, arg):
         """A setter function that sends a set message through CAN
 
@@ -57,12 +54,12 @@ class Tunables(cmd.Cmd):
         write_yaml(parse(arg))
         print(search_yaml(parse(arg)[0]))
 
-    # Lists all messages in the Yaml File only
     def do_list(self):
         """Lists all the parameters in tunables.yml file"""
         list_yaml()
 
 
+# Helper Functions
 def parse(arg):
     """A quick parse function
     that splits everything into a list
@@ -102,12 +99,9 @@ def search_yaml(para_name, para_value):
                     message = data[i]["params"][j]
 
                     if message["name"] == para_name:
-
                         return message[para_value]
-
         except yaml.YAMLError as exc:
-            print(exc)
-            return "Yaml Error"
+            return exc
 
 
 def list_yaml():
@@ -134,7 +128,7 @@ def list_yaml():
                     )
 
         except yaml.YAMLError as exc:
-            print(exc)
+            return exc
 
 
 def get_id(para_name):
@@ -144,8 +138,7 @@ def get_id(para_name):
         para_name: A string parameter name
 
     Return:
-        an int/hex value which is the ecu_id, or -1
-        for error instances"""
+        an int/hex value which is the ecu_id, or the error"""
     with open("libs/tunables/tunables.yml", "r") as file:
         try:
             data = yaml.safe_load(file)
@@ -162,8 +155,7 @@ def get_id(para_name):
                         return int(ecu_id)
 
         except yaml.YAMLError as exc:
-            print(exc)
-            return -1
+            return exc
 
 
 def write_yaml(arg):
@@ -185,7 +177,7 @@ def write_yaml(arg):
                     # Checks if the parameter can be written over
                     if message["name"] == arg[0]:
                         if message["mutable"] == False:
-                            print(f" {arg[0]} cannot be edited")
+                            raise ValueError(f" {arg[0]} cannot be edited")
                             break
 
                         # Else it update's the parameter's value & updates the time
@@ -202,8 +194,8 @@ def write_yaml(arg):
                 file.close()
 
         except yaml.YAMLError as exc:
-            print(exc)
+            return exc
 
 
 if __name__ == "__main__":
-    tunables().cmdloop()
+    Tunables().cmdloop()
