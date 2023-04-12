@@ -1,10 +1,7 @@
 """Handles all CAN-related functions in tunables through TunablesCAN class """
 import can
 
-
 # CAN section
-
-
 class TunablesCAN:
     """A class used in tunables that all all CAN related tasks
     which tunable uses to communicate between the host computer and the car.
@@ -13,22 +10,20 @@ class TunablesCAN:
         bus: A can.Bus instance which is sets the settings for
         which channel and bitrate we will be sending CAN messages
         from.
-
     """
 
-    def __init__(self, channel_para="can0", bitrate_para=500000):
+    def __init__(self, channel="can0", bitrate=500000):
         """Initialization Function which just creates a can.Bus
         instance given parameters
 
         Args:
-            channel_para: Indicates which parameter we'll be using
+
+            channel: Indicates which parameter we'll be using
             for sending our messages. By default it is set to can0.
             bitrate: Sets the bitrate of our CAN messages. By default
             it is 50,000
         """
-        self.bus = can.Bus(
-            bustype="socketcan", channel=channel_para, bitrate=bitrate_para
-        )
+        self.bus = can.Bus(bustype="socketcan", channel=channel, bitrate=bitrate)
 
     # Sending CAN msgs
     def send(self, func_type, parameter_id, arbit_id, new_value=None):
@@ -54,26 +49,40 @@ class TunablesCAN:
 
         # Setter
         if func_type == 1:
-            message += new_value
+
+            # new_value's inital input will be an string of an int.
+            # Convert first into hex
+            hex_val = int(new_value).to_bytes(6, "big").hex()
+            # Format into a list
+            hex_list = [int(hex_val[i : i + 2], 16) for i in range(0, len(hex_val), 2)]
+
+            message = message + hex_list
 
         msg = can.Message(arbitration_id=arbit_id, data=message, is_extended_id=False)
         self.bus.send(msg)
 
     # Receives CAN msgs
-    def receive(self):
+    def receive(self, can_id, can_mask):
         """Receives A can message. Will wait 10
         seconds before timing out.
+
+        Args:
+            can_id: A can_id to be used for our filters.
+            can_mask: our mask value for our filter.
 
         Return:
             A string message it received or a string timeout
             message"""
+
+        # Set filters
+        self.bus.set_filters([{"can_id": can_id, "can_mask": can_mask}])
 
         # Wait 10 seconds to receive message before closing
         message = self.bus.recv(10)
 
         # Timeout Problem
         if message is None:
-            return "Timeout Occurred. No message"
+            raise TimeoutError("Timeout Occurred. No message")
 
         # Returns message
         return message
