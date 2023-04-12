@@ -24,7 +24,7 @@ cc_library(
     target_compatible_with = [
         "//bazel/constraints:avr",
     ],
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
     deps = [
         ":bms_hardware",
     ],

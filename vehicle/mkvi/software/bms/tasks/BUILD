@@ -1,0 +1,20 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "bms_tasks",
+    srcs = [
+        "current_task.c",
+        "temperature_task.c",
+        "voltage_task.c",
+    ],
+    hdrs = [
+        "tasks.h",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vehicle/mkvi/software/bms:bms_config",
+        "//vehicle/mkvi/software/bms:can_api",
+        "//vehicle/common/ltc6811:ltc681x",
+        "//vehicle/mkvi/software/bms/utils:bms_utils",
+    ],
+)

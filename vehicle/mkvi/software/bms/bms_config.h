@@ -41,6 +41,7 @@ gpio_t BSPD_CURRENT_THRESH = PB2;
 adc_pin_e PRE_DIS_TEMP_1 = ADC8;
 adc_pin_e PRE_DIS_TEMP_2 = ADC9;
 adc_pin_e PRE_DIS_TEMP_3 = ADC10;
+adc_pin_e CURRENT_SENSE_VOUT = ADC2;
 
 /*
  * TIMERS
