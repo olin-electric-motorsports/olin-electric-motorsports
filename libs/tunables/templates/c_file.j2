@@ -1,0 +1,10 @@
+#include {{ header_file }}_tunaables.h
+
+size_t NUM_TUNABLES = {{num_tunables}}; 
+
+struct {{ name }}_tunables tunables {
+    {% for parameter in t_params %}
+        {{parameter}};
+    {% endfor %}
+
+} tunables;
