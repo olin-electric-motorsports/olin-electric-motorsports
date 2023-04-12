@@ -1,14 +1,6 @@
-#include "{{ header_file }}"
-
+#pragma once
 #include <stdint.h>
-
-size_t NUM_TUNABLES = {{num_tunables}}; 
-
-struct __attribute__((__packed__)) tunables {
-    {% for parameter in t_params %}
-        {{parameter}};
-
-
-    {% endfor %}
-
-} tunables;
+/* 
+initializes the struct that will contain all the different tunable parameters
+*/
+extern struct {{ name }}_tunables tunables;
