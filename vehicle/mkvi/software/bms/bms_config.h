@@ -63,7 +63,7 @@ timer_cfg_s timer0_cfg = {
     },
 };
 
-// Fan PWM (25kHz)
+// Fan PWM (25kHz) TODO: may need to update value
 timer_cfg_s timer1_cfg = {
     .timer = TIMER1,
     .timer1_mode = TIMER1_MODE_PHASE_CORRECT_PWM_10_BIT,

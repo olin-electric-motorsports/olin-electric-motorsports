@@ -55,6 +55,9 @@ void hw_init() {
     spi_init(&spi_cfg);
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
+
+    can_init_bms();
+    pcint0_callback();
 }
 
 static void monitor_cells(void) {
@@ -179,9 +182,6 @@ static void monitor_cells(void) {
 
 int main(void) {
     hw_init();
-    can_init_bms();
-
-    pcint0_callback();
 
     uint8_t loop_counter = 0;
 
@@ -193,11 +193,13 @@ int main(void) {
 
             monitor_cells();
 
+            // will run every 50 ms (20 Hz)
             if (loop_counter == 50) {
                 loop_counter = 0;
                 can_send_bms_debug();
             }
 
+            // will run every 80 ms (12.5 Hz)
             if (bms_core.bms_state == BMS_STATE_CHARGING) {
                 if (loop_counter % 80 == 0) {
                     can_send_charging_cmd();
