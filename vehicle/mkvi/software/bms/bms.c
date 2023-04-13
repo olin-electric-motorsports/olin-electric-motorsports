@@ -11,10 +11,10 @@
 #include <stdint.h>
 
 #include "vehicle/mkvi/software/bms/bms_config.h"
+#include "vehicle/mkvi/software/bms/can_api.h"
 #include "vehicle/mkvi/software/bms/tasks/tasks.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/mux.h"
-#include "vehicle/mkvi/software/bms/can_api.h"
 
 #include "projects/btldr/btldr_lib.h"
 #include "projects/btldr/git_sha.h"
@@ -25,7 +25,8 @@
  */
 image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .image_magic = IMAGE_MAGIC,
-    .git_sha = STABLE_GIT_COMMIT, };
+    .git_sha = STABLE_GIT_COMMIT,
+};
 
 /*
  * INTERRUPTS
@@ -48,7 +49,7 @@ void hw_init() {
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
-    
+
     gpio_set_mode(BSPD_CURRENT_THRESH, INPUT);
 
     adc_init();
@@ -79,9 +80,9 @@ static void monitor_cells(void) {
         bms_metrics.voltage_pec_error_count += rc;
 
         if bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
-            set_fault(BMS_FAULT_PEC);
-            bms_core.bms_state = BMS_STATE_FAULT;
-        }
+                set_fault(BMS_FAULT_PEC);
+                bms_core.bms_state = BMS_STATE_FAULT;
+            }
         return;
     } else {
         bms_metrics.voltage_pec_error_count = 0;
@@ -111,16 +112,16 @@ static void monitor_cells(void) {
         bms_metrics.temperature_pec_error_count += rc;
 
         if bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
-            set_fault(BMS_FAULT_PEC);
-            bms_core.bms_state = BMS_STATE_FAULT;
-        }
+                set_fault(BMS_FAULT_PEC);
+                bms_core.bms_state = BMS_STATE_FAULT;
+            }
         return;
     } else {
         bms_metrics.temperature_pec_error_count = 0;
     }
 
     // TODO: Open wire detection
-    
+
     // read current
     int16_t current = 0;
     uint16_t vref = 0;
@@ -143,7 +144,7 @@ static void monitor_cells(void) {
     if (uv > 0) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
         bms_core.bms_state = BMS_STATE_FAULT;
-    } 
+    }
 
     switch (bms_core.bms_state) {
         case BMS_STATE_ACTIVE: {
@@ -179,40 +180,39 @@ static void monitor_cells(void) {
         } break;
     }
 
+    int main(void) {
+        hw_init();
 
-int main(void) {
-    hw_init();
+        uint8_t loop_counter = 0;
 
-    uint8_t loop_counter = 0;
+        while (true) {
+            if (run_10ms) {
+                can_send_bms_core();
+                can_send_bms_sense();
+                can_send_bms_metrics();
 
-    while (true) {
-        if (run_10ms) {
-            can_send_bms_core();
-            can_send_bms_sense();
-            can_send_bms_metrics();
+                monitor_cells();
 
-            monitor_cells();
-
-            // will run every 50 ms (20 Hz)
-            if (loop_counter == 50) {
-                loop_counter = 0;
-                can_send_bms_debug();
-            }
-
-            // will run every 80 ms (12.5 Hz)
-            if (bms_core.bms_state == BMS_STATE_CHARGING) {
-                if (loop_counter % 80 == 0) {
-                    can_send_charging_cmd();
+                // will run every 50 ms (20 Hz)
+                if (loop_counter == 50) {
+                    loop_counter = 0;
+                    can_send_bms_debug();
                 }
+
+                // will run every 80 ms (12.5 Hz)
+                if (bms_core.bms_state == BMS_STATE_CHARGING) {
+                    if (loop_counter % 80 == 0) {
+                        can_send_charging_cmd();
+                    }
+                }
+
+                loop_counter++;
+
+                if (loop_counter == 400) {
+                    loop_counter = 0;
+                }
+
+                run_10ms = false;
             }
-
-            loop_counter++;
-
-            if (loop_counter == 400) {
-                loop_counter = 0;
-            }
-
-            run_10ms = false;
         }
     }
-}

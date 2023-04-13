@@ -1,19 +1,19 @@
 #include "tasks.h"
 
-#include "vehicle/mkvi/software/bms/bms_config.h"
-#include "vehicle/mkvi/software/bms/utils/mux.h"
-#include "vehicle/mkvi/software/bms/can_api.h"
 #include "vehicle/common/ltc6811/ltc681x.h"
-#include <string.h>
+#include "vehicle/mkvi/software/bms/bms_config.h"
+#include "vehicle/mkvi/software/bms/can_api.h"
+#include "vehicle/mkvi/software/bms/utils/mux.h"
 #include <stdint.h>
+#include <string.h>
 
 const uint8_t MUXES[NUM_MUXES] = { MUX1_ADDRESS, MUX2_ADDRESS, MUX3_ADDRESS };
-const uint8_t GPIO_CHANNELS[4] = { 1, 1, 1, 3};
+const uint8_t GPIO_CHANNELS[4] = { 1, 1, 1, 3 };
 
-#define NUM_TEMPS_PER_IC        (NUM_MUXES * NUM_MUX_CHANNELS * DA_BOARDS_PER_IC)
-#define NUM_DA_BOARDS (4)
-#define NUM_MUX_CHANNELS (8)
-#define NUM_BYTES_IN_REG (6)
+#define NUM_TEMPS_PER_IC              (NUM_MUXES * NUM_MUX_CHANNELS * DA_BOARDS_PER_IC)
+#define NUM_DA_BOARDS                 (4)
+#define NUM_MUX_CHANNELS              (8)
+#define NUM_BYTES_IN_REG              (6)
 #define INVALID_TEMPERATURE_THRESHOLD (0xD555)
 
 static void fan_enable(bool enable) {
@@ -24,7 +24,8 @@ static void fan_enable(bool enable) {
     timer_init(&timer1_cfg);
 }
 
-static void update_min_max_temps(int16_t* min_temp, int16_t* max_temp, int16_t* temps[], uint8_t num_temps) {
+static void update_min_max_temps(int16_t* min_temp, int16_t* max_temp,
+                                 int16_t* temps[], uint8_t num_temps) {
     for (uint8_t i = 0; i < num_temps; i++) {
         if (*temps[i] > INVALID_TEMPERATURE_THRESHOLD) {
             continue;
@@ -42,7 +43,8 @@ static void update_min_max_temps(int16_t* min_temp, int16_t* max_temp, int16_t* 
 int16_t min_temperature = INT16_MAX; // highest voltage
 int16_t max_temperature = INT16_MIN; // lowest voltage
 
-int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max_temp) {
+int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
+                     int16_t* max_temp) {
     int pec_errors = 0;
 
     static uint8_t mux = 0;
@@ -52,7 +54,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
         min_temperature = INT16_MAX;
         max_temperature = INT16_MIN;
     }
-    
+
     bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
 
     wakeup_sleep(NUM_ICS);
@@ -74,40 +76,49 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
 
         uint16_t raw_idx = ic * NUM_RX_BYT;
 
-        bms_temperature.temperature_1 = aux_reg_a_raw[raw_idx+0] | (aux_reg_a_raw[raw_idx+1] << 8);
-        bms_temperature.temperature_2 = aux_reg_a_raw[raw_idx+2] | (aux_reg_a_raw[raw_idx+3] << 8);
+        bms_temperature.temperature_1
+            = aux_reg_a_raw[raw_idx + 0] | (aux_reg_a_raw[raw_idx + 1] << 8);
+        bms_temperature.temperature_2
+            = aux_reg_a_raw[raw_idx + 2] | (aux_reg_a_raw[raw_idx + 3] << 8);
         can_send_bms_temperature();
 
-        update_min_max_temps(min_temp, max_temp, (int16_t *[]){
-            &bms_temperature.temperature_1,
-            &bms_temperature.temperature_2,
-        }, 2);
+        update_min_max_temps(min_temp, max_temp,
+                             (int16_t*[]) {
+                                 &bms_temperature.temperature_1,
+                                 &bms_temperature.temperature_2,
+                             },
+                             2);
 
         bms_temperature.da_boards = DA_BOARDS_34;
-        bms_temperature.temperature_1 = aux_reg_a_raw[raw_idx+4] | (aux_reg_a_raw[raw_idx+5] << 8);
-        bms_temperature.temperature_2 = aux_reg_c_raw[raw_idx+0] | (aux_reg_c_raw[raw_idx+1] << 8);
+        bms_temperature.temperature_1
+            = aux_reg_a_raw[raw_idx + 4] | (aux_reg_a_raw[raw_idx + 5] << 8);
+        bms_temperature.temperature_2
+            = aux_reg_c_raw[raw_idx + 0] | (aux_reg_c_raw[raw_idx + 1] << 8);
         can_send_bms_temperature();
 
-        update_min_max_temps(min_temp, max_temp, (int16_t *[]){
-            &bms_temperature.temperature_1,
-            &bms_temperature.temperature_2,
-        }, 2);
-
+        update_min_max_temps(min_temp, max_temp,
+                             (int16_t*[]) {
+                                 &bms_temperature.temperature_1,
+                                 &bms_temperature.temperature_2,
+                             },
+                             2);
 
         // PEC error handling for register A...
-        uint16_t received_pec = (aux_reg_a_raw[raw_idx + 6] << 8) | aux_reg_a_raw[raw_idx + 7];
-        uint16_t calculated_pec = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[raw_idx]);
+        uint16_t received_pec
+            = (aux_reg_a_raw[raw_idx + 6] << 8) | aux_reg_a_raw[raw_idx + 7];
+        uint16_t calculated_pec
+            = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[raw_idx]);
         if (received_pec != calculated_pec) {
             pec_errors++;
         }
 
         // and register C
-        received_pec = (aux_reg_c_raw[raw_idx + 6] << 8) | aux_reg_c_raw[raw_idx + 7];
+        received_pec
+            = (aux_reg_c_raw[raw_idx + 6] << 8) | aux_reg_c_raw[raw_idx + 7];
         calculated_pec = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[raw_idx]);
         if (received_pec != calculated_pec) {
             pec_errors++;
         }
-
     }
 
     channel += 1;
@@ -117,9 +128,6 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
         mux = (mux + 1) % NUM_MUXES;
         channel = 0;
     }
-
-    // TODO: Lookup table for which thermistors to disregard
-    // maybe just disregard anything over 2.5V - pending confirmation
 
     // if max is hotter than overtemp threshold, increment overtemp counter
     if (max_temperature < OVERTEMPERATURE_THRESHOLD) {
@@ -136,7 +144,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp, int16_t* max
         fan_enable(true);
     }
 
-    // if min is cooler than soft threshold, disable fan
+    // if min is cooler than soft threshold low, disable fan
     if (min_temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
         fan_enable(false);
     }

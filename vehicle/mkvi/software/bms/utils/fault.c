@@ -1,6 +1,6 @@
 #include "fault.h"
-#include "vehicle/mkvi/software/bms/can_api.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
+#include "vehicle/mkvi/software/bms/can_api.h"
 
 #include "libs/gpio/api.h"
 

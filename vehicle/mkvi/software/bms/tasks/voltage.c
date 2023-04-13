@@ -1,8 +1,8 @@
 #include "tasks.h"
 
+#include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-#include "vehicle/common/ltc6811/ltc681x.h"
 
 #define NUM_CELLS_IN_REG (3)
 #define NUM_CELL_REG     (6)

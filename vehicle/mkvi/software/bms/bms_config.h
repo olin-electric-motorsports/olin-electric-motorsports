@@ -1,16 +1,16 @@
 #pragma once // What is this?
 
 #include "libs/adc/api.h"
-#include "libs/gpio/api.h"
 #include "libs/can/api.h"
-#include "libs/spi/api.h"
+#include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
+#include "libs/spi/api.h"
 #include "libs/timer/api.h"
 
 /*
  * Macros
  */
-#define NUM_ICS 6
+#define NUM_ICS          6
 #define DA_BOARDS_PER_IC 4
 
 // copied from MKV - need ro be updated
@@ -90,4 +90,3 @@ spi_cfg_s spi_cfg = {
     .clock_rate = F_OSC_DIV_4,
     .cs_pin = &SPI_CS,
 };
-

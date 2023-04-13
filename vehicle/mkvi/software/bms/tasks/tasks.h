@@ -6,7 +6,7 @@
  * Task to read the voltages from the battery pack
  *
  * This function will start the ADC conversion, wait until it completes, and
- * then read the voltages of all the cells. 
+ * then read the voltages of all the cells.
  *
  * @param pack_voltage Pointer to a 16-bit number where the pack voltage will
  * be stored
@@ -47,5 +47,3 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv);
  */
 int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
                      int16_t* max_temp);
-
-

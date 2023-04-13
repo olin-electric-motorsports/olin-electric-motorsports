@@ -3,13 +3,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkv/software/bms/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-#include "vehicle/common/ltc6811/ltc681x.h"
 
-#define MUX_DATALENGTH (3) 
-#define ADBMS_CMD_LEN (6)
+#define MUX_DATALENGTH (3)
+#define ADBMS_CMD_LEN  (6)
 
 // ICOMn bits
 #define START       (0b0110 << 4)
@@ -22,7 +22,8 @@
 #define NACK      (0b1000)
 #define NACK_STOP (0b1001)
 
-void configure_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel) {
+void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
+                   uint8_t channel) {
     /*
      * Third byte is command for mux: xxxxECCC
      *   x: don't care
@@ -33,18 +34,18 @@ void configure_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channe
     mux_cmd |= (enable << 3); // ENABLE C2 C1 C0
 
     /*
-    * ADBMS comand message
-    *
-    * A: Address
-    * M: Mux command
-    */
+     * ADBMS comand message
+     *
+     * A: Address
+     * M: Mux command
+     */
     uint8_t tx_data[ADBMS_CMD_LEN] = { 0 };
 
     tx_data[0] = START; // START xxxx
     tx_data[1] = NACK_STOP; // xxxx NACK_STOP
 
     tx_data[2] = START | (address >> 4); // START AAAA
-    tx_data[3] = (address << 4) | NACK; // AAAA NACK    
+    tx_data[3] = (address << 4) | NACK; // AAAA NACK
     tx_data[4] = BLANK; // xxxxBLANK
     tx_data[5] = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
 
