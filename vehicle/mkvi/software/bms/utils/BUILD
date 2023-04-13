@@ -3,11 +3,11 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 cc_library(
     name = "bms_utils",
     srcs = [
-        "faults.c",
+        "fault.c",
         "mux.c",
     ],
     hdrs = [
-        "faults.h",
+        "fault.h",
         "mux.h",
     ],
     visibility = ["//visibility:public"],

@@ -4,7 +4,6 @@
 #include <stdint.h>
 
 #include "vehicle/common/ltc6811/ltc681x.h"
-#include "vehicle/mkv/software/bms/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
 
