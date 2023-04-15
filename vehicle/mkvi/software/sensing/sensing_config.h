@@ -1,4 +1,3 @@
-#include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
@@ -8,8 +7,17 @@ gpio_t DEBUG_LED = PB0;
 gpio_t WHEEL_SPEED_LEFT = PB2;
 gpio_t WHEEL_SPEED_RIGHT = PD6;
 
-enum { counter_left = 0 };
-enum { counter_right = 0 };
+enum sensing_location {
+    FRONT = 0,
+    REAR = 1
+} location __attribute__((section(".eeprom")))
+= SENSING_LOCATION;
+
+can_frame_t sensing_msg = {
+    .mob = 0,
+    .dlc = 2,
+};
+
 /*
  * Timer config
  */
