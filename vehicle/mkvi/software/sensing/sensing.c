@@ -10,6 +10,7 @@ the rear sensing box Author:
 #include "can_api.h"
 #include "sensing_config.h"
 #include "utils/timer.h"
+#include <avr/eeprom.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <stdio.h>
@@ -19,7 +20,6 @@ the rear sensing box Author:
 void timer1_isr(void) {
     send_can = true;
 };
-#include <avr/eeprom.h>
 
 enum sensing_location {
     FRONT = 0,
@@ -52,8 +52,7 @@ int main(void) {
     enum sensing_location location = eeprom_read_dword(&location);
     _delay_ms(2);
 
-    // can_init_sensing();
-    // adc_init();
+    // can_init_sensing(); NEED TO FIND REPLACEMENT
     gpio_set_mode(DEBUG_LED_0, OUTPUT);
     gpio_set_mode(WHEEL_SPEED_LEFT, INPUT);
     gpio_set_mode(WHEEL_SPEED_RIGHT, INPUT);
@@ -83,7 +82,7 @@ int main(void) {
         // If timer is at 1 second
         if (send_can) {
             // Log how many times we saw metal
-            // can_send_sensing();
+            // can_send_sensing(); NEED TO WRITE WITH LIBRARY
 
             // Reset all counters
             sensing.left_wheel_counter = 0;
