@@ -3,14 +3,14 @@
 import cmd
 from ast import literal_eval
 from datetime import date
-import can_layer as CAN_layer
+from can_layer import TunablesCAN
 import yaml
 
 
 class Tunables(cmd.Cmd):
     """A class that generates a terminal shell environment"""
 
-    message = CAN_layer.TunablesCAN()
+    message = TunablesCAN()
 
     print(
         " \n This is the Tunables Parameters program."
