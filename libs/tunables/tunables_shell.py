@@ -2,7 +2,8 @@
 
 import cmd
 from ast import literal_eval
-from datetime import date
+import time
+
 from can_layer import TunablesCAN
 import yaml
 
@@ -10,14 +11,18 @@ import yaml
 class Tunables(cmd.Cmd):
     """A class that generates a terminal shell environment"""
 
-    message = TunablesCAN()
+    # message = TunablesCAN()
 
     print(
         " \n This is the Tunables Parameters program."
         " \n Type in ? to see the list of commands"
     )
+
+    ecu = input("\nWhat ECU will we be editing: ")
+
     prompt = "(Tunables) "
     file = None
+    ecu_yml = "vehicle/mkv/software/{}".format(ecu) + "/tunables.yml"
 
     # Commands
     def do_get(self, arg):
@@ -28,13 +33,11 @@ class Tunables(cmd.Cmd):
             arg: The user command line input. By default a string"""
 
         try:
-            param_id = get_id(parse(arg)[0])
+            param_id = search_yaml(parse(arg)[0], "ecu_id", self.ecu_yml)[1]
             self.message.send(0, param_id, 0x6E1)
-            parameter_val = search_yaml(arg, "current_value")
+            parameter_val = search_yaml((parse(arg)[0], "current_value"))
             print(f"Parameter Current value in Yml file is {parameter_val}")
-
             received_msg = self.message.receive()
-
             received_data = [byte for byte in received_msg.data]
             print(received_data)
             # real data:
@@ -51,12 +54,20 @@ class Tunables(cmd.Cmd):
             arg: The user command line input. By default a string"""
 
         # database.send(0, arg[0], arg[1])
-        write_yaml(parse(arg))
-        print(search_yaml(parse(arg)[0]))
+        write_yaml(parse(arg), self.ecu_yml)
+        print(search_yaml(parse(arg)[0], "current_value", self.ecu_yml))
 
-    def do_list(self):
-        """Lists all the parameters in tunables.yml file"""
-        list_yaml()
+    def do_list(self, arg):
+        """lists all the names of the tunable parameters of the ECU"""
+        list(self.ecu_yml)
+
+    def do_switch(self, arg):
+        """Allows us to switch what ECU tunables.yml we're looking at
+
+        Args:
+            arg: Should be a single string which is the name of the new ECU"""
+        self.ecu = parse(arg)[0]
+        self.ecu_yml = "vehicle/mkv/software/{}".format(self.ecu) + "/tunables.yml"
 
 
 # Helper Functions
@@ -73,92 +84,57 @@ def parse(arg):
     return arg.split(" ")
 
 
-def search_yaml(para_name, para_value):
+def search_yaml(name, value, yml):
 
     """Finds information from tunables.yml of 1 parameter
 
     Args:
-        para_name: A string name of the parameter
-        para_value: A string which is the specific
-        part of the parameter.
+        name: A string name of the parameter
+        value: A string which is the specific
+        part of the parameter. (i.e last updated or type or value)
 
     Return:
-        A string which is the parameter's specific value
-        that we're interested in or a string which shows an error.
+        A tuple which is the parameter's specific value
+        that we're interested in or an error.
     """
-
-    with open("libs/tunables/tunables.yml", "r") as file:
+    with open(yml, "r") as file:
         try:
             data = yaml.safe_load(file)
 
             # Literally just loops through the entire
             # tunables.yml file to find the parameter name
-            for i in range(len(data)):
-                for j in range(len(data[i]["params"])):
+            message = data["params"]
+            for i in range(len(message)):
+                if message[i]["name"] == name:
+                    param_name = message[i]["name"]
+                    param_type = message[i][value]
+                    return (param_name, param_type)
 
-                    message = data[i]["params"][j]
-
-                    if message["name"] == para_name:
-                        return message[para_value]
         except yaml.YAMLError as exc:
+            print(exc)
             return exc
 
 
-def list_yaml():
-    """Lists all parameters in tunables.yml file
-    alongside all their current values"""
-    with open("libs/tunables/tunables.yml", "r") as file:
-        try:
-            data = yaml.safe_load(file)
-
-            # Loops through tunables.yml and prints out
-            # metadata of the parameter
-            for i in range(len(data)):
-                for j in range(len(data[i]["params"])):
-
-                    message = data[i]["params"][j]
-
-                    name = message["name"]
-                    current_value = message["current_value"]
-                    date_modified = message["date_modified"]
-
-                    editable = message["mutable"]
-                    print(
-                        f"Name: {name}, Current Value: {current_value}, Last Date Edited: {date_modified}, Mutable: {editable}"
-                    )
-
-        except yaml.YAMLError as exc:
-            return exc
-
-
-def get_id(para_name):
-    """Returns the ecu_id of a tunable parameter
-
+def list(yml):
+    """Lists all tunable parameter names
     Args:
-        para_name: A string parameter name
 
-    Return:
-        an int/hex value which is the ecu_id, or the error"""
-    with open("libs/tunables/tunables.yml", "r") as file:
+        yml: A path to the tunables.yml
+    """
+    with open(yml, "r") as file:
         try:
             data = yaml.safe_load(file)
 
-            # Loops through tunables.yml and prints out
-            # metadata of the parameter
-            for i in range(len(data)):
-                for j in range(len(data[i]["params"])):
-
-                    message = data[i]["params"][j]
-
-                    if message["name"] == para_name:
-                        ecu_id = message["ecu_id"]
-                        return int(ecu_id)
+            message = data["params"]
+            for i in range(len(message)):
+                print(message[i]["name"])
 
         except yaml.YAMLError as exc:
+            print(exc)
             return exc
 
 
-def write_yaml(arg):
+def write_yaml(arg, yml):
     """update's the tunables.yml file
 
     Args:
@@ -166,34 +142,31 @@ def write_yaml(arg):
         parameter name and the second index should be the new value
         we want to overwrite the old value with.
     """
-    with open("libs/tunables/tunables.yml", "r") as file:
+    with open(yml, "r") as file:
         try:
             data = yaml.safe_load(file)
-            for i in range(len(data)):
-                for j in range(len(data[i]["params"])):
 
-                    message = data[i]["params"][j]
+            message = data["params"]
 
-                    # Checks if the parameter can be written over
-                    if message["name"] == arg[0]:
-                        if message["mutable"] == False:
-                            raise ValueError(f" {arg[0]} cannot be edited")
-                            break
+            for i in range(len(message)):
+                if message[i]["name"] == arg[0]:
+                    if message[i]["mutable"] == False:
+                        raise ValueError(f" {arg[0]} cannot be edited")
 
-                        # Else it update's the parameter's value & updates the time
-                        data[i]["params"][j]["current_value"] = literal_eval(arg[1])
-                        print(date.today())
-                        data[i]["params"][j]["date_modified"] = date.today()
+                    # Else it update's the parameter's value & updates the time
+                    message[i]["current_value"] = literal_eval(arg[1])
+                    message[i]["last_update"] = time.time()
 
-                        break
+                    break
             file.close()
 
             # Overwrites tunables.yml
-            with open("libs/tunables/tunables.yml", "w") as file:
+            with open(yml, "w") as file:
                 yaml.dump(data, file, sort_keys=False)
                 file.close()
 
         except yaml.YAMLError as exc:
+            print(exc)
             return exc
 
 
