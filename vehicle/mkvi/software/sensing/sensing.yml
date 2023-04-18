@@ -1,10 +1,24 @@
-name: brakelight_bspd
-# subscribe:
-#   - name: air_control_critical
-#     mob: 1
+name: sensing
 publish:
-  - name: sensing
-    id: 0xb 
+  - name: front_sensing
+    id: 0x403 
+    freq_hz: 100
+    signals:
+      - name: left_wheel_counter
+        slice: 0 + 8
+        unit:
+          type: uint8_t
+          name: left_cycles/second
+        name: right_wheel_counter
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: right_cycles/second
+
+
+publish:
+  - name: rear_sensing
+    id: 0x404 
     freq_hz: 100
     signals:
       - name: left_wheel_counter
