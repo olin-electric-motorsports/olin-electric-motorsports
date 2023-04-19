@@ -11,8 +11,6 @@
  * m := Minor revision
  *
  * CURRENT VERSION: 0.1
- *
- * TODO: Move to a config.h file?
  */
 #define BOOTLOADER_VERSION_MAJ (0)
 #define BOOTLOADER_VERSION_MIN (1)
@@ -26,11 +24,9 @@
  * flash, we _exclude_ the .eeprom section because the .hex file goes into
  * _flash_, not _eeprom_. We separately generate a .eep file that has all of our
  * eeprom variables and use the flashing tool to write it to EEPROM memory
- *
- * TODO: Reset to bootflags 0 after testing
  */
 // static uint32_t bootflags __attribute__((section(".eeprom"))) = 0;
-uint32_t bootflags __attribute__((section(".eeprom"))) = IMAGE_IS_VALID;
+static uint32_t bootflags __attribute__((section(".eeprom"))) = IMAGE_IS_VALID;
 
 static uint8_t updater_version __attribute__((section(".eeprom")))
 = (BOOTLOADER_VERSION_MAJ << 4) | (BOOTLOADER_VERSION_MIN & 0xF);

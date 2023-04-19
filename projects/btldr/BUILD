@@ -1,6 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 load("//bazel:defs.bzl", "cc_firmware")
-load("//vehicle/mkv:ecus.bzl", "ECUS")
+load("//projects/btldr:ecus.bzl", "ECUS")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -16,6 +16,7 @@ package(default_visibility = ["//visibility:public"])
         defines = [
             "BTLDR_ID=" + data["btldr_id"],
         ],
+        is_btldr = True,
         linkopts = [
             "-static",
             "-nostartfiles",

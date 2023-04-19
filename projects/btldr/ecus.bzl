@@ -1,3 +1,5 @@
+# This file is the ultimate source of truth for the bootloader IDs for each ECU
+
 ECUS = {
     "air_control": {
         "btldr_id": "0x700",
@@ -9,6 +11,9 @@ ECUS = {
         "btldr_id": "0x710",
     },
     "brakelight_bspd": {
+        "btldr_id": "0x718",
+    },
+    "brakes": {
         "btldr_id": "0x718",
     },
     "lvbms": {
