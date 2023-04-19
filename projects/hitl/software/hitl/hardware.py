@@ -7,12 +7,7 @@ import os
 
 from utils import map_to_human, map_to_machine
 
-try:
-    import ft4222
-except ModuleNotFoundError:
-    # We haven't setup the ft4222 library yet...
-    # See https://awenstrup.github.io/setup.html
-    ft4222 = None
+import ft4222
 
 # CONSTANTS
 # ADC parameters
@@ -45,18 +40,10 @@ class FT4222Proxy:
     """
 
     def __init__(self, device_description):
-
         self.log = logging.getLogger(name=__name__)
 
-        if ft4222:
-            try:
-                self.dev = ft4222.openByDescription(device_description)
-                self.dev.i2cMaster_Init(400_000)
-            except ft4222.FT2XXDeviceError as e:
-                self.log.error(f"Failed to connect to device {device_description}")
-                raise
-        else:
-            raise ImportError("ft4222 could not be imported, cannot connect to hardware")
+        self.dev = ft4222.openByDescription(device_description)
+        self.dev.i2cMaster_Init(400000)
 
     def set_analog(address, pin_number, value, min=0, max=5):
         """
