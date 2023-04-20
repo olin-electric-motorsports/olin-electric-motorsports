@@ -56,9 +56,7 @@ def main():
 
         else:
             # Error msg
-            raise Exception(
-                f"ERROR: tunables.ymal at {ymlpath} does not exist. \n{OSError}"
-            )
+            raise Exception(f"{OSError}: \n No file/directory at {ymlpath}")
 
 
 # Helper functions
