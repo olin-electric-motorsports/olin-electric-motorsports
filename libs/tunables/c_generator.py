@@ -28,7 +28,7 @@ def main():
             paramslist = get_params(ymlpath)
             # Generates a C struct with all the parameters in the bms board
             c_content = c_maker(ecu, paramslist)
-            h_content = h_maker(ecu)
+            h_content = h_maker(ecu, paramslist)
 
             # What we made via the jinja template.
             c_out = "{}/tunables.c".format(ecu_path)
@@ -56,7 +56,9 @@ def main():
 
         else:
             # Error msg
-            print(f"ERROR: tunables.yml at {ymlpath} does not exist")
+            raise Exception(
+                f"ERROR: tunables.ymal at {ymlpath} does not exist. \n{OSError}"
+            )
 
 
 # Helper functions
@@ -90,7 +92,7 @@ def get_params(yaml_file):
             return []
 
 
-def h_maker(name):
+def h_maker(name, params):
     """Makes the header file via a jinja template
 
     name: a string of the ecu name
@@ -99,7 +101,7 @@ def h_maker(name):
     environment = Environment(loader=FileSystemLoader(template_path))
     template = environment.get_template(hfile)
     template.render(name="World")
-    content = template.render(name=name)
+    content = template.render(name=name, t_params=params)
     return content
 
 
