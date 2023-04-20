@@ -1,10 +1,7 @@
-#include vehicle/mkvi/software/{{ name }}/tunables.h
+#include "libs/tunables/tunables.h"
+#include "vehicle/mkvi/software/{{ name }}/tunables.h"
 
-size_t NUM_TUNABLES = {{t_params | length}}; 
+const size_t NUM_TUNABLES = {{t_params | length}}; 
+struct {{ name }}_tunables tunables = { 0 }; 
 
-struct {{ name }}_tunables {
-    {% for parameter in t_params %}
-        {{parameter}};
-    {% endfor %}
 
-} tunables;
