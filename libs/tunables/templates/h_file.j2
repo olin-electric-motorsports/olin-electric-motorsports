@@ -4,4 +4,11 @@
 initializes the struct that will contain all the different tunable parameters
 */
 extern size_t NUM_TUNABLES;
-extern struct {{ name }}_tunables;
+extern struct {{ name }}_tunables tunables;
+
+struct {{ name }}_tunables {
+    {% for parameter in t_params %}
+        {{parameter}};
+    {% endfor %}
+
+} tunables;
