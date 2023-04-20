@@ -168,7 +168,6 @@ static bool check_brake(int16_t pos_min) {
             // brake is pressed, pedal travel < 25%
             // no implausibility
             throttle_debug.throttle_brake_implaus = false;
-            return false;
         }
 
         if (brake_implausibility_occurred) {
