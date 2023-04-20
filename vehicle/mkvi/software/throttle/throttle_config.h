@@ -58,15 +58,15 @@ typedef struct {
     int16_t throttle_max; // Maximum position (100%) in raw ADC
 } throttle_potentiometer_s;
 
-const throttle_potentiometer_s throttle_1 = {
-    // 1st throttle pot
+const throttle_potentiometer_s throttle_l = {
+    // left throttle pot
     .adc_pin = ADC5,
     .throttle_min = THROTTLE_L_MIN_COUNTS,
     .throttle_max = THROTTLE_L_MAX_COUNTS
 };
 
-const throttle_potentiometer_s throttle_2 = {
-    // 2nd throttle pot
+const throttle_potentiometer_s throttle_r = {
+    // right throttle pot
     .adc_pin = ADC6,
     .throttle_min = THROTTLE_R_MIN_COUNTS,
     .throttle_max = THROTTLE_R_MAX_COUNTS

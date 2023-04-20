@@ -82,44 +82,44 @@ static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
 /*
     Check if sensors return a value out of range (<0 or >255)
     Args:
-        pos_1: int16_t sensor value of throttle pot 1
-        pos_2: int16_t sensor value of throttle pot 2
+        pos_l: int16_t sensor value of throttle pot 1eft
+        pos_r: int16_t sensor value of throttle pot right
     Returns:
         implausibility: boolean if throttle out of range or not
 */
-static bool check_out_of_range(int16_t* pos_1, int16_t* pos_2) {
+static bool check_out_of_range(int16_t* pos_l, int16_t* pos_r) {
     bool implausibility = false;
 
     // Check 1st pot
-    if (*pos_1 > MAX_THROTTLE_POS) {
-        *pos_1 = MAX_THROTTLE_POS;
-        throttle.throttle_status = THROTTLE_1_OUT_OF_RANGE;
-        throttle_debug.throttle_1_out_of_range = true;
+    if (*pos_l > MAX_THROTTLE_POS) {
+        *pos_l = MAX_THROTTLE_POS;
+        throttle.throttle_status = THROTTLE_L_OUT_OF_RANGE;
+        throttle_debug.throttle_l_out_of_range = true;
         implausibility = true;
-    } else if (*pos_1 < MIN_THROTTLE_POS) {
-        *pos_1 = MIN_THROTTLE_POS;
-        throttle.throttle_status = THROTTLE_1_OUT_OF_RANGE;
-        throttle_debug.throttle_1_out_of_range = true;
+    } else if (*pos_l < MIN_THROTTLE_POS) {
+        *pos_l = MIN_THROTTLE_POS;
+        throttle.throttle_status = THROTTLE_L_OUT_OF_RANGE;
+        throttle_debug.throttle_l_out_of_range = true;
         implausibility = true;
     } else {
-        throttle_debug.throttle_1_out_of_range = false;
+        throttle_debug.throttle_l_out_of_range = false;
     }
 
     // Check 2nd pot
-    if (*pos_2 > MAX_THROTTLE_POS) {
-        *pos_2 = MAX_THROTTLE_POS;
-        throttle.throttle_status = THROTTLE_2_OUT_OF_RANGE;
-        throttle_debug.throttle_2_out_of_range = true;
+    if (*pos_r > MAX_THROTTLE_POS) {
+        *pos_r = MAX_THROTTLE_POS;
+        throttle.throttle_status = THROTTLE_R_OUT_OF_RANGE;
+        throttle_debug.throttle_r_out_of_range = true;
         implausibility = true;
-    } else if (*pos_2 < MIN_THROTTLE_POS) {
-        *pos_2 = MIN_THROTTLE_POS;
-        throttle.throttle_status = THROTTLE_2_OUT_OF_RANGE;
-        throttle_debug.throttle_2_out_of_range = true;
+    } else if (*pos_r < MIN_THROTTLE_POS) {
+        *pos_r = MIN_THROTTLE_POS;
+        throttle.throttle_status = THROTTLE_R_OUT_OF_RANGE;
+        throttle_debug.throttle_r_out_of_range = true;
         implausibility = true;
     } else {
         // Will be reset if Ready to Drive is not on
         throttle.throttle_status = THROTTLE_RUN;
-        throttle_debug.throttle_2_out_of_range = false;
+        throttle_debug.throttle_r_out_of_range = false;
     }
     return implausibility;
 }
@@ -262,16 +262,16 @@ int main(void) {
                 m192_command_message.inverter_enable = dashboard.ready_to_drive;
             }
 
-            int16_t pos_1 = get_throttle_travel(&throttle_1);
-            int16_t pos_2 = get_throttle_travel(&throttle_2);
-            int16_t pos_min = MIN(pos_1, pos_2);
-            int16_t pos_max = MAX(pos_1, pos_2);
+            int16_t pos_l = get_throttle_travel(&throttle_l);
+            int16_t pos_r = get_throttle_travel(&throttle_r);
+            int16_t pos_min = MIN(pos_l, pos_r);
+            int16_t pos_max = MAX(pos_l, pos_r);
 
-            throttle.throttle_1_pos = pos_1;
-            throttle.throttle_2_pos = pos_2;
+            throttle.throttle_l_pos = pos_l;
+            throttle.throttle_r_pos = pos_r;
 
             // checking implausibilities
-            bool oor_implausibility = check_out_of_range(&pos_1, &pos_2);
+            bool oor_implausibility = check_out_of_range(&pos_l, &pos_r);
             bool deviation_implausibility = check_deviation(pos_max, pos_min);
             if (check_brake(pos_min)) {
                 SET_TORQUE_REQUEST(0);
