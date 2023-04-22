@@ -1,3 +1,4 @@
+from math import floor
 from ft4222.GPIO import Dir, Port
 
 
@@ -5,6 +6,7 @@ class AD5675(object):
     def __init__(self, i2c, vref: float, address=0b0001100):
         self.i2c = i2c
         self.address = address
+        self.vref = vref
 
         # LDAC pin initialization
         self.i2c.setSuspendOut(False)  # Use GPIO 2 as a pin
@@ -17,7 +19,7 @@ class AD5675(object):
 
         cmd = 0b00110000 | channel
 
-        data = floor(value / vref) * 65535
+        data = floor(value / self.vref) * 65535
         data_high = (data & 0xFF00) >> 8
         data_low = data & 0x00FF
 
@@ -28,7 +30,7 @@ class AD5675(object):
 
         cmd = 0b00010000 | channel
 
-        data = floor(value / vref) * 65535
+        data = floor(value / self.vref) * 65535
         data_high = (data & 0xFF00) >> 8
         data_low = data & 0x00FF
 

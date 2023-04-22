@@ -1,5 +1,6 @@
 load("@rules_python//python:defs.bzl", "py_binary", "py_library")
 load("//tools/pytest:defs.bzl", "pytest_test")
+load("@hitl_deps//:requirements.bzl", "requirement")
 
 py_library(
     name = "hitl",
@@ -10,7 +11,9 @@ py_library(
         "adc.py",
         "can.py"
     ],
-    deps = [],
+    deps = [
+        requirement("ft4222"),
+    ],
     visibility = ["//visibility:public"],
 )
 
@@ -18,6 +21,7 @@ pytest_test(
     name = "unit",
     srcs = [
         "tests/test_gpio.py",
+        "tests/test_dac.py",
     ],
     imports = ["."],
     deps = [

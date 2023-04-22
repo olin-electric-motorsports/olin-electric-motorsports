@@ -1,3 +1,4 @@
+import pytest
 from unittest.mock import Mock
 from projects.hitl.lib.gpio import MAX7300, PinMode
 
@@ -11,6 +12,10 @@ def test_i2c_set_mode():
     assert i2c.i2cMaster_Write.called_once_with(
         0b1000000, bytes([0b00001001, 0b00100000])
     )
+
+    with pytest.raises(Exception):
+        gpio.set_mode(6, 3)
+
 
 
 def test_i2c_set():
