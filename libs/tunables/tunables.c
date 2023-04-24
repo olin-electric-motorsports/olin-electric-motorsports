@@ -2,9 +2,9 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#include <string.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "libs/can/api.h"
 
@@ -78,7 +78,8 @@ void tunables_loop(void* tunables_data, size_t num_tunables) {
                 // Read the tunable from the local memory (much faster than
                 // reading from EEPROM)
                 response_data[0] = tunable_id;
-                memcpy(&response_data[1], &tunables_array[tunable_id], sizeof(uint32_t));
+                memcpy(&response_data[1], &tunables_array[tunable_id],
+                       sizeof(uint32_t));
                 can_send(&response);
             } break;
             case SET: {
@@ -95,7 +96,8 @@ void tunables_loop(void* tunables_data, size_t num_tunables) {
 
                 // Send the data back to the host
                 response_data[0] = tunable_id;
-                memcpy(&response_data[1], &tunables_array[tunable_id], sizeof(uint32_t));
+                memcpy(&response_data[1], &tunables_array[tunable_id],
+                       sizeof(uint32_t));
                 can_send(&response);
             } break;
             case MEASURE: {
