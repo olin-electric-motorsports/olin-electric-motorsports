@@ -6,10 +6,6 @@
 #include <stdint.h>
 #include <string.h>
 
-#define MAX_NUM_PARAMS (16)
-
-typedef enum { GET, SET, MEASURE } message_type_t;
-
 /*
  * tunables_init
  *

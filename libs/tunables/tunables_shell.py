@@ -11,7 +11,7 @@ import yaml
 class Tunables(cmd.Cmd):
     """A class that generates a terminal shell environment"""
 
-    # message = TunablesCAN()
+    message = TunablesCAN()
 
     print(
         " \n This is the Tunables Parameters program."
@@ -22,6 +22,7 @@ class Tunables(cmd.Cmd):
 
     prompt = "(Tunables) "
     file = None
+    # Will be changed to vehicle/mkvi/software later
     ecu_yml = "vehicle/mkv/software/{}".format(ecu) + "/tunables.yml"
 
     # Commands
@@ -40,7 +41,7 @@ class Tunables(cmd.Cmd):
             received_msg = self.message.receive()
             received_data = [byte for byte in received_msg.data]
             print(received_data)
-            # real data:
+            # real data example I've got:
             # Timestamp: 1679611908.605059 ID: 0024 S Rx E  DL:  8  00 00 00 00 00 00 00 00
             # Channel: can0
 
@@ -53,7 +54,7 @@ class Tunables(cmd.Cmd):
         Args:
             arg: The user command line input. By default a string"""
 
-        # database.send(0, arg[0], arg[1])
+        # WIP Will write once I've tested that getter
         write_yaml(parse(arg), self.ecu_yml)
         print(search_yaml(parse(arg)[0], "current_value", self.ecu_yml))
 
