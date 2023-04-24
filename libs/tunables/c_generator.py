@@ -23,7 +23,6 @@ def main():
 
         # Check that the path to the yml file is correct
         if os.path.exists(ymlpath):
-
             # Reads the tunables.yml file & stores all the struct variables
             paramslist = get_params(ymlpath)
             # Generates a C struct with all the parameters in the bms board

@@ -27,7 +27,6 @@ class Tunables(cmd.Cmd):
 
     # Commands
     def do_get(self, arg):
-
         """Getter function which sends a get message through CAN
 
         Args:
@@ -86,7 +85,6 @@ def parse(arg):
 
 
 def search_yaml(name, value, yml):
-
     """Finds information from tunables.yml of 1 parameter
 
     Args:
