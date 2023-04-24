@@ -1,6 +1,7 @@
 """Handles all CAN-related functions in tunables through TunablesCAN class """
 import can
 
+
 # CAN section
 class TunablesCAN:
     """A class used in tunables that all all CAN related tasks
@@ -49,7 +50,6 @@ class TunablesCAN:
 
         # Setter
         if func_type == 1:
-
             # new_value's inital input will be an string of an int.
             # Convert first into hex
             hex_val = int(new_value).to_bytes(6, "big").hex()
