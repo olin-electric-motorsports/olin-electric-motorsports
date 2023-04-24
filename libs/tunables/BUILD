@@ -5,9 +5,6 @@ cc_library(
     srcs = [
         "tunables.c",
     ],
-    hdrs = [
-        "tunables.h",
-    ],
     target_compatible_with = ["//bazel/constraints:avr"],
     visibility = ["//visibility:public"],
     deps = [
