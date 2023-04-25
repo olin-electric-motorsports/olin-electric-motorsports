@@ -21,6 +21,26 @@
 #define NACK      (0b1000)
 #define NACK_STOP (0b1001)
 
+void mux_init(uint8_t num_ics) {
+    uint8_t tx_data[ADBMS_CMD_LEN] = { 0 };
+
+    tx_data[0] = START; // START xxxx
+    tx_data[1] = NACK_STOP; // xxxx NACK_STOP
+
+    tx_data[2] = START | (I2C_MUX_ADDRESS >> 4); // START AAAA
+    tx_data[3] = (I2C_MUX_ADDRESS << 4) | NACK; // AAAA NACK
+    tx_data[4] = BLANK; // xxxxBLANK
+    tx_data[5] =  0xF | NACK_STOP; // Enable all channels
+
+    wakeup_sleep(num_ics); // wake up the IC core
+
+    uint8_t wrcomm_cmd[2] = { 0x07, 0x21 }; // command to write to COMM register
+    write_68(NUM_ICS, wrcomm_cmd, tx_data);
+
+    wakeup_idle(num_ics); // wake up the isospi comms
+    LTC681x_stcomm(MUX_DATALENGTH); // where does this value come from?
+}
+
 void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
                    uint8_t channel) {
     /*

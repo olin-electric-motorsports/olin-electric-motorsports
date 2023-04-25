@@ -6,5 +6,7 @@ dbc_gen(
     srcs = [
         "//vehicle/common/emeter:emeter.dbc",
         "//vehicle/common/motor_controller:motor_controller.dbc",
+        "//vehicle/common/charging:charging.yml",
+        "//vehicle/mkvi/software/bms:bms.yml",
     ],
 )

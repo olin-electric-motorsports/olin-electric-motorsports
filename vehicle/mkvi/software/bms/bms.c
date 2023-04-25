@@ -57,6 +57,8 @@ void hw_init() {
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
 
+    mux_init(NUM_ICS);
+
     can_init_bms();
     pcint0_callback();
 }
@@ -111,7 +113,7 @@ static void monitor_cells(void) {
     if (rc != 0) {
         bms_metrics.temperature_pec_error_count += rc;
 
-        if bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+        if (bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
                 set_fault(BMS_FAULT_PEC);
                 bms_core.bms_state = BMS_STATE_FAULT;
             }
@@ -179,40 +181,41 @@ static void monitor_cells(void) {
             bms_core.bms_state = BMS_STATE_FAULT;
         } break;
     }
+}
 
-    int main(void) {
-        hw_init();
+int main(void) {
+    hw_init();
 
-        uint8_t loop_counter = 0;
+    uint16_t loop_counter = 0;
 
-        while (true) {
-            if (run_10ms) {
-                can_send_bms_core();
-                can_send_bms_sense();
-                can_send_bms_metrics();
+    while (true) {
+        if (run_10ms) {
+            can_send_bms_core();
+            can_send_bms_sense();
+            can_send_bms_metrics();
 
-                monitor_cells();
+            monitor_cells();
 
-                // will run every 50 ms (20 Hz)
-                if (loop_counter == 50) {
-                    loop_counter = 0;
-                    can_send_bms_debug();
-                }
-
-                // will run every 80 ms (12.5 Hz)
-                if (bms_core.bms_state == BMS_STATE_CHARGING) {
-                    if (loop_counter % 80 == 0) {
-                        can_send_charging_cmd();
-                    }
-                }
-
-                loop_counter++;
-
-                if (loop_counter == 400) {
-                    loop_counter = 0;
-                }
-
-                run_10ms = false;
+            // will run every 50 ms (20 Hz)
+            if (loop_counter == 50) {
+                loop_counter = 0;
+                can_send_bms_debug();
             }
+
+            // will run every 80 ms (12.5 Hz)
+            if (bms_core.bms_state == BMS_STATE_CHARGING) {
+                if (loop_counter % 80 == 0) {
+                    can_send_charging_cmd();
+                }
+            }
+
+            loop_counter++;
+
+            if (loop_counter == 400) {
+                loop_counter = 0;
+            }
+
+            run_10ms = false;
         }
     }
+}

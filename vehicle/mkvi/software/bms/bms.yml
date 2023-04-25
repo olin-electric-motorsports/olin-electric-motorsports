@@ -23,6 +23,7 @@ publish:
             - OVERCURRENT
             - PEC
             - CHARGER_FAULT
+            - STATE_MACHINE
       - name: bms_state
         slice: 4 + 4
         unit:
@@ -120,7 +121,6 @@ publish:
           name: V
           offset: 0
           scale: 5 / 1024
-
   - name: bms_metrics
     id: 0x510
     freq_hz: 100
@@ -262,7 +262,7 @@ publish:
           type: uint8_t
           name: ""
           scale: 1
-          offest: 0
+          offset: 0
       - name: channel
         slice: 3 + 5
         unit:
