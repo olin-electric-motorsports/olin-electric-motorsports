@@ -1,5 +1,6 @@
 from enum import Enum, auto
-
+from ft4222.I2CMaster import Flag as I2C_Flag
+import time
 
 class PinMode(Enum):
     INPUT = auto()
@@ -30,13 +31,15 @@ class MAX7300(object):
         else:
             raise Exception("Unknown/unsupported pintype: {}".format(mode))
 
-        self.i2c.i2cMaster_Write(self.address, bytes([cmd, data]))
+        self.i2c.i2cMaster_WriteEx(self.address, I2C_Flag.NONE, bytes([cmd, data]))
 
     def set(self, pin, value):
         assert (pin >= 4) and (pin <= 31)
         cmd = 0b00100000 | pin
         data = value  # This should be 0 or 1
-        self.i2c.i2cMaster_Write(self.address, bytes([cmd, data]))
+
+        print(bytes([cmd, data]))
+        self.i2c.i2cMaster_WriteEx(self.address, I2C_Flag.NONE, bytes([cmd, data]))
 
     def get(self, pin):
         assert (pin >= 4) and (pin <= 31)

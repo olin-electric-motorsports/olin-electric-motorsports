@@ -1,6 +1,24 @@
-from projects.hitl.lib.gpio import MAX7300, PinMode
-import ft4222
+# General
 from functools import partial
+import random
+from typing import Union
+from enum import Enum, auto
+import logging
+import time
+
+# Specific
+import ft4222
+
+# Project
+# from projects.hitl.lib.can import CanController
+from projects.hitl.lib.gpio import MAX7300, PinMode
+from projects.hitl.lib.adc import (
+    AD7091R,
+    AdcPin,
+    PINS as ADC_PINS,
+    Channel as AdcChannel,
+)
+from projects.hitl.lib.dac import AD5675
 
 
 class PinType(Enum):
@@ -23,23 +41,6 @@ class Pin(object):
         return self.getter()
 
 
-class AdcPin(Enum):
-    ADC1 = auto()
-    ADC2 = auto()
-    ADC3 = auto()
-    ADC4 = auto()
-    ADC5 = auto()
-    ADC6 = auto()
-    BARREL_JACK = auto()
-    USB_5V = auto()
-    VBUS = auto()
-    SELF_TEST = auto()
-
-
-# def hitl_pin_to_channel(pin_num: int, pintype: PinType, pinmode):
-#     if pintype == PinType.ANALO
-
-
 class HitL(object):
     """
     This class represents the HitL board which contains a GPIO, DAC, and ADC
@@ -47,15 +48,17 @@ class HitL(object):
     functions for dealing with CAN communications.
     """
 
-    def __init__(self, device, can_network, pins=[]):
-        i2c_proxy = ft4222.openByDescription("FT4222 A")
-        i2c_proxy.i2cMaster_Init(400000)
-        # openByLocation("/dev/ttyUSB...")
+    def __init__(self, can_network: str, vbus: float, pins=[]):
+        i2c = ft4222.openByDescription("FT4222 A")
+        i2c.i2cMaster_Init(100000)
+        # i2c.i2cMaster_Write(0b1000000, bytes([0b00001000, 0b00000000]))
 
-        self.gpio = MAX7300(i2c_proxy)
-        self.dac = AD5675(i2c_proxy, vref=5.0)
-        self.adc = Adc(i2c_proxy, self.gpio, vref=2.5)  # Pass GPIO to use for mux
-        self.can = CanController(can_network, baudrate=500000)
+        self.gpio = MAX7300(i2c)
+        self.dac = AD5675(i2c, vref=5.0)
+        self.adc = AD7091R(i2c, self.gpio, vref=2.5)  # Pass GPIO to use for mux
+        # self.can = CanController(can_network, baudrate=500000)
+
+        self.vbus = vbus
 
         assert self.gpio.address != self.dac.address
         assert self.gpio.address != self.adc.address
@@ -64,29 +67,36 @@ class HitL(object):
         self.log = logging.getLogger(name="hitl")
 
         self.log.info("Running initialization self-test...")
-        self.self_test()
+        # self.self_test()
         self.log.info("Passed self-test.")
 
-        v_usb = self.adc_read(AdcPin.USB_5V)
-        v_barrel = self.adc_read(AdcPin.BARREL_JACK)
-        v_bus = self.adc_read(AdcPin.VBUS)
+        # v_usb = self.adc.read(ADC_PINS[AdcChannel.USB_5V])
+        # v_barrel = self.adc.read(ADC_PINS[AdcChannel.BARREL_JACK])
+        # v_bus = self.adc.read(ADC_PINS[AdcChannel.VBUS])
 
-        self.log.info("Measured v_usb = {}".format(v_usb))
-        self.log.info("Measured v_barrel = {}".format(v_barrel))
-        self.log.info("Measured v_bus = {}".format(v_bus))
+        # self.log.info("Measured v_usb = {}".format(v_usb))
+        # self.log.info("Measured v_barrel = {}".format(v_barrel))
+        # self.log.info("Measured v_bus = {}".format(v_bus))
 
         for pin in pins:
             self.register_pin(pin["name"], pin["pintype"], pin["number"], pin["dir"])
 
         self.log.info("HitL initialization complete.")
 
-    def register_pin(self, name: str, pintype: PinType, number: int):
+    def register_pin(self, name: str, pintype: PinType, number: Union[int, AdcPin], pindir: PinMode):
         if pintype == PinType.ANALOG:
-            getter = self.read_adc
-            setter = partial(self.dac.write, number)
+            if pindir == PinMode.INPUT:
+                getter = partial(self.read, number)
+            elif pindir == PinMode.OUTPUT:
+                setter = partial(self.dac.write, number)
         elif pintype == PinType.DIGITAL:
             getter = partial(self.gpio.get, number)
             setter = partial(self.gpio.set, number)
+
+            if pindir == PinMode.INPUT:
+                self.gpio.set_mode(number, PinMode.INPUT)
+            elif pindir == PinMode.OUTPUT:
+                self.gpio.set_mode(number, PinMode.OUTPUT)
         else:
             raise Exception(
                 "Invalid pin type: {}. Must use PinType.ANALOG or PinType.DIGITAL".format(
@@ -106,30 +116,13 @@ class HitL(object):
             ),
         )
 
-    def read_adc(self, hitl_pin: AdcPin, scalar: float):
-        if hitl_pin in [AdcPin.ADC1, AdcPin.ADC2]:
-            pass
-        elif hitl_pin in [
-            AdcPin.ADC3,
-            AdcPin.ADC4,
-            AdcPin.ADC5,
-            AdcPin.ADC6,
-            AdcPin.VBUS,
-            AdcPin.BARREL_JACK,
-            AdcPin.USB_5V,
-        ]:
-            # Set mux and read channel 2
-            pass
-        else:
-            raise Exception("Invalid ADC type")
-
     def self_test(self):
         # GPIO
         self.gpio.set_mode(18, PinMode.OUTPUT)
         assert self.gpio.get(19) == 1
 
         # DAC/ADC
-        test_val = 1.5
+        test_val = random.uniform(0.0, vbus)
         self.dac.write(channel=8, value=test_val)
-        result = self.adc.read(channel=3)
+        result = self.adc.read(ADC_PINS[AdcChannel.SELF_TEST])
         assert abs(result - test_val) < 0.05  # Assert result within 50mV

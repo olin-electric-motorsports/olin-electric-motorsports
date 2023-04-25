@@ -17,7 +17,6 @@ def test_i2c_set_mode():
         gpio.set_mode(6, 3)
 
 
-
 def test_i2c_set():
     i2c = Mock()
     i2c.i2cMaster_Write = Mock(return_value=None)

@@ -38,7 +38,9 @@ class AD5675(object):
 
     def trigger(self):
         self._ldac_enable()
+        self._ldac_disable()
         self._ldac_enable()
+
 
     def _ldac_disable(self):
         self.i2c.gpio_Write(Port.P2, True)

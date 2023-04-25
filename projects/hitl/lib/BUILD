@@ -20,6 +20,7 @@ py_library(
 pytest_test(
     name = "unit",
     srcs = [
+        "tests/test_hitl.py",
         "tests/test_gpio.py",
         "tests/test_dac.py",
     ],
@@ -27,4 +28,16 @@ pytest_test(
     deps = [
         ":hitl",
     ]
+)
+
+pytest_test(
+    name = "hw",
+    srcs = [
+        "tests/test_hitl.py",
+    ],
+    tags = ["manual"],
+    imports = ["."],
+    deps = [
+        ":hitl",
+    ],
 )
