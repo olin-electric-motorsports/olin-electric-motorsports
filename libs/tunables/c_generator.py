@@ -4,7 +4,7 @@ import yaml
 import os
 
 # Currently running this in oem directory
-template_path = "libs/tunables/templates"
+template_path = "libs/tunables"
 
 hfile = "h_file.j2"
 cfile = "c_file.j2"
@@ -16,46 +16,41 @@ def main():
     ecu_list = sys.argv
 
     # Currently this can generate the c structs for multiple boards at once.
-    # The format would be: python c_generator.py ecu1 ecu2 ecu3
-    for ecu in ecu_list[1:]:
-        ecu_path = "vehicle/mkv/software/{}".format(ecu)
-        ymlpath = ecu_path + "/tunables.yml"
+    # The format would be: python c_generator.py path_yamlfile out_directory
+    ymlpath = ecu_list[1]
 
-        # Check that the path to the yml file is correct
-        if os.path.exists(ymlpath):
-            # Reads the tunables.yml file & stores all the struct variables
-            paramslist = get_params(ymlpath)
-            # Generates a C struct with all the parameters in the bms board
-            c_content = c_maker(ecu, paramslist)
-            h_content = h_maker(ecu, paramslist)
+    ecu = ecu_list[1].split("/")[-1]  # Last dir in the ymlpath should be the board.
 
-            # What we made via the jinja template.
-            c_out = "{}/tunables.c".format(ecu_path)
-            h_out = "{}/tunables.h".format(ecu_path)
+    # If the outdir is in the same location of the yml file you can just input in the yaml file path
+    if len(ecu_list) == 2:
+        output_dir = ymlpath
+    else:
+        output_dir = ecu_list[2]
 
-            # Write the .c and .h files
-            with open(c_out, "w+") as file:
-                file.write(c_content)
-                file.close()
+    # Check  that the path to the yml file is correct
+    if os.path.exists(ymlpath):
+        # Reads the tunables.yml file & stores all the struct variables
+        paramslist = get_params("{}/tunables.yml".format(ymlpath))
+        # Generates a C struct with all the parameters in the bms board
+        c_content = c_maker(ecu, paramslist)
+        h_content = h_maker(ecu, paramslist)
 
-            with open(h_out, "w+") as file:
-                file.write(h_content)
-                file.close()
+        # What we made via the jinja template.
+        c_out = "{}/tunables_struct.c".format(output_dir)
+        h_out = "{}/tunables_struct.h".format(output_dir)
 
-            # Check that we wrote everything correctly
-            print(f"\n ########## {ecu} tunables.c file ########## \n")
-            with open(c_out, "r") as file:
-                print(file.read())
-                file.close()
+        # Write the .c and .h files
+        with open(c_out, "w+") as file:
+            file.write(c_content)
+            file.close()
 
-            print(f"\n ########## {ecu} tunables.h file ########## \n")
-            with open(h_out, "r") as file:
-                print(file.read())
-                file.close()
+        with open(h_out, "w+") as file:
+            file.write(h_content)
+            file.close()
 
-        else:
-            # Error msg
-            raise Exception(f"{OSError}: \n No file/directory at {ymlpath}")
+    else:
+        # Error msg
+        raise Exception(f"{OSError}: \n No file/directory at {ymlpath}")
 
 
 # Helper functions
