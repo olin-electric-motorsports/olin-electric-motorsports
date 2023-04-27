@@ -8,9 +8,6 @@ from collections import defaultdict
 import cantools
 import can
 
-# Project Imports
-from utils import artifacts_path, get_logging_config
-
 
 class CANController:
     """High level python object to interface with hardware.
@@ -29,12 +26,10 @@ class CANController:
     def __init__(
         self,
         dbc,
-        bustype: str = "socketcan",
-        channel: str = "vcan0",
+        bus: can.interface.Bus
         bitrate: int = 500000,
     ):
         # Create logger
-        get_logging_config() 
         self.log = logging.getLogger(name=__name__)
 
         # Create empty set of periodic messages
@@ -45,23 +40,19 @@ class CANController:
             can_spec_path
         )
 
-        try:
-            self.can_bus = can.interface.Bus(
-                channel=channel, bustype=bustype, bitrate=bitrate
-            )
-            self.kill_flag = threading.Event()
-            listener = threading.Thread(
-                target=self._listen,
-                name="listener",
-                kwargs={
-                    "can_bus": self.can_bus,
-                    "callback": self._rx_callback,
-                    "kill_flag": self.kill_flag,
-                },
-            )
-            listener.start()
-        except OSError as e:
-            raise
+        self.can_bus = bus
+
+        self.kill_flag = threading.Event()
+        listener = threading.Thread(
+            target=self._listen,
+            name="listener",
+            kwargs={
+                "can_bus": self.can_bus,
+                "callback": self._rx_callback,
+                "kill_flag": self.kill_flag,
+            },
+        )
+        listener.start()
 
     def get_state(self, signal):
         """
@@ -70,11 +61,7 @@ class CANController:
         Args:
             signal (str): signal name to get
         """
-        try:
-            msg = self.message_of_signal[signal]
-        except KeyError:
-            raise Exception(f"Cannot get state of signal '{signal}'. It wasn't found.")
-
+        msg = self.message_of_signal[signal]
         self.log.debug(f"Fetched signal {signal} as {self.signals[msg][signal]}")
         return self.signals[msg][signal]
 

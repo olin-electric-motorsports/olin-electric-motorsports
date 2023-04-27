@@ -8,6 +8,7 @@ import time
 
 # Specific
 import ft4222
+from can.interface import Bus
 
 # Project
 # from projects.hitl.lib.can import CanController
@@ -48,15 +49,14 @@ class HitL(object):
     functions for dealing with CAN communications.
     """
 
-    def __init__(self, can_network: str, vbus: float, pins=[]):
+    def __init__(self, canbus: Bus, can_dbc: str, vbus: float = 5.0, pins=[]):
         i2c = ft4222.openByDescription("FT4222 A")
         i2c.i2cMaster_Init(100000)
-        # i2c.i2cMaster_Write(0b1000000, bytes([0b00001000, 0b00000000]))
 
         self.gpio = MAX7300(i2c)
         self.dac = AD5675(i2c, vref=5.0)
         self.adc = AD7091R(i2c, self.gpio, vref=2.5)  # Pass GPIO to use for mux
-        # self.can = CanController(can_network, baudrate=500000)
+        self.can = CanController(can_dbc, bus, bitrate=500000)
 
         self.vbus = vbus
 
@@ -82,6 +82,10 @@ class HitL(object):
             self.register_pin(pin["name"], pin["pintype"], pin["number"], pin["dir"])
 
         self.log.info("HitL initialization complete.")
+
+    def close(self):
+        self.i2c.close()
+        self.can.close()
 
     def register_pin(self, name: str, pintype: PinType, number: Union[int, AdcPin], pindir: PinMode):
         if pintype == PinType.ANALOG:
