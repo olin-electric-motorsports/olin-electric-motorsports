@@ -69,10 +69,18 @@ static void pcint0_callback(void) {
 /*
     Read value from throttle potentiometer, maps it to value between 0 and
     255 where 255 = 100% throttle
+    Takes in bool for whether the read throttle is the left or not for
+    debugging purposes
     Returns an int16_t representing pedal travel
 */
-static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle) {
+static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle,
+                                   bool is_left_throttle) {
     int16_t throttle_raw = adc_read(throttle->adc_pin);
+    if (is_left_throttle) {
+        throttle_debug.throttle_l_raw = throttle_raw;
+    } else {
+        throttle_debug.throttle_r_raw = throttle_raw;
+    }
     throttle_raw >>= 2; // TODO: ask why this is here
     int16_t range = throttle->throttle_max - throttle->throttle_min;
     float position_pct
@@ -263,8 +271,8 @@ int main(void) {
                 m192_command_message.inverter_enable = dashboard.ready_to_drive;
             }
 
-            int16_t pos_l = get_throttle_travel(&throttle_l);
-            int16_t pos_r = get_throttle_travel(&throttle_r);
+            int16_t pos_l = get_throttle_travel(&throttle_l, true);
+            int16_t pos_r = get_throttle_travel(&throttle_r, false);
             int16_t pos_min = MIN(pos_l, pos_r);
             int16_t pos_max = MAX(pos_l, pos_r);
 
