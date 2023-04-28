@@ -40,13 +40,13 @@ in potentiometer happen and we aren't pressing pedal
 
 /*
 Minimum and maximum ADC counts representing 0% and 100% pedal travel
-Last calibrated 4-21
+Last calibrated 4/28/23 for RKH
 TODO: calibrate for MKVI
 */
-#define THROTTLE_R_MIN_COUNTS (int16_t)((126 + THROTTLE_BUFFER) >> 2)
-#define THROTTLE_R_MAX_COUNTS (int16_t)((690 - THROTTLE_BUFFER) >> 2)
-#define THROTTLE_L_MIN_COUNTS (int16_t)((178 + THROTTLE_BUFFER) >> 2)
-#define THROTTLE_L_MAX_COUNTS (int16_t)((1000 - THROTTLE_BUFFER) >> 2)
+#define THROTTLE_R_MIN_COUNTS (int16_t)((0 + THROTTLE_BUFFER) >> 2)
+#define THROTTLE_R_MAX_COUNTS (int16_t)((1023 - THROTTLE_BUFFER) >> 2)
+#define THROTTLE_L_MIN_COUNTS (int16_t)((0 + THROTTLE_BUFFER) >> 2)
+#define THROTTLE_L_MAX_COUNTS (int16_t)((1023 - THROTTLE_BUFFER) >> 2)
 
 // Pin definitions
 gpio_t SS_IS = PB6;
