@@ -8,6 +8,7 @@ from can import Message
 # Project Imports
 from projects.hitl.software.hitl.cancontroller import CANController
 
+
 @pytest.mark.soft
 @pytest.mark.unit
 def test_create_state_dictionary(can, logger):

@@ -89,7 +89,9 @@ class HitL(object):
         self.i2c.close()
         # self.can.close()
 
-    def register_pin(self, name: str, pintype: PinType, number: Union[int, AdcPin], pindir: PinMode):
+    def register_pin(
+        self, name: str, pintype: PinType, number: Union[int, AdcPin], pindir: PinMode
+    ):
         if pintype == PinType.ANALOG:
             if pindir == PinMode.INPUT:
                 getter = partial(self.adc.read, number)

@@ -7,12 +7,12 @@ from projects.btldr.py_client.btldr import BtldrManager
 from projects.hitl.lib.hitl import HitL
 
 
-@pytest.fixture
+@pytest.fixture(scope = "session")
 def dbc():
     return "vehicle/mkvi/mkvi.dbc"
 
 
-@pytest.fixture
+@pytest.fixture(scope = "session")
 def canbus():
     bus = Bus(
         channel = "can0",
@@ -27,10 +27,16 @@ def canbus():
 
 ECUS = [
     {
-        name = "throttle",
-        btldr_id = 0x728,
-        tunable_id = 0x6ea,
-        binary = "vehicle/mkvi/software/throttle/throttle_patched.bin",
+        "name": "throttle",
+        "btldr_id": 0x728,
+        "tunable_id": 0x6ea,
+        "binary": "vehicle/mkvi/software/throttle/throttle_patched.bin",
+    },
+    {
+        "name": "brakes",
+        "btldr_id": 0x718,
+        "tunable_id": 0x6e6,
+        "binary": "vehicle/mkvi/software/brakes/brakes_patched.bin",
     },
 ]
 
@@ -59,7 +65,7 @@ def btldr(canbus):
     yield btldr
 
 
-@pytest.fixture
+@pytest.fixture(scope = "session")
 def rkh_pins():
     return [
         {
@@ -182,13 +188,46 @@ def rkh_pins():
             "number": 4,
             "dir": PinMode.OUTPUT,
         },
+        {
+            "name": "led0",
+            "pintype": PinType.DIGITAL,
+            "number": 8,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "led1",
+            "pintype": PinType.DIGITAL,
+            "number": 12,
+            "dir": PinMode.OUTPUT,
+        },
     ]
 
 
-@pytest.fixture
+@pytest.fixture(scope = "session")
 def hitl(canbus, dbc, rkh_pins):
     hitl = HitL(canbus, dbc, vbus = 5.0, pins = rkh_pins)
     hitl.canbus = canbus
+
+    # Set initial conditions
+    ## Set analog muxes to use DAC
+    hitl.brake_pressure_sel.set(1)
+    hitl.apps_l_sel.set(1)
+    hitl.apps_r_sel.set(1)
+    hitl.i_sense_sel.set(1)
+
+    # Put DACs in correct range
+    hitl.brake_pressure.set(0.5)
+    hitl.apps_l.set(0.5)
+    hitl.apps_r.set(0.5)
+    hitl.i_sense.set(2.5)
+
+    # Initial GPIO states
+    hitl.shdn_estop_driver.set(1)
+    hitl.shdn_bots.set(1)
+    hitl.shdn_is.set(1)
+    hitl.shdn_interlocks.set(1)
+
+    hitl.imd_output.set(1)
 
     yield hitl
 

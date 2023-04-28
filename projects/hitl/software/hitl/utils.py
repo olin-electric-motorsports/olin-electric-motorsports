@@ -121,4 +121,3 @@ def build_pin(address, num, type, visibility, min, max):
         "min": min,
         "max": max,
     }
-

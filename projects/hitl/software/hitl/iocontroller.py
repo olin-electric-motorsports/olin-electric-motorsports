@@ -6,6 +6,7 @@ from enum import Enum, auto
 
 # Project Imports
 from utils import artifacts_path, get_logging_config
+
 # from ft4222_proxy import FT4222Proxy
 
 
@@ -28,8 +29,9 @@ class Pin:
     idiomatic code so that we can call things like pin.set(0.12) or pin.get() or
     pin.set(1).
     """
+
     def __init__(self, name, pintype: PinType, pinmode: PinMode, hitl: int):
-        self.logger = logging.getLogger(name = "io")
+        self.logger = logging.getLogger(name="io")
         self.name = name
         self.pintype = pintype
         self.pinmode = pinmode
@@ -40,19 +42,25 @@ class Pin:
             raise Exception("Cannot use set method on non-OUTPUT pin")
 
         if (self.pintype == PinType.Digital) and (val not in [0, 1]):
-            self.logger.info("Setting {name} to {value}".format(name=self.name, value=val))
+            self.logger.info(
+                "Setting {name} to {value}".format(name=self.name, value=val)
+            )
         elif (self.pintype == PinType.Analog) and (type(val) == float):
-            self.logger.info("Setting {name} to {value}".format(name=self.name, value=val))
+            self.logger.info(
+                "Setting {name} to {value}".format(name=self.name, value=val)
+            )
         else:
-            self.logger.error("Incorrect type passed (analog pin must use float, digital pin must use 0/1")
+            self.logger.error(
+                "Incorrect type passed (analog pin must use float, digital pin must use 0/1"
+            )
             exit(1)
 
         return self
 
     def get(self) -> Union[int, float]:
-        if (self.pintype == PinType.Digital):
+        if self.pintype == PinType.Digital:
             pass
-        elif (self.pintype == PinType.Analog):
+        elif self.pintype == PinType.Analog:
             pass
 
 

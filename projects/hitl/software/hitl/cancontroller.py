@@ -34,7 +34,7 @@ class CANController:
         bitrate: int = 500000,
     ):
         # Create logger
-        get_logging_config() 
+        get_logging_config()
         self.log = logging.getLogger(name=__name__)
 
         # Create empty set of periodic messages
@@ -89,7 +89,7 @@ class CANController:
             Note: Decoded includes all of the decoding instructions in the DBC
             So any fault/state enum signals would use the actual name, like "PRECHARGE"
             Shutdown Sense signals would be "OPEN" or "CLOSED"
-            Any values that have offsets or scales should have those applied, 
+            Any values that have offsets or scales should have those applied,
                 so for example for throttle potentiometers we would use the percentages,
                 not the raw values
         """

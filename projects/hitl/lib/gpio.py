@@ -2,6 +2,7 @@ from enum import Enum, auto
 from ft4222.I2CMaster import Flag as I2C_Flag
 import time
 
+
 class PinMode(Enum):
     INPUT = auto()
     OUTPUT = auto()

@@ -8,17 +8,20 @@ from projects.hitl.software.hitl.iocontroller import PinMode, PinType
 
 @pytest.fixture(scope="session")
 def can():
-    can = CANController() 
+    can = CANController()
     yield can
     can.close()
 
+
 can2 = can
+
 
 @pytest.fixture(scope="session")
 def io():
-    io = IOController() 
+    io = IOController()
     yield io
     io.close()
+
 
 @pytest.fixture
 def bspd():

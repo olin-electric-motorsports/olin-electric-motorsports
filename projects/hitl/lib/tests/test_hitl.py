@@ -6,11 +6,11 @@ from projects.hitl.lib.adc import PINS, Channel
 @pytest.fixture
 def hitl():
     hitl = HitL(
-        canbus = None,
-        can_dbc = None,
+        canbus=None,
+        can_dbc=None,
         # can_network = "can0",
-        vbus = 5.0,
-        pins = [
+        vbus=5.0,
+        pins=[
             {
                 "name": "led0",
                 "pintype": PinType.DIGITAL,
@@ -47,7 +47,7 @@ def hitl():
                 "number": PINS[Channel.SELF_TEST],
                 "dir": PinMode.INPUT,
             },
-        ]
+        ],
     )
 
     yield hitl
@@ -63,9 +63,10 @@ def test_leds(hitl):
 def test_analog_feedback(hitl):
     analog_write = 1.25
     hitl.dac0.set(analog_write)
-    analog_read = (hitl.adc0.get())
-    assert(abs(analog_write - analog_read) < 0.05)
+    analog_read = hitl.adc0.get()
+    assert abs(analog_write - analog_read) < 0.05
+
 
 def test_gpio_feedback(hitl):
     hitl.test_out.set(1)
-    assert(int.from_bytes(hitl.test_in.get(), "little"))
+    assert int.from_bytes(hitl.test_in.get(), "little")

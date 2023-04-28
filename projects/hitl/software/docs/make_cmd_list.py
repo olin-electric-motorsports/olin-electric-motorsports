@@ -30,6 +30,7 @@ PIN_IO_PATH = os.path.join(artifacts_path, "pin_info.csv")
 DBC_PATH = "todo/no/path/yet"
 OUTPUT_PATH = os.path.join(artifacts_path, "cmd_list.md")
 
+
 # Helper functions
 def generate_header() -> str:
     return HEADER
