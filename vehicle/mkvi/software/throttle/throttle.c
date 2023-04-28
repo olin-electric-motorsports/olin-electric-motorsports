@@ -190,6 +190,7 @@ static bool check_brake(int16_t pos_min) {
             } else {
                 // implausibility prev occured, pedal travel > 5%
                 throttle_debug.throttle_brake_implaus = true;
+                throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
                 return true;
             }
         } else {
