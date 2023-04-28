@@ -9,7 +9,7 @@ py_library(
         "gpio.py",
         "dac.py",
         "adc.py",
-        "can.py"
+        "can_controller.py"
     ],
     deps = [
         requirement("ft4222"),

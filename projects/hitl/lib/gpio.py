@@ -12,6 +12,8 @@ class MAX7300(object):
         self.i2c = i2c
         self.address = address
 
+        self.i2c.i2cMaster_Write(self.address, bytes([0x4, 0b1]))
+
     def set_mode(self, pin, mode):
         # self.log.debug("Setting GPIO{} to mode {}".format(pin, mode))
         assert (pin >= 4) and (pin <= 31)
@@ -21,31 +23,37 @@ class MAX7300(object):
         cmd |= ((pin - 4) // 4) + 1  # Convert from the pin number to
         # which port configuration register it resides in
 
-        data = 0
+        self.i2c.i2cMaster_Write(self.address, bytes([cmd]))
+        data = int.from_bytes(self.i2c.i2cMaster_Read(self.address, 1), "little")
+
         if mode == PinMode.INPUT:
             # This bit of math converts the pin number into the offset used for
             # the mode. Datasheet Table 2.
-            data |= 0b01 << ((pin - 4) % 4) * 2
+            data &= ~((0b11) << (((pin - 4) % 4) * 2))
+            data |= 0b10 << (((pin - 4) % 4) * 2)
         elif mode == PinMode.OUTPUT:
-            data |= 0b10 << ((pin - 4) % 4) * 2
+            data &= ~((0b11) << (((pin - 4) % 4) * 2))
+            data |= 0b01 << (((pin - 4) % 4) * 2)
         else:
             raise Exception("Unknown/unsupported pintype: {}".format(mode))
 
-        self.i2c.i2cMaster_WriteEx(self.address, I2C_Flag.NONE, bytes([cmd, data]))
+        self.i2c.i2cMaster_Write(self.address, bytes([cmd, data]))
+
+        # self.i2c.i2cMaster_Write(self.address, bytes([cmd]))
+        # print("READBACK: ", self.i2c.i2cMaster_Read(self.address, 1))
 
     def set(self, pin, value):
         assert (pin >= 4) and (pin <= 31)
         cmd = 0b00100000 | pin
         data = value  # This should be 0 or 1
 
-        print(bytes([cmd, data]))
-        self.i2c.i2cMaster_WriteEx(self.address, I2C_Flag.NONE, bytes([cmd, data]))
+        self.i2c.i2cMaster_Write(self.address, bytes([cmd, data]))
 
     def get(self, pin):
         assert (pin >= 4) and (pin <= 31)
         cmd = 0b00100000 | pin
 
         # First write to set the register we want to read from
-        self.i2c.i2cMaster_Write(cmd, bytes([cmd]))
+        self.i2c.i2cMaster_Write(self.address, bytes([cmd]))
 
-        return self.i2c.i2cMaster_Read(cmd, 1)
+        return self.i2c.i2cMaster_Read(self.address, 1)

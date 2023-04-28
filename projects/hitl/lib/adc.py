@@ -47,7 +47,7 @@ PINS = {
 
 
 class AD7091R(object):
-    def __init__(self, i2c, gpio, vref: float = 2.5, address: int = 0b0100000):
+    def __init__(self, i2c, gpio, vref: float = 5.0, address: int = 0b0101111):
         self.i2c = i2c
         self.gpio = gpio
         self.vref = vref
@@ -69,10 +69,14 @@ class AD7091R(object):
 
     def read(self, pin: AdcPin):
         if pin.configuration == Cfg.DIRECT:
-            return (self.read_channel(pin.channel) - pin.offset) * pin.scalar
+            raw = self.read_channel(pin.channel)
+            raw_v = raw / 4096.0 * self.vref
+            return (raw_v / pin.scalar) - pin.offset
         elif pin.configuration == Cfg.MUX:
             self.set_mux(pin.channel)
-            return (self.read_channel(2) - pin.offset) * pin.scalar
+            raw = self.read_channel(2)
+            raw_v = raw / 4096.0 * self.vref
+            return (raw_v / pin.scalar) - pin.offset
         else:
             raise Exception("Invalid ADC type: {}".format(pin.configuration))
 
@@ -85,7 +89,7 @@ class AD7091R(object):
         self.i2c.i2cMaster_Write(self.address, bytes([cmd]))
 
         # TODO: WriteEx, Write, ReadEx, Read?
-        self.i2c.i2cMaster_WriteEx(self.address, Flag.REPEATED_START, bytes([cmd]))
+        self.i2c.i2cMaster_Write(self.address, bytes([cmd]))
 
         results = self.i2c.i2cMaster_Read(self.address, 4)
         return ((results[2] & 0xF) << 8) | results[3]
@@ -94,6 +98,6 @@ class AD7091R(object):
         pass
 
     def set_mux(self, channel: int):
-        self.gpio.set(19, channel & 0b001)
-        self.gpio.set(20, channel & 0b010)
-        self.gpio.set(21, channel & 0b100)
+        self.gpio.set(19, int(bool(channel & 0b001)))
+        self.gpio.set(20, int(bool(channel & 0b010)))
+        self.gpio.set(21, int(bool(channel & 0b100)))

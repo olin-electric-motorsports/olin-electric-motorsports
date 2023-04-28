@@ -38,7 +38,7 @@ class Pin(object):
     def set(self, value):
         self.setter(value)
 
-    def get(self, value):
+    def get(self):
         return self.getter()
 
 
@@ -51,12 +51,14 @@ class HitL(object):
 
     def __init__(self, canbus: Bus, can_dbc: str, vbus: float = 5.0, pins=[]):
         i2c = ft4222.openByDescription("FT4222 A")
-        i2c.i2cMaster_Init(100000)
+        i2c.i2cMaster_Init(400000)
+
+        self.i2c = i2c
 
         self.gpio = MAX7300(i2c)
         self.dac = AD5675(i2c, vref=5.0)
-        self.adc = AD7091R(i2c, self.gpio, vref=2.5)  # Pass GPIO to use for mux
-        self.can = CanController(can_dbc, bus, bitrate=500000)
+        self.adc = AD7091R(i2c, self.gpio, vref=5.0)  # Pass GPIO to use for mux
+        # self.can = CanController(can_dbc, bus, bitrate=500000)
 
         self.vbus = vbus
 
@@ -70,13 +72,13 @@ class HitL(object):
         # self.self_test()
         self.log.info("Passed self-test.")
 
-        # v_usb = self.adc.read(ADC_PINS[AdcChannel.USB_5V])
-        # v_barrel = self.adc.read(ADC_PINS[AdcChannel.BARREL_JACK])
-        # v_bus = self.adc.read(ADC_PINS[AdcChannel.VBUS])
+        v_usb = self.adc.read(ADC_PINS[AdcChannel.USB_5V])
+        v_barrel = self.adc.read(ADC_PINS[AdcChannel.BARREL_JACK])
+        v_bus = self.adc.read(ADC_PINS[AdcChannel.VBUS])
 
-        # self.log.info("Measured v_usb = {}".format(v_usb))
-        # self.log.info("Measured v_barrel = {}".format(v_barrel))
-        # self.log.info("Measured v_bus = {}".format(v_bus))
+        self.log.info("Measured v_usb = {}".format(v_usb))
+        self.log.info("Measured v_barrel = {}".format(v_barrel))
+        self.log.info("Measured v_bus = {}".format(v_bus))
 
         for pin in pins:
             self.register_pin(pin["name"], pin["pintype"], pin["number"], pin["dir"])
@@ -85,14 +87,16 @@ class HitL(object):
 
     def close(self):
         self.i2c.close()
-        self.can.close()
+        # self.can.close()
 
     def register_pin(self, name: str, pintype: PinType, number: Union[int, AdcPin], pindir: PinMode):
         if pintype == PinType.ANALOG:
             if pindir == PinMode.INPUT:
-                getter = partial(self.read, number)
+                getter = partial(self.adc.read, number)
+                setter = None
             elif pindir == PinMode.OUTPUT:
                 setter = partial(self.dac.write, number)
+                getter = None
         elif pintype == PinType.DIGITAL:
             getter = partial(self.gpio.get, number)
             setter = partial(self.gpio.set, number)

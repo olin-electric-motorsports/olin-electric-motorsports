@@ -19,7 +19,8 @@ class AD5675(object):
 
         cmd = 0b00110000 | channel
 
-        data = floor(value / self.vref) * 65535
+        data = value / self.vref * 65535.0
+        data = floor(data)
         data_high = (data & 0xFF00) >> 8
         data_low = data & 0x00FF
 
