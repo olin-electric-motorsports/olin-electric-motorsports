@@ -15,17 +15,17 @@
 #include <util/delay.h>
 
 // commented out temporarily for Jack's testing
-// #include "projects/btldr/btldr_lib.h"
-// #include "projects/btldr/git_sha.h"
-// #include "projects/btldr/libs/image/api.h"
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
 
-// /*
-//  * Required for btldr
-//  */
-// image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
-//     .image_magic = IMAGE_MAGIC,
-//     .git_sha = STABLE_GIT_COMMIT,
-// };
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
 
 /*
  * Sets the torque request in the motor controller command message
@@ -40,7 +40,8 @@
 enum State {
     THROTTLE_IDLE,
     THROTTLE_RUN,
-    THROTTLE_OUT_OF_RANGE,
+    THROTTLE_L_OUT_OF_RANGE,
+    THROTTLE_R_OUT_OF_RANGE,
     THROTTLE_POSITION_IMPLAUSIBILITY,
     THROTTLE_BRAKE_PRESSED
 };
