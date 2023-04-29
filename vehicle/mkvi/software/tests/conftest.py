@@ -4,7 +4,8 @@ import logging
 from can.interface import Bus
 
 from projects.btldr.py_client.btldr import BtldrManager
-from projects.hitl.lib.hitl import HitL
+from projects.hitl.lib.hitl import HitL, PinType
+from projects.hitl.lib.gpio import PinMode
 
 
 @pytest.fixture(scope = "session")
@@ -22,7 +23,7 @@ def canbus():
 
     yield bus
 
-    bus.shutdown()
+    # bus.shutdown()
 
 
 ECUS = [
@@ -53,14 +54,14 @@ def btldr(canbus):
     btldr.canbus = canbus
 
     # Flash
-    for ecu in ECUS:
-        resp = btldr.ping(ecu["btldr_id"], 1)
-
-        if resp:
-            log.info("Found {}, flashing.".format(ecu["name"]))
-            btldr.flash(ecu["btldr_id"], ecu["binary"], 1)
-        else:
-            log.warning("Unable to ping {}. Is it connected?".format(ecu["name"]))
+    # for ecu in ECUS:
+    #     resp = btldr.ping(ecu["btldr_id"], 1)
+    #
+    #     if resp:
+    #         log.info("Found {}, flashing.".format(ecu["name"]))
+    #         btldr.flash(ecu["btldr_id"], ecu["binary"], 1)
+    #     else:
+    #         log.warning("Unable to ping {}. Is it connected?".format(ecu["name"]))
 
     yield btldr
 
@@ -205,6 +206,7 @@ def rkh_pins():
 
 @pytest.fixture(scope = "session")
 def hitl(canbus, dbc, rkh_pins):
+    print("Called")
     hitl = HitL(canbus, dbc, vbus = 5.0, pins = rkh_pins)
     hitl.canbus = canbus
 

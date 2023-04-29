@@ -36,9 +36,7 @@ class CANController:
         self.periodic_messages = {}
 
         # Set up dictionary of messages
-        self.message_of_signal, self.signals = self._create_state_dictionary(
-            can_spec_path
-        )
+        self.message_of_signal, self.signals = self._create_state_dictionary(dbc)
 
         self.can_bus = bus
 
@@ -133,7 +131,7 @@ class CANController:
         send_task = self.can_bus.send_periodic(message, period)
         self.periodic_messages[msg_name] = send_task
 
-        self.log.debug(f"Set {msg_name} to be sent periodically every {period} ms")
+        self.log.warning(f"Set {msg_name} to be sent periodically every {period} ms")
 
     def stop_periodic(msg_name: str):
         """

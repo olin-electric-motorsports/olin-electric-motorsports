@@ -57,4 +57,4 @@ class MAX7300(object):
         # First write to set the register we want to read from
         self.i2c.i2cMaster_Write(self.address, bytes([cmd]))
 
-        return self.i2c.i2cMaster_Read(self.address, 1)
+        return int.from_bytes(self.i2c.i2cMaster_Read(self.address, 1), "little")

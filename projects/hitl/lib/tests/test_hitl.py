@@ -8,7 +8,6 @@ def hitl():
     hitl = HitL(
         canbus=None,
         can_dbc=None,
-        # can_network = "can0",
         vbus=5.0,
         pins=[
             {

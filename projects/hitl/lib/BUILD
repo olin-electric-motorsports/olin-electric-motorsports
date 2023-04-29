@@ -1,6 +1,6 @@
 load("@rules_python//python:defs.bzl", "py_binary", "py_library")
 load("//tools/pytest:defs.bzl", "pytest_test")
-load("@hitl_deps//:requirements.bzl", "requirement")
+load("@pydeps//:requirements.bzl", "requirement")
 
 py_library(
     name = "hitl",
