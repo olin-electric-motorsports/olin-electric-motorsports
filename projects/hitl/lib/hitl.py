@@ -101,7 +101,8 @@ class HitL(object):
         if pintype == PinType.ANALOG:
             if pindir == PinMode.INPUT:
                 getter = partial(self.adc.read, number)
-                setter = None elif pindir == PinMode.OUTPUT:
+                setter = None
+            elif pindir == PinMode.OUTPUT:
                 setter = partial(self.dac.write, number)
                 getter = None
         elif pintype == PinType.DIGITAL:
@@ -136,10 +137,9 @@ class HitL(object):
         self.gpio.set_mode(19, PinMode.OUTPUT)
         self.gpio.set_mode(18, PinMode.INPUT)
         self.gpio.set(19, 1)
-        print(self.gpio.get(18))
 
-        # # DAC/ADC
-        # test_val = random.uniform(0.0, vbus)
-        # self.dac.write(channel=8, value=test_val)
-        # result = self.adc.read(ADC_PINS[AdcChannel.SELF_TEST])
-        # assert abs(result - test_val) < 0.05  # Assert result within 50mV
+        # DAC/ADC
+        test_val = random.uniform(0.0, self.vbus)
+        self.dac.write(channel=7, value=test_val)
+        result = self.adc.read(ADC_PINS[AdcChannel.SELF_TEST])
+        assert abs(result - test_val) < 0.05  # Assert result within 50mV
