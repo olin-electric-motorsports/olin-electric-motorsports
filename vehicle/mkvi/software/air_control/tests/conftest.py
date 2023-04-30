@@ -1,62 +1,125 @@
-import os
 import pytest
+import logging
 import time
-from formula.projects.hitl.software.hitl import CANController, IOController
-# from formula.projects.microhitl import MicroHitl, Values as PinValue, PinTypes
 
-# Allow passing in arguments
-def pytest_addoption(parser):
-    parser.addoption("--canbus", action="store", default="can0")
-    parser.addoption("--hitl-port", action="store", default="/dev/ttyACM0")
+from can.interface import Bus
 
-
-@pytest.fixture
-def candevice(request):
-    return request.config.getoption("--canbus")
+from projects.btldr.py_client.btldr import BtldrManager
+from projects.hitl.lib.hitl import HitL, PinType
+from projects.hitl.lib.gpio import PinMode
 
 
-@pytest.fixture
-def hitl_port(request):
-    return request.config.getoption("--hitl-port")
+@pytest.fixture(scope = "session")
+def dbc():
+    return "vehicle/mkvi/mkvi.dbc"
 
 
-@pytest.fixture
+@pytest.fixture()
+def canbus():
+    bus = Bus(
+        channel = "can0",
+        bustype = "socketcan",
+        bitrate = 500000
+    )
+
+    yield bus
+
+
+@pytest.fixture()
 def pins():
-    return {
-        "PRECHARGE_CTL": [3, PinTypes.INPUT],  # PB2
-        "AIR_N_LSD": [5, PinTypes.INPUT],  # PC6
-        "FAULT_LED": [10, PinTypes.OUTPUT],  # PB7
-        "SS_TSMS": [6, PinTypes.OUTPUT],  # PB3
-        "SS_IMD_LATCH": [7, PinTypes.OUTPUT],  # PB4
-        "SS_MPC": [12, PinTypes.OUTPUT],  # PB5
-        "SS_TSMP": [11, PinTypes.OUTPUT],  # PB6
-        "RESET": [2, PinTypes.OUTPUT],
-        "BMS_SENSE": [8, PinTypes.OUTPUT],  # PC0
-        "AIR_P_WELD_DETECT": [4, PinTypes.OUTPUT],  # PC4
-        "AIR_N_WELD_DETECT": [13, PinTypes.OUTPUT],  # PC7
-        "IMD_SENSE": [9, PinTypes.OUTPUT],  # PD0
-    }
+    return [
+        {
+            "name": "precharge_ctl",
+            "pintype": PinType.DIGITAL,
+            "number": 14,
+            "dir": PinMode.INPUT,
+        },
+        {
+            "name": "air_n_lsd",
+            "pintype": PinType.DIGITAL,
+            "number": 29,
+            "dir": PinMode.INPUT,
+        },
+        {
+            "name": "fault_led",
+            "pintype": PinType.DIGITAL,
+            "number": 24,
+            "dir": PinMode.INPUT,
+        },
+        {
+            "name": "ss_tsms",
+            "pintype": PinType.DIGITAL,
+            "number": 10,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "ss_imd_latch",
+            "pintype": PinType.DIGITAL,
+            "number": 15,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "ss_mpc",
+            "pintype": PinType.DIGITAL,
+            "number": 11,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "ss_hvd",
+            "pintype": PinType.DIGITAL,
+            "number": 16,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "reset",
+            "pintype": PinType.DIGITAL,
+            "number": 23,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "air_p_aux",
+            "pintype": PinType.DIGITAL,
+            "number": 30,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "air_n_aux",
+            "pintype": PinType.DIGITAL,
+            "number": 5,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "imd_status",
+            "pintype": PinType.DIGITAL,
+            "number": 28,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "ss_bms",
+            "pintype": PinType.DIGITAL,
+            "number": 6,
+            "dir": PinMode.OUTPUT,
+        },
+        {
+            "name": "ss_tsmp",
+            "pintype": PinType.DIGITAL,
+            "number": 17,
+            "dir": PinMode.OUTPUT,
+        },
+    ]
 
 
-@pytest.fixture
-def iocontroller(hitl_port, pins):
-    ioctrl = IOController(pins)
-    time.sleep(2)
+@pytest.fixture()
+def hitl(canbus, pins, dbc):
+    hitl = HitL(canbus, dbc, vbus = 5.0, pins = pins)
+    hitl.reset.set(1)
 
-    for idx, (name, info) in enumerate(pins.items()):
-        ioctrl.configure_pin(info[0], info[1])
+    yield hitl
 
-    ioctrl.write_pin(pins["RESET"][0], PinValue.HIGH)
-
-    return ioctrl
+    hitl.close()
 
 
-@pytest.fixture
-def canbus(candevice):
-    busname = candevice or "can0"
-
-    can = CANController("vehicle/mkvi/mkvi.dbc", busname, 500000)
-
-    yield can
-
-    can.stop_periodic()
+@pytest.fixture(autouse = True)
+def reset_test(hitl):
+    hitl.reset.set(1)
+    hitl.reset.set(0)

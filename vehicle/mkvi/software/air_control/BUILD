@@ -14,9 +14,9 @@ cc_firmware(
     srcs = [
         "air.c",
         "air_config.h",
-        # "//projects/btldr:git_sha_header",
+        "//projects/btldr:git_sha_header",
     ],
-    # btldr = "//projects/btldr:air_control_btldr",
+    btldr = "//projects/btldr:air_control_btldr",
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
         "//conditions:default": ["//bazel/constraints:incompatible_mcu"],

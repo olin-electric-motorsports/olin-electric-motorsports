@@ -15,13 +15,13 @@
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 
-// /*
-//  * Required for btldr
-//  */
-// image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
-//     .image_magic = IMAGE_MAGIC,
-//     .git_sha = STABLE_GIT_COMMIT,
-// };
+/*
+ * Required for btldr
+ */
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
 
 volatile bool send_can = false;
 
@@ -370,7 +370,7 @@ int main(void) {
     can_init_air_control();
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
-    // updater_init(BTLDR_ID, 5);
+    updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_N_LSD, OUTPUT);
@@ -403,11 +403,10 @@ int main(void) {
     gpio_clear_pin(SS_TSMP);
     gpio_clear_pin(SS_HVD);
 
+    sei();
     air_control_critical.air_state = AIR_STATE_INIT;
 
     set_charger_connected();
-
-    sei();
 
     gpio_set_pin(GENERAL_LED);
 
@@ -434,9 +433,9 @@ int main(void) {
         }
 
         // Updates can only occur when the AIR control state machine is in IDLE
-        // if (air_control_critical.air_state == AIR_STATE_IDLE) {
-        //     updater_loop();
-        // }
+        if (air_control_critical.air_state == AIR_STATE_IDLE) {
+            updater_loop();
+        }
 
         if (send_can) {
             can_send_air_control_critical();
@@ -449,7 +448,7 @@ fault:
 
     while (1) {
         // Allow updates in the event of a fault
-        // updater_loop();
+        updater_loop();
 
         /*
          * Continue senging CAN messages
