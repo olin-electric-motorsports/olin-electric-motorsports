@@ -5,29 +5,29 @@ load("@pydeps//:requirements.bzl", "requirement")
 py_library(
     name = "hitl",
     srcs = [
-        "hitl.py",
-        "gpio.py",
-        "dac.py",
         "adc.py",
-        "can_controller.py"
+        "can_controller.py",
+        "dac.py",
+        "gpio.py",
+        "hitl.py",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         requirement("ft4222"),
     ],
-    visibility = ["//visibility:public"],
 )
 
 pytest_test(
     name = "unit",
     srcs = [
-        "tests/test_hitl.py",
-        "tests/test_gpio.py",
         "tests/test_dac.py",
+        "tests/test_gpio.py",
+        "tests/test_hitl.py",
     ],
     imports = ["."],
     deps = [
         ":hitl",
-    ]
+    ],
 )
 
 pytest_test(
@@ -35,8 +35,8 @@ pytest_test(
     srcs = [
         "tests/test_hitl.py",
     ],
-    tags = ["manual"],
     imports = ["."],
+    tags = ["manual"],
     deps = [
         ":hitl",
     ],
