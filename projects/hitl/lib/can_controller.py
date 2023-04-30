@@ -35,8 +35,10 @@ class CANController:
         # Create empty set of periodic messages
         self.periodic_messages = {}
 
+        self.dbc = dbc
+
         # Set up dictionary of messages
-        self.message_of_signal, self.signals = self._create_state_dictionary(dbc)
+        self.message_of_signal, self.signals = self._create_state_dictionary(self.dbc)
 
         self.can_bus = bus
 
@@ -134,7 +136,9 @@ class CANController:
 
         self.log.warning(f"Set {msg_name} to be sent periodically every {period} ms")
 
-    def stop_periodic(msg_name: str):
+        return send_task
+
+    def stop_periodic(self, msg_name: str):
         """
         Stop a periodic message task
         """
@@ -149,8 +153,13 @@ class CANController:
         """
         Stop all periodic message tasks
         """
+        self.periodic_messages = {}
         self.can_bus.stop_all_periodic_tasks()
         self.log.debug("Stopped all periodic tasks")
+
+
+    def clear_states(self):
+        self.message_of_signal, self.signals = self._create_state_dictionary(self.dbc)
 
     def _create_state_dictionary(self, path: str):
         """Generate self.message_of_signal and self.signals
@@ -199,7 +208,7 @@ class CANController:
                 callback(msg)
 
         can_bus.shutdown()
-        self.log.warning("Shut down CAN hardware gracefully")
+        self.log.info("Shut down CAN hardware gracefully")
 
     def close(self):
         self.kill_flag.set()
