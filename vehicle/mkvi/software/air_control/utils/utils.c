@@ -17,7 +17,7 @@ int get_tractive_voltage(int16_t* voltage, enum tractive_system sys, uint32_t ti
 
                 if (rc == 1) {
                     goto bail;
-                } else if (get_time() - start_time > 1000) {
+                } else if (get_time() - start_time > timeout) {
                     rc = 2;
                     goto bail;
                 }
@@ -33,7 +33,7 @@ int get_tractive_voltage(int16_t* voltage, enum tractive_system sys, uint32_t ti
 
                 if (rc == 1) {
                     goto bail;
-                } else if (get_time() - start_time > 1000) {
+                } else if (get_time() - start_time > timeout) {
                     rc = 2;
                     goto bail;
                 }
@@ -62,7 +62,7 @@ int get_bms_voltage(int16_t* voltage) {
 
         if (rc == 1) {
             goto bail;
-        } else if (get_time() - start_time > 2000) {
+        } else if (get_time() - start_time > 1000) {
             rc = 2;
             goto bail;
         }

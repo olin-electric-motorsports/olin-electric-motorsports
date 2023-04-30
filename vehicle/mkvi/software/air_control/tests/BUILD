@@ -4,7 +4,7 @@ pytest_test(
     name = "tests",
     srcs = [
         "conftest.py",
-        # "test_air.py",
+        "test_air.py",
         "test_initial_checks.py",
     ],
     data = [

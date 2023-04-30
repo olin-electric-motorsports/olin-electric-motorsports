@@ -14,7 +14,7 @@ def dbc():
     return "vehicle/mkvi/mkvi.dbc"
 
 
-@pytest.fixture()
+@pytest.fixture(scope = "session")
 def canbus():
     bus = Bus(
         channel = "can0",
@@ -24,8 +24,10 @@ def canbus():
 
     yield bus
 
+    bus.shutdown()
 
-@pytest.fixture()
+
+@pytest.fixture(scope = "session")
 def pins():
     return [
         {
@@ -109,10 +111,16 @@ def pins():
     ]
 
 
-@pytest.fixture()
+@pytest.fixture(scope = "session")
 def hitl(canbus, pins, dbc):
     hitl = HitL(canbus, dbc, vbus = 5.0, pins = pins)
-    hitl.reset.set(1)
+
+    hitl.ss_bms.set(0)
+    hitl.ss_hvd.set(0)
+    hitl.ss_mpc.set(0)
+    hitl.ss_tsmp.set(0)
+    hitl.ss_imd_latch.set(0)
+    hitl.imd_status.set(1)
 
     yield hitl
 
@@ -120,6 +128,14 @@ def hitl(canbus, pins, dbc):
 
 
 @pytest.fixture(autouse = True)
-def reset_test(hitl):
-    hitl.reset.set(1)
-    hitl.reset.set(0)
+def stop_messages(hitl):
+    hitl.can.stop_all_periodic()
+
+    yield
+
+    hitl.can.clear_states()
+
+
+@pytest.fixture(autouse = True)
+def log_level(caplog):
+    caplog.set_level(logging.WARNING)

@@ -2,13 +2,20 @@ import pytest
 import time
 
 
-# def test_bms_can_timeout(hitl):
-#     """
-#     Fault during init if BMS message takes longer than 1 second to receive
-#     """
-#     time.sleep(0.5)
-#     assert hitl.can.get_state("air_state") == "INIT"
-#     assert hitl.can.get_state("air_fault") == "CAN_BMS_TIMEOUT"
+def reset(hitl):
+    hitl.reset.set(1)
+    hitl.reset.set(0)
+    time.sleep(0.1)
+
+
+def test_bms_can_timeout(hitl):
+    """
+    Fault during init if BMS message takes longer than 1 second to receive
+    """
+    reset(hitl)
+    time.sleep(1.25)
+    assert hitl.can.get_state("air_state") == "INIT"
+    assert hitl.can.get_state("air_fault") == "CAN_BMS_TIMEOUT"
 
 
 def test_bms_voltage_low(hitl):
@@ -18,7 +25,9 @@ def test_bms_voltage_low(hitl):
     hitl.can.set_state("pack_voltage", 100)
     hitl.can.set_periodic("bms_core", 0.1)
 
-    time.sleep(0.5)
+    reset(hitl)
+
+    time.sleep(1.25)
     assert hitl.can.get_state("air_state") == "INIT"
     assert hitl.can.get_state("air_fault") == "BMS_VOLTAGE"
 
@@ -29,9 +38,11 @@ def test_motor_controller_timeout(hitl):
     second to receive
     """
     hitl.can.set_state("pack_voltage", 350)
-    hitl.can.set_periodic("bms_core", 0.30)
+    hitl.can.set_periodic("bms_core", 0.1)
 
-    time.sleep(0.5)
+    reset(hitl)
+
+    time.sleep(1.25)
     assert hitl.can.get_state("air_state") == "INIT"
     assert hitl.can.get_state("air_fault") == "CAN_MC_TIMEOUT"
 
@@ -46,9 +57,13 @@ def test_motor_controller_voltage_high(hitl):
     hitl.can.set_periodic("bms_core", 0.1)
     hitl.can.set_periodic("M167_Voltage_Info", 0.1)
 
-    time.sleep(0.5)
+    reset(hitl)
+
+    time.sleep(1.25)
     assert hitl.can.get_state("air_state") == "INIT"
-    assert hitl.can.get_state("air_fault") == "MOTOR_CONTROLLER_VOLTAGE"
+    assert hitl.can.get_state("air_fault") == "TRACTIVE_VOLTAGE"
+
+    hitl.can.set_state("D1_DC_Bus_Voltage", 0)
 
 
 def test_air_p_weld(hitl):
@@ -61,11 +76,15 @@ def test_air_p_weld(hitl):
     hitl.can.set_periodic("bms_core", 0.1)
     hitl.can.set_periodic("M167_Voltage_Info", 0.1)
 
-    hitl.air_p_aux.set(0)
+    hitl.air_p_aux.set(1)
 
-    time.sleep(0.5)
+    reset(hitl)
+
+    time.sleep(1.25)
     assert hitl.can.get_state("air_state") == "INIT"
     assert hitl.can.get_state("air_fault") == "AIR_P_WELD"
+
+    hitl.air_p_aux.set(0)
 
 
 def test_air_n_weld(hitl):
@@ -77,12 +96,16 @@ def test_air_n_weld(hitl):
     hitl.can.set_periodic("M167_Voltage_Info", 0.1)
     hitl.can.set_state("D1_DC_Bus_Voltage", 0)
 
-    iocontroller.write_pin(pins["AIR_P_WELD_DETECT"][0], PinValue.LOW)
-    iocontroller.write_pin(pins["AIR_N_WELD_DETECT"][0], PinValue.HIGH)
+    hitl.air_p_aux.set(0)
+    hitl.air_n_aux.set(1)
+
+    reset(hitl)
 
     time.sleep(0.5)
-    assert hitl.can.get_state("air_state") == "FAULT"
+    assert hitl.can.get_state("air_state") == "INIT"
     assert hitl.can.get_state("air_fault") == "AIR_N_WELD"
+
+    hitl.air_n_aux.set(0)
 
 
 def test_shutdown_circuit_closed(hitl):
@@ -98,9 +121,13 @@ def test_shutdown_circuit_closed(hitl):
     hitl.air_n_aux.set(0)
     hitl.ss_tsms.set(0)
 
-    time.sleep(0.5)
-    assert hitl.can.get_state("air_state") == "FAULT"
+    reset(hitl)
+
+    time.sleep(1.25)
+    assert hitl.can.get_state("air_state") == "INIT"
     assert hitl.can.get_state("air_fault") == "SHUTDOWN_IMPLAUSIBILITY"
+
+    hitl.ss_tsms.set(1)
 
 
 def test_imd_implausibility(hitl):
@@ -115,11 +142,17 @@ def test_imd_implausibility(hitl):
     hitl.air_p_aux.set(0)
     hitl.air_n_aux.set(0)
     hitl.ss_tsms.set(1)
-    hitl.imd_sense.set(0)
+    hitl.imd_status.set(0)
 
-    time.sleep(0.5)
-    assert hitl.can.get_state("air_state") == "FAULT"
+    reset(hitl)
+
+    time.sleep(1.25)
+    assert hitl.can.get_state("air_state") == "INIT"
     assert hitl.can.get_state("air_fault") == "IMD_STATUS"
+
+    hitl.ss_tsms.set(1)
+    hitl.imd_status.set(1)
+
 
 
 def test_initial_checks_success(hitl):
@@ -133,9 +166,11 @@ def test_initial_checks_success(hitl):
 
     hitl.air_p_aux.set(0)
     hitl.air_n_aux.set(0)
-    hitl.ss_tsms.set(0)
-    hitl.imd_sense.set(0)
+    hitl.ss_tsms.set(1)
+    hitl.imd_status.set(1)
 
-    time.sleep(0.5)
+    reset(hitl)
+
+    time.sleep(5)
     assert hitl.can.get_state("air_fault") == "NONE"
     assert hitl.can.get_state("air_state") == "IDLE"
