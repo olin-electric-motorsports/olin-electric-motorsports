@@ -157,7 +157,6 @@ class CANController:
         self.can_bus.stop_all_periodic_tasks()
         self.log.debug("Stopped all periodic tasks")
 
-
     def clear_states(self):
         self.message_of_signal, self.signals = self._create_state_dictionary(self.dbc)
 
