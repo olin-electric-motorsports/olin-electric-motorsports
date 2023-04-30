@@ -68,4 +68,4 @@ def test_analog_feedback(hitl):
 
 def test_gpio_feedback(hitl):
     hitl.test_out.set(1)
-    assert(hitl.test_in.get() == 1)
+    assert hitl.test_in.get() == 1

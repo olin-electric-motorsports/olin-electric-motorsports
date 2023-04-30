@@ -43,7 +43,7 @@ class CANController:
         self.kill_flag = threading.Event()
         listener = threading.Thread(
             target=self._listen,
-            daemon = True,
+            daemon=True,
             name="listener",
             kwargs={
                 "can_bus": self.can_bus,
