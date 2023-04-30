@@ -92,8 +92,8 @@ class HitL(object):
     def close(self):
         self.i2c.close()
 
-        # if self.can:
-        #     self.can.close()
+        if self.can:
+            self.can.close()
 
     def register_pin(
         self, name: str, pintype: PinType, number: Union[int, AdcPin], pindir: PinMode
@@ -137,6 +137,7 @@ class HitL(object):
         self.gpio.set_mode(19, PinMode.OUTPUT)
         self.gpio.set_mode(18, PinMode.INPUT)
         self.gpio.set(19, 1)
+        assert(self.gpio.get(18) == 1)
 
         # DAC/ADC
         test_val = random.uniform(0.0, self.vbus)

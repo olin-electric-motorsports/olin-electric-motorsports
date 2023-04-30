@@ -43,6 +43,7 @@ class CANController:
         self.kill_flag = threading.Event()
         listener = threading.Thread(
             target=self._listen,
+            daemon = True,
             name="listener",
             kwargs={
                 "can_bus": self.can_bus,
@@ -198,7 +199,7 @@ class CANController:
                 callback(msg)
 
         can_bus.shutdown()
-        self.log.info("Shut down CAN hardware gracefully")
+        self.log.warning("Shut down CAN hardware gracefully")
 
     def close(self):
         self.kill_flag.set()
