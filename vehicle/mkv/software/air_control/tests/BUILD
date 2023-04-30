@@ -11,11 +11,13 @@ pytest_test(
         "//vehicle/mkv:mkv.dbc",
         "//vehicle/mkv/software/air_control",
     ],
+    deprecation = "Old HitL library not around anymore; do not use this",
+    tags = ["manual"],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
     deps = [
-        "//projects/hitl/software/hitl",
+        # "//projects/hitl/software/hitl",
         "//projects/microhitl",
     ],
 )
