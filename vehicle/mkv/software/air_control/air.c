@@ -61,7 +61,6 @@ static void set_fault(enum air_fault_e the_fault) {
     }
 }
 
-
 /*
  * Run through initial checks to ensure safe operation. Checks are:
  *  - BMS voltage is above minimum

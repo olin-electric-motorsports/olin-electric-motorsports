@@ -23,10 +23,10 @@ cc_firmware(
     }),
     deps = [
         ":can_api",
-        "//vehicle/mkvi/software/air_control/utils",
         "//libs/gpio",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
+        "//vehicle/mkvi/software/air_control/utils",
     ],
 )
 

@@ -1,6 +1,6 @@
 #include <avr/interrupt.h>
-#include <stdlib.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <util/delay.h>
 
 #include "libs/gpio/api.h"
@@ -63,7 +63,7 @@ static void set_fault(enum air_fault_e the_fault) {
 //             return 0;
 //         }
 //     } while (rc != 0);
-//    
+//
 //     // Catch-all, shouldn't happen
 //     return 1;
 // }
@@ -262,8 +262,9 @@ static void state_machine_run(void) {
             }
 
             if (get_time() - start_time >= PRECHARGE_DELAY_MS) {
-                rc = get_tractive_voltage(&tractive_voltage, tractive_sys, 500); // 500ms
-                                                                                 // timeout
+                rc = get_tractive_voltage(&tractive_voltage, tractive_sys,
+                                          500); // 500ms
+                                                // timeout
                 if (rc != 0) {
                     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
                     once = true;
@@ -273,8 +274,7 @@ static void state_machine_run(void) {
                 // Set correct scale for MC voltage
                 tractive_voltage = tractive_voltage * 0.1;
 
-                if (tractive_voltage
-                    > (PRECHARGE_THRESHOLD * pack_voltage)) {
+                if (tractive_voltage > (PRECHARGE_THRESHOLD * pack_voltage)) {
                     gpio_set_pin(AIR_N_LSD); // Close AIR negative
                     gpio_clear_pin(PRECHARGE_CTL); // Close precharge relay
                     once = true;
@@ -342,7 +342,8 @@ static void state_machine_run(void) {
             int16_t tractive_voltage = 0;
 
             if (get_time() - start_time < DISCHARGE_TIMEOUT) {
-                int rc = get_tractive_voltage(&tractive_voltage, tractive_sys, 500);
+                int rc = get_tractive_voltage(&tractive_voltage, tractive_sys,
+                                              500);
 
                 if (rc == 1) {
                     set_fault(AIR_FAULT_CAN_ERROR);

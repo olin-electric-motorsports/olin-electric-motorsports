@@ -3,7 +3,8 @@
 #include "vehicle/mkvi/software/air_control/can_api.h"
 
 // int get_tractive_voltage(int16_t* voltage) {
-int get_tractive_voltage(int16_t* voltage, enum tractive_system sys, uint32_t timeout) {
+int get_tractive_voltage(int16_t* voltage, enum tractive_system sys,
+                         uint32_t timeout) {
     int rc;
 
     uint32_t start_time = get_time();

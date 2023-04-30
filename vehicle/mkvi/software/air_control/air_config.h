@@ -27,9 +27,9 @@ gpio_t AIR_N_WELD_DETECT = PC5;
 
 // This is the raw value we compare. This is the real voltage divided by 256 and
 // multiplied by 10000.
-#define BMS_VOLTAGE_THRESHOLD_LOW         (7813)
+#define BMS_VOLTAGE_THRESHOLD_LOW (7813)
 #define TRACTIVE_THRESHOLD_LOW_dV (50) // 50 decivolts (5 volts)
-#define PRECHARGE_THRESHOLD               (0.95) // 95% of pack voltage
+#define PRECHARGE_THRESHOLD       (0.95) // 95% of pack voltage
 
 // Time delay during discharge before checking state of AIRs
 #define WELD_CHECK_DELAY_MS (100) // milliseconds

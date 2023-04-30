@@ -9,25 +9,21 @@ from projects.hitl.lib.hitl import HitL, PinType
 from projects.hitl.lib.gpio import PinMode
 
 
-@pytest.fixture(scope = "session")
+@pytest.fixture(scope="session")
 def dbc():
     return "vehicle/mkvi/mkvi.dbc"
 
 
-@pytest.fixture(scope = "session")
+@pytest.fixture(scope="session")
 def canbus():
-    bus = Bus(
-        channel = "can0",
-        bustype = "socketcan",
-        bitrate = 500000
-    )
+    bus = Bus(channel="can0", bustype="socketcan", bitrate=500000)
 
     yield bus
 
     bus.shutdown()
 
 
-@pytest.fixture(scope = "session")
+@pytest.fixture(scope="session")
 def pins():
     return [
         {
@@ -111,9 +107,9 @@ def pins():
     ]
 
 
-@pytest.fixture(scope = "session")
+@pytest.fixture(scope="session")
 def hitl(canbus, pins, dbc):
-    hitl = HitL(canbus, dbc, vbus = 5.0, pins = pins)
+    hitl = HitL(canbus, dbc, vbus=5.0, pins=pins)
 
     hitl.ss_bms.set(0)
     hitl.ss_hvd.set(0)
@@ -127,7 +123,7 @@ def hitl(canbus, pins, dbc):
     hitl.close()
 
 
-@pytest.fixture(autouse = True)
+@pytest.fixture(autouse=True)
 def stop_messages(hitl):
     hitl.can.stop_all_periodic()
 
@@ -136,6 +132,6 @@ def stop_messages(hitl):
     hitl.can.clear_states()
 
 
-@pytest.fixture(autouse = True)
+@pytest.fixture(autouse=True)
 def log_level(caplog):
     caplog.set_level(logging.WARNING)

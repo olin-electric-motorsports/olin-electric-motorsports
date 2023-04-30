@@ -68,7 +68,7 @@ def test_motor_controller_voltage_high(hitl):
 
 def test_air_p_weld(hitl):
     """
-    Faults during init if an AIR_P weld is detected    
+    Faults during init if an AIR_P weld is detected
     """
     hitl.can.periodic_messages = {}
     hitl.can.set_state("pack_voltage", 350)
@@ -89,7 +89,7 @@ def test_air_p_weld(hitl):
 
 def test_air_n_weld(hitl):
     """
-    Faults during init if an AIR_N weld is detected    
+    Faults during init if an AIR_N weld is detected
     """
     hitl.can.set_periodic("bms_core", 0.1)
     hitl.can.set_state("pack_voltage", 350)
@@ -152,7 +152,6 @@ def test_imd_implausibility(hitl):
 
     hitl.ss_tsms.set(1)
     hitl.imd_status.set(1)
-
 
 
 def test_initial_checks_success(hitl):

@@ -15,7 +15,7 @@ pytest_test(
         "//bazel/constraints:atmega16m1",
     ],
     deps = [
-        "//projects/hitl/lib:hitl",
         "//projects/btldr/py_client:btldr",
+        "//projects/hitl/lib:hitl",
     ],
 )

@@ -35,6 +35,8 @@ def initialize_to_idle(hitl):
 """
 Tests
 """
+
+
 def test_idle_imd_fault(hitl):
     """
     Set IMD pin low in IDLE state to simulate IMD fault
@@ -93,7 +95,7 @@ def test_transition_ss_closed_precharge(hitl):
     time.sleep(0.10)
 
     assert "PRECHARGE" == hitl.can.get_state("air_state")
-    assert(hitl.precharge_ctl.get() == 1)
+    assert hitl.precharge_ctl.get() == 1
 
 
 def test_precharge_charge_failure(hitl):
@@ -136,7 +138,7 @@ def test_precharge_motor_controller_timeout(hitl):
     time.sleep(0.2)
 
     assert "PRECHARGE" == hitl.can.get_state("air_state")
-    assert(1 == hitl.precharge_ctl.get())
+    assert 1 == hitl.precharge_ctl.get()
 
     time.sleep(4.0)
 
