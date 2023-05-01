@@ -14,6 +14,8 @@ py_library(
     visibility = ["//visibility:public"],
     deps = [
         requirement("ft4222"),
+        requirement("python-can"),
+        requirement("cantools"),
     ],
 )
 
@@ -36,7 +38,7 @@ pytest_test(
         "tests/test_hitl.py",
     ],
     imports = ["."],
-    tags = ["manual"],
+    tags = ["manual", "hardware"],
     deps = [
         ":hitl",
     ],

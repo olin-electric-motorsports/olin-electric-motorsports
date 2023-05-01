@@ -92,7 +92,7 @@ class HitL(object):
     def close(self):
         self.i2c.close()
 
-        if self.can:
+        if getattr(self, can):
             self.can.close()
 
     def register_pin(
