@@ -338,7 +338,6 @@ class BtldrManager:
             else:
                 break
 
-
         if maybe_response:
             r = self.db.decode_message(offset, maybe_response.data)
             return r
