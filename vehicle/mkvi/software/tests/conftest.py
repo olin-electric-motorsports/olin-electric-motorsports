@@ -23,10 +23,22 @@ def canbus():
 
     yield bus
 
-    # bus.shutdown()
+    bus.shutdown()
 
 
 ECUS = [
+    {
+        "name": "air_control",
+        "btldr_id": 0x700,
+        "tunable_id": 0x6e0,
+        "binary": "vehicle/mkvi/software/air_control/air_control_patched.bin",
+    },
+    {
+        "name": "bms",
+        "btldr_id": 0x708,
+        "tunable_id": 0x6e2,
+        "binary": "vehicle/mkvi/software/bms/bms_patched.bin",
+    },
     {
         "name": "throttle",
         "btldr_id": 0x728,
