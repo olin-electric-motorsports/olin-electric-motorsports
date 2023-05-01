@@ -14,7 +14,7 @@
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 
-// Required for btldr
+//Required for btldr
 image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .image_magic = IMAGE_MAGIC,
     .git_sha = STABLE_GIT_COMMIT,
@@ -39,9 +39,9 @@ void pcint0_callback(void) {
 
 // Check whether an LED needs updating, and if so, change its state
 void update_LEDs(void) {
-    if (update_LED_trigger == true) {
+    if (update_LED_trigger) {
         // Update Brake Light LED on the PCB
-        if (bspd.brake_gate) {
+        if (bspd.brake_gate  == true) {
             gpio_set_pin(BRAKE_LL_LED);
         } else {
             gpio_clear_pin(BRAKE_LL_LED);
@@ -62,6 +62,7 @@ void update_LEDs(void) {
         }
         update_LED_trigger = false;
     }
+    
 }
 
 int main(void) {
@@ -77,7 +78,7 @@ int main(void) {
     adc_init();
 
     // Begin bootloader update function
-    // updater_init(BTLDR_ID, 5);
+    updater_init(BTLDR_ID, 5);
 
     // Start 100Hz CAN update timer (print results to can 100 times / sec)
     timer_init(&timer0_cfg);
@@ -104,7 +105,7 @@ int main(void) {
     ////////////////////////////// BSPD LOOP /////////////////////////////
     for (;;) {
         // BLTDR loop poll function
-        // updater_loop();
+        updater_loop();
 
         if (send_can) {
             bspd.brake_pressure = adc_read(BRAKE_PRESSURE_SENSE);
