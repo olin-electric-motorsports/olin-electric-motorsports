@@ -327,9 +327,20 @@ class BtldrManager:
             ]
         )
 
-        maybe_response = self.canbus.recv(timeout)
+        while True:
+            maybe_response = self.canbus.recv(timeout)
+
+            if maybe_response == None:
+                break
+
+            if maybe_response.arbitration_id != ecu_id + offset:
+                continue
+            else:
+                break
+
 
         if maybe_response:
-            return self.db.decode_message(offset, maybe_response.data)
+            r = self.db.decode_message(offset, maybe_response.data)
+            return r
         else:
             return None
