@@ -1,18 +1,27 @@
-ecu: throttle
+board: throttle
 tunables_id: 0x6ea
-tunables:
+params:
   - name: throttle_l_max
-    current_value: 7000
+    current_value: 4000
+    type: uint32_t
+    mutable: true
     last_update: 10391028123
 
   - name: throttle_r_max
-    current_value: 7000
+    current_value: 1000
+    type: uint32_t
+    mutable: true
     last_update: 10391028123
 
   - name: throttle_l_min
     current_value: 7000
+    type: uint32_t
+    mutable: true
     last_update: 10391028123
 
   - name: throttle_r_min
-    current_value: 7000
+    current_value: 6000
+    type: uint32_t
+    mutable: true
     last_update: 10391028123
+

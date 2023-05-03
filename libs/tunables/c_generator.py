@@ -19,25 +19,38 @@ def main():
     # The format would be: python c_generator.py path_yamlfile out_directory
     ymlpath = ecu_list[1]
 
+    # .find(0:ecu_list[1].find("/tunables.yml"))
+
     ecu = ecu_list[1].split("/")[-1]  # Last dir in the ymlpath should be the board.
 
     # If the outdir is in the same location of the yml file you can just input in the yaml file path
     if len(ecu_list) == 2:
-        output_dir = ymlpath
+        output_dir = ymlpath[0 : ymlpath.find("/tunables.yml")]
+
     else:
         output_dir = ecu_list[2]
 
     # Check  that the path to the yml file is correct
     if os.path.exists(ymlpath):
+        # get board name
+        with open(ymlpath, "r") as file:
+            try:
+
+                ecu = yaml.safe_load(file)["board"]
+            except yaml.YAMLError as exc:
+                print(exc)
+                return
+
         # Reads the tunables.yml file & stores all the struct variables
-        paramslist = get_params("{}/tunables.yml".format(ymlpath))
+        paramslist = get_params(ymlpath)
+
         # Generates a C struct with all the parameters in the bms board
         c_content = c_maker(ecu, paramslist)
         h_content = h_maker(ecu, paramslist)
 
         # What we made via the jinja template.
-        c_out = "{}/tunables_struct.c".format(output_dir)
-        h_out = "{}/tunables_struct.h".format(output_dir)
+        c_out = f"{output_dir}/tunables_{ecu}_tunables.c"
+        h_out = f"{output_dir}/tunables_{ecu}_tunables.h"
 
         # Write the .c and .h files
         with open(c_out, "w+") as file:

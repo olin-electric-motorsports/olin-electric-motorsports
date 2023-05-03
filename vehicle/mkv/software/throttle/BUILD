@@ -56,3 +56,4 @@ can_api_files(
     dbc = "//vehicle/mkv:mkv.dbc",
     yaml = ":throttle.yml",
 )
+
