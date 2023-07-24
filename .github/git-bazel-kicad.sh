@@ -35,8 +35,9 @@ if [[ ! -z $files ]]; then
         schematic_file=${file::-3}sch
 
         layout_file=${file::-3}pcb
+        full_dirname=$(dirname $file)
         hardware_dirname=$(basename $(dirname $file))
-        OUTPUT_DIR=$OUTPUT_BASE_DIR/$hardware_dirname
+        OUTPUT_DIR=$OUTPUT_BASE_DIR/$full_dirname
         mkdir -p $OUTPUT_DIR
 
         
@@ -50,8 +51,8 @@ if [[ ! -z $files ]]; then
 
         echo "file: ${schematic_file}"
         if [[ ! -z $layout_file ]]; then
-            kicad-cli pcb export svg --output $OUTPUT_DIR/${hardware_dirname}_top.svg --layers F.Cu,B.Cu,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,User.Drawings,Edge.Cuts --exclude-drawing-sheet $layout_file
-            kicad-cli pcb export svg --output $OUTPUT_DIR/${hardware_dirname}_bottom.svg --layers F.Cu,B.Cu,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,User.Drawings,Edge.Cuts -m --exclude-drawing-sheet $layout_file
+            kicad-cli pcb export svg --output $OUTPUT_DIR/${hardware_dirname}_a_top_pcb.svg --layers F.Cu,B.Cu,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,User.Drawings,Edge.Cuts --exclude-drawing-sheet $layout_file
+            kicad-cli pcb export svg --output $OUTPUT_DIR/${hardware_dirname}_b_bottom_pcb.svg --layers F.Cu,B.Cu,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,User.Drawings,Edge.Cuts -m --exclude-drawing-sheet $layout_file
         fi
 
     done
