@@ -63,7 +63,7 @@
         "annular_width": "error",
         "clearance": "error",
         "copper_edge_clearance": "error",
-        "courtyards_overlap": "error",
+        "courtyards_overlap": "ignore",
         "diff_pair_gap_out_of_range": "error",
         "diff_pair_uncoupled_length_too_long": "error",
         "drill_out_of_range": "error",
@@ -104,7 +104,7 @@
         "allow_microvias": false,
         "max_error": 0.005,
         "min_clearance": 0.0,
-        "min_copper_edge_clearance": 0.01,
+        "min_copper_edge_clearance": 0.0,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.19999999999999998,
@@ -117,7 +117,13 @@
         "use_height_for_length_calcs": true
       },
       "track_widths": [
-        0.0
+        0.0,
+        0.1524,
+        0.2032,
+        0.254,
+        0.3048,
+        0.381,
+        0.635
       ],
       "via_dimensions": [
         {
@@ -135,7 +141,13 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      "lib_symbol_issues|1917700|2476500|00000000-0000-0000-0000-000061fd9b5f|00000000-0000-0000-0000-000000000000",
+      "lib_symbol_issues|2171700|311150|1eebd38f-2230-4c5f-9b80-b1f786c8e33c|00000000-0000-0000-0000-000000000000",
+      "lib_symbol_issues|2806700|990600|f0efa935-6e5b-48df-9a75-8fdae4f2c827|00000000-0000-0000-0000-000000000000",
+      "lib_symbol_issues|292100|1606550|56fe09cc-670f-4bb4-acd4-c6379d3f7e5c|00000000-0000-0000-0000-000000000000",
+      "power_pin_not_driven|457200|406400|df8c3011-7dd6-4c6a-b666-9c62611dc324|00000000-0000-0000-0000-000000000000"
+    ],
     "meta": {
       "version": 0
     },
@@ -352,7 +364,7 @@
     "classes": [
       {
         "bus_width": 12.0,
-        "clearance": 0.2,
+        "clearance": 0.1508,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
