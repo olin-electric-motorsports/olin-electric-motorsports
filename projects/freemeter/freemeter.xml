@@ -1,0 +1,2442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/home/skachru/Documents/olin-electric-motorsports/projects/freemeter/freemeter.kicad_sch</source>
+    <date>Tue 15 Aug 2023 11:20:36 AM EDT</date>
+    <tool>Eeschema 6.0.11-2627ca5db0~126~ubuntu22.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Freemeter </title>
+        <company/>
+        <rev/>
+        <date>22/02/2023</date>
+        <source>freemeter.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>adc.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>flyback.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/">
+      <title_block>
+        <title>OEM Project Template</title>
+        <company>Olin Electric Motorsports</company>
+        <rev>1</rev>
+        <date>2019-08-22</date>
+        <source>microcontroller.kicad_sch</source>
+        <comment number="1" value="Wesley Soo-Hoo"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="5" name="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>optoisolators.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="6" name="/LDO/" tstamps="/3f61c76f-7cf4-4b8e-a562-d14ec6c3cd85/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>LDO.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="7" name="/Current Shunt /" tstamps="/fabe9c4b-452b-4e8b-901c-d73f5b744d1c/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>currentshunt.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="8" name="/Voltage Divider/" tstamps="/9da0fe99-c29d-4ab7-ae01-c96ae6a529ac/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>voltagedivider.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J101">
+      <value>Conn_01x07</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x07" description="Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="freemeter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>60a85029-588d-4a01-8c8f-dda96dcfd8d5</tstamps>
+    </comp>
+    <comp ref="J102">
+      <value>Conn_01x07</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x07" description="Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="freemeter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>63f31928-dd9f-46d6-a88e-b9e8e16c5e11</tstamps>
+    </comp>
+    <comp ref="J103">
+      <value>Conn_02x02_Counter_Clockwise</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_02x02_Counter_Clockwise" description="Generic connector, double row, 02x02, counter clockwise pin numbering scheme (similar to DIP package numbering), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="freemeter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8ac0c92d-9f34-40e5-a533-c685926560ff</tstamps>
+    </comp>
+    <comp ref="J104">
+      <value>Conn_02x02_Counter_Clockwise</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_02x02_Counter_Clockwise" description="Generic connector, double row, 02x02, counter clockwise pin numbering scheme (similar to DIP package numbering), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="freemeter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8d992703-1aad-4bdc-8da5-cf21292f9f4f</tstamps>
+    </comp>
+    <comp ref="R101">
+      <value>WSBM8518L1000JT</value>
+      <footprint>footprints:Vishay_WSB</footprint>
+      <libsource lib="OEM" part="WSBM8518L1000JT" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="freemeter.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cdc895f2-d58c-4a12-9378-7bff6a519838 89dd7deb-7aad-44df-a1c0-67efccfc7641</tstamps>
+    </comp>
+    <comp ref="C201">
+      <value>C_10uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1052-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138</field>
+      </fields>
+      <libsource lib="formula" part="C_10uF" description="Capacitor, 10uF, 10V, 10%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-1052-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>143fac8c-0771-48fb-9d14-9f6361f0731b</tstamps>
+    </comp>
+    <comp ref="C202">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>e1bcbf48-c57f-49d5-b14b-db026614b891</tstamps>
+    </comp>
+    <comp ref="C203">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>30eb6342-f1d5-47dd-8588-14fce2bf3330</tstamps>
+    </comp>
+    <comp ref="C204">
+      <value>C_10uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1052-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138</field>
+      </fields>
+      <libsource lib="formula" part="C_10uF" description="Capacitor, 10uF, 10V, 10%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-1052-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>ffa07668-1154-4317-be3a-2fa7c59a69f8</tstamps>
+    </comp>
+    <comp ref="C205">
+      <value>C_220pF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>11e0258a-282d-4312-920b-68a753020de9</tstamps>
+    </comp>
+    <comp ref="C206">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>3b06406b-14ed-45ee-8cc0-f95813516aab</tstamps>
+    </comp>
+    <comp ref="C207">
+      <value>C_220pF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>0084a4b8-7064-4a8b-94c1-2a35cfb6e454</tstamps>
+    </comp>
+    <comp ref="C208">
+      <value>C_220pF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>481bf63a-4398-4540-8212-547cea445b49</tstamps>
+    </comp>
+    <comp ref="C209">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>5657eb6a-5aa0-48fc-859e-0726a3407859</tstamps>
+    </comp>
+    <comp ref="C210">
+      <value>C_220pF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>aa34313c-a934-4205-9168-d1adec29deb7</tstamps>
+    </comp>
+    <comp ref="R201">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>3708e0c1-3368-436a-a50d-cb5be4e5c6da</tstamps>
+    </comp>
+    <comp ref="R202">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>589de5e5-b908-4845-a1c1-c00bb6ba914c</tstamps>
+    </comp>
+    <comp ref="R203">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>65e26d18-5c8f-4b82-9ae1-970698295704</tstamps>
+    </comp>
+    <comp ref="R204">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>f166d75c-c5e3-4f26-817f-634aa2fb4248</tstamps>
+    </comp>
+    <comp ref="R205">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>7b7ee7ef-44d2-47b5-abdf-fa0b611170fb</tstamps>
+    </comp>
+    <comp ref="R206">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>dfc40e62-90cd-446e-8aa6-cf5c3b12e830</tstamps>
+    </comp>
+    <comp ref="R207">
+      <value>R_301</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>70f6eb54-4bec-4c6a-8601-e1a7a5eae8b1</tstamps>
+    </comp>
+    <comp ref="R208">
+      <value>R_301</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>0f8e3d0b-8252-492f-ba9e-a1eeac05738b</tstamps>
+    </comp>
+    <comp ref="R209">
+      <value>R_301</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>92936f68-17c2-465d-b7ac-e7dd121bc4da</tstamps>
+    </comp>
+    <comp ref="R210">
+      <value>R_301</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>78f955df-e758-43ad-8e34-563ed01ac531</tstamps>
+    </comp>
+    <comp ref="U201">
+      <value>ADS1222IPWR</value>
+      <footprint>footprints:ADS1222IPWR</footprint>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="Package">SOP65P640X120-14N</field>
+      </fields>
+      <libsource lib="OEM" part="ADS1222IPWR" description=""/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="Package" value="SOP65P640X120-14N"/>
+      <property name="Sheetname" value="ADC"/>
+      <property name="Sheetfile" value="adc.kicad_sch"/>
+      <sheetpath names="/ADC/" tstamps="/b5ceec11-a14a-46aa-93d3-444a5f81d7c0/"/>
+      <tstamps>c7204547-867b-4bc7-b614-fd7df01d0f27</tstamps>
+    </comp>
+    <comp ref="C301">
+      <value>C_1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-6470-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467</field>
+      </fields>
+      <libsource lib="formula" part="C_1uF" description="Capacitor, 1uF, 50V, 0805"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-6470-1-ND"/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>8e5d66ad-5f25-4ada-bceb-f53ee963573b</tstamps>
+    </comp>
+    <comp ref="C302">
+      <value>C_4.7uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://www.samsungsem.com/kr/support/product-search/mlcc/CL10A475KQ8NNNC.jsp</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1045-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10A475KQ8NNNC/1276-1045-1-ND/3889131</field>
+      </fields>
+      <libsource lib="formula" part="C_4.7uF" description="Capacitor, 4.7uF, 6.3V, 10%, 0603"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-1045-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10A475KQ8NNNC/1276-1045-1-ND/3889131"/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>39cad0b3-96a1-4209-b012-d6d767431d19</tstamps>
+    </comp>
+    <comp ref="C303">
+      <value>C_1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-6470-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467</field>
+      </fields>
+      <libsource lib="formula" part="C_1uF" description="Capacitor, 1uF, 50V, 0805"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-6470-1-ND"/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>130ac936-684d-4769-a649-1f723200ef3f</tstamps>
+    </comp>
+    <comp ref="C304">
+      <value>C_4.7uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://www.samsungsem.com/kr/support/product-search/mlcc/CL10A475KQ8NNNC.jsp</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1045-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10A475KQ8NNNC/1276-1045-1-ND/3889131</field>
+      </fields>
+      <libsource lib="formula" part="C_4.7uF" description="Capacitor, 4.7uF, 6.3V, 10%, 0603"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-1045-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10A475KQ8NNNC/1276-1045-1-ND/3889131"/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>1be566ec-efd3-4818-b905-cff83cb6251a</tstamps>
+    </comp>
+    <comp ref="CR301">
+      <value>MBR0520L</value>
+      <footprint>footprints:MBR0520L</footprint>
+      <libsource lib="OEM" part="MBR0520L" description=""/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>80c0cfc1-a606-42b2-9cbb-a137a572556e</tstamps>
+    </comp>
+    <comp ref="CR302">
+      <value>MBR0520L</value>
+      <footprint>footprints:MBR0520L</footprint>
+      <libsource lib="OEM" part="MBR0520L" description=""/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>f2fd8e43-01c9-4a96-8cb7-1cca62544c73</tstamps>
+    </comp>
+    <comp ref="T301">
+      <value>760390014</value>
+      <footprint>footprints:760390014</footprint>
+      <libsource lib="OEM" part="760390014" description=""/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>b61cdf4d-8d24-4f5b-9b4f-7169567d14b2</tstamps>
+    </comp>
+    <comp ref="U301">
+      <value>SN6501DBVT</value>
+      <footprint>OEM:SOT95P280X145-5N</footprint>
+      <libsource lib="OEM" part="SN6501DBVT" description="Flyback Converter "/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>d40cf037-f019-46aa-bb70-ef30edce4534</tstamps>
+    </comp>
+    <comp ref="U302">
+      <value>TPS76350</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/tps763.pdf</datasheet>
+      <libsource lib="OEM" part="TPS76350" description="Low power 150mA LDO, 1.6V fixed output voltage, SOT-23-5"/>
+      <property name="Sheetname" value="Flyback converter "/>
+      <property name="Sheetfile" value="flyback.kicad_sch"/>
+      <sheetpath names="/Flyback converter /" tstamps="/558b8156-7861-45f0-ba9a-21e7f6f8d888/"/>
+      <tstamps>a12ffed9-2e40-4ac4-b86d-8fd8e05c75b8</tstamps>
+    </comp>
+    <comp ref="C401">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d58e34b</tstamps>
+    </comp>
+    <comp ref="C402">
+      <value>C_100pF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>https://katalog.we-online.de/pbs/datasheet/885012007057.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">732-7852-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/wurth-electronics-inc/885012007057/732-7852-1-ND/5454479</field>
+      </fields>
+      <libsource lib="formula" part="C_100pF" description="Capacitor, 100pF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="732-7852-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/wurth-electronics-inc/885012007057/732-7852-1-ND/5454479"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d58e505</tstamps>
+    </comp>
+    <comp ref="C403">
+      <value>C_30pF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1130-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216</field>
+      </fields>
+      <libsource lib="formula" part="C_30pF" description="Capacitor, 30pF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-1130-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d5eb5b2</tstamps>
+    </comp>
+    <comp ref="C404">
+      <value>C_30pF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1130-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216</field>
+      </fields>
+      <libsource lib="formula" part="C_30pF" description="Capacitor, 30pF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-1130-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d5eb694</tstamps>
+    </comp>
+    <comp ref="C405">
+      <value>C_0.1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>http://datasheets.avx.com/X7RDielectric.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <libsource lib="formula" part="C_0.1uF" description="Capacitor, 0.1uF, 50V, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="478-3352-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=478-3352-1-ND"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d5fb603</tstamps>
+    </comp>
+    <comp ref="D401">
+      <value>LED_0805</value>
+      <footprint>footprints:LED_0805_OEM</footprint>
+      <libsource lib="OEM" part="LED_0805" description="Light emitting diode 0805"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>1cee994c-8d78-4d4e-b6d0-02635119260e</tstamps>
+    </comp>
+    <comp ref="J401">
+      <value>CONN_02X03</value>
+      <footprint>footprints:Pin_Header_Straight_2x03</footprint>
+      <datasheet>http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">609-3234-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491</field>
+      </fields>
+      <libsource lib="formula" part="CONN_02X03" description="Connector header through hole 2x3 0.100&quot; (2.54mm)"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="609-3234-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d628c9d</tstamps>
+    </comp>
+    <comp ref="R401">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d58e16f</tstamps>
+    </comp>
+    <comp ref="R402">
+      <value>R_10K</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>http://www.bourns.com/data/global/pdfs/CRS.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_10K" description="Resistor, 10K, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="CRS0805-FX-1002ELFCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d5eb7f3</tstamps>
+    </comp>
+    <comp ref="R403">
+      <value>R_120_DNP</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">667-ERJ-6ENF1200V</field>
+        <field name="PurchasingLink">https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d</field>
+      </fields>
+      <libsource lib="formula" part="R_120_DNP" description="Resistor, 120, 0.125W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="667-ERJ-6ENF1200V"/>
+      <property name="PurchasingLink" value="https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005fa5ab4a</tstamps>
+    </comp>
+    <comp ref="R404">
+      <value>R_1K</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_1K" description="Resistor, 1K, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD1K00CT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>895b7f3a-8f63-4692-897e-b4cff869e4a9</tstamps>
+    </comp>
+    <comp ref="U401">
+      <value>ATMEGA16M1</value>
+      <footprint>footprints:TQFP-32_7x7mm_Pitch0.8mm</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8209-8-bit%20AVR%20ATmega16M1-32M1-64M1_Datasheet.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">ATMEGA16M1-AU-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208</field>
+      </fields>
+      <libsource lib="formula" part="ATMEGA16M1" description="Microcontroller, 8-bit, 1KB RAM, 16KB Flash"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="ATMEGA16M1-AU-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d58a7a6</tstamps>
+    </comp>
+    <comp ref="U402">
+      <value>MCP2561-E_SN</value>
+      <footprint>footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM</footprint>
+      <datasheet>http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en561044</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP2561-E/SN-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn</field>
+      </fields>
+      <libsource lib="formula" part="MCP2561-E_SN" description="High speed CAN transceiver, 1Mb/s"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="MCP2561-E/SN-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d5faede</tstamps>
+    </comp>
+    <comp ref="Y401">
+      <value>Crystal_SMD</value>
+      <footprint>footprints:Crystal_SMD_FA238</footprint>
+      <datasheet>http://www.txccorp.com/download/products/quartz_crystals/2015TXC_7M_17.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">887-1125-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/txc-corporation/7M-16.000MAAJ-T/887-1125-1-ND/2119014</field>
+      </fields>
+      <libsource lib="formula" part="Crystal_SMD" description="CRYSTAL 16.0000MHZ 18PF SMD"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="887-1125-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/txc-corporation/7M-16.000MAAJ-T/887-1125-1-ND/2119014"/>
+      <property name="Sheetname" value="Microcontroller "/>
+      <property name="Sheetfile" value="microcontroller.kicad_sch"/>
+      <sheetpath names="/Microcontroller /" tstamps="/d063b268-85c6-4aa4-9f65-3549b34d24ff/"/>
+      <tstamps>00000000-0000-0000-0000-00005d5eb332</tstamps>
+    </comp>
+    <comp ref="R501">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>2880ce8f-8cc0-4461-8eff-6c9d530cc1f2</tstamps>
+    </comp>
+    <comp ref="R502">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>56d7ac0e-54d8-4092-ab33-0e4b3c7ed9a2</tstamps>
+    </comp>
+    <comp ref="R503">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>d684efa4-97e4-46fc-b725-eb9c7bef446c</tstamps>
+    </comp>
+    <comp ref="R504">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>fff7ef9d-117c-473c-8cec-b19ab377439e</tstamps>
+    </comp>
+    <comp ref="R505">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>bbbd72b9-fcbf-4d24-8e1a-5dcf31f96a9b</tstamps>
+    </comp>
+    <comp ref="R506">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>066dc4b4-f44d-4511-b722-7786c929d7aa</tstamps>
+    </comp>
+    <comp ref="R507">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>b0e69d73-a510-4c60-bc60-9bd31d332f96</tstamps>
+    </comp>
+    <comp ref="R508">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>5841f6de-6b0f-4b79-aacc-b8295cbe1f4c</tstamps>
+    </comp>
+    <comp ref="R509">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>3dda594e-48cc-41af-9605-0165896eedae</tstamps>
+    </comp>
+    <comp ref="R510">
+      <value>R_100</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <libsource lib="formula" part="R_100" description="Resistor, 100, 0.25W, 1%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RNCP0805FTD100RCT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND"/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>bce3e5dc-a7b4-4207-9f65-099759f3eb17</tstamps>
+    </comp>
+    <comp ref="U501">
+      <value>140357145300 </value>
+      <footprint>footprints:140357145300</footprint>
+      <datasheet>https://www.we-online.com/components/products/datasheet/140357145300.pdf</datasheet>
+      <libsource lib="OEM" part="140357145300 " description=""/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>cec02fe3-3b1d-46fd-9c44-1d917561394a</tstamps>
+    </comp>
+    <comp ref="U502">
+      <value>140357145300 </value>
+      <footprint>footprints:140357145300</footprint>
+      <datasheet>https://www.we-online.com/components/products/datasheet/140357145300.pdf</datasheet>
+      <libsource lib="OEM" part="140357145300 " description=""/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>548f463f-0d64-4703-b95d-35c5d62b81a6</tstamps>
+    </comp>
+    <comp ref="U503">
+      <value>140357145300 </value>
+      <footprint>footprints:140357145300</footprint>
+      <datasheet>https://www.we-online.com/components/products/datasheet/140357145300.pdf</datasheet>
+      <libsource lib="OEM" part="140357145300 " description=""/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>aa578a69-6e84-40b6-acf3-491e5e80ada1</tstamps>
+    </comp>
+    <comp ref="U504">
+      <value>140357145300 </value>
+      <footprint>footprints:140357145300</footprint>
+      <datasheet>https://www.we-online.com/components/products/datasheet/140357145300.pdf</datasheet>
+      <libsource lib="OEM" part="140357145300 " description=""/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>a5c581b2-2aac-4618-a012-678b3cf5227c</tstamps>
+    </comp>
+    <comp ref="U505">
+      <value>140357145300 </value>
+      <footprint>footprints:140357145300</footprint>
+      <datasheet>https://www.we-online.com/components/products/datasheet/140357145300.pdf</datasheet>
+      <libsource lib="OEM" part="140357145300 " description=""/>
+      <property name="Sheetname" value="Optioisolators"/>
+      <property name="Sheetfile" value="optoisolators.kicad_sch"/>
+      <sheetpath names="/Optioisolators/" tstamps="/b9b09f59-0c82-4a32-8182-ae0c29964d7c/"/>
+      <tstamps>8ee9d75b-6da7-4633-972c-64bf61882ffc</tstamps>
+    </comp>
+    <comp ref="C601">
+      <value>C_1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-6470-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467</field>
+      </fields>
+      <libsource lib="formula" part="C_1uF" description="Capacitor, 1uF, 50V, 0805"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-6470-1-ND"/>
+      <property name="Sheetname" value="LDO"/>
+      <property name="Sheetfile" value="LDO.kicad_sch"/>
+      <sheetpath names="/LDO/" tstamps="/3f61c76f-7cf4-4b8e-a562-d14ec6c3cd85/"/>
+      <tstamps>863472fc-7899-443b-b602-51db9e73c9a4</tstamps>
+    </comp>
+    <comp ref="C602">
+      <value>C_1uF</value>
+      <footprint>footprints:C_0603_1608Metric</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-6470-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467</field>
+      </fields>
+      <libsource lib="formula" part="C_1uF" description="Capacitor, 1uF, 50V, 0805"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-6470-1-ND"/>
+      <property name="Sheetname" value="LDO"/>
+      <property name="Sheetfile" value="LDO.kicad_sch"/>
+      <sheetpath names="/LDO/" tstamps="/3f61c76f-7cf4-4b8e-a562-d14ec6c3cd85/"/>
+      <tstamps>4c7ea2bd-e9d9-4bb0-8d5a-63cebe37fb3e</tstamps>
+    </comp>
+    <comp ref="U601">
+      <value>AP7370-33Y-13</value>
+      <footprint>footprints:AP7370-33Y-13</footprint>
+      <fields>
+        <field name="MANUFACTURER">Diodes Incorporated</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">1.6 mm</field>
+        <field name="PARTREV">1 - 2</field>
+        <field name="STANDARD">Manufacturer Recommendations</field>
+      </fields>
+      <libsource lib="OEM" part="AP7370-33Y-13" description=""/>
+      <property name="STANDARD" value="Manufacturer Recommendations"/>
+      <property name="PARTREV" value="1 - 2"/>
+      <property name="MAXIMUM_PACKAGE_HEIGHT" value="1.6 mm"/>
+      <property name="MANUFACTURER" value="Diodes Incorporated"/>
+      <property name="Sheetname" value="LDO"/>
+      <property name="Sheetfile" value="LDO.kicad_sch"/>
+      <sheetpath names="/LDO/" tstamps="/3f61c76f-7cf4-4b8e-a562-d14ec6c3cd85/"/>
+      <tstamps>de67c23f-7d10-467a-b7bf-b5f6d36f74ea</tstamps>
+    </comp>
+    <comp ref="C701">
+      <value>C_10uF</value>
+      <footprint>footprints:C_0805_OEM</footprint>
+      <datasheet>http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1052-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138</field>
+      </fields>
+      <libsource lib="formula" part="C_10uF" description="Capacitor, 10uF, 10V, 10%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="1276-1052-1-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138"/>
+      <property name="Sheetname" value="Current Shunt "/>
+      <property name="Sheetfile" value="currentshunt.kicad_sch"/>
+      <sheetpath names="/Current Shunt /" tstamps="/fabe9c4b-452b-4e8b-901c-d73f5b744d1c/"/>
+      <tstamps>92c64de4-5fc5-4556-a20c-1ced3a5b8cea</tstamps>
+    </comp>
+    <comp ref="R702">
+      <value>R_5.1K</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT5K10TR-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805JT5K10/1757930</field>
+      </fields>
+      <libsource lib="formula" part="R_5.1K" description=""/>
+      <property name="MPN" value="RMCF0805JT5K10TR-ND"/>
+      <property name="MFN" value="DK"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805JT5K10/1757930"/>
+      <property name="Sheetname" value="Current Shunt "/>
+      <property name="Sheetfile" value="currentshunt.kicad_sch"/>
+      <sheetpath names="/Current Shunt /" tstamps="/fabe9c4b-452b-4e8b-901c-d73f5b744d1c/"/>
+      <tstamps>9aac4c80-d1e9-4d78-bc16-f85997823b6a</tstamps>
+    </comp>
+    <comp ref="R703">
+      <value>R_5.1K</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT5K10TR-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805JT5K10/1757930</field>
+      </fields>
+      <libsource lib="formula" part="R_5.1K" description=""/>
+      <property name="MPN" value="RMCF0805JT5K10TR-ND"/>
+      <property name="MFN" value="DK"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805JT5K10/1757930"/>
+      <property name="Sheetname" value="Current Shunt "/>
+      <property name="Sheetfile" value="currentshunt.kicad_sch"/>
+      <sheetpath names="/Current Shunt /" tstamps="/fabe9c4b-452b-4e8b-901c-d73f5b744d1c/"/>
+      <tstamps>96ddd8e9-1a58-47ae-a5c2-f0455d8edd81</tstamps>
+    </comp>
+    <comp ref="R704">
+      <value>R_1M</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT1M00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT1M00/RMCF0805JT1M00CT-ND/1942600</field>
+      </fields>
+      <libsource lib="formula" part="R_1M" description="Resistor, 1M, 0.125W, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RMCF0805JT1M00CT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT1M00/RMCF0805JT1M00CT-ND/1942600"/>
+      <property name="Sheetname" value="Current Shunt "/>
+      <property name="Sheetfile" value="currentshunt.kicad_sch"/>
+      <sheetpath names="/Current Shunt /" tstamps="/fabe9c4b-452b-4e8b-901c-d73f5b744d1c/"/>
+      <tstamps>a6061df7-b810-43cd-8430-358ef4ab5931</tstamps>
+    </comp>
+    <comp ref="R705">
+      <value>R_1M</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT1M00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT1M00/RMCF0805JT1M00CT-ND/1942600</field>
+      </fields>
+      <libsource lib="formula" part="R_1M" description="Resistor, 1M, 0.125W, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RMCF0805JT1M00CT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT1M00/RMCF0805JT1M00CT-ND/1942600"/>
+      <property name="Sheetname" value="Current Shunt "/>
+      <property name="Sheetfile" value="currentshunt.kicad_sch"/>
+      <sheetpath names="/Current Shunt /" tstamps="/fabe9c4b-452b-4e8b-901c-d73f5b744d1c/"/>
+      <tstamps>f081525f-f214-4255-8b63-f75cd7ba901f</tstamps>
+    </comp>
+    <comp ref="U701">
+      <value>REF2025QDDCRQ1</value>
+      <footprint>footprints:REF2025QDDCRQ1</footprint>
+      <libsource lib="OEM" part="REF2025QDDCRQ1" description=""/>
+      <property name="Sheetname" value="Current Shunt "/>
+      <property name="Sheetfile" value="currentshunt.kicad_sch"/>
+      <sheetpath names="/Current Shunt /" tstamps="/fabe9c4b-452b-4e8b-901c-d73f5b744d1c/"/>
+      <tstamps>4874e350-060d-4cef-ac6a-73d9cf43b145</tstamps>
+    </comp>
+    <comp ref="U702">
+      <value>MCP6001</value>
+      <footprint>OEM:SOT-23-5</footprint>
+      <datasheet>https://drive.google.com/file/d/1iRWE-V3fswHQDYF5xrmd5FSgV35ZhRNx/view?usp=share_link</datasheet>
+      <fields>
+        <field name="MPN">MCP6001T</field>
+      </fields>
+      <libsource lib="OEM" part="MCP6001" description="Single Rail-to-Rail Operational Amplifier 1.8V-6V"/>
+      <property name="MPN" value="MCP6001T"/>
+      <property name="Sheetname" value="Current Shunt "/>
+      <property name="Sheetfile" value="currentshunt.kicad_sch"/>
+      <sheetpath names="/Current Shunt /" tstamps="/fabe9c4b-452b-4e8b-901c-d73f5b744d1c/"/>
+      <tstamps>d3000ebd-243c-4315-bbf6-ea4a8041769c</tstamps>
+    </comp>
+    <comp ref="J801">
+      <value>Conn_01x01</value>
+      <footprint>TestPoint:TestPoint_Plated_Hole_D3.0mm</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value="Voltage Divider"/>
+      <property name="Sheetfile" value="voltagedivider.kicad_sch"/>
+      <sheetpath names="/Voltage Divider/" tstamps="/9da0fe99-c29d-4ab7-ae01-c96ae6a529ac/"/>
+      <tstamps>b2ebea76-ec9b-4b6e-ac60-cc334ea6fd2f</tstamps>
+    </comp>
+    <comp ref="R801">
+      <value>R_1M</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <datasheet>https://www.seielect.com/Catalog/SEI-rncp.pdf</datasheet>
+      <fields>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT1M00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT1M00/RMCF0805JT1M00CT-ND/1942600</field>
+      </fields>
+      <libsource lib="formula" part="R_1M" description="Resistor, 1M, 0.125W, 5%, 0805"/>
+      <property name="MFN" value="DK"/>
+      <property name="MPN" value="RMCF0805JT1M00CT-ND"/>
+      <property name="PurchasingLink" value="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT1M00/RMCF0805JT1M00CT-ND/1942600"/>
+      <property name="Sheetname" value="Voltage Divider"/>
+      <property name="Sheetfile" value="voltagedivider.kicad_sch"/>
+      <sheetpath names="/Voltage Divider/" tstamps="/9da0fe99-c29d-4ab7-ae01-c96ae6a529ac/"/>
+      <tstamps>2f296626-6d1b-411b-a8cb-fa7214aa14b0</tstamps>
+    </comp>
+    <comp ref="R803">
+      <value>R_11.5k</value>
+      <footprint>footprints:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value="Voltage Divider"/>
+      <property name="Sheetfile" value="voltagedivider.kicad_sch"/>
+      <sheetpath names="/Voltage Divider/" tstamps="/9da0fe99-c29d-4ab7-ae01-c96ae6a529ac/"/>
+      <tstamps>559ffa11-8026-4d9c-8064-8710b9e1a23f</tstamps>
+    </comp>
+    <comp ref="U802">
+      <value>MCP6001</value>
+      <footprint>OEM:SOT-23-5</footprint>
+      <datasheet>https://drive.google.com/file/d/1iRWE-V3fswHQDYF5xrmd5FSgV35ZhRNx/view?usp=share_link</datasheet>
+      <fields>
+        <field name="MPN">MCP6001T</field>
+      </fields>
+      <libsource lib="OEM" part="MCP6001" description="Single Rail-to-Rail Operational Amplifier 1.8V-6V"/>
+      <property name="MPN" value="MCP6001T"/>
+      <property name="Sheetname" value="Voltage Divider"/>
+      <property name="Sheetfile" value="voltagedivider.kicad_sch"/>
+      <sheetpath names="/Voltage Divider/" tstamps="/9da0fe99-c29d-4ab7-ae01-c96ae6a529ac/"/>
+      <tstamps>f204926e-35b3-4120-b06b-e4221bd251e9</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector_Generic" part="Conn_01x01">
+      <description>Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x01</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x07">
+      <description>Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x07</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_02x02_Counter_Clockwise">
+      <description>Generic connector, double row, 02x02, counter clockwise pin numbering scheme (similar to DIP package numbering), script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_2x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_02x02_Counter_Clockwise</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="140357145300 ">
+      <docs>https://www.we-online.com/components/products/datasheet/140357145300.pdf</docs>
+      <footprints>
+        <fp>SOP*4.4x2.6mm*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">140357145300 </field>
+        <field name="Datasheet">https://www.we-online.com/components/products/datasheet/140357145300.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+        <pin num="3" name="" type="passive"/>
+        <pin num="4" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="760390014">
+      <fields>
+        <field name="Reference">T</field>
+        <field name="Value">760390014</field>
+        <field name="Footprint">TOR-6P-HT4_SMT_6PIN_(1109)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+        <pin num="3" name="" type="passive"/>
+        <pin num="4" name="" type="passive"/>
+        <pin num="5" name="" type="passive"/>
+        <pin num="6" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="ADS1222IPWR">
+      <fields>
+        <field name="Reference">U?</field>
+        <field name="Value">ADS1222IPWR</field>
+        <field name="Footprint">SOP65P640X120-14N</field>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="Package">SOP65P640X120-14N</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VDD" type="power_in"/>
+        <pin num="2" name="SCLK" type="input"/>
+        <pin num="3" name="CLK" type="input"/>
+        <pin num="4" name="DOUT" type="output"/>
+        <pin num="5" name="MUX" type="input"/>
+        <pin num="6" name="TEMPEN" type="input"/>
+        <pin num="7" name="BUFEN" type="bidirectional"/>
+        <pin num="8" name="AINP2" type="input"/>
+        <pin num="9" name="AINN2" type="input"/>
+        <pin num="10" name="AINP1" type="input"/>
+        <pin num="11" name="AINN1" type="input"/>
+        <pin num="12" name="GND" type="power_in"/>
+        <pin num="13" name="VREFN" type="input"/>
+        <pin num="14" name="VREFP" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="AP7370-33Y-13">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AP7370-33Y-13</field>
+        <field name="Footprint">VREG_AP7370-33Y-13</field>
+        <field name="STANDARD">Manufacturer Recommendations</field>
+        <field name="PARTREV">1 - 2</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">1.6 mm</field>
+        <field name="MANUFACTURER">Diodes Incorporated</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VOUT" type="output"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="VIN" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="LED_0805">
+      <description>Light emitting diode 0805</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED_SMT:*</fp>
+        <fp>LED_THT:*</fp>
+        <fp>LED:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED_0805</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="MBR0520L">
+      <footprints>
+        <fp>SOD-123_425-04_ONS</fp>
+        <fp>SOD-123_425-04_ONS-M</fp>
+        <fp>SOD-123_425-04_ONS-L</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">CR</field>
+        <field name="Value">MBR0520L</field>
+        <field name="Footprint">SOD-123_425-04_ONS</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="unspecified"/>
+        <pin num="2" name="2" type="unspecified"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="MCP6001">
+      <description>Single Rail-to-Rail Operational Amplifier 1.8V-6V</description>
+      <docs>https://drive.google.com/file/d/1iRWE-V3fswHQDYF5xrmd5FSgV35ZhRNx/view?usp=share_link</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP6001</field>
+        <field name="Footprint">OEM:SOT-23-5</field>
+        <field name="Datasheet">https://drive.google.com/file/d/1iRWE-V3fswHQDYF5xrmd5FSgV35ZhRNx/view?usp=share_link</field>
+        <field name="MPN">MCP6001T</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="output"/>
+        <pin num="2" name="V-" type="power_in"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="-" type="input"/>
+        <pin num="5" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="REF2025QDDCRQ1">
+      <footprints>
+        <fp>SOT-23-THIN-5_DDC_TEX</fp>
+        <fp>SOT-23-THIN-5_DDC_TEX-M</fp>
+        <fp>SOT-23-THIN-5_DDC_TEX-L</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">REF2025QDDCRQ1</field>
+        <field name="Footprint">SOT-23-THIN-5_DDC_TEX</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBIAS" type="output"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="VIN" type="input"/>
+        <pin num="5" name="VREF" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="SN6501DBVT">
+      <description>Flyback Converter </description>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SN6501DBVT</field>
+        <field name="Footprint">OEM:SOT95P280X145-5N</field>
+      </fields>
+      <pins>
+        <pin num="1" name="D1" type="bidirectional"/>
+        <pin num="2" name="VCC" type="power_in"/>
+        <pin num="3" name="D2" type="bidirectional"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="TPS76350">
+      <description>Low power 150mA LDO, 1.6V fixed output voltage, SOT-23-5</description>
+      <docs>http://www.ti.com/lit/ds/symlink/tps763.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TPS76350</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/tps763.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="NC" type="no_connect"/>
+        <pin num="5" name="VOUT" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="OEM" part="WSBM8518L1000JT">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">WSBM8518L1000JT</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+        <pin num="3" name="" type="passive"/>
+        <pin num="4" name="" type="passive"/>
+        <pin num="RA" name="" type="passive"/>
+        <pin num="RB" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="ATMEGA16M1">
+      <description>Microcontroller, 8-bit, 1KB RAM, 16KB Flash</description>
+      <footprints>
+        <fp>TQFP*32*7x7mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ATMEGA16M1</field>
+        <field name="Footprint">footprints:TQFP-32_7x7mm_Pitch0.8mm</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">ATMEGA16M1-AU-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/atmel/ATMEGA16M1-AU/ATMEGA16M1-AU-ND/2271208</field>
+      </fields>
+      <pins>
+        <pin num="1" name="(PCINT18/PSCIN2/OC1A/MISO_A)PD2" type="bidirectional"/>
+        <pin num="2" name="(PCINT19/TXD/TXLIN/OC0A/~{SS}/MOSI_A)PD3" type="bidirectional"/>
+        <pin num="3" name="(PCINT9/PSCIN1/OC1B/~{SS_A})PC1" type="bidirectional"/>
+        <pin num="4" name="VCC" type="power_in"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="6" name="(PCINT10/T0/TXCAN)PC2" type="bidirectional"/>
+        <pin num="7" name="(PCINT11/T1/ICP1B/RXCAN)PC3" type="bidirectional"/>
+        <pin num="8" name="(PCINT0/MISO/PSCOUT2A)PB0" type="bidirectional"/>
+        <pin num="9" name="(PCINT1/MOSI/PSCOUT2B)PB1" type="bidirectional"/>
+        <pin num="10" name="(PCINT25/OC0B/XTAL1)PE1" type="bidirectional"/>
+        <pin num="11" name="(PCINT26/ADC0/XTAL2)PE2" type="bidirectional"/>
+        <pin num="12" name="(PCINT20/ADC1/RXD/RXLIN/ICP1A/SCK_A)PD4" type="bidirectional"/>
+        <pin num="13" name="(PCINT21/ADC2/ACMP2)PD5" type="bidirectional"/>
+        <pin num="14" name="(PCINT22/ADC3/INT0/ACMPN2)PD6" type="bidirectional"/>
+        <pin num="15" name="(PCINT23/ACMP0)PD7" type="bidirectional"/>
+        <pin num="16" name="(PCINT2/ADC5/INT1/ACMPN0)PB2" type="bidirectional"/>
+        <pin num="17" name="(PCINT12/ADC8/ACMPN3/AMP1-)PC4" type="bidirectional"/>
+        <pin num="18" name="(PCINT13/ADC9/ACMP3/AMP1+)PC5" type="bidirectional"/>
+        <pin num="19" name="AVCC" type="power_in"/>
+        <pin num="20" name="AGND" type="power_in"/>
+        <pin num="21" name="AREF(ISRC)" type="power_in"/>
+        <pin num="22" name="(PCINT14/ADC10/ACMP1)PC6" type="bidirectional"/>
+        <pin num="23" name="(PCINT3/AMP0-)PB3" type="bidirectional"/>
+        <pin num="24" name="(PCINT4/AMP0+)PB4" type="bidirectional"/>
+        <pin num="25" name="(PCINT15/D2A/AMP2+)PC7" type="bidirectional"/>
+        <pin num="26" name="(PCINT5/ADC6/INT2/ACMPN1/AMP2-)PB5" type="bidirectional"/>
+        <pin num="27" name="(PCINT6/ADC7/PSCOUT1B)PB6" type="bidirectional"/>
+        <pin num="28" name="(PCINT7/ADC4/SCK/PSCOUT0B)PB7" type="bidirectional"/>
+        <pin num="29" name="(PCINT16/PSCOUT0A)PD0" type="bidirectional"/>
+        <pin num="30" name="(PCINT8/INT3/PSCOUT1A)PC0" type="bidirectional"/>
+        <pin num="31" name="(PCINT24/OCD/~{RESET})PE0" type="bidirectional"/>
+        <pin num="32" name="(PCINT17/CLKO/PSCIN0)PD1" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="CONN_02X03">
+      <description>Connector header through hole 2x3 0.100" (2.54mm)</description>
+      <docs>http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf</docs>
+      <footprints>
+        <fp>Pin_Header_Straight_2X03</fp>
+        <fp>Pin_Header_Angled_2X03</fp>
+        <fp>Socket_Strip_Straight_2X03</fp>
+        <fp>Socket_Strip_Angled_2X03</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">CONN_02X03</field>
+        <field name="Footprint">footprints:Pin_Header_Straight_2x03</field>
+        <field name="Datasheet">http://portal.fciconnect.com/Comergent//fci/drawing/67996.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">609-3234-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/amphenol-fci/67997-206HLF/609-3234-ND/1878491</field>
+      </fields>
+      <pins>
+        <pin num="1" name="P1" type="passive"/>
+        <pin num="2" name="P2" type="passive"/>
+        <pin num="3" name="P3" type="passive"/>
+        <pin num="4" name="P4" type="passive"/>
+        <pin num="5" name="P5" type="passive"/>
+        <pin num="6" name="P6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_0.1uF">
+      <description>Capacitor, 0.1uF, 50V, 5%, 0805</description>
+      <docs>http://datasheets.avx.com/X7RDielectric.pdf</docs>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_0.1uF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">http://datasheets.avx.com/X7RDielectric.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">478-3352-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=478-3352-1-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_100pF">
+      <description>Capacitor, 100pF, 50V, 5%, 0805</description>
+      <docs>https://katalog.we-online.de/pbs/datasheet/885012007057.pdf</docs>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_100pF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">https://katalog.we-online.de/pbs/datasheet/885012007057.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">732-7852-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/wurth-electronics-inc/885012007057/732-7852-1-ND/5454479</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_10uF">
+      <description>Capacitor, 10uF, 10V, 10%, 0805</description>
+      <docs>http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf</docs>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_10uF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/20/CL21A106KPFNNNE.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1052-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_1uF">
+      <description>Capacitor, 1uF, 50V, 0805</description>
+      <docs>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf</docs>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_1uF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KBFNNNG/3894467</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-6470-1-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_30pF">
+      <description>Capacitor, 30pF, 50V, 5%, 0805</description>
+      <docs>https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf</docs>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_30pF</field>
+        <field name="Footprint">footprints:C_0805_OEM</field>
+        <field name="Datasheet">https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1130-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="C_4.7uF">
+      <description>Capacitor, 4.7uF, 6.3V, 10%, 0603</description>
+      <docs>http://www.samsungsem.com/kr/support/product-search/mlcc/CL10A475KQ8NNNC.jsp</docs>
+      <footprints>
+        <fp>C?</fp>
+        <fp>C_????_*</fp>
+        <fp>C_????</fp>
+        <fp>SMD*_c</fp>
+        <fp>Capacitor*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_4.7uF</field>
+        <field name="Footprint">footprints:C_0603_1608Metric</field>
+        <field name="Datasheet">http://www.samsungsem.com/kr/support/product-search/mlcc/CL10A475KQ8NNNC.jsp</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">1276-1045-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10A475KQ8NNNC/1276-1045-1-ND/3889131</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="Crystal_SMD">
+      <description>CRYSTAL 16.0000MHZ 18PF SMD</description>
+      <docs>http://www.txccorp.com/download/products/quartz_crystals/2015TXC_7M_17.pdf</docs>
+      <footprints>
+        <fp>Crystal*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal_SMD</field>
+        <field name="Footprint">footprints:Crystal_SMD_FA238</field>
+        <field name="Datasheet">http://www.txccorp.com/download/products/quartz_crystals/2015TXC_7M_17.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">887-1125-1-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/txc-corporation/7M-16.000MAAJ-T/887-1125-1-ND/2119014</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="MCP2561-E_SN">
+      <description>High speed CAN transceiver, 1Mb/s</description>
+      <docs>http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en561044</docs>
+      <footprints>
+        <fp>SOIC*Pitch1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP2561-E_SN</field>
+        <field name="Footprint">footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM</field>
+        <field name="Datasheet">http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en561044</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">MCP2561-E/SN-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=mcp2561-e%2Fsn</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TXD" type="input"/>
+        <pin num="2" name="VSS" type="power_in"/>
+        <pin num="3" name="VDD" type="power_in"/>
+        <pin num="4" name="RXD" type="output"/>
+        <pin num="5" name="SPLIT" type="passive"/>
+        <pin num="6" name="CANL" type="bidirectional"/>
+        <pin num="7" name="CANH" type="bidirectional"/>
+        <pin num="8" name="STBY" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_100">
+      <description>Resistor, 100, 0.25W, 1%, 0805</description>
+      <docs>https://www.seielect.com/Catalog/SEI-rncp.pdf</docs>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_100</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/Catalog/SEI-rncp.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD100RCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD100RCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_10K">
+      <description>Resistor, 10K, 0.25W, 1%, 0805</description>
+      <docs>http://www.bourns.com/data/global/pdfs/CRS.pdf</docs>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_10K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">http://www.bourns.com/data/global/pdfs/CRS.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">CRS0805-FX-1002ELFCT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_120_DNP">
+      <description>Resistor, 120, 0.125W, 1%, 0805</description>
+      <docs>https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf</docs>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_120_DNP</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">667-ERJ-6ENF1200V</field>
+        <field name="PurchasingLink">https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_1K">
+      <description>Resistor, 1K, 0.25W, 1%, 0805</description>
+      <docs>https://www.seielect.com/Catalog/SEI-rncp.pdf</docs>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_1K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/Catalog/SEI-rncp.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">RNCP0805FTD1K00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_1M">
+      <description>Resistor, 1M, 0.125W, 5%, 0805</description>
+      <docs>https://www.seielect.com/Catalog/SEI-rncp.pdf</docs>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>Resistor_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_1M</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/Catalog/SEI-rncp.pdf</field>
+        <field name="MFN">DK</field>
+        <field name="MPN">RMCF0805JT1M00CT-ND</field>
+        <field name="PurchasingLink">https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT1M00/RMCF0805JT1M00CT-ND/1942600</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="formula" part="R_5.1K">
+      <docs>https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf</docs>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_5.1K</field>
+        <field name="Footprint">footprints:R_0805_OEM</field>
+        <field name="Datasheet">https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf</field>
+        <field name="MPN">RMCF0805JT5K10TR-ND</field>
+        <field name="MFN">DK</field>
+        <field name="PurchasingLink">https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805JT5K10/1757930</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector_Generic">
+      <uri>/usr/share/kicad/symbols//Connector_Generic.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/symbols//Device.kicad_sym</uri>
+    </library>
+    <library logical="OEM">
+      <uri>/home/skachru/Documents/olin-electric-motorsports/parts/schematic/oem.kicad_sym</uri>
+    </library>
+    <library logical="formula">
+      <uri>/home/skachru/Documents/olin-electric-motorsports/parts/schematic/formula.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+5V_HV">
+      <node ref="C201" pin="1" pintype="passive"/>
+      <node ref="C202" pin="1" pintype="passive"/>
+      <node ref="C304" pin="1" pintype="passive"/>
+      <node ref="C701" pin="2" pintype="passive"/>
+      <node ref="J101" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="J102" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="U201" pin="1" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U302" pin="5" pinfunction="VOUT" pintype="power_out"/>
+      <node ref="U501" pin="4" pintype="passive"/>
+      <node ref="U502" pin="4" pintype="passive"/>
+      <node ref="U503" pin="4" pintype="passive"/>
+      <node ref="U504" pin="4" pintype="passive"/>
+      <node ref="U802" pin="5" pinfunction="V+" pintype="power_in"/>
+    </net>
+    <net code="2" name="+5V_LV">
+      <node ref="C301" pin="2" pintype="passive"/>
+      <node ref="C401" pin="1" pintype="passive"/>
+      <node ref="C405" pin="1" pintype="passive"/>
+      <node ref="C602" pin="1" pintype="passive"/>
+      <node ref="J401" pin="2" pinfunction="P2" pintype="passive"/>
+      <node ref="R401" pin="1" pintype="passive"/>
+      <node ref="R402" pin="1" pintype="passive"/>
+      <node ref="T301" pin="2" pintype="passive"/>
+      <node ref="U301" pin="2" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U401" pin="4" pinfunction="VCC" pintype="power_in"/>
+      <node ref="U402" pin="3" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U505" pin="4" pintype="passive"/>
+      <node ref="U601" pin="1" pinfunction="VOUT" pintype="output"/>
+    </net>
+    <net code="3" name="+12V">
+      <node ref="C601" pin="1" pintype="passive"/>
+      <node ref="J103" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J104" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R101" pin="3" pintype="passive"/>
+      <node ref="U601" pin="3" pinfunction="VIN" pintype="input"/>
+    </net>
+    <net code="5" name="/ADC/I+">
+      <node ref="R210" pin="2" pintype="passive"/>
+      <node ref="R705" pin="1" pintype="passive"/>
+      <node ref="U702" pin="1" pintype="output"/>
+    </net>
+    <net code="6" name="/ADC/V+">
+      <node ref="R208" pin="2" pintype="passive"/>
+      <node ref="U802" pin="1" pintype="output"/>
+      <node ref="U802" pin="4" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="7" name="/ADC/VREF">
+      <node ref="C203" pin="1" pintype="passive"/>
+      <node ref="C204" pin="1" pintype="passive"/>
+      <node ref="R704" pin="2" pintype="passive"/>
+      <node ref="U201" pin="14" pinfunction="VREFP" pintype="input"/>
+      <node ref="U701" pin="5" pinfunction="VREF" pintype="output"/>
+    </net>
+    <net code="8" name="/BUFEN">
+      <node ref="J102" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="R206" pin="1" pintype="passive"/>
+    </net>
+    <net code="9" name="/BUFEN_HV">
+      <node ref="J101" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="R508" pin="1" pintype="passive"/>
+      <node ref="U503" pin="3" pintype="passive"/>
+    </net>
+    <net code="10" name="/CAN_+">
+      <node ref="J104" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="R101" pin="1" pintype="passive"/>
+    </net>
+    <net code="11" name="/CAN_-">
+      <node ref="J104" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="R101" pin="2" pintype="passive"/>
+    </net>
+    <net code="12" name="/CLK">
+      <node ref="J102" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R202" pin="1" pintype="passive"/>
+    </net>
+    <net code="13" name="/CLK_HV">
+      <node ref="J101" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R507" pin="1" pintype="passive"/>
+      <node ref="U502" pin="3" pintype="passive"/>
+    </net>
+    <net code="14" name="/Current Shunt /RA">
+      <node ref="R101" pin="6" pintype="passive"/>
+      <node ref="R702" pin="1" pintype="passive"/>
+    </net>
+    <net code="15" name="/MISO">
+      <node ref="J102" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="R203" pin="1" pintype="passive"/>
+    </net>
+    <net code="16" name="/MISO_HV">
+      <node ref="J101" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="R510" pin="1" pintype="passive"/>
+    </net>
+    <net code="17" name="/MUX">
+      <node ref="J102" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="R204" pin="1" pintype="passive"/>
+    </net>
+    <net code="18" name="/MUX_HV">
+      <node ref="J101" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="R509" pin="1" pintype="passive"/>
+      <node ref="U504" pin="3" pintype="passive"/>
+    </net>
+    <net code="19" name="/Microcontroller /BUFEN">
+      <node ref="R503" pin="1" pintype="passive"/>
+      <node ref="U401" pin="16" pinfunction="(PCINT2/ADC5/INT1/ACMPN0)PB2" pintype="bidirectional"/>
+    </net>
+    <net code="20" name="/Microcontroller /CAN_+">
+      <node ref="J103" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="R403" pin="1" pintype="passive"/>
+      <node ref="U402" pin="7" pinfunction="CANH" pintype="bidirectional"/>
+    </net>
+    <net code="21" name="/Microcontroller /CAN_-">
+      <node ref="J103" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="R403" pin="2" pintype="passive"/>
+      <node ref="U402" pin="6" pinfunction="CANL" pintype="bidirectional"/>
+    </net>
+    <net code="22" name="/Microcontroller /CAN_RX">
+      <node ref="U401" pin="7" pinfunction="(PCINT11/T1/ICP1B/RXCAN)PC3" pintype="bidirectional"/>
+      <node ref="U402" pin="4" pinfunction="RXD" pintype="output"/>
+    </net>
+    <net code="23" name="/Microcontroller /CAN_TX">
+      <node ref="U401" pin="6" pinfunction="(PCINT10/T0/TXCAN)PC2" pintype="bidirectional"/>
+      <node ref="U402" pin="1" pinfunction="TXD" pintype="input"/>
+    </net>
+    <net code="24" name="/Microcontroller /CLK">
+      <node ref="R502" pin="1" pintype="passive"/>
+      <node ref="U401" pin="28" pinfunction="(PCINT7/ADC4/SCK/PSCOUT0B)PB7" pintype="bidirectional"/>
+    </net>
+    <net code="25" name="/Microcontroller /DEBUG_LED">
+      <node ref="R404" pin="1" pintype="passive"/>
+      <node ref="U401" pin="23" pinfunction="(PCINT3/AMP0-)PB3" pintype="bidirectional"/>
+    </net>
+    <net code="26" name="/Microcontroller /MISO">
+      <node ref="J401" pin="1" pinfunction="P1" pintype="passive"/>
+      <node ref="R505" pin="1" pintype="passive"/>
+      <node ref="U401" pin="1" pinfunction="(PCINT18/PSCIN2/OC1A/MISO_A)PD2" pintype="bidirectional"/>
+      <node ref="U401" pin="8" pinfunction="(PCINT0/MISO/PSCOUT2A)PB0" pintype="bidirectional"/>
+      <node ref="U505" pin="3" pintype="passive"/>
+    </net>
+    <net code="27" name="/Microcontroller /MOSI">
+      <node ref="J401" pin="4" pinfunction="P4" pintype="passive"/>
+      <node ref="U401" pin="2" pinfunction="(PCINT19/TXD/TXLIN/OC0A/~{SS}/MOSI_A)PD3" pintype="bidirectional"/>
+    </net>
+    <net code="28" name="/Microcontroller /MUX">
+      <node ref="R504" pin="1" pintype="passive"/>
+      <node ref="U401" pin="9" pinfunction="(PCINT1/MOSI/PSCOUT2B)PB1" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="/Microcontroller /RESET">
+      <node ref="J401" pin="5" pinfunction="P5" pintype="passive"/>
+      <node ref="R402" pin="2" pintype="passive"/>
+      <node ref="U401" pin="31" pinfunction="(PCINT24/OCD/~{RESET})PE0" pintype="bidirectional"/>
+    </net>
+    <net code="30" name="/Microcontroller /SCK">
+      <node ref="J401" pin="3" pinfunction="P3" pintype="passive"/>
+      <node ref="U401" pin="12" pinfunction="(PCINT20/ADC1/RXD/RXLIN/ICP1A/SCK_A)PD4" pintype="bidirectional"/>
+    </net>
+    <net code="31" name="/Microcontroller /SCLK ">
+      <node ref="R501" pin="1" pintype="passive"/>
+      <node ref="U401" pin="3" pinfunction="(PCINT9/PSCIN1/OC1B/~{SS_A})PC1" pintype="bidirectional"/>
+    </net>
+    <net code="32" name="/SCLK">
+      <node ref="J102" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="R201" pin="1" pintype="passive"/>
+    </net>
+    <net code="33" name="/SCLK_HV">
+      <node ref="J101" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="R506" pin="1" pintype="passive"/>
+      <node ref="U501" pin="3" pintype="passive"/>
+    </net>
+    <net code="34" name="/Voltage Divider/TS+">
+      <node ref="J801" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R801" pin="1" pintype="passive"/>
+    </net>
+    <net code="35" name="GND1">
+      <node ref="C201" pin="2" pintype="passive"/>
+      <node ref="C202" pin="2" pintype="passive"/>
+      <node ref="C205" pin="1" pintype="passive"/>
+      <node ref="C207" pin="2" pintype="passive"/>
+      <node ref="C208" pin="1" pintype="passive"/>
+      <node ref="C210" pin="2" pintype="passive"/>
+      <node ref="C302" pin="2" pintype="passive"/>
+      <node ref="C303" pin="2" pintype="passive"/>
+      <node ref="C304" pin="2" pintype="passive"/>
+      <node ref="J101" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J102" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="R205" pin="1" pintype="passive"/>
+      <node ref="R506" pin="2" pintype="passive"/>
+      <node ref="R507" pin="2" pintype="passive"/>
+      <node ref="R508" pin="2" pintype="passive"/>
+      <node ref="R509" pin="2" pintype="passive"/>
+      <node ref="T301" pin="5" pintype="passive"/>
+      <node ref="U201" pin="12" pinfunction="GND" pintype="power_in"/>
+      <node ref="U302" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U505" pin="2" pintype="passive"/>
+      <node ref="U802" pin="2" pinfunction="V-" pintype="power_in"/>
+    </net>
+    <net code="36" name="GND2">
+      <node ref="C301" pin="1" pintype="passive"/>
+      <node ref="C401" pin="2" pintype="passive"/>
+      <node ref="C402" pin="2" pintype="passive"/>
+      <node ref="C403" pin="2" pintype="passive"/>
+      <node ref="C404" pin="2" pintype="passive"/>
+      <node ref="C405" pin="2" pintype="passive"/>
+      <node ref="C601" pin="2" pintype="passive"/>
+      <node ref="C602" pin="2" pintype="passive"/>
+      <node ref="D401" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J103" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J104" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J401" pin="6" pinfunction="P6" pintype="passive"/>
+      <node ref="R101" pin="4" pintype="passive"/>
+      <node ref="R505" pin="2" pintype="passive"/>
+      <node ref="U301" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="U301" pin="5" pinfunction="GND" pintype="power_in"/>
+      <node ref="U401" pin="20" pinfunction="AGND" pintype="power_in"/>
+      <node ref="U401" pin="5" pinfunction="GND" pintype="power_in"/>
+      <node ref="U402" pin="2" pinfunction="VSS" pintype="power_in"/>
+      <node ref="U402" pin="8" pinfunction="STBY" pintype="input"/>
+      <node ref="U501" pin="2" pintype="passive"/>
+      <node ref="U502" pin="2" pintype="passive"/>
+      <node ref="U503" pin="2" pintype="passive"/>
+      <node ref="U504" pin="2" pintype="passive"/>
+      <node ref="U601" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="Y401" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Y401" pin="4" pinfunction="4" pintype="passive"/>
+    </net>
+    <net code="37" name="Net-(C203-Pad2)">
+      <node ref="C203" pin="2" pintype="passive"/>
+      <node ref="C204" pin="2" pintype="passive"/>
+      <node ref="U201" pin="13" pinfunction="VREFN" pintype="input"/>
+    </net>
+    <net code="38" name="Net-(C205-Pad2)">
+      <node ref="C205" pin="2" pintype="passive"/>
+      <node ref="C206" pin="1" pintype="passive"/>
+      <node ref="R207" pin="2" pintype="passive"/>
+      <node ref="U201" pin="11" pinfunction="AINN1" pintype="input"/>
+    </net>
+    <net code="39" name="Net-(C206-Pad2)">
+      <node ref="C206" pin="2" pintype="passive"/>
+      <node ref="C207" pin="1" pintype="passive"/>
+      <node ref="R208" pin="1" pintype="passive"/>
+      <node ref="U201" pin="10" pinfunction="AINP1" pintype="input"/>
+    </net>
+    <net code="40" name="Net-(C208-Pad2)">
+      <node ref="C208" pin="2" pintype="passive"/>
+      <node ref="C209" pin="1" pintype="passive"/>
+    </net>
+    <net code="41" name="Net-(C209-Pad2)">
+      <node ref="C209" pin="2" pintype="passive"/>
+      <node ref="C210" pin="1" pintype="passive"/>
+      <node ref="R210" pin="1" pintype="passive"/>
+      <node ref="U201" pin="8" pinfunction="AINP2" pintype="input"/>
+    </net>
+    <net code="42" name="Net-(C302-Pad1)">
+      <node ref="C302" pin="1" pintype="passive"/>
+      <node ref="C303" pin="1" pintype="passive"/>
+      <node ref="CR301" pin="1" pinfunction="1" pintype="unspecified"/>
+      <node ref="CR302" pin="1" pinfunction="1" pintype="unspecified"/>
+      <node ref="U302" pin="1" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U302" pin="3" pinfunction="EN" pintype="input"/>
+    </net>
+    <net code="43" name="Net-(C402-Pad1)">
+      <node ref="C402" pin="1" pintype="passive"/>
+      <node ref="R401" pin="2" pintype="passive"/>
+      <node ref="U401" pin="19" pinfunction="AVCC" pintype="power_in"/>
+    </net>
+    <net code="44" name="Net-(C403-Pad1)">
+      <node ref="C403" pin="1" pintype="passive"/>
+      <node ref="U401" pin="11" pinfunction="(PCINT26/ADC0/XTAL2)PE2" pintype="bidirectional"/>
+      <node ref="Y401" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="45" name="Net-(C404-Pad1)">
+      <node ref="C404" pin="1" pintype="passive"/>
+      <node ref="U401" pin="10" pinfunction="(PCINT25/OC0B/XTAL1)PE1" pintype="bidirectional"/>
+      <node ref="Y401" pin="3" pinfunction="3" pintype="passive"/>
+    </net>
+    <net code="46" name="Net-(CR301-Pad2)">
+      <node ref="CR301" pin="2" pinfunction="2" pintype="unspecified"/>
+      <node ref="T301" pin="6" pintype="passive"/>
+    </net>
+    <net code="47" name="Net-(CR302-Pad2)">
+      <node ref="CR302" pin="2" pinfunction="2" pintype="unspecified"/>
+      <node ref="T301" pin="4" pintype="passive"/>
+    </net>
+    <net code="48" name="Net-(D401-Pad2)">
+      <node ref="D401" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R404" pin="2" pintype="passive"/>
+    </net>
+    <net code="49" name="Net-(R201-Pad2)">
+      <node ref="R201" pin="2" pintype="passive"/>
+      <node ref="U201" pin="2" pinfunction="SCLK" pintype="input"/>
+    </net>
+    <net code="50" name="Net-(R202-Pad2)">
+      <node ref="R202" pin="2" pintype="passive"/>
+      <node ref="U201" pin="3" pinfunction="CLK" pintype="input"/>
+    </net>
+    <net code="51" name="Net-(R203-Pad2)">
+      <node ref="R203" pin="2" pintype="passive"/>
+      <node ref="U201" pin="4" pinfunction="DOUT" pintype="output"/>
+    </net>
+    <net code="52" name="Net-(R204-Pad2)">
+      <node ref="R204" pin="2" pintype="passive"/>
+      <node ref="U201" pin="5" pinfunction="MUX" pintype="input"/>
+    </net>
+    <net code="53" name="Net-(R205-Pad2)">
+      <node ref="R205" pin="2" pintype="passive"/>
+      <node ref="U201" pin="6" pinfunction="TEMPEN" pintype="input"/>
+    </net>
+    <net code="54" name="Net-(R206-Pad2)">
+      <node ref="R206" pin="2" pintype="passive"/>
+      <node ref="U201" pin="7" pinfunction="BUFEN" pintype="bidirectional"/>
+    </net>
+    <net code="55" name="Net-(R209-Pad2)">
+      <node ref="R209" pin="2" pintype="passive"/>
+      <node ref="U201" pin="9" pinfunction="AINN2" pintype="input"/>
+    </net>
+    <net code="56" name="Net-(R501-Pad2)">
+      <node ref="R501" pin="2" pintype="passive"/>
+      <node ref="U501" pin="1" pintype="passive"/>
+    </net>
+    <net code="57" name="Net-(R502-Pad2)">
+      <node ref="R502" pin="2" pintype="passive"/>
+      <node ref="U502" pin="1" pintype="passive"/>
+    </net>
+    <net code="58" name="Net-(R503-Pad2)">
+      <node ref="R503" pin="2" pintype="passive"/>
+      <node ref="U503" pin="1" pintype="passive"/>
+    </net>
+    <net code="59" name="Net-(R504-Pad2)">
+      <node ref="R504" pin="2" pintype="passive"/>
+      <node ref="U504" pin="1" pintype="passive"/>
+    </net>
+    <net code="60" name="Net-(R510-Pad2)">
+      <node ref="R510" pin="2" pintype="passive"/>
+      <node ref="U505" pin="1" pintype="passive"/>
+    </net>
+    <net code="61" name="Net-(R702-Pad2)">
+      <node ref="R702" pin="2" pintype="passive"/>
+      <node ref="R705" pin="2" pintype="passive"/>
+      <node ref="U702" pin="4" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="62" name="Net-(R703-Pad2)">
+      <node ref="R703" pin="2" pintype="passive"/>
+      <node ref="R704" pin="1" pintype="passive"/>
+      <node ref="U702" pin="3" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="63" name="Net-(R801-Pad2)">
+      <node ref="R801" pin="2" pintype="passive"/>
+      <node ref="R803" pin="1" pintype="passive"/>
+      <node ref="U802" pin="3" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="64" name="Net-(T301-Pad1)">
+      <node ref="T301" pin="1" pintype="passive"/>
+      <node ref="U301" pin="1" pinfunction="D1" pintype="bidirectional"/>
+    </net>
+    <net code="65" name="Net-(T301-Pad3)">
+      <node ref="T301" pin="3" pintype="passive"/>
+      <node ref="U301" pin="3" pinfunction="D2" pintype="bidirectional"/>
+    </net>
+    <net code="66" name="Net-(U701-Pad3)">
+      <node ref="C701" pin="1" pintype="passive"/>
+      <node ref="U701" pin="3" pinfunction="EN" pintype="input"/>
+      <node ref="U701" pin="4" pinfunction="VIN" pintype="input"/>
+      <node ref="U702" pin="5" pinfunction="V+" pintype="power_in"/>
+    </net>
+    <net code="67" name="TS-">
+      <node ref="R101" pin="5" pintype="passive"/>
+      <node ref="R207" pin="1" pintype="passive"/>
+      <node ref="R209" pin="1" pintype="passive"/>
+      <node ref="R703" pin="1" pintype="passive"/>
+      <node ref="R803" pin="2" pintype="passive"/>
+      <node ref="U701" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U702" pin="2" pinfunction="V-" pintype="power_in"/>
+    </net>
+    <net code="68" name="unconnected-(U302-Pad4)">
+      <node ref="U302" pin="4" pinfunction="NC" pintype="no_connect"/>
+    </net>
+    <net code="69" name="unconnected-(U401-Pad13)">
+      <node ref="U401" pin="13" pinfunction="(PCINT21/ADC2/ACMP2)PD5" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="70" name="unconnected-(U401-Pad14)">
+      <node ref="U401" pin="14" pinfunction="(PCINT22/ADC3/INT0/ACMPN2)PD6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="71" name="unconnected-(U401-Pad15)">
+      <node ref="U401" pin="15" pinfunction="(PCINT23/ACMP0)PD7" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="72" name="unconnected-(U401-Pad17)">
+      <node ref="U401" pin="17" pinfunction="(PCINT12/ADC8/ACMPN3/AMP1-)PC4" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="73" name="unconnected-(U401-Pad18)">
+      <node ref="U401" pin="18" pinfunction="(PCINT13/ADC9/ACMP3/AMP1+)PC5" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="74" name="unconnected-(U401-Pad21)">
+      <node ref="U401" pin="21" pinfunction="AREF(ISRC)" pintype="power_in+no_connect"/>
+    </net>
+    <net code="75" name="unconnected-(U401-Pad22)">
+      <node ref="U401" pin="22" pinfunction="(PCINT14/ADC10/ACMP1)PC6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="76" name="unconnected-(U401-Pad24)">
+      <node ref="U401" pin="24" pinfunction="(PCINT4/AMP0+)PB4" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="77" name="unconnected-(U401-Pad25)">
+      <node ref="U401" pin="25" pinfunction="(PCINT15/D2A/AMP2+)PC7" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="78" name="unconnected-(U401-Pad26)">
+      <node ref="U401" pin="26" pinfunction="(PCINT5/ADC6/INT2/ACMPN1/AMP2-)PB5" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="79" name="unconnected-(U401-Pad27)">
+      <node ref="U401" pin="27" pinfunction="(PCINT6/ADC7/PSCOUT1B)PB6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="80" name="unconnected-(U401-Pad29)">
+      <node ref="U401" pin="29" pinfunction="(PCINT16/PSCOUT0A)PD0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="81" name="unconnected-(U401-Pad30)">
+      <node ref="U401" pin="30" pinfunction="(PCINT8/INT3/PSCOUT1A)PC0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="82" name="unconnected-(U401-Pad32)">
+      <node ref="U401" pin="32" pinfunction="(PCINT17/CLKO/PSCIN0)PD1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="83" name="unconnected-(U402-Pad5)">
+      <node ref="U402" pin="5" pinfunction="SPLIT" pintype="passive+no_connect"/>
+    </net>
+    <net code="84" name="unconnected-(U701-Pad1)">
+      <node ref="U701" pin="1" pinfunction="VBIAS" pintype="output+no_connect"/>
+    </net>
+  </nets>
+</export>
