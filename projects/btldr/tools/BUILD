@@ -1,3 +1,5 @@
+load("//projects/btldr:ecus.bzl", "ECUS")
+
 cc_binary(
     name = "patch_header",
     srcs = [

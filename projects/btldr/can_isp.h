@@ -44,6 +44,8 @@
  * DLC = 2
  * [0] => Status (0: OK, 1: err)
  * [1] => Error reason (0: OK, else: err_code)
+ *
+ * TODO: Streamline to a single signal
  */
 #define CAN_ID_RESET_RESPONSE (0x005U)
 
@@ -88,13 +90,10 @@
  */
 #define CAN_ID_DATA_RESPONSE (0x007U) // Sends status messages during update
 #define STATUS_NO_ERROR      (0x00)
-#define ERR_IMAGE_INVALID    (0x02)
 
 /*
  * Other defines
  */
-#define CAN_ISP_MASK \
-    (0x000) // No filtering TODO: update this to be more efficient
 #define CAN_MAX_MSG_LENGTH (8) // Always accept up to 8 bytes
 
 union word {

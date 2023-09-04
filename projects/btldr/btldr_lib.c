@@ -10,11 +10,13 @@
 #include "projects/btldr/libs/shmem/api.h"
 
 static can_frame_t can_msg = { 0 };
+static uint8_t can_data[8] = { 0 };
 
 static uint16_t btldr_id = 0x00;
 
 void updater_init(uint16_t ecu_id, uint8_t mob) {
     can_msg.mob = mob;
+    can_msg.data = can_data;
 
     // Save btldr_id
     btldr_id = ecu_id;
@@ -32,7 +34,7 @@ static void do_reset(uint8_t* data, uint8_t dlc) {
         bootflag_set(UPDATE_REQUESTED);
     }
 
-    asm("jmp 0x3000");
+    asm volatile("jmp 0x3000");
 }
 
 static void do_query(uint8_t* data, uint8_t dlc) {
@@ -41,17 +43,19 @@ static void do_query(uint8_t* data, uint8_t dlc) {
     uint8_t chip = CHIP_AVR_ATMEGA16M1;
 
     // Current timestamp from data
-    uint64_t timestamp = (uint64_t)*data;
+    uint64_t timestamp = *(uint64_t*)data;
     uint64_t flash_timestamp = image_get_timestamp();
     uint64_t delta = timestamp - flash_timestamp;
     uint32_t delta_32 = (uint32_t)delta;
 
-    uint8_t resp_data[8] = { version, chip, CURRENT_IMAGE_APP, 0 };
+    can_msg.data[0] = version;
+    can_msg.data[1] = chip;
+    can_msg.data[2] = CURRENT_IMAGE_APP;
+    can_msg.data[3] = 0;
 
-    memcpy((resp_data + 4), &delta_32, sizeof(delta_32));
+    memcpy(&can_msg.data[4], &delta_32, sizeof(delta_32));
 
     can_msg.id = (btldr_id) | CAN_ID_QUERY_RESPONSE;
-    can_msg.data = resp_data;
     can_msg.dlc = 8;
 
     (void)can_send(&can_msg);

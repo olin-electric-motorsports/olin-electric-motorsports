@@ -1,7 +1,7 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
-load("//vehicle/mkv:ecus.bzl", "ECUS")
+load("//projects/btldr:ecus.bzl", "ECUS")
 
 ### cc_firmware
 
@@ -151,10 +151,6 @@ _bin_file = rule(
         "_cc_toolchain": attr.label(
             default = Label("@bazel_tools//tools/cpp:current_cc_toolchain"),
         ),
-        # TODO: (@jack-greenberg) Integrate btldr
-        # "_patch_header": attr.label(
-        #     default = Label("//projects/btldr/tools:patch_image_header"),
-        # )
     },
     executable = False,
     toolchains = [
@@ -278,11 +274,19 @@ def cc_firmware(name, **kwargs):
     if kwargs.get("linkopts"):
         linkopts = kwargs.pop("linkopts")
 
+    is_btldr = False
+    if kwargs.get("is_btldr"):
+        # This is a btldr binary
+        is_btldr = True
+        kwargs.pop("is_btldr")
+    else:
+        # If not a btldr binary, make sure to garbage collect unused sections
+        linkopts.append("-Wl,--gc-sections")
+
     btldr = None
     if kwargs.get("btldr"):
         btldr = kwargs.pop("btldr")
         linkopts.append("-flto")
-        linkopts.append("-Wl,--gc-sections")
         data.append(btldr + ".hex")
         defines.append("BTLDR_ID=" + ECUS[name]["btldr_id"])
 
@@ -350,6 +354,23 @@ def cc_firmware(name, **kwargs):
     template = "//bazel/tools:avrdude.sh.tmpl"
 
     if btldr:
+        native.py_binary(
+            name = "can_flash",
+            srcs = [
+                "//bazel/tools:can_flash.py",
+            ],
+            deps = [
+                "//projects/btldr/py_client:updatr",
+            ],
+            env = {
+                "BTLDR_ID": ECUS[name]["btldr_id"],
+                "TARGET_BINARY": "$(location {}_patched_bin)".format(name),
+            },
+            data = [
+                "{}_patched_bin".format(name),
+            ],
+        )
+
         native.genrule(
             name = "{}_patched_bin".format(name),
             srcs = [

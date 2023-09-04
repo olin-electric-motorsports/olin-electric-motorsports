@@ -1,0 +1,42 @@
+# Container ecosystem for telemetry data pipeline
+version: '3.4'
+
+services:
+  telemetry:
+    container_name: telemetry
+    build:
+      context: .
+    volumes:
+      - .:/src
+    depends_on:
+      - redis
+    # pass in both likely USB ports
+    # devices:
+      # changes based upon which USB port is being used
+      # - "/dev/ttyUSB0:/dev/ttyUSB0" # need to handle just mapped USB ports
+      #- "/dev/ttyACM0:/dev/ttyACM0"
+    links:
+      - redis:redis_host
+
+  redis:
+    image: redislabs/redistimeseries:latest
+    ports:
+      - '6379:6379'
+
+  grafana:
+    container_name: grafana_host
+    image: grafana/grafana:latest
+    ports:
+      - '3001:3000'
+    depends_on: 
+      - redis
+    links: 
+      - "redis:redis_host" 
+    environment:
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_BASIC_ENABLED=false
+      - GF_ENABLE_GZIP=true
+      - GF_INSTALL_PLUGINS=redis-datasource
+    volumes:
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources

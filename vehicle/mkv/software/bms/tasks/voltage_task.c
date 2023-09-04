@@ -37,6 +37,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
         // Executes once for each of the LTC681x cell voltage
 
         // + 1 because of the way _rdcv_reg is written
+        wakeup_idle(NUM_ICS);
         LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
 
         for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach LTC6811
@@ -69,17 +70,27 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
              * reads too low. Until this is fixed, we just average them and
              * report the average instead
              */
-            if ((cell_reg == 2) && (ic == 5)) {
-                uint16_t average
-                    = ((cell_1 >> 8) + (cell_2 >> 8) + (cell_3 >> 8)) / 3;
-                average <<= 8;
-                cell_1 = (uint16_t)average;
-                cell_2 = (uint16_t)average;
-                cell_3 = (uint16_t)average;
-            }
+            // if ((cell_reg == 2) && (ic == 5)) {
+            //     uint16_t average
+            //         = ((cell_1 >> 8) + (cell_2 >> 8) + (cell_3 >> 8)) / 3;
+            //     average <<= 8;
+            //     cell_1 = (uint16_t)average;
+            //     cell_2 = (uint16_t)average;
+            //     cell_3 = (uint16_t)average;
+            // }
 
             reg_voltages[0] = cell_1;
             *pack_voltage += cell_1 >> 8;
+
+            /*
+             * HACK: There is a hardware issue in the BMS where this cell reads
+             * too high and the following cell reads too low, but their average
+             * is correct. We aren't sure why, so for now we are just ignoring
+             * the issue.
+             */
+            // if ((cell_reg == 3) && (ic == 10)) {
+            //     cell_1 = 35000;
+            // }
 
             if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
                 *ov += 1;
@@ -98,6 +109,11 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
                     *uv += 1;
                 }
+
+                // HACK
+                // if ((cell_reg == 2) && (ic == 10)) {
+                //     cell_3 = cell_2;
+                // }
 
                 reg_voltages[2] = cell_3;
                 *pack_voltage += cell_3 >> 8;

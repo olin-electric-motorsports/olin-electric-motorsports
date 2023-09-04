@@ -11,6 +11,8 @@
 #include "projects/btldr/libs/image/api.h"
 #include "projects/btldr/libs/shmem/api.h"
 
+#define ERR_IMAGE_INVALID (1) // HACK: need to formalize
+
 static struct session_data session = {
     .is_active = false,
     .type = 0,
@@ -27,7 +29,7 @@ uint8_t handle_query(uint16_t btldr_id, uint8_t* data, uint8_t length) {
 
     uint8_t chip = CHIP_AVR_ATMEGA16M1;
 
-    uint64_t timestamp = (uint64_t)*data;
+    uint64_t timestamp = *(uint64_t*)data;
     uint64_t flash_timestamp = image_get_timestamp();
     uint64_t delta = timestamp - flash_timestamp;
     uint32_t delta_32 = (uint32_t)delta;

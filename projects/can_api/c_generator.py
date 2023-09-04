@@ -1,7 +1,8 @@
 import yaml
 from cantools.database.can import Database as CANDatabase
 import argparse
-from yaml_handler import YamlParser
+
+# from yaml_handler import YamlParser
 from utils import get_rx_messages
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import os
@@ -41,11 +42,34 @@ def main():
 
     # Filter messages to get only the ones our Node sends
     tx_messages = []
+    choices = []
     for message in yaml_data["publish"]:
-        tx_messages.append(db.get_message_by_name(message["name"]))
+        msg = db.get_message_by_name(message["name"])
+        tx_messages.append(msg)
+
+        if "signals" in message.keys():
+            for sig in message["signals"]:
+                if sig["unit"]["type"] == "enum":
+                    choices.append(
+                        {
+                            "name": sig["name"],
+                            "values": sig["unit"]["values"],
+                        }
+                    )
 
     if "subscribe" in yaml_data.keys():
         rx_messages, mobs, masks = get_rx_messages(yaml_data["subscribe"], db.messages)
+
+        for msg in rx_messages:
+            for sig in msg.signals:
+                if sig.choices:
+                    if len(sig.choices) > 2:
+                        choices.append(
+                            {
+                                "name": sig.name,
+                                "values": list(sig.choices.values()),
+                            }
+                        )
     else:
         rx_messages = []
         mobs = {}
@@ -79,7 +103,10 @@ def main():
 
     with open(h_out, "w+") as f:
         contents = h_template.render(
-            node=node, tx_messages=tx_messages, rx_messages=rx_messages
+            node=node,
+            tx_messages=tx_messages,
+            rx_messages=rx_messages,
+            choices=choices,
         )
 
         f.write(contents)

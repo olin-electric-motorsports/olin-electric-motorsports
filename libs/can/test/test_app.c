@@ -1,12 +1,15 @@
 #include "libs/can/api.h"
 #include "libs/can/test/can_api.h"
+#include "libs/gpio/api.h"
+#include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <stdbool.h>
 #include <util/delay.h>
 
-#define LED0 (PD6)
+// #define LED0 (PD6)
+gpio_t LED0 = PD6;
 
 void timer0_callback(void);
 
@@ -34,18 +37,27 @@ int main(void) {
 
     sei();
 
-    DDRD |= _BV(LED0);
+    gpio_set_mode(LED0, OUTPUT);
 
     int rc = 0;
 
     can_receive_air_control_critical();
 
+    bool toggle = false;
+
     while (1) {
         rc = can_poll_receive_air_control_critical();
-
         if (rc == 0) {
             test_msg.test_sig = test_msg.test_sig + 1;
-            PORTD |= _BV(LED0);
+
+            gpio_toggle_pin(LED0);
+
+            if (toggle) {
+                can_set_id_mode(ID_MODE_STANDARD);
+            } else {
+                can_set_id_mode(ID_MODE_EXTENDED);
+            }
+            toggle = !toggle;
             can_receive_air_control_critical();
         }
 

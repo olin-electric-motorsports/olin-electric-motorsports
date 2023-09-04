@@ -121,7 +121,7 @@
   (zone (net 0) (net_name "") (layers "F.Cu" "Dwgs.User") (tstamp d4622802-1a43-442d-a96f-2159703a15d2) (hatch edge 0.508)
     (connect_pads (clearance 0))
     (min_thickness 0.254)
-    (keepout (tracks allowed) (vias allowed) (pads allowed ) (copperpour allowed) (footprints not_allowed))
+    (keepout (tracks allowed) (vias allowed) (pads allowed) (copperpour allowed) (footprints not_allowed))
     (fill (thermal_gap 0.508) (thermal_bridge_width 0.508))
     (polygon
       (pts
@@ -139,5 +139,10 @@
         (xy -13 -3.3)
       )
     )
+  )
+  (model "${OEM_DIR}/parts/3DModels/M2automotive.STEP"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -90 0 0))
   )
 )

@@ -3,6 +3,7 @@
   (tedit 0)
   (property "Sheetfile" "M.2-Templates.kicad_sch")
   (property "Sheetname" "")
+  (zone_connect 2)
   (attr through_hole exclude_from_bom)
   (fp_text reference "U$2" (at 0 0) (layer "F.SilkS") hide
     (effects (font (size 1.27 1.27) (thickness 0.15)))
@@ -14,7 +15,7 @@
   )
   (fp_line (start 10.499999 0.016) (end -10.499999 0.016) (layer "Dwgs.User") (width 0.05) (tstamp 0e6b8a2b-da63-4e92-b1f0-c630d06d00da))
   (pad "1" smd circle (at 0 1.016) (size 7.249998 7.249998) (layers "B.Cu" "B.Mask")
-    (solder_mask_margin 0.1016) (tstamp 1de6627e-481f-4d84-8b7f-1c0781a8c361))
+    (solder_mask_margin 0.1016) (zone_connect 2) (tstamp 1de6627e-481f-4d84-8b7f-1c0781a8c361))
   (pad "1" thru_hole circle (at 0 0.016) (size 5.499999 5.499999) (drill 3.500001) (layers *.Cu *.Mask)
-    (solder_mask_margin 0.1016) (tstamp 688e521f-9e1d-4d7d-958a-2a7585cbeccb))
+    (solder_mask_margin 0.1016) (zone_connect 2) (tstamp 688e521f-9e1d-4d7d-958a-2a7585cbeccb))
 )

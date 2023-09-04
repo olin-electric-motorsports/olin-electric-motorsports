@@ -5,21 +5,26 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+enum can_id_mode_e {
+    ID_MODE_STANDARD,
+    ID_MODE_EXTENDED,
+};
+
 typedef enum {
     BAUD_250KBPS,
     BAUD_500KBPS,
 } baud_rate_t;
 
 typedef struct {
-    uint16_t id;
+    uint32_t id;
     uint8_t dlc;
     uint8_t* data;
     uint8_t mob; // This can be unused for non AVR? or remove?
 } can_frame_t;
 
 typedef struct {
-    uint16_t id;
-    uint16_t mask;
+    uint32_t id;
+    uint32_t mask;
 } can_filter_t;
 
 #define MAX_DLC (8)
@@ -82,3 +87,5 @@ int can_receive(can_frame_t* frame, can_filter_t filter);
  *   1: Message error
  */
 int can_poll_receive(can_frame_t* frame);
+
+void can_set_id_mode(enum can_id_mode_e mode);
