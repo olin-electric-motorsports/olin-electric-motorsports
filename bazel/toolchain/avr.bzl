@@ -82,6 +82,7 @@ def _impl(ctx):
             ft.all_warnings_as_errors,
             ft.dbg,
             ft.opt,
+            ft.set_min_page_size,
             ft.device,
         ],
     )
