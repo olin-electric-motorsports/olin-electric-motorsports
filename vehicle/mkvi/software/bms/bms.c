@@ -133,17 +133,7 @@ static void monitor_cells(void) {
     bms_sense.current_vref = vref;
     bms_sense.current_vout = vout;
 
-    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_UNDERTEMPERATURE);
-        bms_core.bms_state = BMS_STATE_FAULT;
-        return;
-    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_OVERTEMPERATURE);
-        bms_core.bms_state = BMS_STATE_FAULT;
-        return;
-    }
-
-    if (uv > 0) {
+    if (ov > 0) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
         bms_core.bms_state = BMS_STATE_FAULT;
     }

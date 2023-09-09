@@ -72,7 +72,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
 
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         bms_temperature.ic = ic;
-        bms_temperature.da_boards = DA_BOARDS_12;
+        bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_12;
 
         uint16_t raw_idx = ic * NUM_RX_BYT;
 
@@ -89,7 +89,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
                              },
                              2);
 
-        bms_temperature.da_boards = DA_BOARDS_34;
+        bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
         bms_temperature.temperature_1
             = aux_reg_a_raw[raw_idx + 4] | (aux_reg_a_raw[raw_idx + 5] << 8);
         bms_temperature.temperature_2

@@ -3,7 +3,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define I2C_MUX_ADDRESS (0xE0) // assuming both the hardware configurable pins are 0 - is this the case?
 #define MUX1_ADDRESS (0x90)
 #define MUX2_ADDRESS (0x92)
 #define MUX3_ADDRESS (0x94)
@@ -13,6 +12,9 @@
 
 #define NUM_MUXES    (3)
 #define NUM_CHANNELS (8)
+
+uint8_t I2C_MUX_ADDRESS = 0xE0; // variable so compiler doesn't give overflow
+                                // warning when shifting
 
 /*
  * Configures the multiplexer

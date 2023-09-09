@@ -1,4 +1,4 @@
-#pragma once // What is this?
+#pragma once
 
 #include "libs/adc/api.h"
 #include "libs/can/api.h"
@@ -22,7 +22,7 @@
 #define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)1814) // 35 degC
 #define UNDERTEMPERATURE_THRESHOLD         ((int16_t)15513) // -20 degC
 
-#define OVERVOLTAGE_THRESHOLD  (39500) // 3.95
+#define OVERVOLTAGE_THRESHOLD  (39500) // 3.95V
 #define UNDERVOLTAGE_THRESHOLD (25000) // 2.5V
 
 /*
