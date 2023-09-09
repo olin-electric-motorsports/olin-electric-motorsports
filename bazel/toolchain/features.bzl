@@ -72,6 +72,19 @@ _OPT_FEATURE = feature(
     provides = ["compilation_mode"],
 )
 
+_SET_MIN_PAGE_SIZE = feature(
+    name = "set_min_page_size",
+    enabled = False,
+    flag_sets = [
+        flag_set(
+            actions = _C_ALL_COMPILE_ACTIONS,
+            flag_groups = [
+                flag_group(flags = ["--param=min-pagesize=0"]),
+            ],
+        ),
+    ],
+)
+
 _DEFAULT_FEATURE = feature(
     name = "default",
     enabled = True,
@@ -111,6 +124,7 @@ CC_ALL_COMMON_FEATURES_INFO = {
     "opt": "Compile a release build with, optimisation turned on",
     "default": "Default C flags",
     "device": "The device name and CPU frequency",
+    "set_min_page_size": "Set minimum page size to 0 to prevent warning",
     "type_name": "The type name for this provider",
 }
 
@@ -123,6 +137,7 @@ def AvrGetCommonFeatures(device_name, device_frequency):
         dbg = _DEBUG_FEATURE,
         opt = _OPT_FEATURE,
         default = _DEFAULT_FEATURE,
+        set_min_page_size = _SET_MIN_PAGE_SIZE,
         device = AvrDeviceFeature(device_name, device_frequency),
         type_name = "cc_all_common_feature_info",
     )
