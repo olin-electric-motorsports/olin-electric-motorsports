@@ -33,6 +33,7 @@ cc_firmware(
         "//bazel/constraints:atmega16m1",
     ],
     deps = [
+        ":bms_config",
         ":can_api",
         "//libs/adc",
         "//libs/gpio",
