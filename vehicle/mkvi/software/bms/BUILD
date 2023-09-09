@@ -3,6 +3,9 @@ load("//bazel/tools:defs.bzl", "can_api_files")
 
 cc_library(
     name = "bms_config",
+    srcs = [
+        "bms_config.c",
+    ],
     hdrs = [
         "bms_config.h",
     ],

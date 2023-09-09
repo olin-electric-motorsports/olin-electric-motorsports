@@ -25,23 +25,29 @@ static void fan_enable(bool enable) {
 }
 
 static void update_min_max_temps(int16_t* min_temp, int16_t* max_temp,
-                                 int16_t* temps[], uint8_t num_temps) {
+                                 int16_t temps[], uint8_t num_temps) {
     for (uint8_t i = 0; i < num_temps; i++) {
-        if (*temps[i] > INVALID_TEMPERATURE_THRESHOLD) {
+        if (temps[i] > INVALID_TEMPERATURE_THRESHOLD) {
             continue;
         }
 
-        if (*temps[i] < *min_temp) {
-            *min_temp = *temps[i];
+        if (temps[i] < *min_temp) {
+            *min_temp = temps[i];
         }
-        if (*temps[i] > *max_temp) {
-            *max_temp = *temps[i];
+        if (temps[i] > *max_temp) {
+            *max_temp = temps[i];
         }
     }
 }
 
-int16_t min_temperature = INT16_MAX; // highest voltage
-int16_t max_temperature = INT16_MIN; // lowest voltage
+/*
+ * We are using negative-temperature-coefficient thermistors.
+ * TL;DR is as the temperature increases, the voltage decreases.
+ * These variables refer the the voltages, so the minimum temperature is the
+ * highest voltage, and vice versa.
+ */
+int16_t min_temperature = INT16_MAX;
+int16_t max_temperature = INT16_MIN;
 
 int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
                      int16_t* max_temp) {
@@ -83,9 +89,9 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
         can_send_bms_temperature();
 
         update_min_max_temps(min_temp, max_temp,
-                             (int16_t*[]) {
-                                 &bms_temperature.temperature_1,
-                                 &bms_temperature.temperature_2,
+                             (int16_t[]) {
+                                 bms_temperature.temperature_1,
+                                 bms_temperature.temperature_2,
                              },
                              2);
 
@@ -97,9 +103,9 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
         can_send_bms_temperature();
 
         update_min_max_temps(min_temp, max_temp,
-                             (int16_t*[]) {
-                                 &bms_temperature.temperature_1,
-                                 &bms_temperature.temperature_2,
+                             (int16_t[]) {
+                                 bms_temperature.temperature_1,
+                                 bms_temperature.temperature_2,
                              },
                              2);
 

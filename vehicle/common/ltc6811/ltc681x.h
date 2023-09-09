@@ -778,7 +778,7 @@ void LTC681x_set_cfgr_adcopt(
 void LTC681x_set_cfgr_gpio(
     uint8_t nIC, //!< Current IC
     cell_asic* ic, //!< A two dimensional array that will store the data
-    bool gpio[] //!< The GPIO bits
+    bool gpio[5] //!< The GPIO bits
 );
 
 /*!
@@ -788,7 +788,7 @@ void LTC681x_set_cfgr_gpio(
 void LTC681x_set_cfgr_dis(
     uint8_t nIC, //!< Current IC
     cell_asic* ic, //!< A two dimensional array that will store the data
-    bool dcc[] //!< The DCC bits
+    bool dcc[12] //!< The DCC bits
 );
 
 /*!
@@ -798,7 +798,7 @@ void LTC681x_set_cfgr_dis(
 void LTC681x_set_cfgr_dcto(
     uint8_t nIC, //!< Current IC
     cell_asic* ic, //!< A two dimensional array that will store the data
-    bool dcto[] //!< The Dcto bits
+    bool dcto[4] //!< The Dcto bits
 );
 
 /*!

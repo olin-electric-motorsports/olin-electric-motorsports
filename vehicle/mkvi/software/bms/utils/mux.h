@@ -13,9 +13,6 @@
 #define NUM_MUXES    (3)
 #define NUM_CHANNELS (8)
 
-uint8_t I2C_MUX_ADDRESS = 0xE0; // variable so compiler doesn't give overflow
-                                // warning when shifting
-
 /*
  * Configures the multiplexer
  * @param num_ics - number of ADBMS chips in daisy chain
