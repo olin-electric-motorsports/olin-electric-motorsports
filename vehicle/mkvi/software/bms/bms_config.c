@@ -1,8 +1,8 @@
 #include "bms_config.h"
 
+#include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
-#include "libs/adc/api.h"
 
 /*
  * PIN DEFINITIONS

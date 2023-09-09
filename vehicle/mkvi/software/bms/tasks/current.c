@@ -1,5 +1,5 @@
-#include "tasks.h"
 #include "libs/adc/api.h"
+#include "tasks.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include <stdint.h>
 
@@ -8,7 +8,7 @@
 #define MAX_ADC_COUNT 1024
 
 void current_task(int16_t* current, uint16_t* vref, uint16_t* vout) {
-    *vref = adc_read(MAX_ADC_COUNT / 2); //vref isn't connected to micro?
+    *vref = adc_read(MAX_ADC_COUNT / 2); // vref isn't connected to micro?
     *vout = adc_read(CURRENT_SENSE_VOUT);
 
     *current = (*vout - *vref);

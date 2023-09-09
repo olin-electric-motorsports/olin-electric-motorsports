@@ -82,9 +82,9 @@ static void monitor_cells(void) {
         bms_metrics.voltage_pec_error_count += rc;
 
         if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
-                set_fault(BMS_FAULT_PEC);
-                bms_core.bms_state = BMS_STATE_FAULT;
-            }
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = BMS_STATE_FAULT;
+        }
         return;
     } else {
         bms_metrics.voltage_pec_error_count = 0;
@@ -114,9 +114,9 @@ static void monitor_cells(void) {
         bms_metrics.temperature_pec_error_count += rc;
 
         if (bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
-                set_fault(BMS_FAULT_PEC);
-                bms_core.bms_state = BMS_STATE_FAULT;
-            }
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = BMS_STATE_FAULT;
+        }
         return;
     } else {
         bms_metrics.temperature_pec_error_count = 0;

@@ -13,7 +13,8 @@
 #define DA_BOARDS_PER_IC 4
 
 #define MAX_EXTRANEOUS_TEMPERATURES 3 // ?
-#define MAX_PEC_ERROR_COUNT 32 // copied from mkv where it still says arbitrary...
+#define MAX_PEC_ERROR_COUNT \
+    32 // copied from mkv where it still says arbitrary...
 
 // copied from MKV - need to be updated
 #define OVERTEMPERATURE_THRESHOLD          ((int16_t)714) // 60 degC
@@ -49,4 +50,3 @@ void timer0_isr(void);
 extern timer_cfg_s timer0_cfg;
 extern timer_cfg_s timer1_cfg;
 extern spi_cfg_s spi_cfg;
-
