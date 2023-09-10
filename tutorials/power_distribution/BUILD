@@ -4,9 +4,9 @@ load("//bazel:defs.bzl", "cc_firmware")
 cc_firmware(
     name = "power_distribution",
     srcs = [
+        "api.h",
         "main.c",
         "power_distribution.c",
-        "api.h",
     ],
     target_compatible_with = ["//bazel/constraints:avr"],
     deps = [
