@@ -4,8 +4,8 @@ import can
 import cantools
 import RPi.GPIO as GPIO
 
-BUSTYPE = "slcan"
-CHANNEL = "/dev/ttyACM1"
+BUSTYPE = "socketcan"
+CHANNEL = "can0"
 BITRATE = 500000
 
 # Loading in everyone's compiled config files
@@ -20,10 +20,11 @@ brake_gate = None
 throttle_pressed = None
 
 # Pin Definitions
-BMS_LED_LSD = 27
+AMS_LED_LSD = 36
+# Changed BMS from 27 to reflect hardware updates, also updated to be called AMS
 HV_LED_LSD = 29
 IMD_LED_LSD = 26
-RTD_BUZZER_LSD = 28
+RTD_BUZZER_LSD = 32  # Changed from 28 to reflect hardware updates
 
 RTD_BUTTON_SENSE = 31
 BOTS_SHDN_SENSE = 22
@@ -146,7 +147,7 @@ def main():
 
     # Channel Setup/Pin Mode Setup
     channel_outputs = [
-        BMS_LED_LSD,
+        AMS_LED_LSD,
         HV_LED_LSD,
         IMD_LED_LSD,
         RTD_BUZZER_LSD,
@@ -178,7 +179,7 @@ def main():
         t_0 = time.perf_counter()
 
         # Turns on BMS LED if there are any BMS faults
-        GPIO.output(BMS_LED_LSD, bms_fault != "NONE")
+        GPIO.output(AMS_LED_LSD, bms_fault != "NONE")
 
         # Turns on HV LED if the tractive system is on
         GPIO.output(HV_LED_LSD, air_state == "TS_ACTIVE")
