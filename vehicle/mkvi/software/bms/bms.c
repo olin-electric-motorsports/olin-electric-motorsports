@@ -122,7 +122,12 @@ static void monitor_cells(void) {
         bms_metrics.temperature_pec_error_count = 0;
     }
 
-    // TODO: Open wire detection
+    // Run BMS Chip open wire detection
+    rc = openwire_task();
+    if (rc != 0) {
+        bms_core.bms_state = BMS_STATE_FAULT;
+        return;
+    }
 
     // read current
     int16_t current = 0;

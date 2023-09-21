@@ -6,6 +6,7 @@ cc_library(
         "current.c",
         "temperature.c",
         "voltage.c",
+        "openwire.c",
     ],
     hdrs = [
         "tasks.h",

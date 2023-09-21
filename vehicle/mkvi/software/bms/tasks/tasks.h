@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <stdint.h>
@@ -49,3 +50,5 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
                      int16_t* max_temp);
 
 void current_task(int16_t* current, uint16_t* vref, uint16_t* vout);
+
+int openwire_task(void);
