@@ -1,9 +1,9 @@
 #include "bspd.h"
 
-#include "can_api.h"
 #include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
+#include "vehicle/mkvi/software/brakes/can_api.h"
 
 #include <avr/interrupt.h>
 
@@ -27,40 +27,34 @@ void timer0_callback(void) {
 }
 
 // Code to run when a digital sense pin changes state (High->Low or Low->High)
-volatile bool update_LED_trigger = false;
 void pcint0_callback(void) {
     // Update CAN struct with new board logic values
     bspd.brake_gate = !!gpio_get_pin(BRAKELIGHT_LL);
     bspd.bspd_5kw = !!gpio_get_pin(MOTOR_CURRENT_SENSE);
     bspd.ss_bspd = !gpio_get_pin(BSPD_LL);
-
-    update_LED_trigger = true;
 }
 
 // Check whether an LED needs updating, and if so, change its state
 void update_LEDs(void) {
-    if (update_LED_trigger) {
-        // Update Brake Light LED on the PCB
-        if (bspd.brake_gate == true) {
-            gpio_set_pin(BRAKE_LL_LED);
-        } else {
-            gpio_clear_pin(BRAKE_LL_LED);
-        }
+    // Update Brake Light LED on the PCB
+    if (bspd.brake_gate == true) {
+        gpio_set_pin(BRAKE_LL_LED);
+    } else {
+        gpio_clear_pin(BRAKE_LL_LED);
+    }
 
-        // Update 5kW LED on the PCB
-        if (bspd.bspd_5kw) {
-            gpio_set_pin(MOTOR_5KW_LED);
-        } else {
-            gpio_clear_pin(MOTOR_5KW_LED);
-        }
+    // Update 5kW LED on the PCB
+    if (bspd.bspd_5kw) {
+        gpio_set_pin(MOTOR_5KW_LED);
+    } else {
+        gpio_clear_pin(MOTOR_5KW_LED);
+    }
 
-        // Update Shutdown LED on the PCB
-        if (bspd.ss_bspd) {
-            gpio_set_pin(BSPD_TRIP_LED);
-        } else {
-            gpio_clear_pin(BSPD_TRIP_LED);
-        }
-        update_LED_trigger = false;
+    // Update Shutdown LED on the PCB
+    if (bspd.ss_bspd) {
+        gpio_set_pin(BSPD_TRIP_LED);
+    } else {
+        gpio_clear_pin(BSPD_TRIP_LED);
     }
 }
 
