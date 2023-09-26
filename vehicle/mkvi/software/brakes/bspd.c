@@ -71,7 +71,7 @@ int main(void) {
     adc_init();
 
     // Begin bootloader update function
-    updater_init(0x718, 5);
+    updater_init(BTLDR_ID, 5);
 
     // Start 100Hz CAN update timer (print results to can 100 times / sec)
     timer_init(&timer0_cfg);
