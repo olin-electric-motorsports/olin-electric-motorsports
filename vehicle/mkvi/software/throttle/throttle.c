@@ -233,7 +233,7 @@ int main(void) {
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
 
-    // updater_init(BTLDR_ID, 5);
+    updater_init(BTLDR_ID, 5);
     gpio_set_mode(SS_IS, INPUT);
     gpio_enable_interrupt(SS_IS);
 
@@ -252,18 +252,18 @@ int main(void) {
 
     m192_command_message.direction_command = MOTOR_CLOCKWISE;
 
-    can_receive_brakelight();
+    can_receive_bspd();
     can_receive_dashboard();
 
     while (true) {
-        // updater_loop();
+        updater_loop();
         if (run_1ms) {
             run_1ms = false;
 
-            if (can_poll_receive_brakelight() == 0) {
+            if (can_poll_receive_bspd() == 0) {
                 // checking brake status
-                throttle_state.brake_pressed = brakelight.brake_gate;
-                can_receive_brakelight();
+                throttle_state.brake_pressed = bspd.brake_gate;
+                can_receive_bspd();
             }
 
             if (can_poll_receive_dashboard() == 0) {
