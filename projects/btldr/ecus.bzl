@@ -13,7 +13,7 @@ ECUS = {
     "brakelight_bspd": {
         "btldr_id": "0x718",
     },
-    "brakes": {
+    "bspd": {
         "btldr_id": "0x718",
     },
     "lvbms": {
