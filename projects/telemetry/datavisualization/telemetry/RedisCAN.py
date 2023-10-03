@@ -1,7 +1,6 @@
 """
 Provides tooling to help move messages from a serial can (slcan) device into Redis.
 """
-from typing import Any  # Fully typed, because why not
 import can  # Provides slcan interface
 import cantools  # Decodes using slcan messages
 import re  # Only used to parse out signal names
@@ -9,36 +8,42 @@ from redis import Redis
 from redistimeseries.client import Client
 
 
-def MakeBus(num: int) -> can.Bus:
+def MakeBus(path: str) -> can.Bus:
     """
     Set up slcan interface from a serial radio connected to the computer
 
     Args:
-        num: The USB serial device number of the radio (ex. /dev/ttyUSB0)
+        path: The USB serial device path of the radio (ex. /dev/ttyUSB0)
 
     Returns:
-        a can.Bus object (from python-can) or a descriptive error
+        a can.Bus object (from python-can)
+    
+    Raises:
+        A generic Exception if the device cannot be accessed.
     """
     try:
         return can.interface.Bus(
-            bustype="slcan", channel="/dev/ttyUSB%s@9600" % num, bitrate=500000
+            bustype="slcan", channel=f"{path}@9600", bitrate=500000
         )
     except:
         raise Exception(
-            """/tty/USB%s cannot be accessed. Try the following:
+            f"""{path} cannot be accessed. Try the following:
         *running this script with 'sudo'
         *rebooting the laptop
         *checking the connection between the radio and the laptop
-        *using 'minicom --device=/dev/ttyUSB%s --baudrate=9600' to debug the radio communications
+        *using 'minicom --device={path} --baudrate=9600' to debug the radio communications
         *checking the USB device number
         """
-            % num
         )
 
 
 class RedisReader(can.Listener):
     """
     Puts can messages into Redis
+
+    Attributes:
+        rts: A Redis Time Series object that functions as a client to Redis.
+        dbc: A Cantools database object that functions as 
     """
 
     def __init__(self, redis_instance: Redis, dbc_file: str) -> None:
@@ -47,7 +52,7 @@ class RedisReader(can.Listener):
 
         Args:
             redis_instance: a Redis instance (connection)
-            dbc_file: the relative path to a file in the [dbc](http://www.socialledge.com/sjsu/index.php?title=DBC_Format) format
+            dbc_file: the relative path to a file in the dbc format
         """
         super().__init__()
         # Redis time series -> rts
@@ -58,7 +63,8 @@ class RedisReader(can.Listener):
                 lambda s: s[11:-1],
                 re.findall(
                     "\\n  signal\('.*?'", str(self.dbc)
-                ),  # parses signals from toString of cantools because no method exists
+                ),  # parses signals from toString of cantools
+                # because no method exists
             )
         )
         for data_channel in data_channels:
@@ -92,10 +98,10 @@ class RedisReader(can.Listener):
 
 
 def main():
-    USB_NUM = input(
-        "Provide *only* the number of the USB device corresponding to the radio:"
+    USB_TTY = input(
+        "Provide the path of the USB device corresponding to the radio:"
     )
-    bus = MakeBus(USB_NUM)
+    bus = MakeBus(USB_TTY)
     # dbc file for decoding messages
     dbc = "data/dash.dbc"
     redis_instance = Redis(host="127.0.0.1", port="6379")

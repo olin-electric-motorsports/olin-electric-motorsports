@@ -117,6 +117,8 @@ Test computer two:
 
 You should see some data appear on computer one after the command, then disappear shortly.
 
+[These are full SocketCAN ('vcan')](https://elinux.org/Bringing_CAN_interface_up#SLCAN_based_Interfaces) devices that can be used with all cantools commands
+
 # Radio support (debugging and firmware flash, if chosen) - Advanced
 ```
 sudo apt install minicom
@@ -130,3 +132,8 @@ Enter `+++` when opened in minicom,
 use `AT0` to exit AT mode. 
 
 Use Ctrl+a + x to exit minicom
+
+# Grafana support - Advanced
+
+You can source values from equations if chosen.
+
