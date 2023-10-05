@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#define HW_TIMER_Hz     (30)
 #define SW_TIMER_SCALER (6)
 
 static volatile bool run_blink_led0 = true;
@@ -21,7 +22,7 @@ void sw_timer_callback(void) {
 
 void sw_timer(void) {
     counter += 1;
-    if (counter % (30 / SW_TIMER_SCALER) == 0) {
+    if (counter % (HW_TIMER_Hz / SW_TIMER_SCALER) == 0) {
         sw_timer_callback();
         counter = 0;
     }
@@ -41,6 +42,7 @@ int main(void) {
             run_blink_led0 = false;
             sw_timer();
         }
+
         if (run_blink_led1) {
             gpio_toggle_pin(LED1);
             run_blink_led1 = false;
