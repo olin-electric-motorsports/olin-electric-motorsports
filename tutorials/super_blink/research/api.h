@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 
-#define AS_VOLTAGE(raw) (float)raw * (0.004882813)
+#define AS_VOLTAGE(raw) (float)raw*(0.004882813)
 
 typedef enum {
     ADC0,
