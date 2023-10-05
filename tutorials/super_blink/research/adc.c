@@ -12,15 +12,29 @@ ISR(ADC_vect) {
     }
 }
 
-void adc_init(void) {
-    ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS0);
-    ADCSRB &= (1 << AREFEN);
+/*
+ * Initialize the adc on the MCU
+ * ADCSRA = ADC register A containing configuration bits (ADC Control and Status Register A)
+ * ADCSRB = ADC register B containing more configuration bits
+ * ADEN = ADC enable bit
+ * ADPS2:0 = ADC prescaler select - division factor between system clock fq and input clock to ADC
+ * AREFEN = Analog reference pin enable
+ * ADMUX = Register for muxing to various ADC inputs
+ * REFS0 = REFSn: Selects reference for the ADC
+ */
 
-    ADMUX |= (1 << REFS0);
+// Initializes the ADC on the MCU
+void adc_init(void) {
+    ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS0); // Sets the ADEN, ADPS2, and ADPS0 bits to 1. Enables the ADC, sets the prescaler to 32
+    ADCSRB &= (1 << AREFEN); // Sets the AREFEN bit to 1. 
+
+    ADMUX |= (1 << REFS0); // Bits: 01000000; ADC reference voltage is AV_CC
 }
 
-void adc_start_convert(adc_pin_e pin) {
-    ADMUX &= ~0x1F;
+
+// Starts ADC converting on a pin
+void adc_start_convert(adc_pin_e pin) { // Takes a type adc_pin_e named pin, maps back to an enum
+    ADMUX &= ~0x1F; // In binary: 11100000
     ADMUX |= (pin & 0x1F);
 
     ADCSRA |= (1 << ADSC);
