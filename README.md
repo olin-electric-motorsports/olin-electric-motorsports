@@ -26,6 +26,11 @@ Once you have it, you'll need to install the KiCad Git filters:
 $ ./scripts/install_kicad_git_filters.sh
 ```
 
+You'll also want to have the KiCad Git Hooks to generate our symbol libraries.
+```shell
+$ ./scripts/install_kicad_git_hooks.sh
+```
+
 ### Installing AVR and tools
 
 Next, install the AVR toolchain:
