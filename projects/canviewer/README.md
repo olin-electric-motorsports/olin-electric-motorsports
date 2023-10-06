@@ -7,7 +7,7 @@ The dashboard uses a QT GUI and includes support for SocketCan (for example, the
 It also is fully configurable via YAML.
 
 ## Using the tool
-1. Set up your CAN device if you are using a PCAN or other socketcan device. Instruction for this can be found [here](https://docs.olinelectricmotorsports.com/doc/how-to-use-can-HYcXsHAf2g)
+1. Set up your CAN device if you are using a PCAN or other socketcan device. Instruction for this can be found [here](https://coda.io/d/_dbuFnC2EA_e/How-to-use-CAN_suzvC)
     - You can also use this tool with a virtual CAN bus
 2. Run the tool! This is done using the command `bazel run //projects/canviewer`. There are three command line arguments as well
     - `-b` - Either `seeedstudio` or `socketcan` 
