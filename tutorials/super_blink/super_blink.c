@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define TIMER_5HZ     (5)
+#define TIMER_5HZ (5)
 
 static volatile bool run_blink_led0 = true;
 uint8_t counter = 0;
