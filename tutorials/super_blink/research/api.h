@@ -1,8 +1,10 @@
 #pragma once
 #include <stdint.h>
 
-#define AS_VOLTAGE(raw) (float)raw*(0.004882813)
+// What is this?
+#define AS_VOLTAGE(raw) (float)raw * (0.004882813)
 
+// enum for the ADC pins available
 typedef enum {
     ADC0,
     ADC1,
