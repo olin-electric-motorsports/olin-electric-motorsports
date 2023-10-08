@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 // What is this?
-#define AS_VOLTAGE(raw) (float)raw * (0.004882813)
+#define AS_VOLTAGE(raw) (float)raw*(0.004882813)
 
 // enum for the ADC pins available
 typedef enum {
