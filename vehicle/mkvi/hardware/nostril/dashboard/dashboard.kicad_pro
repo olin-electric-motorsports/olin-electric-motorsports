@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 1.02,
+          "height": 1.53,
+          "width": 1.53
         },
         "silk_line_width": 0.09999999999999999,
         "silk_text_italic": false,
@@ -45,7 +45,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "45_degree_only": true,
+          "45_degree_only": false,
           "min_clearance": 0.15239999999999998
         }
       },
@@ -56,7 +56,34 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "copper_edge_clearance|122725000|120775000|d49127f4-f683-4783-a1a4-4ea9f1838c7b|90ff242f-0436-4034-930c-bf270071da16",
+        "copper_edge_clearance|122725000|120775000|d49127f4-f683-4783-a1a4-4ea9f1838c7b|dcc07b25-ae82-4398-94ef-64165221c504",
+        "lib_footprint_issues|106807000|114790000|8477d471-c8a9-4b6b-b0f2-9883733cbd4e|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|108839000|114808000|4d970555-f5da-4282-a6d7-e03f38500177|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|110871000|114790000|5407c632-b644-4056-a8c6-064e55d8d11c|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|112903000|116425000|18e1696f-ca39-469e-bf1e-51796f5f307f|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|114909600|116027200|29aeaeac-265a-485e-9891-30d8a3473b5f|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|115551200|42436400|6a7f07b2-7cbe-491a-884f-6286d82e9475|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|116890800|114452400|3cd12e55-db17-402c-820b-5ba9071e3944|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|116948200|38880400|619ad136-1d80-44e6-9e11-ef672e37c058|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|118853200|114064400|83f85d61-1542-4ff3-9a47-ef536eb19ab5|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|128505200|34308400|50b3d3e0-0a2b-48ae-83fb-ab22cabfaf3e|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|128576200|39715400|f0455d1e-9b76-468f-80dc-c4b03f5b7945|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|128576200|43271400|3378d0da-a9a7-45c5-bce8-ec817bf0500b|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|131150000|112268000|83973728-9e9a-4c5f-8e8f-189467083c88|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|138605400|74211800|248376f9-0f35-42ad-a59a-7dff198c1f22|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|109085000|69850000|3d72bc01-89df-4f7a-b1d9-f90bcfa22381|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|112477800|39020600|bac303d9-ba62-44c4-86d3-2e4cabf97940|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|115297200|44849400|aed0e8b9-344f-4dbc-a4e3-04867ef8f159|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|118142000|59013700|4f34ba27-0df0-411c-9358-191582b9bee3|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|122725000|121712500|1358bb9d-c1be-4f5d-8687-184073dba596|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|125076200|39515400|a0876fdc-020c-476d-a109-62fc4202708c|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|125076200|43071400|e5818b65-129e-4109-a101-6c58ce687f7e|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|138792200|70757400|68ec9517-a53a-4e2b-bd1f-e3eae88e7ae2|00000000-0000-0000-0000-000000000000",
+        "text_height|128458200|35125400|7622b901-7bcd-4846-8fd4-e61fd6a908bf|00000000-0000-0000-0000-000000000000",
+        "text_thickness|128458200|35125400|7622b901-7bcd-4846-8fd4-e61fd6a908bf|00000000-0000-0000-0000-000000000000"
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -108,7 +135,7 @@
         "tracks_crossing": "error",
         "unconnected_items": "error",
         "unresolved_variable": "error",
-        "via_dangling": "warning",
+        "via_dangling": "ignore",
         "zones_intersect": "error"
       },
       "rule_severitieslegacy_courtyards_overlap": true,
@@ -128,10 +155,10 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.7999999999999999,
         "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.19999999999999998,
+        "min_through_hole_diameter": 0.30479999999999996,
         "min_track_width": 0.15,
-        "min_via_annular_width": 0.15,
-        "min_via_diameter": 0.5,
+        "min_via_annular_width": 0.15239999999999998,
+        "min_via_diameter": 0.6095999999999999,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -384,18 +411,23 @@
     "rule_severities": {
       "bus_definition_conflict": "error",
       "bus_entry_needed": "error",
-      "bus_label_syntax": "error",
       "bus_to_bus_conflict": "error",
       "bus_to_net_conflict": "error",
+      "conflicting_netclasses": "error",
       "different_unit_footprint": "error",
       "different_unit_net": "error",
       "duplicate_reference": "error",
       "duplicate_sheet_names": "error",
+      "endpoint_off_grid": "warning",
       "extra_units": "error",
       "global_label_dangling": "warning",
       "hier_label_mismatch": "error",
       "label_dangling": "error",
       "lib_symbol_issues": "warning",
+      "missing_bidi_pin": "warning",
+      "missing_input_pin": "warning",
+      "missing_power_pin": "error",
+      "missing_unit": "warning",
       "multiple_net_names": "warning",
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
@@ -405,6 +437,7 @@
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
+      "simulation_model_issue": "ignore",
       "unannotated": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
@@ -516,6 +549,8 @@
   "schematic": {
     "annotate_start_num": 0,
     "drawing": {
+      "dashed_lines_dash_length_ratio": 12.0,
+      "dashed_lines_gap_length_ratio": 3.0,
       "default_line_thickness": 6.0,
       "default_text_size": 50.0,
       "field_names": [],
@@ -547,7 +582,11 @@
     "page_layout_descr_file": "",
     "plot_directory": "..",
     "spice_adjust_passive_values": false,
+    "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "spice_save_all_voltages": false,
     "subpart_first_id": 65,
     "subpart_id_separator": 0
   },
