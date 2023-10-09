@@ -7,14 +7,17 @@ The dashboard uses a QT GUI and includes support for SocketCan (for example, the
 It also is fully configurable via YAML.
 
 ## Using the tool
-1. Set up your CAN device if you are using a PCAN or other socketcan device. Instruction for this can be found [here](https://docs.olinelectricmotorsports.com/doc/how-to-use-can-HYcXsHAf2g)
+1. Set up your CAN device if you are using a PCAN or other socketcan device. Instruction for this can be found [here](https://coda.io/d/_dbuFnC2EA_e/How-to-use-CAN_suzvC)
     - You can also use this tool with a virtual CAN bus
-2. Run the tool! This is done using the command `bazel run //projects/canviewer`. There are two command line arguments as well
+2. Run the tool! This is done using the command `bazel run //projects/canviewer`. There are three command line arguments as well
     - `-b` - Either `seeedstudio` or `socketcan` 
     - `-c` - Channel
         - Socketcan: this is the network interface name you created when setting up your device (usually can0 for real hardware or vcan0 for a virtual CAN bus)
         - Seeedstudio: this is the _device path_ for your CAN dongle. Typically this will be something like `/dev/ttyUSB0`. The best way to find it is to run `ls /dev/ttyUSB*`, which lists all the USB device paths, before and after you plug in your dongle to find the one that was added. The number starts at 0 and increments every time something is plugged in, so if you unplug and replug your CAN dongle, the number will change!
-    - These arguments would be passed like so for a bustype of seeedstudio and a USB device at /dev/tty/USB0: 
+    - `-d` - the DBC file to be used to decode the CAN messages. This is specified as a file path starting from the root of the monorepo.
+        - This has a default value of `vehicle/mkvi/mkvi.dbc` - in other words, if you want to decode messages from MKVI or a MKVI board, you do not need to specify this argument. If you're reading this in future years, feel free to update the default value in a new PR - just be sure to add your DBC as a dependency in the BUILD file for this project.
+        - You can check `//vehicle/mkvi/BUILD` to see which DBC/YAML files are included in the master DBC
+    - These arguments would be passed like so for a bustype of seeedstudio and a USB device at /dev/tty/USB0 when plugged into MKVI:
         ```
         bazel run //projects/canviewer -- -b seeedstudio -c /dev/tty/USB0
         ```

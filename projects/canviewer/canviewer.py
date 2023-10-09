@@ -13,8 +13,6 @@ import cantools
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import QTimer
-from rich.layout import Layout
-from rich.live import Live
 
 REFRESH_RATE = 100  # GUI refresh rate in ms
 
@@ -81,11 +79,17 @@ if __name__ == "__main__":
         default="vcan0",
         help="Either a network interface name for socketcan, or the path of the USB device for seeedstudio",
     )
+    parser.add_argument(
+        "-d",
+        "--dbc",
+        default="vehicle/mkvi/mkvi.dbc",
+        help="Path to the DBC file to use for decoding CAN messages; default is the MKVI DBC",
+    )
 
     args = parser.parse_args()
 
     can_bus, db, kill_flag = init_can(
-        args.canbus, args.bustype, 500000, rx_callback, "vehicle/mkv/mkv.dbc"
+        args.canbus, args.bustype, 500000, rx_callback, args.dbc
     )
 
     def update_ui():
