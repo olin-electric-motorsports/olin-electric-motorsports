@@ -112,7 +112,6 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
                              },
                              2);
 
-        // TODO: I think this PEC Calculation is wrong... - amit kh
         // PEC error handling for register A...
         uint16_t received_pec = (aux_reg_a_raw[ic_zero_idx + 6] << 8)
                                 | aux_reg_a_raw[ic_zero_idx + 7];
