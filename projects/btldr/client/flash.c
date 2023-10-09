@@ -59,7 +59,6 @@ int cmd_flash(uint16_t ecu_id, FILE* fp) {
 
     if (can_data[0] != STATUS_NO_ERROR) {
         log_error("CAN status error");
-        // TODO print error
         rc = can_data[0];
         goto bail;
     }
@@ -83,7 +82,6 @@ int cmd_flash(uint16_t ecu_id, FILE* fp) {
         }
 
         if (rc == -1) {
-            // TODO Failed to get response. Resend?
             log_warn("No response to data");
             exit(1);
         }

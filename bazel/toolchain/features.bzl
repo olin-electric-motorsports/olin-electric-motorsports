@@ -68,16 +68,21 @@ _OPT_FEATURE = feature(
                 ),
             ],
         ),
+    ],
+    provides = ["compilation_mode"],
+)
+
+_SET_MIN_PAGE_SIZE = feature(
+    name = "set_min_page_size",
+    enabled = False,
+    flag_sets = [
         flag_set(
-            actions = _LD_ALL_ACTIONS,
+            actions = _C_ALL_COMPILE_ACTIONS,
             flag_groups = [
-                flag_group(
-                    flags = ["-Wl,--gc-sections"],
-                ),
+                flag_group(flags = ["--param=min-pagesize=0"]),
             ],
         ),
     ],
-    provides = ["compilation_mode"],
 )
 
 _SET_MIN_PAGE_SIZE = feature(
