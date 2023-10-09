@@ -16,6 +16,9 @@ const uint8_t GPIO_CHANNELS[4] = { 1, 1, 1, 3 };
 #define NUM_BYTES_IN_REG              (6)
 #define INVALID_TEMPERATURE_THRESHOLD (0xD555)
 
+#define AUX_REG_GROUP_A (1)
+#define AUX_REG_GROUP_C (3)
+
 static void fan_enable(bool enable) {
     timer1_cfg.channel_b.pin_behavior = enable ? SET : DISCONNECTED;
 
@@ -73,19 +76,19 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
     uint8_t aux_reg_c_raw[NUM_RX_BYT * NUM_ICS];
 
     wakeup_idle(NUM_ICS);
-    LTC681x_rdaux_reg(1, NUM_ICS, aux_reg_a_raw); // for GPIOS 1-3
-    LTC681x_rdaux_reg(1, NUM_ICS, aux_reg_c_raw); // for GPIOS 6
+    LTC681x_rdaux_reg(AUX_REG_GROUP_A, NUM_ICS, aux_reg_a_raw); // for GPIOS 1-3
+    LTC681x_rdaux_reg(AUX_REG_GROUP_C, NUM_ICS, aux_reg_c_raw); // for GPIOS 6
 
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         bms_temperature.ic = ic;
         bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_12;
 
-        uint16_t raw_idx = ic * NUM_RX_BYT;
+        uint16_t ic_zero_idx = ic * NUM_RX_BYT;
 
-        bms_temperature.temperature_1
-            = aux_reg_a_raw[raw_idx + 0] | (aux_reg_a_raw[raw_idx + 1] << 8);
-        bms_temperature.temperature_2
-            = aux_reg_a_raw[raw_idx + 2] | (aux_reg_a_raw[raw_idx + 3] << 8);
+        bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 0]
+                                        | (aux_reg_a_raw[ic_zero_idx + 1] << 8);
+        bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
+                                        | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
         can_send_bms_temperature();
 
         update_min_max_temps(min_temp, max_temp,
@@ -96,10 +99,10 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
                              2);
 
         bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
-        bms_temperature.temperature_1
-            = aux_reg_a_raw[raw_idx + 4] | (aux_reg_a_raw[raw_idx + 5] << 8);
-        bms_temperature.temperature_2
-            = aux_reg_c_raw[raw_idx + 0] | (aux_reg_c_raw[raw_idx + 1] << 8);
+        bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 4]
+                                        | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
+        bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
+                                        | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
         can_send_bms_temperature();
 
         update_min_max_temps(min_temp, max_temp,
@@ -109,19 +112,21 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
                              },
                              2);
 
+        // TODO: I think this PEC Calculation is wrong... - amit kh
         // PEC error handling for register A...
-        uint16_t received_pec
-            = (aux_reg_a_raw[raw_idx + 6] << 8) | aux_reg_a_raw[raw_idx + 7];
+        uint16_t received_pec = (aux_reg_a_raw[ic_zero_idx + 6] << 8)
+                                | aux_reg_a_raw[ic_zero_idx + 7];
         uint16_t calculated_pec
-            = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[raw_idx]);
+            = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[ic_zero_idx]);
         if (received_pec != calculated_pec) {
             pec_errors++;
         }
 
         // and register C
-        received_pec
-            = (aux_reg_c_raw[raw_idx + 6] << 8) | aux_reg_c_raw[raw_idx + 7];
-        calculated_pec = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[raw_idx]);
+        received_pec = (aux_reg_c_raw[ic_zero_idx + 6] << 8)
+                       | aux_reg_c_raw[ic_zero_idx + 7];
+        calculated_pec
+            = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[ic_zero_idx]);
         if (received_pec != calculated_pec) {
             pec_errors++;
         }
