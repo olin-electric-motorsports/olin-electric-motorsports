@@ -5,6 +5,7 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
 #include "libs/timer/api.h"
+#include "vehicle/common/ltc6811/ltc681x.h"
 
 /*
  * Macros
@@ -50,3 +51,16 @@ void timer0_isr(void);
 extern timer_cfg_s timer0_cfg;
 extern timer_cfg_s timer1_cfg;
 extern spi_cfg_s spi_cfg;
+
+// A little bit of a hacky, truncated version of the cell_asic
+// struct defined by the LTC681X library
+typedef struct {
+    ic_register config;
+    cv cells;
+} cell_asic_trunc;
+
+typedef struct {
+    cell_asic_trunc cells[NUM_ICS];
+} cell_data_s;
+
+extern cell_data_s cell_data;

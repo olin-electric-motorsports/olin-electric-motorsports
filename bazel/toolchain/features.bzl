@@ -85,19 +85,6 @@ _SET_MIN_PAGE_SIZE = feature(
     ],
 )
 
-_SET_MIN_PAGE_SIZE = feature(
-    name = "set_min_page_size",
-    enabled = False,
-    flag_sets = [
-        flag_set(
-            actions = _C_ALL_COMPILE_ACTIONS,
-            flag_groups = [
-                flag_group(flags = ["--param=min-pagesize=0"]),
-            ],
-        ),
-    ],
-)
-
 _DEFAULT_FEATURE = feature(
     name = "default",
     enabled = True,

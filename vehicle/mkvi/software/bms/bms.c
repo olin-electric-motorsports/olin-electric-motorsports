@@ -36,8 +36,33 @@ void timer0_isr() {
     run_10ms = true;
 }
 
+cell_data_s cell_data;
+
 void pcint0_callback() {
     bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_THRESH);
+}
+
+void LTC681x_set_cfgr_refon_trunc(uint8_t num_ic, cell_data_s* cell_data,
+                                  bool refon) {
+    if (refon) {
+        cell_data->cells[num_ic].config.tx_data[0] |= 0x04;
+    } else {
+        cell_data->cells[num_ic].config.tx_data[0] &= 0xFB;
+    }
+}
+
+void LTC681x_wrcfg_trunc(uint8_t total_ic, cell_asic_trunc cells[]) {
+    uint8_t cmd[2] = { 0x00, 0x01 };
+    uint8_t write_buffer[256] = { 0 };
+    uint8_t write_count = 0;
+
+    for (uint8_t current_ic = 0; current_ic < total_ic; current_ic++) {
+        for (uint8_t data = 0; data < 6; data++) {
+            write_buffer[write_count] = cells[current_ic].config.tx_data[data];
+            write_count++;
+        }
+    }
+    write_68(total_ic, cmd, write_buffer);
 }
 
 void hw_init() {
@@ -61,6 +86,12 @@ void hw_init() {
 
     can_init_bms();
     pcint0_callback();
+
+    wakeup_sleep(NUM_ICS);
+    for (uint8_t i = 0; i < NUM_ICS; i++) {
+        LTC681x_set_cfgr_refon_trunc(i, &cell_data, true);
+    }
+    LTC681x_wrcfg_trunc(NUM_ICS, cell_data.cells);
 }
 
 static void monitor_cells(void) {
@@ -185,6 +216,8 @@ int main(void) {
 
     while (true) {
         if (run_10ms) {
+            wakeup_sleep(NUM_ICS);
+            LTC681x_wrcfg_trunc(NUM_ICS, cell_data.cells);
             can_send_bms_core();
             can_send_bms_sense();
             can_send_bms_metrics();
