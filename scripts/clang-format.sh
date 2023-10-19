@@ -26,6 +26,7 @@ elif [ "$1" = "reformat" ]; then
     exit 0
 
 elif [ "$1" = "commit-reformat" ]; then
+    # clang formatting for pre-commit; only format staged c files
     for file in $(git diff --staged --name-only | grep -iE '\.(c|h|cpp|hpp)$'); do
         clang-format --style=file -i "$file"
         git add "$file"
