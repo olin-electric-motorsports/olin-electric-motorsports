@@ -74,7 +74,10 @@ fi
 git add ${ROOT}/parts/schematic/oem
 
 # format with clang
-${ROOT}/scripts/clang-format.sh commit-reformat
+${ROOT}/scripts/clang-format.sh reformat-commit
+
+# format with buildifier
+${ROOT}/scripts/buildifier-format.sh reformat-staged
 EOF
 
 # make hooks executable
@@ -84,3 +87,4 @@ chmod +x ${ROOT}/.git/hooks/pre-commit
 
 # make hook dependencies executable
 chmod +x ${ROOT}/scripts/clang-format.sh
+chmod +x ${ROOT}/scripts/buildifier-format.sh
