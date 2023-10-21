@@ -57,15 +57,14 @@ void LTC681x_set_cfgr_refon_trunc(uint8_t num_ic, cell_data_s* cell_data,
 void LTC681x_wrcfg_trunc(uint8_t total_ic, cell_asic_trunc cells[]) {
     uint8_t cmd[2] = { 0x00, 0x01 };
     uint8_t write_buffer[256] = { 0 };
-    // uint8_t write_count = 0;
+    uint8_t write_count = 0;
 
-    // for (uint8_t current_ic = 0; current_ic < total_ic; current_ic++) {
-    //     for (uint8_t data = 0; data < 6; data++) {
-    //         write_buffer[write_count] = cells[current_ic].config.tx_data[data];
-    //         write_count++;
-    //     }
-    // }
-    write_buffer[0] = 0x04;
+    for (uint8_t current_ic = 0; current_ic < total_ic; current_ic++) {
+        for (uint8_t data = 0; data < 6; data++) {
+            write_buffer[write_count] = cells[current_ic].config.tx_data[data];
+            write_count++;
+        }
+    }
     write_68(total_ic, cmd, write_buffer);
 }
 
@@ -101,11 +100,11 @@ void hw_init() {
 
 static void monitor_cells(void) {
     // Set a new fault
-
     if (bms_core.bms_fault != BMS_FAULT_NONE) {
         bms_core.bms_state = BMS_STATE_FAULT;
         gpio_clear_pin(BMS_RELAY_LSD);
     }
+
     // Handle condition where fault was cleared
     // TODO: also need to handle charging here
     if (bms_core.bms_state == BMS_STATE_FAULT
@@ -122,18 +121,18 @@ static void monitor_cells(void) {
     bms_core.pack_voltage = pack_voltage;
     (void)rc;
 
-    // // Check for PEC errors
-    // if (rc != 0) {
-    //     bms_metrics.voltage_pec_error_count += rc;
+    // Check for PEC errors
+    if (rc != 0) {
+        bms_metrics.voltage_pec_error_count += rc;
 
-    //     if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
-    //         set_fault(BMS_FAULT_PEC);
-    //         bms_core.bms_state = BMS_STATE_FAULT;
-    //     }
-    //     return;
-    // } else {
-    //     bms_metrics.voltage_pec_error_count = 0;
-    // }
+        if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = BMS_STATE_FAULT;
+        }
+        return;
+    } else {
+        bms_metrics.voltage_pec_error_count = 0;
+    }
 
     // // read all temperatures
     // uint32_t ot = 0;
@@ -231,19 +230,7 @@ int main(void) {
     while (true) {
         if (run_10ms) {
             // wakeup_sleep(NUM_ICS);
-            LTC681x_wrcfg_trunc(NUM_ICS, cell_data.cells);
-            // uint8_t tx_cmd[2] = { 0x00, 0x02 };
-            // uint8_t rx_buffer[256];
-            // // _delay_ms(5);
-            // read_68(NUM_ICS, tx_cmd, &rx_buffer[0]);
-            // cfg_reg_a.bit_0 = rx_buffer[0];
-            // // cfg_reg_a.bit_1 = cell_data.cells[0].config.tx_data[0];
-            // cfg_reg_a.bit_1 = rx_buffer[1];
-            // cfg_reg_a.bit_2 = rx_buffer[2];
-            // cfg_reg_a.bit_3 = rx_buffer[3];
-            // cfg_reg_a.bit_4 = rx_buffer[4];
-            // cfg_reg_a.bit_5 = rx_buffer[5];
-            // can_send_cfg_reg_a();
+            // LTC681x_wrcfg_trunc(NUM_ICS, cell_data.cells);
 
             can_send_bms_core();
             // can_send_bms_sense();

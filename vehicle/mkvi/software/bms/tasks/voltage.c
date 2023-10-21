@@ -14,7 +14,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     *pack_voltage = 0;
     int pec_errors = 0;
 
-    // wakeup_sleep(NUM_ICS);
+    wakeup_sleep(NUM_ICS);
 
     // Start cell voltage ADC conversions
     LTC681x_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL);
@@ -23,7 +23,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     LTC681x_pollAdc(); // Ignore return value because we don't care how long it
                        // took
 
-    // wakeup_idle(NUM_ICS);
+    wakeup_idle(NUM_ICS);
 
     /*
      * Read Cell Group Register A for all ICS,
@@ -34,7 +34,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
         // Read one register at a time for all segments
 
-        // wakeup_idle(NUM_ICS);
+        wakeup_idle(NUM_ICS);
 
         // + 1 because of the way _rdcv_reg is written
         LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
@@ -58,22 +58,18 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
             if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)
                 && (cell_3 == UINT16_MAX)) {
                 set_fault(BMS_FAULT_CSC_MIA);
-                cell_1 = 0;
-                cell_2 = 0;
-                cell_3 = 0;
             } else {
                 clear_fault(BMS_FAULT_CSC_MIA);
+                // Accumulate voltage (only append if valid SPI response)
+                *pack_voltage += cell_1 >> 8;
+                *pack_voltage += cell_2 >> 8;
+                *pack_voltage += cell_3 >> 8;
             }
 
             // Put cell voltages in CAN message
             bms_voltage.voltage_1 = cell_1;
             bms_voltage.voltage_2 = cell_2;
             bms_voltage.voltage_3 = cell_3;
-
-            // Accumulate voltage
-            *pack_voltage += cell_1 >> 8;
-            *pack_voltage += cell_2 >> 8;
-            *pack_voltage += cell_3 >> 8;
 
             // Check under/overvoltage thresholds
             if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
