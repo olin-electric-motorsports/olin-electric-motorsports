@@ -11,3 +11,9 @@ void set_fault(enum bms_fault_e the_fault) {
         bms_core.bms_fault = the_fault;
     }
 }
+
+void clear_fault(enum bms_fault_e the_fault) {
+    if (bms_core.bms_fault == the_fault) {
+        bms_core.bms_fault = BMS_FAULT_NONE;
+    }
+}

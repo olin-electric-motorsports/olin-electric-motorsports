@@ -3,6 +3,7 @@
 #include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
+#include "vehicle/mkvi/software/bms/utils/fault.h"
 
 #define NUM_CELLS_IN_REG (3)
 #define NUM_CELL_REG     (6)
@@ -13,7 +14,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     *pack_voltage = 0;
     int pec_errors = 0;
 
-    wakeup_sleep(NUM_ICS);
+    // wakeup_sleep(NUM_ICS);
 
     // Start cell voltage ADC conversions
     LTC681x_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL);
@@ -22,7 +23,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     LTC681x_pollAdc(); // Ignore return value because we don't care how long it
                        // took
 
-    wakeup_idle(NUM_ICS);
+    // wakeup_idle(NUM_ICS);
 
     /*
      * Read Cell Group Register A for all ICS,
@@ -33,7 +34,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
         // Read one register at a time for all segments
 
-        wakeup_idle(NUM_ICS);
+        // wakeup_idle(NUM_ICS);
 
         // + 1 because of the way _rdcv_reg is written
         LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
@@ -52,6 +53,17 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
             uint16_t cell_3
                 = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
+
+            // Core receives all 1s when the CSC is MIA
+            if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)
+                && (cell_3 == UINT16_MAX)) {
+                set_fault(BMS_FAULT_CSC_MIA);
+                cell_1 = 0;
+                cell_2 = 0;
+                cell_3 = 0;
+            } else {
+                clear_fault(BMS_FAULT_CSC_MIA);
+            }
 
             // Put cell voltages in CAN message
             bms_voltage.voltage_1 = cell_1;
@@ -99,7 +111,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 pec_errors++;
             }
         } // end foreach ltc6811
-    } // end foreach cell reg (A, B, C, D)
+    } // end foreach cell reg (A, B, C, D, E, F)
 
     return pec_errors;
 }

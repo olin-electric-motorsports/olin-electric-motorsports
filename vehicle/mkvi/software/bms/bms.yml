@@ -24,6 +24,15 @@ publish:
             - PEC
             - CHARGER_FAULT
             - STATE_MACHINE
+            # NOTE: MIA refers to receiving all 1s from the CSC,
+            # This either means that there is a communication error
+            # (ex: CSC is not powered) or a register on the CSC was
+            # initialized to all 1s and the appropriate command was
+            # not given to update the value (ex: the cell voltage readings
+            # are initialized to all 1s until an ADC conversion is
+            # requested)
+            # TODO: Implement error handle per CSC
+            - CSC_MIA
       - name: bms_state
         slice: 4 + 4
         unit:
@@ -290,4 +299,51 @@ publish:
           type: uint16_t
           name: "volts"
           scale: 0.0001
+          offset: 0
+
+  - name: cfg_reg_a
+    id: 0x403
+    freq_hz: 100
+    signals:
+      - name: bit_0
+        slice: 0 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_1
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_2
+        slice: 16 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_3
+        slice: 24 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_4
+        slice: 32 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_5
+        slice: 40 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
           offset: 0
