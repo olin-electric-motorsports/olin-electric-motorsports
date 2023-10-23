@@ -7,7 +7,8 @@ if ! command -v git-clang-format &>/dev/null; then
 fi
 
 if [ -z "$1" ]; then
-    echo "No command specified. Use either \"reformat\" or \"check\""
+    echo "No command specified. Use one of: \"check-branch\", \
+\"reformat-branch\", \"check-staged\", or \"reformat-staged\""
     exit 1
 fi
 
@@ -45,6 +46,7 @@ elif [ "$1" = "reformat-staged" ]; then
     exit 0
 
 else
-    echo "Command not recognized. Use either \"reformat\" or \"check\""
+    echo "Command not recognized. Use one of: \"check-branch\", \
+\"reformat-branch\", \"check-staged\", or \"reformat-staged\""
     exit 1
 fi
