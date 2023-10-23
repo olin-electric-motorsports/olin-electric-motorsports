@@ -11,7 +11,8 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-if [ "$1" = "check" ]; then
+# check c files in the current branch
+if [ "$1" = "check-branch" ]; then
     commit_id=$(git show-ref ${GITHUB_BASE_REF:-origin/main} | awk '{print $1}')
     out=$(git-clang-format -f --diff --commit $commit_id --style=file -q)
 
@@ -21,12 +22,13 @@ if [ "$1" = "check" ]; then
     fi
     exit 0
 
-elif [ "$1" = "reformat" ]; then
+# format c files in the current branch
+elif [ "$1" = "reformat-branch" ]; then
     git-clang-format -f --style=file --commit origin/main
     exit 0
 
-elif [ "$1" = "commit-reformat" ]; then
-    # clang formatting for pre-commit; only format staged c files
+# format staged c files; clang formatting for pre-commit
+elif [ "$1" = "reformat-staged" ]; then
     for file in $(git diff --staged --name-only | grep -iE '\.(c|h|cpp|hpp)$'); do
         clang-format --style=file -i "$file"
         git add "$file"

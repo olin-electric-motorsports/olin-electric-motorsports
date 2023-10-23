@@ -74,7 +74,7 @@ fi
 git add ${ROOT}/parts/schematic/oem
 
 # format with clang
-${ROOT}/scripts/clang-format.sh reformat-commit
+${ROOT}/scripts/clang-format.sh reformat-staged
 
 # format with buildifier
 ${ROOT}/scripts/buildifier-format.sh reformat-staged
