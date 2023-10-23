@@ -17,7 +17,7 @@ if [ "$1" = "check-branch" ]; then
     out=$(git-clang-format -f --diff --commit $commit_id --style=file -q)
 
     if [ "$out" != "no modified files to format" ] && [ "$out" != "" ]; then
-        echo "Formatting errors, run ./scripts/clang_format.sh reformat"
+        echo "Formatting errors, run ./scripts/clang_format.sh reformat-branch"
         exit 1
     fi
     exit 0
@@ -26,6 +26,15 @@ if [ "$1" = "check-branch" ]; then
 elif [ "$1" = "reformat-branch" ]; then
     git-clang-format -f --style=file --commit origin/main
     exit 0
+
+# check staged c files
+elif [ "$1" = "check-staged" ]; then
+    out=$(git-clang-format -f --diff --staged --style=file -q)
+
+    if [ "$out" != "no modified files to format" ] && [ "$out" != "" ]; then
+        echo "Formatting errors, run ./scripts/clang_format.sh reformat-staged"
+        exit 1
+    fi
 
 # format staged c files; clang formatting for pre-commit
 elif [ "$1" = "reformat-staged" ]; then
