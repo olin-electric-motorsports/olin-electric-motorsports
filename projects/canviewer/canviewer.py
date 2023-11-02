@@ -88,9 +88,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # can_bus, db, kill_flag = init_can(
-    #     args.canbus, args.bustype, 500000, rx_callback, args.dbc
-    # )
+    can_bus, db, kill_flag = init_can(
+        args.canbus, args.bustype, 500000, rx_callback, args.dbc
+    )
 
     def update_ui():
         try:
