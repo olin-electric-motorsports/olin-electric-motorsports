@@ -134,37 +134,37 @@ static void monitor_cells(void) {
         bms_metrics.voltage_pec_error_count = 0;
     }
 
-    // // read all temperatures
-    // uint32_t ot = 0;
-    // uint32_t ut = 0;
-    // int16_t min_temp, max_temp;
+    // read all temperatures
+    uint32_t ot = 0;
+    uint32_t ut = 0;
+    int16_t min_temp, max_temp;
 
-    // rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
-    // bms_sense.min_temperature = min_temp;
-    // bms_sense.max_temperature = max_temp;
+    rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+    bms_sense.min_temperature = min_temp;
+    bms_sense.max_temperature = max_temp;
 
-    // if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-    //     set_fault(BMS_FAULT_UNDERTEMPERATURE);
-    //     bms_core.bms_state = BMS_STATE_FAULT;
-    //     return;
-    // } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-    //     set_fault(BMS_FAULT_OVERTEMPERATURE);
-    //     bms_core.bms_state = BMS_STATE_FAULT;
-    //     return;
-    // }
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+        return;
+    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+        return;
+    }
 
-    // // Check for PEC errors
-    // if (rc != 0) {
-    //     bms_metrics.temperature_pec_error_count += rc;
+    // Check for PEC errors
+    if (rc != 0) {
+        bms_metrics.temperature_pec_error_count += rc;
 
-    //     if (bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
-    //         set_fault(BMS_FAULT_PEC);
-    //         bms_core.bms_state = BMS_STATE_FAULT;
-    //     }
-    //     return;
-    // } else {
-    //     bms_metrics.temperature_pec_error_count = 0;
-    // }
+        if (bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = BMS_STATE_FAULT;
+        }
+        return;
+    } else {
+        bms_metrics.temperature_pec_error_count = 0;
+    }
 
     // // Run BMS Chip open wire detection
     // rc = openwire_task();
@@ -233,7 +233,7 @@ int main(void) {
             // LTC681x_wrcfg_trunc(NUM_ICS, cell_data.cells);
 
             can_send_bms_core();
-            // can_send_bms_sense();
+            can_send_bms_sense();
             // can_send_bms_metrics();
 
             monitor_cells();

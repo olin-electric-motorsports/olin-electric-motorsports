@@ -27,21 +27,21 @@ static void fan_enable(bool enable) {
     timer_init(&timer1_cfg);
 }
 
-static void update_min_max_temps(int16_t* min_temp, int16_t* max_temp,
-                                 int16_t temps[], uint8_t num_temps) {
-    for (uint8_t i = 0; i < num_temps; i++) {
-        if (temps[i] > INVALID_TEMPERATURE_THRESHOLD) {
-            continue;
-        }
+// static void update_min_max_temps(int16_t* min_temp, int16_t* max_temp,
+//                                  int16_t temps[], uint8_t num_temps) {
+//     for (uint8_t i = 0; i < num_temps; i++) {
+//         if (temps[i] > INVALID_TEMPERATURE_THRESHOLD) {
+//             continue;
+//         }
 
-        if (temps[i] < *min_temp) {
-            *min_temp = temps[i];
-        }
-        if (temps[i] > *max_temp) {
-            *max_temp = temps[i];
-        }
-    }
-}
+//         if (temps[i] < *min_temp) {
+//             *min_temp = temps[i];
+//         }
+//         if (temps[i] > *max_temp) {
+//             *max_temp = temps[i];
+//         }
+//     }
+// }
 
 /*
  * We are using negative-temperature-coefficient thermistors.
@@ -56,8 +56,12 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
                      int16_t* max_temp) {
     int pec_errors = 0;
 
-    static uint8_t mux = 0;
-    static uint8_t channel = 0;
+    // static uint8_t mux = 0;
+    // static uint8_t channel = 0;
+
+    // SPECIFY WHICH MUX:
+    uint8_t mux = 1;
+    uint8_t channel = 2;
 
     if (mux == 0 && channel == 0) {
         min_temperature = INT16_MAX;
@@ -85,50 +89,52 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
 
         uint16_t ic_zero_idx = ic * NUM_RX_BYT;
 
-        bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 0]
-                                        | (aux_reg_a_raw[ic_zero_idx + 1] << 8);
+        // bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 0]
+        //                                 | (aux_reg_a_raw[ic_zero_idx + 1] << 8);
+
+        // DABOARD 2
         bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
                                         | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
         can_send_bms_temperature();
 
-        update_min_max_temps(min_temp, max_temp,
-                             (int16_t[]) {
-                                 bms_temperature.temperature_1,
-                                 bms_temperature.temperature_2,
-                             },
-                             2);
+        // update_min_max_temps(min_temp, max_temp,
+        //                      (int16_t[]) {
+        //                          bms_temperature.temperature_1,
+        //                          bms_temperature.temperature_2,
+        //                      },
+        //                      2);
 
-        bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
-        bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 4]
-                                        | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
-        bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
-                                        | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
-        can_send_bms_temperature();
+        // bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
+        // bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 4]
+        //                                 | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
+        // bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
+        //                                 | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
+        // can_send_bms_temperature();
 
-        update_min_max_temps(min_temp, max_temp,
-                             (int16_t[]) {
-                                 bms_temperature.temperature_1,
-                                 bms_temperature.temperature_2,
-                             },
-                             2);
+        // update_min_max_temps(min_temp, max_temp,
+        //                      (int16_t[]) {
+        //                          bms_temperature.temperature_1,
+        //                          bms_temperature.temperature_2,
+        //                      },
+        //                      2);
 
-        // PEC error handling for register A...
-        uint16_t received_pec = (aux_reg_a_raw[ic_zero_idx + 6] << 8)
-                                | aux_reg_a_raw[ic_zero_idx + 7];
-        uint16_t calculated_pec
-            = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[ic_zero_idx]);
-        if (received_pec != calculated_pec) {
-            pec_errors++;
-        }
+        // // PEC error handling for register A...
+        // uint16_t received_pec = (aux_reg_a_raw[ic_zero_idx + 6] << 8)
+        //                         | aux_reg_a_raw[ic_zero_idx + 7];
+        // uint16_t calculated_pec
+        //     = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[ic_zero_idx]);
+        // if (received_pec != calculated_pec) {
+        //     pec_errors++;
+        // }
 
-        // and register C
-        received_pec = (aux_reg_c_raw[ic_zero_idx + 6] << 8)
-                       | aux_reg_c_raw[ic_zero_idx + 7];
-        calculated_pec
-            = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[ic_zero_idx]);
-        if (received_pec != calculated_pec) {
-            pec_errors++;
-        }
+        // // and register C
+        // received_pec = (aux_reg_c_raw[ic_zero_idx + 6] << 8)
+        //                | aux_reg_c_raw[ic_zero_idx + 7];
+        // calculated_pec
+        //     = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[ic_zero_idx]);
+        // if (received_pec != calculated_pec) {
+        //     pec_errors++;
+        // }
     }
 
     channel += 1;

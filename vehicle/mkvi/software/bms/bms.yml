@@ -272,20 +272,20 @@ publish:
           name: ""
           scale: 1
           offset: 0
-      - name: channel
-        slice: 3 + 5
-        unit:
-          type: uint8_t
-          name: ""
-          scale: 1
-          offset: 0
       - name: da_boards
-        slice: 8 + 1
+        slice: 4 + 1
         unit:
           type: enum
           values:
             - DA_BOARDS_12
             - DA_BOARDS_34
+      - name: channel
+        slice: 8 + 5
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
       - name: temperature_1
         slice: 16 + 16
         unit:
