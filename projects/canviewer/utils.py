@@ -14,7 +14,7 @@ def convertVtoT(x, Vin=3, R1=10000, R2=100000, T2=348.15, beta=3988):
     return temperature
 
 
-def get_val(signal, data):
+def get_val(signal, data, rounding=2):
     """
     Retrieves signal from the message data and applies a processing function if
     one is found in the PROCESSING_FUNCTIONS dictionary
@@ -22,6 +22,7 @@ def get_val(signal, data):
     Args:
         signal (str): signal name to retrieve
         message (dict): message data returned by cantools.database.decode_message
+        rounding (int): number of decimal points to round floats
 
     Returns:
         str: value of the signal
@@ -30,7 +31,8 @@ def get_val(signal, data):
     if val := data.get(signal):
         if func := PROCESSING_FUNCTIONS.get(signal):
             val = globals()[func](val)
-
+        if isinstance(val, float):
+            val = round(val, rounding)
         return str(val)
 
 
