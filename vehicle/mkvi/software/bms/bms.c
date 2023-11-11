@@ -87,6 +87,7 @@ void hw_init() {
     timer_init(&timer1_cfg);
 
     mux_init(NUM_ICS);
+    configure_mux(NUM_ICS, 0x90, true, 7);
 
     can_init_bms();
     pcint0_callback();
@@ -112,34 +113,34 @@ static void monitor_cells(void) {
         bms_core.bms_state = BMS_STATE_ACTIVE;
     }
 
-    // read all voltages
-    uint32_t ov = 0;
-    uint32_t uv = 0;
+    // // read all voltages
+    // uint32_t ov = 0;
+    // uint32_t uv = 0;
 
-    uint16_t pack_voltage = 0;
-    int rc = voltage_task(&pack_voltage, &ov, &uv);
-    bms_core.pack_voltage = pack_voltage;
-    (void)rc;
+    // uint16_t pack_voltage = 0;
+    // int rc = voltage_task(&pack_voltage, &ov, &uv);
+    // bms_core.pack_voltage = pack_voltage;
+    // (void)rc;
 
-    // Check for PEC errors
-    if (rc != 0) {
-        bms_metrics.voltage_pec_error_count += rc;
+    // // Check for PEC errors
+    // if (rc != 0) {
+    //     bms_metrics.voltage_pec_error_count += rc;
 
-        if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
-            set_fault(BMS_FAULT_PEC);
-            bms_core.bms_state = BMS_STATE_FAULT;
-        }
-        return;
-    } else {
-        bms_metrics.voltage_pec_error_count = 0;
-    }
+    //     if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+    //         set_fault(BMS_FAULT_PEC);
+    //         bms_core.bms_state = BMS_STATE_FAULT;
+    //     }
+    //     return;
+    // } else {
+    //     bms_metrics.voltage_pec_error_count = 0;
+    // }
 
     // read all temperatures
     uint32_t ot = 0;
     uint32_t ut = 0;
     int16_t min_temp, max_temp;
 
-    rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+    int rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
     bms_sense.min_temperature = min_temp;
     bms_sense.max_temperature = max_temp;
 

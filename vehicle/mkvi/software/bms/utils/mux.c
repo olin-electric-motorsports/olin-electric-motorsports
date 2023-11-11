@@ -33,7 +33,7 @@ void mux_init(uint8_t num_ics) {
     tx_data[2] = START | (I2C_MUX_ADDRESS >> 4); // START AAAA
     tx_data[3] = (I2C_MUX_ADDRESS << 4) | NACK; // AAAA NACK
     tx_data[4] = BLANK; // xxxxBLANK
-    tx_data[5] = 0xF | NACK_STOP; // Enable all channels
+    tx_data[5] = 0xF0 | NACK_STOP; // Enable all channels
 
     wakeup_sleep(num_ics); // wake up the IC core
 
