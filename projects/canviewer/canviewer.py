@@ -95,7 +95,7 @@ if __name__ == "__main__":
     def update_ui():
         try:
             window.setData(SHUTDOWN_NODES, VEHICLE_VALUES, VEHICLE_STATES)
-        except:
+        except KeyboardInterrupt:
             sys.exit()
 
     app = QApplication([])
