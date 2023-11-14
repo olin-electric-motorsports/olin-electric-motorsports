@@ -46,8 +46,8 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv);
  *  Number of PEC errors that occurred when communicating with the ADBMS1818
  *  0 if no errors
  */
-int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
-                     int16_t* max_temp);
+int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
+                     uint16_t* max_temp);
 
 void current_task(int16_t* current, uint16_t* vref, uint16_t* vout);
 

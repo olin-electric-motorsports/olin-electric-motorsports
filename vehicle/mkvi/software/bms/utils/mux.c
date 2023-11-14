@@ -41,7 +41,7 @@ void mux_init(uint8_t num_ics) {
     write_68(NUM_ICS, wrcomm_cmd, tx_data);
 
     wakeup_idle(num_ics); // wake up the isospi comms
-    LTC681x_stcomm(MUX_DATALENGTH); // where does this value come from?
+    LTC681x_stcomm(MUX_DATALENGTH);
 }
 
 void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
@@ -56,7 +56,7 @@ void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
     mux_cmd |= (enable << 3); // ENABLE C2 C1 C0
 
     /*
-     * ADBMS comand message
+     * ADBMS command message
      *
      * A: Address
      * M: Mux command
@@ -77,5 +77,5 @@ void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
     write_68(NUM_ICS, wrcomm_cmd, tx_data);
 
     wakeup_idle(num_ics); // wake up the isospi comms
-    LTC681x_stcomm(MUX_DATALENGTH); // where does this value come from?
+    LTC681x_stcomm(MUX_DATALENGTH);
 }

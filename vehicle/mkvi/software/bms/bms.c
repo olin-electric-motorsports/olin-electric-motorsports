@@ -7,9 +7,9 @@
 #include "libs/timer/api.h"
 
 #include <avr/interrupt.h>
-#include <util/delay.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <util/delay.h>
 
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
@@ -20,8 +20,6 @@
 #include "projects/btldr/btldr_lib.h"
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
-
-
 
 /*
  * Required for btldr
@@ -62,7 +60,6 @@ void hw_init() {
     timer_init(&timer1_cfg);
 
     mux_init(NUM_ICS);
-    configure_mux(NUM_ICS, 0x90, true, 7);
 
     can_init_bms();
     pcint0_callback();
@@ -91,7 +88,6 @@ static void monitor_cells(void) {
     uint16_t pack_voltage = 0;
     int rc = voltage_task(&pack_voltage, &ov, &uv);
     bms_core.pack_voltage = pack_voltage;
-    (void)rc;
 
     // Check for PEC errors
     if (rc != 0) {
@@ -109,7 +105,8 @@ static void monitor_cells(void) {
     // read all temperatures
     uint32_t ot = 0;
     uint32_t ut = 0;
-    int16_t min_temp, max_temp;
+    static uint16_t min_temp = 0;
+    static uint16_t max_temp = UINT16_MAX;
 
     rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
     bms_sense.min_temperature = min_temp;
@@ -154,10 +151,10 @@ static void monitor_cells(void) {
     // bms_sense.current_vref = vref;
     // bms_sense.current_vout = vout;
 
-    // if (ov > 0) {
-    //     set_fault(BMS_FAULT_UNDERVOLTAGE);
-    //     bms_core.bms_state = BMS_STATE_FAULT;
-    // }
+    if (ov > 0) {
+        set_fault(BMS_FAULT_OVERVOLTAGE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+    }
 
     // switch (bms_core.bms_state) {
     //     case BMS_STATE_ACTIVE: {
@@ -208,7 +205,6 @@ int main(void) {
             can_send_bms_core();
             can_send_bms_sense();
             // can_send_bms_metrics();
-
 
             //     // will run every 50 ms (20 Hz)
             //     if (loop_counter == 50) {

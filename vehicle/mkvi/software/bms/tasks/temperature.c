@@ -27,44 +27,37 @@ static void fan_enable(bool enable) {
     timer_init(&timer1_cfg);
 }
 
-static void update_min_max_temps(int16_t* min_temp, int16_t* max_temp,
-                                 int16_t temps[], uint8_t num_temps) {
-    for (uint8_t i = 0; i < num_temps; i++) {
-        if (temps[i] < *min_temp) {
-            *min_temp = temps[i];
-        }
-        if (temps[i] > *max_temp) {
-            *max_temp = temps[i];
-        }
-    }
-}
-
 /*
  * We are using negative-temperature-coefficient thermistors.
  * TL;DR is as the temperature increases, the voltage decreases.
  * These variables refer the the voltages, so the minimum temperature is the
  * highest voltage, and vice versa.
  */
-int16_t min_temperature = INT16_MAX;
-int16_t max_temperature = INT16_MIN;
+static void update_min_max_temps(uint16_t* min_temp, uint16_t* max_temp,
+                                 uint16_t temps[], uint8_t num_temps) {
+    for (uint8_t i = 0; i < num_temps; i++) {
+        if (temps[i] > *min_temp) {
+            *min_temp = temps[i];
+        }
+        if (temps[i] < *max_temp) {
+            *max_temp = temps[i];
+        }
+    }
+}
 
-int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
-                     int16_t* max_temp) {
+int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
+                     uint16_t* max_temp) {
     int pec_errors = 0;
 
-    // // static uint8_t mux = 0;
-    // // static uint8_t channel = 0;
+    static uint8_t mux = 0;
+    static uint8_t channel = 0;
 
-    // SPECIFY WHICH MUX:
-    uint8_t mux = 0;
-    uint8_t channel = 0;
+    if (mux == 0 && channel == 7) {
+        *min_temp = 0;
+        *max_temp = UINT16_MAX;
+    }
 
-    // if (mux == 0 && channel == 0) {
-    //     min_temperature = INT16_MAX;
-    //     max_temperature = INT16_MIN;
-    // }
-
-    // bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
+    bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
 
     wakeup_sleep(NUM_ICS);
     configure_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
@@ -79,7 +72,11 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
     LTC681x_rdaux_reg(AUX_REG_GROUP_A, NUM_ICS, aux_reg_a_raw); // for GPIOS 1-3
     LTC681x_rdaux_reg(AUX_REG_GROUP_C, NUM_ICS, aux_reg_c_raw); // for GPIOS 6
 
+    uint8_t num_temps;
+    uint16_t temps[4];
+
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+        num_temps = 0;
         bms_temperature.ic = ic;
         bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_12;
 
@@ -87,49 +84,53 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
 
         bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 0]
                                         | (aux_reg_a_raw[ic_zero_idx + 1] << 8);
+        // Skip channels 0-6 on Mux 0, DA Board 1 since the thermistors are not
+        // connected
+        if (mux != 0 || channel == 7) {
+            temps[num_temps] = bms_temperature.temperature_1;
+            num_temps++;
+        }
 
-        // bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
-        //                                 | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
+        bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
+                                        | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
+        temps[num_temps] = bms_temperature.temperature_2;
+        num_temps++;
         can_send_bms_temperature();
 
-        // update_min_max_temps(min_temp, max_temp,
-        //                      (int16_t[]) {
-        //                          bms_temperature.temperature_1,
-        //                          bms_temperature.temperature_2,
-        //                      },
-        //                      2);
+        bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
+        bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 4]
+                                        | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
+        temps[num_temps] = bms_temperature.temperature_1;
+        num_temps++;
+        bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
+                                        | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
+        // Skip channels 0-3 on Mux 0, DA Board 1 since the thermistors are not
+        // connected
+        if (mux != 0 || channel >= 4) {
+            temps[num_temps] = bms_temperature.temperature_2;
+            num_temps++;
+        }
+        can_send_bms_temperature();
 
-        // bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
-        // bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 4]
-        //                                 | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
-        // bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
-        //                                 | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
-        // can_send_bms_temperature();
+        update_min_max_temps(min_temp, max_temp, temps, num_temps);
 
-        // update_min_max_temps(min_temp, max_temp,
-        //                      (int16_t[]) {
-        //                          bms_temperature.temperature_1,
-        //                          bms_temperature.temperature_2,
-        //                      },
-        //                      2);
+        // PEC error handling for register A...
+        uint16_t received_pec = (aux_reg_a_raw[ic_zero_idx + 6] << 8)
+                                | aux_reg_a_raw[ic_zero_idx + 7];
+        uint16_t calculated_pec
+            = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[ic_zero_idx]);
+        if (received_pec != calculated_pec) {
+            pec_errors++;
+        }
 
-        // // PEC error handling for register A...
-        // uint16_t received_pec = (aux_reg_a_raw[ic_zero_idx + 6] << 8)
-        //                         | aux_reg_a_raw[ic_zero_idx + 7];
-        // uint16_t calculated_pec
-        //     = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[ic_zero_idx]);
-        // if (received_pec != calculated_pec) {
-        //     pec_errors++;
-        // }
-
-        // // and register C
-        // received_pec = (aux_reg_c_raw[ic_zero_idx + 6] << 8)
-        //                | aux_reg_c_raw[ic_zero_idx + 7];
-        // calculated_pec
-        //     = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[ic_zero_idx]);
-        // if (received_pec != calculated_pec) {
-        //     pec_errors++;
-        // }
+        // and register C
+        received_pec = (aux_reg_c_raw[ic_zero_idx + 6] << 8)
+                       | aux_reg_c_raw[ic_zero_idx + 7];
+        calculated_pec
+            = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[ic_zero_idx]);
+        if (received_pec != calculated_pec) {
+            pec_errors++;
+        }
     }
 
     channel += 1;
@@ -141,22 +142,22 @@ int temperature_task(uint32_t* ot, uint32_t* ut, int16_t* min_temp,
     }
 
     // if max is hotter than overtemp threshold, increment overtemp counter
-    if (max_temperature < OVERTEMPERATURE_THRESHOLD) {
+    if (*max_temp < OVERTEMPERATURE_THRESHOLD) {
         *ot += 1;
     }
 
     // if min is colder than undertemp threshold, increment undertemp counter
-    if (min_temperature > UNDERTEMPERATURE_THRESHOLD) {
+    if (*min_temp > UNDERTEMPERATURE_THRESHOLD) {
         *ut += 1;
     }
 
     // if max is hotter than soft threshold, enable fan
-    if (max_temperature < SOFT_OVERTEMPERATURE_THRESHOLD) {
+    if (*max_temp < SOFT_OVERTEMPERATURE_THRESHOLD) {
         fan_enable(true);
     }
 
     // if min is cooler than soft threshold low, disable fan
-    if (min_temperature > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
+    if (*min_temp > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
         fan_enable(false);
     }
     return pec_errors;
