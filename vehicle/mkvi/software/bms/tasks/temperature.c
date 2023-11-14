@@ -19,13 +19,13 @@ const uint8_t GPIO_CHANNELS[4] = { 1, 1, 1, 3 };
 #define AUX_REG_GROUP_A (1)
 #define AUX_REG_GROUP_C (3)
 
-static void fan_enable(bool enable) {
-    timer1_cfg.channel_b.pin_behavior = enable ? SET : DISCONNECTED;
+// static void fan_enable(bool enable) {
+//     timer1_cfg.channel_b.pin_behavior = enable ? SET : DISCONNECTED;
 
-    // No way to update a single part of the config so we just re-init the
-    // timer
-    timer_init(&timer1_cfg);
-}
+//     // No way to update a single part of the config so we just re-init the
+//     // timer
+//     timer_init(&timer1_cfg);
+// }
 
 /*
  * We are using negative-temperature-coefficient thermistors.
@@ -151,14 +151,14 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         *ut += 1;
     }
 
-    // if max is hotter than soft threshold, enable fan
-    if (*max_temp < SOFT_OVERTEMPERATURE_THRESHOLD) {
-        fan_enable(true);
-    }
+    // // if max is hotter than soft threshold, enable fan
+    // if (*max_temp < SOFT_OVERTEMPERATURE_THRESHOLD) {
+    //     fan_enable(true);
+    // }
 
-    // if min is cooler than soft threshold low, disable fan
-    if (*min_temp > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
-        fan_enable(false);
-    }
+    // // if min is cooler than soft threshold low, disable fan
+    // if (*min_temp > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
+    //     fan_enable(false);
+    // }
     return pec_errors;
 }
