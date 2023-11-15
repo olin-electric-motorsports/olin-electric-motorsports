@@ -20,14 +20,14 @@ air_p_status:
 air_n_status:
 pack_voltage:
 max_temperature:
-  # processing_function: convertVtoT
+  processing_function: convertVtoT
 min_temperature:
-  # processing_function: convertVtoT
+  processing_function: convertVtoT
 temperature_1:
+  processing_function: convertVtoT
 temperature_2:
+  processing_function: convertVtoT
 D1_DC_Bus_Voltage:
-temperature_1:
-temperature_2:
 
 Torque_Command:
 ---
