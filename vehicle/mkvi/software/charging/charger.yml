@@ -4,6 +4,8 @@ subscribe:
     mob: 1
   - name: bms_core
     mob: 2
+  - name: bms_charging
+    mob: 3
 publish:
   - name: charging_cmd
     id: 0x80
@@ -30,21 +32,3 @@ publish:
           values:
             t: Enabled
             f: Disabled
-  - name: bms_charging
-    id: 0x101
-    freq_hz: 1
-    signals:
-      - name: charge_enable
-        slice: 0 + 1
-        unit:
-          type: bool
-          values:
-            t: Start charging
-            f: Stop charging
-      - name: charger_connected
-        slice: 1 + 1
-        unit:
-          type: bool
-          values:
-            t: Charger connected
-            f: Charger disconnected
