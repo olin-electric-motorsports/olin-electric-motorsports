@@ -48,6 +48,7 @@ extern adc_pin_e PRE_DIS_TEMP_3;
 extern adc_pin_e CURRENT_SENSE_VOUT;
 
 void timer0_isr(void);
+void timer1_isr(void);
 extern timer_cfg_s timer0_cfg;
 extern timer_cfg_s timer1_cfg;
 extern spi_cfg_s spi_cfg;

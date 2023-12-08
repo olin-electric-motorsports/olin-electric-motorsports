@@ -37,8 +37,43 @@ void timer0_isr() {
     run_10ms = true;
 }
 
+void timer1_isr() {
+    timer1_cfg.channel_a.interrupt_enable = false;
+    timer1_cfg.channel_b.interrupt_enable = 0;
+    timer_init(&timer1_cfg);
+}
+
 void pcint0_callback() {
     bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_THRESH);
+}
+
+static void control_cooling_loop(void) {
+    static int8_t tolerance = 5; // to be defined
+    static uint16_t current_temp = 0;
+    static uint16_t previous_temp = 0;
+    static uint8_t duty_cycle = 0;
+    static int8_t min_duty = 13;
+    static int8_t max_duty = 85;
+    static int8_t scaling_factor = 1; // to be defined
+
+    if (can_poll_receive_m162_temperature_set_3() == 0){
+        can_receive_m162_temperature_set_3();
+        current_temp = int(m162_temperature_set_3.d3_motor_temperature);
+    }
+
+    if (abs(previous_temp - current_temp) > tolerance && current_temp != 0) {
+        duty_cycle = (int) (min_duty + current_temp * (max_duty - min_duty) / scaling_factor);
+        
+        if (duty_cycle > max_duty) {
+            duty_cycle = max_duty;
+        }
+        else if (duty_cycle < min_duty) {
+            duty_cycle = min_duty;
+        }
+
+        timer1_cfg.channel_b.output_compare_match = (duty_cycle/100) * timer1_cfg.channel_a.output_compare_match;
+        timer_init(&timer1_cfg);
+    }
 }
 
 void hw_init() {
@@ -65,6 +100,9 @@ void hw_init() {
     pcint0_callback();
 
     wakeup_sleep(NUM_ICS);
+
+    can_receive_dashboard();
+    can_receive_m162_temperature_set_3();
 }
 
 static void monitor_cells(void) {
@@ -224,6 +262,15 @@ int main(void) {
             //     if (loop_counter == 400) {
             //         loop_counter = 0;
             //     }
+
+            if (can_poll_receive_dashboard() == 0) {
+                can_receive_dashboard();
+
+                bool ready_to_drive = dashboard.ready_to_drive;
+                if (ready_to_drive) {
+                    control_cooling_loop();
+                }
+            }
 
             run_10ms = false;
         }

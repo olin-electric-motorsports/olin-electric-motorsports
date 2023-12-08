@@ -2,6 +2,10 @@ name: bms
 subscribe:
   - name: charging_fbk
     mob: 1
+  - name: M162_Temperature_Set_3
+    mob: 2
+  - name: dashboard
+    mob: 3
 publish:
   - name: charging_cmd
   - name: bms_core

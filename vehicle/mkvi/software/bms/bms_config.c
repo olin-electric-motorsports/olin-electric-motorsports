@@ -49,10 +49,13 @@ timer_cfg_s timer1_cfg = {
     .timer1_mode = TIMER1_MODE_PHASE_CORRECT_PWM_10_BIT,
     .prescalar = CLKIO_DIV_8,
     .channel_a = {
-        .output_compare_match = 0x50,
+        .output_compare_match = 12,
+        .interrupt_enable = true,
+        .interrupt_callback = timer1_isr,
     },
     .channel_b = {
         .channel = CHANNEL_B,
+        .output_compare_match = 12,
         .pin_behavior = SET,
         .interrupt_enable = false,
     },
