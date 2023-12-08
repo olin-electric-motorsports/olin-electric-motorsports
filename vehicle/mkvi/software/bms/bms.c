@@ -39,7 +39,7 @@ void timer0_isr() {
 
 void timer1_isr() {
     timer1_cfg.channel_a.interrupt_enable = false;
-    timer1_cfg.channel_b.interrupt_enable = 0;
+    timer1_cfg.channel_b.output_compare_match = 0;
     timer_init(&timer1_cfg);
 }
 
