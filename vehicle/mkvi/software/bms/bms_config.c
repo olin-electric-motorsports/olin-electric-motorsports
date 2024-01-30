@@ -44,18 +44,19 @@ timer_cfg_s timer0_cfg = {
 };
 
 // Fan PWM (25kHz) TODO: may need to update value
+// https://tecomotive.com/download/PWMinfo_EN.pdf
 timer_cfg_s timer1_cfg = {
     .timer = TIMER1,
     .timer1_mode = TIMER1_MODE_PHASE_CORRECT_PWM_10_BIT,
     .prescalar = CLKIO_DIV_8,
     .channel_a = {
-        .output_compare_match = 12,
+        .output_compare_match = 12, // Time it takes to wakeup the Cooling pump
         .interrupt_enable = true,
         .interrupt_callback = timer1_isr,
     },
     .channel_b = {
         .channel = CHANNEL_B,
-        .output_compare_match = 12,
+        .output_compare_match = 12, // Changes according to the temp. of the car
         .pin_behavior = SET,
         .interrupt_enable = false,
     },

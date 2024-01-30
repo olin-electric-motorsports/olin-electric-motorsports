@@ -33,6 +33,7 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
  * INTERRUPTS
  */
 static volatile bool run_10ms = false;
+
 void timer0_isr() {
     run_10ms = true;
 }
@@ -47,32 +48,37 @@ void pcint0_callback() {
     bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_THRESH);
 }
 
+// For running the cooling pump
+static volatile bool ready_to_drive = false;
+
 static void control_cooling_loop(void) {
-    static int8_t tolerance = 5; // to be defined
     static uint16_t current_temp = 0;
     static uint16_t previous_temp = 0;
     static uint8_t duty_cycle = 0;
-    static int8_t min_duty = 13;
-    static int8_t max_duty = 85;
-    static int8_t scaling_factor = 1; // to be defined
-
+    
     if (can_poll_receive_m162_temperature_set_3() == 0){
         can_receive_m162_temperature_set_3();
         current_temp = int(m162_temperature_set_3.d3_motor_temperature);
+
+        if (previous_temp = 0) {
+            previous_temp = current_temp;
+        }
     }
 
-    if (abs(previous_temp - current_temp) > tolerance && current_temp != 0) {
-        duty_cycle = (int) (min_duty + current_temp * (max_duty - min_duty) / scaling_factor);
+    if (abs(previous_temp - current_temp) > TOLERANCE && current_temp != 0) {
+        duty_cycle = (int) (MIN_DUTY + current_temp * (MAX_DUTY - MIN_DUTY) / SCALING_FACTOR);
         
-        if (duty_cycle > max_duty) {
-            duty_cycle = max_duty;
+        if (duty_cycle > MAX_DUTY) {
+            duty_cycle = MAX_DUTY;
         }
-        else if (duty_cycle < min_duty) {
-            duty_cycle = min_duty;
+        else if (duty_cycle < MIN_DUTY) {
+            duty_cycle = MIN_DUTY;
         }
 
-        timer1_cfg.channel_b.output_compare_match = (duty_cycle/100) * timer1_cfg.channel_a.output_compare_match;
+        timer1_cfg.channel_b.output_compare_match = (int) ((duty_cycle/100) * timer1_cfg.channel_a.output_compare_match);
         timer_init(&timer1_cfg);
+
+        previous_temp = current_temp;
     }
 }
 
@@ -266,11 +272,12 @@ int main(void) {
             if (can_poll_receive_dashboard() == 0) {
                 can_receive_dashboard();
 
-                bool ready_to_drive = dashboard.ready_to_drive;
-                if (ready_to_drive) {
+                ready_to_drive = dashboard.ready_to_drive;
+            }
+
+            if (ready_to_drive) {
                     control_cooling_loop();
                 }
-            }
 
             run_10ms = false;
         }
