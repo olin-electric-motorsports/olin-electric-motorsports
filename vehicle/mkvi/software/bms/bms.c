@@ -58,7 +58,7 @@ static void control_cooling_loop(void) {
     
     if (can_poll_receive_m162_temperature_set_3() == 0){
         can_receive_m162_temperature_set_3();
-        current_temp = int(m162_temperature_set_3.d3_motor_temperature);
+        current_temp = int(m162_temperature_set_3.d3_motor_temperature * 0.1);
 
         if (previous_temp = 0) {
             previous_temp = current_temp;
@@ -278,6 +278,8 @@ int main(void) {
             if (ready_to_drive) {
                     control_cooling_loop();
                 }
+
+            can_send_cooling_pump();
 
             run_10ms = false;
         }
