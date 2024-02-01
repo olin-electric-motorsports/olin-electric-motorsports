@@ -17,6 +17,11 @@
 #define MAX_PEC_ERROR_COUNT \
     32 // copied from mkv where it still says arbitrary...
 
+#define TOLERANCE (5U)
+#define MIN_DUTY (13)
+#define MAX_DUTY (85)
+#define SCALING_FACTOR (1)
+
 // copied from MKV - need to be updated
 #define OVERTEMPERATURE_THRESHOLD          ((int16_t)714) // 60 degC
 #define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)1233) // 45 degC
@@ -48,6 +53,7 @@ extern adc_pin_e PRE_DIS_TEMP_3;
 extern adc_pin_e CURRENT_SENSE_VOUT;
 
 void timer0_isr(void);
+void timer1_isr(void);
 extern timer_cfg_s timer0_cfg;
 extern timer_cfg_s timer1_cfg;
 extern spi_cfg_s spi_cfg;

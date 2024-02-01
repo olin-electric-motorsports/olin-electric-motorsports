@@ -33,12 +33,53 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
  * INTERRUPTS
  */
 static volatile bool run_10ms = false;
+
 void timer0_isr() {
     run_10ms = true;
 }
 
+void timer1_isr() {
+    timer1_cfg.channel_a.interrupt_enable = false;
+    timer1_cfg.channel_b.output_compare_match = 0;
+    timer_init(&timer1_cfg);
+}
+
 void pcint0_callback() {
     bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_THRESH);
+}
+
+// For running the cooling pump
+static volatile bool ready_to_drive = false;
+
+static void control_cooling_loop(void) {
+    static uint16_t current_temp = 0;
+    static uint16_t previous_temp = 0;
+    static uint8_t duty_cycle = 0;
+    
+    if (can_poll_receive_m162_temperature_set_3() == 0){
+        can_receive_m162_temperature_set_3();
+        current_temp = int(m162_temperature_set_3.d3_motor_temperature * 0.1);
+
+        if (previous_temp = 0) {
+            previous_temp = current_temp;
+        }
+    }
+
+    if (abs(previous_temp - current_temp) > TOLERANCE && current_temp != 0) {
+        duty_cycle = (int) (MIN_DUTY + current_temp * (MAX_DUTY - MIN_DUTY) / SCALING_FACTOR);
+        
+        if (duty_cycle > MAX_DUTY) {
+            duty_cycle = MAX_DUTY;
+        }
+        else if (duty_cycle < MIN_DUTY) {
+            duty_cycle = MIN_DUTY;
+        }
+
+        timer1_cfg.channel_b.output_compare_match = (int) ((duty_cycle/100) * timer1_cfg.channel_a.output_compare_match);
+        timer_init(&timer1_cfg);
+
+        previous_temp = current_temp;
+    }
 }
 
 void hw_init() {
@@ -65,6 +106,9 @@ void hw_init() {
     pcint0_callback();
 
     wakeup_sleep(NUM_ICS);
+
+    can_receive_dashboard();
+    can_receive_m162_temperature_set_3();
 }
 
 static void monitor_cells(void) {
@@ -224,6 +268,18 @@ int main(void) {
             //     if (loop_counter == 400) {
             //         loop_counter = 0;
             //     }
+
+            if (can_poll_receive_dashboard() == 0) {
+                can_receive_dashboard();
+
+                ready_to_drive = dashboard.ready_to_drive;
+            }
+
+            if (ready_to_drive) {
+                    control_cooling_loop();
+                }
+
+            can_send_cooling_pump();
 
             run_10ms = false;
         }
