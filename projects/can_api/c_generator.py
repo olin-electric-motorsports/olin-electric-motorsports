@@ -73,6 +73,7 @@ def main():
     else:
         rx_messages = []
         mobs = {}
+        masks = None
 
     # Create the Jinja2 environment that contains the template info
     env = Environment(

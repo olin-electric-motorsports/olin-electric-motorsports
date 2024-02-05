@@ -7,17 +7,6 @@ gpio_t DEBUG_LED = PB0;
 gpio_t WHEEL_SPEED_LEFT = PB2;
 gpio_t WHEEL_SPEED_RIGHT = PD6;
 
-enum sensing_location {
-    FRONT = 0,
-    REAR = 1
-} location __attribute__((section(".eeprom")))
-= SENSING_LOCATION;
-
-can_frame_t sensing_msg = {
-    .mob = 0,
-    .dlc = 2,
-};
-
 /*
  * Timer config
  */

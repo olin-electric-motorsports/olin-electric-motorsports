@@ -7,9 +7,9 @@ the rear sensing box Author:
 */
 
 /*----- Includes -----*/
-#include "can_api.h"
+#include "vehicle/mkvi/software/sensing/can_api.h"
 #include "sensing_config.h"
-#include "utils/timer.h"
+#include "libs/timer/api.h"
 #include <avr/eeprom.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
@@ -17,43 +17,31 @@ the rear sensing box Author:
 #include <string.h>
 #include <util/delay.h>
 
+volatile bool send_can = false;
+
 void timer1_isr(void) {
     send_can = true;
 };
 
-enum sensing_location {
-    FRONT = 0,
-    REAR = 1
-} location __attribute__((section(".eeprom")))
-= SENSING_LOCATION;
 
-can_frame_t sensing_msg = {
-    .mob = 0,
-    .dlc = 2,
-};
-
-int pcint0_callback() {
+void pcint0_callback() {
     // Left wheel speed sensor is in pin PB2 -> PORTB
-    sensing.wsl = !gpio_get_pin(WHEEL_SPEED_LEFT);
-    if (sensing.wsl) {
-        sensing.left_wheel_counter += 1;
+    front_sensing.wsl = !gpio_get_pin(WHEEL_SPEED_LEFT);
+    if (front_sensing.wsl) {
+        front_sensing.left_wheel_counter += 1;
     }
 }
 void pcint2_callback() {
     // Right wheel speed sensor is in pin PD6 -> PORTD
-    sensing.wsr = !gpio_get_pin(WHEEL_SPEED_RIGHT);
-    if (sensing.wsr) {
-        sensing.right_wheel_counter += 1;
+    front_sensing.wsr = !gpio_get_pin(WHEEL_SPEED_RIGHT);
+    if (front_sensing.wsr) {
+        front_sensing.right_wheel_counter += 1;
     }
 }
 
 int main(void) {
-    eeprom_busy_wait();
-    enum sensing_location location = eeprom_read_dword(&location);
-    _delay_ms(2);
-
-    // can_init_sensing(); NEED TO FIND REPLACEMENT
-    gpio_set_mode(DEBUG_LED_0, OUTPUT);
+    can_init_sensing();
+    gpio_set_mode(DEBUG_LED, OUTPUT);
     gpio_set_mode(WHEEL_SPEED_LEFT, INPUT);
     gpio_set_mode(WHEEL_SPEED_RIGHT, INPUT);
 
@@ -69,24 +57,16 @@ int main(void) {
 
     // Timer every 1 second
     timer1_isr();
-    switch (location) {
-        case FRONT: {
-            sensing_msg.id = 0x403;
-        } break;
-        case REAR: {
-            sensing_msg.id = 0x404;
-        } break;
-    }
 
     while (true) {
         // If timer is at 1 second
         if (send_can) {
             // Log how many times we saw metal
-            // can_send_sensing(); NEED TO WRITE WITH LIBRARY
+            can_send_front_sensing();
 
             // Reset all counters
-            sensing.left_wheel_counter = 0;
-            sensing.right_wheel_counter = 0;
+            front_sensing.left_wheel_counter = 0;
+            front_sensing.right_wheel_counter = 0;
             send_can = false;
         }
     }

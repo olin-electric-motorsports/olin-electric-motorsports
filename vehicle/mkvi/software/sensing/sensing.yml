@@ -9,14 +9,31 @@ publish:
         unit:
           type: uint8_t
           name: left_cycles/second
-        name: right_wheel_counter
+          offset: 0
+          scale: 1
+      - name: right_wheel_counter
         slice: 8 + 8
         unit:
           type: uint8_t
           name: right_cycles/second
-
-
-publish:
+          offset: 0
+          scale: 1
+      - name: wsl
+        slice: 16 + 1
+        unit:
+          type: bool
+          name: wsl
+          values:
+            t: GOOD
+            f: BAD
+      - name: wsr
+        slice: 17 + 1
+        unit: 
+          type: bool
+          name: wsr
+          values:
+            t: GOOD
+            f: BAD
   - name: rear_sensing
     id: 0x404 
     freq_hz: 100
@@ -26,8 +43,12 @@ publish:
         unit:
           type: uint8_t
           name: left_cycles/second
-        name: right_wheel_counter
+          offset: 0
+          scale: 1
+      - name: right_wheel_counter
         slice: 8 + 8
         unit:
           type: uint8_t
           name: right_cycles/second
+          scale: 1
+          offset: 0
