@@ -70,3 +70,33 @@ def can_api_files(name, yaml, dbc):
         ],
         visibility = ["//visibility:public"],
     )
+
+def tunables_library(name, yaml, tunable_id):
+    native.genrule(
+        name = name + "_gen",
+        srcs = [
+            yaml,
+            "//libs/tunables:c_file.j2",
+            "//libs/tunables:h_file.j2",
+        ],
+        outs = [
+            "tunables_{}.c".format(name),
+            "tunables_{}.h".format(name),
+        ],
+        tools = ["//libs/tunables:c_generator"],
+        cmd = "./$(location //libs/tunables:c_generator) $(location " + yaml + ") $(RULEDIR)",
+    )
+
+    cc_library(
+        name = name,
+        srcs = [
+            "tunables_{}.c".format(name),
+        ],
+        hdrs = [
+            "tunables_{}.h".format(name),
+        ],
+        visibility = ["//visibility:public"],
+        deps = [
+            "//libs/tunables",
+        ],
+    )

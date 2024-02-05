@@ -1,8 +1,9 @@
-load("//bazel/tools:defs.bzl", "can_api_files")
+load("//bazel/tools:defs.bzl", "can_api_files", "tunables_library")
 load("//bazel:defs.bzl", "cc_firmware")
 
 exports_files([
     "throttle.yml",
+    "tunables.yml",
 ])
 
 cc_firmware(
@@ -27,6 +28,12 @@ cc_firmware(
     ],
 )
 
+tunables_library(
+    name = "throttle_tunables",
+    tunable_id = 0x6e0,
+    yaml = ":tunables.yml",
+)
+
 cc_library(
     name = "utils",
     srcs = [
@@ -49,3 +56,4 @@ can_api_files(
     dbc = "//vehicle/mkv:mkv.dbc",
     yaml = ":throttle.yml",
 )
+

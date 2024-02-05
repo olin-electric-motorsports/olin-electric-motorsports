@@ -1,0 +1,14 @@
+#pragma once
+#include <stdint.h>
+/* 
+initializes the struct that will contain all the different tunable parameters
+*/
+extern const size_t NUM_TUNABLES;
+extern struct {{ name }}_tunables tunables;
+
+struct {{ name }}_tunables {
+    {% for parameter in t_params %}
+        {{parameter}};
+    {% endfor %}
+
+} tunables;
