@@ -56,7 +56,14 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "footprint_type_mismatch|109386601|107113401|e83b81a5-3a62-4155-a959-0338b3ac6daf|00000000-0000-0000-0000-000000000000",
+        "footprint_type_mismatch|143660000|73750000|5314ac26-7290-47be-96b3-e0134a0c2661|00000000-0000-0000-0000-000000000000",
+        "footprint_type_mismatch|143720000|77450000|ecaba3a5-6515-4cc5-850d-02155a131fa7|00000000-0000-0000-0000-000000000000",
+        "footprint_type_mismatch|83900000|110980000|8f0fba5d-41b5-4ab1-89a6-b32a131608ff|00000000-0000-0000-0000-000000000000",
+        "footprint_type_mismatch|85950000|76420000|6fe43cb9-5663-455e-a259-72a9a51ad518|00000000-0000-0000-0000-000000000000",
+        "footprint_type_mismatch|89010000|110980000|34758a54-399f-4b56-bb2b-bbdc29e4921b|00000000-0000-0000-0000-000000000000"
+      ],
       "meta": {
         "version": 2
       },
@@ -114,7 +121,7 @@
         "allow_blind_buried_vias": false,
         "allow_microvias": false,
         "max_error": 0.005,
-        "min_clearance": 0.15,
+        "min_clearance": 0.127,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.01,
         "min_hole_clearance": 0.25,
@@ -175,6 +182,8 @@
       "track_widths": [
         0.0,
         0.1524,
+        0.2,
+        0.3048,
         0.381
       ],
       "via_dimensions": [
@@ -375,18 +384,23 @@
     "rule_severities": {
       "bus_definition_conflict": "error",
       "bus_entry_needed": "error",
-      "bus_label_syntax": "error",
       "bus_to_bus_conflict": "error",
       "bus_to_net_conflict": "error",
+      "conflicting_netclasses": "error",
       "different_unit_footprint": "error",
       "different_unit_net": "error",
       "duplicate_reference": "error",
       "duplicate_sheet_names": "error",
+      "endpoint_off_grid": "warning",
       "extra_units": "error",
       "global_label_dangling": "warning",
       "hier_label_mismatch": "error",
       "label_dangling": "error",
       "lib_symbol_issues": "warning",
+      "missing_bidi_pin": "warning",
+      "missing_input_pin": "warning",
+      "missing_power_pin": "error",
+      "missing_unit": "warning",
       "multiple_net_names": "warning",
       "net_not_bus_member": "warning",
       "no_connect_connected": "warning",
@@ -396,6 +410,7 @@
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
+      "simulation_model_issue": "ignore",
       "unannotated": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
@@ -414,7 +429,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.127,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -451,6 +466,8 @@
   "schematic": {
     "annotate_start_num": 0,
     "drawing": {
+      "dashed_lines_dash_length_ratio": 12.0,
+      "dashed_lines_gap_length_ratio": 3.0,
       "default_line_thickness": 6.0,
       "default_text_size": 50.0,
       "field_names": [],
@@ -469,7 +486,7 @@
     "meta": {
       "version": 1
     },
-    "net_format_name": "",
+    "net_format_name": "KiCad",
     "ngspice": {
       "fix_include_paths": true,
       "fix_passive_vals": false,
@@ -482,7 +499,11 @@
     "page_layout_descr_file": "",
     "plot_directory": "",
     "spice_adjust_passive_values": false,
+    "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "spice_save_all_voltages": false,
     "subpart_first_id": 65,
     "subpart_id_separator": 0
   },
@@ -490,10 +511,6 @@
     [
       "8bf539d3-f4e7-408b-921d-45351bdd10f3",
       ""
-    ],
-    [
-      "a8ec3725-a6bd-4d20-87cb-ab75a6a46eb6",
-      "CAR_CAN_CONTROLLER"
     ],
     [
       "156f3892-7281-41fd-9b91-7b34c030624e",
