@@ -38,7 +38,12 @@ PROGRAMMING_LED_3 = 37
 RTD_BUZZ_TIME = 2000  # in milliseconds
 
 # Initializing the dictionary that holds outgoing CAN data
-dashboard_data = {"ready_to_drive": False, "start_button_state": False, "ss_estop": False, "ss_bots": False, }
+dashboard_data = {
+    "ready_to_drive": False,
+    "start_button_state": False,
+    "ss_estop": False,
+    "ss_bots": False,
+}
 
 
 def init_can(channel, bustype, bitrate, callback):
@@ -193,7 +198,6 @@ def main():
 
         # Turns on the button LED if brakes are pressed, tractive system is on,
         # RTD is not on, and the throttle is not being pressed
-        print(brake_gate, air_state, dashboard_data["ready_to_drive"], throttle_pressed)
         if (
             brake_gate
             and air_state == "TS_ACTIVE"
