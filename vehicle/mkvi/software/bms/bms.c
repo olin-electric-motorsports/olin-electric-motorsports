@@ -70,13 +70,10 @@ void hw_init() {
 int main(void) {
     hw_init();
 
-    // uint16_t loop_counter = 0;
-
     while (true) {
         if (run_10ms) {
             can_send_bms_core();
             can_send_bms_sense();
-            gpio_toggle_pin(DEBUG_LED_1);
             run_10ms = false;
         }
     }
