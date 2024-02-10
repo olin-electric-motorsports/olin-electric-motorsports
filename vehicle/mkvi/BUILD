@@ -10,5 +10,6 @@ dbc_gen(
         "//vehicle/mkvi/software/bms:bms.yml",
         "//vehicle/mkvi/software/brakes:bspd.yml",
         "//vehicle/mkvi/software/air_control:air.yml",
+        "//vehicle/mkvi/software/throttle:throttle.yml",
     ],
 )
