@@ -9,7 +9,7 @@ CHANNEL = "/dev/ttyACM1"
 BITRATE = 500000
 
 # Loading in everyone's compiled config files
-dbc_file = "vehicle/mkvi/mkvi.dbc"
+dbc_file = "mkvi.dbc"
 db = cantools.database.load_file(dbc_file)
 
 # Making variables that store incoming CAN data global
@@ -112,12 +112,13 @@ def dashboard_callback(msg, db):
 
 
 # Enabling the start button interrupt
-def button_pressed_callback():
+def button_pressed_callback(channel):
     """
     When called, this sets the value of "start_button_state" in the outgoing
     CAN data dictionary (dashboard_data) to True
     """
     dashboard_data["start_button_state"] = GPIO.input(RTD_BUTTON_SENSE)
+    print("button: " + str(dashboard_data["start_button_state"]))
 
 
 def shutdown_callback(channel):
@@ -173,6 +174,10 @@ def main():
     buzzer_counter = 0  # buzzer_counter starts at 0
 
     dashboard_message = db.get_message_by_name("dashboard")
+
+    button_pressed_callback()
+    shutdown_callback(BOTS_SHDN_SENSE)
+    shutdown_callback(E_STOP_SHDN_SENSE)
 
     while True:  # MAKE THIS RUN EVERY 10 MILLISECONDS
         t_0 = time.perf_counter()
