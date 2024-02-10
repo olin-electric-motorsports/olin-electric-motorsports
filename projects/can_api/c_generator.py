@@ -56,6 +56,9 @@ def main():
                             "values": sig["unit"]["values"],
                         }
                     )
+    rx_messages = None
+    mobs = None
+    masks = None
 
     if "subscribe" in yaml_data.keys():
         rx_messages, mobs, masks = get_rx_messages(yaml_data["subscribe"], db.messages)

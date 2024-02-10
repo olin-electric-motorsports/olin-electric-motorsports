@@ -1,0 +1,81 @@
+name: elcon_hk_j_440_10
+subscribe:
+publish:
+  - name: charging_cmd
+    id: 0x80
+    freq_hz: 1
+    signals:
+      - name: max_voltage
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: Volts
+          offset: 0
+          scale: 0.1
+      - name: max_current
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: Amps
+          offset: 0
+          scale: 0.1
+      - name: enable
+        slice: 32 + 1
+        unit:
+          type: bool
+          values:
+            t: Enabled
+            f: Disabled
+  - name: charging_fbk
+    id: 0x81
+    freq_hz: 1
+    signals:
+      - name: charging_voltage
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: Volts
+          scale: 0.1
+          offset: 0
+      - name: charging_current
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: Amps
+          offset: 0
+          scale: 0.1
+      - name: hardware_fault
+        slice: 32 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: temperature_protection
+        slice: 33 + 1
+        unit:
+          type: bool
+          values:
+            t: ENABLED
+            f: Normal
+      - name: input_voltage
+        slice: 34 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: starting_state
+        slice: 35 + 1
+        unit:
+          type: bool
+          values:
+            t: OFF
+            f: Normal
+      - name: communication_state
+        slice: 36 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal

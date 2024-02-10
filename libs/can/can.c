@@ -86,6 +86,7 @@ int can_mob_has_interrupt(uint8_t mob) {
 }
 
 int can_send(can_frame_t* frame) {
+    PORTB |= 1;
     while (CANGSTA & (1 << TXBSY))
         ;
 

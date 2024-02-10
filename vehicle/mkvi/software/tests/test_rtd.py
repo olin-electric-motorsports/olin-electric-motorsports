@@ -34,3 +34,4 @@ def test_rtd(hitl):
 #     # Cleanup
 #     hitl.shdn_bots.set(1)
 #     assert(hitl.can.get_state("ss_bots") == "CLOSED")
+

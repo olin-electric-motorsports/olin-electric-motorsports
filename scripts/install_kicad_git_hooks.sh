@@ -73,3 +73,9 @@ if test -f ${ROOT}/parts/schematic/oem.kicad_sym; then
 fi
 git add ${ROOT}/parts/schematic/oem
 EOF
+
+# make hooks executable
+chmod +x ${ROOT}/.git/hooks/pre-checkout
+chmod +x ${ROOT}/.git/hooks/post-checkout
+chmod +x ${ROOT}/.git/hooks/pre-commit
+

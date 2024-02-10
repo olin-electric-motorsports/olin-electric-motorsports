@@ -16,14 +16,19 @@ Begin by cloning this repository into a folder of your choice (many people
 choose to put it in `~/Documents`.
 
 ```shell
-$ cd ~/Documents
-$ git clone git@github.com:olin-electric-motorsports/olin-electric-motorsports.git
+cd ~/Documents
+git clone git@github.com:olin-electric-motorsports/olin-electric-motorsports.git
 ```
 
 Once you have it, you'll need to install the KiCad Git filters:
 
 ```shell
-$ ./scripts/install_kicad_git_filters.sh
+./scripts/install_kicad_git_filters.sh
+```
+
+You'll also want to have the KiCad Git Hooks to generate our symbol libraries.
+```shell
+./scripts/install_kicad_git_hooks.sh
 ```
 
 ### Installing AVR and tools
@@ -31,7 +36,7 @@ $ ./scripts/install_kicad_git_filters.sh
 Next, install the AVR toolchain:
 
 ```shell
-$ sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
+sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
 ```
 
 ### Installing Bazel
@@ -42,16 +47,18 @@ will download for Ubuntu on x86\_64 machines. Once downloaded, run the
 following to install:
 
 ```shell
-$ cp bazelisk-linux-amd64 /usr/local/bin/bazel
+cd ~/Downloads
+cp bazelisk-linux-amd64 /usr/local/bin/bazel
 ```
 Next, run the following file to ensure that bazel is executable:
 ```shell
 chmod u+x /usr/local/bin/bazel
 ```
-You should now be able to run the following without error:
+You should now be able to run the following without error (after changing your directory to be in
+the `olin-electric-motorsports` folder):
 
 ```shell
-$ bazel build --config=16m1 //examples/blinky
+bazel build --config=16m1 //examples/blinky
 ```
 If you get an error message stating 'env: python: No such file or directory', ensure that the PATH environment variable is properly established. This can be done by adding the file to your .bashrc file:
 
@@ -72,7 +79,7 @@ Be sure to follow all the steps, including adding your current user to the
 command:
 
 ```shell
-$ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight
+bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight
 ```
 
 ### KiCad Setup
@@ -80,9 +87,9 @@ $ bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brake
 To install KiCad on Ubuntu, run the following:
 
 ```shell
-$ sudo add-apt-repository --yes ppa:kicad/kicad-6.0-releases
-$ sudo apt update
-$ sudo apt install --install-recommends kicad
+sudo add-apt-repository --yes ppa:kicad/kicad-6.0-releases
+sudo apt update
+sudo apt install --install-recommends kicad
 ```
 
 Next, take note of the path to your monorepo. If you put it in your
@@ -106,13 +113,13 @@ If you are working on a new project, the first step is to make sure you have the
 latest code:
 
 ```shell
-$ git pull origin main
+git pull origin main
 ```
 
 Next, create your feature branch:
 
 ```shell
-$ git switch -c your-username/feature-name origin/main
+git switch -c your-username/feature-name origin/main
 ```
 
 Now, you can start working on code, committing on your branch, and eventually

@@ -12,15 +12,19 @@ ss_imd:
 ss_tsms:
 ---
 # Vehicle Values
+throttle_l_pos:
+throttle_r_pos:
+brake_gate:
+ready_to_drive:
 air_p_status:
 air_n_status:
-ready_to_drive:
 pack_voltage:
 max_temperature:
   processing_function: convertVtoT
 min_temperature:
   processing_function: convertVtoT
 D1_DC_Bus_Voltage:
+Torque_Command:
 ---
 # Vehicle States (state and fault)
 air_control_critical:
