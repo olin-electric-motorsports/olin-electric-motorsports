@@ -1,0 +1,349 @@
+name: bms
+subscribe:
+  - name: charging_fbk
+    mob: 1
+publish:
+  - name: charging_cmd
+  - name: bms_core
+    id: 0x10
+    freq_hz: 100
+    signals:
+      - name: bms_fault
+        slice: 0 + 4
+        unit:
+          type: enum
+          values:
+            - NONE
+            - UNDERVOLTAGE
+            - OVERVOLTAGE
+            - UNDERTEMPERATURE
+            - OVERTEMPERATURE
+            - DIAGNOSTICS_FAIL
+            - OPEN_WIRE
+            - OVERCURRENT
+            - PEC
+            - CHARGER_FAULT
+            - STATE_MACHINE
+            # NOTE: MIA refers to receiving all 1s from the CSC,
+            # This either means that there is a communication error
+            # (ex: CSC is not powered) or a register on the CSC was
+            # initialized to all 1s and the appropriate command was
+            # not given to update the value (ex: the cell voltage readings
+            # are initialized to all 1s until an ADC conversion is
+            # requested)
+            # TODO: Implement error handle per CSC
+            - CSC_MIA
+      - name: bms_state
+        slice: 4 + 4
+        unit:
+          type: enum
+          values:
+            - ACTIVE
+            - CHARGING
+            - FAULT
+      - name: pack_voltage
+        slice: 8 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 0.0001 * 256
+      - name: pack_current
+        slice: 24 + 12
+        unit:
+          type: int16_t
+          name: A
+          offset: 0
+          scale: 0.004
+      - name: cell_balancing_status
+        slice: 36 + 1
+        unit:
+          type: bool
+          values:
+            t: Cell balancing enabled
+            f: Cell balancing disabled
+      - name: regen_enabled
+        slice: 37 + 1
+        unit:
+          type: bool
+          values:
+            t: Regenerative braking enabled
+            f: Regenerative braking disabled
+      - name: current_limiting_enabled
+        slice: 38 + 1
+        unit:
+          type: bool
+          values:
+            t: Current limiting enabled
+            f: Current limiting disabled
+      - name: bspd_current_sense
+        slice: 39 + 1
+        unit:
+          type: bool
+          values:
+            t: Current sensed
+            f: No current sensed
+      - name: overcurrent_detect
+        slice: 40 + 1
+        unit:
+          type: bool
+          values:
+            t: Over-current detected
+            f: No over-current detected
+      - name: charger_connected
+        slice: 41 + 1
+        unit:
+          type: bool
+          values:
+            t: Connected
+            f: Disconnected
+
+  - name: bms_sense
+    id: 0x011
+    freq_hz: 100
+    signals:
+      - name: min_temperature
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 0.0001
+      - name: max_temperature
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 0.0001
+      - name: current_vref
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 5 / 1024
+      - name: current_vout
+        slice: 48 + 16
+        unit:
+          type: uint16_t
+          name: V
+          offset: 0
+          scale: 5 / 1024
+  - name: bms_metrics
+    id: 0x510
+    freq_hz: 100
+    signals:
+      - name: voltage_pec_error_count
+        slice: 0 + 8
+        unit:
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
+      - name: temperature_pec_error_count
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
+
+  - name: bms_debug
+    id: 0x511
+    freq_hz: 100
+    signals:
+      - name: dbg_1
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: dbg_2
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: dbg_3
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: dbg_4
+        slice: 48 + 8
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: charger_hardware_fault
+        slice: 56 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_temperature_protection
+        slice: 57 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_input_voltage
+        slice: 58 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_starting_state
+        slice: 59 + 1
+        unit:
+          type: bool
+          values:
+            t: OFF
+            f: On
+      - name: charger_communication
+        slice: 60 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+
+  - name: bms_voltage
+    id: 0x401
+    freq_hz: 4
+    signals:
+      - name: ic
+        slice: 0 + 8
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: cell
+        slice: 8 + 8
+        unit:
+          type: enum
+          values:
+            - REG_A
+            - REG_B
+            - REG_C
+            - REG_D
+            - REG_E
+            - REF_F
+      - name: voltage_1
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: "volts"
+          scale: 0.0001
+          offset: 0
+      - name: voltage_2
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: "volts"
+          scale: 0.0001
+          offset: 0
+      - name: voltage_3
+        slice: 48 + 16
+        unit:
+          type: uint16_t
+          name: "volts"
+          scale: 0.0001
+          offset: 0
+
+  - name: bms_temperature
+    id: 0x402
+    freq_hz: 4
+    signals:
+      - name: ic
+        slice: 0 + 3
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: da_boards
+        slice: 4 + 1
+        unit:
+          type: enum
+          values:
+            - DA_BOARDS_12
+            - DA_BOARDS_34
+      - name: channel
+        slice: 8 + 5
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: temperature_1
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: "volts"
+          scale: 0.0001
+          offset: 0
+      - name: temperature_2
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: "volts"
+          scale: 0.0001
+          offset: 0
+
+  - name: cfg_reg_a
+    id: 0x403
+    freq_hz: 100
+    signals:
+      - name: bit_0
+        slice: 0 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_1
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_2
+        slice: 16 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_3
+        slice: 24 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_4
+        slice: 32 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_5
+        slice: 40 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
