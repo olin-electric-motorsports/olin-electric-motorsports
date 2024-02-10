@@ -38,7 +38,10 @@ pytest_test(
         "tests/test_hitl.py",
     ],
     imports = ["."],
-    tags = ["manual", "hardware"],
+    tags = [
+        "hardware",
+        "manual",
+    ],
     deps = [
         ":hitl",
     ],
