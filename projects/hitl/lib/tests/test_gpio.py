@@ -6,6 +6,8 @@ from projects.hitl.lib.gpio import MAX7300, PinMode
 def test_i2c_set_mode():
     i2c = Mock()
     i2c.i2cMaster_Write = Mock(return_value=None)
+    i2c.i2cMaster_Read = Mock(return_value=b'\x00\x00')
+
 
     gpio = MAX7300(i2c)
     gpio.set_mode(6, PinMode.OUTPUT)
@@ -31,7 +33,8 @@ def test_i2c_set():
 def test_i2c_get():
     i2c = Mock()
     i2c.i2cMaster_Write = Mock(return_value=None)
-    i2c.i2cMaster_Read = Mock(return_value=1)
+    i2c.i2cMaster_Read = Mock(return_value=b'\x01\x00')
+
 
     gpio = MAX7300(i2c)
     assert gpio.get(15) == 1

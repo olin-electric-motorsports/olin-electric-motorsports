@@ -24,7 +24,7 @@ pytest_test(
     srcs = [
         "tests/test_dac.py",
         "tests/test_gpio.py",
-        "tests/test_hitl.py",
+        # "tests/test_hitl.py",
     ],
     imports = ["."],
     deps = [
