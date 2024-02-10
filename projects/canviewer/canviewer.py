@@ -37,24 +37,6 @@ for signal, value in VEHICLE_VALUES.items():
             VEHICLE_VALUES[signal] = None
 
 
-from dataclasses import dataclass
-from typing import Dict
-
-
-@dataclass
-class ThermistorReading:
-    ic: int
-    da_board: int
-    channel: int
-
-    def __str__(self):
-        return f"{self.da_board}:{self.channel}"
-
-
-readings: Dict[ThermistorReading, float] = {}
-import numpy as np
-
-
 def rx_callback(msg, db):
     """
     Callback when a CAN message is received, updates appropriate vehicle dictionaries
@@ -67,51 +49,6 @@ def rx_callback(msg, db):
         message = db.decode_message(msg.arbitration_id, msg.data)
     except Exception as e:
         return
-
-    if "da_boards" in message.keys():
-        channel = str(message["channel"])
-        if len(channel) == 1:
-            channel = f"0{channel}"
-        if message["da_boards"] == "DA_BOARDS_34":
-            reading1 = ThermistorReading(ic=message["ic"], da_board=3, channel=channel)
-            readings[str(reading1)] = message["temperature_1"]
-            if message["channel"] >= 4:
-                reading2 = ThermistorReading(
-                    ic=message["ic"], da_board=4, channel=channel
-                )
-                readings[str(reading2)] = message["temperature_2"]
-        else:
-            if message["channel"] >= 7:
-                reading1 = ThermistorReading(
-                    ic=message["ic"], da_board=1, channel=channel
-                )
-                readings[str(reading1)] = message["temperature_1"]
-            reading2 = ThermistorReading(ic=message["ic"], da_board=2, channel=channel)
-            readings[str(reading2)] = message["temperature_2"]
-        txt = "_____________start______________\n"
-        channels = list(readings.keys())
-        vals = list(readings.values())
-        num_high = sum(np.array([float(convertVtoT(x)) for x in vals]) > 76)
-        zipped = list(zip(channels, vals))
-        zipped.sort(key=lambda a: a[0])
-        i = 0
-        print
-        while i < len(channels):
-            txt += (
-                "\t".join(
-                    [
-                        str(z[0] + "\t" + str(convertVtoT(z[1])))
-                        for z in zipped[i : i + 4]
-                    ]
-                )
-                + "\n"
-            )
-            i += 4
-        txt += "min:\t" + str(convertVtoT(max(readings.values()))) + "\n"
-        txt += "max:\t" + str(convertVtoT(min(readings.values()))) + "\n"
-        txt += "high:\t" + str(num_high) + "\n"
-        txt += "______________end_______________"
-        print(txt)
 
     for signal_name in message:
         if signal_name in SHUTDOWN_NODES:
@@ -156,10 +93,7 @@ if __name__ == "__main__":
     )
 
     def update_ui():
-        try:
-            window.setData(SHUTDOWN_NODES, VEHICLE_VALUES, VEHICLE_STATES)
-        except KeyboardInterrupt:
-            sys.exit()
+        window.setData(SHUTDOWN_NODES, VEHICLE_VALUES, VEHICLE_STATES)
 
     app = QApplication([])
     window = Window()
