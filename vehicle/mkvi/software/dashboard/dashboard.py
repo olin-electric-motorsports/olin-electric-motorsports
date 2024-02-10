@@ -4,8 +4,8 @@ import can
 import cantools
 import RPi.GPIO as GPIO
 
-BUSTYPE = "slcan"
-CHANNEL = "/dev/ttyACM1"
+BUSTYPE = "socketcan"
+CHANNEL = "can0"
 BITRATE = 500000
 
 # Loading in everyone's compiled config files
@@ -175,7 +175,7 @@ def main():
 
     dashboard_message = db.get_message_by_name("dashboard")
 
-    button_pressed_callback()
+    button_pressed_callback(RTD_BUTTON_SENSE)
     shutdown_callback(BOTS_SHDN_SENSE)
     shutdown_callback(E_STOP_SHDN_SENSE)
 
