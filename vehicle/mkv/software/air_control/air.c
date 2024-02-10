@@ -25,6 +25,16 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
 /*
  * Interrupts
  */
+
+static void set_fault(enum air_fault_e the_fault) {
+    gpio_set_pin(FAULT_LED);
+
+    if (air_control_critical.air_fault == AIR_FAULT_NONE) {
+        // Only update fault state for the first fault to occur
+        air_control_critical.air_fault = the_fault;
+    }
+}
+
 volatile bool send_can = false;
 
 void timer0_isr(void) {
@@ -49,15 +59,6 @@ void pcint2_callback(void) {
     if (!gpio_get_pin(IMD_SENSE)) {
         set_fault(AIR_FAULT_IMD_STATUS);
         air_control_critical.imd_status = false;
-    }
-}
-
-static void set_fault(enum air_fault_e the_fault) {
-    gpio_set_pin(FAULT_LED);
-
-    if (air_control_critical.air_fault == AIR_FAULT_NONE) {
-        // Only update fault state for the first fault to occur
-        air_control_critical.air_fault = the_fault;
     }
 }
 

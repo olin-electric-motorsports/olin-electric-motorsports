@@ -68,14 +68,13 @@ def btldr(canbus):
     # Flash
     for ecu in ECUS:
         resp = btldr.ping(ecu["btldr_id"], 1)
-    
+
         if resp:
-            log.warning("Found {}, flashing.".format(ecu["name"]))
-            # btldr.flash(ecu["btldr_id"], ecu["binary"], 1)
+            log.info("Found {}, flashing.".format(ecu["name"]))
         else:
             log.warning("Unable to ping {}. Is it connected?".format(ecu["name"]))
 
-    yield btldr
+    return btldr
 
 
 @pytest.fixture(scope = "session")

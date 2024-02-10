@@ -8,9 +8,6 @@ from collections import defaultdict
 import cantools
 import can
 
-# Project Imports
-from utils import artifacts_path, get_logging_config
-
 
 class CANController:
     """High level python object to interface with hardware.
@@ -28,40 +25,35 @@ class CANController:
 
     def __init__(
         self,
-        can_spec_path: str = "vehicle/mkv/mkv.dbc",
-        bustype: str = "socketcan",
-        channel: str = "vcan0",
+        dbc,
+        bus: can.interface.Bus,
         bitrate: int = 500000,
     ):
         # Create logger
-        get_logging_config() 
         self.log = logging.getLogger(name=__name__)
 
         # Create empty set of periodic messages
         self.periodic_messages = {}
 
-        # Set up dictionary of messages
-        self.message_of_signal, self.signals = self._create_state_dictionary(
-            can_spec_path
-        )
+        self.dbc = dbc
 
-        try:
-            self.can_bus = can.interface.Bus(
-                channel=channel, bustype=bustype, bitrate=bitrate
-            )
-            self.kill_flag = threading.Event()
-            listener = threading.Thread(
-                target=self._listen,
-                name="listener",
-                kwargs={
-                    "can_bus": self.can_bus,
-                    "callback": self._rx_callback,
-                    "kill_flag": self.kill_flag,
-                },
-            )
-            listener.start()
-        except OSError as e:
-            raise
+        # Set up dictionary of messages
+        self.message_of_signal, self.signals = self._create_state_dictionary(self.dbc)
+
+        self.can_bus = bus
+
+        self.kill_flag = threading.Event()
+        listener = threading.Thread(
+            target=self._listen,
+            daemon=True,
+            name="listener",
+            kwargs={
+                "can_bus": self.can_bus,
+                "callback": self._rx_callback,
+                "kill_flag": self.kill_flag,
+            },
+        )
+        listener.start()
 
     def get_state(self, signal):
         """
@@ -70,11 +62,7 @@ class CANController:
         Args:
             signal (str): signal name to get
         """
-        try:
-            msg = self.message_of_signal[signal]
-        except KeyError:
-            raise Exception(f"Cannot get state of signal '{signal}'. It wasn't found.")
-
+        msg = self.message_of_signal[signal]
         self.log.debug(f"Fetched signal {signal} as {self.signals[msg][signal]}")
         return self.signals[msg][signal]
 
@@ -89,7 +77,7 @@ class CANController:
             Note: Decoded includes all of the decoding instructions in the DBC
             So any fault/state enum signals would use the actual name, like "PRECHARGE"
             Shutdown Sense signals would be "OPEN" or "CLOSED"
-            Any values that have offsets or scales should have those applied, 
+            Any values that have offsets or scales should have those applied,
                 so for example for throttle potentiometers we would use the percentages,
                 not the raw values
         """
@@ -146,9 +134,11 @@ class CANController:
         send_task = self.can_bus.send_periodic(message, period)
         self.periodic_messages[msg_name] = send_task
 
-        self.log.debug(f"Set {msg_name} to be sent periodically every {period} ms")
+        self.log.warning(f"Set {msg_name} to be sent periodically every {period} ms")
 
-    def stop_periodic(msg_name: str):
+        return send_task
+
+    def stop_periodic(self, msg_name: str):
         """
         Stop a periodic message task
         """
@@ -163,8 +153,12 @@ class CANController:
         """
         Stop all periodic message tasks
         """
+        self.periodic_messages = {}
         self.can_bus.stop_all_periodic_tasks()
         self.log.debug("Stopped all periodic tasks")
+
+    def clear_states(self):
+        self.message_of_signal, self.signals = self._create_state_dictionary(self.dbc)
 
     def _create_state_dictionary(self, path: str):
         """Generate self.message_of_signal and self.signals
