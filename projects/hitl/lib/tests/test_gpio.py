@@ -8,6 +8,7 @@ def test_i2c_set_mode():
     i2c.i2cMaster_Write = Mock(return_value=None)
     i2c.i2cMaster_Read = Mock(return_value=b'\x00\x00')
 
+
     gpio = MAX7300(i2c)
     gpio.set_mode(6, PinMode.OUTPUT)
     assert i2c.i2cMaster_Write.called_once_with(
@@ -33,6 +34,7 @@ def test_i2c_get():
     i2c = Mock()
     i2c.i2cMaster_Write = Mock(return_value=None)
     i2c.i2cMaster_Read = Mock(return_value=b'\x01\x00')
+
 
     gpio = MAX7300(i2c)
     assert gpio.get(15) == 1
