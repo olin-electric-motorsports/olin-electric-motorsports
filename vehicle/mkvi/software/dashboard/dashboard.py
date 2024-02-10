@@ -20,14 +20,14 @@ brake_gate = None
 throttle_pressed = None
 
 # Pin Definitions
-BMS_LED_LSD = 27
+BMS_LED_LSD = 36
 HV_LED_LSD = 29
 IMD_LED_LSD = 26
-RTD_BUZZER_LSD = 28
+RTD_BUZZER_LSD = 32
 
 RTD_BUTTON_SENSE = 31
-BOTS_SHDN_SENSE = 22
-E_STOP_SHDN_SENSE = 24
+BOTS_SHDN_SENSE = 18
+E_STOP_SHDN_SENSE = 22
 
 RTD_BUTTON_LED = 33
 PROGRAMMING_LED_1 = 40
@@ -38,7 +38,7 @@ PROGRAMMING_LED_3 = 37
 RTD_BUZZ_TIME = 2000  # in milliseconds
 
 # Initializing the dictionary that holds outgoing CAN data
-dashboard_data = {}
+dashboard_data = {"ready_to_drive": False, "start_button_state": False, "ss_estop": False, "ss_bots": False, }
 
 
 def init_can(channel, bustype, bitrate, callback):
@@ -90,6 +90,7 @@ def dashboard_callback(msg, db):
         msg (can.Message): CAN message that was received
         db (cantools.database): Database generated from our DBC
     """
+    global air_state, imd_status, bms_fault, brake_gate, throttle_pressed
 
     try:
         message = db.decode_message(msg.arbitration_id, msg.data)
@@ -103,8 +104,8 @@ def dashboard_callback(msg, db):
         imd_status = message.get("imd_status")
     if message_name == "bms_core":
         bms_fault = message.get("bms_fault")
-    if message_name == "brakes":
-        brake_gate = message.get("brake_gate")
+    if message_name == "bspd":
+        brake_gate = message.get("brake_gate") == "Brakelight ON"
     if message_name == "throttle":
         throttle_l = message.get("throttle_l_pos")
         throttle_r = message.get("throttle_r_pos")
@@ -118,7 +119,6 @@ def button_pressed_callback(channel):
     CAN data dictionary (dashboard_data) to True
     """
     dashboard_data["start_button_state"] = GPIO.input(RTD_BUTTON_SENSE)
-    print("button: " + str(dashboard_data["start_button_state"]))
 
 
 def shutdown_callback(channel):
@@ -189,10 +189,11 @@ def main():
         GPIO.output(HV_LED_LSD, air_state == "TS_ACTIVE")
 
         # Turns on IMD LED if there is an IMD fault; imd_status True is good
-        GPIO.output(IMD_LED_LSD, not imd_status)
+        GPIO.output(IMD_LED_LSD, imd_status != "IMD OK")
 
         # Turns on the button LED if brakes are pressed, tractive system is on,
         # RTD is not on, and the throttle is not being pressed
+        print(brake_gate, air_state, dashboard_data["ready_to_drive"], throttle_pressed)
         if (
             brake_gate
             and air_state == "TS_ACTIVE"
