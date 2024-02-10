@@ -7,5 +7,6 @@ dbc_gen(
         "//vehicle/common/emeter:emeter.dbc",
         "//vehicle/common/motor_controller:motor_controller.dbc",
         "//vehicle/mkvi/software/brakes:bspd.yml",
+        "//vehicle/mkvi/software/throttle:throttle.yml",
     ],
 )
