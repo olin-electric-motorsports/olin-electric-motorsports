@@ -25,15 +25,21 @@ uint8_t I2C_MUX_ADDRESS = 0xE0; // variable so compiler doesn't give overflow
                                 // warning when shifting
 
 void mux_init(uint8_t num_ics) {
-    uint8_t tx_data[ADBMS_CMD_LEN] = { 0 };
+    uint8_t tx_data[ADBMS_CMD_LEN];
 
-    tx_data[0] = START; // START xxxx
-    tx_data[1] = NACK_STOP; // xxxx NACK_STOP
+    const uint8_t BYTES_IN_REG = 6;
 
-    tx_data[2] = START | (I2C_MUX_ADDRESS >> 4); // START AAAA
-    tx_data[3] = (I2C_MUX_ADDRESS << 4) | NACK; // AAAA NACK
-    tx_data[4] = BLANK; // xxxxBLANK
-    tx_data[5] = 0xF0 | NACK_STOP; // Enable all channels
+    for (uint8_t ic = 0; ic < num_ics; ic++) {
+        tx_data[ic * BYTES_IN_REG + 0] = START; // START xxxx
+        tx_data[ic * BYTES_IN_REG + 1] = NACK_STOP; // xxxx NACK_STOP
+        tx_data[ic * BYTES_IN_REG + 2]
+            = START | (I2C_MUX_ADDRESS >> 4); // START AAAA
+        tx_data[ic * BYTES_IN_REG + 3]
+            = (I2C_MUX_ADDRESS << 4) | NACK; // AAAA NACK
+        tx_data[ic * BYTES_IN_REG + 4] = BLANK; // xxxxBLANK
+        tx_data[ic * BYTES_IN_REG + 5]
+            = 0xF0 | NACK_STOP; // Enable all channels
+    }
 
     wakeup_sleep(num_ics); // wake up the IC core
 
@@ -61,15 +67,17 @@ void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
      * A: Address
      * M: Mux command
      */
-    uint8_t tx_data[ADBMS_CMD_LEN] = { 0 };
-
-    tx_data[0] = START; // START xxxx
-    tx_data[1] = NACK_STOP; // xxxx NACK_STOP
-
-    tx_data[2] = START | (address >> 4); // START AAAA
-    tx_data[3] = (address << 4) | NACK; // AAAA NACK
-    tx_data[4] = BLANK; // xxxxBLANK
-    tx_data[5] = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
+    uint8_t tx_data[ADBMS_CMD_LEN * num_ics];
+    const uint8_t BYTES_IN_REG = 6;
+    for (uint8_t ic = 0; ic < num_ics; ic++) {
+        tx_data[ic * BYTES_IN_REG + 0] = START; // START xxxx
+        tx_data[ic * BYTES_IN_REG + 1] = NACK_STOP; // xxxx NACK_STOP
+        tx_data[ic * BYTES_IN_REG + 2] = START | (address >> 4); // START AAAA
+        tx_data[ic * BYTES_IN_REG + 3] = (address << 4) | NACK; // AAAA NACK
+        tx_data[ic * BYTES_IN_REG + 4] = BLANK; // xxxxBLANK
+        tx_data[ic * BYTES_IN_REG + 5]
+            = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
+    }
 
     wakeup_sleep(num_ics); // wake up the IC core
 
