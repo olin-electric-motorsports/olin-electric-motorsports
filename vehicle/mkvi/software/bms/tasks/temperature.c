@@ -93,15 +93,22 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
 
         bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
                                         | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
-        temps[num_temps] = bms_temperature.temperature_2;
-        num_temps++;
+        // Thermistor 20 on IC 1, DA Board 2 is broken
+        if (ic != 1 || mux != 2 || channel != 4) {
+            temps[num_temps] = bms_temperature.temperature_2;
+            num_temps++;
+        }
         can_send_bms_temperature();
 
         bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
         bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 4]
                                         | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
-        temps[num_temps] = bms_temperature.temperature_1;
-        num_temps++;
+        // Thermistor 12 on IC 1, DA Board 3 is broken
+        if (ic != 1 || mux != 1 || channel != 4) {
+            temps[num_temps] = bms_temperature.temperature_1;
+            num_temps++;
+        }
+
         bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
                                         | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
         // Skip channels 0-3 on Mux 0, DA Board 1 since the thermistors are not

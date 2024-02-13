@@ -25,7 +25,7 @@ uint8_t I2C_MUX_ADDRESS = 0xE0; // variable so compiler doesn't give overflow
                                 // warning when shifting
 
 void mux_init(uint8_t num_ics) {
-    uint8_t tx_data[ADBMS_CMD_LEN];
+    uint8_t tx_data[ADBMS_CMD_LEN * num_ics];
 
     const uint8_t BYTES_IN_REG = 6;
 

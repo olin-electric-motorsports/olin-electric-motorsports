@@ -14,8 +14,8 @@ def convertVtoT(
     temperature = 1 / ((np.log(thermistor_R1 / R2) / beta) + (1 / T2)) - 273.15
     temperature = 9 / 5 * (temperature) + 32
     t = str(round(temperature, 5))
-    if temperature < 76:
-        t = "0.0"
+    # if temperature < 76:
+    #     t = "0.0"
     if len(t) < 8:
         t += "0" * (8 - len(t))
     return t

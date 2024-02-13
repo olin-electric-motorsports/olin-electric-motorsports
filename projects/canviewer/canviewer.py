@@ -48,7 +48,7 @@ class ThermistorReading:
     channel: int
 
     def __str__(self):
-        return f"{self.da_board}:{self.channel}"
+        return f"{self.ic}:{self.da_board}:{self.channel}"
 
 
 readings: Dict[ThermistorReading, float] = {}
