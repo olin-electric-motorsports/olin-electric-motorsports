@@ -1471,9 +1471,6 @@
   (junction (at 101.6 101.6) (diameter 0) (color 0 0 0 0)
     (uuid 296c1477-b7ed-4e3d-ac2d-66b311e2fefb)
   )
-  (junction (at 214.63 27.94) (diameter 0) (color 0 0 0 0)
-    (uuid 4fbd0520-cb3e-4cc7-9165-a95c85287948)
-  )
   (junction (at 30.48 181.61) (diameter 0) (color 0 0 0 0)
     (uuid 4fffc591-95fc-4c32-a68a-7804f1929c7f)
   )
@@ -1497,6 +1494,9 @@
   )
   (junction (at 158.75 45.72) (diameter 0) (color 0 0 0 0)
     (uuid f0a40226-ed4a-42cc-a257-3001c994868d)
+  )
+  (junction (at 214.63 27.94) (diameter 0) (color 0 0 0 0)
+    (uuid f2c4c994-d26c-46ea-9a91-d0a19f9dd68d)
   )
   (junction (at 101.6 111.76) (diameter 0) (color 0 0 0 0)
     (uuid f8ac1a42-1668-4794-9ffd-08201a88cc67)
@@ -1647,7 +1647,7 @@
     (stroke (width 0) (type default))
     (uuid 48ed4d7a-dd1c-4104-be11-3c3d7a790f8c)
   )
-  (wire (pts (xy 214.63 27.94) (xy 214.63 40.64))
+  (wire (pts (xy 214.63 25.4) (xy 214.63 27.94))
     (stroke (width 0) (type default))
     (uuid 4f2187e2-71c3-45ef-b6a9-e980572675df)
   )
@@ -1675,10 +1675,6 @@
     (stroke (width 0) (type default))
     (uuid 695c83d7-18bb-4579-8070-cad7f6f1f2f6)
   )
-  (wire (pts (xy 214.63 25.4) (xy 214.63 27.94))
-    (stroke (width 0) (type default))
-    (uuid 6d370d9c-bf65-4dc7-8ff5-630cd9d0ab42)
-  )
   (wire (pts (xy 91.44 109.22) (xy 86.36 109.22))
     (stroke (width 0) (type default))
     (uuid 6fd87e62-cbf2-43c3-b01b-fe2f5de2be09)
@@ -1694,6 +1690,10 @@
   (wire (pts (xy 46.99 39.37) (xy 49.53 39.37))
     (stroke (width 0) (type default))
     (uuid 72cec34c-9255-4358-9424-b84bb8c372c7)
+  )
+  (wire (pts (xy 214.63 27.94) (xy 214.63 40.64))
+    (stroke (width 0) (type default))
+    (uuid 73e78d9a-727b-4d90-a670-092c563cfe05)
   )
   (wire (pts (xy 93.98 101.6) (xy 93.98 118.11))
     (stroke (width 0) (type default))
@@ -1956,11 +1956,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
         )
@@ -1985,11 +1980,6 @@
     )
     (pin "1" (uuid 2a7be87d-8a7f-4576-9d6c-9a4f4f200b11))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
@@ -2017,11 +2007,6 @@
     (instances
       (project "bms_core"
         (path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5/8857e594-f9a2-447b-85c9-7fce31d1bf44"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -2066,11 +2051,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "R3") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "R1") (unit 1)
         )
@@ -2101,11 +2081,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#FLG?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#FLG?") (unit 1)
         )
@@ -2130,11 +2105,6 @@
     )
     (pin "1" (uuid e34257e3-cdbe-4bee-bbf9-52b20c397f37))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
@@ -2162,11 +2132,6 @@
     (instances
       (project "template_board"
         (path "/10f522c8-3a01-4239-b7df-a730ca32b367"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -2201,11 +2166,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
         )
@@ -2232,11 +2192,6 @@
     (instances
       (project "template_board"
         (path "/10f522c8-3a01-4239-b7df-a730ca32b367"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -2271,11 +2226,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
         )
@@ -2302,11 +2252,6 @@
     (instances
       (project "bms_core"
         (path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-          (reference "#FLG?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#FLG?") (unit 1)
         )
       )
@@ -2341,11 +2286,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
         )
@@ -2356,7 +2296,7 @@
   (symbol (lib_id "formula:R_4.7K") (at 214.63 21.59 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 56194b9b-b65e-4d79-9f39-a851b8d9936c)
-    (property "Reference" "R1" (at 217.17 20.32 0)
+    (property "Reference" "R6" (at 217.17 20.32 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R_4.7K" (at 217.17 22.86 0)
@@ -2380,11 +2320,6 @@
     (pin "1" (uuid 53dd50a8-0f09-41ed-9986-a8349c7ed4f6))
     (pin "2" (uuid 292414ca-05c0-4842-9a2b-e3ba05e26b96))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "R1") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "R6") (unit 1)
@@ -2413,11 +2348,6 @@
     (pin "3" (uuid 4f8fbcf2-82ed-40ce-ae61-747080d1d199))
     (instances
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "U3") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "U3") (unit 1)
         )
@@ -2442,11 +2372,6 @@
     )
     (pin "1" (uuid 4a07c162-6e71-4d7e-96e9-6e4c2e80a3e6))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
@@ -2474,11 +2399,6 @@
     (instances
       (project "template_board"
         (path "/10f522c8-3a01-4239-b7df-a730ca32b367"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -2525,11 +2445,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "Y1") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "Y1") (unit 1)
         )
@@ -2567,11 +2482,6 @@
       (project "template_board"
         (path "/10f522c8-3a01-4239-b7df-a730ca32b367"
           (reference "C5") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "C4") (unit 1)
         )
       )
       (project "cooling-board"
@@ -2672,11 +2582,6 @@
     (pin "P40" (uuid ad60b3f7-6542-4fa5-9f6b-4366573b18fc))
     (instances
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "J1") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "J1") (unit 1)
         )
@@ -2717,11 +2622,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "C1") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "C1") (unit 1)
         )
@@ -2732,7 +2632,7 @@
   (symbol (lib_id "cooling-board:PN2222ABU") (at 158.75 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 761601a3-bc9d-45e9-b19d-4cf0128b4268)
-    (property "Reference" "U2" (at 186.69 35.56 0)
+    (property "Reference" "U4" (at 186.69 35.56 0)
       (effects (font (size 1.524 1.524)))
     )
     (property "Value" "PN2222ABU" (at 186.69 38.1 0)
@@ -2748,11 +2648,6 @@
     (pin "2" (uuid 02d14cb1-e11d-41fc-996d-5e134255682c))
     (pin "3" (uuid 46c7db58-dfbb-4939-bb89-0dd23d4258a0))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "U2") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "U4") (unit 1)
@@ -2794,11 +2689,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "R5") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "R3") (unit 1)
         )
@@ -2825,11 +2715,6 @@
     (instances
       (project "bms_core"
         (path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-          (reference "#FLG?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#FLG?") (unit 1)
         )
       )
@@ -2880,11 +2765,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "U5") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "U1") (unit 1)
         )
@@ -2911,11 +2791,6 @@
     (instances
       (project "template_board"
         (path "/10f522c8-3a01-4239-b7df-a730ca32b367"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -2950,11 +2825,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
         )
@@ -2981,11 +2851,6 @@
     (instances
       (project "bms_core"
         (path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -3060,11 +2925,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "U4") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "U2") (unit 1)
         )
@@ -3105,11 +2965,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "C5") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "C2") (unit 1)
         )
@@ -3140,11 +2995,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
         )
@@ -3170,11 +3020,6 @@
     (pin "1" (uuid b71ef2db-3532-432a-9161-bcf4e5f43bb5))
     (pin "2" (uuid edc12cab-86cc-4666-80f1-b0707a6fe427))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "CR1") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "CR1") (unit 1)
@@ -3213,11 +3058,6 @@
       (project "template_board"
         (path "/10f522c8-3a01-4239-b7df-a730ca32b367"
           (reference "R2") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "R6") (unit 1)
         )
       )
       (project "cooling-board"
@@ -3261,11 +3101,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "C3") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "C5") (unit 1)
         )
@@ -3292,11 +3127,6 @@
     (instances
       (project "template_board"
         (path "/10f522c8-3a01-4239-b7df-a730ca32b367"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -3331,11 +3161,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
         )
@@ -3346,7 +3171,7 @@
   (symbol (lib_id "formula:R_4.7K") (at 158.75 39.37 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bafcc80f-6787-45a6-8e96-09756f036294)
-    (property "Reference" "R2" (at 161.29 38.1 0)
+    (property "Reference" "R5" (at 161.29 38.1 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "R_4.7K" (at 161.29 40.64 0)
@@ -3370,11 +3195,6 @@
     (pin "1" (uuid 8a1d0bc9-58a0-43c7-89db-abc55c2bff70))
     (pin "2" (uuid 99e57353-6344-4f6a-a7b7-7153d165665f))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "R2") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "R5") (unit 1)
@@ -3406,11 +3226,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "#PWR?") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "#PWR?") (unit 1)
         )
@@ -3421,7 +3236,7 @@
   (symbol (lib_id "cooling-board:PN2222ABU") (at 214.63 27.94 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid deed5287-e4c8-4538-bb70-8ec208e2ad5d)
-    (property "Reference" "U1" (at 242.57 17.78 0)
+    (property "Reference" "U5" (at 242.57 17.78 0)
       (effects (font (size 1.524 1.524)))
     )
     (property "Value" "PN2222ABU" (at 242.57 20.32 0)
@@ -3437,11 +3252,6 @@
     (pin "2" (uuid c7caaab9-8b48-4b43-b0ea-524dc6081bce))
     (pin "3" (uuid c025612a-bfe0-40ec-ad63-26f6f9c70dcd))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "U1") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "U5") (unit 1)
@@ -3483,11 +3293,6 @@
         )
       )
       (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "C2") (unit 1)
-        )
-      )
-      (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "C3") (unit 1)
         )
@@ -3522,11 +3327,6 @@
     (pin "1" (uuid 8a6e580e-d5f2-4097-9c79-60e33a536fae))
     (pin "2" (uuid 831db3f1-1d33-4273-ac77-8208fbef17a1))
     (instances
-      (project "cooling-board"
-        (path "/384b3661-d4ae-4258-b724-1e38c92c8e6d"
-          (reference "R4") (unit 1)
-        )
-      )
       (project "cooling-board"
         (path "/885f9691-78bd-429d-8ad1-648f2534621c"
           (reference "R4") (unit 1)
