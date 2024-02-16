@@ -3,6 +3,7 @@
 #include "libs/timer/api.h"
 #include "vehicle/mkvi/software/charging/charger.h"
 #include "vehicle/mkvi/software/charging/can_api.h"
+#include "MCP25625.h"
 
 #define TARGET_PACK_VOLTAGE (360) // in volts
 #define CHARGING_MAX_VOLTAGE (201) // 3201 = 320.1V
@@ -12,8 +13,26 @@ void timer0_isr(void) {
     // doing smth;
 }
 
+// 
+void spi_init(){
+    mcp25625_init(OPMODE_NORMAL);
+    unit8_t *bytes[5] = { 0 };
+    bytes[0] = (charging_cmd.max_voltage * 10) & 0b11111111;
+    bytes[1] = (charging_cmd.max_voltage * 10) >> 8;
+    bytes[2] = (charging_cmd.max_current * 10) & 0b11111111;
+    bytes[3] = (charging_cmd.max_current * 10) >> 8;
+    bytes[4] = charging_cmd.enable;
+    mcp25625_msg_load(TXB0, bytes, 5, 0x80, true, false);
+    mcp25625_msg_send(TXB0);
+}
+
 //loop
 int main(void) {
+
+    //insert extend mode thingy + change baud rate; try use existing can.c thing
+    // 
+
+    can_init_elcon_hk_j_440_10();
 
     can_receive_bms_core();
     can_receive_charging_fbk();
