@@ -10,7 +10,7 @@
 /*
  * Macros
  */
-#define NUM_ICS          2
+#define NUM_ICS          1
 #define DA_BOARDS_PER_IC 4
 
 #define MAX_EXTRANEOUS_TEMPERATURES 3 // ?

@@ -38,8 +38,8 @@ for signal, value in VEHICLE_VALUES.items():
 
 
 from dataclasses import dataclass
+from enum import Enum
 from typing import Dict
-
 
 @dataclass
 class ThermistorReading:
@@ -50,8 +50,32 @@ class ThermistorReading:
     def __str__(self):
         return f"{self.ic}:{self.da_board}:{self.channel}"
 
+# 1 indexing because of how _rdcv_reg is written
 
-readings: Dict[ThermistorReading, float] = {}
+class VoltageRegister(Enum):
+    REG_A = 1
+    REG_B = 2
+    REG_C = 3
+    REG_D = 4
+    REG_E = 5
+    REG_F = 6
+
+@dataclass
+class VoltageReading:
+    ic: int
+    cell: VoltageRegister
+    adc: int
+
+    def __str__(self):
+        cell_number = str((int(self.cell) + 6 * self.adc))
+        if len(cell_number) == 1:
+          cell_number = f"0{cell_number}"
+        return f"{self.ic}:{cell_number}"
+
+debug_temp: bool = False
+debug_voltage: bool = True
+temp_readings: Dict[ThermistorReading, float] = {}
+voltage_readings: Dict[VoltageReading, float] = {}
 import numpy as np
 
 
@@ -68,50 +92,94 @@ def rx_callback(msg, db):
     except Exception as e:
         return
 
-    if "da_boards" in message.keys():
-        channel = str(message["channel"])
-        if len(channel) == 1:
-            channel = f"0{channel}"
-        if message["da_boards"] == "DA_BOARDS_34":
-            reading1 = ThermistorReading(ic=message["ic"], da_board=3, channel=channel)
-            readings[str(reading1)] = message["temperature_1"]
-            if message["channel"] >= 4:
-                reading2 = ThermistorReading(
-                    ic=message["ic"], da_board=4, channel=channel
-                )
-                readings[str(reading2)] = message["temperature_2"]
-        else:
-            if message["channel"] >= 7:
-                reading1 = ThermistorReading(
-                    ic=message["ic"], da_board=1, channel=channel
-                )
-                readings[str(reading1)] = message["temperature_1"]
-            reading2 = ThermistorReading(ic=message["ic"], da_board=2, channel=channel)
-            readings[str(reading2)] = message["temperature_2"]
-        txt = "_____________start______________\n"
-        channels = list(readings.keys())
-        vals = list(readings.values())
-        num_high = sum(np.array([float(convertVtoT(x)) for x in vals]) > 76)
-        zipped = list(zip(channels, vals))
-        zipped.sort(key=lambda a: a[0])
-        i = 0
-        print
-        while i < len(channels):
-            txt += (
-                "\t".join(
-                    [
-                        str(z[0] + "\t" + str(convertVtoT(z[1])))
-                        for z in zipped[i : i + 4]
-                    ]
-                )
-                + "\n"
-            )
-            i += 4
-        txt += "min:\t" + str(convertVtoT(max(readings.values()))) + "\n"
-        txt += "max:\t" + str(convertVtoT(min(readings.values()))) + "\n"
-        txt += "high:\t" + str(num_high) + "\n"
-        txt += "______________end_______________"
-        print(txt)
+    if debug_temp:
+      if "da_boards" in message.keys():
+          channel = str(message["channel"])
+          if len(channel) == 1:
+              channel = f"0{channel}"
+          if message["da_boards"] == "DA_BOARDS_34":
+              reading1 = ThermistorReading(ic=message["ic"], da_board=3, channel=channel)
+              temp_readings[str(reading1)] = message["temperature_1"]
+              if message["channel"] >= 4:
+                  reading2 = ThermistorReading(
+                      ic=message["ic"], da_board=4, channel=channel
+                  )
+                  temp_readings[str(reading2)] = message["temperature_2"]
+          else:
+              if message["channel"] >= 7:
+                  reading1 = ThermistorReading(
+                      ic=message["ic"], da_board=1, channel=channel
+                  )
+                  temp_readings[str(reading1)] = message["temperature_1"]
+              reading2 = ThermistorReading(ic=message["ic"], da_board=2, channel=channel)
+              temp_readings[str(reading2)] = message["temperature_2"]
+          txt = "_____________start______________\n"
+          channels = list(temp_readings.keys())
+          vals = list(temp_readings.values())
+          try:
+            num_high = sum(np.array([float(convertVtoT(x)) for x in vals]) > 76)
+          except:
+            num_high = -1
+          zipped = list(zip(channels, vals))
+          zipped.sort(key=lambda a: a[0])
+          i = 0
+          print
+          while i < len(channels):
+              txt += (
+                  "\t".join(
+                      [
+                          str(z[0] + "\t" + str(convertVtoT(z[1])))
+                          for z in zipped[i : i + 4]
+                      ]
+                  )
+                  + "\n"
+              )
+              i += 4
+          txt += "min:\t" + str(convertVtoT(max(temp_readings.values()))) + "\n"
+          txt += "max:\t" + str(convertVtoT(min(temp_readings.values()))) + "\n"
+          txt += "high:\t" + str(num_high) + "\n"
+          txt += "______________end_______________"
+          print(txt)
+
+    if debug_voltage:
+        if "cell" in message.keys():
+          cell_number = VoltageRegister[str(message["cell"])].value
+          reading1 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 0)
+          reading2 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 1)
+          reading3 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 2)
+          voltage_readings[str(reading1)] = message["voltage_1"]
+          voltage_readings[str(reading2)] = message["voltage_2"]
+          if (int(reading3.cell) + 6 * reading3.adc) - 1 != 17:
+            voltage_readings[str(reading3)] = message["voltage_3"]
+          txt = "_____________start______________\n"
+          cells = list(voltage_readings.keys())
+          voltages = list(voltage_readings.values())
+          highest_voltage = max(voltages)
+          lowest_voltage = min(voltages)
+          zipped_readings = list(zip(cells, voltages))
+          zipped_readings.sort(key = lambda a: a[0])
+          i = 0
+          print
+          while i < len(cells):
+              txt += (
+                  "\t".join(
+                      [
+                          str(b[0] + "\t" + str(round(b[1], 5)))
+                          for b in zipped_readings[i : i + 4]
+                      ]
+                  )
+                  + "\n"
+              )
+              i += 4
+          txt += "min: \t" + str(round(lowest_voltage,5)) + "\n"
+          txt += "max: \t" + str(round(highest_voltage,5)) + "\n"
+          txt += "______________end_______________"
+          print(txt)
+
+          # adc = message[""]
+          # print(str(message["cell"]))
+
+          
 
     for signal_name in message:
         if signal_name in SHUTDOWN_NODES:
