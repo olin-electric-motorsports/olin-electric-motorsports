@@ -114,7 +114,7 @@
         "allow_blind_buried_vias": false,
         "allow_microvias": false,
         "max_error": 0.005,
-        "min_clearance": 0.15,
+        "min_clearance": 0.127,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.01,
         "min_hole_clearance": 0.25,
@@ -175,6 +175,8 @@
       "track_widths": [
         0.0,
         0.1524,
+        0.2,
+        0.3048,
         0.381
       ],
       "via_dimensions": [
@@ -413,14 +415,14 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "J1772.kicad_pro",
+    "filename": "J1772_V2.kicad_pro",
     "version": 1
   },
   "net_settings": {
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.127,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -477,7 +479,7 @@
     "meta": {
       "version": 1
     },
-    "net_format_name": "",
+    "net_format_name": "KiCad",
     "ngspice": {
       "fix_include_paths": true,
       "fix_passive_vals": false,
@@ -502,10 +504,6 @@
     [
       "8bf539d3-f4e7-408b-921d-45351bdd10f3",
       ""
-    ],
-    [
-      "a8ec3725-a6bd-4d20-87cb-ab75a6a46eb6",
-      "CAR_CAN_CONTROLLER"
     ],
     [
       "156f3892-7281-41fd-9b91-7b34c030624e",
