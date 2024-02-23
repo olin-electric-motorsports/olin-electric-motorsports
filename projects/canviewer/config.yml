@@ -23,7 +23,12 @@ max_temperature:
   processing_function: convertVtoT
 min_temperature:
   processing_function: convertVtoT
+temperature_1:
+temperature_2:
 D1_DC_Bus_Voltage:
+temperature_1:
+temperature_2:
+
 Torque_Command:
 ---
 # Vehicle States (state and fault)
@@ -32,6 +37,6 @@ air_control_critical:
   air_fault:
 bms_core:
   bms_state:
-  bms_fault_state:
+  bms_fault:
 throttle:
   throttle_state:
