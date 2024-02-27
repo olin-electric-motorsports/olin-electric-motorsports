@@ -3,20 +3,33 @@
 #include "libs/timer/api.h"
 #include "vehicle/mkvi/software/charging/charger.h"
 #include "vehicle/mkvi/software/charging/can_api.h"
+#include <stdint.h>
 #include "MCP25625.h"
+#include "vehicle/mkvi/software/charging/can_api.h"
 
 #define TARGET_PACK_VOLTAGE (360) // in volts
 #define CHARGING_MAX_VOLTAGE (201) // 3201 = 320.1V
 #define CHARGING_MAX_CURRENT (582) // 582 = 58.2A
 
+uint8_t rx_msg[5] = { 0 };
+uint8_t count = 0;
+bool RX_IDE, RX_RTR;
+uint32_t EID = 0;
+
+
 void timer0_isr(void) {
-    // doing smth;
+    // doing smth;_
 }
 
-// 
-void spi_init(){
+void spi_int(){
     mcp25625_init(OPMODE_NORMAL);
-    unit8_t *bytes[5] = { 0 };
+}
+
+//bazel build --config=16m1 //vehicle/mkvi/software/charging:charging -c opt
+
+// sending SPI to charger
+void spi_send_charger(){
+    uint8_t bytes[5] = { 0 };
     bytes[0] = (charging_cmd.max_voltage * 10) & 0b11111111;
     bytes[1] = (charging_cmd.max_voltage * 10) >> 8;
     bytes[2] = (charging_cmd.max_current * 10) & 0b11111111;
@@ -26,11 +39,19 @@ void spi_init(){
     mcp25625_msg_send(TXB0);
 }
 
+// receiving SPI from charger
+//next task: parse data
+void spi_receive_charger(){
+    if( mcp25625_msg_ready( RXB0 ) )
+        {
+            mcp25625_msg_read( RXB0, rx_msg, &count, &EID, &RX_IDE, &RX_RTR );
+        }
+}
+
 //loop
 int main(void) {
 
     //insert extend mode thingy + change baud rate; try use existing can.c thing
-    // 
 
     can_init_elcon_hk_j_440_10();
 
