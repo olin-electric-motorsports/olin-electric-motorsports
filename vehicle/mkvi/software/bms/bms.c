@@ -126,6 +126,7 @@ int main(void) {
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             }
+            monitor_cells();
             can_send_bms_core();
             can_send_bms_sense();
             run_10ms = false;
