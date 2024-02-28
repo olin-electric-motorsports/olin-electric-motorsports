@@ -13,7 +13,7 @@
 
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-// #include "vehicle/mkvi/software/bms/tasks/tasks.h"
+#include "vehicle/mkvi/software/bms/tasks/tasks.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/mux.h"
 
@@ -67,11 +67,35 @@ void hw_init() {
     wakeup_sleep(NUM_ICS);
 }
 
+static void monitor_cells(void) {
+    // Set a new fault
+    if (bms_core.bms_fault != BMS_FAULT_NONE) {
+        bms_core.bms_state = BMS_STATE_FAULT;
+        gpio_clear_pin(BMS_RELAY_LSD);
+    }
+
+    // Handle condition where fault was cleared
+    // TODO: also need to handle charging here
+    if (bms_core.bms_state == BMS_STATE_FAULT
+        && bms_core.bms_fault == BMS_FAULT_NONE) {
+        bms_core.bms_state = BMS_STATE_ACTIVE;
+    }
+
+    // Run BMS Chip open wire detection
+    // TODO: Remove type cast for rc or define new variable before merging.
+    int rc = openwire_task();
+    if (rc != 0) {
+        bms_core.bms_state = BMS_STATE_FAULT;
+        return;
+    }
+}
+
 int main(void) {
     hw_init();
 
     while (true) {
         if (run_10ms) {
+            monitor_cells();
             can_send_bms_core();
             can_send_bms_sense();
             run_10ms = false;
