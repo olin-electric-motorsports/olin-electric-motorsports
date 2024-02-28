@@ -13,7 +13,7 @@
 
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-// #include "vehicle/mkvi/software/bms/tasks/tasks.h"
+#include "vehicle/mkvi/software/bms/tasks/tasks.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/mux.h"
 
@@ -67,11 +67,61 @@ void hw_init() {
     wakeup_sleep(NUM_ICS);
 }
 
+static void monitor_cells(void) {
+    // Set a new fault
+    if (bms_core.bms_fault != BMS_FAULT_NONE) {
+        bms_core.bms_state = BMS_STATE_FAULT;
+        gpio_clear_pin(BMS_RELAY_LSD);
+    }
+
+    // Handle condition where fault was cleared
+    // TODO: also need to handle charging here
+    if (bms_core.bms_state == BMS_STATE_FAULT
+        && bms_core.bms_fault == BMS_FAULT_NONE) {
+        bms_core.bms_state = BMS_STATE_ACTIVE;
+    }
+
+    // read all temperatures
+    uint32_t ot = 0;
+    uint32_t ut = 0;
+    static uint16_t min_temp = 0;
+    static uint16_t max_temp = UINT16_MAX;
+
+    // TODO: Remove type cast here or define new variable name before merging
+    int rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+    bms_sense.min_temperature = min_temp;
+    bms_sense.max_temperature = max_temp;
+
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+        return;
+    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
+        bms_core.bms_state = BMS_STATE_FAULT;
+        return;
+    }
+
+    // Check for PEC errors
+    if (rc != 0) {
+        bms_metrics.temperature_pec_error_count += rc;
+
+        if (bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+            set_fault(BMS_FAULT_PEC);
+            bms_core.bms_state = BMS_STATE_FAULT;
+        }
+        return;
+    } else {
+        bms_metrics.temperature_pec_error_count = 0;
+    }
+}
+
 int main(void) {
     hw_init();
 
     while (true) {
         if (run_10ms) {
+            monitor_cells();
             can_send_bms_core();
             can_send_bms_sense();
             run_10ms = false;
