@@ -1,12 +1,12 @@
 name: elcon_hk_j_440_10
-subscribe:
+subscribe: # listening to other yml file (charging.yml)
   - name: charging_fbk
     mob: 1
   - name: bms_core
     mob: 2
   - name: bms_charging
     mob: 3
-publish:
+publish: # sending out these variables
   - name: charging_cmd
     id: 0x80
     freq_hz: 1

@@ -50,7 +50,7 @@ void timer0_isr(void) {
     // doing smth;_
 }
 
-void spi_int(){
+void spi_init(){
     mcp25625_init(OPMODE_NORMAL);
 }
 
@@ -69,7 +69,7 @@ void spi_send_charger(){
 }
 
 // receiving SPI from charger
-//next task: parse data from charger
+// parse data from charger
 void spi_receive_charger(){
     if( mcp25625_msg_ready( RXB0 ) )
         {
@@ -88,10 +88,10 @@ int main(void) {
 
     //insert extend mode thingy + change baud rate; try use existing can.c thing
 
-    can_init_elcon_hk_j_440_10();
+    spi_init();
 
     can_receive_bms_core();
-    can_receive_charging_fbk(); // replace this with spi receive
+    spi_receive_charger(); // replace this with spi receive; next task to change main function 
     can_receive_bms_charging(); // will be added into bms.yml soon
 
     while(1) {
@@ -100,9 +100,7 @@ int main(void) {
         if (can_poll_receive_bms_core() == 0){
             can_receive_bms_core(); // getting can data
         }
-        if (can_poll_receive_charging_fbk() == 0){
-            can_receive_charging_fbk();
-        }
+        spi_receive_charger();
         // values would initialize to 0 if poll receives fail
         if (bms_core.pack_voltage < TARGET_PACK_VOLTAGE){
             if (bms_charging.charge_enable){
@@ -115,13 +113,13 @@ int main(void) {
             }
         }
         //safety checks
-        if (charging_fbk.hardware_fault) {
+        if (hardware_fault) {
             charging_cmd.enable = false;
         }
-        if (charging_fbk.temperature_protection) {
+        if (temperature_protection) {
             charging_cmd.enable = false;
         }
-        if (charging_fbk.charging_voltage > charging_cmd.max_voltage || charging_fbk.charging_current > charging_cmd.max_current) {
+        if (charging_voltage > charging_cmd.max_voltage || charging_current > charging_cmd.max_current) {
             charging_cmd.enable = false;
         }
 
