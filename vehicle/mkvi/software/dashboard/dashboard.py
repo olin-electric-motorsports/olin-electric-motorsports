@@ -9,7 +9,7 @@ CHANNEL = "can0"
 BITRATE = 500000
 
 # Loading in everyone's compiled config files
-dbc_file = "vehicle/mkvi/mkvi.dbc"
+dbc_file = "mkvi.dbc"
 db = cantools.database.load_file(dbc_file)
 
 # Making variables that store incoming CAN data global
@@ -20,11 +20,10 @@ brake_gate = None
 throttle_pressed = None
 
 # Pin Definitions
-AMS_LED_LSD = 36
-# Changed BMS from 27 to reflect hardware updates, also updated to be called AMS
+BMS_LED_LSD = 36
 HV_LED_LSD = 29
 IMD_LED_LSD = 26
-RTD_BUZZER_LSD = 32  # Changed from 28 to reflect hardware updates
+RTD_BUZZER_LSD = 32
 
 RTD_BUTTON_SENSE = 31
 BOTS_SHDN_SENSE = 18
@@ -39,7 +38,12 @@ PROGRAMMING_LED_3 = 37
 RTD_BUZZ_TIME = 2000  # in milliseconds
 
 # Initializing the dictionary that holds outgoing CAN data
-dashboard_data = {}
+dashboard_data = {
+    "ready_to_drive": False,
+    "start_button_state": False,
+    "ss_estop": False,
+    "ss_bots": False,
+}
 
 
 def init_can(channel, bustype, bitrate, callback):
@@ -91,6 +95,7 @@ def dashboard_callback(msg, db):
         msg (can.Message): CAN message that was received
         db (cantools.database): Database generated from our DBC
     """
+    global air_state, imd_status, bms_fault, brake_gate, throttle_pressed
 
     try:
         message = db.decode_message(msg.arbitration_id, msg.data)
@@ -104,8 +109,8 @@ def dashboard_callback(msg, db):
         imd_status = message.get("imd_status")
     if message_name == "bms_core":
         bms_fault = message.get("bms_fault")
-    if message_name == "brakes":
-        brake_gate = message.get("brake_gate")
+    if message_name == "bspd":
+        brake_gate = message.get("brake_gate") == "Brakelight ON"
     if message_name == "throttle":
         throttle_l = message.get("throttle_l_pos")
         throttle_r = message.get("throttle_r_pos")
@@ -113,7 +118,7 @@ def dashboard_callback(msg, db):
 
 
 # Enabling the start button interrupt
-def button_pressed_callback():
+def button_pressed_callback(channel):
     """
     When called, this sets the value of "start_button_state" in the outgoing
     CAN data dictionary (dashboard_data) to True
@@ -147,7 +152,7 @@ def main():
 
     # Channel Setup/Pin Mode Setup
     channel_outputs = [
-        AMS_LED_LSD,
+        BMS_LED_LSD,
         HV_LED_LSD,
         IMD_LED_LSD,
         RTD_BUZZER_LSD,
@@ -175,17 +180,21 @@ def main():
 
     dashboard_message = db.get_message_by_name("dashboard")
 
+    button_pressed_callback(RTD_BUTTON_SENSE)
+    shutdown_callback(BOTS_SHDN_SENSE)
+    shutdown_callback(E_STOP_SHDN_SENSE)
+
     while True:  # MAKE THIS RUN EVERY 10 MILLISECONDS
         t_0 = time.perf_counter()
 
         # Turns on BMS LED if there are any BMS faults
-        GPIO.output(AMS_LED_LSD, bms_fault != "NONE")
+        GPIO.output(BMS_LED_LSD, bms_fault != "NONE")
 
         # Turns on HV LED if the tractive system is on
         GPIO.output(HV_LED_LSD, air_state == "TS_ACTIVE")
 
         # Turns on IMD LED if there is an IMD fault; imd_status True is good
-        GPIO.output(IMD_LED_LSD, not imd_status)
+        GPIO.output(IMD_LED_LSD, imd_status != "IMD OK")
 
         # Turns on the button LED if brakes are pressed, tractive system is on,
         # RTD is not on, and the throttle is not being pressed

@@ -1,0 +1,91 @@
+name: throttle
+subscribe:
+  # Transmit MOB is 0
+  - name: bspd
+    mob: 1
+  - name: dashboard
+    mob: 2
+publish:
+  - name: M192_Command_Message
+  - name: throttle
+    id: 0xC
+    freq_hz: 100
+    signals:
+      - name: throttle_status
+        slice: 0 + 8
+        unit:
+          type: enum
+          values:
+            - THROTTLE_IDLE
+            - THROTTLE_RUN
+            - THROTTLE_L_OUT_OF_RANGE
+            - THROTTLE_R_OUT_OF_RANGE
+            - THROTTLE_POSITION_IMPLAUSIBILITY
+            - THROTTLE_BRAKE_PRESSED
+      - name: throttle_l_pos
+        slice: 8 + 16
+        unit:
+          type: int16_t
+          name: '%' 
+          offset: 0
+          scale: 100/255
+      - name: throttle_r_pos
+        slice: 24 + 16
+        unit:
+          type: int16_t
+          name: '%'
+          offset: 0
+          scale: 100/255
+      - name: ss_is
+        slice: 41 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+  - name: throttle_debug
+    id: 0x6C0
+    freq_hz: 100
+    signals:
+      - name: throttle_l_raw
+        slice: 0 + 16
+        unit:
+          type: int16_t
+          name: ''
+          offset: 0
+          scale: 1
+      - name: throttle_r_raw
+        slice: 16 + 16
+        unit:
+          type: int16_t
+          name: ''
+          offset: 0
+          scale: 1
+      - name: throttle_l_out_of_range
+        slice: 32 + 1
+        unit:
+          type: bool
+          values:
+            t: OUT_OF_RANGE
+            f: IN_RANGE
+      - name: throttle_r_out_of_range
+        slice: 33 + 1
+        unit:
+          type: bool
+          values:
+            t: OUT_OF_RANGE
+            f: IN_RANGE
+      - name: throttle_deviation
+        slice: 34 + 1
+        unit:
+          type: bool
+          values:
+            t: DEVIATE
+            f: NO_DEVIATE
+      - name: throttle_brake_implaus
+        slice: 35 + 1
+        unit:
+          type: bool
+          values:
+            t: BRAKE_IMPLAUS
+            f: NO_BRAKE_IMPLAUS

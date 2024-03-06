@@ -107,8 +107,8 @@ pip_install(
 )
 
 pip_install(
-    name = "hitl_deps",
-    requirements = "//projects/hitl/software:requirements.txt",
+    name = "pydeps",
+    requirements = "//third_party:requirements.txt",
 )
 
 pip_install(

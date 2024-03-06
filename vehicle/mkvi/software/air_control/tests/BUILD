@@ -8,15 +8,14 @@ pytest_test(
         "test_initial_checks.py",
     ],
     data = [
-        "//vehicle/mkv:mkv.dbc",
-        "//vehicle/mkv/software/air_control",
+        "//vehicle/mkvi:mkvi.dbc",
+        "//vehicle/mkvi/software/air_control:air_control_patched.bin",
     ],
-    deprecation = "Old HitL library not around anymore; do not use this, will fail.",
-    tags = ["manual"],
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
     deps = [
-        "//projects/microhitl",
+        "//projects/btldr/py_client:btldr",
+        "//projects/hitl/lib:hitl",
     ],
 )
