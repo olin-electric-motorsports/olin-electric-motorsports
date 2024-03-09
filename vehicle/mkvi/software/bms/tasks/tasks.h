@@ -22,7 +22,7 @@
  *   Number of PEC errors that occurred when communicating with the ADBMS1818
  *   0 if no errors
  */
-int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv);
+void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* pec_errors);
 
 /*
  * Task to read the temperature from the battery pack

@@ -10,9 +10,8 @@
 #define NUM_BYTES_IN_REG (6)
 #define NUM_CELLS_PER_IC (17)
 
-int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
+void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* pec_errors) {
     *pack_voltage = 0;
-    int pec_errors = 0;
 
     wakeup_sleep(NUM_ICS);
 
@@ -104,10 +103,8 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 = pec15_calc(NUM_BYTES_IN_REG, &raw_data[(ic)*NUM_RX_BYT]);
 
             if (received_pec != data_pec) {
-                pec_errors++;
+                *pec_errors++;
             }
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D, E, F)
-
-    return pec_errors;
 }

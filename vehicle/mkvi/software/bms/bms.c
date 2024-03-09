@@ -85,12 +85,13 @@ static void monitor_cells(void) {
     uint32_t uv = 0;
 
     uint16_t pack_voltage = 0;
-    int rc = voltage_task(&pack_voltage, &ov, &uv);
+    uint16_t pec_errors = 0;
+    voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
     bms_core.pack_voltage = pack_voltage;
 
     // Check for PEC errors
-    if (rc != 0) {
-        bms_metrics.voltage_pec_error_count += rc;
+    if (pec_errors != 0) {
+        bms_metrics.voltage_pec_error_count += pec_errors;
 
         if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
             set_fault(BMS_FAULT_PEC);
