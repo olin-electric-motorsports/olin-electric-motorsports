@@ -75,7 +75,6 @@ static void monitor_cells(void) {
     }
 
     // Handle condition where fault was cleared
-    // TODO: also need to handle charging here
     if (bms_core.bms_state == BMS_STATE_FAULT
         && bms_core.bms_fault == BMS_FAULT_NONE) {
         bms_core.bms_state = BMS_STATE_ACTIVE;
@@ -106,40 +105,6 @@ static void monitor_cells(void) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
         bms_core.bms_state = BMS_STATE_FAULT;
     }
-
-    // switch (bms_core.bms_state) {
-    //     case BMS_STATE_ACTIVE: {
-    //         if (uv > 0) {
-    //             set_fault(BMS_FAULT_UNDERVOLTAGE);
-    //             bms_core.bms_state = BMS_STATE_FAULT;
-    //         }
-    //     } break;
-    //     case BMS_STATE_CHARGING: {
-    //         if (can_poll_receive_charging_fbk() == 0) {
-    //             uint8_t charger_status = charging_fbk_data[4];
-    //             if (charger_status != 0) {
-    //                 if ((charger_status & (1 << 3)) == 0) {
-    //                 } else if ((charger_status & (1 << 2)) == 0) {
-    //                 } else {
-    //                     set_fault(BMS_FAULT_CHARGER_FAULT);
-    //                 }
-    //             }
-
-    //             can_receive_charging_fbk();
-    //         }
-    //     } break;
-    //     case BMS_STATE_FAULT: {
-    //         gpio_clear_pin(BMS_RELAY_LSD);
-    //         charging_cmd.max_voltage = 0;
-    //         charging_cmd.max_current = 0;
-    //         charging_cmd.enable = false;
-    //     } break;
-    //     default: {
-    //         // shouldn't reach here. failsafe
-    //         set_fault(BMS_FAULT_STATE_MACHINE);
-    //         bms_core.bms_state = BMS_STATE_FAULT;
-    //     } break;
-    // }
 }
 
 int main(void) {
