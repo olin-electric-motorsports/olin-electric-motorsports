@@ -455,7 +455,7 @@ def cc_arm_firmware(name, **kwargs):
     cc_binary(
         name = "{}.elf".format(name),
         linkopts = linkopts + select({
-            "//bazel/constraints:stm32f103c8t6": ["-T $(location //scripts/ldscripts:stm32f103c8t6.ld)", "--specs=nosys.specs", "-Wl,-Map=linker.map", "-Wl,-cref", "-Wl,--gc-sections"],
+            "//bazel/constraints:stm32f103c8t6": ["-T $(location //scripts/ldscripts:stm32f103c8t6.ld)", "-Os", "-std=c99", "-ggdb3", "-mcpu=cortex-m3", "-mthumb", "-msoft-float", "-fno-common", "-ffunction-sections", "-fdata-sections", "-Wextra", "-Wshadow", "-Wno-unused-variable", "-Wimplicit-function-declaration", "-Wredundant-decls", "-Wstrict-prototypes", "-Wmissing-prototypes", "-MD", "-Wall", "-Wundef","-nostartfiles", "-mcpu=cortex-m3", "-mthumb", "-msoft-float", "-specs=nano.specs", "-Wl,--gc-sections", "-Wl,--start-group", "-lc", "-lgcc", "-lnosys", "-Wl,--end-group"],
             # Add more ldscripts here
             "//conditions:default": [],
         }),
