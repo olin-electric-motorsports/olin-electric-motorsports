@@ -103,7 +103,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* 
                 = pec15_calc(NUM_BYTES_IN_REG, &raw_data[(ic)*NUM_RX_BYT]);
 
             if (received_pec != data_pec) {
-                *pec_errors++;
+                *pec_errors += 1;
             }
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D, E, F)
