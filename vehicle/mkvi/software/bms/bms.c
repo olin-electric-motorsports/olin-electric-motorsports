@@ -87,8 +87,9 @@ static void monitor_cells(void) {
     static uint16_t min_temp = 0;
     static uint16_t max_temp = UINT16_MAX;
 
-    // TODO: Remove type cast here or define new variable name before merging
-    int rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+    uint16_t pec_errors = 0;
+    temperature_task(&ot, &ut, &min_temp, &max_temp, &pec_errors);
+
     bms_sense.min_temperature = min_temp;
     bms_sense.max_temperature = max_temp;
 
@@ -103,8 +104,8 @@ static void monitor_cells(void) {
     }
 
     // Check for PEC errors
-    if (rc != 0) {
-        bms_metrics.temperature_pec_error_count += rc;
+    if (pec_errors != 0) {
+        bms_metrics.temperature_pec_error_count += pec_errors;
 
         if (bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
             set_fault(BMS_FAULT_PEC);

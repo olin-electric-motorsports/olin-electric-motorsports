@@ -45,10 +45,8 @@ static void update_min_max_temps(uint16_t* min_temp, uint16_t* max_temp,
     }
 }
 
-int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
-                     uint16_t* max_temp) {
-    int pec_errors = 0;
-
+void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
+                     uint16_t* max_temp, uint16_t* pec_errors) {
     static uint8_t mux = 0;
     static uint8_t channel = 0;
 
@@ -127,7 +125,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         uint16_t calculated_pec
             = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[ic_zero_idx]);
         if (received_pec != calculated_pec) {
-            pec_errors++;
+            *pec_errors += 1;
         }
 
         // and register C
@@ -136,7 +134,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         calculated_pec
             = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[ic_zero_idx]);
         if (received_pec != calculated_pec) {
-            pec_errors++;
+            *pec_errors += 1;
         }
     }
 
@@ -167,5 +165,4 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     // if (*min_temp > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
     //     fan_enable(false);
     // }
-    return pec_errors;
 }
