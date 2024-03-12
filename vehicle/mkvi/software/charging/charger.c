@@ -50,7 +50,8 @@ void timer0_isr(void) {
     // doing smth;_
 }
 
-void spi_init(){
+void charger_can_init(){
+    spi_init(&spi_cfg);
     mcp25625_init(OPMODE_NORMAL);
 }
 
@@ -77,18 +78,20 @@ void spi_receive_charger(){
             // assigning spi data to variables
             charging_voltage = binaryToDecimal((uint16_t) rx_msg[0] << 8 | rx_msg[1]) * 0.1;
             charging_current = binaryToDecimal((uint16_t) rx_msg[2] << 8 | rx_msg[3]) * 0.1;
-            for (int i = 0; i < 5: i++){
+            for (int i = 0; i < 5; i++){
                 *checks[i] = (bool)((rx_msg[4] >> i) & 0x01);
             }
-        }_
+        }
 }
+
+// 3/4 note: changed MCP25625_hw.c delay function (commented lib out & put empty for loops instead)
 
 //loop
 int main(void) {
 
     //insert extend mode thingy + change baud rate; try use existing can.c thing
 
-    spi_init();
+    charger_can_init();
 
     can_receive_bms_core();
     spi_receive_charger(); // replace this with spi receive; next task to change main function 
