@@ -32,15 +32,6 @@ load("@arm_none_eabi//:deps.bzl", "arm_none_eabi_deps")
 
 arm_none_eabi_deps()
 
-# Libopencm3 (HAL for STM32)
-http_archive(
-    name = "libopencm3",
-    build_file = "@//third_party/libopencm3:BUILD",
-    sha256 = "0acbc805d2c1450591412a109290cec2b3fb7c302a57ade34f2247d632c405a3",
-    strip_prefix = "libopencm3-0.8.0",
-    urls = ["https://github.com/libopencm3/libopencm3/archive/refs/tags/v0.8.0.tar.gz"],
-)
-
 # OpenOCD (flashing support for STM32) via bazel-embedded
 git_repository(
     name = "bazel_embedded",
@@ -48,25 +39,6 @@ git_repository(
     remote = "https://github.com/bazelembedded/bazel-embedded.git",
     shallow_since = "1585022166 +0800",
 )
-
-# load("@bazel_embedded//:bazel_embedded_deps.bzl", "bazel_embedded_deps")
-
-# bazel_embedded_deps()
-
-# load("@bazel_embedded//platforms:execution_platforms.bzl", "register_platforms")
-
-# register_platforms()
-
-# load(
-#     "@bazel_embedded//toolchains/compilers/gcc_arm_none_eabi:gcc_arm_none_repository.bzl",
-#     "gcc_arm_none_compiler",
-# )
-
-# gcc_arm_none_compiler()
-
-# load("@bazel_embedded//toolchains/gcc_arm_none_eabi:gcc_arm_none_toolchain.bzl", "register_gcc_arm_none_toolchain")
-
-# register_gcc_arm_none_toolchain()
 
 load("@bazel_embedded//tools/openocd:openocd_repository.bzl", "openocd_deps")
 
