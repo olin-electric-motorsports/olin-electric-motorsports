@@ -334,19 +334,16 @@ def cc_firmware(name, **kwargs):
         linkopts = linkopts + select({
             "//bazel/constraints:atmega16m1": ["-T $(location //scripts/ldscripts:atmega16m1.ld)"],
             "//bazel/constraints:atmega64m1": ["-T $(location //scripts/ldscripts:atmega64m1.ld)"],
-            "//bazel/constraints:stm32f103rbt6": ["-T $(location //scripts/ldscripts:stm32f103rbt6.ld)", "--specs=nosys.specs", "-Wl,-Map=linker.map", "-Wl,-cref", "-Wl,--gc-sections"],
             # Add more ldscripts here
             "//conditions:default": [],
         }),
         additional_linker_inputs = [
             "//scripts/ldscripts:atmega16m1.ld",
             "//scripts/ldscripts:atmega64m1.ld",
-            "//scripts/ldscripts:stm32f103rbt6.ld",
         ],
         copts = copts + select({
             "//bazel/constraints:hitl": ["-DBOARD_FIRMWARE_TEST"],
             "//bazel/constraints:hackerboard": ["-DBOARD_HACKERBOARD"],
-            "//bazel/constraints:stm32f103rbt6": ["-mthumb", "-mcpu=cortex-m3", "-mlittle-endian", "-mthumb-interwork"],
             "//conditions:default": [],
         }),
         defines = defines,
@@ -421,7 +418,6 @@ def cc_firmware(name, **kwargs):
         btldr = btldr_hex,
         method = select({
             "//bazel/constraints:avr": "avrdude",
-            "@platforms//cpu:arm": "openocd",
             "//conditions:default": "",
         }),
         template = template,
@@ -429,7 +425,6 @@ def cc_firmware(name, **kwargs):
             "//bazel/constraints:atmega16m1": "16m1",
             "//bazel/constraints:atmega328p": "m328p",
             "//bazel/constraints:atmega64m1": "64m1",
-            "//bazel/constraints:stm32f103rbt6": "stm32f103",
             "//conditions:default": "",
         }),
     )
@@ -455,7 +450,7 @@ def cc_arm_firmware(name, **kwargs):
     cc_binary(
         name = "{}.elf".format(name),
         linkopts = linkopts + select({
-            "//bazel/constraints:stm32f103rbt6": ["-T $(location //scripts/ldscripts:stm32f103rbt6.ld)", "-Os", "-std=c99", "-ggdb3", "-mcpu=cortex-m3", "-mthumb", "-msoft-float", "-fno-common", "-ffunction-sections", "-fdata-sections", "-Wextra", "-Wshadow", "-Wno-unused-variable", "-Wimplicit-function-declaration", "-Wredundant-decls", "-Wstrict-prototypes", "-Wmissing-prototypes", "-MD", "-Wall", "-Wundef","-nostartfiles", "-mcpu=cortex-m3", "-mthumb", "-msoft-float", "-specs=nano.specs", "-Wl,--gc-sections", "-Wl,--start-group", "-lc", "-lgcc", "-lnosys", "-Wl,--end-group"],
+            "//bazel/constraints:stm32f103rbt6": ["-T $(location //scripts/ldscripts:stm32f103rbt6.ld)", "-Os", "-std=c99", "-ggdb3", "-mcpu=cortex-m3", "-mthumb", "-msoft-float", "-fno-common", "-ffunction-sections", "-fdata-sections", "-Wextra", "-Wshadow", "-Wno-unused-variable", "-Wimplicit-function-declaration", "-Wredundant-decls", "-Wstrict-prototypes", "-Wmissing-prototypes", "-MD", "-Wall", "-Wundef", "-nostartfiles", "-mcpu=cortex-m3", "-mthumb", "-msoft-float", "-specs=nano.specs", "-Wl,--gc-sections", "-Wl,--start-group", "-lc", "-lgcc", "-lnosys", "-Wl,--end-group"],
             # Add more ldscripts here
             "//conditions:default": [],
         }),
@@ -502,8 +497,6 @@ def cc_arm_firmware(name, **kwargs):
     )
 
     # Generates flash script
-    # TODO: Integrade openocd to flash images
-
     bin_file = ":{}.bin".format(name)
     btldr_hex = None
     eeprom = None

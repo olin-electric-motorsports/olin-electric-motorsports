@@ -3,7 +3,6 @@ cc_library(
     hdrs = glob(["**/*.h"]),
     include_prefix = "libopencm3/stm32",
     strip_include_prefix = "hdrs/",
-    # strip_include_prefix = "include",
     visibility = ["//visibility:public"],
     deps = [":compiled_library"],
 )
