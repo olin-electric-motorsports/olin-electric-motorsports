@@ -30,7 +30,7 @@ constraint_value(
 )
 
 constraint_value(
-    name = "stm32f103c8t6",
+    name = "stm32f103rbt6",
     constraint_setting = ":mcu",
 )
 
