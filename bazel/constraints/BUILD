@@ -29,6 +29,11 @@ constraint_value(
     constraint_setting = ":mcu",
 )
 
+constraint_value(
+    name = "stm32f103rbt6",
+    constraint_setting = ":mcu",
+)
+
 # Runtime environment
 constraint_setting(name = "environment")
 

@@ -1,7 +1,7 @@
 load("//bazel:defs.bzl", "cc_firmware")
 
 cc_firmware(
-    name = "blinky",
+    name = "blinky_avr",
     srcs = [
         "main.c",
     ],
