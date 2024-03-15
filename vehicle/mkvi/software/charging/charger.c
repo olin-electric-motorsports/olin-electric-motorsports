@@ -46,8 +46,9 @@ uint16_t binaryToDecimal(uint16_t binaryNumber) {
     return decimalNumber;
 }
 
+volatile bool send_can = false;
 void timer0_isr(void) {
-    // doing smth;_
+    send_can = true;
 }
 
 void charger_can_init(){
@@ -93,38 +94,42 @@ int main(void) {
 
     charger_can_init();
 
-    can_receive_bms_core();
-    spi_receive_charger(); // replace this with spi receive; next task to change main function 
-    can_receive_bms_charging(); // will be added into bms.yml soon
-
+    // modify while loop to include a clock / delay
     while(1) {
         //check status of BMS
         // poll like asking a question is there can data or not; verifying if the message exists or not
-        if (can_poll_receive_bms_core() == 0){
-            can_receive_bms_core(); // getting can data
-        }
-        spi_receive_charger();
-        // values would initialize to 0 if poll receives fail
-        if (bms_core.pack_voltage < TARGET_PACK_VOLTAGE){
-            if (bms_charging.charge_enable){
-                charging_cmd.enable = true;
-                charging_cmd.max_voltage = CHARGING_MAX_VOLTAGE; 
-                charging_cmd.max_current = CHARGING_MAX_CURRENT; 
+        if (send_can){
+            if (can_poll_receive_bms_core() == 0){
+                can_receive_bms_core(); // getting can data
             }
-            else {
+            if(can_poll_receive_bms_charging() == 0){
+                can_receive_bms_charging(); // will be added into bms.yml soon
+            }
+            spi_receive_charger();
+            // values would initialize to 0 if poll receives fail
+            if (bms_core.pack_voltage < TARGET_PACK_VOLTAGE){
+                if (bms_charging.charge_enable){
+                    charging_cmd.enable = true;
+                    charging_cmd.max_voltage = CHARGING_MAX_VOLTAGE; 
+                    charging_cmd.max_current = CHARGING_MAX_CURRENT; 
+                }
+                else {
+                    charging_cmd.enable = false;
+                }
+            }
+            //safety checks
+            if (hardware_fault) {
                 charging_cmd.enable = false;
             }
+            if (temperature_protection) {
+                charging_cmd.enable = false;
+            }
+            if (charging_voltage > charging_cmd.max_voltage || charging_current > charging_cmd.max_current) {
+                charging_cmd.enable = false;
+            }
+            spi_send_charger();
+            send_can = false;
         }
-        //safety checks
-        if (hardware_fault) {
-            charging_cmd.enable = false;
-        }
-        if (temperature_protection) {
-            charging_cmd.enable = false;
-        }
-        if (charging_voltage > charging_cmd.max_voltage || charging_current > charging_cmd.max_current) {
-            charging_cmd.enable = false;
-        }
-
     }
+
 }
