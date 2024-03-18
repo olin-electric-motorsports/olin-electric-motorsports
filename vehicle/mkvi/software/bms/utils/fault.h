@@ -36,6 +36,7 @@ void set_fault(enum bms_fault the_fault);
 void clear_fault(enum bms_fault the_fault);
 
 /**
- * Based on the bms_core.bms_fault, determine if the BMS is in a fault state.
+ * Based on the bms_core.bms_fault_code, determine if the BMS is in a fault
+ * state.
  */
 int check_fault_state(void);
