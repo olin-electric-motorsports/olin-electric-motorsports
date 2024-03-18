@@ -24,9 +24,6 @@ enum bms_fault {
 
 /**
  * Set a BMS fault from the enum bms_fault.
- *
- * Note that more than one fault can occur at once, and all are transmitted over
- * CAN.
  */
 void set_fault(enum bms_fault the_fault);
 
@@ -36,7 +33,7 @@ void set_fault(enum bms_fault the_fault);
 void clear_fault(enum bms_fault the_fault);
 
 /**
- * Based on the bms_core.bms_fault_code, determine if the BMS is in a fault
+ * Based on bms_core.bms_fault_code, determine if the BMS is in a fault
  * state.
  */
 int check_fault_state(void);
