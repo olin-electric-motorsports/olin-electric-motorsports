@@ -8,15 +8,16 @@ publish:
     id: 0x10
     freq_hz: 100
     signals:
-      - name: bms_fault
-        slice: 0 + 1
+      - name: bms_state
+        slice: 0 + 2
         unit:
           type: enum
           values:
-            - NONE
+            - ACTIVE
+            - CHARGING
             - FAULT
       - name: bms_fault_code
-        slice: 1 + 16
+        slice: 2 + 16
         unit:
           type: uint16_t
           name: ""
@@ -46,65 +47,57 @@ publish:
           #   # TODO: Implement error handle per CSC
           #   - CSC_MIA
           #   - DA_MIA
-      - name: bms_state
-        slice: 17 + 4
-        unit:
-          type: enum
-          values:
-            - ACTIVE
-            - CHARGING
-            - FAULT
       - name: pack_voltage
-        slice: 21 + 16
+        slice: 18 + 16
         unit:
           type: uint16_t
           name: V
           offset: 0
           scale: 0.0001 * 256
       - name: pack_current
-        slice: 37 + 12
+        slice: 34 + 12
         unit:
           type: int16_t
           name: A
           offset: 0
           scale: 0.004
       - name: cell_balancing_status
-        slice: 49 + 1
+        slice: 46 + 1
         unit:
           type: bool
           values:
             t: Cell balancing enabled
             f: Cell balancing disabled
       - name: regen_enabled
-        slice: 50 + 1
+        slice: 47 + 1
         unit:
           type: bool
           values:
             t: Regenerative braking enabled
             f: Regenerative braking disabled
       - name: current_limiting_enabled
-        slice: 51 + 1
+        slice: 48 + 1
         unit:
           type: bool
           values:
             t: Current limiting enabled
             f: Current limiting disabled
       - name: bspd_current_sense
-        slice: 52 + 1
+        slice: 49 + 1
         unit:
           type: bool
           values:
             t: Current sensed
             f: No current sensed
       - name: overcurrent_detect
-        slice: 53 + 1
+        slice: 50 + 1
         unit:
           type: bool
           values:
             t: Over-current detected
             f: No over-current detected
       - name: charger_connected
-        slice: 54 + 1
+        slice: 51 + 1
         unit:
           type: bool
           values:
