@@ -9,34 +9,38 @@ publish:
     freq_hz: 100
     signals:
       - name: bms_fault
-        slice: 0 + 4
+        slice: 0 + 16
         unit:
-          type: enum
-          values:
-            - NONE
-            - UNDERVOLTAGE
-            - OVERVOLTAGE
-            - UNDERTEMPERATURE
-            - OVERTEMPERATURE
-            - DIAGNOSTICS_FAIL
-            - OPEN_WIRE
-            - OVERCURRENT
-            - PEC
-            - CHARGER_FAULT
-            - STATE_MACHINE
-            # NOTE: MIA refers to receiving all 1s from the CSC,
-            # This either means that there is a communication error
-            # (ex: CSC is not powered) or a register on the CSC was
-            # initialized to all 1s and the appropriate command was
-            # not given to update the value (ex: the cell voltage readings
-            # are initialized to all 1s until an ADC conversion is
-            # requested)
-            # TODO: Implement error handle per CSC
-            - CSC_MIA
-            - DA_MIA
-
+          type: uint16_t
+          name: ""
+          offset: 0
+          scale: 1
+          # See fault.c for list of faults
+          #
+          # values:
+          #   - NONE
+          #   - UNDERVOLTAGE
+          #   - OVERVOLTAGE
+          #   - UNDERTEMPERATURE
+          #   - OVERTEMPERATURE
+          #   - DIAGNOSTICS_FAIL
+          #   - OPEN_WIRE
+          #   - OVERCURRENT
+          #   - PEC
+          #   - CHARGER_FAULT
+          #   - STATE_MACHINE
+          #   # NOTE: MIA refers to receiving all 1s from the CSC,
+          #   # This either means that there is a communication error
+          #   # (ex: CSC is not powered) or a register on the CSC was
+          #   # initialized to all 1s and the appropriate command was
+          #   # not given to update the value (ex: the cell voltage readings
+          #   # are initialized to all 1s until an ADC conversion is
+          #   # requested)
+          #   # TODO: Implement error handle per CSC
+          #   - CSC_MIA
+          #   - DA_MIA
       - name: bms_state
-        slice: 4 + 4
+        slice: 16 + 4
         unit:
           type: enum
           values:
@@ -44,62 +48,62 @@ publish:
             - CHARGING
             - FAULT
       - name: pack_voltage
-        slice: 8 + 16
+        slice: 20 + 16
         unit:
           type: uint16_t
           name: V
           offset: 0
           scale: 0.0001 * 256
       - name: pack_current
-        slice: 24 + 12
+        slice: 36 + 12
         unit:
           type: int16_t
           name: A
           offset: 0
           scale: 0.004
       - name: cell_balancing_status
-        slice: 36 + 1
+        slice: 48 + 1
         unit:
           type: bool
           values:
             t: Cell balancing enabled
             f: Cell balancing disabled
       - name: regen_enabled
-        slice: 37 + 1
+        slice: 49 + 1
         unit:
           type: bool
           values:
             t: Regenerative braking enabled
             f: Regenerative braking disabled
       - name: current_limiting_enabled
-        slice: 38 + 1
+        slice: 50 + 1
         unit:
           type: bool
           values:
             t: Current limiting enabled
             f: Current limiting disabled
       - name: bspd_current_sense
-        slice: 39 + 1
+        slice: 51 + 1
         unit:
           type: bool
           values:
             t: Current sensed
             f: No current sensed
       - name: overcurrent_detect
-        slice: 40 + 1
+        slice: 52 + 1
         unit:
           type: bool
           values:
             t: Over-current detected
             f: No over-current detected
       - name: charger_connected
-        slice: 41 + 1
+        slice: 53 + 1
         unit:
           type: bool
           values:
             t: Connected
             f: Disconnected
-  
+
   - name: bms_sense
     id: 0x011
     freq_hz: 100
@@ -132,7 +136,7 @@ publish:
           name: V
           offset: 0
           scale: 5 / 1024
-  
+
   - name: bms_metrics
     id: 0x510
     freq_hz: 100
