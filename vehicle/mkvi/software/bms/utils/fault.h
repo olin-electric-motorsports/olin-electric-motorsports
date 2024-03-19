@@ -6,20 +6,59 @@
  *
  * Used for bitwise operations on the unit16_t bms_fault variable defined in
  * bms.yml.
+ *
+ * BMS_FAULT_UNDERVOLTAGE: Cell undervoltage fault, set when any cell voltage
+ *   is below the UNDERVOLTAGE_THRESHOLD, as defined in bms_config.h.
+ *
+ * BMS_FAULT_OVERVOLTAGE: Cell overvoltage fault, set when any cell voltage
+ *   is above the OVERVOLTAGE_THRESHOLD, as defined in bms_config.h.
+ *
+ * BMS_FAULT_UNDERTEMPERATURE: Cell undertemperature fault, set when any cell
+ *   temperature is below the UNDERTEMPERATURE_THRESHOLD, as defined in
+ *   bms_config.h.
+ *
+ * BMS_FAULT_OVERTEMPERATURE: Cell overtemperature fault, set when any cell
+ *   temperature is above the OVERTEMPERATURE_THRESHOLD, as defined in
+ *   bms_config.h.
+ *
+ * BMS_FAULT_DIAGNOSTICS_FAIL: Currently unused.
+ *
+ * BMS_FAULT_OPEN_WIRE: Currently unused.
+ *
+ * BMS_FAULT_OVERCURRENT: Currently unused.
+ *
+ * BMS_FAULT_PEC: Fault set if the number of PEC errors is above
+ *   MAX_PEC_ERROR_COUNT, as defined in bms_config.h
+ *
+ * BMS_FAULT_CHARGER_FAULT: Currently unused.
+ *
+ * BMS_FAULT_STATE_MACHINE: Currently unused.
+ *
+ * BMS_FAULT_CSC_MIA: Fault set if any CSC is MIA. Only the number of CSCs as
+ *   defined in bms_config.h are checked.
+ *   NOTE: MIA refers to receiving all 1s from the CSC,
+ *   This either means that there is a communication error
+ *   (ex: CSC is not powered) or a register on the CSC was
+ *   initialized to all 1s and the appropriate command was
+ *   not given to update the value (ex: the cell voltage readings
+ *   are initialized to all 1s until an ADC conversion is
+ *   requested)
+ *
+ * BMS_FAULT_DA_MIA: Currently unused.
  */
 enum bms_fault {
-    BMS_FAULT_UNDERVOLTAGE,
-    BMS_FAULT_OVERVOLTAGE,
-    BMS_FAULT_UNDERTEMPERATURE,
-    BMS_FAULT_OVERTEMPERATURE,
-    BMS_FAULT_DIAGNOSTICS_FAIL,
-    BMS_FAULT_OPEN_WIRE,
-    BMS_FAULT_OVERCURRENT,
-    BMS_FAULT_PEC,
-    BMS_FAULT_CHARGER_FAULT,
-    BMS_FAULT_STATE_MACHINE,
-    BMS_FAULT_CSC_MIA,
-    BMS_FAULT_DA_MIA,
+    BMS_FAULT_UNDERVOLTAGE, // UV
+    BMS_FAULT_OVERVOLTAGE, // OV
+    BMS_FAULT_UNDERTEMPERATURE, // UT
+    BMS_FAULT_OVERTEMPERATURE, // OT
+    BMS_FAULT_DIAGNOSTICS_FAIL, // DF
+    BMS_FAULT_OPEN_WIRE, // OW
+    BMS_FAULT_OVERCURRENT, // OC
+    BMS_FAULT_PEC, // PEC
+    BMS_FAULT_CHARGER_FAULT, // CF
+    BMS_FAULT_STATE_MACHINE, // SM
+    BMS_FAULT_CSC_MIA, // CSC
+    BMS_FAULT_DA_MIA, // DA
 };
 
 enum csc_mia {
