@@ -68,18 +68,6 @@ void hw_init() {
 }
 
 static void monitor_cells(void) {
-    // Set a new fault
-    if (bms_core.bms_fault != BMS_FAULT_NONE) {
-        bms_core.bms_state = BMS_STATE_FAULT;
-        gpio_clear_pin(BMS_RELAY_LSD);
-    }
-
-    // Handle condition where fault was cleared
-    if (bms_core.bms_state == BMS_STATE_FAULT
-        && bms_core.bms_fault == BMS_FAULT_NONE) {
-        bms_core.bms_state = BMS_STATE_ACTIVE;
-    }
-
     // read all voltages
     uint32_t ov = 0;
     uint32_t uv = 0;
@@ -95,7 +83,6 @@ static void monitor_cells(void) {
 
         if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
             set_fault(BMS_FAULT_PEC);
-            bms_core.bms_state = BMS_STATE_FAULT;
         }
         return;
     } else {
@@ -104,7 +91,6 @@ static void monitor_cells(void) {
 
     if (ov > 0) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
-        bms_core.bms_state = BMS_STATE_FAULT;
     }
 }
 
@@ -113,10 +99,10 @@ int main(void) {
 
     while (true) {
         if (run_10ms) {
+            monitor_cells();
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             }
-            monitor_cells();
             can_send_bms_core();
             can_send_bms_sense();
             run_10ms = false;
