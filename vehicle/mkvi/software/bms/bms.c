@@ -89,8 +89,12 @@ static void monitor_cells(void) {
         bms_metrics.voltage_pec_error_count = 0;
     }
 
+    // Check for undervoltage and overvoltage faults
     if (ov > 0) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
+    }
+    if (uv > 0) {
+        set_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
 
@@ -100,6 +104,7 @@ int main(void) {
     while (true) {
         if (run_10ms) {
             monitor_cells();
+            // Only set the BMS relay LSD if no faults are present
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             }
