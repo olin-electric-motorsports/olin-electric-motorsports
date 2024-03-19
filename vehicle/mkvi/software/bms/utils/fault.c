@@ -16,10 +16,10 @@ void clear_fault(enum bms_fault the_fault) {
 
 int check_fault_state(void) {
     if (bms_core.bms_fault_code == 0) {
-        bms_core.bms_fault = BMS_FAULT_NONE;
+        bms_core.bms_state = BMS_STATE_ACTIVE;
         return 0;
     } else {
-        bms_core.bms_fault = BMS_FAULT_FAULT;
+        bms_core.bms_state = BMS_STATE_FAULT;
         return 1;
     }
 }
