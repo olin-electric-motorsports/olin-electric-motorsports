@@ -10,7 +10,8 @@
 #define NUM_BYTES_IN_REG (6)
 #define NUM_CELLS_PER_IC (17)
 
-void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* pec_errors) {
+void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
+                  uint16_t* pec_errors) {
     *pack_voltage = 0;
 
     wakeup_sleep(NUM_ICS);
@@ -56,13 +57,20 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* 
             // Core receives all 1s when the CSC is MIA
             if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)
                 && (cell_3 == UINT16_MAX)) {
-                set_fault(BMS_FAULT_CSC_MIA);
+                set_csc_mia(ic);
             } else {
-                clear_fault(BMS_FAULT_CSC_MIA);
+                clear_csc_mia(ic);
                 // Accumulate voltage (only append if valid SPI response)
                 *pack_voltage += cell_1 >> 8;
                 *pack_voltage += cell_2 >> 8;
                 *pack_voltage += cell_3 >> 8;
+            }
+
+            // Set CSC fault based on status of all CSCs
+            if (!check_csc_state()) {
+                clear_fault(BMS_FAULT_CSC_MIA);
+            } else {
+                set_fault(BMS_FAULT_CSC_MIA);
             }
 
             // Put cell voltages in CAN message

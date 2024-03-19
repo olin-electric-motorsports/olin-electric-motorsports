@@ -23,3 +23,19 @@ int check_fault_state(void) {
         return 1;
     }
 }
+
+void set_csc_mia(enum csc_mia the_csc) {
+    bms_metrics.csc_status |= (1 << the_csc);
+}
+
+void clear_csc_mia(enum csc_mia the_csc) {
+    bms_metrics.csc_status &= ((1 << the_csc) ^ UINT8_MAX);
+}
+
+int check_csc_state(void) {
+    if (bms_metrics.csc_status == 0) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
