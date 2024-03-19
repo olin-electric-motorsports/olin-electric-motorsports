@@ -141,35 +141,57 @@ publish:
     id: 0x510
     freq_hz: 100
     signals:
+      - name: csc_status
+        slice: 0 + 6
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: da_status_1
+        slice: 6 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: da_status_2
+        slice: 22 + 8
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: i2c_error_count
+        slice: 30 + 8
+        unit:
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
+      - name: i2c_channel
+        slice: 38 + 2
+        unit:
+          type: enum
+          values:
+            - CHANNEL_0
+            - CHANNEL_1
+            - CHANNEL_2
+            - CHANNEL_3
       - name: voltage_pec_error_count
-        slice: 0 + 8
+        slice: 40 + 8
         unit:
           type: uint8_t
           name: "errors"
           scale: 1
           offset: 0
       - name: temperature_pec_error_count
-        slice: 8 + 8
+        slice: 48 + 8
         unit:
           type: uint8_t
           name: "errors"
           scale: 1
           offset: 0
-      #TODO: Fully define i2c error detection struct
-      # - name: ic
-      #   slice: 16 + 4
-      #   unit:
-      #     type: uint8_t
-      #     name: ""
-      #     scale: 1
-      #     offset: 0
-      # - name: i2c_error_count
-      #   slice: 20 + 8
-      #   unit:
-      #     type: uint8_t
-      #     name: ""
-      #     scale: 1
-      #     offset: 0
 
   - name: bms_debug
     id: 0x511
