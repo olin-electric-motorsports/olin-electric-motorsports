@@ -13,7 +13,7 @@
 
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-// #include "vehicle/mkvi/software/bms/tasks/tasks.h"
+#include "vehicle/mkvi/software/bms/tasks/tasks.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/mux.h"
 
@@ -67,11 +67,31 @@ void hw_init() {
     wakeup_sleep(NUM_ICS);
 }
 
+static void monitor_cells(void) {
+    // read current
+    int16_t current = 0;
+    uint16_t vref = 0;
+    uint16_t vout = 0;
+    current_task(&current, &vref, &vout);
+    bms_core.pack_current = current;
+    bms_sense.current_vref = vref;
+    bms_sense.current_vout = vout;
+
+    // Check for overcurrent fault
+    if (current > CURRENT_THRESH) {
+        set_fault(BMS_FAULT_OVERCURRENT);
+    }
+}
+
 int main(void) {
     hw_init();
 
     while (true) {
         if (run_10ms) {
+            monitor_cells();
+            if (!check_fault_state()) {
+                gpio_set_pin(BMS_RELAY_LSD);
+            }
             can_send_bms_core();
             can_send_bms_sense();
             run_10ms = false;
