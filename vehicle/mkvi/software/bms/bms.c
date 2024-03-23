@@ -68,19 +68,6 @@ void hw_init() {
 }
 
 static void monitor_cells(void) {
-    // Set a new fault
-    if (bms_core.bms_fault != BMS_FAULT_NONE) {
-        bms_core.bms_state = BMS_STATE_FAULT;
-        gpio_clear_pin(BMS_RELAY_LSD);
-    }
-
-    // Handle condition where fault was cleared
-    // TODO: also need to handle charging here
-    if (bms_core.bms_state == BMS_STATE_FAULT
-        && bms_core.bms_fault == BMS_FAULT_NONE) {
-        bms_core.bms_state = BMS_STATE_ACTIVE;
-    }
-
     // read current
     int16_t current = 0;
     uint16_t vref = 0;
@@ -89,6 +76,11 @@ static void monitor_cells(void) {
     bms_core.pack_current = current;
     bms_sense.current_vref = vref;
     bms_sense.current_vout = vout;
+
+    // Check for overcurrent fault
+    if (current > CURRENT_THRESH) {
+        set_fault(BMS_FAULT_OVERCURRENT);
+    }
 }
 
 int main(void) {

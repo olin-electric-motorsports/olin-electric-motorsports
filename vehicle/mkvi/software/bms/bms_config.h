@@ -26,6 +26,8 @@
 #define OVERVOLTAGE_THRESHOLD  (39500) // 3.95V
 #define UNDERVOLTAGE_THRESHOLD (25000) // 2.5V
 
+#define CURRENT_THRESH (5000) // Not sure about this value
+
 /*
  * PIN DEFINITIONS
  */
