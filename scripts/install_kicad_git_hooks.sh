@@ -6,7 +6,7 @@ ROOT=$(git rev-parse --show-toplevel)
 
 # install virtual pre-checkout hook
 # the pre-checkout hook will prevent checkout if the symbols haven't been commited
-cat << EOF > ${ROOT}/.git/hooks/pre-checkout
+cat <<EOF >${ROOT}/.git/hooks/pre-checkout
 #!/bin/bash
 # parameters:
 # 1: previous HEAD
@@ -43,7 +43,7 @@ EOF
 
 # install post-checkout hook
 # the post-checkout hook generates a kicad_sym file from the symbols in parts/schematic/oem
-cat << EOF > ${ROOT}/.git/hooks/post-checkout
+cat <<EOF >${ROOT}/.git/hooks/post-checkout
 #!/bin/bash
 # parameters:
 # 1: previous HEAD
@@ -65,13 +65,19 @@ EOF
 # install pre-commit hook
 # the pre-commit hook generates files for parts/schematic/oem from a kicad_sym file
 
-cat << EOF > ${ROOT}/.git/hooks/pre-commit
+cat <<EOF >${ROOT}/.git/hooks/pre-commit
 #!/bin/bash
 if test -f ${ROOT}/parts/schematic/oem.kicad_sym; then
     rm -rf ${ROOT}/parts/schematic/oem
     bazel run //tools/symbols:convert -- library2symbols --source ${ROOT}/parts/schematic/oem.kicad_sym --out ${ROOT}/parts/schematic/oem
 fi
 git add ${ROOT}/parts/schematic/oem
+
+# format with clang
+${ROOT}/scripts/clang-format.sh reformat-staged
+
+# format with buildifier
+${ROOT}/scripts/buildifier-format.sh reformat-staged
 EOF
 
 # make hooks executable
@@ -79,3 +85,6 @@ chmod +x ${ROOT}/.git/hooks/pre-checkout
 chmod +x ${ROOT}/.git/hooks/post-checkout
 chmod +x ${ROOT}/.git/hooks/pre-commit
 
+# make hook dependencies executable
+chmod +x ${ROOT}/scripts/clang-format.sh
+chmod +x ${ROOT}/scripts/buildifier-format.sh
