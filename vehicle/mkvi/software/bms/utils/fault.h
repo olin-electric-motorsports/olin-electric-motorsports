@@ -37,3 +37,11 @@ void clear_fault(enum bms_fault the_fault);
  * state.
  */
 int check_fault_state(void);
+
+/**
+ * Clear all BMS faults.
+ *
+ * Use with caution. However, any faults caused non-transient effects will
+ * trigger faults again.
+ */
+void clear_all_faults(void);

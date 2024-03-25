@@ -23,3 +23,7 @@ int check_fault_state(void) {
         return 1;
     }
 }
+
+void clear_all_faults(void) {
+    bms_core.bms_fault_code = 0;
+}

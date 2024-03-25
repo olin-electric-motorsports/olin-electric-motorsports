@@ -72,6 +72,9 @@ int main(void) {
 
     while (true) {
         if (run_10ms) {
+            // Future: Place monitor cells before the fault state is checked to
+            // ensure the BMS relay is not closed on init, even when there
+            // are conditions for faults.
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             }
