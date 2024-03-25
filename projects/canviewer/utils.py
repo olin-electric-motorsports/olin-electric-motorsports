@@ -37,3 +37,18 @@ def get_val(signal, data):
 def get_message_name(msg, db):
     """Given a can.Message and a cantools.database, return the message name"""
     return db.get_message_by_frame_id(msg.arbitration_id).name
+
+
+# BMS faults, see fault.h for full list of faults
+bms_faults_decoded = ["UV", "OV", "UT", "OT", "DF", "OW",
+                    "OC", "PEC", "CF", "SM", "CSC", "DA"]
+
+def decode_bms_fault_msg(fault_msg):
+    """Decode the bms fault message"""
+    msg = "{0:b}".format(int(fault_msg))
+    decoded_msg = ""
+    for index, error in enumerate(msg[::-1]):
+        if error == "1":
+          decoded_msg += bms_faults_decoded[index]
+          decoded_msg += ", "
+    return decoded_msg[0:-2]
