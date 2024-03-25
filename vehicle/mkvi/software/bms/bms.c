@@ -13,7 +13,7 @@
 
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-// #include "vehicle/mkvi/software/bms/tasks/tasks.h"
+#include "vehicle/mkvi/software/bms/tasks/tasks.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/mux.h"
 
@@ -67,11 +67,49 @@ void hw_init() {
     wakeup_sleep(NUM_ICS);
 }
 
+static void monitor_cells(void) {
+    // read all temperatures
+    uint32_t ot = 0;
+    uint32_t ut = 0;
+    static uint16_t min_temp = 0;
+    static uint16_t max_temp = UINT16_MAX;
+
+    uint16_t pec_errors = 0;
+    temperature_task(&ot, &ut, &min_temp, &max_temp, &pec_errors);
+
+    bms_sense.min_temperature = min_temp;
+    bms_sense.max_temperature = max_temp;
+
+    // Check for PEC errors
+    if (pec_errors != 0) {
+        bms_metrics.temperature_pec_error_count += pec_errors;
+
+        if (bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+            set_fault(BMS_FAULT_PEC);
+        }
+    } else {
+        bms_metrics.temperature_pec_error_count = 0;
+    }
+
+    // Check for undertemparature and overtemperature faults
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+    }
+    
+    if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
+    }
+}
+
 int main(void) {
     hw_init();
 
     while (true) {
         if (run_10ms) {
+            monitor_cells();
+            if (!check_fault_state()) {
+                gpio_set_pin(BMS_RELAY_LSD);
+            }
             can_send_bms_core();
             can_send_bms_sense();
             run_10ms = false;
