@@ -84,7 +84,6 @@ static void monitor_cells(void) {
         if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
             set_fault(BMS_FAULT_PEC);
         }
-        return;
     } else {
         bms_metrics.voltage_pec_error_count = 0;
     }
