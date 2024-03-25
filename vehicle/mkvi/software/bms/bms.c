@@ -13,7 +13,7 @@
 
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-// #include "vehicle/mkvi/software/bms/tasks/tasks.h"
+#include "vehicle/mkvi/software/bms/tasks/tasks.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/mux.h"
 
@@ -67,11 +67,46 @@ void hw_init() {
     wakeup_sleep(NUM_ICS);
 }
 
+static void monitor_cells(void) {
+    // read all voltages
+    uint32_t ov = 0;
+    uint32_t uv = 0;
+
+    uint16_t pack_voltage = 0;
+    uint16_t pec_errors = 0;
+    voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
+    bms_core.pack_voltage = pack_voltage;
+
+    // Check for PEC errors
+    if (pec_errors != 0) {
+        bms_metrics.voltage_pec_error_count += pec_errors;
+
+        if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+            set_fault(BMS_FAULT_PEC);
+        }
+    } else {
+        bms_metrics.voltage_pec_error_count = 0;
+    }
+
+    // Check for undervoltage and overvoltage faults
+    if (ov > 0) {
+        set_fault(BMS_FAULT_OVERVOLTAGE);
+    }
+    if (uv > 0) {
+        set_fault(BMS_FAULT_UNDERVOLTAGE);
+    }
+}
+
 int main(void) {
     hw_init();
 
     while (true) {
         if (run_10ms) {
+            monitor_cells();
+            // Only set the BMS relay LSD if no faults are present
+            if (!check_fault_state()) {
+                gpio_set_pin(BMS_RELAY_LSD);
+            }
             can_send_bms_core();
             can_send_bms_sense();
             run_10ms = false;
