@@ -1,14 +1,13 @@
+#include "vehicle/mkvi/software/charging/charger.h"
+#include "MCP25625.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
-#include "vehicle/mkvi/software/charging/charger.h"
 #include "vehicle/mkvi/software/charging/can_api.h"
 #include <stdint.h>
-#include "MCP25625.h"
-#include "vehicle/mkvi/software/charging/can_api.h"
 #include <stdio.h>
 
-#define TARGET_PACK_VOLTAGE (360) // in volts
+#define TARGET_PACK_VOLTAGE  (360) // in volts
 #define CHARGING_MAX_VOLTAGE (201) // 3201 = 320.1V
 #define CHARGING_MAX_CURRENT (582) // 582 = 58.2A
 
@@ -24,7 +23,8 @@ bool temperature_protection = false;
 bool input_voltage = false;
 bool starting_state = false;
 bool communication_state = false;
-bool *checks[] = {&hardware_fault, &temperature_protection, &input_voltage, &starting_state, &communication_state};
+bool* checks[] = { &hardware_fault, &temperature_protection, &input_voltage,
+                   &starting_state, &communication_state };
 
 // helper function
 uint16_t binaryToDecimal(uint16_t binaryNumber) {
@@ -51,15 +51,15 @@ void timer0_isr(void) {
     send_can = true;
 }
 
-void charger_can_init(){
+void charger_can_init() {
     spi_init(&spi_cfg);
     mcp25625_init(OPMODE_NORMAL);
 }
 
-//bazel build --config=16m1 //vehicle/mkvi/software/charging:charging -c opt
+// bazel build --config=16m1 //vehicle/mkvi/software/charging:charging -c opt
 
 // sending SPI to charger
-void spi_send_charger(){
+void spi_send_charger() {
     uint8_t bytes[5] = { 0 };
     bytes[0] = (charging_cmd.max_voltage * 10) & 0b11111111;
     bytes[1] = (charging_cmd.max_voltage * 10) >> 8;
@@ -72,64 +72,66 @@ void spi_send_charger(){
 
 // receiving SPI from charger
 // parse data from charger
-void spi_receive_charger(){
-    if( mcp25625_msg_ready( RXB0 ) )
-        {
-            mcp25625_msg_read( RXB0, rx_msg, &count, &EID, &RX_IDE, &RX_RTR );
-            // assigning spi data to variables
-            charging_voltage = binaryToDecimal((uint16_t) rx_msg[0] << 8 | rx_msg[1]) * 0.1;
-            charging_current = binaryToDecimal((uint16_t) rx_msg[2] << 8 | rx_msg[3]) * 0.1;
-            for (int i = 0; i < 5; i++){
-                *checks[i] = (bool)((rx_msg[4] >> i) & 0x01);
-            }
+void spi_receive_charger() {
+    if (mcp25625_msg_ready(RXB0)) {
+        mcp25625_msg_read(RXB0, rx_msg, &count, &EID, &RX_IDE, &RX_RTR);
+        // assigning spi data to variables
+        charging_voltage
+            = binaryToDecimal((uint16_t)rx_msg[0] << 8 | rx_msg[1]) * 0.1;
+        charging_current
+            = binaryToDecimal((uint16_t)rx_msg[2] << 8 | rx_msg[3]) * 0.1;
+        for (int i = 0; i < 5; i++) {
+            *checks[i] = (bool)((rx_msg[4] >> i) & 0x01);
         }
+    }
 }
 
-// 3/4 note: changed MCP25625_hw.c delay function (commented lib out & put empty for loops instead)
+// 3/4 note: changed MCP25625_hw.c delay function (commented lib out & put empty
+// for loops instead)
 
-//loop
+// loop
 int main(void) {
-
-    //insert extend mode thingy + change baud rate; try use existing can.c thing
+    // insert extend mode thingy + change baud rate; try use existing can.c
+    // thing
 
     charger_can_init();
 
     // modify while loop to include a clock / delay
-    while(1) {
-        //check status of BMS
-        // poll like asking a question is there can data or not; verifying if the message exists or not
-        if (send_can){
-            if (can_poll_receive_bms_core() == 0){
+    while (1) {
+        // check status of BMS
+        //  poll like asking a question is there can data or not; verifying if
+        //  the message exists or not
+        if (send_can) {
+            if (can_poll_receive_bms_core() == 0) {
                 can_receive_bms_core(); // getting can data
             }
-            if(can_poll_receive_bms_charging() == 0){
+            if (can_poll_receive_bms_charging() == 0) {
                 can_receive_bms_charging(); // will be added into bms.yml soon
             }
             spi_receive_charger();
             // values would initialize to 0 if poll receives fail
-            if (bms_core.pack_voltage < TARGET_PACK_VOLTAGE){
-                if (bms_charging.charge_enable){
+            if (bms_core.pack_voltage < TARGET_PACK_VOLTAGE) {
+                if (bms_charging.charge_enable) {
                     charging_cmd.enable = true;
-                    charging_cmd.max_voltage = CHARGING_MAX_VOLTAGE; 
-                    charging_cmd.max_current = CHARGING_MAX_CURRENT; 
-                }
-                else {
+                    charging_cmd.max_voltage = CHARGING_MAX_VOLTAGE;
+                    charging_cmd.max_current = CHARGING_MAX_CURRENT;
+                } else {
                     charging_cmd.enable = false;
                 }
             }
-            //safety checks
+            // safety checks
             if (hardware_fault) {
                 charging_cmd.enable = false;
             }
             if (temperature_protection) {
                 charging_cmd.enable = false;
             }
-            if (charging_voltage > charging_cmd.max_voltage || charging_current > charging_cmd.max_current) {
+            if (charging_voltage > charging_cmd.max_voltage
+                || charging_current > charging_cmd.max_current) {
                 charging_cmd.enable = false;
             }
             spi_send_charger();
             send_can = false;
         }
     }
-
 }
