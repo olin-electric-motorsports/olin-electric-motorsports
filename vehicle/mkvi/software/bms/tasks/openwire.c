@@ -87,6 +87,22 @@ int openwire_task(void) {
         }
     }
 
+    for (i = 0; i < 3; i++) {
+        wakeup_idle(total_ic);
+        LTC681x_adow(MD_26HZ_2KHZ, PULL_DOWN_CURRENT, CELL_CH_ALL,
+                     DCP_DISABLED);
+        LTC681x_pollAdc();
+    }
+
+    wakeup_idle(total_ic);
+    LTC681x_rdcv(0, total_ic, ic);
+
+    for (int cic = 0; cic < total_ic; cic++) {
+        for (int cell = 0; cell < N_CHANNELS; cell++) {
+            pullDwn[cic][cell] = ic[cic].cells.c_codes[cell];
+        }
+    }
+
     long open_wire;
     for (int cic = 0; cic < NUM_ICS; cic++) {
         open_wire = 0xFFFF;
