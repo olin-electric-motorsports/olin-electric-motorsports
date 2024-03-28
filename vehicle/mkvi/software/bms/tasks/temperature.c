@@ -17,6 +17,7 @@ const uint8_t GPIO_CHANNELS[4] = { 1, 1, 1, 3 };
 #define INVALID_TEMPERATURE_THRESHOLD (0xD555)
 
 #define AUX_REG_GROUP_A (1)
+#define AUX_REG_GROUP_B (2)
 #define AUX_REG_GROUP_C (3)
 
 // static void fan_enable(bool enable) {
@@ -66,11 +67,15 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     (void)LTC681x_pollAdc();
 
     uint8_t aux_reg_a_raw[NUM_RX_BYT * NUM_ICS];
+    uint8_t aux_reg_b_raw[NUM_RX_BYT * NUM_ICS];
     uint8_t aux_reg_c_raw[NUM_RX_BYT * NUM_ICS];
 
     wakeup_idle(NUM_ICS);
     LTC681x_rdaux_reg(AUX_REG_GROUP_A, NUM_ICS, aux_reg_a_raw); // for GPIOS 1-3
     LTC681x_rdaux_reg(AUX_REG_GROUP_C, NUM_ICS, aux_reg_c_raw); // for GPIOS 6
+            
+    // Read the Vref2
+    LTC681x_rdaux_reg(AUX_REG_GROUP_B, NUM_ICS, aux_reg_b_raw); // for GPIO 4-5 and VREF
 
     uint8_t num_temps;
     uint16_t temps[4];
@@ -118,6 +123,10 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
             num_temps++;
         }
         can_send_bms_temperature();
+
+        bms_debug.vref2 = aux_reg_c_raw[ic_zero_idx + 4]
+                                        | (aux_reg_c_raw[ic_zero_idx + 5] << 8);
+        can_send_bms_debug();
 
         update_min_max_temps(min_temp, max_temp, temps, num_temps);
 
