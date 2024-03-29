@@ -1,0 +1,43 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model ADUM4150ARIZ
+#/421450/1360581/2.50/20/2/Integrated Circuit
+DEF ADUM4150ARIZ IC 0 30 Y Y 1 F N
+F0 "IC" 1150 300 50 H V L CNN
+F1 "ADUM4150ARIZ" 1150 200 50 H V L CNN
+F2 "SOIC127P1030X264-20N" 1150 100 50 H I L CNN
+F3 "https://www.analog.com/ADUM4150/datasheet" 1150 0 50 H I L CNN
+F4 "5kV, 6-Channel, SPIsolator Digital Isolator for SPI with Delay Clock" 1150 -100 50 H I L CNN "Description"
+F5 "2.64" 1150 -200 50 H I L CNN "Height"
+F6 "Analog Devices" 1150 -300 50 H I L CNN "Manufacturer_Name"
+F7 "ADUM4150ARIZ" 1150 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "584-ADUM4150ARIZ" 1150 -500 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.co.uk/ProductDetail/Analog-Devices/ADUM4150ARIZ?qs=iCT64eccu7g5leq3YKn5uw%3D%3D" 1150 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "ADUM4150ARIZ" 1150 -700 50 H I L CNN "Arrow Part Number"
+F11 "https://www.arrow.com/en/products/adum4150ariz/analog-devices?region=europe" 1150 -800 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X VDD1 1 0 0 200 R 50 50 0 0 P
+X GND1_1 2 0 -100 200 R 50 50 0 0 P
+X MCLK 3 0 -200 200 R 50 50 0 0 P
+X MO 4 0 -300 200 R 50 50 0 0 P
+X MI 5 0 -400 200 R 50 50 0 0 P
+X ~MSS 6 0 -500 200 R 50 50 0 0 P
+X VIA 7 0 -600 200 R 50 50 0 0 P
+X VOB 8 0 -700 200 R 50 50 0 0 P
+X DCLK 9 0 -800 200 R 50 50 0 0 P
+X GND1_2 10 0 -900 200 R 50 50 0 0 P
+X VDD2 20 1300 0 200 L 50 50 0 0 P
+X GND2_2 19 1300 -100 200 L 50 50 0 0 P
+X SCLK 18 1300 -200 200 L 50 50 0 0 P
+X SI 17 1300 -300 200 L 50 50 0 0 P
+X SO 16 1300 -400 200 L 50 50 0 0 P
+X ~SSS 15 1300 -500 200 L 50 50 0 0 P
+X VOA 14 1300 -600 200 L 50 50 0 0 P
+X VIB 13 1300 -700 200 L 50 50 0 0 P
+X NIC 12 1300 -800 200 L 50 50 0 0 P
+X GND2_1 11 1300 -900 200 L 50 50 0 0 P
+P 5 0 1 6 200 100 1100 100 1100 -1000 200 -1000 200 100 N
+ENDDRAW
+ENDDEF
+#
+#End Library

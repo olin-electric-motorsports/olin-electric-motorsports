@@ -1,0 +1,134 @@
+;Proteus Design Interchange Format
+(PDIF
+ (vendor "SamacSys Limited")
+ (version 1 0)
+ (library
+  (part "PEME2-5-S5-D"
+   (description "Isolated DC/DC Converters - Through Hole dc-dc isolated, 2 W, 4.5-5.5 Vdc input, 5 Vdc, 400 mA, single unregulated output, DIP")
+   (family "ANA")
+   (package "PEME25S5D")
+   (attribute "Datasheet Link" "https://www.cui.com/product/resource/supplyframepdf/peme2-d.pdf")
+   (attribute "Geometry.Height" "8.45mm")
+   (attribute "Manufacturer_Name" "CUI Inc.")
+   (attribute "Manufacturer_Part_Number" "PEME2-5-S5-D")
+   (attribute "Mouser Part Number" "")
+   (attribute "Mouser Price/Stock" "")
+   (attribute "Arrow Part Number" "")
+   (attribute "Arrow Price/Stock" "")
+   (gate
+    (symbol "PEME2-5-S5-D")
+    (pin "GND" 1 PS)
+    (pin "NC" 7 NC)
+    (pin "+VO" 8 PS)
+    (pin "0V" 10 PS)
+    (pin "VIN" 14 PS)
+   )
+  )
+  (symbol "PEME2-5-S5-D"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 200 100) (pt 800 100) (pt 800 -300) (pt 200 -300) (pt 200 100) (closed))
+   )
+   (terminal
+    (body (symbol "PIN") (pt 0 0) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -100) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -200) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -100) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 0) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+  )
+  (symbol "PIN"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 0 0) (pt 200 0))))
+  (symbol "PINSHORT"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 0 0) (pt 100 0))))
+  (package "PEME25S5D"
+   (units MM)
+   (layer TASM
+    (graphic
+     (stroke 0.1)
+     (path
+      (closed true)
+      (pt -2.54 -1.27)
+      (pt 17.78 -1.27)
+      (pt 17.78 8.89)
+      (pt -2.54 8.89)
+      (pt -2.54 -1.27))))
+   (layer OCCA
+    (graphic
+     (stroke 0.1)
+     (path
+      (closed true)
+      (pt -3.54 9.89)
+      (pt 18.78 9.89)
+      (pt 18.78 -2.27)
+      (pt -3.54 -2.27)
+      (pt -3.54 9.89))))
+   (layer TSLK
+    (graphic
+     (stroke 0.2)
+     (path
+      (closed false)
+      (pt 17.78 -1.27)
+      (pt 17.78 8.89)
+      (pt -2.54 8.89)
+      (pt -2.54 -1.27)
+      (pt 17.82 -1.27))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1)
+     (path
+      (closed true)
+      (pt -3.1 0)
+      (arc (pt -3.100 0.000) (pt -3.100 -0.050) (pt -3.000 0.050) (start 180.0) (sweep -180.0))
+      (pt -3 0)
+      (arc (pt -3.000 0.000) (pt -3.100 -0.050) (pt -3.000 0.050) (start 180.0) (sweep .0))
+      (pt -3.1 0))))
+   (leg 1 (pt 0.000 0.000) (padstack 1))
+   (leg 7 (pt 15.240 0.000) (padstack 0))
+   (leg 8 (pt 15.240 7.620) (padstack 0))
+   (leg 10 (pt 10.160 7.620) (padstack 0))
+   (leg 14 (pt 0.000 7.620) (padstack 0))
+   (padstack 0
+    (hole 1)
+    (plated true)
+    (pad (layer TCOP) (round 1.500))
+    (pad (layer INNER) (round 1.500))
+    (pad (layer BCOP) (round 1.500))
+   )
+   (padstack 1
+    (hole 1)
+    (plated true)
+    (pad (layer TCOP) (square 1.500))
+    (pad (layer INNER) (round 1.500))
+    (pad (layer BCOP) (square 1.500))
+   )
+   (model "PEME2-5-S5-D.stp"
+    (euler 90 0 -90)
+    (offset 7.619999885559082 3.809999942779541 4)
+   )
+  )
+ )
+)

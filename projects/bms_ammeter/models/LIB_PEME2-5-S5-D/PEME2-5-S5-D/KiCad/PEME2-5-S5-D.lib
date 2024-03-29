@@ -1,0 +1,28 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model PEME2-5-S5-D
+#/18907445/1360581/2.50/5/2/Power Supply
+DEF PEME2-5-S5-D PS 0 30 Y Y 1 F N
+F0 "PS" 850 300 50 H V L CNN
+F1 "PEME2-5-S5-D" 850 200 50 H V L CNN
+F2 "PEME25S5D" 850 100 50 H I L CNN
+F3 "https://www.cui.com/product/resource/supplyframepdf/peme2-d.pdf" 850 0 50 H I L CNN
+F4 "Isolated DC/DC Converters - Through Hole dc-dc isolated, 2 W, 4.5-5.5 Vdc input, 5 Vdc, 400 mA, single unregulated output, DIP" 850 -100 50 H I L CNN "Description"
+F5 "8.45" 850 -200 50 H I L CNN "Height"
+F6 "CUI Inc." 850 -300 50 H I L CNN "Manufacturer_Name"
+F7 "PEME2-5-S5-D" 850 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "" 850 -500 50 H I L CNN "Mouser Part Number"
+F9 "" 850 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "" 850 -700 50 H I L CNN "Arrow Part Number"
+F11 "" 850 -800 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X GND 1 0 0 200 R 50 50 0 0 P
+X NC 7 0 -100 200 R 50 50 0 0 N
+X +VO 8 1000 -200 200 L 50 50 0 0 P
+X 0V 10 1000 -100 200 L 50 50 0 0 P
+X VIN 14 1000 0 200 L 50 50 0 0 P
+P 5 0 1 6 200 100 800 100 800 -300 200 -300 200 100 N
+ENDDRAW
+ENDDEF
+#
+#End Library

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/18907445/1360581/2.50/5/2/Power Supply/-->
+<!DOCTYPE curve SYSTEM "eagle.dtd">
+<eagle version="7.7.0">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+</layers>
+<library>
+<description>&lt;Isolated DC/DC Converters - Through Hole dc-dc isolated, 2 W, 4.5-5.5 Vdc input, 5 Vdc, 400 mA, single unregulated output, DIP&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="PEME25S5D">
+<description>&lt;b&gt;PEME2-5-S5-D-1&lt;/b&gt;&lt;br&gt;
+</description>
+<pad name="1" x="0.000" y="0.000" drill="1" diameter="1.500" shape="square"/>
+<pad name="7" x="15.240" y="0.000" drill="1" diameter="1.500"/>
+<pad name="8" x="15.240" y="7.620" drill="1" diameter="1.500"/>
+<pad name="10" x="10.160" y="7.620" drill="1" diameter="1.500"/>
+<pad name="14" x="0.000" y="7.620" drill="1" diameter="1.500"/>
+<text x="7.620" y="3.810" align="center" size="1.27" layer="25" rot="R0" >&gt;NAME</text>
+<text x="7.620" y="3.810" align="center" size="1.27" layer="27" rot="R0" >&gt;VALUE</text>
+<wire x1="-2.54" y1="-1.27" x2="17.78" y2="-1.27" width="0.1" layer="51"/>
+<wire x1="17.78" y1="-1.27" x2="17.78" y2="8.89" width="0.1" layer="51"/>
+<wire x1="17.78" y1="8.89" x2="-2.54" y2="8.89" width="0.1" layer="51"/>
+<wire x1="-2.54" y1="8.89" x2="-2.54" y2="-1.27" width="0.1" layer="51"/>
+<wire x1="-3.54" y1="9.89" x2="18.78" y2="9.89" width="0.1" layer="51"/>
+<wire x1="18.78" y1="9.89" x2="18.78" y2="-2.27" width="0.1" layer="51"/>
+<wire x1="18.78" y1="-2.27" x2="-3.54" y2="-2.27" width="0.1" layer="51"/>
+<wire x1="-3.54" y1="-2.27" x2="-3.54" y2="9.89" width="0.1" layer="51"/>
+<wire x1="17.78" y1="-1.27" x2="17.78" y2="8.89" width="0.2" layer="21"/>
+<wire x1="17.78" y1="8.89" x2="-2.54" y2="8.89" width="0.2" layer="21"/>
+<wire x1="-2.54" y1="8.89" x2="-2.54" y2="-1.27" width="0.2" layer="21"/>
+<wire x1="-2.54" y1="-1.27" x2="17.82" y2="-1.27" width="0.2" layer="21"/>
+<wire x1="-3.1" y1="0" x2="-3.1" y2="0" width="0.1" layer="21"/>
+<wire x1="-3.100" y1="0.000" x2="-3.000" y2="0.000" width="0.1" layer="21" curve="180.0"/>
+<wire x1="-3" y1="0" x2="-3" y2="0" width="0.1" layer="21"/>
+<wire x1="-3.000" y1="0.000" x2="-3.100" y2="0.000" width="0.1" layer="21" curve="180.0"/>
+</package>
+</packages>
+<symbols>
+<symbol name="PEME2-5-S5-D">
+<wire x1="5.08" y1="2.54" x2="20.32" y2="2.54" width="0.254" layer="94"/>
+<wire x1="20.32" y1="-7.62" x2="20.32" y2="2.54" width="0.254" layer="94"/>
+<wire x1="20.32" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<text x="21.59" y="7.62" align="center-left" size="1.778" layer="95">&gt;NAME</text>
+<text x="21.59" y="5.08" align="center-left" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="GND" x="0" y="0" length="middle" direction="io" rot="R0"/>
+<pin name="NC" x="0" y="-2.54" length="middle" direction="nc" rot="R0"/>
+<pin name="+VO" x="25.4" y="-5.08" length="middle" direction="io" rot="R180"/>
+<pin name="0V" x="25.4" y="-2.54" length="middle" direction="io" rot="R180"/>
+<pin name="VIN" x="25.4" y="0" length="middle" direction="io" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="PEME2-5-S5-D" prefix="PS">
+<description>&lt;b&gt;Isolated DC/DC Converters - Through Hole dc-dc isolated, 2 W, 4.5-5.5 Vdc input, 5 Vdc, 400 mA, single unregulated output, DIP&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://www.cui.com/product/resource/supplyframepdf/peme2-d.pdf"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="PEME2-5-S5-D" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="PEME25S5D">
+<connects>
+<connect gate="G$1" pin="GND" pad="1"/>
+<connect gate="G$1" pin="NC" pad="7"/>
+<connect gate="G$1" pin="+VO" pad="8"/>
+<connect gate="G$1" pin="0V" pad="10"/>
+<connect gate="G$1" pin="VIN" pad="14"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="Manufacturer_Name" value="CUI Inc." constant="no"/>
+<attribute name="Manufacturer_Part_Number" value="PEME2-5-S5-D" constant="no"/>
+<attribute name="Mouser_Part_Number" value="" constant="no"/>
+<attribute name="Mouser_Price-Stock" value="" constant="no"/>
+<attribute name="Arrow_Part_Number" value="" constant="no"/>
+<attribute name="Arrow_Price-Stock" value="" constant="no"/>
+<attribute name="Description" value="Isolated DC/DC Converters - Through Hole dc-dc isolated, 2 W, 4.5-5.5 Vdc input, 5 Vdc, 400 mA, single unregulated output, DIP" constant="no"/>
+<attribute name="Height" value="8.45mm" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>
