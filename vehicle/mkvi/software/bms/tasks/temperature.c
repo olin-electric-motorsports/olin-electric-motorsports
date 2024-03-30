@@ -124,8 +124,8 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         }
         can_send_bms_temperature();
 
-        bms_debug.vref2 = aux_reg_c_raw[ic_zero_idx + 4]
-                                        | (aux_reg_c_raw[ic_zero_idx + 5] << 8);
+        bms_debug.vref2 = aux_reg_b_raw[ic_zero_idx + 4]
+                                        | (aux_reg_b_raw[ic_zero_idx + 5] << 8);
         can_send_bms_debug();
 
         update_min_max_temps(min_temp, max_temp, temps, num_temps);
