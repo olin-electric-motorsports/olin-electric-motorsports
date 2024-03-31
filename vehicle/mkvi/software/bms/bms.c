@@ -113,15 +113,15 @@ static void monitor_cells(void) {
     bms_sense.min_temperature = min_temp;
     bms_sense.max_temperature = max_temp;
 
-    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_UNDERTEMPERATURE);
-        bms_core.bms_state = BMS_STATE_FAULT;
-        return;
-    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_OVERTEMPERATURE);
-        bms_core.bms_state = BMS_STATE_FAULT;
-        return;
-    }
+    // if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+    //     set_fault(BMS_FAULT_UNDERTEMPERATURE);
+    //     bms_core.bms_state = BMS_STATE_FAULT;
+    //     return;
+    // } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+    //     set_fault(BMS_FAULT_OVERTEMPERATURE);
+    //     bms_core.bms_state = BMS_STATE_FAULT;
+    //     return;
+    // }
 
     // Check for PEC errors
     if (rc != 0) {
