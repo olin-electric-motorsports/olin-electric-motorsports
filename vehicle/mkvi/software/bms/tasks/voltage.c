@@ -30,6 +30,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
      * then the Register B, etc.
      */
     uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
+    uint16_t pack_voltages[NUM_ICS] = { 0 };
 
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
         // Read one register at a time for all segments
@@ -67,28 +68,28 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
             }
 
             // Put cell voltages in CAN message
-            bms_voltage.voltage_1 = cell_1;
-            bms_voltage.voltage_2 = cell_2;
-            bms_voltage.voltage_3 = cell_3;
+            pack_voltages[ic] += cell_1;
+            pack_voltages[ic] += cell_2;
+            pack_voltages[ic] += cell_3;
 
             // Check under/overvoltage thresholds
-            if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
+            // if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
+            //     *ov += 1;
+            // } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
+            //     *uv += 1;
+            // }
 
-            if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
+            // if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
+            //     *ov += 1;
+            // } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
+            //     *uv += 1;
+            // }
 
-            if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
+            // if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
+            //     *ov += 1;
+            // } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
+            //     *uv += 1;
+            // }
 
             can_send_bms_voltage();
 
@@ -108,6 +109,15 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
             }
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D, E, F)
+
+    for(uint8_t ic = 0; ic < NUM_ICS; ic++) {
+        if (pack_voltages[ic] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
+            *ov += 1;
+        }
+        if (pack_voltages[ic] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
+            *uv += 1;
+        }
+    }
 
     return pec_errors;
 }
