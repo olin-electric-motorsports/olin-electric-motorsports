@@ -67,13 +67,13 @@ class VoltageReading:
     adc: int
 
     def __str__(self):
-        cell_number = str((int(self.cell) + 6 * self.adc))
+        cell_number = str(((int(self.cell) -1) * 3 + self.adc))
         if len(cell_number) == 1:
           cell_number = f"0{cell_number}"
         return f"{self.ic}:{cell_number}"
 
-debug_temp: bool = False
-debug_voltage: bool = True
+debug_temp: bool = True
+debug_voltage: bool = False
 temp_readings: Dict[ThermistorReading, float] = {}
 voltage_readings: Dict[VoltageReading, float] = {}
 import numpy as np
@@ -135,8 +135,8 @@ def rx_callback(msg, db):
                   + "\n"
               )
               i += 4
-          txt += "min:\t" + str(convertVtoT(max(temp_readings.values()))) + "\n"
-          txt += "max:\t" + str(convertVtoT(min(temp_readings.values()))) + "\n"
+          txt += "min:\t" + str((max(temp_readings.values()))) + "\n"
+          txt += "max:\t" + str((min(temp_readings.values()))) + "\n"
           txt += "high:\t" + str(num_high) + "\n"
           txt += "______________end_______________"
           print(txt)

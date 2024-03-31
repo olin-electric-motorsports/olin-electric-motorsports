@@ -5,7 +5,7 @@
 #include "libs/gpio/api.h"
 
 void set_fault(enum bms_fault_e the_fault) {
-    gpio_clear_pin(BMS_RELAY_LSD);
+    // gpio_clear_pin(BMS_RELAY_LSD);
 
     if (bms_core.bms_fault == BMS_FAULT_NONE) {
         bms_core.bms_fault = the_fault;

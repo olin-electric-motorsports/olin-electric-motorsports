@@ -51,6 +51,7 @@ void hw_init() {
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
     gpio_set_pin(DEBUG_LED_2);
+    gpio_set_pin(BMS_RELAY_LSD);
 
     gpio_set_mode(BSPD_CURRENT_THRESH, INPUT);
 
@@ -103,8 +104,8 @@ static void monitor_cells(void) {
     }
 
     // read all temperatures
-    uint32_t ot = 0;
-    uint32_t ut = 0;
+    static uint32_t ot = 0;
+    static uint32_t ut = 0;
     static uint16_t min_temp = 0;
     static uint16_t max_temp = UINT16_MAX;
 
@@ -198,6 +199,7 @@ int main(void) {
 
     while (true) {
         if (run_10ms) {
+            gpio_set_pin(BMS_RELAY_LSD);
             // wakeup_sleep(NUM_ICS);
             // LTC681x_wrcfg_trunc(NUM_ICS, cell_data.cells);
             monitor_cells();
