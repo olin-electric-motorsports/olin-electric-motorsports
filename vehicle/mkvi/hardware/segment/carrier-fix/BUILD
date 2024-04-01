@@ -4,5 +4,5 @@ kicad_hardware(
     name = "carrier-fix",
     schematic_files = [
         "carrier-fix.kicad_sch",
-    ]
+    ],
 )
