@@ -68,6 +68,9 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
             }
 
             // Put cell voltages in CAN message
+            bms_voltage.voltage_1 = cell_1;
+            bms_voltage.voltage_2 = cell_2;
+            bms_voltage.voltage_3 = cell_3;
             pack_voltages[ic] += cell_1;
             pack_voltages[ic] += cell_2;
             pack_voltages[ic] += cell_3;

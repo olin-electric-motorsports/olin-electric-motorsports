@@ -72,8 +72,8 @@ class VoltageReading:
           cell_number = f"0{cell_number}"
         return f"{self.ic}:{cell_number}"
 
-debug_temp: bool = True
-debug_voltage: bool = False
+debug_temp: bool = False
+debug_voltage: bool = True
 temp_readings: Dict[ThermistorReading, float] = {}
 voltage_readings: Dict[VoltageReading, float] = {}
 import numpy as np

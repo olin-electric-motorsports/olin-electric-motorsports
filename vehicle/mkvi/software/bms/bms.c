@@ -70,10 +70,10 @@ void hw_init() {
 
 static void monitor_cells(void) {
     // Set a new fault
-    if (bms_core.bms_fault != BMS_FAULT_NONE) {
-        bms_core.bms_state = BMS_STATE_FAULT;
-        gpio_clear_pin(BMS_RELAY_LSD);
-    }
+    // if (bms_core.bms_fault != BMS_FAULT_NONE) {
+    //     bms_core.bms_state = BMS_STATE_FAULT;
+    //     gpio_clear_pin(BMS_RELAY_LSD);
+    // }
 
     // Handle condition where fault was cleared
     // TODO: also need to handle charging here
@@ -195,7 +195,7 @@ static void monitor_cells(void) {
 int main(void) {
     hw_init();
 
-    // uint16_t loop_counter = 0;
+    uint16_t loop_counter = 0;
 
     while (true) {
         if (run_10ms) {
@@ -221,13 +221,17 @@ int main(void) {
             //         }
             //     }
 
-            //     loop_counter++;
+            loop_counter++;
 
             //     if (loop_counter == 400) {
             //         loop_counter = 0;
             //     }
 
             run_10ms = false;
+        }
+        if (loop_counter == 10) {
+            gpio_toggle_pin(DEBUG_LED_2);
+            loop_counter = 0;
         }
     }
 }
