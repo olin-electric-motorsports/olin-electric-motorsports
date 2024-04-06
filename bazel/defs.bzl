@@ -1,5 +1,6 @@
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+load("@bazel_embedded//tools/openocd:defs.bzl", "openocd_flash")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 load("//projects/btldr:ecus.bzl", "ECUS")
 
@@ -254,6 +255,48 @@ _flash = rule(
     executable = True,
 )
 
+# Generate .bin and .hex files for arm platform
+def _bin_file_arm(name, srcs):
+    native.genrule(
+        name = "gen_{}".format(name),
+        srcs = srcs,
+        outs = [name],
+        cmd = "$(execpath @arm_none_eabi//:objcopy) -O binary $< $@",
+        tools = ["@arm_none_eabi//:objcopy"],
+    )
+    return [
+        DefaultInfo(
+            files = depset([name]),
+        ),
+    ]
+
+def _hex_file_arm(name, srcs):
+    native.genrule(
+        name = "gen_{}".format(name),
+        srcs = srcs,
+        outs = [name],
+        cmd = "$(execpath @arm_none_eabi//:objcopy) -O ihex $< $@",
+        tools = ["@arm_none_eabi//:objcopy"],
+    )
+    return [
+        DefaultInfo(
+            files = depset([name]),
+        ),
+    ]
+
+def _flash_arm(name, image):
+    return openocd_flash(
+        name = name,
+        device_configs = [
+            "target/stm32f1x.cfg",
+        ],
+        image = image,
+        interface_configs = [
+            "interface/stlink.cfg",
+        ],
+        transport = "hla_swd",
+    )
+
 # Macro to generate all the proper files
 def cc_firmware(name, **kwargs):
     # Generates .elf file
@@ -406,6 +449,84 @@ def cc_firmware(name, **kwargs):
             "//bazel/constraints:atmega64m1": "64m1",
             "//conditions:default": "",
         }),
+    )
+
+def cc_arm_firmware(name, **kwargs):
+    # Generates .elf file
+    data = []
+    if kwargs.get("data"):
+        data = kwargs.pop("data")
+
+    defines = []
+    if kwargs.get("defines"):
+        defines = kwargs.pop("defines")
+
+    copts = []
+    if kwargs.get("copts"):
+        copts = kwargs.pop("copts")
+
+    linkopts = []
+    if kwargs.get("linkopts"):
+        linkopts = kwargs.pop("linkopts")
+
+    cc_binary(
+        name = "{}.elf".format(name),
+        linkopts = linkopts + select({
+            "//bazel/constraints:stm32f103rbt6": ["-T $(location //scripts/ldscripts:stm32f103rbt6.ld)", "-Os", "-std=c99", "-ggdb3", "-mcpu=cortex-m3", "-mthumb", "-msoft-float", "-fno-common", "-ffunction-sections", "-fdata-sections", "-Wextra", "-Wshadow", "-Wno-unused-variable", "-Wimplicit-function-declaration", "-Wredundant-decls", "-Wstrict-prototypes", "-Wmissing-prototypes", "-MD", "-Wall", "-Wundef", "-nostartfiles", "-mcpu=cortex-m3", "-mthumb", "-msoft-float", "-specs=nano.specs", "-Wl,--gc-sections", "-Wl,--start-group", "-lc", "-lgcc", "-lnosys", "-Wl,--end-group"],
+            # Add more ldscripts here
+            "//conditions:default": [],
+        }),
+        additional_linker_inputs = [
+            "//scripts/ldscripts:stm32f103rbt6.ld",
+        ],
+        copts = copts + select({
+            "//bazel/constraints:stm32f103rbt6": ["-mthumb", "-mcpu=cortex-m3", "-mlittle-endian", "-mthumb-interwork"],
+            "//conditions:default": [],
+        }),
+        defines = defines,
+        data = data,
+        **kwargs
+    )
+
+    # Generates .bin file
+    _bin_file_arm(
+        name = "{}.bin".format(name),
+        srcs = [":{}.elf".format(name)],
+    )
+
+    # Generates .hex file
+    _hex_file_arm(
+        name = "{}.hex".format(name),
+        srcs = [":{}.elf".format(name)],
+    )
+
+    # Generates .eep file
+    _eep_file(
+        name = "{}.eep".format(name),
+        elf = ":{}.elf".format(name),
+    )
+
+    # Generates tarball file with all
+    pkg_tar(
+        name = "{}.tgz".format(name),
+        extension = "tgz",
+        srcs = [
+            ":{}.elf".format(name),
+            ":{}.hex".format(name),
+            ":{}.bin".format(name),
+            ":{}.eep".format(name),
+        ],
+    )
+
+    # Generates flash script
+    bin_file = ":{}.bin".format(name)
+    btldr_hex = None
+    eeprom = None
+    template = "//bazel/tools:avrdude.sh.tmpl"
+
+    _flash_arm(
+        name = name,
+        image = bin_file,
     )
 
 ### kicad

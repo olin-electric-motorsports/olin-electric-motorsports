@@ -1,7 +1,7 @@
 workspace(name = "formula")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 register_execution_platforms("@local_config_platform//:host", "//bazel/platforms:all")
 
@@ -18,6 +18,30 @@ http_archive(
 )
 
 load("@rules_python//python:pip.bzl", "pip_install")
+
+# STM32 Workspace setup
+http_archive(
+    name = "arm_none_eabi",
+    sha256 = "34487973fd09f655a0b4531fb48cec5795bec303de30223aef43606b01fcb161",
+    strip_prefix = "bazel-arm-none-eabi-1.2.0",
+    url = "https://github.com/d-asnaghi/bazel-arm-none-eabi/archive/v1.2.0.tar.gz",
+)
+
+load("@arm_none_eabi//:deps.bzl", "arm_none_eabi_deps")
+
+arm_none_eabi_deps()
+
+# OpenOCD (flashing support for STM32) via bazel-embedded
+git_repository(
+    name = "bazel_embedded",
+    commit = "d3cbe4eff9a63d3dee63067d61096d681daca33b",
+    remote = "https://github.com/bazelembedded/bazel-embedded.git",
+    shallow_since = "1585022166 +0800",
+)
+
+load("@bazel_embedded//tools/openocd:openocd_repository.bzl", "openocd_deps")
+
+openocd_deps()
 
 # Buildifier formatter for Bazel
 
@@ -107,8 +131,8 @@ pip_install(
 )
 
 pip_install(
-    name = "hitl_deps",
-    requirements = "//projects/hitl/software:requirements.txt",
+    name = "pydeps",
+    requirements = "//third_party:requirements.txt",
 )
 
 pip_install(

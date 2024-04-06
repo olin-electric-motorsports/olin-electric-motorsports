@@ -15,6 +15,9 @@ build:328p --config=m328p-avr
 build:64m1-avr --platforms=//bazel/platforms:atmega64m1_avr
 build:64m1 --config=64m1-avr
 
+#STM32 target
+build:stm32 --platforms=//bazel/platforms:stm32f103_arm
+
 # Test target
 build:avr-test-sim --platforms=//bazel/platforms:avr_test_sim
 

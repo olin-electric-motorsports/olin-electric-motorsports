@@ -1,0 +1,92 @@
+@startuml
+start
+:Initialize CAN;
+:Initialize Timers;
+:Initialize bootloader;
+:Initialize GPIO;
+
+:Get BMS CAN message;
+if (Charger connected?) then (yes)
+    :tractive_sys = CHARGER;
+else (no)
+    :tractive_sys = MOTOR_CONTROLLER;
+endif
+
+floating note right: "TODO: Should we\nhave a default case?"
+
+partition "**state** Init " {
+    :Enable interrupts;
+    partition "Initial checks" {
+        :Get BMS voltage;
+        :Get Motor Controller voltage;
+
+        if (BMS > 200V) then (<color:red>no)
+            #pink:Fault;
+            stop
+        elseif (TS < 5V) then (<color:red>no)
+            #pink:Fault;
+            floating note right: TS refers to\nMC voltage\nunless charging,\nthen charger\nvoltage
+            stop
+        elseif (AIR_P closed or AIR_N closed) then (<color:red>no)
+            #pink:Fault;
+            stop
+        elseif (TSMS closed) then (<color:red>no)
+            #pink:Fault;
+            stop
+        elseif (IMD tripped) then (<color:red>no)
+            #pink:Fault;
+            stop
+        endif
+    }
+
+    :Get initial GPIO states;
+    :Send CAN message;
+}
+
+partition "**state** Idle " {
+    repeat
+    repeat while (SHDN_TSMS closed?) is (no)
+    ->yes;
+}
+
+partition "**state** SHDN_CLOSED " {
+    repeat
+        if (AIR_P closed?) then (yes)
+            break;
+        endif
+        ->no;
+    repeat while (200msec elapsed?) is (no)
+    ->yes;
+
+    if (AIR_P closed?) then (no)
+        #pink:Fault;
+        stop
+    endif
+    ->yes;
+}
+
+partition "**state** PRECHARGE " {
+    :Set PRECHARGE_CTL high;
+    :Read BMS voltage;
+    :Wait 2sec;
+    :Read tractive voltage;
+
+    if (tractive_voltage within\n95% of BMS voltage) then (no)
+        #pink:Fault;
+        stop
+    endif
+    ->yes;
+    :Set AIR_N_LSD high;
+    :Set PRECHARGE_CTL low;
+}
+
+partition "**state** TS_ACTIVE " {
+    repeat
+    repeat while (SHDN_TSMS closed?) is (yes)
+    ->no;
+}
+
+partition "**state** DISCHARGE " {
+    :TODO;
+}
+@enduml
