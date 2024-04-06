@@ -4,11 +4,11 @@ cc_library(
     name = "bms_utils",
     srcs = [
         "fault.c",
-        "mux.c",
+        "i2c_helpers.c",
     ],
     hdrs = [
         "fault.h",
-        "mux.h",
+        "i2c_helpers.h",
     ],
     visibility = ["//visibility:public"],
     deps = [

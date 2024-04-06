@@ -15,7 +15,7 @@
 #include "vehicle/mkvi/software/bms/can_api.h"
 #include "vehicle/mkvi/software/bms/tasks/tasks.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
-#include "vehicle/mkvi/software/bms/utils/mux.h"
+#include "vehicle/mkvi/software/bms/utils/i2c_helpers.h"
 
 #include "projects/btldr/btldr_lib.h"
 #include "projects/btldr/git_sha.h"
