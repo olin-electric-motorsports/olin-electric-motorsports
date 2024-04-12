@@ -81,42 +81,42 @@ static void monitor_cells(void) {
         bms_metrics.voltage_pec_error_count = 0;
     }
 
-    /*
-     * Read temperatures
-     */
-    uint32_t ot = 0;
-    uint32_t ut = 0;
-    int16_t min_temp, max_temp;
+    // /*
+    //  * Read temperatures
+    //  */
+    // uint32_t ot = 0;
+    // uint32_t ut = 0;
+    // int16_t min_temp, max_temp;
 
-    // uint16_t pack_temperature;
-    rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
+    // // uint16_t pack_temperature;
+    // rc = temperature_task(&ot, &ut, &min_temp, &max_temp);
 
-    bms_sense.min_temperature = min_temp;
-    bms_sense.max_temperature = max_temp;
+    // bms_sense.min_temperature = min_temp;
+    // bms_sense.max_temperature = max_temp;
 
-    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_UNDERTEMPERATURE);
-        bms_core.bms_state = BMS_STATE_FAULT;
-        return;
-    } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_OVERTEMPERATURE);
-        bms_core.bms_state = BMS_STATE_FAULT;
-        return;
-    }
+    // if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+    //     set_fault(BMS_FAULT_UNDERTEMPERATURE);
+    //     bms_core.bms_state = BMS_STATE_FAULT;
+    //     return;
+    // } else if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+    //     set_fault(BMS_FAULT_OVERTEMPERATURE);
+    //     bms_core.bms_state = BMS_STATE_FAULT;
+    //     return;
+    // }
 
-    /*
-     * Check for PEC errors
-     */
-    if (rc) {
-        bms_metrics.temperature_pec_error_count += rc;
+    // /*
+    //  * Check for PEC errors
+    //  */
+    // if (rc) {
+    //     bms_metrics.temperature_pec_error_count += rc;
 
-        if (bms_metrics.temperature_pec_error_count >= MAX_PEC_IN_A_ROW) {
-            set_fault(BMS_FAULT_PEC);
-            bms_core.bms_state = BMS_STATE_FAULT;
-        }
-    } else {
-        bms_metrics.temperature_pec_error_count = 0;
-    }
+    //     if (bms_metrics.temperature_pec_error_count >= MAX_PEC_IN_A_ROW) {
+    //         set_fault(BMS_FAULT_PEC);
+    //         bms_core.bms_state = BMS_STATE_FAULT;
+    //     }
+    // } else {
+    //     bms_metrics.temperature_pec_error_count = 0;
+    // }
 
     /*
      * Check for open-wires
