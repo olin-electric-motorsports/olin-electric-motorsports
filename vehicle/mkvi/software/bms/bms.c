@@ -91,9 +91,14 @@ static void monitor_cells(void) {
     // Check for undervoltage and overvoltage faults
     if (ov > 0) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
+    } else if (ov == 0) {
+        clear_fault(BMS_FAULT_OVERVOLTAGE);
     }
+
     if (uv > 0) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
+    } else if (uv == 0) {
+        clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
 

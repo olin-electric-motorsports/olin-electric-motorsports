@@ -80,6 +80,8 @@ void set_fault(enum bms_fault the_fault);
  */
 void clear_fault(enum bms_fault the_fault);
 
+void clear_all_faults(void);
+
 /**
  * Based on bms_core.bms_fault_code, determine if the BMS is in a fault
  * state.
