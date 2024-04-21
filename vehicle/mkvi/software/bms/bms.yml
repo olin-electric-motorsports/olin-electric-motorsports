@@ -16,7 +16,6 @@ publish:
             - ACTIVE
             - CHARGING
             - FAULT
-      # See fault.c for list of faults
       - name: bms_fault_code
         slice: 2 + 16
         unit:
@@ -24,6 +23,21 @@ publish:
           name: ""
           offset: 0
           scale: 1
+          # See fault.h for full documentation of faults. Faults are listed
+          # here for convenience.
+          # - NONE
+          # - (UV)  UNDERVOLTAGE
+          # - (OV)  OVERVOLTAGE
+          # - (UT)  UNDERTEMPERATURE
+          # - (OT)  OVERTEMPERATURE
+          # - (DF)  DIAGNOSTICS_FAIL
+          # - (OW)  OPEN_WIRE
+          # - (OC)  OVERCURRENT
+          # - (PEC) PEC
+          # - (CF)  CHARGER_FAULT
+          # - (SM)  STATE_MACHINE
+          # - (CSC) CSC_MIA
+          # - (DA)  DA_MIA     
       - name: pack_voltage
         slice: 18 + 16
         unit:
