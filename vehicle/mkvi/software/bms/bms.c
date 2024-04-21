@@ -100,6 +100,10 @@ static void monitor_cells(void) {
     } else if (uv == 0) {
         clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
+
+    bms_debug.dbg_1 = uv;
+    bms_debug.dbg_2 = ov;
+    can_send_bms_debug();
 }
 
 int main(void) {
