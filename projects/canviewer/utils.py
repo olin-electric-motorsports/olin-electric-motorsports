@@ -53,9 +53,9 @@ def decode_bms_fault_msg(fault_msg):
           decoded_msg += ", "
     return decoded_msg[0:-2]
 
-def decode_csc_status(csc_status):
-    """Decode the csc status message"""
-    msg = "{0:b}".format(int(csc_status))[::-1]
+def decode_csc_status(csc_mia):
+    """Decode the csc mia message"""
+    msg = "{0:b}".format(int(csc_mia))[::-1]
     decoded_msg = ""
     for index, csc in enumerate(msg):
         if csc == "1":
