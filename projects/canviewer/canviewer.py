@@ -149,7 +149,7 @@ def rx_callback(msg, db):
           reading3 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 2)
           voltage_readings[str(reading1)] = message["voltage_1"]
           voltage_readings[str(reading2)] = message["voltage_2"]
-          if (int(reading3.cell) + 6 * reading3.adc) - 1 != 17:
+          if (int(reading3.cell) * 3 + reading3.adc) != 17:
             voltage_readings[str(reading3)] = message["voltage_3"]
           txt = "_____________start______________\n"
           cells = list(voltage_readings.keys())

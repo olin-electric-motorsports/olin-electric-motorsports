@@ -95,9 +95,9 @@ static void monitor_cells(void) {
         clear_fault(BMS_FAULT_OVERVOLTAGE);
     }
 
-    if (uv > 0) {
+    if (uv > NUM_UNUSED_VOLTAGE_CHANNELS) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
-    } else if (uv == 0) {
+    } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS) {
         clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 
