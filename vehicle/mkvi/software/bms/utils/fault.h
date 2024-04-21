@@ -41,7 +41,7 @@ int check_fault_state(void);
 /**
  * Clear all BMS faults.
  *
- * Use with caution. However, any faults caused non-transient effects will
+ * Use with caution. However, any faults caused non-transient effects should
  * trigger faults again.
  */
 void clear_all_faults(void);
