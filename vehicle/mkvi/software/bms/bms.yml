@@ -16,6 +16,7 @@ publish:
             - ACTIVE
             - CHARGING
             - FAULT
+      # See fault.c for list of faults
       - name: bms_fault_code
         slice: 2 + 16
         unit:
@@ -23,30 +24,6 @@ publish:
           name: ""
           offset: 0
           scale: 1
-          # See fault.c for list of faults
-          #
-          # values:
-          #   - NONE
-          #   - UNDERVOLTAGE
-          #   - OVERVOLTAGE
-          #   - UNDERTEMPERATURE
-          #   - OVERTEMPERATURE
-          #   - DIAGNOSTICS_FAIL
-          #   - OPEN_WIRE
-          #   - OVERCURRENT
-          #   - PEC
-          #   - CHARGER_FAULT
-          #   - STATE_MACHINE
-          #   # NOTE: MIA refers to receiving all 1s from the CSC,
-          #   # This either means that there is a communication error
-          #   # (ex: CSC is not powered) or a register on the CSC was
-          #   # initialized to all 1s and the appropriate command was
-          #   # not given to update the value (ex: the cell voltage readings
-          #   # are initialized to all 1s until an ADC conversion is
-          #   # requested)
-          #   # TODO: Implement error handle per CSC
-          #   - CSC_MIA
-          #   - DA_MIA
       - name: pack_voltage
         slice: 18 + 16
         unit:
@@ -155,21 +132,6 @@ publish:
           name: "errors"
           scale: 1
           offset: 0
-      #TODO: Fully define i2c error detection struct
-      # - name: ic
-      #   slice: 16 + 4
-      #   unit:
-      #     type: uint8_t
-      #     name: ""
-      #     scale: 1
-      #     offset: 0
-      # - name: i2c_error_count
-      #   slice: 20 + 8
-      #   unit:
-      #     type: uint8_t
-      #     name: ""
-      #     scale: 1
-      #     offset: 0
 
   - name: bms_debug
     id: 0x511
