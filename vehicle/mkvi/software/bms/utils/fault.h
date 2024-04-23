@@ -47,18 +47,18 @@
  * BMS_FAULT_DA_MIA: Currently unused.
  */
 enum bms_fault {
-    BMS_FAULT_UNDERVOLTAGE, // UV
-    BMS_FAULT_OVERVOLTAGE, // OV
+    BMS_FAULT_UNDERVOLTAGE,     // UV 
+    BMS_FAULT_OVERVOLTAGE,      // OV
     BMS_FAULT_UNDERTEMPERATURE, // UT
-    BMS_FAULT_OVERTEMPERATURE, // OT
+    BMS_FAULT_OVERTEMPERATURE,  // OT
     BMS_FAULT_DIAGNOSTICS_FAIL, // DF
-    BMS_FAULT_OPEN_WIRE, // OW
-    BMS_FAULT_OVERCURRENT, // OC
-    BMS_FAULT_PEC, // PEC
-    BMS_FAULT_CHARGER_FAULT, // CF
-    BMS_FAULT_STATE_MACHINE, // SM
-    BMS_FAULT_CSC_MIA, // CSC
-    BMS_FAULT_DA_MIA, // DA
+    BMS_FAULT_OPEN_WIRE,        // OW
+    BMS_FAULT_OVERCURRENT,      // OC
+    BMS_FAULT_PEC,              // PEC
+    BMS_FAULT_CHARGER_FAULT,    // CF
+    BMS_FAULT_STATE_MACHINE,    // SM
+    BMS_FAULT_CSC_MIA,          // CSC
+    BMS_FAULT_DA_MIA,           // DA
 };
 
 enum csc_mia {
@@ -108,3 +108,10 @@ void clear_csc_mia(enum csc_mia the_csc);
  * for at least one CSC MIA.
  */
 int check_csc_state(void);
+
+ * Clear all BMS faults.
+ *
+ * Use with caution. However, any faults caused non-transient effects should
+ * trigger faults again.
+ */
+void clear_all_faults(void);
