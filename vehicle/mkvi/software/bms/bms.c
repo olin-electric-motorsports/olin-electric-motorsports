@@ -99,19 +99,48 @@ static void monitor_cells(void) {
     if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_OVERTEMPERATURE);
     }
+
+    bms_debug.dbg_1 = ut;
+    bms_debug.dbg_1 = ot;
 }
 
 int main(void) {
     hw_init();
 
+    // Tracks the number of times the 10ms loop has been run
+    uint8_t loop_counter = 0;
+
     while (true) {
         if (run_10ms) {
+            can_send_bms_core();
             monitor_cells();
+            // Only set the BMS relay LSD if no faults are present
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             }
-            can_send_bms_core();
+            
             can_send_bms_sense();
+            can_send_bms_voltage();
+            
+            if (loop_counter == 50) {
+              // can_send_bms_debug();
+              can_send_bms_metrics();
+            }
+
+
+            // Untested
+            // if (bms_core.bms_state == BMS_STATE_CHARGING) {
+            //     if (loop_counter % 80 == 0) {
+            //         can_send_charging_cmd();
+            //     }
+            // }
+
+            loop_counter++;
+
+            if (loop_counter == 100) {
+              loop_counter = 0;
+            }
+
             run_10ms = false;
         }
     }
