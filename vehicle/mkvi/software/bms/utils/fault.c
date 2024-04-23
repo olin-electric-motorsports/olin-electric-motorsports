@@ -24,6 +24,22 @@ int check_fault_state(void) {
     }
 }
 
+void set_csc_mia(enum csc_mia the_csc) {
+    bms_metrics.csc_mia |= (1 << the_csc);
+}
+
+void clear_csc_mia(enum csc_mia the_csc) {
+    bms_metrics.csc_mia &= ((1 << the_csc) ^ UINT8_MAX);
+}
+
+int check_csc_state(void) {
+    if (bms_metrics.csc_mia == 0) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
 void clear_all_faults(void) {
     bms_core.bms_fault_code = 0;
 }

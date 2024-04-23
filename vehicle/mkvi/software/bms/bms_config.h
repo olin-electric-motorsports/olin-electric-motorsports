@@ -26,6 +26,10 @@
 #define OVERVOLTAGE_THRESHOLD  (39500) // 3.95V
 #define UNDERVOLTAGE_THRESHOLD (25000) // 2.5V
 
+// Number (out of 18) voltage channels not used. Unused channels are bridged
+// and read as 0V
+#define NUM_UNUSED_VOLTAGE_CHANNELS 1
+
 /*
  * PIN DEFINITIONS
  */

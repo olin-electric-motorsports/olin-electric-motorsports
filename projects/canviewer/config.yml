@@ -27,6 +27,8 @@ D1_DC_Bus_Voltage:
 Torque_Command:
 bms_fault_code:
   processing_function: decode_bms_fault_msg
+csc_mia:
+  processing_function: decode_csc_status
 ---
 # Vehicle States (state and fault)
 air_control_critical:
