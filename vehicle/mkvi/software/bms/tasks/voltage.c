@@ -98,7 +98,6 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             }
 
             can_send_bms_voltage();
-            can_send_bms_metrics(); // For per CSC MIA detection
 
             /*
              * The received PEC for the current_ic
