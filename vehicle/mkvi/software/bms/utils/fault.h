@@ -109,6 +109,7 @@ void clear_csc_mia(enum csc_mia the_csc);
  */
 int check_csc_state(void);
 
+/**
  * Clear all BMS faults.
  *
  * Use with caution. However, any faults caused non-transient effects should
