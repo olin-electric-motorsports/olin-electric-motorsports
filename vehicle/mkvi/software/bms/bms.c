@@ -69,8 +69,8 @@ void hw_init() {
 
 static void monitor_cells(void) {
     // read all temperatures
-    uint32_t ot = 0;
-    uint32_t ut = 0;
+    static uint32_t ot = 0;
+    static uint32_t ut = 0;
     static uint16_t min_temp = 0;
     static uint16_t max_temp = UINT16_MAX;
 
@@ -101,7 +101,7 @@ static void monitor_cells(void) {
     }
 
     bms_debug.dbg_1 = ut;
-    bms_debug.dbg_1 = ot;
+    bms_debug.dbg_2 = ot;
 }
 
 int main(void) {
@@ -123,7 +123,7 @@ int main(void) {
             can_send_bms_voltage();
             
             if (loop_counter == 50) {
-              // can_send_bms_debug();
+              can_send_bms_debug();
               can_send_bms_metrics();
             }
 

@@ -2,7 +2,19 @@ import numpy as np
 from canviewer import PROCESSING_FUNCTIONS
 
 
-def convertVtoT(x, Vin=3, R1=10000, R2=100000, T2=348.15, beta=3988):
+# def convertVtoT(x, Vin=3, R1=10000, R2=100000, T2=348.15, beta=3988):
+#     """
+#     converts voltage drop data to temperature
+#     x: array containing only the voltages
+#     """
+#     Vout = float(x)
+#     thermistor_R1 = (Vout * R1) / (Vin - Vout)
+#     temperature = 1 / ((np.log(thermistor_R1 / R2) / beta) + (1 / T2)) - 273.15
+
+#     return temperature
+
+def convertVtoT(
+    x, Vin=3, R1=100000, R2=100000, T2=298.15, beta=4100,):
     """
     converts voltage drop data to temperature
     x: array containing only the voltages
@@ -10,8 +22,13 @@ def convertVtoT(x, Vin=3, R1=10000, R2=100000, T2=348.15, beta=3988):
     Vout = float(x)
     thermistor_R1 = (Vout * R1) / (Vin - Vout)
     temperature = 1 / ((np.log(thermistor_R1 / R2) / beta) + (1 / T2)) - 273.15
-
-    return temperature
+    # temperature = 9 / 5 * (temperature) + 32
+    t = str(round(temperature, 5))
+    # if temperature < 76:
+    #     t = "0.0"
+    if len(t) < 8:
+        t += "0" * (8 - len(t))
+    return t
 
 
 def get_val(signal, data):

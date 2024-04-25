@@ -53,6 +53,8 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     if (mux == 0 && channel == 7) {
         *min_temp = 0;
         *max_temp = UINT16_MAX;
+        *ot = 0;
+        *ut = 0;
     }
 
     bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
@@ -155,6 +157,11 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     if (*min_temp > UNDERTEMPERATURE_THRESHOLD) {
         *ut += 1;
     }
+
+    // bms_debug.dbg_1 = *ot;
+    // bms_debug.dbg_2 = *ut;
+    bms_debug.dbg_3 = *max_temp;
+    bms_debug.dbg_4 = *min_temp;
 
     // // if max is hotter than soft threshold, enable fan
     // if (*max_temp < SOFT_OVERTEMPERATURE_THRESHOLD) {
