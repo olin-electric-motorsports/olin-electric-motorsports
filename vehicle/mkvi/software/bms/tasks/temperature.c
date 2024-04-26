@@ -87,8 +87,12 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         // Skip channels 0-6 on Mux 0, DA Board 1 since the thermistors are not
         // connected
         if (mux != 0 || channel == 7) {
-            temps[num_temps] = bms_temperature.temperature_1;
-            num_temps++;
+          if (ic != 0 || mux != 0 || channel != 7) {
+            if (ic != 0 || mux != 1 || channel != 6) {
+              temps[num_temps] = bms_temperature.temperature_1;
+              num_temps++;
+            }
+          }
         }
 
         bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
@@ -157,11 +161,6 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     if (*min_temp > UNDERTEMPERATURE_THRESHOLD) {
         *ut += 1;
     }
-
-    // bms_debug.dbg_1 = *ot;
-    // bms_debug.dbg_2 = *ut;
-    bms_debug.dbg_3 = *max_temp;
-    bms_debug.dbg_4 = *min_temp;
 
     // // if max is hotter than soft threshold, enable fan
     // if (*max_temp < SOFT_OVERTEMPERATURE_THRESHOLD) {

@@ -93,11 +93,15 @@ static void monitor_cells(void) {
 
     // Check for undertemparature and overtemperature faults
     if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+      set_fault(BMS_FAULT_UNDERTEMPERATURE);
+    } else {
+      // clear_fault(BMS_FAULT_UNDERTEMPERATURE);
     }
     
     if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_OVERTEMPERATURE);
+      set_fault(BMS_FAULT_OVERTEMPERATURE);
+    } else {
+      // clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
 
     bms_debug.dbg_1 = ut;
