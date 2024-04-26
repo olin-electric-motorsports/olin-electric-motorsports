@@ -18,10 +18,10 @@
     32 // copied from mkv where it still says arbitrary...
 
 // copied from MKV - need to be updated
-#define OVERTEMPERATURE_THRESHOLD          ((int16_t)714) // 60 degC
-#define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)1233) // 45 degC
-#define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)1814) // 35 degC
-#define UNDERTEMPERATURE_THRESHOLD         ((int16_t)15513) // -20 degC
+#define OVERTEMPERATURE_THRESHOLD          ((int16_t)5725) // 60 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)8892) // 45 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)11708) // 35 degC
+#define UNDERTEMPERATURE_THRESHOLD         ((int16_t)27605) // -20 degC
 
 #define OVERVOLTAGE_THRESHOLD  (39500) // 3.95V
 #define UNDERVOLTAGE_THRESHOLD (25000) // 2.5V
