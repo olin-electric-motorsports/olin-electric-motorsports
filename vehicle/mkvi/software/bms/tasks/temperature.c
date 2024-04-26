@@ -51,6 +51,8 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     static uint8_t channel = 0;
 
     if (mux == 0 && channel == 7) {
+        bms_sense.min_temperature = *min_temp;
+        bms_sense.max_temperature = *max_temp;
         *min_temp = 0;
         *max_temp = UINT16_MAX;
         *ot = 0;
