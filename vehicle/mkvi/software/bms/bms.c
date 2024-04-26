@@ -68,6 +68,15 @@ void hw_init() {
 }
 
 static void monitor_cells(void) {
+    // read all voltages
+    uint32_t ov = 0;
+    uint32_t uv = 0;
+
+    uint16_t pack_voltage = 0;
+    uint16_t pec_errors = 0;
+    voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
+    bms_core.pack_voltage = pack_voltage;
+
     // read current
     int16_t current = 0;
     current_task(&current);
@@ -79,10 +88,42 @@ static void monitor_cells(void) {
     } else {
         // clear_fault(BMS_FAULT_OVERCURRENT);
     }
+
+    // Check for PEC errors
+    if (pec_errors != 0) {
+        bms_metrics.voltage_pec_error_count += pec_errors;
+
+        if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+          set_fault(BMS_FAULT_PEC);
+        }
+    } else {
+        bms_metrics.voltage_pec_error_count = 0;
+        // clear_fault(BMS_FAULT_PEC);
+    }
+
+    // Check for undervoltage and overvoltage faults
+    if (ov > 0) {
+        set_fault(BMS_FAULT_OVERVOLTAGE);
+    } else if (ov == 0) {
+        // clear_fault(BMS_FAULT_OVERVOLTAGE);
+    }
+
+    if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
+        set_fault(BMS_FAULT_UNDERVOLTAGE);
+    } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
+        // clear_fault(BMS_FAULT_UNDERVOLTAGE);
+    }
+}
+
+static void monitor_cells(void) {
+    
 }
 
 int main(void) {
     hw_init();
+
+    // Tracks the number of times the 10ms loop has been run
+    uint8_t loop_counter = 0;
 
     while (true) {
         if (run_10ms) {
@@ -91,7 +132,33 @@ int main(void) {
                 gpio_set_pin(BMS_RELAY_LSD);
             }
             can_send_bms_core();
+            monitor_cells();
+            // Only set the BMS relay LSD if no faults are present
+            if (!check_fault_state()) {
+                gpio_set_pin(BMS_RELAY_LSD);
+            }
+            
             can_send_bms_sense();
+            
+            if (loop_counter == 50) {
+              // can_send_bms_debug();
+              can_send_bms_metrics();
+            }
+
+
+            // Untested
+            // if (bms_core.bms_state == BMS_STATE_CHARGING) {
+            //     if (loop_counter % 80 == 0) {
+            //         can_send_charging_cmd();
+            //     }
+            // }
+
+            loop_counter++;
+
+            if (loop_counter == 100) {
+              loop_counter = 0;
+            }
+
             run_10ms = false;
         }
     }
