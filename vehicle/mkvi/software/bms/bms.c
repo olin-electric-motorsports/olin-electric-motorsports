@@ -86,20 +86,20 @@ static void monitor_cells(void) {
         }
     } else {
         bms_metrics.voltage_pec_error_count = 0;
-        clear_fault(BMS_FAULT_PEC);
+        // clear_fault(BMS_FAULT_PEC);
     }
 
     // Check for undervoltage and overvoltage faults
     if (ov > 0) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
     } else if (ov == 0) {
-        clear_fault(BMS_FAULT_OVERVOLTAGE);
+        // clear_fault(BMS_FAULT_OVERVOLTAGE);
     }
 
     if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
     } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
-        clear_fault(BMS_FAULT_UNDERVOLTAGE);
+        // clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
 
