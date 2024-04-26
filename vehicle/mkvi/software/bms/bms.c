@@ -68,6 +68,38 @@ void hw_init() {
 }
 
 static void monitor_cells(void) {
+    // read all temperatures
+    static uint32_t ot = 0;
+    static uint32_t ut = 0;
+    static uint16_t min_temp = 0;
+    static uint16_t max_temp = UINT16_MAX;
+
+    uint16_t pec_errors = 0;
+    temperature_task(&ot, &ut, &min_temp, &max_temp, &pec_errors);
+
+    // Check for PEC errors
+    if (pec_errors != 0) {
+        bms_metrics.temperature_pec_error_count += pec_errors;
+
+        if (bms_metrics.temperature_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+            set_fault(BMS_FAULT_PEC);
+        }
+    } else {
+        bms_metrics.temperature_pec_error_count = 0;
+    }
+
+    // Check for undertemparature and overtemperature faults
+    if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
+      set_fault(BMS_FAULT_UNDERTEMPERATURE);
+    } else {
+      // clear_fault(BMS_FAULT_UNDERTEMPERATURE);
+    }
+    
+    if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
+      set_fault(BMS_FAULT_OVERTEMPERATURE);
+    } else {
+      // clear_fault(BMS_FAULT_OVERTEMPERATURE);
+
     // read all voltages
     uint32_t ov = 0;
     uint32_t uv = 0;
@@ -141,7 +173,7 @@ int main(void) {
             can_send_bms_sense();
             
             if (loop_counter == 50) {
-              // can_send_bms_debug();
+              can_send_bms_debug();
               can_send_bms_metrics();
             }
 

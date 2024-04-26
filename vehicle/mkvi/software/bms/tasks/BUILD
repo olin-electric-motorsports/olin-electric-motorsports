@@ -4,7 +4,7 @@ cc_library(
     name = "bms_tasks",
     srcs = [
         "current.c",
-        # "temperature.c",
+        "temperature.c",
         "voltage.c",
         # "openwire.c",
     ],
