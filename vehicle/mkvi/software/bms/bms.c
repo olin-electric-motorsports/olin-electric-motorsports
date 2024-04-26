@@ -99,13 +99,13 @@ static void monitor_cells(void) {
       set_fault(BMS_FAULT_OVERTEMPERATURE);
     } else {
       // clear_fault(BMS_FAULT_OVERTEMPERATURE);
-
+    }
     // read all voltages
     uint32_t ov = 0;
     uint32_t uv = 0;
 
     uint16_t pack_voltage = 0;
-    uint16_t pec_errors = 0;
+    pec_errors = 0;
     voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
     bms_core.pack_voltage = pack_voltage;
 
@@ -147,10 +147,6 @@ static void monitor_cells(void) {
     }
 }
 
-static void monitor_cells(void) {
-    
-}
-
 int main(void) {
     hw_init();
 
@@ -164,19 +160,12 @@ int main(void) {
                 gpio_set_pin(BMS_RELAY_LSD);
             }
             can_send_bms_core();
-            monitor_cells();
-            // Only set the BMS relay LSD if no faults are present
-            if (!check_fault_state()) {
-                gpio_set_pin(BMS_RELAY_LSD);
-            }
-            
             can_send_bms_sense();
             
             if (loop_counter == 50) {
               can_send_bms_debug();
               can_send_bms_metrics();
             }
-
 
             // Untested
             // if (bms_core.bms_state == BMS_STATE_CHARGING) {
