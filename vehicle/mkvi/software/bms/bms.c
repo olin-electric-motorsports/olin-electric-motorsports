@@ -99,6 +99,39 @@ static void monitor_cells(void) {
       set_fault(BMS_FAULT_OVERTEMPERATURE);
     } else {
       // clear_fault(BMS_FAULT_OVERTEMPERATURE);
+
+    // read all voltages
+    uint32_t ov = 0;
+    uint32_t uv = 0;
+
+    uint16_t pack_voltage = 0;
+    uint16_t pec_errors = 0;
+    voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
+    bms_core.pack_voltage = pack_voltage;
+
+    // Check for PEC errors
+    if (pec_errors != 0) {
+        bms_metrics.voltage_pec_error_count += pec_errors;
+
+        if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
+          set_fault(BMS_FAULT_PEC);
+        }
+    } else {
+        bms_metrics.voltage_pec_error_count = 0;
+        // clear_fault(BMS_FAULT_PEC);
+    }
+
+    // Check for undervoltage and overvoltage faults
+    if (ov > 0) {
+        set_fault(BMS_FAULT_OVERVOLTAGE);
+    } else if (ov == 0) {
+        // clear_fault(BMS_FAULT_OVERVOLTAGE);
+    }
+
+    if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
+        set_fault(BMS_FAULT_UNDERVOLTAGE);
+    } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
+        // clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
 
@@ -118,7 +151,6 @@ int main(void) {
             }
             
             can_send_bms_sense();
-            can_send_bms_voltage();
             
             if (loop_counter == 50) {
               can_send_bms_debug();

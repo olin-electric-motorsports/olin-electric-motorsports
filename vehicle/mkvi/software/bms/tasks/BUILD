@@ -5,7 +5,7 @@ cc_library(
     srcs = [
         # "current.c",
         "temperature.c",
-        # "voltage.c",
+        "voltage.c",
         # "openwire.c",
     ],
     hdrs = [
