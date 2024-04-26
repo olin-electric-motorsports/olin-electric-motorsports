@@ -100,9 +100,6 @@ static void monitor_cells(void) {
     } else {
       // clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
-
-    bms_debug.dbg_1 = ut;
-    bms_debug.dbg_2 = ot;
 }
 
 int main(void) {

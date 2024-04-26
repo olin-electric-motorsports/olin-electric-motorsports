@@ -89,12 +89,8 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         // Skip channels 0-6 on Mux 0, DA Board 1 since the thermistors are not
         // connected
         if (mux != 0 || channel == 7) {
-          if (ic != 0 || mux != 0 || channel != 7) {
-            if (ic != 0 || mux != 1 || channel != 6) {
-              temps[num_temps] = bms_temperature.temperature_1;
-              num_temps++;
-            }
-          }
+            temps[num_temps] = bms_temperature.temperature_1;
+            num_temps++;
         }
 
         bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
