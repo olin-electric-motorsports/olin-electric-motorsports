@@ -49,6 +49,6 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* 
 void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
                      uint16_t* max_temp, uint16_t* pec_errors);
 
-void current_task(int16_t* current, uint16_t* vref, uint16_t* vout);
+void current_task(int16_t* current);
 
 int openwire_task(void);

@@ -109,6 +109,18 @@ static void monitor_cells(void) {
     voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
     bms_core.pack_voltage = pack_voltage;
 
+    // read current
+    int16_t current = 0;
+    current_task(&current);
+    bms_core.pack_current = current;
+
+    // Check for overcurrent fault
+    if (current > CURRENT_THRESH) {
+        set_fault(BMS_FAULT_OVERCURRENT);
+    } else {
+        // clear_fault(BMS_FAULT_OVERCURRENT);
+    }
+
     // Check for PEC errors
     if (pec_errors != 0) {
         bms_metrics.voltage_pec_error_count += pec_errors;
@@ -135,6 +147,10 @@ static void monitor_cells(void) {
     }
 }
 
+static void monitor_cells(void) {
+    
+}
+
 int main(void) {
     hw_init();
 
@@ -143,6 +159,10 @@ int main(void) {
 
     while (true) {
         if (run_10ms) {
+            monitor_cells();
+            if (!check_fault_state()) {
+                gpio_set_pin(BMS_RELAY_LSD);
+            }
             can_send_bms_core();
             monitor_cells();
             // Only set the BMS relay LSD if no faults are present
