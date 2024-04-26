@@ -70,16 +70,14 @@ void hw_init() {
 static void monitor_cells(void) {
     // read current
     int16_t current = 0;
-    uint16_t vref = 0;
-    uint16_t vout = 0;
-    current_task(&current, &vref, &vout);
+    current_task(&current);
     bms_core.pack_current = current;
-    bms_sense.current_vref = vref;
-    bms_sense.current_vout = vout;
 
     // Check for overcurrent fault
     if (current > CURRENT_THRESH) {
         set_fault(BMS_FAULT_OVERCURRENT);
+    } else {
+        // clear_fault(BMS_FAULT_OVERCURRENT);
     }
 }
 

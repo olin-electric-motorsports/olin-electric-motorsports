@@ -57,10 +57,10 @@ publish:
       - name: pack_current
         slice: 34 + 12
         unit:
-          type: int16_t
+          type: uint16_t
           name: A
           offset: 0
-          scale: 0.004
+          scale: 1
       - name: cell_balancing_status
         slice: 46 + 1
         unit:
