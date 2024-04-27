@@ -31,7 +31,7 @@ const uint8_t MUXES[NUM_MUXES] = { MUX1_ADDRESS, MUX2_ADDRESS, MUX3_ADDRESS };
 uint8_t I2C_MUX_ADDRESS = 0xE0; // variable so compiler doesn't give overflow
                                 // warning when shifting
 
-uint8_t rdcomm_buffer[NUM_ICS][8] = { 0 };
+#define BYTES_IN_REG (6)
 
 // TODO: function currently assumes all i2c commands transmit 3 bytes, where
 // the first byte is all 0 - this should be made more generic
@@ -105,15 +105,16 @@ void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
      * A: Address
      * M: Mux command
      */
-    uint8_t tx_data[ADBMS_CMD_LEN] = { 0 };
+    uint8_t tx_data[ADBMS_CMD_LEN * NUM_ICS] = { 0 };
+    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+        tx_data[ic*NUM_ICS + 0] = START; // START xxxx
+        tx_data[ic*NUM_ICS + 1] = NACK_STOP; // xxxx NACK_STOP
 
-    tx_data[0] = START; // START xxxx
-    tx_data[1] = NACK_STOP; // xxxx NACK_STOP
-
-    tx_data[2] = START | (address >> 4); // START AAAA
-    tx_data[3] = (address << 4) | NACK; // AAAA NACK
-    tx_data[4] = BLANK; // xxxxBLANK
-    tx_data[5] = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
+        tx_data[ic*NUM_ICS + 2] = START | (address >> 4); // START AAAA
+        tx_data[ic*NUM_ICS + 3] = (address << 4) | NACK; // AAAA NACK
+        tx_data[ic*NUM_ICS + 4] = BLANK; // xxxxBLANK
+        tx_data[ic*NUM_ICS + 5] = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
+    }
 
     wakeup_sleep(num_ics); // wake up the IC core
 
@@ -138,7 +139,7 @@ uint8_t check_ack(uint8_t num_ics) {
         // Read the last Byte in each COMM Register. Memory is as follows:
         // D2[3:0], FCOM2[3:0]
         // Secondary device ACKs if FCOM2[3] is 0 (datasheet pg. 43)
-        ack = (rx_buffer[NUM_RX_BYT * i + 5] >> 3) & 1;
+        ack = ~(rx_buffer[NUM_RX_BYT * i + 5] >> 3) & 1;
         status |= ack << i;
     }
 
@@ -154,9 +155,19 @@ bool configure_mux_until_ack(uint8_t num_ics, uint8_t address, bool enable,
         configure_mux(num_ics, address, enable, channel);
         acks |= check_ack(num_ics);
         // Hardcoded for 6 BMS Chips
-        if (acks == 0b00111111) {
+        for (uint8_t i = 0; i < NUM_ICS; i++) {
+            if ((acks >> i) & 1) {
+                continue;
+            } else {
+                break;
+            }
             return true;
         }
+        
+        if (acks == 0b00000001) {
+            return true;
+        }
+        try_counter++;
     }
 
     set_fault(BMS_FAULT_MUX_MIA);

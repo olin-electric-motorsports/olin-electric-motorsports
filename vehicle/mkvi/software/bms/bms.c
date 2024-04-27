@@ -59,9 +59,9 @@ void hw_init() {
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
 
+    can_init_bms();
     mux_init(NUM_ICS);
 
-    can_init_bms();
     pcint0_callback();
 
     wakeup_sleep(NUM_ICS);
@@ -158,6 +158,8 @@ int main(void) {
             monitor_cells();
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
+            } else {
+                gpio_clear_pin(BMS_RELAY_LSD);
             }
             can_send_bms_core();
             can_send_bms_sense();

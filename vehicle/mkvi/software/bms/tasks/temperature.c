@@ -4,6 +4,7 @@
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
 #include "vehicle/mkvi/software/bms/utils/i2c_helpers.h"
+#include "vehicle/mkvi/software/bms/utils/fault.h"
 #include <stdint.h>
 #include <string.h>
 
@@ -54,6 +55,10 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
                      uint16_t* max_temp, uint16_t* pec_errors) {
     static uint8_t mux = 0;
     static uint8_t channel = 0;
+
+    if (get_fault(BMS_FAULT_MUX_MIA)) {
+        return;
+    }
 
     if (mux == 0 && channel == 7) {
         bms_sense.min_temperature = *min_temp;

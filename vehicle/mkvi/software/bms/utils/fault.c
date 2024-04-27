@@ -14,6 +14,10 @@ void clear_fault(enum bms_fault the_fault) {
     bms_core.bms_fault_code &= ((1 << the_fault) ^ UINT16_MAX);
 }
 
+bool get_fault(enum bms_fault the_fault) {
+    return bms_core.bms_fault_code & ((1 << the_fault));
+}
+
 int check_fault_state(void) {
     if (bms_core.bms_fault_code == 0) {
         bms_core.bms_state = BMS_STATE_ACTIVE;
