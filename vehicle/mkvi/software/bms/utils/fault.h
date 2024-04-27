@@ -58,7 +58,7 @@ enum bms_fault {
     BMS_FAULT_CHARGER_FAULT,    // CF
     BMS_FAULT_STATE_MACHINE,    // SM
     BMS_FAULT_CSC_MIA,          // CSC
-    BMS_FAULT_DA_MIA,           // DA
+    BMS_FAULT_MUX_MIA,          // MUX
 };
 
 enum csc_mia {
@@ -79,6 +79,11 @@ void set_fault(enum bms_fault the_fault);
  * Clear a BMS fault from the enum bms_fault.
  */
 void clear_fault(enum bms_fault the_fault);
+
+/**
+ * Get whether a current fault is set.
+ */
+bool get_fault(enum bms_fault the_fault);
 
 /**
  * Based on bms_core.bms_fault_code, determine if the BMS is in a fault

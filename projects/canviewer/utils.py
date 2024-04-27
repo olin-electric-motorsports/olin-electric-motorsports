@@ -46,7 +46,7 @@ def get_message_name(msg, db):
 
 # BMS faults, see fault.h for full list of faults
 bms_faults_decoded = ["UV", "OV", "UT", "OT", "DF", "OW",
-                    "OC", "PEC", "CF", "SM", "CSC", "DA"]
+                    "OC", "PEC", "CF", "SM", "CSC", "MUX"]
 
 def decode_bms_fault_msg(fault_msg):
     """Decode the bms fault message"""

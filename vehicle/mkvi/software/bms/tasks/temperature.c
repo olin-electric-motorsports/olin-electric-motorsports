@@ -3,15 +3,14 @@
 #include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-#include "vehicle/mkvi/software/bms/utils/mux.h"
+#include "vehicle/mkvi/software/bms/utils/i2c_helpers.h"
+#include "vehicle/mkvi/software/bms/utils/fault.h"
 #include <stdint.h>
 #include <string.h>
 
-const uint8_t MUXES[NUM_MUXES] = { MUX1_ADDRESS, MUX2_ADDRESS, MUX3_ADDRESS };
 const uint8_t GPIO_CHANNELS[4] = { 1, 1, 1, 3 };
 
 #define NUM_TEMPS_PER_IC              (NUM_MUXES * NUM_MUX_CHANNELS * DA_BOARDS_PER_IC)
-#define NUM_DA_BOARDS                 (4)
 #define NUM_MUX_CHANNELS              (8)
 #define NUM_BYTES_IN_REG              (6)
 #define INVALID_TEMPERATURE_THRESHOLD (0xD555)
@@ -45,10 +44,21 @@ static void update_min_max_temps(uint16_t* min_temp, uint16_t* max_temp,
     }
 }
 
+void set_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel) {
+    for (uint8_t da = 0; da < DA_BOARDS_PER_IC; da++) {
+        enable_da_i2c(num_ics, da);
+        configure_mux_until_ack(num_ics, address, enable, channel, 10);
+    }
+}
+
 void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
                      uint16_t* max_temp, uint16_t* pec_errors) {
     static uint8_t mux = 0;
     static uint8_t channel = 0;
+
+    if (get_fault(BMS_FAULT_MUX_MIA)) {
+        return;
+    }
 
     if (mux == 0 && channel == 7) {
         bms_sense.min_temperature = *min_temp;
@@ -62,7 +72,10 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
 
     wakeup_sleep(NUM_ICS);
-    configure_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
+    set_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
+    // For debugging to know which mux is being commanded
+    bms_mux.num_mux = mux;
+
 
     LTC681x_adax(MD_7KHZ_3KHZ, AUX_CH_ALL);
     (void)LTC681x_pollAdc();

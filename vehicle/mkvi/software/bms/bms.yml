@@ -38,7 +38,7 @@ publish:
           # - (CF)  CHARGER_FAULT
           # - (SM)  STATE_MACHINE
           # - (CSC) CSC_MIA
-          # - (DA)  DA_MIA
+          # - (MUX)  MUX_MIA
       - name: pack_voltage
         slice: 18 + 16
         unit:
@@ -362,3 +362,66 @@ publish:
           name: "degC"
           scale: .0001
           offset: 0
+          
+  - name: bms_mux
+    id: 0x404
+    freq_hz: 4
+    signals:
+      - name: num_da
+        slice: 0 + 2
+        unit:
+          type: enum
+          values:
+            - 0
+            - 1
+            - 2
+            - 3
+      - name: num_mux
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: "num_mux"
+          scale: 1
+          offset: 0
+      - name: segment0_ack
+        slice: 16 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment1_ack
+        slice: 24 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment2_ack
+        slice: 32 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment3_ack
+        slice: 40 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment4_ack
+        slice: 48 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment5_ack
+        slice: 56 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
