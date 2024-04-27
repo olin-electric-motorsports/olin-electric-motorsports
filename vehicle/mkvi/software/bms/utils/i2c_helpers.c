@@ -163,10 +163,6 @@ bool configure_mux_until_ack(uint8_t num_ics, uint8_t address, bool enable,
             }
             return true;
         }
-        
-        if (acks == 0b00000001) {
-            return true;
-        }
         try_counter++;
     }
 
