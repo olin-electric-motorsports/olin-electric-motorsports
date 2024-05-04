@@ -81,7 +81,10 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
 
             // Average cell voltages on segment 1
             if (ic == 0) {
-                pack_voltages[ic] += (cell_1 + cell_2 + cell_3);
+                // pack_voltages[ic] += (cell_1 + cell_2 + cell_3);
+                pack_voltages[ic] += cell_1;
+                pack_voltages[ic] += cell_2;
+                pack_voltages[ic] += cell_3;
             } else {
                 // Check under/overvoltage thresholds
                 if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
@@ -125,7 +128,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
     // Fault handling for cell voltage average on segment 1
     if (pack_voltages[0] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
-    } else if (pack_voltages[0] > SEGMENT_UNDERVOLTAGE_THRESHOLD) {
+    } else if (pack_voltages[0] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
