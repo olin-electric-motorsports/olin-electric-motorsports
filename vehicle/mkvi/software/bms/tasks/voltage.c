@@ -30,7 +30,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
      * then the Register B, etc.
      */
     uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
-    uint16_t pack_voltages[NUM_ICS] = { 0 };
+    uint32_t pack_voltages[NUM_ICS] = { 0 };
 
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
         // Read one register at a time for all segments
@@ -80,7 +80,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             bms_voltage.voltage_3 = cell_3;
 
             // Average cell voltages on segment 1
-            if (ic == 0) {
+            if (ic == 1) {
                 // pack_voltages[ic] += (cell_1 + cell_2 + cell_3);
                 pack_voltages[ic] += cell_1;
                 pack_voltages[ic] += cell_2;
@@ -126,9 +126,9 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
     } // end foreach cell reg (A, B, C, D, E, F)
 
     // Fault handling for cell voltage average on segment 1
-    if (pack_voltages[0] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
+    if (pack_voltages[1] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
-    } else if (pack_voltages[0] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
+    } else if (pack_voltages[1] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
