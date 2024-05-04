@@ -166,7 +166,7 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     channel += 1;
     // Move on to next mux if we are at the last channel
     if (channel == NUM_MUX_CHANNELS) {
-        configure_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, channel);
+        set_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, channel);
         mux = (mux + 1) % NUM_MUXES;
         channel = 0;
     }
