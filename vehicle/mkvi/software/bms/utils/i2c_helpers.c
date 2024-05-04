@@ -159,10 +159,10 @@ bool configure_mux_until_ack(uint8_t num_ics, uint8_t address, bool enable,
             if ((acks >> i) & 1) {
                 continue;
             } else {
-                break;
+                return false;
             }
-            return true;
         }
+        return true;
         try_counter++;
     }
 
