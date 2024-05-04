@@ -74,18 +74,41 @@ void disable_da_i2c(uint8_t num_ics) {
     transmit_i2c(num_ics, tx_byte);
 }
 
-// This function explicitally disables all muxes
-void mux_init(uint8_t num_ics) {
-    for (uint8_t i = 0; i < DA_BOARDS_PER_IC; i++) {
-        enable_da_i2c(num_ics, i);
+// // This function explicitally disables all muxes
+// void mux_init(uint8_t num_ics) {
+//     for (uint8_t i = 0; i < DA_BOARDS_PER_IC; i++) {
+//         enable_da_i2c(num_ics, i);
 
-        // Disable Each MUX on the DA Board
-        for (uint8_t j = 0; j < NUM_MUXES; j++) {
-            configure_mux_until_ack(num_ics, MUXES[j], false, 0, 10);
-        }
+//         // Disable Each MUX on the DA Board
+//         for (uint8_t j = 0; j < NUM_MUXES; j++) {
+//             configure_mux_until_ack(num_ics, MUXES[j], false, 0, 10);
+//         }
+//     }
+
+//     disable_da_i2c(num_ics);
+// }
+void mux_init(uint8_t num_ics) {
+    uint8_t tx_data[ADBMS_CMD_LEN * num_ics];
+
+    for (uint8_t ic = 0; ic < num_ics; ic++) {
+        tx_data[ic * BYTES_IN_REG + 0] = START; // START xxxx
+        tx_data[ic * BYTES_IN_REG + 1] = NACK_STOP; // xxxx NACK_STOP
+        tx_data[ic * BYTES_IN_REG + 2]
+            = START | (I2C_MUX_ADDRESS >> 4); // START AAAA
+        tx_data[ic * BYTES_IN_REG + 3]
+            = (I2C_MUX_ADDRESS << 4) | NACK; // AAAA NACK
+        tx_data[ic * BYTES_IN_REG + 4] = BLANK; // xxxxBLANK
+        tx_data[ic * BYTES_IN_REG + 5]
+            = 0xF0 | NACK_STOP; // Enable all channels
     }
 
-    disable_da_i2c(num_ics);
+    wakeup_sleep(num_ics); // wake up the IC core
+
+    uint8_t wrcomm_cmd[2] = { 0x07, 0x21 }; // command to write to COMM register
+    write_68(NUM_ICS, wrcomm_cmd, tx_data);
+
+    wakeup_idle(num_ics); // wake up the isospi comms
+    LTC681x_stcomm(MUX_DATALENGTH);
 }
 
 void configure_mux(uint8_t num_ics, uint8_t address, bool enable,

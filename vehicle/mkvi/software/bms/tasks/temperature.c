@@ -44,21 +44,17 @@ static void update_min_max_temps(uint16_t* min_temp, uint16_t* max_temp,
     }
 }
 
-void set_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel) {
-    for (uint8_t da = 0; da < DA_BOARDS_PER_IC; da++) {
-        enable_da_i2c(num_ics, da);
-        configure_mux_until_ack(num_ics, address, enable, channel, 10);
-    }
-}
+// void set_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel) {
+//     for (uint8_t da = 0; da < DA_BOARDS_PER_IC; da++) {
+//         enable_da_i2c(num_ics, da);
+//         configure_mux_until_ack(num_ics, address, enable, channel, 10);
+//     }
+// }
 
 void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
                      uint16_t* max_temp, uint16_t* pec_errors) {
     static uint8_t mux = 0;
     static uint8_t channel = 0;
-
-    if (get_fault(BMS_FAULT_MUX_MIA)) {
-        return;
-    }
 
     if (mux == 0 && channel == 7) {
         bms_sense.min_temperature = *min_temp;
@@ -72,7 +68,7 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
 
     wakeup_sleep(NUM_ICS);
-    set_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
+    configure_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
     // For debugging to know which mux is being commanded
     bms_mux.num_mux = mux;
 
@@ -104,19 +100,19 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         // Skip channels 0-6 on Mux 0, DA Board 1 since the thermistors are not
         // connected
         // Skip DA board 1 on Segment 3 because it is not working
-        if (ic != 2) {
-            if (mux != 0 || channel == 7) {
-            temps[num_temps] = bms_temperature.temperature_1;
-            num_temps++;
-            }
+        if (mux != 0 || channel == 7) {
+        temps[num_temps] = bms_temperature.temperature_1;
+        num_temps++;
         }
 
         bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
                                         | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
         // Thermistor 20 on IC 1, DA Board 2 is broken
-        if (ic != 1 || mux != 2 || channel != 4) {
-            temps[num_temps] = bms_temperature.temperature_2;
-            num_temps++;
+        if (ic != 3) {
+            if (ic != 1 || mux != 2 || channel != 4) {
+                temps[num_temps] = bms_temperature.temperature_2;
+                num_temps++;
+            }
         }
         can_send_bms_temperature();
 
@@ -125,20 +121,21 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
                                         | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
         // Thermistor 12 on IC 1, DA Board 3 is broken
         // Skip DA board 3 on Segment 3 because it is not working
-        if (ic != 2) {
-            if (ic != 1 || mux != 1 || channel != 4) {
-                temps[num_temps] = bms_temperature.temperature_1;
-                num_temps++;
-            }
+        
+        if (ic != 1 || mux != 1 || channel != 4) {
+            temps[num_temps] = bms_temperature.temperature_1;
+            num_temps++;
         }
 
         bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
                                         | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
         // Skip channels 0-3 on Mux 0, DA Board 4 since the thermistors are not
         // connected
-        if (mux != 0 || channel >= 4) {
-            temps[num_temps] = bms_temperature.temperature_2;
-            num_temps++;
+        if (ic != 3) {
+            if (mux != 0 || channel >= 4) {
+                temps[num_temps] = bms_temperature.temperature_2;
+                num_temps++;
+            }
         }
         can_send_bms_temperature();
 
