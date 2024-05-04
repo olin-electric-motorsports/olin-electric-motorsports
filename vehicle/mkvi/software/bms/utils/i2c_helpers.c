@@ -38,10 +38,7 @@ uint8_t I2C_MUX_ADDRESS = 0xE0; // variable so compiler doesn't give overflow
 void transmit_i2c(uint8_t num_ics, uint8_t tx_byte) {
     uint8_t tx_data[ADBMS_CMD_LEN * num_ics];
 
-    tx_data[0] = START; // START xxxx
-    tx_data[1] = NACK_STOP; // xxxx NACK_STOP
-
-    for (uint8_t ic = 0; ic < num_ics; ic++) {
+    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         tx_data[ic * BYTES_IN_REG + 0] = START; // START xxxx
         tx_data[ic * BYTES_IN_REG + 1] = NACK_STOP; // xxxx NACK_STOP
         tx_data[ic * BYTES_IN_REG + 2]
@@ -130,13 +127,13 @@ void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
      */
     uint8_t tx_data[ADBMS_CMD_LEN * NUM_ICS] = { 0 };
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-        tx_data[ic*NUM_ICS + 0] = START; // START xxxx
-        tx_data[ic*NUM_ICS + 1] = NACK_STOP; // xxxx NACK_STOP
-
-        tx_data[ic*NUM_ICS + 2] = START | (address >> 4); // START AAAA
-        tx_data[ic*NUM_ICS + 3] = (address << 4) | NACK; // AAAA NACK
-        tx_data[ic*NUM_ICS + 4] = BLANK; // xxxxBLANK
-        tx_data[ic*NUM_ICS + 5] = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
+        tx_data[ic * BYTES_IN_REG + 0] = START; // START xxxx
+        tx_data[ic * BYTES_IN_REG + 1] = NACK_STOP; // xxxx NACK_STOP
+        tx_data[ic * BYTES_IN_REG + 2] = START | (address >> 4); // START AAAA
+        tx_data[ic * BYTES_IN_REG + 3] = (address << 4) | NACK; // AAAA NACK
+        tx_data[ic * BYTES_IN_REG + 4] = BLANK; // xxxxBLANK
+        tx_data[ic * BYTES_IN_REG + 5]
+            = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
     }
 
     wakeup_sleep(num_ics); // wake up the IC core
@@ -172,25 +169,24 @@ uint8_t check_ack(uint8_t num_ics) {
 bool configure_mux_until_ack(uint8_t num_ics, uint8_t address, bool enable,
                              uint8_t channel, uint8_t max_tries) {
     uint8_t try_counter = 0;
-
     uint8_t acks = 0;
+
+    uint8_t ack_field = 0;
+    for (uint8_t i = 0; i < NUM_ICS; i++) {
+        ack_field |= (1 << i);
+    }
+
     while (try_counter < max_tries) {
         configure_mux(num_ics, address, enable, channel);
         acks |= check_ack(num_ics);
-        // Hardcoded for 6 BMS Chips
         for (uint8_t i = 0; i < NUM_ICS; i++) {
-            if ((acks >> i) & 1) {
-                continue;
-            } else {
-                return false;
+            if (acks == ack_field) {
+                return true;
             }
         }
-        return true;
         try_counter++;
     }
 
     set_fault(BMS_FAULT_MUX_MIA);
-
-
     return false;
 }
