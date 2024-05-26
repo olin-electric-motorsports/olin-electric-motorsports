@@ -144,14 +144,17 @@ def rx_callback(msg, db):
     if debug_voltage:
         if "cell" in message.keys():
           cell_number = VoltageRegister[str(message["cell"])].value
+
           reading1 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 0)
           reading2 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 1)
           reading3 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 2)
+
           voltage_readings[str(reading1)] = message["voltage_1"]
           voltage_readings[str(reading2)] = message["voltage_2"]
           if (int(reading3.cell) * 3 + reading3.adc) != 17:
             voltage_readings[str(reading3)] = message["voltage_3"]
-          txt = "_____________start______________\n"
+
+          txt = "\n___________________________________________________Start___________________________________________________\n"
           cells = list(voltage_readings.keys())
           voltages = list(voltage_readings.values())
           highest_voltage = max(voltages)
@@ -159,21 +162,34 @@ def rx_callback(msg, db):
           zipped_readings = list(zip(cells, voltages))
           zipped_readings.sort(key = lambda a: a[0])
           i = 0
-          print
+          seg = 0
+          cellHeader = 0
+          cellsPerSeg = 17
+          txt += "\nSeg |"
+          while(cellHeader < cellsPerSeg):
+            txt += str(cellHeader).rjust(6, " ")
+            cellHeader += 1
+
+          txt += "\n"
+
           while i < len(cells):
+              txt += "  " + str(seg) + " |  "
               txt += (
-                  "\t".join(
+                  " ".join(
                       [
-                          str(b[0] + "\t" + str(round(b[1], 5)))
-                          for b in zipped_readings[i : i + 4]
+                          str(str(round(b[1], 2)) + " ")
+                          for b in zipped_readings[i : i + 17]
+                          # str(b[0] + "\t" + str(round(b[1], 2)))
+                          # for b in zipped_readings[i : i + 4]
                       ]
                   )
                   + "\n"
               )
-              i += 4
-          txt += "min: \t" + str(round(lowest_voltage,5)) + "\n"
-          txt += "max: \t" + str(round(highest_voltage,5)) + "\n"
-          txt += "______________end_______________"
+              i += cellsPerSeg
+              seg += 1
+          txt += "Min: \t" + str(round(lowest_voltage,3)) + "\n"
+          txt += "Max: \t" + str(round(highest_voltage,3)) + "\n"
+          txt += "____________________________________________________End____________________________________________________\n\n"
           print(txt)
 
           # adc = message[""]
