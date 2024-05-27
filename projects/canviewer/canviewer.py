@@ -72,8 +72,8 @@ class VoltageReading:
           cell_number = f"0{cell_number}"
         return f"{self.ic}:{cell_number}"
 
-debug_temp: bool = False
-debug_voltage: bool = True
+debug_temp: bool = True
+debug_voltage: bool = False
 temp_readings: Dict[ThermistorReading, float] = {}
 voltage_readings: Dict[VoltageReading, float] = {}
 import numpy as np
@@ -123,18 +123,42 @@ def rx_callback(msg, db):
           zipped = list(zip(channels, vals))
           zipped.sort(key=lambda a: a[0])
           i = 0
+          cellHeader = 0;
+          daChCount = 0;
+          seg = 0;
+          chPerDa = 24;
+          daCount = 0;
+          cellInRow = chPerDa;
+
+          txt += "\nSeg : DA |"
+          while(cellHeader < chPerDa):
+            txt += str(cellHeader).rjust(6, " ")
+            cellHeader += 1
+
+          txt += "\n"
           print
           while i < len(channels):
+              if(daCount % 4 != 3):
+                cellInRow = chPerDa
+              else:
+                cellInRow = 13
+              
+              txt += "  " + str(int(daCount / 4)) + " :  " + str(daCount % 4) + " | " 
+              # if(daCount % 4 == 3):
+              #   txt += "\n"
               txt += (
-                  "\t".join(
+                  " ".join(
                       [
-                          str(z[0] + "\t" + str(convertVtoT(z[1])))
-                          for z in zipped[i : i + 4]
+                          str(str(round(float(convertVtoT(z[1])), 1))).rjust(5, " ")
+                          for z in zipped[i : i + cellInRow]
                       ]
                   )
                   + "\n"
               )
-              i += 4
+              if(daCount % 4 == 3):
+                txt += "\n"
+              i += cellInRow #DAs per segment
+              daCount += 1;
           txt += "min:\t" + str(convertVtoT(max(temp_readings.values()))) + "\n"
           txt += "max:\t" + str(convertVtoT(min(temp_readings.values()))) + "\n"
           txt += "high:\t" + str(num_high) + "\n"
@@ -177,7 +201,7 @@ def rx_callback(msg, db):
               txt += (
                   " ".join(
                       [
-                          str(str(round(b[1], 2)) + " ")
+                          str(str(round(b[1], 2)).ljust(4, "0") + " ")
                           for b in zipped_readings[i : i + 17]
                           # str(b[0] + "\t" + str(round(b[1], 2)))
                           # for b in zipped_readings[i : i + 4]
