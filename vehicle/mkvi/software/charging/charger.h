@@ -4,8 +4,8 @@
 
 void timer0_isr(void);
 
-gpio_t LED1 = PC1;
-gpio_t LED2 = PC2;
+gpio_t LED1 = PB3;
+gpio_t LED2 = PB4;
 gpio_t MCP25625_CS = PC4;
 
 timer_cfg_s timer0_cfg = {
@@ -13,13 +13,11 @@ timer_cfg_s timer0_cfg = {
     .timer0_mode = TIMER0_MODE_CTC,
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
-        .channel = CHANNEL_A,
-        .output_compare_match = 0x4E, // 100 Hz; every 10 milliseconds
+        .output_compare_match = 0x27,
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer0_isr,
     },
-    .timer_overflow_interrupt_enable = false,
 };
 
 // FYI - parameter values still need to be tested on hardware
