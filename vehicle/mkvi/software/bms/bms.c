@@ -64,6 +64,8 @@ void hw_init() {
 
     pcint0_callback();
 
+    can_receive_charging_fbk();
+
     wakeup_sleep(NUM_ICS);
 }
 
@@ -164,21 +166,24 @@ int main(void) {
             can_send_bms_core();
             can_send_bms_sense();
             
-            if (loop_counter == 50) {
+            if (loop_counter % 50 == 0) {
               can_send_bms_debug();
               can_send_bms_metrics();
             }
 
             // Untested
-            // if (bms_core.bms_state == BMS_STATE_CHARGING) {
-            //     if (loop_counter % 80 == 0) {
-            //         can_send_charging_cmd();
-            //     }
-            // }
+            if (bms_core.bms_state == BMS_STATE_CHARGING) {
+                if (loop_counter % 50 == 0) {
+                    charging_cmd_to_elcon.target_voltage = 403;
+                    charging_cmd_to_elcon.target_current = 5;
+                    charging_cmd_to_elcon.enable_charging = true;
+                    can_send_charging_cmd_to_elcon();
+                }
+            }
 
             loop_counter++;
 
-            if (loop_counter == 100) {
+            if (loop_counter == 1000) {
               loop_counter = 0;
             }
 
