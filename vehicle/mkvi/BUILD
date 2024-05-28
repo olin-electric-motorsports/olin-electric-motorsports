@@ -4,7 +4,7 @@ load("//bazel/tools:defs.bzl", "dbc_gen")
 dbc_gen(
     name = "mkvi.dbc",
     srcs = [
-        "//vehicle/common/charging:charging.yml",
+        "//vehicle/mkvi/software/charging:charger.yml",
         "//vehicle/common/emeter:emeter.dbc",
         "//vehicle/common/motor_controller:motor_controller.dbc",
         "//vehicle/mkvi/software/bms:bms.yml",

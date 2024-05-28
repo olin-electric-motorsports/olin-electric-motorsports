@@ -1,0 +1,18 @@
+name: charger
+subscribe:
+  - name: charging_cmd
+    mob: 1
+  - name: bms_core
+    mob: 2
+publish: # sending out these variables
+  - name: charging_ping
+    id: 0x81
+    freq_hz: 100
+    signals:
+      - name: enable
+        slice: 0 + 1
+        unit:
+          type: bool
+          values:
+            t: Enabled
+            f: Disabled

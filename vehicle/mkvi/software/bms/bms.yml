@@ -1,11 +1,11 @@
 name: bms
 subscribe:
-  - name: charging_fbk
+  - name: charging_ping
     mob: 1
 publish:
-  - name: charging_cmd_to_elcon
+  - name: charging_cmd
     id: 0x80
-    freq_hz: 1
+    freq_hz: 100
     signals:
       - name: target_voltage
         slice: 0 + 16
