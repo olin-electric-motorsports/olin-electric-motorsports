@@ -28,6 +28,17 @@ publish:
           values:
             t: Charging Enabled
             f: Charging Disabled
+  - name: WHY
+    id: 0x88
+    freq_hz: 100
+    signals:
+      - name: AHH
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: errors
+          offset: 0
+          scale: 1
   - name: bms_core
     id: 0x10
     freq_hz: 100

@@ -5,8 +5,6 @@
 #include "libs/gpio/api.h"
 
 void set_fault(enum bms_fault the_fault) {
-    gpio_clear_pin(BMS_RELAY_LSD);
-
     bms_core.bms_fault_code |= (1 << the_fault);
 }
 
@@ -19,7 +17,7 @@ bool get_fault(enum bms_fault the_fault) {
 }
 
 int check_fault_state(void) {
-    if (bms_core.bms_fault_code != 0) {
+    if (bms_core.bms_fault_code == 0) {
         bms_core.bms_state = BMS_STATE_ACTIVE;
         if (can_poll_receive_charging_ping() == 0) {
             can_receive_charging_ping(); // getting can data

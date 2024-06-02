@@ -173,7 +173,7 @@ int main(void) {
 
             // Untested
             if (bms_core.bms_state == BMS_STATE_CHARGING) {
-                if (loop_counter % 50 == 0) {
+                if (loop_counter % 5 == 0) {
                     charging_cmd.target_voltage = 403;
                     charging_cmd.target_current = 5;
                     charging_cmd.enable_charging = true;

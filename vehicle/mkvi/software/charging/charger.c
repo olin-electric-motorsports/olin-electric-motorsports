@@ -1,16 +1,4 @@
 #include "vehicle/mkvi/software/charging/charger.h"
-//#include "MCP25625.h"
-#include "libs/gpio/api.h"
-#include "libs/gpio/pin_defs.h"
-#include "libs/timer/api.h"
-#include "vehicle/mkvi/software/charging/can_api.h"
-#include <stdint.h>
-#include <stdio.h>
-#include <util/delay.h>
-
-#include <avr/interrupt.h>
-
-#include <stdbool.h>
 
 #define TARGET_PACK_VOLTAGE  (360) // in volts
 #define CHARGING_MAX_VOLTAGE (3201) // 3201 = 320.1V
@@ -45,8 +33,9 @@ void timer0_isr(void) {
 }
 
 void charger_can_init() {
+    //Initialize the SPI bus
     spi_init(&spi_cfg);
-    //mcp25625_init(OPMODE_NORMAL);
+    MCP25625_init(&charger_CAN_converter);
 }
 
 //To Program:
@@ -54,16 +43,17 @@ void charger_can_init() {
 
 
 // sending SPI to charger
-// void spi_send_charger() {
-//     uint8_t bytes[5] = { 0 };
-//     bytes[0] = (uint8_t)charging_cmd.max_voltage;
-//     bytes[1] = (uint8_t)(charging_cmd.max_voltage >> 8);
-//     bytes[2] = (uint16_t)(charging_cmd.max_current) & 0xFF;
-//     bytes[3] = (uint16_t)(charging_cmd.max_current) >> 8;
-//     bytes[4] = charging_cmd.enable;
-//     mcp25625_msg_load(TXB0, bytes, 5, 0x80, true, false);
-//     mcp25625_msg_send(TXB0);
-// }
+void spi_send_charger() {
+    uint8_t bytes[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+    gpio_toggle_pin(LED2);
+
+    bytes[0] = (uint8_t)((charging_cmd.target_voltage * 10) >> 8);
+    bytes[1] = (uint8_t)(charging_cmd.target_voltage * 10);
+    bytes[2] = (uint8_t)((charging_cmd.target_current * 10) >> 8);
+    bytes[3] = (uint8_t)(charging_cmd.target_current * 10);
+    bytes[4] = (uint8_t)charging_cmd.enable_charging;
+    mcp25625_send_message(0x1806E5F4, 8, bytes, true);
+}
 
 // // receiving SPI from charger
 // // parse data from charger
@@ -82,8 +72,12 @@ void charger_can_init() {
 //     }
 // }
 
+uint8_t ten_ms_counter = 0;
+uint8_t charger_timeout = 0;
+
 // loop
 int main(void) {
+
     //Enable interrupts
     sei();
 
@@ -104,16 +98,30 @@ int main(void) {
     while (1) {
         // check status of BMS
         if (send_can) {
-
+            if (can_poll_receive_bms_core() == 0) {
+                can_send_charging_ping();
+                can_receive_bms_core(); // core data
+                
+            }
             //Broker exchange with the car (get charging targets and OK from BMS core)
-            can_send_charging_ping();
             if (can_poll_receive_charging_cmd() == 0) {
                 can_receive_charging_cmd(); // charging targets
                 gpio_set_pin(LED1);
+                charger_timeout = 0;
             }
-            if (can_poll_receive_bms_core() == 0) {
-                can_receive_bms_core(); // core data
+            else {
+                //
+                if(charger_timeout < 100) {
+                    charger_timeout++;
+                }
+                else {
+                    charging_cmd.target_voltage = 0;
+                    charging_cmd.target_current = 0;
+                    charging_cmd.enable_charging = 0;
+                     gpio_clear_pin(LED1);
+                }
             }
+
 
 
             //Handle Elcon charger CAN interaction
@@ -142,6 +150,15 @@ int main(void) {
             //     charging_cmd.enable = false;
             // }
             // spi_send_charger();
+            
+            // _delay_ms(100);
+            
+            
+            ten_ms_counter++;
+            if(ten_ms_counter == 100) {
+                spi_send_charger();
+                ten_ms_counter = 0;
+            }
             send_can = false;
         }
     }

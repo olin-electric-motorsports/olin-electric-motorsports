@@ -30,6 +30,6 @@ cc_firmware(
         "//libs/gpio",
         "//libs/timer",
         "//libs/spi",
-        # "//third_party/Click_MCP25625:MCP25625",
+        "//third_party/MCP25625",
     ],
 )
