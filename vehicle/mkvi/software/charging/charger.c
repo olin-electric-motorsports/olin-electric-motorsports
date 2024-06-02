@@ -99,7 +99,8 @@ int main(void) {
         // check status of BMS
         if (send_can) {
             if (can_poll_receive_bms_core() == 0) {
-                can_send_charging_ping();
+                charging_fbk.charging_voltage = 4000;
+                can_send_charging_fbk();
                 can_receive_bms_core(); // core data
                 
             }
