@@ -30,6 +30,9 @@
 
 #define CURRENT_THRESH (978) // Not sure about this value
 
+//
+#define DIE_OVERTEMPERATURE_THRESHOLD (0)
+
 // Number (out of 18) voltage channels not used. Unused channels are bridged
 // and read as 0V
 #define NUM_UNUSED_VOLTAGE_CHANNELS 1

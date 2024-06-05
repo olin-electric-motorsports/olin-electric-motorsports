@@ -25,7 +25,8 @@
  *
  * BMS_FAULT_OPEN_WIRE: Currently unused.
  *
- * BMS_FAULT_OVERCURRENT: Currently unused.
+ * BMS_FAULT_OVERCURRENT: Fault set if pack current draw is above the
+ * CURRENT_THRESH set in bms_config.h
  *
  * BMS_FAULT_PEC: Fault set if the number of PEC errors is above
  *   MAX_PEC_ERROR_COUNT, as defined in bms_config.h
@@ -44,21 +45,27 @@
  *   are initialized to all 1s until an ADC conversion is
  *   requested)
  *
- * BMS_FAULT_DA_MIA: Currently unused.
+ * BMS_FAULT_MUX_MIA: Fault set if an analog mux is not sending ACKs over i2c.
+ *
+ * BMS_FAULT_DIE_OVERTEMPERATURE: Fault set if the die temperature of the BMS
+ *   chip is above the DIE_OVERTEMPERATURE_THRESHOLD set in bms_config.h.
+ * Primarily checked with cell balancing to ensure internal mosfets do not
+ * overheat.
  */
 enum bms_fault {
-    BMS_FAULT_UNDERVOLTAGE,     // UV 
-    BMS_FAULT_OVERVOLTAGE,      // OV
-    BMS_FAULT_UNDERTEMPERATURE, // UT
-    BMS_FAULT_OVERTEMPERATURE,  // OT
-    BMS_FAULT_DIAGNOSTICS_FAIL, // DF
-    BMS_FAULT_OPEN_WIRE,        // OW
-    BMS_FAULT_OVERCURRENT,      // OC
-    BMS_FAULT_PEC,              // PEC
-    BMS_FAULT_CHARGER_FAULT,    // CF
-    BMS_FAULT_STATE_MACHINE,    // SM
-    BMS_FAULT_CSC_MIA,          // CSC
-    BMS_FAULT_MUX_MIA,          // MUX
+    BMS_FAULT_UNDERVOLTAGE,       // UV 
+    BMS_FAULT_OVERVOLTAGE,        // OV
+    BMS_FAULT_UNDERTEMPERATURE,   // UT
+    BMS_FAULT_OVERTEMPERATURE,    // OT
+    BMS_FAULT_DIAGNOSTICS_FAIL,   // DF
+    BMS_FAULT_OPEN_WIRE,          // OW
+    BMS_FAULT_OVERCURRENT,        // OC
+    BMS_FAULT_PEC,                // PEC
+    BMS_FAULT_CHARGER_FAULT,      // CF
+    BMS_FAULT_STATE_MACHINE,      // SM
+    BMS_FAULT_CSC_MIA,            // CSC
+    BMS_FAULT_MUX_MIA,            // MUX
+    BMS_FAULT_DIE_OVERTEMPERATURE // DOT
 };
 
 enum csc_mia {
