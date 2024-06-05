@@ -67,6 +67,7 @@ void hw_init() {
     can_receive_charging_ping();
 
     wakeup_sleep(NUM_ICS);
+    cell_balancing_init();
 }
 
 static void monitor_cells(void) {
@@ -92,15 +93,15 @@ static void monitor_cells(void) {
 
     // Check for undertemparature and overtemperature faults
     if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-      set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        set_fault(BMS_FAULT_UNDERTEMPERATURE);
     } else {
-      // clear_fault(BMS_FAULT_UNDERTEMPERATURE);
+        // clear_fault(BMS_FAULT_UNDERTEMPERATURE);
     }
-    
+
     if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-      set_fault(BMS_FAULT_OVERTEMPERATURE);
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
     } else {
-      // clear_fault(BMS_FAULT_OVERTEMPERATURE);
+        // clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
     // read all voltages
     uint32_t ov = 0;
@@ -128,7 +129,7 @@ static void monitor_cells(void) {
         bms_metrics.voltage_pec_error_count += pec_errors;
 
         if (bms_metrics.voltage_pec_error_count >= MAX_PEC_ERROR_COUNT) {
-          set_fault(BMS_FAULT_PEC);
+            set_fault(BMS_FAULT_PEC);
         }
     } else {
         bms_metrics.voltage_pec_error_count = 0;
@@ -165,10 +166,10 @@ int main(void) {
             }
             can_send_bms_core();
             can_send_bms_sense();
-            
+
             if (loop_counter % 50 == 0) {
-              can_send_bms_debug();
-              can_send_bms_metrics();
+                can_send_bms_debug();
+                can_send_bms_metrics();
             }
 
             // Untested
@@ -184,7 +185,7 @@ int main(void) {
             loop_counter++;
 
             if (loop_counter == 1000) {
-              loop_counter = 0;
+                loop_counter = 0;
             }
 
             run_10ms = false;
