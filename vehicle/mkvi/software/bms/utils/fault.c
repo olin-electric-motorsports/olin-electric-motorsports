@@ -19,6 +19,7 @@ bool get_fault(enum bms_fault the_fault) {
 int check_fault_state(void) {
     if (bms_core.bms_fault_code == 0) {
         bms_core.bms_state = BMS_STATE_ACTIVE;
+
         if (can_poll_receive_charging_fbk() == 0) {
             can_receive_charging_fbk(); // getting can data
             bms_core.bms_state = BMS_STATE_CHARGING;
@@ -28,7 +29,6 @@ int check_fault_state(void) {
         bms_core.bms_state = BMS_STATE_FAULT;
         return 1;
     }
-
 }
 
 void set_csc_mia(enum csc_mia the_csc) {

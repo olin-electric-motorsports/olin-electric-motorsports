@@ -66,3 +66,10 @@ def decode_csc_status(csc_mia):
         if csc == "1":
            decoded_msg += f"{index}, " 
     return decoded_msg[0:-2]
+
+def convert_internal_die_temp(internal_die_temp):
+    """
+    Convert internal die temp according to pg.34: "internal die temperature
+    measurement"
+    """
+    return internal_die_temp * (0.1 / 7.6) - 276

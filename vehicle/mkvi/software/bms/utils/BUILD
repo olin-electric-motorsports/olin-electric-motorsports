@@ -5,10 +5,12 @@ cc_library(
     srcs = [
         "fault.c",
         "i2c_helpers.c",
+        "cell_balancing.c"
     ],
     hdrs = [
         "fault.h",
         "i2c_helpers.h",
+        "cell_balancing.h"
     ],
     visibility = ["//visibility:public"],
     deps = [
