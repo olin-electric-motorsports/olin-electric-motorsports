@@ -1,6 +1,6 @@
 name: bms
 subscribe:
-  - name: charging_ping
+  - name: charging_fbk
     mob: 1
 publish:
   - name: charging_cmd
@@ -28,17 +28,6 @@ publish:
           values:
             t: Charging Enabled
             f: Charging Disabled
-  - name: WHY
-    id: 0x88
-    freq_hz: 100
-    signals:
-      - name: AHH
-        slice: 0 + 16
-        unit:
-          type: uint16_t
-          name: errors
-          offset: 0
-          scale: 1
   - name: bms_core
     id: 0x10
     freq_hz: 100
@@ -61,19 +50,19 @@ publish:
           scale: 1
           # See fault.h for full documentation of faults. Faults are listed
           # here for convenience.
-          # - NONE
-          # - (UV)  UNDERVOLTAGE
-          # - (OV)  OVERVOLTAGE
-          # - (UT)  UNDERTEMPERATURE
-          # - (OT)  OVERTEMPERATURE
-          # - (DF)  DIAGNOSTICS_FAIL
-          # - (OW)  OPEN_WIRE
-          # - (OC)  OVERCURRENT
-          # - (PEC) PEC
-          # - (CF)  CHARGER_FAULT
-          # - (SM)  STATE_MACHINE
-          # - (CSC) CSC_MIA
-          # - (MUX)  MUX_MIA
+          #0 - NONE
+          #1 - (UV)  UNDERVOLTAGE
+          #2 - (OV)  OVERVOLTAGE
+          #3 - (UT)  UNDERTEMPERATURE
+          #4 - (OT)  OVERTEMPERATURE
+          #5 - (DF)  DIAGNOSTICS_FAIL
+          #6 - (OW)  OPEN_WIRE
+          #7 - (OC)  OVERCURRENT
+          #8 - (PEC) PEC
+          #9 - (CF)  CHARGER_FAULT
+          #A - (SM)  STATE_MACHINE
+          #B - (CSC) CSC_MIA
+          #C - (MUX)  MUX_MIA
       - name: pack_voltage
         slice: 18 + 16
         unit:
@@ -84,10 +73,10 @@ publish:
       - name: pack_current
         slice: 34 + 12
         unit:
-          type: uint16_t
+          type: int16_t
           name: A
           offset: 0
-          scale: 1
+          scale: .01
       - name: cell_balancing_status
         slice: 46 + 1
         unit:

@@ -1,8 +1,8 @@
 name: charger
 subscribe:
-  - name: charging_cmd
-    mob: 1
   - name: bms_core
+    mob: 1
+  - name: charging_cmd
     mob: 2
 publish: # sending out these variables
   - name: charging_fbk
@@ -14,7 +14,7 @@ publish: # sending out these variables
         unit:
           type: uint16_t
           name: Volts
-          scale: 0.1
+          scale: 1
           offset: 0
       - name: charging_current
         slice: 16 + 16
