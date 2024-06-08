@@ -14,6 +14,7 @@
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
 #include "vehicle/mkvi/software/bms/tasks/tasks.h"
+#include "vehicle/mkvi/software/bms/utils/cell_balancing.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/i2c_helpers.h"
 
@@ -64,7 +65,7 @@ void hw_init() {
 
     pcint0_callback();
 
-    can_receive_charging_ping();
+    // can_receive_charging_ping();
 
     wakeup_sleep(NUM_ICS);
     cell_balancing_init();

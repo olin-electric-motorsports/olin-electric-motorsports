@@ -1,8 +1,15 @@
 import numpy as np
 from canviewer import PROCESSING_FUNCTIONS
 
+
 def convertVtoT(
-    x, Vin=3, R1=100000, R2=100000, T2=298.15, beta=4100,):
+    x,
+    Vin=3,
+    R1=100000,
+    R2=100000,
+    T2=298.15,
+    beta=4100,
+):
     """
     converts voltage drop data to temperature
     x: array containing only the voltages
@@ -45,8 +52,21 @@ def get_message_name(msg, db):
 
 
 # BMS faults, see fault.h for full list of faults
-bms_faults_decoded = ["UV", "OV", "UT", "OT", "DF", "OW",
-                    "OC", "PEC", "CF", "SM", "CSC", "MUX"]
+bms_faults_decoded = [
+    "UV",
+    "OV",
+    "UT",
+    "OT",
+    "DF",
+    "OW",
+    "OC",
+    "PEC",
+    "CF",
+    "SM",
+    "CSC",
+    "MUX",
+]
+
 
 def decode_bms_fault_msg(fault_msg):
     """Decode the bms fault message"""
@@ -54,9 +74,10 @@ def decode_bms_fault_msg(fault_msg):
     decoded_msg = ""
     for index, error in enumerate(msg[::-1]):
         if error == "1":
-          decoded_msg += bms_faults_decoded[index]
-          decoded_msg += ", "
+            decoded_msg += bms_faults_decoded[index]
+            decoded_msg += ", "
     return decoded_msg[0:-2]
+
 
 def decode_csc_status(csc_mia):
     """Decode the csc mia message"""
@@ -64,5 +85,13 @@ def decode_csc_status(csc_mia):
     decoded_msg = ""
     for index, csc in enumerate(msg):
         if csc == "1":
-           decoded_msg += f"{index}, " 
+            decoded_msg += f"{index}, "
     return decoded_msg[0:-2]
+
+
+def convert_internal_die_temp(internal_die_temp):
+    """
+    Convert internal die temp according to pg.34: "internal die temperature
+    measurement"
+    """
+    return internal_die_temp * (0.1 / 7.6) - 276
