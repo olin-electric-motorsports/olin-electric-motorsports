@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+    #define NUM_EXEPTIONS 1;
+
 /*
  * Task to read the voltages from the battery pack
  *

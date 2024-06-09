@@ -72,8 +72,8 @@ class VoltageReading:
           cell_number = f"0{cell_number}"
         return f"{self.ic}:{cell_number}"
 
-debug_temp: bool = False
-debug_voltage: bool = True
+debug_temp: bool = True
+debug_voltage: bool = False
 temp_readings: Dict[ThermistorReading, float] = {}
 voltage_readings: Dict[VoltageReading, float] = {}
 import numpy as np
@@ -117,7 +117,7 @@ def rx_callback(msg, db):
           channels = list(temp_readings.keys())
           vals = list(temp_readings.values())
           try:
-            num_high = sum(np.array([float(convertVtoT(x)) for x in vals]) > 76)
+            num_high = sum(np.array([float(convertVtoT(x)) for x in vals]) > 60)
           except:
             num_high = -1
           zipped = list(zip(channels, vals))
@@ -138,12 +138,16 @@ def rx_callback(msg, db):
           txt += "\n"
           print
           while i < len(channels):
-              if(daCount % 4 != 3):
-                cellInRow = chPerDa
-              else:
-                cellInRow = 13
-              
+                
               txt += "  " + str(int(daCount / 4)) + " :  " + str(daCount % 4) + " | " 
+              if(daCount % 4 == 0):
+              	cellInRow = 17
+              	txt += "      " * 7
+              elif(daCount % 4 == 3):
+              	cellInRow = 20
+              else:
+                cellInRow = chPerDa
+                
               # if(daCount % 4 == 3):
               #   txt += "\n"
               txt += (

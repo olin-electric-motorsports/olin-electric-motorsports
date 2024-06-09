@@ -167,6 +167,6 @@ bool configure_mux_until_ack(uint8_t num_ics, uint8_t address, bool enable,
         try_counter++;
     }
 
-    set_fault(BMS_FAULT_MUX_MIA);
+    // set_fault(BMS_FAULT_MUX_MIA);
     return false;
 }

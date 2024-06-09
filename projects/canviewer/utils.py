@@ -8,6 +8,10 @@ def convertVtoT(
     x: array containing only the voltages
     """
     Vout = float(x)
+    
+    if Vout > 2.99:
+    	Vout = 2.99584
+    #print(Vout)
     thermistor_R1 = (Vout * R1) / (Vin - Vout)
     temperature = 1 / ((np.log(thermistor_R1 / R2) / beta) + (1 / T2)) - 273.15
     # temperature = 9 / 5 * (temperature) + 32

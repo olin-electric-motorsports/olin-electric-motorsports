@@ -51,7 +51,7 @@ void hw_init() {
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
-    gpio_set_pin(DEBUG_LED_1);
+    
 
     gpio_set_mode(BSPD_CURRENT_THRESH, INPUT);
 
@@ -72,6 +72,7 @@ void hw_init() {
     cell_balancing_init();
 
     updater_init(BTLDR_ID, 5);
+    gpio_set_pin(DEBUG_LED_1);
 }
 
 static void monitor_cells(void) {
