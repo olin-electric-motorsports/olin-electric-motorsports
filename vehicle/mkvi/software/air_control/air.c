@@ -83,13 +83,11 @@ void pcint1_callback(void) {
     air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 }
 
-// void pcint2_callback(void) {
-//     air_control_critical.imd_status = true;
-
-//     if (!air_control_critical.imd_status) {
-//         // set_fault(AIR_FAULT_IMD_STATUS);
-//     }
-// }
+void pcint2_callback(void) {
+    if (!air_control_critical.imd_status) {
+        set_fault(AIR_FAULT_IMD_STATUS);
+    }
+}
 
 /*
  * Run through initial checks to ensure safe operation. Checks are:
@@ -118,32 +116,33 @@ static int initial_checks(void) {
         rc = 1;
         goto bail;
     }
-
-    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
-        set_fault(AIR_FAULT_BMS_VOLTAGE);
-        rc = 1;
-        goto bail;
+    if(tractive_sys == MOTOR_CONTROLLER) {
+        if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
+            // set_fault(AIR_FAULT_BMS_VOLTAGE);
+            rc = 1;
+            // goto bail;
+        }
     }
 
     can_send_air_control_critical();
 
-    // int16_t mc_voltage = 0;
-    // rc = get_tractive_voltage(&mc_voltage, tractive_sys, 1000);
+    int16_t mc_voltage = 0;
+    rc = get_tractive_voltage(&mc_voltage, tractive_sys, 1000);
 
-    // if (rc == 1) {
-    //     set_fault(AIR_FAULT_CAN_ERROR);
-    //     goto bail;
-    // } else if (rc == 2) {
-    //     set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
-    //     rc = 1;
-    //     goto bail;
-    // }
+    if (rc == 1) {
+        set_fault(AIR_FAULT_CAN_ERROR);
+        goto bail;
+    } else if (rc == 2) {
+        set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
+        rc = 1;
+        goto bail;
+    }
 
-    // if (mc_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
-    //     set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
-    //     rc = 1;
-    //     goto bail;
-    // }
+    if (mc_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
+        set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
+        rc = 1;
+        goto bail;
+    }
 
     can_send_air_control_critical();
 
@@ -412,7 +411,7 @@ int main(void) {
     gpio_enable_interrupt(SS_MPC);
     gpio_enable_interrupt(SS_TSMP);
     gpio_enable_interrupt(SS_HVD);
-    gpio_enable_interrupt(IMD_SENSE);
+    
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
@@ -437,11 +436,15 @@ int main(void) {
 
     pcint0_callback();
     pcint1_callback();
-    // pcint2_callback();
 
+    //IMD takes a while to warm up, so just set it to work 
+    air_control_critical.imd_status = true;
     if (initial_checks() != 0) {
         goto fault;
     }
+
+    //Now enable the IMD
+    gpio_enable_interrupt(IMD_SENSE);
 
     // Clear general LED to indicate that initialization has completed
     gpio_clear_pin(GENERAL_LED);
@@ -449,7 +452,7 @@ int main(void) {
     // Get initial states of pins
     pcint0_callback();
     pcint1_callback();
-    // pcint2_callback();
+    pcint2_callback();
 
     can_send_air_control_critical();
 

@@ -46,11 +46,12 @@ void hw_init() {
     sei();
 
     gpio_set_mode(BMS_RELAY_LSD, OUTPUT);
-    gpio_set_mode(COOLING_PUMP_LSD, OUTPUT);
+    gpio_set_mode(COOLING_PUMP_PWM, OUTPUT);
     gpio_set_mode(DEBUG_LED_1, OUTPUT);
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
+    gpio_clear_pin(COOLING_PUMP_PWM);
     
 
     gpio_set_mode(BSPD_CURRENT_THRESH, INPUT);
@@ -178,7 +179,6 @@ int main(void) {
                 can_send_bms_metrics();
             }
 
-            // Untested
             if (bms_core.bms_state == BMS_STATE_CHARGING) {
                 if (loop_counter % 5 == 0) {
                     charging_cmd.target_voltage = 403;

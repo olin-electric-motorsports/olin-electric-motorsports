@@ -46,6 +46,7 @@
 // Outputs
 extern gpio_t BMS_RELAY_LSD;
 extern gpio_t COOLING_PUMP_LSD;
+extern gpio_t COOLING_PUMP_PWM;
 extern gpio_t SPI_CS;
 extern gpio_t CHARGE_ENABLE_IN;
 extern gpio_t CHARGE_ENABLE_OUT;
