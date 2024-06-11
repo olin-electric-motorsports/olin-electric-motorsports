@@ -1,9 +1,9 @@
 #pragma once
 
 /**
- * Write necessary register configurations for cell balancing based on the cell
- * balancing config in bms_config.h. Leaves cell balancing disabled. Should be
- * run on hardware init.
+ * Write necessary register configurations for cell balancing. Config is
+ * hard-coded to save on space. Leaves cell balancing disabled. Should be run on
+ * hardware init.
  */
 void cell_balancing_init(void);
 

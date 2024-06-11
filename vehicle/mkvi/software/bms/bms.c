@@ -113,7 +113,10 @@ static void monitor_cells(void) {
 
     uint16_t pack_voltage = 0;
     pec_errors = 0;
+
+    disable_cell_balancing();
     voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
+    enable_cell_balancing();
     bms_core.pack_voltage = pack_voltage;
 
     // read current
