@@ -3,6 +3,8 @@ name: bms
 subscribe:
   - name: charging_fbk
     mob: 1
+  - name: cell_balancing
+    mob: 2
 publish:
   - name: charging_cmd
     id: 0x80
@@ -79,7 +81,7 @@ publish:
           name: A
           offset: 0
           scale: .01
-      - name: cell_balancing_status
+      - name: cell_balancing_status_old
         slice: 46 + 1
         unit:
           type: bool
@@ -285,7 +287,17 @@ publish:
           values:
             t: FAULT
             f: Normal
-
+  # - name: cell_balancing
+  #   id: 0x513
+  #   freq_hz: 100
+  #   signals:
+  #     - name: cell_balancing_enabled
+  #       slice: 0 + 1
+  #       unit:
+  #         type: bool
+  #         values:
+  #           t: enabled
+  #           f: disabled
   - name: bms_voltage
     id: 0x401
     freq_hz: 4

@@ -58,3 +58,14 @@ publish: # sending out these variables
           values:
             t: FAULT
             f: Normal
+  - name: cell_balancing
+    id: 0x513
+    freq_hz: 100
+    signals:
+      - name: cell_balancing_status
+        slice: 0 + 1
+        unit:
+          type: bool
+          values:
+            t: enabled
+            f: disabled        

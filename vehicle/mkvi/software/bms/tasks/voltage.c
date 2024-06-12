@@ -61,21 +61,23 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             if (cell_1 < minimum_cell_voltage) {
                 minimum_cell_voltage = cell_1;
                 minimum_cell_index[0] = ic;
-                minimum_cell_index[1] = 3 + cell_reg;
+                minimum_cell_index[1] = cell_reg + 1;
             }
             if (cell_2 < minimum_cell_voltage) {
                 minimum_cell_voltage = cell_2;
                 minimum_cell_index[0] = ic;
-                minimum_cell_index[1] = 2 * 3 + cell_reg;
+                minimum_cell_index[1] = 2 * cell_reg + 2;
             }
-            if (cell_3 < minimum_cell_voltage) {
+            if (cell_3 < minimum_cell_voltage && cell_reg != 5) {
                 minimum_cell_voltage = cell_3;
                 minimum_cell_index[0] = ic;
-                minimum_cell_index[1] = 3 * 3 + cell_reg;
+                minimum_cell_index[1] = 3 * cell_reg + 3;
             }
 
             bms_debug.segment_with_min_cell = minimum_cell_index[0];
             bms_debug.minimum_cell = minimum_cell_index[1];
+            bms_debug.dbg_3 = minimum_cell_voltage;
+            can_send_bms_debug();
 
             // Core receives all 1s when the CSC is MIA
             if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)

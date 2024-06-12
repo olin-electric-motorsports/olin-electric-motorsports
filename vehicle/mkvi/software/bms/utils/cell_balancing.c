@@ -52,14 +52,14 @@ void cell_balancing_task(void) {
 };
 
 void enable_cell_balancing(void) {
-    uint8_t unmute_data[NUM_ICS] = { 0, 0, 0, 0, 0, 0 }; // Hacky, please fix
+    uint8_t unmute_data[NUM_ICS] = { 0 };
     wakeup_sleep(NUM_ICS);
     uint8_t unmute_cmd[2] = { 0x0, 0x29 };
     write_68(NUM_ICS, unmute_cmd, unmute_data);
 };
 
 void disable_cell_balancing(void) {
-    uint8_t mute_data[NUM_ICS] = { 1, 1, 1, 1, 1, 1 }; // Hacky, please fix
+    uint8_t mute_data[NUM_ICS] = { 1, 1, 1, 1, 1, 1 };
     wakeup_sleep(NUM_ICS);
     uint8_t mute_cmd[2] = { 0x0, 0x28 };
     write_68(NUM_ICS, mute_cmd, mute_data);

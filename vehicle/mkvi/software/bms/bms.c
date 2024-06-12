@@ -67,6 +67,8 @@ void hw_init() {
 
     can_receive_charging_fbk();
 
+    can_receive_cell_balancing();
+
     wakeup_sleep(NUM_ICS);
 
     updater_init(BTLDR_ID, 5);
@@ -114,7 +116,7 @@ static void monitor_cells(void) {
 
     disable_cell_balancing();
     voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
-    if (bms_core.cell_balancing_status) {
+    if (cell_balancing.cell_balancing_status) {
         enable_cell_balancing();
     }
     bms_core.pack_voltage = pack_voltage;
@@ -165,6 +167,7 @@ int main(void) {
     uint8_t loop_counter = 0;
 
     while (true) {
+        // can_receive_cell_balancing();
         if (run_10ms) {
             updater_loop();
             monitor_cells();
@@ -185,24 +188,30 @@ int main(void) {
             static uint16_t balancing_counter = 0;
             static bool balancing_cooldown = false;
             // bms_debug.dbg_2 = balancing_cooldown;
-            can_send_bms_debug();
+            // can_send_bms_debug();
             if (balancing_cooldown) {
-                if (balancing_counter == 20) { // 5s
+                if (balancing_counter == 4) { // 5s 20
                     balancing_cooldown = false;
-                    can_send_bms_debug();
+                    // bms_debug.dbg_3 = 100;
+                    // can_send_bms_debug();
                     balancing_counter = 0;
                 }
             }
-            bms_core.bms_state = BMS_STATE_CHARGING; // TOOD: Remove later
+            if (cell_balancing.cell_balancing_status) {
+                bms_core.bms_state = BMS_STATE_CHARGING; // TOOD: Remove later
+            }
+            // bms_debug.dbg_4 = cell_balancing.cell_balancing_status;
+            // can_send_bms_debug();
             if (bms_core.bms_state == BMS_STATE_CHARGING) {
                 if (loop_counter % 5 == 0) { // Every 200ms
-                    if (balancing_counter == 100
+                    if (balancing_counter == 20 // 100
                         && !balancing_cooldown) { // Every 20s
-                        if (bms_core.cell_balancing_status) {
+                        if (cell_balancing.cell_balancing_status) {
                             cell_balancing_task();
                         }
                         balancing_cooldown = true;
-                        can_send_bms_debug();
+                        // bms_debug.dbg_3 = 200;
+                        // can_send_bms_debug();
                         balancing_counter = 0;
                     }
                     charging_cmd.target_voltage = 403;
