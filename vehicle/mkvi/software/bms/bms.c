@@ -69,6 +69,9 @@ void hw_init() {
 
     can_receive_cell_balancing();
 
+    cell_balancing_task();
+    enable_cell_balancing();
+
     wakeup_sleep(NUM_ICS);
 
     updater_init(BTLDR_ID, 5);
@@ -192,8 +195,8 @@ int main(void) {
             if (balancing_cooldown) {
                 if (balancing_counter == 4) { // 5s 20
                     balancing_cooldown = false;
-                    // bms_debug.dbg_3 = 100;
-                    // can_send_bms_debug();
+                    bms_debug.dbg_3 = 100;
+                    can_send_bms_debug();
                     balancing_counter = 0;
                 }
             }

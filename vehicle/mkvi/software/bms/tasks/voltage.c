@@ -12,6 +12,9 @@
 
 void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                   uint16_t* pec_errors) {
+    // Cell discharge register
+    uint32_t cells_to_discharge[NUM_ICS] = { 0 };
+
     *pack_voltage = 0;
 
     wakeup_sleep(NUM_ICS);
@@ -32,7 +35,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
     uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
     // uint32_t pack_voltages[NUM_ICS] = { 0 };
     static uint16_t minimum_cell_voltage = UINT16_MAX;
-    static uint8_t minimum_cell_index[2] = { 0, 0 };
+    // static uint8_t minimum_cell_index[2] = { 0, 0 };
 
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
         // Read one register at a time for all segments
@@ -59,25 +62,34 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
 
             // Find minimum cell voltage and track index
             if (cell_1 < minimum_cell_voltage) {
+                if (cell_1 < minimum_cell_voltage + 0.05) {
+                    cells_to_discharge[ic] |= 1 << (3 * cell_reg + 0);
+                }
                 minimum_cell_voltage = cell_1;
-                minimum_cell_index[0] = ic;
-                minimum_cell_index[1] = 3 * cell_reg + 0;
+                // minimum_cell_index[0] = ic;
+                // minimum_cell_index[1] = 3 * cell_reg + 0;
             }
             if (cell_2 < minimum_cell_voltage) {
+                if (cell_2 < minimum_cell_voltage + 0.05) {
+                    cells_to_discharge[ic] |= 1 << (3 * cell_reg + 1);
+                }
                 minimum_cell_voltage = cell_2;
-                minimum_cell_index[0] = ic;
-                minimum_cell_index[1] = 3 * cell_reg + 1;
+                // minimum_cell_index[0] = ic;
+                // minimum_cell_index[1] = 3 * cell_reg + 1;
             }
             if (cell_3 < minimum_cell_voltage && cell_reg != 5) {
                 minimum_cell_voltage = cell_3;
-                minimum_cell_index[0] = ic;
-                minimum_cell_index[1] = 3 * cell_reg + 2;
+                if (cell_3 < minimum_cell_voltage + 0.05) {
+                    cells_to_discharge[ic] |= 1 << (3 * cell_reg + 2);
+                }
+                // minimum_cell_index[0] = ic;
+                // minimum_cell_index[1] = 3 * cell_reg + 2;
             }
 
-            bms_debug.segment_with_min_cell = minimum_cell_index[0];
-            bms_debug.minimum_cell = minimum_cell_index[1];
-            bms_debug.dbg_3 = minimum_cell_voltage;
-            can_send_bms_debug();
+            // bms_debug.segment_with_min_cell = minimum_cell_index[0];
+            // bms_debug.minimum_cell = minimum_cell_index[1];
+            // bms_debug.dbg_3 = minimum_cell_voltage;
+            // can_send_bms_debug();
 
             // Core receives all 1s when the CSC is MIA
             if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)
