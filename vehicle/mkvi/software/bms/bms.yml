@@ -222,10 +222,17 @@ publish:
           name: ""
           scale: 1
           offset: 0
-      - name: dbg_2
-        slice: 16 + 16
+      - name: segment_with_min_cell
+        slice: 16 + 8
         unit:
-          type: uint16_t
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: minimum_cell
+        slice: 24 + 8
+        unit:
+          type: uint8_t
           name: ""
           scale: 1
           offset: 0

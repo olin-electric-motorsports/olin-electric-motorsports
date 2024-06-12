@@ -69,8 +69,6 @@ void hw_init() {
 
     wakeup_sleep(NUM_ICS);
 
-    cell_balancing_init();
-
     updater_init(BTLDR_ID, 5);
 }
 
@@ -176,17 +174,41 @@ int main(void) {
             can_send_bms_sense();
 
             if (loop_counter % 50 == 0) {
-                can_send_bms_debug();
+                // can_send_bms_debug();
                 can_send_bms_metrics();
             }
 
             // Untested
+            static uint16_t balancing_counter = 0;
+            static bool balancing_cooldown = false;
+            // bms_debug.dbg_2 = balancing_cooldown;
+            can_send_bms_debug();
+            if (balancing_cooldown) {
+                if (balancing_counter % 250 == 0) { // 10s
+                    balancing_cooldown = false;
+                    // bms_debug.dbg_2 = balancing_cooldown;
+                    can_send_bms_debug();
+                    balancing_counter = 1;
+                }
+            }
+            bms_core.bms_state = BMS_STATE_CHARGING; // TOOD: Remove later
             if (bms_core.bms_state == BMS_STATE_CHARGING) {
-                if (loop_counter % 5 == 0) {
+                if (loop_counter % 5 == 0) { // Every 200ms
+                    if (balancing_counter % 300 == 0
+                        && !balancing_cooldown) { // Every 60s
+                        cell_balancing_task();
+                        balancing_cooldown = true;
+                        // bms_debug.dbg_2 = balancing_cooldown;
+                        can_send_bms_debug();
+                        balancing_counter = 1;
+                    }
                     charging_cmd.target_voltage = 403;
                     charging_cmd.target_current = 5;
                     charging_cmd.enable_charging = true;
                     can_send_charging_cmd();
+                    balancing_counter++;
+                    // bms_debug.dbg_3 = balancing_counter;
+                    can_send_bms_debug();
                 }
             }
 

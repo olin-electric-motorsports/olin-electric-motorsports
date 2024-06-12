@@ -6,38 +6,8 @@
 
 #define ADBMS_CMD_LEN (6)
 
-void cell_balancing_init(void) {
-    // Check internal die temperature
-    wakeup_sleep(NUM_ICS);
-
-    // Start and wait for ADC conversion for internal temp
-    LTC681x_adstat(MD_7KHZ_3KHZ, STAT_CH_ITEMP);
-    LTC681x_pollAdc();
-    wakeup_sleep(NUM_ICS);
-
-    // Buffers for reading data
-    uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
-    // uint16_t die_temperatures[NUM_ICS] = { 0 };
-
-    // For each segment, check internal die temp
-    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-        // reg = 1, read back status group A
-        LTC681x_rdstat_reg(1, NUM_ICS, raw_data);
-
-        // Index for the raw data array
-        uint8_t raw_idx = ic * NUM_RX_BYT;
-
-        bms_debug.internal_die_temp
-            = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
-
-        can_send_bms_debug();
-
-        if (bms_debug.internal_die_temp > DIE_OVERTEMPERATURE_THRESHOLD) {
-            set_fault(BMS_FAULT_DIE_OVERTEMPERATURE);
-        }
-    }
-
-    // Mute cell balancing by default
+void cell_balancing_task(void) {
+    // Mute cell balancing before setting config
     disable_cell_balancing();
 
     // Set discharge timer duration to zero to disable watchdog and set
@@ -49,8 +19,8 @@ void cell_balancing_init(void) {
         wrcfga_data[ic * ADBMS_CMD_LEN + 0]
             = 0xFC; // GPIO pull-downs off, REFON 0, DTEN x, ADC 0
         wrcfga_data[ic * ADBMS_CMD_LEN + 1] = 0x0; // VUV 0x000
-        wrcfga_data[ic * ADBMS_CMD_LEN + 2] = 0x0; // VOV, VUV 0x000
-        wrcfga_data[ic * ADBMS_CMD_LEN + 3] = 0x0; // VOV 0x000
+        wrcfga_data[ic * ADBMS_CMD_LEN + 2] = 0x0; // VOV, VUV 0x000default
+        wrcfga_data[ic * ADBMS_CMD_LEN + 3] = 0x0; // VOV 0x000default
         wrcfga_data[ic * ADBMS_CMD_LEN + 4] = 0xFF; // Discharge cells 1-8
         wrcfga_data[ic * ADBMS_CMD_LEN + 5]
             = 0xF; // Discharge timer off, discharge cells 9-12
