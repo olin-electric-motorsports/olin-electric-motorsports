@@ -112,9 +112,11 @@ static void monitor_cells(void) {
     uint16_t pack_voltage = 0;
     pec_errors = 0;
 
-    // disable_cell_balancing();
+    disable_cell_balancing();
     voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
-    // enable_cell_balancing();
+    if (bms_core.cell_balancing_status) {
+        enable_cell_balancing();
+    }
     bms_core.pack_voltage = pack_voltage;
 
     // read current
@@ -164,6 +166,7 @@ int main(void) {
 
     while (true) {
         if (run_10ms) {
+            updater_loop();
             monitor_cells();
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
@@ -184,30 +187,29 @@ int main(void) {
             // bms_debug.dbg_2 = balancing_cooldown;
             can_send_bms_debug();
             if (balancing_cooldown) {
-                if (balancing_counter % 250 == 0) { // 10s
+                if (balancing_counter == 20) { // 5s
                     balancing_cooldown = false;
-                    // bms_debug.dbg_2 = balancing_cooldown;
                     can_send_bms_debug();
-                    balancing_counter = 1;
+                    balancing_counter = 0;
                 }
             }
-            // bms_core.bms_state = BMS_STATE_CHARGING; // TOOD: Remove later
+            bms_core.bms_state = BMS_STATE_CHARGING; // TOOD: Remove later
             if (bms_core.bms_state == BMS_STATE_CHARGING) {
                 if (loop_counter % 5 == 0) { // Every 200ms
-                    if (balancing_counter % 300 == 0
-                        && !balancing_cooldown) { // Every 60s
-                        cell_balancing_task();
+                    if (balancing_counter == 100
+                        && !balancing_cooldown) { // Every 20s
+                        if (bms_core.cell_balancing_status) {
+                            cell_balancing_task();
+                        }
                         balancing_cooldown = true;
-                        // bms_debug.dbg_2 = balancing_cooldown;
                         can_send_bms_debug();
-                        balancing_counter = 1;
+                        balancing_counter = 0;
                     }
                     charging_cmd.target_voltage = 403;
                     charging_cmd.target_current = 5;
                     charging_cmd.enable_charging = true;
                     can_send_charging_cmd();
                     balancing_counter++;
-                    // bms_debug.dbg_3 = balancing_counter;
                     can_send_bms_debug();
                 }
             }
@@ -216,7 +218,6 @@ int main(void) {
             if (loop_counter == 1000) {
                 loop_counter = 0;
             }
-            updater_loop();
 
             run_10ms = false;
         }

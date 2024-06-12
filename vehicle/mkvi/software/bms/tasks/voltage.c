@@ -101,51 +101,24 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             bms_voltage.voltage_2 = cell_2;
             bms_voltage.voltage_3 = cell_3;
 
-            // Average cell voltages on segment 1
-            if (ic == 1) {
-                // pack_voltages[ic] += (cell_1 + cell_2 + cell_3);
-                pack_voltages[ic] += cell_1;
-                pack_voltages[ic] += cell_2;
-                pack_voltages[ic] += cell_3;
-            } else {
-                // Check under/overvoltage thresholds
-                if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
-                    *ov += 1;
-                } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
-                    *uv += 1;
-                }
-
-                if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
-                    *ov += 1;
-                } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
-                    *uv += 1;
-                }
-
-                if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
-                    *ov += 1;
-                } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
-                    *uv += 1;
-                }
+            // Check under/overvoltage thresholds
+            if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
+                *ov += 1;
+            } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
+                *uv += 1;
             }
 
-            // // Check under/overvoltage thresholds
-            // if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
-            //     *ov += 1;
-            // } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
-            //     *uv += 1;
-            // }
+            if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
+                *ov += 1;
+            } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
+                *uv += 1;
+            }
 
-            // if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
-            //     *ov += 1;
-            // } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
-            //     *uv += 1;
-            // }
-
-            // if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
-            //     *ov += 1;
-            // } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
-            //     *uv += 1;
-            // }
+            if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
+                *ov += 1;
+            } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
+                *uv += 1;
+            }
 
             can_send_bms_voltage();
 
