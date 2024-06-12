@@ -57,7 +57,7 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     static uint8_t channel = 0;
 
     if (get_fault(BMS_FAULT_MUX_MIA)) {
-        return;
+        // return;
     }
 
     if (mux == 0 && channel == 7) {
@@ -67,38 +67,6 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         *max_temp = UINT16_MAX;
         *ot = 0;
         *ut = 0;
-    }
-
-    if (bms_core.bms_state == BMS_STATE_CHARGING) {
-        // Check internal die temperature
-        wakeup_sleep(NUM_ICS);
-
-        // Start and wait for ADC conversion for internal temp
-        LTC681x_adstat(MD_7KHZ_3KHZ, STAT_CH_ITEMP);
-        LTC681x_pollAdc();
-        wakeup_sleep(NUM_ICS);
-
-        // Buffers for reading data
-        uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
-        // uint16_t die_temperatures[NUM_ICS] = { 0 };
-
-        // For each segment, check internal die temp
-        for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-            // reg = 1, read back status group A
-            LTC681x_rdstat_reg(1, NUM_ICS, raw_data);
-
-            // Index for the raw data array
-            uint8_t raw_idx = ic * NUM_RX_BYT;
-
-            bms_debug.internal_die_temp
-                = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
-
-            can_send_bms_debug();
-
-            if (bms_debug.internal_die_temp > DIE_OVERTEMPERATURE_THRESHOLD) {
-                set_fault(BMS_FAULT_DIE_OVERTEMPERATURE);
-            }
-        }
     }
 
     bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
@@ -115,13 +83,20 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     uint8_t aux_reg_c_raw[NUM_RX_BYT * NUM_ICS];
 
     wakeup_idle(NUM_ICS);
-    LTC681x_rdaux_reg(AUX_REG_GROUP_A, NUM_ICS,
-                      aux_reg_a_raw); // for GPIOS 1-3
-    LTC681x_rdaux_reg(AUX_REG_GROUP_C, NUM_ICS,
-                      aux_reg_c_raw); // for GPIOS 6
+    LTC681x_rdaux_reg(AUX_REG_GROUP_A, NUM_ICS, aux_reg_a_raw); // for GPIOS 1-3
+    LTC681x_rdaux_reg(AUX_REG_GROUP_C, NUM_ICS, aux_reg_c_raw); // for GPIOS 6
 
     uint8_t num_temps;
     uint16_t temps[4];
+
+    // ADD PROBLEM THERMISTORS HERE
+    const uint8_t numExeptions = 3;
+    // add a triplet for each bad thermistor {segment (0-5), DA (0-3),
+    // thermistor (0-23)}
+    uint8_t exceptions[3][3] = { { 0, 0, 7 }, { 1, 2, 12 }, { 1, 1, 20 } };
+    static uint16_t exceptionReplacement
+        = 11708; // 35C at the beginning, will follow the average of the pack
+                 // after
 
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         num_temps = 0;
@@ -132,49 +107,72 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
 
         bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 0]
                                         | (aux_reg_a_raw[ic_zero_idx + 1] << 8);
+        bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
+                                        | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
 
-        // Skip channels 0-6 on Mux 0, DA Board 1 since the thermistors are
-        // not connected Skip DA board 1 on Segment 3 because it is not
-        // working
-        if (ic != 2) {
-            if (mux != 0 || channel == 7) {
-                temps[num_temps] = bms_temperature.temperature_1;
-                num_temps++;
+        // Deal with problem thermistors in DA 0 and 1
+        for (uint8_t i = 0; i < numExeptions; i++) {
+            // Indevidual issue cells
+            if (ic == exceptions[i][0]
+                && mux == exceptions[i][2] / NUM_MUX_CHANNELS
+                && channel == exceptions[i][2] % NUM_MUX_CHANNELS) {
+                if (exceptions[i][1] == 0) {
+                    bms_temperature.temperature_1 = exceptionReplacement;
+                }
+                if (exceptions[i][1] == 1) {
+                    bms_temperature.temperature_2 = exceptionReplacement;
+                }
             }
         }
 
-        bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
-                                        | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
-        // Thermistor 20 on IC 1, DA Board 2 is broken
-        if (ic != 1 || mux != 2 || channel != 4) {
-            temps[num_temps] = bms_temperature.temperature_2;
-            num_temps++;
+        // Unconnected cells
+        if (mux == 0 && channel != 7) {
+            bms_temperature.temperature_1 = exceptionReplacement;
         }
+
+        temps[num_temps] = bms_temperature.temperature_1;
+        num_temps++;
+        temps[num_temps] = bms_temperature.temperature_2;
+        num_temps++;
+
         can_send_bms_temperature();
 
         bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
+
         bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 4]
                                         | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
-        // Thermistor 12 on IC 1, DA Board 3 is broken
-        // Skip DA board 3 on Segment 3 because it is not working
-        if (ic != 2) {
-            if (ic != 1 || mux != 1 || channel != 4) {
-                temps[num_temps] = bms_temperature.temperature_1;
-                num_temps++;
+        bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
+                                        | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
+
+        // Deal with problem thermistors in DA 2 and 3
+        for (uint8_t i = 0; i < numExeptions; i++) {
+            // Indevidual issue cells
+            if (ic == exceptions[i][0]
+                && mux == exceptions[i][2] / NUM_MUX_CHANNELS
+                && channel == exceptions[i][2] % NUM_MUX_CHANNELS) {
+                if (exceptions[i][1] == 2) {
+                    bms_temperature.temperature_1 = exceptionReplacement;
+                }
+                if (exceptions[i][1] == 3) {
+                    bms_temperature.temperature_2 = exceptionReplacement;
+                }
             }
         }
 
-        bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
-                                        | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
-        // Skip channels 0-3 on Mux 0, DA Board 4 since the thermistors are
-        // not connected
-        if (mux != 0 || channel >= 4) {
-            temps[num_temps] = bms_temperature.temperature_2;
-            num_temps++;
+        if (mux == 0 && channel < 4) {
+            bms_temperature.temperature_2 = exceptionReplacement;
         }
+
+        temps[num_temps] = bms_temperature.temperature_1;
+        num_temps++;
+        temps[num_temps] = bms_temperature.temperature_2;
+        num_temps++;
+
         can_send_bms_temperature();
 
         update_min_max_temps(min_temp, max_temp, temps, num_temps);
+
+        exceptionReplacement = (*min_temp + *max_temp) / 2;
 
         // PEC error handling for register A...
         uint16_t received_pec = (aux_reg_a_raw[ic_zero_idx + 6] << 8)
@@ -208,8 +206,7 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         *ot += 1;
     }
 
-    // if min is colder than undertemp threshold, increment undertemp
-    // counter
+    // if min is colder than undertemp threshold, increment undertemp counter
     if (*min_temp > UNDERTEMPERATURE_THRESHOLD) {
         *ut += 1;
     }

@@ -107,13 +107,14 @@ void configure_mux(uint8_t num_ics, uint8_t address, bool enable,
      */
     uint8_t tx_data[ADBMS_CMD_LEN * NUM_ICS] = { 0 };
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-        tx_data[ic*BYTES_IN_REG + 0] = START; // START xxxx
-        tx_data[ic*BYTES_IN_REG + 1] = NACK_STOP; // xxxx NACK_STOP
+        tx_data[ic * BYTES_IN_REG + 0] = START; // START xxxx
+        tx_data[ic * BYTES_IN_REG + 1] = NACK_STOP; // xxxx NACK_STOP
 
-        tx_data[ic*BYTES_IN_REG + 2] = START | (address >> 4); // START AAAA
-        tx_data[ic*BYTES_IN_REG + 3] = (address << 4) | NACK; // AAAA NACK
-        tx_data[ic*BYTES_IN_REG + 4] = BLANK; // xxxxBLANK
-        tx_data[ic*BYTES_IN_REG + 5] = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
+        tx_data[ic * BYTES_IN_REG + 2] = START | (address >> 4); // START AAAA
+        tx_data[ic * BYTES_IN_REG + 3] = (address << 4) | NACK; // AAAA NACK
+        tx_data[ic * BYTES_IN_REG + 4] = BLANK; // xxxxBLANK
+        tx_data[ic * BYTES_IN_REG + 5]
+            = mux_cmd << 4 | NACK_STOP; // MMMM NACK_STOP
     }
 
     wakeup_sleep(num_ics); // wake up the IC core
@@ -167,6 +168,6 @@ bool configure_mux_until_ack(uint8_t num_ics, uint8_t address, bool enable,
         try_counter++;
     }
 
-    set_fault(BMS_FAULT_MUX_MIA);
+    // set_fault(BMS_FAULT_MUX_MIA);
     return false;
 }

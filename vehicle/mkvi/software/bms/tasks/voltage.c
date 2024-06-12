@@ -30,7 +30,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
      * then the Register B, etc.
      */
     uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
-    uint32_t pack_voltages[NUM_ICS] = { 0 };
+    // uint32_t pack_voltages[NUM_ICS] = { 0 };
     static uint16_t minimum_cell_voltage = UINT16_MAX;
     static uint8_t minimum_cell_index[2] = { 0, 0 };
 
@@ -77,7 +77,6 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             bms_debug.segment_with_min_cell = minimum_cell_index[0];
             bms_debug.minimum_cell = minimum_cell_index[1];
             bms_debug.dbg_3 = minimum_cell_voltage;
-            bms_debug.dbg_4 = cell_reg;
             can_send_bms_debug();
 
             // Core receives all 1s when the CSC is MIA
@@ -123,6 +122,8 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                 *uv += 1;
             }
 
+            bms_debug.dbg_4 = *uv;
+            can_send_bms_debug();
             can_send_bms_voltage();
 
             /*
@@ -141,11 +142,4 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             }
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D, E, F)
-
-    // Fault handling for cell voltage average on segment 1
-    if (pack_voltages[1] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
-        set_fault(BMS_FAULT_OVERVOLTAGE);
-    } else if (pack_voltages[1] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
-        set_fault(BMS_FAULT_UNDERVOLTAGE);
-    }
 }
