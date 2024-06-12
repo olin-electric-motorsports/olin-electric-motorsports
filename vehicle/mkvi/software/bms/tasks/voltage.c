@@ -42,7 +42,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
         // + 1 because of the way _rdcv_reg is written
         LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
 
-        for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // cell_voltage = UINT16_MAX;
+        for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach segment/chip
             bms_voltage.ic = ic;
             bms_voltage.cell = cell_reg;
 
@@ -54,7 +54,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                 = raw_data[raw_idx + 0] + (raw_data[raw_idx + 1] << 8);
             uint16_t cell_2
                 = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
-            uint8_t cell_3
+            uint16_t cell_3
                 = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
 
             // Find minimum cell voltage and track index
@@ -101,24 +101,51 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             bms_voltage.voltage_2 = cell_2;
             bms_voltage.voltage_3 = cell_3;
 
-            // Check under/overvoltage thresholds
-            if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
+            // Average cell voltages on segment 1
+            if (ic == 1) {
+                // pack_voltages[ic] += (cell_1 + cell_2 + cell_3);
+                pack_voltages[ic] += cell_1;
+                pack_voltages[ic] += cell_2;
+                pack_voltages[ic] += cell_3;
+            } else {
+                // Check under/overvoltage thresholds
+                if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
+
+                if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
+
+                if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
             }
 
-            if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
+            // // Check under/overvoltage thresholds
+            // if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
+            //     *ov += 1;
+            // } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
+            //     *uv += 1;
+            // }
 
-            if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
+            // if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
+            //     *ov += 1;
+            // } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
+            //     *uv += 1;
+            // }
+
+            // if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
+            //     *ov += 1;
+            // } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
+            //     *uv += 1;
+            // }
 
             can_send_bms_voltage();
 

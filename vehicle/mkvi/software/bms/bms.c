@@ -112,9 +112,9 @@ static void monitor_cells(void) {
     uint16_t pack_voltage = 0;
     pec_errors = 0;
 
-    disable_cell_balancing();
+    // disable_cell_balancing();
     voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
-    enable_cell_balancing();
+    // enable_cell_balancing();
     bms_core.pack_voltage = pack_voltage;
 
     // read current
@@ -191,7 +191,7 @@ int main(void) {
                     balancing_counter = 1;
                 }
             }
-            bms_core.bms_state = BMS_STATE_CHARGING; // TOOD: Remove later
+            // bms_core.bms_state = BMS_STATE_CHARGING; // TOOD: Remove later
             if (bms_core.bms_state == BMS_STATE_CHARGING) {
                 if (loop_counter % 5 == 0) { // Every 200ms
                     if (balancing_counter % 300 == 0
@@ -213,7 +213,6 @@ int main(void) {
             }
 
             loop_counter++;
-
             if (loop_counter == 1000) {
                 loop_counter = 0;
             }
