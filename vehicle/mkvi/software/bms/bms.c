@@ -51,7 +51,6 @@ void hw_init() {
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
-    
 
     gpio_set_mode(BSPD_CURRENT_THRESH, INPUT);
 
@@ -66,9 +65,9 @@ void hw_init() {
     pcint0_callback();
 
     can_receive_charging_fbk();
-  
+
     wakeup_sleep(NUM_ICS);
-  
+
     cell_balancing_init();
 
     updater_init(BTLDR_ID, 5);
@@ -119,7 +118,7 @@ static void monitor_cells(void) {
 
     // read current
     int16_t current = 0;
-    //current_task(&current);
+    // current_task(&current);
     current = (adc_read(CURRENT_SENSE_VOUT) - 568) * 24;
     bms_core.pack_current = current;
 
@@ -144,7 +143,7 @@ static void monitor_cells(void) {
 
     // Check for undervoltage and overvoltage faults
     if (ov > 0) {
-        set_fault(BMS_FAULT_OVERVOLTAGE);
+        // set_fault(BMS_FAULT_OVERVOLTAGE);
     } else if (ov == 0) {
         // clear_fault(BMS_FAULT_OVERVOLTAGE);
     }

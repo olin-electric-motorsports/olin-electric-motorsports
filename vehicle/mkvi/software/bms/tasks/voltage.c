@@ -127,7 +127,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
 
     // Fault handling for cell voltage average on segment 1
     if (pack_voltages[1] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
-        set_fault(BMS_FAULT_OVERVOLTAGE);
+        // set_fault(BMS_FAULT_OVERVOLTAGE);
     } else if (pack_voltages[1] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
     }
