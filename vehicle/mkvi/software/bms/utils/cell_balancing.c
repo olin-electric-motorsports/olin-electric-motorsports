@@ -75,7 +75,8 @@ void enable_cell_balancing(void) {
 void disable_cell_balancing(void) {
     // bms_ctrl.cell_balancing_status = false;
     // can_send_bms_ctrl(); // TODO: Remove when running low on mem
-    uint8_t mute_data[NUM_ICS] = { 1 }; // TODO: Update for six segments
+    uint8_t mute_data[NUM_ICS]
+        = { 1, 1, 1, 1, 1, 1 }; // TODO: Update for six segments
     wakeup_sleep(NUM_ICS);
     uint8_t mute_cmd[2] = { 0x0, 0x28 };
     write_68(NUM_ICS, mute_cmd, mute_data);
