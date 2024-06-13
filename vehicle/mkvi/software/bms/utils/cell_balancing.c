@@ -7,6 +7,17 @@
 #define ADBMS_CMD_LEN (6)
 
 void cell_balancing_task(void) {
+    uint32_t cells_to_balance[NUM_ICS] = { 0 };
+    // To use: little endian, so 0x1 would discharge only cell 1. Find the
+    // lowest cell and discharge all but the lowest cell. Ex: 0x1FFBF to
+    // discharge only cell seven.
+    cells_to_balance[0] = 0x1FFFF;
+    cells_to_balance[1] = 0x1FFFF;
+    cells_to_balance[2] = 0x1FFFF;
+    cells_to_balance[3] = 0x1FFFF;
+    cells_to_balance[4] = 0x1FFFF;
+    cells_to_balance[5] = 0x1FFFF;
+
     // Set discharge timer duration to zero to disable watchdog and set
     // discharge cells in cfg register A
     uint8_t wrcfga_cmd[2] = { 0x00, 0x01 };
@@ -18,9 +29,11 @@ void cell_balancing_task(void) {
         wrcfga_data[ic * ADBMS_CMD_LEN + 1] = 0x0; // VUV 0x000
         wrcfga_data[ic * ADBMS_CMD_LEN + 2] = 0x0; // VOV, VUV 0x000default
         wrcfga_data[ic * ADBMS_CMD_LEN + 3] = 0x0; // VOV 0x000default
-        wrcfga_data[ic * ADBMS_CMD_LEN + 4] = 0xFF; // Discharge cells 1-8
+        wrcfga_data[ic * ADBMS_CMD_LEN + 4]
+            = cells_to_balance[ic] & 0xFF; // Discharge cells 1-8
         wrcfga_data[ic * ADBMS_CMD_LEN + 5]
-            = 0xF; // Discharge timer off, discharge cells 9-12
+            = (cells_to_balance[ic] >> 8)
+              | 0xF0; // Discharge timer off, discharge cells 9-12
     }
 
     wakeup_sleep(NUM_ICS);
@@ -33,10 +46,12 @@ void cell_balancing_task(void) {
 
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         wrcfga_data[ic * ADBMS_CMD_LEN + 0]
-            = 0xFF; // Discharge cells 13-16, GPIO pull-downs off
+            = (cells_to_balance[ic] >> 8)
+              | 0xF; // Discharge cells 13-16, GPIO pull-downs off
         wrcfga_data[ic * ADBMS_CMD_LEN + 1]
-            = 0x81; // Mute x, FDRF off, defualt PS, DTMEN off, GPIO
-                    // 9 pull-down off, discharge cell 17 but not 18
+            = (cells_to_balance[ic] >> 15)
+              & 0x2; // Mute x, FDRF off, defualt PS, DTMEN off, GPIO
+                     // 9 pull-down off, discharge cell 17 but not 18
         wrcfga_data[ic * ADBMS_CMD_LEN + 2] = 0x0; // Reserved bits
         wrcfga_data[ic * ADBMS_CMD_LEN + 3] = 0x0; // Reserved bits
         wrcfga_data[ic * ADBMS_CMD_LEN + 4] = 0x0; // Reserved bits
@@ -49,8 +64,8 @@ void cell_balancing_task(void) {
 };
 
 void enable_cell_balancing(void) {
-    bms_ctrl.cell_balancing_status = true;
-    can_send_bms_ctrl(); // TODO: Remove when running low on mem
+    // bms_ctrl.cell_balancing_status = true;
+    // can_send_bms_ctrl(); // TODO: Remove when running low on mem
     uint8_t unmute_data[NUM_ICS] = { 0 };
     wakeup_sleep(NUM_ICS);
     uint8_t unmute_cmd[2] = { 0x0, 0x29 };
@@ -58,8 +73,8 @@ void enable_cell_balancing(void) {
 };
 
 void disable_cell_balancing(void) {
-    bms_ctrl.cell_balancing_status = false;
-    can_send_bms_ctrl(); // TODO: Remove when running low on mem
+    // bms_ctrl.cell_balancing_status = false;
+    // can_send_bms_ctrl(); // TODO: Remove when running low on mem
     uint8_t mute_data[NUM_ICS] = { 1 }; // TODO: Update for six segments
     wakeup_sleep(NUM_ICS);
     uint8_t mute_cmd[2] = { 0x0, 0x28 };
