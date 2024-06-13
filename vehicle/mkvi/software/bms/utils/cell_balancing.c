@@ -7,9 +7,6 @@
 #define ADBMS_CMD_LEN (6)
 
 void cell_balancing_task(void) {
-    // Mute cell balancing before setting config
-    disable_cell_balancing();
-
     // Set discharge timer duration to zero to disable watchdog and set
     // discharge cells in cfg register A
     uint8_t wrcfga_cmd[2] = { 0x00, 0x01 };
@@ -52,6 +49,8 @@ void cell_balancing_task(void) {
 };
 
 void enable_cell_balancing(void) {
+    bms_ctrl.cell_balancing_status = true;
+    can_send_bms_ctrl(); // TODO: Remove when running low on mem
     uint8_t unmute_data[NUM_ICS] = { 0 };
     wakeup_sleep(NUM_ICS);
     uint8_t unmute_cmd[2] = { 0x0, 0x29 };
@@ -59,7 +58,9 @@ void enable_cell_balancing(void) {
 };
 
 void disable_cell_balancing(void) {
-    uint8_t mute_data[NUM_ICS] = { 1 };
+    bms_ctrl.cell_balancing_status = false;
+    can_send_bms_ctrl(); // TODO: Remove when running low on mem
+    uint8_t mute_data[NUM_ICS] = { 1 }; // TODO: Update for six segments
     wakeup_sleep(NUM_ICS);
     uint8_t mute_cmd[2] = { 0x0, 0x28 };
     write_68(NUM_ICS, mute_cmd, mute_data);

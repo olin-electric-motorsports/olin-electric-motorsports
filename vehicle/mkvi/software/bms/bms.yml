@@ -79,43 +79,36 @@ publish:
           name: A
           offset: 0
           scale: .01
-      - name: cell_balancing_status
-        slice: 46 + 1
-        unit:
-          type: bool
-          values:
-            t: Cell balancing enabled
-            f: Cell balancing disabled
       - name: regen_enabled
-        slice: 47 + 1
+        slice: 46 + 1
         unit:
           type: bool
           values:
             t: Regenerative braking enabled
             f: Regenerative braking disabled
       - name: current_limiting_enabled
-        slice: 48 + 1
+        slice: 47 + 1
         unit:
           type: bool
           values:
             t: Current limiting enabled
             f: Current limiting disabled
       - name: bspd_current_sense
-        slice: 49 + 1
+        slice: 48 + 1
         unit:
           type: bool
           values:
             t: Current sensed
             f: No current sensed
       - name: overcurrent_detect
-        slice: 50 + 1
+        slice: 49 + 1
         unit:
           type: bool
           values:
             t: Over-current detected
             f: No over-current detected
       - name: charger_connected
-        slice: 51 + 1
+        slice: 50 + 1
         unit:
           type: bool
           values:
@@ -278,7 +271,24 @@ publish:
           values:
             t: FAULT
             f: Normal
-
+  - name: bms_ctrl
+    id: 0x513
+    freq_hz: 4
+    signals:
+      - name: cell_balancing_status
+        slice: 0 + 1
+        unit:
+          type: bool
+          values:
+            t: enabled
+            f: disabled
+      - name: charging_status
+        slice: 1 + 2
+        unit:
+          type: bool
+          values:
+            t: enabled
+            f: disabled
   - name: bms_voltage
     id: 0x401
     freq_hz: 4

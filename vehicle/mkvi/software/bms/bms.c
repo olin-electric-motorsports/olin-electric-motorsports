@@ -68,11 +68,11 @@ void hw_init() {
 
     wakeup_sleep(NUM_ICS);
 
-    cell_balancing_task();
-    enable_cell_balancing();
-
     updater_init(BTLDR_ID, 5);
     gpio_set_pin(DEBUG_LED_1);
+
+    cell_balancing_task();
+    enable_cell_balancing();
 }
 
 static void monitor_cells(void) {
@@ -187,6 +187,8 @@ int main(void) {
                     can_send_charging_cmd();
                 }
             }
+
+            // #TODO: If cell balancing
 
             loop_counter++;
 
