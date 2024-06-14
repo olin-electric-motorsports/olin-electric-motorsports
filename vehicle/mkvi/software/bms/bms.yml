@@ -1,8 +1,9 @@
 name: bms
 subscribe:
-  - name: air_control_critical
+  - name: charging_fbk
     mob: 1
 publish:
+  - name: charging_cmd
   - name: bms_core
     id: 0x10
     freq_hz: 100
@@ -21,14 +22,23 @@ publish:
             - OPEN_WIRE
             - OVERCURRENT
             - PEC
+            - CHARGER_FAULT
+            - STATE_MACHINE
+            # NOTE: MIA refers to receiving all 1s from the CSC,
+            # This either means that there is a communication error
+            # (ex: CSC is not powered) or a register on the CSC was
+            # initialized to all 1s and the appropriate command was
+            # not given to update the value (ex: the cell voltage readings
+            # are initialized to all 1s until an ADC conversion is
+            # requested)
+            # TODO: Implement error handle per CSC
+            - CSC_MIA
       - name: bms_state
         slice: 4 + 4
         unit:
           type: enum
           values:
-            - INIT
-            - IDLE
-            - DISCHARGING
+            - ACTIVE
             - CHARGING
             - FAULT
       - name: pack_voltage
@@ -85,8 +95,8 @@ publish:
         unit:
           type: bool
           values:
-            t: Charger connected (CHARGER)
-            f: Charger disconnected (MOTOR CONTROLLER)
+            t: Connected
+            f: Disconnected
 
   - name: bms_sense
     id: 0x011
@@ -120,7 +130,6 @@ publish:
           name: V
           offset: 0
           scale: 5 / 1024
-
   - name: bms_metrics
     id: 0x510
     freq_hz: 100
@@ -166,12 +175,47 @@ publish:
           scale: 1
           offset: 0
       - name: dbg_4
-        slice: 48 + 16
+        slice: 48 + 8
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
+      - name: charger_hardware_fault
+        slice: 56 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_temperature_protection
+        slice: 57 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_input_voltage
+        slice: 58 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_starting_state
+        slice: 59 + 1
+        unit:
+          type: bool
+          values:
+            t: OFF
+            f: On
+      - name: charger_communication
+        slice: 60 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
 
   - name: bms_voltage
     id: 0x401
@@ -193,6 +237,8 @@ publish:
             - REG_B
             - REG_C
             - REG_D
+            - REG_E
+            - REG_F
       - name: voltage_1
         slice: 16 + 16
         unit:
@@ -219,22 +265,22 @@ publish:
     id: 0x402
     freq_hz: 4
     signals:
-      - name: ics
-        slice: 0 + 8
-        unit:
-          type: enum
-          values:
-            - SEGMENTS_1_THRU_3
-            - SEGMENTS_4_THRU_6
-      - name: mux
-        slice: 8 + 4
+      - name: ic
+        slice: 0 + 3
         unit:
           type: uint8_t
           name: ""
           scale: 1
           offset: 0
+      - name: da_boards
+        slice: 4 + 1
+        unit:
+          type: enum
+          values:
+            - DA_BOARDS_12
+            - DA_BOARDS_34
       - name: channel
-        slice: 12 + 4
+        slice: 8 + 5
         unit:
           type: uint8_t
           name: ""
@@ -254,10 +300,50 @@ publish:
           name: "volts"
           scale: 0.0001
           offset: 0
-      - name: temperature_3
-        slice: 48 + 16
+
+  - name: cfg_reg_a
+    id: 0x403
+    freq_hz: 100
+    signals:
+      - name: bit_0
+        slice: 0 + 8
         unit:
-          type: uint16_t
-          name: "volts"
-          scale: 0.0001
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_1
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_2
+        slice: 16 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_3
+        slice: 24 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_4
+        slice: 32 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
+          offset: 0
+      - name: bit_5
+        slice: 40 + 8
+        unit:
+          type: uint8_t
+          name: "bits"
+          scale: 1
           offset: 0
