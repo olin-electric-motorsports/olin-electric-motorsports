@@ -6,7 +6,7 @@
 // implausibility constants according to rule T.4.2
 #define IMPLAUSIBILITY_TIME_LIMIT 100
 
-#define TORQUE_REQUEST_SCALE 9
+#define TORQUE_REQUEST_SCALE 8
 
 #define MOTOR_CLOCKWISE     (1)
 #define MOTOR_ANTICLOCKWISE (0)
