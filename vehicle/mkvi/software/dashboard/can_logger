@@ -1,6 +1,10 @@
 #!/bin/bash
 
-dir="$(pwd)/can_logs/"
+#use this if you're running the script yourself
+#dir="$(pwd)/can_logs/"
+
+#cron script run
+dir="//home/oemdashboard/can_logs/"
 
 # find the current maximum value
 current_max=$( 
@@ -19,3 +23,4 @@ echo ${dir}
 
 touch ${dir}mk6_${counter}.log
 /usr/bin/python -m can.logger -f ${dir}mk6_${counter}.log -c can0 -b 500000 -i socketcan
+
