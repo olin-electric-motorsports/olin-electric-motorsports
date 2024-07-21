@@ -51,7 +51,7 @@ void spi_send_charger() {
     bytes[1] = (uint8_t)(charging_cmd.target_voltage * 10);
     bytes[2] = (uint8_t)((charging_cmd.target_current * 6) >> 8);
     bytes[3] = (uint8_t)(charging_cmd.target_current * 6);
-    bytes[4] = (uint8_t)(!charging_cmd.enable_charging);
+    bytes[4] = (uint8_t)(charging_cmd.enable_charging);
     mcp25625_send_message(0x1806E5F4, 8, bytes, true);
 }
 
@@ -102,13 +102,14 @@ int main(void) {
             
             if (can_poll_receive_bms_core() == 0) {
                 can_send_charging_fbk();
+                gpio_set_pin(LED1);
                 charging_fbk.charging_voltage = 4000;
                 can_receive_bms_core(); // core data         
             }
             //Broker exchange with the car (get charging targets and OK from BMS core)
             if (can_poll_receive_charging_cmd() == 0) {
                 can_receive_charging_cmd(); // charging targets
-                // gpio_set_pin(LED1);
+                
                 charger_timeout = 0;
             }
             else {

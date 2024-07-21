@@ -10,7 +10,7 @@
 
 // Outputs
 gpio_t BMS_RELAY_LSD = PC7;
-gpio_t COOLING_PUMP_LSD = PD3;
+gpio_t COOLING_PUMP_LSD = PC0;
 gpio_t COOLING_PUMP_PWM = PC1;
 gpio_t SPI_CS = PB6;
 gpio_t CHARGE_ENABLE_IN = PB4;

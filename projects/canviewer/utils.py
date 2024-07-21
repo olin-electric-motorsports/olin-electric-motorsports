@@ -76,4 +76,12 @@ def convert_internal_die_temp(internal_die_temp):
     Convert internal die temp according to pg.34: "internal die temperature
     measurement"
     """
+    print()
     return internal_die_temp * (0.1 / 7.6) - 276
+
+def padding(val):
+    """
+    Convert internal die temp according to pg.34: "internal die temperature
+    measurement"
+    """
+    return round(val,2)

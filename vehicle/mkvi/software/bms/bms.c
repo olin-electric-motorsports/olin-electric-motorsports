@@ -46,12 +46,13 @@ void hw_init() {
     sei();
 
     gpio_set_mode(BMS_RELAY_LSD, OUTPUT);
-    gpio_set_mode(COOLING_PUMP_PWM, OUTPUT);
+    gpio_set_mode(COOLING_PUMP_LSD, OUTPUT);
     gpio_set_mode(DEBUG_LED_1, OUTPUT);
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
-    gpio_clear_pin(COOLING_PUMP_PWM);
+
+    gpio_set_pin(COOLING_PUMP_LSD);
     
 
     gpio_set_mode(BSPD_CURRENT_THRESH, INPUT);
@@ -67,13 +68,16 @@ void hw_init() {
     pcint0_callback();
 
     can_receive_charging_fbk();
+
   
     wakeup_sleep(NUM_ICS);
-  
+
     cell_balancing_init();
+
 
     updater_init(BTLDR_ID, 5);
     gpio_set_pin(DEBUG_LED_1);
+    
 }
 
 static void monitor_cells(void) {
@@ -183,7 +187,7 @@ int main(void) {
                 if (loop_counter % 5 == 0) {
                     charging_cmd.target_voltage = 403;
                     charging_cmd.target_current = 5;
-                    charging_cmd.enable_charging = true;
+                    charging_cmd.enable_charging = false;
                     can_send_charging_cmd();
                 }
             }

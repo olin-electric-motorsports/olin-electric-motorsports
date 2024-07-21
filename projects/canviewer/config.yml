@@ -20,7 +20,7 @@ air_p_status:
 air_n_status:
 imd_status:
 pack_voltage:
-pack_current:
+#pack_current:
 max_temperature:
   processing_function: convertVtoT
 min_temperature:
@@ -32,6 +32,44 @@ bms_fault_code:
 csc_mia:
   processing_function: decode_csc_status
 internal_die_temp: convert_internal_die_temp
+IVT_Result_U1:
+IVT_Result_I:
+IVT_Result_As:
+IVT_Result_W:
+IVT_Result_Wh:
+lpms_gyro_x:
+  processing_function: padding
+lpms_gyro_x:
+  processing_function: padding
+lpms_gyro_z:
+  processing_function: padding
+lpms_accel_y:
+  processing_function: padding
+lpms_accel_x:
+  processing_function: padding
+lpms_accel_z:
+  processing_function: padding
+lpms_mag_y:
+  processing_function: padding
+lpms_mag_x:
+  processing_function: padding
+lpms_mag_z:
+  processing_function: padding
+lpms_roll:
+  processing_function: padding
+lpms_pitch:
+  processing_function: padding
+lpms_yaw:
+  processing_function: padding
+lpms_q0:
+  processing_function: padding
+lpms_q1:
+  processing_function: padding
+lpms_q2:
+  processing_function: padding
+lpms_q3:
+  processing_function: padding
+
 
 ---
 # Vehicle States (state and fault)

@@ -84,6 +84,7 @@ void pcint1_callback(void) {
 }
 
 void pcint2_callback(void) {
+    air_control_critical.imd_status = !!gpio_get_pin(IMD_SENSE);
     if (!air_control_critical.imd_status) {
         set_fault(AIR_FAULT_IMD_STATUS);
     }
@@ -138,10 +139,12 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (mc_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
-        set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
-        rc = 1;
-        goto bail;
+    if(tractive_sys == MOTOR_CONTROLLER) {
+        if (mc_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
+            set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
+            rc = 1;
+            goto bail;
+        }
     }
 
     can_send_air_control_critical();
