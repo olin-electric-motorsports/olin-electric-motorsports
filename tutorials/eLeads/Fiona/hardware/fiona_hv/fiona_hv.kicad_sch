@@ -1433,35 +1433,35 @@
         )
       )
     )
-    (symbol "formula:LED_0805_Amber" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+    (symbol "formula:LED_0805" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "D" (at 0 -2.54 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "LED_0805_Amber" (at 0 2.54 0)
+      (property "Value" "LED_0805" (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "footprints:LED_0805_OEM" (at -2.54 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Chicago%20Miniature%20Lamps%20PDFs/CMDA5_Series_Rev_Aug_2014.pdf" (at 0 2.54 0)
+      (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 0 2.54 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "MFN" "DK" (at 0 0 0)
         (effects (font (size 1.524 1.524)) hide)
       )
-      (property "MPN" "L71517CT-ND" (at 0 0 0)
+      (property "MPN" "475-1410-1-ND" (at 0 0 0)
         (effects (font (size 1.524 1.524)) hide)
       )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/visual-communications-company-vcc/CMDA5DY7D1S/L71517CT-ND/614867" (at 10.16 12.7 0)
+      (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 10.16 12.7 0)
         (effects (font (size 1.524 1.524)) hide)
       )
-      (property "ki_description" "LED, Amber, 1.9V, 20mA, 0805" (at 0 0 0)
+      (property "ki_description" "LED, Green, 2.2V, 20mA, 0805" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "ki_fp_filters" "LED*" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "LED_0805_Amber_0_1"
+      (symbol "LED_0805_0_1"
         (polyline
           (pts
             (xy -1.27 -1.27)
@@ -1511,7 +1511,7 @@
           (fill (type none))
         )
       )
-      (symbol "LED_0805_Amber_1_1"
+      (symbol "LED_0805_1_1"
         (pin passive line (at -3.81 0 0) (length 2.54)
           (name "K" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -1681,6 +1681,54 @@
         )
       )
     )
+    (symbol "formula:TP_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "TP" (at 0 7.62 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "TP_SMD" (at 1.27 5.08 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "footprints:Test_Point_SMD" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "MPN" "5019" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "MFN" "Keystone" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "DKPN" "36-5019TR-ND" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "NewDesigns" "YES" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Stocked" "Reel" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Package" "Custom" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Style" "SMD" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "test point SMD hook" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "TP_SMD_1_1"
+        (circle (center 0 2.54) (radius 1.27)
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (pin input line (at 0 -1.27 90) (length 2.54)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "power:+5V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -1773,16 +1821,62 @@
         )
       )
     )
+    (symbol "power:PWR_FLAG" (power) (pin_numbers hide) (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "#FLG" (at 0 1.905 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Value" "PWR_FLAG" (at 0 3.81 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "~" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "power-flag" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Special symbol for telling ERC where power comes from" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "PWR_FLAG_0_0"
+        (pin power_out line (at 0 0 90) (length 0)
+          (name "pwr" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+      (symbol "PWR_FLAG_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 1.27)
+            (xy -1.016 1.905)
+            (xy 0 2.54)
+            (xy 1.016 1.905)
+            (xy 0 1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+    )
   )
 
   (junction (at 385.064 196.088) (diameter 0) (color 0 0 0 0)
     (uuid 0e3606e9-e7fb-474e-a0d5-1b2f24f3fd0e)
+  )
+  (junction (at 49.784 26.162) (diameter 0) (color 0 0 0 0)
+    (uuid 19c538d5-d29e-4060-856d-f9ee7fdb0642)
   )
   (junction (at 50.038 108.458) (diameter 0) (color 0 0 0 0)
     (uuid 2b3c6cfd-a7a5-4903-bfee-f14be93276f1)
   )
   (junction (at 49.784 41.91) (diameter 0) (color 0 0 0 0)
     (uuid 368d4665-69b1-4eb2-933c-98c98ff3672a)
+  )
+  (junction (at 147.32 108.458) (diameter 0) (color 0 0 0 0)
+    (uuid 3d5f7767-81e1-4315-a8c1-1a76a179a4a8)
   )
   (junction (at 362.204 125.73) (diameter 0) (color 0 0 0 0)
     (uuid 4fb05a5e-a375-4623-8261-2c68f3aa7178)
@@ -1793,6 +1887,12 @@
   (junction (at 277.114 46.99) (diameter 0) (color 0 0 0 0)
     (uuid 55269957-f59c-42b7-a43b-37144c24f09e)
   )
+  (junction (at 197.866 75.946) (diameter 0) (color 0 0 0 0)
+    (uuid 6091324a-f8b7-4646-a984-2715a5a9a4c3)
+  )
+  (junction (at 90.424 176.276) (diameter 0) (color 0 0 0 0)
+    (uuid 660e895d-b736-484a-9c74-cad7b577c1ea)
+  )
   (junction (at 136.144 41.91) (diameter 0) (color 0 0 0 0)
     (uuid 76e5000d-e5a5-4851-97b9-e13b8bcea15f)
   )
@@ -1802,8 +1902,14 @@
   (junction (at 282.194 120.65) (diameter 0) (color 0 0 0 0)
     (uuid 95d484a3-b8ee-4d21-a8bf-f7c336d34c81)
   )
+  (junction (at 49.784 92.456) (diameter 0) (color 0 0 0 0)
+    (uuid 9dac35c4-26ee-40a3-bae6-e07962c3b948)
+  )
   (junction (at 364.744 174.498) (diameter 0) (color 0 0 0 0)
     (uuid b88fa945-c28f-49af-a9e3-2e36e7d8f463)
+  )
+  (junction (at 149.352 41.91) (diameter 0) (color 0 0 0 0)
+    (uuid d292e92e-cb0e-4970-bd63-10b06bc0204f)
   )
   (junction (at 102.87 41.91) (diameter 0) (color 0 0 0 0)
     (uuid d29c3bcf-764d-4ffa-bae3-5bcdae04f365)
@@ -1848,9 +1954,17 @@
   (no_connect (at 343.154 110.49) (uuid d6751a5b-c8e7-466d-868e-527971affc0b))
   (no_connect (at 343.154 105.41) (uuid ff0643c0-0c0a-45ac-bb0b-6fd282dceec8))
 
+  (wire (pts (xy 318.008 182.372) (xy 318.008 184.912))
+    (stroke (width 0) (type default))
+    (uuid 00c01189-690b-4c0c-a48c-b27f124e0947)
+  )
   (wire (pts (xy 103.124 136.398) (xy 87.884 136.398))
     (stroke (width 0) (type default))
     (uuid 00d1c57c-2034-4789-9a15-810987f948c0)
+  )
+  (wire (pts (xy 282.448 169.418) (xy 289.814 169.418))
+    (stroke (width 0) (type default))
+    (uuid 03149153-fd91-427f-a2a0-475431ac453b)
   )
   (wire (pts (xy 136.398 125.476) (xy 136.398 134.874))
     (stroke (width 0) (type default))
@@ -1860,9 +1974,9 @@
     (stroke (width 0) (type default))
     (uuid 05e7e801-c6da-45bf-aa91-a0c4be5ce44e)
   )
-  (wire (pts (xy 62.484 36.83) (xy 49.784 36.83))
+  (wire (pts (xy 147.32 108.458) (xy 163.068 108.458))
     (stroke (width 0) (type default))
-    (uuid 08765160-72a8-44c8-a136-58cca041ffed)
+    (uuid 0cd3fded-2b6f-4403-ae1d-36665892df1d)
   )
   (wire (pts (xy 344.424 125.73) (xy 344.424 129.54))
     (stroke (width 0) (type default))
@@ -1872,6 +1986,10 @@
     (stroke (width 0) (type default))
     (uuid 0e036489-ea0d-498b-b7e7-a72aa407ee05)
   )
+  (wire (pts (xy 267.97 268.478) (xy 267.97 272.288))
+    (stroke (width 0) (type default))
+    (uuid 104dc70b-4650-44a0-a522-741e8a9f72a2)
+  )
   (wire (pts (xy 346.964 187.198) (xy 352.044 187.198))
     (stroke (width 0) (type default))
     (uuid 1165501d-b325-4781-b206-679c07e6b5bd)
@@ -1879,6 +1997,10 @@
   (wire (pts (xy 84.328 99.314) (xy 84.328 100.838))
     (stroke (width 0) (type default))
     (uuid 11bd4489-b1f3-491f-9bec-d5375a987f61)
+  )
+  (wire (pts (xy 94.996 178.562) (xy 95.25 178.562))
+    (stroke (width 0) (type default))
+    (uuid 14e42869-a939-4850-a9c7-15a9727ceee0)
   )
   (wire (pts (xy 282.194 110.49) (xy 287.274 110.49))
     (stroke (width 0) (type default))
@@ -1896,10 +2018,6 @@
     (stroke (width 0) (type default))
     (uuid 22fbe47e-8420-4a8a-b330-b68271a3dfd9)
   )
-  (wire (pts (xy 206.756 100.33) (xy 206.756 104.902))
-    (stroke (width 0) (type default))
-    (uuid 23002ec4-d65a-4ee9-b1b0-ea2327e6fc3e)
-  )
   (wire (pts (xy 49.784 41.91) (xy 62.484 41.91))
     (stroke (width 0) (type default))
     (uuid 238c7f93-689e-4012-8a40-4e723f66471c)
@@ -1912,9 +2030,17 @@
     (stroke (width 0) (type default))
     (uuid 263efd61-37e6-440c-b9f7-2630b51ecc03)
   )
+  (wire (pts (xy 278.511 263.906) (xy 278.511 266.446))
+    (stroke (width 0) (type default))
+    (uuid 267c1444-ab48-4fd2-b068-b9219a2035d0)
+  )
   (wire (pts (xy 72.136 215.9) (xy 63.246 215.9))
     (stroke (width 0) (type default))
     (uuid 28c13258-bcc5-447c-9250-89535fe5f5a1)
+  )
+  (wire (pts (xy 259.08 169.418) (xy 274.828 169.418))
+    (stroke (width 0) (type default))
+    (uuid 2ae525fa-5a9d-442a-aa43-9f17a043df2c)
   )
   (wire (pts (xy 49.784 41.91) (xy 49.784 51.816))
     (stroke (width 0) (type default))
@@ -1928,17 +2054,33 @@
     (stroke (width 0) (type default))
     (uuid 2df8572e-1176-493d-9aec-11b5acda563d)
   )
+  (wire (pts (xy 94.996 178.562) (xy 94.996 176.276))
+    (stroke (width 0) (type default))
+    (uuid 2e8f65b7-4612-46a3-a5ef-9bb43bcba065)
+  )
   (wire (pts (xy 385.064 196.088) (xy 390.144 196.088))
     (stroke (width 0) (type default))
     (uuid 2ef9760c-ee29-47e6-bf2e-05ae2c4fbc9e)
+  )
+  (wire (pts (xy 197.866 75.946) (xy 212.852 75.946))
+    (stroke (width 0) (type default))
+    (uuid 30cec573-8963-4e04-a0f9-7db6c08180fd)
   )
   (wire (pts (xy 103.124 108.458) (xy 117.856 108.458))
     (stroke (width 0) (type default))
     (uuid 3392f55f-d5ac-45e7-ae19-8afb320ea333)
   )
+  (wire (pts (xy 317.754 198.12) (xy 317.754 200.406))
+    (stroke (width 0) (type default))
+    (uuid 348b529e-4eef-4aea-aca3-99066db4bc17)
+  )
   (wire (pts (xy 70.104 69.85) (xy 80.01 69.85))
     (stroke (width 0) (type default))
     (uuid 35061e2f-606c-4340-82f4-21cba8196fd1)
+  )
+  (wire (pts (xy 94.996 176.276) (xy 90.424 176.276))
+    (stroke (width 0) (type default))
+    (uuid 37d04f19-33ce-4d9f-bc26-9232881c9660)
   )
   (wire (pts (xy 50.546 223.52) (xy 50.546 227.076))
     (stroke (width 0) (type default))
@@ -2000,6 +2142,10 @@
     (stroke (width 0) (type default))
     (uuid 4f2689ce-7abd-4cdd-9d48-e9922dd631fa)
   )
+  (wire (pts (xy 251.714 198.12) (xy 251.714 195.58))
+    (stroke (width 0) (type default))
+    (uuid 4ffc770c-7db5-4bb0-863c-ef3b4cdeedb6)
+  )
   (wire (pts (xy 84.328 116.078) (xy 84.328 118.364))
     (stroke (width 0) (type default))
     (uuid 51230c89-ede5-4a9c-89ff-a6823ac34cfa)
@@ -2016,7 +2162,7 @@
     (stroke (width 0) (type default))
     (uuid 5a22d416-f9e0-4b1a-b98e-699185f80ac6)
   )
-  (wire (pts (xy 136.398 108.458) (xy 163.068 108.458))
+  (wire (pts (xy 136.398 108.458) (xy 147.32 108.458))
     (stroke (width 0) (type default))
     (uuid 5c63f8e0-9961-4f9f-ab34-798cbde4ee82)
   )
@@ -2027,6 +2173,10 @@
   (wire (pts (xy 103.124 127) (xy 103.124 136.398))
     (stroke (width 0) (type default))
     (uuid 5e571a50-9ea4-4c47-b8e9-e8b14ed6ddf8)
+  )
+  (wire (pts (xy 274.828 198.12) (xy 251.714 198.12))
+    (stroke (width 0) (type default))
+    (uuid 5edc7142-6586-4be1-ad1f-f38bc7c337a6)
   )
   (wire (pts (xy 346.964 184.658) (xy 352.044 184.658))
     (stroke (width 0) (type default))
@@ -2088,7 +2238,7 @@
     (stroke (width 0) (type default))
     (uuid 76363bb1-229f-4916-9f09-8dd66c39d8a2)
   )
-  (wire (pts (xy 86.36 176.276) (xy 95.25 176.276))
+  (wire (pts (xy 86.36 176.276) (xy 90.424 176.276))
     (stroke (width 0) (type default))
     (uuid 775f6764-fb45-42dd-b914-e30bd2ed7d9f)
   )
@@ -2100,13 +2250,29 @@
     (stroke (width 0) (type default))
     (uuid 7bc520d1-b356-40ee-99ce-ecaa9ff469e4)
   )
+  (wire (pts (xy 282.448 182.372) (xy 289.814 182.372))
+    (stroke (width 0) (type default))
+    (uuid 7c744daf-da0f-4075-96c5-d08e2ae06b10)
+  )
   (wire (pts (xy 385.064 196.088) (xy 385.064 193.548))
     (stroke (width 0) (type default))
     (uuid 7c881d81-8be2-4087-b316-35b8c4e5f941)
   )
+  (wire (pts (xy 49.784 26.162) (xy 49.784 25.908))
+    (stroke (width 0) (type default))
+    (uuid 7ed3171b-efe1-40f0-812d-f9a27075e11e)
+  )
+  (wire (pts (xy 274.828 182.372) (xy 258.572 182.372))
+    (stroke (width 0) (type default))
+    (uuid 7f6c1362-530a-4fe1-9c68-7ee24e508f6a)
+  )
   (wire (pts (xy 343.154 77.47) (xy 354.584 77.47))
     (stroke (width 0) (type default))
     (uuid 80d05a30-16db-4865-8293-1b5a99805e28)
+  )
+  (wire (pts (xy 318.008 169.418) (xy 318.008 171.196))
+    (stroke (width 0) (type default))
+    (uuid 8112cd8b-98cb-419c-be7d-abda3bacfabf)
   )
   (wire (pts (xy 86.36 181.61) (xy 68.58 181.61))
     (stroke (width 0) (type default))
@@ -2124,11 +2290,7 @@
     (stroke (width 0) (type default))
     (uuid 8a32ba07-90cf-404c-98cd-d74f5e9d9d11)
   )
-  (wire (pts (xy 206.756 88.9) (xy 206.756 92.71))
-    (stroke (width 0) (type default))
-    (uuid 8a8de697-cb5a-4b1c-92e5-337ee244a251)
-  )
-  (wire (pts (xy 45.466 92.456) (xy 50.038 92.456))
+  (wire (pts (xy 45.466 92.456) (xy 49.784 92.456))
     (stroke (width 0) (type default))
     (uuid 8ab66c82-79d7-4453-b368-e25491fd53f0)
   )
@@ -2152,7 +2314,7 @@
     (stroke (width 0) (type default))
     (uuid 93a8807a-984c-482e-8123-61967ff2a6a6)
   )
-  (wire (pts (xy 49.784 36.83) (xy 49.784 25.908))
+  (wire (pts (xy 49.784 36.83) (xy 49.784 26.162))
     (stroke (width 0) (type default))
     (uuid 95dbe9b6-4615-4289-9ccc-cfa647542cbb)
   )
@@ -2180,7 +2342,15 @@
     (stroke (width 0) (type default))
     (uuid a552f5dd-2064-4b95-b91d-8d92e23d4999)
   )
-  (wire (pts (xy 136.144 41.91) (xy 162.814 41.91))
+  (wire (pts (xy 282.448 198.12) (xy 289.814 198.12))
+    (stroke (width 0) (type default))
+    (uuid a7fb899f-7e95-485a-98c1-7072670bcebe)
+  )
+  (wire (pts (xy 297.434 182.372) (xy 318.008 182.372))
+    (stroke (width 0) (type default))
+    (uuid aa98d7bd-e121-4363-be57-8ad3f680d275)
+  )
+  (wire (pts (xy 136.144 41.91) (xy 149.352 41.91))
     (stroke (width 0) (type default))
     (uuid ae4e7d29-817b-4ce9-83d5-c804b4ce8ee3)
   )
@@ -2195,6 +2365,10 @@
   (wire (pts (xy 62.738 103.378) (xy 50.038 103.378))
     (stroke (width 0) (type default))
     (uuid b6587750-10ec-445f-8956-6b32dff2bef5)
+  )
+  (wire (pts (xy 297.434 198.12) (xy 317.754 198.12))
+    (stroke (width 0) (type default))
+    (uuid b6a245d5-18f8-4199-9d1b-0be258fc4ccc)
   )
   (wire (pts (xy 162.814 73.406) (xy 173.99 73.406))
     (stroke (width 0) (type default))
@@ -2215,6 +2389,18 @@
   (wire (pts (xy 344.424 120.65) (xy 343.154 120.65))
     (stroke (width 0) (type default))
     (uuid c5ea8957-804f-40f0-a27f-f961bdeb656c)
+  )
+  (wire (pts (xy 49.784 36.83) (xy 62.484 36.83))
+    (stroke (width 0) (type default))
+    (uuid c76e4d18-5d56-4601-9f05-96644c16275b)
+  )
+  (wire (pts (xy 49.784 92.456) (xy 50.038 92.456))
+    (stroke (width 0) (type default))
+    (uuid cabc75ab-6835-4ab3-99a8-fd2c489e2a1c)
+  )
+  (wire (pts (xy 297.434 169.418) (xy 318.008 169.418))
+    (stroke (width 0) (type default))
+    (uuid cb4d1d89-21c7-4082-929a-ab25b7e532f7)
   )
   (wire (pts (xy 50.038 108.458) (xy 62.738 108.458))
     (stroke (width 0) (type default))
@@ -2239,10 +2425,6 @@
   (wire (pts (xy 268.224 54.61) (xy 268.224 57.15))
     (stroke (width 0) (type default))
     (uuid d054fb5f-c06e-4b97-9f5b-7bd1d9c7c395)
-  )
-  (wire (pts (xy 206.756 81.28) (xy 206.756 75.946))
-    (stroke (width 0) (type default))
-    (uuid d06e1164-3bf6-4375-9dcc-724cf8e2802f)
   )
   (wire (pts (xy 282.194 110.49) (xy 282.194 120.65))
     (stroke (width 0) (type default))
@@ -2276,6 +2458,10 @@
     (stroke (width 0) (type default))
     (uuid d95b096e-26b9-4ec9-8c3d-88bd4a41402d)
   )
+  (wire (pts (xy 149.352 41.91) (xy 162.814 41.91))
+    (stroke (width 0) (type default))
+    (uuid d981c12b-32d1-483e-865e-142c4330cfcb)
+  )
   (wire (pts (xy 27.432 213.36) (xy 36.576 213.36))
     (stroke (width 0) (type default))
     (uuid dcea642f-6cc0-48e5-87df-b53f6888e69b)
@@ -2292,7 +2478,7 @@
     (stroke (width 0) (type default))
     (uuid df2745dd-ef0e-4d00-a350-e55d6791a459)
   )
-  (wire (pts (xy 189.23 75.946) (xy 206.756 75.946))
+  (wire (pts (xy 189.23 75.946) (xy 197.866 75.946))
     (stroke (width 0) (type default))
     (uuid e1d62ca0-1c5e-481d-bc2b-d47e3a83db08)
   )
@@ -2354,10 +2540,20 @@
     (fill (type none))
     (uuid 60d16c2e-1634-409c-a9a4-282aa6c41d83)
   )
+  (rectangle (start 241.808 159.258) (end 328.168 212.09)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid 7a1a09a9-a335-4dc2-a661-c4594c614dbc)
+  )
   (rectangle (start 335.534 159.258) (end 401.574 207.518)
     (stroke (width 0) (type default))
     (fill (type none))
     (uuid 95a6b170-f6e7-42f2-b060-48ab3535c09a)
+  )
+  (rectangle (start 253.619 248.285) (end 293.751 281.813)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid 969ab43e-aa71-4215-8f75-649ca9502a7b)
   )
   (rectangle (start 14.986 197.358) (end 80.01 235.712)
     (stroke (width 0) (type default))
@@ -2369,7 +2565,7 @@
     (fill (type none))
     (uuid e242b128-a7f3-4f8d-9f44-961b312bdbc7)
   )
-  (rectangle (start 14.478 21.082) (end 235.712 144.78)
+  (rectangle (start 14.478 19.304) (end 235.712 144.78)
     (stroke (width 0) (type default))
     (fill (type none))
     (uuid f5943574-e9a7-4100-9226-c2aa7a81c378)
@@ -2395,6 +2591,10 @@
     (effects (font (size 3 3)) (justify left bottom))
     (uuid 3c61b5c1-cf18-47d4-88f8-b3a596e6c551)
   )
+  (text "Status LEDs" (at 241.046 158.242 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 4361919a-8dd4-4bc8-a7f7-222d7a7b0b9a)
+  )
   (text "33 Hz cutoff" (at 115.062 97.536 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 4589decb-4614-4d37-a6f1-3a602dcf6003)
@@ -2403,9 +2603,13 @@
     (effects (font (size 2.5 2.5)) (justify left bottom))
     (uuid 656dc459-d139-42c2-9e8b-cacb3cb6b77a)
   )
-  (text "Analog Section" (at 14.224 20.066 0)
+  (text "Analog Section" (at 14.224 18.796 0)
     (effects (font (size 3 3)) (justify left bottom))
     (uuid 744ce632-5056-4fb8-9ca7-27d4bb3f8bc2)
+  )
+  (text "Power Flags\n" (at 262.636 252.984 0)
+    (effects (font (size 2.2606 2.2606)) (justify left bottom))
+    (uuid a13a0bb9-da96-403e-859d-a646700599d9)
   )
   (text "Vout can range between .55V and 3.67V  \nmax HV voltage is 403.2V"
     (at 24.13 161.925 0)
@@ -2425,6 +2629,10 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 01d4cf00-bfb0-42e5-a35a-72133a750211)
   )
+  (label "out" (at 258.572 182.372 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 02c49cc5-9d99-4b41-953e-833dfc74a9b8)
+  )
   (label "TXCAN" (at 354.584 74.93 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 068457c1-91da-4b30-918e-5f2f0e423f61)
@@ -2440,6 +2648,10 @@
   (label "RXCAN" (at 354.584 77.47 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 18ad55e1-7bcf-4fb2-9380-b5e5724afdb5)
+  )
+  (label "HV_stepdown" (at 259.08 169.418 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 3491b66d-0b94-45eb-8417-6497fc37411b)
   )
   (label "HV-" (at 36.83 181.61 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -2457,7 +2669,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 6afbab0a-3b1f-44a2-910b-be9c74c6b63c)
   )
-  (label "HV_stepdown" (at 95.25 176.276 0) (fields_autoplaced)
+  (label "HV_stepdown" (at 95.25 178.562 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 6f6d901b-74d7-4cf4-aa94-045f9af52e82)
   )
@@ -2469,7 +2681,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid d45c374b-ba9b-44d8-8af9-29f9748ec5fb)
   )
-  (label "out" (at 206.248 75.946 0) (fields_autoplaced)
+  (label "out" (at 212.852 75.946 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid e0c243ea-a51b-410e-a604-23d675f142c9)
   )
@@ -2500,7 +2712,7 @@
           (reference "#PWR?") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0114") (unit 1)
         )
@@ -2530,7 +2742,7 @@
     )
     (pin "1" (uuid 6319e695-c854-459f-9a16-9f79f5337cd0))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0124") (unit 1)
         )
@@ -2587,9 +2799,44 @@
           (reference "R6") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R114") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:R_1K") (at 293.624 198.12 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 0af02101-088f-4dcc-99b1-146d758aded4)
+    (property "Reference" "R109" (at 293.624 192.278 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "R_1K" (at 293.624 194.818 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "OEM:R_0603" (at 293.624 199.898 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 293.624 196.088 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 293.624 198.12 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "MPN" "RNCP0805FTD1K00CT-ND" (at 293.624 198.12 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 283.464 185.928 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (pin "1" (uuid c39e1a2c-58af-48dd-8833-9cd3cca458f9))
+    (pin "2" (uuid 2c8c33c7-d880-495c-9718-8b54cec30d55))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "R109") (unit 1)
         )
       )
     )
@@ -2612,9 +2859,69 @@
     )
     (pin "1" (uuid 5b24021b-1b73-4a54-9af3-51edf684d963))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0103") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 267.97 272.288 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 13563243-bfb0-4617-8437-19e14c37d224)
+    (property "Reference" "#PWR0132" (at 267.97 278.638 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 267.97 277.368 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 267.97 272.288 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 267.97 272.288 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 3325f0b0-896c-4771-9355-ae5f8a579c34))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "#PWR0132") (unit 1)
+        )
+      )
+      (project "ishan_challenge"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
+          (reference "#PWR?") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:PWR_FLAG") (at 267.97 268.478 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 16863e94-8367-4f91-b0e5-488a51d2dca1)
+    (property "Reference" "#FLG0101" (at 267.97 266.573 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "PWR_FLAG" (at 267.97 260.858 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 267.97 268.478 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 267.97 268.478 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 19c1cdc3-f0de-4171-90d5-53d5bc01b9cc))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "#FLG0101") (unit 1)
+        )
+      )
+      (project "ishan_challenge"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
+          (reference "#FLG?") (unit 1)
         )
       )
     )
@@ -2642,7 +2949,7 @@
           (reference "#PWR?") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0115") (unit 1)
         )
@@ -2677,7 +2984,7 @@
           (reference "#PWR?") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0116") (unit 1)
         )
@@ -2717,7 +3024,7 @@
     (pin "1" (uuid dabaf61e-3f0d-4080-97f5-3b58eb1b68fa))
     (pin "2" (uuid 1a58c8f0-bad4-44a4-a5a1-326c4527ced4))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R102") (unit 1)
         )
@@ -2747,7 +3054,7 @@
           (reference "#PWR?") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0117") (unit 1)
         )
@@ -2777,7 +3084,7 @@
     )
     (pin "1" (uuid 2079441c-a24f-48d7-b2c0-92cfa3d7d154))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0120") (unit 1)
         )
@@ -2790,36 +3097,26 @@
     )
   )
 
-  (symbol (lib_id "formula:R_1K") (at 206.756 85.09 180) (unit 1)
+  (symbol (lib_id "power:GND") (at 318.008 171.196 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 360d65e2-135d-456d-af83-902152a4b6c4)
-    (property "Reference" "R109" (at 208.788 83.82 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "R_1K" (at 208.788 86.36 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "OEM:R_0603" (at 208.534 85.09 0)
+    (uuid 33cbc06b-afa4-4ab0-a362-be96eddbab9f)
+    (property "Reference" "#PWR0129" (at 318.008 177.546 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 204.724 85.09 0)
+    (property "Value" "GND" (at 318.008 176.022 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 318.008 171.196 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "MFN" "DK" (at 206.756 85.09 0)
-      (effects (font (size 1.524 1.524)) hide)
+    (property "Datasheet" "" (at 318.008 171.196 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
-    (property "MPN" "RNCP0805FTD1K00CT-ND" (at 206.756 85.09 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 194.564 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 1a3d0c82-9e5d-46de-a240-8074880fd125))
-    (pin "2" (uuid ebf0df94-85ad-4e06-916d-cd60f031fc16))
+    (pin "1" (uuid 2e5ad58a-f84b-4dd5-873f-c6af44466883))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
-          (reference "R109") (unit 1)
+          (reference "#PWR0129") (unit 1)
         )
       )
     )
@@ -2846,7 +3143,7 @@
     (pin "4" (uuid 2de263a3-2a9a-4b12-8c4d-7164f3c25dac))
     (pin "5" (uuid 10d05da0-f57c-4e50-b135-7180916341b2))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "U104") (unit 1)
         )
@@ -2871,7 +3168,7 @@
     )
     (pin "1" (uuid e6dafc3c-e079-49a1-a751-a95813340114))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0121") (unit 1)
         )
@@ -2879,6 +3176,71 @@
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6"
           (reference "#PWR022") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+5V") (at 278.511 263.906 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 426926b7-2020-4ccf-836f-d5e240705eee)
+    (property "Reference" "#PWR0133" (at 278.511 267.716 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+5V" (at 278.511 258.826 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 278.511 263.906 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 278.511 263.906 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 9068fb7b-45c2-4509-9a55-1881ad6aec3c))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "#PWR0133") (unit 1)
+        )
+      )
+      (project "ishan_challenge"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
+          (reference "#PWR?") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:R_1K") (at 293.624 169.418 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 45a8eb63-e1d3-4d72-aa5b-e388454bdf7c)
+    (property "Reference" "R117" (at 293.624 163.576 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "R_1K" (at 293.624 166.116 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "OEM:R_0603" (at 293.624 171.196 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 293.624 167.386 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 293.624 169.418 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "MPN" "RNCP0805FTD1K00CT-ND" (at 293.624 169.418 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 283.464 157.226 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (pin "1" (uuid 7aad262f-f817-4078-82ca-790a6631bc9c))
+    (pin "2" (uuid a52124fe-0128-4d39-930f-43e99309d0f6))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "R117") (unit 1)
         )
       )
     )
@@ -2928,7 +3290,7 @@
           (reference "C1") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "C103") (unit 1)
         )
@@ -2968,9 +3330,79 @@
     (pin "1" (uuid 1c0df275-6fb2-4eb0-a399-abf6155bca68))
     (pin "2" (uuid 61714add-b155-4652-8d2d-86c2b1188896))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R101") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:LED_0805") (at 278.638 169.418 180) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 4ca1c4cd-3b0d-44ff-9e9c-bf250c2dd8a7)
+    (property "Reference" "D102" (at 280.2382 162.052 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "LED_0805" (at 280.2382 164.592 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "footprints:LED_0805_OEM" (at 281.178 169.418 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 278.638 171.958 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 278.638 169.418 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "MPN" "475-1410-1-ND" (at 278.638 169.418 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 268.478 182.118 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (pin "1" (uuid 4b0a2b7a-6859-4fb0-b246-71fd482799ed))
+    (pin "2" (uuid c548e4d2-f8e7-46ff-bb30-883a3138e7f6))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "D102") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:LED_0805") (at 278.638 198.12 180) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 4d6f6e4f-3b49-4c37-9149-22e5d98a2f47)
+    (property "Reference" "D101" (at 280.2382 191.516 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "LED_0805" (at 280.2382 194.056 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "footprints:LED_0805_OEM" (at 281.178 198.12 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 278.638 200.66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 278.638 198.12 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "MPN" "475-1410-1-ND" (at 278.638 198.12 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 268.478 210.82 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (pin "1" (uuid 8f11fbeb-ebf6-4cf7-ba3a-9e75e2b58e59))
+    (pin "2" (uuid 696b5f06-f7d2-4abb-9c26-b040eddc3269))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "D101") (unit 1)
         )
       )
     )
@@ -3020,7 +3452,7 @@
           (reference "R4") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R113") (unit 1)
         )
@@ -3049,7 +3481,7 @@
     (pin "3" (uuid 72f7fb81-a63f-459e-a005-7528e9af2457))
     (pin "4" (uuid def70219-4c61-467f-b229-69e17ab320eb))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "U103") (unit 1)
         )
@@ -3075,7 +3507,7 @@
     (pin "1" (uuid cd505738-6076-43bf-855f-983d35129b34))
     (pin "2" (uuid 2fa479d2-34ca-4ee6-be61-e7c53eca7731))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "C105") (unit 1)
         )
@@ -3083,6 +3515,36 @@
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6"
           (reference "C5") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:PWR_FLAG") (at 278.511 266.446 180) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 59d3655b-29e7-4263-b8d5-e563511427ac)
+    (property "Reference" "#FLG0102" (at 278.511 268.351 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "PWR_FLAG" (at 278.511 274.066 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 278.511 266.446 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 278.511 266.446 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ed8a8375-4894-43ad-b5f6-158b7cdaa30a))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "#FLG0102") (unit 1)
+        )
+      )
+      (project "ishan_challenge"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
+          (reference "#FLG?") (unit 1)
         )
       )
     )
@@ -3112,7 +3574,7 @@
     (pin "7" (uuid 3eb2addf-4e44-40d3-9493-a1ed7694cea2))
     (pin "8" (uuid 38289619-4e90-4318-9970-5005bd1cde83))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "U106") (unit 1)
         )
@@ -3137,7 +3599,7 @@
     )
     (pin "1" (uuid 1c90eaf2-3b8c-4c43-a443-e7a6deb85feb))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0112") (unit 1)
         )
@@ -3172,7 +3634,7 @@
     (pin "1" (uuid 47d1e589-941e-4998-8239-b708b2ddff72))
     (pin "2" (uuid 2b7d99de-3763-43f6-a3a0-847195432222))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R103") (unit 1)
         )
@@ -3207,7 +3669,7 @@
     (pin "1" (uuid 17bead6a-018e-471c-870a-05f87d97771b))
     (pin "2" (uuid c994deb2-53f4-4689-9fd0-9b919e81a099))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R108") (unit 1)
         )
@@ -3259,7 +3721,7 @@
           (reference "R2") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R110") (unit 1)
         )
@@ -3272,36 +3734,47 @@
     )
   )
 
-  (symbol (lib_id "formula:LED_0805_Amber") (at 206.756 96.52 90) (unit 1)
+  (symbol (lib_id "formula:TP_SMD") (at 197.866 74.676 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 7b21645c-77ee-4c7f-865f-88aaf0cd57e8)
-    (property "Reference" "D101" (at 210.82 96.8502 90)
-      (effects (font (size 1.27 1.27)) (justify right))
+    (uuid 7c2b5a12-e8ff-4292-87b1-8fdceddfbb50)
+    (property "Reference" "TP101" (at 200.152 70.866 0)
+      (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "LED_0805_Amber" (at 210.82 99.3902 90)
-      (effects (font (size 1.27 1.27)) (justify right))
+    (property "Value" "TP_SMD" (at 200.152 73.406 0)
+      (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:LED_0805_OEM" (at 206.756 99.06 0)
+    (property "Footprint" "footprints:Test_Point_SMD" (at 197.866 78.486 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Chicago%20Miniature%20Lamps%20PDFs/CMDA5_Series_Rev_Aug_2014.pdf" (at 204.216 96.52 0)
+    (property "Datasheet" "" (at 197.866 74.676 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "MFN" "DK" (at 206.756 96.52 0)
-      (effects (font (size 1.524 1.524)) hide)
+    (property "MPN" "5019" (at 197.866 74.676 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
-    (property "MPN" "L71517CT-ND" (at 206.756 96.52 0)
-      (effects (font (size 1.524 1.524)) hide)
+    (property "MFN" "Keystone" (at 197.866 74.676 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/visual-communications-company-vcc/CMDA5DY7D1S/L71517CT-ND/614867" (at 194.056 86.36 0)
-      (effects (font (size 1.524 1.524)) hide)
+    (property "DKPN" "36-5019TR-ND" (at 197.866 74.676 0)
+      (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid f7d35876-e6d9-4353-9c33-5c8b713ce1b9))
-    (pin "2" (uuid 37606f4f-0c84-459e-9f2b-0cfbe7c18cae))
+    (property "NewDesigns" "YES" (at 197.866 74.676 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Stocked" "Reel" (at 197.866 74.676 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Custom" (at 197.866 74.676 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Style" "SMD" (at 197.866 74.676 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 85ad8a8f-41a4-4f83-8df9-a906bd3d18ed))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
-          (reference "D101") (unit 1)
+          (reference "TP101") (unit 1)
         )
       )
     )
@@ -3324,7 +3797,7 @@
     )
     (pin "1" (uuid d34b3116-cdb6-4362-9c6d-79ec8f459d63))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0118") (unit 1)
         )
@@ -3394,7 +3867,7 @@
     (pin "8" (uuid e2405aab-59e3-48c2-9f40-caaf3b907534))
     (pin "9" (uuid 38313744-a18b-4c98-b0cf-0310a5d27891))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "U102") (unit 1)
         )
@@ -3424,7 +3897,7 @@
     )
     (pin "1" (uuid 6ebc1fc8-05dc-4f30-ade9-10a4c69426c1))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0101") (unit 1)
         )
@@ -3449,7 +3922,7 @@
     )
     (pin "1" (uuid a187ec05-10d7-444e-9979-0b19fa3d2923))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0107") (unit 1)
         )
@@ -3484,7 +3957,7 @@
     (pin "1" (uuid 51af7da9-18e4-493e-9693-42540c8aa05d))
     (pin "2" (uuid 39ba5604-23f4-4abb-9481-f6fca11a2e32))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R104") (unit 1)
         )
@@ -3519,7 +3992,7 @@
     (pin "1" (uuid a40a64dc-abbb-4bab-aa1d-e9659474ae60))
     (pin "2" (uuid 406a0a04-8ffe-4fc4-9831-06a3652ee636))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R106") (unit 1)
         )
@@ -3544,7 +4017,7 @@
     )
     (pin "1" (uuid a5bcd098-8312-4eec-877b-00721ef1fb8c))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0106") (unit 1)
         )
@@ -3570,7 +4043,7 @@
     (pin "1" (uuid bd27c385-d190-4b16-9a29-aef660161030))
     (pin "2" (uuid 0031de51-569d-453b-9c49-b76c430957a7))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "TC101") (unit 1)
         )
@@ -3595,7 +4068,7 @@
     )
     (pin "1" (uuid 2adb8be1-6e8a-4850-9b2b-fb7e9ded12ec))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0111") (unit 1)
         )
@@ -3630,9 +4103,55 @@
     (pin "1" (uuid a084b16d-57b9-4b67-a234-3d1e852d88dc))
     (pin "2" (uuid a5fd10a5-6c48-4305-a7ad-d9aa00531f4e))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "C102") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP_SMD") (at 90.424 175.006 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 92e7b3aa-046b-4602-a11d-962eb09e29f0)
+    (property "Reference" "TP106" (at 92.71 171.196 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP_SMD" (at 92.71 173.736 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:Test_Point_SMD" (at 90.424 178.816 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 90.424 175.006 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "5019" (at 90.424 175.006 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "Keystone" (at 90.424 175.006 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "DKPN" "36-5019TR-ND" (at 90.424 175.006 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "NewDesigns" "YES" (at 90.424 175.006 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Stocked" "Reel" (at 90.424 175.006 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Custom" (at 90.424 175.006 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Style" "SMD" (at 90.424 175.006 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid acdb01ab-7439-44ff-8320-dcc34250ebd7))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "TP106") (unit 1)
         )
       )
     )
@@ -3655,7 +4174,7 @@
     )
     (pin "1" (uuid c6e9244e-a47f-4f74-b49f-37d80253ccf0))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0102") (unit 1)
         )
@@ -3681,7 +4200,7 @@
     (pin "1" (uuid d4214d0a-86ff-428a-9ae5-0961ad6bd251))
     (pin "2" (uuid ee69c1cf-977e-41ed-ad84-3b2777a5b3ee))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "C106") (unit 1)
         )
@@ -3689,6 +4208,98 @@
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6"
           (reference "C6") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP_SMD") (at 147.32 107.188 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 9b51f14b-cb94-46a3-bb19-33c64374f271)
+    (property "Reference" "TP104" (at 149.606 103.378 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP_SMD" (at 149.606 105.918 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:Test_Point_SMD" (at 147.32 110.998 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 147.32 107.188 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "5019" (at 147.32 107.188 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "Keystone" (at 147.32 107.188 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "DKPN" "36-5019TR-ND" (at 147.32 107.188 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "NewDesigns" "YES" (at 147.32 107.188 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Stocked" "Reel" (at 147.32 107.188 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Custom" (at 147.32 107.188 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Style" "SMD" (at 147.32 107.188 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid e4505b42-85dc-485f-9c50-5c8f65c4a09b))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "TP104") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP_SMD") (at 49.784 91.186 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 9df3939a-6f44-4457-813e-5b37fba4cce2)
+    (property "Reference" "TP103" (at 52.07 87.376 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP_SMD" (at 52.07 89.916 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:Test_Point_SMD" (at 49.784 94.996 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 49.784 91.186 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "5019" (at 49.784 91.186 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "Keystone" (at 49.784 91.186 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "DKPN" "36-5019TR-ND" (at 49.784 91.186 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "NewDesigns" "YES" (at 49.784 91.186 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Stocked" "Reel" (at 49.784 91.186 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Custom" (at 49.784 91.186 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Style" "SMD" (at 49.784 91.186 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 5895c84e-783b-482e-8aa8-78b3066b0296))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "TP103") (unit 1)
         )
       )
     )
@@ -3721,7 +4332,7 @@
     (pin "1" (uuid 404ceda2-b898-4b83-b25f-f1592d9174e8))
     (pin "2" (uuid 5a69f738-33b7-492b-87bd-21804bdd96b8))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R105") (unit 1)
         )
@@ -3756,9 +4367,55 @@
     (pin "1" (uuid 6001eceb-36c9-4b80-a971-c4dfb768ea0b))
     (pin "2" (uuid e60a3cc6-5fd3-49e2-b77c-a64c49b63b17))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R107") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP_SMD") (at 149.352 40.64 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid a4ad4931-49b3-4010-a5f8-87703c180aa4)
+    (property "Reference" "TP105" (at 151.638 36.83 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP_SMD" (at 151.638 39.37 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:Test_Point_SMD" (at 149.352 44.45 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 149.352 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "5019" (at 149.352 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "Keystone" (at 149.352 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "DKPN" "36-5019TR-ND" (at 149.352 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "NewDesigns" "YES" (at 149.352 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Stocked" "Reel" (at 149.352 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Custom" (at 149.352 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Style" "SMD" (at 149.352 40.64 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 969a977b-573e-4e05-bdcc-6f6361bd411d))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "TP105") (unit 1)
         )
       )
     )
@@ -3781,9 +4438,55 @@
     )
     (pin "1" (uuid 2c82deb9-0e12-43a5-9619-f7402dc2350c))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0128") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP_SMD") (at 49.784 24.892 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid a9418c92-3bc6-4cf0-a5d6-4b82db2c282d)
+    (property "Reference" "TP102" (at 52.07 21.082 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP_SMD" (at 52.07 23.622 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:Test_Point_SMD" (at 49.784 28.702 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 49.784 24.892 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "5019" (at 49.784 24.892 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "Keystone" (at 49.784 24.892 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "DKPN" "36-5019TR-ND" (at 49.784 24.892 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "NewDesigns" "YES" (at 49.784 24.892 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Stocked" "Reel" (at 49.784 24.892 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Custom" (at 49.784 24.892 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Style" "SMD" (at 49.784 24.892 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 69058ebe-9615-4535-aeaf-04dd7501abf7))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "TP102") (unit 1)
         )
       )
     )
@@ -3833,7 +4536,7 @@
           (reference "C2") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "C104") (unit 1)
         )
@@ -3863,7 +4566,7 @@
     )
     (pin "1" (uuid 100f7f18-025d-49d7-b96f-1d48afa2213b))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0127") (unit 1)
         )
@@ -3900,7 +4603,7 @@
     (pin "3" (uuid bca83939-4f95-450a-99b5-e6b2494357f4))
     (pin "4" (uuid 08ed8831-a68a-430b-89ef-5c6acfd3c55c))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "Y101") (unit 1)
         )
@@ -3930,7 +4633,7 @@
     )
     (pin "1" (uuid 24511d21-4b2f-42e7-9c6c-19d65e8af412))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0119") (unit 1)
         )
@@ -3938,6 +4641,31 @@
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6"
           (reference "#PWR035") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 317.754 200.406 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid bd508fcd-8897-4e3c-9821-0ff17baf9732)
+    (property "Reference" "#PWR0131" (at 317.754 206.756 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 317.754 205.232 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 317.754 200.406 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 317.754 200.406 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid bc736b7f-b0af-4439-9c37-a703ad1ee6e6))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "#PWR0131") (unit 1)
         )
       )
     )
@@ -3962,7 +4690,7 @@
     (pin "2" (uuid 836d25be-97d3-4a03-bea9-f4ac2993a2d7))
     (pin "3" (uuid 2750ed68-9e17-43e9-a727-bfceec882281))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "SW102") (unit 1)
         )
@@ -3987,7 +4715,7 @@
     )
     (pin "1" (uuid 4deb9586-82cb-45c5-a334-671601c9168d))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0109") (unit 1)
         )
@@ -4012,7 +4740,7 @@
     )
     (pin "1" (uuid ea1445e1-1c34-4001-b962-571c13543d61))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0122") (unit 1)
         )
@@ -4069,9 +4797,39 @@
           (reference "R1") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R112") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_name "+5V_1") (lib_id "power:+5V") (at 251.714 195.58 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid c569a461-56b6-4c8f-b0d7-8d176e3e7cdb)
+    (property "Reference" "#PWR0113" (at 251.714 199.39 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+5V" (at 251.714 190.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 251.714 195.58 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 251.714 195.58 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid e53d1651-8e15-40d5-970d-4099ce073614))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "#PWR0113") (unit 1)
+        )
+      )
+      (project "summer2024_onboarding"
+        (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6"
+          (reference "#PWR032") (unit 1)
         )
       )
     )
@@ -4096,7 +4854,7 @@
     (pin "2" (uuid 6065d7ca-c89c-42b6-a55d-0105bb4a2b38))
     (pin "3" (uuid bec3de5b-4b57-4907-b00b-0681f7e322ee))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "SW101") (unit 1)
         )
@@ -4121,7 +4879,7 @@
     )
     (pin "1" (uuid 1de72b29-fe27-4c12-86b8-0836c3122913))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0104") (unit 1)
         )
@@ -4148,7 +4906,7 @@
     (pin "2" (uuid d886b25c-8c4b-4935-9b1f-634646df771f))
     (pin "3" (uuid e4da427a-0278-49af-a5cb-7afbede08417))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "RV101") (unit 1)
         )
@@ -4183,7 +4941,7 @@
     (pin "1" (uuid 686803fd-595e-4779-8d96-6ce089ae7030))
     (pin "2" (uuid 344fc5be-36dc-4646-b2ab-955b0c82207d))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R111") (unit 1)
         )
@@ -4217,7 +4975,7 @@
     (pin "3" (uuid 2a5b4cf8-97b5-4258-b003-a2568194e406))
     (pin "4" (uuid f04823c5-a4c0-4976-af77-33f9489fba93))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "U101") (unit 1)
         )
@@ -4225,26 +4983,36 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 206.756 104.902 0) (unit 1)
+  (symbol (lib_id "formula:R_1K") (at 293.624 182.372 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid d53cd9cb-d878-4268-9e4c-b7425e7847f4)
-    (property "Reference" "#PWR0113" (at 206.756 111.252 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 206.756 109.728 0)
+    (uuid d3afaffd-c6c8-455c-a87e-cfabbb32861c)
+    (property "Reference" "R118" (at 293.624 176.53 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 206.756 104.902 0)
+    (property "Value" "R_1K" (at 293.624 179.07 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "OEM:R_0603" (at 293.624 184.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 206.756 104.902 0)
+    (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 293.624 180.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid f7a89498-9597-4e3d-9302-1575fb088544))
+    (property "MFN" "DK" (at 293.624 182.372 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "MPN" "RNCP0805FTD1K00CT-ND" (at 293.624 182.372 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 283.464 170.18 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (pin "1" (uuid 61d6860b-6110-4845-be51-752f5994e27e))
+    (pin "2" (uuid 7beed1c8-e324-441d-ae71-188485d5ae4b))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
-          (reference "#PWR0113") (unit 1)
+          (reference "R118") (unit 1)
         )
       )
     )
@@ -4269,7 +5037,7 @@
     (pin "2" (uuid 9baea400-7979-42bf-a416-bb3354376bd5))
     (pin "3" (uuid 59b56676-2c90-400b-8aef-6c26bedfeb96))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "RV102") (unit 1)
         )
@@ -4304,7 +5072,7 @@
     (pin "1" (uuid 1887893e-7a91-4746-95b2-36ce90d7f7f5))
     (pin "2" (uuid 3e905867-373b-4067-979a-6642ba8cd124))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "C101") (unit 1)
         )
@@ -4356,7 +5124,7 @@
           (reference "C1") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "C107") (unit 1)
         )
@@ -4364,6 +5132,31 @@
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6"
           (reference "C7") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 318.008 184.912 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid da345255-4ecf-4330-ac9b-3193758d3c9e)
+    (property "Reference" "#PWR0130" (at 318.008 191.262 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 318.008 189.738 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 318.008 184.912 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 318.008 184.912 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid e2662b96-3313-4df5-9912-356c1db02c66))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "#PWR0130") (unit 1)
         )
       )
     )
@@ -4413,7 +5206,7 @@
           (reference "R8") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R116") (unit 1)
         )
@@ -4465,7 +5258,7 @@
           (reference "R7") (unit 1)
         )
       )
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "R115") (unit 1)
         )
@@ -4490,7 +5283,7 @@
     )
     (pin "1" (uuid f148313f-2783-47e9-ab4d-18fe9ec6a9ed))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0108") (unit 1)
         )
@@ -4515,7 +5308,7 @@
     )
     (pin "1" (uuid 7a14ec03-47fd-4c08-8483-b04935b7dac3))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0110") (unit 1)
         )
@@ -4540,7 +5333,7 @@
     )
     (pin "1" (uuid d5c09b6b-1c99-432c-a0c6-f03dcc3dc934))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0126") (unit 1)
         )
@@ -4565,7 +5358,7 @@
     )
     (pin "1" (uuid d60254b5-d5c1-44b4-85fb-4578c418a8a5))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0125") (unit 1)
         )
@@ -4595,7 +5388,7 @@
     )
     (pin "1" (uuid b0bb1664-2776-4e1e-b54d-145776a67e44))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0123") (unit 1)
         )
@@ -4603,6 +5396,41 @@
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6"
           (reference "#PWR034") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:LED_0805") (at 278.638 182.372 180) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid f5c9e013-0b05-4249-bd20-f00bf13dc4d5)
+    (property "Reference" "D103" (at 280.2382 175.768 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "LED_0805" (at 280.2382 178.308 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "footprints:LED_0805_OEM" (at 281.178 182.372 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 278.638 184.912 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 278.638 182.372 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "MPN" "475-1410-1-ND" (at 278.638 182.372 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 268.478 195.072 0)
+      (effects (font (size 1.524 1.524)) hide)
+    )
+    (pin "1" (uuid eb3b25ff-c9de-44ab-8f78-423c7e13f3b6))
+    (pin "2" (uuid aefa764b-7ce8-4b0b-80b5-6d14b6520491))
+    (instances
+      (project "fiona_hv"
+        (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
+          (reference "D103") (unit 1)
         )
       )
     )
@@ -4641,7 +5469,7 @@
     (pin "7" (uuid 14def39e-cac6-4be0-ac03-3da090c520a6))
     (pin "8" (uuid 7886157f-11ac-44dd-bbf6-6b43792ea5d1))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "U105") (unit 1)
         )
@@ -4671,7 +5499,7 @@
     )
     (pin "1" (uuid d68fe51c-df1d-41c7-9224-453cd95d08ff))
     (instances
-      (project "hardware"
+      (project "fiona_hv"
         (path "/b34db13a-c7e3-48a0-b77f-45da96e8fa7a"
           (reference "#PWR0105") (unit 1)
         )
