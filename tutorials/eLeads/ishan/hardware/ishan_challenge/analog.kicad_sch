@@ -288,6 +288,54 @@
         )
       )
     )
+    (symbol "formula:TP_SMD" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "TP" (at 0 7.62 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "TP_SMD" (at 1.27 5.08 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "footprints:Test_Point_SMD" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "MPN" "5019" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "MFN" "Keystone" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "DKPN" "36-5019TR-ND" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "NewDesigns" "YES" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Stocked" "Reel" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Package" "Custom" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Style" "SMD" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "test point SMD hook" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "TP_SMD_1_1"
+        (circle (center 0 2.54) (radius 1.27)
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (pin input line (at 0 -1.27 90) (length 2.54)
+          (name "~" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "power:+5V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -382,6 +430,9 @@
     )
   )
 
+  (junction (at 120.65 113.03) (diameter 0) (color 0 0 0 0)
+    (uuid 2de06908-2cdc-44ef-b381-347e2780064d)
+  )
   (junction (at 146.05 63.5) (diameter 0) (color 0 0 0 0)
     (uuid 344a64d7-8d25-45eb-9585-7799b6d2405a)
   )
@@ -390,6 +441,9 @@
   )
   (junction (at 128.27 71.12) (diameter 0) (color 0 0 0 0)
     (uuid 5119eb4d-7dc5-41f6-99fe-ad5139bf5fb0)
+  )
+  (junction (at 199.39 97.79) (diameter 0) (color 0 0 0 0)
+    (uuid 78de5d45-dfb1-41cd-80a8-a736abdb2c1f)
   )
   (junction (at 128.27 123.19) (diameter 0) (color 0 0 0 0)
     (uuid b6924416-6621-4d37-8c91-423778fd6456)
@@ -479,6 +533,10 @@
     (stroke (width 0) (type default))
     (uuid 4b9e0b44-30f9-40ad-9c92-3f686afb1d74)
   )
+  (wire (pts (xy 120.65 113.03) (xy 128.27 113.03))
+    (stroke (width 0) (type default))
+    (uuid 4bd674da-dd3f-4c5f-b4ee-9f5f57f07317)
+  )
   (wire (pts (xy 128.27 118.11) (xy 128.27 123.19))
     (stroke (width 0) (type default))
     (uuid 4fc95659-7411-4f6e-bf3b-33a26785fd20)
@@ -523,7 +581,7 @@
     (stroke (width 0) (type default))
     (uuid 866d205b-c02f-4030-a7b7-3b0c5473b8f4)
   )
-  (wire (pts (xy 115.57 113.03) (xy 128.27 113.03))
+  (wire (pts (xy 115.57 113.03) (xy 120.65 113.03))
     (stroke (width 0) (type default))
     (uuid 8b5b6f7e-eb0c-421a-9ae5-a9ca810d39b6)
   )
@@ -555,9 +613,17 @@
     (stroke (width 0) (type default))
     (uuid a5bdf9e0-e08a-44f9-86ba-44fb9783b5b2)
   )
+  (wire (pts (xy 195.58 97.79) (xy 199.39 97.79))
+    (stroke (width 0) (type default))
+    (uuid a6b4c8e0-05c6-43fb-9149-b4a3f049f30b)
+  )
   (wire (pts (xy 69.85 109.22) (xy 66.04 109.22))
     (stroke (width 0) (type default))
     (uuid bbc0fae8-b041-4aa9-a612-35c7c72a5a80)
+  )
+  (wire (pts (xy 199.39 97.79) (xy 201.93 97.79))
+    (stroke (width 0) (type default))
+    (uuid c5125b58-bdde-4036-8304-2d5f714e87d3)
   )
   (wire (pts (xy 175.26 63.5) (xy 175.26 95.25))
     (stroke (width 0) (type default))
@@ -624,7 +690,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 68cb1d60-b1cc-4775-b184-8171e60af300)
   )
-  (hierarchical_label "Output" (shape output) (at 195.58 97.79 0) (fields_autoplaced)
+  (hierarchical_label "Output" (shape output) (at 201.93 97.79 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid e62d9412-0363-4393-8c4d-dec4ea5714eb)
   )
@@ -657,7 +723,7 @@
     (pin "1" (uuid 39053398-0637-4b4d-ba43-cc6332d27f7a))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R6") (unit 1)
         )
       )
@@ -682,7 +748,7 @@
     (pin "1" (uuid 13413f4f-1a4a-497a-966a-6c8d368d44e7))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -717,7 +783,7 @@
     (pin "1" (uuid 6c31398f-4b6e-4d8a-a95c-9fb1a4b24db2))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "C10") (unit 1)
         )
       )
@@ -752,7 +818,7 @@
     (pin "1" (uuid e4f8d5ed-3613-4ceb-abd1-f30495bd4aef))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R11") (unit 1)
         )
       )
@@ -787,7 +853,7 @@
     (pin "1" (uuid 59f1815e-cee7-4da9-8fc6-55330138296e))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R10") (unit 1)
         )
       )
@@ -813,8 +879,54 @@
     (pin "2" (uuid 79d1c535-115a-4384-9894-bba4307a99e9))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "SW2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP_SMD") (at 199.39 99.06 180) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 246fdd30-e42f-4bd3-8c49-b7390b8e168b)
+    (property "Reference" "TP9" (at 194.31 104.14 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "TP_SMD" (at 194.31 101.6 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "footprints:Test_Point_SMD" (at 199.39 95.25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 199.39 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "5019" (at 199.39 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "Keystone" (at 199.39 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "DKPN" "36-5019TR-ND" (at 199.39 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "NewDesigns" "YES" (at 199.39 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Stocked" "Reel" (at 199.39 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Custom" (at 199.39 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Style" "SMD" (at 199.39 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 4a417645-a399-443c-93c6-37b9bfdfcca0))
+    (instances
+      (project "ishan_challenge"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
+          (reference "TP9") (unit 1)
         )
       )
     )
@@ -848,7 +960,7 @@
     (pin "1" (uuid de76d735-d142-4d6f-b888-b5b470066e54))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R15") (unit 1)
         )
       )
@@ -886,8 +998,54 @@
     (pin "5" (uuid c0483266-f9ef-4c36-8ebb-684bed5f2992))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "U6") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP_SMD") (at 120.65 111.76 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 3f8f0f26-a616-4cb7-99dc-9a7caedfbc4f)
+    (property "Reference" "TP8" (at 125.73 106.68 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "TP_SMD" (at 125.73 109.22 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "footprints:Test_Point_SMD" (at 120.65 115.57 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 120.65 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "5019" (at 120.65 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "Keystone" (at 120.65 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "DKPN" "36-5019TR-ND" (at 120.65 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "NewDesigns" "YES" (at 120.65 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Stocked" "Reel" (at 120.65 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Package" "Custom" (at 120.65 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Style" "SMD" (at 120.65 111.76 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid a3deecc2-a76a-4f8b-9eb4-6faba2535953))
+    (instances
+      (project "ishan_challenge"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
+          (reference "TP8") (unit 1)
         )
       )
     )
@@ -921,7 +1079,7 @@
     (pin "1" (uuid 2bddb292-3e1b-460c-8529-181f11a51452))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R12") (unit 1)
         )
       )
@@ -946,7 +1104,7 @@
     (pin "1" (uuid f1354fc4-dc9b-4467-97e9-8c1ef048cb8c))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -971,7 +1129,7 @@
     (pin "1" (uuid cd4fdf98-ab33-4d5f-b6e3-2815e74a0f10))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -996,7 +1154,7 @@
     (pin "1" (uuid 38073914-2f0e-4e4c-88ef-8adaae415442))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1031,7 +1189,7 @@
     (pin "1" (uuid 2be03572-b849-48b8-9cfa-7b5da3cad78c))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R7") (unit 1)
         )
       )
@@ -1056,7 +1214,7 @@
     (pin "1" (uuid aa715ccb-96fb-4596-b1a7-64676215efea))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1091,7 +1249,7 @@
     (pin "1" (uuid c4c2f7f0-0659-44b4-baa7-5f132274227e))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R13") (unit 1)
         )
       )
@@ -1116,7 +1274,7 @@
     (pin "1" (uuid b524ce68-5c40-46ca-ad4c-df177ccc7e1c))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1154,7 +1312,7 @@
     (pin "5" (uuid 8f1c1262-fdee-4684-86fb-cb73e0942f41))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "U4") (unit 1)
         )
       )
@@ -1179,7 +1337,7 @@
     (pin "1" (uuid 43fce710-2baa-451a-8844-cb6244b2c634))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1204,7 +1362,7 @@
     (pin "1" (uuid 13523f96-9c94-455a-ab1f-25714c6d8d5d))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1239,7 +1397,7 @@
     (pin "1" (uuid d0fda57d-3c23-4007-b1a0-c2f2d25c8cb1))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R8") (unit 1)
         )
       )
@@ -1264,7 +1422,7 @@
     (pin "1" (uuid baf726f7-8978-4309-a7ca-4b98539a0d57))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1289,7 +1447,7 @@
     (pin "1" (uuid 5a64cb0a-9633-49bc-b1d1-b02314b7adee))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1315,7 +1473,7 @@
     (pin "2" (uuid 0d473c2c-4d84-4e7a-bca8-76f961968056))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "SW5") (unit 1)
         )
       )
@@ -1342,7 +1500,7 @@
     (pin "2" (uuid 81a8fe53-a558-479b-8213-1db206e7ceae))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "RV1") (unit 1)
         )
       )
@@ -1377,7 +1535,7 @@
     (pin "1" (uuid f0b16f6a-2877-49b8-a212-78296e11668c))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R14") (unit 1)
         )
       )
@@ -1403,7 +1561,7 @@
     (pin "2" (uuid f2887783-83d2-483e-8d4a-041df03fc6da))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "SW4") (unit 1)
         )
       )
@@ -1428,7 +1586,7 @@
     (pin "1" (uuid ddf06986-088b-4e2d-9150-12075354ac1b))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1453,7 +1611,7 @@
     (pin "1" (uuid 1f8ff687-1cf2-4385-8c58-907f3c16c9fa))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1491,7 +1649,7 @@
     (pin "5" (uuid d55fbeca-319f-4aa9-9e4b-73136498d8f4))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "U5") (unit 1)
         )
       )
@@ -1526,7 +1684,7 @@
     (pin "1" (uuid b969bc40-0145-4152-beda-70e13518f7f8))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "R9") (unit 1)
         )
       )
@@ -1551,7 +1709,7 @@
     (pin "1" (uuid be9f222f-6f04-43ab-8516-1f5fa2347de0))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1578,7 +1736,7 @@
     (pin "2" (uuid d17548ad-5987-494d-b017-00ee7ec93ab0))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "RV2") (unit 1)
         )
       )
@@ -1603,7 +1761,7 @@
     (pin "1" (uuid bd3d4d18-b81b-4417-bfdc-eff80a188697))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "#PWR?") (unit 1)
         )
       )
@@ -1629,7 +1787,7 @@
     (pin "2" (uuid 65f18b3e-d322-4610-8980-313e0a80fcf8))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "SW3") (unit 1)
         )
       )
@@ -1664,7 +1822,7 @@
     (pin "1" (uuid 6ab743fe-afa1-4384-a479-fa99f0fc596a))
     (instances
       (project "ishan_challenge"
-        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/a352f5e8-312b-44f7-9aa0-e40ba79a1d22"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/e9e37094-f15c-4d12-b4d2-57fff89d49ef"
           (reference "C9") (unit 1)
         )
       )
