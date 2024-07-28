@@ -93,13 +93,16 @@ int main(void) {
     //Init 16M1 CAN tranciever
     can_init_charger();
 
+        _delay_ms(20);
+
     can_receive_charging_cmd();
     can_receive_bms_core();
+    // can_poll_receive_bms_core();
+    // can_poll_receive_charging_cmd();
 
     while (1) {
         // check status of BMS
         if (send_can) {
-            
             if (can_poll_receive_bms_core() == 0) {
                 can_send_charging_fbk();
                 gpio_set_pin(LED1);

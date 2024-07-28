@@ -38,10 +38,15 @@ csc_mia:
   processing_function: decode_csc_status
 internal_die_temp: convert_internal_die_temp
 IVT_Result_U1:
+    processing_function: padding
 IVT_Result_I:
+    processing_function: padding
 IVT_Result_As:
+    processing_function: padding
 IVT_Result_W:
+    processing_function: padding
 IVT_Result_Wh:
+    processing_function: padding
 lpms_gyro_x:
   processing_function: padding
 lpms_gyro_x:
