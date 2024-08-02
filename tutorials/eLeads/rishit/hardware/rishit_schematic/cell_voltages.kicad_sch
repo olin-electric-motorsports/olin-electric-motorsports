@@ -113,6 +113,41 @@
         )
       )
     )
+    (symbol "formula:TP" (pin_numbers hide) (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "TP" (at 0 0 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "TP" (at 0 0 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "footprints:tp_1.6mm" (at -2.54 -2.54 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "http://www.keyelco.com/product-pdf.cfm?p=1314" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "MFN" "DK" (at 2.54 2.54 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "MPN" "36-5006-ND" (at 5.08 5.08 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330" (at 7.62 7.62 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "TP_0_1"
+        (circle (center 0 -1.27) (radius 1.27)
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "TP_1_1"
+        (pin input line (at 0 -5.08 90) (length 2.54)
+          (name "TP" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "power:+5V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -216,8 +251,17 @@
   (junction (at 82.55 133.35) (diameter 0) (color 0 0 0 0)
     (uuid 7cb1714c-6fa2-4460-86fe-52606aed1880)
   )
+  (junction (at 140.97 104.14) (diameter 0) (color 0 0 0 0)
+    (uuid 8c83db59-296a-4d4c-ac13-11c1692efc7d)
+  )
+  (junction (at 140.97 69.85) (diameter 0) (color 0 0 0 0)
+    (uuid 96b9d086-853f-4ac6-84eb-e1b6b8a147f0)
+  )
   (junction (at 111.76 69.85) (diameter 0) (color 0 0 0 0)
     (uuid a2f96a2d-10c6-4290-b2e7-0f9be809fb30)
+  )
+  (junction (at 139.7 135.89) (diameter 0) (color 0 0 0 0)
+    (uuid cc1dc82e-95fc-47e4-9931-00d005f0e66c)
   )
   (junction (at 82.55 67.31) (diameter 0) (color 0 0 0 0)
     (uuid e8e73261-40d9-4cba-b43d-b66ed5402188)
@@ -226,7 +270,7 @@
     (uuid ee0777b2-cec6-4c22-b2ab-afba7d4a6cd3)
   )
 
-  (wire (pts (xy 111.76 135.89) (xy 151.13 135.89))
+  (wire (pts (xy 111.76 135.89) (xy 139.7 135.89))
     (stroke (width 0) (type default))
     (uuid 029f7f84-51b2-4767-bea0-9b4962ae0ef2)
   )
@@ -258,6 +302,10 @@
     (stroke (width 0) (type default))
     (uuid 2bafb990-0b42-4dc0-ac03-8ce201c2f194)
   )
+  (wire (pts (xy 140.97 69.85) (xy 151.13 69.85))
+    (stroke (width 0) (type default))
+    (uuid 2bb53c09-bd71-4b7c-8ae0-95e0795058a9)
+  )
   (wire (pts (xy 111.76 135.89) (xy 111.76 151.13))
     (stroke (width 0) (type default))
     (uuid 388f48da-def7-4034-a3a6-1ed7acdeeb69)
@@ -274,9 +322,13 @@
     (stroke (width 0) (type default))
     (uuid 5721566c-08fe-46cf-9254-fadfc8bf36e1)
   )
-  (wire (pts (xy 121.92 104.14) (xy 151.13 104.14))
+  (wire (pts (xy 121.92 104.14) (xy 140.97 104.14))
     (stroke (width 0) (type default))
     (uuid 58669289-804a-4a2b-96af-21663ea12fd1)
+  )
+  (wire (pts (xy 140.97 104.14) (xy 151.13 104.14))
+    (stroke (width 0) (type default))
+    (uuid 63ddc0ee-daa7-4787-a767-fbfc12a0ac66)
   )
   (wire (pts (xy 96.52 151.13) (xy 111.76 151.13))
     (stroke (width 0) (type default))
@@ -286,7 +338,7 @@
     (stroke (width 0) (type default))
     (uuid 7dd43b63-f9a8-4987-9f23-cce82a52bcd3)
   )
-  (wire (pts (xy 111.76 69.85) (xy 151.13 69.85))
+  (wire (pts (xy 111.76 69.85) (xy 140.97 69.85))
     (stroke (width 0) (type default))
     (uuid 8bb95cba-0f24-41a3-80c8-10d32c6fe2de)
   )
@@ -301,6 +353,10 @@
   (wire (pts (xy 111.76 69.85) (xy 111.76 85.09))
     (stroke (width 0) (type default))
     (uuid a1f9e9b7-7689-40d1-9181-b9d82ef330e8)
+  )
+  (wire (pts (xy 139.7 135.89) (xy 151.13 135.89))
+    (stroke (width 0) (type default))
+    (uuid d23b277e-976b-4a99-8165-a50f2b53d29d)
   )
   (wire (pts (xy 106.68 106.68) (xy 106.68 119.38))
     (stroke (width 0) (type default))
@@ -345,7 +401,7 @@
   (symbol (lib_id "formula:MCP6001") (at 104.14 135.89 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 041dea7c-119b-4c14-90e7-b13c3fcb3566)
-    (property "Reference" "U1" (at 115.57 131.6991 0)
+    (property "Reference" "U?" (at 115.57 131.6991 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "MCP6001" (at 115.57 134.2391 0)
@@ -374,10 +430,10 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/f09d82cd-e53e-42f8-91d7-298e9a119bee"
-          (reference "U1") (unit 1)
+          (reference "U?") (unit 1)
         )
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "U107") (unit 1)
+          (reference "U110") (unit 1)
         )
       )
     )
@@ -386,7 +442,7 @@
   (symbol (lib_id "power:GND") (at 92.71 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 16f77174-a3fd-418c-b273-6d11b8256162)
-    (property "Reference" "#PWR0131" (at 92.71 118.11 0)
+    (property "Reference" "#PWR0150" (at 92.71 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 92.71 116.84 0)
@@ -402,7 +458,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0131") (unit 1)
+          (reference "#PWR0150") (unit 1)
         )
       )
     )
@@ -411,7 +467,7 @@
   (symbol (lib_id "power:+5V") (at 101.6 62.23 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3935fd06-628d-4c28-803b-200d6612ec99)
-    (property "Reference" "#PWR0132" (at 101.6 66.04 0)
+    (property "Reference" "#PWR0151" (at 101.6 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 101.6 57.15 0)
@@ -427,7 +483,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0132") (unit 1)
+          (reference "#PWR0151") (unit 1)
         )
       )
     )
@@ -436,7 +492,7 @@
   (symbol (lib_id "formula:R_1K") (at 78.74 67.31 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3b8aa6f7-0c64-4c13-bd77-8084a43ef664)
-    (property "Reference" "R111" (at 78.74 60.96 90)
+    (property "Reference" "R119" (at 78.74 60.96 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 78.74 63.5 90)
@@ -462,7 +518,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "R111") (unit 1)
+          (reference "R119") (unit 1)
         )
       )
     )
@@ -471,7 +527,7 @@
   (symbol (lib_id "power:GND") (at 82.55 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 40367b26-5a32-4366-9994-ff7a66ed1d84)
-    (property "Reference" "#PWR0130" (at 82.55 149.86 0)
+    (property "Reference" "#PWR0149" (at 82.55 149.86 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 82.55 148.59 0)
@@ -487,7 +543,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0130") (unit 1)
+          (reference "#PWR0149") (unit 1)
         )
       )
     )
@@ -496,7 +552,7 @@
   (symbol (lib_id "power:+5V") (at 111.76 96.52 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 46b20c3a-5883-4602-9058-71005fb6a676)
-    (property "Reference" "#PWR0136" (at 111.76 100.33 0)
+    (property "Reference" "#PWR0155" (at 111.76 100.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 111.76 91.44 0)
@@ -512,7 +568,41 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0136") (unit 1)
+          (reference "#PWR0155") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP") (at 140.97 99.06 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 47f0d4c8-f5c1-49b3-8e01-ceb342f6587a)
+    (property "Reference" "TP112" (at 143.51 99.06 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP" (at 143.51 101.6 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:tp_1.6mm" (at 138.43 101.6 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://www.keyelco.com/product-pdf.cfm?p=1314" (at 140.97 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 143.51 96.52 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "36-5006-ND" (at 146.05 93.98 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330" (at 148.59 91.44 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid c7abfef9-3b6f-46cd-8bf9-837d7178896a))
+    (instances
+      (project "summer2024_onboarding"
+        (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
+          (reference "TP112") (unit 1)
         )
       )
     )
@@ -521,7 +611,7 @@
   (symbol (lib_id "formula:R_1K") (at 78.74 133.35 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4c275e1e-ef92-43ff-a380-406926587423)
-    (property "Reference" "R112" (at 78.74 127 90)
+    (property "Reference" "R120" (at 78.74 127 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 78.74 129.54 90)
@@ -547,7 +637,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "R112") (unit 1)
+          (reference "R120") (unit 1)
         )
       )
     )
@@ -556,7 +646,7 @@
   (symbol (lib_id "formula:R_1K") (at 82.55 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4e0fae74-7b32-47e3-b9b3-6d574527c375)
-    (property "Reference" "R113" (at 85.09 72.39 0)
+    (property "Reference" "R121" (at 85.09 72.39 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R_1K" (at 85.09 74.93 0)
@@ -582,7 +672,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "R113") (unit 1)
+          (reference "R121") (unit 1)
         )
       )
     )
@@ -591,7 +681,7 @@
   (symbol (lib_id "formula:MCP6001") (at 114.3 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 578a48f8-a780-42c7-a673-7de7238d2998)
-    (property "Reference" "U1" (at 125.73 99.9491 0)
+    (property "Reference" "U?" (at 125.73 99.9491 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "MCP6001" (at 125.73 102.4891 0)
@@ -620,10 +710,10 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/f09d82cd-e53e-42f8-91d7-298e9a119bee"
-          (reference "U1") (unit 1)
+          (reference "U?") (unit 1)
         )
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "U108") (unit 1)
+          (reference "U111") (unit 1)
         )
       )
     )
@@ -632,7 +722,7 @@
   (symbol (lib_id "power:GND") (at 101.6 77.47 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5ba2cc98-5d09-46af-9f24-e480db12b4ec)
-    (property "Reference" "#PWR0133" (at 101.6 83.82 0)
+    (property "Reference" "#PWR0152" (at 101.6 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 101.6 82.55 0)
@@ -648,7 +738,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0133") (unit 1)
+          (reference "#PWR0152") (unit 1)
         )
       )
     )
@@ -657,7 +747,7 @@
   (symbol (lib_id "power:GND") (at 82.55 77.47 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 601b11ca-cbdf-471a-bf80-484cd332a3d9)
-    (property "Reference" "#PWR0129" (at 82.55 83.82 0)
+    (property "Reference" "#PWR0148" (at 82.55 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 82.55 82.55 0)
@@ -673,7 +763,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0129") (unit 1)
+          (reference "#PWR0148") (unit 1)
         )
       )
     )
@@ -682,7 +772,7 @@
   (symbol (lib_id "formula:MCP6001") (at 104.14 69.85 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6ed42605-c804-4e66-a57e-0d7a12cc1009)
-    (property "Reference" "U1" (at 115.57 65.6591 0)
+    (property "Reference" "U?" (at 115.57 65.6591 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "MCP6001" (at 115.57 68.1991 0)
@@ -711,10 +801,10 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/f09d82cd-e53e-42f8-91d7-298e9a119bee"
-          (reference "U1") (unit 1)
+          (reference "U?") (unit 1)
         )
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "U106") (unit 1)
+          (reference "U109") (unit 1)
         )
       )
     )
@@ -723,7 +813,7 @@
   (symbol (lib_id "formula:R_1K") (at 82.55 139.7 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 78ec6cf3-977c-40f9-bbfd-e007d487c682)
-    (property "Reference" "R114" (at 85.09 138.43 0)
+    (property "Reference" "R122" (at 85.09 138.43 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R_1K" (at 85.09 140.97 0)
@@ -749,7 +839,41 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "R114") (unit 1)
+          (reference "R122") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP") (at 139.7 130.81 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid a4a9854e-b40d-4c5b-92d0-a066b2461348)
+    (property "Reference" "TP110" (at 142.24 130.81 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP" (at 142.24 133.35 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:tp_1.6mm" (at 137.16 133.35 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://www.keyelco.com/product-pdf.cfm?p=1314" (at 139.7 130.81 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 142.24 128.27 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "36-5006-ND" (at 144.78 125.73 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330" (at 147.32 123.19 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 7ac5bd5c-2701-4f08-92e6-005a1f410037))
+    (instances
+      (project "summer2024_onboarding"
+        (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
+          (reference "TP110") (unit 1)
         )
       )
     )
@@ -758,7 +882,7 @@
   (symbol (lib_id "power:GND") (at 101.6 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid dc133cda-5bc5-44d9-8a4d-e04edf602d32)
-    (property "Reference" "#PWR0135" (at 101.6 149.86 0)
+    (property "Reference" "#PWR0154" (at 101.6 149.86 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 101.6 148.59 0)
@@ -774,7 +898,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0135") (unit 1)
+          (reference "#PWR0154") (unit 1)
         )
       )
     )
@@ -783,7 +907,7 @@
   (symbol (lib_id "power:GND") (at 111.76 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e57efd18-7e7b-43a9-bb71-28ce22731cee)
-    (property "Reference" "#PWR0137" (at 111.76 118.11 0)
+    (property "Reference" "#PWR0156" (at 111.76 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 111.76 116.84 0)
@@ -799,7 +923,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0137") (unit 1)
+          (reference "#PWR0156") (unit 1)
         )
       )
     )
@@ -808,7 +932,7 @@
   (symbol (lib_id "formula:R_1K") (at 92.71 107.95 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid eede7512-1b21-4986-a3c3-a54b4e8d5f81)
-    (property "Reference" "R116" (at 95.25 106.68 0)
+    (property "Reference" "R124" (at 95.25 106.68 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R_1K" (at 95.25 109.22 0)
@@ -834,7 +958,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "R116") (unit 1)
+          (reference "R124") (unit 1)
         )
       )
     )
@@ -843,7 +967,7 @@
   (symbol (lib_id "formula:R_1K") (at 88.9 101.6 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f0cf2781-3206-48bd-9cb0-8857b6ff125d)
-    (property "Reference" "R115" (at 88.9 95.25 90)
+    (property "Reference" "R123" (at 88.9 95.25 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 88.9 97.79 90)
@@ -869,7 +993,41 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "R115") (unit 1)
+          (reference "R123") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP") (at 140.97 64.77 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid fce50248-81e8-44cb-ac90-2e567d3f9db4)
+    (property "Reference" "TP111" (at 143.51 64.77 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP" (at 143.51 67.31 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:tp_1.6mm" (at 138.43 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://www.keyelco.com/product-pdf.cfm?p=1314" (at 140.97 64.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 143.51 62.23 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "36-5006-ND" (at 146.05 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330" (at 148.59 57.15 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid b69cbf9d-899f-4773-9454-3938f8912b68))
+    (instances
+      (project "summer2024_onboarding"
+        (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
+          (reference "TP111") (unit 1)
         )
       )
     )
@@ -878,7 +1036,7 @@
   (symbol (lib_id "power:+5V") (at 101.6 128.27 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid feb74ebc-3097-4495-994a-40bd7982e33f)
-    (property "Reference" "#PWR0134" (at 101.6 132.08 0)
+    (property "Reference" "#PWR0153" (at 101.6 132.08 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 101.6 123.19 0)
@@ -894,7 +1052,7 @@
     (instances
       (project "summer2024_onboarding"
         (path "/c18fa433-29bc-48c5-ae90-22a6db48cfc6/a4c6b8ec-4698-45dd-b8bb-7cfe1c10de22"
-          (reference "#PWR0134") (unit 1)
+          (reference "#PWR0153") (unit 1)
         )
       )
     )
