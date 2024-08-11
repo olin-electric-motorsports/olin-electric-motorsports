@@ -630,7 +630,7 @@
   (symbol (lib_id "power:+5V") (at 27.94 33.02 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0617e2b5-4e88-4a90-b8dd-f677229edf26)
-    (property "Reference" "#PWR042" (at 27.94 36.83 0)
+    (property "Reference" "#PWR036" (at 27.94 36.83 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 27.94 27.94 0)
@@ -646,7 +646,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR036") (unit 1)
         )
       )
     )
@@ -661,7 +661,7 @@
     (property "Value" "C" (at 120.65 81.28 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 117.8052 83.82 0)
+    (property "Footprint" "Capacitor_SMD:C_0504_1310Metric" (at 117.8052 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 116.84 80.01 0)
@@ -681,13 +681,13 @@
   (symbol (lib_id "formula:R_1K") (at 109.22 43.18 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0a103e9d-000c-43fa-8b30-1ae8a53d3968)
-    (property "Reference" "R30" (at 109.22 36.83 90)
+    (property "Reference" "R22" (at 109.22 36.83 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 109.22 39.37 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 109.22 41.402 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 109.22 41.402 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 109.22 45.212 0)
@@ -707,7 +707,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R30") (unit 1)
+          (reference "R22") (unit 1)
         )
       )
     )
@@ -716,7 +716,7 @@
   (symbol (lib_id "power:+5V") (at 80.01 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0f8c0631-e9b2-4468-a7c6-e1605f1820b9)
-    (property "Reference" "#PWR046" (at 80.01 39.37 0)
+    (property "Reference" "#PWR040" (at 80.01 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 80.01 30.48 0)
@@ -732,7 +732,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR046") (unit 1)
+          (reference "#PWR040") (unit 1)
         )
       )
     )
@@ -741,7 +741,7 @@
   (symbol (lib_id "power:GND") (at 80.01 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 107af095-d849-4699-b495-d4af3f9d686f)
-    (property "Reference" "#PWR049" (at 80.01 90.17 0)
+    (property "Reference" "#PWR043" (at 80.01 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 80.01 88.9 0)
@@ -757,7 +757,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR049") (unit 1)
+          (reference "#PWR043") (unit 1)
         )
       )
     )
@@ -766,7 +766,7 @@
   (symbol (lib_id "power:GND") (at 40.64 46.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 10a1f6cc-669b-406e-ba10-aecb4233580e)
-    (property "Reference" "#PWR044" (at 40.64 53.34 0)
+    (property "Reference" "#PWR038" (at 40.64 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 40.64 52.07 0)
@@ -782,7 +782,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR044") (unit 1)
+          (reference "#PWR038") (unit 1)
         )
       )
     )
@@ -791,7 +791,7 @@
   (symbol (lib_id "power:GND") (at 80.01 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1ef45fd4-81c7-4d89-aab6-ffd68bfe7676)
-    (property "Reference" "#PWR047" (at 80.01 57.15 0)
+    (property "Reference" "#PWR041" (at 80.01 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 80.01 55.88 0)
@@ -807,7 +807,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR047") (unit 1)
+          (reference "#PWR041") (unit 1)
         )
       )
     )
@@ -816,7 +816,7 @@
   (symbol (lib_id "power:GND") (at 127 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 360a5415-c99b-41af-883f-78c1176ca1f1)
-    (property "Reference" "#PWR055" (at 127 73.66 0)
+    (property "Reference" "#PWR049" (at 127 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 127 72.39 0)
@@ -832,7 +832,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR055") (unit 1)
+          (reference "#PWR049") (unit 1)
         )
       )
     )
@@ -841,7 +841,7 @@
   (symbol (lib_id "power:GND") (at 90.17 99.06 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3ab7eaf7-ab0e-45c6-b634-37b27cc2b0a2)
-    (property "Reference" "#PWR051" (at 90.17 105.41 0)
+    (property "Reference" "#PWR045" (at 90.17 105.41 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 90.17 104.14 0)
@@ -857,7 +857,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR051") (unit 1)
+          (reference "#PWR045") (unit 1)
         )
       )
     )
@@ -866,7 +866,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 140.335 58.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 464a7704-0b84-4b4f-824b-4e445fe1a476)
-    (property "Reference" "TP5" (at 142.875 54.61 0)
+    (property "Reference" "TP6" (at 142.875 54.61 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TP_SMD" (at 142.875 57.15 0)
@@ -903,7 +903,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "TP5") (unit 1)
+          (reference "TP6") (unit 1)
         )
       )
     )
@@ -912,13 +912,13 @@
   (symbol (lib_id "formula:R_1K") (at 53.34 43.18 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5387403f-4b7f-413b-a9c4-c9ed0a47c0c7)
-    (property "Reference" "R24" (at 53.34 36.83 90)
+    (property "Reference" "R16" (at 53.34 36.83 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 53.34 39.37 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 53.34 41.402 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 53.34 41.402 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 53.34 45.212 0)
@@ -938,7 +938,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R24") (unit 1)
+          (reference "R16") (unit 1)
         )
       )
     )
@@ -947,7 +947,7 @@
   (symbol (lib_id "power:GND") (at 40.64 80.01 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5552b794-9111-43d6-99ff-76e60e759931)
-    (property "Reference" "#PWR045" (at 40.64 86.36 0)
+    (property "Reference" "#PWR039" (at 40.64 86.36 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 40.64 85.09 0)
@@ -963,7 +963,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR045") (unit 1)
+          (reference "#PWR039") (unit 1)
         )
       )
     )
@@ -972,7 +972,7 @@
   (symbol (lib_id "power:GND") (at 116.84 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5a3a3765-9ea5-4ddd-ad4b-db4da22fd07e)
-    (property "Reference" "#PWR052" (at 116.84 57.15 0)
+    (property "Reference" "#PWR046" (at 116.84 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 116.84 55.88 0)
@@ -988,7 +988,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR052") (unit 1)
+          (reference "#PWR046") (unit 1)
         )
       )
     )
@@ -997,13 +997,13 @@
   (symbol (lib_id "Simulation_SPICE:OPAMP") (at 82.55 76.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5afafc6a-70f4-4af0-a135-56edcac13178)
-    (property "Reference" "U9" (at 96.52 72.0091 0)
+    (property "Reference" "U7" (at 96.52 72.0091 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "${SIM.PARAMS}" (at 96.52 74.5491 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 82.55 76.2 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 82.55 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec__SUBCKT_Subcircuits" (at 82.55 76.2 0)
@@ -1029,7 +1029,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "U9") (unit 1)
+          (reference "U7") (unit 1)
         )
       )
     )
@@ -1038,13 +1038,13 @@
   (symbol (lib_id "formula:R_1K") (at 90.17 85.09 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5bfb2b75-76f1-4230-a926-2771cc019a58)
-    (property "Reference" "R28" (at 92.71 83.82 0)
+    (property "Reference" "R20" (at 92.71 83.82 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "R_1K" (at 92.71 86.36 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 91.948 85.09 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 91.948 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 88.138 85.09 0)
@@ -1064,7 +1064,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R28") (unit 1)
+          (reference "R20") (unit 1)
         )
       )
     )
@@ -1073,13 +1073,13 @@
   (symbol (lib_id "formula:R_1K") (at 36.83 66.04 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5f7e3bc4-a446-4b5f-8946-989c6b7165d2)
-    (property "Reference" "R23" (at 36.83 59.69 90)
+    (property "Reference" "R15" (at 36.83 59.69 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 36.83 62.23 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 36.83 64.262 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 36.83 64.262 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 36.83 68.072 0)
@@ -1099,7 +1099,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R23") (unit 1)
+          (reference "R15") (unit 1)
         )
       )
     )
@@ -1108,13 +1108,13 @@
   (symbol (lib_id "formula:R_1K") (at 53.34 76.2 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 63688064-38a2-490f-ae7a-7e7346e87662)
-    (property "Reference" "R25" (at 53.34 69.85 90)
+    (property "Reference" "R17" (at 53.34 69.85 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 53.34 72.39 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 53.34 74.422 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 53.34 74.422 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 53.34 78.232 0)
@@ -1134,7 +1134,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R25") (unit 1)
+          (reference "R17") (unit 1)
         )
       )
     )
@@ -1143,13 +1143,13 @@
   (symbol (lib_id "Device:R_Potentiometer") (at 40.64 76.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6dca6734-f91a-4ff7-8097-157d4cfbf220)
-    (property "Reference" "RV4" (at 38.1 74.93 0)
+    (property "Reference" "RV2" (at 38.1 74.93 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "R_Potentiometer" (at 38.1 77.47 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 40.64 76.2 0)
+    (property "Footprint" "Potentiometer_THT:Potentiometer_Vishay_T73XW_Horizontal" (at 40.64 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 40.64 76.2 0)
@@ -1161,7 +1161,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "RV4") (unit 1)
+          (reference "RV2") (unit 1)
         )
       )
     )
@@ -1170,7 +1170,7 @@
   (symbol (lib_id "power:GND") (at 116.84 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 82dfa695-5c41-458d-87fa-d45fb4656c24)
-    (property "Reference" "#PWR053" (at 116.84 90.17 0)
+    (property "Reference" "#PWR047" (at 116.84 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 116.84 88.9 0)
@@ -1186,7 +1186,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR053") (unit 1)
+          (reference "#PWR047") (unit 1)
         )
       )
     )
@@ -1195,7 +1195,7 @@
   (symbol (lib_id "power:+5V") (at 27.94 66.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 83c77d80-9a12-43ab-af16-4a71648448c4)
-    (property "Reference" "#PWR043" (at 27.94 69.85 0)
+    (property "Reference" "#PWR037" (at 27.94 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 27.94 60.96 0)
@@ -1211,7 +1211,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR043") (unit 1)
+          (reference "#PWR037") (unit 1)
         )
       )
     )
@@ -1220,7 +1220,7 @@
   (symbol (lib_id "power:GND") (at 90.17 66.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 83d057a1-cb75-49df-a25a-3337e87aa628)
-    (property "Reference" "#PWR050" (at 90.17 72.39 0)
+    (property "Reference" "#PWR044" (at 90.17 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 90.17 71.12 0)
@@ -1236,7 +1236,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR050") (unit 1)
+          (reference "#PWR044") (unit 1)
         )
       )
     )
@@ -1245,7 +1245,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 119.38 41.91 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 87390596-1f4f-432d-8f18-22e3ff373499)
-    (property "Reference" "TP3" (at 121.92 38.1 0)
+    (property "Reference" "TP4" (at 121.92 38.1 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TP_SMD" (at 121.92 40.64 0)
@@ -1282,7 +1282,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "TP3") (unit 1)
+          (reference "TP4") (unit 1)
         )
       )
     )
@@ -1291,13 +1291,13 @@
   (symbol (lib_id "Simulation_SPICE:OPAMP") (at 82.55 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8820dc2e-8b1e-494f-abe4-7e125e15ce34)
-    (property "Reference" "U8" (at 96.52 38.9891 0)
+    (property "Reference" "U6" (at 96.52 38.9891 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "${SIM.PARAMS}" (at 96.52 41.5291 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 82.55 43.18 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 82.55 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec__SUBCKT_Subcircuits" (at 82.55 43.18 0)
@@ -1323,7 +1323,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "U8") (unit 1)
+          (reference "U6") (unit 1)
         )
       )
     )
@@ -1332,13 +1332,13 @@
   (symbol (lib_id "Device:R_Potentiometer") (at 40.64 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8c696aef-b7ea-4027-be91-2c495ee26a57)
-    (property "Reference" "RV3" (at 38.1 41.91 0)
+    (property "Reference" "RV1" (at 38.1 41.91 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "R_Potentiometer" (at 38.1 44.45 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 40.64 43.18 0)
+    (property "Footprint" "Potentiometer_THT:Potentiometer_Vishay_T73XW_Horizontal" (at 40.64 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 40.64 43.18 0)
@@ -1350,7 +1350,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "RV3") (unit 1)
+          (reference "RV1") (unit 1)
         )
       )
     )
@@ -1359,13 +1359,13 @@
   (symbol (lib_id "formula:R_1K") (at 90.17 62.23 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8c80d525-0c24-4f5a-b179-31d6e7c4bb1a)
-    (property "Reference" "R27" (at 92.71 60.96 0)
+    (property "Reference" "R19" (at 92.71 60.96 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "R_1K" (at 92.71 63.5 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 91.948 62.23 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 91.948 62.23 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 88.138 62.23 0)
@@ -1385,7 +1385,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R27") (unit 1)
+          (reference "R19") (unit 1)
         )
       )
     )
@@ -1394,13 +1394,13 @@
   (symbol (lib_id "formula:R_1K") (at 90.17 95.25 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8df1677f-622d-4fc7-bd06-6aab90583bc3)
-    (property "Reference" "R29" (at 92.71 93.98 0)
+    (property "Reference" "R21" (at 92.71 93.98 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "R_1K" (at 92.71 96.52 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 91.948 95.25 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 91.948 95.25 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 88.138 95.25 0)
@@ -1420,7 +1420,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R29") (unit 1)
+          (reference "R21") (unit 1)
         )
       )
     )
@@ -1429,13 +1429,13 @@
   (symbol (lib_id "Switch:SW_SPDT") (at 69.85 40.64 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a58648af-db8e-4c19-9a3e-88ab11c38bc6)
-    (property "Reference" "SW2" (at 69.85 31.75 0)
+    (property "Reference" "SW1" (at 69.85 31.75 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SW_SPDT" (at 69.85 34.29 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 69.85 40.64 0)
+    (property "Footprint" "Button_Switch_SMD:SW_SPDT_PCM12" (at 69.85 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 69.85 48.26 0)
@@ -1447,7 +1447,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "SW2") (unit 1)
+          (reference "SW1") (unit 1)
         )
       )
     )
@@ -1456,7 +1456,7 @@
   (symbol (lib_id "power:+5V") (at 127 52.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid aba1e316-05e0-44d2-a2c5-a6574898089e)
-    (property "Reference" "#PWR054" (at 127 55.88 0)
+    (property "Reference" "#PWR048" (at 127 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 127 46.99 0)
@@ -1472,7 +1472,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR054") (unit 1)
+          (reference "#PWR048") (unit 1)
         )
       )
     )
@@ -1481,7 +1481,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 120.015 74.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b006a49d-213a-41cf-ba85-5024e92693a3)
-    (property "Reference" "TP4" (at 122.555 71.12 0)
+    (property "Reference" "TP5" (at 122.555 71.12 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TP_SMD" (at 122.555 73.66 0)
@@ -1518,7 +1518,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "TP4") (unit 1)
+          (reference "TP5") (unit 1)
         )
       )
     )
@@ -1527,7 +1527,7 @@
   (symbol (lib_id "power:+5V") (at 80.01 68.58 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b2ba1211-b507-4ee9-8106-976ce87d7f85)
-    (property "Reference" "#PWR048" (at 80.01 72.39 0)
+    (property "Reference" "#PWR042" (at 80.01 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 80.01 63.5 0)
@@ -1543,7 +1543,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "#PWR048") (unit 1)
+          (reference "#PWR042") (unit 1)
         )
       )
     )
@@ -1552,13 +1552,13 @@
   (symbol (lib_id "formula:R_1K") (at 36.83 33.02 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bb1e0a7c-d543-48dc-bcdc-789b1cbf25cd)
-    (property "Reference" "R22" (at 36.83 26.67 90)
+    (property "Reference" "R14" (at 36.83 26.67 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 36.83 29.21 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 36.83 31.242 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 36.83 31.242 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 36.83 35.052 0)
@@ -1578,7 +1578,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R22") (unit 1)
+          (reference "R14") (unit 1)
         )
       )
     )
@@ -1587,13 +1587,13 @@
   (symbol (lib_id "formula:R_1K") (at 109.22 76.2 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bb419e4b-125a-4257-a047-4bac5220bf67)
-    (property "Reference" "R31" (at 109.22 69.85 90)
+    (property "Reference" "R23" (at 109.22 69.85 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_1K" (at 109.22 72.39 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 109.22 74.422 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 109.22 74.422 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 109.22 78.232 0)
@@ -1613,7 +1613,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R31") (unit 1)
+          (reference "R23") (unit 1)
         )
       )
     )
@@ -1622,13 +1622,13 @@
   (symbol (lib_id "Switch:SW_SPDT") (at 69.85 73.66 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ca657714-44e7-4c82-8955-38139500b8d8)
-    (property "Reference" "SW4" (at 69.85 64.77 0)
+    (property "Reference" "SW2" (at 69.85 64.77 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SW_SPDT" (at 69.85 67.31 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 69.85 73.66 0)
+    (property "Footprint" "Button_Switch_SMD:SW_SPDT_PCM12" (at 69.85 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 69.85 81.28 0)
@@ -1640,7 +1640,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "SW4") (unit 1)
+          (reference "SW2") (unit 1)
         )
       )
     )
@@ -1649,13 +1649,13 @@
   (symbol (lib_id "Simulation_SPICE:OPAMP") (at 129.54 59.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d0501b4d-7386-4f83-93a8-eb106f9b40a8)
-    (property "Reference" "U10" (at 143.51 62.865 0)
+    (property "Reference" "U8" (at 143.51 62.865 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "${SIM.PARAMS}" (at 143.51 60.96 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 129.54 59.69 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 129.54 59.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec__SUBCKT_Subcircuits" (at 129.54 59.69 0)
@@ -1681,7 +1681,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "U10") (unit 1)
+          (reference "U8") (unit 1)
         )
       )
     )
@@ -1696,7 +1696,7 @@
     (property "Value" "C" (at 120.65 48.26 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 117.8052 50.8 0)
+    (property "Footprint" "Capacitor_SMD:C_0504_1310Metric" (at 117.8052 50.8 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 116.84 46.99 0)
@@ -1716,13 +1716,13 @@
   (symbol (lib_id "formula:R_1K") (at 90.17 52.07 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e8bedb22-9863-45c5-96a4-7740bf7555a0)
-    (property "Reference" "R26" (at 92.71 50.8 0)
+    (property "Reference" "R18" (at 92.71 50.8 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "R_1K" (at 92.71 53.34 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 91.948 52.07 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 91.948 52.07 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 88.138 52.07 0)
@@ -1742,7 +1742,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17/a6087a7e-2f2d-40c6-b396-7fda4715dafd"
-          (reference "R26") (unit 1)
+          (reference "R18") (unit 1)
         )
       )
     )

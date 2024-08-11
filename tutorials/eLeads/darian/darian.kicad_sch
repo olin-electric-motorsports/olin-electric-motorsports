@@ -4,6 +4,12 @@
 
   (paper "A4")
 
+  (title_block
+    (title "Formula Onboarding Project")
+    (rev "1")
+    (company "Darian Jimenez")
+  )
+
   (lib_symbols
     (symbol "Device:Antenna" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "AE" (at -1.905 1.905 0)
@@ -2012,6 +2018,9 @@
   (junction (at 71.12 149.225) (diameter 0) (color 0 0 0 0)
     (uuid c8b23256-f44b-49f9-879c-89e25b4d3a24)
   )
+  (junction (at 82.55 149.225) (diameter 0) (color 0 0 0 0)
+    (uuid d1031108-5490-4356-9fa8-61f39e1b6378)
+  )
   (junction (at 196.85 111.76) (diameter 0) (color 0 0 0 0)
     (uuid dd15d0e3-cce3-49bc-bfe6-ee99be756fff)
   )
@@ -2175,6 +2184,10 @@
     (stroke (width 0) (type default))
     (uuid 4accea6e-e840-4b91-97a4-3c4c50661a17)
   )
+  (wire (pts (xy 82.55 148.59) (xy 82.55 149.225))
+    (stroke (width 0) (type default))
+    (uuid 4d113938-abbf-4ab8-bc8c-621e468b01b8)
+  )
   (wire (pts (xy 24.765 166.37) (xy 28.575 166.37))
     (stroke (width 0) (type default))
     (uuid 4e8f00a0-6d03-4246-88f1-3168af6e5110)
@@ -2262,6 +2275,10 @@
   (wire (pts (xy 182.245 46.99) (xy 205.105 46.99))
     (stroke (width 0) (type default))
     (uuid 90bd0a6c-ad0c-4f77-a662-e5ee64966f53)
+  )
+  (wire (pts (xy 82.55 149.225) (xy 82.55 161.925))
+    (stroke (width 0) (type default))
+    (uuid 91156bb9-0026-4101-868d-694cc0320587)
   )
   (wire (pts (xy 214.63 129.54) (xy 219.71 129.54))
     (stroke (width 0) (type default))
@@ -2482,10 +2499,6 @@
   (wire (pts (xy 156.21 139.065) (xy 162.56 139.065))
     (stroke (width 0) (type default))
     (uuid faac6bb8-21d9-4f1d-b3a7-b6541d4ac714)
-  )
-  (wire (pts (xy 82.55 149.225) (xy 82.55 161.925))
-    (stroke (width 0) (type default))
-    (uuid fad2327c-4d5a-4031-adc0-02a8556c5f22)
   )
   (wire (pts (xy 210.185 55.88) (xy 210.185 60.96))
     (stroke (width 0) (type default))
@@ -2764,12 +2777,12 @@
   )
 
   (symbol (lib_id "power:+3.3V") (at 141.605 86.36 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 005bd87a-90b0-4666-a399-badd0c13abd9)
-    (property "Reference" "#PWR018" (at 141.605 90.17 0)
+    (property "Reference" "#PWR021" (at 141.605 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+3.3V" (at 141.605 81.28 0)
+    (property "Value" "+3.3V" (at 143.51 82.55 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "" (at 141.605 86.36 0)
@@ -2782,7 +2795,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR021") (unit 1)
         )
       )
     )
@@ -2791,7 +2804,7 @@
   (symbol (lib_id "power:GND") (at 212.725 95.885 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 082b1031-b055-417b-80b1-f373367c9ffe)
-    (property "Reference" "#PWR07" (at 212.725 102.235 0)
+    (property "Reference" "#PWR035" (at 212.725 102.235 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 215.9 97.79 0)
@@ -2807,7 +2820,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR07") (unit 1)
+          (reference "#PWR035") (unit 1)
         )
       )
     )
@@ -2816,13 +2829,13 @@
   (symbol (lib_id "formula:C_30pF") (at 89.535 123.19 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0c1a7e32-038d-4945-a570-928e6e1304f9)
-    (property "Reference" "C11" (at 85.725 121.92 0)
+    (property "Reference" "C5" (at 85.725 121.92 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "C_30pF" (at 85.725 124.46 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:C_0805_OEM" (at 88.5698 127 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 88.5698 127 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" (at 88.9 120.65 0)
@@ -2842,7 +2855,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C11") (unit 1)
+          (reference "C5") (unit 1)
         )
       )
     )
@@ -2851,7 +2864,7 @@
   (symbol (lib_id "Sensor_Pressure:BMP280") (at 96.52 177.165 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 12a21c66-263f-4e99-9093-c04a615a9f3c)
-    (property "Reference" "U4" (at 102.87 174.625 0)
+    (property "Reference" "U3" (at 102.87 174.625 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "BMP280" (at 102.87 177.165 0)
@@ -2874,7 +2887,41 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "U4") (unit 1)
+          (reference "U3") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:TP") (at 82.55 143.51 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 12ff2508-fd9e-4ecc-a0c9-0edc4a75326e)
+    (property "Reference" "TP1" (at 85.09 143.51 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TP" (at 85.09 146.05 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:tp_1.6mm" (at 80.01 146.05 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "http://www.keyelco.com/product-pdf.cfm?p=1314" (at 82.55 143.51 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MFN" "DK" (at 85.09 140.97 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "36-5006-ND" (at 87.63 138.43 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330" (at 90.17 135.89 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid e55f3aa3-8ae0-4a61-a3f0-6b9cbc017a08))
+    (instances
+      (project "darian"
+        (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
+          (reference "TP1") (unit 1)
         )
       )
     )
@@ -2883,7 +2930,7 @@
   (symbol (lib_id "power:GND") (at 144.145 121.92 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 13a42bf4-cf37-4060-a1c2-e5ed7e4c820a)
-    (property "Reference" "#PWR017" (at 144.145 128.27 0)
+    (property "Reference" "#PWR022" (at 144.145 128.27 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 144.145 126.365 0)
@@ -2899,7 +2946,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR022") (unit 1)
         )
       )
     )
@@ -2908,7 +2955,7 @@
   (symbol (lib_id "power:GND") (at 89.535 127 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 15ff96fa-7516-4cb4-9374-5a3b3f843e20)
-    (property "Reference" "#PWR030" (at 89.535 133.35 0)
+    (property "Reference" "#PWR09" (at 89.535 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 89.535 132.08 0)
@@ -2924,7 +2971,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR030") (unit 1)
+          (reference "#PWR09") (unit 1)
         )
       )
     )
@@ -2933,13 +2980,13 @@
   (symbol (lib_id "formula:C_100pF") (at 28.575 52.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 16037999-4cdd-4e6d-bb61-a7a32df93a97)
-    (property "Reference" "C8" (at 32.385 50.8 0)
+    (property "Reference" "C2" (at 32.385 50.8 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "C_100pF" (at 32.385 53.34 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:C_0805_OEM" (at 29.5402 55.88 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 29.5402 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://katalog.we-online.de/pbs/datasheet/885012007057.pdf" (at 29.21 49.53 0)
@@ -2959,7 +3006,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C8") (unit 1)
+          (reference "C2") (unit 1)
         )
       )
     )
@@ -2968,7 +3015,7 @@
   (symbol (lib_id "power:GND") (at 99.06 184.785 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1b4f754d-96f7-4b6e-a643-782c03d258eb)
-    (property "Reference" "#PWR08" (at 99.06 191.135 0)
+    (property "Reference" "#PWR011" (at 99.06 191.135 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 99.06 189.865 0)
@@ -2984,7 +3031,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR08") (unit 1)
+          (reference "#PWR011") (unit 1)
         )
       )
     )
@@ -2993,7 +3040,7 @@
   (symbol (lib_id "Transistor_BJT:BC547") (at 42.545 175.895 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1c5617a0-a066-46a4-b6fd-c2137586d5e3)
-    (property "Reference" "Q3" (at 48.26 174.625 0)
+    (property "Reference" "Q1" (at 48.26 174.625 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "BC547" (at 48.26 177.165 0)
@@ -3011,7 +3058,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "Q3") (unit 1)
+          (reference "Q1") (unit 1)
         )
       )
     )
@@ -3020,13 +3067,13 @@
   (symbol (lib_id "formula:R_10K") (at 32.385 175.895 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 20b5593f-9b42-4c3a-b447-7945ff76cedd)
-    (property "Reference" "R6" (at 33.02 177.8 0)
+    (property "Reference" "R3" (at 33.02 177.8 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "R_10K" (at 29.21 173.355 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 32.385 174.117 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 32.385 174.117 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.bourns.com/data/global/pdfs/CRS.pdf" (at 32.385 177.927 0)
@@ -3046,7 +3093,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R6") (unit 1)
+          (reference "R3") (unit 1)
         )
       )
     )
@@ -3055,7 +3102,7 @@
   (symbol (lib_id "power:GND") (at 111.76 158.115 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 236b3165-8a59-41c6-8d56-a05c24851ce3)
-    (property "Reference" "#PWR027" (at 111.76 151.765 0)
+    (property "Reference" "#PWR015" (at 111.76 151.765 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 111.76 153.035 0)
@@ -3071,7 +3118,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR015") (unit 1)
         )
       )
     )
@@ -3080,7 +3127,7 @@
   (symbol (lib_id "power:GND") (at 126.365 119.38 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 277c89c7-b4d9-4e6b-8191-8ae03af3310d)
-    (property "Reference" "#PWR014" (at 126.365 125.73 0)
+    (property "Reference" "#PWR017" (at 126.365 125.73 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 126.365 123.825 0)
@@ -3096,7 +3143,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR014") (unit 1)
+          (reference "#PWR017") (unit 1)
         )
       )
     )
@@ -3105,13 +3152,13 @@
   (symbol (lib_id "Device:C") (at 126.365 115.57 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2bf94361-aec3-4d52-9ad7-354918c7d6fe)
-    (property "Reference" "C5" (at 130.175 114.3 0)
+    (property "Reference" "C9" (at 130.175 114.3 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "C" (at 130.175 116.84 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 125.3998 111.76 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 125.3998 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 126.365 115.57 0)
@@ -3122,7 +3169,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C5") (unit 1)
+          (reference "C9") (unit 1)
         )
       )
     )
@@ -3131,7 +3178,7 @@
   (symbol (lib_id "formula:ATMEGA16M1") (at 61.595 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2e914904-d451-48a2-8d10-f56d8e1bd1d2)
-    (property "Reference" "U3" (at 61.595 33.02 0)
+    (property "Reference" "U2" (at 61.595 33.02 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "ATMEGA16M1" (at 61.595 35.56 0)
@@ -3187,7 +3234,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "U3") (unit 1)
+          (reference "U2") (unit 1)
         )
       )
     )
@@ -3196,13 +3243,13 @@
   (symbol (lib_id "formula:R_10K") (at 85.09 184.785 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 373cd9bd-2344-4b5f-935c-b734e5b745d4)
-    (property "Reference" "R12" (at 86.995 184.15 0)
+    (property "Reference" "R7" (at 86.995 184.15 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "R_10K" (at 82.55 187.96 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 83.312 184.785 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 83.312 184.785 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.bourns.com/data/global/pdfs/CRS.pdf" (at 87.122 184.785 0)
@@ -3222,7 +3269,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R12") (unit 1)
+          (reference "R7") (unit 1)
         )
       )
     )
@@ -3231,7 +3278,7 @@
   (symbol (lib_id "Interface_CAN_LIN:TJA1042T") (at 196.85 125.73 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3b0b43fd-aca5-4ae3-860a-52b2f15b1fc5)
-    (property "Reference" "U2" (at 199.0441 113.03 0)
+    (property "Reference" "U5" (at 199.0441 113.03 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "TJA1042T" (at 198.12 116.84 0)
@@ -3254,7 +3301,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "U2") (unit 1)
+          (reference "U5") (unit 1)
         )
       )
     )
@@ -3263,7 +3310,7 @@
   (symbol (lib_id "formula:C_100nF") (at 107.95 163.195 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3b9eccba-5287-4bd2-8d2f-a280360157fb)
-    (property "Reference" "C7" (at 107.315 169.545 90)
+    (property "Reference" "C8" (at 107.315 169.545 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "C_100nF" (at 104.775 167.005 90)
@@ -3289,7 +3336,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C7") (unit 1)
+          (reference "C8") (unit 1)
         )
       )
     )
@@ -3298,7 +3345,7 @@
   (symbol (lib_id "power:GND") (at 106.045 114.3 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3c0f2683-6768-41c1-b727-cc47ce13c222)
-    (property "Reference" "#PWR033" (at 106.045 120.65 0)
+    (property "Reference" "#PWR014" (at 106.045 120.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 106.045 119.38 0)
@@ -3314,7 +3361,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR033") (unit 1)
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -3323,13 +3370,13 @@
   (symbol (lib_id "formula:C_30pF") (at 102.235 123.19 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3e341c18-156a-465d-bbb4-5c3b899fafe7)
-    (property "Reference" "C10" (at 106.045 121.92 0)
+    (property "Reference" "C6" (at 106.045 121.92 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "C_30pF" (at 106.045 124.46 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:C_0805_OEM" (at 103.2002 127 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 103.2002 127 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" (at 102.87 120.65 0)
@@ -3349,7 +3396,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C10") (unit 1)
+          (reference "C6") (unit 1)
         )
       )
     )
@@ -3358,7 +3405,7 @@
   (symbol (lib_id "power:GND") (at 196.85 135.89 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3f8cebdc-97d3-4d82-8870-62c9b3602df2)
-    (property "Reference" "#PWR038" (at 196.85 142.24 0)
+    (property "Reference" "#PWR031" (at 196.85 142.24 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 196.85 140.97 0)
@@ -3374,7 +3421,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR031") (unit 1)
         )
       )
     )
@@ -3383,13 +3430,13 @@
   (symbol (lib_id "formula:R_10K") (at 82.55 165.735 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4092aec7-0403-4fc5-8bca-e2b3565bb369)
-    (property "Reference" "R1" (at 84.455 165.1 0)
+    (property "Reference" "R6" (at 84.455 165.1 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "R_10K" (at 80.01 168.91 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 80.772 165.735 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 80.772 165.735 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.bourns.com/data/global/pdfs/CRS.pdf" (at 84.582 165.735 0)
@@ -3409,7 +3456,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R1") (unit 1)
+          (reference "R6") (unit 1)
         )
       )
     )
@@ -3418,7 +3465,7 @@
   (symbol (lib_id "power:+5V") (at 106.045 100.33 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 42a8ef2d-a4d4-4ae0-b5b8-52802ae17a52)
-    (property "Reference" "#PWR05" (at 106.045 104.14 0)
+    (property "Reference" "#PWR013" (at 106.045 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 106.045 95.25 0)
@@ -3434,7 +3481,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR05") (unit 1)
+          (reference "#PWR013") (unit 1)
         )
       )
     )
@@ -3443,7 +3490,7 @@
   (symbol (lib_id "power:GND") (at 28.575 55.88 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 432ee290-3ac2-44a1-a777-10a332e0549f)
-    (property "Reference" "#PWR019" (at 28.575 62.23 0)
+    (property "Reference" "#PWR05" (at 28.575 62.23 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 28.575 60.96 0)
@@ -3459,7 +3506,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR019") (unit 1)
+          (reference "#PWR05") (unit 1)
         )
       )
     )
@@ -3468,7 +3515,7 @@
   (symbol (lib_id "power:GND") (at 102.235 127 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 44302ac2-e35a-4ac0-ab67-ce93aac5f7b4)
-    (property "Reference" "#PWR032" (at 102.235 133.35 0)
+    (property "Reference" "#PWR012" (at 102.235 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 102.235 132.08 0)
@@ -3484,7 +3531,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR032") (unit 1)
+          (reference "#PWR012") (unit 1)
         )
       )
     )
@@ -3493,7 +3540,7 @@
   (symbol (lib_id "power:+5V") (at 128.27 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 454f362e-9378-43d6-be64-975ca1205c87)
-    (property "Reference" "#PWR01" (at 128.27 39.37 0)
+    (property "Reference" "#PWR018" (at 128.27 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 128.27 30.48 0)
@@ -3509,7 +3556,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR01") (unit 1)
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -3518,7 +3565,7 @@
   (symbol (lib_id "power:GND") (at 210.185 60.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 468f1684-52d9-4856-97a6-3821720e0a46)
-    (property "Reference" "#PWR04" (at 210.185 67.31 0)
+    (property "Reference" "#PWR032" (at 210.185 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 210.185 66.04 0)
@@ -3534,7 +3581,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR04") (unit 1)
+          (reference "#PWR032") (unit 1)
         )
       )
     )
@@ -3543,7 +3590,7 @@
   (symbol (lib_id "formula:SSM3K333R") (at 212.725 50.8 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 49796712-b448-4820-9088-0a44a352ca81)
-    (property "Reference" "Q2" (at 206.375 49.53 0)
+    (property "Reference" "Q3" (at 206.375 49.53 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SSM3K333R" (at 206.375 52.07 0)
@@ -3570,7 +3617,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "Q2") (unit 1)
+          (reference "Q3") (unit 1)
         )
       )
     )
@@ -3579,13 +3626,13 @@
   (symbol (lib_id "formula:R_10K") (at 71.12 165.735 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4aa4f64a-6533-4818-b09d-7d65d7fc8969)
-    (property "Reference" "R3" (at 73.025 165.1 0)
+    (property "Reference" "R4" (at 73.025 165.1 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "R_10K" (at 68.58 168.91 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 69.342 165.735 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 69.342 165.735 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.bourns.com/data/global/pdfs/CRS.pdf" (at 73.152 165.735 0)
@@ -3605,7 +3652,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R3") (unit 1)
+          (reference "R4") (unit 1)
         )
       )
     )
@@ -3651,7 +3698,7 @@
   (symbol (lib_id "power:GND") (at 162.56 161.925 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4d1057bf-785c-40cd-a5a1-2b5df114dc35)
-    (property "Reference" "#PWR013" (at 162.56 168.275 0)
+    (property "Reference" "#PWR027" (at 162.56 168.275 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 162.56 167.005 0)
@@ -3667,7 +3714,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR013") (unit 1)
+          (reference "#PWR027") (unit 1)
         )
       )
     )
@@ -3676,7 +3723,7 @@
   (symbol (lib_id "power:+5V") (at 23.495 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4e134439-3a6b-4339-b59e-a5d84491a383)
-    (property "Reference" "#PWR028" (at 23.495 39.37 0)
+    (property "Reference" "#PWR01" (at 23.495 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 23.495 30.48 0)
@@ -3692,7 +3739,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR028") (unit 1)
+          (reference "#PWR01") (unit 1)
         )
       )
     )
@@ -3701,7 +3748,7 @@
   (symbol (lib_id "power:+5V") (at 45.085 183.515 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 52ae73ff-57c6-429b-b1b6-52d6baa025ab)
-    (property "Reference" "#PWR09" (at 45.085 179.705 0)
+    (property "Reference" "#PWR06" (at 45.085 179.705 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 45.085 188.595 0)
@@ -3717,7 +3764,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR09") (unit 1)
+          (reference "#PWR06") (unit 1)
         )
       )
     )
@@ -3726,13 +3773,13 @@
   (symbol (lib_id "Device:C") (at 137.795 86.36 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 53c0cad9-45dc-4de3-98c3-1950c0db1101)
-    (property "Reference" "C3" (at 137.795 78.74 90)
+    (property "Reference" "C10" (at 137.795 78.74 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "C" (at 137.795 81.28 90)
+    (property "Value" "C_20pF" (at 137.795 81.28 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 133.985 87.3252 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 133.985 87.3252 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 137.795 86.36 0)
@@ -3743,7 +3790,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C3") (unit 1)
+          (reference "C10") (unit 1)
         )
       )
     )
@@ -3777,7 +3824,7 @@
   (symbol (lib_id "power:GND") (at 162.56 154.305 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 590a9dd2-4196-4b0d-af1c-000303820295)
-    (property "Reference" "#PWR012" (at 162.56 160.655 0)
+    (property "Reference" "#PWR026" (at 162.56 160.655 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 162.56 159.385 0)
@@ -3793,7 +3840,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR012") (unit 1)
+          (reference "#PWR026") (unit 1)
         )
       )
     )
@@ -3802,7 +3849,7 @@
   (symbol (lib_id "power:GND") (at 210.82 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5b37d45d-8bbb-426c-9d0e-e652ac50bbc6)
-    (property "Reference" "#PWR037" (at 210.82 118.11 0)
+    (property "Reference" "#PWR033" (at 210.82 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 210.82 116.84 0)
@@ -3818,7 +3865,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR033") (unit 1)
         )
       )
     )
@@ -3827,13 +3874,13 @@
   (symbol (lib_id "formula:LED_0805") (at 140.97 161.925 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5bad803f-1f87-4a52-b97a-d55d9891b173)
-    (property "Reference" "D2" (at 139.3698 155.575 0)
+    (property "Reference" "D4" (at 139.3698 155.575 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "LED_0805" (at 134.62 160.655 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:LED_0805_OEM" (at 138.43 161.925 0)
+    (property "Footprint" "LED_SMD:LED_0805_2012Metric" (at 138.43 161.925 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 140.97 159.385 0)
@@ -3853,7 +3900,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "D2") (unit 1)
+          (reference "D4") (unit 1)
         )
       )
     )
@@ -3862,7 +3909,7 @@
   (symbol (lib_id "power:GND") (at 55.88 156.845 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 60e4d1cc-caaf-460d-9443-b881e21716cb)
-    (property "Reference" "#PWR021" (at 55.88 163.195 0)
+    (property "Reference" "#PWR07" (at 55.88 163.195 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 55.88 161.925 0)
@@ -3878,7 +3925,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR021") (unit 1)
+          (reference "#PWR07") (unit 1)
         )
       )
     )
@@ -3926,13 +3973,13 @@
   (symbol (lib_id "Regulator_Linear:TC1262-33") (at 55.88 149.225 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6c5d6c91-61d7-4661-a1f7-e62be6915759)
-    (property "Reference" "U5" (at 55.88 142.24 0)
+    (property "Reference" "U1" (at 55.88 142.24 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "TC1262-33" (at 55.88 144.78 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 55.88 143.51 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at 55.88 143.51 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
     (property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21373C.pdf" (at 55.88 156.845 0)
@@ -3944,7 +3991,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "U5") (unit 1)
+          (reference "U1") (unit 1)
         )
       )
     )
@@ -3953,7 +4000,7 @@
   (symbol (lib_id "power:GND") (at 162.56 60.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6c65de0b-18a6-4959-9116-3d55447dfba5)
-    (property "Reference" "#PWR02" (at 162.56 67.31 0)
+    (property "Reference" "#PWR023" (at 162.56 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 162.56 66.04 0)
@@ -3969,7 +4016,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR02") (unit 1)
+          (reference "#PWR023") (unit 1)
         )
       )
     )
@@ -3978,7 +4025,7 @@
   (symbol (lib_id "power:+5V") (at 196.85 109.22 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 706b41d8-92ac-4919-9406-d7dd505507d1)
-    (property "Reference" "#PWR036" (at 196.85 113.03 0)
+    (property "Reference" "#PWR030" (at 196.85 113.03 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 196.85 104.14 0)
@@ -3994,7 +4041,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR030") (unit 1)
         )
       )
     )
@@ -4003,13 +4050,13 @@
   (symbol (lib_id "formula:R_1K") (at 152.4 154.305 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 70c84338-09c7-4e07-8b25-fc668c18e300)
-    (property "Reference" "R4" (at 152.4 149.225 90)
+    (property "Reference" "R11" (at 152.4 149.225 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "R_1K" (at 152.4 151.765 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 152.4 152.527 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 152.4 152.527 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 152.4 156.337 0)
@@ -4029,7 +4076,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R4") (unit 1)
+          (reference "R11") (unit 1)
         )
       )
     )
@@ -4038,7 +4085,7 @@
   (symbol (lib_id "power:GND") (at 184.15 130.81 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 72d74918-a72e-49e3-8c97-41f36ffb557b)
-    (property "Reference" "#PWR039" (at 184.15 137.16 0)
+    (property "Reference" "#PWR029" (at 184.15 137.16 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 184.15 135.89 0)
@@ -4054,7 +4101,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR039") (unit 1)
+          (reference "#PWR029") (unit 1)
         )
       )
     )
@@ -4063,13 +4110,13 @@
   (symbol (lib_id "formula:R_100") (at 28.575 44.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 74e2b1bb-dca2-4f9e-9268-666d609e796a)
-    (property "Reference" "R11" (at 31.115 43.18 0)
+    (property "Reference" "R1" (at 31.115 43.18 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R_100" (at 31.115 45.72 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 8.255 40.64 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 8.255 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 20.955 31.75 0)
@@ -4089,7 +4136,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R11") (unit 1)
+          (reference "R1") (unit 1)
         )
       )
     )
@@ -4098,7 +4145,7 @@
   (symbol (lib_id "power:GND") (at 85.09 188.595 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 763bb98d-caf5-4c64-95f0-5d8fcf8aef52)
-    (property "Reference" "#PWR024" (at 85.09 194.945 0)
+    (property "Reference" "#PWR08" (at 85.09 194.945 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 85.09 193.675 0)
@@ -4114,7 +4161,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR024") (unit 1)
+          (reference "#PWR08") (unit 1)
         )
       )
     )
@@ -4123,7 +4170,7 @@
   (symbol (lib_id "power:GND") (at 162.56 139.065 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 775b2482-8e86-4259-80a0-a473445cca24)
-    (property "Reference" "#PWR034" (at 162.56 145.415 0)
+    (property "Reference" "#PWR024" (at 162.56 145.415 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 162.56 144.145 0)
@@ -4139,7 +4186,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR024") (unit 1)
         )
       )
     )
@@ -4148,13 +4195,13 @@
   (symbol (lib_id "formula:R_10K") (at 32.385 166.37 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7d0abb94-f460-42e9-a13d-6cdd425f60c7)
-    (property "Reference" "R7" (at 33.02 168.275 0)
+    (property "Reference" "R2" (at 33.02 168.275 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "R_10K" (at 29.21 163.83 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 32.385 164.592 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 32.385 164.592 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.bourns.com/data/global/pdfs/CRS.pdf" (at 32.385 168.402 0)
@@ -4174,7 +4221,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R7") (unit 1)
+          (reference "R2") (unit 1)
         )
       )
     )
@@ -4183,7 +4230,7 @@
   (symbol (lib_id "formula:SSM3K333R") (at 165.1 50.8 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 87439c72-5b94-498d-8ca9-6adb0b109e82)
-    (property "Reference" "Q1" (at 158.75 49.53 0)
+    (property "Reference" "Q2" (at 158.75 49.53 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SSM3K333R" (at 158.75 52.07 0)
@@ -4210,7 +4257,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "Q1") (unit 1)
+          (reference "Q2") (unit 1)
         )
       )
     )
@@ -4219,7 +4266,7 @@
   (symbol (lib_id "power:GND") (at 111.76 163.195 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8a5f9ce0-6d5a-4af0-a8cf-ddfb2d0769f1)
-    (property "Reference" "#PWR026" (at 111.76 169.545 0)
+    (property "Reference" "#PWR016" (at 111.76 169.545 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 111.76 168.275 0)
@@ -4235,7 +4282,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR016") (unit 1)
         )
       )
     )
@@ -4244,7 +4291,7 @@
   (symbol (lib_id "power:+5V") (at 175.895 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8ca4f607-98b3-4563-a2a5-cb7775e0b3f1)
-    (property "Reference" "#PWR03" (at 175.895 39.37 0)
+    (property "Reference" "#PWR028" (at 175.895 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 175.895 30.48 0)
@@ -4260,7 +4307,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR03") (unit 1)
+          (reference "#PWR028") (unit 1)
         )
       )
     )
@@ -4269,13 +4316,13 @@
   (symbol (lib_id "formula:C_1uF") (at 66.04 149.225 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9204f9fd-d1db-47df-838d-108098ba08f7)
-    (property "Reference" "C2" (at 68.58 152.4 0)
+    (property "Reference" "C4" (at 68.58 152.4 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "C_1uF" (at 67.31 144.78 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:C_0805_OEM" (at 81.28 150.1902 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 81.28 150.1902 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf" (at 87.63 149.86 0)
@@ -4295,7 +4342,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C2") (unit 1)
+          (reference "C4") (unit 1)
         )
       )
     )
@@ -4341,7 +4388,7 @@
   (symbol (lib_id "power:GND") (at 23.495 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9cff17b2-39e7-4075-bb7b-997e56f9784c)
-    (property "Reference" "#PWR029" (at 23.495 54.61 0)
+    (property "Reference" "#PWR02" (at 23.495 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 23.495 53.34 0)
@@ -4357,7 +4404,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR029") (unit 1)
+          (reference "#PWR02") (unit 1)
         )
       )
     )
@@ -4366,13 +4413,13 @@
   (symbol (lib_id "formula:LED_0805") (at 140.97 146.685 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9e621aae-fa83-43f9-9512-98119f096ebc)
-    (property "Reference" "D6" (at 139.3698 140.335 0)
+    (property "Reference" "D2" (at 139.3698 140.335 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "LED_0805" (at 134.62 145.415 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:LED_0805_OEM" (at 138.43 146.685 0)
+    (property "Footprint" "LED_SMD:LED_0805_2012Metric" (at 138.43 146.685 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 140.97 144.145 0)
@@ -4392,7 +4439,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "D6") (unit 1)
+          (reference "D2") (unit 1)
         )
       )
     )
@@ -4401,7 +4448,7 @@
   (symbol (lib_id "formula:TP") (at 221.615 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a0203d0e-7f96-45d7-b547-142eb9567866)
-    (property "Reference" "TP2" (at 224.155 45.72 0)
+    (property "Reference" "TP3" (at 224.155 45.72 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TP" (at 224.155 48.26 0)
@@ -4426,7 +4473,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "TP2") (unit 1)
+          (reference "TP3") (unit 1)
         )
       )
     )
@@ -4435,7 +4482,7 @@
   (symbol (lib_id "formula:TP") (at 173.99 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a1fd312c-5573-44a6-a695-18e0c12e24c2)
-    (property "Reference" "TP1" (at 176.53 45.72 0)
+    (property "Reference" "TP2" (at 176.53 45.72 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TP" (at 176.53 48.26 0)
@@ -4460,7 +4507,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "TP1") (unit 1)
+          (reference "TP2") (unit 1)
         )
       )
     )
@@ -4506,7 +4553,7 @@
   (symbol (lib_id "power:+5V") (at 212.725 90.805 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a6cc9160-80b6-4c29-ab5b-da2d586eeeeb)
-    (property "Reference" "#PWR06" (at 212.725 94.615 0)
+    (property "Reference" "#PWR034" (at 212.725 94.615 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 212.725 86.995 0)
@@ -4522,7 +4569,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR06") (unit 1)
+          (reference "#PWR034") (unit 1)
         )
       )
     )
@@ -4531,13 +4578,13 @@
   (symbol (lib_id "formula:R_10K") (at 76.835 165.735 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a9f3dc87-8a39-4d43-b4f4-1c0746ad5a1c)
-    (property "Reference" "R2" (at 78.74 165.1 0)
+    (property "Reference" "R5" (at 78.74 165.1 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "R_10K" (at 74.295 168.91 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 75.057 165.735 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 75.057 165.735 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.bourns.com/data/global/pdfs/CRS.pdf" (at 78.867 165.735 0)
@@ -4557,7 +4604,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R2") (unit 1)
+          (reference "R5") (unit 1)
         )
       )
     )
@@ -4566,13 +4613,13 @@
   (symbol (lib_id "formula:R_1K") (at 152.4 139.065 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid aa0654f8-b161-4299-90a7-3e51cb2c9f23)
-    (property "Reference" "R16" (at 152.4 133.985 90)
+    (property "Reference" "R9" (at 152.4 133.985 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "R_1K" (at 152.4 136.525 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 152.4 137.287 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 152.4 137.287 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 152.4 141.097 0)
@@ -4592,7 +4639,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R16") (unit 1)
+          (reference "R9") (unit 1)
         )
       )
     )
@@ -4601,13 +4648,13 @@
   (symbol (lib_id "formula:LED_0805") (at 140.97 139.065 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b208cb45-2206-4d72-bb59-b51e15b21898)
-    (property "Reference" "D5" (at 139.3698 132.715 0)
+    (property "Reference" "D1" (at 139.3698 132.715 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "LED_0805" (at 134.62 137.795 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:LED_0805_OEM" (at 138.43 139.065 0)
+    (property "Footprint" "LED_SMD:LED_0805_2012Metric" (at 138.43 139.065 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 140.97 136.525 0)
@@ -4627,7 +4674,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "D5") (unit 1)
+          (reference "D1") (unit 1)
         )
       )
     )
@@ -4636,7 +4683,7 @@
   (symbol (lib_id "power:GND") (at 95.885 127 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b63d1efc-0475-495c-9573-bf266badc2a4)
-    (property "Reference" "#PWR031" (at 95.885 133.35 0)
+    (property "Reference" "#PWR010" (at 95.885 133.35 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 95.885 132.08 0)
@@ -4652,7 +4699,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR031") (unit 1)
+          (reference "#PWR010") (unit 1)
         )
       )
     )
@@ -4661,7 +4708,7 @@
   (symbol (lib_id "formula:MicroFit_RA_4") (at 246.38 31.75 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b898d08c-914c-46b1-8fe6-595bc9fe401b)
-    (property "Reference" "J1" (at 246.38 24.765 0)
+    (property "Reference" "J2" (at 246.38 24.765 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "MicroFit_RA_4" (at 246.38 24.765 0)
@@ -4686,7 +4733,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "J1") (unit 1)
+          (reference "J2") (unit 1)
         )
       )
     )
@@ -4695,7 +4742,7 @@
   (symbol (lib_id "power:+3.3V") (at 24.765 171.45 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bf1a73d2-085d-4c0e-b7f8-32dbd1ec64aa)
-    (property "Reference" "#PWR010" (at 28.575 171.45 0)
+    (property "Reference" "#PWR04" (at 28.575 171.45 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 24.13 168.91 90)
@@ -4711,7 +4758,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR010") (unit 1)
+          (reference "#PWR04") (unit 1)
         )
       )
     )
@@ -4720,13 +4767,13 @@
   (symbol (lib_id "formula:C_1uF") (at 45.085 154.305 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c262ed14-6007-4a95-a076-9e8d36e0648d)
-    (property "Reference" "C1" (at 41.91 151.765 0)
+    (property "Reference" "C3" (at 41.91 151.765 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Value" "C_1uF" (at 41.91 154.305 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:C_0805_OEM" (at 44.1198 139.065 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 44.1198 139.065 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf" (at 44.45 132.715 0)
@@ -4746,7 +4793,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C1") (unit 1)
+          (reference "C3") (unit 1)
         )
       )
     )
@@ -4790,13 +4837,13 @@
   (symbol (lib_id "formula:R_120_DNP") (at 214.63 125.73 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c58da5d2-c86d-42e8-b451-ad88fbb79f22)
-    (property "Reference" "R18" (at 217.17 124.46 0)
+    (property "Reference" "R13" (at 217.17 124.46 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R_120_DNP" (at 217.17 127 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 184.15 121.92 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 184.15 121.92 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
     (property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" (at 184.15 114.3 0)
@@ -4816,7 +4863,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R18") (unit 1)
+          (reference "R13") (unit 1)
         )
       )
     )
@@ -4825,7 +4872,7 @@
   (symbol (lib_id "power:GND") (at 162.56 146.685 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid cc8c8183-4745-4f3f-819f-a760dc37dd56)
-    (property "Reference" "#PWR035" (at 162.56 153.035 0)
+    (property "Reference" "#PWR025" (at 162.56 153.035 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 162.56 151.765 0)
@@ -4841,7 +4888,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR025") (unit 1)
         )
       )
     )
@@ -4850,13 +4897,13 @@
   (symbol (lib_id "formula:R_1K") (at 152.4 146.685 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d0ecba92-427c-4506-ac96-56e5cfdc1751)
-    (property "Reference" "R17" (at 152.4 141.605 90)
+    (property "Reference" "R10" (at 152.4 141.605 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "R_1K" (at 152.4 144.145 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 152.4 144.907 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 152.4 144.907 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 152.4 148.717 0)
@@ -4876,7 +4923,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R17") (unit 1)
+          (reference "R10") (unit 1)
         )
       )
     )
@@ -4885,13 +4932,13 @@
   (symbol (lib_id "RF_Module:RFM69HCW") (at 141.605 106.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d16e3b38-488d-47b5-a049-cdad631c8142)
-    (property "Reference" "U7" (at 143.7991 91.44 0)
+    (property "Reference" "U4" (at 143.7991 91.44 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "RFM69HCW" (at 143.7991 93.98 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 57.785 64.77 0)
+    (property "Footprint" "RF_Module:HOPERF_RFM9XW_SMD" (at 57.785 64.77 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.hoperf.com/data/upload/portal/20181127/5bfcb8284d838.pdf" (at 57.785 64.77 0)
@@ -4916,7 +4963,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "U7") (unit 1)
+          (reference "U4") (unit 1)
         )
       )
     )
@@ -4925,7 +4972,7 @@
   (symbol (lib_id "power:GND") (at 139.065 121.92 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d178fae0-2ba2-4072-9922-090e18f05ba6)
-    (property "Reference" "#PWR015" (at 139.065 128.27 0)
+    (property "Reference" "#PWR020" (at 139.065 128.27 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 139.065 126.365 0)
@@ -4941,7 +4988,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR015") (unit 1)
+          (reference "#PWR020") (unit 1)
         )
       )
     )
@@ -4950,13 +4997,13 @@
   (symbol (lib_id "formula:R_1K") (at 152.4 161.925 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d6384929-b6dd-4f61-b03b-f4da213d1d0c)
-    (property "Reference" "R5" (at 152.4 156.845 90)
+    (property "Reference" "R12" (at 152.4 156.845 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "R_1K" (at 152.4 159.385 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 152.4 160.147 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 152.4 160.147 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 152.4 163.957 0)
@@ -4976,7 +5023,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R5") (unit 1)
+          (reference "R12") (unit 1)
         )
       )
     )
@@ -4985,13 +5032,13 @@
   (symbol (lib_id "formula:C_1uF") (at 23.495 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e0f5b767-167b-43d5-ad10-177bd6d3f536)
-    (property "Reference" "C9" (at 19.685 46.99 0)
+    (property "Reference" "C1" (at 19.685 46.99 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "C_1uF" (at 27.305 45.72 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "footprints:C_0805_OEM" (at 24.4602 30.48 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 24.4602 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B105KBFNNNG_Spec.pdf" (at 24.13 24.13 0)
@@ -5011,7 +5058,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C9") (unit 1)
+          (reference "C1") (unit 1)
         )
       )
     )
@@ -5020,13 +5067,13 @@
   (symbol (lib_id "formula:LED_0805") (at 140.97 154.305 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e51c780c-271e-49e8-950f-526ddf06edb0)
-    (property "Reference" "D1" (at 139.3698 147.955 0)
+    (property "Reference" "D3" (at 139.3698 147.955 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "LED_0805" (at 134.62 153.035 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:LED_0805_OEM" (at 138.43 154.305 0)
+    (property "Footprint" "LED_SMD:LED_0805_2012Metric" (at 138.43 154.305 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 140.97 151.765 0)
@@ -5046,7 +5093,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "D1") (unit 1)
+          (reference "D3") (unit 1)
         )
       )
     )
@@ -5055,7 +5102,7 @@
   (symbol (lib_id "formula:MicroFit_RA_4") (at 266.065 31.75 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ee2fa105-01b9-4def-90d4-cbe2d2b3ff66)
-    (property "Reference" "J2" (at 266.065 24.765 0)
+    (property "Reference" "J3" (at 266.065 24.765 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "MicroFit_RA_4" (at 266.065 24.13 0)
@@ -5080,7 +5127,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "J2") (unit 1)
+          (reference "J3") (unit 1)
         )
       )
     )
@@ -5089,13 +5136,13 @@
   (symbol (lib_id "formula:R_10K") (at 98.425 104.14 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f01dc7b9-06ab-415c-97f5-ad0e1c776b0d)
-    (property "Reference" "R19" (at 98.425 97.79 90)
+    (property "Reference" "R8" (at 98.425 97.79 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "R_10K" (at 98.425 100.33 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "footprints:R_0805_OEM" (at 98.425 102.362 0)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 98.425 102.362 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.bourns.com/data/global/pdfs/CRS.pdf" (at 98.425 106.172 0)
@@ -5115,7 +5162,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "R19") (unit 1)
+          (reference "R8") (unit 1)
         )
       )
     )
@@ -5124,7 +5171,7 @@
   (symbol (lib_id "power:GND1") (at 24.765 120.65 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f2d974d6-db4d-4f9f-9aea-0b109a5d2314)
-    (property "Reference" "#PWR016" (at 24.765 127 0)
+    (property "Reference" "#PWR03" (at 24.765 127 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND1" (at 24.765 125.73 0)
@@ -5140,7 +5187,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR016") (unit 1)
+          (reference "#PWR03") (unit 1)
         )
       )
     )
@@ -5149,7 +5196,7 @@
   (symbol (lib_id "power:GND") (at 133.985 86.36 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f73bf572-dde2-4590-a2b4-898577522fef)
-    (property "Reference" "#PWR020" (at 127.635 86.36 0)
+    (property "Reference" "#PWR019" (at 127.635 86.36 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 130.81 86.36 90)
@@ -5165,7 +5212,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "#PWR020") (unit 1)
+          (reference "#PWR019") (unit 1)
         )
       )
     )
@@ -5174,7 +5221,7 @@
   (symbol (lib_id "formula:C_100nF") (at 107.95 158.115 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f77e5caa-706d-4a96-83e9-6e65b03494ac)
-    (property "Reference" "C6" (at 105.41 154.305 90)
+    (property "Reference" "C7" (at 105.41 154.305 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "C_100nF" (at 105.41 156.845 90)
@@ -5200,7 +5247,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C6") (unit 1)
+          (reference "C7") (unit 1)
         )
       )
     )
@@ -5209,13 +5256,13 @@
   (symbol (lib_id "Device:C") (at 137.795 92.71 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f9bed00c-2b52-488f-9839-139781652162)
-    (property "Reference" "C4" (at 197.485 78.74 90)
+    (property "Reference" "C11" (at 197.485 78.74 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "C" (at 197.485 81.28 90)
+    (property "Value" "C_20pF" (at 197.485 81.28 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Footprint" "" (at 133.985 93.6752 0)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 133.985 93.6752 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 137.795 92.71 0)
@@ -5226,7 +5273,7 @@
     (instances
       (project "darian"
         (path "/db509cb0-93fc-40f9-9e5d-097be62eaa17"
-          (reference "C4") (unit 1)
+          (reference "C11") (unit 1)
         )
       )
     )
