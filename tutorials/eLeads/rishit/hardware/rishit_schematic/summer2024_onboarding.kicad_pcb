@@ -78,79 +78,6 @@
   (net 0 "")
   (net 1 "+5V")
   (net 2 "GND")
-<<<<<<< HEAD
-  (net 3 "Net-(TP101-TP)")
-  (net 4 "Net-(U101-(PCINT26{slash}ADC0{slash}XTAL2)PE2)")
-  (net 5 "Net-(U101-(PCINT25{slash}OC0B{slash}XTAL1)PE1)")
-  (net 6 "Net-(U104-+)")
-  (net 7 "Net-(U105-+)")
-  (net 8 "/+5")
-  (net 9 "/CAN+")
-  (net 10 "/CAN-")
-  (net 11 "Net-(D101-K)")
-  (net 12 "Net-(D102-K)")
-  (net 13 "/ANALOG_A")
-  (net 14 "/ANALOG_B")
-  (net 15 "/MISO")
-  (net 16 "/SCK")
-  (net 17 "/MOSI")
-  (net 18 "/RESET")
-  (net 19 "/CAN_H")
-  (net 20 "/CAN_L")
-  (net 21 "Net-(D103-K)")
-  (net 22 "SHDN_IN")
-  (net 23 "Net-(D104-K)")
-  (net 24 "Net-(D104-A)")
-  (net 25 "Net-(U106-+)")
-  (net 26 "Net-(U104--)")
-  (net 27 "SHDN_OUT")
-  (net 28 "Net-(U105--)")
-  (net 29 "/Cell Voltages/CELL_1")
-  (net 30 "Net-(U107-+)")
-  (net 31 "/Cell Voltages/CELL_3")
-  (net 32 "Net-(U108-+)")
-  (net 33 "/Cell Voltages/CELL_2")
-  (net 34 "Net-(U109-+)")
-  (net 35 "/TXCAN")
-  (net 36 "/RXCAN")
-  (net 37 "unconnected-(U101-(PCINT9{slash}PSCIN1{slash}OC1B{slash}~{SS_A})PC1-Pad3)")
-  (net 38 "unconnected-(U101-(PCINT0{slash}MISO{slash}PSCOUT2A)PB0-Pad8)")
-  (net 39 "unconnected-(U101-(PCINT1{slash}MOSI{slash}PSCOUT2B)PB1-Pad9)")
-  (net 40 "unconnected-(U101-(PCINT21{slash}ADC2{slash}ACMP2)PD5-Pad13)")
-  (net 41 "unconnected-(U101-(PCINT22{slash}ADC3{slash}INT0{slash}ACMPN2)PD6-Pad14)")
-  (net 42 "unconnected-(U101-(PCINT23{slash}ACMP0)PD7-Pad15)")
-  (net 43 "Net-(D105-K)")
-  (net 44 "/VOLTAGE_CELL_1")
-  (net 45 "/VOLTAGE_CELL_2")
-  (net 46 "unconnected-(U101-AREF(ISRC)-Pad21)")
-  (net 47 "/VOLTAGE_CELL_3")
-  (net 48 "/ANALOG_SS")
-  (net 49 "/CE")
-  (net 50 "unconnected-(U101-(PCINT15{slash}D2A{slash}AMP2+)PC7-Pad25)")
-  (net 51 "/SENSOR_SS")
-  (net 52 "/ANALOG_OUT")
-  (net 53 "Net-(R107-Pad2)")
-  (net 54 "unconnected-(U101-(PCINT16{slash}PSCOUT0A)PD0-Pad29)")
-  (net 55 "unconnected-(U101-(PCINT8{slash}INT3{slash}PSCOUT1A)PC0-Pad30)")
-  (net 56 "unconnected-(U101-(PCINT17{slash}CLKO{slash}PSCIN0)PD1-Pad32)")
-  (net 57 "unconnected-(U102-SPLIT-Pad5)")
-  (net 58 "unconnected-(U103-Pad1)")
-  (net 59 "unconnected-(U103-Pad7)")
-  (net 60 "Net-(R108-Pad2)")
-  (net 61 "Net-(U108--)")
-  (net 62 "Net-(U110-+)")
-  (net 63 "Net-(U111-+)")
-  (net 64 "/Analog Section/ANALOG_A")
-  (net 65 "/Analog Section/ANALOG_B")
-  (net 66 "/ANALOG_VOLTAGE_A")
-  (net 67 "/ANALOG_VOLTAGE_B")
-  (net 68 "Net-(Q101-S)")
-  (net 69 "Net-(Q102-S)")
-  (net 70 "Net-(R109-Pad1)")
-  (net 71 "Net-(R110-Pad1)")
-  (net 72 "Net-(RV101-Pad2)")
-  (net 73 "Net-(RV102-Pad2)")
-=======
   (net 3 "Net-(U101-(PCINT26{slash}ADC0{slash}XTAL2)PE2)")
   (net 4 "Net-(U101-(PCINT25{slash}OC0B{slash}XTAL1)PE1)")
   (net 5 "Net-(U104-+)")
@@ -217,7 +144,6 @@
   (net 66 "Net-(RV102-Pad2)")
   (net 67 "/CELL_2")
   (net 68 "/CELL_3")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
 
   (footprint "kibuzzard-66BE71F1" (layer "F.Cu")
     (tstamp 008e5589-bee8-44ab-9c19-fd3cc917b4bb)
@@ -506,15 +432,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 05a8aa13-296a-41ab-ab2b-8e496faf2da8)
-<<<<<<< HEAD
-    (at 36.7175 95.755)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 184.47 48.71 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -963,15 +883,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 05e2fb0c-960c-4eab-912c-8fdb28d8f75f)
-<<<<<<< HEAD
-    (at 66.8675 74.645)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 184.295 115.4 180)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -1057,15 +971,9 @@
 
   (footprint "OEM:SOT-23-5" (layer "F.Cu")
     (tstamp 07dd237b-a2b5-47a8-9e36-9fe13b3b37e7)
-<<<<<<< HEAD
-    (at 71.3675 68.66)
-    (descr "5-pin SOT23 package")
-    (tags "SOT-23-5")
-=======
     (at 184.2 128.4 -90)
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "MCP6001T-I/OTCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158")
@@ -1129,19 +1037,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp 093d1aed-8c07-45b8-830c-95e25368585f)
-    (at 76.705 97.48)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-    (property "Sheetfile" "summer2024_onboarding.kicad_sch")
-    (property "Sheetname" "")
-    (path "/044f30ea-d2bf-44f1-8222-b029be423166")
-    (attr through_hole)
-    (fp_text reference "TP103" (at 0 2.54) (layer "F.SilkS")
-=======
   (footprint "footprints:Test_Point_SMD" (layer "F.Cu")
     (tstamp 08c64359-1613-40f1-9336-c5bf081fe309)
     (at 193 123.5)
@@ -1158,7 +1053,6 @@
     (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/4a965b4d-54e2-4790-abc7-ca34b4e916e7")
     (attr smd)
     (fp_text reference "TP113" (at 0 2.54) (layer "F.SilkS") hide
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 55b9bfd6-2b58-4e45-8346-e412c0595dc0)
     )
@@ -1177,11 +1071,7 @@
 
   (footprint "footprints:MSOP8_MC_MCH" (layer "F.Cu")
     (tstamp 0a71df9b-924e-428e-95f5-921706a4a0a4)
-<<<<<<< HEAD
-    (at 38.2794 85.6538)
-=======
     (at 185.5 77.5 180)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (tags "TC72-3.3MUATR ")
     (property "Sheetfile" "summer2024_onboarding.kicad_sch")
     (property "Sheetname" "")
@@ -1322,15 +1212,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 0b058850-f094-4b6b-9b20-8be0ea29ac5d)
-<<<<<<< HEAD
-    (at 84.03 105.86)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 199.95 116.3375 180)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -1382,21 +1266,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp 0bbd1875-8409-4adf-a0c8-91ece4b5edd4)
-    (at 92.655 97.48)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-    (property "Sheetfile" "analog_section.kicad_sch")
-    (property "Sheetname" "Analog Section")
-    (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/21c2daef-31d5-4ab8-9258-39a1433d87da")
-    (attr through_hole)
-    (fp_text reference "TP108" (at 0 2.54) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp e3782d79-5c72-4592-af08-04e02db4e1ca)
-=======
   (footprint "kibuzzard-66BE6AB2" (layer "F.Cu")
     (tstamp 0b2f72a1-4f9a-486a-932e-e4bb7b57a53b)
     (at 170.75 110)
@@ -1406,7 +1275,6 @@
     (fp_text reference "kibuzzard-66BE6AB2" (at 0 -3.538411) (layer "F.SilkS") hide
         (effects (font (size 0 0)))
       (tstamp 1988a3f6-594c-4326-b2fc-04b4538fd348)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     )
     (fp_text value "G***" (at 0 3.538411) (layer "F.SilkS") hide
         (effects (font (size 0 0)))
@@ -1819,11 +1687,7 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 180e4b72-cd80-4f03-8268-41e66aa7b665)
-<<<<<<< HEAD
-    (at 59.9875 70.47)
-=======
     (at 171.5 72.25 180)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "DKPN" "RMCF0603FT100RTR-ND")
@@ -2690,15 +2554,9 @@
 
   (footprint "OEM:SOT-23-5" (layer "F.Cu")
     (tstamp 2548a6fd-8ea0-404d-979c-773a807b8b37)
-<<<<<<< HEAD
-    (at 88.53 102.755)
-    (descr "5-pin SOT23 package")
-    (tags "SOT-23-5")
-=======
     (at 205.3 115.2375 -90)
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "MCP6001T-I/OTCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158")
@@ -2943,15 +2801,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 29a05bc4-979e-49bc-81cf-1fee40d54b7b)
-<<<<<<< HEAD
-    (at 77.08 107.42)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 207.25 77.6 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -3005,15 +2857,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 2baf6399-1362-4c8c-8473-8adecad3a48e)
-<<<<<<< HEAD
-    (at 36.7175 98.635)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 174.02 48.71 90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -3099,15 +2945,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 34667c31-bbc2-4ead-b3e5-382afd832801)
-<<<<<<< HEAD
-    (at 66.8675 66.005)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 151.28 102.1)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -3161,11 +3001,7 @@
 
   (footprint "footprints:Pin_Header_Straight_2x03" (layer "F.Cu")
     (tstamp 34d04837-834a-4158-bfd7-0f0010b2e3f3)
-<<<<<<< HEAD
-    (at 52.0075 75.61)
-=======
     (at 205.9 47.36)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Through hole pin header")
     (tags "pin header")
     (property "Sheetfile" "summer2024_onboarding.kicad_sch")
@@ -3454,15 +3290,9 @@
 
   (footprint "OEM:SOT-23-5" (layer "F.Cu")
     (tstamp 458abce0-384f-4fdb-8a73-dd131783994c)
-<<<<<<< HEAD
-    (at 41.2175 93.76)
-    (descr "5-pin SOT23 package")
-    (tags "SOT-23-5")
-=======
     (at 175.32 53.06 180)
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "MCP6001T-I/OTCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158")
@@ -3526,11 +3356,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "Button_Switch_SMD:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm" (layer "F.Cu")
-    (tstamp 4aaf38d8-8e25-40ad-b3f9-8c835c1311b1)
-    (at 83.305 79.45)
-=======
   (footprint "kibuzzard-66BF4127" (layer "F.Cu")
     (tstamp 484ef951-4ed1-460d-86d7-e0dec149b4bd)
     (at 164.75 66.75)
@@ -3682,7 +3507,6 @@
   (footprint "Button_Switch_SMD:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm" (layer "F.Cu")
     (tstamp 4aaf38d8-8e25-40ad-b3f9-8c835c1311b1)
     (at 170.695 123.5)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "SMD 1x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x4.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD")
     (tags "SMD DIP Switch SPST Slide 8.61mm 338mil SMD")
     (property "Sheetfile" "analog_section.kicad_sch")
@@ -3691,11 +3515,7 @@
     (property "ki_keywords" "dip switch")
     (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/adcac3b6-b512-4b01-8c87-a2b12027e398")
     (attr smd)
-<<<<<<< HEAD
-    (fp_text reference "SW104" (at 0 -3.42) (layer "F.SilkS")
-=======
     (fp_text reference "SW104" (at 0 -3.42) (layer "F.SilkS") hide
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 9fe502a1-b852-40d8-adb2-59240d0fee31)
     )
@@ -3810,15 +3630,9 @@
     (fp_line (start 4.89 2.36) (end -4.89 2.36)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp ac1dead7-4816-4ad6-b104-f550149c5ce6))
     (pad "1" smd rect (at -4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
-<<<<<<< HEAD
-      (net 72 "Net-(RV101-Pad2)") (pintype "passive") (tstamp 41ae6f0e-499c-4a83-8fcb-75bf79a56bb9))
-    (pad "2" smd rect (at 4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 71 "Net-(R110-Pad1)") (pintype "passive") (tstamp ecd63912-33e2-4b88-b4c3-238d83b30a2d))
-=======
       (net 65 "Net-(RV101-Pad2)") (pintype "passive") (tstamp 41ae6f0e-499c-4a83-8fcb-75bf79a56bb9))
     (pad "2" smd rect (at 4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 64 "Net-(R110-Pad1)") (pintype "passive") (tstamp ecd63912-33e2-4b88-b4c3-238d83b30a2d))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (model "${KICAD6_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -3826,13 +3640,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp 4b66486a-66a4-411d-9e4d-87e34905109e)
-    (at 79.055 86.115)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
   (footprint "kibuzzard-66BE702D" (layer "F.Cu")
     (tstamp 4ab95b45-95ac-48e6-9051-fa7c0fcef2bd)
     (at 193 121)
@@ -4027,7 +3834,6 @@
     (at 125 108.7 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -4036,46 +3842,6 @@
     (property "ki_description" "Resistor, 1K, 0.25W, 1%, 0805")
     (path "/314e8186-afb4-4ee8-9513-1896daaffec8")
     (attr smd)
-<<<<<<< HEAD
-    (fp_text reference "R127" (at 0 -1.65) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp d6157859-afb5-4671-83c3-433afe053bb0)
-    )
-    (fp_text value "R_1K" (at 0 1.75) (layer "F.Fab") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 74449769-10dc-429b-b399-44eab83e9cb9)
-    )
-    (fp_line (start -0.6 -0.88) (end 0.6 -0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 8a7bb334-9b38-4642-882d-8955f016696d))
-    (fp_line (start 0.6 0.88) (end -0.6 0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp a9dedde3-3bfe-498b-b62c-86b7e6902596))
-    (fp_line (start -1.55 -0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp b62e6e68-b092-48f9-83df-88b2602df91e))
-    (fp_line (start -1.55 -0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp f8289fe4-7a0f-4499-90c3-f802316d934c))
-    (fp_line (start 1.55 0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp f32adbc3-97a1-4fe5-9900-0032706f935b))
-    (fp_line (start 1.55 0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 7e0a8397-3130-42fa-ad06-e0cf38ac6e3d))
-    (fp_line (start -1 -0.62) (end 1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 7a97a723-01b3-4f35-bd90-b8b7277dbf9a))
-    (fp_line (start -1 0.62) (end -1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp f2b97977-3cc0-4e92-bf52-fedf7f136973))
-    (fp_line (start 1 -0.62) (end 1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 000b2901-13a0-40c6-8ffb-718c4fe46fe4))
-    (fp_line (start 1 0.62) (end -1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 31337182-7826-4df2-8171-d386ed482237))
-    (pad "1" smd rect (at -0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 23 "Net-(D104-K)") (pintype "passive") (tstamp 0ec86575-cf37-43dc-ae2b-fec4b26aef1a))
-    (pad "2" smd rect (at 0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 2 "GND") (pintype "passive") (tstamp f495bf18-fc88-4c64-b425-c7f4c276d76a))
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-=======
     (fp_text reference "R127" (at 0 -1.43 -90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 59454c49-f89f-40bc-9cf4-ad33a5a093a1)
@@ -4113,7 +3879,6 @@
     (pad "2" smd roundrect (at 0.825 0 270) (size 0.8 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 2 "GND") (pintype "passive") (tstamp 2fcb778d-d885-4b1f-b706-41c699ee45e6))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -4122,11 +3887,7 @@
 
   (footprint "Button_Switch_SMD:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm" (layer "F.Cu")
     (tstamp 4e19adb3-93e5-4502-a559-699d504a03db)
-<<<<<<< HEAD
-    (at 83.305 66.55)
-=======
     (at 170.595 104.7)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "SMD 1x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x4.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD")
     (tags "SMD DIP Switch SPST Slide 8.61mm 338mil SMD")
     (property "Sheetfile" "analog_section.kicad_sch")
@@ -4135,11 +3896,7 @@
     (property "ki_keywords" "dip switch")
     (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/91f8a48b-d2d0-4a75-867d-288ea5644162")
     (attr smd)
-<<<<<<< HEAD
-    (fp_text reference "SW102" (at 0 -3.42) (layer "F.SilkS")
-=======
     (fp_text reference "SW102" (at 0 -3.42) (layer "F.SilkS") hide
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 148ee2ed-b45c-4122-8369-f04467edfc50)
     )
@@ -4254,15 +4011,9 @@
     (fp_line (start 4.89 2.36) (end -4.89 2.36)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp cd8e8755-f163-450d-b355-b3e238826726))
     (pad "1" smd rect (at -4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
-<<<<<<< HEAD
-      (net 73 "Net-(RV102-Pad2)") (pintype "passive") (tstamp 136eb1ff-b40d-4225-a0c3-0ed24918c5a8))
-    (pad "2" smd rect (at 4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 70 "Net-(R109-Pad1)") (pintype "passive") (tstamp 3ea7cbc6-b28d-46df-8e38-2ec0697adc0e))
-=======
       (net 66 "Net-(RV102-Pad2)") (pintype "passive") (tstamp 136eb1ff-b40d-4225-a0c3-0ed24918c5a8))
     (pad "2" smd rect (at 4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 63 "Net-(R109-Pad1)") (pintype "passive") (tstamp 3ea7cbc6-b28d-46df-8e38-2ec0697adc0e))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (model "${KICAD6_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -4270,19 +4021,11 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:SOT-23-5_OEM" (layer "F.Cu")
-    (tstamp 4e48f266-7e44-4a51-ab04-5322ddcc0ab7)
-    (at 71.3675 64.01)
-    (descr "5-pin SOT23 package")
-    (tags "SOT-23-5")
-=======
   (footprint "OEM:SOT-23-5" (layer "F.Cu")
     (tstamp 4e48f266-7e44-4a51-ab04-5322ddcc0ab7)
     (at 184.3 111.1 -90)
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "MCP6001T-I/OTCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158")
@@ -4346,41 +4089,11 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp 4eff2ae4-7ab9-444d-a351-d324f6b84043)
-    (at 76.705 104.28)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-    (property "Sheetfile" "summer2024_onboarding.kicad_sch")
-    (property "Sheetname" "")
-    (path "/9e4af1b9-eb72-4773-ac4b-1a93892bbd62")
-    (attr through_hole)
-    (fp_text reference "TP107" (at 0 2.54) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 82467c35-19b0-4b65-87c4-7c6b8ea9ed3c)
-    )
-    (fp_text value "TP" (at 0 -0.5) (layer "F.Fab")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 54a2ae66-3162-41ab-a4d0-e34aff17ed0c)
-    )
-    (pad "1" thru_hole circle (at 0 0) (size 2.4 2.4) (drill 1.6) (layers "*.Cu" "*.Mask")
-      (net 51 "/SENSOR_SS") (pinfunction "TP") (pintype "input") (tstamp d5c781da-1566-4093-9602-39b36431a2c5))
-  )
-
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp 502c7537-65af-4d24-b11b-3202b4f129f4)
-    (at 36.7175 107.275)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 502c7537-65af-4d24-b11b-3202b4f129f4)
     (at 165.97 48.76 90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -4434,11 +4147,7 @@
 
   (footprint "footprints:SOT-23F" (layer "F.Cu")
     (tstamp 5252fbfe-fa02-422a-a58a-a96b2722be60)
-<<<<<<< HEAD
-    (at 55.53 121.155)
-=======
     (at 128.25 69.75)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "SOT-23, Standard")
     (tags "SOT-23")
     (property "MFN" "DK")
@@ -4485,11 +4194,7 @@
     (pad "1" smd rect (at -1.05 -0.95) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 41 "/ANALOG_SHDN") (pinfunction "G") (pintype "input") (tstamp 5202dc33-3dc4-40f3-a108-182aebbf2083))
     (pad "2" smd rect (at -1.05 0.95) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
-<<<<<<< HEAD
-      (net 68 "Net-(Q101-S)") (pinfunction "S") (pintype "passive") (tstamp 985c1102-5594-4aac-a927-33389e2718d2))
-=======
       (net 61 "Net-(Q101-S)") (pinfunction "S") (pintype "passive") (tstamp 985c1102-5594-4aac-a927-33389e2718d2))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (pad "3" smd rect (at 1.05 0) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 2 "GND") (pinfunction "D") (pintype "passive") (tstamp 8f744f8a-072a-4479-ac87-92a155d39087))
     (model "${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl"
@@ -4972,15 +4677,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 59af515d-1558-44fa-8acc-ce224f1bdfdd)
-<<<<<<< HEAD
-    (at 77.08 110.3)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 200 49.75)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -5034,11 +4733,7 @@
 
   (footprint "footprints:MicroFit_VT_4" (layer "F.Cu")
     (tstamp 5c4ae8f1-3961-4128-9c5c-a4e7ce035776)
-<<<<<<< HEAD
-    (at 38.9875 76)
-=======
     (at 129.5 124.1)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Molex Micro-Fit 3.0 Connector System, 43045-0412 (compatible alternatives: 43045-0413, 43045-0424), 2 Pins per row (http://www.molex.com/pdm_docs/sd/430450212_sd.pdf), generated with kicad-footprint-generator")
     (tags "connector Molex Micro-Fit_3.0 side entry")
     (property "MPN" "430450414")
@@ -5134,41 +4829,11 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp 5cbe04cc-4353-415d-a849-917dfdbf89bd)
-    (at 92.655 100.88)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-    (property "Sheetfile" "analog_section.kicad_sch")
-    (property "Sheetname" "Analog Section")
-    (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/291c93d2-8e68-4a96-a44a-c4d220d893f0")
-    (attr through_hole)
-    (fp_text reference "TP109" (at 0 2.54) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp a7fcc980-9ddf-4b70-aa98-95b1eb6311d6)
-    )
-    (fp_text value "TP" (at 0 -0.5) (layer "F.Fab")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp d23a5548-a4e8-4662-97d6-59ce1be38af6)
-    )
-    (pad "1" thru_hole circle (at 0 0) (size 2.4 2.4) (drill 1.6) (layers "*.Cu" "*.Mask")
-      (net 65 "/Analog Section/ANALOG_B") (pinfunction "TP") (pintype "input") (tstamp a64f75a5-6db5-42d6-8284-33963f7bcf08))
-  )
-
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp 606dd55a-dff7-4ea9-82d6-e3f37aee4493)
-    (at 84.03 97.22)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 606dd55a-dff7-4ea9-82d6-e3f37aee4493)
     (at 199.85 127.8375)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -5623,11 +5288,7 @@
 
   (footprint "footprints:Crystal_SMD_FA238" (layer "F.Cu")
     (tstamp 6332db7a-00eb-4282-8117-ba20114e97da)
-<<<<<<< HEAD
-    (at 59.3825 75.485)
-=======
     (at 181.125 82.975 180)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "crystal Epson Toyocom FA-238 series http://www.mouser.com/ds/2/137/1721499-465440.pdf, hand-soldering, 3.2x2.5mm^2 package")
     (tags "SMD SMT crystal hand-soldering")
     (property "MFN" "DK")
@@ -5686,21 +5347,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp 68429267-c69f-445c-9350-9a09d9eb77bf)
-    (at 48.0325 75.035)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-    (property "Sheetfile" "summer2024_onboarding.kicad_sch")
-    (property "Sheetname" "")
-    (path "/d99482f3-51e4-4bd8-9324-9527f217e748")
-    (attr through_hole)
-    (fp_text reference "TP101" (at 0 2.54) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp f0626ee5-985c-4441-9bf0-37e3fb3fb76a)
-=======
   (footprint "kibuzzard-66BE72B5" (layer "F.Cu")
     (tstamp 6872d268-62aa-437a-b737-f9093aa36138)
     (at 210.75 50 -90)
@@ -5710,7 +5356,6 @@
     (fp_text reference "kibuzzard-66BE72B5" (at 0 -3.458959 90) (layer "F.SilkS") hide
         (effects (font (size 0 0)))
       (tstamp 8a50357a-5013-4c0e-a39d-04ccf35cef97)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     )
     (fp_text value "G***" (at 0 3.458959 90) (layer "F.SilkS") hide
         (effects (font (size 0 0)))
@@ -5870,11 +5515,7 @@
 
   (footprint "Potentiometer_THT:Potentiometer_Vishay_T73XW_Horizontal" (layer "F.Cu")
     (tstamp 6a36b487-8d9e-4aa4-95b4-cbd6108ae2cf)
-<<<<<<< HEAD
-    (at 99.005 58.45)
-=======
     (at 158.9 102.16)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Potentiometer, horizontal, Vishay T73XW, http://www.vishay.com/docs/51016/t73.pdf")
     (tags "Potentiometer horizontal Vishay T73XW")
     (property "Sheetfile" "analog_section.kicad_sch")
@@ -5883,11 +5524,7 @@
     (property "ki_keywords" "resistor variable")
     (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/f7f65f9b-64a0-4485-b6b3-59deb7db2620")
     (attr through_hole)
-<<<<<<< HEAD
-    (fp_text reference "RV102" (at 0 -2.01) (layer "F.SilkS")
-=======
     (fp_text reference "RV102" (at 0 -2.01) (layer "F.SilkS") hide
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 6924577f-3b03-48a4-a4af-7f554b9812f5)
     )
@@ -5928,15 +5565,9 @@
     (fp_line (start 2.35 5.84) (end -2.35 5.84)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp e99edc10-594e-4491-b807-53f474e55f97))
     (pad "1" thru_hole circle (at 0 0) (size 1.44 1.44) (drill 0.8) (layers "*.Cu" "*.Mask")
-<<<<<<< HEAD
-      (net 60 "Net-(R108-Pad2)") (pinfunction "1") (pintype "passive") (tstamp be9bdb6c-c821-4d0d-bff7-20ed868d5890))
-    (pad "2" thru_hole circle (at 0 2.54) (size 1.44 1.44) (drill 0.8) (layers "*.Cu" "*.Mask")
-      (net 73 "Net-(RV102-Pad2)") (pinfunction "2") (pintype "passive") (tstamp a8b89c0e-c2a5-4156-8ef4-262a50e5f096))
-=======
       (net 53 "Net-(R108-Pad2)") (pinfunction "1") (pintype "passive") (tstamp be9bdb6c-c821-4d0d-bff7-20ed868d5890))
     (pad "2" thru_hole circle (at 0 2.54) (size 1.44 1.44) (drill 0.8) (layers "*.Cu" "*.Mask")
       (net 66 "Net-(RV102-Pad2)") (pinfunction "2") (pintype "passive") (tstamp a8b89c0e-c2a5-4156-8ef4-262a50e5f096))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (pad "3" thru_hole circle (at 0 5.08) (size 1.44 1.44) (drill 0.8) (layers "*.Cu" "*.Mask")
       (net 2 "GND") (pinfunction "3") (pintype "passive") (tstamp 05078ab1-c043-4c4a-a2ae-84f9ff0aa142))
     (model "${KICAD6_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Vishay_T73XW_Horizontal.wrl"
@@ -5946,19 +5577,11 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp 6a36ff64-c619-4b25-8e77-0db93b4494e5)
-    (at 43.9875 84.765)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 6a36ff64-c619-4b25-8e77-0db93b4494e5)
     (at 161 82.6 180)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "CRS0805-FX-1002ELFCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=CRS0805-FX-1002ELFCT-ND")
@@ -6012,15 +5635,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 6d7c98c6-cf34-4eba-a860-4a22f71aecb0)
-<<<<<<< HEAD
-    (at 36.7175 101.515)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 182.07 48.71 90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -6074,15 +5691,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 6fa65761-cc87-45a6-b439-21272e0f3c9c)
-<<<<<<< HEAD
-    (at 66.8675 63.125)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 150.8 120.885)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -6136,11 +5747,7 @@
 
   (footprint "OEM:CHIPLED_0805" (layer "F.Cu")
     (tstamp 704162f5-e6c9-41ae-a887-ee9675a6eea7)
-<<<<<<< HEAD
-    (at 77.48 115.995)
-=======
     (at 204.75 77.75 -90)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "CHIPLED 0805 smd package")
     (tags "LED led 0805 SMD smd SMT smt smdled SMDLED smtled SMTLED")
     (property "Sheetfile" "summer2024_onboarding.kicad_sch")
@@ -6217,11 +5824,7 @@
 
   (footprint "Button_Switch_SMD:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm" (layer "F.Cu")
     (tstamp 709a3dcc-c528-46e1-aae8-990d09128061)
-<<<<<<< HEAD
-    (at 83.305 73)
-=======
     (at 170.6 133.1)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "SMD 1x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x4.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD")
     (tags "SMD DIP Switch SPST Slide 8.61mm 338mil SMD")
     (property "Sheetfile" "analog_section.kicad_sch")
@@ -6230,11 +5833,7 @@
     (property "ki_keywords" "dip switch")
     (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/6b4c8e10-865a-4514-94ce-7281f2e19447")
     (attr smd)
-<<<<<<< HEAD
-    (fp_text reference "SW103" (at 0 -3.42) (layer "F.SilkS")
-=======
     (fp_text reference "SW103" (at 0 -3.42) (layer "F.SilkS") hide
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp fb32eee2-940c-4bb5-9bac-7b8b3e3cf6e9)
     )
@@ -6349,15 +5948,9 @@
     (fp_line (start 4.89 2.36) (end -4.89 2.36)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp d9714c60-d795-490a-80b9-397eb1dad596))
     (pad "1" smd rect (at -4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
-<<<<<<< HEAD
-      (net 64 "/Analog Section/ANALOG_A") (pintype "passive") (tstamp 0c4d320e-c1a8-4f77-8730-ee6ff4f1a073))
-    (pad "2" smd rect (at 4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 71 "Net-(R110-Pad1)") (pintype "passive") (tstamp 467b07f2-2c84-45e0-8e2b-a2de336fbd9e))
-=======
       (net 11 "/ANALOG_A") (pintype "passive") (tstamp 0c4d320e-c1a8-4f77-8730-ee6ff4f1a073))
     (pad "2" smd rect (at 4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 64 "Net-(R110-Pad1)") (pintype "passive") (tstamp 467b07f2-2c84-45e0-8e2b-a2de336fbd9e))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (model "${KICAD6_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -6365,13 +5958,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp 724a56e2-00c6-4d96-a3da-de7a4178c3ec)
-    (at 43.9875 87.645)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
   (footprint "kibuzzard-66BE7235" (layer "F.Cu")
     (tstamp 70ee4c24-e692-4af7-9a1c-0d7504fa31d4)
     (at 129.25 45.75)
@@ -6496,7 +6082,6 @@
     (at 176 90.311169 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "667-ERJ-6ENF1200V")
     (property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d")
@@ -7193,11 +6778,7 @@
 
   (footprint "footprints:Relay_SPST_OMRON-G5Q-1A4_OEM" (layer "F.Cu")
     (tstamp 7c240fb5-08b2-46e3-82f4-c3500a3cc596)
-<<<<<<< HEAD
-    (at 55.28 116.905)
-=======
     (at 136.2 78.125 -90)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Relay SPST-NO Omron Serie G5Q")
     (tags "Relay SPST-NO Omron Serie G5Q")
     (property "MFN" "DK")
@@ -7278,15 +6859,6 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp f2a29b6b-d503-40b1-8bc7-ac2bf913eee5))
     (fp_circle (center 15.24 -3.81) (end 15.24 -3.68)
       (stroke (width 0.12) (type solid)) (fill none) (layer "F.Fab") (tstamp 38a6a9ed-3b04-4a41-b2ff-50fba787499a))
-<<<<<<< HEAD
-    (pad "1" thru_hole circle (at 0 0 180) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
-      (net 69 "Net-(Q102-S)") (pintype "passive") (tstamp 7f249fd2-dc67-4090-afc4-80d4e5fa3c4c))
-    (pad "2" thru_hole circle (at 10.16 0 180) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
-      (net 27 "SHDN_OUT") (pintype "passive") (tstamp 6f7bdc8c-4305-44cc-849a-dfb58568f299))
-    (pad "3" thru_hole circle (at 17.78 0 180) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
-      (net 24 "Net-(D104-A)") (pintype "passive") (tstamp e604a746-7cdf-40cc-af13-8acf334eaf98))
-    (pad "5" thru_hole circle (at 0 -7.62 180) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
-=======
     (pad "1" thru_hole circle (at 0 0 90) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
       (net 62 "Net-(Q102-S)") (pintype "passive") (tstamp 7f249fd2-dc67-4090-afc4-80d4e5fa3c4c))
     (pad "2" thru_hole circle (at 10.16 0 90) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
@@ -7294,7 +6866,6 @@
     (pad "3" thru_hole circle (at 17.78 0 90) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
       (net 20 "Net-(D104-A)") (pintype "passive") (tstamp e604a746-7cdf-40cc-af13-8acf334eaf98))
     (pad "5" thru_hole circle (at 0 -7.62 90) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
       (net 1 "+5V") (pintype "passive") (tstamp aae2adac-7389-402c-9d7e-71cbe8e87222))
     (model "${OEM_DIR}/parts/3DModels/G5Q_OEM/G5Q.step"
       (offset (xyz 0 0 0))
@@ -7303,17 +6874,11 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp 7cda93ea-86b9-43ee-b8a8-f32474014576)
-    (at 83.655 117.8)
-=======
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 7de69676-a176-4429-90e3-c78bef7a2842)
     (at 129.3 134.05 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "P100KCCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551")
@@ -7365,70 +6930,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp 7de69676-a176-4429-90e3-c78bef7a2842)
-    (at 91.705 69.395)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-    (property "MFN" "DK")
-    (property "MPN" "P100KCCT-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551")
-    (property "Sheetfile" "analog_section.kicad_sch")
-    (property "Sheetname" "Analog Section")
-    (property "ki_description" "Resistor, 100K, 0.125W, 1%, 0805")
-    (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/deff4722-4aab-400c-87dc-42a0c89380bc")
-    (attr smd)
-    (fp_text reference "R126" (at 0 -1.65) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 12c68b71-7105-42c6-8893-ae57ba9b265e)
-    )
-    (fp_text value "R_100K" (at 0 1.75) (layer "F.Fab") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp d4b2c2fd-c320-4bed-ba88-697b7d23b12f)
-    )
-    (fp_line (start -0.6 -0.88) (end 0.6 -0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 7dd5f05e-0a94-4f02-8468-9cb6f42dc2bd))
-    (fp_line (start 0.6 0.88) (end -0.6 0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 824d9b90-8e54-4f9c-bb43-54d4eae441be))
-    (fp_line (start -1.55 -0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp b5d918e5-d4e6-4a17-b0e1-fc164b713b3b))
-    (fp_line (start -1.55 -0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 7bbdedb7-4010-4b03-8eae-f7f080ac8e71))
-    (fp_line (start 1.55 0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 6034694c-f5a7-4bf0-8cab-b23a87eb5202))
-    (fp_line (start 1.55 0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 73b55aea-6211-42d1-b3fe-7a142279626b))
-    (fp_line (start -1 -0.62) (end 1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 46e7834d-1643-48c4-9831-0c692ece50a1))
-    (fp_line (start -1 0.62) (end -1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 33f2a5db-65e2-41c0-a1bf-060cbe4ea8a4))
-    (fp_line (start 1 -0.62) (end 1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 5cbb620c-6a10-4bf2-afff-64429953a829))
-    (fp_line (start 1 0.62) (end -1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp d6923a98-d039-402f-83d9-7a3741921c18))
-    (pad "1" smd rect (at -0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 64 "/Analog Section/ANALOG_A") (pintype "passive") (tstamp dca3a643-6ef4-4a4c-84ea-e53469350a33))
-    (pad "2" smd rect (at 0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 2 "GND") (pintype "passive") (tstamp 8f001b5a-9ebe-4a57-9d6a-ffd97da35beb))
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-  )
-
-  (footprint "footprints:C_0805_OEM" (layer "F.Cu")
-    (tstamp 7f56c458-c275-46d2-86ac-a3cbeaa83242)
-    (at 60.5175 87.215)
-    (descr "Capacitor SMD 0805, reflow soldering, AVX (see smccp.pdf)")
-    (tags "capacitor 0805")
-=======
   (footprint "footprints:Test_Point_SMD" (layer "F.Cu")
     (tstamp 7ee31302-698f-4e61-8aec-6fe8ce0ab1e7)
     (at 143.75 122.25)
@@ -7466,7 +6967,6 @@
     (at 181.25 86.4)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "1276-1130-1-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216")
@@ -7848,15 +7348,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 830ff85b-6cad-4bda-92ac-2a3196fcfe21)
-<<<<<<< HEAD
-    (at 84.03 102.98)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 199.85 130.0375 180)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -7910,15 +7404,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 850bc70a-b7b5-40c5-bf38-3a80810229e1)
-<<<<<<< HEAD
-    (at 36.7175 92.875)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 176.62 48.71 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -7972,11 +7460,7 @@
 
   (footprint "footprints:MicroFit_VT_4" (layer "F.Cu")
     (tstamp 872887ba-6098-4391-a5a4-4397b26731ab)
-<<<<<<< HEAD
-    (at 38.9875 65.18)
-=======
     (at 204.5 87.5)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Molex Micro-Fit 3.0 Connector System, 43045-0412 (compatible alternatives: 43045-0413, 43045-0424), 2 Pins per row (http://www.molex.com/pdm_docs/sd/430450212_sd.pdf), generated with kicad-footprint-generator")
     (tags "connector Molex Micro-Fit_3.0 side entry")
     (property "MPN" "430450414")
@@ -8072,13 +7556,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp 8c1e63da-d029-4ff9-8b67-6adb532ef65c)
-    (at 91.705 66.515)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
   (footprint "kibuzzard-66BE725D" (layer "F.Cu")
     (tstamp 87b4d532-f138-401f-a66f-5bd8d0026188)
     (at 132.5 45.75)
@@ -8508,7 +7985,6 @@
     (at 132.7 134.1 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "P100KCCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551")
@@ -8517,46 +7993,6 @@
     (property "ki_description" "Resistor, 100K, 0.125W, 1%, 0805")
     (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/54e9709f-f95a-422f-9419-d6770eb5556a")
     (attr smd)
-<<<<<<< HEAD
-    (fp_text reference "R125" (at 0 -1.65) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 66f0f028-eb3b-446e-b885-c5cca529f4ed)
-    )
-    (fp_text value "R_100K" (at 0 1.75) (layer "F.Fab") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 775c1ce8-8827-43c0-b5fc-931a06e6eafb)
-    )
-    (fp_line (start -0.6 -0.88) (end 0.6 -0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp b58a5313-e0d2-4cdd-afcc-fcbd364031b9))
-    (fp_line (start 0.6 0.88) (end -0.6 0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 0b6a70cb-1203-4010-b1d9-8e3f26013a00))
-    (fp_line (start -1.55 -0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 994fa751-8964-40fc-8244-22f2a39c1cf2))
-    (fp_line (start -1.55 -0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp d4f95c85-9e85-445a-a42c-21735a7f056a))
-    (fp_line (start 1.55 0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 9210d770-5579-4850-9201-452971d5ae40))
-    (fp_line (start 1.55 0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 269de014-e2d1-43f8-b357-80f02a5ce32f))
-    (fp_line (start -1 -0.62) (end 1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 317129ba-8167-406f-8f98-31cb8b3834e4))
-    (fp_line (start -1 0.62) (end -1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp ff1597a1-d006-45fd-b818-798e632d6de0))
-    (fp_line (start 1 -0.62) (end 1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 5bbb55f0-e9cd-474d-8f28-32976f49779e))
-    (fp_line (start 1 0.62) (end -1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 448fb825-1a41-42dd-85e2-81e7bc77decc))
-    (pad "1" smd rect (at -0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 65 "/Analog Section/ANALOG_B") (pintype "passive") (tstamp 0b5ca18f-404f-470f-8c78-efdc69bdeca5))
-    (pad "2" smd rect (at 0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 2 "GND") (pintype "passive") (tstamp 0b6b9dc9-e4b3-4e92-893d-efa751cde835))
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-=======
     (fp_text reference "R125" (at 0 -1.43 -90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp e332f372-4d97-49f7-b2c3-4179014da52f)
@@ -8594,26 +8030,17 @@
     (pad "2" smd roundrect (at 0.825 0 270) (size 0.8 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 2 "GND") (pintype "passive") (tstamp a2949671-7274-4592-bb97-7ab86c8851c8))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp 8c4ffd32-442d-4a41-bd0d-e5e1a02b90e5)
-    (at 66.8675 68.885)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 8c4ffd32-442d-4a41-bd0d-e5e1a02b90e5)
     (at 179.495 108.7 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -8630,40 +8057,9 @@
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 4b021356-4497-49f4-a008-739b69a8139f)
     )
-<<<<<<< HEAD
-    (fp_line (start -0.6 -0.88) (end 0.6 -0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 1f2907e5-83f7-4294-83d6-f8de754f393b))
-    (fp_line (start 0.6 0.88) (end -0.6 0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 4ea177b5-4102-4053-a6cc-850b893440fb))
-    (fp_line (start -1.55 -0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 220f9639-c692-45ec-aabc-558f6544212d))
-    (fp_line (start -1.55 -0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp d1e490a4-3bb6-49ff-bd5a-084a94380810))
-    (fp_line (start 1.55 0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp ea583d78-1fd5-41f1-9607-aad07e1e3da3))
-    (fp_line (start 1.55 0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 47b4a26f-9d4a-4633-ae85-58588b768674))
-    (fp_line (start -1 -0.62) (end 1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 09c18393-9aa7-4ef5-b58f-7700558ee662))
-    (fp_line (start -1 0.62) (end -1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 63fbc5d1-4e14-4755-a0b2-90c2549e71c3))
-    (fp_line (start 1 -0.62) (end 1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 988fe117-d79c-4d1b-9d91-605732d59ee8))
-    (fp_line (start 1 0.62) (end -1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 3ead27a1-8a7f-4d45-8a2f-3c53968dbb61))
-    (pad "1" smd rect (at -0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 70 "Net-(R109-Pad1)") (pintype "passive") (tstamp 3eb5e138-5d5e-439c-b24c-42f6bb6cf4bf))
-    (pad "2" smd rect (at 0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 6 "Net-(U104-+)") (pintype "passive") (tstamp fbf9c75c-78e4-4306-b796-494d19b3425b))
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-=======
     (fp_text user "${REFERENCE}" (at 0 0 -90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp 2fbeef86-fdfb-4ec4-99c6-72a3c7b3b79e)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     )
     (fp_line (start -0.237258 -0.5225) (end 0.237258 -0.5225)
       (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 97d04ebb-9ab5-44f5-9be4-fc819a489d43))
@@ -8730,15 +8126,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 8d756605-461f-4f99-b019-4c0da88c4d3e)
-<<<<<<< HEAD
-    (at 77.08 113.18)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 213.295 47.7775 180)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -8792,93 +8182,9 @@
 
   (footprint "OEM:CHIPLED_0805" (layer "F.Cu")
     (tstamp 91aaf6b4-8b23-4d47-ad92-e637d808a7d3)
-<<<<<<< HEAD
-    (at 83.605 88.8)
-    (descr "CHIPLED 0805 smd package")
-    (tags "LED led 0805 SMD smd SMT smt smdled SMDLED smtled SMTLED")
-    (property "Sheetfile" "summer2024_onboarding.kicad_sch")
-    (property "Sheetname" "")
-    (property "ki_description" "Light emitting diode")
-    (property "ki_keywords" "LED diode")
-    (path "/a5807946-9361-42ae-9974-9636645b88a3")
-    (attr smd)
-    (fp_text reference "D105" (at 0 -1.45) (layer "F.SilkS") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 992f586a-84b0-4b5c-b89c-3cf2ee022b52)
-    )
-    (fp_text value "5V_LED" (at 0.508 2.032) (layer "F.Fab") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 2fc5ad30-65b1-4665-a5bf-fc735a189e81)
-    )
-    (fp_text user "https://dammedia.osram.info/media/resource/hires/osram-dam-5178064/LO%20R976_EN.pdf" (at 0 0) (layer "F.SilkS") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp ab79ac7b-ac4f-4296-a74b-7a0e09181acb)
-    )
-    (fp_line (start -1.75 -0.7) (end -1.75 0.7)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp a9880196-5791-40fb-935c-c81dc6b66a98))
-    (fp_line (start -1.75 -0.7) (end 1 -0.7)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp d5e18d19-bed5-4edf-b0e3-a05c2588fe48))
-    (fp_line (start -1.75 0.7) (end 1 0.7)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 2a989061-9d44-4035-86fd-ccfa6d7b9485))
-    (fp_line (start -0.2 0) (end -0.2 -0.35)
-      (stroke (width 0.1) (type solid)) (layer "Dwgs.User") (tstamp 5ad6b2aa-b278-4d02-97eb-fbb6658e5311))
-    (fp_line (start -0.2 0) (end 0.1 -0.3)
-      (stroke (width 0.1) (type solid)) (layer "Dwgs.User") (tstamp b62a4c62-d845-433e-9bc2-78005b414dac))
-    (fp_line (start -0.2 0.35) (end -0.2 0)
-      (stroke (width 0.1) (type solid)) (layer "Dwgs.User") (tstamp ea28b632-8a9a-499e-8cdd-421ee5f9876e))
-    (fp_line (start 0.1 -0.3) (end 0.15 -0.35)
-      (stroke (width 0.1) (type solid)) (layer "Dwgs.User") (tstamp 193401a0-18bc-4574-bf83-bea81704fbeb))
-    (fp_line (start 0.15 -0.35) (end 0.15 0.3)
-      (stroke (width 0.1) (type solid)) (layer "Dwgs.User") (tstamp 0853ba7a-9322-4264-b894-14841ede5b59))
-    (fp_line (start 0.15 0.3) (end 0.15 0.35)
-      (stroke (width 0.1) (type solid)) (layer "Dwgs.User") (tstamp c33723c2-dc99-4ed8-bd7d-71f9d8de207f))
-    (fp_line (start 0.15 0.35) (end -0.2 0)
-      (stroke (width 0.1) (type solid)) (layer "Dwgs.User") (tstamp f3b61d39-c83d-43b0-bcde-763203c7fda5))
-    (fp_line (start 0.15 0.35) (end 0.15 0.3)
-      (stroke (width 0.1) (type solid)) (layer "Dwgs.User") (tstamp 29fde827-8faf-4525-a724-4f956447a97f))
-    (fp_line (start -1.95 -0.85) (end 1.95 -0.85)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 7160680e-ec59-4aaa-95a2-9d3559a7a2b8))
-    (fp_line (start -1.95 0.85) (end -1.95 -0.85)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 1e7e6b7c-01c0-44fc-9a9f-6aae088a90f2))
-    (fp_line (start 1.95 -0.85) (end 1.95 0.85)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 921b0a48-04a7-4d8d-8186-818b15f9e938))
-    (fp_line (start 1.95 0.85) (end -1.95 0.85)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp e5343e88-79b8-4c91-9f64-d692ec2b5c20))
-    (fp_line (start -1 -0.65) (end 1 -0.65)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 19391b97-514e-4422-9ac4-61f5f11e2d01))
-    (fp_line (start -1 0.65) (end -1 -0.65)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 1d0c8710-ac3a-4d2c-b739-6633da2c7d5c))
-    (fp_line (start 1 -0.65) (end 1 0.65)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 8c75085d-e572-4563-b8b9-c406af07faf8))
-    (fp_line (start 1 0.65) (end -1 0.65)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp dd53d39b-d8ca-410e-bf7e-1922917e648d))
-    (pad "1" smd rect (at -1.05 0 180) (size 1.2 1.2) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 43 "Net-(D105-K)") (pinfunction "K") (pintype "passive") (tstamp 2c879978-6fb2-4e67-8708-b6d7819d8629))
-    (pad "2" smd rect (at 1.05 0 180) (size 1.2 1.2) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 27 "SHDN_OUT") (pinfunction "A") (pintype "passive") (tstamp b1f2cde2-2088-4184-b0af-80741adc061f))
-    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED_0805_Base_GREEN001_sp.wrl"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 180))
-    )
-    (model "${OEM_DIR}/parts/3DModels/LED_0805/LED_0805_Base_GREEN001_sp.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-  )
-
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp 9784e7c4-93f1-41eb-a00b-ec4c62d3dbac)
-    (at 48.0325 78.435)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-=======
     (at 137.25 104.75 90)
     (descr "CHIPLED 0805 smd package")
     (tags "LED led 0805 SMD smd SMT smt smdled SMDLED smtled SMTLED")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "Sheetfile" "summer2024_onboarding.kicad_sch")
     (property "Sheetname" "")
     (property "ki_description" "Light emitting diode")
@@ -8951,14 +8257,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp 9862439c-31d3-48f9-b238-abd71d0cd570)
-    (at 83.655 114.4)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-=======
   (footprint "footprints:Test_Point_SMD" (layer "F.Cu")
     (tstamp 94a532ef-35c8-47cc-9d0a-9f3a439a18b9)
     (at 187.75 63 90)
@@ -8967,7 +8265,6 @@
     (property "MPN" "5019")
     (property "NewDesigns" "YES")
     (property "Package" "Custom")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "Sheetfile" "cell_voltages.kicad_sch")
     (property "Sheetname" "Cell Voltages")
     (property "Stocked" "Reel")
@@ -9144,11 +8441,7 @@
 
   (footprint "OEM:C_0603" (layer "F.Cu")
     (tstamp 9b8f7f86-b057-4e56-a693-d70d811d7a26)
-<<<<<<< HEAD
-    (at 59.9875 65.45)
-=======
     (at 171.5 70.5)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "DKPN" "1292-1472-6-ND")
@@ -9335,15 +8628,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp 9f06b6a9-4322-467a-8afb-96619fb6896b)
-<<<<<<< HEAD
-    (at 36.7175 104.395)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 168.37 48.71 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -9397,15 +8684,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp a07d154a-4e22-426d-a95e-72cc5a68e4cd)
-<<<<<<< HEAD
-    (at 84.03 100.1)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 199.95 114.1375)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -9704,15 +8985,9 @@
 
   (footprint "OEM:SOT-23-5" (layer "F.Cu")
     (tstamp a7028318-aadf-40e3-a2b8-c89155171736)
-<<<<<<< HEAD
-    (at 41.2175 98.41)
-    (descr "5-pin SOT23 package")
-    (tags "SOT-23-5")
-=======
     (at 183.27 53.11 180)
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "MCP6001T-I/OTCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158")
@@ -9778,11 +9053,7 @@
 
   (footprint "footprints:SOT-23F" (layer "F.Cu")
     (tstamp a779d5b3-f2cc-4cbe-84fa-7c07f9c78eeb)
-<<<<<<< HEAD
-    (at 59.98 121.155)
-=======
     (at 139.75 69.75)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "SOT-23, Standard")
     (tags "SOT-23")
     (property "MFN" "DK")
@@ -9829,11 +9100,7 @@
     (pad "1" smd rect (at -1.05 -0.95) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 44 "/SENSOR_SHDN") (pinfunction "G") (pintype "input") (tstamp 56ea0256-c32a-4cb9-adf6-ca830e72ddb7))
     (pad "2" smd rect (at -1.05 0.95) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
-<<<<<<< HEAD
-      (net 69 "Net-(Q102-S)") (pinfunction "S") (pintype "passive") (tstamp ab346705-3dc1-4853-a8c9-faf2994ec849))
-=======
       (net 62 "Net-(Q102-S)") (pinfunction "S") (pintype "passive") (tstamp ab346705-3dc1-4853-a8c9-faf2994ec849))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (pad "3" smd rect (at 1.05 0) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 2 "GND") (pinfunction "D") (pintype "passive") (tstamp c521a16c-1cb1-4b79-9091-8db787385d91))
     (model "${OEM_DIR}/parts/3DModels/SOT-23_OEM/SOT-23.wrl"
@@ -9991,15 +9258,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp a9cab724-e73d-41e2-814a-23db9eb24b2b)
-<<<<<<< HEAD
-    (at 66.8675 77.525)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 184.295 117.6)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -10053,15 +9314,9 @@
 
   (footprint "OEM:C_0603" (layer "F.Cu")
     (tstamp aae56e16-ac96-4ead-97cc-26bcda1afbbc)
-<<<<<<< HEAD
-    (at 60.5175 84.395)
-    (descr "Capacitor SMD 0805, reflow soldering, AVX (see smccp.pdf)")
-    (tags "capacitor 0805")
-=======
     (at 177.061826 83.142482 -90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "1276-1130-1-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL21C300JBANNNC/1276-1130-1-ND/3889216")
@@ -10115,15 +9370,9 @@
 
   (footprint "OEM:SOT-23-5" (layer "F.Cu")
     (tstamp b3d3b743-4a70-4bb0-9cc6-50b441e3d309)
-<<<<<<< HEAD
-    (at 41.2175 103.06)
-    (descr "5-pin SOT23 package")
-    (tags "SOT-23-5")
-=======
     (at 167.22 53.06 180)
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "MCP6001T-I/OTCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158")
@@ -10323,15 +9572,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp b7787c6e-c752-4e4e-81ed-6ca256bc077b)
-<<<<<<< HEAD
-    (at 66.8675 83.285)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 184.295 135.3)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -10383,14 +9626,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp bcebb6ad-bff8-4c7b-b6c7-37c36f8ee0e4)
-    (at 48.0325 81.835)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-=======
   (footprint "kibuzzard-66BF4330" (layer "F.Cu")
     (tstamp ba6696ae-066d-4ccc-96ee-dc62cbc65e80)
     (at 158.75 66.75)
@@ -10847,7 +10082,6 @@
     (property "MPN" "5019")
     (property "NewDesigns" "YES")
     (property "Package" "Custom")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "Sheetfile" "summer2024_onboarding.kicad_sch")
     (property "Sheetname" "")
     (property "Stocked" "Reel")
@@ -10992,15 +10226,9 @@
 
   (footprint "OEM:C_0603" (layer "F.Cu")
     (tstamp c586048b-409a-4c1a-8566-b2263152b415)
-<<<<<<< HEAD
-    (at 71.2175 75.215)
-    (descr "Capacitor SMD 0805, reflow soldering, AVX (see smccp.pdf)")
-    (tags "capacitor 0805")
-=======
     (at 179.495 131.25 -90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "1276-1052-1-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138")
@@ -11438,15 +10666,9 @@
 
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp cc9e892b-4ac9-4423-b6f6-8deba02a53f2)
-<<<<<<< HEAD
-    (at 66.8675 80.405)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
     (at 184.295 132.8 180)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -11496,67 +10718,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-<<<<<<< HEAD
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-  )
-
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp cdcd3cc3-88e0-48ad-b7df-ffd49de315fb)
-    (at 76.705 100.88)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-    (property "Sheetfile" "summer2024_onboarding.kicad_sch")
-    (property "Sheetname" "")
-    (path "/322bf741-bf27-43cc-b6b2-32fc3ed87858")
-    (attr through_hole)
-    (fp_text reference "TP104" (at 0 2.54) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp a24b7499-0202-4137-bd4e-b79bf294d5e3)
-    )
-    (fp_text value "TP" (at 0 -0.5) (layer "F.Fab")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp e6a6b1fc-924e-4122-b0b3-39adf335ff1f)
-    )
-    (pad "1" thru_hole circle (at 0 0) (size 2.4 2.4) (drill 1.6) (layers "*.Cu" "*.Mask")
-      (net 48 "/ANALOG_SS") (pinfunction "TP") (pintype "input") (tstamp fa3a934a-2f88-47d0-ab53-044d8bf6fa98))
-  )
-
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp d44a46b6-fd06-4f01-a5e9-8b85dd9f8ea5)
-    (at 48.0325 85.235)
-    (property "MFN" "DK")
-    (property "MPN" "36-5006-ND")
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/keystone-electronics/5006/36-5006-ND/255330")
-    (property "Sheetfile" "summer2024_onboarding.kicad_sch")
-    (property "Sheetname" "")
-    (path "/85713c64-bb51-46f7-9d8c-4b0f7bedfce6")
-    (attr through_hole)
-    (fp_text reference "TP106" (at 0 2.54) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 4a728799-5cd1-4c3e-9ef8-6115566fa14b)
-    )
-    (fp_text value "TP" (at 0 -0.5) (layer "F.Fab")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 95dac586-2f53-429f-a1b6-def8f586cdfa)
-    )
-    (pad "1" thru_hole circle (at 0 0) (size 2.4 2.4) (drill 1.6) (layers "*.Cu" "*.Mask")
-      (net 36 "/RXCAN") (pinfunction "TP") (pintype "input") (tstamp 4c3bed85-e56a-4384-bad3-6975c0150afa))
-=======
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
   )
 
   (footprint "footprints:Relay_SPST_OMRON-G5Q-1A4_OEM" (layer "F.Cu")
     (tstamp d47b7ce7-c494-42c8-ac2e-5df249817975)
-<<<<<<< HEAD
-    (at 55.28 105.355)
-=======
     (at 124.4425 78.025 -90)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Relay SPST-NO Omron Serie G5Q")
     (tags "Relay SPST-NO Omron Serie G5Q")
     (property "MFN" "DK")
@@ -11637,15 +10803,6 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp f2be416e-1d52-48f7-b59d-6c63e537066a))
     (fp_circle (center 15.24 -3.81) (end 15.24 -3.68)
       (stroke (width 0.12) (type solid)) (fill none) (layer "F.Fab") (tstamp da222cb7-435e-445a-b425-2225e7f030fa))
-<<<<<<< HEAD
-    (pad "1" thru_hole circle (at 0 0 180) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
-      (net 68 "Net-(Q101-S)") (pintype "passive") (tstamp 753e20f1-882f-4e38-b380-00944ab89afc))
-    (pad "2" thru_hole circle (at 10.16 0 180) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
-      (net 24 "Net-(D104-A)") (pintype "passive") (tstamp e0e26ded-a715-41d2-80c2-022e7098cc38))
-    (pad "3" thru_hole circle (at 17.78 0 180) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
-      (net 22 "SHDN_IN") (pintype "passive") (tstamp e15c12e1-7ae7-4ff3-acfe-00713300c955))
-    (pad "5" thru_hole circle (at 0 -7.62 180) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
-=======
     (pad "1" thru_hole circle (at 0 0 90) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
       (net 61 "Net-(Q101-S)") (pintype "passive") (tstamp 753e20f1-882f-4e38-b380-00944ab89afc))
     (pad "2" thru_hole circle (at 10.16 0 90) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
@@ -11653,7 +10810,6 @@
     (pad "3" thru_hole circle (at 17.78 0 90) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
       (net 18 "SHDN_IN") (pintype "passive") (tstamp e15c12e1-7ae7-4ff3-acfe-00713300c955))
     (pad "5" thru_hole circle (at 0 -7.62 90) (size 1.8 1.8) (drill 1.3) (layers "*.Cu" "*.Mask")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
       (net 1 "+5V") (pintype "passive") (tstamp d3df5783-bcda-4430-9e3e-7fe509c644e6))
     (model "${OEM_DIR}/parts/3DModels/G5Q_OEM/G5Q.step"
       (offset (xyz 0 0 0))
@@ -11783,15 +10939,9 @@
 
   (footprint "OEM:SOT-23-5" (layer "F.Cu")
     (tstamp d8b5f681-f360-44d4-a37f-43431a249022)
-<<<<<<< HEAD
-    (at 88.53 98.105)
-    (descr "5-pin SOT23 package")
-    (tags "SOT-23-5")
-=======
     (at 205.3 129.0375 -90)
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "MCP6001T-I/OTCT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/microchip-technology/MCP6001T-I-OT/MCP6001T-I-OTCT-ND/697158")
@@ -11857,11 +11007,7 @@
 
   (footprint "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM" (layer "F.Cu")
     (tstamp d8edf26c-0787-4f81-a8b6-dfb572854268)
-<<<<<<< HEAD
-    (at 53.9875 86.21)
-=======
     (at 170.3 90.3)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "8-Lead Plastic Small Outline (SN) - Narrow, 3.90 mm Body [SOIC] (see Microchip Packaging Specification 00000049BS.pdf)")
     (tags "SOIC 1.27")
     (property "MFN" "DK")
@@ -11937,11 +11083,7 @@
 
   (footprint "OEM:C_0603" (layer "F.Cu")
     (tstamp da5b7d0d-7378-4fc6-9a89-7959d6a5fd2e)
-<<<<<<< HEAD
-    (at 59.9875 67.96)
-=======
     (at 163.9 89.5 90)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "DKPN" "1276-1935-2-ND")
@@ -12002,11 +11144,7 @@
 
   (footprint "OEM:CHIPLED_0805" (layer "F.Cu")
     (tstamp db64b87c-9763-47dd-bd76-09853f4e8b1d)
-<<<<<<< HEAD
-    (at 77.48 121.495)
-=======
     (at 213.325 49.9125 180)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "CHIPLED 0805 smd package")
     (tags "LED led 0805 SMD smd SMT smt smdled SMDLED smtled SMTLED")
     (property "Sheetfile" "summer2024_onboarding.kicad_sch")
@@ -12171,11 +11309,7 @@
 
   (footprint "OEM:CHIPLED_0805" (layer "F.Cu")
     (tstamp de267c4d-f092-4ed7-b8b9-dad2ef37609c)
-<<<<<<< HEAD
-    (at 77.48 118.745)
-=======
     (at 200.14 47.34)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "CHIPLED 0805 smd package")
     (tags "LED led 0805 SMD smd SMT smt smdled SMDLED smtled SMTLED")
     (property "Sheetfile" "summer2024_onboarding.kicad_sch")
@@ -12250,11 +11384,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "Button_Switch_SMD:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm" (layer "F.Cu")
-    (tstamp e19dc1d0-03e1-42ee-9603-8c68e37b1b3d)
-    (at 83.305 60.1)
-=======
   (footprint "kibuzzard-66BE71FF" (layer "F.Cu")
     (tstamp e1670193-f455-442b-b200-1dd10ee310bd)
     (at 212 90.5 -90)
@@ -12368,7 +11497,6 @@
   (footprint "Button_Switch_SMD:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm" (layer "F.Cu")
     (tstamp e19dc1d0-03e1-42ee-9603-8c68e37b1b3d)
     (at 170.595 113.4)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "SMD 1x-dip-switch SPST , Slide, row spacing 8.61 mm (338 mils), body size 9.78x4.72mm (see e.g. https://www.ctscorp.com/wp-content/uploads/204.pdf), SMD")
     (tags "SMD DIP Switch SPST Slide 8.61mm 338mil SMD")
     (property "Sheetfile" "analog_section.kicad_sch")
@@ -12377,11 +11505,7 @@
     (property "ki_keywords" "dip switch")
     (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/2e2c399c-a52f-4150-9bcd-d13177e7c022")
     (attr smd)
-<<<<<<< HEAD
-    (fp_text reference "SW101" (at 0 -3.42) (layer "F.SilkS")
-=======
     (fp_text reference "SW101" (at 0 -3.42) (layer "F.SilkS") hide
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 536899f5-47bc-4ec8-b480-ef303c348e38)
     )
@@ -12496,15 +11620,9 @@
     (fp_line (start 4.89 2.36) (end -4.89 2.36)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 2b43d063-c4f6-4f88-86b0-2180c199d120))
     (pad "1" smd rect (at -4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
-<<<<<<< HEAD
-      (net 65 "/Analog Section/ANALOG_B") (pintype "passive") (tstamp 13ac1d3c-73c3-4303-9fb4-710abff542a6))
-    (pad "2" smd rect (at 4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 70 "Net-(R109-Pad1)") (pintype "passive") (tstamp c3727465-1195-4d35-89f5-fd0317326632))
-=======
       (net 12 "/ANALOG_B") (pintype "passive") (tstamp 13ac1d3c-73c3-4303-9fb4-710abff542a6))
     (pad "2" smd rect (at 4.305 0) (size 2.44 1.12) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 63 "Net-(R109-Pad1)") (pintype "passive") (tstamp c3727465-1195-4d35-89f5-fd0317326632))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (model "${KICAD6_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_DIP_SPSTx01_Slide_9.78x4.72mm_W8.61mm_P2.54mm.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -12512,11 +11630,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:TQFP-32_7x7mm_Pitch0.8mm" (layer "F.Cu")
-    (tstamp e78c7ce2-d4ca-4631-99c5-eeaacaceae31)
-    (at 52.1575 67.51)
-=======
   (footprint "kibuzzard-66BE7123" (layer "F.Cu")
     (tstamp e4426826-ccb7-467d-8bf3-1f0f732accd1)
     (at 198.25 102.75)
@@ -13638,7 +12751,6 @@
   (footprint "footprints:TQFP-32_7x7mm_Pitch0.8mm" (layer "F.Cu")
     (tstamp e78c7ce2-d4ca-4631-99c5-eeaacaceae31)
     (at 169.4425 80.56 90)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "32-Lead Plastic Thin Quad Flatpack (PT) - 7x7x1.0 mm Body, 2.00 mm [TQFP] (see Microchip Packaging Specification 00000049BS.pdf)")
     (tags "QFP 0.8")
     (property "MFN" "DK")
@@ -13774,11 +12886,7 @@
 
   (footprint "OEM:C_0603" (layer "F.Cu")
     (tstamp ee0c7b47-ef18-4c4c-8f00-f2a388b7f0fe)
-<<<<<<< HEAD
-    (at 59.9875 62.94)
-=======
     (at 174.5 71.5 90)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "DKPN" "1276-1935-2-ND")
@@ -13839,11 +12947,7 @@
 
   (footprint "Package_TO_SOT_SMD:SOT-23-5" (layer "F.Cu")
     (tstamp f196c883-2451-4317-bfbf-020503bcee2b)
-<<<<<<< HEAD
-    (at 71.5175 78.85)
-=======
     (at 199.85 121.7375 90)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
     (property "Sheetfile" "analog_section.kicad_sch")
@@ -13909,15 +13013,9 @@
 
   (footprint "OEM:C_0603" (layer "F.Cu")
     (tstamp f5bb6b4f-75de-4688-85fd-0cd93a1f4c98)
-<<<<<<< HEAD
-    (at 71.2175 72.395)
-    (descr "Capacitor SMD 0805, reflow soldering, AVX (see smccp.pdf)")
-    (tags "capacitor 0805")
-=======
     (at 179.495 112.9 -90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "1276-1052-1-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A106KPFNNNE/1276-1052-1-ND/3889138")
@@ -13971,11 +13069,7 @@
 
   (footprint "OEM:CHIPLED_0805" (layer "F.Cu")
     (tstamp f6d28aec-303a-4e17-9fde-d8915ef4d2fa)
-<<<<<<< HEAD
-    (at 83.605 86.05)
-=======
     (at 125 104.75 90)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "CHIPLED 0805 smd package")
     (tags "LED led 0805 SMD smd SMT smt smdled SMDLED smtled SMTLED")
     (property "Sheetfile" "summer2024_onboarding.kicad_sch")
@@ -13984,17 +13078,6 @@
     (property "ki_keywords" "LED diode")
     (path "/84f1577a-fdae-4e34-9be2-fb39ed21bfe4")
     (attr smd)
-<<<<<<< HEAD
-    (fp_text reference "D104" (at 0 -1.45) (layer "F.SilkS") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 6649bbd6-0252-4540-abda-6af98725d017)
-    )
-    (fp_text value "5V_LED" (at 0.508 2.032) (layer "F.Fab") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp fcbbb548-49a6-4a7a-b63d-43f468a36e26)
-    )
-    (fp_text user "https://dammedia.osram.info/media/resource/hires/osram-dam-5178064/LO%20R976_EN.pdf" (at 0 0) (layer "F.SilkS") hide
-=======
     (fp_text reference "D104" (at 0 -1.45 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 6649bbd6-0252-4540-abda-6af98725d017)
@@ -14004,7 +13087,6 @@
       (tstamp fcbbb548-49a6-4a7a-b63d-43f468a36e26)
     )
     (fp_text user "https://dammedia.osram.info/media/resource/hires/osram-dam-5178064/LO%20R976_EN.pdf" (at 0 0 90) (layer "F.SilkS") hide
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp fb6abd24-64d1-4e42-bf00-dafe0974b189)
     )
@@ -14046,17 +13128,10 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 472db4b7-389b-4d21-8473-0fb65268f3a8))
     (fp_line (start 1 0.65) (end -1 0.65)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp d5002f7c-8428-4fe8-9900-4dff23008c7e))
-<<<<<<< HEAD
-    (pad "1" smd rect (at -1.05 0 180) (size 1.2 1.2) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 23 "Net-(D104-K)") (pinfunction "K") (pintype "passive") (tstamp 11daa328-fa87-4fe6-aea4-86b470c95cbe))
-    (pad "2" smd rect (at 1.05 0 180) (size 1.2 1.2) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 24 "Net-(D104-A)") (pinfunction "A") (pintype "passive") (tstamp 2a0ec54e-2857-455b-8198-c08682a40fb8))
-=======
     (pad "1" smd rect (at -1.05 0 270) (size 1.2 1.2) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 19 "Net-(D104-K)") (pinfunction "K") (pintype "passive") (tstamp 11daa328-fa87-4fe6-aea4-86b470c95cbe))
     (pad "2" smd rect (at 1.05 0 270) (size 1.2 1.2) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 20 "Net-(D104-A)") (pinfunction "A") (pintype "passive") (tstamp 2a0ec54e-2857-455b-8198-c08682a40fb8))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (model "${OEM_DIR}/parts/3DModels/LED_0805/LED_0805_Base_GREEN001_sp.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -14069,68 +13144,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp f778fa46-7291-4589-99ad-8f2ea85d4bfb)
-    (at 79.055 88.995)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-    (property "MFN" "DK")
-    (property "MPN" "RNCP0805FTD1K00CT-ND")
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
-    (property "Sheetfile" "summer2024_onboarding.kicad_sch")
-    (property "Sheetname" "")
-    (property "ki_description" "Resistor, 1K, 0.25W, 1%, 0805")
-    (path "/3ecdf19f-9f99-437e-8a7c-c6b51dc55ec6")
-    (attr smd)
-    (fp_text reference "R128" (at 0 -1.65) (layer "F.SilkS")
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 87acd8b6-942f-43c0-afce-d701fbdf7f1a)
-    )
-    (fp_text value "R_1K" (at 0 1.75) (layer "F.Fab") hide
-        (effects (font (size 1 1) (thickness 0.15)))
-      (tstamp 5eb73504-aa33-492a-a1bf-90b0952e43f1)
-    )
-    (fp_line (start -0.6 -0.88) (end 0.6 -0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp cc2975af-bab3-4eee-8a00-c57a01aacd2c))
-    (fp_line (start 0.6 0.88) (end -0.6 0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 5042da02-9ae8-483a-a0f5-586435d0e365))
-    (fp_line (start -1.55 -0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 3b4c0d9f-58e3-4a52-879d-67f4ad525c03))
-    (fp_line (start -1.55 -0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 097c7e84-6c23-4d27-ba56-7bbc02e19636))
-    (fp_line (start 1.55 0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 54664413-6974-418a-a4d7-c024c8a268cd))
-    (fp_line (start 1.55 0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp d6b8d9da-cb6a-4329-944a-129ba81a269b))
-    (fp_line (start -1 -0.62) (end 1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 758ce415-20c3-4877-a477-081d1505c303))
-    (fp_line (start -1 0.62) (end -1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp ea047f64-b572-4ad4-ac0b-bcbb1c7031eb))
-    (fp_line (start 1 -0.62) (end 1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp c99be1ef-6c9c-4e7a-8059-de44b4804fbf))
-    (fp_line (start 1 0.62) (end -1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 58a903ba-7028-47a2-85d5-ec23a05f578d))
-    (pad "1" smd rect (at -0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 43 "Net-(D105-K)") (pintype "passive") (tstamp d183da4e-a092-4cf7-a2bd-09b123f00a86))
-    (pad "2" smd rect (at 0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 2 "GND") (pintype "passive") (tstamp 805bd589-78ae-4fff-a2f2-dee69b6d654e))
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
-  )
-
-  (footprint "footprints:tp_1.6mm" (layer "F.Cu")
-    (tstamp f91c0ed2-0925-4d34-a5bf-c0bf8e288029)
-    (at 83.655 111)
-=======
   (footprint "kibuzzard-66BE7023" (layer "F.Cu")
     (tstamp f6da0dbf-cf94-4e22-a44b-111c560abc65)
     (at 193 116)
@@ -14210,7 +13223,6 @@
     (at 137.25 108.7 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -14264,11 +13276,7 @@
 
   (footprint "Potentiometer_THT:Potentiometer_Vishay_T73XW_Horizontal" (layer "F.Cu")
     (tstamp fcf769e2-41df-4902-aa49-a05d2e4059d7)
-<<<<<<< HEAD
-    (at 92.755 58.45)
-=======
     (at 159.2 121.06)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (descr "Potentiometer, horizontal, Vishay T73XW, http://www.vishay.com/docs/51016/t73.pdf")
     (tags "Potentiometer horizontal Vishay T73XW")
     (property "Sheetfile" "analog_section.kicad_sch")
@@ -14277,11 +13285,7 @@
     (property "ki_keywords" "resistor variable")
     (path "/f09d82cd-e53e-42f8-91d7-298e9a119bee/42e8c47c-8f93-41ff-ae77-6da41ac76227")
     (attr through_hole)
-<<<<<<< HEAD
-    (fp_text reference "RV101" (at 0 -2.01) (layer "F.SilkS")
-=======
     (fp_text reference "RV101" (at 0 -2.01) (layer "F.SilkS") hide
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 1c2b85ea-6b2a-41f0-af80-1b9c14e026bd)
     )
@@ -14322,15 +13326,9 @@
     (fp_line (start 2.35 5.84) (end -2.35 5.84)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 458b84e9-c316-4004-9e4e-4887233bc527))
     (pad "1" thru_hole circle (at 0 0) (size 1.44 1.44) (drill 0.8) (layers "*.Cu" "*.Mask")
-<<<<<<< HEAD
-      (net 53 "Net-(R107-Pad2)") (pinfunction "1") (pintype "passive") (tstamp cd4b4627-2e68-4ccb-bea3-26f5e6d63082))
-    (pad "2" thru_hole circle (at 0 2.54) (size 1.44 1.44) (drill 0.8) (layers "*.Cu" "*.Mask")
-      (net 72 "Net-(RV101-Pad2)") (pinfunction "2") (pintype "passive") (tstamp b22b275b-6367-468b-a762-55624f8cb4a6))
-=======
       (net 46 "Net-(R107-Pad2)") (pinfunction "1") (pintype "passive") (tstamp cd4b4627-2e68-4ccb-bea3-26f5e6d63082))
     (pad "2" thru_hole circle (at 0 2.54) (size 1.44 1.44) (drill 0.8) (layers "*.Cu" "*.Mask")
       (net 65 "Net-(RV101-Pad2)") (pinfunction "2") (pintype "passive") (tstamp b22b275b-6367-468b-a762-55624f8cb4a6))
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (pad "3" thru_hole circle (at 0 5.08) (size 1.44 1.44) (drill 0.8) (layers "*.Cu" "*.Mask")
       (net 2 "GND") (pinfunction "3") (pintype "passive") (tstamp 7b2395f8-8059-4d56-9d4e-dd66066c4833))
     (model "${KICAD6_3DMODEL_DIR}/Potentiometer_THT.3dshapes/Potentiometer_Vishay_T73XW_Horizontal.wrl"
@@ -14340,19 +13338,11 @@
     )
   )
 
-<<<<<<< HEAD
-  (footprint "footprints:R_0805_OEM" (layer "F.Cu")
-    (tstamp fe8e2012-6941-456f-bc16-0670583081ef)
-    (at 66.8675 71.765)
-    (descr "Resistor SMD 0805, reflow soldering, Vishay (see dcrcw.pdf)")
-    (tags "resistor 0805")
-=======
   (footprint "OEM:R_0603" (layer "F.Cu")
     (tstamp fe8e2012-6941-456f-bc16-0670583081ef)
     (at 179.495 126.85 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     (property "MFN" "DK")
     (property "MPN" "RNCP0805FTD1K00CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND")
@@ -14369,40 +13359,9 @@
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 425e4ca8-c72c-4cf4-acb9-4e8e1d238b6b)
     )
-<<<<<<< HEAD
-    (fp_line (start -0.6 -0.88) (end 0.6 -0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp e07ddf36-cad0-4bda-bb59-a75758fa30d2))
-    (fp_line (start 0.6 0.88) (end -0.6 0.88)
-      (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp ba03a765-1610-48e5-88b4-c9edb16bea19))
-    (fp_line (start -1.55 -0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 98084439-a9c9-4ace-a3b4-ab8582fa82b4))
-    (fp_line (start -1.55 -0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 679dff30-02a2-4d68-a01c-7a190f2e32f3))
-    (fp_line (start 1.55 0.9) (end -1.55 0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp c5031061-a153-47a9-8b96-db8de92b5e07))
-    (fp_line (start 1.55 0.9) (end 1.55 -0.9)
-      (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 8f5dd311-c03f-4f54-b7ab-f3e1a9f9d027))
-    (fp_line (start -1 -0.62) (end 1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 4bac8d8e-f9a1-4190-87fe-ac9bfd69a074))
-    (fp_line (start -1 0.62) (end -1 -0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp d78fc4cf-09ed-4640-aeb0-b17114eb7f7d))
-    (fp_line (start 1 -0.62) (end 1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 2943636e-6efa-4320-9df3-83ae1acffe5c))
-    (fp_line (start 1 0.62) (end -1 0.62)
-      (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 83c4c659-d46b-43dd-bdce-219cd02ef723))
-    (pad "1" smd rect (at -0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 71 "Net-(R110-Pad1)") (pintype "passive") (tstamp 5a647ab7-bcf7-4a71-9515-2e4233557c67))
-    (pad "2" smd rect (at 0.95 0) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 7 "Net-(U105-+)") (pintype "passive") (tstamp 6d9ea0f0-c05f-4ab0-bb3f-758948f32ebd))
-    (model "${OEM_DIR}/parts/3DModels/R_0805_OEM/res0805.step"
-      (offset (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-=======
     (fp_text user "${REFERENCE}" (at 0 0 -90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp cf99a6da-3a84-4b91-a192-09d66d9df505)
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
     )
     (fp_line (start -0.237258 -0.5225) (end 0.237258 -0.5225)
       (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 99cff9e0-9387-43b9-b05c-546b5fd1d24b))
@@ -14435,11 +13394,6 @@
     )
   )
 
-<<<<<<< HEAD
-  (gr_rect (start 121 44) (end 221 144)
-    (stroke (width 0.1) (type default)) (fill none) (layer "Edge.Cuts") (tstamp 38e07f8e-6ad3-417c-afe5-435ee26c0a06))
-
-=======
   (gr_rect (start 157.25 42.75) (end 193.25 55.5)
     (stroke (width 0.15) (type default)) (fill none) (layer "F.SilkS") (tstamp 2194b150-6aa3-422e-b0ac-b1079e5f5c9e))
   (gr_rect (start 147.5 68) (end 196.25 100)
@@ -18412,5 +17366,4 @@
       )
     )
   )
->>>>>>> e0feb157245d7d7eaffc8b769c8aea30a2b0f662
 )
