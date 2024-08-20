@@ -5,6 +5,58 @@
   (paper "A4")
 
   (lib_symbols
+    (symbol "+5V_1" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Value" "+5V_1" (at 0 3.556 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "global power" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Power symbol creates a global label with name \"+5V\"" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "+5V_1_0_1"
+        (polyline
+          (pts
+            (xy -0.762 1.27)
+            (xy 0 2.54)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 2.54)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0 2.54)
+            (xy 0.762 1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "+5V_1_1_1"
+        (pin power_in line (at 0 0 90) (length 0) hide
+          (name "+5V" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "GND_1" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -6.35 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -1724,9 +1776,6 @@
   (junction (at 43.18 26.67) (diameter 0) (color 0 0 0 0)
     (uuid 1c1cf1d8-2e89-47f8-a921-c10b6af17924)
   )
-  (junction (at 163.195 144.78) (diameter 0) (color 0 0 0 0)
-    (uuid 243ac8d2-764b-4f1b-9b40-8d29b1c34aa1)
-  )
   (junction (at 109.22 109.22) (diameter 0) (color 0 0 0 0)
     (uuid 252b73e1-1a01-4efb-9713-30b7ec6f2591)
   )
@@ -1744,9 +1793,6 @@
   )
   (junction (at 121.92 182.88) (diameter 0) (color 0 0 0 0)
     (uuid 49d04085-954c-498d-9614-420ccda9ec10)
-  )
-  (junction (at 147.955 144.78) (diameter 0) (color 0 0 0 0)
-    (uuid 4d045d53-4ca2-4987-94e7-bbe50cefd00d)
   )
   (junction (at 63.5 48.26) (diameter 0) (color 0 0 0 0)
     (uuid 6151328b-0426-4070-ada8-be21b298c2b8)
@@ -1781,17 +1827,14 @@
   (junction (at 211.455 82.55) (diameter 0) (color 0 0 0 0)
     (uuid b8e2ba3d-3a3d-495a-af01-3116730340e9)
   )
-  (junction (at 162.56 106.68) (diameter 0) (color 0 0 0 0)
-    (uuid be0d4d7d-b931-489c-8e25-7355d154829f)
-  )
   (junction (at 200.025 67.31) (diameter 0) (color 0 0 0 0)
     (uuid ccbd1dcb-32e3-4b3d-ac90-dabca48945c9)
   )
+  (junction (at 31.75 127) (diameter 0) (color 0 0 0 0)
+    (uuid dc3ac9d0-a539-4966-a0e2-31bc953bd409)
+  )
   (junction (at 113.03 105.41) (diameter 0) (color 0 0 0 0)
     (uuid dd366ff7-1bf7-4251-b0ee-16ffbd1c9dab)
-  )
-  (junction (at 147.32 106.68) (diameter 0) (color 0 0 0 0)
-    (uuid e4c70434-9fe1-4bd8-87b6-8bc7f515a4db)
   )
   (junction (at 31.75 101.6) (diameter 0) (color 0 0 0 0)
     (uuid ea9ad238-a2db-4c50-9fd9-4648d13b6755)
@@ -1815,17 +1858,14 @@
   (no_connect (at 262.89 151.13) (uuid 0da02d4e-b134-4dff-9b0b-ae9d21028dc8))
   (no_connect (at 48.26 167.64) (uuid 1572041e-df7a-4dbe-9d56-885ef5fbee65))
   (no_connect (at 48.26 175.26) (uuid 23a6e2fd-102a-42fc-9c99-39cb0f0bb620))
-  (no_connect (at 48.26 132.08) (uuid 37497f97-83b2-426d-a5ab-125a5067ab65))
   (no_connect (at 265.43 54.61) (uuid 3ba1a8ba-adc0-413d-8951-7a6c649150d1))
   (no_connect (at 48.26 147.32) (uuid 3bcfcc89-d0ea-4ff5-959d-55593cb36dca))
-  (no_connect (at 48.26 127) (uuid 57cd194d-da49-48c9-9ec2-a0c9f6da7864))
   (no_connect (at 48.26 121.92) (uuid 6710fbfc-5c9a-479c-b76f-861817dcebe2))
   (no_connect (at 265.43 57.15) (uuid 6f90c738-d9f2-43e8-9378-b33fa1c09175))
   (no_connect (at 48.26 124.46) (uuid 70197756-1d21-44aa-9fac-f826b01964e5))
   (no_connect (at 104.14 165.1) (uuid 7b1d77a4-e7e1-4007-9b64-841fb9613861))
   (no_connect (at 48.26 160.02) (uuid 7f656f5d-99d5-4677-9014-f4acc03fff1f))
   (no_connect (at 48.26 142.24) (uuid 9e70116d-c70f-46a4-97dd-c7861953eda7))
-  (no_connect (at 48.26 119.38) (uuid ae773c51-d960-4b75-b853-542a1063501f))
   (no_connect (at 48.26 172.72) (uuid b641bb7f-55c1-411e-ad9b-fe6dcbef521f))
   (no_connect (at 252.095 112.395) (uuid c51928ac-1b79-4838-a337-7ed868277f11))
   (no_connect (at 48.26 137.16) (uuid c71eec95-862e-4ada-a70f-9e86404bfb12))
@@ -1853,11 +1893,7 @@
     (stroke (width 0) (type default))
     (uuid 0b4a59e6-721b-471e-8603-19d18d558ec0)
   )
-  (wire (pts (xy 162.56 115.57) (xy 162.56 106.68))
-    (stroke (width 0) (type default))
-    (uuid 0c7cb3b1-5617-4339-b4c7-f7751f399eb6)
-  )
-  (wire (pts (xy 36.83 127) (xy 30.48 127))
+  (wire (pts (xy 36.83 127) (xy 31.75 127))
     (stroke (width 0) (type default))
     (uuid 0dd2fe1f-9fa7-42c1-a085-60981385ccbb)
   )
@@ -1926,10 +1962,6 @@
   (wire (pts (xy 199.39 51.435) (xy 200.66 51.435))
     (stroke (width 0) (type default))
     (uuid 2d6102d4-41c8-48e3-9936-957f64a69846)
-  )
-  (wire (pts (xy 147.955 144.78) (xy 147.955 153.67))
-    (stroke (width 0) (type default))
-    (uuid 2e3ec321-e794-4bb3-b778-1aabdd103202)
   )
   (wire (pts (xy 212.09 51.435) (xy 214.63 51.435))
     (stroke (width 0) (type default))
@@ -2064,10 +2096,6 @@
     (stroke (width 0) (type default))
     (uuid 678ab5a1-4187-4fda-a0e3-01292f8c172e)
   )
-  (wire (pts (xy 163.195 153.67) (xy 163.195 144.78))
-    (stroke (width 0) (type default))
-    (uuid 6858cf62-a906-4642-889e-6c577f290568)
-  )
   (wire (pts (xy 90.17 57.785) (xy 95.885 57.785))
     (stroke (width 0) (type default))
     (uuid 6a62f873-ecf1-4b63-a537-3d5d61793300)
@@ -2117,10 +2145,6 @@
     (uuid 8667a324-3875-4090-9f9b-27525cef2f98)
   )
 
-  (wire (pts (xy 145.415 144.78) (xy 147.955 144.78))
-    (stroke (width 0) (type default))
-    (uuid 86a51051-7832-4c87-9c4a-45046dd47e49)
-  )
   (wire (pts (xy 255.27 33.02) (xy 265.43 33.02))
     (stroke (width 0) (type default))
     (uuid 872d1c28-d97d-4676-b1d1-4ecb834751cd)
@@ -2206,9 +2230,9 @@
     (stroke (width 0) (type default))
     (uuid b3e395b1-5876-4cc4-be8b-b5bae654c279)
   )
-  (wire (pts (xy 163.195 144.78) (xy 165.735 144.78))
+  (wire (pts (xy 145.415 144.78) (xy 147.955 144.78))
     (stroke (width 0) (type default))
-    (uuid b5f9d054-4219-4a92-b5ea-3c7d4f45f74c)
+    (uuid b7958420-7e4d-4c38-a860-6f9925bb7e4c)
   )
   (wire (pts (xy 63.5 48.26) (xy 63.5 45.72))
     (stroke (width 0) (type default))
@@ -2234,6 +2258,10 @@
     (stroke (width 0) (type default))
     (uuid c0381bdd-9073-4afd-962a-e2a0b361c8cc)
   )
+  (wire (pts (xy 163.195 144.78) (xy 165.735 144.78))
+    (stroke (width 0) (type default))
+    (uuid c1a906f4-e757-4f88-a0ce-a127b7f99a76)
+  )
   (wire (pts (xy 31.75 101.6) (xy 31.75 111.76))
     (stroke (width 0) (type default))
     (uuid c2567036-46cd-4910-8c35-aef5bfffbffc)
@@ -2245,6 +2273,10 @@
   (wire (pts (xy 138.43 119.38) (xy 140.97 119.38))
     (stroke (width 0) (type default))
     (uuid cfbd6840-91f0-4e13-8c81-8995983a51b1)
+  )
+  (wire (pts (xy 31.75 127) (xy 30.48 127))
+    (stroke (width 0) (type default))
+    (uuid d43342a5-c9ed-4f7e-9ec7-38ea07e791f3)
   )
   (wire (pts (xy 210.185 82.55) (xy 211.455 82.55))
     (stroke (width 0) (type default))
@@ -2298,10 +2330,6 @@
     (stroke (width 0) (type default))
     (uuid e753ba43-c303-4c1c-8968-964fcbab8029)
   )
-  (wire (pts (xy 147.32 115.57) (xy 162.56 115.57))
-    (stroke (width 0) (type default))
-    (uuid e90b7b3d-2c79-4f32-8cda-22beb5bd5f71)
-  )
   (wire (pts (xy 138.43 124.46) (xy 163.195 124.46))
     (stroke (width 0) (type default))
     (uuid ebfd3ff4-286e-45b6-9e66-404b30a03ded)
@@ -2309,10 +2337,6 @@
   (wire (pts (xy 117.475 73.025) (xy 126.365 73.025))
     (stroke (width 0) (type default))
     (uuid ed23a721-8a3f-4ba6-96ff-12c07ad99f1a)
-  )
-  (wire (pts (xy 147.955 153.67) (xy 163.195 153.67))
-    (stroke (width 0) (type default))
-    (uuid edec2e75-5ec0-4b84-8c8d-3a5e87cea46b)
   )
   (wire (pts (xy 211.455 67.31) (xy 212.725 67.31))
     (stroke (width 0) (type default))
@@ -2337,10 +2361,6 @@
   (wire (pts (xy 43.18 25.4) (xy 43.18 26.67))
     (stroke (width 0) (type default))
     (uuid f740c23c-81f3-48f8-9764-5aefb12082e6)
-  )
-  (wire (pts (xy 147.32 106.68) (xy 147.32 115.57))
-    (stroke (width 0) (type default))
-    (uuid f80c0c85-67ef-425d-8e7a-a8c0183d3c79)
   )
   (wire (pts (xy 152.4 34.29) (xy 153.67 34.29))
     (stroke (width 0) (type default))
@@ -2523,10 +2543,6 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 3222df97-e867-4eb5-bc35-4160d58e470f)
   )
-  (label "CS_IMU" (at 48.26 129.54 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid 3278620e-4838-490d-9d95-970858991c61)
-  )
   (label "1.9_SCK" (at 196.215 82.55 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 32b11f94-3f71-460b-81d5-b66be76e0562)
@@ -2551,7 +2567,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 37ebe381-dd9e-4609-9c1a-96884b4036e5)
   )
-  (label "MOSI" (at 53.975 75.565 0) (fields_autoplaced)
+  (label "MOSI_A" (at 53.975 75.565 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 38cf7016-c1d8-47fc-81a2-1a65665248d0)
   )
@@ -2603,6 +2619,10 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 607fa2d0-e7da-42f7-9e81-43874960db77)
   )
+  (label "MISO_A" (at 48.26 132.08 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 62b69af5-cb2a-41dd-a25e-4c212607e366)
+  )
   (label "SHDN_OUT" (at 147.955 137.16 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 68385c27-4fb0-4b42-b9bf-839de8dee81b)
@@ -2635,7 +2655,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 7a9b8966-a6e3-47c1-8992-76aff0da9d80)
   )
-  (label "SCK" (at 41.275 75.565 180) (fields_autoplaced)
+  (label "SCK_A" (at 41.275 75.565 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 7b7c128a-3614-4bb8-92d1-3f3e75abcc24)
   )
@@ -2663,9 +2683,21 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 8499e352-fdec-42ac-87bd-e05af1c4b0b7)
   )
+  (label "CS_IMU" (at 48.26 119.38 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 857628d7-d42c-4ab8-8570-5b54e2c3689e)
+  )
+  (label "MOSI_A" (at 48.26 129.54 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 8d5465fc-e8a0-4577-8b1e-139199b9addb)
+  )
   (label "CAN_RX" (at 25.4 39.37 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 931c8c34-92ed-42b4-9ff0-3b8061593d1b)
+  )
+  (label "SCK_A" (at 48.26 127 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 9462dea6-afd2-460b-b95e-0a1e63fc310a)
   )
   (label "1.9V" (at 200.025 59.69 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -2751,11 +2783,7 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid ce7b4e78-9cee-42c3-9813-0406d4a7e228)
   )
-  (label "+5V" (at 140.335 180.975 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid cf5a9f68-f14b-46d0-903f-cbdfa4122724)
-  )
-  (label "MISO" (at 41.275 73.025 180) (fields_autoplaced)
+  (label "MISO_A" (at 41.275 73.025 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid d19a3c2d-cc0b-4493-bbc3-e5fa08678289)
   )
@@ -2803,7 +2831,7 @@
   (symbol (lib_id "power:GND") (at 126.365 73.025 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0204d7f8-36ba-4c0e-bc67-dcb851349b2c)
-    (property "Reference" "#PWR?" (at 126.365 79.375 0)
+    (property "Reference" "#PWR0112" (at 126.365 79.375 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 126.365 77.851 0)
@@ -2819,7 +2847,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0112") (unit 1)
         )
       )
     )
@@ -2874,7 +2902,7 @@
   (symbol (lib_id "power:GND") (at 252.73 74.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0548709e-1d0a-49ed-8c20-76ef0ad4d09b)
-    (property "Reference" "#PWR?" (at 252.73 81.28 0)
+    (property "Reference" "#PWR0120" (at 252.73 81.28 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 252.73 78.74 0)
@@ -2890,7 +2918,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0120") (unit 1)
         )
       )
     )
@@ -2967,9 +2995,9 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" (at 196.85 40.005 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (pin "1" (uuid 98067caf-28f3-498e-afb5-df43e760552b))
     (pin "2" (uuid 772e6101-6d17-47a4-9aad-4c665c40893c))
     (pin "3" (uuid 7fe53052-6736-4f7b-846b-703ae8e4c5eb))
-    (pin "1" (uuid 98067caf-28f3-498e-afb5-df43e760552b))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -2982,7 +3010,7 @@
   (symbol (lib_id "power:GND") (at 116.84 167.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0ec2a12b-9d49-4c7a-9ea3-58d528353f2d)
-    (property "Reference" "#PWR?" (at 116.84 173.99 0)
+    (property "Reference" "#PWR0108" (at 116.84 173.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 116.84 166.37 0)
@@ -2998,7 +3026,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0108") (unit 1)
         )
       )
     )
@@ -3074,9 +3102,9 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" (at 160.02 107.315 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (pin "1" (uuid f1e4f1d4-3170-49c0-a1bd-5b03377bbd1a))
     (pin "2" (uuid b106a606-1afe-4cae-b922-f9faacfb1e3f))
     (pin "3" (uuid d83147c6-4e31-42fc-96cc-9de97cc0a2bd))
-    (pin "1" (uuid f1e4f1d4-3170-49c0-a1bd-5b03377bbd1a))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -3124,7 +3152,7 @@
   (symbol (lib_id "power:GND") (at 273.05 69.85 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1810e486-1534-4d1e-a59d-f9fb2bbe91ac)
-    (property "Reference" "#PWR?" (at 273.05 76.2 0)
+    (property "Reference" "#PWR0117" (at 273.05 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 273.05 73.66 0)
@@ -3140,7 +3168,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0117") (unit 1)
         )
       )
     )
@@ -3149,7 +3177,7 @@
   (symbol (lib_id "power:GND") (at 240.03 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1d2ff9af-b0d5-420a-a5e0-36322df4c8cb)
-    (property "Reference" "#PWR?" (at 240.03 46.99 0)
+    (property "Reference" "#PWR0119" (at 240.03 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 240.03 44.45 0)
@@ -3165,7 +3193,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0119") (unit 1)
         )
       )
     )
@@ -3174,7 +3202,7 @@
   (symbol (lib_name "GND_1") (lib_id "power:GND") (at 30.48 46.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1ffe3ed8-4d94-4e06-832b-3d24ada0c936)
-    (property "Reference" "#PWR?" (at 30.48 53.34 0)
+    (property "Reference" "#PWR0111" (at 30.48 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 30.48 52.07 0)
@@ -3190,7 +3218,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0111") (unit 1)
         )
       )
     )
@@ -3211,8 +3239,8 @@
     (property "Datasheet" "TLV70019DDCR" (at 207.01 148.59 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
-    (pin "2" (uuid bb9d61c6-50ee-4c34-99de-fb300413ba33))
     (pin "1" (uuid 4142001b-b932-430c-bec9-8037df02f56b))
+    (pin "2" (uuid bb9d61c6-50ee-4c34-99de-fb300413ba33))
     (pin "3" (uuid 4fe937af-72ef-4e47-b666-45ea5c885cb6))
     (pin "4" (uuid 35dcbf6a-abfc-49f2-a712-08973cfee0f3))
     (pin "5" (uuid 88d6dedf-b7d6-418c-9c66-9eb1b885942c))
@@ -3249,9 +3277,9 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" (at 160.655 145.415 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (pin "1" (uuid c62217dd-6cdc-46b7-9236-ef03ae8c8c94))
     (pin "2" (uuid 11c3f449-a973-4520-8205-fe73bf2140c2))
     (pin "3" (uuid de5c6df3-ed0a-4507-bae6-2d56fe3dd709))
-    (pin "1" (uuid c62217dd-6cdc-46b7-9236-ef03ae8c8c94))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -3299,7 +3327,7 @@
   (symbol (lib_id "power:GND") (at 41.275 95.885 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 24aaca2c-58d4-4a8d-b401-742a9128421e)
-    (property "Reference" "#PWR?" (at 41.275 102.235 0)
+    (property "Reference" "#PWR0104" (at 41.275 102.235 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 41.402 100.2792 0)
@@ -3315,7 +3343,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0104") (unit 1)
         )
       )
     )
@@ -3356,6 +3384,31 @@
     )
   )
 
+  (symbol (lib_name "+5V_1") (lib_id "power:+5V") (at 31.75 127 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 37dde1a8-8b9e-45ca-ade1-f56e1bc9a035)
+    (property "Reference" "#PWR02" (at 31.75 130.81 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+5V" (at 31.75 121.92 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 31.75 127 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 31.75 127 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 8dc84c41-7510-4db7-9704-e8909fe1bd1e))
+    (instances
+      (project "ishan_challenge"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
+          (reference "#PWR02") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "formula:MicroFit_RA_4") (at 164.465 62.865 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4007aec0-6c4c-4c16-a699-1f88021f8be5)
@@ -3377,10 +3430,10 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" (at 164.465 62.865 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 0155ffe2-8144-4511-bbbe-cd98ed9dc099))
-    (pin "2" (uuid a9634c71-2a46-4aca-9a77-9226d3a246f0))
-    (pin "4" (uuid 2ae02fa8-347c-4a76-8799-dd4df5cf1722))
     (pin "1" (uuid 1e1e5328-6b36-45a6-8246-48fd387e66cd))
+    (pin "2" (uuid a9634c71-2a46-4aca-9a77-9226d3a246f0))
+    (pin "3" (uuid 0155ffe2-8144-4511-bbbe-cd98ed9dc099))
+    (pin "4" (uuid 2ae02fa8-347c-4a76-8799-dd4df5cf1722))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -3393,7 +3446,7 @@
   (symbol (lib_id "power:GND") (at 165.735 156.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 47bf2716-ab37-4a03-b9b6-be1f1a20e1b6)
-    (property "Reference" "#PWR?" (at 165.735 162.56 0)
+    (property "Reference" "#PWR0122" (at 165.735 162.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 165.862 160.6042 0)
@@ -3409,7 +3462,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0122") (unit 1)
         )
       )
     )
@@ -3418,7 +3471,7 @@
   (symbol (lib_name "GND_1") (lib_id "power:GND") (at 43.18 52.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 485ce8c1-4036-4eb4-8554-397b329ef282)
-    (property "Reference" "#PWR?" (at 43.18 58.42 0)
+    (property "Reference" "#PWR0110" (at 43.18 58.42 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 43.18 57.15 0)
@@ -3434,7 +3487,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0110") (unit 1)
         )
       )
     )
@@ -3478,7 +3531,7 @@
   (symbol (lib_name "GND_1") (lib_id "power:GND") (at 58.42 27.94 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4f69a933-e549-4425-927e-3d9f8639c221)
-    (property "Reference" "#PWR?" (at 58.42 34.29 0)
+    (property "Reference" "#PWR0109" (at 58.42 34.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 58.42 33.02 0)
@@ -3494,7 +3547,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0109") (unit 1)
         )
       )
     )
@@ -3524,9 +3577,9 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" (at 201.93 72.39 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (pin "1" (uuid 9e757f94-5969-4a93-82c7-e26cc503f297))
     (pin "2" (uuid 6a8fb50d-1de4-45f9-94e6-945c4973eb4a))
     (pin "3" (uuid ca1e7d6b-b6a7-41c8-a1ba-a02d6f60ed63))
-    (pin "1" (uuid 9e757f94-5969-4a93-82c7-e26cc503f297))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -3586,12 +3639,12 @@
     (property "Datasheet" "TMP127EDBVRQ1" (at 211.455 109.855 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
-    (pin "6" (uuid d83555c8-272b-4f2c-b39c-067fb983b1b3))
-    (pin "4" (uuid f7dde61d-d8fb-4408-b89f-4e60d01368e5))
-    (pin "3" (uuid 094adc63-d1ec-4a9e-b3af-1690f4711752))
     (pin "1" (uuid 61fc21ef-fb58-4a8b-8d23-adb3f31749d3))
     (pin "2" (uuid ab3b207f-d2d4-416b-ba91-b6dc19972ee3))
+    (pin "3" (uuid 094adc63-d1ec-4a9e-b3af-1690f4711752))
+    (pin "4" (uuid f7dde61d-d8fb-4408-b89f-4e60d01368e5))
     (pin "5" (uuid 48d889aa-1f3d-4e2f-8a1e-20a39aa8ab94))
+    (pin "6" (uuid d83555c8-272b-4f2c-b39c-067fb983b1b3))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -3639,7 +3692,7 @@
   (symbol (lib_id "power:GND") (at 264.795 117.475 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 65f419b9-0e71-448e-87f0-a3173f5f8ed9)
-    (property "Reference" "#PWR?" (at 264.795 123.825 0)
+    (property "Reference" "#PWR0125" (at 264.795 123.825 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 264.795 121.285 0)
@@ -3655,7 +3708,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0125") (unit 1)
         )
       )
     )
@@ -3780,7 +3833,7 @@
   (symbol (lib_id "power:+5V") (at 53.975 73.025 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 774638db-26dc-4831-b2f0-b4ee1d435dfb)
-    (property "Reference" "#PWR?" (at 53.975 76.835 0)
+    (property "Reference" "#PWR0103" (at 53.975 76.835 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 54.356 68.6308 0)
@@ -3796,7 +3849,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0103") (unit 1)
         )
       )
     )
@@ -3805,7 +3858,7 @@
   (symbol (lib_id "power:GND") (at 53.975 78.105 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7892a3e7-9144-4bcd-a290-f4abc28514e6)
-    (property "Reference" "#PWR?" (at 53.975 84.455 0)
+    (property "Reference" "#PWR0102" (at 53.975 84.455 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 54.102 82.4992 0)
@@ -3821,7 +3874,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0102") (unit 1)
         )
       )
     )
@@ -3970,7 +4023,7 @@
   (symbol (lib_id "power:GND") (at 127 44.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 818bdd78-8ff4-437d-aead-9d5da2f97f5e)
-    (property "Reference" "#PWR?" (at 127 50.8 0)
+    (property "Reference" "#PWR0115" (at 127 50.8 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 127 49.276 0)
@@ -3986,7 +4039,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0115") (unit 1)
         )
       )
     )
@@ -4086,8 +4139,8 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/G5Q-1A4-DC5/Z3632-ND/1815721" (at 138.43 77.47 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid 56a81232-d507-49f1-aa4b-43c82a5625c3))
     (pin "1" (uuid 927107c2-4c33-4edb-bd64-947860fdaf7f))
+    (pin "2" (uuid 56a81232-d507-49f1-aa4b-43c82a5625c3))
     (pin "3" (uuid c871b779-e63b-4702-9c83-dd5a68a74f43))
     (pin "5" (uuid 995d9ca6-9712-4adc-ad26-44ad7d9f25ff))
     (instances
@@ -4102,7 +4155,7 @@
   (symbol (lib_id "power:GND") (at 126.365 31.115 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8697d46b-4628-4ac7-83e7-c6f70c311f28)
-    (property "Reference" "#PWR?" (at 126.365 37.465 0)
+    (property "Reference" "#PWR0114" (at 126.365 37.465 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 126.365 35.941 0)
@@ -4118,7 +4171,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0114") (unit 1)
         )
       )
     )
@@ -4328,7 +4381,7 @@
   (symbol (lib_id "power:GND") (at 124.46 175.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 93b0f916-4446-4b68-9007-45c4f4d61f47)
-    (property "Reference" "#PWR?" (at 124.46 181.61 0)
+    (property "Reference" "#PWR0106" (at 124.46 181.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 128.27 176.53 0)
@@ -4344,7 +4397,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0106") (unit 1)
         )
       )
     )
@@ -4425,7 +4478,7 @@
   (symbol (lib_id "power:GND") (at 201.295 112.395 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a42f3750-59a2-4106-8cf2-bcf7090cf0dc)
-    (property "Reference" "#PWR?" (at 201.295 118.745 0)
+    (property "Reference" "#PWR0126" (at 201.295 118.745 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 201.422 116.7892 0)
@@ -4441,7 +4494,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0126") (unit 1)
         )
       )
     )
@@ -4491,7 +4544,7 @@
   (symbol (lib_id "power:GND") (at 22.86 91.44 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ae7720f8-dfed-4d14-bd17-9ea104810800)
-    (property "Reference" "#PWR?" (at 22.86 97.79 0)
+    (property "Reference" "#PWR0101" (at 22.86 97.79 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 22.987 95.8342 0)
@@ -4507,7 +4560,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0101") (unit 1)
         )
       )
     )
@@ -4621,7 +4674,7 @@
   (symbol (lib_id "power:GND") (at 165.1 118.11 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b4fa2363-299a-4e1f-9eeb-98ad9422941f)
-    (property "Reference" "#PWR?" (at 165.1 124.46 0)
+    (property "Reference" "#PWR0116" (at 165.1 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 165.227 122.5042 0)
@@ -4637,7 +4690,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0116") (unit 1)
         )
       )
     )
@@ -4646,7 +4699,7 @@
   (symbol (lib_id "power:GND") (at 158.75 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b50681a7-af91-40be-bb1b-d6fd932514f6)
-    (property "Reference" "#PWR?" (at 158.75 73.66 0)
+    (property "Reference" "#PWR0123" (at 158.75 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 158.877 71.7042 0)
@@ -4662,7 +4715,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0123") (unit 1)
         )
       )
     )
@@ -4671,7 +4724,7 @@
   (symbol (lib_id "power:GND") (at 265.43 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b7c2f215-b864-4307-bb55-a4cc43fc28f3)
-    (property "Reference" "#PWR?" (at 265.43 46.99 0)
+    (property "Reference" "#PWR0118" (at 265.43 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 265.43 44.45 0)
@@ -4687,7 +4740,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0118") (unit 1)
         )
       )
     )
@@ -4752,9 +4805,9 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" (at 154.305 39.37 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (pin "1" (uuid 2ebace71-7223-432a-8def-c8534d9504f6))
     (pin "2" (uuid bbd7110b-c99e-4795-b79a-1ac2f8908703))
     (pin "3" (uuid 0885616c-810d-461b-b1b1-dcf24f2a0e48))
-    (pin "1" (uuid 2ebace71-7223-432a-8def-c8534d9504f6))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -4767,7 +4820,7 @@
   (symbol (lib_id "power:GND") (at 50.8 91.44 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b9e6f04b-cf7f-40bb-bacf-17f6616a83ac)
-    (property "Reference" "#PWR?" (at 50.8 97.79 0)
+    (property "Reference" "#PWR0105" (at 50.8 97.79 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 50.8 90.17 0)
@@ -4783,7 +4836,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0105") (unit 1)
         )
       )
     )
@@ -4827,7 +4880,7 @@
   (symbol (lib_id "power:GND") (at 233.045 62.23 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bb965676-a794-463c-ab9c-ddadfab3d0cc)
-    (property "Reference" "#PWR?" (at 233.045 68.58 0)
+    (property "Reference" "#PWR0121" (at 233.045 68.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 233.172 66.6242 0)
@@ -4843,7 +4896,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0121") (unit 1)
         )
       )
     )
@@ -4873,9 +4926,9 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" (at 200.66 87.63 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (pin "1" (uuid 7ba12a47-9d95-4eb0-8919-2f79bd81da46))
     (pin "2" (uuid 711a89a0-295d-42be-afe6-02383e4ba821))
     (pin "3" (uuid ffc6a385-e31b-4744-b87a-35928324734b))
-    (pin "1" (uuid 7ba12a47-9d95-4eb0-8919-2f79bd81da46))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -4923,7 +4976,7 @@
   (symbol (lib_id "power:GND") (at 113.03 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c0c713fa-59bb-408e-adfa-c0ae4aace1c9)
-    (property "Reference" "#PWR?" (at 113.03 111.76 0)
+    (property "Reference" "#PWR0107" (at 113.03 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 113.157 109.8042 0)
@@ -4939,7 +4992,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0107") (unit 1)
         )
       )
     )
@@ -5030,30 +5083,30 @@
     (property "Datasheet" "http://www.invensense.com/wp-content/uploads/2016/06/DS-000189-ICM-20948-v1.3.pdf" (at 252.73 60.96 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "23" (uuid 3b06d704-f1b4-48fe-9c8c-ca563f599986))
-    (pin "8" (uuid f2ef63e8-194f-4763-81ae-19762dde6dc9))
-    (pin "5" (uuid 694abf70-33b2-4cfb-a553-c33ddccf8c3d))
-    (pin "9" (uuid e6c84b73-1832-4a6f-a380-3648c2c01836))
-    (pin "4" (uuid c8208270-aa6e-49bf-99ac-c414edb7582f))
-    (pin "22" (uuid 229f15c5-74f8-43da-8120-1e20ecf9380c))
-    (pin "20" (uuid 622d8ced-0858-4ca6-85ab-25d65adc98bf))
+    (pin "1" (uuid af0ec7e2-170a-4f50-9e78-7dae4783f310))
     (pin "10" (uuid cfe2c9a3-4b7e-40b3-9e16-31d0bb5fdece))
-    (pin "16" (uuid 9a16c4ee-7d7d-40f6-9ff2-cafc3df57849))
-    (pin "24" (uuid 2577e09f-c440-4461-89a7-33ae7e3c096b))
-    (pin "6" (uuid 43c0e4af-6505-4070-bc4b-2dc7cdcb42d1))
-    (pin "18" (uuid ff5ae8aa-bdcd-472f-b4a7-54fc79abc58a))
-    (pin "2" (uuid 067f6a89-c771-40d1-97b3-aa1bee516446))
-    (pin "7" (uuid 150bba77-2651-43a1-8039-4e6ab4fc417a))
-    (pin "3" (uuid 1d79bb7c-e539-4c23-a299-86c5e87c9d76))
-    (pin "21" (uuid 71341909-c52e-452d-84b2-429335d96fee))
-    (pin "19" (uuid d934f59a-5645-41fd-8314-6174871b31a0))
     (pin "11" (uuid fc1e9525-7302-4b3b-84d9-688d4bf4181b))
-    (pin "15" (uuid c8bcc0e0-fa67-45aa-91fa-d63325cfcfa7))
+    (pin "12" (uuid e27b0f18-c825-4a8e-af78-32e372df035a))
     (pin "13" (uuid ec0aaf9c-4b21-4caa-8477-2cc96157f499))
     (pin "14" (uuid a77e664e-52af-491c-946b-980114441f46))
-    (pin "12" (uuid e27b0f18-c825-4a8e-af78-32e372df035a))
-    (pin "1" (uuid af0ec7e2-170a-4f50-9e78-7dae4783f310))
+    (pin "15" (uuid c8bcc0e0-fa67-45aa-91fa-d63325cfcfa7))
+    (pin "16" (uuid 9a16c4ee-7d7d-40f6-9ff2-cafc3df57849))
     (pin "17" (uuid be04d267-f518-4ccd-a5fc-27811bfb2ea7))
+    (pin "18" (uuid ff5ae8aa-bdcd-472f-b4a7-54fc79abc58a))
+    (pin "19" (uuid d934f59a-5645-41fd-8314-6174871b31a0))
+    (pin "2" (uuid 067f6a89-c771-40d1-97b3-aa1bee516446))
+    (pin "20" (uuid 622d8ced-0858-4ca6-85ab-25d65adc98bf))
+    (pin "21" (uuid 71341909-c52e-452d-84b2-429335d96fee))
+    (pin "22" (uuid 229f15c5-74f8-43da-8120-1e20ecf9380c))
+    (pin "23" (uuid 3b06d704-f1b4-48fe-9c8c-ca563f599986))
+    (pin "24" (uuid 2577e09f-c440-4461-89a7-33ae7e3c096b))
+    (pin "3" (uuid 1d79bb7c-e539-4c23-a299-86c5e87c9d76))
+    (pin "4" (uuid c8208270-aa6e-49bf-99ac-c414edb7582f))
+    (pin "5" (uuid 694abf70-33b2-4cfb-a553-c33ddccf8c3d))
+    (pin "6" (uuid 43c0e4af-6505-4070-bc4b-2dc7cdcb42d1))
+    (pin "7" (uuid 150bba77-2651-43a1-8039-4e6ab4fc417a))
+    (pin "8" (uuid f2ef63e8-194f-4763-81ae-19762dde6dc9))
+    (pin "9" (uuid e6c84b73-1832-4a6f-a380-3648c2c01836))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -5066,7 +5119,7 @@
   (symbol (lib_id "power:GND") (at 273.05 156.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cf69ac12-26fe-4a4b-8909-5bd235c1422c)
-    (property "Reference" "#PWR?" (at 273.05 162.56 0)
+    (property "Reference" "#PWR0124" (at 273.05 162.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 273.05 160.02 0)
@@ -5082,7 +5135,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0124") (unit 1)
         )
       )
     )
@@ -5342,7 +5395,7 @@
   (symbol (lib_id "power:GND") (at 126.365 57.785 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e19cbe63-7471-42c5-9ad4-ff71009fc2be)
-    (property "Reference" "#PWR?" (at 126.365 64.135 0)
+    (property "Reference" "#PWR0113" (at 126.365 64.135 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 126.365 62.611 0)
@@ -5358,7 +5411,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0113") (unit 1)
         )
       )
     )
@@ -5367,7 +5420,7 @@
   (symbol (lib_id "power:GND") (at 198.12 156.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e65f4e67-3999-4d52-a3e7-c7a472d796da)
-    (property "Reference" "#PWR?" (at 198.12 162.56 0)
+    (property "Reference" "#PWR0127" (at 198.12 162.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 198.12 160.02 0)
@@ -5383,7 +5436,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0127") (unit 1)
         )
       )
     )
@@ -5491,10 +5544,10 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450400/WM1814-ND/252527" (at 146.685 62.865 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 5b58dc11-a215-4124-bc26-5c250d3ea653))
-    (pin "2" (uuid 53bd1dd4-7ab1-4d18-b236-d1d51117cdd0))
-    (pin "4" (uuid bb26c600-7a7c-4f21-938c-b9cf01046463))
     (pin "1" (uuid 6afd3037-1052-485d-9c5d-ab15b39dcdb8))
+    (pin "2" (uuid 53bd1dd4-7ab1-4d18-b236-d1d51117cdd0))
+    (pin "3" (uuid 5b58dc11-a215-4124-bc26-5c250d3ea653))
+    (pin "4" (uuid bb26c600-7a7c-4f21-938c-b9cf01046463))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -5528,9 +5581,9 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/toshiba-semiconductor-and-storage/SSM3K333RLF/SSM3K333RLFCT-ND/3522391" (at 201.295 56.515 0)
       (effects (font (size 1.524 1.524)) hide)
     )
+    (pin "1" (uuid 129fdd41-83a7-441a-86db-a1dd772acadf))
     (pin "2" (uuid 870c4de9-11f3-4c9c-8df3-67f8ec1719b0))
     (pin "3" (uuid cf227113-8cd2-4d03-870c-3585e7a35821))
-    (pin "1" (uuid 129fdd41-83a7-441a-86db-a1dd772acadf))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9"
@@ -5645,8 +5698,8 @@
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/G5Q-1A4-DC5/Z3632-ND/1815721" (at 139.065 115.57 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid ba633f37-201d-4477-a42b-286ed3fbd454))
     (pin "1" (uuid ad21e943-414b-4563-bff1-af6fed208535))
+    (pin "2" (uuid ba633f37-201d-4477-a42b-286ed3fbd454))
     (pin "3" (uuid 8ee594e6-50c2-4a18-b8c4-dad769100e68))
     (pin "5" (uuid 61604683-93e9-42b1-937e-51251ea761a7))
     (instances
@@ -5671,10 +5724,6 @@
     (pin "B" input (at 140.335 177.165 180)
       (effects (font (size 1.27 1.27)) (justify left))
       (uuid 68aa20ee-9aef-45b8-8599-0d697ffdcf62)
-    )
-    (pin "+5V" input (at 140.335 180.975 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 70ff5bf5-7dd2-4b6c-8081-1a63c05b99d8)
     )
     (pin "A" input (at 140.335 184.785 180)
       (effects (font (size 1.27 1.27)) (justify left))

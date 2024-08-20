@@ -482,6 +482,58 @@
         )
       )
     )
+    (symbol "power:+5V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Value" "+5V" (at 0 3.556 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "global power" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Power symbol creates a global label with name \"+5V\"" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "+5V_0_1"
+        (polyline
+          (pts
+            (xy -0.762 1.27)
+            (xy 0 2.54)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 2.54)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0 2.54)
+            (xy 0.762 1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "+5V_1_1"
+        (pin power_in line (at 0 0 90) (length 0) hide
+          (name "+5V" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "power:GND" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -6.35 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -617,7 +669,7 @@
     (stroke (width 0) (type default))
     (uuid 29c56536-7e39-46a2-927c-4564324c289e)
   )
-  (wire (pts (xy 64.77 58.42) (xy 60.96 58.42))
+  (wire (pts (xy 64.77 58.42) (xy 62.23 58.42))
     (stroke (width 0) (type default))
     (uuid 3f06d286-f720-46ff-9bee-1ee0ef7764df)
   )
@@ -737,10 +789,6 @@
     (stroke (width 0) (type default))
     (uuid b939cac2-0d35-492f-8ff9-33efb0d630d8)
   )
-  (wire (pts (xy 54.61 46.99) (xy 60.96 46.99))
-    (stroke (width 0) (type default))
-    (uuid b98ca8e6-be13-41d0-a5c4-ed4c03dbf6e7)
-  )
   (wire (pts (xy 200.66 106.68) (xy 205.74 106.68))
     (stroke (width 0) (type default))
     (uuid bb078f96-85f1-4c85-8b2f-bae401fb70dc)
@@ -769,7 +817,7 @@
     (stroke (width 0) (type default))
     (uuid d4b73157-fa91-4778-a3ba-b3b29515365f)
   )
-  (wire (pts (xy 60.96 46.99) (xy 60.96 58.42))
+  (wire (pts (xy 62.23 54.61) (xy 62.23 58.42))
     (stroke (width 0) (type default))
     (uuid d4f417b4-eafc-4540-a037-78719c4e0110)
   )
@@ -818,13 +866,9 @@
     (uuid f5353432-fafe-425e-b228-2e130ae99dff)
   )
 
-  (label "+5V" (at 60.96 46.99 180) (fields_autoplaced)
+  (label "+5V" (at 62.23 54.61 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 1dcf7287-9e15-4726-a05a-61b9c5d24745)
-  )
-  (label "+5V" (at 59.69 99.06 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid 4c058c7e-d392-4c83-8de5-630ed10c7ad1)
   )
   (label "+5V" (at 179.07 91.44 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
@@ -833,6 +877,10 @@
   (label "A" (at 86.36 100.33 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 6288078f-32e4-4513-9cbf-adce1b93d134)
+  )
+  (label "+5V" (at 59.69 104.14 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 6ff8a332-800d-4bb6-a1ec-b3d0a4b30359)
   )
   (label "+5V" (at 127 109.22 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
@@ -862,10 +910,6 @@
   (hierarchical_label "A_Output" (shape output) (at 195.58 92.71 90) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 8f6ccb2f-2dc9-44b2-892f-b34ceacca3d8)
-  )
-  (hierarchical_label "+5V" (shape input) (at 54.61 46.99 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid d26c603c-441b-4d39-b8e0-dfa2cce7398f)
   )
 
   (symbol (lib_id "Switch:SW_DIP_x01") (at 100.33 66.04 0) (unit 1)
@@ -897,7 +941,7 @@
   (symbol (lib_id "power:GND") (at 222.25 106.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 05707aa7-825e-44ff-a1e6-70622357797d)
-    (property "Reference" "#PWR?" (at 222.25 113.03 0)
+    (property "Reference" "#PWR0136" (at 222.25 113.03 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 226.06 107.95 0)
@@ -913,7 +957,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0136") (unit 1)
         )
       )
     )
@@ -943,8 +987,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 109.728 138.43 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid a9c81d8c-73c7-4d24-892d-9b7eea483f57))
     (pin "1" (uuid de7f3664-0dc0-4676-8a30-4caf7182c922))
+    (pin "2" (uuid a9c81d8c-73c7-4d24-892d-9b7eea483f57))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -978,8 +1022,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 109.728 86.36 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid 22e2426d-5434-495a-be6a-999b21a3eb32))
     (pin "1" (uuid f28080fd-1520-4284-9383-0901928a673d))
+    (pin "2" (uuid 22e2426d-5434-495a-be6a-999b21a3eb32))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1004,9 +1048,9 @@
     (property "Datasheet" "~" (at 73.66 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 19c9f707-b167-4fff-8cc5-cce08f91b9ca))
     (pin "1" (uuid ef5193c1-647f-4339-8fdb-7a5ab2d7cda8))
     (pin "2" (uuid c5e3841f-5878-4d10-8c6f-8b5f3106f6f1))
+    (pin "3" (uuid 19c9f707-b167-4fff-8cc5-cce08f91b9ca))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1040,8 +1084,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 137.16 104.648 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid 220d562a-1acc-45de-8d8e-e7bacae0236a))
     (pin "1" (uuid d559427e-51c1-4132-a7db-41ccb3a3e8fb))
+    (pin "2" (uuid 220d562a-1acc-45de-8d8e-e7bacae0236a))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1054,7 +1098,7 @@
   (symbol (lib_id "power:GND") (at 121.92 134.62 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2a4e5ed9-1278-4b24-866f-23d8cd8dd1f6)
-    (property "Reference" "#PWR?" (at 121.92 140.97 0)
+    (property "Reference" "#PWR0129" (at 121.92 140.97 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 121.92 139.7 0)
@@ -1070,7 +1114,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0129") (unit 1)
         )
       )
     )
@@ -1097,6 +1141,31 @@
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
           (reference "SW2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+5V") (at 59.69 99.06 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 3244bf80-2f62-4a09-8332-88b516a9ff4f)
+    (property "Reference" "#PWR01" (at 59.69 102.87 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+5V" (at 59.69 93.98 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 59.69 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 59.69 99.06 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid db5b19f8-3f92-4a46-9d6f-3b33f93efba7))
+    (instances
+      (project "ishan_challenge"
+        (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
+          (reference "#PWR01") (unit 1)
         )
       )
     )
@@ -1152,8 +1221,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 58.42 46.228 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid 8c9217dd-b304-4b15-87f3-75a043bf75d5))
     (pin "1" (uuid 7778a0fe-b830-47cb-85d7-83f3c197513a))
+    (pin "2" (uuid 8c9217dd-b304-4b15-87f3-75a043bf75d5))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1213,8 +1282,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 118.11 66.548 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid 52f5d5b6-3071-48c9-907d-a0c9d2651ce3))
     (pin "1" (uuid cf5c95dc-0585-4644-b402-4e49f09dfcf9))
+    (pin "2" (uuid 52f5d5b6-3071-48c9-907d-a0c9d2651ce3))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1248,8 +1317,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 118.11 118.618 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid e3bc56b6-92ac-4081-97de-5edf58d3edcd))
     (pin "1" (uuid d3520f70-11ae-4edf-9f22-87e479abfb3e))
+    (pin "2" (uuid e3bc56b6-92ac-4081-97de-5edf58d3edcd))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1262,7 +1331,7 @@
   (symbol (lib_id "power:GND") (at 73.66 72.39 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 414db467-d1c3-4db6-b9fc-0784605973ba)
-    (property "Reference" "#PWR?" (at 73.66 78.74 0)
+    (property "Reference" "#PWR0135" (at 73.66 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 73.66 77.47 0)
@@ -1278,7 +1347,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0135") (unit 1)
         )
       )
     )
@@ -1309,10 +1378,10 @@
       (effects (font (size 1.524 1.524)) hide)
     )
     (pin "2" (uuid 20a1bc29-0966-4b30-ae9a-fe4f78318e66))
-    (pin "4" (uuid 385479cf-a70e-40a5-8740-88d03d6e20c2))
-    (pin "3" (uuid abc32b69-b63b-4dae-952b-b5fdcc27bcae))
-    (pin "1" (uuid 753ab167-4c52-4292-a946-4aab9a2c10ff))
     (pin "5" (uuid 3063b72e-f2fc-4313-8777-04c23e0b1c68))
+    (pin "1" (uuid 753ab167-4c52-4292-a946-4aab9a2c10ff))
+    (pin "3" (uuid abc32b69-b63b-4dae-952b-b5fdcc27bcae))
+    (pin "4" (uuid 385479cf-a70e-40a5-8740-88d03d6e20c2))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1346,8 +1415,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 73.66 105.918 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid 64b58582-a709-4701-969e-d0bd63c51098))
     (pin "1" (uuid 07d3e06b-2681-4add-a198-7601be1ea291))
+    (pin "2" (uuid 64b58582-a709-4701-969e-d0bd63c51098))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1381,8 +1450,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 74.93 53.848 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid 6daa4b7c-d6e6-4ea4-9b01-6e99169fb910))
     (pin "1" (uuid 2b9901cd-edc9-430d-8f55-2d2c545fe9bc))
+    (pin "2" (uuid 6daa4b7c-d6e6-4ea4-9b01-6e99169fb910))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1395,7 +1464,7 @@
   (symbol (lib_id "power:GND") (at 127 124.46 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 59755ae7-9a26-43b5-a558-addb71ecbf74)
-    (property "Reference" "#PWR?" (at 127 130.81 0)
+    (property "Reference" "#PWR0133" (at 127 130.81 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 130.81 125.73 0)
@@ -1411,7 +1480,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0133") (unit 1)
         )
       )
     )
@@ -1420,7 +1489,7 @@
   (symbol (lib_id "power:GND") (at 151.13 76.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5f2eb160-02bc-4b67-9529-6661c93fc094)
-    (property "Reference" "#PWR?" (at 151.13 82.55 0)
+    (property "Reference" "#PWR0132" (at 151.13 82.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 151.13 81.28 0)
@@ -1436,7 +1505,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0132") (unit 1)
         )
       )
     )
@@ -1445,7 +1514,7 @@
   (symbol (lib_id "power:GND") (at 121.92 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 637f8df0-fd78-47ee-a9ef-9e12bfc777e7)
-    (property "Reference" "#PWR?" (at 121.92 88.9 0)
+    (property "Reference" "#PWR0131" (at 121.92 88.9 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 121.92 87.63 0)
@@ -1461,7 +1530,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0131") (unit 1)
         )
       )
     )
@@ -1470,7 +1539,7 @@
   (symbol (lib_id "power:GND") (at 72.39 124.46 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 67667e0d-34f7-4f8b-af98-e21395bbf90c)
-    (property "Reference" "#PWR?" (at 72.39 130.81 0)
+    (property "Reference" "#PWR0128" (at 72.39 130.81 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 72.39 129.54 0)
@@ -1486,7 +1555,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0128") (unit 1)
         )
       )
     )
@@ -1495,7 +1564,7 @@
   (symbol (lib_id "power:GND") (at 127 72.39 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 73178a0e-4450-4a1c-a59f-b425deda8493)
-    (property "Reference" "#PWR?" (at 127 78.74 0)
+    (property "Reference" "#PWR0130" (at 127 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 130.81 73.66 0)
@@ -1511,7 +1580,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0130") (unit 1)
         )
       )
     )
@@ -1532,9 +1601,9 @@
     (property "Datasheet" "~" (at 72.39 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 32974560-fb20-4f73-a9a3-61699af43dd0))
     (pin "1" (uuid 33c37ad9-4325-4b5d-aa7c-82a8cc96b54f))
     (pin "2" (uuid b9df187c-b0fc-4d6d-8f3a-a95c27a3645a))
+    (pin "3" (uuid 32974560-fb20-4f73-a9a3-61699af43dd0))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1568,8 +1637,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 137.16 52.578 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid 8bd4fa71-6af1-4d41-9a2e-371e72061b4b))
     (pin "1" (uuid 60c0ce6f-f8a7-4375-8054-8673cb77ba5b))
+    (pin "2" (uuid 8bd4fa71-6af1-4d41-9a2e-371e72061b4b))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1582,7 +1651,7 @@
   (symbol (lib_id "power:GND") (at 179.07 106.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9847f6eb-bd0d-49e5-86a2-cb3b27f32b2c)
-    (property "Reference" "#PWR?" (at 179.07 113.03 0)
+    (property "Reference" "#PWR0137" (at 179.07 113.03 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 175.26 107.95 0)
@@ -1598,7 +1667,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0137") (unit 1)
         )
       )
     )
@@ -1629,10 +1698,10 @@
       (effects (font (size 1.524 1.524)) hide)
     )
     (pin "2" (uuid f9671a3d-8420-4420-b433-bc38f242fa8e))
-    (pin "4" (uuid 15919bf8-8d3d-4a6c-bf01-81360a205512))
-    (pin "3" (uuid 9f8c9e38-1219-4f93-8e46-54de7b01ec51))
-    (pin "1" (uuid 171d421c-e181-40a2-a0d0-1d591629510d))
     (pin "5" (uuid 52317347-8a58-4136-a70f-15456bdc6460))
+    (pin "1" (uuid 171d421c-e181-40a2-a0d0-1d591629510d))
+    (pin "3" (uuid 9f8c9e38-1219-4f93-8e46-54de7b01ec51))
+    (pin "4" (uuid 15919bf8-8d3d-4a6c-bf01-81360a205512))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1712,8 +1781,8 @@
     (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 57.15 98.298 0)
       (effects (font (size 1.524 1.524)) hide)
     )
-    (pin "2" (uuid a9aeca6d-d7b7-4ae5-b7f5-d1e229b186da))
     (pin "1" (uuid b902a492-b435-4214-b2f0-349c5df00f45))
+    (pin "2" (uuid a9aeca6d-d7b7-4ae5-b7f5-d1e229b186da))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1794,8 +1863,8 @@
     (property "MPN" "1276-6470-1-ND" (at 151.13 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "2" (uuid d04e7b62-e62b-4863-9238-fad855646263))
     (pin "1" (uuid 32e6b6fa-e482-4141-ae33-e57e7133dddd))
+    (pin "2" (uuid d04e7b62-e62b-4863-9238-fad855646263))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1911,10 +1980,10 @@
       (effects (font (size 1.524 1.524)) hide)
     )
     (pin "2" (uuid 2e5d8c60-c8c2-4ab6-9979-27f26c96ee00))
-    (pin "4" (uuid dc1b8ee9-e52c-462e-996c-106e4e7d1239))
-    (pin "3" (uuid a29672e1-252d-4f78-be7e-9aa2c8de7432))
-    (pin "1" (uuid b2ea16b2-c3f4-4e6f-9551-5694be5d8cf4))
     (pin "5" (uuid 6e7aea25-b0d5-46a0-84fa-05f1795ce968))
+    (pin "1" (uuid b2ea16b2-c3f4-4e6f-9551-5694be5d8cf4))
+    (pin "3" (uuid a29672e1-252d-4f78-be7e-9aa2c8de7432))
+    (pin "4" (uuid dc1b8ee9-e52c-462e-996c-106e4e7d1239))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -1948,8 +2017,8 @@
     (property "MPN" "1276-6470-1-ND" (at 151.13 125.73 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "2" (uuid 6cd87bae-5f03-4286-add8-cca62bcd8dbc))
     (pin "1" (uuid 39fdd6b8-4643-4b7e-aa52-9c56fb01744a))
+    (pin "2" (uuid 6cd87bae-5f03-4286-add8-cca62bcd8dbc))
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
@@ -2008,7 +2077,7 @@
   (symbol (lib_id "power:GND") (at 151.13 128.27 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f8f1fb72-cf05-4013-ab90-00d04a37af5a)
-    (property "Reference" "#PWR?" (at 151.13 134.62 0)
+    (property "Reference" "#PWR0134" (at 151.13 134.62 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 151.13 133.35 0)
@@ -2024,7 +2093,7 @@
     (instances
       (project "ishan_challenge"
         (path "/fd04df53-5d35-4a53-8480-f61754ab13c9/10b880c2-b30e-41d3-bbce-00ec1526dceb"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0134") (unit 1)
         )
       )
     )
