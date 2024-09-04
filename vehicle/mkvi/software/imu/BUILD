@@ -5,6 +5,29 @@ exports_files([
     "imu.yml",
 ])
 
+cc_binary(
+    name = "imu_debug",
+    srcs = [
+        "imu.c",
+        "imu_config.h",
+        "//projects/btldr:git_sha_header",
+    ],
+    copts = ["-E", "-P"],
+    linkopts = [],
+    target_compatible_with = select({
+        "//bazel/constraints:atmega16m1": [],
+        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+    }),
+    deps = [
+        ":can_api",
+        "//libs/spi",
+        "//libs/gpio",
+        "//libs/timer",
+        "//projects/btldr:btldr_lib",
+        "//projects/can_print",
+    ],
+)
+
 cc_firmware(
     name = "imu",
     srcs = [
@@ -23,7 +46,7 @@ cc_firmware(
         "//libs/gpio",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
-        # "//projects/can_print",
+        "//projects/can_print",
     ],
 )
 
