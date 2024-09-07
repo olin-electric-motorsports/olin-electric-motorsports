@@ -12,22 +12,13 @@
 
 uint8_t txdata_receive = 0xFF;
 
-// CS Pins
-
-// Spi pins
-gpio_t miso = PB0;
-gpio_t mosi = PB1;
-gpio_t sck = PB7;
+// SPI pins
 gpio_t cs;
+gpio_t miso;
+gpio_t mosi;
+gpio_t sck;
 
 spi_mode_e mode = MAIN;
-
-typedef struct {
-    gpio_t mosi;
-    gpio_t miso;
-    gpio_t sck;
-    gpio_t* cs;
-} spi_pins_s;
 
 static bool spi_interrupt_enabled = false;
 static void (*spi_callback)(void);
@@ -42,14 +33,26 @@ void spi_init(spi_cfg_s* spi_cfg) {
     cs = *spi_cfg->cs_pin;
     mode = spi_cfg->mode;
 
+    // Redirect SPI to either the main or alternate bus
+    if (spi_cfg->spi_channel) {
+        miso = (gpio_t)PD2;
+        mosi = (gpio_t)PD3;
+        sck = (gpio_t)PD4;
+        MCUCR |= 1 << SPIPS; // Redirect SPI to alt bus
+    } else {
+        miso = (gpio_t)PB0;
+        mosi = (gpio_t)PB1;
+        sck = (gpio_t)PB7;
+    }
+
     uint8_t main_direction = (mode == MAIN) ? OUTPUT : INPUT;
 
     gpio_set_mode(mosi, main_direction);
     gpio_set_mode(miso, main_direction);
     gpio_set_mode(sck, main_direction);
 
-    gpio_t ss = PD3;
-    gpio_set_mode(ss, OUTPUT);
+    // gpio_t ss = PD3;
+    // gpio_set_mode(ss, OUTPUT);
 
     SPCR |= (spi_cfg->data_order << DORD) | (spi_cfg->interrupt_enable << SPIE)
             | (spi_cfg->polarity << CPOL) | (spi_cfg->phase << CPHA)

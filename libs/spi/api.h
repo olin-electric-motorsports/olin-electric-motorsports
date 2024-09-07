@@ -36,6 +36,15 @@ typedef enum {
     F_OSC_DIV_64_2,
 } spi_clock_rate_e;
 
+/**
+ * Redirect SPI to either the main or alternate bus
+ * MAIN_BUS: MISO (PB0), MOSI (PB1), SCK (PB7)
+ * ALT_BUS: MISO_A (PD2), MOSI_A (PD3), SCK_A (PD4)
+ *
+ * MAIN_BUS is the default, as most existing boards use the _A SPI pins
+ */
+typedef enum { MAIN_BUS = 0, ALT_BUS = 1 } spi_channel_e;
+
 typedef struct {
     bool interrupt_enable;
     spi_data_order_e data_order;
@@ -44,6 +53,7 @@ typedef struct {
     spi_clock_phase_e phase;
     spi_clock_rate_e clock_rate;
     gpio_t* cs_pin;
+    spi_channel_e spi_channel;
 } spi_cfg_s;
 
 /*
