@@ -51,8 +51,9 @@ void spi_init(spi_cfg_s* spi_cfg) {
     gpio_set_mode(miso, main_direction);
     gpio_set_mode(sck, main_direction);
 
-    // gpio_t ss = PD3;
-    // gpio_set_mode(ss, OUTPUT);
+    // TODO: Update for ALT/MAIN spi buses
+    gpio_t ss = PC1;
+    gpio_set_mode(ss, OUTPUT);
 
     SPCR |= (spi_cfg->data_order << DORD) | (spi_cfg->interrupt_enable << SPIE)
             | (spi_cfg->polarity << CPOL) | (spi_cfg->phase << CPHA)

@@ -2,24 +2,36 @@
 
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
+#include "libs/timer/api.h"
 
-// SPI pins
-gpio_t miso = PD2;
-gpio_t mosi = PD3;
-gpio_t sck = PD4;
+// Timer config
+void timer_0_isr(void);
+timer_cfg_s timer_0_cfg = {
+    .timer = TIMER0,
+    .timer0_mode = TIMER0_MODE_CTC,
+    .prescalar = CLKIO_DIV_1024,
+    .channel_a = {
+        .channel = CHANNEL_A,
+        .output_compare_match = 0x9C, // 100 Hz
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer_0_isr,
+    },
+};
+
+// ICM20948 pins
 gpio_t cs = PC4;
 gpio_t imu_int = PB7;
 
 // SPI config
-spi_cfg_s imu_spi
-    = { .interrupt_enable = false,
-        .data_order = MSB,
-        .mode = MAIN,
-        .polarity = RISING_FALLING,
-        .phase = SAMPLE_SETUP,
-        .clock_rate
-        = F_OSC_DIV_2, // TODO: Update to F_OSC_DIV_4 if using 16MHz crystal
-        .cs_pin = &cs };
+spi_cfg_s imu_spi_cfg = { .interrupt_enable = false,
+                          .data_order = MSB,
+                          .mode = MAIN,
+                          .polarity = RISING_FALLING,
+                          .phase = SAMPLE_SETUP,
+                          .clock_rate = F_OSC_DIV_4, // ICM20948 max: 7MHz
+                          .cs_pin = &cs,
+                          .spi_channel = ALT_BUS };
 
 // Debug LED
 gpio_t debug_led = PD6;
