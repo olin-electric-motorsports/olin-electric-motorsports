@@ -4,7 +4,7 @@
 #include "libs/spi/api.h"
 #include "libs/timer/api.h"
 
-// Timer config
+// IMU data read timer config
 void timer_0_isr(void);
 timer_cfg_s timer_0_cfg = {
     .timer = TIMER0,
@@ -16,6 +16,21 @@ timer_cfg_s timer_0_cfg = {
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer_0_isr,
+    },
+};
+
+// Heartbeat timer config
+void timer_1_isr(void);
+timer_cfg_s timer_1_cfg = {
+    .timer = TIMER1,
+    .timer1_mode = TIMER1_MODE_CTC,
+    .prescalar = CLKIO_DIV_1024,
+    .channel_a = {
+        .channel = CHANNEL_A,
+        .output_compare_match = 0x7A1, // 2 Hz
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer_1_isr,
     },
 };
 

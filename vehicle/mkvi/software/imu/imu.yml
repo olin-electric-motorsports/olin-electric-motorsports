@@ -1,24 +1,77 @@
 name: imu
 publish:
-  - name: imu_debug
-    id: 0x410
+  - name: imu_accel
+    id: 0x430
     freq_hz: 100
     signals:
-      - name: imu_debug
+      - name: x
         slice: 0 + 16
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
-  # - name: can_print_debug
-  #   id: 0x7ff
-  #   freq_hz: 100
-  #   signals:
-  #     - name: can_print
-  #       slice: 0 + 64
-  #       unit:
-  #         type: uint64_t
-  #         name: ""
-  #         scale: 1
-  #         offset: 0
+      - name: y
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: z
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+  - name: imu_gyro
+    id: 0x431
+    freq_hz: 100
+    signals:
+      - name: x
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: y
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: z
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+  - name: imu_magnet
+    id: 0x432
+    freq_hz: 100
+    signals:
+      - name: x
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: y
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: z
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
