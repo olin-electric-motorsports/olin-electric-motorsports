@@ -3,6 +3,7 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
 #include "vehicle/mkvi/software/imu/can_api.h"
+#include "vehicle/mkvi/software/imu/icm20948/icm20948.h"
 
 #include <avr/interrupt.h>
 #include <avr/io.h>
@@ -95,9 +96,7 @@ int main(void) {
 
     init_imu();
 
-    for (;;) {
-        ;
-    }
+    uint8_t rx_data;
 
     for (;;) {
         if (led_heartbeat) {
@@ -113,16 +112,18 @@ int main(void) {
             //         ;
             //     }
             // }
+            icm_read_register(WHO_AM_I, &rx_data);
+            _can_print(rx_data);
 
-            // gpio_toggle_pin(debug_led);
-            uint8_t tx_data_2[2] = { 0xAE, 0x00 };
-            uint8_t rx_data_2[2];
-            // _can_print(SPCR);
-            spi_cs_low();
-            spi_transceive(tx_data_2, rx_data_2, 2);
-            spi_cs_high();
-            // _can_print(rx_data_2[0]);
-            _can_print(rx_data_2[1]);
+            // // gpio_toggle_pin(debug_led);
+            // uint8_t tx_data_2[2] = { 0xAE, 0x00 };
+            // uint8_t rx_data_2[2];
+            // // _can_print(SPCR);
+            // spi_cs_low();
+            // spi_transceive(tx_data_2, rx_data_2, 2);
+            // spi_cs_high();
+            // // _can_print(rx_data_2[0]);
+            // _can_print(rx_data_2[1]);
 
             can_send_imu_data = false;
         }

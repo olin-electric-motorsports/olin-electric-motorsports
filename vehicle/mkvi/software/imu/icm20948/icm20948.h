@@ -1,3 +1,7 @@
+#pragma once
+
+#include <stdint.h>
+
 /**
  * Basic library for the ICM20948
  */
@@ -7,9 +11,24 @@
  */
 
 // Bank 0
-#define WHO_AM_I              0x00
-#define USER_CTRL             0x03
-#define LP_CONFIG             0x05
+#define WHO_AM_I 0x00
+
+#define USER_CTRL 0x03
+// USER_CTRL bits
+#define I2C_MST_RST 0x01
+#define SRAM_RST    0x02
+#define DMP_RST     0x03
+#define I2C_IF_DIS  0x04
+#define I2C_MST_EN  0x05
+#define FIFO_EN     0x06
+#define DMP_EN      0x07
+
+#define LP_CONFIG 0x05
+// LP_CONFIG bits
+#define GYRO_CYCLE    0x04
+#define ACCEL_CYCLE   0x05
+#define I2C_MST_CYCLE 0x06
+
 #define PWR_MGMT_1            0x06
 #define PWR_MGMT_2            0x07
 #define INT_PIN_CFG           0x0F
@@ -29,7 +48,7 @@
 #define ACCEL_YOUT_H          0x2F
 #define ACCEL_YOUT_L          0x30
 #define ACCEL_ZOUT_H          0x31
-#define ACCEL_ZOUT_H          0x32
+#define ACCEL_ZOUT_L          0x32
 #define GYRO_XOUT_H           0x33
 #define GYRO_XOUT_L           0x34
 #define GYRO_YOUT_H           0x35
@@ -114,7 +133,7 @@
 // Bank 3
 #define I2C_MST_ODR_CONFIG 0x00
 #define I2C_MST_CTRL       0x01
-#define I2C_MST_CTRL       0x02
+#define I2C_MST_DELAY_CTRL 0x02
 #define I2C_SLV0_ADDR      0x03
 #define I2C_SLV0_REG       0x04
 #define I2C_SLV0_CTRL      0x05
@@ -142,3 +161,19 @@
  * Magnetometer register map
  */
 // TODO
+
+/**
+ * Read data from an ICM register.
+ *
+ * @param register (uint8_t) The register to read.
+ * @param rx_data (uint8_t*) A pointer to the read data.
+ */
+void icm_read_register(uint8_t register, uint8_t* rx_data);
+
+// /**
+//  * Write data to an ICM register.
+//  *
+//  * @param register (uint8_t) The register to write.
+//  * @param tx_data (uint8_t) The data to write.
+//  */
+// void icm_write_register(uint8_t register, uint8_t tx_data);

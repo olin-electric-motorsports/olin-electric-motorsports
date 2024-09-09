@@ -12,7 +12,10 @@ cc_binary(
         "imu_config.h",
         "//projects/btldr:git_sha_header",
     ],
-    copts = ["-E", "-P"],
+    copts = [
+        "-E",
+        "-P",
+    ],
     linkopts = [],
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
@@ -20,8 +23,8 @@ cc_binary(
     }),
     deps = [
         ":can_api",
-        "//libs/spi",
         "//libs/gpio",
+        "//libs/spi",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
         "//projects/can_print",
@@ -42,11 +45,12 @@ cc_firmware(
     }),
     deps = [
         ":can_api",
-        "//libs/spi",
         "//libs/gpio",
+        "//libs/spi",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
         "//projects/can_print",
+        "//vehicle/mkvi/software/imu/icm20948",
     ],
 )
 
