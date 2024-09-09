@@ -95,17 +95,29 @@ void init_imu(void) {
 
     switch_register_bank(BANK_2);
 
-    uint8_t rx_data;
-    // icm_read_register(ACCEL_CONFIG, &rx_data);
-    // _can_print(rx_data);
-
     // Set accelerometer full scale range
-    icm_write_register(ACCEL_CONFIG, accel_fsr << 1);
-
-    icm_read_register(ACCEL_CONFIG, &rx_data);
-    _can_print(rx_data);
+    icm_write_register(ACCEL_CONFIG, 0x1 + (accel_fsr << 1));
 
     // Set gyroscope full scale range
+    icm_write_register(GYRO_CONFIG_1, 0x01 + (gyro_fsr << 1));
+
+    switch_register_bank(BANK_0);
+}
+
+/**
+ * Read accel data and place in CAN structs
+ */
+void read_accel_data(void) {
+    uint8_t accel_data[2] = { 0x0, 0x0 };
+    icm_read_register(ACCEL_XOUT_L, &accel_data[0]);
+    icm_read_register(ACCEL_XOUT_H, &accel_data[1]);
+    imu_accel.x = accel_data[0] + (accel_data[1] << 8);
+    icm_read_register(ACCEL_YOUT_L, &accel_data[0]);
+    icm_read_register(ACCEL_YOUT_H, &accel_data[1]);
+    imu_accel.y = accel_data[0] + (accel_data[1] << 8);
+    icm_read_register(ACCEL_ZOUT_L, &accel_data[0]);
+    icm_read_register(ACCEL_ZOUT_H, &accel_data[1]);
+    imu_accel.z = accel_data[0] + (accel_data[1] << 8);
 }
 
 int main(void) {
@@ -123,27 +135,10 @@ int main(void) {
             led_heartbeat = false;
         };
         if (can_send_imu_data) {
-            // can_print("oem", 65535, -3);
-            // _can_print(0xEA);
-            // if (rx_data == 0) {
-            //     for (;;) {
-            //         ;
-            //     }
-            // }
-            // // gpio_toggle_pin(debug_led);
-            // uint8_t tx_data_2[2] = { 0xAE, 0x00 };
-            // uint8_t rx_data_2[2];
-            // // _can_print(SPCR);
-            // spi_cs_low();
-            // spi_transceive(tx_data_2, rx_data_2, 2);
-            // spi_cs_high();
-            // // _can_print(rx_data_2[0]);
-            // _can_print(rx_data_2[1]);
-
+            read_accel_data();
+            can_send_imu_accel();
+            // can_send_imu_gyro();
             can_send_imu_data = false;
         }
-        // can_print("test", -65535);
-        // can_send_can_print_debug();
-        // can_send_imu_debug();
     }
 }

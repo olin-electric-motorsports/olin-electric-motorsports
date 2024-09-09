@@ -200,5 +200,15 @@ typedef enum {
     ACCEL_FSR_2G,
     ACCEL_FSR_4G,
     ACCEL_FSR_8G,
-    ACCEL_FSR_16G
+    ACCEL_FSR_16G,
 } accel_fsr_e;
+
+/**
+ * ICM gyroscope full scale range
+ */
+typedef enum {
+    GYRO_FSR_250,
+    GYRO_FSR_500,
+    GYRO_FSR_1000,
+    GYRO_FSR_2000,
+} gyro_fsr_e;

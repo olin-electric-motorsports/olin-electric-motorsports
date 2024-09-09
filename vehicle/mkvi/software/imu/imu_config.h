@@ -61,3 +61,4 @@ gpio_t bin_id_2 = PC7;
  * ICM config
  */
 accel_fsr_e accel_fsr = ACCEL_FSR_8G;
+gyro_fsr_e gyro_fsr = GYRO_FSR_2000;
