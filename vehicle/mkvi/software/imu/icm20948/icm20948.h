@@ -165,15 +165,40 @@
 /**
  * Read data from an ICM register.
  *
- * @param register (uint8_t) The register to read.
+ * @param _register (uint8_t) The register to read.
  * @param rx_data (uint8_t*) A pointer to the read data.
  */
-void icm_read_register(uint8_t register, uint8_t* rx_data);
+void icm_read_register(uint8_t _register, uint8_t* rx_data);
 
-// /**
-//  * Write data to an ICM register.
-//  *
-//  * @param register (uint8_t) The register to write.
-//  * @param tx_data (uint8_t) The data to write.
-//  */
-// void icm_write_register(uint8_t register, uint8_t tx_data);
+/**
+ * Write data to an ICM register.
+ *
+ * @param _register (uint8_t) The register to write.
+ * @param tx_data (uint8_t) The data to write.
+ */
+void icm_write_register(uint8_t _register, uint8_t tx_data);
+
+/**
+ * ICM register banks.
+ */
+#define BANK_0 0
+#define BANK_1 1
+#define BANK_2 2
+#define BANK_3 3
+
+/**
+ * Switch register bank.
+ *
+ * @param register_bank (uint8_t) The register bank to switch to.
+ */
+void switch_register_bank(uint8_t register_bank);
+
+/**
+ * ICM accelerometer full scale range
+ */
+typedef enum {
+    ACCEL_FSR_2G,
+    ACCEL_FSR_4G,
+    ACCEL_FSR_8G,
+    ACCEL_FSR_16G
+} accel_fsr_e;

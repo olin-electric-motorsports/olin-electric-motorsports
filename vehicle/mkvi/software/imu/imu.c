@@ -83,9 +83,29 @@ void init_peripherals(void) {
  * Initialize ICM20948 for full 9-axis readings
  */
 void init_imu(void) {
+    // Perform soft reset and wait for power up
+    icm_write_register(PWR_MGMT_1, 0x81);
+    uint8_t pwr_mgmt_1_data = 0;
+    while (pwr_mgmt_1_data != 0x41) {
+        icm_read_register(PWR_MGMT_1, &pwr_mgmt_1_data);
+    }
+
     // Wake from sleep
-    uint8_t tx_data_0[2] = { 0x06, 0x01 };
-    spi_transceive_cs(tx_data_0, NULL, 2);
+    icm_write_register(PWR_MGMT_1, 0x01);
+
+    switch_register_bank(BANK_2);
+
+    uint8_t rx_data;
+    // icm_read_register(ACCEL_CONFIG, &rx_data);
+    // _can_print(rx_data);
+
+    // Set accelerometer full scale range
+    icm_write_register(ACCEL_CONFIG, accel_fsr << 1);
+
+    icm_read_register(ACCEL_CONFIG, &rx_data);
+    _can_print(rx_data);
+
+    // Set gyroscope full scale range
 }
 
 int main(void) {
@@ -95,15 +115,13 @@ int main(void) {
     // _can_print(imu_magnet_msg.id);
 
     init_imu();
-
-    uint8_t rx_data;
+    // uint8_t rx_data;
 
     for (;;) {
         if (led_heartbeat) {
             gpio_toggle_pin(debug_led);
             led_heartbeat = false;
-        }
-
+        };
         if (can_send_imu_data) {
             // can_print("oem", 65535, -3);
             // _can_print(0xEA);
@@ -112,9 +130,6 @@ int main(void) {
             //         ;
             //     }
             // }
-            icm_read_register(WHO_AM_I, &rx_data);
-            _can_print(rx_data);
-
             // // gpio_toggle_pin(debug_led);
             // uint8_t tx_data_2[2] = { 0xAE, 0x00 };
             // uint8_t rx_data_2[2];

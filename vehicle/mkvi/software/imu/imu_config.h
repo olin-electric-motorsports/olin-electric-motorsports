@@ -3,6 +3,7 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
 #include "libs/timer/api.h"
+#include "vehicle/mkvi/software/imu/icm20948/icm20948.h"
 
 // IMU data read timer config
 void timer_0_isr(void);
@@ -55,3 +56,8 @@ gpio_t debug_led = PD6;
 gpio_t bin_id_0 = PC5;
 gpio_t bin_id_1 = PC6;
 gpio_t bin_id_2 = PC7;
+
+/**
+ * ICM config
+ */
+accel_fsr_e accel_fsr = ACCEL_FSR_8G;
