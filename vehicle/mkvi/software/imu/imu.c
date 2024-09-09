@@ -120,6 +120,22 @@ void read_accel_data(void) {
     imu_accel.z = accel_data[0] + (accel_data[1] << 8);
 }
 
+/**
+ * Read gyro data and place in CAN structs
+ */
+void read_gyro_data(void) {
+    uint8_t gyro_data[2] = { 0x0, 0x0 };
+    icm_read_register(GYRO_XOUT_L, &gyro_data[0]);
+    icm_read_register(GYRO_XOUT_H, &gyro_data[1]);
+    imu_gyro.x = gyro_data[0] + (gyro_data[1] << 8);
+    icm_read_register(GYRO_YOUT_L, &gyro_data[0]);
+    icm_read_register(GYRO_YOUT_H, &gyro_data[1]);
+    imu_gyro.y = gyro_data[0] + (gyro_data[1] << 8);
+    icm_read_register(GYRO_ZOUT_L, &gyro_data[0]);
+    icm_read_register(GYRO_ZOUT_H, &gyro_data[1]);
+    imu_gyro.z = gyro_data[0] + (gyro_data[1] << 8);
+}
+
 int main(void) {
     init_peripherals();
     // _can_print(imu_accel_msg.id);
@@ -137,7 +153,9 @@ int main(void) {
         if (can_send_imu_data) {
             read_accel_data();
             can_send_imu_accel();
-            // can_send_imu_gyro();
+
+            read_gyro_data();
+            can_send_imu_gyro();
             can_send_imu_data = false;
         }
     }
