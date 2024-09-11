@@ -13,7 +13,7 @@ timer_cfg_s timer_0_cfg = {
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
-        .output_compare_match = 0x9C, // 100 Hz
+        .output_compare_match = 0x12, // 326Hz
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer_0_isr,
@@ -53,9 +53,9 @@ spi_cfg_s imu_spi_cfg = { .interrupt_enable = false,
 gpio_t debug_led = PD6;
 
 // Binary ID pins, for physically differentiating IMUs on the same CAN bus
-gpio_t bin_id_0 = PC5;
+gpio_t bin_id_0 = PC7;
 gpio_t bin_id_1 = PC6;
-gpio_t bin_id_2 = PC7;
+gpio_t bin_id_2 = PC5;
 
 /**
  * ICM config

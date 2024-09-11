@@ -55,9 +55,9 @@ void read_magnetometer(uint8_t register_, uint8_t* rx_data) {
     switch_register_bank(BANK_0);
 
     // // Toggle I2C controller
-    icm_write_register(USER_CTRL, 0x20);
+    icm_write_register(USER_CTRL, 0x20); // TODO: Future, read before writing
     _delay_ms(30);
-    icm_write_register(USER_CTRL, 0x00);
+    // icm_write_register(USER_CTRL, 0x00);
 
     switch_register_bank(BANK_3);
     // Read data

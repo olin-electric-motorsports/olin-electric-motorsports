@@ -4,21 +4,21 @@ publish:
     id: 0x430
     freq_hz: 100
     signals:
-      - name: x
+      - name: accel_x
         slice: 0 + 16
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
-      - name: y
+      - name: accel_y
         slice: 16 + 16
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
-      - name: z
+      - name: accel_z
         slice: 32 + 16
         unit:
           type: uint16_t
@@ -29,21 +29,21 @@ publish:
     id: 0x431
     freq_hz: 100
     signals:
-      - name: x
+      - name: gyro_x
         slice: 0 + 16
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
-      - name: y
+      - name: gyro_y
         slice: 16 + 16
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
-      - name: z
+      - name: gyro_z
         slice: 32 + 16
         unit:
           type: uint16_t
@@ -54,21 +54,21 @@ publish:
     id: 0x432
     freq_hz: 100
     signals:
-      - name: x
+      - name: magnet_x
         slice: 0 + 16
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
-      - name: y
+      - name: magnet_y
         slice: 16 + 16
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
-      - name: z
+      - name: magnet_z
         slice: 32 + 16
         unit:
           type: uint16_t
