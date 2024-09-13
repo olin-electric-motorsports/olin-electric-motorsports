@@ -22,6 +22,10 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .git_sha = STABLE_GIT_COMMIT,
 };
 
+/*
+ * Interrupts
+ */
+
 static void set_fault(enum air_fault_e the_fault) {
     gpio_set_pin(FAULT_LED);
 
@@ -31,9 +35,6 @@ static void set_fault(enum air_fault_e the_fault) {
     }
 }
 
-/*
- * Interrupts
- */
 volatile bool send_can = false;
 
 void timer0_isr(void) {
