@@ -37,33 +37,41 @@
 #define COUNT_ARGS(_1, _2, _3, _4, _5, count, ...) CHECK_ARGS(count)
 #define CHECK_ARGS(select)                         CHECK_##select
 #define CHECK_0                                    (#error "Not enough args provided in use of can_print.")
-#define CHECK_1                                    (#error "Not enough args provided in use of can_print.")
-#define CHECK_2                                    0 // For CAN_PRINT_0
-#define CHECK_3                                    1 // For CAN_PRINT_1
+#define CHECK_1                                    0 // For CAN_PRINT_0
+#define CHECK_2                                    1 // For CAN_PRINT_1
+#define CHECK_3                                    2 // For CAN_PRINT_2
 #define CHECK_4                                    (#error "Too many args provided in use of can_print.")
 #define CHECK_5                                    (#error "Too many args provided in use of can_print.")
 
 /**
- * Select CAN_PRINT_0 or CAN_PRINT_1 based on the number of arguments provided.
+ * Select CAN_PRINT_0, CAN_PRINT_1, or CAN_PRINT_2 based on the number of
+ * arguments provided.
  *
- * CAN_PRINT_0: Can print value multiplier not provided, defaulting to 1.
- * CAN_PRINT_1: Can print multiplier provided.
+ * CAN_PRINT_0: Can print text only.
+ * CAN_PRINT_1: Can print text and a number with the default multiplier of 1.
+ * CAN_PRINT_2: Can print text and a number with a custom multiplier.
  */
 #define _SELECT_CAN_PRINT(select, ...) CAN_PRINT_##select(__VA_ARGS__)
 #define SELECT_CAN_PRINT(select, ...)  _SELECT_CAN_PRINT(select, __VA_ARGS__)
 
 /**
- * Can print with the default multiplier of 1.
+ * Can print text only.
  */
-#define CAN_PRINT_0(...) CAN_PRINT(__VA_ARGS__, 1)
+#define CAN_PRINT_0(...) CAN_PRINT(__VA_ARGS__, -1 * UINT16_MAX, -1 * 0xF)
 
 /**
- * Can print with a custom multiplier.
+ * Can print text and a number with the default multiplier of 1.
  */
-#define CAN_PRINT_1(...) CAN_PRINT(__VA_ARGS__)
+#define CAN_PRINT_1(...) CAN_PRINT(__VA_ARGS__, 1)
 
 /**
- * Wrapper macro for _can_print to ensure proper padding for string and...
+ * Can print text and a number with a custom multiplier.
+ */
+#define CAN_PRINT_2(...) CAN_PRINT(__VA_ARGS__)
+
+/**
+ * Wrapper macro for _can_print to ensure proper padding for string and bit
+ * offsets.
  *
  * @param string The string to print.
  * @param value The value to print.
@@ -72,14 +80,15 @@
 #define CAN_PRINT(string, value, multiplier)                           \
     (_can_print(STOI(PAD_STRING(string))                               \
                 + (VALUE_TO_SIGN(value) << VALUE_SIGN_SHIFT)           \
-                + (VALUE_TO_INT(value) << VALUE_SHIFT)                 \
+                + ABS((VALUE_TO_INT(value)) << VALUE_SHIFT)            \
                 + (VALUE_TO_SIGN(multiplier) << MULTIPLIER_SIGN_SHIFT) \
                 + ((uint64_t)multiplier << MULTIPLIER_SHIFT)))
 
 /**
  * Print a string (0-9 characters) and value (uint16_t) over can in 8 bytes.
  *
- * Do not call directly. Call can_print instead to ensure string padding and...
+ * Do not call directly. Call can_print instead to ensure string padding and bit
+ * offsets.
  *
  * @param print_value (uint64_t) The string and value to print, packed into 8
  * bytes.
@@ -195,24 +204,4 @@ void _can_print(uint64_t print_value);
  * @param value The input value.
  * @return The absolute value of the input value.
  */
-#define ABS(value) ((value < 0) ? (value * -1) : (value))
-
-/**
- * #TODO: Add float support here.
- * Convert a float into an int without losing resolution, up to 16-bit.
- * Ex: 3.14159265358979 -> 31416
- *
- * Meant to be used with FLOAT_TO_MULTIPLIER for generating a uint16_t with a
- * float multiplier.
- *
- * @param value The float to convert into an int.
- * @return value converted to an int.
- */
-#define VALUE_TO_INT(value) (uint64_t) ABS(value)
-
-/**
- * Convert a float into a float multiplier.
- * Ex: 3.14159265358979 -> 4
- * Where 4 -> 4e^-10
- */
-#define FLOAT_TO_MULTIPLIER(float)
+#define ABS(value) (uint64_t)((value < 0) ? (value * -1) : (value))
