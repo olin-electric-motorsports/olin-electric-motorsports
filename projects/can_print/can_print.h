@@ -5,7 +5,7 @@
  * Bit packing for a can print message.
  *
  *        lsb                                                               msb
- * chars: |c_0|c_1| c_2 | c_3 | c_4 | c_5 | c_6 | c_7 |sign|uint16|multi|resv |
+ * field: |c_0|c_1| c_2 | c_3 | c_4 | c_5 | c_6 | c_7 |sign|uint16|multi|resv |
  * bits:  |0-4|5-9|10-14|15-19|20-24|25-29|30-34|35-39| 40 |41-56 |57-60|61-63|
  *
  * c_x: An [a-z] character to print.

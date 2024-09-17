@@ -10,7 +10,8 @@ int main(void) {
     can_init_can_print_example();
 
     // Example 0: Regular CAN messages still work
-    can_send_example_message();
-
-    _can_print(12345);
+    for (;;) {
+        can_send_example_message();
+        _can_print(12345);
+    }
 }
