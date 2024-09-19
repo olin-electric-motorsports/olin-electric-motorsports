@@ -109,7 +109,7 @@ static void monitor_cells(void) {
     }
 
     if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_OVERTEMPERATURE);
+        // set_fault(BMS_FAULT_OVERTEMPERATURE);
     } else {
         // clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }

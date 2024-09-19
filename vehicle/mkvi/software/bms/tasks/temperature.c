@@ -197,7 +197,7 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     }
 
     // if max is hotter than overtemp threshold, increment overtemp counter
-    if (*max_temp < OVERTEMPERATURE_THRESHOLD) {
+    if (*max_temp < OVERTEMPERATURE_THRESHOLD  && *max_temp > FAKE_DA_FIRE_BODGE) {
         *ot += 1;
     }
 

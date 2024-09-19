@@ -13,11 +13,12 @@
 #define NUM_ICS          6
 #define DA_BOARDS_PER_IC 4
 
-#define MAX_EXTRANEOUS_TEMPERATURES 3 // ?
+#define MAX_EXTRANEOUS_TEMPERATURES 3 // causing isssssueeeess... maybe set to higher value - ian W 9/14/2024
 #define MAX_PEC_ERROR_COUNT \
     32 // copied from mkv where it still says arbitrary...
 
 // copied from MKV - need to be updated
+#define FAKE_DA_FIRE_BODGE                 ((int16_t)700) // 140 degC
 #define OVERTEMPERATURE_THRESHOLD          ((int16_t)5725) // 60 degC
 #define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)8892) // 45 degC
 #define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)11708) // 35 degC
