@@ -66,22 +66,6 @@ If you get an error message stating 'env: python: No such file or directory', en
 export PATH=$PATH:/usr/local/bin
 ```
 
-### Install Docker
-
-In order to use the KiCad build tools locally, you'll need to install Docker.
-The instructions can be found here for [Ubuntu
-20.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
-and [Ubuntu
-18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04).
-
-Be sure to follow all the steps, including adding your current user to the
-`docker` group. If all goes well, you should be able to run the following
-command:
-
-```shell
-bazel build --config=docker-kicad //vehicle/mkv/hardware/lvbox/bspd:bspd_brakelight
-```
-
 ### KiCad Setup
 
 To install KiCad on Ubuntu, run the following:
@@ -116,7 +100,7 @@ latest code:
 git pull origin main
 ```
 
-Next, create your feature branch:
+Next, create your feature branch (only do this once you have a project!):
 
 ```shell
 git switch -c your-username/feature-name origin/main
