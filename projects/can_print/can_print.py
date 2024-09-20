@@ -9,38 +9,76 @@ from typing import Optional
 from dataclasses import dataclass
 
 
+def singleton(cls):
+    """
+    Singleton design pattern.
+    """
+    instances = {}
+
+    def get_instance(*args, **kwargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+
+    return get_instance
+
+
 class CharDecode(IntEnum):
     """
-    Enum for decoding characters.
+    DecodeChar input options.
     """
 
-    A = 0x00
-    B = 0x01
-    C = 0x02
-    D = 0x02
-    E = 0x03
-    F = 0x04
-    G = 0x05
-    H = 0x05
-    I = 0x06
-    J = 0x07
-    K = 0x08
-    L = 0x08
-    M = 0x09
-    N = 0x0A
-    O = 0x0B
-    P = 0x0B
-    Q = 0x0C
-    R = 0x0D
-    S = 0x0E
-    T = 0x0E
-    U = 0x0F
-    V = 0x10
-    W = 0x11
-    X = 0x11
-    Y = 0x12
-    Z = 0x13
-    UNSUPPORTED_CHAR = 0x14
+    NULL = 0x0
+    A = 0x01
+    B = 0x02
+    C = 0x03
+    D = 0x04
+    E = 0x05
+    F = 0x06
+    G = 0x07
+    H = 0x08
+    I = 0x09
+    J = 0x0A
+    K = 0x0B
+    L = 0x0C
+    M = 0x0D
+    N = 0x0E
+    O = 0x0F
+    P = 0x10
+    Q = 0x11
+    R = 0x12
+    S = 0x13
+    T = 0x14
+    U = 0x15
+    V = 0x16
+    W = 0x17
+    X = 0x18
+    Y = 0x19
+    Z = 0x1A
+    UNSUPPORTED_CHAR = 0x1F
+
+
+@singleton
+class DecodeChar:
+    """
+    Class for decoding characters.
+    """
+
+    @staticmethod
+    def decode(num: int) -> str:
+        """
+        Return the decoded char as a string.
+
+        Args:
+          num (int): The number to decode.
+        """
+        character = CharDecode(num).name.lower()
+        if character == "unsupported_char":
+            return "\0"  # TODO :FIX repr("\uFFFd")[1:2]
+        elif character == "null":
+            return "\0"
+        else:
+            return character
 
 
 @dataclass
@@ -80,7 +118,7 @@ class CanPrintMessage:
         Returns:
           An int representing the raw data.
         """
-        return int.to_bytes(self.raw_data_bytes, byteorder="little")
+        return int.from_bytes(self.raw_data_bytes, byteorder="little")
 
     @property
     def string(self) -> str:
@@ -90,9 +128,12 @@ class CanPrintMessage:
         Returns:
           The string in a can print message.
         """
-        return sum(
+        # print(bin(self.raw_data))
+        return "".join(
             [
-                CharDecode(((self._raw_data & 0xFFFFFFFFFF) >> (5 * char)) & 0x1F)
+                DecodeChar().decode(
+                    ((self.raw_data & 0xFFFFFFFFFF) >> (5 * char)) & 0x1F
+                )
                 for char in range(0, 8)
             ]
         )
@@ -103,9 +144,10 @@ class CanPrintMessage:
         Derive the value sign from raw can print data.
 
         Returns:
-          pass
+          A bool representing the sign of the can print data. 0 if positive, 1
+            if negative.
         """
-        return False
+        return (self.raw_data >> CanPrintOffset.VALUE_SIGN_SHIFT) & 0x1
 
     @property
     def value(self) -> int:
@@ -113,23 +155,27 @@ class CanPrintMessage:
         Derive the value from raw can print data.
 
         Returns:
-          pass
+          The value associated with a can print message.
         """
-        return 0xFFFF
+        return (self.raw_data >> CanPrintOffset.VALUE_SHIFT) & 0xFFFF
 
     @property
     def multiplier_sign(self) -> bool:
         """
-        Derive the multiplier sign from raw can print data.
+        Derive the multiplier sign from raw can print data
+
+        Returns:
+        A bool representing the sign of the can print multiplier. 0 if positive,
+          1 if negative.
         """
-        return False
+        return (self.raw_data >> CanPrintOffset.MULTIPLIER_SIGN_SHIFT) & 0x1
 
     @property
     def multiplier(self) -> int:
         """
         Derive the multiplier from raw can print data.
         """
-        return 0x0
+        return (self.raw_data >> CanPrintOffset.MULTIPLIER_SHIFT) & 0xF
 
     def __str__(self) -> str:
         """
@@ -143,13 +189,6 @@ class CanPrintMessage:
                 * (10 ** ((-1 if self.multiplier_sign else 1) * self.multiplier))
             )
         )
-
-    # = int.from_bytes(message.data, byteorder="little")
-    #     string = raw_data & 0x27
-    #     value_sign = (raw_data >> CanPrintOffset.VALUE_SIGN_SHIFT) & 0x1
-    #     value = (raw_data >> CanPrintOffset.VALUE_SHIFT) & 0xFFFF
-    #     multiplier_sign = (raw_data >> CanPrintOffset.MULTIPLIER_SIGN_SHIFT) & 0x1
-    #     multiplier = (raw_data >> CanPrintOffset.MULTIPLIER_SHIFT) & 0xF
 
 
 class CanPrint:

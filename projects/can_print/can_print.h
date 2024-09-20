@@ -55,14 +55,14 @@
 #define SELECT_CAN_PRINT(select, ...)  _SELECT_CAN_PRINT(select, __VA_ARGS__)
 
 /**
- * Can print text only.
+ * Can print text only. #TODO: Remove printing of number if printing text only.
  */
 #define CAN_PRINT_0(...) CAN_PRINT(__VA_ARGS__, -1 * UINT16_MAX, -1 * 0xF)
 
 /**
- * Can print text and a number with the default multiplier of 1.
+ * Can print text and a number with the default multiplier of 1 (10^0).
  */
-#define CAN_PRINT_1(...) CAN_PRINT(__VA_ARGS__, 1)
+#define CAN_PRINT_1(...) CAN_PRINT(__VA_ARGS__, 0)
 
 /**
  * Can print text and a number with a custom multiplier.
@@ -80,7 +80,7 @@
 #define CAN_PRINT(string, value, multiplier)                           \
     (_can_print(STOI(PAD_STRING(string))                               \
                 + (VALUE_TO_SIGN(value) << VALUE_SIGN_SHIFT)           \
-                + ABS((VALUE_TO_INT(value)) << VALUE_SHIFT)            \
+                + (ABS(value) << VALUE_SHIFT)                          \
                 + (VALUE_TO_SIGN(multiplier) << MULTIPLIER_SIGN_SHIFT) \
                 + ((uint64_t)multiplier << MULTIPLIER_SHIFT)))
 
@@ -105,32 +105,32 @@ void _can_print(uint64_t print_value);
  * @return (uint64_t) An uint64_t representing the character.  
 */
 #define ATOI(char) (uint64_t) \
-                   ((char == 'a' || char == 'A') ? 0b00000 \
-                  : (char == 'b' || char == 'B') ? 0b00001 \
-                  : (char == 'c' || char == 'C') ? 0b00010 \
-                  : (char == 'd' || char == 'D') ? 0b00011 \
-                  : (char == 'e' || char == 'E') ? 0b00100 \
-                  : (char == 'f' || char == 'F') ? 0b00101 \
-                  : (char == 'g' || char == 'G') ? 0b00110 \
-                  : (char == 'h' || char == 'H') ? 0b00111 \
-                  : (char == 'i' || char == 'I') ? 0b01000 \
-                  : (char == 'j' || char == 'J') ? 0b01001 \
-                  : (char == 'k' || char == 'K') ? 0b01010 \
-                  : (char == 'l' || char == 'L') ? 0b01011 \
-                  : (char == 'm' || char == 'M') ? 0b01100 \
-                  : (char == 'n' || char == 'N') ? 0b01101 \
-                  : (char == 'o' || char == 'O') ? 0b01110 \
-                  : (char == 'p' || char == 'P') ? 0b01111 \
-                  : (char == 'q' || char == 'Q') ? 0b10000 \
-                  : (char == 'r' || char == 'R') ? 0b10001 \
-                  : (char == 's' || char == 'S') ? 0b10010 \
-                  : (char == 't' || char == 'T') ? 0b10011 \
-                  : (char == 'u' || char == 'U') ? 0b10100 \
-                  : (char == 'v' || char == 'V') ? 0b10101 \
-                  : (char == 'w' || char == 'W') ? 0b10110 \
-                  : (char == 'x' || char == 'X') ? 0b10111 \
-                  : (char == 'y' || char == 'Y') ? 0b11000 \
-                  : (char == 'z' || char == 'Z') ? 0b11001 \
+                   ((char == 'a' || char == 'A') ? 0x01 \
+                  : (char == 'b' || char == 'B') ? 0x02 \
+                  : (char == 'c' || char == 'C') ? 0x03 \
+                  : (char == 'd' || char == 'D') ? 0x04 \
+                  : (char == 'e' || char == 'E') ? 0x05 \
+                  : (char == 'f' || char == 'F') ? 0x06 \
+                  : (char == 'g' || char == 'G') ? 0x07 \
+                  : (char == 'h' || char == 'H') ? 0x08 \
+                  : (char == 'i' || char == 'I') ? 0x09 \
+                  : (char == 'j' || char == 'J') ? 0x0A \
+                  : (char == 'k' || char == 'K') ? 0x0B \
+                  : (char == 'l' || char == 'L') ? 0x0C \
+                  : (char == 'm' || char == 'M') ? 0x0D \
+                  : (char == 'n' || char == 'N') ? 0x0E \
+                  : (char == 'o' || char == 'O') ? 0x0F \
+                  : (char == 'p' || char == 'P') ? 0x10 \
+                  : (char == 'q' || char == 'Q') ? 0x11 \
+                  : (char == 'r' || char == 'R') ? 0x12 \
+                  : (char == 's' || char == 'S') ? 0x13 \
+                  : (char == 't' || char == 'T') ? 0x14 \
+                  : (char == 'u' || char == 'U') ? 0x15 \
+                  : (char == 'v' || char == 'V') ? 0x16 \
+                  : (char == 'w' || char == 'W') ? 0x17 \
+                  : (char == 'x' || char == 'X') ? 0x18 \
+                  : (char == 'y' || char == 'Y') ? 0x19 \
+                  : (char == 'z' || char == 'Z') ? 0x1A \
                   : UNSUPPORTED_CHAR)
 
 /**
