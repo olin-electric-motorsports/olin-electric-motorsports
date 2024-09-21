@@ -18,6 +18,9 @@
 #define MULTIPLIER_SIGN_SHIFT 57
 #define MULTIPLIER_SHIFT      58
 
+#define VALUE_WIDTH      16
+#define MULTIPLIER_WIDTH 4
+
 /**
  * Main can print macro.
  *
@@ -77,12 +80,13 @@
  * @param value The value to print.
  * @param multiplier The multiplier to apply to the value.
  */
-#define CAN_PRINT(string, value, multiplier)                           \
-    (_can_print(STOI(PAD_STRING(string))                               \
-                + (VALUE_TO_SIGN(value) << VALUE_SIGN_SHIFT)           \
-                + (ABS(value) << VALUE_SHIFT)                          \
-                + (VALUE_TO_SIGN(multiplier) << MULTIPLIER_SIGN_SHIFT) \
-                + ((uint64_t)multiplier << MULTIPLIER_SHIFT)))
+#define CAN_PRINT(string, value, multiplier)                                   \
+    (_can_print(STOI(PAD_STRING(string))                                       \
+                + (VALUE_TO_SIGN(value) << VALUE_SIGN_SHIFT)                   \
+                + (CHECK_OVERFLOW(ABS(value), VALUE_WIDTH) << VALUE_SHIFT)     \
+                + (VALUE_TO_SIGN(multiplier) << MULTIPLIER_SIGN_SHIFT)         \
+                + ((uint64_t)CHECK_OVERFLOW(ABS(multiplier), MULTIPLIER_WIDTH) \
+                   << MULTIPLIER_SHIFT)))
 
 /**
  * Print a string (0-9 characters) and value (uint16_t) over can in 8 bytes.
@@ -105,7 +109,8 @@ void _can_print(uint64_t print_value);
  * @return (uint64_t) An uint64_t representing the character.  
 */
 #define ATOI(char) (uint64_t) \
-                   ((char == 'a' || char == 'A') ? 0x01 \
+                   ((char == ' ') ? 0x00 \
+                  : (char == 'a' || char == 'A') ? 0x01 \
                   : (char == 'b' || char == 'B') ? 0x02 \
                   : (char == 'c' || char == 'C') ? 0x03 \
                   : (char == 'd' || char == 'D') ? 0x04 \
@@ -131,6 +136,8 @@ void _can_print(uint64_t print_value);
                   : (char == 'x' || char == 'X') ? 0x18 \
                   : (char == 'y' || char == 'Y') ? 0x19 \
                   : (char == 'z' || char == 'Z') ? 0x1A \
+                  : (char == '-') ? 0x1B \
+                  : (char == '_') ? 0x1C \
                   : UNSUPPORTED_CHAR)
 
 /**
@@ -205,3 +212,14 @@ void _can_print(uint64_t print_value);
  * @return The absolute value of the input value.
  */
 #define ABS(value) (uint64_t)((value < 0) ? (value * -1) : (value))
+
+#define ERROR #error "test"
+/**
+ * Check for an integer overflow for a given bitfield.
+ *
+ * @param value The value to check for overflow.
+ * @param field_width The width of the field to check.
+ * @return The checked value, error if overflow.
+ */
+#define CHECK_OVERFLOW(value, field_width) \
+    (uint64_t)(value >= ((uint64_t)1 << field_width)) ? (value) : (value)

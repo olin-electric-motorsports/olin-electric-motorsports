@@ -55,6 +55,8 @@ class CharDecode(IntEnum):
     X = 0x18
     Y = 0x19
     Z = 0x1A
+    DASH = 0x1B
+    UNDERSCORE = 0x1C
     UNSUPPORTED_CHAR = 0x1F
 
 
@@ -72,13 +74,17 @@ class DecodeChar:
         Args:
           num (int): The number to decode.
         """
-        character = CharDecode(num).name.lower()
-        if character == "unsupported_char":
-            return "\0"  # TODO :FIX repr("\uFFFd")[1:2]
-        elif character == "null":
+        character = CharDecode(num)
+        if character == CharDecode.NULL:
             return "\0"
+        elif character == CharDecode.DASH:
+            return "-"
+        elif character == CharDecode.UNDERSCORE:
+            return "_"
+        elif character == CharDecode.UNSUPPORTED_CHAR:
+            return repr("\uFFFd")[1:2]
         else:
-            return character
+            return character.name.lower()
 
 
 @dataclass
@@ -197,7 +203,7 @@ class CanPrint:
     """
 
     ARB_ID = 0x7FF
-    REFRESH_RATE = 100  # Hz
+    REFRESH_RATE = 100  # Hz, upper bound
 
     def __init__(self):
         """
@@ -240,14 +246,6 @@ class CanPrint:
             if message is not None:
                 print(CanPrintMessage(raw_data_bytes=message.data))
             time.sleep(1 / self.REFRESH_RATE)
-
-    def decode_message(self, message: Message) -> None:
-        """
-        Decode a can print message and print to stdout.
-
-        Args:
-          message_data (int): Data received from can_print to decode.
-        """
 
     def close_bus(self) -> None:
         """
