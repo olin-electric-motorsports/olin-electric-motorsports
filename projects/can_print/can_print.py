@@ -8,6 +8,8 @@ from enum import IntEnum
 from typing import Optional
 from dataclasses import dataclass
 
+INT16_MAX = 32767
+
 
 def singleton(cls):
     """
@@ -93,10 +95,8 @@ class CanPrintOffset:
     Class to hold the bitshift amount for each field in a can_print message.
     """
 
-    VALUE_SIGN_SHIFT = 0x28
-    VALUE_SHIFT = 0x29
-    MULTIPLIER_SIGN_SHIFT = 0x39
-    MULTIPLIER_SHIFT = 0x3A
+    VALUE_SHIFT = 0x28
+    MULTIPLIER_SHIFT = 0x38
 
 
 @dataclass
@@ -111,9 +111,7 @@ class CanPrintMessage:
     # Derived
     _raw_data: Optional[int] = 0
     _string: Optional[str] = 0
-    _value_sign: Optional[bool] = 0
     _value: Optional[int] = 0
-    _multiplier_sign: Optional[bool] = 0
     _multiplier: Optional[int] = 0
 
     @property
@@ -145,17 +143,6 @@ class CanPrintMessage:
         )
 
     @property
-    def value_sign(self) -> bool:
-        """
-        Derive the value sign from raw can print data.
-
-        Returns:
-          A bool representing the sign of the can print data. 0 if positive, 1
-            if negative.
-        """
-        return (self.raw_data >> CanPrintOffset.VALUE_SIGN_SHIFT) & 0x1
-
-    @property
     def value(self) -> int:
         """
         Derive the value from raw can print data.
@@ -163,38 +150,30 @@ class CanPrintMessage:
         Returns:
           The value associated with a can print message.
         """
-        return (self.raw_data >> CanPrintOffset.VALUE_SHIFT) & 0xFFFF
-
-    @property
-    def multiplier_sign(self) -> bool:
-        """
-        Derive the multiplier sign from raw can print data
-
-        Returns:
-        A bool representing the sign of the can print multiplier. 0 if positive,
-          1 if negative.
-        """
-        return (self.raw_data >> CanPrintOffset.MULTIPLIER_SIGN_SHIFT) & 0x1
+        raw_value = (self.raw_data >> CanPrintOffset.VALUE_SHIFT) & 0xFFFF
+        if raw_value > 0x7FFF:
+            return -((~(raw_value) & 0x7FFF) + 1)
+        else:
+            return raw_value
 
     @property
     def multiplier(self) -> int:
         """
         Derive the multiplier from raw can print data.
         """
-        return (self.raw_data >> CanPrintOffset.MULTIPLIER_SHIFT) & 0xF
+        raw_multiplier = (self.raw_data >> CanPrintOffset.MULTIPLIER_SHIFT) & 0xF
+        if raw_multiplier > 0x7:
+            return -((~(raw_multiplier) & 0x7) + 1)
+        else:
+            return raw_multiplier
 
     def __str__(self) -> str:
         """
         String representation of a can print message.
         """
-        return (
-            self.string
-            + ": "
-            + str(
-                ((-1 if self.value_sign else 1) * self.value)
-                * (10 ** ((-1 if self.multiplier_sign else 1) * self.multiplier))
-            )
-        )
+        if (self.value == INT16_MAX) and (self.multiplier == 0x7):
+            return self.string
+        return self.string + ": " + str((self.value) * (10 ** (self.multiplier)))
 
 
 class CanPrint:

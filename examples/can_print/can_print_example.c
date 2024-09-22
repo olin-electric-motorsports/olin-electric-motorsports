@@ -33,12 +33,9 @@ int main(void) {
     can_print("pi", 31415, -4); // pi: 3.1415
 
     // Example 5: Printing text, a negative number, and a negative multiplier
-    can_print("regen_tq", -34085, -3); // regen_tq: -34.085
+    can_print("regen_tq", -32085, -3); // regen_tq: -34.085
 
-    // Example 6: Decimals are allowed, but will be rounded to ints
-    can_print("regen_tq", -34.085); // regen_tq: -34
-
-    // Example 7: Math in value field, rounded to an int
+    // Example 6: Math in value field, rounded to an int
     can_print("math", ((3340 + 189) / 2) * 0.25); // math: 441
 
     // Example 8: Dynamic values
@@ -51,23 +48,21 @@ int main(void) {
 
     // Example 9: Dynamic negative values
     while (counter > 0) {
-        can_print("dynamic",
-                  -1 * counter); // dynamic: -9, dynamic: -8 ... dynamic: 0
+        can_print("_dynamic",
+                  -1 * counter); // _dynamic: -10, _dynamic: -9 ... _dynamic: -1
         counter--;
     }
 
     /**
-     * Breaking use examples. Some cause intentional complier errors.
+     * Unintended use examples. Some cause intentional complier errors.
      */
 
     // Example 7: Character overflow; truncated to 8 characters.
     can_print("olinelectricmotorsports"); // olinelec
 
-    // // Example 8: Value integer overflow; bounds checking causes compiler
-    // error can_print("overflow", 65536); // #error:
+    // Example 8: Value integer overflow; compiler warning
+    // can_print("overflow", INT16_MAX + 1);
 
-    // // Example 9: Multiplier integer overflow; bounds checking causes
-    // complier
-    // // error
-    // can_print("multi_ov", 1, 17); // #error:
+    // // Example 9: Multiplier integer overflow; undefined behavior
+    can_print("multi_ov", 1, 17); // multi_ov: 10
 }

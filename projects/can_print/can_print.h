@@ -4,22 +4,17 @@
 /**
  * Bit packing for a can print message.
  *
- *        lsb                                                               msb
- * field: |c_0|c_1| c_2 | c_3 | c_4 | c_5 | c_6 | c_7 |sign|uint16|multi|resv |
- * bits:  |0-4|5-9|10-14|15-19|20-24|25-29|30-34|35-39| 40 |41-56 |57-60|61-63|
+ *        lsb                                                          msb
+ * field: |c_0|c_1| c_2 | c_3 | c_4 | c_5 | c_6 | c_7 |value|multi|resv |
+ * bits:  |0-4|5-9|10-14|15-19|20-24|25-29|30-34|35-39|40-55|56-59|60-63|
  *
  * c_x: An [a-z] character to print.
- * uint16: A uint16 value to print.
- * multi: A multiplier for converting the uint16 to a float.
- * resv: Reserved for future use.
+ * int16: A int16 value to print.
+ * multi: The multiplier to apply to the value.
+ * resv: Reserved bits. Do not access.
  */
-#define VALUE_SIGN_SHIFT      40
-#define VALUE_SHIFT           41
-#define MULTIPLIER_SIGN_SHIFT 57
-#define MULTIPLIER_SHIFT      58
-
-#define VALUE_WIDTH      16
-#define MULTIPLIER_WIDTH 4
+#define VALUE_SHIFT      40
+#define MULTIPLIER_SHIFT 56
 
 /**
  * Main can print macro.
@@ -58,9 +53,9 @@
 #define SELECT_CAN_PRINT(select, ...)  _SELECT_CAN_PRINT(select, __VA_ARGS__)
 
 /**
- * Can print text only. #TODO: Remove printing of number if printing text only.
+ * Can print text only.
  */
-#define CAN_PRINT_0(...) CAN_PRINT(__VA_ARGS__, -1 * UINT16_MAX, -1 * 0xF)
+#define CAN_PRINT_0(...) CAN_PRINT(__VA_ARGS__, INT16_MAX, 0x7)
 
 /**
  * Can print text and a number with the default multiplier of 1 (10^0).
@@ -80,13 +75,10 @@
  * @param value The value to print.
  * @param multiplier The multiplier to apply to the value.
  */
-#define CAN_PRINT(string, value, multiplier)                                   \
-    (_can_print(STOI(PAD_STRING(string))                                       \
-                + (VALUE_TO_SIGN(value) << VALUE_SIGN_SHIFT)                   \
-                + (CHECK_OVERFLOW(ABS(value), VALUE_WIDTH) << VALUE_SHIFT)     \
-                + (VALUE_TO_SIGN(multiplier) << MULTIPLIER_SIGN_SHIFT)         \
-                + ((uint64_t)CHECK_OVERFLOW(ABS(multiplier), MULTIPLIER_WIDTH) \
-                   << MULTIPLIER_SHIFT)))
+#define CAN_PRINT(string, value, multiplier)                      \
+    (_can_print(STOI(PAD_STRING(string))                          \
+                + ((((uint64_t)(value)) & 0xFFFF) << VALUE_SHIFT) \
+                + (((((uint64_t)(multiplier)) & 0xF)) << MULTIPLIER_SHIFT)))
 
 /**
  * Print a string (0-9 characters) and value (uint16_t) over can in 8 bytes.
@@ -99,7 +91,7 @@
  */
 void _can_print(uint64_t print_value);
 
-#define UNSUPPORTED_CHAR 0b11111
+#define UNSUPPORTED_CHAR 0x1F
 // clang-format off
 /**
  * Convert an upper or lower case character into the smallest bitwise 
@@ -168,8 +160,8 @@ void _can_print(uint64_t print_value);
 /**
  * Pad a string with additional characters.
  *
- * For use with the can_print library for printing over can. Does not include
- * the null terminator.
+ * For use with the can_print library for printing over can.
+ * Does not include the null terminator.
  *
  * @param string The string to pad.
  * @return The padded string, to length STRING_LENGTH.
@@ -212,14 +204,3 @@ void _can_print(uint64_t print_value);
  * @return The absolute value of the input value.
  */
 #define ABS(value) (uint64_t)((value < 0) ? (value * -1) : (value))
-
-#define ERROR #error "test"
-/**
- * Check for an integer overflow for a given bitfield.
- *
- * @param value The value to check for overflow.
- * @param field_width The width of the field to check.
- * @return The checked value, error if overflow.
- */
-#define CHECK_OVERFLOW(value, field_width) \
-    (uint64_t)(value >= ((uint64_t)1 << field_width)) ? (value) : (value)
