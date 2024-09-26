@@ -13,22 +13,43 @@ important steps for collaborating with teammates.
 ## Getting Started
 
 ### For first-time users:
-Make sure you have a GitHub account. If you don't, create it! Make sure to save your username, email, and password. This will be useful in the next step.
+Make sure you have a GitHub account. If you don't, create one on github.com (this website). Make sure to save your username, email, and password. This will be useful in the next step.
+
+Once you've successfully installed Ubuntu on your computer, open a terminal (press the Windows key and type `term`, then hit `Enter`).
 
 Install `git` on your computer if it's not already.
 ```shell
 sudo apt install git -y
 ```
 
+### Linking a Computer to your Account
 We need to connect your GitHub account to your computer's specific git instance \(created by the command you just ran\). We do this for safety: someone pretending to be you can't add code to our repo!
-1. Set your username: `git config --global user.name 'your username here'`
-2. Set your email address: `git config --global user.email 'your email here'`
-3. Create the SSH Key \(essentially a super crazy passord\): `ssh-keygen -t ed25519 -C "your_email@example.com"`  When you’re prompted to: "Enter a file in which to save the key," press Enter. This accepts the default file location. At the password prompt, hit `Enter`.
-4. To see your SSH Key, type: `cat ~/.ssh/id_ed25519.pub`. Copy it.
-5. In your github page, go to your profile \(Top Right\) > `settings` > `SSH and GPG Keys`, title your key as "Olin Computer", and paste in your SSH key. That's it!
-6. Test you ssh connection by using this command: `ssh -T git@github.com` You've done this step correctly if you don't get an authentication error.
+1. Set your username:
+```shell
+git config --global user.name 'your username here'
+```
 
-### On to OEM stuff.
+2. Set your email address:
+```shell
+git config --global user.email 'your email here'
+```
+
+3. Create the SSH Key \(essentially a super crazy passord\). When you’re prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location. At the password prompt, hit `Enter` again.
+```shell
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+4. To see your SSH Key, run the following command. Copy the whole contents of the output to your clipboard.
+```shell
+cat ~/.ssh/id_ed25519.pub.
+```
+
+5. In your github page, go to your profile \(Top Right\) > `settings` > `SSH and GPG Keys`. Title your key as "Olin Computer and paste in your SSH key. Nearly done!
+6. Test you ssh connection by using the command below. You've done this step correctly if you don't get an authentication error.
+```shell
+ssh -T git@github.com
+```
+### Creating your OEM environment
 Clone this repository into a folder of your choice (many people
 choose to put it in `~/Documents`.
 
