@@ -12,10 +12,10 @@ important steps for collaborating with teammates.
 
 ## Getting Started
 
-### For first-time users:
-Make sure you have a GitHub account. If you don't, create one on github.com (this website). Make sure to save your username, email, and password. This will be useful in the next step.
+### For new members:
+Make sure you have a GitHub account. If you don't, create one on [GitHub](github.com) (this website). Make sure to save your username, email, and password. This will be useful in the next step. Once you have an account, STOP, and ask a lead/senior engineer to add you to the `olin-electric-motorsports` org.
 
-Once you've successfully installed Ubuntu on your computer, open a terminal (press the Windows key and type `term`, then hit `Enter`).
+Once you've successfully installed Ubuntu, have a GitHub account, and have ben added as an org member: on your computer, open a terminal (press the Windows key and type `term`, then hit `Enter`).
 
 Install `git` on your computer if it's not already.
 ```shell
@@ -34,18 +34,18 @@ git config --global user.name 'your username here'
 git config --global user.email 'your email here'
 ```
 
-3. Create the SSH Key \(essentially a super crazy passord\). When you’re prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location. At the password prompt, hit `Enter` again.
+3. Create the SSH Key \(essentially a super crazy passord\). When you’re prompted to "Enter a file in which to save the key," press `Enter`. This accepts the default file location. At the password prompt, hit `Enter` again.
 ```shell
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-4. To see your SSH Key, run the following command. Copy the whole contents of the output to your clipboard.
+4. To see your SSH Key, run the following command. Copy the whole contents of the output to your clipboard (you won't be able to copy or paste in the terminal using ctrl+c and ctrl+v, instead use ctrl+shift+c and ctrl+shift+v or right-click to do it graphically).
 ```shell
 cat ~/.ssh/id_ed25519.pub
 ```
 
-5. In your github page, go to your profile \(Top Right\) > `settings` > `SSH and GPG Keys`. Title your key as "Olin Computer and paste in your SSH key. Nearly done!
-6. Test you ssh connection by using the command below. Type `yes` when prompted. You've done this step correctly if you see something along the lines of `Hi "username"! You've successfully authenticated, but GitHub does not provide shell access.`
+5. In your github page, go to your profile \(Top Right\) > `settings` > `SSH and GPG Keys`. Click on the green `New SSH Key` button. Title your key as `Olin Computer` and paste in your SSH key. Finally, click the green `Add SSH Key` button. Nearly done!
+6. Test your ssh connection by using the command below. Type `yes` when prompted. You've done this step correctly if you see something along the lines of `Hi "username"! You've successfully authenticated, but GitHub does not provide shell access.`
 ```shell
 ssh -T git@github.com
 ```
@@ -81,19 +81,7 @@ sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
 
 ### Installing Bazel
 
-Next, install Bazelisk. [This
-link](https://github.com/bazelbuild/bazelisk/releases/download/v1.10.1/bazelisk-linux-amd64)
-will download for Ubuntu on x86\_64 machines. Once downloaded, run the
-following to install:
-
-```shell
-cd ~/Downloads
-cp bazelisk-linux-amd64 /usr/local/bin/bazel
-```
-Next, run the following file to ensure that bazel is executable:
-```shell
-chmod u+x /usr/local/bin/bazel
-```
+Next, install Bazelisk. Run this massive blob and you should be good to go.
 
 ```shell
 sudo apt install apt-transport-https curl gnupg -y
@@ -117,7 +105,7 @@ export PATH=$PATH:/usr/local/bin
 
 ### KiCad Setup
 
-To install KiCad on Ubuntu, run the following:
+To install KiCad on Ubuntu, run the following: Type `Y` when prompted.
 
 ```shell
 sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
@@ -126,8 +114,8 @@ sudo apt install --install-recommends kicad
 ```
 
 
-Open KiCad. From the top bar, open up _Preferences > Configure Paths..._. Add a
-new row to the table using the plus button:
+Open KiCad (windows key and type KiCAD) Click on the Blue App (always do this when opening Kicad - otherwise you can corrupt files!). Hit `Enter` if asked about settings imports and auto-updates for add-ons.
+From the top bar, open up _Preferences > Configure Paths..._. Add a new row to the table using the plus button:
 
 Name | Path
 -----|-----
