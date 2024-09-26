@@ -107,7 +107,7 @@ You should now be able to run the following without error (after changing your d
 the `olin-electric-motorsports` folder):
 
 ```shell
-bazel build --config=16m1 //examples/blinky -c opt
+bazel build --config=16m1 //examples/16M1/blinky -c opt
 ```
 If you get an error message stating 'env: python: No such file or directory', ensure that the PATH environment variable is properly established. This can be done by adding the file to your .bashrc file:
 
@@ -139,7 +139,40 @@ If you cloned our repository into a different directory than the `~/Documents` f
 Visit [this page](https://www.kicad.org/download/) to find instructions for
 downloading KiCad for other operating systems.
 
-## Contributing
+## Integration Resources
+### Flashing to microcontrollers
+To flash (program) an ATMEGA16m1 microcontroller, use a variation of the following command:
+```shell
+need to insert example flashing command here
+```
+
+To flash (program) an ATMEGA16m1 microcontroller using the btldr (remote CAN flashing), use a variation of the following command:
+```shell
+need to insert example can flashing command here
+```
+
+### Viewing CAN data/the canviewer
+First, plug a CAN-to-USB dongle into your computer and connect CAN+ and CAN- to the car or test platform's CAN port.
+
+To initalize the dongle, run the following command:
+```shell
+need to insert example can init command here
+```
+
+### Cantools
+1. `candump`: A tool for streaming CAN frames as they are sent. Useful for short captures or slow data.
+2. `cansniffer`: Similar to candump, but messages with the same ID replace each other for easier viewing (a table).
+3. `cansend`: Use this tool to send CAN frames from your computer. CAN (oh the puns will never end) be helpful when debugging boards or to program modules like the motor controller or G-Meter.
+
+### CANViewer
+OEM has designed a custom Python CAN GUI to monitor the car's state.
+Type the following command to run the viewer.
+```shell
+need to insert CANViewer command here.
+```
+
+
+### Contributing
 
 If you are working on a new project, the first step is to make sure you have the
 latest code:
