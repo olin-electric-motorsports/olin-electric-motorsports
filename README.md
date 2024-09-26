@@ -58,13 +58,15 @@ cd ~/Documents
 git clone git@github.com:olin-electric-motorsports/olin-electric-motorsports.git
 ```
 
-Once you have it, you'll need to install the KiCad Git filters:
+Once you have it, cd into the repo and install the KiCad Git filters (a set of rules that remove temp files that can cause clutter):
 
 ```shell
+cd olin-electric-motorsports/
 ./scripts/install_kicad_git_filters.sh
 ```
 
-You'll also want to have the KiCad Git Hooks to generate our symbol libraries.
+You'll also want to have the KiCad Git Hooks to generate our symbol libraries. These hooks run every time you push or pull and allow multiple users to add symbols/footprints to our KiCAD library.
+
 ```shell
 ./scripts/install_kicad_git_hooks.sh
 ```
@@ -92,11 +94,20 @@ Next, run the following file to ensure that bazel is executable:
 ```shell
 chmod u+x /usr/local/bin/bazel
 ```
+
+```shell
+sudo apt install apt-transport-https curl gnupg -y
+curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
+sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+sudo apt install bazel-5.4.0
+```
+
 You should now be able to run the following without error (after changing your directory to be in
 the `olin-electric-motorsports` folder):
 
 ```shell
-bazel build --config=16m1 //examples/blinky
+bazel build --config=16m1 //examples/blinky -c opt
 ```
 If you get an error message stating 'env: python: No such file or directory', ensure that the PATH environment variable is properly established. This can be done by adding the file to your .bashrc file:
 
@@ -109,22 +120,21 @@ export PATH=$PATH:/usr/local/bin
 To install KiCad on Ubuntu, run the following:
 
 ```shell
-sudo add-apt-repository --yes ppa:kicad/kicad-6.0-releases
+sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
 sudo apt update
 sudo apt install --install-recommends kicad
 ```
 
-Next, take note of the path to your monorepo. If you put it in your
-`~/Documents` folder, your path will be `~/Downloads/olin-electric-motorsports`.
 
 Open KiCad. From the top bar, open up _Preferences > Configure Paths..._. Add a
-new row to the table:
+new row to the table using the plus button:
 
 Name | Path
 -----|-----
-OEM\_DIR|`/home/your-username/olin-electric-motorsports`
+OEM\_DIR|`/home/your-username/Documents/olin-electric-motorsports`
 
 where `your-username` is the username on your computer.
+If you cloned our repository into a different directory than the `~/Documents` folder, this is just an absolute path to the repo.
 
 Visit [this page](https://www.kicad.org/download/) to find instructions for
 downloading KiCad for other operating systems.
