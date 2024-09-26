@@ -41,11 +41,11 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 
 4. To see your SSH Key, run the following command. Copy the whole contents of the output to your clipboard.
 ```shell
-cat ~/.ssh/id_ed25519.pub.
+cat ~/.ssh/id_ed25519.pub
 ```
 
 5. In your github page, go to your profile \(Top Right\) > `settings` > `SSH and GPG Keys`. Title your key as "Olin Computer and paste in your SSH key. Nearly done!
-6. Test you ssh connection by using the command below. You've done this step correctly if you don't get an authentication error.
+6. Test you ssh connection by using the command below. Type `yes` when prompted. You've done this step correctly if you see something along the lines of `Hi "username"! You've successfully authenticated, but GitHub does not provide shell access.`
 ```shell
 ssh -T git@github.com
 ```
