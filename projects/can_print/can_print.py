@@ -2,13 +2,15 @@
 Continuously read a CAN bus for can_print messages and decode accordingly.
 """
 
-import can, atexit, signal, sys, argparse, time
+import can, atexit, signal, sys, argparse, time, os, subprocess, re
 from can import Bus, Message
-from enum import IntEnum
+from enum import IntEnum, Enum
 from typing import Optional
 from dataclasses import dataclass
 
 INT16_MAX = 32767
+BUS_DEFAULT = "can0"
+BITRATE_DEFAULT = 500000
 
 
 def singleton(cls):
@@ -60,6 +62,12 @@ class CharDecode(IntEnum):
     DASH = 0x1B
     UNDERSCORE = 0x1C
     UNSUPPORTED_CHAR = 0x1F
+
+
+class TargetMCUs(Enum):
+    ATMEGA16M1 = ("16m1",)
+    ATMEGA64M1 = ("64m1",)
+    ATMEGA328P = ("328p",)
 
 
 @singleton
@@ -191,6 +199,13 @@ class CanPrint:
         # Parse args
         self.parse_args()
 
+        # Resolve input variables
+        self.resolve_variables()
+
+        # Flash target
+        if self.flash:
+            self.flash_mcu()
+
         # Initialize the can bus
         self.init_can()
 
@@ -199,6 +214,9 @@ class CanPrint:
 
         # Register callback for keyboard interrupt
         signal.signal(signal.SIGINT, self.signal_handler)
+
+        # Signal beginning of can print stdout
+        print("_" * 10 + "begin can print output" + "_" * 10)
 
         # Decode messages
         self.can_print()
@@ -209,9 +227,9 @@ class CanPrint:
         """
         filters = [{"can_id": self.ARB_ID, "can_mask": 0x7FF, "extended": False}]
         self.bus = can.interface.Bus(
-            channel=self.args.bus,
+            channel=self.bus,
             bustype="socketcan",
-            bitrate=self.args.bitrate,
+            bitrate=self.bitrate,
             ignore_rx_error_frames=True,
             can_filters=filters,
         )
@@ -247,19 +265,132 @@ class CanPrint:
         parser.add_argument(
             "bus",
             type=str,
-            default="can0",
             nargs="?",
             help="The can bus to read can_print messages on. Defaults to can0.",
         )
         parser.add_argument(
             "bitrate",
             type=int,
-            default="500000",
             nargs="?",
             help="The bitrate to read on the selected can bus. Defaults to 500k.",
         )
 
         self.args = parser.parse_args()
+
+    def resolve_variables(self):
+        """
+        Resolve variables from cli or env.
+        """
+        if self.args.bus:
+            self.bus = self.args.bus
+        else:
+            try:
+                self.bus = os.environ["CAN_BUS"]
+            except:
+                # Use default
+                self.bus = BUS_DEFAULT
+
+        if self.args.bitrate:
+            self.bitrate = self.args.bitrate
+        else:
+            try:
+                self.bitrate = int(os.environ["BITRATE"])
+            except:
+                # Use default
+                self.bitrate = BITRATE_DEFAULT
+
+        try:
+            self.flash = True if os.environ["FLASH"] == "True" else False
+        except:
+            # Use default
+            self.flash = False
+
+        try:
+            self._flash_target = os.environ["FLASH_TARGET"]
+        except:
+            self._flash_target = None
+
+        try:
+            self.flash_isp = os.environ["FLASH_ISP"]
+        except:
+            self.flash_isp = None
+
+        try:
+            self._target_mcu = os.environ["TARGET_MCU"]
+        except:
+            self._target_mcu = None
+
+    @property
+    def flash_target(self):
+        """
+        Process the flash target input.
+        """
+        if self._flash_target is None:
+            return None
+        target_split = ((self._flash_target).removesuffix(".sh")).split("/")
+        return "//" + target_split[0] + "/" + target_split[1] + ":" + target_split[2]
+
+    @property
+    def target_mcu(self):
+        """
+        Process the target mcu input.
+        """
+        if self._target_mcu is None:
+            return None
+        for mcu in TargetMCUs:
+            if mcu.value[0] in self._target_mcu:
+                return mcu.value[0]
+        return None
+
+    @property
+    def repo_root_dir(self):
+        """
+        Find the root directory of the repo.
+
+        # Janky.
+        """
+        output = subprocess.run(  # Trick Bazel into giving absolute dir of OEM repo.
+            ["bazel", "info", "workspace"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        ).stdout
+        match = re.search(r"'(.*?)'", output)
+        return match.group(1) if match else None
+
+    def flash_mcu(self):
+        """
+        Flash the target.
+
+        This is a janky way of flashing the target and running the can print
+        decoder directly after, all in one Bazel rule. Due to a lack of Bazel
+        knowledge, this is the best I can do at this point. Hopefully this can
+        be updated in the future to properly leverage Bazel. Ideally, with a
+        single Bazel command, an image would be built, flashed, and the
+        can print py_binary would be initialized, all in one Bazel rule and
+        completely within Bazel. Instead, the firmware is built, and the can
+        print binary is initialized, which flashes the image if the proper
+        environment variables are provided via env.
+        """
+        command = [
+            "bazel",
+            "run",
+            f"--config={self.target_mcu}",
+            "-c",
+            "opt",
+            self.flash_target,
+            "--",
+            "-c",
+            self.flash_isp,
+        ]
+        # Hacky at best, will definitely break in the future at worst!
+        os.chdir(self.repo_root_dir)
+        output = subprocess.Popen(
+            command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
+        )
+
+        for line in output.stdout:
+            print(line, end="")
 
 
 if __name__ == "__main__":
