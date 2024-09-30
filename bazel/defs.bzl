@@ -1,5 +1,5 @@
-load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 load("//projects/btldr:ecus.bzl", "ECUS")
 
@@ -291,18 +291,6 @@ def cc_firmware(name, **kwargs):
         data.append(btldr + ".hex")
         defines.append("BTLDR_ID=" + ECUS[btldr_ecu_name]["btldr_id"])
 
-    is_can_print = False
-    can_print_bus = None
-    can_print_bitrate = None
-    can_print_flash_isp = None
-    if "can_print_bus" in kwargs:
-        can_print_bus = kwargs.pop("can_print_bus")
-        is_can_print = True
-    if "can_print_bitrate" in kwargs:
-        can_print_bitrate = kwargs.pop("can_print_bitrate")
-    if "can_print_flash_isp" in kwargs:
-        can_print_flash_isp = kwargs.pop("can_print_flash_isp")
-
     cc_binary(
         name = "{}.elf".format(name),
         linkopts = linkopts + select({
@@ -401,23 +389,6 @@ def cc_firmware(name, **kwargs):
         btldr_hex = "//projects/btldr:{}_btldr.hex".format(name)
         eeprom = "//projects/btldr:{}_btldr.eep".format(name)
         template = "//bazel/tools:avrdude-btldr.sh.tmpl"
-
-    if is_can_print:
-        native.py_binary(
-            name = "can_print",
-            srcs = [
-                "//projects/can_print:can_print.py",
-            ],
-            data = [name],
-            env = {
-                "CAN_BUS": can_print_bus,
-                "CAN_BITRATE": can_print_bitrate,
-                "FLASH": "True",
-                "FLASH_TARGET": "$(location {})".format(name),
-                "FLASH_ISP": can_print_flash_isp,
-                "TARGET_MCU": str(kwargs["target_compatible_with"]),
-            },
-        )
 
     _flash(
         name = name,
