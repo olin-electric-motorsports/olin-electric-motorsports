@@ -1,7 +1,10 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+load("@rules_python//python:defs.bzl", "py_binary")
 load("//bazel/tools:defs.bzl", "can_api_files")
 
 exports_files([
     "can_print.yml",
+    "can_print.py",
 ])
 
 cc_library(
