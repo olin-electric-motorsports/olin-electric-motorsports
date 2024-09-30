@@ -365,12 +365,12 @@ class CanPrint:
         This is a janky way of flashing the target and running the can print
         decoder directly after, all in one Bazel rule. Due to a lack of Bazel
         knowledge, this is the best I can do at this point. Hopefully this can
-        be updated in the future to properly leverage Bazel. Ideally, with a
-        single Bazel command, an image would be built, flashed, and the
-        can print py_binary would be initialized, all in one Bazel rule and
-        completely within Bazel. Instead, the firmware is built, and the can
-        print binary is initialized, which flashes the image if the proper
-        environment variables are provided via env.
+        be updated in the future to properly leverage Bazel. Ideally, an image
+        would be built, flashed, and the can print py_binary would be
+        initialized, all in one Bazel rule and completely within Bazel. Instead,
+        the firmware is built, and the can print binary is initialized, which
+        flashes the image if the proper environment variables are provided via
+        env.
         """
         command = [
             "bazel",
