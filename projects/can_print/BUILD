@@ -26,3 +26,10 @@ can_api_files(
     dbc = "//vehicle/mkvi:mkvi.dbc",
     yaml = ":can_print.yml",
 )
+
+py_binary(
+    name = "can_print_decode",
+    srcs = ["can_print.py"],
+    main = "can_print.py",
+    visibility = ["//visibility:public"],
+)
