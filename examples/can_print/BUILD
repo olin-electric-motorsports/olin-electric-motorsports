@@ -10,7 +10,6 @@ cc_binary(
     name = "can_print_debug",
     srcs = [
         "can_print_example.c",
-        "can_print_example.h",
     ],
     copts = [
         "-E",
@@ -32,8 +31,10 @@ cc_firmware(
     name = "can_print_example",
     srcs = [
         "can_print_example.c",
-        "can_print_example.h",
     ],
+    can_print_bitrate = "500000",
+    can_print_bus = "can0",
+    can_print_flash_isp = "usbasp",
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
         "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
