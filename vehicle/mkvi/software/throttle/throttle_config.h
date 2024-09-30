@@ -6,10 +6,11 @@
 // implausibility constants according to rule T.4.2
 #define IMPLAUSIBILITY_TIME_LIMIT 100
 
-#define TORQUE_REQUEST_SCALE 5
+#define TORQUE_REQUEST_SCALE (9)
 
-#define MOTOR_CLOCKWISE     (0)
-#define MOTOR_ANTICLOCKWISE (1)
+//BASED ON DIRECTION COMMANDS from the PM100DX DATASHEET...DON'T CHANGE!!
+#define MOTOR_CLOCKWISE     (1)
+#define MOTOR_ANTICLOCKWISE (0)
 
 #define MIN_THROTTLE_POS 0
 #define MAX_THROTTLE_POS 255
@@ -42,10 +43,10 @@ in potentiometer happen and we aren't pressing pedal
 Minimum and maximum ADC counts representing 0% and 100% pedal travel
 Last calibrated 11-30-2023 for MKVI
 */
-#define THROTTLE_R_MIN_COUNTS (int16_t)((64 + THROTTLE_BUFFER) >> 2)
-#define THROTTLE_R_MAX_COUNTS (int16_t)((833 - THROTTLE_BUFFER) >> 2)
-#define THROTTLE_L_MIN_COUNTS (int16_t)((112 + THROTTLE_BUFFER) >> 2)
-#define THROTTLE_L_MAX_COUNTS (int16_t)((877 - THROTTLE_BUFFER) >> 2)
+#define THROTTLE_R_MIN_COUNTS (int16_t)((49 + THROTTLE_BUFFER) >> 2)
+#define THROTTLE_R_MAX_COUNTS (int16_t)((876 - THROTTLE_BUFFER) >> 2)
+#define THROTTLE_L_MIN_COUNTS (int16_t)((96 + THROTTLE_BUFFER) >> 2)
+#define THROTTLE_L_MAX_COUNTS (int16_t)((926 - THROTTLE_BUFFER) >> 2)
 
 // Pin definitions
 gpio_t SS_IS = PB6;
