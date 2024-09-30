@@ -4,7 +4,7 @@
 /**
  * Bit packing for a can print message.
  *
- *        lsb                                                          msb
+ *       lsb                                                           msb
  * field: |c_0|c_1| c_2 | c_3 | c_4 | c_5 | c_6 | c_7 |value|multi|resv |
  * bits:  |0-4|5-9|10-14|15-19|20-24|25-29|30-34|35-39|40-55|56-59|60-63|
  *
@@ -19,7 +19,9 @@
 /**
  * Main can print macro.
  *
- *
+ * @param string (char[8]) The string to print.
+ * @param value (int16) Optional, the value to print.
+ * @param multiplier (int4) Optional, the power of ten to multiply the value by.
  */
 #define can_print(...) \
     SELECT_CAN_PRINT(COUNT_ARGS(__VA_ARGS__, 5, 4, 3, 2, 1, 0), __VA_ARGS__)
