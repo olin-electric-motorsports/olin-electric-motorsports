@@ -1,6 +1,6 @@
 name: ci
 
-on: 
+on:
   pull_request:
     branches:
       - main
@@ -13,42 +13,44 @@ jobs:
         platform: [linux-x86_64, 16m1, 328p, 64m1]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Cache bazel
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-bazel
-      with:
-        path: ~/.cache/bazel
-        key: bazel
+      - uses: actions/checkout@v2
+      # - name: Cache bazel
+      #   uses: actions/cache@v2
+      #   env:
+      #     cache-name: cache-bazel
+      #   with:
+      #     path: ~/.cache/bazel
+      #     key: bazel
 
-    # Speed things up a bit
-    - name: Disable initramfs update
-      run: sudo sed -i 's/yes/no/g' /etc/initramfs-tools/update-initramfs.conf
-    - name: Disable man-db update
-      run: sudo rm -f /var/lib/man-db/auto-update
+      # Speed things up a bit
+      - name: Disable initramfs update
+        run: sudo sed -i 's/yes/no/g' /etc/initramfs-tools/update-initramfs.conf
+      - name: Disable man-db update
+        run: sudo rm -f /var/lib/man-db/auto-update
 
-    - name: Install gcc-avr
-      run: sudo apt install gcc-avr avr-libc binutils-avr
+      - name: Install gcc-avr
+        run: sudo apt install gcc-avr avr-libc binutils-avr
 
-    - name: Build all host
-      run: bazelisk build --config=${{ matrix.platform }} -c opt --build_tag_filters="-kicad" //...
+      - name: Build all host
+        run:
+          bazelisk build --config=${{ matrix.platform }} -c opt
+          --build_tag_filters="-kicad" //...
 
   test:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    # Speed things up a bit
-    - name: Disable initramfs update
-      run: sudo sed -i 's/yes/no/g' /etc/initramfs-tools/update-initramfs.conf
-    - name: Disable man-db update
-      run: sudo rm -f /var/lib/man-db/auto-update
+      # Speed things up a bit
+      - name: Disable initramfs update
+        run: sudo sed -i 's/yes/no/g' /etc/initramfs-tools/update-initramfs.conf
+      - name: Disable man-db update
+        run: sudo rm -f /var/lib/man-db/auto-update
 
-    - name: Install gcc-avr
-      run: sudo apt install gcc-avr avr-libc binutils-avr
+      - name: Install gcc-avr
+        run: sudo apt install gcc-avr avr-libc binutils-avr
 
-    - name: Run all tests
-      run: bazelisk test --build_tag_filters="-kicad" --test_output=all //...
+      - name: Run all tests
+        run: bazelisk test --build_tag_filters="-kicad" --test_output=all //...
