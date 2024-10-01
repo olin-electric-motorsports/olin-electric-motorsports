@@ -1,4 +1,4 @@
-#include "examples/bazel_test/library.h"
+#include "examples/old/bazel_test/library.h"
 // clang-format off
 #include <stdarg.h>
 #include <stddef.h>
