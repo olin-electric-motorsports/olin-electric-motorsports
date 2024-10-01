@@ -22,6 +22,11 @@ Install `git` on your computer if it's not already.
 sudo apt install git -y
 ```
 
+Also install python3
+```shell
+sudo apt update && sudo apt install python3
+```
+
 ### Linking a Computer to your Account
 We need to connect your GitHub account to your computer's specific git instance \(created by the command you just ran\). We do this for safety: someone pretending to be you can't add code to our repo!
 1. Set your username:
