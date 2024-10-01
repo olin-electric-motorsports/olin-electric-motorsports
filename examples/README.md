@@ -4,8 +4,8 @@ The `examples/` directory will house code samples and hardware samples for
 people to reference. Examples will include
 
 * Blinky for the ATMega16m1
-* Blinky for the STM32F103C8T6 (not finished)
-* Simple ATMEGA KiCad schematic/layout (not finished)
+* Blinky for the STM32F103C8T6
+* KiCad Arduino schematic/layout
 
 as well as others.
 

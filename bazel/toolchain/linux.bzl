@@ -1,7 +1,6 @@
 # This file is unused. It may be used in the future, but for now it is kept as a
 # reference.
 
-load("@bazel_tools//tools/build_defs/cc:action_names.bzl", "ACTION_NAMES")
 load(
     "@bazel_tools//tools/cpp:cc_toolchain_config_lib.bzl",
     "feature",
@@ -9,6 +8,7 @@ load(
     "flag_set",
     "tool_path",
 )
+load("@bazel_tools//tools/build_defs/cc:action_names.bzl", "ACTION_NAMES")
 load("@rules_cc//cc:defs.bzl", "cc_toolchain")
 load(
     "//bazel/toolchain:features.bzl",

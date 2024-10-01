@@ -1,5 +1,5 @@
-load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 load("//projects/btldr:ecus.bzl", "ECUS")
 

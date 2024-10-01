@@ -103,14 +103,12 @@ int can_send(can_frame_t* frame) {
     mob_enable_tx();
 
     // Wait for TX to finish
-    while (!(CANSTMOB & (1 << TXOK))) {
+    while (!(CANSTMOB & (1 << TXOK)))
         ;
-    }
     CANSTMOB &= ~(1 << TXOK);
 
     return 0;
 }
-
 
 int can_receive(can_frame_t* frame, can_filter_t filter) {
     select_mob(frame->mob);

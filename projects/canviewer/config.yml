@@ -14,74 +14,23 @@ ss_tsms:
 # Vehicle Values
 throttle_l_pos:
 throttle_r_pos:
-throttle_r_out_of_range:
-throttle_deviation:
-throttle_brake_implaus:
 brake_gate:
-brake_pressure:
 ready_to_drive:
-start_button_state:
 air_p_status:
 air_n_status:
-imd_status:
 pack_voltage:
-D3_Motor_Temperature:
-#pack_current:
 max_temperature:
   processing_function: convertVtoT
 min_temperature:
   processing_function: convertVtoT
 D1_DC_Bus_Voltage:
 Torque_Command:
-bms_fault_code:
-  processing_function: decode_bms_fault_msg
-csc_mia:
-  processing_function: decode_csc_status
-internal_die_temp: convert_internal_die_temp
-IVT_Result_U1:
-    processing_function: padding
-IVT_Result_I:
-    processing_function: padding
-IVT_Result_As:
-    processing_function: padding
-IVT_Result_W:
-    processing_function: padding
-IVT_Result_Wh:
-    processing_function: padding
-lpms_gyro_x:
-  processing_function: padding
-lpms_gyro_x:
-  processing_function: padding
-lpms_gyro_z:
-  processing_function: padding
-lpms_accel_y:
-  processing_function: padding
-lpms_accel_x:
-  processing_function: padding
-lpms_accel_z:
-  processing_function: padding
-lpms_mag_y:
-  processing_function: padding
-lpms_mag_x:
-  processing_function: padding
-lpms_mag_z:
-  processing_function: padding
-lpms_roll:
-  processing_function: padding
-lpms_pitch:
-  processing_function: padding
-lpms_yaw:
-  processing_function: padding
-lpms_q0:
-  processing_function: padding
-lpms_q1:
-  processing_function: padding
-lpms_q2:
-  processing_function: padding
-lpms_q3:
-  processing_function: padding
-
-
+accel_x:
+accel_y:
+accel_z:
+gyro_x:
+gyro_y:
+gyro_z:
 ---
 # Vehicle States (state and fault)
 air_control_critical:
@@ -91,4 +40,4 @@ bms_core:
   bms_state:
   bms_fault_state:
 throttle:
-  throttle_status:
+  throttle_state:

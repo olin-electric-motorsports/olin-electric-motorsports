@@ -1,5 +1,5 @@
-load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//bazel:defs.bzl", "cc_firmware")
+load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//bazel/tools:defs.bzl", "can_api_files")
 
 exports_files([

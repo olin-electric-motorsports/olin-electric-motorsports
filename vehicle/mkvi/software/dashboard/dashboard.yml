@@ -35,8 +35,8 @@ publish:
         unit:
           type: bool
           values:
-            t: OPEN
-            f: CLOSED
+            t: CLOSED
+            f: OPEN
       
       - name: ss_estop
         slice: 4 + 1
