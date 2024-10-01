@@ -12,11 +12,10 @@ cc_library(
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         "//libs/gpio",
-        "//libs/timer",
         "//libs/spi",
+        "//libs/timer",
     ],
-    visibility = ["//visibility:public"],
 )
-
