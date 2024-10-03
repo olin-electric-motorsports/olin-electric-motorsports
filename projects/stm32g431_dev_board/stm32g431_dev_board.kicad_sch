@@ -2069,6 +2069,171 @@
         )
       )
     )
+    (symbol "formula:STM32G431KBT6" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at -15.24 34.29 0)
+        (effects (font (size 1.27 1.27)) (justify left bottom))
+      )
+      (property "Value" "STM32G431KBT6" (at 3.81 -30.48 0)
+        (effects (font (size 1.27 1.27)) (justify left top))
+      )
+      (property "Footprint" "STM32G431KBT6:QFP80P900X900X160-32N" (at 0 58.42 0)
+        (effects (font (size 1.27 1.27)) (justify bottom) hide)
+      )
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g431cb.pdf" (at 0 48.26 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Description" "ARM® Cortex®-M4F STM32G4 Microcontroller IC 32-Bit Single-Core 170MHz 128KB (128K x 8) FLASH 32-LQFP (7x7)" (at 1.27 50.8 0)
+        (effects (font (size 1.27 1.27)) (justify bottom) hide)
+      )
+      (property "Package" "LQFP-32 STMicroelectronics" (at -1.27 55.88 0)
+        (effects (font (size 1.27 1.27)) (justify bottom) hide)
+      )
+      (property "Standard" "IPC-7351B" (at 0 53.34 0)
+        (effects (font (size 1.27 1.27)) (justify bottom) hide)
+      )
+      (property "ki_keywords" "ARM® Cortex®-M4F STM32G4 Microcontroller IC 32-Bit Single-Core 170MHz 128KB (128K x 8) FLASH 32-LQFP (7x7)" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "IC MCU 32BIT 128KB FLASH 32LQFP" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "STM32G431KBT6_0_0"
+        (rectangle (start -11.43 33.02) (end 11.43 -29.21)
+          (stroke (width 0.254) (type default))
+          (fill (type background))
+        )
+      )
+      (symbol "STM32G431KBT6_1_0"
+        (pin power_in line (at -2.54 36.83 270) (length 3.81)
+          (name "VDD" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 0 0) (length 3.81)
+          (name "PA5" (effects (font (size 1.016 1.016))))
+          (number "10" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -2.54 0) (length 3.81)
+          (name "PA6" (effects (font (size 1.016 1.016))))
+          (number "11" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -5.08 0) (length 3.81)
+          (name "PA7" (effects (font (size 1.016 1.016))))
+          (number "12" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at 15.24 13.97 180) (length 3.81)
+          (name "PB0" (effects (font (size 1.016 1.016))))
+          (number "13" (effects (font (size 1.016 1.016))))
+        )
+        (pin power_in line (at 2.54 -33.02 90) (length 3.81)
+          (name "VSSA" (effects (font (size 1.016 1.016))))
+          (number "14" (effects (font (size 1.016 1.016))))
+        )
+        (pin power_in line (at 2.54 36.83 270) (length 3.81)
+          (name "VDDA/VREF+" (effects (font (size 1.016 1.016))))
+          (number "15" (effects (font (size 1.016 1.016))))
+        )
+        (pin power_in line (at -2.54 -33.02 90) (length 3.81)
+          (name "VSS" (effects (font (size 1.016 1.016))))
+          (number "16" (effects (font (size 1.016 1.016))))
+        )
+        (pin power_in line (at 0 36.83 270) (length 3.81)
+          (name "VDD" (effects (font (size 1.016 1.016))))
+          (number "17" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -7.62 0) (length 3.81)
+          (name "PA8" (effects (font (size 1.016 1.016))))
+          (number "18" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -10.16 0) (length 3.81)
+          (name "PA9" (effects (font (size 1.016 1.016))))
+          (number "19" (effects (font (size 1.016 1.016))))
+        )
+        (pin input line (at -15.24 20.32 0) (length 3.81)
+          (name "PF0-OSC_IN" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -12.7 0) (length 3.81)
+          (name "PA10" (effects (font (size 1.016 1.016))))
+          (number "20" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -15.24 0) (length 3.81)
+          (name "PA11" (effects (font (size 1.016 1.016))))
+          (number "21" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -17.78 0) (length 3.81)
+          (name "PA12" (effects (font (size 1.016 1.016))))
+          (number "22" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -20.32 0) (length 3.81)
+          (name "PA13" (effects (font (size 1.016 1.016))))
+          (number "23" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -22.86 0) (length 3.81)
+          (name "PA14" (effects (font (size 1.016 1.016))))
+          (number "24" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 -25.4 0) (length 3.81)
+          (name "PA15" (effects (font (size 1.016 1.016))))
+          (number "25" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at 15.24 11.43 180) (length 3.81)
+          (name "PB3" (effects (font (size 1.016 1.016))))
+          (number "26" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at 15.24 8.89 180) (length 3.81)
+          (name "PB4" (effects (font (size 1.016 1.016))))
+          (number "27" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at 15.24 6.35 180) (length 3.81)
+          (name "PB5" (effects (font (size 1.016 1.016))))
+          (number "28" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at 15.24 3.81 180) (length 3.81)
+          (name "PB6" (effects (font (size 1.016 1.016))))
+          (number "29" (effects (font (size 1.016 1.016))))
+        )
+        (pin output line (at -15.24 17.78 0) (length 3.81)
+          (name "PF1-OSC_OUT" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at 15.24 1.27 180) (length 3.81)
+          (name "PB7" (effects (font (size 1.016 1.016))))
+          (number "30" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at 15.24 -1.27 180) (length 3.81)
+          (name "PB8-BOOT0" (effects (font (size 1.016 1.016))))
+          (number "31" (effects (font (size 1.016 1.016))))
+        )
+        (pin power_in line (at 0 -33.02 90) (length 3.81)
+          (name "VSS" (effects (font (size 1.016 1.016))))
+          (number "32" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at 15.24 -6.35 180) (length 3.81)
+          (name "PG10-NRST" (effects (font (size 1.016 1.016))))
+          (number "4" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 12.7 0) (length 3.81)
+          (name "PA0" (effects (font (size 1.016 1.016))))
+          (number "5" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 10.16 0) (length 3.81)
+          (name "PA1" (effects (font (size 1.016 1.016))))
+          (number "6" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 7.62 0) (length 3.81)
+          (name "PA2" (effects (font (size 1.016 1.016))))
+          (number "7" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 5.08 0) (length 3.81)
+          (name "PA3" (effects (font (size 1.016 1.016))))
+          (number "8" (effects (font (size 1.016 1.016))))
+        )
+        (pin bidirectional line (at -15.24 2.54 0) (length 3.81)
+          (name "PA4" (effects (font (size 1.016 1.016))))
+          (number "9" (effects (font (size 1.016 1.016))))
+        )
+      )
+    )
     (symbol "formula:SW_Push_SPST_NO" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "SW" (at 2.54 3.81 0)
         (effects (font (size 1.27 1.27)))
@@ -3285,6 +3450,11 @@
     (effects (font (size 2.2606 2.2606)) (justify left bottom))
     (uuid de2df633-a4fc-4270-bdd8-521d0bdc5fd2)
   )
+  (text "can transiecver\nrx tx leds\nwago 2601 interface\nstm32g431\nusb interface\ntvs\nuart interface\nfuses for usb?\nbreakout for all pins\nprogramming header breakout\n3v3 ldo\nlevel shifters\n12v input?\ntvs for 12v input?\nfuses for 12v input?"
+    (at 161.29 228.6 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid f5e95d1a-a990-438b-9d04-c45120cc5157)
+  )
 
   (label "PB5" (at 64.77 88.9 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
@@ -3616,7 +3786,7 @@
     )
     (pin "1" (uuid 9f4f63c1-7896-4f58-8805-d414e9286c3f))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#FLG02") (unit 1)
         )
@@ -3641,7 +3811,7 @@
     )
     (pin "1" (uuid 7f1ce36a-57bd-4cf8-8ec1-fba66c536a9e))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR030") (unit 1)
         )
@@ -3676,7 +3846,7 @@
     (pin "1" (uuid c5c3c4a9-f22f-42ce-b937-f3396ca6378a))
     (pin "2" (uuid dcf8e431-009c-47b6-bc79-bd6d545f246f))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "SW1") (unit 1)
         )
@@ -3712,7 +3882,7 @@
     (pin "2" (uuid f80097fb-2f2e-4021-9b65-8ce5b34f71b0))
     (pin "5" (uuid ddc0d6f1-6074-4e64-b27a-1615818f5693))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "U1") (unit 1)
         )
@@ -3737,7 +3907,7 @@
     )
     (pin "1" (uuid b6966a9f-7b79-4f67-9f84-0b601a9a75b7))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR010") (unit 1)
         )
@@ -3766,7 +3936,7 @@
     (pin "1" (uuid d20f0f6e-9f17-4414-8078-2febd9437271))
     (pin "2" (uuid 31427f91-5c5c-4636-ad8f-7448a25b0e84))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C4") (unit 1)
         )
@@ -3791,7 +3961,7 @@
     )
     (pin "1" (uuid 3704ff80-fa67-47b5-9303-2aa385b50d00))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR07") (unit 1)
         )
@@ -3820,7 +3990,7 @@
     (pin "1" (uuid b11d07de-8947-40d4-baae-c2e7abffdaa4))
     (pin "2" (uuid bf1ef98f-317f-4f21-9fdc-0165e0aea364))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C5") (unit 1)
         )
@@ -3845,7 +4015,7 @@
     )
     (pin "1" (uuid 5143497e-c7f8-4bbc-a471-fe502cb3041f))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR011") (unit 1)
         )
@@ -3880,7 +4050,7 @@
     (pin "1" (uuid 9313772d-ac99-469e-b813-2160886af77a))
     (pin "2" (uuid c35c0d94-6aa8-4bf7-a17f-e7dc1efef39d))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R3") (unit 1)
         )
@@ -3915,7 +4085,7 @@
     (pin "1" (uuid e013ce0b-4993-412f-8539-117df03dc3ad))
     (pin "2" (uuid fcd9f022-06eb-4971-90df-18072a930b93))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "D2") (unit 1)
         )
@@ -3940,7 +4110,7 @@
     )
     (pin "1" (uuid c69a52f1-35ed-4c23-9f6a-288618cc2c47))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR012") (unit 1)
         )
@@ -3965,7 +4135,7 @@
     )
     (pin "1" (uuid f9c846ad-c8e2-418e-b2d1-b51b231e2c08))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "TP1") (unit 1)
         )
@@ -3990,7 +4160,7 @@
     )
     (pin "1" (uuid d06ecabc-0b32-436d-b085-7c1fe5ec07d9))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR023") (unit 1)
         )
@@ -4015,7 +4185,7 @@
     )
     (pin "1" (uuid 80d0b02e-aa11-4fd3-b900-4eb6b055b8c0))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "TP2") (unit 1)
         )
@@ -4040,7 +4210,7 @@
     )
     (pin "1" (uuid a7b7736c-b3a1-4577-a09e-b97c0f00beeb))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "TP3") (unit 1)
         )
@@ -4065,7 +4235,7 @@
     )
     (pin "1" (uuid 66e00241-d7ca-4106-9ead-3a1ec7a6b3ea))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR029") (unit 1)
         )
@@ -4090,7 +4260,7 @@
     )
     (pin "1" (uuid 89f2beeb-9157-43b8-aed1-da311a9bea67))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR032") (unit 1)
         )
@@ -4116,7 +4286,7 @@
     (pin "1" (uuid 79c5cf49-060b-45c3-aada-1485d3ec26b2))
     (pin "2" (uuid 6693c1fd-1e3d-484e-a0de-fd0d18c92619))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R4") (unit 1)
         )
@@ -4141,7 +4311,7 @@
     )
     (pin "1" (uuid 61d5c1f9-81ea-4085-a811-76d3bf369b61))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0130") (unit 1)
         )
@@ -4170,7 +4340,7 @@
     (pin "2" (uuid 6a75bc54-2e44-41f8-a3b0-35961a485267))
     (pin "5" (uuid a1a94605-41d1-46c5-8315-c3166da5ee0e))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "U6") (unit 1)
         )
@@ -4196,7 +4366,7 @@
     (pin "1" (uuid e88b5351-8837-43ba-a21c-8535537e9456))
     (pin "2" (uuid 6e2021ce-5a08-430a-9560-0a2076cffa11))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R6") (unit 1)
         )
@@ -4221,7 +4391,7 @@
     )
     (pin "1" (uuid 4ebf73ec-74c1-4ff5-9cba-86aa17b422a6))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR014") (unit 1)
         )
@@ -4246,7 +4416,7 @@
     )
     (pin "1" (uuid 6d501c27-b7db-4559-8395-437db501fd68))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR03") (unit 1)
         )
@@ -4281,7 +4451,7 @@
     (pin "1" (uuid 880af514-06d6-4f31-8906-79ff958987dc))
     (pin "2" (uuid 11499cf6-6b9e-48b6-b250-73fb4e185f2b))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C9") (unit 1)
         )
@@ -4316,9 +4486,74 @@
     (pin "1" (uuid 143acf03-eb2a-4cc9-a79d-2e386d80ef48))
     (pin "2" (uuid 8ad92dac-51d7-411b-a64b-c6c6f5db48c1))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C7") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "formula:STM32G431KBT6") (at -26.67 80.01 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 1d5c0b7e-1b2a-4830-b355-373662ea8b4a)
+    (property "Reference" "U7" (at -22.1106 41.91 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "STM32G431KBT6" (at -22.1106 44.45 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "STM32G431KBT6:QFP80P900X900X160-32N" (at -26.67 21.59 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g431cb.pdf" (at -26.67 31.75 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Description" "ARM® Cortex®-M4F STM32G4 Microcontroller IC 32-Bit Single-Core 170MHz 128KB (128K x 8) FLASH 32-LQFP (7x7)" (at -25.4 29.21 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Package" "LQFP-32 STMicroelectronics" (at -27.94 24.13 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Standard" "IPC-7351B" (at -26.67 26.67 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (pin "21" (uuid 8e86c41b-53eb-4684-bc67-f29ab3e6cb96))
+    (pin "26" (uuid 0e044b26-337b-430f-b17c-da129cca1dc6))
+    (pin "2" (uuid a606a2f2-8f53-4bec-940b-947014fd1b4c))
+    (pin "17" (uuid f7a85c96-a3bb-4004-91db-94b48b07799d))
+    (pin "12" (uuid 40a39295-85f0-4a9a-b023-bfc723062f26))
+    (pin "11" (uuid 2026e19f-b0d4-44c7-95af-06fa7a9028df))
+    (pin "9" (uuid 520c5f19-08e6-407b-b479-194eff8c26c8))
+    (pin "32" (uuid 75928052-6b74-4687-a011-a0cb594fffe9))
+    (pin "25" (uuid ea43e1d3-f2fc-4894-ba58-1a12cd956230))
+    (pin "13" (uuid 33b30f62-5490-459c-8900-26782fb88258))
+    (pin "19" (uuid abe3b725-b636-4510-aede-5bfea1bdfa81))
+    (pin "15" (uuid 70da08a7-c605-460c-92f8-32d9ceddb2b2))
+    (pin "10" (uuid 26a61ed9-2889-46c6-802b-fcaef3b8ac7d))
+    (pin "1" (uuid ff82c892-3df2-4a22-b730-d4fee0b94f82))
+    (pin "5" (uuid e17768a3-2f37-4e45-8782-97f6cba40f93))
+    (pin "30" (uuid e4a00a0b-ca0d-4f4b-9ede-15ebe6d3a0b6))
+    (pin "27" (uuid 607fa869-b3d1-4447-b349-4a32c604a61a))
+    (pin "28" (uuid 2bf87966-c46b-4ed5-84d3-7a96148176d6))
+    (pin "24" (uuid ce97bf47-7423-44b3-8d9a-10a1d8d7da61))
+    (pin "3" (uuid 8f3a4474-e361-4f79-8ce0-36a209793d7e))
+    (pin "23" (uuid 3af64ab9-238d-4a06-82a6-cd4069c6fadd))
+    (pin "29" (uuid eaf27373-69e8-4f66-9c71-99f6d7c14e20))
+    (pin "31" (uuid c88a5df5-7ee3-4acc-ab98-6117a3824ff3))
+    (pin "20" (uuid c85164ba-e10e-4301-b4a1-6239a463cd86))
+    (pin "8" (uuid e3a32ea8-b746-45b7-9336-d32958d71cb7))
+    (pin "7" (uuid e1188904-e822-4153-9192-34dc721aff7e))
+    (pin "4" (uuid 9b81ec31-1909-40c7-a686-02503e067081))
+    (pin "22" (uuid 687848b2-869c-405f-9c14-362737421436))
+    (pin "16" (uuid 8ac9bd8a-b82b-4c6a-a10e-f77062c336e5))
+    (pin "14" (uuid 39da1841-35c0-4424-9478-b44ef7e30226))
+    (pin "6" (uuid 8a96cb3d-7078-413a-bf1a-8042bee59402))
+    (pin "18" (uuid ef134c1c-23b8-4cfe-9138-9e97421d0b64))
+    (instances
+      (project "stm32g431_dev_board"
+        (path "/052dad07-d6a2-412d-856d-0db02130970c"
+          (reference "U7") (unit 1)
         )
       )
     )
@@ -4341,7 +4576,7 @@
     )
     (pin "1" (uuid 443652db-d46e-46b6-bc5c-0ba4ba38258b))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR015") (unit 1)
         )
@@ -4366,7 +4601,7 @@
     )
     (pin "1" (uuid a6e79365-a734-4580-98b9-a52b3f8f2f2a))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0103") (unit 1)
         )
@@ -4392,7 +4627,7 @@
     (pin "1" (uuid 24a1e356-5e40-4f82-a852-c4cfb54955c1))
     (pin "2" (uuid f263d27f-e43f-43c4-a0d5-069aa4d39898))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C1") (unit 1)
         )
@@ -4427,7 +4662,7 @@
     (pin "1" (uuid 31705bc7-7f6a-4d36-9fe2-6ea91ae34a89))
     (pin "2" (uuid 29c87417-e396-474f-98ce-f7a41b1e5a90))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R8") (unit 1)
         )
@@ -4452,7 +4687,7 @@
     )
     (pin "1" (uuid e185e84e-aae2-4b2f-9f9f-c1c6a5067a58))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR013") (unit 1)
         )
@@ -4487,7 +4722,7 @@
     (pin "1" (uuid 5e90f178-92e2-489b-ac40-09893b508870))
     (pin "2" (uuid 37d60713-b647-4988-94a2-b1c511b83ec4))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C6") (unit 1)
         )
@@ -4512,7 +4747,7 @@
     )
     (pin "1" (uuid b51c44d8-41f8-4a60-b3fb-d803cd6e0991))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR02") (unit 1)
         )
@@ -4537,7 +4772,7 @@
     )
     (pin "1" (uuid 091a66dd-1bc7-4773-a387-d2964a1ddd56))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR08") (unit 1)
         )
@@ -4573,7 +4808,7 @@
     (pin "11" (uuid d881f4b8-61bf-4012-a9db-d0c0c0e84691))
     (pin "7" (uuid 46984e66-7646-42bf-bcf2-80a6162e524a))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "J3") (unit 1)
         )
@@ -4605,7 +4840,7 @@
     (pin "7" (uuid 7ff144a3-d216-4e7a-8644-ea6a5beb0a19))
     (pin "1" (uuid f18a7cf0-7c82-45f6-9061-20aa053fb118))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "U5") (unit 1)
         )
@@ -4630,7 +4865,7 @@
     )
     (pin "1" (uuid 24ac89aa-d50c-42e8-97c3-77c72c283f42))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR022") (unit 1)
         )
@@ -4665,7 +4900,7 @@
     (pin "1" (uuid 292c8d42-52ff-4973-b414-c1d1828d5445))
     (pin "2" (uuid 9c74b79d-5cce-46e8-b73d-9cc614864755))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R2") (unit 1)
         )
@@ -4690,7 +4925,7 @@
     )
     (pin "1" (uuid a89eb5d4-5a51-410f-b4ef-dd449bb782ba))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR018") (unit 1)
         )
@@ -4716,7 +4951,7 @@
     (pin "1" (uuid 9d8eee64-88e6-4786-b17f-4a4171d5810b))
     (pin "2" (uuid bdb334ba-d4ea-46a8-8765-eeb9536bbefa))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C_100nF1") (unit 1)
         )
@@ -4741,7 +4976,7 @@
     )
     (pin "1" (uuid 8acf86d2-32b4-43b3-9db4-019c584ce29e))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0127") (unit 1)
         )
@@ -4766,7 +5001,7 @@
     )
     (pin "1" (uuid 71bbac39-47f6-4e36-8b08-f0795464a7de))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0104") (unit 1)
         )
@@ -4791,7 +5026,7 @@
     )
     (pin "1" (uuid f641aa35-0ca0-4f4e-a875-9baae081aea6))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0102") (unit 1)
         )
@@ -4826,7 +5061,7 @@
     (pin "1" (uuid bddaa66a-4709-4e9b-b160-14c5e721cca9))
     (pin "2" (uuid 99988a97-33be-4d9f-b56b-aeaea6443ad1))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "D4") (unit 1)
         )
@@ -4851,7 +5086,7 @@
     )
     (pin "1" (uuid 5836f849-4642-4c97-9a7e-7bebae0de57f))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR019") (unit 1)
         )
@@ -4886,7 +5121,7 @@
     (pin "2" (uuid aa38440b-81e7-4a0c-94bc-11a7e1ea27d3))
     (pin "1" (uuid 9a09b28b-1753-4a56-9767-833384aaf27e))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C12") (unit 1)
         )
@@ -4911,7 +5146,7 @@
     )
     (pin "1" (uuid 9500d78d-7c14-4279-aa73-a105bfa0912f))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0101") (unit 1)
         )
@@ -4946,7 +5181,7 @@
     (pin "2" (uuid 27d0198c-2607-4090-b932-82310c2b4e90))
     (pin "1" (uuid d24fd957-6809-48b1-b64f-28ce2c2bff65))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R5") (unit 1)
         )
@@ -4971,7 +5206,7 @@
     )
     (pin "1" (uuid 218c426f-e21a-4d71-a2eb-9711a993261f))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0125") (unit 1)
         )
@@ -4996,7 +5231,7 @@
     )
     (pin "1" (uuid e7d87399-90ff-4f08-9ed6-5719d25132e5))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR01") (unit 1)
         )
@@ -5021,7 +5256,7 @@
     )
     (pin "1" (uuid ee28d592-632b-4c6d-a45c-c832c6b77ced))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR021") (unit 1)
         )
@@ -5058,7 +5293,7 @@
     (pin "3" (uuid 20e4ea00-32a6-42f7-a4e7-b5ffaf420469))
     (pin "4" (uuid cb8d7993-252a-4e69-8678-a93d50abfd69))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "Y1") (unit 1)
         )
@@ -5094,7 +5329,7 @@
     (pin "11" (uuid 57ca0b3d-0d6e-4b93-b54b-a233b11b5e03))
     (pin "7" (uuid 9070eb5e-2774-4970-b96a-b1c327b684f2))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "J4") (unit 1)
         )
@@ -5119,7 +5354,7 @@
     )
     (pin "1" (uuid 98b470f8-c124-4f6d-948b-db97c0534f04))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0109") (unit 1)
         )
@@ -5144,7 +5379,7 @@
     )
     (pin "1" (uuid cf19b420-9f72-43f7-9ff3-46c62c9e2f0b))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0106") (unit 1)
         )
@@ -5171,7 +5406,7 @@
     (pin "1" (uuid 9030eb78-dccf-4491-be0b-aa4915c30a82))
     (pin "2" (uuid 45dab6e3-6bb4-4e6d-9e87-7467032c60a6))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "U4") (unit 1)
         )
@@ -5206,7 +5441,7 @@
     (pin "1" (uuid 86e28a3e-48ff-41e5-8070-feecc3a3bafb))
     (pin "2" (uuid bc1cf1b3-a900-430b-828b-fff2b91d8f9d))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "J1") (unit 1)
         )
@@ -5241,7 +5476,7 @@
     (pin "1" (uuid 9b98f97d-d9e2-4cc0-b04f-8ea0e3d93aae))
     (pin "2" (uuid ef72f105-9751-4a73-98ae-e8b613951577))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C3") (unit 1)
         )
@@ -5266,7 +5501,7 @@
     )
     (pin "1" (uuid 1b142c25-a03e-4f5a-83e4-dc0fb709860d))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0122") (unit 1)
         )
@@ -5301,7 +5536,7 @@
     (pin "1" (uuid b7d8fab1-1492-447e-a2c2-b06ca6c5ce02))
     (pin "2" (uuid 3a2d5202-025d-4927-8d02-abeaaa02c450))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C10") (unit 1)
         )
@@ -5326,7 +5561,7 @@
     )
     (pin "1" (uuid aeeca712-2737-4048-9660-aace8051b93f))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR09") (unit 1)
         )
@@ -5351,7 +5586,7 @@
     )
     (pin "1" (uuid 8ca12e3a-04ba-4bbc-a2d0-a3bbb4eae21b))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0112") (unit 1)
         )
@@ -5386,7 +5621,7 @@
     (pin "1" (uuid 819e8379-49d5-4582-afab-cdc5378fc896))
     (pin "2" (uuid dc9458fa-316d-4f2f-bc50-ebcc4382e5fc))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "D3") (unit 1)
         )
@@ -5421,7 +5656,7 @@
     (pin "1" (uuid 7e4c8555-fa05-4e49-8cf6-b7adf81f7dea))
     (pin "2" (uuid 78cfdbdf-3791-4b4c-957f-150c14885ea8))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "SW2") (unit 1)
         )
@@ -5446,7 +5681,7 @@
     )
     (pin "1" (uuid aafbe397-1575-4541-9c89-3ce430e2ce5a))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0128") (unit 1)
         )
@@ -5472,7 +5707,7 @@
     (pin "1" (uuid 31680ae1-7891-4d35-9ef2-02bf106d1f18))
     (pin "2" (uuid 04eb0fc8-a5e5-48ae-ae8d-83d7c2eca1f8))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C2") (unit 1)
         )
@@ -5497,7 +5732,7 @@
     )
     (pin "1" (uuid b6ec89bc-9031-45c8-849e-9889dd8ff7df))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR05") (unit 1)
         )
@@ -5522,7 +5757,7 @@
     )
     (pin "1" (uuid 0c902be8-4cdf-48c4-ad04-d76f93566955))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR017") (unit 1)
         )
@@ -5547,7 +5782,7 @@
     )
     (pin "1" (uuid 7af2928f-9ef8-4627-8487-4609c2453a48))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR020") (unit 1)
         )
@@ -5572,7 +5807,7 @@
     )
     (pin "1" (uuid 83d18139-8d92-4bba-8c40-10d0d50627aa))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0124") (unit 1)
         )
@@ -5597,7 +5832,7 @@
     )
     (pin "1" (uuid ee7bb39a-3a24-4fc2-bf18-799a25338183))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR016") (unit 1)
         )
@@ -5622,7 +5857,7 @@
     )
     (pin "1" (uuid ca2dec0c-325e-46ef-841b-89fb03658d54))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0110") (unit 1)
         )
@@ -5647,7 +5882,7 @@
     )
     (pin "1" (uuid 70b581f4-0b01-4f29-8cb9-e222bc025774))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0107") (unit 1)
         )
@@ -5673,7 +5908,7 @@
     (pin "1" (uuid a7031b19-df5d-4473-a4ec-3e2a749dd9dd))
     (pin "2" (uuid 8a616d6f-df66-47ba-9f12-9ad766c39447))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R1") (unit 1)
         )
@@ -5698,7 +5933,7 @@
     )
     (pin "1" (uuid c9fd9ec1-129c-4d93-bc23-e6c21331cc79))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0111") (unit 1)
         )
@@ -5723,7 +5958,7 @@
     )
     (pin "1" (uuid 2898ec73-8392-42e2-9ce2-db3e6f507dd4))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0123") (unit 1)
         )
@@ -5755,7 +5990,7 @@
     (pin "7" (uuid 962dbff5-3f04-4dd1-992b-1ffc836990bf))
     (pin "8" (uuid 722e139c-22b1-4d59-ad1e-be4338878a74))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "U3") (unit 1)
         )
@@ -5827,7 +6062,7 @@
     (pin "8" (uuid 61b77938-c82d-40ee-ab87-e192f31ea42c))
     (pin "9" (uuid e3eff544-9ebb-49ea-82cd-99a88d1cd900))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "U2") (unit 1)
         )
@@ -5861,7 +6096,7 @@
     (pin "8" (uuid d82e4247-db5c-441d-8985-87472ec5695c))
     (pin "9" (uuid 1ce5b532-89e3-44fa-ace5-0edee53295fb))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "J15") (unit 1)
         )
@@ -5896,7 +6131,7 @@
     (pin "1" (uuid 3914d2e8-6a54-4932-b0ca-47128f8b965d))
     (pin "2" (uuid 57876275-5a0e-4f60-8533-237231f63147))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C8") (unit 1)
         )
@@ -5922,7 +6157,7 @@
     (pin "1" (uuid 0e9081a0-504b-48e1-9871-9b5bd927a5d2))
     (pin "2" (uuid b9d84e96-cfb2-4010-9736-1d94ec7eae10))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R7") (unit 1)
         )
@@ -5957,7 +6192,7 @@
     (pin "1" (uuid 559c83b8-9ccb-45c8-bbd5-06be9a04143d))
     (pin "2" (uuid 9f7837fe-e812-4591-b57e-2acbabc21a8b))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "SW3") (unit 1)
         )
@@ -5982,7 +6217,7 @@
     )
     (pin "1" (uuid 37799c78-de6f-47db-a0e2-de9ee1a08b6f))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "TP4") (unit 1)
         )
@@ -6014,7 +6249,7 @@
     (pin "1" (uuid f8b6987e-674c-4af5-993d-1cef4992e589))
     (pin "2" (uuid 5243b7f7-0a79-484c-9daa-c986b0856257))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "J14") (unit 1)
         )
@@ -6039,7 +6274,7 @@
     )
     (pin "1" (uuid a0c2c59c-aa18-47bd-adf9-68f7bf02bd60))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0113") (unit 1)
         )
@@ -6091,7 +6326,7 @@
     (pin "B6" (uuid 9167423c-4aae-411a-ab17-dc01160bc1cf))
     (pin "B5" (uuid 7c221fb9-bc76-4c6b-8f57-ab35258d8c87))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "J2") (unit 1)
         )
@@ -6116,7 +6351,7 @@
     )
     (pin "1" (uuid 89fc53c6-a817-48ed-b4b0-b95f42248994))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0129") (unit 1)
         )
@@ -6142,7 +6377,7 @@
     (pin "1" (uuid 9501a5c5-be6c-4adf-b63a-656394f65aef))
     (pin "2" (uuid a99ef5c0-18e2-45b0-8d33-36d9d5443173))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R30") (unit 1)
         )
@@ -6167,7 +6402,7 @@
     )
     (pin "1" (uuid 2e468e51-ea89-459f-a91a-8e4ecf741190))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0105") (unit 1)
         )
@@ -6192,7 +6427,7 @@
     )
     (pin "1" (uuid 50e096c6-8716-40ae-8e41-30839b4c0b8d))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0121") (unit 1)
         )
@@ -6217,7 +6452,7 @@
     )
     (pin "1" (uuid 57ec7ddb-91f8-4e55-a3f9-a2bf21b64752))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0108") (unit 1)
         )
@@ -6242,7 +6477,7 @@
     )
     (pin "1" (uuid e84339de-d6ea-46b0-b53f-3fa7c72e2835))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR06") (unit 1)
         )
@@ -6267,7 +6502,7 @@
     )
     (pin "1" (uuid a8951876-72a0-46f7-b21f-215c7fc449fb))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR0116") (unit 1)
         )
@@ -6302,7 +6537,7 @@
     (pin "1" (uuid e46b64c8-d5fb-4226-a6be-c506a1c9bfb8))
     (pin "2" (uuid fef0bce2-6fec-4e80-b65e-38f0820f4960))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "C11") (unit 1)
         )
@@ -6327,7 +6562,7 @@
     )
     (pin "1" (uuid 4544ea7b-f629-463e-ad13-a4529b8f560e))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#FLG04") (unit 1)
         )
@@ -6353,7 +6588,7 @@
     (pin "1" (uuid 1fcc6b02-a69b-49a4-bc5f-70d2e6b57337))
     (pin "2" (uuid 295329cc-9af6-41d0-9c92-d10d063e8280))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "R29") (unit 1)
         )
@@ -6378,7 +6613,7 @@
     )
     (pin "1" (uuid dd0d7117-86f8-4a2b-9fcd-04c31ec48ed2))
     (instances
-      (project "firmware_tester_board_stm32"
+      (project "stm32g431_dev_board"
         (path "/052dad07-d6a2-412d-856d-0db02130970c"
           (reference "#PWR04") (unit 1)
         )
