@@ -16,6 +16,6 @@ pytest_test(
     ],
     deps = [
         "//projects/btldr/py_client:btldr",
-        "//projects/hitl/lib:hitl",
+        # "//projects/hitl/lib:hitl",
     ],
 )

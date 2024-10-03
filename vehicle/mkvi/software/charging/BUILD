@@ -1,6 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
-load("//bazel/tools:defs.bzl", "can_api_files")
 load("//bazel:defs.bzl", "cc_firmware")
+load("//bazel/tools:defs.bzl", "can_api_files")
 
 exports_files(
     [
@@ -28,8 +28,8 @@ cc_firmware(
         ":can_api",
         "//libs/can",
         "//libs/gpio",
-        "//libs/timer",
         "//libs/spi",
+        "//libs/timer",
         "//third_party/MCP25625",
     ],
 )
