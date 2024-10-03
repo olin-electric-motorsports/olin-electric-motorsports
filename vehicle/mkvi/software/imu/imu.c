@@ -13,7 +13,7 @@
 // #include "projects/btldr/btldr_lib.h"
 // #include "projects/btldr/git_sha.h"
 // #include "projects/btldr/libs/image/api.h"
-#include "projects/can_print/can_print.h"
+// #include "projects/can_print/can_print.h"
 
 // /*
 //  * Required for btldr

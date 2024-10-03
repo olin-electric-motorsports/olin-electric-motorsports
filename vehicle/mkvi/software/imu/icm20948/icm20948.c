@@ -5,7 +5,7 @@
 #include "libs/spi/api.h"
 #include <util/delay.h>
 
-#include "projects/can_print/can_print.h"
+// #include "projects/can_print/can_print.h"
 
 void icm_read_register(uint8_t register_, uint8_t* rx_data) {
     uint8_t tx_data[2] = { register_ | (1 << 7), 0x0 };
@@ -63,7 +63,7 @@ void read_magnetometer(uint8_t register_, uint8_t* rx_data) {
     // Read data
     icm_read_register(I2C_SLV4_DI, &_rx_data);
     // icm_read_register(EXT_SLV_SENS_DATA_00, &_rx_data);
-    _can_print(_rx_data);
+    // _can_print(_rx_data);
 }
 
 void write_magnetometer(uint8_t register_, uint8_t tx_data) {

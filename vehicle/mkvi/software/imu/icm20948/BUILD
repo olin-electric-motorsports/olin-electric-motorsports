@@ -12,6 +12,6 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "//libs/spi",
-        "//projects/can_print",
+        # "//projects/can_print",
     ],
 )
