@@ -26,7 +26,7 @@ typedef enum {
 } spi_clock_phase_e;
 
 typedef enum {
-    F_OSC_DIV_4,
+    F_OSC_DIV_4, // I believe this is 4mhz
     F_OSC_DIV_16,
     F_OSC_DIV_64,
     F_OSC_DIV_128,
@@ -69,6 +69,7 @@ void spi_init(spi_cfg_s* cfg);
 void spi_transceive(uint8_t* txdata, uint8_t* rxdata, uint8_t len);
 void spi_transceive_cs(uint8_t* txdata, uint8_t* rxdata, uint8_t len);
 
+void spi_transmit(uint8_t* txdata, uint8_t len);
 void spi_receive(uint8_t* rxdata, uint8_t len);
 
 /*

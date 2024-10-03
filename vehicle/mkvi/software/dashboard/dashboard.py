@@ -1,7 +1,11 @@
+###### DO NOT USE THIS CODE ######
+#UPLOAD SCRIPT FROM THE CAR
+
+
 import threading
 import time
-import can
 import cantools
+import can
 import RPi.GPIO as GPIO
 
 BUSTYPE = "socketcan"
@@ -9,20 +13,20 @@ CHANNEL = "can0"
 BITRATE = 500000
 
 # Loading in everyone's compiled config files
-dbc_file = "mkvi.dbc"
+dbc_file = "/home/oemdashboard/mkvi.dbc"
 db = cantools.database.load_file(dbc_file)
 
 # Making variables that store incoming CAN data global
-air_state = None
-imd_status = None
-bms_fault = None
-brake_gate = None
-throttle_pressed = None
+air_state = "INIT"
+imd_status = "IMD OK"
+bms_state = "ACTIVE"
+brake_gate = "Brakelight OFF"
+throttle_pressed = False
 
 # Pin Definitions
 BMS_LED_LSD = 36
 HV_LED_LSD = 29
-IMD_LED_LSD = 26
+IMD_LED_LSD = 16  # 26 IAN W changing this 6/9/24
 RTD_BUZZER_LSD = 32
 
 RTD_BUTTON_SENSE = 31
@@ -38,12 +42,7 @@ PROGRAMMING_LED_3 = 37
 RTD_BUZZ_TIME = 2000  # in milliseconds
 
 # Initializing the dictionary that holds outgoing CAN data
-dashboard_data = {
-    "ready_to_drive": False,
-    "start_button_state": False,
-    "ss_estop": False,
-    "ss_bots": False,
-}
+dashboard_data = {"ready_to_drive": False, "start_button_state": False, "ss_estop": False, "ss_bots": False, }
 
 
 def init_can(channel, bustype, bitrate, callback):
@@ -95,11 +94,12 @@ def dashboard_callback(msg, db):
         msg (can.Message): CAN message that was received
         db (cantools.database): Database generated from our DBC
     """
-    global air_state, imd_status, bms_fault, brake_gate, throttle_pressed
+    global air_state, imd_status, bms_state, brake_gate, throttle_pressed
 
     try:
         message = db.decode_message(msg.arbitration_id, msg.data)
     except Exception as _:
+        print("bad message")
         return
 
     message_name = db.get_message_by_frame_id(msg.arbitration_id).name
@@ -108,7 +108,8 @@ def dashboard_callback(msg, db):
         air_state = message.get("air_state")
         imd_status = message.get("imd_status")
     if message_name == "bms_core":
-        bms_fault = message.get("bms_fault")
+        bms_state = message.get("bms_state")
+        print(bms_state)
     if message_name == "bspd":
         brake_gate = message.get("brake_gate") == "Brakelight ON"
     if message_name == "throttle":
@@ -165,7 +166,13 @@ def main():
     channel_inputs = [RTD_BUTTON_SENSE, BOTS_SHDN_SENSE, E_STOP_SHDN_SENSE]
     GPIO.setup(channel_outputs, GPIO.OUT)
     GPIO.setup(channel_inputs, GPIO.IN)
-
+    GPIO.output(HV_LED_LSD, 1)
+    GPIO.output(IMD_LED_LSD, 1)
+    GPIO.output(BMS_LED_LSD, 1)
+    time.sleep(.5)
+    GPIO.output(HV_LED_LSD, 0)
+    GPIO.output(IMD_LED_LSD, 0)
+    GPIO.output(BMS_LED_LSD, 0)
     # Initialize a thread to constantly update STATES_DICTIONARY from CAN messages
     can_bus, kill_flag = init_can(CHANNEL, BUSTYPE, BITRATE, dashboard_callback)
 
@@ -175,7 +182,7 @@ def main():
     )
     GPIO.add_event_detect(BOTS_SHDN_SENSE, GPIO.RISING, callback=shutdown_callback)
     GPIO.add_event_detect(E_STOP_SHDN_SENSE, GPIO.RISING, callback=shutdown_callback)
-
+    #GPIO.output(IMD_LED_LSD, 1)
     buzzer_counter = 0  # buzzer_counter starts at 0
 
     dashboard_message = db.get_message_by_name("dashboard")
@@ -183,12 +190,14 @@ def main():
     button_pressed_callback(RTD_BUTTON_SENSE)
     shutdown_callback(BOTS_SHDN_SENSE)
     shutdown_callback(E_STOP_SHDN_SENSE)
+    #GPIO.output(BMS_LED_LSD, 1)
 
     while True:  # MAKE THIS RUN EVERY 10 MILLISECONDS
         t_0 = time.perf_counter()
 
         # Turns on BMS LED if there are any BMS faults
-        GPIO.output(BMS_LED_LSD, bms_fault != "NONE")
+        GPIO.output(PROGRAMMING_LED_1, bms_state != "ACTIVE")
+        GPIO.output(BMS_LED_LSD, bms_state != "ACTIVE")
 
         # Turns on HV LED if the tractive system is on
         GPIO.output(HV_LED_LSD, air_state == "TS_ACTIVE")
@@ -235,9 +244,9 @@ def main():
             GPIO.output(RTD_BUZZER_LSD, 0)
 
         data = dashboard_message.encode(dashboard_data)
-        message = can.Message(arbitration_id=dashboard_message.frame_id, data=data)
+        message = can.Message(arbitration_id=dashboard_message.frame_id, data=data, is_extended_id=False)
         can_bus.send(message)  # Send out RTD status over CAN
-
+        
         # Make the loop run every 10 milliseconds
         delta = time.perf_counter() - t_0
         if delta < 0.01:
