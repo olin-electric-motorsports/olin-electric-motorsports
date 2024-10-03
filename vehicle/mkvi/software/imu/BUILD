@@ -27,7 +27,7 @@ cc_binary(
         "//libs/spi",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
-        "//projects/can_print",
+        # "//projects/can_print",
     ],
 )
 
@@ -49,7 +49,7 @@ cc_firmware(
         "//libs/spi",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
-        "//projects/can_print",
+        # "//projects/can_print",
         "//vehicle/mkvi/software/imu/icm20948",
     ],
 )
