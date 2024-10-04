@@ -21,9 +21,9 @@ macro.
 
 ```
 // example_file.c
-#include "projects/can_print/can_print.h"
 
 // Example usage
+#include "projects/can_print/can_print.h"
 can_print("regen_tq", -32085, 3);
 ```
 
@@ -115,6 +115,8 @@ single Bazel command.
 
 ## Reference
 
+### can print Macro
+
 Main `can_print` macro reference.
 
 `can_print(string, value, multiplier);`
@@ -122,6 +124,33 @@ Main `can_print` macro reference.
 `string`: (char[8]) The string to print. \
 `value`: (int16) Optional, the value to print.  
 `multiplier`: (int4) Optional, the power of ten to multiply the value by.
+
+### can print Decoder
+
+`can print` decoder reference. Both the bus and bitrate are configurable via
+input arguments to the decoder.
+
+```
+bazel run //projects/can_print:can_print_decode -- <bus> <bitrate>
+
+# Example
+bazel run //projects/can_print:can_print_decode -- can1 250000
+```
+
+### Custom Arb ID
+
+The default arb ID used by `can print`, but can be changed to any 11-bit value.
+To change the ID, edit the following two files:
+
+```
+//projects/can_print/can_print.yml:4
+id: 0x7ff
+```
+
+```
+//projects/can_print/can_print.py:192
+ARB_ID = 0x7FF
+```
 
 ## Examples
 
