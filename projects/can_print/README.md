@@ -277,6 +277,8 @@ replace it entirely.
 
 - Optional timestamps for can print messages in stdout. Ex: "[2024-09-30
   04:11:13] regen_tq: -32.085"
+- Clean up automatic Bazel flash-and-print integration, through parameter
+  definition in a global config file.
 - Support for floating point and values larger than an `int16`.
 - Larger `can_print` messages that stream over multiple CAN messages, adjusting
   to the character and value inputs.
