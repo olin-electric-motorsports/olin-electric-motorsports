@@ -95,6 +95,13 @@ void spi_transceive_cs(uint8_t* txdata, uint8_t* rxdata, uint8_t len) {
     spi_cs_high();
 }
 
+void spi_transmit(uint8_t* txdata, uint8_t len) {
+    uint8_t rxdata = 0x00;
+    for (uint8_t i = 0; i < len; i++) {
+        spi_transceive_private(txdata[i], &rxdata);
+    }
+}
+
 void spi_receive(uint8_t* rxdata, uint8_t len) {
     spi_transceive(NULL, rxdata, len);
 }
