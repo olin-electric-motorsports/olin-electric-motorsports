@@ -17,6 +17,7 @@ gpio_t cs;
 gpio_t miso;
 gpio_t mosi;
 gpio_t sck;
+gpio_t ss;
 
 spi_mode_e mode = MAIN;
 
@@ -38,11 +39,13 @@ void spi_init(spi_cfg_s* spi_cfg) {
         miso = (gpio_t)PD2;
         mosi = (gpio_t)PD3;
         sck = (gpio_t)PD4;
+        ss = (gpio_t)PC1;
         MCUCR |= 1 << SPIPS; // Redirect SPI to alt bus
     } else {
         miso = (gpio_t)PB0;
         mosi = (gpio_t)PB1;
         sck = (gpio_t)PB7;
+        ss = (gpio_t)PD3;
     }
 
     uint8_t main_direction = (mode == MAIN) ? OUTPUT : INPUT;
@@ -51,8 +54,6 @@ void spi_init(spi_cfg_s* spi_cfg) {
     gpio_set_mode(miso, main_direction);
     gpio_set_mode(sck, main_direction);
 
-    // TODO: Update for ALT/MAIN spi buses
-    gpio_t ss = PC1;
     gpio_set_mode(ss, OUTPUT);
 
     SPCR |= (spi_cfg->data_order << DORD) | (spi_cfg->interrupt_enable << SPIE)
