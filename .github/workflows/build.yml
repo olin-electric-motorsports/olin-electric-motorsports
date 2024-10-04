@@ -14,13 +14,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      # - name: Cache bazel
-      #   uses: actions/cache@v2
-      #   env:
-      #     cache-name: cache-bazel
-      #   with:
-      #     path: ~/.cache/bazel
-      #     key: bazel
+      - name: Cache bazel
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-bazel
+        with:
+          path: ~/.cache/bazel
+          key: bazel
 
       # Speed things up a bit
       - name: Disable initramfs update
