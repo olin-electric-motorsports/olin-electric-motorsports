@@ -6,26 +6,26 @@ exports_files([
 ])
 
 # Used for debugging with compiler preprocessor output.
-cc_binary(
-    name = "can_print_debug",
-    srcs = [
-        "can_print_example.c",
-    ],
-    copts = [
-        "-E",
-        "-P",
-    ],
-    linkopts = [],
-    target_compatible_with = select({
-        "//bazel/constraints:atmega16m1": [],
-        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
-    }),
-    deps = [
-        ":can_api",
-        "//libs/timer",
-        "//projects/can_print",
-    ],
-)
+# cc_binary(
+#     name = "can_print_debug",
+#     srcs = [
+#         "can_print_example.c",
+#     ],
+#     copts = [
+#         "-E",
+#         "-P",
+#     ],
+#     linkopts = [],
+#     target_compatible_with = select({
+#         "//bazel/constraints:atmega16m1": [],
+#         "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+#     }),
+#     deps = [
+#         ":can_api",
+#         "//libs/timer",
+#         "//projects/can_print",
+#     ],
+# )
 
 cc_firmware(
     name = "can_print_example",
