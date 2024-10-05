@@ -66,6 +66,7 @@ void read_magnetometer(uint8_t register_, uint8_t* rx_data) {
     // _can_print(_rx_data);
 }
 
+// TODO: Finish and debug magnetometer in the ICM20948
 void write_magnetometer(uint8_t register_, uint8_t tx_data) {
     ;
 }
