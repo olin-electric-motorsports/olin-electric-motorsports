@@ -50,6 +50,7 @@ void update_can_arb_id(void) {
     gpio_set_mode(bin_id_1, INPUT);
     gpio_set_mode(bin_id_2, INPUT);
 
+    // TODO: Calculate arb id offset once instead of thrice.
     // Update ids
     imu_accel_msg.id
         += (0x10
