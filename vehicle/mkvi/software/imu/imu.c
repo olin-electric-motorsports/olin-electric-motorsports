@@ -39,7 +39,6 @@ void timer_1_isr(void) {
     led_heartbeat = true;
 }
 
-uint8_t test = 0;
 /**
  * Update the arb id of an IMU based on soldered pull up jumpers.
  *
