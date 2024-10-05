@@ -223,6 +223,7 @@ void icm_write_register(uint8_t _register, uint8_t tx_data);
 /**
  * ICM register banks.
  */
+// TODO: Make an enum and keep track of which bank is active.
 #define BANK_0 0
 #define BANK_1 1
 #define BANK_2 2
