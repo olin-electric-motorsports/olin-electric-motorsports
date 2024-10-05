@@ -2,8 +2,8 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
+#include "vehicle/common/icm20948/icm20948.h"
 #include "vehicle/mkvi/software/imu/can_api.h"
-#include "vehicle/mkvi/software/imu/icm20948/icm20948.h"
 
 #include <avr/interrupt.h>
 #include <avr/io.h>

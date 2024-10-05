@@ -24,7 +24,7 @@ cc_firmware(
         "//libs/timer",
         "//projects/btldr:btldr_lib",
         # "//projects/can_print",
-        "//vehicle/mkvi/software/imu/icm20948",
+        "//vehicle/common/icm20948",
     ],
 )
 

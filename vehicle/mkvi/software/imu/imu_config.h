@@ -3,7 +3,7 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
 #include "libs/timer/api.h"
-#include "vehicle/mkvi/software/imu/icm20948/icm20948.h"
+#include "vehicle/common/icm20948/icm20948.h"
 
 // IMU data read timer config
 void timer_0_isr(void);
