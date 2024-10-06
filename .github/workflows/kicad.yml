@@ -47,10 +47,10 @@ jobs:
       #     out_dir: kicad-artifacts
       #     versioning: false
 
-      - name: comment
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          path: build/comment.md
+      # - name: comment
+      #   uses: marocchino/sticky-pull-request-comment@v2
+      #   with:
+      #     path: build/comment.md
 
     # - name: update_outline
     #   if: ${{ github.event_name == 'push' }} # TODO
