@@ -5,7 +5,7 @@
 
 //////////////////////// GPIO - DIGITAL ////////////////////////
 // These are digital outputs for avr-controlled LED outputs
-gpio_t MOTOR_5KW_LED = PB0;
+gpio_t MOTOR_5KW_LED = PB5;
 gpio_t BRAKE_LL_LED = PB1;
 gpio_t BSPD_TRIP_LED = PB2;
 
