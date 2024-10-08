@@ -77,11 +77,17 @@ You'll also want to have the KiCad Git Hooks to generate our symbol libraries. T
 ```
 
 ### Installing AVR and tools
-
 Next, install the AVR toolchain:
 
 ```shell
 sudo apt install gcc-avr avrdude avr-libc binutils-avr gdb-avr
+```
+
+### Installing Cantools
+You need to be able to hear to our MCUs on the car!
+```shell
+pip3 install cantools
+sudo apt install can-utils
 ```
 
 ### Installing Bazel
