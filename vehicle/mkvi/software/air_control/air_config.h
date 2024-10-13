@@ -10,7 +10,6 @@ gpio_t PRECHARGE_CTL = PB2;
 gpio_t AIR_N_LSD = PC6;
 
 // Inputs
-// gpio_t RANDOM = PD1;
 gpio_t SS_TSMS = PB3;
 gpio_t SS_IMD_LATCH = PB4;
 gpio_t SS_MPC = PB5;
@@ -28,7 +27,7 @@ gpio_t AIR_N_WELD_DETECT = PC5;
 
 // This is the raw value we compare. This is the real voltage divided by 256 and
 // multiplied by 10000.
-#define BMS_VOLTAGE_THRESHOLD_LOW (7813) //(200V)
+#define BMS_VOLTAGE_THRESHOLD_LOW (7813)
 #define TRACTIVE_THRESHOLD_LOW_dV (50) // 50 decivolts (5 volts)
 #define PRECHARGE_THRESHOLD       (0.95) // 95% of pack voltage
 
@@ -37,7 +36,7 @@ gpio_t AIR_N_WELD_DETECT = PC5;
 
 // Milliseconds to wait while the IMD output stabilizes before reading the
 // output
-#define IMD_STABILITY_CHECK_DELAY_MS (6000)
+#define IMD_STABILITY_CHECK_DELAY_MS (4000)
 
 #define PRECHARGE_DELAY_MS (3000)
 #define DISCHARGE_TIMEOUT  (10000)
