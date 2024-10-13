@@ -1,92 +1,126 @@
 name: bms
+
 subscribe:
-  - name: air_control_critical
+  - name: charging_fbk
     mob: 1
 publish:
+  - name: charging_cmd
+    id: 0x80
+    freq_hz: 100
+    signals:
+      - name: target_voltage
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: Volts
+          offset: 0
+          scale: 1
+      - name: target_current
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: Amps
+          offset: 0
+          scale: 1
+      - name: enable_charging
+        slice: 32 + 1
+        unit:
+          type: bool
+          values:
+            t: Charging Enabled
+            f: Charging Disabled
   - name: bms_core
     id: 0x10
     freq_hz: 100
     signals:
-      - name: bms_fault
-        slice: 0 + 4
-        unit:
-          type: enum
-          values:
-            - NONE
-            - UNDERVOLTAGE
-            - OVERVOLTAGE
-            - UNDERTEMPERATURE
-            - OVERTEMPERATURE
-            - DIAGNOSTICS_FAIL
-            - OPEN_WIRE
-            - OVERCURRENT
-            - PEC
       - name: bms_state
-        slice: 4 + 4
+        slice: 0 + 2
+        slice: 0 + 2
         unit:
           type: enum
           values:
-            - INIT
-            - IDLE
-            - DISCHARGING
+            - ACTIVE
             - CHARGING
             - FAULT
+      - name: bms_fault_code
+        slice: 2 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          offset: 0
+          scale: 1
+          # See fault.h for full documentation of faults. Faults are listed
+          # here for convenience.
+          # - NONE
+          # - (UV)  UNDERVOLTAGE
+          # - (OV)  OVERVOLTAGE
+          # - (UT)  UNDERTEMPERATURE
+          # - (OT)  OVERTEMPERATURE
+          # - (DF)  DIAGNOSTICS_FAIL
+          # - (OW)  OPEN_WIRE
+          # - (OC)  OVERCURRENT
+          # - (PEC) PEC
+          # - (CF)  CHARGER_FAULT
+          # - (SM)  STATE_MACHINE
+          # - (CSC) CSC_MIA
+          # - (MUX) MUX_MIA
+          # - (DOT) DIE_OVERTEMPERATURE
       - name: pack_voltage
-        slice: 8 + 16
+        slice: 18 + 16
         unit:
           type: uint16_t
           name: V
           offset: 0
           scale: 0.0001 * 256
       - name: pack_current
-        slice: 24 + 12
+        slice: 34 + 12
         unit:
           type: int16_t
           name: A
           offset: 0
-          scale: 0.004
+          scale: .01
       - name: cell_balancing_status
-        slice: 36 + 1
+        slice: 46 + 1
         unit:
           type: bool
           values:
             t: Cell balancing enabled
             f: Cell balancing disabled
       - name: regen_enabled
-        slice: 37 + 1
+        slice: 47 + 1
         unit:
           type: bool
           values:
             t: Regenerative braking enabled
             f: Regenerative braking disabled
       - name: current_limiting_enabled
-        slice: 38 + 1
+        slice: 48 + 1
         unit:
           type: bool
           values:
             t: Current limiting enabled
             f: Current limiting disabled
       - name: bspd_current_sense
-        slice: 39 + 1
+        slice: 49 + 1
         unit:
           type: bool
           values:
             t: Current sensed
             f: No current sensed
       - name: overcurrent_detect
-        slice: 40 + 1
+        slice: 50 + 1
         unit:
           type: bool
           values:
             t: Over-current detected
             f: No over-current detected
       - name: charger_connected
-        slice: 41 + 1
+        slice: 51 + 1
         unit:
           type: bool
           values:
-            t: Charger connected (CHARGER)
-            f: Charger disconnected (MOTOR CONTROLLER)
+            t: Connected
+            f: Disconnected
 
   - name: bms_sense
     id: 0x011
@@ -125,15 +159,52 @@ publish:
     id: 0x510
     freq_hz: 100
     signals:
+      - name: csc_mia
+        slice: 0 + 6
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: da_status_1
+        slice: 6 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: da_status_2
+        slice: 22 + 8
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: i2c_error_count
+        slice: 30 + 8
+        unit:
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
+      - name: i2c_channel
+        slice: 38 + 2
+        unit:
+          type: enum
+          values:
+            - CHANNEL_0
+            - CHANNEL_1
+            - CHANNEL_2
+            - CHANNEL_3
       - name: voltage_pec_error_count
-        slice: 0 + 8
+        slice: 40 + 8
         unit:
           type: uint8_t
           name: "errors"
           scale: 1
           offset: 0
       - name: temperature_pec_error_count
-        slice: 8 + 8
+        slice: 48 + 8
         unit:
           type: uint8_t
           name: "errors"
@@ -144,7 +215,7 @@ publish:
     id: 0x511
     freq_hz: 100
     signals:
-      - name: dbg_1
+      - name: internal_die_temp
         slice: 0 + 16
         unit:
           type: uint16_t
@@ -166,12 +237,47 @@ publish:
           scale: 1
           offset: 0
       - name: dbg_4
-        slice: 48 + 16
+        slice: 48 + 8
         unit:
           type: uint16_t
           name: ""
           scale: 1
           offset: 0
+      - name: charger_hardware_fault
+        slice: 56 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_temperature_protection
+        slice: 57 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_input_voltage
+        slice: 58 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
+      - name: charger_starting_state
+        slice: 59 + 1
+        unit:
+          type: bool
+          values:
+            t: OFF
+            f: On
+      - name: charger_communication
+        slice: 60 + 1
+        unit:
+          type: bool
+          values:
+            t: FAULT
+            f: Normal
 
   - name: bms_voltage
     id: 0x401
@@ -193,6 +299,8 @@ publish:
             - REG_B
             - REG_C
             - REG_D
+            - REG_E
+            - REG_F
       - name: voltage_1
         slice: 16 + 16
         unit:
@@ -219,22 +327,22 @@ publish:
     id: 0x402
     freq_hz: 4
     signals:
-      - name: ics
-        slice: 0 + 8
-        unit:
-          type: enum
-          values:
-            - SEGMENTS_1_THRU_3
-            - SEGMENTS_4_THRU_6
-      - name: mux
-        slice: 8 + 4
+      - name: ic
+        slice: 0 + 3
         unit:
           type: uint8_t
           name: ""
           scale: 1
           offset: 0
+      - name: da_boards
+        slice: 4 + 1
+        unit:
+          type: enum
+          values:
+            - DA_BOARDS_12
+            - DA_BOARDS_34
       - name: channel
-        slice: 12 + 4
+        slice: 8 + 5
         unit:
           type: uint8_t
           name: ""
@@ -254,10 +362,92 @@ publish:
           name: "volts"
           scale: 0.0001
           offset: 0
-      - name: temperature_3
-        slice: 48 + 16
+
+  - name: bms_cooling
+    id: 0x403
+    freq_hz: 4
+    signals:
+      - name: duty_cycle
+        slice: 0 + 8
+        unit:
+          type: uint8_t
+          name: "percent"
+          scale: 1
+          offset: 0
+      - name: current_temp
+        slice: 8 + 16
         unit:
           type: uint16_t
-          name: "volts"
-          scale: 0.0001
+          name: "degC"
+          scale: .0001
           offset: 0
+      - name: previous_temp
+        slice: 24 + 16
+        unit:
+          type: uint16_t
+          name: "degC"
+          scale: .0001
+          offset: 0
+          
+  - name: bms_mux
+    id: 0x404
+    freq_hz: 4
+    signals:
+      - name: num_da
+        slice: 0 + 2
+        unit:
+          type: enum
+          values:
+            - 0
+            - 1
+            - 2
+            - 3
+      - name: num_mux
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: "num_mux"
+          scale: 1
+          offset: 0
+      - name: segment0_ack
+        slice: 16 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment1_ack
+        slice: 24 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment2_ack
+        slice: 32 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment3_ack
+        slice: 40 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment4_ack
+        slice: 48 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
+      - name: segment5_ack
+        slice: 56 + 8
+        unit:
+          type: bool
+          values:
+            t: ACK
+            f: NACK
