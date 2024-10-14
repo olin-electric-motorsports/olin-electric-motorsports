@@ -27,6 +27,11 @@ Also install python3
 sudo apt update && sudo apt install python3
 ```
 
+One last Python library...
+```shell
+sudo apt-get install python3-distutils
+```
+
 ### Linking a Computer to your Account
 We need to connect your GitHub account to your computer's specific git instance \(created by the command you just ran\). We do this for safety: someone pretending to be you can't add code to our repo!
 1. Set your username:
@@ -108,11 +113,12 @@ the `olin-electric-motorsports` folder):
 ```shell
 bazel build --config=16m1 //examples/16M1/blinky -c opt
 ```
-If you get an error message stating 'env: python: No such file or directory', ensure that the PATH environment variable is properly established. This can be done by adding the file to your .bashrc file:
 
-```
-export PATH=$PATH:/usr/local/bin
-```
+> [!NOTE]
+> If you get an error message stating 'env: python: No such file or directory', ensure that the PATH environment variable is properly established. This can be done by adding the file to your .bashrc file:
+> ```
+> export PATH=$PATH:/usr/local/bin
+> ```
 
 ### KiCad Setup
 
@@ -126,11 +132,35 @@ sudo apt install --install-recommends kicad
 
 
 Open KiCad (windows key and type KiCAD) Click on the Blue App (always do this when opening Kicad - otherwise you can corrupt files!). Hit `Enter` if asked about settings imports and auto-updates for add-ons.
-From the top bar, open up _Preferences > Configure Paths..._. Add a new row to the table using the plus button:
+From the top bar, open _Preferences > Configure Paths..._. Add a new row to the table using the plus button (you will have to fill out TWO fields... shown below):
 
 Name | Path
 -----|-----
 OEM\_DIR|`/home/your-username/Documents/olin-electric-motorsports`
+
+Click `OK`, then again from the top bar, open _Preferences > Manage Symbol Libraries ..._.
+Same deal as before with the new line at the bottom, new values though this time:
+
+Name | Path
+-----|-----
+OEM |`${OEM_DIR}/parts/schematic/oem.kicad_sym`
+
+> [!WARNING]
+> If you get an error, you either typed something incorrectly or haven't generated the OEM symbol library ever before.
+> To generate:
+> 1. navigate to the base `olin-electric-motorsports` directory in a terminal.
+> 2. run python3 tools/symbols/convert.py symbols2library
+> 3. path to symbol files: parts/schematic/oem
+> 4. path to library file: parts/schematic/oem.kicad_sym
+
+Click `OK`, then again from the top bar, open _Preferences > Manage Footprint Libraries ..._.
+3rd time's the magic one, plus button, add the values in the table below.
+
+Name | Path
+-----|-----
+OEM |`${OEM_DIR}/parts/oem.pretty`
+
+
 
 where `your-username` is the username on your computer.
 If you cloned our repository into a different directory than the `~/Documents` folder, this is just an absolute path to the repo.
@@ -140,6 +170,10 @@ downloading KiCad for other operating systems.
 
 ## Integration Resources
 ### Flashing to microcontrollers
+
+> [!CAUTION]
+> Take care to plug in the programmer correctly. If you insert it the wrong way, you have the potential to reverse-bias sensitive electronics (you could smoke them)!
+
 To flash (program) an ATMEGA16m1 microcontroller, use a variation of the following command:
 ```shell
 need to insert example flashing command here
