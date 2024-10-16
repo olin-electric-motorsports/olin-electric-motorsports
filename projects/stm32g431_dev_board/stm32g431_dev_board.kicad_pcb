@@ -135,6 +135,7 @@
   (net 65 "Net-(R8-Pad1)")
   (net 66 "unconnected-(SW3-Pad6)")
   (net 67 "unconnected-(J4-Pin_7-Pad7)")
+  (net 68 "unconnected-(D10-Pad5)")
 
   (footprint "kibuzzard-670C854F" (layer "F.Cu")
     (tstamp 012d1365-28ce-4f32-815b-ccbb39461464)
@@ -257,7 +258,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 02348723-d374-4f7a-8c67-bf7e59eb9de0)
-    (at 116.27 120.05)
+    (at 119.07 92.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -270,11 +271,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp 55953648-058e-4f90-a2c7-8db05d117f5f)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 7a3854f4-2c6d-495d-ab57-486e64b0ac5c)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 6052e780-2e6e-4c89-91de-b0e8201858b7)
     )
@@ -284,7 +285,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 023aa459-94a7-49ed-9d16-de83a8347d6c)
-    (at 112.27 118.05)
+    (at 115.07 90.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -297,11 +298,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp 975f37d6-0167-482c-9f2a-c9dee8397e77)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 99822bfa-bba0-460d-8d3f-61c4ba6412aa)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp c7de56c9-be45-4d77-8647-01e257317c51)
     )
@@ -366,7 +367,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp 08ada156-fddd-4b07-b0c1-99ac3f243562)
-    (at 110.4025 98.03)
+    (at 166.93 103.33 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -376,15 +377,15 @@
     (property "ki_description" "Resistor, 0 ohm jumper, 0.1W, 0603")
     (path "/a565c328-0a73-4f07-af37-04d1932f18b2")
     (attr smd)
-    (fp_text reference "R6" (at 0 -1.43) (layer "F.SilkS") hide
+    (fp_text reference "R6" (at 0 -1.43 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 9208a592-2d3e-4153-99d5-6b0a4ec43330)
     )
-    (fp_text value "R_1k" (at 0 1.43) (layer "F.Fab")
+    (fp_text value "R_1k" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp a0dde19a-b38c-4291-994c-5a72557d8921)
     )
-    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 0 90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp dc8f2ea3-dadd-4c31-9d17-9f188dad0148)
     )
@@ -408,9 +409,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 126c8147-3432-44a5-bba5-5010729628cb))
     (fp_line (start 0.8 0.4) (end -0.8 0.4)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 97aea39c-4b46-43a5-a585-62565d63b8c6))
-    (pad "1" smd roundrect (at -0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "1" smd roundrect (at -0.7875 0 270) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 46 "/PB15") (pintype "passive") (tstamp 4e03843f-cd93-49ad-b100-02051011f0a4))
-    (pad "2" smd roundrect (at 0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "2" smd roundrect (at 0.7875 0 270) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 26 "Net-(D4-Pad2)") (pintype "passive") (tstamp f56de053-baff-48fa-ac0c-12aeb39dc92a))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
       (offset (xyz 0 0 0))
@@ -609,7 +610,7 @@
 
   (footprint "footprints:SOT95P237X111-3N" (layer "F.Cu")
     (tstamp 09ce37f2-8dc5-487e-93f2-bd15928e033d)
-    (at 139.03 97.63)
+    (at 140.685 97.625)
     (property "MFG" "NXP")
     (property "MPN" "PMEG3005CT,215")
     (property "Package" "SOT23-3")
@@ -688,7 +689,7 @@
 
   (footprint "footprints:SW_B3U-1000P_4.2x1.7mm" (layer "F.Cu")
     (tstamp 09f2da53-0604-4b97-a058-b753fb3f7d7c)
-    (at 129.37 104.43 180)
+    (at 131.105 104.27 180)
     (property "MFN" "DK")
     (property "MPN" "SW1020CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/B3U-1000P/SW1020CT-ND/1534357A")
@@ -936,7 +937,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 0c1aedd7-e27f-4a8a-8b8e-7f95cf7028a9)
-    (at 149.42 92.01 180)
+    (at 149.7875 92.125 180)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Yageo")
@@ -992,7 +993,7 @@
 
   (footprint "TestPoint:TestPoint_Keystone_5000-5004_Miniature" (layer "F.Cu")
     (tstamp 0c792c3a-f232-426a-a2d0-9ec05de377e9)
-    (at 170.57 92.03)
+    (at 170.43 91.4)
     (descr "Keystone Miniature THM Test Point 5000-5004, http://www.keyelco.com/product-pdf.cfm?p=1309")
     (tags "Through Hole Mount Test Points")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -1182,7 +1183,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 0f6762a4-23bb-433f-ab32-83b5ccbc6517)
-    (at 118.27 120.05)
+    (at 121.07 92.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -1195,11 +1196,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp 7854156b-07bd-4d6a-90ed-27591154f9dd)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 9ee50a3c-14c2-4b58-add4-639ff8af6608)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp cecbbdfc-a33f-44ff-b7b1-a5dde192095b)
     )
@@ -1265,7 +1266,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 16673102-3cb2-45c3-9e4b-87672c6656b5)
-    (at 155.97 102.66 180)
+    (at 155.555 102.55 180)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFN" "DK")
@@ -1595,7 +1596,7 @@
 
   (footprint "TestPoint:TestPoint_Keystone_5000-5004_Miniature" (layer "F.Cu")
     (tstamp 1f0c953f-2229-489b-b2bf-d6d6e7de1205)
-    (at 124.37 80.74)
+    (at 190.4 107.2)
     (descr "Keystone Miniature THM Test Point 5000-5004, http://www.keyelco.com/product-pdf.cfm?p=1309")
     (tags "Through Hole Mount Test Points")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -1641,7 +1642,7 @@
 
   (footprint "footprints:SMAJ24A-13-F" (layer "F.Cu")
     (tstamp 1fc62560-5d90-4acf-8839-0c4a4dd3fc9a)
-    (at 141.325 91.85)
+    (at 142.1 91.2)
     (property "MFG" "Diodes")
     (property "MPN" "SMAJ24A")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -1840,7 +1841,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 2ee5dc6d-d6b0-4163-8c29-e01a2f87ee72)
-    (at 149.42 101.535)
+    (at 149.7875 99.575)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Yageo")
@@ -1896,7 +1897,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 3030d703-13b7-4701-a558-1c49d329ba8e)
-    (at 114.27 118.05)
+    (at 117.07 90.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -1909,11 +1910,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp 1c31bf53-4280-47e9-81d1-5908e2abd8d0)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 9a8ad99d-ea4a-42e2-ab0b-501f7f7136b3)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp e3f8d43f-e02e-4b73-93fb-d5791eb904d6)
     )
@@ -1923,7 +1924,7 @@
 
   (footprint "TestPoint:TestPoint_Keystone_5000-5004_Miniature" (layer "F.Cu")
     (tstamp 31ffd2f6-3c0d-4a22-8d7c-02651621d910)
-    (at 167.17 92.03)
+    (at 166.8 91.4)
     (descr "Keystone Miniature THM Test Point 5000-5004, http://www.keyelco.com/product-pdf.cfm?p=1309")
     (tags "Through Hole Mount Test Points")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -1969,7 +1970,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp 33b20621-94ec-48a5-93d2-67113cb66453)
-    (at 133.22 95)
+    (at 134.875 94.995)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -2196,7 +2197,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 378fe5c8-ae37-42d8-9e8c-9dce8d31cbc7)
-    (at 136.32 97.63)
+    (at 137.975 97.625)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -2291,7 +2292,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp 4106d477-9814-4b53-a788-d8863e16b46f)
-    (at 130.87 107.83 90)
+    (at 132.605 107.27 90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -2518,7 +2519,7 @@
 
   (footprint "footprints:QFP50P900X900X160-48N" (layer "F.Cu")
     (tstamp 46f04d51-3cf6-48cc-8250-97c6dc113e52)
-    (at 156.92 96.66)
+    (at 156.505 96.55)
     (property "MFG" "ST")
     (property "MPN" "STM32G431CBT6")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -2778,7 +2779,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 49555e31-6071-44e4-af2e-da0ff6dd64de)
-    (at 159.02 102.66)
+    (at 158.605 102.55)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFN" "DK")
@@ -2834,7 +2835,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 4998b8a6-641f-4838-8d01-3e87b99c7608)
-    (at 148.46 119.2075)
+    (at 119.6 88.9)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -2847,11 +2848,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp a72302d2-0328-4d11-8c6a-28356baa4e3f)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 1477df06-de42-4cd9-8c7d-13103d179c33)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 929528ba-477c-4415-a1ae-313066ad6fcc)
     )
@@ -3269,7 +3270,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 4ec9d646-73e8-4104-8f0b-5fa883452896)
-    (at 155.97 104.21 180)
+    (at 155.555 104.1 180)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Samsung")
@@ -3848,7 +3849,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 570f3a9c-8287-4676-b463-691814504c1c)
-    (at 118.27 122.05)
+    (at 121.07 94.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -3861,11 +3862,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp fecd935d-61f0-4988-9ee7-17b60901b788)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 091143e6-616e-461a-a8ee-be59c5e81953)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp d8256dd4-5914-418a-99a9-06f2db920131)
     )
@@ -4007,7 +4008,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 5c57145c-24c8-4db4-af37-c877d5e1f7d0)
-    (at 130.87 104.43 90)
+    (at 132.605 104.27 90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFN" "DK")
@@ -4063,7 +4064,7 @@
 
   (footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (layer "F.Cu")
     (tstamp 5e12eef3-674e-406d-b406-e3a7fbf7d24a)
-    (at 139.83 103.23 90)
+    (at 147.25 103.4 90)
     (descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
     (tags "Through hole pin header THT 1x03 2.54mm single row")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -4096,13 +4097,13 @@
       (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 189d93a0-6faa-473f-b299-a431c3a08567))
     (fp_line (start 1.33 1.27) (end 1.33 6.41)
       (stroke (width 0.12) (type solid)) (layer "F.SilkS") (tstamp 4d3ae3da-c02a-4f91-805d-e54f0a49ff02))
-    (fp_line (start -1.8 -1.8) (end -1.8 6.85)
+    (fp_line (start -1.6 -1.6) (end -1.6 6.7)
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 7262cd8b-29bd-461d-ac9d-5b1a1fce79c0))
-    (fp_line (start -1.8 6.85) (end 1.8 6.85)
+    (fp_line (start -1.6 6.7) (end 1.6 6.7)
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp b8beedd2-cf81-4bce-a714-53c4b2554f65))
-    (fp_line (start 1.8 -1.8) (end -1.8 -1.8)
+    (fp_line (start 1.6 -1.6) (end -1.6 -1.6)
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp b6bb8d71-981f-4b3d-af4e-ba6913f6b734))
-    (fp_line (start 1.8 6.85) (end 1.8 -1.8)
+    (fp_line (start 1.6 6.7) (end 1.6 -1.6)
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 87ed4d05-fc16-471e-9742-c1d0f83c0bc0))
     (fp_line (start -1.27 -0.635) (end -0.635 -1.27)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 2bca3ccb-f10c-4635-9d54-4ebb28d0b826))
@@ -4185,7 +4186,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 62d39a3c-8fdf-4949-85d3-2de19c27a9be)
-    (at 162.92 92.985 90)
+    (at 162.505 92.875 90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFN" "DK")
@@ -4670,7 +4671,7 @@
 
   (footprint "footprints:SOT323-5L" (layer "F.Cu")
     (tstamp 777f892a-3bba-4d85-9b99-be4415e17be4)
-    (at 170.72 102.8825)
+    (at 172.2 102.645)
     (property "Description" "Dual Bi-Directional TVS Diode 350W 3-Pin SOT-23 | ON Semiconductor NUP2105LT1G")
     (property "MFG" "ST")
     (property "MPN" "ESDALC6V1W5")
@@ -4682,22 +4683,24 @@
     (attr smd)
     (fp_text reference "D10" (at 0 0) (layer "F.SilkS") hide
         (effects (font (size 0.787402 0.787402) (thickness 0.15)))
-      (tstamp db02c5a9-7f7c-4988-84a7-24b8b342f5b4)
+      (tstamp 9075afd1-a020-4668-9c3e-ab1589b85333)
     )
     (fp_text value "ESDALC6V1W5" (at 0 0) (layer "F.Fab") hide
         (effects (font (size 0.787402 0.787402) (thickness 0.15)))
-      (tstamp 0b3ae8c1-605a-4116-ab16-3a2ce8b73140)
+      (tstamp cdf9ffa2-7161-4184-ac16-5ace75871e5f)
     )
+    (fp_rect (start -1.2 -1.7) (end 1.2 1.7)
+      (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd") (tstamp 8aa32716-829f-452f-bb6a-2e5aa23eb312))
     (pad "1" smd rect (at 0.65 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 12 "/nRESET") (pintype "passive") (solder_mask_margin 0.102) (tstamp 318a6d43-4c19-43e5-b954-4be6229e4b4d))
-    (pad "2" smd rect (at -0.65 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 1 "GND") (pintype "passive") (solder_mask_margin 0.102) (tstamp e9d27575-546a-4236-b2ee-6624890fa3c0))
-    (pad "3" smd rect (at -0.65 0.9475) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 23 "/UART_TX") (pintype "passive") (solder_mask_margin 0.102) (tstamp 93d64c8d-147e-482d-ba84-c074af243eee))
+      (net 12 "/nRESET") (pintype "passive") (solder_mask_margin 0.102) (tstamp 4b7522f7-a1fe-4bc0-842a-117a0f00188c))
+    (pad "2" smd rect (at 0 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 1 "GND") (pintype "passive") (solder_mask_margin 0.102) (tstamp 80aae8be-c3d2-4d30-a071-533c549380a9))
+    (pad "3" smd rect (at -0.65 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 23 "/UART_TX") (pintype "passive") (solder_mask_margin 0.102) (tstamp 2441757c-ff0f-4092-a7b9-46feda52a41a))
     (pad "4" smd rect (at 0.65 0.9475) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 24 "/UART_RX") (pintype "passive") (solder_mask_margin 0.102) (tstamp 2d44b697-4b73-4d25-bea3-9378c0243496))
-    (pad "GND" smd rect (at 0 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (solder_mask_margin 0.102) (tstamp 8eab3260-2c1e-494a-85a6-80e9a8b181d3))
+      (net 24 "/UART_RX") (pintype "passive") (solder_mask_margin 0.102) (tstamp d7171cf9-e054-442c-b188-ab88d632d447))
+    (pad "5" smd rect (at -0.65 0.9475) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 68 "unconnected-(D10-Pad5)") (pintype "passive+no_connect") (solder_mask_margin 0.102) (tstamp 7e00cda5-2752-436b-aaf5-883cf29064e4))
     (model "${KICAD_3RD_PARTY}/parts/3DModels/ESDALC6V1W5.step"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -4839,7 +4842,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 77a332f3-4f61-49fa-8c11-fdbea402b7ee)
-    (at 118.27 118.05)
+    (at 121.07 90.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -4852,11 +4855,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp 7f929ac4-7fe1-4572-ba7d-9ade32bdc444)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 8228f9d1-6e1c-433b-9786-44b95d425ddc)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 24f03b2a-9fff-4e6d-bade-c07a46cd6c7c)
     )
@@ -4866,7 +4869,7 @@
 
   (footprint "footprints:LED_0603_1608Metric" (layer "F.Cu")
     (tstamp 80de8a39-523f-44e2-8ce8-0b78de987107)
-    (at 139.93 120.6075 90)
+    (at 140.2 103.7875 90)
     (descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "Color" "WHITE")
@@ -4880,11 +4883,11 @@
     (property "ki_keywords" "White LED Indication - Discrete 2.925V 0603 (1608 Metric)")
     (path "/033d85d8-08f1-40be-95d2-be3c046df82c")
     (attr smd)
-    (fp_text reference "D1" (at 0 -1.43 90) (layer "F.SilkS")
+    (fp_text reference "D1" (at 0 -1.43 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 72ef5928-8d84-4475-9f19-73ab6abc42e1)
     )
-    (fp_text value "EAST16084WA1" (at 0 1.43 90) (layer "F.Fab")
+    (fp_text value "EAST16084WA1" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 888b9425-afc2-4726-909a-83b43a03ef55)
     )
@@ -4927,7 +4930,7 @@
 
   (footprint "footprints:MFNSMF02530X2" (layer "F.Cu")
     (tstamp 80ffeb1b-9531-4925-90e7-97595648b12b)
-    (at 130.95 88.86 90)
+    (at 132.605 88.855 90)
     (descr "MF-NSMF025/30X-2")
     (tags "Resettable Fuse")
     (property "MFG" "Bourns")
@@ -4991,7 +4994,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 8ba56144-c04b-47cb-a201-068a47aa8409)
-    (at 159.02 104.21)
+    (at 158.605 104.1)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Samsung")
@@ -5209,7 +5212,7 @@
 
   (footprint "footprints:SOT-23-6_OEM" (layer "F.Cu")
     (tstamp 91885fcc-7b00-4748-9da1-875d39eadb9e)
-    (at 133.62 97.63)
+    (at 135.275 97.625)
     (descr "6-pin SOT-23 package")
     (tags "SOT-23-6")
     (property "MFG" "ST")
@@ -5272,7 +5275,7 @@
 
   (footprint "footprints:CON_530480210_MOL" (layer "F.Cu")
     (tstamp 919fcd0d-c51c-4628-965f-43473fd7567f)
-    (at 127.615 90.44 180)
+    (at 129.27 90.435 180)
     (tags "530480210 ")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
     (property "Sheetname" "")
@@ -5345,9 +5348,34 @@
     )
   )
 
+  (footprint "footprints:000_mounting_hole" (layer "F.Cu")
+    (tstamp 9313aed7-5bc1-4ece-b0ed-c56d897835d3)
+    (at 135.8 92.2)
+    (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Mounting Hole with connection")
+    (property "ki_keywords" "mounting hole")
+    (path "/da25a1df-c515-414c-9d76-5adbdc405e90")
+    (attr through_hole)
+    (fp_text reference "H4" (at 0 -0.5 unlocked) (layer "F.SilkS") hide
+        (effects (font (size 1 1) (thickness 0.1)))
+      (tstamp 0d88b1e5-53eb-4f51-acc6-63aeb6b7a460)
+    )
+    (fp_text value "000_MOUNTING_HOLE" (at 0 1 unlocked) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 26a7972f-6b93-408c-839a-08cf0271ffbd)
+    )
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 717b7d77-b27d-4a9f-92da-ba4d9571146f)
+    )
+    (pad "1" thru_hole circle (at 0 0) (size 2.9 2.9) (drill 1.6) (layers "*.Cu" "*.Mask")
+      (net 1 "GND") (pinfunction "1") (pintype "input") (tstamp b9bf408e-9153-4e1e-8173-5cfde87f595d))
+  )
+
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp 94df21ee-dd7b-420b-8c25-c83f31f20fca)
-    (at 164.47 92.985 90)
+    (at 164.055 92.875 90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Taiyo Yuden")
@@ -5403,7 +5431,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp 98ba5b45-d450-41d3-aeec-2668b6899525)
-    (at 114.27 120.05)
+    (at 117.07 92.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -5416,11 +5444,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp 7a6a667b-8698-4b91-a2ff-09536291a7cf)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 0cd79f66-51ed-4ba3-b4c3-5fbc01f3d12f)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 35163afc-bb02-4227-88d1-0adab8c8d105)
     )
@@ -5574,7 +5602,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp 9cb8c905-636b-4a26-b705-48da0af0a615)
-    (at 136.27 100.25 180)
+    (at 137.925 100.245 180)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -5761,7 +5789,7 @@
 
   (footprint "footprints:AP7375-33SA-7_DIO" (layer "F.Cu")
     (tstamp a1b0fad5-bcf5-41b7-badd-5248fbcf772d)
-    (at 142.8575 97.63 -90)
+    (at 144.5125 97.625 -90)
     (tags "AP7375-33SA-7 ")
     (property "MFG" "Diodes")
     (property "MPN" "AP7375-33SA-7")
@@ -5868,7 +5896,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp a4c77494-3ef9-4a58-bce1-a0fe40da0d3b)
-    (at 120.27 118.05)
+    (at 123.07 90.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -5881,11 +5909,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp f7337ee1-c6f5-441c-a980-0ab3740634ec)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp eca994dc-39ce-46dc-8c33-85d94176ef07)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 8e64b46a-2e09-4a71-94f5-94c2f4e652a0)
     )
@@ -6198,7 +6226,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp a9292c3b-1ed6-47f8-ad6c-5e504a512299)
-    (at 150.46 115.2075)
+    (at 121.36 88.9075)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -6211,11 +6239,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp af7d9b4e-870d-4c76-b400-d92ff2a5abc2)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp c388e413-1bdb-4ace-ba08-c743078a1d9c)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp e449d491-1c01-4045-ac19-691208a6b0d4)
     )
@@ -6377,9 +6405,34 @@
       (stroke (width 0) (type solid)) (fill solid) (layer "F.SilkS") (tstamp ae4b73c5-9313-45f1-8f88-bd1e8275e2b2))
   )
 
+  (footprint "footprints:000_mounting_hole" (layer "F.Cu")
+    (tstamp a9b50f43-cca0-4c74-b92c-9b34753751c7)
+    (at 187.07 107.24)
+    (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Mounting Hole with connection")
+    (property "ki_keywords" "mounting hole")
+    (path "/c12aad96-f363-45af-a496-d9de0c9ed7cd")
+    (attr through_hole)
+    (fp_text reference "H2" (at 0 -0.5 unlocked) (layer "F.SilkS") hide
+        (effects (font (size 1 1) (thickness 0.1)))
+      (tstamp 1780c273-66a6-4ac9-93c4-466f8b1fbfac)
+    )
+    (fp_text value "000_MOUNTING_HOLE" (at 0 1 unlocked) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 505ff20e-4953-48dc-a98a-023cf5a951d9)
+    )
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp b3ff6590-9a1a-47ef-ac06-c010bda43576)
+    )
+    (pad "1" thru_hole circle (at 0 0) (size 2.9 2.9) (drill 1.6) (layers "*.Cu" "*.Mask")
+      (net 1 "GND") (pinfunction "1") (pintype "input") (tstamp 86b2e76f-a554-4a54-819b-46cc700c4aff))
+  )
+
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp aadab22c-025c-476c-9ab0-0dc1692e5540)
-    (at 116.27 122.05)
+    (at 119.07 94.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -6392,11 +6445,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp deb75405-b257-4372-98fc-9afacafda67e)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 9718f14f-f28d-43b4-b0e3-bb24577ad637)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp d206b22d-5eb2-4040-b7c1-a0c8493df5a3)
     )
@@ -6749,7 +6802,7 @@
 
   (footprint "footprints:MOLEX_2171790001" (layer "F.Cu")
     (tstamp b0efbb3a-6fe6-4818-aa51-cd3ac2ad1e0a)
-    (at 127.37 97.63 -90)
+    (at 129.025 97.625 -90)
     (property "MFG" "Molex")
     (property "MPN" "2171790001")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -6941,7 +6994,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp b11eac8b-c35d-4e1a-b332-eac1b1e6ace4)
-    (at 110.4025 95.52)
+    (at 162.43 103.33 -90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -6951,15 +7004,15 @@
     (property "ki_description" "Resistor, 0 ohm jumper, 0.1W, 0603")
     (path "/c46f2e41-60a7-4d64-ae70-86e299e1d4ee")
     (attr smd)
-    (fp_text reference "R5" (at 0 -1.43) (layer "F.SilkS") hide
+    (fp_text reference "R5" (at 0 -1.43 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp e33f439d-d748-4e61-8346-b25316fde4df)
     )
-    (fp_text value "R_1k" (at 0 1.43) (layer "F.Fab")
+    (fp_text value "R_1k" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 4c73bbf8-ffc2-49e8-b2e0-781ef77e68b8)
     )
-    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 0 90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp ed4401e2-e788-403d-bc8b-236fd60a7676)
     )
@@ -6983,9 +7036,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 6e50e94b-c809-40a0-8f25-383cf2f7537a))
     (fp_line (start 0.8 0.4) (end -0.8 0.4)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 4f790440-83a0-4267-b648-931ddc1a7fe1))
-    (pad "1" smd roundrect (at -0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "1" smd roundrect (at -0.7875 0 270) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 45 "/PB14") (pintype "passive") (tstamp 45e90716-2ef4-4fd7-aafd-09a3602fb863))
-    (pad "2" smd roundrect (at 0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "2" smd roundrect (at 0.7875 0 270) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 25 "Net-(D3-Pad2)") (pintype "passive") (tstamp 79c8eeb2-7844-45d0-bdb8-982c6cac87eb))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
       (offset (xyz 0 0 0))
@@ -7049,9 +7102,34 @@
     )
   )
 
+  (footprint "footprints:000_mounting_hole" (layer "F.Cu")
+    (tstamp b3759733-b448-4a69-9bc6-5a0bbf920bac)
+    (at 135.5 103.3)
+    (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Mounting Hole with connection")
+    (property "ki_keywords" "mounting hole")
+    (path "/44f4f328-0432-413d-884c-dd63624c3308")
+    (attr through_hole)
+    (fp_text reference "H3" (at 0 -0.5 unlocked) (layer "F.SilkS") hide
+        (effects (font (size 1 1) (thickness 0.1)))
+      (tstamp 5eb9bb71-3d99-405b-a6a1-359b9f217ab6)
+    )
+    (fp_text value "000_MOUNTING_HOLE" (at 0 1 unlocked) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp cd0b6a01-d8cb-4b07-8a3e-8bc54a462a0f)
+    )
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 3c7f6602-bda8-425e-8699-81ab49975876)
+    )
+    (pad "1" thru_hole circle (at 0 0) (size 2.9 2.9) (drill 1.6) (layers "*.Cu" "*.Mask")
+      (net 1 "GND") (pinfunction "1") (pintype "input") (tstamp cec36696-4756-4480-93b0-87d3903402e9))
+  )
+
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp b460c4a3-0bc1-484a-a129-cdc5d385bfb9)
-    (at 142.8575 95.13)
+    (at 144.7 94.3 90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Samsung")
@@ -7062,15 +7140,15 @@
     (property "ki_keywords" "1 µF ±10% 25V Ceramic Capacitor X7R 0603 (1608 Metric)")
     (path "/0b2697a3-7b72-4d26-9b19-5b403de86360")
     (attr smd)
-    (fp_text reference "C9" (at 0 -1.43) (layer "F.SilkS") hide
+    (fp_text reference "C9" (at 0 -1.43 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp c4cdcbb3-ea07-4b82-aa1f-89c4cd23fb0e)
     )
-    (fp_text value "C_1uF" (at 0 1.43) (layer "F.Fab") hide
+    (fp_text value "C_1uF" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp a00cedf5-7be5-4fd1-9583-1ab0257445c5)
     )
-    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 0 90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp e51da175-c273-4af2-8201-6e5e0fa6ac33)
     )
@@ -7094,9 +7172,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 5e442472-4e9d-407d-8140-cebd59f4b73c))
     (fp_line (start 0.8 0.4) (end -0.8 0.4)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 7e83a27e-875d-4dfb-b43f-b2c444963c68))
-    (pad "1" smd roundrect (at -0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "1" smd roundrect (at -0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 8 "Net-(U1-Vin)") (pintype "passive") (tstamp 04043a62-203d-4a9a-8253-e23547556513))
-    (pad "2" smd roundrect (at 0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "2" smd roundrect (at 0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 1 "GND") (pintype "passive") (tstamp 6129c922-f4c9-41f3-a82c-e4a7f26f990f))
     (model "${KICAD6_3DMODEL_DIR}/Capacitor_SMD.3dshapes/C_0603_1608Metric.wrl"
       (offset (xyz 0 0 0))
@@ -7107,7 +7185,7 @@
 
   (footprint "footprints:SW_B3U-1000P_4.2x1.7mm" (layer "F.Cu")
     (tstamp b46678a7-3748-4b9f-8e94-3300675d131d)
-    (at 129.37 107.83 180)
+    (at 131.105 107.27 180)
     (property "MFN" "DK")
     (property "MPN" "SW1020CT-ND")
     (property "PurchasingLink" "https://www.digikey.com/product-detail/en/omron-electronics-inc-emc-div/B3U-1000P/SW1020CT-ND/1534357A")
@@ -7138,7 +7216,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp b562f5d0-cf53-4782-b608-e9e5aa335f01)
-    (at 112.27 122.05)
+    (at 115.07 94.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -7151,11 +7229,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp 21ecee69-ae11-4a68-9ac6-0c40f5cc2d2b)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp cd3b257b-128e-49e4-88da-fff7e11772a6)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 973e0673-2340-4888-acd5-d15cb29537d2)
     )
@@ -7253,7 +7331,7 @@
 
   (footprint "footprints:MFNSMF02530X2" (layer "F.Cu")
     (tstamp bc192539-6874-4dc7-842d-877ab4a89cbb)
-    (at 133.92 93.08 180)
+    (at 141.6 94)
     (descr "MF-NSMF025/30X-2")
     (tags "Resettable Fuse")
     (property "MFG" "Bourns")
@@ -7304,9 +7382,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 0d5d1266-e465-4dd7-aead-f1e9f711de5d))
     (fp_line (start 1.6 0.8) (end 1.6 -0.8)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 9913bf70-3e5e-41d2-8e27-8bf997c1f825))
-    (pad "1" smd rect (at -1.5 0 180) (size 1 1.6) (layers "F.Cu" "F.Paste" "F.Mask")
+    (pad "1" smd rect (at -1.5 0) (size 1 1.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 15 "+VUSB") (pinfunction "1") (pintype "passive") (tstamp 35a3e6f4-f005-406d-a7b1-c934ca6f6f61))
-    (pad "2" smd rect (at 1.5 0 180) (size 1 1.6) (layers "F.Cu" "F.Paste" "F.Mask")
+    (pad "2" smd rect (at 1.5 0) (size 1 1.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 28 "Net-(J1-VBUS1)") (pinfunction "2") (pintype "passive") (tstamp fe370b2b-05a7-4589-b744-bb38191b8902))
     (model "${KICAD_3RD_PARTY}/parts/3DModels/MF-NSMF025_30X-2.stp"
       (offset (xyz 0 0 0))
@@ -7317,7 +7395,7 @@
 
   (footprint "footprints:LED_0603_1608Metric" (layer "F.Cu")
     (tstamp c0c66a5e-297e-4637-b63b-eab9d1d7af59)
-    (at 154.147 123.9945)
+    (at 141.7 103.7875 90)
     (descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "Color" "WHITE")
@@ -7331,15 +7409,15 @@
     (property "ki_keywords" "White LED Indication - Discrete 2.925V 0603 (1608 Metric)")
     (path "/6fea4338-470d-409a-a05c-471f5f69fd9c")
     (attr smd)
-    (fp_text reference "D5" (at 0 -1.43) (layer "F.SilkS")
+    (fp_text reference "D5" (at 0 -1.43 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 655d763f-469d-4869-a294-0984aee4d26a)
     )
-    (fp_text value "EAST16084WA1" (at 0 1.43) (layer "F.Fab")
+    (fp_text value "EAST16084WA1" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp c2648cc5-fc35-48f0-9483-45347ab8560e)
     )
-    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 0 90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp ce3b454a-7528-426e-9a6c-eb786ccbfcb4)
     )
@@ -7365,9 +7443,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp b9d76da7-a373-4d43-9006-9245654f93c7))
     (fp_line (start 0.8 0.4) (end -0.8 0.4)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp cf4099d7-ff0d-4bd6-aae4-1434f46a0182))
-    (pad "1" smd roundrect (at -0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "1" smd roundrect (at -0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 1 "GND") (pintype "passive") (tstamp 0d4592ce-02af-4604-a572-ecbab9d45622))
-    (pad "2" smd roundrect (at 0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "2" smd roundrect (at 0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 27 "Net-(D5-Pad2)") (pintype "passive") (tstamp 950cd64d-627d-4d5c-984b-63283d0d504a))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
       (offset (xyz 0 0 0))
@@ -7378,7 +7456,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp c28777c2-3b18-41ef-9129-f438645f724f)
-    (at 158.31 119.5575)
+    (at 143.2 103.7875 90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -7388,15 +7466,15 @@
     (property "ki_description" "Resistor, 0 ohm jumper, 0.1W, 0603")
     (path "/6c93a9fc-614c-46c2-9ad6-66816da52fed")
     (attr smd)
-    (fp_text reference "R7" (at 0 -1.43) (layer "F.SilkS") hide
+    (fp_text reference "R7" (at 0 -1.43 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp dda6fd7c-9d46-431b-acee-c390b0c44ae2)
     )
-    (fp_text value "R_200" (at 0 1.43) (layer "F.Fab")
+    (fp_text value "R_200" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 2cd3946b-b376-4805-94e6-2e287c641dfc)
     )
-    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 0 90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp 58d6a7c8-bbf3-4e69-b0d6-60702f096644)
     )
@@ -7420,9 +7498,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp e4aeffa0-7c8c-41b5-85b4-9d6742dc131c))
     (fp_line (start 0.8 0.4) (end -0.8 0.4)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 3ad6c009-f19b-4f65-8ad9-5147e975d14a))
-    (pad "1" smd roundrect (at -0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "1" smd roundrect (at -0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 2 "+3V3") (pintype "passive") (tstamp 55c0e335-68b8-41ee-b8bf-711aa2689a67))
-    (pad "2" smd roundrect (at 0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "2" smd roundrect (at 0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 27 "Net-(D5-Pad2)") (pintype "passive") (tstamp 9e2cd952-25ce-4d34-95d5-5b7bc6e5c35f))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
       (offset (xyz 0 0 0))
@@ -7433,7 +7511,7 @@
 
   (footprint "footprints:LED_0603_1608Metric" (layer "F.Cu")
     (tstamp c60dc41a-f444-47e3-bb91-29e4915075ab)
-    (at 110.8665 104.71)
+    (at 165.43 103.33 90)
     (descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "Color" "WHITE")
@@ -7447,15 +7525,15 @@
     (property "ki_keywords" "White LED Indication - Discrete 2.925V 0603 (1608 Metric)")
     (path "/aab4cc48-cc58-4766-bf5b-3dc6ef02e1e0")
     (attr smd)
-    (fp_text reference "D4" (at 0 -1.43) (layer "F.SilkS")
+    (fp_text reference "D4" (at 0 -1.43 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 40c91775-9e8c-42e7-8f76-520c7a934d74)
     )
-    (fp_text value "EAST16084WA1" (at 0 1.43) (layer "F.Fab")
+    (fp_text value "EAST16084WA1" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp a2630332-10dc-4776-a165-ed40db24e714)
     )
-    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 0 90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp 01ae27b1-95ae-4821-8cc8-fd546ad9b4ec)
     )
@@ -7481,9 +7559,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp bc0dd810-95d6-4e3c-a26d-54f125e5591a))
     (fp_line (start 0.8 0.4) (end -0.8 0.4)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp e8c4e5d8-8b6a-431a-932b-cbc7c7478818))
-    (pad "1" smd roundrect (at -0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "1" smd roundrect (at -0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 1 "GND") (pintype "passive") (tstamp 1fba8b37-443a-4caa-95d4-f9012260aff2))
-    (pad "2" smd roundrect (at 0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "2" smd roundrect (at 0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 26 "Net-(D4-Pad2)") (pintype "passive") (tstamp 01be3e49-5814-4419-99bf-ee7164e79eef))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
       (offset (xyz 0 0 0))
@@ -7672,7 +7750,7 @@
 
   (footprint "footprints:XTAL_MU00525_NDK" (layer "F.Cu")
     (tstamp c77f3b49-9020-4a78-ac50-9fd351675a07)
-    (at 149.42 93.81)
+    (at 147.175 93.65 90)
     (tags "MU00525-32.768K ")
     (property "MFG" "NDK")
     (property "MPN" "MU00525-32.768K")
@@ -7682,15 +7760,15 @@
     (property "ki_keywords" "32.768 kHz Crystal 6pF 70 kOhms 2-SMD, No Lead")
     (path "/7e7724aa-dc0b-4a42-9c3b-b562e889485b")
     (attr smd)
-    (fp_text reference "Y1" (at 0 0 unlocked) (layer "F.SilkS") hide
+    (fp_text reference "Y1" (at 0 0 90 unlocked) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 3a717fba-f8b3-423a-99aa-c30b2c14cab0)
     )
-    (fp_text value "32_768kHz" (at 0 0 unlocked) (layer "F.Fab") hide
+    (fp_text value "32_768kHz" (at 0 0 90 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 2692d8a5-b6c2-4e38-9010-9e66f939c837)
     )
-    (fp_text user "${REFERENCE}" (at 0 0 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 0 90 unlocked) (layer "F.Fab")
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp f745e278-9566-435d-a7ea-e6ba06d22071)
     )
@@ -7734,9 +7812,9 @@
       (stroke (width 0.0254) (type solid)) (layer "F.Fab") (tstamp 3803a90a-0e18-4d21-8666-7519df1d73cf))
     (fp_circle (center -0.889 0) (end -0.8128 0)
       (stroke (width 0.0254) (type solid)) (fill none) (layer "F.Fab") (tstamp 9db0fc36-5628-437f-a43e-6f5537a2fbe3))
-    (pad "1" smd rect (at -1.4224 0) (size 1.0668 1.2446) (layers "F.Cu" "F.Paste" "F.Mask")
+    (pad "1" smd rect (at -1.4224 0 90) (size 1.0668 1.2446) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 33 "/OSC32_OUT") (pintype "passive") (tstamp be2e30da-f8ce-475a-9f76-6612b2cedbd9))
-    (pad "2" smd rect (at 1.4224 0) (size 1.0668 1.2446) (layers "F.Cu" "F.Paste" "F.Mask")
+    (pad "2" smd rect (at 1.4224 0 90) (size 1.0668 1.2446) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 32 "/OSC32_IN") (pintype "passive") (tstamp dd397b39-8add-4601-be8c-38c23cad077e))
     (model "${OEM_DIR}/parts/3DModels/XTAL_MU00525_NDK.step"
       (offset (xyz 0 0 0))
@@ -8007,7 +8085,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp cd82ee01-31b9-408a-95d3-ffbb846b6b4b)
-    (at 153.22 90.66 180)
+    (at 152.805 90.55 180)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFN" "DK")
@@ -8320,7 +8398,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp da99a1ea-5623-4da9-b190-ec273f51968b)
-    (at 136.27 95)
+    (at 137.925 94.995)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -8375,7 +8453,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp dc16ea98-d1f5-4748-9488-38a31003b742)
-    (at 149.42 97.135)
+    (at 149.7875 95.175)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Yageo")
@@ -8431,7 +8509,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp ddcebf9c-e2b5-4acd-8c1b-e4c179bce4ac)
-    (at 133.22 100.25)
+    (at 134.875 100.245)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -8486,7 +8564,7 @@
 
   (footprint "footprints:LED_0603_1608Metric" (layer "F.Cu")
     (tstamp dfdc0dc8-c269-4718-a45f-828c8a7aac97)
-    (at 110.8665 102.46)
+    (at 163.93 103.33 90)
     (descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "Color" "WHITE")
@@ -8500,15 +8578,15 @@
     (property "ki_keywords" "White LED Indication - Discrete 2.925V 0603 (1608 Metric)")
     (path "/8703b9b1-0324-46f2-8847-a3abd521e388")
     (attr smd)
-    (fp_text reference "D3" (at 0 -1.43) (layer "F.SilkS")
+    (fp_text reference "D3" (at 0 -1.43 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 0ff98f89-d924-4ee6-9243-5320f1db7047)
     )
-    (fp_text value "EAST16084WA1" (at 0 1.43) (layer "F.Fab")
+    (fp_text value "EAST16084WA1" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 4cf00ef7-292e-4b99-ae62-a006b8fd1383)
     )
-    (fp_text user "${REFERENCE}" (at 0 0) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 0 90) (layer "F.Fab")
         (effects (font (size 0.4 0.4) (thickness 0.06)))
       (tstamp 17dad0ae-2cbf-4350-a4e9-2ac5de44cbed)
     )
@@ -8534,9 +8612,9 @@
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 4ba8d7f1-1f04-4422-9ee9-c1d69d29f69c))
     (fp_line (start 0.8 0.4) (end -0.8 0.4)
       (stroke (width 0.1) (type solid)) (layer "F.Fab") (tstamp 6c1d2cd9-9423-4002-abd3-e5dd047f0e5e))
-    (pad "1" smd roundrect (at -0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "1" smd roundrect (at -0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 1 "GND") (pintype "passive") (tstamp 61e7064d-ee5a-457c-adbd-caaaf7b149f9))
-    (pad "2" smd roundrect (at 0.7875 0) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
+    (pad "2" smd roundrect (at 0.7875 0 90) (size 0.875 0.95) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25)
       (net 25 "Net-(D3-Pad2)") (pintype "passive") (tstamp 6a3bf9c8-42c8-422b-888b-717401c11101))
     (model "${KICAD6_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.wrl"
       (offset (xyz 0 0 0))
@@ -8547,7 +8625,7 @@
 
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp e17ea222-619b-4e37-a6d1-ac81a854740e)
-    (at 114.07 85.28)
+    (at 118.74 86.055)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -8560,11 +8638,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp 6958f4ff-2a22-48c1-9b9f-56fa827f0c91)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 23c86e4e-dd63-4d6b-a83d-a69ea6b8934c)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 6824932f-0519-475a-ac2e-f69a285e96da)
     )
@@ -8574,7 +8652,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp e54f5851-d8bc-4737-94d1-cd19067407f8)
-    (at 142.8575 100.13)
+    (at 144.5125 100.125)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Taiyo Yuden")
@@ -8630,7 +8708,7 @@
 
   (footprint "footprints:GW12LBP" (layer "F.Cu")
     (tstamp e6249f38-3591-4a60-9e30-17cdb3670c47)
-    (at 176.42 93.03 -90)
+    (at 176.41 92.3 -90)
     (descr "Rocker Switch SPDT 0.4VA (AC/DC) 28 V Through Hole")
     (tags "Rocker Switch SPDT 0.4VA (AC/DC) 28 V Through Hole")
     (property "MFG" "NKK")
@@ -8990,7 +9068,7 @@
 
   (footprint "footprints:OSC_NX2016SA-24MHZ-EXS00A-CS10820" (layer "F.Cu")
     (tstamp e81aa6ac-4ec7-49b1-b6ad-705d9dbd496a)
-    (at 149.42 99.335 180)
+    (at 149.7875 97.375 180)
     (property "MFG" "NDK")
     (property "MPN" "CS10820-24M")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -9175,7 +9253,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp e98af8e4-c40a-48aa-a2b6-fc754d7a00b3)
-    (at 149.42 95.61)
+    (at 149.7875 93.65)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFG" "Yageo")
@@ -9231,7 +9309,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp ea227be6-54b3-4c9e-b803-6f0089dddac7)
-    (at 139.93 117.6075 90)
+    (at 138.7 103.7875 90)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -9245,7 +9323,7 @@
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp bde42564-a93e-4abc-8df4-888d092c69f8)
     )
-    (fp_text value "R_1k" (at 0 1.43 90) (layer "F.Fab")
+    (fp_text value "R_1k" (at 0 1.43 90) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 16c286ee-c48f-4778-8daa-7ecd4af1f3fe)
     )
@@ -9286,7 +9364,7 @@
 
   (footprint "footprints:SOT323-5L" (layer "F.Cu")
     (tstamp eaaade1b-c1b4-45ba-8ece-f4893482bada)
-    (at 168.07 102.8825)
+    (at 169.8 102.645)
     (property "Description" "Dual Bi-Directional TVS Diode 350W 3-Pin SOT-23 | ON Semiconductor NUP2105LT1G")
     (property "MFG" "ST")
     (property "MPN" "ESDALC6V1W5")
@@ -9298,22 +9376,24 @@
     (attr smd)
     (fp_text reference "D9" (at 0 0) (layer "F.SilkS") hide
         (effects (font (size 0.787402 0.787402) (thickness 0.15)))
-      (tstamp 2d362ecf-8b34-453c-9808-1b23e02a0b94)
+      (tstamp f3c9862b-0058-468e-ba1a-51d9a6725670)
     )
     (fp_text value "ESDALC6V1W5" (at 0 0) (layer "F.Fab") hide
         (effects (font (size 0.787402 0.787402) (thickness 0.15)))
-      (tstamp 0239b30e-a3f2-46f4-b28f-c30a832926df)
+      (tstamp c6c8baf8-b361-4c79-9e9d-869ec56b7068)
     )
+    (fp_rect (start -1.2 -1.7) (end 1.2 1.7)
+      (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd") (tstamp 53ffde5a-d061-4332-9192-e3bb10e5b0e1))
     (pad "1" smd rect (at 0.65 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 20 "/NC{slash}TDI") (pintype "passive") (solder_mask_margin 0.102) (tstamp 1bace4f7-d496-4c67-a170-44ae1f57a5aa))
-    (pad "2" smd rect (at -0.65 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 1 "GND") (pintype "passive") (solder_mask_margin 0.102) (tstamp a269a552-80f3-4e0e-beaf-5b065a1a073a))
-    (pad "3" smd rect (at -0.65 0.9475) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 21 "/SWO{slash}TDO") (pintype "passive") (solder_mask_margin 0.102) (tstamp ac7486b1-b576-4edf-b3f4-043cf5802266))
+      (net 20 "/NC{slash}TDI") (pintype "passive") (solder_mask_margin 0.102) (tstamp cf7048a6-8bfa-494b-bf42-082ea0995fbd))
+    (pad "2" smd rect (at 0 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 1 "GND") (pintype "passive") (solder_mask_margin 0.102) (tstamp 94a0e02a-21b1-461d-9e83-99466dd535a9))
+    (pad "3" smd rect (at -0.65 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 21 "/SWO{slash}TDO") (pintype "passive") (solder_mask_margin 0.102) (tstamp 7d4fada2-3fc6-4a0d-932b-b9fe4c2ef76e))
     (pad "4" smd rect (at 0.65 0.9475) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (net 22 "/SWCLK{slash}TCLK") (pintype "passive") (solder_mask_margin 0.102) (tstamp 1c450651-c4ee-4fa3-bf61-ddf81d9b2e3e))
-    (pad "GND" smd rect (at 0 -0.9525) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
-      (solder_mask_margin 0.102) (tstamp 10e8e20e-8176-4b18-8883-47530591bd83))
+      (net 22 "/SWCLK{slash}TCLK") (pintype "passive") (solder_mask_margin 0.102) (tstamp dd379ce1-fbe9-4351-8ad0-3624a8e03c65))
+    (pad "5" smd rect (at -0.65 0.9475) (size 0.35 1) (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 52 "/SWDIO{slash}TMS") (pintype "passive") (solder_mask_margin 0.102) (tstamp 2361ab9b-326f-4d17-869e-2a50bcd3506a))
     (model "${KICAD_3RD_PARTY}/parts/3DModels/ESDALC6V1W5.step"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
@@ -9321,9 +9401,34 @@
     )
   )
 
+  (footprint "footprints:000_mounting_hole" (layer "F.Cu")
+    (tstamp eb7f8a5e-80eb-4362-bf0b-abfad56ffe09)
+    (at 187.11 87.74)
+    (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
+    (property "Sheetname" "")
+    (property "ki_description" "Mounting Hole with connection")
+    (property "ki_keywords" "mounting hole")
+    (path "/9efba8c2-4020-40d7-bf47-ed937a885a19")
+    (attr through_hole)
+    (fp_text reference "H1" (at 0 -0.5 unlocked) (layer "F.SilkS") hide
+        (effects (font (size 1 1) (thickness 0.1)))
+      (tstamp 9173b141-4cfc-4a6a-9bb6-0589935b50ea)
+    )
+    (fp_text value "000_MOUNTING_HOLE" (at 0 1 unlocked) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp d36fad79-4142-44aa-8055-0d51e3ad7137)
+    )
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
+        (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp 361755b4-2331-4252-a892-6dd41f945ead)
+    )
+    (pad "1" thru_hole circle (at 0 0) (size 2.9 2.9) (drill 1.6) (layers "*.Cu" "*.Mask")
+      (net 1 "GND") (pinfunction "1") (pintype "input") (tstamp 80c2064f-61c1-403c-bac3-876e82317ed2))
+  )
+
   (footprint "footprints:TestPoint_Hole_D1mm" (layer "F.Cu")
     (tstamp ec9dd626-54f0-4296-b818-1831ec19e634)
-    (at 112.27 120.05)
+    (at 115.07 92.925)
     (descr "1mm OD, 0.5mm ID test point")
     (tags "1mm OD, 0.5mm ID test point")
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
@@ -9336,11 +9441,11 @@
         (effects (font (size 1 1) (thickness 0.1)))
       (tstamp c35eca0c-210b-4af6-af7c-03feb84277ea)
     )
-    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab")
+    (fp_text value "TestPoint_Probe" (at 0 1 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 50b262e4-816f-4120-a6ea-83bbf26051a6)
     )
-    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 0 2.5 unlocked) (layer "F.Fab") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 54333f56-a9b2-4f2f-a62b-6431915aeac2)
     )
@@ -9614,7 +9719,7 @@
 
   (footprint "footprints:SAMTEC_FTSH-105-01-LM-D-K" (layer "F.Cu")
     (tstamp fc8d8789-1547-4eb7-9699-51cbd6bd0f00)
-    (at 173.69 103.43)
+    (at 174.38 103.28)
     (property "Sheetfile" "stm32g431_dev_board.kicad_sch")
     (property "Sheetname" "")
     (property "ki_description" "Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)")
@@ -9643,6 +9748,8 @@
       (stroke (width 0.2) (type solid)) (layer "F.SilkS") (tstamp 9c10dfdb-6811-403f-9763-8d79663813fb))
     (fp_circle (center -1.27 0) (end -1.17 0)
       (stroke (width 0.2) (type solid)) (fill none) (layer "F.SilkS") (tstamp d4a7cac0-2dd6-494e-906b-3c343c00e8ef))
+    (fp_rect (start -5.905 -2.15) (end 10.985 0.9)
+      (stroke (width 0.1) (type default)) (fill none) (layer "Dwgs.User") (tstamp 3214dc60-7601-4ef1-828c-f27a7a11b94b))
     (fp_line (start -0.885 -2.6) (end -0.885 1.33)
       (stroke (width 0.05) (type solid)) (layer "F.CrtYd") (tstamp 557c2b84-c3ba-4b89-9774-3c552375fa74))
     (fp_line (start -0.885 -2.6) (end 5.965 -2.6)
@@ -9690,7 +9797,7 @@
 
   (footprint "footprints:R_0603_1608Metric" (layer "F.Cu")
     (tstamp fd54170e-1853-4576-8090-60c7128d0f42)
-    (at 159.445 90.66 180)
+    (at 159.03 90.55 180)
     (descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "resistor")
     (property "MFG" "Stackpole")
@@ -9907,7 +10014,7 @@
 
   (footprint "footprints:C_0603_1608Metric" (layer "F.Cu")
     (tstamp ff413ddd-6673-4cda-a09d-9976d2b7ace1)
-    (at 161.345 103.4475 -90)
+    (at 160.93 103.3375 -90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
     (tags "capacitor")
     (property "MFN" "DK")
@@ -10411,9 +10518,7 @@
     )
   )
 
-  (gr_line (start 134.1 86.01) (end 121.4 86.01)
-    (stroke (width 0.2) (type default)) (layer "F.Cu") (tstamp 0cde55bf-0509-48af-8c52-9653d64295dd))
-  (gr_rect (start 124.4 86.05) (end 202.59 108.93)
+  (gr_rect (start 126.35 85.61) (end 204.54 108.49)
     (stroke (width 0.2) (type default)) (fill none) (layer "Edge.Cuts") (tstamp 16fbf87b-47e5-4c09-a368-9083ab434776))
 
   (group "" (id ef3556d1-95c9-4ff0-8652-c4a94198fb5a)
