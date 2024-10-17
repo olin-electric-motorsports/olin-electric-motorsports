@@ -1,378 +1,891 @@
-(kicad_sch (version 20230121) (generator eeschema)
-
-  (uuid 10f522c8-3a01-4239-b7df-a730ca32b367)
-
-  (paper "B")
-
-  (title_block
-    (title "OEM Project Template")
-    (date "2019-08-22")
-    (rev "1")
-    (company "Olin Electric Motorsports")
-    (comment 1 "Wesley Soo-Hoo")
-  )
-
-  (lib_symbols
-  )
-
-  (junction (at 251.46 163.83) (diameter 0) (color 0 0 0 0)
-    (uuid 1eb6f675-82a9-41aa-a3d7-80c734bd3bbd)
-  )
-  (junction (at 218.44 114.3) (diameter 0) (color 0 0 0 0)
-    (uuid 2a8e831a-3d21-4330-bcb3-781bd208e26d)
-  )
-  (junction (at 226.06 119.38) (diameter 0) (color 0 0 0 0)
-    (uuid 72610577-dd86-442b-8f25-830db67b7574)
-  )
-  (junction (at 214.63 76.2) (diameter 0) (color 0 0 0 0)
-    (uuid 7612241a-b21a-488b-ae9d-8553bf980745)
-  )
-  (junction (at 231.14 127) (diameter 0) (color 0 0 0 0)
-    (uuid 7d94f9e0-4ba0-41f6-bdb3-81c405b48cb4)
-  )
-
-  (no_connect (at 234.95 163.83) (uuid 01928853-fca6-42aa-a89d-55e19bc17faf))
-  (no_connect (at 226.06 114.3) (uuid 02bb2783-5775-4e67-a4e5-f021400682a1))
-  (no_connect (at 214.63 163.83) (uuid 0a44eb7e-db3b-43d1-a85c-f32d4077b8e0))
-  (no_connect (at 214.63 119.38) (uuid 171f7816-aeda-4b9d-b525-ddac35a75ec0))
-  (no_connect (at 247.65 156.21) (uuid 1e040df7-6d23-42bd-8d8f-f23a894d8aa9))
-  (no_connect (at 214.63 114.3) (uuid 411a8e02-47dd-4538-adc3-36dfed6acd85))
-  (no_connect (at 214.63 127) (uuid 4722af4a-a6fc-43c5-8da0-f71d834a8966))
-  (no_connect (at 234.95 114.3) (uuid 4bce283f-1858-4b93-9b88-8eba7ea9cd63))
-  (no_connect (at 234.95 156.21) (uuid 5508d796-f030-4d34-b8a5-42b5b0ccf712))
-  (no_connect (at 234.95 119.38) (uuid 615f1bbe-8f63-4edb-be89-652152fd9bfa))
-  (no_connect (at 243.84 163.83) (uuid 81e2f2eb-3662-4552-8702-8cd8a58a15cb))
-  (no_connect (at 218.44 127) (uuid 89f71984-1666-4fe3-9f45-dc42ce348b23))
-  (no_connect (at 218.44 163.83) (uuid a066b89d-85ae-42eb-9f3a-962933e4b087))
-  (no_connect (at 243.84 156.21) (uuid a6c93a10-082b-4edb-9ffb-95d5f484084f))
-  (no_connect (at 247.65 163.83) (uuid ab4a960d-17c3-40ed-8155-d9b79754e3d0))
-  (no_connect (at 234.95 127) (uuid be0022eb-29fa-4419-b4f4-dc493eb1bca7))
-  (no_connect (at 218.44 119.38) (uuid dc3e9e1d-bdcb-44dd-a78d-c644b8053538))
-
-  (wire (pts (xy 226.06 85.09) (xy 255.27 85.09))
-    (stroke (width 0) (type default))
-    (uuid 05609d81-9d3c-4038-85bf-a10ee546cbc6)
-  )
-  (wire (pts (xy 231.14 156.21) (xy 255.27 156.21))
-    (stroke (width 0) (type default))
-    (uuid 11475dfe-428f-40e4-ad79-f1640330e447)
-  )
-  (wire (pts (xy 199.39 130.81) (xy 210.82 130.81))
-    (stroke (width 0) (type default))
-    (uuid 18cd3bdb-c49e-4ec0-b7a4-9966058bb78e)
-  )
-  (wire (pts (xy 207.01 134.62) (xy 207.01 173.99))
-    (stroke (width 0) (type default))
-    (uuid 19439937-8d23-462d-b8ba-e4fd28f36ae4)
-  )
-  (wire (pts (xy 231.14 156.21) (xy 231.14 127))
-    (stroke (width 0) (type default))
-    (uuid 291b991e-8d81-4718-ba1e-c47e9363e067)
-  )
-  (wire (pts (xy 214.63 76.2) (xy 214.63 173.99))
-    (stroke (width 0) (type default))
-    (uuid 2aee6796-7f8e-47e8-8606-8b6095d814cb)
-  )
-  (wire (pts (xy 247.65 173.99) (xy 247.65 139.7))
-    (stroke (width 0) (type default))
-    (uuid 349bc28a-55f8-46e5-8ba7-de1cbc1734f9)
-  )
-  (wire (pts (xy 255.27 163.83) (xy 251.46 163.83))
-    (stroke (width 0) (type default))
-    (uuid 3db4cb54-0b4f-4f97-b35d-dcaab7546d54)
-  )
-  (wire (pts (xy 199.39 114.3) (xy 218.44 114.3))
-    (stroke (width 0) (type default))
-    (uuid 42808827-c6b2-4a52-a155-2ff8b46a26fe)
-  )
-  (wire (pts (xy 218.44 114.3) (xy 255.27 114.3))
-    (stroke (width 0) (type default))
-    (uuid 4513feaa-e718-407c-acd1-51afbcade59f)
-  )
-  (wire (pts (xy 234.95 173.99) (xy 234.95 93.98))
-    (stroke (width 0) (type default))
-    (uuid 45b0cb7b-61ab-43bb-b4f4-da73fbbc7564)
-  )
-  (wire (pts (xy 203.2 173.99) (xy 203.2 138.43))
-    (stroke (width 0) (type default))
-    (uuid 51f2791f-d448-4408-be87-c690b069b976)
-  )
-  (wire (pts (xy 247.65 139.7) (xy 255.27 139.7))
-    (stroke (width 0) (type default))
-    (uuid 5344e58e-1c52-407b-bce6-a8c0c4eed1ab)
-  )
-  (wire (pts (xy 231.14 127) (xy 255.27 127))
-    (stroke (width 0) (type default))
-    (uuid 5d584339-2b1d-4a9a-8a36-f3153248d077)
-  )
-  (wire (pts (xy 210.82 163.83) (xy 251.46 163.83))
-    (stroke (width 0) (type default))
-    (uuid 5f978e55-ab57-456e-8a2e-5bed91d295fb)
-  )
-  (wire (pts (xy 199.39 119.38) (xy 226.06 119.38))
-    (stroke (width 0) (type default))
-    (uuid 60233e0a-63cd-4b4c-8537-c281dbc15638)
-  )
-  (wire (pts (xy 199.39 134.62) (xy 207.01 134.62))
-    (stroke (width 0) (type default))
-    (uuid 617821e4-fe2e-42a0-a372-f16c95584211)
-  )
-  (wire (pts (xy 234.95 93.98) (xy 255.27 93.98))
-    (stroke (width 0) (type default))
-    (uuid 7165f2c8-e7eb-4b08-80ed-8c794347dc26)
-  )
-  (wire (pts (xy 214.63 76.2) (xy 255.27 76.2))
-    (stroke (width 0) (type default))
-    (uuid 71af487e-ad84-4ed3-909c-c8f0c15ea7a4)
-  )
-  (wire (pts (xy 203.2 138.43) (xy 199.39 138.43))
-    (stroke (width 0) (type default))
-    (uuid 7d4e9837-ebe9-4653-96fa-bb2569e32e78)
-  )
-  (wire (pts (xy 214.63 76.2) (xy 199.39 76.2))
-    (stroke (width 0) (type default))
-    (uuid 82fb8af4-ae58-4197-bfea-8173705e9ec6)
-  )
-  (wire (pts (xy 226.06 119.38) (xy 226.06 85.09))
-    (stroke (width 0) (type default))
-    (uuid 887a3e80-77a8-4484-9910-7aa0a6d46e00)
-  )
-  (wire (pts (xy 210.82 130.81) (xy 210.82 163.83))
-    (stroke (width 0) (type default))
-    (uuid ab16c722-febd-46e6-b241-5ed89afd3667)
-  )
-  (wire (pts (xy 226.06 119.38) (xy 255.27 119.38))
-    (stroke (width 0) (type default))
-    (uuid b71cc764-7f79-4cb5-9d18-d4798e492387)
-  )
-  (wire (pts (xy 243.84 135.89) (xy 243.84 173.99))
-    (stroke (width 0) (type default))
-    (uuid bf501780-e5fb-4ebf-9d41-7f6600881f98)
-  )
-  (wire (pts (xy 255.27 135.89) (xy 243.84 135.89))
-    (stroke (width 0) (type default))
-    (uuid cdd9e5a5-a30e-4018-8687-bf52908f6289)
-  )
-  (wire (pts (xy 251.46 163.83) (xy 251.46 173.99))
-    (stroke (width 0) (type default))
-    (uuid d10288f4-e206-407a-a03f-465607e07e93)
-  )
-  (wire (pts (xy 218.44 114.3) (xy 218.44 173.99))
-    (stroke (width 0) (type default))
-    (uuid e6a62cff-333b-43e0-a9e8-41ebdc3afb80)
-  )
-  (wire (pts (xy 199.39 127) (xy 231.14 127))
-    (stroke (width 0) (type default))
-    (uuid fe8e9b16-0195-4516-b822-4b0013a06ec4)
-  )
-
-  (text "Logic + timer circuit to\ncontrol BSPD Shutdown state"
-    (at 310.261 127.889 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 531daa7d-8c35-4ce2-b848-a2018d7efd5b)
-  )
-  (text "Analog Brakelight output\ncircuitry - toggles brakelight\nbased on brake pressure"
-    (at 311.404 90.17 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 5f47dac9-57ee-4f09-b956-03f248610671)
-  )
-  (text "Driver for upstream\nmodeule-by-module fault \ndetection"
-    (at 286.639 161.798 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 7a4022b2-875e-4a0f-965e-3cdeafcd722d)
-  )
-  (text "CAN, Status LEDS,\nmicrocontroller,\nprogramming pins"
-    (at 158.877 108.331 0)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid c9aa6468-1140-44ad-bc28-026683e161fe)
-  )
-
-  (sheet (at 160.02 71.12) (size 39.37 71.12) (fields_autoplaced)
-    (stroke (width 0.1524) (type solid))
-    (fill (color 0 0 0 0.0000))
-    (uuid 063f9baa-9e7f-4e30-8189-9b7cdc546808)
-    (property "Sheetname" "Microcontroller - ATMEGA16M1" (at 160.02 70.4084 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (property "Sheetfile" "microcontroller.kicad_sch" (at 160.02 142.8246 0)
-      (effects (font (size 1.27 1.27)) (justify left top))
-    )
-    (pin "BRAKE_PRESS_SENSE" input (at 199.39 76.2 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 89e10852-853f-4726-8454-f9c0c8eecbd7)
-    )
-    (pin "CAN_+" bidirectional (at 199.39 134.62 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 577c8a5c-065c-46aa-ad00-f89038ed0274)
-    )
-    (pin "CAN_-" bidirectional (at 199.39 138.43 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 804092cd-7ef0-4c7f-9c04-a7e49aa8da7d)
-    )
-    (pin "BRAKELIGHT_LL" input (at 199.39 119.38 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 0f94ab61-4326-4fac-9bcf-3250db1d2d30)
-    )
-    (pin "BSPD_LL" input (at 199.39 127 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 54cc83bd-1470-4841-8a1d-6f982282c5cb)
-    )
-    (pin "MOTOR_CURRENT_SENSE" input (at 199.39 114.3 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 0c09eb30-afbf-4b72-88f8-6f1f94ca42cb)
-    )
-    (pin "BSPD_SHUTDOWN_SENSE" input (at 199.39 130.81 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 99a27343-32ae-4480-a264-05f1fc76200c)
-    )
-    (instances
-      (project "brakes"
-        (path "/10f522c8-3a01-4239-b7df-a730ca32b367" (page "5"))
-      )
-    )
-  )
-
-  (sheet (at 255.27 71.12) (size 54.61 31.75) (fields_autoplaced)
-    (stroke (width 0.1524) (type solid))
-    (fill (color 0 0 0 0.0000))
-    (uuid 339fb11c-fad1-47d9-b52d-da4ae2419b11)
-    (property "Sheetname" "BrakeLight" (at 255.27 70.4084 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (property "Sheetfile" "brakeLight.kicad_sch" (at 255.27 103.4546 0)
-      (effects (font (size 1.27 1.27)) (justify left top))
-    )
-    (pin "BRAKELIGHT_LL" output (at 255.27 85.09 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 2090578c-5b05-4de9-88ba-f7bf37dd4496)
-    )
-    (pin "BREAKLIGHT_CONN" output (at 255.27 93.98 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 43b7e678-1126-4f82-8981-4b1de1d2472d)
-    )
-    (pin "BRAKE_PRESS_SENSE" input (at 255.27 76.2 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 99384850-b06e-489a-b7be-8601d9f19f89)
-    )
-    (instances
-      (project "brakes"
-        (path "/10f522c8-3a01-4239-b7df-a730ca32b367" (page "3"))
-      )
-    )
-  )
-
-  (sheet (at 255.27 152.4) (size 30.48 15.24) (fields_autoplaced)
-    (stroke (width 0.1524) (type solid))
-    (fill (color 0 0 0 0.0000))
-    (uuid 69578ef1-8102-4794-908a-f711a97b447d)
-    (property "Sheetname" "Shutdown Sense" (at 255.27 151.6884 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (property "Sheetfile" "shtdwn_LSD.kicad_sch" (at 255.27 168.2246 0)
-      (effects (font (size 1.27 1.27)) (justify left top))
-    )
-    (pin "BSPD_LL" input (at 255.27 156.21 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 12dcc7b1-80b7-4632-ac3e-09cdf1164522)
-    )
-    (pin "BSPD_SHUTDOWN_SENSE" output (at 255.27 163.83 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 1af6cb4e-7b0f-42f6-a08a-100f5e39e90f)
-    )
-    (instances
-      (project "brakes"
-        (path "/10f522c8-3a01-4239-b7df-a730ca32b367" (page "6"))
-      )
-    )
-  )
-
-  (sheet (at 185.8518 173.99) (size 77.0382 26.1366)
-    (stroke (width 0.1524) (type solid))
-    (fill (color 0 0 0 0.0000))
-    (uuid 718fe271-d81c-4ddf-8baf-ccfb6ae290e3)
-    (property "Sheetname" "M.2 Connector" (at 185.8518 173.3296 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (property "Sheetfile" "Connector.kicad_sch" (at 185.8518 201.3204 0)
-      (effects (font (size 1.27 1.27)) (justify left top))
-    )
-    (pin "SHDN_IN" output (at 243.84 173.99 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid a85fefd7-9b86-4bf0-b80c-33e70d179f41)
-    )
-    (pin "SHDN_OUT" input (at 247.65 173.99 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 31eeaa68-26d3-46f8-97c7-46af3ec48798)
-    )
-    (pin "CAN_+" bidirectional (at 207.01 173.99 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 493888c3-4860-4cee-a919-d71df2a7b66d)
-    )
-    (pin "CAN_-" bidirectional (at 203.2 173.99 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid b075c13d-f35a-4be9-a1e5-fa1ce98c8354)
-    )
-    (pin "BRAKE_PRESS_SENSE" output (at 214.63 173.99 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid c85ce7dd-f934-463a-938c-17d7dced71d0)
-    )
-    (pin "MOTOR_CURRENT_SENSE" output (at 218.44 173.99 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 7f9e663a-80be-495e-a516-6efecc31ee35)
-    )
-    (pin "BRAKELIGHT_CONN" input (at 234.95 173.99 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid c641ac85-8397-4603-ad07-241e6888a1bd)
-    )
-    (pin "BSPD_SHUTDOWN_SENSE" input (at 251.46 173.99 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-      (uuid 98249b65-02aa-40bf-a65e-50b455ba72b6)
-    )
-    (instances
-      (project "brakes"
-        (path "/10f522c8-3a01-4239-b7df-a730ca32b367" (page "7"))
-      )
-    )
-  )
-
-  (sheet (at 255.27 110.49) (size 53.34 31.75) (fields_autoplaced)
-    (stroke (width 0.1524) (type solid))
-    (fill (color 0 0 0 0.0000))
-    (uuid e279e344-9058-4851-bdde-ca605e652c75)
-    (property "Sheetname" "BSPD" (at 255.27 109.7784 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (property "Sheetfile" "bspd.kicad_sch" (at 255.27 142.3166 0)
-      (effects (font (size 1.27 1.27)) (justify left top))
-    )
-    (pin "BSPD_RELAY_OUT" output (at 255.27 139.7 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 71a892a9-13ee-49be-a68e-bf7b9f7ab39d)
-    )
-    (pin "BSPD_RELAY_IN" input (at 255.27 135.89 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 7ee90a78-b42d-4a85-857f-d46b5b1b1035)
-    )
-    (pin "MOTOR_CURRENT_SENSE" input (at 255.27 114.3 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid f7195f94-511c-4ab2-8c5b-02d7cc3b97c0)
-    )
-    (pin "BRAKELIGHT_LL" input (at 255.27 119.38 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid 561999df-370e-4a00-acbf-010a3c993e3b)
-    )
-    (pin "BSPD_LL" output (at 255.27 127 180)
-      (effects (font (size 1.27 1.27)) (justify left))
-      (uuid db7d5d52-d106-425e-90b2-6a92b28ba3ee)
-    )
-    (instances
-      (project "brakes"
-        (path "/10f522c8-3a01-4239-b7df-a730ca32b367" (page "3"))
-      )
-    )
-  )
-
-  (sheet_instances
-    (path "/" (page "1"))
-  )
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "10f522c8-3a01-4239-b7df-a730ca32b367")
+	(paper "B")
+	(title_block
+		(title "OEM Project Template")
+		(date "2019-08-22")
+		(rev "1")
+		(company "Olin Electric Motorsports")
+		(comment 1 "Wesley Soo-Hoo")
+	)
+	(lib_symbols)
+	(junction
+		(at 251.46 163.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1eb6f675-82a9-41aa-a3d7-80c734bd3bbd")
+	)
+	(junction
+		(at 218.44 114.3)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2a8e831a-3d21-4330-bcb3-781bd208e26d")
+	)
+	(junction
+		(at 226.06 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "72610577-dd86-442b-8f25-830db67b7574")
+	)
+	(junction
+		(at 214.63 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7612241a-b21a-488b-ae9d-8553bf980745")
+	)
+	(junction
+		(at 231.14 127)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7d94f9e0-4ba0-41f6-bdb3-81c405b48cb4")
+	)
+	(no_connect
+		(at 234.95 163.83)
+		(uuid "01928853-fca6-42aa-a89d-55e19bc17faf")
+	)
+	(no_connect
+		(at 226.06 114.3)
+		(uuid "02bb2783-5775-4e67-a4e5-f021400682a1")
+	)
+	(no_connect
+		(at 214.63 163.83)
+		(uuid "0a44eb7e-db3b-43d1-a85c-f32d4077b8e0")
+	)
+	(no_connect
+		(at 214.63 119.38)
+		(uuid "171f7816-aeda-4b9d-b525-ddac35a75ec0")
+	)
+	(no_connect
+		(at 247.65 156.21)
+		(uuid "1e040df7-6d23-42bd-8d8f-f23a894d8aa9")
+	)
+	(no_connect
+		(at 214.63 114.3)
+		(uuid "411a8e02-47dd-4538-adc3-36dfed6acd85")
+	)
+	(no_connect
+		(at 214.63 127)
+		(uuid "4722af4a-a6fc-43c5-8da0-f71d834a8966")
+	)
+	(no_connect
+		(at 234.95 114.3)
+		(uuid "4bce283f-1858-4b93-9b88-8eba7ea9cd63")
+	)
+	(no_connect
+		(at 234.95 156.21)
+		(uuid "5508d796-f030-4d34-b8a5-42b5b0ccf712")
+	)
+	(no_connect
+		(at 234.95 119.38)
+		(uuid "615f1bbe-8f63-4edb-be89-652152fd9bfa")
+	)
+	(no_connect
+		(at 243.84 163.83)
+		(uuid "81e2f2eb-3662-4552-8702-8cd8a58a15cb")
+	)
+	(no_connect
+		(at 218.44 127)
+		(uuid "89f71984-1666-4fe3-9f45-dc42ce348b23")
+	)
+	(no_connect
+		(at 218.44 163.83)
+		(uuid "a066b89d-85ae-42eb-9f3a-962933e4b087")
+	)
+	(no_connect
+		(at 243.84 156.21)
+		(uuid "a6c93a10-082b-4edb-9ffb-95d5f484084f")
+	)
+	(no_connect
+		(at 247.65 163.83)
+		(uuid "ab4a960d-17c3-40ed-8155-d9b79754e3d0")
+	)
+	(no_connect
+		(at 234.95 127)
+		(uuid "be0022eb-29fa-4419-b4f4-dc493eb1bca7")
+	)
+	(no_connect
+		(at 218.44 119.38)
+		(uuid "dc3e9e1d-bdcb-44dd-a78d-c644b8053538")
+	)
+	(wire
+		(pts
+			(xy 226.06 85.09) (xy 255.27 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05609d81-9d3c-4038-85bf-a10ee546cbc6")
+	)
+	(wire
+		(pts
+			(xy 231.14 156.21) (xy 255.27 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11475dfe-428f-40e4-ad79-f1640330e447")
+	)
+	(wire
+		(pts
+			(xy 199.39 130.81) (xy 210.82 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18cd3bdb-c49e-4ec0-b7a4-9966058bb78e")
+	)
+	(wire
+		(pts
+			(xy 207.01 134.62) (xy 207.01 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19439937-8d23-462d-b8ba-e4fd28f36ae4")
+	)
+	(wire
+		(pts
+			(xy 231.14 156.21) (xy 231.14 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "291b991e-8d81-4718-ba1e-c47e9363e067")
+	)
+	(wire
+		(pts
+			(xy 214.63 76.2) (xy 214.63 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2aee6796-7f8e-47e8-8606-8b6095d814cb")
+	)
+	(wire
+		(pts
+			(xy 247.65 173.99) (xy 247.65 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "349bc28a-55f8-46e5-8ba7-de1cbc1734f9")
+	)
+	(wire
+		(pts
+			(xy 255.27 163.83) (xy 251.46 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3db4cb54-0b4f-4f97-b35d-dcaab7546d54")
+	)
+	(wire
+		(pts
+			(xy 199.39 114.3) (xy 218.44 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42808827-c6b2-4a52-a155-2ff8b46a26fe")
+	)
+	(wire
+		(pts
+			(xy 218.44 114.3) (xy 255.27 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4513feaa-e718-407c-acd1-51afbcade59f")
+	)
+	(wire
+		(pts
+			(xy 234.95 173.99) (xy 234.95 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45b0cb7b-61ab-43bb-b4f4-da73fbbc7564")
+	)
+	(wire
+		(pts
+			(xy 203.2 173.99) (xy 203.2 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51f2791f-d448-4408-be87-c690b069b976")
+	)
+	(wire
+		(pts
+			(xy 247.65 139.7) (xy 255.27 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5344e58e-1c52-407b-bce6-a8c0c4eed1ab")
+	)
+	(wire
+		(pts
+			(xy 231.14 127) (xy 255.27 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d584339-2b1d-4a9a-8a36-f3153248d077")
+	)
+	(wire
+		(pts
+			(xy 210.82 163.83) (xy 251.46 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f978e55-ab57-456e-8a2e-5bed91d295fb")
+	)
+	(wire
+		(pts
+			(xy 199.39 119.38) (xy 226.06 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60233e0a-63cd-4b4c-8537-c281dbc15638")
+	)
+	(wire
+		(pts
+			(xy 199.39 134.62) (xy 207.01 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "617821e4-fe2e-42a0-a372-f16c95584211")
+	)
+	(wire
+		(pts
+			(xy 234.95 93.98) (xy 255.27 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7165f2c8-e7eb-4b08-80ed-8c794347dc26")
+	)
+	(wire
+		(pts
+			(xy 214.63 76.2) (xy 255.27 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "71af487e-ad84-4ed3-909c-c8f0c15ea7a4")
+	)
+	(wire
+		(pts
+			(xy 203.2 138.43) (xy 199.39 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d4e9837-ebe9-4653-96fa-bb2569e32e78")
+	)
+	(wire
+		(pts
+			(xy 214.63 76.2) (xy 199.39 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82fb8af4-ae58-4197-bfea-8173705e9ec6")
+	)
+	(wire
+		(pts
+			(xy 226.06 119.38) (xy 226.06 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "887a3e80-77a8-4484-9910-7aa0a6d46e00")
+	)
+	(wire
+		(pts
+			(xy 210.82 130.81) (xy 210.82 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab16c722-febd-46e6-b241-5ed89afd3667")
+	)
+	(wire
+		(pts
+			(xy 226.06 119.38) (xy 255.27 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b71cc764-7f79-4cb5-9d18-d4798e492387")
+	)
+	(wire
+		(pts
+			(xy 243.84 135.89) (xy 243.84 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf501780-e5fb-4ebf-9d41-7f6600881f98")
+	)
+	(wire
+		(pts
+			(xy 255.27 135.89) (xy 243.84 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cdd9e5a5-a30e-4018-8687-bf52908f6289")
+	)
+	(wire
+		(pts
+			(xy 251.46 163.83) (xy 251.46 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d10288f4-e206-407a-a03f-465607e07e93")
+	)
+	(wire
+		(pts
+			(xy 218.44 114.3) (xy 218.44 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6a62cff-333b-43e0-a9e8-41ebdc3afb80")
+	)
+	(wire
+		(pts
+			(xy 199.39 127) (xy 231.14 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe8e9b16-0195-4516-b822-4b0013a06ec4")
+	)
+	(text "Logic + timer circuit to\ncontrol BSPD Shutdown state"
+		(exclude_from_sim no)
+		(at 310.261 127.889 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "531daa7d-8c35-4ce2-b848-a2018d7efd5b")
+	)
+	(text "Analog Brakelight output\ncircuitry - toggles brakelight\nbased on brake pressure"
+		(exclude_from_sim no)
+		(at 311.404 90.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5f47dac9-57ee-4f09-b956-03f248610671")
+	)
+	(text "Driver for upstream\nmodeule-by-module fault \ndetection"
+		(exclude_from_sim no)
+		(at 286.639 161.798 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7a4022b2-875e-4a0f-965e-3cdeafcd722d")
+	)
+	(text "CAN, Status LEDS,\nmicrocontroller,\nprogramming pins"
+		(exclude_from_sim no)
+		(at 158.877 108.331 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c9aa6468-1140-44ad-bc28-026683e161fe")
+	)
+	(sheet
+		(at 160.02 71.12)
+		(size 39.37 71.12)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "063f9baa-9e7f-4e30-8189-9b7cdc546808")
+		(property "Sheetname" "Microcontroller - ATMEGA16M1"
+			(at 160.02 70.4084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "microcontroller.kicad_sch"
+			(at 160.02 142.8246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BRAKE_PRESS_SENSE" input
+			(at 199.39 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "89e10852-853f-4726-8454-f9c0c8eecbd7")
+		)
+		(pin "CAN_+" bidirectional
+			(at 199.39 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "577c8a5c-065c-46aa-ad00-f89038ed0274")
+		)
+		(pin "CAN_-" bidirectional
+			(at 199.39 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "804092cd-7ef0-4c7f-9c04-a7e49aa8da7d")
+		)
+		(pin "BRAKELIGHT_LL" input
+			(at 199.39 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "0f94ab61-4326-4fac-9bcf-3250db1d2d30")
+		)
+		(pin "BSPD_LL" input
+			(at 199.39 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "54cc83bd-1470-4841-8a1d-6f982282c5cb")
+		)
+		(pin "MOTOR_CURRENT_SENSE" input
+			(at 199.39 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "0c09eb30-afbf-4b72-88f8-6f1f94ca42cb")
+		)
+		(pin "BSPD_SHUTDOWN_SENSE" input
+			(at 199.39 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "99a27343-32ae-4480-a264-05f1fc76200c")
+		)
+		(instances
+			(project "brakes"
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 255.27 71.12)
+		(size 54.61 31.75)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "339fb11c-fad1-47d9-b52d-da4ae2419b11")
+		(property "Sheetname" "BrakeLight"
+			(at 255.27 70.4084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "brakeLight.kicad_sch"
+			(at 255.27 103.4546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BRAKELIGHT_LL" output
+			(at 255.27 85.09 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "2090578c-5b05-4de9-88ba-f7bf37dd4496")
+		)
+		(pin "BREAKLIGHT_CONN" output
+			(at 255.27 93.98 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "43b7e678-1126-4f82-8981-4b1de1d2472d")
+		)
+		(pin "BRAKE_PRESS_SENSE" input
+			(at 255.27 76.2 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "99384850-b06e-489a-b7be-8601d9f19f89")
+		)
+		(instances
+			(project "brakes"
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 255.27 152.4)
+		(size 30.48 15.24)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "69578ef1-8102-4794-908a-f711a97b447d")
+		(property "Sheetname" "Shutdown Sense"
+			(at 255.27 151.6884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "shtdwn_LSD.kicad_sch"
+			(at 255.27 168.2246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BSPD_LL" input
+			(at 255.27 156.21 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "12dcc7b1-80b7-4632-ac3e-09cdf1164522")
+		)
+		(pin "BSPD_SHUTDOWN_SENSE" output
+			(at 255.27 163.83 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "1af6cb4e-7b0f-42f6-a08a-100f5e39e90f")
+		)
+		(instances
+			(project "brakes"
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 185.8518 173.99)
+		(size 77.0382 26.1366)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "718fe271-d81c-4ddf-8baf-ccfb6ae290e3")
+		(property "Sheetname" "M.2 Connector"
+			(at 185.8518 173.3296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Connector.kicad_sch"
+			(at 185.8518 201.3204 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "SHDN_IN" output
+			(at 243.84 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "a85fefd7-9b86-4bf0-b80c-33e70d179f41")
+		)
+		(pin "SHDN_OUT" input
+			(at 247.65 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "31eeaa68-26d3-46f8-97c7-46af3ec48798")
+		)
+		(pin "CAN_+" bidirectional
+			(at 207.01 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "493888c3-4860-4cee-a919-d71df2a7b66d")
+		)
+		(pin "CAN_-" bidirectional
+			(at 203.2 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "b075c13d-f35a-4be9-a1e5-fa1ce98c8354")
+		)
+		(pin "BRAKE_PRESS_SENSE" output
+			(at 214.63 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "c85ce7dd-f934-463a-938c-17d7dced71d0")
+		)
+		(pin "MOTOR_CURRENT_SENSE" output
+			(at 218.44 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "7f9e663a-80be-495e-a516-6efecc31ee35")
+		)
+		(pin "BRAKELIGHT_CONN" input
+			(at 234.95 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "c641ac85-8397-4603-ad07-241e6888a1bd")
+		)
+		(pin "BSPD_SHUTDOWN_SENSE" input
+			(at 251.46 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "98249b65-02aa-40bf-a65e-50b455ba72b6")
+		)
+		(instances
+			(project "brakes"
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 255.27 110.49)
+		(size 53.34 31.75)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "e279e344-9058-4851-bdde-ca605e652c75")
+		(property "Sheetname" "BSPD"
+			(at 255.27 109.7784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "bspd.kicad_sch"
+			(at 255.27 142.3166 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BSPD_RELAY_OUT" output
+			(at 255.27 139.7 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "71a892a9-13ee-49be-a68e-bf7b9f7ab39d")
+		)
+		(pin "BSPD_RELAY_IN" input
+			(at 255.27 135.89 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "7ee90a78-b42d-4a85-857f-d46b5b1b1035")
+		)
+		(pin "MOTOR_CURRENT_SENSE" input
+			(at 255.27 114.3 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "f7195f94-511c-4ab2-8c5b-02d7cc3b97c0")
+		)
+		(pin "BRAKELIGHT_LL" input
+			(at 255.27 119.38 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "561999df-370e-4a00-acbf-010a3c993e3b")
+		)
+		(pin "BSPD_LL" output
+			(at 255.27 127 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "db7d5d52-d106-425e-90b2-6a92b28ba3ee")
+		)
+		(instances
+			(project "brakes"
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
 )
