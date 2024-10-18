@@ -1,0 +1,2431 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "730f81a3-d5ff-4c36-8b7b-2c0387a886a0")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Device:Thermistor"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TH"
+				(at 2.54 1.27 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Thermistor"
+				(at -2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Temperature dependent resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res thermistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Thermistor_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 3.175) (xy -1.905 1.905) (xy 1.905 -1.905) (xy 1.905 -3.175) (xy 1.905 -3.175)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Thermistor_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 31.75 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0b28138c-1726-4e9b-8a10-1b3c3b6f4c8c")
+	)
+	(junction
+		(at 53.34 25.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "17b3dd13-4773-40f7-8a34-a06591e326a2")
+	)
+	(junction
+		(at 74.93 25.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6e83a30e-02ca-4fc4-8fd3-f386ed717bda")
+	)
+	(junction
+		(at 31.75 25.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7ccc67d5-ac93-4d72-b618-6e77cb5a009b")
+	)
+	(junction
+		(at 96.52 25.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "869c1aea-1497-4638-9b02-440d579b91be")
+	)
+	(bus_entry
+		(at 57.15 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0936bf58-4fa1-4c5d-8f86-3e8225c0e013")
+	)
+	(bus_entry
+		(at 143.51 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b1303a1-f7a5-4785-b6a2-2aa8e6475e2c")
+	)
+	(bus_entry
+		(at 121.92 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40a375f7-d7f0-4003-93de-7828e08412fe")
+	)
+	(bus_entry
+		(at 120.65 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e14d827-0a4f-49bc-9694-7dff26fa1530")
+	)
+	(bus_entry
+		(at 167.64 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a6b484f-f0a4-4271-834a-84cd68a977b6")
+	)
+	(bus_entry
+		(at 166.37 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5be10d5a-d1c2-40e5-b0b0-ac86d9b643dc")
+	)
+	(bus_entry
+		(at 144.78 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f93b21e-dce5-458d-8671-05aa63ffd21d")
+	)
+	(bus_entry
+		(at 39.37 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60b7201c-1dfd-4ad4-a0bc-9d43c713ef78")
+	)
+	(bus_entry
+		(at 100.33 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82f15608-af20-4790-b575-c89ce74a5560")
+	)
+	(bus_entry
+		(at 213.36 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a68cffc9-44a4-4ad4-9eb5-696e4ab1627d")
+	)
+	(bus_entry
+		(at 40.64 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa6bc9ad-9e85-443b-8144-f30e866d2ed4")
+	)
+	(bus_entry
+		(at 77.47 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ada8f881-efde-494b-8409-709bac61becd")
+	)
+	(bus_entry
+		(at 190.5 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aec5d3e8-c3e1-46da-a01f-d601db18d671")
+	)
+	(bus_entry
+		(at 55.88 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c151265a-2fee-4593-b384-8cac9bd723a9")
+	)
+	(bus_entry
+		(at 99.06 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de5aa808-befc-4371-b520-90fc297e7314")
+	)
+	(bus_entry
+		(at 189.23 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6e1297c-c446-4099-bc1f-9a3e414b5136")
+	)
+	(bus_entry
+		(at 78.74 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8bc1ac4-4182-41de-9287-23541db1aefb")
+	)
+	(bus
+		(pts
+			(xy 55.88 41.91) (xy 57.15 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09915621-8d0d-4dfc-bce5-b92cf79c0d56")
+	)
+	(bus
+		(pts
+			(xy 143.51 41.91) (xy 144.78 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11228a65-e78e-4d34-83fc-bd4688f70311")
+	)
+	(wire
+		(pts
+			(xy 187.96 25.4) (xy 186.69 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2243e2a7-195e-451c-b964-de7810132ce4")
+	)
+	(wire
+		(pts
+			(xy 52.07 35.56) (xy 52.07 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2accf435-702a-4743-9278-3d5f1174ca8f")
+	)
+	(wire
+		(pts
+			(xy 76.2 25.4) (xy 74.93 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bf8b8e5-634e-40b4-a04a-f42b310a5059")
+	)
+	(bus
+		(pts
+			(xy 39.37 41.91) (xy 40.64 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2daab155-a66c-4352-9350-6f74f527c1e7")
+	)
+	(wire
+		(pts
+			(xy 119.38 25.4) (xy 118.11 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f4b41f4-2eb1-4408-9fbd-905ee9abdeb4")
+	)
+	(wire
+		(pts
+			(xy 140.97 35.56) (xy 140.97 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "346a9633-1b78-416b-bb47-f03a7dc9b9b7")
+	)
+	(wire
+		(pts
+			(xy 53.34 36.83) (xy 53.34 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39107658-5fd0-43bf-96a2-e53549c31294")
+	)
+	(bus
+		(pts
+			(xy 100.33 41.91) (xy 120.65 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cfc2584-1d80-4e55-8674-ac493ada8bc4")
+	)
+	(wire
+		(pts
+			(xy 142.24 39.37) (xy 142.24 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "419bbbeb-9b66-44f7-8435-5a66638bf888")
+	)
+	(bus
+		(pts
+			(xy 121.92 41.91) (xy 143.51 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ab71245-8f99-4291-aa2c-8750a1dc10ff")
+	)
+	(wire
+		(pts
+			(xy 36.83 39.37) (xy 36.83 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b18785a-8dc3-4fe3-b77a-b6277afa1b4f")
+	)
+	(wire
+		(pts
+			(xy 187.96 39.37) (xy 187.96 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c1b9ee7-689d-4111-86c8-ca975ea055b8")
+	)
+	(wire
+		(pts
+			(xy 54.61 39.37) (xy 54.61 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c3ef09f-95c6-45f2-96ff-6f399878421d")
+	)
+	(wire
+		(pts
+			(xy 36.83 35.56) (xy 31.75 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "594a859d-9943-40a8-9142-5a26b45f671b")
+	)
+	(wire
+		(pts
+			(xy 73.66 25.4) (xy 74.93 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d98f877-68e7-4026-bd79-f1e05a7af0f0")
+	)
+	(wire
+		(pts
+			(xy 165.1 39.37) (xy 165.1 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60c3a5cd-688f-423d-a65d-1856563cd8b7")
+	)
+	(wire
+		(pts
+			(xy 97.79 39.37) (xy 97.79 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a2ed2fc-e44c-4677-b4c3-29f53a18bb6a")
+	)
+	(bus
+		(pts
+			(xy 166.37 41.91) (xy 167.64 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80951e57-a9ae-4164-92cf-cbddaff0788e")
+	)
+	(wire
+		(pts
+			(xy 52.07 35.56) (xy 53.34 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8297f5a7-4140-4727-a93c-fdb14505f2a7")
+	)
+	(bus
+		(pts
+			(xy 77.47 41.91) (xy 78.74 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8687f904-4154-45a6-a558-c57b41bb50a8")
+	)
+	(wire
+		(pts
+			(xy 165.1 25.4) (xy 163.83 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c0022ae-7c7f-40f5-ac27-428e7fa76844")
+	)
+	(wire
+		(pts
+			(xy 119.38 39.37) (xy 119.38 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d0da8e5-e62b-4677-a8a5-3071e6e59d5f")
+	)
+	(wire
+		(pts
+			(xy 74.93 35.56) (xy 74.93 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "971b3217-a7fb-48d5-b5f5-567cb3f8f14b")
+	)
+	(wire
+		(pts
+			(xy 38.1 25.4) (xy 31.75 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1369ff8-9a94-4bf2-ba2c-48092f3cdd34")
+	)
+	(wire
+		(pts
+			(xy 31.75 35.56) (xy 29.21 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a215a67b-6db1-4947-bbf0-91fb75531cf3")
+	)
+	(bus
+		(pts
+			(xy 144.78 41.91) (xy 166.37 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5494492-c299-4a0f-8273-50a4068e83b9")
+	)
+	(wire
+		(pts
+			(xy 163.83 35.56) (xy 163.83 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af57ec03-98ed-4d24-a7fb-7563edca63f5")
+	)
+	(bus
+		(pts
+			(xy 120.65 41.91) (xy 121.92 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af9e8b6a-62ac-49d4-a477-f6d36adbd647")
+	)
+	(wire
+		(pts
+			(xy 97.79 25.4) (xy 96.52 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aff08ab1-abf2-4096-b6da-e752140d0dc7")
+	)
+	(wire
+		(pts
+			(xy 96.52 35.56) (xy 96.52 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2cc8105-aac0-428a-8efe-49e1f1d50cc5")
+	)
+	(wire
+		(pts
+			(xy 142.24 25.4) (xy 140.97 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b99a4c02-51d7-4ac8-a8b0-927d089608b7")
+	)
+	(wire
+		(pts
+			(xy 95.25 25.4) (xy 96.52 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c17a2e0d-3abe-413e-9fad-a44dfeafec1f")
+	)
+	(bus
+		(pts
+			(xy 190.5 41.91) (xy 213.36 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2471027-3fe5-4925-a4aa-9721d63c0777")
+	)
+	(bus
+		(pts
+			(xy 40.64 41.91) (xy 55.88 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4816e5d-e9f1-4cdf-a950-f2d5f7353d12")
+	)
+	(wire
+		(pts
+			(xy 38.1 39.37) (xy 38.1 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c496a2ab-8867-413a-94a0-33d3abf90017")
+	)
+	(wire
+		(pts
+			(xy 46.99 54.61) (xy 46.99 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7c299c3-db72-47fb-840b-a999ccb7b83f")
+	)
+	(bus
+		(pts
+			(xy 189.23 41.91) (xy 190.5 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca53fd68-058e-499e-99df-8cc7d5d713d4")
+	)
+	(wire
+		(pts
+			(xy 54.61 25.4) (xy 53.34 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd156566-cc8a-4e57-bb19-35fe4af08097")
+	)
+	(wire
+		(pts
+			(xy 76.2 39.37) (xy 76.2 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1f8acc7-4ca5-48fd-ba68-d9b48d333f88")
+	)
+	(wire
+		(pts
+			(xy 53.34 25.4) (xy 52.07 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2ab8b37-56ae-442d-a633-2109f7d6aea6")
+	)
+	(wire
+		(pts
+			(xy 186.69 35.56) (xy 186.69 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5992451-6f66-4382-86e4-30c21a66ab2f")
+	)
+	(bus
+		(pts
+			(xy 99.06 41.91) (xy 100.33 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d642bd3b-4b8b-4c37-ac3e-7f2c2e8854b7")
+	)
+	(wire
+		(pts
+			(xy 31.75 25.4) (xy 29.21 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd5724ef-6350-42f9-8545-4e046e9cec22")
+	)
+	(bus
+		(pts
+			(xy 78.74 41.91) (xy 99.06 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e253d969-dab7-4c7c-9745-ef35b786f141")
+	)
+	(bus
+		(pts
+			(xy 57.15 41.91) (xy 77.47 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e7c5afd3-676b-488d-9de8-207bd4620617")
+	)
+	(wire
+		(pts
+			(xy 210.82 35.56) (xy 209.55 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e801df39-5b1d-4651-a47e-7e9d4ffc23af")
+	)
+	(wire
+		(pts
+			(xy 118.11 35.56) (xy 118.11 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "efa9d17b-b861-47b6-af11-b6c0485e9193")
+	)
+	(bus
+		(pts
+			(xy 213.36 41.91) (xy 222.25 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc1e201a-5cba-4619-b433-0fd63f6a0280")
+	)
+	(wire
+		(pts
+			(xy 52.07 36.83) (xy 53.34 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc1eb65e-92ec-4a68-a7a9-caa0ca5950f6")
+	)
+	(bus
+		(pts
+			(xy 167.64 41.91) (xy 189.23 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc5ccae2-f98a-4deb-b812-ffc8b8f4f497")
+	)
+	(wire
+		(pts
+			(xy 210.82 39.37) (xy 210.82 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcdd8dba-4aa7-4f63-8e9a-f4aab0ffee01")
+	)
+	(label "Therm34"
+		(at 209.55 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "017960e5-cb88-4516-b37e-35ccc64545bf")
+	)
+	(label "Therm25"
+		(at 96.52 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0561f911-8560-4ebc-9ab4-eb3546e85443")
+	)
+	(label "GND"
+		(at 86.36 35.56 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "09c5a342-903b-457e-8fc9-35d81b9e0893")
+	)
+	(label "GND"
+		(at 43.18 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1e4976a1-10fc-48a7-8f00-1fe98e4673a1")
+	)
+	(label "GND"
+		(at 107.95 35.56 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1fb12281-3021-4736-a98f-1ffe085ee56b")
+	)
+	(label "Therm22"
+		(at 73.66 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "21154de7-f199-4c63-a335-b259b3f9987b")
+	)
+	(label "GND"
+		(at 130.81 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2d81561e-e146-4c94-a792-8ae54dfdc20a")
+	)
+	(label "GND"
+		(at 176.53 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2e5a5f27-10a2-4db5-836c-78c7cffb0261")
+	)
+	(label "Therm28"
+		(at 140.97 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "416036eb-b14c-496c-90c3-b50872a4f7d4")
+	)
+	(label "Therm27"
+		(at 118.11 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "42fa843a-a407-4db3-a9ed-e65a09573cd5")
+	)
+	(label "GND"
+		(at 153.67 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4778b57a-c63e-4bb2-8e59-bb1640925004")
+	)
+	(label "Therm21"
+		(at 52.07 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4b58a77c-812e-4b20-bbb0-0798620a0c44")
+	)
+	(label "Therm29"
+		(at 140.97 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4fce27fd-c777-4389-b6b9-ce68f7a04dfc")
+	)
+	(label "GND"
+		(at 86.36 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "50f11dc7-fb19-4f50-a0ce-2ebc4428596b")
+	)
+	(label "GND"
+		(at 130.81 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5ea5f2bd-d21b-422b-b04a-2b0f499df6cc")
+	)
+	(label "Therm18"
+		(at 29.21 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "68a069a7-1957-4cee-802c-0c94f47f524d")
+	)
+	(label "GND"
+		(at 21.59 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6cc57059-497d-4a36-b9b1-272c607c251d")
+	)
+	(label "GND"
+		(at 176.53 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6fed27e9-2077-4b12-927b-fb4be7046dfc")
+	)
+	(label "Therm30"
+		(at 163.83 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "79374173-2f1a-4d88-88af-b20f72f786fb")
+	)
+	(label "GND"
+		(at 153.67 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7fb18b23-77c9-4899-a56b-1ac222633d65")
+	)
+	(label "GND"
+		(at 107.95 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "80c9330c-2240-45c0-bd29-98707fdfee0b")
+	)
+	(label "Therm33"
+		(at 186.69 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "813cd321-c26b-4094-97ad-cd0744d86d0e")
+	)
+	(label "Therm32"
+		(at 186.69 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "840ac6a5-c449-45bf-8932-58bb507cedaf")
+	)
+	(label "Therm19"
+		(at 29.21 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "89518c2e-9934-403e-aae2-41722e3d77cf")
+	)
+	(label "GND"
+		(at 64.77 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8ff2d030-57da-414e-9850-f86acc7d5976")
+	)
+	(label "Therm26"
+		(at 118.11 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "97a6c29b-19a6-40e7-92a7-02e954e31778")
+	)
+	(label "Therm31"
+		(at 163.83 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9f40501f-a8af-4fb9-85e3-a8a0fc709d92")
+	)
+	(label "GND"
+		(at 46.99 54.61 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ba2e1d2d-af59-478c-90d3-b4a736b46485")
+	)
+	(label "Therm23"
+		(at 74.93 35.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dbb82a9b-f562-4347-abbf-4fa5ac07878b")
+	)
+	(label "Therm24"
+		(at 95.25 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dc80c571-2047-455b-b34a-9fa983a9aefd")
+	)
+	(label "Therm20"
+		(at 52.07 25.4 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "deef1f74-602a-4983-91e0-cdf2ee351131")
+	)
+	(label "GND"
+		(at 64.77 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e0ea054e-e255-4255-9fa1-79d74afd48f9")
+	)
+	(label "GND"
+		(at 43.18 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e2088b8e-16cb-4120-a79f-56190bf85915")
+	)
+	(label "GND"
+		(at 199.39 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "eb48a93f-3b3f-4efa-8bc6-5ecf15789b9b")
+	)
+	(label "GND"
+		(at 21.59 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f9ae2c4c-f8d9-4e96-bf77-a53f2cbb897a")
+	)
+	(global_label "Therm[18..34]"
+		(shape passive)
+		(at 222.25 41.91 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dab06ccf-feb5-44ec-8609-5dfaa80d5272")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 237.5496 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(hierarchical_label "GND"
+		(shape input)
+		(at 46.99 57.15 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "baa904fc-903f-40da-856d-27f83cbc8233")
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 69.85 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "04e1f137-9ebb-4181-ac5d-23b20f190f95")
+		(property "Reference" "TH23"
+			(at 69.85 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 69.85 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 69.85 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 69.85 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 69.85 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e49c3dae-c197-4f94-9fb2-95ac98b58ce1")
+		)
+		(pin "1"
+			(uuid "b4308e80-4468-4afa-92ea-ad521e682860")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 135.89 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "12cc1140-a87c-4960-84b0-009e99e9ffca")
+		(property "Reference" "TH28"
+			(at 135.89 19.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 135.89 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 135.89 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 135.89 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 135.89 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6489c7f3-c5f1-4cb2-a68d-9ced63507ad8")
+		)
+		(pin "1"
+			(uuid "44684d66-7227-4681-9ea2-a9f556d8e2d9")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH28")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 181.61 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1e699658-3403-45ee-884b-060264cb2f56")
+		(property "Reference" "TH32"
+			(at 181.61 19.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 181.61 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 181.61 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 181.61 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 181.61 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0f1bb4b2-ebc5-42ab-a725-6df0983bb817")
+		)
+		(pin "1"
+			(uuid "1ac369a1-3c9c-4f0a-916f-5692a7fec8b2")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 26.67 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2f00b00e-40ea-49dd-a9f3-c0b1d476fde3")
+		(property "Reference" "TH18"
+			(at 26.67 19.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 26.67 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 26.67 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 26.67 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 26.67 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "417a12c7-b6e9-4fa8-99d9-704094db7cde")
+		)
+		(pin "1"
+			(uuid "a34dea74-5b0f-4878-a353-c3be322c7ed7")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 26.67 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "56643872-d99f-4f4d-8d02-088ec52f3bb4")
+		(property "Reference" "TH19"
+			(at 26.67 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 26.67 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 26.67 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 26.67 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 26.67 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f680b373-ee7e-4d5b-85f6-e4733f5fb57d")
+		)
+		(pin "1"
+			(uuid "c92d883a-3d30-4334-8f56-ae83bab239e8")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 91.44 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6f007948-a31f-414d-a080-e54900bb7d5d")
+		(property "Reference" "TH25"
+			(at 91.44 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 91.44 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 91.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 91.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 91.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a240fbf8-3d69-4548-843b-c4a8b22047ea")
+		)
+		(pin "1"
+			(uuid "b822a977-8917-4561-acee-7ba39be8872b")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 135.89 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "75c35b9c-a279-446d-a007-405c8b03e1ee")
+		(property "Reference" "TH29"
+			(at 135.89 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 135.89 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 135.89 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 135.89 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 135.89 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9fb10d7d-25ed-45a5-b498-3e409bcf77b1")
+		)
+		(pin "1"
+			(uuid "d6cceda7-8b04-4c75-892e-5b60d5fdf108")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 91.44 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7c525f24-3ae0-41e1-b552-7a3ee509d5b3")
+		(property "Reference" "TH24"
+			(at 91.44 19.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 91.44 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 91.44 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 91.44 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 91.44 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2789d5ef-ab71-40a3-903b-264f093b3e8c")
+		)
+		(pin "1"
+			(uuid "13fe055b-1474-42f9-8d89-50c552177db9")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 69.85 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9bd53000-3487-46e2-be08-0297387e9ec0")
+		(property "Reference" "TH22"
+			(at 69.85 19.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 69.85 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 69.85 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 69.85 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 69.85 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "13abc174-0edd-4538-a9ef-c4a52eb5853c")
+		)
+		(pin "1"
+			(uuid "255d4636-3698-4e68-8251-d6e7df6cb51c")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 158.75 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a49f8256-303c-45e4-b7c3-e3e6400bc7db")
+		(property "Reference" "TH30"
+			(at 158.75 19.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 158.75 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 158.75 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 158.75 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 158.75 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "7745f31c-173f-412f-a3f2-def606b10dc9")
+		)
+		(pin "1"
+			(uuid "9c5a1eb0-d5d1-4537-9e7d-64a5423b6fc4")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 113.03 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b9105df5-47e1-48c3-a467-397e4c29ff83")
+		(property "Reference" "TH27"
+			(at 113.03 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 113.03 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 113.03 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 113.03 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 113.03 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4dcac4d2-77d4-4a12-82bc-3a01b1c2cef1")
+		)
+		(pin "1"
+			(uuid "d7ca324c-f0aa-4245-985a-82a799574285")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 48.26 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bce1c82f-d836-4038-adf5-92d31db2ea7d")
+		(property "Reference" "TH21"
+			(at 48.26 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 48.26 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 48.26 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 48.26 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 48.26 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9327a110-7261-40c8-bbcc-61344bdcd308")
+		)
+		(pin "1"
+			(uuid "0653f72f-67e7-461f-97ae-2377167dd975")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 204.47 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d1ff1e96-8b82-4ce6-b1ed-88f15edcd4eb")
+		(property "Reference" "TH34"
+			(at 204.47 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 204.47 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 204.47 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 204.47 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 204.47 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "09e3e23b-3b2d-4e7c-8542-b5e0b6662a81")
+		)
+		(pin "1"
+			(uuid "47bc7c8d-800b-493a-8409-ee4532bffe2c")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH34")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 158.75 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f131d40f-5300-47fe-abc6-47f19d32e446")
+		(property "Reference" "TH31"
+			(at 158.75 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 158.75 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 158.75 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 158.75 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 158.75 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0fe0260e-55a8-4710-987e-f8540de3ea0c")
+		)
+		(pin "1"
+			(uuid "b002f86d-2920-4fee-a926-799874d35c2a")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 48.26 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f2de910d-7483-4976-a156-dd2b1c1e1f7a")
+		(property "Reference" "TH20"
+			(at 48.26 19.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 48.26 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 48.26 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 48.26 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 48.26 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "73ab8369-4195-45f5-a4e5-53295e942d87")
+		)
+		(pin "1"
+			(uuid "4d6327b1-8305-4035-bbfa-be8249847215")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 113.03 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f44c1cf5-162e-4303-b2f7-bfff2e13f5a2")
+		(property "Reference" "TH26"
+			(at 113.03 19.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 113.03 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 113.03 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 113.03 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 113.03 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "1852ef9e-840f-4948-a0ae-0a6cd78d795f")
+		)
+		(pin "1"
+			(uuid "efa15c1c-20fb-4bc1-87ca-1f6c21a0a0e2")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Thermistor")
+		(at 181.61 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ff283eae-f8e6-4453-82ad-0dcaa1d59c4c")
+		(property "Reference" "TH33"
+			(at 181.61 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 181.61 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "oem:R_0603 (B)"
+			(at 181.61 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 181.61 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Temperature dependent resistor"
+			(at 181.61 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f47b3722-db64-4756-9606-c720144b002f")
+		)
+		(pin "1"
+			(uuid "4b64c9f9-940c-4045-a3b4-9b1e08e44411")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "TH33")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

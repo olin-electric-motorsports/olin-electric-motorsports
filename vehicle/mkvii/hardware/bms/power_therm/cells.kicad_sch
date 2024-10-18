@@ -1,0 +1,5149 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "4c3ff340-a20b-4773-be1b-5b5539eae115")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Device:Fuse"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Fuse"
+				(at -1.905 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Fuse"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "fuse"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*Fuse*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Fuse_0_1"
+				(rectangle
+					(start -0.762 -2.54)
+					(end 0.762 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Fuse_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Jumper:SolderJumper_2_Open"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "JP"
+				(at 0 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_2_Open"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Solder Jumper, 2-pole, open"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "solder jumper SPST"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Open*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SolderJumper_2_Open_0_1"
+				(arc
+					(start -0.254 1.016)
+					(mid -1.2656 0)
+					(end -0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 1.016)
+					(mid -1.2656 0)
+					(end -0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 -1.016)
+					(mid 1.2656 0)
+					(end 0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 -1.016)
+					(mid 1.2656 0)
+					(end 0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "OEM:MKVI_BondPad"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.762) hide)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MKVI_BondPad"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:Bond Pad"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Bond Pad (for wire bonding)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MKVI_BondPad_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MKVI_BondPad_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(bus_entry
+		(at 147.32 36.83)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0fc7a42f-04fd-40c4-9790-1d9dce08b89e")
+	)
+	(bus_entry
+		(at 147.32 67.31)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "372148ef-35a1-40a3-98a2-5b729d227ca4")
+	)
+	(bus_entry
+		(at 147.32 54.61)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3954268a-f8e6-4ddc-be99-f7b5012165a0")
+	)
+	(bus_entry
+		(at 147.32 49.53)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c2e0e8b-fa7f-42f1-a360-c23de6d8529f")
+	)
+	(bus_entry
+		(at 147.32 39.37)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "477ac943-472a-4bb9-8f6e-54e66736cc7b")
+	)
+	(bus_entry
+		(at 147.32 46.99)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6285b45f-bad8-4c42-b2a7-e19f9ff66fe0")
+	)
+	(bus_entry
+		(at 147.32 72.39)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "657ce06f-1d2f-4275-8185-583713e7cf3d")
+	)
+	(bus_entry
+		(at 147.32 41.91)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89021d8f-e36d-47c1-aa96-943e7338808a")
+	)
+	(bus_entry
+		(at 147.32 69.85)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b08377a1-dc57-4732-99b9-100884792073")
+	)
+	(bus_entry
+		(at 147.32 44.45)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6048df2-970f-4126-9dea-3207e5fffecb")
+	)
+	(bus_entry
+		(at 147.32 57.15)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9c7181c-262e-487c-b927-b8950fc4dcad")
+	)
+	(bus_entry
+		(at 147.32 31.75)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c46b711d-014d-45b0-abdb-caf12e8c912e")
+	)
+	(bus_entry
+		(at 147.32 52.07)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb27b9b3-ae7f-4238-8825-c504db27c45a")
+	)
+	(bus_entry
+		(at 147.32 59.69)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ccecb92c-eecc-493f-af68-cff047cf8706")
+	)
+	(bus_entry
+		(at 147.32 64.77)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cfaf5a94-f830-4f31-a59a-7d5d0d2a3307")
+	)
+	(bus_entry
+		(at 147.32 34.29)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1dbd398-929c-43ab-8131-29913d856efb")
+	)
+	(bus_entry
+		(at 147.32 62.23)
+		(size -2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb9e1c24-a5ac-4a7c-9e61-7dfa506abcaa")
+	)
+	(wire
+		(pts
+			(xy 93.98 59.69) (xy 102.87 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0264af78-b37c-4156-8545-da5226a25bb3")
+	)
+	(bus
+		(pts
+			(xy 147.32 39.37) (xy 147.32 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "064f5bb2-4deb-4ca2-b0fe-b34d1f11c914")
+	)
+	(bus
+		(pts
+			(xy 147.32 57.15) (xy 147.32 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07d6717e-94ae-4113-868f-6fbfb2fa9c78")
+	)
+	(bus
+		(pts
+			(xy 147.32 31.75) (xy 147.32 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0abc7c00-c4e0-4176-ba73-3dfd983b7298")
+	)
+	(wire
+		(pts
+			(xy 62.23 54.61) (xy 118.11 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14e7203d-613a-4f01-a591-acebe9f98b66")
+	)
+	(wire
+		(pts
+			(xy 48.26 57.15) (xy 125.73 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15031d62-dde5-42a7-8b14-62acd3f23849")
+	)
+	(wire
+		(pts
+			(xy 118.11 41.91) (xy 144.78 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1695eda8-cb0f-43f5-bf4c-0a0725b4547c")
+	)
+	(bus
+		(pts
+			(xy 147.32 36.83) (xy 147.32 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17e302e8-3441-48ad-ab9d-adfaab0272d2")
+	)
+	(bus
+		(pts
+			(xy 147.32 34.29) (xy 147.32 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f8f5081-acaa-4613-a603-02041b4d9209")
+	)
+	(bus
+		(pts
+			(xy 147.32 46.99) (xy 147.32 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "224c0e68-35ff-4404-8d61-f4f9e01cb2eb")
+	)
+	(bus
+		(pts
+			(xy 147.32 59.69) (xy 147.32 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b74909f-3753-48ac-a196-b8c0fd2a0f27")
+	)
+	(wire
+		(pts
+			(xy 133.35 46.99) (xy 144.78 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f2c1274-8d05-4e81-83d1-2d18f7b3a9a6")
+	)
+	(wire
+		(pts
+			(xy 20.32 67.31) (xy 40.64 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3009eb58-167e-49c4-a60e-4cde4cf9f8ec")
+	)
+	(wire
+		(pts
+			(xy 133.35 67.31) (xy 144.78 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31bfd37b-174e-4ad0-b65f-55d8dff66d5e")
+	)
+	(wire
+		(pts
+			(xy 48.26 46.99) (xy 125.73 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33307268-f739-4079-a465-392689641142")
+	)
+	(wire
+		(pts
+			(xy 48.26 36.83) (xy 125.73 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3811cc50-af93-451f-b03a-192133248059")
+	)
+	(wire
+		(pts
+			(xy 77.47 41.91) (xy 110.49 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cb6cbf4-c155-424b-88fa-aeee640c730b")
+	)
+	(wire
+		(pts
+			(xy 93.98 69.85) (xy 102.87 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4af54c7c-484d-472f-a5f5-ab3a9bac76a3")
+	)
+	(wire
+		(pts
+			(xy 20.32 34.29) (xy 54.61 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b903614-27cd-4cd3-859a-c5d6cae9611e")
+	)
+	(wire
+		(pts
+			(xy 93.98 39.37) (xy 102.87 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a08bdb5-0a29-476d-9466-30478efe39da")
+	)
+	(wire
+		(pts
+			(xy 118.11 62.23) (xy 144.78 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c383dba-7d8f-4584-8af7-34161b6edb4f")
+	)
+	(bus
+		(pts
+			(xy 147.32 44.45) (xy 147.32 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c5911e0-1def-47a4-9b28-a08206d8430a")
+	)
+	(wire
+		(pts
+			(xy 20.32 69.85) (xy 86.36 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e3b3bd5-e443-4a38-a744-17080233db95")
+	)
+	(wire
+		(pts
+			(xy 125.73 34.29) (xy 144.78 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "602df3a8-0354-43a8-beee-d210eaf4214d")
+	)
+	(wire
+		(pts
+			(xy 110.49 59.69) (xy 144.78 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60f036be-c526-4e2c-bc55-38116e2613cd")
+	)
+	(wire
+		(pts
+			(xy 20.32 36.83) (xy 40.64 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6401e538-bfa7-4d08-b5a8-194bd2e3b4d8")
+	)
+	(wire
+		(pts
+			(xy 118.11 31.75) (xy 144.78 31.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "643e6570-6c9a-4f45-9f95-f74ea3f66c68")
+	)
+	(wire
+		(pts
+			(xy 125.73 64.77) (xy 144.78 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6aa5c0cb-9b4f-43b2-9fa4-b92f41b26729")
+	)
+	(wire
+		(pts
+			(xy 20.32 57.15) (xy 40.64 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e4770de-b3dd-47a5-9dcd-5a2318e9721c")
+	)
+	(wire
+		(pts
+			(xy 118.11 52.07) (xy 144.78 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6fd4ee69-6502-40ba-924a-8269a74cbb8d")
+	)
+	(wire
+		(pts
+			(xy 20.32 39.37) (xy 86.36 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72608972-643f-4e02-8c0c-37c5c6ad45e7")
+	)
+	(wire
+		(pts
+			(xy 110.49 29.21) (xy 144.78 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "735b2bff-5a54-4d23-9a19-14fb725cec5e")
+	)
+	(wire
+		(pts
+			(xy 77.47 52.07) (xy 110.49 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77e91972-8407-4501-8baf-20061a9279ac")
+	)
+	(wire
+		(pts
+			(xy 20.32 62.23) (xy 69.85 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ae6479c-1f46-45c7-bf6f-d8e933253b4b")
+	)
+	(wire
+		(pts
+			(xy 77.47 62.23) (xy 110.49 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c3cf9e1-b35b-4f72-a10c-7739eed6b702")
+	)
+	(wire
+		(pts
+			(xy 20.32 64.77) (xy 54.61 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7dc34dc2-7fdb-4999-b25e-503bf1b26e34")
+	)
+	(bus
+		(pts
+			(xy 147.32 54.61) (xy 147.32 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ec35b4c-80e9-4f47-9fba-1be101ecd793")
+	)
+	(wire
+		(pts
+			(xy 62.23 44.45) (xy 118.11 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80963a3d-07e3-4cf4-a567-4dfd52133db4")
+	)
+	(wire
+		(pts
+			(xy 20.32 59.69) (xy 86.36 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8175b820-9eae-43c7-a5ad-87268888b0bf")
+	)
+	(wire
+		(pts
+			(xy 110.49 39.37) (xy 144.78 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cb54d72-5036-4494-80d6-481002cbafec")
+	)
+	(wire
+		(pts
+			(xy 93.98 49.53) (xy 102.87 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cceab86-f941-413a-b73d-380914d0567d")
+	)
+	(bus
+		(pts
+			(xy 147.32 72.39) (xy 147.32 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d91b08d-920b-480e-83e7-f6d720146242")
+	)
+	(wire
+		(pts
+			(xy 110.49 49.53) (xy 144.78 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9021cd8e-751b-4a66-8373-aacef9abfac8")
+	)
+	(wire
+		(pts
+			(xy 125.73 54.61) (xy 144.78 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93bb71b9-26a3-4dc3-a214-13bae20917a9")
+	)
+	(bus
+		(pts
+			(xy 147.32 41.91) (xy 147.32 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d6f04bc-3758-4edc-abde-76ccd74fdda2")
+	)
+	(wire
+		(pts
+			(xy 20.32 46.99) (xy 40.64 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9fdda260-ec7f-422d-9b3d-06901551712d")
+	)
+	(wire
+		(pts
+			(xy 20.32 54.61) (xy 54.61 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a10953b5-a415-4eae-9d94-fdbe5b7deab3")
+	)
+	(wire
+		(pts
+			(xy 62.23 64.77) (xy 118.11 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a61e9668-7bd7-4b05-963f-9f4aa1cfe1cb")
+	)
+	(wire
+		(pts
+			(xy 20.32 49.53) (xy 86.36 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa75976a-6ecb-4075-95f2-f092ccefbb71")
+	)
+	(bus
+		(pts
+			(xy 147.32 64.77) (xy 147.32 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abe7629c-3991-495e-b4f6-402e549fc43d")
+	)
+	(wire
+		(pts
+			(xy 20.32 44.45) (xy 54.61 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad8076d1-21b9-4f57-90a1-044fbb867c43")
+	)
+	(wire
+		(pts
+			(xy 93.98 29.21) (xy 102.87 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b0e29468-b15f-4beb-8f10-30c024c75052")
+	)
+	(bus
+		(pts
+			(xy 147.32 52.07) (xy 147.32 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b23c955c-1e08-43e7-a936-63588297a480")
+	)
+	(wire
+		(pts
+			(xy 62.23 34.29) (xy 118.11 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b77a053d-faa2-46b3-817d-d52bfa81e12b")
+	)
+	(wire
+		(pts
+			(xy 20.32 31.75) (xy 69.85 31.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8fdfec7-4ef4-4b39-b7b8-db104d393f45")
+	)
+	(wire
+		(pts
+			(xy 20.32 29.21) (xy 86.36 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bac07fcf-0ecd-42bb-81c5-27ff01b46935")
+	)
+	(wire
+		(pts
+			(xy 48.26 67.31) (xy 125.73 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc5d03f0-4d45-486b-ae53-cf9cf8642f22")
+	)
+	(bus
+		(pts
+			(xy 147.32 73.66) (xy 151.13 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c06f1d7b-dc5e-43a5-8e23-472aa6aceaff")
+	)
+	(wire
+		(pts
+			(xy 133.35 36.83) (xy 144.78 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb8204f4-90a2-4542-8fa1-ef4242f588ca")
+	)
+	(wire
+		(pts
+			(xy 133.35 57.15) (xy 144.78 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd321b32-9380-4b8b-a3ff-37c37fb2a2ec")
+	)
+	(wire
+		(pts
+			(xy 110.49 69.85) (xy 144.78 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd71d538-a445-4791-a626-fcdd18c7349e")
+	)
+	(bus
+		(pts
+			(xy 147.32 67.31) (xy 147.32 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d066c45b-a1bf-450c-b6aa-6d55ff10c818")
+	)
+	(wire
+		(pts
+			(xy 125.73 44.45) (xy 144.78 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d217b3ba-d357-4563-b983-cb59848ff4b8")
+	)
+	(bus
+		(pts
+			(xy 147.32 49.53) (xy 147.32 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d86f9cab-abbf-4600-bdf6-d81cc4c456d2")
+	)
+	(bus
+		(pts
+			(xy 147.32 69.85) (xy 147.32 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e37e2a91-0116-4032-9e93-6093933cb588")
+	)
+	(wire
+		(pts
+			(xy 77.47 31.75) (xy 110.49 31.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eee31fba-3f4f-473b-9253-6cdfca58aed1")
+	)
+	(bus
+		(pts
+			(xy 147.32 62.23) (xy 147.32 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef0e82b8-ab26-4e0d-8aa6-7089f5b7c9e5")
+	)
+	(wire
+		(pts
+			(xy 20.32 52.07) (xy 69.85 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f03c8462-53a5-4053-8cac-e4e0f6e49aaf")
+	)
+	(wire
+		(pts
+			(xy 20.32 41.91) (xy 69.85 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb94861b-02f4-469f-8618-3abd824ef95a")
+	)
+	(label "CELL2"
+		(at 137.16 31.75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0cee3f92-cec1-48af-9bcf-1b8168abd76a")
+	)
+	(label "CELL7"
+		(at 20.32 44.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "12da8fce-0905-4cee-9270-81ae800b6197")
+	)
+	(label "CELL15"
+		(at 20.32 64.77 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "14fa6c56-bf2a-43b8-95fd-9aca575954ef")
+	)
+	(label "CELL11"
+		(at 137.16 54.61 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "154b5214-ef33-43e9-9268-e07e67821a21")
+	)
+	(label "CELL17"
+		(at 137.16 69.85 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "17a64832-2e0f-411e-a5d4-1d2830190229")
+	)
+	(label "CELL6"
+		(at 20.32 41.91 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "187c4a57-091f-4e97-8aad-0aeb59e83af4")
+	)
+	(label "CELL14"
+		(at 137.16 62.23 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "235733bc-d075-46e2-851f-de36854544c4")
+	)
+	(label "CELL6"
+		(at 137.16 41.91 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "32d5eda3-6bd4-470d-ae1a-418c8bb41099")
+	)
+	(label "CELL3"
+		(at 20.32 34.29 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "36450fa9-0653-481e-b94e-87f4175f9ba8")
+	)
+	(label "CELL15"
+		(at 137.16 64.77 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "38669707-6ea5-4f13-8b0d-b9c565015c36")
+	)
+	(label "CELL10"
+		(at 20.32 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "40276c1f-0e92-4dc4-aace-2c7f2ef5eb89")
+	)
+	(label "CELL1"
+		(at 20.32 29.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "45db06e8-fc4c-4311-ab47-7766cadddc17")
+	)
+	(label "CELL11"
+		(at 20.32 54.61 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "66497964-fa25-4baa-83e3-4028f91b26a8")
+	)
+	(label "CELL13"
+		(at 20.32 59.69 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "70504b3c-e186-44d5-97ed-789d96b252ba")
+	)
+	(label "CELL3"
+		(at 137.16 34.29 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7c5c8cac-963d-458e-a4e8-9e1a0770d86f")
+	)
+	(label "CELL8"
+		(at 20.32 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "825ccac0-4e6b-4203-8a7c-d7a9eac8ba7f")
+	)
+	(label "CELL4"
+		(at 20.32 36.83 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8643b316-a8b4-45a4-bd26-2775296797d4")
+	)
+	(label "CELL9"
+		(at 20.32 49.53 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8c588f6c-2bc3-452a-b0c1-27b1e0af85b2")
+	)
+	(label "CELL5"
+		(at 20.32 39.37 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8cc4d692-94ce-493f-b4a8-971f4d041eba")
+	)
+	(label "CELL17"
+		(at 20.32 69.85 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9db290f2-f0a1-4232-96d2-7c5b4905d334")
+	)
+	(label "CELL4"
+		(at 137.16 36.83 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a86ff26f-69ad-400a-8e07-e2204115bbe5")
+	)
+	(label "CELL13"
+		(at 137.16 59.69 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ab046029-bfda-4971-b3e2-94639e046f2a")
+	)
+	(label "CELL5"
+		(at 137.16 39.37 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b0aa7a87-3984-498e-9526-5deb7441cc75")
+	)
+	(label "CELL14"
+		(at 20.32 62.23 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b83b873f-00f1-49ca-9cc5-cc9a574d2040")
+	)
+	(label "CELL2"
+		(at 20.32 31.75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c83f21e7-0a40-4f24-97b2-2841ff526fc7")
+	)
+	(label "CELL16"
+		(at 20.32 67.31 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c9523005-12fb-4d8f-b521-6369d103babd")
+	)
+	(label "CELL12"
+		(at 20.32 57.15 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d09ffa58-50dd-4458-a133-7d7e1bf2be2d")
+	)
+	(label "CELL16"
+		(at 137.16 67.31 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d5c9b5db-8662-4b67-9e91-5baaa771590e")
+	)
+	(label "CELL1"
+		(at 137.16 29.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "df73ce15-30fc-4fa4-927b-699680ce6834")
+	)
+	(label "CELL7"
+		(at 137.16 44.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e363a045-d892-4a4c-9e53-84806db27412")
+	)
+	(label "CELL10"
+		(at 137.16 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e91842df-1574-4974-a561-d67fc3567f3b")
+	)
+	(label "CELL12"
+		(at 137.16 57.15 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "eb0160eb-90c4-4808-bf2c-b57e6af1a819")
+	)
+	(label "CELL9"
+		(at 137.16 49.53 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "efe3e020-98fc-41da-bd74-440b9e935bf8")
+	)
+	(label "CELL8"
+		(at 137.16 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f1a1d6f0-684b-40c7-9c59-2afa6164b0e3")
+	)
+	(global_label "CELL[1..17]"
+		(shape passive)
+		(at 151.13 73.66 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b18440ab-8cd7-495d-aa50-c29dd02792fa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 164.0106 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 62.23 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "027cbfde-56bc-4ac2-9d33-21f9ac3afbc9")
+		(property "Reference" "TP16"
+			(at 17.0179 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "15de71ff-babb-4c98-958a-2d3fbe72e870")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 39.37 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0c63ea71-7b99-4416-afa7-bf553dbb42f8")
+		(property "Reference" "TP7"
+			(at 17.0179 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e694247e-718d-4e98-8664-83e0786056d9")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 67.31 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "13d50318-6487-4a70-9cd7-17f1133bc631")
+		(property "Reference" "TP18"
+			(at 17.0179 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "db3fd97e-439d-4407-bb44-75930369934c")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 106.68 59.69 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1586c2d6-c4dc-4742-99c6-6ac733dc60a5")
+		(property "Reference" "F13"
+			(at 106.68 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 106.68 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 106.68 61.468 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 106.68 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "532902aa-c440-482e-bc5b-734dbef88d98")
+		)
+		(pin "1"
+			(uuid "2d7798ee-1189-4041-b620-0c24f5cd580f")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 52.07 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1b259e19-1f03-448b-961a-cbc1603500db")
+		(property "Reference" "TP12"
+			(at 17.0179 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0908c8a9-e60a-4592-8511-5564a68f901d")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 106.68 29.21 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1c99d0d7-4913-45b6-9b4b-847cad652491")
+		(property "Reference" "F1"
+			(at 106.68 22.86 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 106.68 25.4 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 106.68 30.988 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 106.68 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8df1b88d-0eff-498d-9ada-b90f35ceef3c")
+		)
+		(pin "1"
+			(uuid "e8c7208b-47bb-450d-81d1-d8dbfa0a5e62")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 90.17 39.37 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "25188f55-0bc4-41b9-810f-855f08d47ad9")
+		(property "Reference" "JP5"
+			(at 90.17 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 90.17 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 90.17 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 90.17 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 90.17 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f809e6bd-5969-4958-8ee0-9d51dc0f48b9")
+		)
+		(pin "1"
+			(uuid "e77c5d74-97d9-47e5-abc0-2247aca042fb")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 106.68 49.53 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "288fc953-bfba-4cee-8ce8-df7c1377e46c")
+		(property "Reference" "F9"
+			(at 106.68 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 106.68 45.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 106.68 51.308 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 106.68 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f5b8cff6-e7d3-4c6e-a81e-5178b0031fe0")
+		)
+		(pin "1"
+			(uuid "412a5cbe-6e7f-4a39-80ca-e2f2cfab75c1")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 129.54 57.15 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "29d12709-9a0e-41aa-b938-13722a817fc5")
+		(property "Reference" "F12"
+			(at 129.54 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 129.54 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 129.54 58.928 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 129.54 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 129.54 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d439c820-b940-4618-9b35-d8d9bb5817a6")
+		)
+		(pin "1"
+			(uuid "627a1041-66fd-4a0b-9cf6-a6af2790f9d3")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 64.77 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2a720765-3c7a-4bcf-b9af-8f68a18c38f1")
+		(property "Reference" "TP17"
+			(at 17.0179 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5a1a411d-ae02-4b58-a85d-433c8a479480")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 58.42 54.61 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "329f51f4-d518-4c2b-a1d8-cce506b8b8b8")
+		(property "Reference" "JP11"
+			(at 58.42 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 58.42 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 58.42 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 58.42 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "28c48a3f-b48a-4e82-8882-2dcdc37aab3a")
+		)
+		(pin "1"
+			(uuid "eaf02496-854c-496c-a954-a80d66794c20")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 129.54 36.83 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "342d1aa6-c67e-4ef6-bdbf-3198c332c634")
+		(property "Reference" "F4"
+			(at 129.54 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 129.54 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 129.54 38.608 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 129.54 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 129.54 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "59abed0f-cd29-4c3a-a81e-cc5fa232ba9e")
+		)
+		(pin "1"
+			(uuid "ddd046fa-be14-412b-ab36-323a4aeb6d53")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 44.45 67.31 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "355345a6-6634-4520-a406-4a38db274ea5")
+		(property "Reference" "JP16"
+			(at 44.45 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 44.45 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 44.45 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 44.45 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "479912e2-6f94-4261-a987-6c3367a0492c")
+		)
+		(pin "1"
+			(uuid "f57c3910-aa2c-43fb-b8f3-1ac7e267561d")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 49.53 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "38b7791f-6ab6-4d31-a927-551da17b048e")
+		(property "Reference" "TP11"
+			(at 17.0179 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a463515-9dad-4d1f-9bf0-492ed868e4fa")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 114.3 41.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "38c44245-5fcb-472c-a7bd-8d35d575e9ba")
+		(property "Reference" "F6"
+			(at 114.3 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 114.3 38.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 114.3 43.688 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 114.3 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 114.3 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f65f2064-c779-493e-8c9f-576ac37acf24")
+		)
+		(pin "1"
+			(uuid "78e8601c-eccf-4a3c-9cef-253055b028e5")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 58.42 64.77 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3b5ada02-49cb-4d08-b837-e324248bfa00")
+		(property "Reference" "JP15"
+			(at 58.42 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 58.42 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 58.42 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 58.42 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9b5f21b1-c743-461d-a34c-bc782a3e8a81")
+		)
+		(pin "1"
+			(uuid "370e875c-f21f-4baa-a99a-a9a541b9bf20")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 129.54 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3c3e2f64-dbb8-4f7a-bfd1-f7a1fba21296")
+		(property "Reference" "F8"
+			(at 129.54 40.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 129.54 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 129.54 48.768 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 129.54 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 129.54 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9cc26e5b-2d12-46d1-9dce-b2b1b87a63f3")
+		)
+		(pin "1"
+			(uuid "5a8eabc5-cde6-4b4c-8f99-a0299faeea33")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 29.21 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "40b86a59-fa1b-4e58-adb4-54f2cb2fb312")
+		(property "Reference" "TP3"
+			(at 17.0179 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4a0da6dc-92ac-4d08-abe6-4e3ed9da2037")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 90.17 69.85 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4418ff02-28ac-4ed3-aa9f-195894635aa5")
+		(property "Reference" "JP17"
+			(at 90.17 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 90.17 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 90.17 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 90.17 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 90.17 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "93424f32-4af0-4dd1-8869-224afccd5169")
+		)
+		(pin "1"
+			(uuid "a9c31724-1f47-4b6f-81ae-183b06a501f1")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 114.3 52.07 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4468816f-66ad-4cd5-957c-3adb71628655")
+		(property "Reference" "F10"
+			(at 114.3 45.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 114.3 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 114.3 53.848 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 114.3 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 114.3 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ca98731c-5f73-4cce-bacd-2fe9c437118c")
+		)
+		(pin "1"
+			(uuid "a8a5ed40-af2b-4a27-a6cf-bdb4d8e13e2d")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 129.54 67.31 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5aa60d20-66b7-4099-98d6-9102ad69d40d")
+		(property "Reference" "F16"
+			(at 129.54 60.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 129.54 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 129.54 69.088 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 129.54 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 129.54 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b35bf0a0-4a5b-4d43-a496-61456abf5621")
+		)
+		(pin "1"
+			(uuid "c6c39b66-1a45-47d3-8e0b-fd2a5ca8ec1e")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 73.66 62.23 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5d682849-9a0f-4474-bb38-dad6df1450be")
+		(property "Reference" "JP14"
+			(at 73.66 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 73.66 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 73.66 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 73.66 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "474d850d-7239-4189-80e2-329140dc6a5d")
+		)
+		(pin "1"
+			(uuid "bacd50e0-5550-4cec-9847-a3c62d860b35")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 121.92 54.61 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "60507728-56b9-46f1-b9d1-26d84aa22996")
+		(property "Reference" "F11"
+			(at 121.92 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 121.92 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 121.92 56.388 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 121.92 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "02382eb3-e1ef-4d3c-bde5-96a3b7ad2b2a")
+		)
+		(pin "1"
+			(uuid "cb504851-f271-42bf-aaad-b5f26dfb758f")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 41.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6466a839-fe21-4a5b-a5ce-9ebd6131798d")
+		(property "Reference" "TP8"
+			(at 17.0179 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c751b9ee-fe4d-4409-b499-2dd6d6778e36")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 34.29 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6764d670-07e1-419d-a053-fc708efd73e6")
+		(property "Reference" "TP5"
+			(at 17.0179 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b168582f-1cc1-46df-abc7-ff045820910e")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 58.42 34.29 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6e5d2201-ed28-4353-9c40-3d2a21189e00")
+		(property "Reference" "JP3"
+			(at 58.42 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 58.42 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 58.42 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 58.42 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ec6fa2fc-cc4c-4b43-b2bc-be97b9de50f0")
+		)
+		(pin "1"
+			(uuid "19f662a0-7473-491f-9c4b-ae0195cacde6")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 54.61 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "701b2795-9ac0-4fcc-91f0-c36ebff1271e")
+		(property "Reference" "TP13"
+			(at 17.0179 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fd402322-9a3f-4755-81b8-2acd7adee3b8")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 44.45 36.83 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "762e173a-0ba8-4458-a5aa-bcbececd258e")
+		(property "Reference" "JP4"
+			(at 44.45 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 44.45 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 44.45 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 44.45 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "864b9d0f-653b-4221-870e-fa27fb9bc193")
+		)
+		(pin "1"
+			(uuid "4d586d7f-0bc6-459d-b062-a1f3e7c323dc")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 73.66 41.91 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "76d9f767-6455-4735-8dda-6261b3ea0628")
+		(property "Reference" "JP6"
+			(at 73.66 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 73.66 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 73.66 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 73.66 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0903c291-bf26-4656-b11e-bda3926a0bb0")
+		)
+		(pin "1"
+			(uuid "3c5d5e20-184c-400d-8f61-94c3832aca9e")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 46.99 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "77620b2f-3799-4a09-acb3-fa1ea1a7df87")
+		(property "Reference" "TP10"
+			(at 17.0179 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "113e71c5-dee2-4422-8ad6-0697b0cddd07")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 59.69 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "859d42e6-7ab5-4005-849a-cb37413ddb57")
+		(property "Reference" "TP15"
+			(at 17.0179 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3664dd13-563a-4ab7-a71f-fec82b74603a")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 44.45 46.99 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "91f0fb4c-22c7-4e5c-91c6-df722cb1dc00")
+		(property "Reference" "JP8"
+			(at 44.45 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 44.45 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 44.45 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 44.45 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "29c862fe-4206-4e84-b56f-6b0ba85342f2")
+		)
+		(pin "1"
+			(uuid "f9374ce8-fba5-4913-bce9-804b9bcef602")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 106.68 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ae538f9b-c2a9-4351-ac6d-2a02c081d568")
+		(property "Reference" "F17"
+			(at 106.68 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 106.68 66.04 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 106.68 71.628 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 106.68 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9f2b00ae-8a09-4310-b5cf-9b409795d412")
+		)
+		(pin "1"
+			(uuid "4b890482-a058-4277-a54a-688c746492ae")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 121.92 64.77 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "af5b26f1-84db-4004-ad2c-d17874d4d0fe")
+		(property "Reference" "F15"
+			(at 121.92 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 121.92 60.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 121.92 66.548 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 121.92 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e859ce54-5834-48a2-b6c1-0fd13404453d")
+		)
+		(pin "1"
+			(uuid "fcbc6f0d-bf3b-476d-b4c0-eeeb33cb1f05")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 73.66 31.75 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b414ae5a-b540-4811-8b57-d80054200bf8")
+		(property "Reference" "JP2"
+			(at 73.66 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 73.66 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 73.66 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 73.66 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "118d2cff-e4bf-44e6-bb0a-2af28c5ae515")
+		)
+		(pin "1"
+			(uuid "78c032c9-6d35-4100-8344-033f16db6dff")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 121.92 44.45 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ba93dd30-84a5-41db-b601-c1d5a9092cd7")
+		(property "Reference" "F7"
+			(at 121.92 38.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 121.92 40.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 121.92 46.228 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 121.92 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ec003e39-2a1b-4ca2-aab1-968bc24758ae")
+		)
+		(pin "1"
+			(uuid "fff63c92-ed37-4a4c-a3e7-70d7a84be02c")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 114.3 31.75 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "be18833d-1e7b-42d5-ac8c-afee54a72e61")
+		(property "Reference" "F2"
+			(at 114.3 25.4 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 114.3 27.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 114.3 33.528 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 114.3 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 114.3 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "023fb1fe-ea32-41f4-881f-f74bad763c15")
+		)
+		(pin "1"
+			(uuid "82623d63-3654-492e-ad67-dd6fd8a18438")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "be4b6bf8-e5f5-407e-b397-3b92c25d62d0")
+		(property "Reference" "TP19"
+			(at 17.0179 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b67a261d-dc65-4dac-ac02-f94bfde98a42")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 90.17 49.53 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c08770cd-8b83-4d65-ab3d-00fc397f75eb")
+		(property "Reference" "JP9"
+			(at 90.17 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 90.17 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 90.17 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 90.17 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "3052d090-51ec-4c50-89fe-d71843a176c7")
+		)
+		(pin "1"
+			(uuid "6394d1ae-9317-4a54-a9c0-3bb0021b358c")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 121.92 34.29 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c5954cdc-17b7-417c-867d-9b1d59584ead")
+		(property "Reference" "F3"
+			(at 121.92 27.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 121.92 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 121.92 36.068 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 121.92 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ccd34d6b-3096-4940-af3a-86f5cd76396f")
+		)
+		(pin "1"
+			(uuid "d5ccc391-da60-4092-b86a-f42bd3762066")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 90.17 29.21 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cf312ac7-135d-454b-aea8-d38860cf828f")
+		(property "Reference" "JP1"
+			(at 90.17 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 90.17 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 90.17 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 90.17 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 90.17 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "878b843c-58ad-459f-8476-cc4086278e42")
+		)
+		(pin "1"
+			(uuid "331e9e30-c14d-4878-90ab-aa0801ac4118")
+		)
+		(instances
+			(project ""
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 36.83 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d1032dba-300a-4ef8-89c2-32f687f26f13")
+		(property "Reference" "TP6"
+			(at 17.0179 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "50a36b43-f2af-4c31-97ed-e7697fac2ca5")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 106.68 39.37 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d4d9132b-3b59-4f3b-a849-ec00ce2aa0c6")
+		(property "Reference" "F5"
+			(at 106.68 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 106.68 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 106.68 41.148 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 106.68 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 106.68 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f9735edb-c158-4c5d-ac2e-777b8a5943d5")
+		)
+		(pin "1"
+			(uuid "db868bb1-b232-4f27-8781-05927fd845c9")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 73.66 52.07 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d640852a-8c39-49df-84f6-45b79f612270")
+		(property "Reference" "JP10"
+			(at 73.66 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 73.66 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 73.66 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 73.66 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4579e4e4-0024-43ef-a9e9-3601a35dfd16")
+		)
+		(pin "1"
+			(uuid "47c251ac-7144-4920-ac5d-4b1e25e28131")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 44.45 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e92cec71-6eeb-452c-a588-f445b7640a76")
+		(property "Reference" "TP9"
+			(at 17.0179 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "defdb384-94be-4f3f-9656-b6752d0c8f54")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 57.15 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eae6123c-6220-4869-93c9-3d7cb775b5bf")
+		(property "Reference" "TP14"
+			(at 17.0179 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f5dce09a-77f1-4929-9505-9e68876007cf")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 114.3 62.23 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "edb2afa6-01f0-4c21-870a-1c1477a1b3e0")
+		(property "Reference" "F14"
+			(at 114.3 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 114.3 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1206"
+			(at 114.3 64.008 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 114.3 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 114.3 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6222a5f2-c699-40e4-a6b0-0f3afc5c2212")
+		)
+		(pin "1"
+			(uuid "1ebacf6d-ec9d-4305-9c8e-7fab1050a6e5")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 44.45 57.15 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f3add83a-417b-481d-bf85-d99567ca0853")
+		(property "Reference" "JP12"
+			(at 44.45 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 44.45 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 44.45 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 44.45 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e1ccf851-5c02-4d01-976d-e4f2c903e30a")
+		)
+		(pin "1"
+			(uuid "14c120a0-afaa-4fcd-a0e5-da038924bca1")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 31.75 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fb546b8d-8d5d-49e4-a1ee-3e0b2f563dc8")
+		(property "Reference" "TP4"
+			(at 17.0179 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 18.2879 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Bond Pad"
+			(at 20.32 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 20.32 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c28df51c-cc57-40c7-a82e-f24a7d7d04e5")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 90.17 59.69 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fecefe0b-a083-462a-86a4-dd150236725e")
+		(property "Reference" "JP13"
+			(at 90.17 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 90.17 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 90.17 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 90.17 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 90.17 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "fa4eb6bc-dbf5-487c-ac2c-45a30b8c7922")
+		)
+		(pin "1"
+			(uuid "c823588e-717d-4a23-8b3e-23c96715c9fd")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 58.42 44.45 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ff941d2e-84fa-4e48-bd86-7689dabdc098")
+		(property "Reference" "JP7"
+			(at 58.42 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 58.42 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
+			(at 58.42 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 58.42 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "19c15e7d-c989-4a37-b8e9-b2d7971b5f25")
+		)
+		(pin "1"
+			(uuid "456bbd7d-bc66-49bf-8658-5c79427508a7")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP7")
+					(unit 1)
+				)
+			)
+		)
+	)
+)
