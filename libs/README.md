@@ -8,6 +8,8 @@ of these would be
 * UART library
 * SPI library
 * GPIO library
+* Timer library
+* ADC (analog input) library
 
 Libraries will each have their own subdirectory like so:
 

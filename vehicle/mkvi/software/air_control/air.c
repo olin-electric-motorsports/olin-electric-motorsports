@@ -27,7 +27,8 @@ volatile bool send_can = false;
 
 // A global variable that is used to tell if we are connected to the vehicle
 // (MOTOR_CONTROLLER) or the charger (CHARGER)
-static enum tractive_system tractive_sys = MOTOR_CONTROLLER;
+
+static bool tractive_sys = MOTOR_CONTROLLER;
 
 void timer0_isr(void) {
     send_can = true;
@@ -42,31 +43,31 @@ static void set_fault(enum air_fault_e the_fault) {
     }
 }
 
-// static int set_charger_connected() {
-//     uint32_t start_time = get_time();
-//
-//     (void)can_receive_bms_core();
-//
-//     uint8_t rc = 1;
-//
-//     do {
-//         rc = can_poll_receive_bms_core();
-//
-//         if (rc == 0) {
-//             tractive_sys = (enum tractive_system) bms_core.charger_connected;
-//             return 0;
-//         } else if (rc == 1) {
-//             // CAN error--fault
-//             return 1;
-//         } else if (get_time() - start_time > 1000) {
-//             // Timeout, so use default
-//             return 0;
-//         }
-//     } while (rc != 0);
-//
-//     // Catch-all, shouldn't happen
-//     return 1;
-// }
+static int set_charger_connected() {
+    uint32_t start_time = get_time();
+
+    (void)can_receive_charging_fbk();
+
+    uint8_t rc = 1;
+
+    do {
+        rc = can_poll_receive_charging_fbk();
+
+        if (rc == 0) {
+            tractive_sys = CHARGER;
+            return 0;
+        } else if (rc == 1) {
+            // CAN error--fault
+            return 1;
+        } else if (get_time() - start_time > 1500) {
+            // Timeout, so use default
+            return 0;
+        }
+    } while (rc != 0);
+
+    // Catch-all, shouldn't happen
+    return 1;
+}
 
 void pcint0_callback(void) {
     air_control_critical.ss_tsms = !gpio_get_pin(SS_TSMS);
@@ -84,7 +85,6 @@ void pcint1_callback(void) {
 
 void pcint2_callback(void) {
     air_control_critical.imd_status = !!gpio_get_pin(IMD_SENSE);
-
     if (!air_control_critical.imd_status) {
         set_fault(AIR_FAULT_IMD_STATUS);
     }
@@ -117,11 +117,12 @@ static int initial_checks(void) {
         rc = 1;
         goto bail;
     }
-
-    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
-        set_fault(AIR_FAULT_BMS_VOLTAGE);
-        rc = 1;
-        goto bail;
+    if(tractive_sys == MOTOR_CONTROLLER) {
+        if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
+            set_fault(AIR_FAULT_BMS_VOLTAGE);
+            rc = 1;
+            goto bail;
+        }
     }
 
     can_send_air_control_critical();
@@ -138,10 +139,12 @@ static int initial_checks(void) {
         goto bail;
     }
 
-    if (mc_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
-        set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
-        rc = 1;
-        goto bail;
+    if(tractive_sys == MOTOR_CONTROLLER) {
+        if (mc_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
+            set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
+            rc = 1;
+            goto bail;
+        }
     }
 
     can_send_air_control_critical();
@@ -167,27 +170,26 @@ static int initial_checks(void) {
 
     can_send_air_control_critical();
 
-    if (!gpio_get_pin(SS_TSMS)) {
-        // SS_TSMS should start high
-        air_control_critical.ss_tsms = true;
-        set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
-        rc = 1;
-        goto bail;
+    if(tractive_sys == MOTOR_CONTROLLER) {
+        if (!gpio_get_pin(SS_TSMS)) {
+            // SS_TSMS should start high
+            air_control_critical.ss_tsms = true;
+            set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
+            rc = 1;
+            goto bail;
+        }
     }
 
     can_send_air_control_critical();
 
+
     // Wait for IMD to stabilize
     _delay_ms(IMD_STABILITY_CHECK_DELAY_MS);
 
-    if (!gpio_get_pin(IMD_SENSE)) {
-        // IMD_SENSE pin should start high
-        air_control_critical.imd_status = false;
+    if (!air_control_critical.ss_imd) {
         set_fault(AIR_FAULT_IMD_STATUS);
         rc = 1;
         goto bail;
-    } else {
-        air_control_critical.imd_status = true;
     }
 
     can_send_air_control_critical();
@@ -227,8 +229,9 @@ static void state_machine_run(void) {
                     once = true;
                 }
             } else {
-                set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                // set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
                 once = true;
+                air_control_critical.air_state = AIR_STATE_PRECHARGE; //COMP AHHHHH
             }
             return;
         } break;
@@ -410,7 +413,7 @@ int main(void) {
     gpio_enable_interrupt(SS_MPC);
     gpio_enable_interrupt(SS_TSMP);
     gpio_enable_interrupt(SS_HVD);
-    gpio_enable_interrupt(IMD_SENSE);
+    
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
@@ -427,9 +430,9 @@ int main(void) {
 
     can_send_air_control_critical();
 
-    // set_charger_connected();
+    set_charger_connected();
 
-    // can_send_air_control_critical();
+    can_send_air_control_critical();
 
     gpio_set_pin(GENERAL_LED);
 
@@ -437,9 +440,14 @@ int main(void) {
     pcint1_callback();
     pcint2_callback();
 
+    //IMD takes a while to warm up, so just set it to work 
+    air_control_critical.imd_status = true;
     if (initial_checks() != 0) {
         goto fault;
     }
+
+    //Now enable the IMD
+    gpio_enable_interrupt(IMD_SENSE);
 
     // Clear general LED to indicate that initialization has completed
     gpio_clear_pin(GENERAL_LED);

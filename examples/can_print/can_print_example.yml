@@ -1,0 +1,13 @@
+name: can_print_example
+publish:
+  - name: example_message
+    id: 0x001
+    freq_hz: 100
+    signals:
+      - name: example_message
+        slice: 0 + 64
+        unit:
+          type: uint64_t
+          name: ""
+          scale: 1
+          offset: 0

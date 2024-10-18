@@ -307,6 +307,14 @@ int main(void) {
                 // NOTE: If we decide to do a non-linear map, that would go here
                 int16_t torque_request = pos_min * TORQUE_REQUEST_SCALE;
 
+                //Prevent motor whining while idle
+                if(torque_request < 20) {
+                    torque_request = 0;
+                }
+                if(torque_request > 2300) {
+                    torque_request = 2540;
+                }
+
                 SET_TORQUE_REQUEST(torque_request);
             }
 
