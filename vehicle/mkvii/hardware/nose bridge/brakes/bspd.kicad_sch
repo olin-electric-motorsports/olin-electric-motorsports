@@ -4714,6 +4714,12 @@
 		(uuid "1f7006e5-ed87-49a5-bca5-0878f98a1dd5")
 	)
 	(junction
+		(at 127 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "21c6fd1d-d0cd-44a0-94c7-da62965fe3ee")
+	)
+	(junction
 		(at 266.7 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5143,7 +5149,7 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 99.06) (xy 149.86 99.06)
+			(xy 125.73 99.06) (xy 127 99.06)
 		)
 		(stroke
 			(width 0)
@@ -5901,6 +5907,16 @@
 		)
 		(uuid "c7643f19-fde6-44fd-8082-aa477772db31")
 	)
+	(wire
+		(pts
+			(xy 127 99.06) (xy 149.86 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9103ee5-21c4-4465-92e2-bd216af75a0b")
+	)
 	(polyline
 		(pts
 			(xy 60.96 76.2) (xy 60.96 134.62)
@@ -5960,6 +5976,16 @@
 			(type default)
 		)
 		(uuid "d35b781b-3836-426b-8de6-ab4acbe5f487")
+	)
+	(wire
+		(pts
+			(xy 127 87.63) (xy 127 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4fafff0-c68f-4e93-9658-9202cf864caf")
 	)
 	(wire
 		(pts
@@ -6193,6 +6219,17 @@
 		)
 		(uuid "2b745502-5dc1-4cb5-bb8a-8b6e30b9db33")
 	)
+	(text "^ Allows Microcontroller \nto see voltage in RC Timer\n(to see how close BSPD \nis to tripping)"
+		(exclude_from_sim no)
+		(at 127.762 93.472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2f2490c8-2bbf-4811-83e5-a5af5800339f")
+	)
 	(text "AND Gate"
 		(exclude_from_sim no)
 		(at 80.01 81.28 0)
@@ -6292,6 +6329,18 @@
 			(justify right)
 		)
 		(uuid "17e0202a-fe08-4f49-8909-7cdcd0300fbd")
+	)
+	(hierarchical_label "RC_TIMER_STATUS"
+		(shape output)
+		(at 127 87.63 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "45da6699-acd6-4726-9ad1-4ebbaa16dd20")
 	)
 	(hierarchical_label "MOTOR_CURRENT_SENSE"
 		(shape input)

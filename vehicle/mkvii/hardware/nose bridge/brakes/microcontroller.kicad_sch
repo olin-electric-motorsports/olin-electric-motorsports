@@ -4744,10 +4744,6 @@
 		(uuid "5bc954d8-57d1-4d1c-bb9e-688aa35d6960")
 	)
 	(no_connect
-		(at 99.06 60.96)
-		(uuid "5fb9f4ff-8028-4e6e-a89d-7c7c046c0ccf")
-	)
-	(no_connect
 		(at 99.06 68.58)
 		(uuid "66b5c018-2322-475c-aec2-6c624d0858a3")
 	)
@@ -4770,10 +4766,6 @@
 	(no_connect
 		(at 99.06 27.94)
 		(uuid "ea6e6f48-64d6-47d9-83a0-66ca94a3f9b1")
-	)
-	(no_connect
-		(at 99.06 45.72)
-		(uuid "f5529066-e4cd-49f6-b913-cbe1518a5d61")
 	)
 	(no_connect
 		(at 99.06 76.2)
@@ -5795,6 +5787,18 @@
 		)
 		(uuid "ff1718c2-2072-4062-b471-6b4942eb69c3")
 	)
+	(hierarchical_label "BRAKE_PRESS_SENSE_FILTERED"
+		(shape input)
+		(at 99.06 45.72 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1f007236-1866-4a8a-9d63-bbf862762f7f")
+	)
 	(hierarchical_label "CAN_+"
 		(shape input)
 		(at 200.66 90.17 0)
@@ -5854,6 +5858,18 @@
 			(justify left)
 		)
 		(uuid "aa544008-46f8-4c99-aedb-05b370e765cd")
+	)
+	(hierarchical_label "RC_TIMER_STATUS"
+		(shape input)
+		(at 99.06 60.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "af66c4d9-21ff-4ff8-a72b-03e02ff4263d")
 	)
 	(hierarchical_label "BSPD_SHUTDOWN_SENSE"
 		(shape input)
