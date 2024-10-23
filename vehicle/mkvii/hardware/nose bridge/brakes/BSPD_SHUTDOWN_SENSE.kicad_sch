@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "Shutdown Circuit Sensor")
-		(date "2024-10-22")
+		(date "2024-10-23")
 		(rev "2")
 		(company "Olin Electric Motorsports")
 		(comment 1 "Rev. by Henry Tejada Deras")
@@ -1754,18 +1754,6 @@
 		(uuid "f7231e3a-e9c1-4b38-8c8f-0360b44add54")
 	)
 	(hierarchical_label "BSPD_SHUTDOWN_SENSE"
-		(shape input)
-		(at 109.22 93.98 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "9aecc6e6-4f7e-4022-8319-6e50fa3e58f7")
-	)
-	(hierarchical_label "BSPD_LL"
 		(shape output)
 		(at 152.4 82.55 0)
 		(fields_autoplaced yes)
@@ -1775,7 +1763,19 @@
 			)
 			(justify left)
 		)
-		(uuid "c36e91f9-9ee6-4047-9b3f-0c6e5c788c98")
+		(uuid "17a81694-d56b-403c-bfd4-d8628d8eced5")
+	)
+	(hierarchical_label "BSPD_RELAY_OUT"
+		(shape input)
+		(at 109.22 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c925fdba-1dcd-423d-812d-2c772899750c")
 	)
 	(symbol
 		(lib_id "OEM:LED_BLUE")

@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "PCIe x1 Connector")
-		(date "2024-10-22")
+		(date "2024-10-23")
 		(rev "1")
 		(company "Olin Electric Motorsports")
 		(comment 1 "By Henry Tejada Deras")
@@ -953,6 +953,193 @@
 				)
 			)
 		)
+		(symbol "OEM:F_500mA_16V"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "F_500mA_16V"
+				(at -1.905 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:Fuse_1210"
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Fuse, PTC, 500mA, 16V, 1210"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "0ZCH0050FF2G"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "Bel Fuse"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" "507-1786-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "YES"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Tape"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "1210"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*Fuse*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "F_500mA_16V_0_1"
+				(rectangle
+					(start -0.762 -2.54)
+					(end 0.762 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "F_500mA_16V_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+5V"
 			(power)
 			(pin_numbers hide)
@@ -1177,12 +1364,6 @@
 		(uuid "0c8379bc-1fb5-4b9d-ac56-391925b5327b")
 	)
 	(junction
-		(at 137.16 34.29)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1d2f0e87-ad55-433d-a118-0b44eb8fbd4e")
-	)
-	(junction
 		(at 123.19 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1195,10 +1376,22 @@
 		(uuid "4c3aeb36-c9dd-4f10-ab41-b0a3ef55d187")
 	)
 	(junction
+		(at 135.89 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "547e57e8-51dd-4d4c-b1cf-e794b159bfe9")
+	)
+	(junction
 		(at 191.77 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8f0d46c5-c99a-4ca0-86d4-f84909eb4530")
+	)
+	(junction
+		(at 191.77 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8f90f670-d061-4eac-926c-fd1c43050c3c")
 	)
 	(junction
 		(at 123.19 86.36)
@@ -1255,10 +1448,6 @@
 	(no_connect
 		(at 189.23 106.68)
 		(uuid "51411f1f-a29e-4681-8c79-5893986b06f9")
-	)
-	(no_connect
-		(at 191.77 86.36)
-		(uuid "5ba7196e-a384-443d-8bf3-521dd0211f3d")
 	)
 	(no_connect
 		(at 189.23 99.06)
@@ -1342,7 +1531,7 @@
 	)
 	(wire
 		(pts
-			(xy 149.86 34.29) (xy 149.86 50.8)
+			(xy 149.86 35.56) (xy 149.86 50.8)
 		)
 		(stroke
 			(width 0)
@@ -1359,6 +1548,16 @@
 			(type default)
 		)
 		(uuid "07a51efb-887a-4315-b5d4-2f7f14c001b6")
+	)
+	(wire
+		(pts
+			(xy 191.77 86.36) (xy 191.77 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b303013-5fdb-4579-8ed0-002b6d0df04c")
 	)
 	(wire
 		(pts
@@ -1542,7 +1741,7 @@
 	)
 	(polyline
 		(pts
-			(xy 151.13 52.07) (xy 151.13 33.02)
+			(xy 151.13 52.07) (xy 151.13 27.94)
 		)
 		(stroke
 			(width 0)
@@ -1589,16 +1788,6 @@
 			(type default)
 		)
 		(uuid "3295f9b1-3011-4167-b16a-df4153184739")
-	)
-	(wire
-		(pts
-			(xy 137.16 34.29) (xy 149.86 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "333d1f8d-e079-4f75-91b4-9c1be7ff6178")
 	)
 	(polyline
 		(pts
@@ -1772,6 +1961,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 35.56) (xy 135.89 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f6478f1-952b-40ba-bb62-39c1d4f5fabe")
+	)
+	(wire
+		(pts
 			(xy 133.35 102.87) (xy 133.35 96.52)
 		)
 		(stroke
@@ -1799,26 +1998,6 @@
 			(type default)
 		)
 		(uuid "517ee708-50be-4095-8c67-72799485e8b1")
-	)
-	(wire
-		(pts
-			(xy 137.16 35.56) (xy 137.16 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "57cf1c3c-dbc5-4364-9be2-f902794f0429")
-	)
-	(wire
-		(pts
-			(xy 132.08 34.29) (xy 137.16 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "58e11981-19ba-472f-949c-8440d5c48cbf")
 	)
 	(wire
 		(pts
@@ -1850,6 +2029,16 @@
 		)
 		(uuid "5df9f16e-fb63-4f64-9e31-f806fb0e8301")
 	)
+	(wire
+		(pts
+			(xy 189.23 86.36) (xy 191.77 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "614662e2-7d48-4650-b2d4-fa9a9b39deb4")
+	)
 	(polyline
 		(pts
 			(xy 124.46 113.03) (xy 95.25 113.03)
@@ -1859,6 +2048,16 @@
 			(type default)
 		)
 		(uuid "6226ddf2-7d80-4610-9b4d-98aba0dcba65")
+	)
+	(wire
+		(pts
+			(xy 135.89 35.56) (xy 137.16 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "645cd893-fd3b-4d14-a37b-d3cb4675412f")
 	)
 	(polyline
 		(pts
@@ -1902,7 +2101,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 34.29) (xy 132.08 50.8)
+			(xy 132.08 35.56) (xy 132.08 50.8)
 		)
 		(stroke
 			(width 0)
@@ -2062,16 +2261,6 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 86.36) (xy 220.98 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9cb1a7a2-493a-4572-8458-a0b2ae79aca1")
-	)
-	(wire
-		(pts
 			(xy 137.16 118.11) (xy 137.16 111.76)
 		)
 		(stroke
@@ -2182,7 +2371,7 @@
 	)
 	(polyline
 		(pts
-			(xy 99.06 33.02) (xy 99.06 52.07)
+			(xy 99.06 27.94) (xy 99.06 52.07)
 		)
 		(stroke
 			(width 0)
@@ -2232,17 +2421,17 @@
 	)
 	(wire
 		(pts
-			(xy 137.16 43.18) (xy 137.16 44.45)
+			(xy 144.78 35.56) (xy 149.86 35.56)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ba5ab73d-0ab0-401c-888e-a30304c8dc00")
+		(uuid "b9720553-3da4-4292-8ee4-45b6018e2988")
 	)
 	(polyline
 		(pts
-			(xy 99.06 33.02) (xy 151.13 33.02)
+			(xy 99.06 27.94) (xy 151.13 27.94)
 		)
 		(stroke
 			(width 0)
@@ -2269,6 +2458,16 @@
 			(type default)
 		)
 		(uuid "c6853a07-6672-43ae-8af3-08261bedfaf8")
+	)
+	(wire
+		(pts
+			(xy 135.89 35.56) (xy 135.89 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c966ddf0-a57f-459f-b0ab-c7b054ac81dc")
 	)
 	(polyline
 		(pts
@@ -2452,7 +2651,7 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 81.28) (xy 191.77 88.9)
+			(xy 191.77 81.28) (xy 191.77 86.36)
 		)
 		(stroke
 			(width 0)
@@ -2490,7 +2689,7 @@
 		)
 		(uuid "fe716ee8-728d-459c-b4fe-2dbb83f3e6cb")
 	)
-	(text "Capacitor: Smoothes out \ncurrent to BSPD board."
+	(text "Capacitor: Smoothes out \ncurrent to BSPD board.\n\nFuse: Overcurrent\nprotection for BSPD\nboard."
 		(exclude_from_sim no)
 		(at 100.076 51.054 0)
 		(effects
@@ -2523,7 +2722,7 @@
 	)
 	(text "Board Current\nElectrical Safety Module"
 		(exclude_from_sim no)
-		(at 111.76 37.084 0)
+		(at 112.014 30.734 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2661,18 +2860,6 @@
 		)
 		(uuid "341f8ce5-6b2d-4487-8cbc-0935fec15247")
 	)
-	(hierarchical_label "BSPD_SHUTDOWN_SENSE"
-		(shape input)
-		(at 220.98 86.36 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "64cfa4b7-3f87-4bf0-97dd-708539a43d52")
-	)
 	(hierarchical_label "MOTOR_CURRENT_SENSE"
 		(shape output)
 		(at 220.98 76.2 0)
@@ -2776,7 +2963,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 137.16 44.45 0)
+		(at 135.89 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2785,7 +2972,7 @@
 		(fields_autoplaced yes)
 		(uuid "4e28ec49-b53a-4d9d-8645-dde85fc4d151")
 		(property "Reference" "#PWR?"
-			(at 137.16 50.8 0)
+			(at 135.89 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2794,15 +2981,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 137.16 49.53 0)
+			(at 135.89 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify bottom)
 			)
 		)
 		(property "Footprint" ""
-			(at 137.16 44.45 0)
+			(at 135.89 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2811,7 +2999,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 137.16 44.45 0)
+			(at 135.89 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2820,7 +3008,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 137.16 44.45 0)
+			(at 135.89 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2835,6 +3023,139 @@
 			(project "brakes"
 				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/875aabfb-3c91-4011-8240-4af05d59512e"
 					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:F_500mA_16V")
+		(at 140.97 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5feeeed2-59b2-4932-9766-d2e04734f5d0")
+		(property "Reference" "F1"
+			(at 140.97 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "F_500mA_16V"
+			(at 140.97 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Footprint" "OEM:Fuse_1210"
+			(at 140.97 37.338 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf"
+			(at 140.97 33.528 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse, PTC, 500mA, 16V, 1210"
+			(at 140.97 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0ZCH0050FF2G"
+			(at 140.97 35.56 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Bel Fuse"
+			(at 140.97 35.56 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "507-1786-1-ND"
+			(at 140.97 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 140.97 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Tape"
+			(at 140.97 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "1210"
+			(at 140.97 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 140.97 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7cae7cb9-a2cc-41ba-9bfe-86f8d9526f61")
+		)
+		(pin "2"
+			(uuid "7c8b68df-8134-4839-a790-3c69c40bf434")
+		)
+		(instances
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/875aabfb-3c91-4011-8240-4af05d59512e"
+					(reference "F1")
 					(unit 1)
 				)
 			)
@@ -2975,7 +3296,7 @@
 	)
 	(symbol
 		(lib_id "OEM:C_10uF")
-		(at 137.16 39.37 0)
+		(at 135.89 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2984,7 +3305,7 @@
 		(fields_autoplaced yes)
 		(uuid "d37bc151-9e60-4799-86f2-7e9dd00f7519")
 		(property "Reference" "C6"
-			(at 140.97 38.0999 0)
+			(at 139.7 39.3699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2993,7 +3314,7 @@
 			)
 		)
 		(property "Value" "C_10uF"
-			(at 140.97 40.6399 0)
+			(at 139.7 41.9099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3002,7 +3323,7 @@
 			)
 		)
 		(property "Footprint" "OEM:C_0603"
-			(at 138.1252 43.18 0)
+			(at 136.8552 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3011,7 +3332,7 @@
 			)
 		)
 		(property "Datasheet" "${OEM_DIR}/parts/datasheets"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3020,7 +3341,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor 10uf 10% 10V X5R 0603"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3029,7 +3350,7 @@
 			)
 		)
 		(property "MPN" "LMK107BBJ106KALT"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3038,7 +3359,7 @@
 			)
 		)
 		(property "MFN" "Taiyo Yuden"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3047,7 +3368,7 @@
 			)
 		)
 		(property "DKPN" "587-6017-6-ND"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3056,7 +3377,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3065,7 +3386,7 @@
 			)
 		)
 		(property "Stocked" "Digi-Reel"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3074,7 +3395,7 @@
 			)
 		)
 		(property "Package" "0603"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3083,7 +3404,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 137.16 39.37 0)
+			(at 135.89 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)

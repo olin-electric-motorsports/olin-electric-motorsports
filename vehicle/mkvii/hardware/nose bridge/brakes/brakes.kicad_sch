@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "BSPD - Top Level View")
-		(date "2024-10-22")
+		(date "2024-10-23")
 		(rev "2")
 		(company "Olin Electric Motorsports")
 		(comment 1 "Rev. by Henry Tejada Deras")
@@ -20,16 +20,10 @@
 		(uuid "0436f206-1899-464c-9fce-4c418749fa5a")
 	)
 	(junction
-		(at 96.52 137.16)
+		(at 99.06 57.15)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "1bca5ee5-80a0-48e9-99d4-009e484834ea")
-	)
-	(junction
-		(at 116.84 146.05)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "95d0e367-63e0-4cc6-82e3-7baf395e4361")
+		(uuid "2c57b3fc-f659-4349-b8a0-ad8b269accb0")
 	)
 	(junction
 		(at 107.95 80.01)
@@ -42,6 +36,10 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ee969d06-4717-49da-b7fb-8bbc84ffa8ba")
+	)
+	(no_connect
+		(at 99.06 137.16)
+		(uuid "089212c1-b059-44bc-8dd5-3fe8a0472b88")
 	)
 	(no_connect
 		(at 116.84 77.47)
@@ -66,6 +64,10 @@
 	(no_connect
 		(at 71.12 99.06)
 		(uuid "45d195c6-4f5e-44bb-ad5f-7bdb7cf7383a")
+	)
+	(no_connect
+		(at 99.06 73.66)
+		(uuid "4d9db94a-a120-4e2d-96ce-d057981697a2")
 	)
 	(no_connect
 		(at 116.84 137.16)
@@ -164,12 +166,20 @@
 		(uuid "bf2f1fa4-bda6-48c3-9ebc-87abe7fe173a")
 	)
 	(no_connect
+		(at 99.06 77.47)
+		(uuid "c362cd26-a41d-4d90-8762-1295063371a1")
+	)
+	(no_connect
 		(at 116.84 57.15)
 		(uuid "d8fd2b31-8a43-493f-8f61-b95c714341d2")
 	)
 	(no_connect
 		(at 107.95 54.61)
 		(uuid "dba05b2e-e4cc-4af9-8c2f-068a8f33d3e3")
+	)
+	(no_connect
+		(at 99.06 80.01)
+		(uuid "e1013856-4832-4cc2-ae09-94c17ef103ec")
 	)
 	(no_connect
 		(at 114.3 92.71)
@@ -223,6 +233,16 @@
 	)
 	(wire
 		(pts
+			(xy 99.06 57.15) (xy 99.06 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26930ff2-1dae-4471-ad97-23577c80cba7")
+	)
+	(wire
+		(pts
 			(xy 124.46 152.4) (xy 87.63 152.4)
 		)
 		(stroke
@@ -243,23 +263,13 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 57.15) (xy 124.46 57.15)
+			(xy 71.12 57.15) (xy 99.06 57.15)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "32b56915-9770-4b11-b400-e9b2e44474dc")
-	)
-	(wire
-		(pts
-			(xy 96.52 137.16) (xy 78.74 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "36e4f2e7-d3d6-4107-8478-866afc7340e1")
 	)
 	(wire
 		(pts
@@ -270,16 +280,6 @@
 			(type default)
 		)
 		(uuid "3830f15b-086a-4d55-9aa5-765d7c2aa795")
-	)
-	(wire
-		(pts
-			(xy 59.69 82.55) (xy 96.52 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4fb54dcc-f499-4c58-991c-93b230bb0d90")
 	)
 	(wire
 		(pts
@@ -333,6 +333,16 @@
 	)
 	(wire
 		(pts
+			(xy 99.06 57.15) (xy 124.46 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f457139-8d0f-4001-b636-1816d1db4b49")
+	)
+	(wire
+		(pts
 			(xy 59.69 101.6) (xy 87.63 101.6)
 		)
 		(stroke
@@ -353,23 +363,13 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 137.16) (xy 96.52 137.16)
+			(xy 78.74 137.16) (xy 124.46 137.16)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "8d53954d-269f-48f2-8572-5ceecbd9bf0a")
-	)
-	(wire
-		(pts
-			(xy 101.6 146.05) (xy 116.84 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "98e31cab-755c-457c-8b06-bd7e0bf35cfa")
 	)
 	(wire
 		(pts
@@ -393,16 +393,6 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 140.97) (xy 101.6 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9bef8453-8a7f-483a-86a1-0a79f8a859c2")
-	)
-	(wire
-		(pts
 			(xy 124.46 139.7) (xy 107.95 139.7)
 		)
 		(stroke
@@ -410,6 +400,16 @@
 			(type default)
 		)
 		(uuid "9c57a063-3206-4c9a-a630-d6c2d5315b43")
+	)
+	(wire
+		(pts
+			(xy 78.74 140.97) (xy 99.06 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6061173-ce50-4666-bf2f-6abe0a6ddb56")
 	)
 	(wire
 		(pts
@@ -440,16 +440,6 @@
 			(type default)
 		)
 		(uuid "c02011ca-7892-4400-9c4c-a82026fdbb2d")
-	)
-	(wire
-		(pts
-			(xy 78.74 140.97) (xy 101.6 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c319ce8c-65fd-4701-953b-faf488c2ff78")
 	)
 	(wire
 		(pts
@@ -570,16 +560,6 @@
 			(type default)
 		)
 		(uuid "f59efd31-902e-4dea-9bc9-4fcc9a517ae9")
-	)
-	(wire
-		(pts
-			(xy 96.52 82.55) (xy 96.52 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fa1ed452-ccc2-46b1-a126-68ebaa389adc")
 	)
 	(wire
 		(pts
@@ -931,16 +911,6 @@
 			)
 			(uuid "4e0884a6-e9e6-42a3-a49e-8a6983d959c7")
 		)
-		(pin "BSPD_SHUTDOWN_SENSE" input
-			(at 59.69 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "c2e08c21-ef2b-48ad-9067-b9c25a644b10")
-		)
 		(instances
 			(project "brakes"
 				(path "/10f522c8-3a01-4239-b7df-a730ca32b367"
@@ -979,17 +949,7 @@
 				(justify left top)
 			)
 		)
-		(pin "BSPD_SHUTDOWN_SENSE" input
-			(at 78.74 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "07ba9b55-10e0-4597-914d-abb055250633")
-		)
-		(pin "BSPD_LL" output
+		(pin "BSPD_RELAY_OUT" input
 			(at 78.74 140.97 0)
 			(effects
 				(font
@@ -997,7 +957,17 @@
 				)
 				(justify right)
 			)
-			(uuid "43d3c3e5-093b-4a0f-bdcb-a143661f3a19")
+			(uuid "3eff9611-4345-4a9b-b215-60df1316b85c")
+		)
+		(pin "BSPD_SHUTDOWN_SENSE" output
+			(at 78.74 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "cbbc6104-d3d7-48de-b4a8-91cf232c991f")
 		)
 		(instances
 			(project "brakes"
