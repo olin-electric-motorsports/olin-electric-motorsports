@@ -139,6 +139,102 @@
 				)
 			)
 		)
+		(symbol "power:GND"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 	)
 	(junction
 		(at 31.75 35.56)
@@ -693,16 +789,6 @@
 		)
 		(uuid "c496a2ab-8867-413a-94a0-33d3abf90017")
 	)
-	(wire
-		(pts
-			(xy 46.99 54.61) (xy 46.99 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c7c299c3-db72-47fb-840b-a999ccb7b83f")
-	)
 	(bus
 		(pts
 			(xy 189.23 41.91) (xy 190.5 41.91)
@@ -875,39 +961,6 @@
 		)
 		(uuid "0561f911-8560-4ebc-9ab4-eb3546e85443")
 	)
-	(label "GND"
-		(at 86.36 35.56 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "09c5a342-903b-457e-8fc9-35d81b9e0893")
-	)
-	(label "GND"
-		(at 43.18 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1e4976a1-10fc-48a7-8f00-1fe98e4673a1")
-	)
-	(label "GND"
-		(at 107.95 35.56 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1fb12281-3021-4736-a98f-1ffe085ee56b")
-	)
 	(label "Therm22"
 		(at 73.66 25.4 0)
 		(fields_autoplaced yes)
@@ -918,28 +971,6 @@
 			(justify left bottom)
 		)
 		(uuid "21154de7-f199-4c63-a335-b259b3f9987b")
-	)
-	(label "GND"
-		(at 130.81 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "2d81561e-e146-4c94-a792-8ae54dfdc20a")
-	)
-	(label "GND"
-		(at 176.53 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "2e5a5f27-10a2-4db5-836c-78c7cffb0261")
 	)
 	(label "Therm28"
 		(at 140.97 25.4 0)
@@ -963,17 +994,6 @@
 		)
 		(uuid "42fa843a-a407-4db3-a9ed-e65a09573cd5")
 	)
-	(label "GND"
-		(at 153.67 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "4778b57a-c63e-4bb2-8e59-bb1640925004")
-	)
 	(label "Therm21"
 		(at 52.07 35.56 0)
 		(fields_autoplaced yes)
@@ -996,28 +1016,6 @@
 		)
 		(uuid "4fce27fd-c777-4389-b6b9-ce68f7a04dfc")
 	)
-	(label "GND"
-		(at 86.36 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "50f11dc7-fb19-4f50-a0ce-2ebc4428596b")
-	)
-	(label "GND"
-		(at 130.81 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "5ea5f2bd-d21b-422b-b04a-2b0f499df6cc")
-	)
 	(label "Therm18"
 		(at 29.21 25.4 0)
 		(fields_autoplaced yes)
@@ -1029,28 +1027,6 @@
 		)
 		(uuid "68a069a7-1957-4cee-802c-0c94f47f524d")
 	)
-	(label "GND"
-		(at 21.59 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "6cc57059-497d-4a36-b9b1-272c607c251d")
-	)
-	(label "GND"
-		(at 176.53 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "6fed27e9-2077-4b12-927b-fb4be7046dfc")
-	)
 	(label "Therm30"
 		(at 163.83 25.4 0)
 		(fields_autoplaced yes)
@@ -1061,28 +1037,6 @@
 			(justify left bottom)
 		)
 		(uuid "79374173-2f1a-4d88-88af-b20f72f786fb")
-	)
-	(label "GND"
-		(at 153.67 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7fb18b23-77c9-4899-a56b-1ac222633d65")
-	)
-	(label "GND"
-		(at 107.95 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "80c9330c-2240-45c0-bd29-98707fdfee0b")
 	)
 	(label "Therm33"
 		(at 186.69 35.56 0)
@@ -1117,17 +1071,6 @@
 		)
 		(uuid "89518c2e-9934-403e-aae2-41722e3d77cf")
 	)
-	(label "GND"
-		(at 64.77 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "8ff2d030-57da-414e-9850-f86acc7d5976")
-	)
 	(label "Therm26"
 		(at 118.11 25.4 0)
 		(fields_autoplaced yes)
@@ -1149,17 +1092,6 @@
 			(justify left bottom)
 		)
 		(uuid "9f40501f-a8af-4fb9-85e3-a8a0fc709d92")
-	)
-	(label "GND"
-		(at 46.99 54.61 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "ba2e1d2d-af59-478c-90d3-b4a736b46485")
 	)
 	(label "Therm23"
 		(at 74.93 35.56 0)
@@ -1194,50 +1126,6 @@
 		)
 		(uuid "deef1f74-602a-4983-91e0-cdf2ee351131")
 	)
-	(label "GND"
-		(at 64.77 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e0ea054e-e255-4255-9fa1-79d74afd48f9")
-	)
-	(label "GND"
-		(at 43.18 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e2088b8e-16cb-4120-a79f-56190bf85915")
-	)
-	(label "GND"
-		(at 199.39 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "eb48a93f-3b3f-4efa-8bc6-5ecf15789b9b")
-	)
-	(label "GND"
-		(at 21.59 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f9ae2c4c-f8d9-4e96-bf77-a53f2cbb897a")
-	)
 	(global_label "Therm[18..34]"
 		(shape passive)
 		(at 222.25 41.91 0)
@@ -1259,18 +1147,6 @@
 				(hide yes)
 			)
 		)
-	)
-	(hierarchical_label "GND"
-		(shape input)
-		(at 46.99 57.15 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "baa904fc-903f-40da-856d-27f83cbc8233")
 	)
 	(symbol
 		(lib_id "Device:Thermistor")
@@ -1298,7 +1174,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 69.85 35.56 0)
 			(effects
 				(font
@@ -1341,6 +1217,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 153.67 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "07b60da9-b596-4c6f-926a-7df5437f7fd2")
+		(property "Reference" "#PWR?"
+			(at 153.67 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 153.67 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 153.67 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 153.67 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 153.67 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9b2ca8d1-3390-45f1-affa-6bf915130b46")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Thermistor")
 		(at 135.89 25.4 90)
 		(unit 1)
@@ -1366,7 +1308,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 135.89 25.4 0)
 			(effects
 				(font
@@ -1409,6 +1351,138 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 43.18 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "16aab775-1c97-4e9b-acc3-04c564f7aae5")
+		(property "Reference" "#PWR?"
+			(at 43.18 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 43.18 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 43.18 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 43.18 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 43.18 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c750be3f-9b8d-4a60-ae8f-a2e81c209749")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 176.53 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1c52edc7-8cf7-48a8-9284-eae90c218b01")
+		(property "Reference" "#PWR?"
+			(at 176.53 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 176.53 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 176.53 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 176.53 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 176.53 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "53159322-f4fa-425a-982d-e1723aa408a1")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Thermistor")
 		(at 181.61 25.4 90)
 		(unit 1)
@@ -1434,7 +1508,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 181.61 25.4 0)
 			(effects
 				(font
@@ -1477,6 +1551,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 153.67 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "20b4a572-e350-4d88-83cd-2112cb7adb59")
+		(property "Reference" "#PWR?"
+			(at 153.67 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 153.67 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 153.67 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 153.67 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 153.67 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8ac272b6-5dd4-4fc2-894e-c0928255c29f")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Thermistor")
 		(at 26.67 25.4 90)
 		(unit 1)
@@ -1502,7 +1642,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 26.67 25.4 0)
 			(effects
 				(font
@@ -1545,6 +1685,204 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 21.59 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4fc96323-e373-4ef0-81b6-081aebf9ee72")
+		(property "Reference" "#PWR?"
+			(at 21.59 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 21.59 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 21.59 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 21.59 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 21.59 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9f373f10-4dbb-4009-8e98-a6ff6edfeac4")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 64.77 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "54d19cc1-74de-4572-9359-d5930604752e")
+		(property "Reference" "#PWR?"
+			(at 64.77 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 64.77 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.77 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 64.77 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cfd2be33-1698-49ca-9a49-ccad3b25fc33")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 176.53 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5569f827-a14a-46f0-8c38-ede909134df5")
+		(property "Reference" "#PWR?"
+			(at 176.53 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 176.53 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 176.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 176.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 176.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "50d7a79f-b9f1-4cf4-b70c-422546d38a6c")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Thermistor")
 		(at 26.67 35.56 90)
 		(unit 1)
@@ -1570,7 +1908,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 26.67 35.56 0)
 			(effects
 				(font
@@ -1638,7 +1976,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 91.44 35.56 0)
 			(effects
 				(font
@@ -1706,7 +2044,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 135.89 35.56 0)
 			(effects
 				(font
@@ -1774,7 +2112,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 91.44 25.4 0)
 			(effects
 				(font
@@ -1817,6 +2155,270 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 107.95 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7d784e9b-b4bf-4622-a61f-7fad2a249332")
+		(property "Reference" "#PWR?"
+			(at 107.95 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 107.95 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.95 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.95 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 107.95 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "467b8430-cd88-48fa-9b1e-3bd669aa115b")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 107.95 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8b824f98-17fb-4828-a628-deaced31bda8")
+		(property "Reference" "#PWR?"
+			(at 107.95 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 107.95 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.95 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.95 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 107.95 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fc6958cb-745c-43ea-abc7-9f5001db4928")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 86.36 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "908dd42f-2893-49bf-8aba-f0b2dc337b56")
+		(property "Reference" "#PWR?"
+			(at 86.36 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 86.36 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 86.36 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 86.36 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c0a63e97-3abd-4218-be06-e224f341e8cd")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 86.36 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "94fe8f99-3d8f-476c-91a2-46d6acfea0f5")
+		(property "Reference" "#PWR?"
+			(at 86.36 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 86.36 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 86.36 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 86.36 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a74e2531-ca32-4d1f-8ac8-cbd2bd840e7a")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Thermistor")
 		(at 69.85 25.4 90)
 		(unit 1)
@@ -1842,7 +2444,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 69.85 25.4 0)
 			(effects
 				(font
@@ -1910,7 +2512,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 158.75 25.4 0)
 			(effects
 				(font
@@ -1953,6 +2555,138 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 21.59 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7fffbf6-3077-4255-8f7e-dedf86e90d02")
+		(property "Reference" "#PWR?"
+			(at 21.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 21.59 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 21.59 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 21.59 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 21.59 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9ad48833-bdb1-4059-afac-47729a3f4c23")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 64.77 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b1d63650-c01c-46ab-914f-9a4a46f34a8d")
+		(property "Reference" "#PWR?"
+			(at 64.77 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 64.77 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.77 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 64.77 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a1ca7198-ce7e-4782-bd69-c4466ab3b8a9")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Thermistor")
 		(at 113.03 35.56 90)
 		(unit 1)
@@ -1978,7 +2712,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 113.03 35.56 0)
 			(effects
 				(font
@@ -2046,7 +2780,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 48.26 35.56 0)
 			(effects
 				(font
@@ -2089,6 +2823,138 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 130.81 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c114f604-8c22-4007-93e4-9efa88460dd9")
+		(property "Reference" "#PWR?"
+			(at 130.81 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 130.81 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 130.81 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "61b28436-de1a-4a75-ba5f-1b966de7a52d")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 130.81 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c339c45c-ec11-4170-a64e-5de40dfab374")
+		(property "Reference" "#PWR?"
+			(at 130.81 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 130.81 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 130.81 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6516b6aa-1dac-42ea-8cae-f3d5e6d9eb5a")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Thermistor")
 		(at 204.47 35.56 90)
 		(unit 1)
@@ -2114,7 +2980,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 204.47 35.56 0)
 			(effects
 				(font
@@ -2157,6 +3023,138 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 199.39 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d494f3ee-4d9d-4a46-baed-b63780756f8c")
+		(property "Reference" "#PWR?"
+			(at 199.39 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 199.39 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 199.39 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 199.39 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 199.39 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9d9d9f6f-a7f1-46c7-a7f3-96b94dab08ee")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 43.18 25.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d57123d2-639a-4c4d-aff2-aaaa664117fa")
+		(property "Reference" "#PWR?"
+			(at 43.18 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 43.18 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 43.18 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 43.18 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 43.18 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "37e7631c-957a-4188-ba0f-b46e719d2adb")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Thermistor")
 		(at 158.75 35.56 90)
 		(unit 1)
@@ -2182,7 +3180,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 158.75 35.56 0)
 			(effects
 				(font
@@ -2250,7 +3248,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 48.26 25.4 0)
 			(effects
 				(font
@@ -2318,7 +3316,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 113.03 25.4 0)
 			(effects
 				(font
@@ -2386,7 +3384,7 @@
 				)
 			)
 		)
-		(property "Footprint" "oem:R_0603 (B)"
+		(property "Footprint" "OEM:R_0603"
 			(at 181.61 35.56 0)
 			(effects
 				(font

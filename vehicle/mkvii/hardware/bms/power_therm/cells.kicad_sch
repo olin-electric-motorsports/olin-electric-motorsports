@@ -5,24 +5,23 @@
 	(uuid "4c3ff340-a20b-4773-be1b-5b5539eae115")
 	(paper "A4")
 	(lib_symbols
-		(symbol "Device:Fuse"
+		(symbol "Connector:TestPoint"
 			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-			)
+				(offset 0.762) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "F"
-				(at 2.032 0 90)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "Fuse"
-				(at -1.905 0 90)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -30,7 +29,7 @@
 				)
 			)
 			(property "Footprint" ""
-				(at -1.778 0 90)
+				(at 5.08 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -39,6 +38,15 @@
 				)
 			)
 			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
 				(at 0 0 0)
 				(effects
 					(font
@@ -47,7 +55,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Fuse"
+			(property "ki_keywords" "test point tp"
 				(at 0 0 0)
 				(effects
 					(font
@@ -56,7 +64,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "fuse"
+			(property "ki_fp_filters" "Pin* Test*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -65,31 +73,10 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*Fuse*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Fuse_0_1"
-				(rectangle
-					(start -0.762 -2.54)
-					(end 0.762 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0 -2.54)
-					)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
 					(stroke
 						(width 0)
 						(type default)
@@ -99,11 +86,11 @@
 					)
 				)
 			)
-			(symbol "Fuse_1_1"
+			(symbol "TestPoint_1_1"
 				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -118,27 +105,9 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 			)
 		)
-		(symbol "Jumper:SolderJumper_2_Open"
+		(symbol "Jumper:SolderJumper_2_Bridged"
 			(pin_numbers hide)
 			(pin_names
 				(offset 0) hide)
@@ -153,7 +122,7 @@
 					)
 				)
 			)
-			(property "Value" "SolderJumper_2_Open"
+			(property "Value" "SolderJumper_2_Bridged"
 				(at 0 -2.54 0)
 				(effects
 					(font
@@ -179,7 +148,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Solder Jumper, 2-pole, open"
+			(property "Description" "Solder Jumper, 2-pole, closed/bridged"
 				(at 0 0 0)
 				(effects
 					(font
@@ -197,7 +166,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "SolderJumper*Open*"
+			(property "ki_fp_filters" "SolderJumper*Bridged*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -206,7 +175,18 @@
 					(hide yes)
 				)
 			)
-			(symbol "SolderJumper_2_Open_0_1"
+			(symbol "SolderJumper_2_Bridged_0_1"
+				(rectangle
+					(start -0.508 0.508)
+					(end 0.508 -0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
 				(arc
 					(start -0.254 1.016)
 					(mid -1.2656 0)
@@ -280,7 +260,7 @@
 					)
 				)
 			)
-			(symbol "SolderJumper_2_Open_1_1"
+			(symbol "SolderJumper_2_Bridged_1_1"
 				(pin passive line
 					(at -3.81 0 0)
 					(length 2.54)
@@ -421,6 +401,277 @@
 				)
 			)
 		)
+		(symbol "formula:200mA_Fuse"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "200mA_Fuse"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+				(at -1.27 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+				(at -1.27 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "507-1767-1-ND"
+				(at 2.54 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+				(at 5.08 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 7.62 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Fuse 200mA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "200mA_Fuse_0_1"
+				(arc
+					(start -2.54 0)
+					(mid -1.27 -1.2645)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.27 1.27)
+					(mid 0.3554 0.9071)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.54 0)
+					(mid 2.1771 0.9146)
+					(end 1.27 1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "200mA_Fuse_1_1"
+				(pin input line
+					(at -7.62 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 7.62 0 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:GND"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 167.64 26.67)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e4d2342-99a7-4cf4-b743-4e0ee738ae32")
+	)
+	(junction
+		(at 20.32 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "921e3873-5718-4087-92de-379e47d6d9d8")
 	)
 	(bus_entry
 		(at 147.32 36.83)
@@ -575,16 +826,6 @@
 		)
 		(uuid "eb9e1c24-a5ac-4a7c-9e61-7dfa506abcaa")
 	)
-	(wire
-		(pts
-			(xy 93.98 59.69) (xy 102.87 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0264af78-b37c-4156-8545-da5226a25bb3")
-	)
 	(bus
 		(pts
 			(xy 147.32 39.37) (xy 147.32 41.91)
@@ -617,33 +858,13 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 54.61) (xy 118.11 54.61)
+			(xy 125.73 34.29) (xy 144.78 34.29)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "14e7203d-613a-4f01-a591-acebe9f98b66")
-	)
-	(wire
-		(pts
-			(xy 48.26 57.15) (xy 125.73 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "15031d62-dde5-42a7-8b14-62acd3f23849")
-	)
-	(wire
-		(pts
-			(xy 118.11 41.91) (xy 144.78 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1695eda8-cb0f-43f5-bf4c-0a0725b4547c")
+		(uuid "0ed989cc-49cb-49b9-8a72-eaa121617bb2")
 	)
 	(bus
 		(pts
@@ -665,6 +886,16 @@
 		)
 		(uuid "1f8f5081-acaa-4613-a603-02041b4d9209")
 	)
+	(wire
+		(pts
+			(xy 133.35 36.83) (xy 144.78 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fc62caa-902f-48b0-ae2c-7814ef089b83")
+	)
 	(bus
 		(pts
 			(xy 147.32 46.99) (xy 147.32 49.53)
@@ -674,6 +905,16 @@
 			(type default)
 		)
 		(uuid "224c0e68-35ff-4404-8d61-f4f9e01cb2eb")
+	)
+	(wire
+		(pts
+			(xy 93.98 69.85) (xy 95.25 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29484583-f815-4345-b531-914222e6cebd")
 	)
 	(bus
 		(pts
@@ -717,43 +958,23 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 46.99) (xy 125.73 46.99)
+			(xy 48.26 57.15) (xy 118.11 57.15)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "33307268-f739-4079-a465-392689641142")
+		(uuid "39d4f785-1cc0-40c1-a27a-24607628592b")
 	)
 	(wire
 		(pts
-			(xy 48.26 36.83) (xy 125.73 36.83)
+			(xy 118.11 41.91) (xy 144.78 41.91)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3811cc50-af93-451f-b03a-192133248059")
-	)
-	(wire
-		(pts
-			(xy 77.47 41.91) (xy 110.49 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3cb6cbf4-c155-424b-88fa-aeee640c730b")
-	)
-	(wire
-		(pts
-			(xy 93.98 69.85) (xy 102.87 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4af54c7c-484d-472f-a5f5-ab3a9bac76a3")
+		(uuid "3ccc5b78-042a-4f03-9268-bd72fee3b689")
 	)
 	(wire
 		(pts
@@ -767,13 +988,73 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 39.37) (xy 102.87 39.37)
+			(xy 93.98 39.37) (xy 95.25 39.37)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5a08bdb5-0a29-476d-9466-30478efe39da")
+		(uuid "4c7a987a-5003-492e-8701-9bc50cbec866")
+	)
+	(wire
+		(pts
+			(xy 62.23 44.45) (xy 110.49 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ca8bdd7-57ae-4eb3-b746-094f2e09dc52")
+	)
+	(wire
+		(pts
+			(xy 62.23 64.77) (xy 110.49 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4da987ca-2c1c-46a7-bee2-8c5bb839db7e")
+	)
+	(wire
+		(pts
+			(xy 110.49 49.53) (xy 144.78 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "517a23b9-29c4-429d-9e67-9c90629d26ed")
+	)
+	(wire
+		(pts
+			(xy 77.47 31.75) (xy 102.87 31.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53b354c0-7332-4bb9-aa74-a0d2d7c70f57")
+	)
+	(wire
+		(pts
+			(xy 118.11 31.75) (xy 144.78 31.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5440cddb-de28-4a34-a66b-456dbaea87f8")
+	)
+	(wire
+		(pts
+			(xy 93.98 59.69) (xy 95.25 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5754a87f-5b40-4995-ae7a-64a4bed70e9c")
 	)
 	(wire
 		(pts
@@ -797,6 +1078,16 @@
 	)
 	(wire
 		(pts
+			(xy 110.49 39.37) (xy 144.78 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ccf348a-847a-44d2-ad98-4d5ea11531a7")
+	)
+	(wire
+		(pts
 			(xy 20.32 69.85) (xy 86.36 69.85)
 		)
 		(stroke
@@ -807,23 +1098,23 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 34.29) (xy 144.78 34.29)
+			(xy 167.64 26.67) (xy 170.18 26.67)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "602df3a8-0354-43a8-beee-d210eaf4214d")
+		(uuid "5f836fca-8042-4a76-a92f-c97ab9acfe59")
 	)
 	(wire
 		(pts
-			(xy 110.49 59.69) (xy 144.78 59.69)
+			(xy 77.47 52.07) (xy 102.87 52.07)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "60f036be-c526-4e2c-bc55-38116e2613cd")
+		(uuid "6364648e-40ca-45d1-82ce-d3aafa61a3fc")
 	)
 	(wire
 		(pts
@@ -837,13 +1128,13 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 31.75) (xy 144.78 31.75)
+			(xy 77.47 62.23) (xy 102.87 62.23)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "643e6570-6c9a-4f45-9f95-f74ea3f66c68")
+		(uuid "67fcc38c-875e-4590-95e1-0ced00d86949")
 	)
 	(wire
 		(pts
@@ -887,23 +1178,13 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 29.21) (xy 144.78 29.21)
+			(xy 62.23 54.61) (xy 110.49 54.61)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "735b2bff-5a54-4d23-9a19-14fb725cec5e")
-	)
-	(wire
-		(pts
-			(xy 77.47 52.07) (xy 110.49 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "77e91972-8407-4501-8baf-20061a9279ac")
+		(uuid "78aa5623-7eb9-4bfa-b153-40161767f94b")
 	)
 	(wire
 		(pts
@@ -914,16 +1195,6 @@
 			(type default)
 		)
 		(uuid "7ae6479c-1f46-45c7-bf6f-d8e933253b4b")
-	)
-	(wire
-		(pts
-			(xy 77.47 62.23) (xy 110.49 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7c3cf9e1-b35b-4f72-a10c-7739eed6b702")
 	)
 	(wire
 		(pts
@@ -947,16 +1218,6 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 44.45) (xy 118.11 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "80963a3d-07e3-4cf4-a567-4dfd52133db4")
-	)
-	(wire
-		(pts
 			(xy 20.32 59.69) (xy 86.36 59.69)
 		)
 		(stroke
@@ -964,26 +1225,6 @@
 			(type default)
 		)
 		(uuid "8175b820-9eae-43c7-a5ad-87268888b0bf")
-	)
-	(wire
-		(pts
-			(xy 110.49 39.37) (xy 144.78 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8cb54d72-5036-4494-80d6-481002cbafec")
-	)
-	(wire
-		(pts
-			(xy 93.98 49.53) (xy 102.87 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8cceab86-f941-413a-b73d-380914d0567d")
 	)
 	(bus
 		(pts
@@ -994,16 +1235,6 @@
 			(type default)
 		)
 		(uuid "8d91b08d-920b-480e-83e7-f6d720146242")
-	)
-	(wire
-		(pts
-			(xy 110.49 49.53) (xy 144.78 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9021cd8e-751b-4a66-8373-aacef9abfac8")
 	)
 	(wire
 		(pts
@@ -1047,13 +1278,13 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 64.77) (xy 118.11 64.77)
+			(xy 77.47 41.91) (xy 102.87 41.91)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a61e9668-7bd7-4b05-963f-9f4aa1cfe1cb")
+		(uuid "a8c18f26-d31b-4635-b967-982a47fdad52")
 	)
 	(wire
 		(pts
@@ -1087,13 +1318,23 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 29.21) (xy 102.87 29.21)
+			(xy 110.49 59.69) (xy 144.78 59.69)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b0e29468-b15f-4beb-8f10-30c024c75052")
+		(uuid "ade89079-a14b-4ef2-be7a-e13707f1a624")
+	)
+	(wire
+		(pts
+			(xy 93.98 49.53) (xy 95.25 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af3491a0-530c-4c2e-906c-58982feed688")
 	)
 	(bus
 		(pts
@@ -1107,13 +1348,13 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 34.29) (xy 118.11 34.29)
+			(xy 93.98 29.21) (xy 96.52 29.21)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b77a053d-faa2-46b3-817d-d52bfa81e12b")
+		(uuid "b3c7c96d-08c6-4f2f-ba7f-3608bb4d5463")
 	)
 	(wire
 		(pts
@@ -1135,16 +1376,6 @@
 		)
 		(uuid "bac07fcf-0ecd-42bb-81c5-27ff01b46935")
 	)
-	(wire
-		(pts
-			(xy 48.26 67.31) (xy 125.73 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bc5d03f0-4d45-486b-ae53-cf9cf8642f22")
-	)
 	(bus
 		(pts
 			(xy 147.32 73.66) (xy 151.13 73.66)
@@ -1157,13 +1388,13 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 36.83) (xy 144.78 36.83)
+			(xy 48.26 36.83) (xy 118.11 36.83)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "cb8204f4-90a2-4542-8fa1-ef4242f588ca")
+		(uuid "cb2d8b2b-e5a6-46bf-a14b-018cfa0ec5cc")
 	)
 	(wire
 		(pts
@@ -1205,6 +1436,16 @@
 		)
 		(uuid "d217b3ba-d357-4563-b983-cb59848ff4b8")
 	)
+	(wire
+		(pts
+			(xy 111.76 29.21) (xy 144.78 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d27f442d-a64a-443e-ae93-df7757b85528")
+	)
 	(bus
 		(pts
 			(xy 147.32 49.53) (xy 147.32 52.07)
@@ -1214,6 +1455,16 @@
 			(type default)
 		)
 		(uuid "d86f9cab-abbf-4600-bdf6-d81cc4c456d2")
+	)
+	(wire
+		(pts
+			(xy 62.23 34.29) (xy 110.49 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd138369-ca1d-4e3a-aa39-fdffb431734b")
 	)
 	(bus
 		(pts
@@ -1227,13 +1478,13 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 31.75) (xy 110.49 31.75)
+			(xy 48.26 67.31) (xy 118.11 67.31)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "eee31fba-3f4f-473b-9253-6cdfca58aed1")
+		(uuid "e54cb990-f213-4ba3-8fbd-8d1bc48a4197")
 	)
 	(bus
 		(pts
@@ -1264,6 +1515,16 @@
 			(type default)
 		)
 		(uuid "fb94861b-02f4-469f-8618-3abd824ef95a")
+	)
+	(wire
+		(pts
+			(xy 48.26 46.99) (xy 118.11 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc43056d-423e-4456-8b9f-5fc822f3baa9")
 	)
 	(label "CELL2"
 		(at 137.16 31.75 0)
@@ -1662,6 +1923,74 @@
 		)
 	)
 	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 73.66 41.91 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "02310570-ab94-437b-b9ac-6662b90e1548")
+		(property "Reference" "JP6"
+			(at 73.66 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 73.66 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 73.66 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 73.66 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f7befeba-c417-427a-bc1b-9f210263d574")
+		)
+		(pin "1"
+			(uuid "90957a74-7fd2-4ae1-a8a7-078dd317df34")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OEM:MKVI_BondPad")
 		(at 20.32 62.23 90)
 		(unit 1)
@@ -1691,7 +2020,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 57.15 0)
 			(effects
 				(font
@@ -1731,6 +2060,101 @@
 		)
 	)
 	(symbol
+		(lib_id "formula:200mA_Fuse")
+		(at 125.73 57.15 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0b94f99f-7210-4745-ba5d-472b2a25f769")
+		(property "Reference" "F12"
+			(at 125.7303 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200mA_Fuse"
+			(at 125.7303 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 124.46 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 124.46 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 125.73 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 128.27 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 130.81 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 133.35 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2276082c-2ef0-46d5-9085-fd175a31dfbf")
+		)
+		(pin "1"
+			(uuid "f5d41dc9-a9a7-435f-8095-9fa358b8e140")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OEM:MKVI_BondPad")
 		(at 20.32 39.37 90)
 		(unit 1)
@@ -1760,7 +2184,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 34.29 0)
 			(effects
 				(font
@@ -1800,6 +2224,101 @@
 		)
 	)
 	(symbol
+		(lib_id "formula:200mA_Fuse")
+		(at 102.87 49.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0e3fa71a-fcf8-4684-a925-858b459b8f25")
+		(property "Reference" "F9"
+			(at 102.8703 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200mA_Fuse"
+			(at 102.8703 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 101.6 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 101.6 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 102.87 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 105.41 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 107.95 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 110.49 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b72549c3-9af5-47d5-923b-24d1ddcfa2c2")
+		)
+		(pin "1"
+			(uuid "c54f9b54-07ae-4948-9ea6-7b09c70c3d11")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OEM:MKVI_BondPad")
 		(at 20.32 67.31 90)
 		(unit 1)
@@ -1829,7 +2348,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 62.23 0)
 			(effects
 				(font
@@ -1869,33 +2388,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 106.68 59.69 90)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 58.42 64.77 0)
 		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
+		(exclude_from_sim yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "1586c2d6-c4dc-4742-99c6-6ac733dc60a5")
-		(property "Reference" "F13"
-			(at 106.68 53.34 90)
+		(uuid "17f47bee-e672-4c9f-8550-797cc982888e")
+		(property "Reference" "JP15"
+			(at 58.42 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 106.68 55.88 90)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 58.42 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 106.68 61.468 90)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 58.42 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1904,7 +2423,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 106.68 59.69 0)
+			(at 58.42 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1912,8 +2431,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 106.68 59.69 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 58.42 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1922,15 +2441,83 @@
 			)
 		)
 		(pin "2"
-			(uuid "532902aa-c440-482e-bc5b-734dbef88d98")
+			(uuid "f640d55b-406c-4db3-b1f3-919c28b5d8f8")
 		)
 		(pin "1"
-			(uuid "2d7798ee-1189-4041-b620-0c24f5cd580f")
+			(uuid "4f966de8-e4fb-4bff-88a2-406f2b4b6d8f")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F13")
+					(reference "JP15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 58.42 44.45 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1998f630-1005-409b-b3f7-7165eee275db")
+		(property "Reference" "JP7"
+			(at 58.42 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 58.42 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 58.42 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 58.42 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6e5eb339-33cf-4f46-85d9-c52cc97c9270")
+		)
+		(pin "1"
+			(uuid "8bd7ec8f-f8d9-40be-b51b-c8930149bb3e")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP7")
 					(unit 1)
 				)
 			)
@@ -1966,7 +2553,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 46.99 0)
 			(effects
 				(font
@@ -2006,101 +2593,32 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 106.68 29.21 90)
+		(lib_id "Connector:TestPoint")
+		(at 167.64 26.67 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1c99d0d7-4913-45b6-9b4b-847cad652491")
-		(property "Reference" "F1"
-			(at 106.68 22.86 90)
+		(uuid "1d20f0e3-9540-4d01-b3d0-794bc8dfc1d0")
+		(property "Reference" "TP1"
+			(at 160.02 19.558 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 106.68 25.4 90)
+		(property "Value" "TestPoint"
+			(at 160.02 22.098 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 106.68 30.988 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 106.68 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Fuse"
-			(at 106.68 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "8df1b88d-0eff-498d-9ada-b90f35ceef3c")
-		)
-		(pin "1"
-			(uuid "e8c7208b-47bb-450d-81d1-d8dbfa0a5e62")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 90.17 39.37 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "25188f55-0bc4-41b9-810f-855f08d47ad9")
-		(property "Reference" "JP5"
-			(at 90.17 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 90.17 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 90.17 39.37 0)
+		(property "Footprint" "oem:Wurth-7461115"
+			(at 167.64 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2109,7 +2627,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 90.17 39.37 0)
+			(at 167.64 21.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2117,161 +2635,22 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 90.17 39.37 0)
+		(property "Description" "test point"
+			(at 167.64 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(pin "2"
-			(uuid "f809e6bd-5969-4958-8ee0-9d51dc0f48b9")
 		)
 		(pin "1"
-			(uuid "e77c5d74-97d9-47e5-abc0-2247aca042fb")
+			(uuid "ee0a1df6-a98a-46da-8ef5-671d5bdb4733")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Fuse")
-		(at 106.68 49.53 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "288fc953-bfba-4cee-8ce8-df7c1377e46c")
-		(property "Reference" "F9"
-			(at 106.68 43.18 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Fuse"
-			(at 106.68 45.72 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 106.68 51.308 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 106.68 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Fuse"
-			(at 106.68 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "f5b8cff6-e7d3-4c6e-a81e-5178b0031fe0")
-		)
-		(pin "1"
-			(uuid "412a5cbe-6e7f-4a39-80ca-e2f2cfab75c1")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Fuse")
-		(at 129.54 57.15 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "29d12709-9a0e-41aa-b938-13722a817fc5")
-		(property "Reference" "F12"
-			(at 129.54 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Fuse"
-			(at 129.54 53.34 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 129.54 58.928 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 129.54 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Fuse"
-			(at 129.54 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "d439c820-b940-4618-9b35-d8d9bb5817a6")
-		)
-		(pin "1"
-			(uuid "627a1041-66fd-4a0b-9cf6-a6af2790f9d3")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F12")
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -2307,7 +2686,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 59.69 0)
 			(effects
 				(font
@@ -2347,33 +2726,34 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 58.42 54.61 0)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 90.17 29.21 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "329f51f4-d518-4c2b-a1d8-cce506b8b8b8")
-		(property "Reference" "JP11"
-			(at 58.42 48.26 0)
+		(uuid "323332a2-8838-4a48-80b4-a61d31d51d2a")
+		(property "Reference" "JP1"
+			(at 90.17 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 58.42 50.8 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 90.17 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 58.42 54.61 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 90.17 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2382,7 +2762,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 58.42 54.61 0)
+			(at 90.17 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2390,8 +2770,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 58.42 54.61 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 90.17 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2400,57 +2780,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "28c48a3f-b48a-4e82-8882-2dcdc37aab3a")
+			(uuid "fdb4749e-fdfc-4aa0-b118-51a715e1e0e9")
 		)
 		(pin "1"
-			(uuid "eaf02496-854c-496c-a954-a80d66794c20")
+			(uuid "79c9949c-87f6-4139-b232-1e8147d7e30b")
 		)
 		(instances
-			(project "power_therm"
+			(project ""
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP11")
+					(reference "JP1")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 129.54 36.83 90)
+		(lib_id "formula:200mA_Fuse")
+		(at 102.87 59.69 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "342d1aa6-c67e-4ef6-bdbf-3198c332c634")
-		(property "Reference" "F4"
-			(at 129.54 30.48 90)
+		(uuid "346370b7-82c0-45e1-8d44-1d70e8be0e9e")
+		(property "Reference" "F13"
+			(at 102.8703 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 129.54 33.02 90)
+		(property "Value" "200mA_Fuse"
+			(at 102.8703 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 129.54 38.608 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 129.54 36.83 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 101.6 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2458,8 +2829,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 129.54 36.83 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 101.6 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 102.87 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 105.41 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 107.95 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 110.49 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2468,48 +2875,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "59abed0f-cd29-4c3a-a81e-cc5fa232ba9e")
+			(uuid "0cabebe3-bb5d-4e0a-b0ce-a22437e79b0b")
 		)
 		(pin "1"
-			(uuid "ddd046fa-be14-412b-ab36-323a4aeb6d53")
+			(uuid "24fb2dc7-4ce9-43a4-95ff-2060e3b4d7c6")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F4")
+					(reference "F13")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 44.45 67.31 0)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 90.17 49.53 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "355345a6-6634-4520-a406-4a38db274ea5")
-		(property "Reference" "JP16"
-			(at 44.45 60.96 0)
+		(uuid "356fe9ad-695b-4fd1-a919-6a1e6db45e2f")
+		(property "Reference" "JP9"
+			(at 90.17 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 44.45 63.5 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 90.17 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 44.45 67.31 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 90.17 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2518,7 +2925,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 44.45 67.31 0)
+			(at 90.17 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2526,8 +2933,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 44.45 67.31 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 90.17 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2536,15 +2943,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "479912e2-6f94-4261-a987-6c3367a0492c")
+			(uuid "2184db83-9a65-4a8c-9a0f-8ef758ff3bf0")
 		)
 		(pin "1"
-			(uuid "f57c3910-aa2c-43fb-b8f3-1ac7e267561d")
+			(uuid "35b81f33-0f50-4b18-b7e4-e4ad940c6e8b")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP16")
+					(reference "JP9")
 					(unit 1)
 				)
 			)
@@ -2580,7 +2987,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 44.45 0)
 			(effects
 				(font
@@ -2620,101 +3027,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 114.3 41.91 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "38c44245-5fcb-472c-a7bd-8d35d575e9ba")
-		(property "Reference" "F6"
-			(at 114.3 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Fuse"
-			(at 114.3 38.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 114.3 43.688 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 114.3 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Fuse"
-			(at 114.3 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "f65f2064-c779-493e-8c9f-576ac37acf24")
-		)
-		(pin "1"
-			(uuid "78e8601c-eccf-4a3c-9cef-253055b028e5")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 58.42 64.77 0)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 44.45 36.83 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "3b5ada02-49cb-4d08-b837-e324248bfa00")
-		(property "Reference" "JP15"
-			(at 58.42 58.42 0)
+		(uuid "3cf95afc-0379-490e-b1a5-14d872eb4581")
+		(property "Reference" "JP4"
+			(at 44.45 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 58.42 60.96 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 44.45 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 58.42 64.77 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 44.45 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2723,7 +3062,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 58.42 64.77 0)
+			(at 44.45 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2731,8 +3070,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 58.42 64.77 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 44.45 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2741,48 +3080,47 @@
 			)
 		)
 		(pin "2"
-			(uuid "9b5f21b1-c743-461d-a34c-bc782a3e8a81")
+			(uuid "d39f4cb1-8952-4cc1-b498-7d13a6be2e2b")
 		)
 		(pin "1"
-			(uuid "370e875c-f21f-4baa-a99a-a9a541b9bf20")
+			(uuid "5dea03e6-194c-4f8c-b00c-61d306d4ea89")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP15")
+					(reference "JP4")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 129.54 46.99 90)
+		(lib_id "Connector:TestPoint")
+		(at 167.64 26.67 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3c3e2f64-dbb8-4f7a-bfd1-f7a1fba21296")
-		(property "Reference" "F8"
-			(at 129.54 40.64 90)
+		(uuid "3d00f2c8-829a-4302-8dc2-b613b32e8dea")
+		(property "Reference" "TP20"
+			(at 160.528 34.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 129.54 43.18 90)
+		(property "Value" "TestPoint"
+			(at 163.068 34.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 129.54 48.768 90)
+		(property "Footprint" "oem:Bond Pad(4p)"
+			(at 162.56 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2791,7 +3129,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 129.54 46.99 0)
+			(at 162.56 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2799,8 +3137,73 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 129.54 46.99 0)
+		(property "Description" "test point"
+			(at 167.64 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a8164125-31c9-468b-8542-77f6fa9fdf57")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 73.66 31.75 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3d94e6c2-b330-4346-9b97-44dc0a67585e")
+		(property "Reference" "JP2"
+			(at 73.66 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 73.66 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 73.66 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 73.66 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2809,15 +3212,110 @@
 			)
 		)
 		(pin "2"
-			(uuid "9cc26e5b-2d12-46d1-9dce-b2b1b87a63f3")
+			(uuid "68bec15d-b614-4d48-94fb-55b5f79a0804")
 		)
 		(pin "1"
-			(uuid "5a8eabc5-cde6-4b4c-8f99-a0299faeea33")
+			(uuid "c7cc6fb3-298e-48ad-a3a4-cd2902382351")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F8")
+					(reference "JP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:200mA_Fuse")
+		(at 110.49 31.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "400e0c96-6297-4099-a81d-c84855c89f24")
+		(property "Reference" "F2"
+			(at 110.4903 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200mA_Fuse"
+			(at 110.4903 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 109.22 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 109.22 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 110.49 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 113.03 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 115.57 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 118.11 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "7a187016-117d-4dab-a835-fd5b71cca2b6")
+		)
+		(pin "1"
+			(uuid "8860ec13-a88e-41d3-95a3-3e91d1088eb7")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F2")
 					(unit 1)
 				)
 			)
@@ -2853,7 +3351,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 24.13 0)
 			(effects
 				(font
@@ -2893,33 +3391,128 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 90.17 69.85 0)
+		(lib_id "formula:200mA_Fuse")
+		(at 125.73 36.83 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4994b3fb-3d06-4573-951e-e362949c6364")
+		(property "Reference" "F4"
+			(at 125.7303 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200mA_Fuse"
+			(at 125.7303 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 124.46 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 124.46 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 125.73 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 128.27 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 130.81 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 133.35 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d40bb029-6ed6-4f52-960f-0350c739b6b2")
+		)
+		(pin "1"
+			(uuid "0e423a96-ea7a-4088-87ac-bf0d3f52bcf4")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 44.45 67.31 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "4418ff02-28ac-4ed3-aa9f-195894635aa5")
-		(property "Reference" "JP17"
-			(at 90.17 63.5 0)
+		(uuid "49eddbe0-bec2-4920-b922-f0711fa5d76c")
+		(property "Reference" "JP16"
+			(at 44.45 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 90.17 66.04 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 44.45 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 90.17 69.85 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 44.45 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2928,7 +3521,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 90.17 69.85 0)
+			(at 44.45 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2936,8 +3529,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 90.17 69.85 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 44.45 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2946,57 +3539,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "93424f32-4af0-4dd1-8869-224afccd5169")
+			(uuid "ef28a822-550f-4a9e-95c3-7d8a4e8f3b03")
 		)
 		(pin "1"
-			(uuid "a9c31724-1f47-4b6f-81ae-183b06a501f1")
+			(uuid "71a528f8-7baf-4990-bea5-0177309605ba")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP17")
+					(reference "JP16")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 114.3 52.07 90)
+		(lib_id "formula:200mA_Fuse")
+		(at 118.11 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "4468816f-66ad-4cd5-957c-3adb71628655")
-		(property "Reference" "F10"
-			(at 114.3 45.72 90)
+		(uuid "4a5818fd-c82d-4e4d-9227-2db35ef25a24")
+		(property "Reference" "F7"
+			(at 118.1103 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 114.3 48.26 90)
+		(property "Value" "200mA_Fuse"
+			(at 118.1103 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 114.3 53.848 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 114.3 52.07 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 116.84 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3004,8 +3588,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 114.3 52.07 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 116.84 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 118.11 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 120.65 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 123.19 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 125.73 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3014,57 +3634,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "ca98731c-5f73-4cce-bacd-2fe9c437118c")
+			(uuid "f91486f0-ff97-40ce-9c8b-0115f9d5676a")
 		)
 		(pin "1"
-			(uuid "a8a5ed40-af2b-4a27-a6cf-bdb4d8e13e2d")
+			(uuid "4a287bfe-c7ac-4787-8d82-0941b24ee934")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F10")
+					(reference "F7")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 129.54 67.31 90)
+		(lib_id "formula:200mA_Fuse")
+		(at 118.11 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "5aa60d20-66b7-4099-98d6-9102ad69d40d")
-		(property "Reference" "F16"
-			(at 129.54 60.96 90)
+		(uuid "5ad2ac30-cdca-4d64-aae7-361c353cb1de")
+		(property "Reference" "F15"
+			(at 118.1103 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 129.54 63.5 90)
+		(property "Value" "200mA_Fuse"
+			(at 118.1103 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 129.54 69.088 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 129.54 67.31 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 116.84 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3072,8 +3683,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 129.54 67.31 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 116.84 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 118.11 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 120.65 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 123.19 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 125.73 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3082,116 +3729,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "b35bf0a0-4a5b-4d43-a496-61456abf5621")
+			(uuid "60d834b8-41ce-4ce9-b8b7-90559b1e1bb3")
 		)
 		(pin "1"
-			(uuid "c6c39b66-1a45-47d3-8e0b-fd2a5ca8ec1e")
+			(uuid "284912f8-d32b-47a6-9ed9-f57736369841")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F16")
+					(reference "F15")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 73.66 62.23 0)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 90.17 39.37 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "5d682849-9a0f-4474-bb38-dad6df1450be")
-		(property "Reference" "JP14"
-			(at 73.66 55.88 0)
+		(uuid "63a445a2-b2b1-4d51-ae85-8e63fec1abdb")
+		(property "Reference" "JP5"
+			(at 90.17 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 73.66 58.42 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 90.17 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 73.66 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 73.66 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 73.66 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "474d850d-7239-4189-80e2-329140dc6a5d")
-		)
-		(pin "1"
-			(uuid "bacd50e0-5550-4cec-9847-a3c62d860b35")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP14")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Fuse")
-		(at 121.92 54.61 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "60507728-56b9-46f1-b9d1-26d84aa22996")
-		(property "Reference" "F11"
-			(at 121.92 48.26 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Fuse"
-			(at 121.92 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 121.92 56.388 90)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 90.17 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3200,7 +3779,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 121.92 54.61 0)
+			(at 90.17 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3208,8 +3787,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 121.92 54.61 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 90.17 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3218,15 +3797,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "02382eb3-e1ef-4d3c-bde5-96a3b7ad2b2a")
+			(uuid "e997373f-8dc1-40b7-a182-0ab46d7bd0b3")
 		)
 		(pin "1"
-			(uuid "cb504851-f271-42bf-aaad-b5f26dfb758f")
+			(uuid "c36b9973-fd4f-4d12-8e78-e7cc65bbe44b")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F11")
+					(reference "JP5")
 					(unit 1)
 				)
 			)
@@ -3262,7 +3841,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 36.83 0)
 			(effects
 				(font
@@ -3331,7 +3910,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 29.21 0)
 			(effects
 				(font
@@ -3371,42 +3950,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 58.42 34.29 0)
+		(lib_id "formula:200mA_Fuse")
+		(at 102.87 69.85 0)
 		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
+		(exclude_from_sim no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "6e5d2201-ed28-4353-9c40-3d2a21189e00")
-		(property "Reference" "JP3"
-			(at 58.42 27.94 0)
+		(uuid "6d7cf197-e183-4d1f-a4da-3d81c23937e2")
+		(property "Reference" "F17"
+			(at 102.8703 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 58.42 30.48 0)
+		(property "Value" "200mA_Fuse"
+			(at 102.8703 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 58.42 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 58.42 34.29 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 101.6 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3414,8 +3984,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 58.42 34.29 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 101.6 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 102.87 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 105.41 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 107.95 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 110.49 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3424,15 +4030,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "ec6fa2fc-cc4c-4b43-b2bc-be97b9de50f0")
+			(uuid "2b809d69-a168-433b-886d-8500c751de1a")
 		)
 		(pin "1"
-			(uuid "19f662a0-7473-491f-9c4b-ae0195cacde6")
+			(uuid "0afc48aa-f106-4a5c-84dd-789952b73d25")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP3")
+					(reference "F17")
 					(unit 1)
 				)
 			)
@@ -3468,7 +4074,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 49.53 0)
 			(effects
 				(font
@@ -3508,42 +4114,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 44.45 36.83 0)
+		(lib_id "formula:200mA_Fuse")
+		(at 125.73 46.99 0)
 		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
+		(exclude_from_sim no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "762e173a-0ba8-4458-a5aa-bcbececd258e")
-		(property "Reference" "JP4"
-			(at 44.45 30.48 0)
+		(uuid "736c36d8-c018-43db-9af4-f443237a3baf")
+		(property "Reference" "F8"
+			(at 125.7303 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 44.45 33.02 0)
+		(property "Value" "200mA_Fuse"
+			(at 125.7303 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 44.45 36.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 44.45 36.83 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 124.46 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3551,8 +4148,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 44.45 36.83 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 124.46 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 125.73 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 128.27 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 130.81 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 133.35 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3561,83 +4194,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "864b9d0f-653b-4221-870e-fa27fb9bc193")
+			(uuid "1bc7bb6a-01a7-4312-b73a-f5d36e62229d")
 		)
 		(pin "1"
-			(uuid "4d586d7f-0bc6-459d-b062-a1f3e7c323dc")
+			(uuid "f032d4a8-f496-4015-8791-81c9515da423")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 73.66 41.91 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "76d9f767-6455-4735-8dda-6261b3ea0628")
-		(property "Reference" "JP6"
-			(at 73.66 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 73.66 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 73.66 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 73.66 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 73.66 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "0903c291-bf26-4656-b11e-bda3926a0bb0")
-		)
-		(pin "1"
-			(uuid "3c5d5e20-184c-400d-8f61-94c3832aca9e")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP6")
+					(reference "F8")
 					(unit 1)
 				)
 			)
@@ -3673,7 +4238,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 41.91 0)
 			(effects
 				(font
@@ -3713,6 +4278,142 @@
 		)
 	)
 	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 73.66 52.07 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "77aba7b5-8dd4-4a03-bbe2-fbfc81e74d5f")
+		(property "Reference" "JP10"
+			(at 73.66 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 73.66 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 73.66 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 73.66 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c32d8661-e620-41a7-aa08-f608d4de167d")
+		)
+		(pin "1"
+			(uuid "e58d464a-37c2-4561-b975-5c195f4c567f")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 58.42 54.61 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8561baec-702a-488e-9790-780c55b79216")
+		(property "Reference" "JP11"
+			(at 58.42 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 58.42 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 58.42 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 58.42 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "1a008948-8443-4b4b-8650-26677a07c1eb")
+		)
+		(pin "1"
+			(uuid "f0b0d91e-f574-4a78-abb1-6e74ce5d0927")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OEM:MKVI_BondPad")
 		(at 20.32 59.69 90)
 		(unit 1)
@@ -3742,7 +4443,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 54.61 0)
 			(effects
 				(font
@@ -3782,33 +4483,128 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 44.45 46.99 0)
+		(lib_id "formula:200mA_Fuse")
+		(at 104.14 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "868bbb68-7eb5-4fc0-9139-0cb830cdb767")
+		(property "Reference" "F1"
+			(at 104.1403 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200mA_Fuse"
+			(at 104.1403 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 102.87 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 102.87 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 104.14 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 106.68 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 109.22 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 111.76 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9a93baae-95b4-476c-b8db-e86bf63bdffe")
+		)
+		(pin "1"
+			(uuid "7dad577e-09a4-4f2c-b7dc-afa9e19aab5f")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 90.17 59.69 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "91f0fb4c-22c7-4e5c-91c6-df722cb1dc00")
-		(property "Reference" "JP8"
-			(at 44.45 40.64 0)
+		(uuid "92b1339a-4193-4216-a47d-0b85fcd4540c")
+		(property "Reference" "JP13"
+			(at 90.17 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 44.45 43.18 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 90.17 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 44.45 46.99 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 90.17 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3817,7 +4613,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 44.45 46.99 0)
+			(at 90.17 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3825,8 +4621,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 44.45 46.99 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 90.17 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3835,57 +4631,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "29c862fe-4206-4e84-b56f-6b0ba85342f2")
+			(uuid "02efb9b5-9fd6-40a7-a862-9715768a1572")
 		)
 		(pin "1"
-			(uuid "f9374ce8-fba5-4913-bce9-804b9bcef602")
+			(uuid "6da1ed45-f391-4dea-b055-3b3cf870ed1d")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP8")
+					(reference "JP13")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 106.68 69.85 90)
+		(lib_id "formula:200mA_Fuse")
+		(at 110.49 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "ae538f9b-c2a9-4351-ac6d-2a02c081d568")
-		(property "Reference" "F17"
-			(at 106.68 63.5 90)
+		(uuid "9b72644a-ae40-4f24-9376-3c3bbdc32954")
+		(property "Reference" "F6"
+			(at 110.4903 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 106.68 66.04 90)
+		(property "Value" "200mA_Fuse"
+			(at 110.4903 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 106.68 71.628 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 106.68 69.85 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 109.22 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3893,8 +4680,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 106.68 69.85 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 109.22 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3902,49 +4689,8 @@
 				(hide yes)
 			)
 		)
-		(pin "2"
-			(uuid "9f2b00ae-8a09-4310-b5cf-9b409795d412")
-		)
-		(pin "1"
-			(uuid "4b890482-a058-4277-a54a-688c746492ae")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F17")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Fuse")
-		(at 121.92 64.77 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "af5b26f1-84db-4004-ad2c-d17874d4d0fe")
-		(property "Reference" "F15"
-			(at 121.92 58.42 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Fuse"
-			(at 121.92 60.96 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 121.92 66.548 90)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 110.49 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3952,8 +4698,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 121.92 64.77 0)
+		(property "MPN" "507-1767-1-ND"
+			(at 113.03 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3961,8 +4707,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 121.92 64.77 0)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 115.57 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 118.11 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3971,48 +4726,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "e859ce54-5834-48a2-b6c1-0fd13404453d")
+			(uuid "5b00a545-9460-4bbe-8886-4c68b11a6bb3")
 		)
 		(pin "1"
-			(uuid "fcbc6f0d-bf3b-476d-b4c0-eeeb33cb1f05")
+			(uuid "98a08731-af0d-4703-800e-deb62f3d0f44")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F15")
+					(reference "F6")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 73.66 31.75 0)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 58.42 34.29 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "b414ae5a-b540-4811-8b57-d80054200bf8")
-		(property "Reference" "JP2"
-			(at 73.66 25.4 0)
+		(uuid "9c3d5790-1721-4a1b-9842-61a126e17ff0")
+		(property "Reference" "JP3"
+			(at 58.42 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 73.66 27.94 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 58.42 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 73.66 31.75 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 58.42 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4021,7 +4776,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 73.66 31.75 0)
+			(at 58.42 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4029,8 +4784,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 73.66 31.75 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 58.42 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4039,57 +4794,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "118d2cff-e4bf-44e6-bb0a-2af28c5ae515")
+			(uuid "d2a28fc1-3ab0-4d39-a6a5-1f5c9b42f1f3")
 		)
 		(pin "1"
-			(uuid "78c032c9-6d35-4100-8344-033f16db6dff")
+			(uuid "fe295a48-242e-4e3b-a2da-9d116f2a03ac")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP2")
+					(reference "JP3")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 121.92 44.45 90)
+		(lib_id "formula:200mA_Fuse")
+		(at 110.49 52.07 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "ba93dd30-84a5-41db-b601-c1d5a9092cd7")
-		(property "Reference" "F7"
-			(at 121.92 38.1 90)
+		(uuid "9ffcee0d-36e4-40e0-8670-f7a2bd5de76d")
+		(property "Reference" "F10"
+			(at 110.4903 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 121.92 40.64 90)
+		(property "Value" "200mA_Fuse"
+			(at 110.4903 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 121.92 46.228 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 121.92 44.45 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 109.22 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4097,8 +4843,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 121.92 44.45 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 109.22 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 110.49 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 113.03 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 115.57 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 118.11 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4107,48 +4889,32 @@
 			)
 		)
 		(pin "2"
-			(uuid "ec003e39-2a1b-4ca2-aab1-968bc24758ae")
+			(uuid "3a6fe632-19e8-4f06-97f3-283c3d5b3a5a")
 		)
 		(pin "1"
-			(uuid "fff63c92-ed37-4a4c-a3e7-70d7a84be02c")
+			(uuid "70da2abb-2f83-4502-bf00-2b7267d2e253")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F7")
+					(reference "F10")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 114.3 31.75 90)
+		(lib_id "power:GND")
+		(at 170.18 26.67 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "be18833d-1e7b-42d5-ac8c-afee54a72e61")
-		(property "Reference" "F2"
-			(at 114.3 25.4 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Fuse"
-			(at 114.3 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 114.3 33.528 90)
+		(uuid "a940ca06-4198-402e-954c-0e875a7b0f99")
+		(property "Reference" "#PWR?"
+			(at 170.18 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4156,8 +4922,16 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 114.3 31.75 0)
+		(property "Value" "GND"
+			(at 170.18 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 170.18 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4165,8 +4939,109 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 114.3 31.75 0)
+		(property "Datasheet" ""
+			(at 170.18 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 170.18 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fbdc81c5-0236-474b-bc2d-b1de27266f22")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:200mA_Fuse")
+		(at 118.11 34.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b9d83520-829b-4ada-85dc-3efa9c731442")
+		(property "Reference" "F3"
+			(at 118.1103 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200mA_Fuse"
+			(at 118.1103 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 116.84 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 116.84 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 118.11 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 120.65 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 123.19 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 125.73 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4175,15 +5050,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "023fb1fe-ea32-41f4-881f-f74bad763c15")
+			(uuid "f94e99ed-95fa-44df-b18c-7039272979fc")
 		)
 		(pin "1"
-			(uuid "82623d63-3654-492e-ad67-dd6fd8a18438")
+			(uuid "a92b1865-e96b-473d-8fbf-48dbba18d0eb")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F2")
+					(reference "F3")
 					(unit 1)
 				)
 			)
@@ -4219,7 +5094,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 64.77 0)
 			(effects
 				(font
@@ -4259,33 +5134,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 90.17 49.53 0)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 73.66 62.23 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "c08770cd-8b83-4d65-ab3d-00fc397f75eb")
-		(property "Reference" "JP9"
-			(at 90.17 43.18 0)
+		(uuid "c7ae0d08-096a-49c4-bf85-fc084f50ece1")
+		(property "Reference" "JP14"
+			(at 73.66 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 90.17 45.72 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 73.66 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 90.17 49.53 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 73.66 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4294,7 +5169,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 90.17 49.53 0)
+			(at 73.66 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4302,8 +5177,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 90.17 49.53 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 73.66 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4312,57 +5187,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "3052d090-51ec-4c50-89fe-d71843a176c7")
+			(uuid "ec97e94e-4405-41bb-ab12-b333d3dc7af6")
 		)
 		(pin "1"
-			(uuid "6394d1ae-9317-4a54-a9c0-3bb0021b358c")
+			(uuid "86d673e4-e275-4f52-8cd1-84a1084c6578")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP9")
+					(reference "JP14")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 121.92 34.29 90)
+		(lib_id "formula:200mA_Fuse")
+		(at 110.49 62.23 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "c5954cdc-17b7-417c-867d-9b1d59584ead")
-		(property "Reference" "F3"
-			(at 121.92 27.94 90)
+		(uuid "c85917a6-14bc-4798-9c75-82b500e7e8fc")
+		(property "Reference" "F14"
+			(at 110.4903 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 121.92 30.48 90)
+		(property "Value" "200mA_Fuse"
+			(at 110.4903 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 121.92 36.068 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 121.92 34.29 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 109.22 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4370,8 +5236,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 121.92 34.29 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 109.22 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 110.49 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 113.03 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 115.57 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 118.11 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4380,48 +5282,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "ccd34d6b-3096-4940-af3a-86f5cd76396f")
+			(uuid "ec177aad-2110-4705-bc9b-3dfb76a119c1")
 		)
 		(pin "1"
-			(uuid "d5ccc391-da60-4092-b86a-f42bd3762066")
+			(uuid "85fa0d77-9fe5-442c-a460-efd4161c37cf")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F3")
+					(reference "F14")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 90.17 29.21 0)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 44.45 46.99 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "cf312ac7-135d-454b-aea8-d38860cf828f")
-		(property "Reference" "JP1"
-			(at 90.17 22.86 0)
+		(uuid "c8918f5c-e540-4356-b03f-0ff21e5c2e09")
+		(property "Reference" "JP8"
+			(at 44.45 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 90.17 25.4 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 44.45 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 90.17 29.21 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 44.45 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4430,7 +5332,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 90.17 29.21 0)
+			(at 44.45 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4438,8 +5340,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 90.17 29.21 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 44.45 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4448,15 +5350,84 @@
 			)
 		)
 		(pin "2"
-			(uuid "878b843c-58ad-459f-8476-cc4086278e42")
+			(uuid "15520164-aca2-446e-8907-4f8e92a4e423")
 		)
 		(pin "1"
-			(uuid "331e9e30-c14d-4878-90ab-aa0801ac4118")
+			(uuid "77bebeef-4ab7-4a32-8bfe-c51f06462113")
 		)
 		(instances
-			(project ""
+			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP1")
+					(reference "JP8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:MKVI_BondPad")
+		(at 20.32 69.85 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cb74deca-7f43-485f-897d-d79ddeb5eb3a")
+		(property "Reference" "TP2"
+			(at 17.78 73.1521 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 17.78 71.8821 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "oem:Wurth-7461115"
+			(at 15.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 15.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 20.32 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "449cc4a9-e6b6-4ba5-8d7d-267f7e69424e")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -4492,7 +5463,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 31.75 0)
 			(effects
 				(font
@@ -4532,42 +5503,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 106.68 39.37 90)
+		(lib_id "formula:200mA_Fuse")
+		(at 125.73 67.31 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "d4d9132b-3b59-4f3b-a849-ec00ce2aa0c6")
-		(property "Reference" "F5"
-			(at 106.68 33.02 90)
+		(uuid "ddefacf3-c588-4d09-a6b1-9e5e0eb4be4a")
+		(property "Reference" "F16"
+			(at 125.7303 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 106.68 35.56 90)
+		(property "Value" "200mA_Fuse"
+			(at 125.7303 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 106.68 41.148 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 106.68 39.37 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 124.46 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4575,8 +5537,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 106.68 39.37 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 124.46 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 125.73 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 128.27 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 130.81 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 133.35 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4585,57 +5583,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "f9735edb-c158-4c5d-ac2e-777b8a5943d5")
+			(uuid "71cd2a50-639f-46d9-922d-9c5d37f4b9f3")
 		)
 		(pin "1"
-			(uuid "db868bb1-b232-4f27-8781-05927fd845c9")
+			(uuid "a06bd140-223e-4f34-a2ef-2b4b23fe2c0c")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F5")
+					(reference "F16")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 73.66 52.07 0)
+		(lib_id "formula:200mA_Fuse")
+		(at 118.11 54.61 0)
 		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
+		(exclude_from_sim no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "d640852a-8c39-49df-84f6-45b79f612270")
-		(property "Reference" "JP10"
-			(at 73.66 45.72 0)
+		(uuid "e1ec775b-0022-4e93-a161-93737fb75b77")
+		(property "Reference" "F11"
+			(at 118.1103 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 73.66 48.26 0)
+		(property "Value" "200mA_Fuse"
+			(at 118.1103 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 73.66 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 73.66 52.07 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 116.84 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4643,8 +5632,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 73.66 52.07 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 116.84 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 118.11 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 120.65 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 123.19 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 125.73 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4653,15 +5678,83 @@
 			)
 		)
 		(pin "2"
-			(uuid "4579e4e4-0024-43ef-a9e9-3601a35dfd16")
+			(uuid "287ced4b-62d8-4891-8b97-9df3311bba66")
 		)
 		(pin "1"
-			(uuid "47c251ac-7144-4920-ac5d-4b1e25e28131")
+			(uuid "c6549269-014b-4d40-8355-0a8728885af9")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP10")
+					(reference "F11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 44.45 57.15 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e31aa432-38d6-40fa-901b-ad68514e7323")
+		(property "Reference" "JP12"
+			(at 44.45 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 44.45 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 44.45 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 44.45 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b8ddaa90-3db1-413f-8786-212d091b8ef8")
+		)
+		(pin "1"
+			(uuid "0b5b452d-d34b-4bf0-a80b-3d128afb6085")
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
+					(reference "JP12")
 					(unit 1)
 				)
 			)
@@ -4697,7 +5790,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 39.37 0)
 			(effects
 				(font
@@ -4766,7 +5859,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 52.07 0)
 			(effects
 				(font
@@ -4806,42 +5899,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Fuse")
-		(at 114.3 62.23 90)
+		(lib_id "formula:200mA_Fuse")
+		(at 102.87 39.37 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "edb2afa6-01f0-4c21-870a-1c1477a1b3e0")
-		(property "Reference" "F14"
-			(at 114.3 55.88 90)
+		(uuid "f4b2f13a-f6dc-4660-9d27-5c61b07846df")
+		(property "Reference" "F5"
+			(at 102.8703 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Fuse"
-			(at 114.3 58.42 90)
+		(property "Value" "200mA_Fuse"
+			(at 102.8703 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "footprints:Fuse_1206"
-			(at 114.3 64.008 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 114.3 62.23 0)
+		(property "Footprint" "Fuse:Fuse_0805_2012Metric"
+			(at 101.6 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4849,8 +5933,44 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Fuse"
-			(at 114.3 62.23 0)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/yageo/SMD0805B020TF/15212938"
+			(at 101.6 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polymeric PTC Resettable Fuse 9V 200 mA Ih Surface Mount 0805 (2012 Metric), Concave"
+			(at 102.87 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1767-1-ND"
+			(at 105.41 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCG0110AF2C/507-1767-1-ND/4156157"
+			(at 107.95 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 110.49 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4859,48 +5979,48 @@
 			)
 		)
 		(pin "2"
-			(uuid "6222a5f2-c699-40e4-a6b0-0f3afc5c2212")
+			(uuid "9ae7497d-00b3-47e4-a7dc-c6e415f8640f")
 		)
 		(pin "1"
-			(uuid "1ebacf6d-ec9d-4305-9c8e-7fab1050a6e5")
+			(uuid "d1c28ae8-fb9b-41b2-8703-8ad7076b669c")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "F14")
+					(reference "F5")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 44.45 57.15 0)
+		(lib_id "Jumper:SolderJumper_2_Bridged")
+		(at 90.17 69.85 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "f3add83a-417b-481d-bf85-d99567ca0853")
-		(property "Reference" "JP12"
-			(at 44.45 50.8 0)
+		(uuid "f50ced32-96bb-4134-aed2-38ba813bd056")
+		(property "Reference" "JP17"
+			(at 90.17 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 44.45 53.34 0)
+		(property "Value" "SolderJumper_2_Bridged"
+			(at 90.17 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 44.45 57.15 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm"
+			(at 90.17 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4909,7 +6029,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 44.45 57.15 0)
+			(at 90.17 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4917,8 +6037,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 44.45 57.15 0)
+		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
+			(at 90.17 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4927,15 +6047,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "e1ccf851-5c02-4d01-976d-e4f2c903e30a")
+			(uuid "588e97e7-ee48-41db-97fa-604a9d454c2c")
 		)
 		(pin "1"
-			(uuid "14c120a0-afaa-4fcd-a0e5-da038924bca1")
+			(uuid "171aff98-d8e4-4f79-be67-9c07b618bbf9")
 		)
 		(instances
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP12")
+					(reference "JP17")
 					(unit 1)
 				)
 			)
@@ -4971,7 +6091,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "oem:Bond Pad"
+		(property "Footprint" "oem:Bond Pad(4p)"
 			(at 20.32 26.67 0)
 			(effects
 				(font
@@ -5005,142 +6125,6 @@
 			(project "power_therm"
 				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
 					(reference "TP4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 90.17 59.69 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "fecefe0b-a083-462a-86a4-dd150236725e")
-		(property "Reference" "JP13"
-			(at 90.17 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 90.17 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 90.17 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 90.17 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 90.17 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "fa4eb6bc-dbf5-487c-ac2c-45a30b8c7922")
-		)
-		(pin "1"
-			(uuid "c823588e-717d-4a23-8b3e-23c96715c9fd")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP13")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 58.42 44.45 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ff941d2e-84fa-4e48-bd86-7689dabdc098")
-		(property "Reference" "JP7"
-			(at 58.42 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 58.42 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm"
-			(at 58.42 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 58.42 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 58.42 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "19c15e7d-c989-4a37-b8e9-b2d7971b5f25")
-		)
-		(pin "1"
-			(uuid "456bbd7d-bc66-49bf-8658-5c79427508a7")
-		)
-		(instances
-			(project "power_therm"
-				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc/f3090018-c2ca-49da-b6ce-efc594670d93"
-					(reference "JP7")
 					(unit 1)
 				)
 			)
