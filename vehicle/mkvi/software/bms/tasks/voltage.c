@@ -3,6 +3,7 @@
 #include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
+#include "vehicle/mkvi/software/bms/utils/cell_balancing.h"
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 
 #define NUM_CELLS_IN_REG (3)
@@ -39,7 +40,11 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
         wakeup_idle(NUM_ICS);
 
         // + 1 because of the way _rdcv_reg is written
+        disable_cell_balancing();
         LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
+        if (bms_core.cell_balancing_status) {
+            enable_cell_balancing();
+        }
 
         for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach segment/chip
             bms_voltage.ic = ic;

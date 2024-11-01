@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 /**
  * Check the internal die temps of all ICs.
  *
@@ -12,7 +14,7 @@ bool check_ic_temps(void);
  * balancing config in bms_config.h. Leaves cell balancing disabled. Should be
  * run on hardware init.
  */
-void cell_balancing_init(void);
+void cell_balancing_task(uint8_t lv_seg_index, uint8_t lv_cell_index);
 
 /**
  * Enable cell balancing via S pin unmuting.

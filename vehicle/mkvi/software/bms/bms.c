@@ -72,8 +72,6 @@ void hw_init() {
 
     wakeup_sleep(NUM_ICS);
 
-    cell_balancing_init();
-
     // updater_init(BTLDR_ID, 5);
     gpio_set_pin(DEBUG_LED_1);
 }
@@ -175,9 +173,6 @@ int main(void) {
             uint8_t lv_seg_index = UINT8_MAX;
             uint8_t lv_cell_index = UINT8_MAX;
             monitor_cells(&lowest_voltage, &lv_seg_index, &lv_cell_index);
-            can_print("LV", lowest_voltage);
-            can_print("SEG", lv_seg_index);
-            can_print("CELL", lv_cell_index);
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             } else {
@@ -200,16 +195,21 @@ int main(void) {
                 }
             }
 
-            check_ic_temps();
-            if (bms_core.cell_balancing_status) {
-                enable_cell_balancing();
-            } else {
-                disable_cell_balancing();
-            }
-
             loop_counter++;
 
-            if (loop_counter == 1000) {
+            if (loop_counter % 10 == 0) {
+                // Only enable cell balancing if IC temps below TJ_MAX
+                if (check_ic_temps()) {
+                    bms_core.cell_balancing_status = true;
+                    can_print("bal_on");
+                } else {
+                    bms_core.cell_balancing_status = false;
+                    can_print("bal_off");
+                }
+                can_print("lv", lowest_voltage);
+                can_print("seg", lv_seg_index);
+                can_print("cell", lv_cell_index);
+                cell_balancing_task(lv_seg_index, lv_cell_index);
                 loop_counter = 0;
             }
             // updater_loop();
