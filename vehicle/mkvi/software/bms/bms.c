@@ -55,7 +55,6 @@ void hw_init() {
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
 
     gpio_set_pin(COOLING_PUMP_LSD);
-    
 
     gpio_set_mode(BSPD_CURRENT_THRESH, INPUT);
 
@@ -71,15 +70,12 @@ void hw_init() {
 
     can_receive_charging_fbk();
 
-  
     wakeup_sleep(NUM_ICS);
 
     cell_balancing_init();
 
-
     // updater_init(BTLDR_ID, 5);
     gpio_set_pin(DEBUG_LED_1);
-    
 }
 
 static void monitor_cells(void) {
@@ -126,7 +122,7 @@ static void monitor_cells(void) {
 
     // read current
     int16_t current = 0;
-    //current_task(&current);
+    // current_task(&current);
     current = (adc_read(CURRENT_SENSE_VOUT) - 568) * 24;
     bms_core.pack_current = current;
 
@@ -194,10 +190,11 @@ int main(void) {
                 }
             }
 
+            check_ic_temps();
             if (bms_core.cell_balancing_status) {
-              enable_cell_balancing();
+                enable_cell_balancing();
             } else {
-              disable_cell_balancing();
+                disable_cell_balancing();
             }
 
             loop_counter++;

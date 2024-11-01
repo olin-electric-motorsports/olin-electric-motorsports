@@ -1,6 +1,13 @@
 #pragma once
 
 /**
+ * Check the internal die temps of all ICs.
+ *
+ * @returns True if temperatures are under CELL_TJ_ITMP_MAX, False if above
+ */
+bool check_ic_temps(void);
+
+/**
  * Write necessary register configurations for cell balancing based on the cell
  * balancing config in bms_config.h. Leaves cell balancing disabled. Should be
  * run on hardware init.
