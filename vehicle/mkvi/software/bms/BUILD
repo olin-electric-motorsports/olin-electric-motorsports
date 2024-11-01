@@ -43,7 +43,7 @@ cc_firmware(
         "//vehicle/common/ltc6811:ltc681x",
         "//vehicle/mkvi/software/bms/tasks:bms_tasks",
         "//vehicle/mkvi/software/bms/utils:bms_utils",
-        "//projects/can_print"
+        "//projects/can_print",
     ],
 )
 
