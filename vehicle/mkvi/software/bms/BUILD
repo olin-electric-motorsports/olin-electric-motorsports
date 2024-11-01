@@ -28,7 +28,7 @@ cc_firmware(
     srcs = [
         "bms.c",
     ],
-    btldr = "//projects/btldr:bms_btldr",
+    # btldr = "//projects/btldr:bms_btldr",
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
@@ -39,7 +39,7 @@ cc_firmware(
         "//libs/gpio",
         "//libs/spi",
         "//libs/timer",
-        "//projects/btldr:btldr_lib",
+        # "//projects/btldr:btldr_lib",
         "//vehicle/common/ltc6811:ltc681x",
         "//vehicle/mkvi/software/bms/tasks:bms_tasks",
         "//vehicle/mkvi/software/bms/utils:bms_utils",

@@ -125,10 +125,10 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D, E, F)
 
-    // Fault handling for cell voltage average on segment 1
-    if (pack_voltages[1] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
-        set_fault(BMS_FAULT_OVERVOLTAGE);
-    } else if (pack_voltages[1] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
-        set_fault(BMS_FAULT_UNDERVOLTAGE);
-    }
+    // // Fault handling for cell voltage average on segment 1
+    // if (pack_voltages[1] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
+    //     set_fault(BMS_FAULT_OVERVOLTAGE);
+    // } else if (pack_voltages[1] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
+    //     set_fault(BMS_FAULT_UNDERVOLTAGE);
+    // }
 }
