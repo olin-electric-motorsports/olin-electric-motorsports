@@ -18,12 +18,16 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
 
     wakeup_sleep(NUM_ICS);
 
+    disable_cell_balancing();
     // Start cell voltage ADC conversions
     LTC681x_adcv(MD_7KHZ_3KHZ, DCP_ENABLED, CELL_CH_ALL);
 
     // Blocks until all ADCs are done being read
     LTC681x_pollAdc(); // Ignore return value because we don't care how long it
                        // took
+    if (bms_core.cell_balancing_status) {
+        enable_cell_balancing();
+    }
 
     wakeup_idle(NUM_ICS);
 
@@ -40,11 +44,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
         wakeup_idle(NUM_ICS);
 
         // + 1 because of the way _rdcv_reg is written
-        disable_cell_balancing();
         LTC681x_rdcv_reg(cell_reg + 1, NUM_ICS, raw_data);
-        if (bms_core.cell_balancing_status) {
-            enable_cell_balancing();
-        }
 
         for (uint8_t ic = 0; ic < NUM_ICS; ic++) { // foreach segment/chip
             bms_voltage.ic = ic;
