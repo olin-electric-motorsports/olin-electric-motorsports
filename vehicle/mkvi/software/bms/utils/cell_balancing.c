@@ -63,13 +63,13 @@ void cell_balancing_task(uint8_t lv_seg_index, uint8_t lv_cell_index) {
 
     // Automatic cell balancing
     for (uint8_t segment = 0; segment < NUM_ICS; segment++) {
-        can_print("segment", segment);
+        // can_print("segment", segment);
         if (lv_seg_index == segment) {
             cells_to_balance[segment] = 0x1FFFF & ~(1 << lv_cell_index);
         } else {
             cells_to_balance[segment] = 0x1FFFF;
         }
-        can_print("cells", cells_to_balance[segment]);
+        can_print("s_pins", cells_to_balance[segment]);
     }
 
     // Set discharge timer duration to zero to disable watchdog and set

@@ -210,6 +210,7 @@ int main(void) {
                 can_print("seg", lv_seg_index);
                 can_print("cell", lv_cell_index);
                 cell_balancing_task(lv_seg_index, lv_cell_index);
+                can_print("--------");
                 loop_counter = 0;
             }
             // updater_loop();
