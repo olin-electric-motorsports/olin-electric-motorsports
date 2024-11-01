@@ -18,6 +18,8 @@
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/i2c_helpers.h"
 
+#include "projects/can_print/can_print.h"
+
 // #include "projects/btldr/btldr_lib.h"
 // #include "projects/btldr/git_sha.h"
 // #include "projects/btldr/libs/image/api.h"
@@ -109,7 +111,7 @@ static void monitor_cells(void) {
     }
 
     if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        // set_fault(BMS_FAULT_OVERTEMPERATURE);
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
     } else {
         // clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
