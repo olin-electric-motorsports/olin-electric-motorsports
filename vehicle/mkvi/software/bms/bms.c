@@ -194,6 +194,12 @@ int main(void) {
                 }
             }
 
+            if (bms_core.cell_balancing_status) {
+              enable_cell_balancing();
+            } else {
+              disable_cell_balancing();
+            }
+
             loop_counter++;
 
             if (loop_counter == 1000) {
