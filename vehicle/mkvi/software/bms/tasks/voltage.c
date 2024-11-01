@@ -11,7 +11,8 @@
 #define NUM_CELLS_PER_IC (17)
 
 void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
-                  uint16_t* pec_errors) {
+                  uint16_t* lowest_voltage, uint8_t* lv_seg_index,
+                  uint8_t* lv_cell_index, uint16_t* pec_errors) {
     *pack_voltage = 0;
 
     wakeup_sleep(NUM_ICS);
@@ -50,10 +51,27 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             // Get cell voltages
             uint16_t cell_1
                 = raw_data[raw_idx + 0] + (raw_data[raw_idx + 1] << 8);
+            if (cell_1 < *lowest_voltage) {
+                *lowest_voltage = cell_1;
+                *lv_seg_index = ic;
+                *lv_cell_index = cell_reg * 3;
+            }
             uint16_t cell_2
                 = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
+            if (cell_2 < *lowest_voltage) {
+                *lowest_voltage = cell_2;
+                *lv_seg_index = ic;
+                *lv_cell_index = cell_reg * 3 + 1;
+            }
             uint16_t cell_3
                 = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
+            if (cell_reg != 5) { // Exclude last cell
+                if (cell_3 < *lowest_voltage) {
+                    *lowest_voltage = cell_3;
+                    *lv_seg_index = ic;
+                    *lv_cell_index = cell_reg * 3 + 2;
+                }
+            }
 
             // Core receives all 1s when the CSC is MIA
             if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)
@@ -86,7 +104,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             //     pack_voltages[ic] += cell_2;
             //     pack_voltages[ic] += cell_3;
             // } else {
-                // Check under/overvoltage thresholds
+            // Check under/overvoltage thresholds
             if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
                 *ov += 1;
             } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {

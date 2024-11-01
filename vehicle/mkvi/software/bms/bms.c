@@ -78,7 +78,8 @@ void hw_init() {
     gpio_set_pin(DEBUG_LED_1);
 }
 
-static void monitor_cells(void) {
+static void monitor_cells(uint16_t* lowest_voltage, uint8_t* lv_seg_index,
+                          uint8_t* lv_cell_index) {
     // read all temperatures
     static uint32_t ot = 0;
     static uint32_t ut = 0;
@@ -117,7 +118,9 @@ static void monitor_cells(void) {
 
     uint16_t pack_voltage = 0;
     pec_errors = 0;
-    voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
+    voltage_task(&pack_voltage, &ov, &uv, lowest_voltage, lv_seg_index,
+                 lv_cell_index, &pec_errors);
+
     bms_core.pack_voltage = pack_voltage;
 
     // read current
@@ -167,7 +170,14 @@ int main(void) {
 
     while (true) {
         if (run_10ms) {
-            monitor_cells();
+            // Cell balancing
+            uint16_t lowest_voltage = UINT16_MAX;
+            uint8_t lv_seg_index = UINT8_MAX;
+            uint8_t lv_cell_index = UINT8_MAX;
+            monitor_cells(&lowest_voltage, &lv_seg_index, &lv_cell_index);
+            can_print("LV", lowest_voltage);
+            can_print("SEG", lv_seg_index);
+            can_print("CELL", lv_cell_index);
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             } else {
