@@ -20,5 +20,6 @@ cc_library(
         "//vehicle/common/ltc6811:ltc681x",
         "//vehicle/mkvi/software/bms:bms_config",
         "//vehicle/mkvi/software/bms:can_api",
+        "//projects/can_print"
     ],
 )
