@@ -76,8 +76,9 @@ void hw_init() {
     gpio_set_pin(DEBUG_LED_1);
 }
 
-static void monitor_cells(uint16_t* lowest_voltage, uint8_t* lv_seg_index,
-                          uint8_t* lv_cell_index) {
+static void monitor_cells(uint16_t* lowest_voltage,
+                          uint16_t* last_lowest_voltage,
+                          uint32_t (*cells_to_balance)[NUM_ICS]) {
     // read all temperatures
     static uint32_t ot = 0;
     static uint32_t ut = 0;
@@ -116,8 +117,8 @@ static void monitor_cells(uint16_t* lowest_voltage, uint8_t* lv_seg_index,
 
     uint16_t pack_voltage = 0;
     pec_errors = 0;
-    voltage_task(&pack_voltage, &ov, &uv, lowest_voltage, lv_seg_index,
-                 lv_cell_index, &pec_errors);
+    voltage_task(&pack_voltage, &ov, &uv, lowest_voltage, last_lowest_voltage,
+                 cells_to_balance, &pec_errors);
 
     bms_core.pack_voltage = pack_voltage;
 
@@ -165,14 +166,16 @@ int main(void) {
 
     // Tracks the number of times the 10ms loop has been run
     uint8_t loop_counter = 0;
+    uint16_t last_lowest_voltage = UINT16_MAX;
 
     while (true) {
         if (run_10ms) {
             // Cell balancing
             uint16_t lowest_voltage = UINT16_MAX;
-            uint8_t lv_seg_index = UINT8_MAX;
-            uint8_t lv_cell_index = UINT8_MAX;
-            monitor_cells(&lowest_voltage, &lv_seg_index, &lv_cell_index);
+            uint32_t cells_to_balance[NUM_ICS]
+                = { 0 }; // TODO: Update for 6 segments
+            monitor_cells(&lowest_voltage, &last_lowest_voltage,
+                          &cells_to_balance);
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             } else {
@@ -206,11 +209,7 @@ int main(void) {
                     bms_core.cell_balancing_status = false;
                     can_print("bal_off");
                 }
-                can_print("lv", lowest_voltage);
-                can_print("seg", lv_seg_index);
-                can_print("cell", lv_cell_index);
-                cell_balancing_task(lv_seg_index, lv_cell_index);
-                can_print("--------");
+                cell_balancing_task(&cells_to_balance);
                 loop_counter = 0;
             }
             // updater_loop();

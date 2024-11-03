@@ -1,5 +1,6 @@
 #include "tasks.h"
 
+#include "projects/can_print/can_print.h"
 #include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
@@ -12,8 +13,8 @@
 #define NUM_CELLS_PER_IC (17)
 
 void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
-                  uint16_t* lowest_voltage, uint8_t* lv_seg_index,
-                  uint8_t* lv_cell_index, uint16_t* pec_errors) {
+                  uint16_t* lowest_voltage, uint16_t* last_lowest_voltage,
+                  uint32_t (*cells_to_balance)[NUM_ICS], uint16_t* pec_errors) {
     *pack_voltage = 0;
 
     wakeup_sleep(NUM_ICS);
@@ -58,23 +59,26 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                 = raw_data[raw_idx + 0] + (raw_data[raw_idx + 1] << 8);
             if (cell_1 < *lowest_voltage) {
                 *lowest_voltage = cell_1;
-                *lv_seg_index = ic;
-                *lv_cell_index = cell_reg * 3;
+            }
+            if (cell_1 > *last_lowest_voltage + BALANCED_MARGIN) {
+                *cells_to_balance[ic] |= 1 << (cell_reg * 3);
             }
             uint16_t cell_2
                 = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
             if (cell_2 < *lowest_voltage) {
                 *lowest_voltage = cell_2;
-                *lv_seg_index = ic;
-                *lv_cell_index = cell_reg * 3 + 1;
+            }
+            if (cell_2 > *last_lowest_voltage + BALANCED_MARGIN) {
+                *cells_to_balance[ic] |= 1 << (cell_reg * 3 + 1);
             }
             uint16_t cell_3
                 = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
             if (cell_reg != 5) { // Exclude last cell
                 if (cell_3 < *lowest_voltage) {
                     *lowest_voltage = cell_3;
-                    *lv_seg_index = ic;
-                    *lv_cell_index = cell_reg * 3 + 2;
+                }
+                if (cell_3 > *last_lowest_voltage + BALANCED_MARGIN) {
+                    *cells_to_balance[ic] |= 1 << (cell_reg * 3 + 2);
                 }
             }
 
@@ -154,4 +158,5 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
     // } else if (pack_voltages[1] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
     //     set_fault(BMS_FAULT_UNDERVOLTAGE);
     // }
+    *last_lowest_voltage = *lowest_voltage;
 }

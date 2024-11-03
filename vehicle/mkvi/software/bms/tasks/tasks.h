@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include "vehicle/mkvi/software/bms/bms_config.h"
 #include <stdint.h>
 
 #define NUM_EXEPTIONS 1;
@@ -25,8 +26,8 @@
  *   0 if no errors
  */
 void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
-                  uint16_t* lowest_voltage, uint8_t* lv_seg_index,
-                  uint8_t* lv_cell_index, uint16_t* pec_errors);
+                  uint16_t* lowest_voltage, uint16_t* last_lowest_voltage,
+                  uint32_t (*cells_to_balance)[NUM_ICS], uint16_t* pec_errors);
 
 /*
  * Task to read the temperature from the battery pack
