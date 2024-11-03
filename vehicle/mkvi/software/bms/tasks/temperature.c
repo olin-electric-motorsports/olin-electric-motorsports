@@ -57,9 +57,13 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     static uint8_t mux = 0;
     static uint8_t channel = 0;
 
+    bms_debug.temperature_task = TEMPERATURE_TASK_TASK_START;
+    can_send_bms_debug();
+
     if (get_fault(BMS_FAULT_MUX_MIA)) {
         // return;
     }
+
 
     if (mux == 0 && channel == 7) {
         bms_sense.min_temperature = *min_temp;
@@ -77,9 +81,14 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     // For debugging to know which mux is being commanded
     bms_mux.num_mux = mux;
 
+    bms_debug.temperature_task = TEMPERATURE_TASK_SET_MUX;
+    can_send_bms_debug();
 
     LTC681x_adax(MD_7KHZ_3KHZ, AUX_CH_ALL);
     (void)LTC681x_pollAdc();
+
+    bms_debug.temperature_task = TEMPERATURE_TASK_ADC_CONVERSIONS;
+    can_send_bms_debug();
 
     uint8_t aux_reg_a_raw[NUM_RX_BYT * NUM_ICS];
     uint8_t aux_reg_c_raw[NUM_RX_BYT * NUM_ICS];
@@ -87,6 +96,9 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     wakeup_idle(NUM_ICS);
     LTC681x_rdaux_reg(AUX_REG_GROUP_A, NUM_ICS, aux_reg_a_raw); // for GPIOS 1-3
     LTC681x_rdaux_reg(AUX_REG_GROUP_C, NUM_ICS, aux_reg_c_raw); // for GPIOS 6
+
+    bms_debug.temperature_task = TEMPERATURE_TASK_READ_REGISTERS;
+    can_send_bms_debug();
 
     uint8_t num_temps;
     uint16_t temps[4];
@@ -188,6 +200,9 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         }
     }
 
+    bms_debug.temperature_task = TEMPERATURE_TASK_COMPUTATION;
+    can_send_bms_debug();
+
     channel += 1;
     // Move on to next mux if we are at the last channel
     if (channel == NUM_MUX_CHANNELS) {
@@ -195,6 +210,9 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         mux = (mux + 1) % NUM_MUXES;
         channel = 0;
     }
+
+    bms_debug.temperature_task = TEMPERATURE_TASK_SET_NEXT_MUX;
+    can_send_bms_debug();
 
     // if max is hotter than overtemp threshold, increment overtemp counter
     if (*max_temp < OVERTEMPERATURE_THRESHOLD  && *max_temp > FAKE_DA_FIRE_BODGE) {
