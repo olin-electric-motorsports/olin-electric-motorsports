@@ -1,0 +1,17 @@
+(module Trim_Pot (layer F.Cu) (tedit 59F24C38)
+  (fp_text reference RV1 (at 3.937 0.635) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value POT (at 0.5588 -3.24612) (layer F.Fab) hide
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_circle (center 0 0) (end 1.73736 1.58496) (layer F.SilkS) (width 0.2))
+  (pad 2 smd rect (at 0 -1.4) (size 1.8 1.7) (layers F.Cu F.Paste F.Mask))
+  (pad 1 smd rect (at -1 1.8) (size 1.4 1.4) (layers F.Cu F.Paste F.Mask))
+  (pad 3 smd rect (at 1 1.8) (size 1.4 1.4) (layers F.Cu F.Paste F.Mask))
+  (model ../../../../../home/byron/Documents/Formula/kiCadPCBS/library/3DModels/TC-33X-2.wrl
+    (at (xyz 0 0 0.005))
+    (scale (xyz 0.5 0.5 0.5))
+    (rotate (xyz -90 0 0))
+  )
+)
