@@ -9,7 +9,6 @@
 		(date "2022-12-03")
 		(rev "1")
 		(company "Olin Electric Motorsports")
-		(comment 1 "Jacob Likins")
 		(comment 2 "Melissa Kazazic")
 	)
 	(lib_symbols
@@ -1371,7 +1370,7 @@
 					(justify left bottom)
 				)
 			)
-			(property "Footprint" "footprints:TQFP-32_7x7mm_Pitch0.8mm"
+			(property "Footprint" "OEM:TQFP-32_7x7mm_Pitch0.8mm"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2094,7 +2093,7 @@
 					)
 				)
 			)
-			(property "Footprint" "footprints:Pin_Header_Straight_2x03"
+			(property "Footprint" "OEM:Pin_Header_Straight_2x03"
 				(at 0 -30.48 0)
 				(effects
 					(font
@@ -2699,6 +2698,1141 @@
 				)
 			)
 		)
+		(symbol "OEM:D_Zener_18V_SMBJ5355B-TP"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D_Zener_18V_SMBJ5355B-TP"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:DO-214AA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.mccsemi.com/pdf/Products/SMBJ5338B-SMBJ5388B(SMB).pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Zener diode 18V 5W 5%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "SMBJ5355B-TP"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "Micro Commercial Co"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" "SMBJ5355B-TPMSCT-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "YES"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Tape"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "DO-214AA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_Zener_18V_SMBJ5355B-TP_0_1"
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Zener_18V_SMBJ5355B-TP_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "OEM:LED_AMBER"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_AMBER"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:CHIPLED_0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "No"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "No"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_AMBER_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_AMBER_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "OEM:LED_BLUE"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_BLUE"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:CHIPLED_0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets/lite-on_LTST-C171TBKT.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode blue 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "LTST-C171TBKT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "Lite-On"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" "160-1645-6-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "Yes"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Digi-Reel"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_BLUE_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_BLUE_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "OEM:LED_GREEN"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_GREEN"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:CHIPLED_0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "No"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "No"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_GREEN_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_GREEN_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "OEM:LED_RED"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_RED"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:CHIPLED_0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "No"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "No"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_RED_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_RED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "OEM:LED_WHITE"
 			(pin_numbers hide)
 			(pin_names
@@ -2956,7 +4090,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM"
+			(property "Footprint" "OEM:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM"
 				(at 0 -12.7 0)
 				(effects
 					(font
@@ -3225,6 +4359,389 @@
 						)
 					)
 					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "OEM:Relay_G5Q-1A4-DC5"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "K"
+				(at 8.89 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Relay_G5Q-1A4-DC5"
+				(at -10.16 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "OEM:Relay_SPST_OMRON-G5Q-1A4_OEM"
+				(at 11.43 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5q.pdf"
+				(at 11.43 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "Relay 12V 10A 5V coil"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "G5Q-1A4 DC5"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "Omron"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" "Z3632-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "YES"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Tray"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "G5Q (Custom)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "THT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Relay?SPDT?OMRON?G5Q*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Relay_G5Q-1A4-DC5_0_0"
+				(polyline
+					(pts
+						(xy 2.54 3.81) (xy 2.54 5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Relay_G5Q-1A4-DC5_0_1"
+				(rectangle
+					(start -10.16 5.08)
+					(end 7.62 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -8.255 1.905)
+					(end -1.905 -1.905)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 -1.905) (xy -2.54 1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 -5.08) (xy -5.08 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy -5.08 1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 0) (xy 0 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 5.08 2.54)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 0) (xy 3.81 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 3.175 3.175) (xy 2.54 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "Relay_G5Q-1A4-DC5_1_1"
+				(pin passive line
+					(at -5.08 -7.62 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -7.62 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 7.62 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 7.62 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3726,6 +5243,151 @@
 				)
 			)
 		)
+		(symbol "OEM:TP_SMD"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TP_SMD"
+				(at 1.27 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:Test_Point_SMD"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point SMD hook"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "5019"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "Keystone"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" "36-5019TR-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "YES"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Reel"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "Custom"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TP_SMD_1_1"
+				(circle
+					(center 0 2.54)
+					(radius 1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at 0 -1.27 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+5V"
 			(power)
 			(pin_names
@@ -4040,6 +5702,18 @@
 		)
 	)
 	(junction
+		(at 193.04 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1d067e6f-2416-4cea-aa3b-d3307753f38d")
+	)
+	(junction
+		(at 175.26 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1ffaf7d6-d636-49e8-8de7-24deba73536d")
+	)
+	(junction
 		(at 125.73 162.56)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4058,7 +5732,7 @@
 		(uuid "55a943ac-8498-4cdd-9c14-96bbd47856f7")
 	)
 	(junction
-		(at 163.83 73.66)
+		(at 152.4 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "838ffa32-fa27-484b-a599-b80eeb08d068")
@@ -4120,6 +5794,10 @@
 		(uuid "660c43b1-112c-4aa1-b1dc-8f71909aa490")
 	)
 	(no_connect
+		(at 99.06 71.12)
+		(uuid "7b97a4a0-3b95-4e93-ba97-dac050a16481")
+	)
+	(no_connect
 		(at 97.79 45.72)
 		(uuid "b32645fe-ebe3-43c7-a17f-40cef353ff1c")
 	)
@@ -4128,8 +5806,16 @@
 		(uuid "c277424f-e95d-4fb8-9422-94d3331d42b6")
 	)
 	(no_connect
+		(at 98.8553 68.58)
+		(uuid "cb29544e-3860-44cc-9689-e27f487d1d34")
+	)
+	(no_connect
 		(at 97.79 48.26)
 		(uuid "df52b646-1eee-487e-81d6-c43f0fab3a85")
+	)
+	(no_connect
+		(at 99.06 73.66)
+		(uuid "e8404253-31ee-4111-8b49-838651277774")
 	)
 	(no_connect
 		(at 97.79 83.82)
@@ -4325,6 +6011,16 @@
 		)
 		(uuid "21c56917-2475-4cd0-985a-5ef1b0ea6aeb")
 	)
+	(wire
+		(pts
+			(xy 172.72 91.44) (xy 172.72 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23f3574a-5b93-467b-b8f2-befcdc3fb051")
+	)
 	(polyline
 		(pts
 			(xy 233.68 132.08) (xy 265.43 132.08)
@@ -4344,16 +6040,6 @@
 			(type default)
 		)
 		(uuid "2748ff03-c0a6-41f5-8fc3-5da08df2969c")
-	)
-	(wire
-		(pts
-			(xy 190.5 33.02) (xy 187.96 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "27b74693-2d01-4bd9-b846-9444cdbf2f55")
 	)
 	(wire
 		(pts
@@ -4455,16 +6141,6 @@
 		)
 		(uuid "38676423-303b-40ae-8dc6-139a2f6355dd")
 	)
-	(wire
-		(pts
-			(xy 189.23 26.67) (xy 190.5 26.67)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "38d2140d-2633-4183-a009-c9d48a55c7f0")
-	)
 	(polyline
 		(pts
 			(xy 142.24 186.69) (xy 82.55 186.69)
@@ -4507,16 +6183,6 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 35.56) (xy 190.5 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "41df6ccb-9f8d-4e99-9ca6-ca2ae53bcb6b")
-	)
-	(wire
-		(pts
 			(xy 24.13 35.56) (xy 31.75 35.56)
 		)
 		(stroke
@@ -4547,6 +6213,16 @@
 	)
 	(wire
 		(pts
+			(xy 196.85 91.44) (xy 196.85 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "505a5435-c6af-4a66-aaea-d90bfd97c088")
+	)
+	(wire
+		(pts
 			(xy 125.73 172.72) (xy 129.54 172.72)
 		)
 		(stroke
@@ -4554,6 +6230,16 @@
 			(type default)
 		)
 		(uuid "531705a8-2dc2-4da2-a925-95697b3d8d34")
+	)
+	(wire
+		(pts
+			(xy 191.77 71.12) (xy 193.04 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5360d1bf-6f9d-45f4-a21b-7743a13c344d")
 	)
 	(wire
 		(pts
@@ -4604,6 +6290,16 @@
 			(type default)
 		)
 		(uuid "5b5aae70-3e63-45ae-90ec-142057fb61fb")
+	)
+	(wire
+		(pts
+			(xy 172.72 78.74) (xy 176.53 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ced2ff4-a741-42b6-8f3c-152d1dd91671")
 	)
 	(wire
 		(pts
@@ -4707,7 +6403,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 83.82) (xy 163.83 82.55)
+			(xy 152.4 86.36) (xy 152.4 85.09)
 		)
 		(stroke
 			(width 0)
@@ -4767,7 +6463,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 73.66) (xy 163.83 74.93)
+			(xy 152.4 76.2) (xy 152.4 77.47)
 		)
 		(stroke
 			(width 0)
@@ -4797,7 +6493,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 78.74) (xy 173.99 82.55)
+			(xy 162.56 81.28) (xy 162.56 85.09)
 		)
 		(stroke
 			(width 0)
@@ -4897,7 +6593,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 73.66) (xy 160.02 73.66)
+			(xy 152.4 76.2) (xy 148.59 76.2)
 		)
 		(stroke
 			(width 0)
@@ -4924,6 +6620,16 @@
 			(type default)
 		)
 		(uuid "8ae511dd-d14c-4cc0-909a-87af60e4735f")
+	)
+	(wire
+		(pts
+			(xy 187.96 63.5) (xy 193.04 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b51dd23-95d7-4018-88aa-5ca2c030ebc1")
 	)
 	(wire
 		(pts
@@ -4965,6 +6671,26 @@
 		)
 		(uuid "8daadb9a-405e-4bf5-9b4c-ddf6155fd759")
 	)
+	(wire
+		(pts
+			(xy 193.04 63.5) (xy 193.04 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f8a0cd6-37a7-44be-b4de-a576b568a4bf")
+	)
+	(wire
+		(pts
+			(xy 186.69 40.64) (xy 190.5 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90efbd3f-ff0c-4e79-84f9-7df13798cea2")
+	)
 	(polyline
 		(pts
 			(xy 140.97 129.54) (xy 214.63 129.54)
@@ -4975,16 +6701,6 @@
 		)
 		(uuid "91082fca-3d5b-43b3-8cef-6a6273ad0af1")
 	)
-	(wire
-		(pts
-			(xy 242.57 26.67) (xy 240.03 26.67)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "953b4d5a-b7a7-4e7b-a673-82fe51debd9e")
-	)
 	(polyline
 		(pts
 			(xy 231.14 132.08) (xy 231.14 170.18)
@@ -4994,6 +6710,16 @@
 			(type default)
 		)
 		(uuid "963963a3-9ce6-4c1c-8591-2a10b29cb492")
+	)
+	(wire
+		(pts
+			(xy 175.26 71.12) (xy 176.53 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "972b0bf2-b9fc-46f1-a6c9-68aa0b0038e2")
 	)
 	(wire
 		(pts
@@ -5125,16 +6851,6 @@
 		)
 		(uuid "a424a615-16e8-4e28-a765-554319427470")
 	)
-	(wire
-		(pts
-			(xy 187.96 41.91) (xy 190.5 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a4b42445-d291-4a84-b4c1-f10a40db24e2")
-	)
 	(polyline
 		(pts
 			(xy 140.97 96.52) (xy 214.63 96.52)
@@ -5147,6 +6863,16 @@
 	)
 	(wire
 		(pts
+			(xy 186.69 36.83) (xy 190.5 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a783373a-8d70-494f-874f-f8ce84d06242")
+	)
+	(wire
+		(pts
 			(xy 229.87 96.52) (xy 232.41 96.52)
 		)
 		(stroke
@@ -5154,16 +6880,6 @@
 			(type default)
 		)
 		(uuid "a78d797b-a8b6-44e0-8291-d6fdf515834b")
-	)
-	(wire
-		(pts
-			(xy 187.96 30.48) (xy 190.5 30.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ac9924a4-066c-40d0-9b65-dc45cf53fa71")
 	)
 	(wire
 		(pts
@@ -5367,6 +7083,26 @@
 	)
 	(wire
 		(pts
+			(xy 175.26 63.5) (xy 175.26 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be454145-5f20-4a93-a0a4-bb409804d7d9")
+	)
+	(wire
+		(pts
+			(xy 162.56 71.12) (xy 175.26 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0b9aa64-a26b-4518-9c71-ac65773bb1a3")
+	)
+	(wire
+		(pts
 			(xy 118.11 88.9) (xy 120.65 88.9)
 		)
 		(stroke
@@ -5374,6 +7110,16 @@
 			(type default)
 		)
 		(uuid "c0c5f371-fc95-4b27-adac-09ad1cb39770")
+	)
+	(wire
+		(pts
+			(xy 193.04 71.12) (xy 194.31 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c190cc0a-0ee7-433a-a23c-c33a2c1a7394")
 	)
 	(polyline
 		(pts
@@ -5387,7 +7133,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 73.66) (xy 166.37 73.66)
+			(xy 152.4 76.2) (xy 154.94 76.2)
 		)
 		(stroke
 			(width 0)
@@ -5404,6 +7150,16 @@
 			(type default)
 		)
 		(uuid "c47e4f7e-8a34-4ca2-8904-a20412601095")
+	)
+	(wire
+		(pts
+			(xy 196.85 78.74) (xy 191.77 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5bbacf9-866b-4d04-a750-b05fa81efdc0")
 	)
 	(polyline
 		(pts
@@ -5474,16 +7230,6 @@
 			(type default)
 		)
 		(uuid "cb456679-b9af-486b-9cbd-9ef2b9acf3ec")
-	)
-	(wire
-		(pts
-			(xy 240.03 33.02) (xy 243.84 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cd1fdf0f-d954-4d64-8f4a-a8a7b4b6828e")
 	)
 	(wire
 		(pts
@@ -5715,16 +7461,6 @@
 		)
 		(uuid "ef8472ee-efed-49c8-9805-330a0710c910")
 	)
-	(wire
-		(pts
-			(xy 173.99 67.31) (xy 173.99 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f1bcb001-8416-4cfd-8b13-1838d651555f")
-	)
 	(polyline
 		(pts
 			(xy 29.21 140.97) (xy 80.01 140.97)
@@ -5795,16 +7531,6 @@
 		)
 		(uuid "f6ed59ee-a5dd-4a7f-8056-3990bb226146")
 	)
-	(wire
-		(pts
-			(xy 187.96 38.1) (xy 190.5 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f72df7c2-8340-4c4d-93d7-e989216c097e")
-	)
 	(polyline
 		(pts
 			(xy 191.77 132.08) (xy 191.77 170.18)
@@ -5835,6 +7561,16 @@
 		)
 		(uuid "f898f53b-7797-4ff2-bff2-3853b7b058ba")
 	)
+	(wire
+		(pts
+			(xy 180.34 63.5) (xy 175.26 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8d2d560-a6c8-465e-a357-3b2cd953b21c")
+	)
 	(polyline
 		(pts
 			(xy 119.38 105.41) (xy 137.16 105.41)
@@ -5857,7 +7593,7 @@
 	)
 	(text "BMS SHUTDOWN RELAY\nLOW-SIDE DRIVE"
 		(exclude_from_sim no)
-		(at 144.78 66.04 0)
+		(at 142.24 64.008 0)
 		(effects
 			(font
 				(size 2.4892 2.4892)
@@ -6023,18 +7759,6 @@
 		)
 		(uuid "935d3998-83a0-4c90-b013-590dbeedb1c4")
 	)
-	(text "Relay itself is connected\nthrough the Service Section Motherboard"
-		(exclude_from_sim no)
-		(at 142.24 92.71 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(italic yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "a14f5efd-7662-45fd-b9b1-d2440f8f9f01")
-	)
 	(text "PROGRAMMING HEADERS"
 		(exclude_from_sim no)
 		(at 218.44 78.74 0)
@@ -6069,9 +7793,9 @@
 		)
 		(uuid "bd2c84b2-7622-47ed-8410-3cdbdeb1fb4d")
 	)
-	(text "M.2 CONNECTOR"
+	(text "PCIEx1\n"
 		(exclude_from_sim no)
-		(at 193.04 20.32 0)
+		(at 206.248 19.812 0)
 		(effects
 			(font
 				(size 2.4892 2.4892)
@@ -6170,6 +7894,17 @@
 		)
 		(uuid "02a2ea0c-1735-41cc-8c4d-9e5663b9552a")
 	)
+	(label "SHDN_OUT"
+		(at 172.72 91.44 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "08f6af61-f694-4e6e-9b16-74850011d2fb")
+	)
 	(label "VOUT_CURRENT_SENSE"
 		(at 97.79 93.98 0)
 		(fields_autoplaced yes)
@@ -6258,28 +7993,6 @@
 		)
 		(uuid "2adb6813-fef6-4277-b96a-61657e779bd4")
 	)
-	(label "BMS_LSD"
-		(at 173.99 67.31 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "2eb727ff-ad66-4379-aa30-c843da367266")
-	)
-	(label "PUMP_LSD"
-		(at 243.84 33.02 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "30d3fb27-7415-4fd4-8e61-0c6a1210b5e8")
-	)
 	(label "Power"
 		(at 20.32 120.65 180)
 		(fields_autoplaced yes)
@@ -6290,17 +8003,6 @@
 			(justify right bottom)
 		)
 		(uuid "35c27eac-8c63-47ec-a72a-30650eeeef69")
-	)
-	(label "PRE_DIS_TEMP_3"
-		(at 187.96 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "3a561349-32bd-4eef-ad4c-33e3c72b223e")
 	)
 	(label "ISO_SCK"
 		(at 229.87 116.84 180)
@@ -6356,17 +8058,6 @@
 			(justify left bottom)
 		)
 		(uuid "42034bbb-18ec-4442-8bc6-34743ae8678f")
-	)
-	(label "PRE_DIS_TEMP_1"
-		(at 99.06 68.58 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "45a8d34f-2a6a-471a-92bc-ea2f3189db01")
 	)
 	(label "SCK"
 		(at 229.87 93.98 180)
@@ -6424,7 +8115,7 @@
 		(uuid "67719be8-848e-4e7e-ad01-0038fb602123")
 	)
 	(label "BMS_RELAY_DRIVE"
-		(at 160.02 73.66 180)
+		(at 148.59 76.2 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6488,17 +8179,6 @@
 			(justify right bottom)
 		)
 		(uuid "7d2a7ec4-019f-47df-8807-29990d3898b2")
-	)
-	(label "BMS_LSD"
-		(at 187.96 38.1 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7d9b1bbd-4284-40e6-8575-04a94d9a2421")
 	)
 	(label "RXCAN"
 		(at 95.25 165.1 180)
@@ -6632,8 +8312,8 @@
 		)
 		(uuid "aa84f931-398f-4cf2-ba29-dc6df0b35e8f")
 	)
-	(label "PRE_DIS_TEMP_2"
-		(at 99.06 71.12 0)
+	(label "SHDN_IN"
+		(at 196.85 91.44 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6641,29 +8321,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "ad6f19ef-ef68-45c2-8720-747a516c18b2")
-	)
-	(label "PRE_DIS_TEMP_1"
-		(at 187.96 30.48 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "aec2c385-e860-4f4f-b381-24401d912a0e")
-	)
-	(label "PRE_DIS_TEMP_2"
-		(at 187.96 33.02 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "af321557-a299-46b4-b253-ba870b4addcb")
+		(uuid "b02755a4-c50f-48b8-9bf9-89f764122cad")
 	)
 	(label "MOSI"
 		(at 120.65 88.9 0)
@@ -6686,6 +8344,39 @@
 			(justify left bottom)
 		)
 		(uuid "b8e7efac-8dc5-4c52-b3f8-0cfa88b12019")
+	)
+	(label "SHDN_OUT"
+		(at 207.01 67.31 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bab6191e-4f32-4f65-88f8-56218cde3450")
+	)
+	(label "SHDN_IN"
+		(at 186.69 40.64 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c0a6606c-5cd9-4caa-a205-d3fe0cd0357e")
+	)
+	(label "SHDN_OUT"
+		(at 186.69 36.83 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c603dd93-69ee-402b-b44d-bd14ad8e363a")
 	)
 	(label "Heartbeat"
 		(at 19.05 76.2 90)
@@ -6753,28 +8444,6 @@
 		)
 		(uuid "dbb332d9-8428-45f9-b966-9c54522e2350")
 	)
-	(label "CHARGE_ENABLE_IN"
-		(at 189.23 26.67 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "dcaec423-8123-421d-ac54-6e6783868820")
-	)
-	(label "Heartbeat"
-		(at 207.01 67.31 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e29cf9d0-9d99-4668-bb57-6e093eec6937")
-	)
 	(label "ISO_MISO"
 		(at 41.91 165.1 180)
 		(fields_autoplaced yes)
@@ -6808,17 +8477,6 @@
 		)
 		(uuid "f1f90c05-396b-40d8-a569-9868ebb4033d")
 	)
-	(label "PRE_DIS_TEMP_3"
-		(at 99.06 73.66 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f328fe4e-4cd9-49ea-9d4c-0c0bc0575ffb")
-	)
 	(label "TXCAN"
 		(at 95.25 162.56 180)
 		(fields_autoplaced yes)
@@ -6851,17 +8509,6 @@
 			(justify right bottom)
 		)
 		(uuid "f691fc3d-a4f4-4673-80bc-2d760279142d")
-	)
-	(label "CHARGE_ENABLE_OUT"
-		(at 242.57 26.67 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f7e82835-e9dc-45c8-85eb-8cf188481e65")
 	)
 	(label "MISO"
 		(at 120.65 86.36 0)
@@ -7346,6 +8993,136 @@
 		)
 	)
 	(symbol
+		(lib_id "OEM:TP_SMD")
+		(at 209.55 158.75 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "161706e5-65c4-4139-b75d-439e96b98a3c")
+		(property "Reference" "TP2"
+			(at 214.63 157.4799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CANH1"
+			(at 214.63 160.0199 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:Test_Point_SMD"
+			(at 205.74 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point SMD hook"
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5019"
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Keystone"
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "36-5019TR-ND"
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "Custom"
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 209.55 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1ccad4b5-c911-48ed-9c93-efb8f622ccbe")
+		)
+		(instances
+			(project "bms_core"
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 107.95 121.92 0)
 		(unit 1)
@@ -7537,6 +9314,266 @@
 			(project "bms_core"
 				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
 					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:LED_WHITE")
+		(at 25.4 120.65 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1f423959-a634-49c1-82c0-f7fa5793eeab")
+		(property "Reference" "D4"
+			(at 25.4 123.698 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED_WHITE"
+			(at 25.4 116.586 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:CHIPLED_0805"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "B1701TW--20P000314U1930"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Harvatek"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0805"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "Yes"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Digi-Reel"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 25.4 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "077e62cf-974c-4ffa-9d27-349f2b898a5a")
+		)
+		(pin "2"
+			(uuid "77251b7a-dde7-41a4-80fb-71459c28b4f0")
+		)
+		(instances
+			(project ""
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:D_Zener_18V_SMBJ5355B-TP")
+		(at 184.15 63.5 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "20e539c5-4d4e-4976-9956-7ad80be6a9b6")
+		(property "Reference" "D5"
+			(at 185.928 58.674 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_Zener_18V_SMBJ5355B-TP"
+			(at 187.198 60.706 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:DO-214AA"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mccsemi.com/pdf/Products/SMBJ5338B-SMBJ5388B(SMB).pdf"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Zener diode 18V 5W 5%"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SMBJ5355B-TP"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Micro Commercial Co"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "SMBJ5355B-TPMSCT-ND"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Tape"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "DO-214AA"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 184.15 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "135d3d4e-069e-4564-a737-001391f996e3")
+		)
+		(pin "2"
+			(uuid "d178b7d9-c4a2-4143-8fec-d4af148050c1")
+		)
+		(instances
+			(project ""
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -7830,7 +9867,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "footprints:Crystal_SMD_FA238"
+		(property "Footprint" "OEM:Crystal_SMD_FA238"
 			(at 111.76 111.125 0)
 			(effects
 				(font
@@ -7942,32 +9979,34 @@
 		)
 	)
 	(symbol
-		(lib_id "OEM:LED_WHITE")
-		(at 35.56 81.28 90)
+		(lib_id "OEM:LED_GREEN")
+		(at 27.94 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "352b5574-644e-4e42-9536-4866b41c027a")
-		(property "Reference" "PD3"
-			(at 38.1 81.28 0)
+		(uuid "3472d7ad-776a-4c8f-9cf9-5f4e1980e863")
+		(property "Reference" "D2"
+			(at 30.988 79.502 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
-		(property "Value" "Red"
-			(at 33.02 81.28 0)
+		(property "Value" "LED_GREEN"
+			(at 24.892 76.454 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 35.56 81.28 0)
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7975,8 +10014,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 35.56 81.28 0)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets"
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7984,8 +10023,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 35.56 81.28 0)
+		(property "Description" "Light emitting diode"
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7993,8 +10032,8 @@
 				(hide yes)
 			)
 		)
-		(property "MFN" "Harvatek"
-			(at 35.56 81.28 0)
+		(property "MPN" ""
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8002,8 +10041,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "B1701TW--20P000314U1930"
-			(at 35.56 81.28 0)
+		(property "MFN" ""
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8011,8 +10050,8 @@
 				(hide yes)
 			)
 		)
-		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 35.56 81.28 0)
+		(property "DKPN" ""
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8021,7 +10060,7 @@
 			)
 		)
 		(property "Package" "0805"
-			(at 35.56 81.28 0)
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8029,8 +10068,8 @@
 				(hide yes)
 			)
 		)
-		(property "NewDesigns" "Yes"
-			(at 35.56 81.28 0)
+		(property "NewDesigns" "No"
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8038,138 +10077,8 @@
 				(hide yes)
 			)
 		)
-		(property "Stocked" "Digi-Reel"
-			(at 35.56 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 35.56 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ce8d1f09-514e-4459-a125-ce3e7dc5ca37")
-		)
-		(pin "2"
-			(uuid "4dff3494-fa2b-46f5-82de-6774f7d06f2b")
-		)
-		(instances
-			(project "bms_core"
-				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-					(reference "PD3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:LED_WHITE")
-		(at 207.01 72.39 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "36f682b3-8efd-49c5-9407-20c6c08ec3a3")
-		(property "Reference" "PD5"
-			(at 209.55 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Amber"
-			(at 204.47 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 207.01 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 207.01 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 207.01 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Harvatek"
-			(at 207.01 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "B1701TW--20P000314U1930"
-			(at 207.01 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 207.01 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 207.01 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "Yes"
-			(at 207.01 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 207.01 72.39 0)
+		(property "Stocked" "No"
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8178,7 +10087,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 207.01 72.39 0)
+			(at 27.94 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8187,15 +10096,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "eac5a3d9-a59d-4e03-91f0-7eaf373057b9")
+			(uuid "fc4e5d42-7bf0-4995-bcb7-f37060f33fb6")
 		)
 		(pin "2"
-			(uuid "d635263c-ed5d-4b8c-a1d4-191a9b926e82")
+			(uuid "26e81b97-5004-424f-9443-fce7fa17bb0c")
 		)
 		(instances
-			(project "bms_core"
+			(project ""
 				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-					(reference "PD5")
+					(reference "D2")
 					(unit 1)
 				)
 			)
@@ -8203,7 +10112,7 @@
 	)
 	(symbol
 		(lib_id "OEM:SSM3K333R")
-		(at 171.45 73.66 0)
+		(at 160.02 76.2 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8211,7 +10120,7 @@
 		(dnp no)
 		(uuid "37617a87-b990-4868-9c88-8b3d06e88c66")
 		(property "Reference" "Q1"
-			(at 176.53 71.755 0)
+			(at 165.1 74.295 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8220,7 +10129,7 @@
 			)
 		)
 		(property "Value" "SSM3K333R"
-			(at 176.53 73.66 0)
+			(at 165.1 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8228,8 +10137,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "footprints:SOT-23F"
-			(at 176.53 75.565 0)
+		(property "Footprint" "OEM:SOT-23F"
+			(at 165.1 78.105 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8240,7 +10149,7 @@
 			)
 		)
 		(property "Datasheet" "https://drive.google.com/drive/folders/0B-V-iZf33Y4GNzhDQTJZanJRbVk"
-			(at 176.53 71.755 0)
+			(at 165.1 74.295 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8250,7 +10159,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 171.45 73.66 0)
+			(at 160.02 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8259,7 +10168,7 @@
 			)
 		)
 		(property "MFN" "DK"
-			(at 184.15 64.135 0)
+			(at 172.72 66.675 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -8268,7 +10177,7 @@
 			)
 		)
 		(property "MPN" "SSM3K333RLFCT-ND"
-			(at 181.61 66.675 0)
+			(at 170.18 69.215 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -8277,7 +10186,7 @@
 			)
 		)
 		(property "DKPN" "SSM3K333RLFDKR-ND"
-			(at 171.45 73.66 0)
+			(at 160.02 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8286,7 +10195,7 @@
 			)
 		)
 		(property "Package" "SOT-23"
-			(at 171.45 73.66 0)
+			(at 160.02 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8295,7 +10204,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 171.45 73.66 0)
+			(at 160.02 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8304,7 +10213,7 @@
 			)
 		)
 		(property "Stocked" "Digi-Reel"
-			(at 171.45 73.66 0)
+			(at 160.02 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8313,7 +10222,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 171.45 73.66 0)
+			(at 160.02 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8406,7 +10315,7 @@
 	)
 	(symbol
 		(lib_id "OEM:10KR")
-		(at 163.83 78.74 180)
+		(at 152.4 81.28 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8414,7 +10323,7 @@
 		(dnp no)
 		(uuid "439c3980-cc37-4d28-aa4c-e7c27034202e")
 		(property "Reference" "R7"
-			(at 161.798 78.74 90)
+			(at 150.368 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8422,7 +10331,7 @@
 			)
 		)
 		(property "Value" "R_10K"
-			(at 166.37 78.74 90)
+			(at 154.94 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8430,7 +10339,7 @@
 			)
 		)
 		(property "Footprint" "OEM:R_0603"
-			(at 165.608 78.74 0)
+			(at 154.178 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8439,7 +10348,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.bourns.com/data/global/pdfs/CRS.pdf"
-			(at 161.798 78.74 0)
+			(at 150.368 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8448,7 +10357,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 163.83 78.74 0)
+			(at 152.4 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8457,7 +10366,7 @@
 			)
 		)
 		(property "MFN" "DK"
-			(at 163.83 78.74 0)
+			(at 152.4 81.28 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -8466,7 +10375,7 @@
 			)
 		)
 		(property "MPN" "CRS0805-FX-1002ELFCT-ND"
-			(at 163.83 78.74 0)
+			(at 152.4 81.28 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -8475,7 +10384,7 @@
 			)
 		)
 		(property "DKPN" "RMCF0603FT10K0TR-ND"
-			(at 163.83 78.74 0)
+			(at 152.4 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8484,7 +10393,7 @@
 			)
 		)
 		(property "Package" "0603"
-			(at 163.83 78.74 0)
+			(at 152.4 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8493,7 +10402,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 163.83 78.74 0)
+			(at 152.4 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8502,7 +10411,7 @@
 			)
 		)
 		(property "Stocked" "Reel"
-			(at 163.83 78.74 0)
+			(at 152.4 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8511,7 +10420,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 163.83 78.74 0)
+			(at 152.4 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8658,136 +10567,6 @@
 			(project "bms_core"
 				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
 					(reference "IP1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:LED_WHITE")
-		(at 27.94 81.28 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4c7ce331-4f4a-4912-a58e-40bebb4881de")
-		(property "Reference" "PD2"
-			(at 30.48 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Green"
-			(at 25.4 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Harvatek"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "B1701TW--20P000314U1930"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "Yes"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 27.94 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "23bab779-7ccd-4116-924f-874298231194")
-		)
-		(pin "2"
-			(uuid "4abb0436-5e14-429f-b533-d82ae00356f8")
-		)
-		(instances
-			(project "bms_core"
-				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-					(reference "PD2")
 					(unit 1)
 				)
 			)
@@ -8990,7 +10769,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 173.99 82.55 0)
+		(at 162.56 85.09 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8998,7 +10777,7 @@
 		(dnp no)
 		(uuid "5dd27ee4-774b-4ed2-8e53-0ad033cced15")
 		(property "Reference" "#PWR?"
-			(at 173.99 88.9 0)
+			(at 162.56 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9007,7 +10786,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 173.99 86.36 0)
+			(at 162.56 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9015,7 +10794,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 173.99 82.55 0)
+			(at 162.56 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9024,7 +10803,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 173.99 82.55 0)
+			(at 162.56 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9033,7 +10812,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 173.99 82.55 0)
+			(at 162.56 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9573,6 +11352,138 @@
 		)
 	)
 	(symbol
+		(lib_id "OEM:LED_AMBER")
+		(at 19.05 81.28 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "63587938-dc60-43ed-8af6-1c7055dc38f4")
+		(property "Reference" "D1"
+			(at 21.336 79.756 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_AMBER"
+			(at 16.002 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "OEM:CHIPLED_0805"
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets"
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" ""
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" ""
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0805"
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "No"
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "No"
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 19.05 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9534d31b-1d9d-4b95-a6db-14ce77bd3761")
+		)
+		(pin "2"
+			(uuid "cb3abe21-1791-4a16-85f5-89969a304191")
+		)
+		(instances
+			(project ""
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OEM:MAX33011EASA")
 		(at 107.95 167.64 0)
 		(unit 1)
@@ -9597,7 +11508,7 @@
 				)
 			)
 		)
-		(property "Footprint" "footprints:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM"
+		(property "Footprint" "OEM:SOIC-8_3.9x4.9mm_Pitch1.27mm_OEM"
 			(at 107.95 180.34 0)
 			(effects
 				(font
@@ -10130,266 +12041,6 @@
 		)
 	)
 	(symbol
-		(lib_id "OEM:LED_WHITE")
-		(at 19.05 81.28 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7c90d0f9-21a8-41bf-8eed-e955c157a11e")
-		(property "Reference" "PD1"
-			(at 21.59 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Amber"
-			(at 16.51 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Harvatek"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "B1701TW--20P000314U1930"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "Yes"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 19.05 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1cf3cb71-69ec-41de-9786-da0dca49e1e3")
-		)
-		(pin "2"
-			(uuid "cb4f939b-9940-4a6c-a6af-e272c47d2daf")
-		)
-		(instances
-			(project "bms_core"
-				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-					(reference "PD1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:LED_WHITE")
-		(at 25.4 120.65 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "84b6b5f1-8941-4cfb-91cc-348d7f43917e")
-		(property "Reference" "PD4"
-			(at 25.4 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "White"
-			(at 25.4 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Harvatek"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "B1701TW--20P000314U1930"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "Yes"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 25.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "baf01d99-c765-4669-91d2-c399d9597045")
-		)
-		(pin "2"
-			(uuid "782e5d8d-cf5d-4c31-83a4-9545d742b17c")
-		)
-		(instances
-			(project "bms_core"
-				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-					(reference "PD4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+5V")
 		(at 252.73 148.59 0)
 		(unit 1)
@@ -10449,6 +12100,138 @@
 			(project "bms_core"
 				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
 					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:LED_BLUE")
+		(at 207.01 72.39 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "89372d09-147b-483b-8c9e-21073f8f633f")
+		(property "Reference" "D6"
+			(at 210.058 70.866 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_BLUE"
+			(at 204.216 67.564 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "OEM:CHIPLED_0805"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/lite-on_LTST-C171TBKT.pdf"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode blue 0805"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "LTST-C171TBKT"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Lite-On"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "160-1645-6-ND"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0805"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "Yes"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Digi-Reel"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 207.01 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5ec07574-91b9-44c6-87e5-ccdc440f6ed6")
+		)
+		(pin "1"
+			(uuid "788a0c50-d0ba-4f96-a04e-7543ca9d6244")
+		)
+		(instances
+			(project ""
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "D6")
 					(unit 1)
 				)
 			)
@@ -10809,7 +12592,7 @@
 				)
 			)
 		)
-		(property "Footprint" "footprints:TQFP-32_7x7mm_Pitch0.8mm"
+		(property "Footprint" "OEM:TQFP-32_7x7mm_Pitch0.8mm"
 			(at 69.85 78.74 0)
 			(effects
 				(font
@@ -11137,7 +12920,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 163.83 83.82 0)
+		(at 152.4 86.36 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11145,7 +12928,7 @@
 		(dnp no)
 		(uuid "b25aa9fc-0001-4088-89d9-3ba379b5bd1a")
 		(property "Reference" "#PWR?"
-			(at 163.83 90.17 0)
+			(at 152.4 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11154,7 +12937,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 163.83 87.63 0)
+			(at 152.4 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11162,7 +12945,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 163.83 83.82 0)
+			(at 152.4 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11171,7 +12954,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 163.83 83.82 0)
+			(at 152.4 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11180,7 +12963,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 163.83 83.82 0)
+			(at 152.4 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11658,24 +13441,32 @@
 		)
 	)
 	(symbol
-		(lib_id "OEM:TP_1mm")
-		(at 209.55 158.75 270)
+		(lib_id "OEM:Relay_G5Q-1A4-DC5")
+		(at 184.15 76.2 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d18df731-7075-43b2-9733-bbd614e31416")
-		(property "Reference" "CANH1"
-			(at 216.535 158.75 90)
+		(uuid "c6f24ad2-f095-4778-98cc-48ee053a6c72")
+		(property "Reference" "K1"
+			(at 184.404 84.836 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "TP_1mm"
-			(at 209.4738 160.7312 0)
+		(property "Value" "Relay_G5Q-1A4-DC5"
+			(at 184.404 88.392 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:Relay_SPST_OMRON-G5Q-1A4_OEM"
+			(at 182.88 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11684,8 +13475,18 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 205.74 158.75 0)
+		(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-g5q.pdf"
+			(at 175.26 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "Relay 12V 10A 5V coil"
+			(at 184.15 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11693,8 +13494,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 209.55 158.75 0)
+		(property "MPN" "G5Q-1A4 DC5"
+			(at 184.15 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11702,8 +13503,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 209.55 158.75 0)
+		(property "MFN" "Omron"
+			(at 184.15 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11711,26 +13512,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
-			(at 209.55 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" ""
-			(at 209.55 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" ""
-			(at 209.55 158.75 0)
+		(property "DKPN" "Z3632-ND"
+			(at 184.15 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11739,7 +13522,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 209.55 158.75 0)
+			(at 184.15 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11747,8 +13530,8 @@
 				(hide yes)
 			)
 		)
-		(property "Stocked" ""
-			(at 209.55 158.75 0)
+		(property "Stocked" "Tray"
+			(at 184.15 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11756,8 +13539,146 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "Custom"
-			(at 209.55 158.75 0)
+		(property "Package" "G5Q (Custom)"
+			(at 184.15 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "THT"
+			(at 184.15 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b4600486-9fb2-4243-8506-34adb4e20eda")
+		)
+		(pin "1"
+			(uuid "45984fe8-2ba1-405d-9ab3-625e409b7f04")
+		)
+		(pin "5"
+			(uuid "20456d3b-e256-4120-a2d1-2b2c85227143")
+		)
+		(pin "3"
+			(uuid "9ab0c57f-e393-4a93-9916-78bfef3dc7a6")
+		)
+		(instances
+			(project ""
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "K1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:LED_RED")
+		(at 35.56 81.28 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d4af65a7-8a77-492f-bd4c-6f39f8268ac7")
+		(property "Reference" "D3"
+			(at 38.354 80.264 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_RED"
+			(at 32.766 77.216 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "OEM:CHIPLED_0805"
+			(at 35.56 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets"
+			(at 35.56 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 35.56 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 35.56 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" ""
+			(at 35.56 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" ""
+			(at 35.56 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0805"
+			(at 35.56 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "No"
+			(at 35.56 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "No"
+			(at 35.56 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11766,7 +13687,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 209.55 158.75 0)
+			(at 35.56 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11774,13 +13695,16 @@
 				(hide yes)
 			)
 		)
+		(pin "2"
+			(uuid "71f365be-cc36-4128-ab78-309129efe1fc")
+		)
 		(pin "1"
-			(uuid "c9e7e114-64bb-4701-bb24-305d90a1d2af")
+			(uuid "5ec9b58e-b079-425a-ba63-c21066152eee")
 		)
 		(instances
-			(project "bms_core"
+			(project ""
 				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-					(reference "CANH1")
+					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -11988,6 +13912,136 @@
 			(project "bms_core"
 				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
 					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:TP_SMD")
+		(at 209.55 153.67 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e27d67a9-9294-4527-a497-1f6b226f8b45")
+		(property "Reference" "TP1"
+			(at 214.63 152.3999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CANL1"
+			(at 214.63 154.9399 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:Test_Point_SMD"
+			(at 205.74 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point SMD hook"
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5019"
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Keystone"
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "36-5019TR-ND"
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "Custom"
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 209.55 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "07ac8446-3685-415e-a750-f0ac5f468b3e")
+		)
+		(instances
+			(project ""
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -12254,135 +14308,6 @@
 		)
 	)
 	(symbol
-		(lib_id "OEM:TP_1mm")
-		(at 209.55 153.67 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "ed3dbf87-f796-42a2-8192-9831758492ca")
-		(property "Reference" "CANL1"
-			(at 216.535 153.67 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TP_1mm"
-			(at 209.4738 155.6512 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 205.74 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" ""
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" ""
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" ""
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" ""
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "Custom"
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 209.55 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a81c1b64-8003-4dff-ae07-0307820cc171")
-		)
-		(instances
-			(project "bms_core"
-				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
-					(reference "CANL1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "OEM:100pF")
 		(at 31.75 49.53 0)
 		(unit 1)
@@ -12569,6 +14494,71 @@
 		)
 		(pin "1"
 			(uuid "d1578995-d045-4ec6-9634-ca2bd9591052")
+		)
+		(instances
+			(project "bms_core"
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 194.31 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f5b70096-0842-427d-8ba9-140606bc6813")
+		(property "Reference" "#PWR?"
+			(at 194.31 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 194.31 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 194.31 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 194.31 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 194.31 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "23452dc3-cb25-4954-b0b8-24a124dd2961")
 		)
 		(instances
 			(project "bms_core"
@@ -12803,26 +14793,6 @@
 				(justify left top)
 			)
 		)
-		(pin "PRE_DIS_TEMP_2" output
-			(at 190.5 33.02 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "71efebfe-f7b5-4f43-8d08-595158b8a4b0")
-		)
-		(pin "PRE_DIS_TEMP_1" output
-			(at 190.5 30.48 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "c3720ae2-6187-4363-be11-a3587781b15d")
-		)
 		(pin "CAN_LOW" bidirectional
 			(at 240.03 40.64 0)
 			(effects
@@ -12843,16 +14813,6 @@
 			)
 			(uuid "a4bad2f1-77e2-49d7-b621-b996bb9aab7f")
 		)
-		(pin "PRE_DIS_TEMP_3" output
-			(at 190.5 35.56 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "29c1346e-4498-45e0-af1c-41019492c3f6")
-		)
 		(pin "FAN_PWM" input
 			(at 240.03 30.48 0)
 			(effects
@@ -12862,26 +14822,6 @@
 				(justify right)
 			)
 			(uuid "0ab9adda-5d4b-40b7-983e-4978c1334e29")
-		)
-		(pin "CHARGE_ENA_IN" output
-			(at 190.5 26.67 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "77582169-5953-41e0-b1d9-c1930cb385a4")
-		)
-		(pin "VREF_CURRENT_SENSE" output
-			(at 190.5 41.91 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "382f33f2-298d-444e-a31b-67129c242b54")
 		)
 		(pin "VOUT_CURRENT_SENSE" output
 			(at 190.5 44.45 180)
@@ -12903,35 +14843,25 @@
 			)
 			(uuid "1b366642-524a-4ff5-93fc-ec8849517d94")
 		)
-		(pin "BMS_LSD" output
-			(at 190.5 38.1 180)
+		(pin "SHDN_IN" input
+			(at 190.5 40.64 180)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "662cb275-50b0-4155-9317-9d6fdf72827e")
+			(uuid "c570f891-ec79-4c57-95a1-37ce6b0bddf1")
 		)
-		(pin "CHARGE_ENA_OUT" input
-			(at 240.03 26.67 0)
+		(pin "SHDN_OUT" input
+			(at 190.5 36.83 180)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
-			(uuid "1739ac6e-5023-4505-822c-a47f7c11917e")
-		)
-		(pin "PUMP_LSD" input
-			(at 240.03 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "163ce651-8083-4c92-93de-51f8f4ebdaf9")
+			(uuid "5066b336-5742-42ea-9786-d2c1aef23683")
 		)
 		(instances
 			(project "bms_core"
