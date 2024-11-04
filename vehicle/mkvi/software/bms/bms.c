@@ -202,7 +202,7 @@ int main(void) {
 
             if (loop_counter % 10 == 0) {
                 // Only enable cell balancing if IC temps below TJ_MAX
-                if (check_ic_temps()) {
+                if (check_ic_temps() && !check_fault_state()) {
                     bms_core.cell_balancing_status = true;
                     can_print("bal_on");
                 } else {
