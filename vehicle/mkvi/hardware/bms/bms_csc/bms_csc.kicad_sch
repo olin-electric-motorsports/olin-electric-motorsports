@@ -6993,16 +6993,6 @@
 		)
 		(uuid "daaa7b8c-0646-48eb-80ca-441bc723ca26")
 	)
-	(wire
-		(pts
-			(xy 255.27 113.03) (xy 257.81 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "db25793f-d78f-47b8-81b9-103b405e750d")
-	)
 	(bus
 		(pts
 			(xy 151.13 129.54) (xy 153.67 129.54)
@@ -8701,17 +8691,6 @@
 		)
 		(uuid "dafb6f8d-daef-4dfd-9c34-aa5c84ebf7da")
 	)
-	(label "V+"
-		(at 257.81 113.03 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "dc1fabb3-ab54-4544-a7e8-9c3af4a1c2d7")
-	)
 	(label "S6"
 		(at 44.45 109.22 0)
 		(fields_autoplaced yes)
@@ -8937,6 +8916,266 @@
 			(project "bms_csc"
 				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
 					(reference "#FLG?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:LED_WHITE")
+		(at 207.01 113.03 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "057ba81a-308f-4794-8d2e-6d4e12557c73")
+		(property "Reference" "PD2"
+			(at 209.55 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "WHITE"
+			(at 204.47 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0402_1005Metric"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Harvatek"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "B1701TW--20P000314U1930"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0805"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "Yes"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Digi-Reel"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 207.01 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "56fd3519-f8c0-4907-b7e4-f8878c15d5ef")
+		)
+		(pin "2"
+			(uuid "d776d2b0-d740-48dd-bc0c-af3e486122d5")
+		)
+		(instances
+			(project "bms_csc"
+				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
+					(reference "PD2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:LED_WHITE")
+		(at 217.17 113.03 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "08f7aa0b-2041-4da6-9831-f1022049982d")
+		(property "Reference" "PD3"
+			(at 219.71 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "WHITE"
+			(at 214.63 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0402_1005Metric"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Harvatek"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "B1701TW--20P000314U1930"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0805"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "Yes"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Digi-Reel"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 217.17 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ba92691f-8f15-479e-8e1a-05a58284f2e6")
+		)
+		(pin "2"
+			(uuid "d430cb86-646b-4f02-8e68-0b86179d5814")
+		)
+		(instances
+			(project "bms_csc"
+				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
+					(reference "PD3")
 					(unit 1)
 				)
 			)
@@ -10061,7 +10300,8 @@
 	)
 	(symbol
 		(lib_id "OEM:LED_WHITE")
-		(at 196.85 113.03 90)
+		(at 196.85 113.03 270)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10069,14 +10309,6 @@
 		(dnp no)
 		(uuid "35d0723c-f806-49cb-9110-d943323f808a")
 		(property "Reference" "PD1"
-			(at 199.39 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "WHITE"
 			(at 194.31 113.03 0)
 			(effects
 				(font
@@ -10084,7 +10316,15 @@
 				)
 			)
 		)
-		(property "Footprint" "OEM:CHIPLED_0805"
+		(property "Value" "WHITE"
+			(at 199.39 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0402_1005Metric"
 			(at 196.85 113.03 0)
 			(effects
 				(font
@@ -10184,136 +10424,6 @@
 			(project "bms_csc"
 				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
 					(reference "PD1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:LED_WHITE")
-		(at 217.17 113.03 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4768a642-e9d0-4dfc-8dfa-6d5db41bed64")
-		(property "Reference" "PD4"
-			(at 219.71 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "WHITE"
-			(at 214.63 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Harvatek"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "B1701TW--20P000314U1930"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "Yes"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 217.17 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e87b59dd-cc8c-4026-beca-806fae2db5d0")
-		)
-		(pin "2"
-			(uuid "e07cc27e-6126-4959-b18c-1b4bffd004ae")
-		)
-		(instances
-			(project "bms_csc"
-				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
-					(reference "PD4")
 					(unit 1)
 				)
 			)
@@ -10996,7 +11106,7 @@
 				)
 			)
 		)
-		(property "Value" "1KR"
+		(property "Value" "?"
 			(at 204.47 123.19 90)
 			(effects
 				(font
@@ -11629,136 +11739,6 @@
 		)
 	)
 	(symbol
-		(lib_id "OEM:LED_WHITE")
-		(at 207.01 113.03 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8976ad95-4494-4e9e-8f80-65944332c89e")
-		(property "Reference" "PD3"
-			(at 209.55 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "WHITE"
-			(at 204.47 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Harvatek"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "B1701TW--20P000314U1930"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "Yes"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "89b3cfce-5872-4ad0-a153-fa718bc18f69")
-		)
-		(pin "2"
-			(uuid "34e3c20d-2d8d-4526-8633-5eec714b6ee5")
-		)
-		(instances
-			(project "bms_csc"
-				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
-					(reference "PD3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 207.01 128.27 0)
 		(unit 1)
@@ -11970,7 +11950,7 @@
 				)
 			)
 		)
-		(property "Value" "1KR"
+		(property "Value" "422"
 			(at 214.63 123.19 90)
 			(effects
 				(font
@@ -12489,7 +12469,7 @@
 				)
 			)
 		)
-		(property "Value" "1KR"
+		(property "Value" "80"
 			(at 194.31 123.19 90)
 			(effects
 				(font
@@ -12695,7 +12675,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OEM:R_0603"
+		(property "Footprint" "OEM:R_2512_OEM"
 			(at 111.76 72.39 0)
 			(effects
 				(font
@@ -13704,133 +13684,6 @@
 			(project "bms_csc"
 				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
 					(reference "#FLG?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:TP_1mm")
-		(at 254 113.03 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "d8719813-130a-4359-a2b8-4eca9022539e")
-		(property "Reference" "TP12"
-			(at 236.22 113.03 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TP_1mm"
-			(at 245.11 113.03 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 257.81 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" ""
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" ""
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" ""
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" ""
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "Custom"
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 254 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d8d4cac8-cdce-415a-b8e9-159d72d41e53")
-		)
-		(instances
-			(project "bms_csc"
-				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
-					(reference "TP12")
 					(unit 1)
 				)
 			)
