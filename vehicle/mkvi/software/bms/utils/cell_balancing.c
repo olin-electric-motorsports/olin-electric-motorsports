@@ -43,7 +43,8 @@ bool check_ic_temps(void) {
 }
 
 void cell_balancing_task(uint32_t (*cells_to_balance)[NUM_ICS]) {
-    can_print("cell_b", (*cells_to_balance)[0]);
+    can_print("cell_bh", (*cells_to_balance)[0] >> 16);
+    can_print("cell_bl", (*cells_to_balance)[0] && 0xFF);
     // for (uint8_t segment = 0; segment < NUM_ICS; segment++) {
     //     can_print("seg_b", segment);
     //     can_print("cell_b", *cells_to_balance[segment]);

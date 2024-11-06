@@ -69,7 +69,12 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                 *lowest_voltage = cell_2;
             }
             if (cell_2 > *last_lowest_voltage + BALANCED_MARGIN) {
-                *cells_to_balance[ic] |= 1 << (cell_reg * 3 + 1);
+                if (cell_reg == 5) {
+                    *cells_to_balance[ic] |= 0b00000000000000010000000000000000;
+                } else {
+                    *cells_to_balance[ic] |= 1 << (cell_reg * 3 + 1);
+                }
+                can_send_bms_debug();
             }
             uint16_t cell_3
                 = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
@@ -149,6 +154,11 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             if (received_pec != data_pec) {
                 *pec_errors += 1;
             }
+
+            // can_print("cell1", cell_1);
+            // can_print("cell2", cell_2);
+            // can_print("cell3", cell_3);
+            // can_print("lv", *last_lowest_voltage);
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D, E, F)
 
@@ -159,4 +169,5 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
     //     set_fault(BMS_FAULT_UNDERVOLTAGE);
     // }
     *last_lowest_voltage = *lowest_voltage;
+    // can_print("lv", *last_lowest_voltage);
 }
