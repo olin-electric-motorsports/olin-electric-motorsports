@@ -5265,16 +5265,6 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 127) (xy 207.01 128.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1faf75ab-a23e-4878-b249-f213b11a2d5c")
-	)
-	(wire
-		(pts
 			(xy 132.08 83.82) (xy 132.08 82.55)
 		)
 		(stroke
@@ -5765,7 +5755,7 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 107.95) (xy 196.85 109.22)
+			(xy 208.28 107.95) (xy 208.28 109.22)
 		)
 		(stroke
 			(width 0)
@@ -6055,17 +6045,7 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 107.95) (xy 207.01 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7c6e6711-e64a-41fb-930e-d1aba1287cef")
-	)
-	(wire
-		(pts
-			(xy 196.85 127) (xy 196.85 128.27)
+			(xy 208.28 127) (xy 208.28 128.27)
 		)
 		(stroke
 			(width 0)
@@ -6295,7 +6275,7 @@
 	)
 	(polyline
 		(pts
-			(xy 184.15 96.52) (xy 223.52 96.52)
+			(xy 199.39 96.52) (xy 223.52 96.52)
 		)
 		(stroke
 			(width 0)
@@ -6505,7 +6485,7 @@
 	)
 	(polyline
 		(pts
-			(xy 184.15 96.52) (xy 184.15 137.16)
+			(xy 199.39 96.52) (xy 199.39 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6535,7 +6515,7 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 116.84) (xy 196.85 119.38)
+			(xy 208.28 116.84) (xy 208.28 119.38)
 		)
 		(stroke
 			(width 0)
@@ -6903,16 +6883,6 @@
 		)
 		(uuid "d105e0cc-d298-483f-a874-fe3dea77db9c")
 	)
-	(wire
-		(pts
-			(xy 207.01 116.84) (xy 207.01 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d1c4ca70-b06d-4a8f-9e39-3fd7110058a5")
-	)
 	(polyline
 		(pts
 			(xy 172.72 83.82) (xy 172.72 96.52)
@@ -7135,7 +7105,7 @@
 	)
 	(polyline
 		(pts
-			(xy 223.52 137.16) (xy 184.15 137.16)
+			(xy 223.52 137.16) (xy 199.39 137.16)
 		)
 		(stroke
 			(width 0)
@@ -7420,20 +7390,6 @@
 			(justify right bottom)
 		)
 		(uuid "2b052676-fdeb-475a-b2c4-ffc30467d92a")
-	)
-	(text "do we need a power led for v+"
-		(exclude_from_sim no)
-		(at 186.69 99.314 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-				(color 255 38 85 1)
-			)
-			(justify left bottom)
-		)
-		(uuid "3693c183-9c06-4bd3-92c3-8c672521677a")
 	)
 	(text "2 isoSPI- A -> BMS Core\n2 isoSPI+ B -> Next CSC"
 		(exclude_from_sim no)
@@ -7722,17 +7678,6 @@
 			(justify left bottom)
 		)
 		(uuid "02f0e2f5-cb30-441d-a54f-1f628d2ad051")
-	)
-	(label "VDRIVE"
-		(at 207.01 107.95 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "044b9929-6f7b-4ef7-906d-e9cd472dc278")
 	)
 	(label "V+"
 		(at 126.365 72.39 180)
@@ -8054,7 +7999,7 @@
 		(uuid "48db16fd-1ae7-451f-a87a-b29af44a7940")
 	)
 	(label "VREF2"
-		(at 196.85 107.95 90)
+		(at 208.28 107.95 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8916,136 +8861,6 @@
 			(project "bms_csc"
 				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
 					(reference "#FLG?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:LED_WHITE")
-		(at 207.01 113.03 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "057ba81a-308f-4794-8d2e-6d4e12557c73")
-		(property "Reference" "PD2"
-			(at 209.55 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "WHITE"
-			(at 204.47 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0402_1005Metric"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Harvatek"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "B1701TW--20P000314U1930"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "Yes"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 207.01 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "56fd3519-f8c0-4907-b7e4-f8878c15d5ef")
-		)
-		(pin "2"
-			(uuid "d776d2b0-d740-48dd-bc0c-af3e486122d5")
-		)
-		(instances
-			(project "bms_csc"
-				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
-					(reference "PD2")
 					(unit 1)
 				)
 			)
@@ -10300,7 +10115,7 @@
 	)
 	(symbol
 		(lib_id "OEM:LED_WHITE")
-		(at 196.85 113.03 270)
+		(at 208.28 113.03 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10309,7 +10124,7 @@
 		(dnp no)
 		(uuid "35d0723c-f806-49cb-9110-d943323f808a")
 		(property "Reference" "PD1"
-			(at 194.31 113.03 0)
+			(at 205.74 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10317,7 +10132,7 @@
 			)
 		)
 		(property "Value" "WHITE"
-			(at 199.39 113.03 0)
+			(at 210.82 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10325,7 +10140,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0402_1005Metric"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10334,7 +10149,7 @@
 			)
 		)
 		(property "Datasheet" "${OEM_DIR}/parts/datasheets/harvatek_B1701TW--20P000314U1930.pdf"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10343,7 +10158,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10352,7 +10167,7 @@
 			)
 		)
 		(property "MFN" "Harvatek"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10361,7 +10176,7 @@
 			)
 		)
 		(property "MPN" "B1701TW--20P000314U1930"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10370,7 +10185,7 @@
 			)
 		)
 		(property "DKPN" "3147-B1701TW--20P000314U1930DKR-ND"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10379,7 +10194,7 @@
 			)
 		)
 		(property "Package" "0805"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10388,7 +10203,7 @@
 			)
 		)
 		(property "NewDesigns" "Yes"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10397,7 +10212,7 @@
 			)
 		)
 		(property "Stocked" "Digi-Reel"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10406,7 +10221,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 196.85 113.03 0)
+			(at 208.28 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11091,136 +10906,6 @@
 	)
 	(symbol
 		(lib_id "OEM:1KR")
-		(at 207.01 123.19 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "6d03d274-83f5-4b9a-bb0c-a01dc9d8dfe8")
-		(property "Reference" "R10"
-			(at 209.042 123.19 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "?"
-			(at 204.47 123.19 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:R_0603"
-			(at 205.232 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
-			(at 209.042 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 207.01 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Stackpole Electronics"
-			(at 207.01 123.19 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RMCF0603FT1K00"
-			(at 207.01 123.19 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "RMCF0603FT1K00TR-ND"
-			(at 207.01 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 207.01 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Reel"
-			(at 207.01 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0603"
-			(at 207.01 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 207.01 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a1c1a562-84e8-4d87-a02c-fa785608b6c3")
-		)
-		(pin "2"
-			(uuid "06724345-7ffc-4654-9a45-abb592f1b5fa")
-		)
-		(instances
-			(project "bms_csc"
-				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
-					(reference "R10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:1KR")
 		(at 25.4 63.5 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11728,71 +11413,6 @@
 		)
 		(pin "1"
 			(uuid "49dbd62a-cd61-49c3-b99e-cb7070d9fcaf")
-		)
-		(instances
-			(project "bms_csc"
-				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 207.01 128.27 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8ea037bf-08a5-49f6-992f-b6932ead3091")
-		(property "Reference" "#PWR?"
-			(at 207.01 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 207.01 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 207.01 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 207.01 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 207.01 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e1fe953e-8f05-4b21-8ab1-06d88c3261a4")
 		)
 		(instances
 			(project "bms_csc"
@@ -12454,7 +12074,7 @@
 	)
 	(symbol
 		(lib_id "OEM:1KR")
-		(at 196.85 123.19 0)
+		(at 208.28 123.19 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12462,7 +12082,7 @@
 		(dnp no)
 		(uuid "a2fd9f7a-59dc-476a-8933-61d02aa6d1ce")
 		(property "Reference" "R8"
-			(at 198.882 123.19 90)
+			(at 210.312 123.19 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12470,7 +12090,7 @@
 			)
 		)
 		(property "Value" "80"
-			(at 194.31 123.19 90)
+			(at 205.74 123.19 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12478,7 +12098,7 @@
 			)
 		)
 		(property "Footprint" "OEM:R_0603"
-			(at 195.072 123.19 0)
+			(at 206.502 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12487,7 +12107,7 @@
 			)
 		)
 		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
-			(at 198.882 123.19 0)
+			(at 210.312 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12496,7 +12116,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.85 123.19 0)
+			(at 208.28 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12505,7 +12125,7 @@
 			)
 		)
 		(property "MFN" "Stackpole Electronics"
-			(at 196.85 123.19 0)
+			(at 208.28 123.19 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12514,7 +12134,7 @@
 			)
 		)
 		(property "MPN" "RMCF0603FT1K00"
-			(at 196.85 123.19 0)
+			(at 208.28 123.19 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -12523,7 +12143,7 @@
 			)
 		)
 		(property "DKPN" "RMCF0603FT1K00TR-ND"
-			(at 196.85 123.19 0)
+			(at 208.28 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12532,7 +12152,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 196.85 123.19 0)
+			(at 208.28 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12541,7 +12161,7 @@
 			)
 		)
 		(property "Stocked" "Reel"
-			(at 196.85 123.19 0)
+			(at 208.28 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12550,7 +12170,7 @@
 			)
 		)
 		(property "Package" "0603"
-			(at 196.85 123.19 0)
+			(at 208.28 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12559,7 +12179,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 196.85 123.19 0)
+			(at 208.28 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14208,7 +13828,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 196.85 128.27 0)
+		(at 208.28 128.27 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14216,7 +13836,7 @@
 		(dnp no)
 		(uuid "f9b46ee6-d609-464d-86bd-86832a117006")
 		(property "Reference" "#PWR?"
-			(at 196.85 134.62 0)
+			(at 208.28 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14225,7 +13845,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 196.85 132.08 0)
+			(at 208.28 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14233,7 +13853,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 196.85 128.27 0)
+			(at 208.28 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14242,7 +13862,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 196.85 128.27 0)
+			(at 208.28 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14251,7 +13871,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 196.85 128.27 0)
+			(at 208.28 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
