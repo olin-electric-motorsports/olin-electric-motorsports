@@ -70,7 +70,7 @@ class VehicleTable(QTableWidget):
 
     def setData(self, data):
         for i, (signal, val) in enumerate(data.items()):
-            self.setItem(i, 0, createTableItem(signal))
+            self.setItem(i, 0, createTableItem(DISPLAY_NAMES.get(signal, signal)))
             self.setItem(i, 1, createTableItem(val))
 
 
