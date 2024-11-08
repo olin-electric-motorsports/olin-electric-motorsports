@@ -1,5 +1,5 @@
-load("@rules_python//python:defs.bzl", "py_test")
 load("@pytest_deps//:requirements.bzl", "requirement")
+load("@rules_python//python:defs.bzl", "py_test")
 
 def pytest_test(name, srcs, deps = [], args = [], **kwargs):
     """
