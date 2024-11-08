@@ -12,7 +12,7 @@
 bool check_ic_temps(void) {
     // Check internal die temperatures
     wakeup_sleep(NUM_ICS);
-
+    
     // Start and wait for ADC conversion for internal temp
     LTC681x_adstat(MD_7KHZ_3KHZ, STAT_CH_ITEMP);
     LTC681x_pollAdc();
@@ -37,6 +37,7 @@ bool check_ic_temps(void) {
     can_print("Max IC", max_ic_temp);
     // can_print("Max IC", (max_ic_temp < CELL_TJ_ITMP_MAX));
     if (max_ic_temp < CELL_TJ_ITMP_MAX) {
+        can_print("Balancing stopped");
         return true;
     }
     return false;

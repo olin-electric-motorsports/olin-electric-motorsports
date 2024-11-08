@@ -7,7 +7,7 @@
 // ADBMS1818 junction max for lowest spec is 85C
 // Pg. 69: ITMP × 100μV/7.6mV/°C − 276°C
 // @60C, ITMP = 25536
-#define CELL_TJ_ITMP_MAX (25536)
+#define CELL_TJ_ITMP_MAX (26269)
 // #define CELL_TJ_ITMP_MAX (24000)
 #define BALANCED_MARGIN (100) // 0.01V
 

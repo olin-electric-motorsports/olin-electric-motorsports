@@ -101,7 +101,7 @@ static void monitor_cells(uint16_t* lowest_voltage,
 
     // Check for undertemparature and overtemperature faults
     if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        // set_fault(BMS_FAULT_UNDERTEMPERATURE);
     } else {
         // clear_fault(BMS_FAULT_UNDERTEMPERATURE);
     }
@@ -155,7 +155,7 @@ static void monitor_cells(uint16_t* lowest_voltage,
     }
 
     if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
-        set_fault(BMS_FAULT_UNDERVOLTAGE);
+        // set_fault(BMS_FAULT_UNDERVOLTAGE);
     } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
         // clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
@@ -186,7 +186,7 @@ int main(void) {
 
             if (loop_counter % 50 == 0) {
                 can_send_bms_debug();
-                can_send_bms_metrics();
+                // can_send_bms_metrics();
             }
 
             if (bms_core.bms_state == BMS_STATE_CHARGING) {

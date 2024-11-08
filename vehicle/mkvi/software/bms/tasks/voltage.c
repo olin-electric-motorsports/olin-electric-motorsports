@@ -61,7 +61,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                 *lowest_voltage = cell_1;
             }
             if (cell_1 > *last_lowest_voltage + BALANCED_MARGIN) {
-                *cells_to_balance[ic] |= (uint32_t)1 << (cell_reg * 3);
+                (*cells_to_balance)[ic] |= (uint32_t)1 << (cell_reg * 3);
             }
             uint16_t cell_2
                 = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
@@ -69,7 +69,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                 *lowest_voltage = cell_2;
             }
             if (cell_2 > *last_lowest_voltage + BALANCED_MARGIN) {
-                *cells_to_balance[ic] |= (uint32_t)1 << (cell_reg * 3 + 1);
+                (*cells_to_balance)[ic] |= (uint32_t)1 << (cell_reg * 3 + 1);
             }
             uint16_t cell_3
                 = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
@@ -78,7 +78,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                     *lowest_voltage = cell_3;
                 }
                 if (cell_3 > *last_lowest_voltage + BALANCED_MARGIN) {
-                    *cells_to_balance[ic] |= (uint32_t)1 << (cell_reg * 3 + 2);
+                    (*cells_to_balance)[ic] |= (uint32_t)1 << (cell_reg * 3 + 2);
                 }
             }
 

@@ -205,7 +205,7 @@ def rx_callback(msg, db):
               txt += (
                   " ".join(
                       [
-                          str(str(round(b[1], 2)).ljust(4, "0") + " ")
+                          str(str(round(b[1], 4)).ljust(6, "0") + " ")
                           for b in zipped_readings[i : i + 17]
                           # str(b[0] + "\t" + str(round(b[1], 2)))
                           # for b in zipped_readings[i : i + 4]
@@ -217,6 +217,7 @@ def rx_callback(msg, db):
               seg += 1
           txt += "Min: \t" + str(round(lowest_voltage,3)) + "\n"
           txt += "Max: \t" + str(round(highest_voltage,3)) + "\n"
+          txt += "Diff: \t" + str(round(highest_voltage - lowest_voltage,3)) + "\n"
           txt += "____________________________________________________End____________________________________________________\n\n"
           print(txt)
 
