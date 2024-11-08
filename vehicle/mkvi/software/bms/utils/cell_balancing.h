@@ -9,7 +9,7 @@
 // @60C, ITMP = 25536
 #define CELL_TJ_ITMP_MAX (25536)
 // #define CELL_TJ_ITMP_MAX (24000)
-#define BALANCED_MARGIN (100) // 0.1V
+#define BALANCED_MARGIN (1000) // 0.1V
 
 /**
  * Check the internal die temps of all ICs.

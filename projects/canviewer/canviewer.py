@@ -205,7 +205,7 @@ def rx_callback(msg, db):
               txt += (
                   " ".join(
                       [
-                          str(str(round(b[1], 5)).ljust(4, "0") + " ")
+                          str(str(round(b[1], 2)).ljust(4, "0") + " ")
                           for b in zipped_readings[i : i + 17]
                           # str(b[0] + "\t" + str(round(b[1], 2)))
                           # for b in zipped_readings[i : i + 4]
