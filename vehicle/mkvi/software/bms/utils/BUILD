@@ -3,14 +3,14 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 cc_library(
     name = "bms_utils",
     srcs = [
+        "cell_balancing.c",
         "fault.c",
         "i2c_helpers.c",
-        "cell_balancing.c"
     ],
     hdrs = [
+        "cell_balancing.h",
         "fault.h",
         "i2c_helpers.h",
-        "cell_balancing.h"
     ],
     visibility = ["//visibility:public"],
     deps = [
