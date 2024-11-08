@@ -43,12 +43,12 @@ bool check_ic_temps(void) {
 }
 
 void cell_balancing_task(uint32_t (*cells_to_balance)[NUM_ICS]) {
-    can_print("cell_bh", (*cells_to_balance)[0] >> 16);
-    can_print("cell_bl", (*cells_to_balance)[0] & 0xFFFF);
-    // for (uint8_t segment = 0; segment < NUM_ICS; segment++) {
-    //     can_print("seg_b", segment);
-    //     can_print("cell_b", *cells_to_balance[segment]);
-    // }
+    for (uint8_t segment = 0; segment < NUM_ICS; segment++) {
+        can_print("seg_b", segment);
+        can_print("cell_bh", (*cells_to_balance)[segment] >> 16);
+        can_print("cell_bl", (*cells_to_balance)[segment] & 0xFFFF);
+        can_print("========");
+    }
 
     // Manual cell balancing
     // To use: little endian, so 0x1 would discharge only cell 1. Find the
@@ -121,7 +121,7 @@ void cell_balancing_task(uint32_t (*cells_to_balance)[NUM_ICS]) {
 void enable_cell_balancing(void) {
     // bms_ctrl.cell_balancing_status = true;
     // can_send_bms_ctrl(); // TODO: Remove when running low on mem
-    uint8_t unmute_data[NUM_ICS] = { 0 };
+    uint8_t unmute_data[NUM_ICS] = { 0, 0, 0, 0, 0, 0 };
     wakeup_sleep(NUM_ICS);
     uint8_t unmute_cmd[2] = { 0x0, 0x29 };
     write_68(NUM_ICS, unmute_cmd, unmute_data);
@@ -130,8 +130,7 @@ void enable_cell_balancing(void) {
 void disable_cell_balancing(void) {
     // bms_ctrl.cell_balancing_status = false;
     // can_send_bms_ctrl(); // TODO: Remove when running low on mem
-    uint8_t mute_data[NUM_ICS] = { 1 }; // TODO: Update for six segments
-    // = { 1, 1, 1, 1, 1, 1 }; // TODO: Update for six segments
+    uint8_t mute_data[NUM_ICS] = { 1, 1, 1, 1, 1, 1 };
     wakeup_sleep(NUM_ICS);
     uint8_t mute_cmd[2] = { 0x0, 0x28 };
     write_68(NUM_ICS, mute_cmd, mute_data);
