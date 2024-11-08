@@ -12,6 +12,108 @@
 		(comment 1 "By Henry Tejada Deras")
 	)
 	(lib_symbols
+		(symbol "OEM:CONN_MountingHole"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_MountingHole"
+				(at 0 4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:PCIe_Mount"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole with connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*Pad*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CONN_MountingHole_0_1"
+				(circle
+					(center 0 1.27)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_MountingHole_1_1"
+				(pin input line
+					(at 0 -2.54 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "OEM:CONN_pcie_x1"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1659,6 +1761,16 @@
 		)
 		(uuid "18b284b7-0a3d-4626-8042-229e246fe71f")
 	)
+	(polyline
+		(pts
+			(xy 205.74 52.07) (xy 205.74 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "199e206c-9d6e-4e5a-be09-e9635cb23065")
+	)
 	(wire
 		(pts
 			(xy 121.92 102.87) (xy 133.35 102.87)
@@ -1948,6 +2060,16 @@
 			(type default)
 		)
 		(uuid "448d84cd-9039-41b1-90e2-332d1b2ba91c")
+	)
+	(polyline
+		(pts
+			(xy 165.1 27.94) (xy 205.74 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45065c0e-7b92-4196-8db9-b8df9b0bca74")
 	)
 	(wire
 		(pts
@@ -2501,6 +2623,16 @@
 	)
 	(polyline
 		(pts
+			(xy 165.1 52.07) (xy 205.74 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d37e8e2d-f355-4a7e-bfed-6157ae8694b7")
+	)
+	(polyline
+		(pts
 			(xy 95.25 128.27) (xy 124.46 128.27)
 		)
 		(stroke
@@ -2631,6 +2763,16 @@
 	)
 	(polyline
 		(pts
+			(xy 165.1 27.94) (xy 165.1 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5b11231-623f-4584-b6e9-839c147c35a3")
+	)
+	(polyline
+		(pts
 			(xy 124.46 113.03) (xy 92.71 113.03)
 		)
 		(stroke
@@ -2719,6 +2861,16 @@
 			)
 		)
 		(uuid "1f0e4d88-f03e-4046-9657-3e912728382d")
+	)
+	(text "PCIe x1 Mounting Hole"
+		(exclude_from_sim no)
+		(at 185.674 31.242 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4a9348d9-be81-463b-a640-4d33ac562522")
 	)
 	(text "Board Current\nElectrical Safety Module"
 		(exclude_from_sim no)
@@ -2895,6 +3047,72 @@
 			(justify right)
 		)
 		(uuid "e44d7a03-17b9-40e5-b6a9-ab8271445882")
+	)
+	(symbol
+		(lib_id "OEM:CONN_MountingHole")
+		(at 177.8 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "19f26d26-e995-4ae6-b07e-a3ff168c81d0")
+		(property "Reference" "H1"
+			(at 180.34 36.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_MountingHole"
+			(at 180.34 39.3699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:PCIe_Mount"
+			(at 177.8 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 177.8 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 177.8 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f7ab57f2-8320-4761-aef1-14598765e1be")
+		)
+		(instances
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/875aabfb-3c91-4011-8240-4af05d59512e"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -3594,6 +3812,72 @@
 			(project ""
 				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/875aabfb-3c91-4011-8240-4af05d59512e"
 					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 177.8 41.91 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fa9d9ab2-b292-4ceb-aa94-c8f48d9a05f6")
+		(property "Reference" "#PWR?"
+			(at 177.8 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 177.8 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 177.8 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e7f3695f-cd46-4e2e-afdb-b5e35671d8bf")
+		)
+		(instances
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/875aabfb-3c91-4011-8240-4af05d59512e"
+					(reference "#PWR?")
 					(unit 1)
 				)
 			)
