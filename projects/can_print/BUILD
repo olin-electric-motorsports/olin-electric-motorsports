@@ -13,10 +13,14 @@ cc_library(
         "can_print.c",
     ],
     hdrs = ["can_print.h"],
-    target_compatible_with = select({
-        "//bazel/constraints:atmega16m1": [],
-        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
-    }),
+    # target_compatible_with = select({
+    #     "//bazel/constraints:atmega16m1": [],
+    #     "//bazel/constraints:atmega64m1": [],
+    #     "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+    # }),
+    target_compatible_with = [
+        "//bazel/constraints:avr",
+    ],
     visibility = ["//visibility:public"],
     deps = [":can_api"],
 )

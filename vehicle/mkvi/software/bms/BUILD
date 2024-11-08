@@ -10,8 +10,12 @@ cc_library(
         "bms_config.h",
     ],
     target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
+        "//bazel/constraints:avr",
     ],
+    # target_compatible_with = [
+    #     "//bazel/constraints:atmega16m1",
+    #     "//bazel/constraints:atmega64m1",
+    # ],
     visibility = ["//visibility:public"],
     deps = [
         "//libs/adc",
@@ -28,9 +32,13 @@ cc_firmware(
     srcs = [
         "bms.c",
     ],
-    btldr = "//projects/btldr:bms_btldr",
+    # btldr = "//projects/btldr:bms_btldr",
+    # target_compatible_with = [
+    #     "//bazel/constraints:atmega16m1",
+    #     "//bazel/constraints:atmega64m1",
+    # ],
     target_compatible_with = [
-        "//bazel/constraints:atmega16m1",
+        "//bazel/constraints:avr",
     ],
     deps = [
         ":bms_config",
@@ -39,10 +47,11 @@ cc_firmware(
         "//libs/gpio",
         "//libs/spi",
         "//libs/timer",
-        "//projects/btldr:btldr_lib",
+        # "//projects/btldr:btldr_lib",
         "//vehicle/common/ltc6811:ltc681x",
         "//vehicle/mkvi/software/bms/tasks:bms_tasks",
         "//vehicle/mkvi/software/bms/utils:bms_utils",
+        "//projects/can_print",
     ],
 )
 

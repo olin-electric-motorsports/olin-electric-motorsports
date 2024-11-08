@@ -1,9 +1,10 @@
 
 #pragma once
 
+#include "vehicle/mkvi/software/bms/bms_config.h"
 #include <stdint.h>
 
-    #define NUM_EXEPTIONS 1;
+#define NUM_EXEPTIONS 1;
 
 /*
  * Task to read the voltages from the battery pack
@@ -24,7 +25,9 @@
  *   Number of PEC errors that occurred when communicating with the ADBMS1818
  *   0 if no errors
  */
-void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* pec_errors);
+void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
+                  uint16_t* lowest_voltage, uint16_t* last_lowest_voltage,
+                  uint32_t (*cells_to_balance)[NUM_ICS], uint16_t* pec_errors);
 
 /*
  * Task to read the temperature from the battery pack
@@ -49,7 +52,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* 
  *  0 if no errors
  */
 void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
-                     uint16_t* max_temp, uint16_t* pec_errors);
+                      uint16_t* max_temp, uint16_t* pec_errors);
 
 void current_task(int16_t* current);
 

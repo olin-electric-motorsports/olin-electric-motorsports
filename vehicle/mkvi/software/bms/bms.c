@@ -18,17 +18,19 @@
 #include "vehicle/mkvi/software/bms/utils/fault.h"
 #include "vehicle/mkvi/software/bms/utils/i2c_helpers.h"
 
-#include "projects/btldr/btldr_lib.h"
-#include "projects/btldr/git_sha.h"
-#include "projects/btldr/libs/image/api.h"
+#include "projects/can_print/can_print.h"
 
-/*
- * Required for btldr
- */
-image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
-    .image_magic = IMAGE_MAGIC,
-    .git_sha = STABLE_GIT_COMMIT,
-};
+// #include "projects/btldr/btldr_lib.h"
+// #include "projects/btldr/git_sha.h"
+// #include "projects/btldr/libs/image/api.h"
+
+// /*
+//  * Required for btldr
+//  */
+// image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+//     .image_magic = IMAGE_MAGIC,
+//     .git_sha = STABLE_GIT_COMMIT,
+// };
 
 /*
  * INTERRUPTS
@@ -53,7 +55,6 @@ void hw_init() {
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
 
     gpio_set_pin(COOLING_PUMP_LSD);
-    
 
     gpio_set_mode(BSPD_CURRENT_THRESH, INPUT);
 
@@ -69,18 +70,15 @@ void hw_init() {
 
     can_receive_charging_fbk();
 
-  
     wakeup_sleep(NUM_ICS);
 
-    cell_balancing_init();
-
-
-    updater_init(BTLDR_ID, 5);
+    // updater_init(BTLDR_ID, 5);
     gpio_set_pin(DEBUG_LED_1);
-    
 }
 
-static void monitor_cells(void) {
+static void monitor_cells(uint16_t* lowest_voltage,
+                          uint16_t* last_lowest_voltage,
+                          uint32_t (*cells_to_balance)[NUM_ICS]) {
     // read all temperatures
     static uint32_t ot = 0;
     static uint32_t ut = 0;
@@ -103,13 +101,13 @@ static void monitor_cells(void) {
 
     // Check for undertemparature and overtemperature faults
     if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
-        set_fault(BMS_FAULT_UNDERTEMPERATURE);
+        // set_fault(BMS_FAULT_UNDERTEMPERATURE);
     } else {
         // clear_fault(BMS_FAULT_UNDERTEMPERATURE);
     }
 
     if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        // set_fault(BMS_FAULT_OVERTEMPERATURE);
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
     } else {
         // clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
@@ -119,12 +117,14 @@ static void monitor_cells(void) {
 
     uint16_t pack_voltage = 0;
     pec_errors = 0;
-    voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
+    voltage_task(&pack_voltage, &ov, &uv, lowest_voltage, last_lowest_voltage,
+                 cells_to_balance, &pec_errors);
+
     bms_core.pack_voltage = pack_voltage;
 
     // read current
     int16_t current = 0;
-    //current_task(&current);
+    // current_task(&current);
     current = (adc_read(CURRENT_SENSE_VOUT) - 568) * 24;
     bms_core.pack_current = current;
 
@@ -155,7 +155,7 @@ static void monitor_cells(void) {
     }
 
     if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
-        set_fault(BMS_FAULT_UNDERVOLTAGE);
+        // set_fault(BMS_FAULT_UNDERVOLTAGE);
     } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
         // clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
@@ -166,10 +166,16 @@ int main(void) {
 
     // Tracks the number of times the 10ms loop has been run
     uint8_t loop_counter = 0;
+    uint16_t last_lowest_voltage = UINT16_MAX;
 
     while (true) {
         if (run_10ms) {
-            monitor_cells();
+            // Cell balancing
+            uint16_t lowest_voltage = UINT16_MAX;
+            uint32_t cells_to_balance[NUM_ICS]
+                = { 0 }; // TODO: Update for 6 segments
+            monitor_cells(&lowest_voltage, &last_lowest_voltage,
+                          &cells_to_balance);
             if (!check_fault_state()) {
                 gpio_set_pin(BMS_RELAY_LSD);
             } else {
@@ -180,7 +186,7 @@ int main(void) {
 
             if (loop_counter % 50 == 0) {
                 can_send_bms_debug();
-                can_send_bms_metrics();
+                // can_send_bms_metrics();
             }
 
             if (bms_core.bms_state == BMS_STATE_CHARGING) {
@@ -194,10 +200,19 @@ int main(void) {
 
             loop_counter++;
 
-            if (loop_counter == 1000) {
+            if (loop_counter % 10 == 0) {
+                // Only enable cell balancing if IC temps below TJ_MAX
+                if (check_ic_temps() && !check_fault_state()) {
+                    bms_core.cell_balancing_status = true;
+                    can_print("bal_on");
+                } else {
+                    bms_core.cell_balancing_status = false;
+                    can_print("bal_off");
+                }
+                cell_balancing_task(&cells_to_balance);
                 loop_counter = 0;
             }
-            updater_loop();
+            // updater_loop();
 
             run_10ms = false;
         }
