@@ -234,6 +234,8 @@
 	(net 85 "unconnected-(U1-(PCINT12{slash}ADC8{slash}ACMPN3{slash}AMP1-)PC4-Pad17)")
 	(net 86 "unconnected-(U1-(PCINT13{slash}ADC9{slash}ACMP3{slash}AMP1+)PC5-Pad18)")
 	(net 87 "unconnected-(U2-FAULT-Pad5)")
+	(net 88 "unconnected-(H2-Pad1)")
+	(net 89 "unconnected-(H2-Pad1)_1")
 	(footprint "OEM:SOT-23F"
 		(layer "F.Cu")
 		(uuid "0590f1c6-589a-4a1b-8e6c-ae413472a89c")
@@ -4160,7 +4162,6 @@
 				)
 			)
 		)
-		(path "/be343294-bfee-4d49-a85a-b58a37467bda/0fdff84d-116d-4e4b-bdb9-1057d2caf040")
 		(sheetname "BSPD Current Sensor Trigger")
 		(sheetfile "bspd_current_sense.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
@@ -8556,7 +8557,6 @@
 				)
 			)
 		)
-		(path "/be343294-bfee-4d49-a85a-b58a37467bda/f14261d2-4c2f-4801-86c0-54c3b52b1d8a")
 		(sheetname "BSPD Current Sensor Trigger")
 		(sheetfile "bspd_current_sense.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
@@ -10118,7 +10118,6 @@
 				)
 			)
 		)
-		(path "/be343294-bfee-4d49-a85a-b58a37467bda/678217e1-2db2-4dd9-b795-ba16376a41c2")
 		(sheetname "BSPD Current Sensor Trigger")
 		(sheetfile "bspd_current_sense.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
@@ -10143,17 +10142,6 @@
 			(fill none)
 			(layer "F.CrtYd")
 			(uuid "735b3ba4-1807-41da-8116-491d28cc24d4")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 2.8592 8.84 0)
-			(layer "F.Fab")
-			(uuid "5d74738f-0084-4df4-bb31-35ed6caa766b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -10626,7 +10614,6 @@
 				)
 			)
 		)
-		(path "/be343294-bfee-4d49-a85a-b58a37467bda/b803d9c5-c2ae-419d-ae44-7591b53d4060")
 		(sheetname "BSPD Current Sensor Trigger")
 		(sheetfile "bspd_current_sense.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
@@ -16502,7 +16489,6 @@
 				)
 			)
 		)
-		(path "/be343294-bfee-4d49-a85a-b58a37467bda/1d468f6b-9b6c-4a41-9c1f-0abb2ef48a4f")
 		(sheetname "BSPD Current Sensor Trigger")
 		(sheetfile "bspd_current_sense.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
@@ -17763,7 +17749,6 @@
 				)
 			)
 		)
-		(path "/be343294-bfee-4d49-a85a-b58a37467bda/c06cf966-9e25-42a8-b4a9-111b4529cc03")
 		(sheetname "BSPD Current Sensor Trigger")
 		(sheetfile "bspd_current_sense.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
@@ -21690,7 +21675,6 @@
 				)
 			)
 		)
-		(path "/be343294-bfee-4d49-a85a-b58a37467bda/91da1142-ab4a-4ea1-97a4-74e18e699ad0")
 		(sheetname "BSPD Current Sensor Trigger")
 		(sheetfile "bspd_current_sense.kicad_sch")
 		(attr exclude_from_pos_files exclude_from_bom)
@@ -22861,6 +22845,111 @@
 			(uuid "626912db-6cf9-4ac8-b661-88995082e39f")
 		)
 	)
+	(footprint "OEM:PCIe_Mount"
+		(layer "F.Cu")
+		(uuid "ef08e58a-c4cc-4fe1-b58e-519ac9aac50e")
+		(at 137.684 102.7299 90)
+		(property "Reference" "H2"
+			(at 0 0 90)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7c86346d-cbb6-4776-88e7-7865b2dd16f8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "CONN_MountingHole"
+			(at 0 0 90)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0d1884be-4eb8-40d3-8258-65943535d6b4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "OEM:PCIe_Mount"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0e107006-b268-4223-bf38-d5c7a2980648")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "aa295517-45fc-4af1-a998-eb4c31b26993")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 0 0 90)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "33fa6ebf-0c19-424e-8ba0-11d013593142")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property ki_fp_filters "MountingHole*Pad*")
+		(path "/5e72a1cd-529a-486b-8d2d-619c54aa4904")
+		(sheetname "Root")
+		(sheetfile "bms_core.kicad_sch")
+		(zone_connect 2)
+		(attr through_hole exclude_from_bom)
+		(fp_line
+			(start 10.499999 0.016)
+			(end -10.499999 0.016)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "Dwgs.User")
+			(uuid "cb88c9d6-db3d-49a4-aa9a-065d704e3f67")
+		)
+		(pad "1" thru_hole circle
+			(at 0 0.016 90)
+			(size 5.499999 5.499999)
+			(drill 3.500001)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 89 "unconnected-(H2-Pad1)_1")
+			(pinfunction "1")
+			(pintype "input+no_connect")
+			(solder_mask_margin 0.1016)
+			(zone_connect 2)
+			(uuid "a55049cb-c127-4f4a-ac7b-08cd8776703d")
+		)
+		(pad "1" smd circle
+			(at 0 1.016 90)
+			(size 7.249998 7.249998)
+			(layers "B.Cu" "B.Mask")
+			(net 88 "unconnected-(H2-Pad1)")
+			(pinfunction "1")
+			(pintype "input+no_connect")
+			(solder_mask_margin 0.1016)
+			(zone_connect 2)
+			(uuid "201f402a-cc15-4221-88cf-5e97ff99a305")
+		)
+	)
 	(footprint "OEM:C_0603"
 		(layer "F.Cu")
 		(uuid "efe8df8d-5337-4bcc-a1e7-37fecd5dc782")
@@ -23917,7 +24006,6 @@
 				)
 			)
 		)
-		(path "/161706e5-65c4-4139-b75d-439e96b98a3c")
 		(sheetname "Root")
 		(sheetfile "bms_core.kicad_sch")
 		(attr smd)
@@ -24095,7 +24183,6 @@
 				)
 			)
 		)
-		(path "/e27d67a9-9294-4527-a497-1f6b226f8b45")
 		(sheetname "Root")
 		(sheetfile "bms_core.kicad_sch")
 		(attr smd)
@@ -28261,7 +28348,7 @@
 	(footprint "OEM:OEM_Logo_8mm"
 		(layer "B.Cu")
 		(uuid "4bfd64b5-5229-42fe-8275-0117d5e9b1c5")
-		(at 207.98 98.46 180)
+		(at 211.61 98.21 180)
 		(property "Reference" "REF**"
 			(at 0 0.5 0)
 			(unlocked yes)
@@ -29165,7 +29252,7 @@
 	(footprint "kibuzzard-67240C9D"
 		(layer "B.Cu")
 		(uuid "6f6b070c-714b-4f9c-954f-d8c5abc3e813")
-		(at 197.7184 101.304799 180)
+		(at 201.3484 101.054799 180)
 		(descr "Generated with KiBuzzard")
 		(tags "kb_params=eyJBbGlnbm1lbnRDaG9pY2UiOiAiQ2VudGVyIiwgIkNhcExlZnRDaG9pY2UiOiAiWyIsICJDYXBSaWdodENob2ljZSI6ICJdIiwgIkZvbnRDb21ib0JveCI6ICJVYnVudHVNb25vLUIiLCAiSGVpZ2h0Q3RybCI6IDEuMSwgIkxheWVyQ29tYm9Cb3giOiAiRi5TaWxrUyIsICJMaW5lU3BhY2luZ0N0cmwiOiAxLjUsICJNdWx0aUxpbmVUZXh0IjogIlIxIC0gMjAyNC0wMSIsICJQYWRkaW5nQm90dG9tQ3RybCI6IDYuNSwgIlBhZGRpbmdMZWZ0Q3RybCI6IDUuMCwgIlBhZGRpbmdSaWdodEN0cmwiOiA1LjAsICJQYWRkaW5nVG9wQ3RybCI6IDYuNSwgIldpZHRoQ3RybCI6IDEuMCwgImFkdmFuY2VkQ2hlY2tib3giOiBmYWxzZSwgImlubGluZUZvcm1hdFRleHRib3giOiBmYWxzZSwgImxpbmVvdmVyU3R5bGVDaG9pY2UiOiAiU3F1YXJlIiwgImxpbmVvdmVyVGhpY2tuZXNzQ3RybCI6IDF9")
 		(property "Reference" "kibuzzard-67240C9D"
@@ -29368,7 +29455,7 @@
 	(footprint "kibuzzard-63BF43E2"
 		(layer "B.Cu")
 		(uuid "7b448348-73dc-4c4e-adce-5522d2ecb867")
-		(at 198.9376 95.640599 180)
+		(at 202.5676 95.390599 180)
 		(descr "Generated with KiBuzzard")
 		(tags "kb_params=eyJBbGlnbm1lbnRDaG9pY2UiOiAiQ2VudGVyIiwgIkNhcExlZnRDaG9pY2UiOiAiWyIsICJDYXBSaWdodENob2ljZSI6ICJdIiwgIkZvbnRDb21ib0JveCI6ICJTcGFjZUdyb3Rlc2stQm9sZCIsICJIZWlnaHRDdHJsIjogIjEuMTUiLCAiTGF5ZXJDb21ib0JveCI6ICJGLlNpbGtTIiwgIk11bHRpTGluZVRleHQiOiAiQk1TIENvcmUiLCAiUGFkZGluZ0JvdHRvbUN0cmwiOiAiNi41IiwgIlBhZGRpbmdMZWZ0Q3RybCI6ICI1IiwgIlBhZGRpbmdSaWdodEN0cmwiOiAiNSIsICJQYWRkaW5nVG9wQ3RybCI6ICI2LjUiLCAiV2lkdGhDdHJsIjogIiJ9")
 		(property "Reference" "kibuzzard-63BF43E2"
@@ -29563,7 +29650,7 @@
 	(footprint "kibuzzard-67240CB0"
 		(layer "B.Cu")
 		(uuid "96c631f4-d4b2-4163-bbc0-98a2b8af4a79")
-		(at 196.296 98.459999 180)
+		(at 199.926 98.209999 180)
 		(descr "Generated with KiBuzzard")
 		(tags "kb_params=eyJBbGlnbm1lbnRDaG9pY2UiOiAiQ2VudGVyIiwgIkNhcExlZnRDaG9pY2UiOiAiWyIsICJDYXBSaWdodENob2ljZSI6ICJdIiwgIkZvbnRDb21ib0JveCI6ICJVYnVudHVNb25vLUIiLCAiSGVpZ2h0Q3RybCI6IDEuMSwgIkxheWVyQ29tYm9Cb3giOiAiRi5TaWxrUyIsICJMaW5lU3BhY2luZ0N0cmwiOiAxLjUsICJNdWx0aUxpbmVUZXh0IjogIkphY29iIExpa2lucyIsICJQYWRkaW5nQm90dG9tQ3RybCI6IDYuNSwgIlBhZGRpbmdMZWZ0Q3RybCI6IDUuMCwgIlBhZGRpbmdSaWdodEN0cmwiOiA1LjAsICJQYWRkaW5nVG9wQ3RybCI6IDYuNSwgIldpZHRoQ3RybCI6IDEuMCwgImFkdmFuY2VkQ2hlY2tib3giOiBmYWxzZSwgImlubGluZUZvcm1hdFRleHRib3giOiBmYWxzZSwgImxpbmVvdmVyU3R5bGVDaG9pY2UiOiAiU3F1YXJlIiwgImxpbmVvdmVyVGhpY2tuZXNzQ3RybCI6IDF9")
 		(property "Reference" "kibuzzard-67240CB0"
