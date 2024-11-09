@@ -5487,16 +5487,6 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 161.29) (xy 87.63 161.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3914ab47-4c85-46bb-95a5-f52c631621fe")
-	)
-	(wire
-		(pts
 			(xy 134.62 195.58) (xy 135.89 195.58)
 		)
 		(stroke
@@ -5544,16 +5534,6 @@
 			(type default)
 		)
 		(uuid "3c125605-b4aa-490c-a828-fbb9b06a806b")
-	)
-	(polyline
-		(pts
-			(xy 64.77 152.4) (xy 64.77 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3c834dcb-5327-4fb1-94e0-c549b06431b6")
 	)
 	(wire
 		(pts
@@ -5774,16 +5754,6 @@
 			(type default)
 		)
 		(uuid "52750d32-43ab-4103-827b-0979e57a4aea")
-	)
-	(polyline
-		(pts
-			(xy 64.77 152.4) (xy 95.25 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5354e430-b674-4708-a48a-13dbc75c90ac")
 	)
 	(polyline
 		(pts
@@ -6985,16 +6955,6 @@
 		)
 		(uuid "ca3dd8ea-4a24-4c19-a8d4-de051c3be097")
 	)
-	(wire
-		(pts
-			(xy 72.39 162.56) (xy 73.66 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cbfdcfa6-6240-4bd4-b3b2-721dba0a8d16")
-	)
 	(bus
 		(pts
 			(xy 39.37 81.28) (xy 39.37 83.82)
@@ -7004,16 +6964,6 @@
 			(type default)
 		)
 		(uuid "cc789003-8646-4fa9-8b77-3818224872cb")
-	)
-	(polyline
-		(pts
-			(xy 95.25 170.18) (xy 95.25 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cd1e75df-2710-452e-a0b2-57de8662e148")
 	)
 	(wire
 		(pts
@@ -7164,16 +7114,6 @@
 			(type default)
 		)
 		(uuid "da5b0d4d-9218-45a5-b0f0-6c40c681a1ae")
-	)
-	(wire
-		(pts
-			(xy 86.36 163.83) (xy 87.63 163.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "daaa7b8c-0646-48eb-80ca-441bc723ca26")
 	)
 	(bus
 		(pts
@@ -7425,16 +7365,6 @@
 		)
 		(uuid "f395a146-1c68-4608-9980-459242f07c5a")
 	)
-	(polyline
-		(pts
-			(xy 64.77 170.18) (xy 95.25 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f5e67539-be55-4d83-adda-8c3a07dc9c66")
-	)
 	(bus
 		(pts
 			(xy 39.37 88.9) (xy 39.37 91.44)
@@ -7541,6 +7471,17 @@
 		)
 		(uuid "133534fb-0437-45b6-8aa2-de7893f2d0ed")
 	)
+	(text "INPUT FILTERING"
+		(exclude_from_sim no)
+		(at 112.522 151.13 0)
+		(effects
+			(font
+				(size 2.2606 2.2606)
+			)
+			(justify left bottom)
+		)
+		(uuid "17764abb-764b-4d3c-81a4-28a7f635fd17")
+	)
 	(text "From Power Board"
 		(exclude_from_sim no)
 		(at 190.5 34.29 0)
@@ -7636,7 +7577,7 @@
 	)
 	(text "COMMUNICATION INTERFACES"
 		(exclude_from_sim no)
-		(at 34.29 152.4 0)
+		(at 34.036 150.622 0)
 		(effects
 			(font
 				(size 2.2606 2.2606)
@@ -8505,17 +8446,6 @@
 		)
 		(uuid "7f03639f-d1b1-4e11-a7a3-1e218ced0753")
 	)
-	(label "VREG"
-		(at 72.39 162.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7f545f59-744b-40a9-a3e8-a141314bdd69")
-	)
 	(label "MUX_OUT_0_FILT"
 		(at 44.45 40.64 180)
 		(fields_autoplaced yes)
@@ -8890,17 +8820,6 @@
 		)
 		(uuid "c216c6ff-c430-4e97-bcb6-1f2a7e3d81b4")
 	)
-	(label "SCL"
-		(at 87.63 161.29 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c661eea4-570a-4cff-aaa6-90fe73518808")
-	)
 	(label "C7"
 		(at 83.82 63.5 0)
 		(fields_autoplaced yes)
@@ -9197,17 +9116,6 @@
 			(justify left bottom)
 		)
 		(uuid "fef845c3-e4be-443e-af49-ec487d96376e")
-	)
-	(label "SDA"
-		(at 87.63 163.83 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ff1f0fe0-7e3b-4036-8ab1-3f6e7a2d51d8")
 	)
 	(label "V+"
 		(at 220.98 154.94 90)
@@ -14587,6 +14495,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Sheetfile" "mux_input_lpfs.kicad_sch"
@@ -14948,6 +14857,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Sheetfile" "mux_input_lpfs.kicad_sch"
@@ -15007,6 +14917,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Sheetfile" "mux_input_lpfs.kicad_sch"
@@ -15066,6 +14977,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Sheetfile" "mux_input_lpfs.kicad_sch"
@@ -15107,74 +15019,6 @@
 		)
 	)
 	(sheet
-		(at 73.66 158.75)
-		(size 12.7 7.62)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 255 229 191 1.0000)
-		)
-		(uuid "affa8a2e-98a3-4652-b78e-588e0080aa5c")
-		(property "Sheetname" "I2C Pull-Up Resistors"
-			(at 71.12 157.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "DA_I2C_Pull_Up_Resistor.kicad_sch"
-			(at 73.66 166.9546 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "SCL" bidirectional
-			(at 86.36 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "fe4dac1a-a216-41ac-80ea-ee82d7a04bdd")
-		)
-		(pin "SDA" bidirectional
-			(at 86.36 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "cf535e81-5c5b-43b8-a048-3b06a430742f")
-		)
-		(pin "VREG" bidirectional
-			(at 73.66 162.56 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "ec657011-69e0-463f-8591-eac8d8816831")
-		)
-		(instances
-			(project "bms_csc"
-				(path "/de39404c-59cf-4c78-81b7-fcd02a664327"
-					(page "24")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 78.74 176.53)
 		(size 16.51 7.62)
 		(fields_autoplaced yes)
@@ -15193,6 +15037,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Sheetfile" "mux_input_lpfs.kicad_sch"
@@ -15252,6 +15097,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Sheetfile" "mux_input_lpfs.kicad_sch"
