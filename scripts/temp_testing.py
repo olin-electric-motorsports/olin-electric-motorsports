@@ -3,10 +3,10 @@ import time
 
 def extract_enum_value(data, slice_start, slice_length, enum_values):
     byte_start = slice_start // 8
-    byte_end = (slice_start + slice_length)//8
+    byte_end = (slice_start + slice_length) // 8
 
     raw_value = 0
-    for i in range(byte_start, byte_end + 1):
+    for i in range(byte_start, byte_end):
         raw_value |= data[i] << (8 * (i - byte_start))
 
     if raw_value < len(enum_values):
@@ -30,8 +30,11 @@ slice_length = 8
 last_time = None
 last_enum = None
 
+time_data = [[]*len(temperature_task_enum)]
+
 try:
     print("Starting CAN message listener\n")
+    counter = 0
     while True:
         msg = bus.recv()
 
@@ -43,9 +46,14 @@ try:
             if last_time is not None and enum_value != last_enum:
                 elapsed_time = current_time - last_time
                 print(f"Enum changed {last_enum} -> {enum_value}. Time taken: {elapsed_time}")
+                time_data[counter].append(elapsed_time)
+                counter+=1
 
             last_time = current_time
             last_enum = enum_value
+
+            if counter == len(temperature_task_enum):
+                counter = 0
 
 except KeyboardInterrupt:
     print("\nCAN message listener stopped")
