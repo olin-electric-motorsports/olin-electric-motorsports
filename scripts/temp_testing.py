@@ -30,7 +30,7 @@ slice_length = 8
 last_time = None
 last_enum = None
 
-time_data = [[]*len(temperature_task_enum)]
+time_data = [[]]*len(temperature_task_enum)
 
 try:
     print("Starting CAN message listener\n")
@@ -45,8 +45,9 @@ try:
 
             if last_time is not None and enum_value != last_enum:
                 elapsed_time = current_time - last_time
-                print(f"Enum changed {last_enum} -> {enum_value}. Time taken: {elapsed_time}")
+                print(f"Enum changed {last_enum} -> {enum_value}. Time taken: {elapsed_time:.4F}")
                 time_data[counter].append(elapsed_time)
+                # print(time_data)
                 counter+=1
 
             last_time = current_time
