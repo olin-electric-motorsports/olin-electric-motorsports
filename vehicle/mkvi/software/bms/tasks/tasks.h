@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+    #define NUM_EXEPTIONS 1;
+
 /*
  * Task to read the voltages from the battery pack
  *
@@ -22,7 +24,7 @@
  *   Number of PEC errors that occurred when communicating with the ADBMS1818
  *   0 if no errors
  */
-int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv);
+void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* pec_errors);
 
 /*
  * Task to read the temperature from the battery pack
@@ -46,9 +48,9 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv);
  *  Number of PEC errors that occurred when communicating with the ADBMS1818
  *  0 if no errors
  */
-int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
-                     uint16_t* max_temp);
+void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
+                     uint16_t* max_temp, uint16_t* pec_errors);
 
-void current_task(int16_t* current, uint16_t* vref, uint16_t* vout);
+void current_task(int16_t* current);
 
 int openwire_task(void);

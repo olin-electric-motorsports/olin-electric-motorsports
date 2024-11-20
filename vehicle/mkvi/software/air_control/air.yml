@@ -1,0 +1,109 @@
+name: air_control
+subscribe:
+  # Transmit MOb is 0
+  - name: bms_core
+    mob: 1
+  - name: M167_Voltage_Info
+    mob: 2
+  - name: charging_fbk
+    mob: 3
+publish:
+  - name: air_control_critical
+    id: 0xd
+    freq_hz: 1000
+    signals:
+      - name: air_fault
+        slice: 0 + 8
+        unit:
+          type: enum
+          values:
+            - NONE
+            - AIR_N_WELD
+            - AIR_P_WELD
+            - BOTH_AIRS_WELD
+            - PRECHARGE_FAIL
+            - DISCHARGE_FAIL
+            - PRECHARGE_FAIL_RELAY_WELDED
+            - CAN_ERROR
+            - CAN_BMS_TIMEOUT
+            - CAN_MC_TIMEOUT
+            - SHUTDOWN_IMPLAUSIBILITY
+            - TRACTIVE_VOLTAGE
+            - BMS_VOLTAGE
+            - IMD_STATUS
+      - name: air_state
+        slice: 8 + 8
+        unit:
+          type: enum
+          values:
+            - INIT
+            - IDLE
+            - SHUTDOWN_CIRCUIT_CLOSED
+            - PRECHARGE
+            - TS_ACTIVE
+            - DISCHARGE
+            - FAULT
+      - name: air_p_status
+        slice: 16 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+      - name: air_n_status
+        slice: 17 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+      - name: ss_tsms
+        slice: 18 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+      - name: ss_imd
+        slice: 19 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+      - name: ss_mpc
+        slice: 20 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+      - name: ss_hvd_conn
+        slice: 21 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+      - name: ss_hvd
+        slice: 22 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+      - name: ss_bms
+        slice: 23 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+
+      - name: imd_status
+        slice: 24 + 1
+        unit:
+          type: bool
+          values:
+            t: IMD OK
+            f: IMD NOT OK

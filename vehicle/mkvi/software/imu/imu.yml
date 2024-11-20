@@ -1,0 +1,77 @@
+name: imu
+publish:
+  - name: imu_accel
+    id: 0x430
+    freq_hz: 100
+    signals:
+      - name: accel_x
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: accel_y
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: accel_z
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+  - name: imu_gyro
+    id: 0x431
+    freq_hz: 100
+    signals:
+      - name: gyro_x
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: gyro_y
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: gyro_z
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+  - name: imu_magnet
+    id: 0x432
+    freq_hz: 100
+    signals:
+      - name: magnet_x
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: magnet_y
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: magnet_z
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 1
+          offset: 0

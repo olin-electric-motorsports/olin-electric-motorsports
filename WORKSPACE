@@ -1,7 +1,7 @@
 workspace(name = "formula")
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 register_execution_platforms("@local_config_platform//:host", "//bazel/platforms:all")
 
@@ -107,8 +107,8 @@ pip_install(
 )
 
 pip_install(
-    name = "hitl_deps",
-    requirements = "//projects/hitl/software:requirements.txt",
+    name = "pydeps",
+    requirements = "//third_party:requirements.txt",
 )
 
 pip_install(

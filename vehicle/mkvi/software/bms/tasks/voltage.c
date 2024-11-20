@@ -10,9 +10,9 @@
 #define NUM_BYTES_IN_REG (6)
 #define NUM_CELLS_PER_IC (17)
 
-int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
+void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
+                  uint16_t* pec_errors) {
     *pack_voltage = 0;
-    int pec_errors = 0;
 
     wakeup_sleep(NUM_ICS);
 
@@ -30,6 +30,7 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
      * then the Register B, etc.
      */
     uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
+    uint32_t pack_voltages[NUM_ICS] = { 0 };
 
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
         // Read one register at a time for all segments
@@ -57,13 +58,20 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
             // Core receives all 1s when the CSC is MIA
             if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)
                 && (cell_3 == UINT16_MAX)) {
-                set_fault(BMS_FAULT_CSC_MIA);
+                set_csc_mia(ic);
             } else {
-                clear_fault(BMS_FAULT_CSC_MIA);
+                clear_csc_mia(ic);
                 // Accumulate voltage (only append if valid SPI response)
                 *pack_voltage += cell_1 >> 8;
                 *pack_voltage += cell_2 >> 8;
                 *pack_voltage += cell_3 >> 8;
+            }
+
+            // Set CSC fault based on status of all CSCs
+            if (!check_csc_state()) {
+                clear_fault(BMS_FAULT_CSC_MIA);
+            } else {
+                set_fault(BMS_FAULT_CSC_MIA);
             }
 
             // Put cell voltages in CAN message
@@ -71,23 +79,31 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
             bms_voltage.voltage_2 = cell_2;
             bms_voltage.voltage_3 = cell_3;
 
-            // Check under/overvoltage thresholds
-            if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
+            // Average cell voltages on segment 1
+            if (ic == 1) {
+                // pack_voltages[ic] += (cell_1 + cell_2 + cell_3);
+                pack_voltages[ic] += cell_1;
+                pack_voltages[ic] += cell_2;
+                pack_voltages[ic] += cell_3;
+            } else {
+                // Check under/overvoltage thresholds
+                if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
 
-            if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
+                if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
 
-            if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
+                if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
             }
 
             can_send_bms_voltage();
@@ -104,10 +120,15 @@ int voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv) {
                 = pec15_calc(NUM_BYTES_IN_REG, &raw_data[(ic)*NUM_RX_BYT]);
 
             if (received_pec != data_pec) {
-                pec_errors++;
+                *pec_errors += 1;
             }
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D, E, F)
 
-    return pec_errors;
+    // Fault handling for cell voltage average on segment 1
+    if (pack_voltages[1] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
+        set_fault(BMS_FAULT_OVERVOLTAGE);
+    } else if (pack_voltages[1] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
+        set_fault(BMS_FAULT_UNDERVOLTAGE);
+    }
 }

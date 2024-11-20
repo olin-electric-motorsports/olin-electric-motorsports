@@ -3,13 +3,20 @@
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include <stdint.h>
 
-// // Defines maximum current range (-125 to 125A)
-// #define MAX_CURRENT_RANGE (250)
-#define MAX_ADC_COUNT 1024
+void current_task(int16_t* current) {
+    float tempCurrent = 0;
+    for(uint8_t averageNum = 0; averageNum < 100; averageNum++) {
+        tempCurrent += (float)adc_read(CURRENT_SENSE_VOUT);
+    }
+    //Average
+    tempCurrent /= 100;
 
-void current_task(int16_t* current, uint16_t* vref, uint16_t* vout) {
-    *vref = adc_read(MAX_ADC_COUNT / 2); // vref isn't connected to micro?
-    *vout = adc_read(CURRENT_SENSE_VOUT);
+    //Remove offset (2.5V from sensor)
+    tempCurrent -= 568;
 
-    *current = (*vout - *vref);
+    //Convert to current (20mV/A, ADC is 10 bit and runs @ 5V)
+    tempCurrent = tempCurrent * 5 / 1024 / 0.02;
+
+    //Return in cA (centiAmps)
+    *current = (uint16_t)(tempCurrent * 100);
 }

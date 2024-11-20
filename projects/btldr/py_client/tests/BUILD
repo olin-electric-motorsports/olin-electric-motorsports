@@ -1,4 +1,4 @@
-load("@hitl_deps//:requirements.bzl", "requirement")
+load("@pydeps//:requirements.bzl", "requirement")
 load("//tools/pytest:defs.bzl", "pytest_test")
 
 pytest_test(

@@ -3,15 +3,14 @@
 #include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkvi/software/bms/bms_config.h"
 #include "vehicle/mkvi/software/bms/can_api.h"
-#include "vehicle/mkvi/software/bms/utils/mux.h"
+#include "vehicle/mkvi/software/bms/utils/i2c_helpers.h"
+#include "vehicle/mkvi/software/bms/utils/fault.h"
 #include <stdint.h>
 #include <string.h>
 
-const uint8_t MUXES[NUM_MUXES] = { MUX1_ADDRESS, MUX2_ADDRESS, MUX3_ADDRESS };
 const uint8_t GPIO_CHANNELS[4] = { 1, 1, 1, 3 };
 
 #define NUM_TEMPS_PER_IC              (NUM_MUXES * NUM_MUX_CHANNELS * DA_BOARDS_PER_IC)
-#define NUM_DA_BOARDS                 (4)
 #define NUM_MUX_CHANNELS              (8)
 #define NUM_BYTES_IN_REG              (6)
 #define INVALID_TEMPERATURE_THRESHOLD (0xD555)
@@ -45,22 +44,39 @@ static void update_min_max_temps(uint16_t* min_temp, uint16_t* max_temp,
     }
 }
 
-int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
-                     uint16_t* max_temp) {
-    int pec_errors = 0;
+void set_mux(uint8_t num_ics, uint8_t address, bool enable, uint8_t channel) {
+    for (uint8_t da = 0; da < DA_BOARDS_PER_IC; da++) {
+        enable_da_i2c(num_ics, da);
+        configure_mux_until_ack(num_ics, address, enable, channel, 10);
+    }
+}
 
+
+void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
+                     uint16_t* max_temp, uint16_t* pec_errors) {
     static uint8_t mux = 0;
     static uint8_t channel = 0;
 
+    if (get_fault(BMS_FAULT_MUX_MIA)) {
+        // return;
+    }
+
     if (mux == 0 && channel == 7) {
+        bms_sense.min_temperature = *min_temp;
+        bms_sense.max_temperature = *max_temp;
         *min_temp = 0;
         *max_temp = UINT16_MAX;
+        *ot = 0;
+        *ut = 0;
     }
 
     bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
 
     wakeup_sleep(NUM_ICS);
-    configure_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
+    set_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
+    // For debugging to know which mux is being commanded
+    bms_mux.num_mux = mux;
+
 
     LTC681x_adax(MD_7KHZ_3KHZ, AUX_CH_ALL);
     (void)LTC681x_pollAdc();
@@ -75,6 +91,12 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     uint8_t num_temps;
     uint16_t temps[4];
 
+    //ADD PROBLEM THERMISTORS HERE
+    const uint8_t numExeptions = 3;
+    //add a triplet for each bad thermistor {segment (0-5), DA (0-3), thermistor (0-23)}
+    uint8_t exceptions[3][3] = {{0,0,7}, {1,2,12}, {1,1,20}};
+    static uint16_t exceptionReplacement = 11708; //35C at the beginning, will follow the average of the pack after
+
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
         num_temps = 0;
         bms_temperature.ic = ic;
@@ -84,35 +106,68 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
 
         bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 0]
                                         | (aux_reg_a_raw[ic_zero_idx + 1] << 8);
-        // Skip channels 0-6 on Mux 0, DA Board 1 since the thermistors are not
-        // connected
-        if (mux != 0 || channel == 7) {
-            temps[num_temps] = bms_temperature.temperature_1;
-            num_temps++;
+        bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
+                                         | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
+
+        //Deal with problem thermistors in DA 0 and 1
+        for(uint8_t i = 0; i < numExeptions; i++) {
+            //Indevidual issue cells
+            if(ic == exceptions[i][0] && mux == exceptions[i][2] / NUM_MUX_CHANNELS && channel == exceptions[i][2] % NUM_MUX_CHANNELS) {
+                if(exceptions[i][1] == 0) {
+                    bms_temperature.temperature_1 = exceptionReplacement;
+                }
+                if(exceptions[i][1] == 1) {
+                    bms_temperature.temperature_2 = exceptionReplacement;
+                }
+            }
         }
 
-        bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
-                                        | (aux_reg_a_raw[ic_zero_idx + 3] << 8);
-        temps[num_temps] = bms_temperature.temperature_2;
+        //Unconnected cells
+        if(mux == 0 && channel != 7) {
+            bms_temperature.temperature_1 = exceptionReplacement;
+        }
+
+        temps[num_temps] =  bms_temperature.temperature_1;
         num_temps++;
+        temps[num_temps] =  bms_temperature.temperature_2;
+        num_temps++;
+
         can_send_bms_temperature();
 
         bms_temperature.da_boards = DA_BOARDS_DA_BOARDS_34;
+
         bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 4]
                                         | (aux_reg_a_raw[ic_zero_idx + 5] << 8);
-        temps[num_temps] = bms_temperature.temperature_1;
-        num_temps++;
         bms_temperature.temperature_2 = aux_reg_c_raw[ic_zero_idx + 0]
                                         | (aux_reg_c_raw[ic_zero_idx + 1] << 8);
-        // Skip channels 0-3 on Mux 0, DA Board 1 since the thermistors are not
-        // connected
-        if (mux != 0 || channel >= 4) {
-            temps[num_temps] = bms_temperature.temperature_2;
-            num_temps++;
+
+        //Deal with problem thermistors in DA 2 and 3
+        for(uint8_t i = 0; i < numExeptions; i++) {
+            //Indevidual issue cells
+            if(ic == exceptions[i][0] && mux == exceptions[i][2] / NUM_MUX_CHANNELS && channel == exceptions[i][2] % NUM_MUX_CHANNELS) {
+                if(exceptions[i][1] == 2) {
+                    bms_temperature.temperature_1 = exceptionReplacement;
+                }
+                if(exceptions[i][1] == 3) {
+                    bms_temperature.temperature_2 = exceptionReplacement;
+                }
+            }
         }
+
+        if(mux == 0 && channel < 4) {
+            bms_temperature.temperature_2 = exceptionReplacement;
+        }
+
+        temps[num_temps] =  bms_temperature.temperature_1;
+        num_temps++;
+        temps[num_temps] =  bms_temperature.temperature_2;
+        num_temps++;
+
         can_send_bms_temperature();
 
         update_min_max_temps(min_temp, max_temp, temps, num_temps);
+
+        exceptionReplacement = (*min_temp + *max_temp) / 2;
 
         // PEC error handling for register A...
         uint16_t received_pec = (aux_reg_a_raw[ic_zero_idx + 6] << 8)
@@ -120,7 +175,7 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         uint16_t calculated_pec
             = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_a_raw[ic_zero_idx]);
         if (received_pec != calculated_pec) {
-            pec_errors++;
+            *pec_errors += 1;
         }
 
         // and register C
@@ -129,20 +184,20 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         calculated_pec
             = pec15_calc(NUM_BYTES_IN_REG, &aux_reg_c_raw[ic_zero_idx]);
         if (received_pec != calculated_pec) {
-            pec_errors++;
+            *pec_errors += 1;
         }
     }
 
     channel += 1;
     // Move on to next mux if we are at the last channel
     if (channel == NUM_MUX_CHANNELS) {
-        configure_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, channel);
+        set_mux(NUM_ICS, MUXES[mux], MUX_DISABLE, channel);
         mux = (mux + 1) % NUM_MUXES;
         channel = 0;
     }
 
     // if max is hotter than overtemp threshold, increment overtemp counter
-    if (*max_temp < OVERTEMPERATURE_THRESHOLD) {
+    if (*max_temp < OVERTEMPERATURE_THRESHOLD  && *max_temp > FAKE_DA_FIRE_BODGE) {
         *ot += 1;
     }
 
@@ -160,5 +215,4 @@ int temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     // if (*min_temp > SOFT_OVERTEMPERATURE_THRESHOLD_LOW) {
     //     fan_enable(false);
     // }
-    return pec_errors;
 }

@@ -10,10 +10,10 @@
 /*
  * Macros
  */
-#define NUM_ICS          1
+#define NUM_ICS          6
 #define DA_BOARDS_PER_IC 4
 
-#define MAX_EXTRANEOUS_TEMPERATURES 3 // ?
+#define MAX_EXTRANEOUS_TEMPERATURES 3 // causing isssssueeeess... maybe set to higher value - ian W 9/14/2024
 #define MAX_PEC_ERROR_COUNT \
     32 // copied from mkv where it still says arbitrary...
 
@@ -23,13 +23,27 @@
 #define SCALING_FACTOR (1)
 
 // copied from MKV - need to be updated
-#define OVERTEMPERATURE_THRESHOLD          ((int16_t)714) // 60 degC
-#define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)1233) // 45 degC
-#define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)1814) // 35 degC
-#define UNDERTEMPERATURE_THRESHOLD         ((int16_t)15513) // -20 degC
+#define FAKE_DA_FIRE_BODGE                 ((int16_t)700) // 140 degC
+#define OVERTEMPERATURE_THRESHOLD          ((int16_t)5725) // 60 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD     ((int16_t)8892) // 45 degC
+#define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)11708) // 35 degC
+#define UNDERTEMPERATURE_THRESHOLD         ((int16_t)27605) // -20 degC
 
-#define OVERVOLTAGE_THRESHOLD  (39500) // 3.95V
-#define UNDERVOLTAGE_THRESHOLD (25000) // 2.5V
+#define OVERVOLTAGE_THRESHOLD          (42000) // 3.95V (max pack voltage (402.9V / [17 * 6] cells))
+#define UNDERVOLTAGE_THRESHOLD         (25000) // 2.5V (Li-ion chemistry minimum)
+#define SEGMENT_OVERVOLTAGE_THRESHOLD  (714000) // 71.4V (4.2v * 17 cells)
+#define SEGMENT_UNDERVOLTAGE_THRESHOLD (442000) // 44.2V (4.6 * 17 cells)
+
+#define CURRENT_THRESH (12000) // 120A (peak current) * 100cA/A = 12,000 centiAmps
+
+// Cell balancing config
+// Insert here
+
+#define DIE_OVERTEMPERATURE_THRESHOLD (0)
+
+// Number (out of 18) voltage channels not used. Unused channels are bridged
+// and read as 0V
+#define NUM_UNUSED_VOLTAGE_CHANNELS 1
 
 /*
  * PIN DEFINITIONS
@@ -38,6 +52,7 @@
 // Outputs
 extern gpio_t BMS_RELAY_LSD;
 extern gpio_t COOLING_PUMP_LSD;
+extern gpio_t COOLING_PUMP_PWM;
 extern gpio_t SPI_CS;
 extern gpio_t CHARGE_ENABLE_IN;
 extern gpio_t CHARGE_ENABLE_OUT;
