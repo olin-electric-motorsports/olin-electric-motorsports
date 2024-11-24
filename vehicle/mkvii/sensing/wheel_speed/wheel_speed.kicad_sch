@@ -5098,6 +5098,18 @@
 		(uuid 59713003-b6d9-4387-95e0-c5e2e8a40f4e)
 	)
 	(rectangle
+		(start 165.1 85.09)
+		(end 185.42 111.76)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 7f1b431f-bd9b-4e74-a32e-c896cc3c81af)
+	)
+	(rectangle
 		(start 143.51 85.09)
 		(end 163.83 111.76)
 		(stroke
@@ -5182,6 +5194,16 @@
 			)
 		)
 		(uuid "42d90654-5fc2-415a-a864-0eff889d668f")
+	)
+	(text "VDD Test Point"
+		(exclude_from_sim no)
+		(at 173.736 88.646 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "5a9f3578-2963-46ef-a1c5-92882e3916bf")
 	)
 	(text "ATmega16m1"
 		(exclude_from_sim no)
@@ -5622,6 +5644,135 @@
 			(project "wheel_speed"
 				(path "/e7195ce3-5a1b-4095-9397-a48b8b9b0612"
 					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:TP_1mm")
+		(at 175.26 97.79 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "090a9803-019e-485d-a5e6-e8510cca1870")
+		(property "Reference" "VDD1"
+			(at 178.308 106.934 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 178.308 104.394 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 175.26 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point circular 1mm"
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" ""
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" ""
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" ""
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "Custom"
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 175.26 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e82439f1-8b33-4de7-a955-f392fbba9273")
+		)
+		(instances
+			(project "wheel_speed"
+				(path "/e7195ce3-5a1b-4095-9397-a48b8b9b0612"
+					(reference "VDD1")
 					(unit 1)
 				)
 			)
@@ -8952,6 +9103,72 @@
 		)
 		(pin "1"
 			(uuid "628b33b7-4b6c-4f8f-924b-96a16013b239")
+		)
+		(instances
+			(project ""
+				(path "/e7195ce3-5a1b-4095-9397-a48b8b9b0612"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 175.26 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "941a9cfc-166c-4544-9f6c-9c2fc5a08016")
+		(property "Reference" "#PWR?"
+			(at 175.26 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 175.26 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 175.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 175.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 175.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cd65d211-2de7-4b57-adbb-0f8f7436be32")
 		)
 		(instances
 			(project ""
