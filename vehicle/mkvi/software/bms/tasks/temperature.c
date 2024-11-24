@@ -70,21 +70,30 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         *ut = 0;
     }
 
+    // channel in CAN message
     bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
 
     wakeup_sleep(NUM_ICS);
+
+    // Configurs the mux and which channel to read
     set_mux(NUM_ICS, MUXES[mux], MUX_ENABLE, channel);
+    
     // For debugging to know which mux is being commanded
     bms_mux.num_mux = mux;
 
-
+    // Start ADC conversion
     LTC681x_adax(MD_7KHZ_3KHZ, AUX_CH_ALL);
+
+    // Blocks operation till the ADC has finished it's conversion
     (void)LTC681x_pollAdc();
 
+    // Defining two arrays to store the data from the ADC Conversions
     uint8_t aux_reg_a_raw[NUM_RX_BYT * NUM_ICS];
     uint8_t aux_reg_c_raw[NUM_RX_BYT * NUM_ICS];
 
     wakeup_idle(NUM_ICS);
+
+    // Read the raw data from the LTC681x auxiliary register
     LTC681x_rdaux_reg(AUX_REG_GROUP_A, NUM_ICS, aux_reg_a_raw); // for GPIOS 1-3
     LTC681x_rdaux_reg(AUX_REG_GROUP_C, NUM_ICS, aux_reg_c_raw); // for GPIOS 6
 
@@ -104,6 +113,7 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
 
         uint16_t ic_zero_idx = ic * NUM_RX_BYT;
 
+        // Bit shifting to set the CAN message with the correct data
         bms_temperature.temperature_1 = aux_reg_a_raw[ic_zero_idx + 0]
                                         | (aux_reg_a_raw[ic_zero_idx + 1] << 8);
         bms_temperature.temperature_2 = aux_reg_a_raw[ic_zero_idx + 2]
