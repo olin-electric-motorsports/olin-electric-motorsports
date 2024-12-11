@@ -304,6 +304,58 @@
         )
       )
     )
+    (symbol "power:+12V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Value" "+12V" (at 0 3.556 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "power-flag" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Power symbol creates a global label with name \"+12V\"" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "+12V_0_1"
+        (polyline
+          (pts
+            (xy -0.762 1.27)
+            (xy 0 2.54)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 2.54)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0 2.54)
+            (xy 0.762 1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "+12V_1_1"
+        (pin power_in line (at 0 0 90) (length 0) hide
+          (name "+12V" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "power:+5V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -352,58 +404,6 @@
       (symbol "+5V_1_1"
         (pin power_in line (at 0 0 90) (length 0) hide
           (name "+5V" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "power:+BATT" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "#PWR" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "+BATT" (at 0 3.556 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "power-flag battery" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Power symbol creates a global label with name \"+BATT\"" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "+BATT_0_1"
-        (polyline
-          (pts
-            (xy -0.762 1.27)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 2.54)
-            (xy 0.762 1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "+BATT_1_1"
-        (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+BATT" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
@@ -564,7 +564,7 @@
   (symbol (lib_id "power:GND") (at 160.655 83.82 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 35868a35-9ace-4d1e-b414-4bc859f9d286)
-    (property "Reference" "#PWR0303" (at 160.655 90.17 0)
+    (property "Reference" "#PWR0302" (at 160.655 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 160.655 88.9 0)
@@ -580,7 +580,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/9708f553-2f63-4b94-83be-15a4aefe0784"
-          (reference "#PWR0303") (unit 1)
+          (reference "#PWR0302") (unit 1)
         )
       )
     )
@@ -589,7 +589,7 @@
   (symbol (lib_id "oem:MicroFit_VT_3x1") (at 117.475 70.485 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3742152d-9aa7-44d2-89e2-48e1f753c4b6)
-    (property "Reference" "J303" (at 132.08 71.755 0)
+    (property "Reference" "J301" (at 132.08 71.755 0)
       (effects (font (size 1.524 1.524)) (justify left))
     )
     (property "Value" "IMD HV" (at 132.08 74.295 0)
@@ -628,7 +628,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/9708f553-2f63-4b94-83be-15a4aefe0784"
-          (reference "J303") (unit 1)
+          (reference "J301") (unit 1)
         )
       )
     )
@@ -637,7 +637,7 @@
   (symbol (lib_id "OEM:pcie_x1") (at 186.055 95.25 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5b39b7eb-3151-44ff-aec5-78fd4acb0ee1)
-    (property "Reference" "J301" (at 186.055 64.77 0) (do_not_autoplace)
+    (property "Reference" "J302" (at 186.055 64.77 0) (do_not_autoplace)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "pcie_x1" (at 186.055 67.31 0) (do_not_autoplace)
@@ -688,19 +688,19 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/9708f553-2f63-4b94-83be-15a4aefe0784"
-          (reference "J301") (unit 1)
+          (reference "J302") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "power:+BATT") (at 164.465 69.85 0) (unit 1)
+  (symbol (lib_id "power:+12V") (at 164.465 69.85 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid fef56ab0-8745-4bee-a7b2-2376765e1da1)
-    (property "Reference" "#PWR0302" (at 164.465 73.66 0)
+    (uuid e2360421-e0f4-49f8-8cea-7b906c2d16c5)
+    (property "Reference" "#PWR0303" (at 164.465 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+BATT" (at 164.465 64.77 0)
+    (property "Value" "+12V" (at 164.465 64.77 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "" (at 164.465 69.85 0)
@@ -709,11 +709,11 @@
     (property "Datasheet" "" (at 164.465 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid e1fafea5-b37d-47f4-bf61-f95257acf0f0))
+    (pin "1" (uuid 6d18a7f7-f6f1-4fc7-9d32-ce30320b82ea))
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/9708f553-2f63-4b94-83be-15a4aefe0784"
-          (reference "#PWR0302") (unit 1)
+          (reference "#PWR0303") (unit 1)
         )
       )
     )

@@ -417,11 +417,11 @@
         )
       )
     )
-    (symbol "power:+BATT" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+    (symbol "power:+12V" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Value" "+BATT" (at 0 3.556 0)
+      (property "Value" "+12V" (at 0 3.556 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (at 0 0 0)
@@ -430,13 +430,13 @@
       (property "Datasheet" "" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_keywords" "power-flag battery" (at 0 0 0)
+      (property "ki_keywords" "power-flag" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Power symbol creates a global label with name \"+BATT\"" (at 0 0 0)
+      (property "ki_description" "Power symbol creates a global label with name \"+12V\"" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "+BATT_0_1"
+      (symbol "+12V_0_1"
         (polyline
           (pts
             (xy -0.762 1.27)
@@ -462,9 +462,9 @@
           (fill (type none))
         )
       )
-      (symbol "+BATT_1_1"
+      (symbol "+12V_1_1"
         (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+BATT" (effects (font (size 1.27 1.27))))
+          (name "+12V" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
@@ -605,6 +605,31 @@
     (uuid fb611c8d-7562-41c2-8db6-3db780a09b6b)
   )
 
+  (symbol (lib_id "power:+12V") (at 114.3 77.47 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 140c5e95-cd8b-4b74-8104-2c023dea133e)
+    (property "Reference" "#PWR0201" (at 114.3 81.28 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+12V" (at 114.3 72.39 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 114.3 77.47 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 114.3 77.47 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid da01a61d-b719-43da-98bf-906fca4a0e62))
+    (instances
+      (project "motherboard-pcie"
+        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/a79abbba-3db4-4d37-af6c-322d54dae847"
+          (reference "#PWR0201") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "OEM:F_500mA_16V") (at 124.46 77.47 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4646ba8c-7022-4527-9539-f611251cbb4c)
@@ -726,7 +751,7 @@
   (symbol (lib_id "OEM:pcie_x1") (at 147.32 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b0ffbe1b-c836-4445-88ea-666acc973020)
-    (property "Reference" "J201" (at 147.32 71.12 0) (do_not_autoplace)
+    (property "Reference" "J202" (at 147.32 71.12 0) (do_not_autoplace)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "pcie_x1" (at 147.32 73.66 0) (do_not_autoplace)
@@ -777,7 +802,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/a79abbba-3db4-4d37-af6c-322d54dae847"
-          (reference "J201") (unit 1)
+          (reference "J202") (unit 1)
         )
       )
     )
@@ -786,7 +811,7 @@
   (symbol (lib_id "oem:MicroFit_VT_3x1") (at 93.98 83.82 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid da2fd7b5-e1bb-4549-b85a-bb11709d8304)
-    (property "Reference" "J202" (at 85.09 69.85 0)
+    (property "Reference" "J201" (at 85.09 69.85 0)
       (effects (font (size 1.524 1.524)))
     )
     (property "Value" "TSAL/AIL HV" (at 85.09 73.66 0)
@@ -825,32 +850,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/a79abbba-3db4-4d37-af6c-322d54dae847"
-          (reference "J202") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+BATT") (at 114.3 77.47 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid dbd2e46b-1d0f-4df7-ad96-568fe2b0881a)
-    (property "Reference" "#PWR0201" (at 114.3 81.28 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+BATT" (at 114.3 72.39 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 114.3 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 114.3 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid cbe08cc8-9e41-46bc-b892-e4f7713727bf))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/a79abbba-3db4-4d37-af6c-322d54dae847"
-          (reference "#PWR0201") (unit 1)
+          (reference "J201") (unit 1)
         )
       )
     )

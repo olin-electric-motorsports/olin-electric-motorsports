@@ -887,58 +887,6 @@
         )
       )
     )
-    (symbol "power:+BATT" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "#PWR" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "+BATT" (at 0 3.556 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "power-flag battery" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Power symbol creates a global label with name \"+BATT\"" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "+BATT_0_1"
-        (polyline
-          (pts
-            (xy -0.762 1.27)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 2.54)
-            (xy 0.762 1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "+BATT_1_1"
-        (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+BATT" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "power:GND" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "#PWR" (at 0 -6.35 0)
         (effects (font (size 1.27 1.27)) hide)
@@ -1628,7 +1576,7 @@
   (symbol (lib_id "oem:MicroFit_VT_3x1") (at 114.935 88.9 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 110c487b-bbfb-4dc4-b93b-464c9e8dc3b2)
-    (property "Reference" "J101" (at 128.27 100.33 90)
+    (property "Reference" "J105" (at 128.27 100.33 90)
       (effects (font (size 1.524 1.524)))
     )
     (property "Value" "IMD HV" (at 128.27 96.52 90)
@@ -1667,7 +1615,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J101") (unit 1)
+          (reference "J105") (unit 1)
         )
       )
     )
@@ -1676,7 +1624,7 @@
   (symbol (lib_id "formula:MicroFit_V_2") (at 147.955 139.065 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2a0ab57d-e71d-42d9-87a6-fadd129bd7a6)
-    (property "Reference" "J121" (at 147.955 131.445 90)
+    (property "Reference" "J110" (at 147.955 131.445 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SS MPC" (at 151.765 133.985 90)
@@ -1702,7 +1650,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J121") (unit 1)
+          (reference "J110") (unit 1)
         )
       )
     )
@@ -1736,7 +1684,7 @@
   (symbol (lib_id "formula:Ampseal_14_VT") (at 64.77 136.525 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2f8201b1-53f6-4568-9578-74df264f942f)
-    (property "Reference" "J102" (at 60.96 113.665 0)
+    (property "Reference" "J103" (at 60.96 113.665 0)
       (effects (font (size 1.524 1.524)))
     )
     (property "Value" "Ampseal_14_VT" (at 60.96 116.205 0)
@@ -1774,7 +1722,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J102") (unit 1)
+          (reference "J103") (unit 1)
         )
       )
     )
@@ -1783,7 +1731,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 284.48 193.675 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 372da418-c5cb-42c9-afc3-16660dfa4a17)
-    (property "Reference" "TP111" (at 292.735 194.31 90)
+    (property "Reference" "TP109" (at 292.735 194.31 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_MPC" (at 292.735 192.405 90)
@@ -1820,7 +1768,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP111") (unit 1)
+          (reference "TP109") (unit 1)
         )
       )
     )
@@ -1829,7 +1777,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 284.48 180.34 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3e3b29ae-433d-46dc-a55b-1eda44afb986)
-    (property "Reference" "TP109" (at 292.735 180.975 90)
+    (property "Reference" "TP106" (at 292.735 180.975 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_HVD" (at 292.735 179.07 90)
@@ -1866,7 +1814,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP109") (unit 1)
+          (reference "TP106") (unit 1)
         )
       )
     )
@@ -1875,7 +1823,7 @@
   (symbol (lib_id "power:+5V") (at 142.24 210.185 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4a747232-9979-4ace-967c-0511319f436f)
-    (property "Reference" "#PWR0108" (at 142.24 213.995 0)
+    (property "Reference" "#PWR0107" (at 142.24 213.995 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 141.605 205.74 0)
@@ -1891,7 +1839,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0108") (unit 1)
+          (reference "#PWR0107") (unit 1)
         )
       )
     )
@@ -1900,7 +1848,7 @@
   (symbol (lib_id "formula:MicroFit_VT_4") (at 314.325 198.12 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4d3c32af-0461-48cb-9f77-bbfc476bb4ac)
-    (property "Reference" "J116" (at 310.515 200.66 0)
+    (property "Reference" "J111" (at 310.515 200.66 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "AIR +" (at 310.515 198.1201 0)
@@ -1925,7 +1873,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J116") (unit 1)
+          (reference "J111") (unit 1)
         )
       )
     )
@@ -1980,7 +1928,7 @@
   (symbol (lib_id "formula:MicroFit_V_2") (at 139.065 139.065 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4ee2d010-09dd-4879-8ade-99b4f3a7e700)
-    (property "Reference" "J120" (at 139.065 131.445 90)
+    (property "Reference" "J108" (at 139.065 131.445 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SS TSMP" (at 143.51 133.985 90)
@@ -2006,7 +1954,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J120") (unit 1)
+          (reference "J108") (unit 1)
         )
       )
     )
@@ -2015,7 +1963,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 133.35 177.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 56318371-1541-4522-a70f-158482c8cf5e)
-    (property "Reference" "TP101" (at 127.635 182.88 0)
+    (property "Reference" "TP103" (at 127.635 182.88 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_GND" (at 127.635 180.34 0)
@@ -2052,7 +2000,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP101") (unit 1)
+          (reference "TP103") (unit 1)
         )
       )
     )
@@ -2061,7 +2009,7 @@
   (symbol (lib_id "power:+5V") (at 292.1 68.58 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 59653020-246e-42f4-810e-6f3f94f90d2a)
-    (property "Reference" "#PWR0121" (at 292.1 72.39 0)
+    (property "Reference" "#PWR0112" (at 292.1 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 292.481 64.1858 0)
@@ -2077,7 +2025,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0121") (unit 1)
+          (reference "#PWR0112") (unit 1)
         )
       )
     )
@@ -2086,7 +2034,7 @@
   (symbol (lib_id "power:+5V") (at 374.65 67.31 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 59ba438a-65a5-42ba-b8fd-390d991a7c96)
-    (property "Reference" "#PWR0102" (at 374.65 71.12 0)
+    (property "Reference" "#PWR0117" (at 374.65 71.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 374.65 62.865 0)
@@ -2102,7 +2050,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0102") (unit 1)
+          (reference "#PWR0117") (unit 1)
         )
       )
     )
@@ -2111,7 +2059,7 @@
   (symbol (lib_id "power:GND") (at 303.53 72.39 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6072df6c-1469-4a82-b965-117006dceb33)
-    (property "Reference" "#PWR0123" (at 303.53 78.74 0)
+    (property "Reference" "#PWR0113" (at 303.53 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 303.657 76.7842 0)
@@ -2127,7 +2075,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0123") (unit 1)
+          (reference "#PWR0113") (unit 1)
         )
       )
     )
@@ -2136,7 +2084,7 @@
   (symbol (lib_id "power:+5V") (at 149.225 179.07 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 62a381a5-8148-40ab-a0fb-3075cd734a38)
-    (property "Reference" "#PWR0103" (at 149.225 182.88 0)
+    (property "Reference" "#PWR0108" (at 149.225 182.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 149.606 174.6758 0)
@@ -2152,7 +2100,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0103") (unit 1)
+          (reference "#PWR0108") (unit 1)
         )
       )
     )
@@ -2161,7 +2109,7 @@
   (symbol (lib_id "power:+5V") (at 67.945 172.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6616dac8-8ab4-4958-bfb1-e13c47dae30c)
-    (property "Reference" "#PWR0125" (at 67.945 176.53 0)
+    (property "Reference" "#PWR0101" (at 67.945 176.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 68.326 168.3258 0)
@@ -2177,7 +2125,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0125") (unit 1)
+          (reference "#PWR0101") (unit 1)
         )
       )
     )
@@ -2186,7 +2134,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 284.48 189.23 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7117a4ab-818a-4d9e-9ed2-81a296022344)
-    (property "Reference" "TP110" (at 292.735 189.865 90)
+    (property "Reference" "TP108" (at 292.735 189.865 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_TSMP" (at 292.735 187.96 90)
@@ -2223,7 +2171,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP110") (unit 1)
+          (reference "TP108") (unit 1)
         )
       )
     )
@@ -2232,7 +2180,7 @@
   (symbol (lib_id "oem:MicroFit_VT_7x1") (at 69.215 64.77 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 72260e7a-d8c7-4af0-bd03-4a06d100d351)
-    (property "Reference" "J112" (at 55.245 71.0882 0)
+    (property "Reference" "J104" (at 55.245 71.0882 0)
       (effects (font (size 1.524 1.524)) (justify left))
     )
     (property "Value" "HV In" (at 55.245 74.8982 0)
@@ -2275,7 +2223,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J112") (unit 1)
+          (reference "J104") (unit 1)
         )
       )
     )
@@ -2284,7 +2232,7 @@
   (symbol (lib_id "formula:MicroFit_V_2") (at 144.78 76.2 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 76eed421-de41-4683-b7bd-39cbdbc72421)
-    (property "Reference" "J111" (at 152.4 77.4699 0)
+    (property "Reference" "J109" (at 152.4 77.4699 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "EMETER HV" (at 149.86 74.93 0)
@@ -2310,7 +2258,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J111") (unit 1)
+          (reference "J109") (unit 1)
         )
       )
     )
@@ -2319,7 +2267,7 @@
   (symbol (lib_id "power:+5V") (at 340.995 201.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7e1e65e1-a30e-4caa-a0ca-addc98cca67a)
-    (property "Reference" "#PWR0105" (at 340.995 205.74 0)
+    (property "Reference" "#PWR0115" (at 340.995 205.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 340.995 198.12 0)
@@ -2335,7 +2283,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0105") (unit 1)
+          (reference "#PWR0115") (unit 1)
         )
       )
     )
@@ -2344,7 +2292,7 @@
   (symbol (lib_id "OEM:330R") (at 163.195 210.185 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7f35c3fa-fc61-4e68-9948-646493190946)
-    (property "Reference" "R101" (at 165.735 207.01 90)
+    (property "Reference" "R102" (at 165.735 207.01 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "330R" (at 165.735 204.47 90)
@@ -2382,7 +2330,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "R101") (unit 1)
+          (reference "R102") (unit 1)
         )
       )
     )
@@ -2391,7 +2339,7 @@
   (symbol (lib_id "formula:MicroFit_VT_4") (at 376.555 198.12 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 853a031a-2d63-472e-afea-da778b2a1e97)
-    (property "Reference" "J117" (at 380.365 200.66 0)
+    (property "Reference" "J112" (at 380.365 200.66 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "AIR -" (at 380.365 198.1201 0)
@@ -2416,7 +2364,32 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J117") (unit 1)
+          (reference "J112") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+12V") (at 117.475 123.825 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 8b647f80-ac46-4883-97ef-f2f3f5f7ede2)
+    (property "Reference" "#PWR0104" (at 117.475 127.635 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+12V" (at 117.475 119.38 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 117.475 123.825 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 117.475 123.825 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 254cbe3c-59be-4e8e-8538-80613b1724a9))
+    (instances
+      (project "motherboard-pcie"
+        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
+          (reference "#PWR0104") (unit 1)
         )
       )
     )
@@ -2425,7 +2398,7 @@
   (symbol (lib_id "power:+5V") (at 349.25 201.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 91873186-6c34-4218-8861-b4bfa9d92ed1)
-    (property "Reference" "#PWR0104" (at 349.25 205.74 0)
+    (property "Reference" "#PWR0116" (at 349.25 205.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 349.25 198.12 0)
@@ -2441,7 +2414,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0104") (unit 1)
+          (reference "#PWR0116") (unit 1)
         )
       )
     )
@@ -2450,7 +2423,7 @@
   (symbol (lib_id "power:+12V") (at 101.6 210.185 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 952c6f35-c664-4ebc-8476-0ffd12e7cf52)
-    (property "Reference" "#PWR0110" (at 101.6 213.995 0)
+    (property "Reference" "#PWR0103" (at 101.6 213.995 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (at 101.6 205.74 0)
@@ -2466,7 +2439,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0110") (unit 1)
+          (reference "#PWR0103") (unit 1)
         )
       )
     )
@@ -2475,7 +2448,7 @@
   (symbol (lib_id "power:GND") (at 128.905 210.185 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9a313d00-b808-4920-a64f-7091befe4fba)
-    (property "Reference" "#PWR0107" (at 128.905 216.535 0)
+    (property "Reference" "#PWR0105" (at 128.905 216.535 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 128.905 213.995 0)
@@ -2491,7 +2464,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0107") (unit 1)
+          (reference "#PWR0105") (unit 1)
         )
       )
     )
@@ -2500,7 +2473,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 164.465 182.245 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9a62baba-5464-449d-945f-16cdf3766f30)
-    (property "Reference" "TP104" (at 158.75 182.88 0)
+    (property "Reference" "TP105" (at 158.75 182.88 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_12V" (at 158.75 180.34 0)
@@ -2537,7 +2510,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP104") (unit 1)
+          (reference "TP105") (unit 1)
         )
       )
     )
@@ -2546,7 +2519,7 @@
   (symbol (lib_id "formula:LED_0805") (at 109.855 210.185 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9d2089a7-e01b-4901-bc56-bc84163f98b4)
-    (property "Reference" "D102" (at 106.045 207.01 0)
+    (property "Reference" "D101" (at 106.045 207.01 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "LED_0805" (at 106.045 204.47 0)
@@ -2572,7 +2545,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "D102") (unit 1)
+          (reference "D101") (unit 1)
         )
       )
     )
@@ -2581,7 +2554,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 284.48 202.565 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9e654df2-9776-4103-ad77-50a86f927188)
-    (property "Reference" "TP107" (at 292.735 203.2 90)
+    (property "Reference" "TP111" (at 292.735 203.2 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_IMD" (at 292.735 201.295 90)
@@ -2618,7 +2591,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP107") (unit 1)
+          (reference "TP111") (unit 1)
         )
       )
     )
@@ -2627,7 +2600,7 @@
   (symbol (lib_id "formula:R_1K") (at 122.555 210.185 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a3d8c764-511e-4f86-a2e0-db3e7cf7a15e)
-    (property "Reference" "R102" (at 125.095 207.01 90)
+    (property "Reference" "R101" (at 125.095 207.01 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R_1K" (at 125.095 204.47 90)
@@ -2653,7 +2626,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "R102") (unit 1)
+          (reference "R101") (unit 1)
         )
       )
     )
@@ -2662,7 +2635,7 @@
   (symbol (lib_id "formula:LED_0805") (at 150.495 210.185 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a6840738-7ed6-4b6c-9e6a-a656e9a7c928)
-    (property "Reference" "D101" (at 146.685 207.01 0)
+    (property "Reference" "D102" (at 146.685 207.01 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "LED_0805" (at 146.685 204.47 0)
@@ -2688,7 +2661,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "D101") (unit 1)
+          (reference "D102") (unit 1)
         )
       )
     )
@@ -2697,7 +2670,7 @@
   (symbol (lib_id "formula:MicroFit_VT_4") (at 60.325 177.165 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b157171b-ab9d-4c4c-8bb6-d786f8190c1f)
-    (property "Reference" "J115" (at 62.23 186.69 0)
+    (property "Reference" "J102" (at 62.23 186.69 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Current Sensor" (at 71.755 184.15 0)
@@ -2722,7 +2695,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J115") (unit 1)
+          (reference "J102") (unit 1)
         )
       )
     )
@@ -2731,7 +2704,7 @@
   (symbol (lib_id "power:GND") (at 133.35 180.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b2c44206-820b-4f55-8d58-4b98d02d54d2)
-    (property "Reference" "#PWR0111" (at 133.35 186.69 0)
+    (property "Reference" "#PWR0106" (at 133.35 186.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 133.35 184.785 0)
@@ -2747,7 +2720,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0111") (unit 1)
+          (reference "#PWR0106") (unit 1)
         )
       )
     )
@@ -2756,7 +2729,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 149.225 182.245 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b749e9d2-2c96-47f3-91c0-d0979b0daf90)
-    (property "Reference" "TP105" (at 143.51 182.88 0)
+    (property "Reference" "TP104" (at 143.51 182.88 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_12V" (at 143.51 180.34 0)
@@ -2793,7 +2766,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP105") (unit 1)
+          (reference "TP104") (unit 1)
         )
       )
     )
@@ -2802,7 +2775,7 @@
   (symbol (lib_id "power:+12V") (at 280.67 68.58 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b84f66ff-88f6-4209-b73b-b1ce66a8fdef)
-    (property "Reference" "#PWR0113" (at 280.67 72.39 0)
+    (property "Reference" "#PWR0111" (at 280.67 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (at 280.67 64.135 0)
@@ -2818,7 +2791,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0113") (unit 1)
+          (reference "#PWR0111") (unit 1)
         )
       )
     )
@@ -2827,7 +2800,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 113.665 182.88 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bb1ab558-f381-4182-b467-edf58bcb5124)
-    (property "Reference" "TP103" (at 104.14 181.61 90)
+    (property "Reference" "TP102" (at 104.14 181.61 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_CAN-" (at 104.14 184.15 90)
@@ -2864,7 +2837,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP103") (unit 1)
+          (reference "TP102") (unit 1)
         )
       )
     )
@@ -2898,7 +2871,7 @@
   (symbol (lib_id "formula:MicroFit_V_2") (at 114.935 139.065 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c3a3a200-9dcf-484e-a790-e24f2c9804a2)
-    (property "Reference" "J119" (at 114.935 132.08 90)
+    (property "Reference" "J106" (at 114.935 132.08 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SS HVD" (at 118.11 133.985 90)
@@ -2924,7 +2897,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J119") (unit 1)
+          (reference "J106") (unit 1)
         )
       )
     )
@@ -2933,7 +2906,7 @@
   (symbol (lib_id "power:+12V") (at 73.025 94.615 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cb0e7693-a9a3-4464-85b8-a7e80560a714)
-    (property "Reference" "#PWR0114" (at 73.025 98.425 0)
+    (property "Reference" "#PWR0102" (at 73.025 98.425 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+12V" (at 73.025 90.17 0)
@@ -2949,7 +2922,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0114") (unit 1)
+          (reference "#PWR0102") (unit 1)
         )
       )
     )
@@ -2980,35 +2953,10 @@
     )
   )
 
-  (symbol (lib_id "power:+BATT") (at 117.475 123.825 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid d0206e75-c765-4952-87f4-ef05c183f3c3)
-    (property "Reference" "#PWR0126" (at 117.475 127.635 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+BATT" (at 116.84 120.015 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 117.475 123.825 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 117.475 123.825 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 3e5a95d8-49f8-4d07-98da-9bd6dd1d7d63))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0126") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "formula:TP_SMD") (at 113.665 176.53 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d1957562-8325-42d7-bbf6-3b76dcf5e86e)
-    (property "Reference" "TP102" (at 104.14 174.625 90)
+    (property "Reference" "TP101" (at 104.14 174.625 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_CAN+" (at 104.14 177.165 90)
@@ -3045,7 +2993,32 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP102") (unit 1)
+          (reference "TP101") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+12V") (at 319.405 66.675 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid d59047b0-3ab9-46eb-832b-cf95d5e775fd)
+    (property "Reference" "#PWR0114" (at 319.405 70.485 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+12V" (at 319.405 62.23 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 319.405 66.675 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 319.405 66.675 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ace01e2a-a521-48d8-bc51-b79303556ca9))
+    (instances
+      (project "motherboard-pcie"
+        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
+          (reference "#PWR0114") (unit 1)
         )
       )
     )
@@ -3079,7 +3052,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 284.48 198.12 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ebe1c9ea-b290-40d2-b29f-490f7f217446)
-    (property "Reference" "TP108" (at 292.735 198.755 90)
+    (property "Reference" "TP110" (at 292.735 198.755 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_BMS" (at 292.735 196.85 90)
@@ -3116,7 +3089,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP108") (unit 1)
+          (reference "TP110") (unit 1)
         )
       )
     )
@@ -3125,7 +3098,7 @@
   (symbol (lib_id "Connector_Generic:Conn_02x03_Odd_Even") (at 125.095 126.365 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ec3d3086-d33a-498c-b52f-020d4260db21)
-    (property "Reference" "J103" (at 126.365 118.745 0)
+    (property "Reference" "J107" (at 126.365 118.745 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "EMETER Connector" (at 126.365 116.205 0)
@@ -3146,7 +3119,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J103") (unit 1)
+          (reference "J107") (unit 1)
         )
       )
     )
@@ -3155,7 +3128,7 @@
   (symbol (lib_id "formula:TP_SMD") (at 284.48 184.785 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f0d8bc35-653f-4705-9c2e-e77aec467f50)
-    (property "Reference" "TP106" (at 292.735 185.42 90)
+    (property "Reference" "TP107" (at 292.735 185.42 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TP_EMETER" (at 294.005 183.515 90)
@@ -3192,7 +3165,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "TP106") (unit 1)
+          (reference "TP107") (unit 1)
         )
       )
     )
@@ -3201,7 +3174,7 @@
   (symbol (lib_id "power:GND") (at 169.545 210.185 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f4ceea3c-dbfc-4dcf-84db-91bbcf222402)
-    (property "Reference" "#PWR0106" (at 169.545 216.535 0)
+    (property "Reference" "#PWR0110" (at 169.545 216.535 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 169.545 214.63 0)
@@ -3217,7 +3190,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0106") (unit 1)
+          (reference "#PWR0110") (unit 1)
         )
       )
     )
@@ -3226,7 +3199,7 @@
   (symbol (lib_id "formula:MicroFit_VT_4") (at 59.69 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f689bb07-954f-49e7-bb1d-f09edc5a73aa)
-    (property "Reference" "J104" (at 59.69 90.805 0)
+    (property "Reference" "J101" (at 59.69 90.805 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "IMD" (at 59.69 88.265 0)
@@ -3251,32 +3224,7 @@
     (instances
       (project "motherboard-pcie"
         (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "J104") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+BATT") (at 319.405 66.675 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid fd373833-2a60-4efb-bd08-0d328440e52c)
-    (property "Reference" "#PWR0101" (at 319.405 70.485 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+BATT" (at 319.786 62.2808 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 319.405 66.675 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 319.405 66.675 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 91aa7eb9-e975-460f-a9c0-0d566246e672))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-          (reference "#PWR0101") (unit 1)
+          (reference "J101") (unit 1)
         )
       )
     )
