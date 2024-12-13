@@ -44,11 +44,11 @@ from typing import Dict
 @dataclass
 class ThermistorReading:
     ic: int
-    da_board: int
+    mux_chip: int
     channel: int
 
     def __str__(self):
-        return f"{self.ic}:{self.da_board}:{self.channel}"
+        return f"{self.ic}:{self.mux_chip}:{self.channel}"
 
 # 1 indexing because of how _rdcv_reg is written
 
@@ -93,25 +93,30 @@ def rx_callback(msg, db):
         return
 
     if debug_temp:
-      if "da_boards" in message.keys():
+      if "mux_chips" in message.keys():
           channel = str(message["channel"])
           if len(channel) == 1:
               channel = f"0{channel}"
-          if message["da_boards"] == "DA_BOARDS_34":
-              reading1 = ThermistorReading(ic=message["ic"], da_board=3, channel=channel)
+          if message["mux_chips"] == "MUX_CHIPS_34":
+              reading1 = ThermistorReading(ic=message["ic"], mux_chip=3, channel=channel)
               temp_readings[str(reading1)] = message["temperature_1"]
               if message["channel"] >= 4:
                   reading2 = ThermistorReading(
-                      ic=message["ic"], da_board=4, channel=channel
+                      ic=message["ic"], mux_chip=4, channel=channel
                   )
                   temp_readings[str(reading2)] = message["temperature_2"]
+          elif message["mux_chips"] == "NO_MUX":
+              reading1 = ThermistorReading(ic=message["ic"], mux_chip=5, channel=33)
+              temp_readings[str(reading1)] = message["temperature_1"]
+              reading2 = ThermistorReading(ic=message["ic"], mux_chip=5, channel=34)
+              temp_readings[str(reading2)] = message["temperature_2"]
           else:
               if message["channel"] >= 7:
                   reading1 = ThermistorReading(
-                      ic=message["ic"], da_board=1, channel=channel
+                      ic=message["ic"], mux_chip=1, channel=channel
                   )
                   temp_readings[str(reading1)] = message["temperature_1"]
-              reading2 = ThermistorReading(ic=message["ic"], da_board=2, channel=channel)
+              reading2 = ThermistorReading(ic=message["ic"], mux_chip=2, channel=channel)
               temp_readings[str(reading2)] = message["temperature_2"]
           txt = "_____________start______________\n"
           channels = list(temp_readings.keys())
@@ -124,14 +129,14 @@ def rx_callback(msg, db):
           zipped.sort(key=lambda a: a[0])
           i = 0
           cellHeader = 0;
-          daChCount = 0;
+          muxChCount = 0;
           seg = 0;
-          chPerDa = 24;
-          daCount = 0;
-          cellInRow = chPerDa;
+          chPerMux = 24;
+          muxCount = 0;
+          cellInRow = chPerMux;
 
-          txt += "\nSeg : DA |"
-          while(cellHeader < chPerDa):
+          txt += "\nSeg : MUX |"
+          while(cellHeader < chPerMux):
             txt += str(cellHeader).rjust(6, " ")
             cellHeader += 1
 
@@ -139,16 +144,16 @@ def rx_callback(msg, db):
           print
           while i < len(channels):
                 
-              txt += "  " + str(int(daCount / 4)) + " :  " + str(daCount % 4) + " | " 
-              if(daCount % 4 == 0):
+              txt += "  " + str(int(muxCount / 4)) + " :  " + str(muxCount % 4) + " | " 
+              if(muxCount % 4 == 0):
               	cellInRow = 17
               	txt += "      " * 7
-              elif(daCount % 4 == 3):
+              elif(muxCount % 4 == 3):
               	cellInRow = 20
               else:
-                cellInRow = chPerDa
+                cellInRow = chPerMux
                 
-              # if(daCount % 4 == 3):
+              # if(muxCount % 4 == 3):
               #   txt += "\n"
               txt += (
                   " ".join(
@@ -159,10 +164,10 @@ def rx_callback(msg, db):
                   )
                   + "\n"
               )
-              if(daCount % 4 == 3):
+              if(muxCount % 4 == 3):
                 txt += "\n"
-              i += cellInRow #DAs per segment
-              daCount += 1;
+              i += cellInRow #MUXs per segment
+              muxCount += 1;
           txt += "min:\t" + str(convertVtoT(max(temp_readings.values()))) + "\n"
           txt += "max:\t" + str(convertVtoT(min(temp_readings.values()))) + "\n"
           txt += "high:\t" + str(num_high) + "\n"
