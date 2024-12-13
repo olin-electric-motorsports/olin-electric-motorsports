@@ -1,1973 +1,5339 @@
-(kicad_sch (version 20230121) (generator eeschema)
-
-  (uuid 2b015bf6-fa88-4021-beab-acf9f3019c03)
-
-  (paper "A4")
-
-  (lib_symbols
-    (symbol "formula:C_0.1uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-      (property "Reference" "C" (at 0.635 2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "C_0.1uF" (at 0.635 -2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "footprints:C_0805_OEM" (at 0.9652 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf" (at 0.635 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "478-3352-1-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=478-3352-1-ND" (at 10.795 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "Capacitor, 0.1uF, 50V, 5%, 0805" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "C_0.1uF_0_1"
-        (polyline
-          (pts
-            (xy -2.032 -0.762)
-            (xy 2.032 -0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -2.032 0.762)
-            (xy 2.032 0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "C_0.1uF_1_1"
-        (pin passive line (at 0 3.81 270) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:C_2.2uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-      (property "Reference" "C" (at 0.635 3.81 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "C_2.2uF" (at 0.635 -1.27 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "footprints:C_0805_OEM" (at 0.9652 15.24 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21A225KBFNNNE_Spec.pdf" (at 0.635 21.59 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A225KBFNNNE/5961186" (at 10.795 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MFN" "1276-6702-1-ND" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MPN" "DK" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Capacitor, 2.2uF, 50V, 20%, 0805" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "C_2.2uF_0_1"
-        (polyline
-          (pts
-            (xy -2.032 0.508)
-            (xy 2.032 0.508)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -2.032 2.032)
-            (xy 2.032 2.032)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "C_2.2uF_1_1"
-        (pin passive line (at 0 5.08 270) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -2.54 90) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:C_22uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-      (property "Reference" "C" (at 0.635 2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "C_22uF" (at 0.635 -2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "footprints:C_1206_OEM" (at 0.9652 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf" (at 0.635 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "445-11693-1-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/C3216JB1C226M160AB/445-11693-1-ND/3953359" (at 10.795 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "Capacitor, 22uF, 16V, 20%, 1206" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "C_22uF_0_1"
-        (polyline
-          (pts
-            (xy -2.032 -0.762)
-            (xy 2.032 -0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -2.032 0.762)
-            (xy 2.032 0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "C_22uF_1_1"
-        (pin passive line (at 0 3.81 270) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:C_33uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-      (property "Reference" "C" (at 0.635 2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "C_33uF" (at 2.54 -7.62 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "footprints:Fuse_1812" (at 1.27 -10.16 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf" (at 0 16.51 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 1.27 -12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "445-3924-1-ND" (at 0 8.89 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250KC/445-3924-1-ND/1923431" (at 6.35 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "C_33uF_0_1"
-        (polyline
-          (pts
-            (xy -2.032 -0.762)
-            (xy 2.032 -0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -2.032 0.762)
-            (xy 2.032 0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "C_33uF_1_1"
-        (pin passive line (at 0 3.81 270) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:C_47uF" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-      (property "Reference" "C" (at 0.635 2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "C_47uF" (at 0.635 -2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "footprints:C_0805_OEM" (at 0.9652 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/22/CL21A476MQYNNNG.pdf" (at 0.635 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "1276-6467-1-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A476MQYNNNG/1276-6467-1-ND/5958095" (at 10.795 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "Capacitor, 47uF, 6.3V, 20%, 0805" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "C_47uF_0_1"
-        (polyline
-          (pts
-            (xy -2.032 -0.762)
-            (xy 2.032 -0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -2.032 0.762)
-            (xy 2.032 0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "C_47uF_1_1"
-        (pin passive line (at 0 3.81 270) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:D_Zener_18V" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "D" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "D_Zener_18V" (at 0 -2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:DO-214AA" (at -2.54 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 5.08 7.62 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "SMBJ5355B-TPMSCT-ND" (at 2.54 5.08 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND" (at 10.16 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "Diode, Zener, 18V, 5W, 5%" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "TO-???* *SingleDiode *_Diode_* *SingleDiode* D_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "D_Zener_18V_0_1"
-        (polyline
-          (pts
-            (xy -1.27 -1.27)
-            (xy -2.54 -1.27)
-          )
-          (stroke (width 0.2032) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 1.27)
-            (xy 0 1.27)
-          )
-          (stroke (width 0.2032) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 0)
-            (xy -1.27 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 -1.27)
-            (xy -1.27 1.27)
-            (xy -0.762 1.27)
-          )
-          (stroke (width 0.2032) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 -1.27)
-            (xy 1.27 1.27)
-            (xy -1.27 0)
-            (xy 1.27 -1.27)
-          )
-          (stroke (width 0.2032) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "D_Zener_18V_1_1"
-        (pin passive line (at -3.81 0 0) (length 2.54)
-          (name "K" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 3.81 0 180) (length 2.54)
-          (name "A" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:F_500mA_16V" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "F" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "F_500mA_16V" (at -1.905 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:Fuse_1210" (at -1.778 0 90)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "507-1786-1-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" (at 12.192 10.16 90)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "Fuse, PTC, 500mA, 16V, 1210" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "*Fuse*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "F_500mA_16V_0_1"
-        (rectangle (start -0.762 -2.54) (end 0.762 2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 2.54)
-            (xy 0 -2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "F_500mA_16V_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:LED_0805" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "D" (at 0 -2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "LED_0805" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:LED_0805_OEM" (at -2.54 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "475-1410-1-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 10.16 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "LED, Green, 2.2V, 20mA, 0805" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "LED*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "LED_0805_0_1"
-        (polyline
-          (pts
-            (xy -1.27 -1.27)
-            (xy -1.27 1.27)
-          )
-          (stroke (width 0.2032) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 0)
-            (xy 1.27 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 -1.27)
-            (xy 1.27 1.27)
-            (xy -1.27 0)
-            (xy 1.27 -1.27)
-          )
-          (stroke (width 0.2032) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -3.048 -0.762)
-            (xy -4.572 -2.286)
-            (xy -3.81 -2.286)
-            (xy -4.572 -2.286)
-            (xy -4.572 -1.524)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.778 -0.762)
-            (xy -3.302 -2.286)
-            (xy -2.54 -2.286)
-            (xy -3.302 -2.286)
-            (xy -3.302 -1.524)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "LED_0805_1_1"
-        (pin passive line (at -3.81 0 0) (length 2.54)
-          (name "K" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 3.81 0 180) (length 2.54)
-          (name "A" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:L_100uH" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "L" (at 0 -1.27 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "L_100uH" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:L_100uH_OEM" (at -2.54 -5.08 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_decoupling_nlfv32-ef_en.pdf" (at -2.54 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 2.54 -5.08 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MPN" "445-15759-1-ND" (at 0 6.35 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/445-15759-1-ND/4328055" (at 7.62 5.08 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "L_100uH_1_1"
-        (arc (start -1.016 0) (mid -1.524 0.5058) (end -2.032 0)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (arc (start 0 0) (mid -0.508 0.5058) (end -1.016 0)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (arc (start 1.016 0) (mid 0.508 0.5058) (end 0 0)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (arc (start 2.032 0) (mid 1.524 0.5058) (end 1.016 0)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (pin passive line (at -2.54 0 0) (length 0.508)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 2.54 0 180) (length 0.508)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:R_0_2512" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "R" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "R_0_2512" (at -2.54 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:R_2512_OEM" (at -1.778 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" (at 2.032 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "A121322CT-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=A121322CT-ND" (at 12.192 10.16 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "Resistor, 0 ohm jumper, 3W, 2512" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "R_* Resistor_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "R_0_2512_0_1"
-        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "R_0_2512_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:R_100K" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "R" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "R_100K" (at -2.54 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:R_0805_OEM" (at -1.778 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" (at 2.032 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "P100KCCT-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" (at 12.192 10.16 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "Resistor, 100K, 0.125W, 1%, 0805" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "R_* Resistor_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "R_100K_0_1"
-        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "R_100K_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:R_1K" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "R" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "R_1K" (at -2.54 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:R_0805_OEM" (at -1.778 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 2.032 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "RNCP0805FTD1K00CT-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 12.192 10.16 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "Resistor, 1K, 0.25W, 1%, 0805" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "R_* Resistor_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "R_1K_0_1"
-        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "R_1K_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:R_200" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "R" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "R_200" (at -2.54 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:R_0805_OEM" (at -1.778 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" (at 2.032 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "RMCF0805JT200RCT-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" (at 12.192 10.16 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_fp_filters" "R_* Resistor_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "R_200_0_1"
-        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "R_200_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:R_25K" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "R" (at 6.35 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "R_25K" (at 5.08 5.08 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:R_0805_OEM" (at 1.27 -13.97 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 -10.16 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at -15.24 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "A124124CT-ND" (at 1.27 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/te-connectivity-passive-product/CPF-A-0805B25KE/A124124CT-ND/5970044" (at 1.27 10.16 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_fp_filters" "R_* Resistor_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "R_25K_0_1"
-        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "R_25K_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:TPS560430YF" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-      (property "Reference" "U" (at -5.08 -8.89 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "TPS560430YF" (at 0 10.16 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:SOT-23-6_OEM" (at -1.27 17.78 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 13.97 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MPN" "TPS560430YFDBVR-ND" (at -1.27 -27.94 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 -25.4 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/texas-instruments/TPS560430XDBVR/296-50420-6-ND/9685813" (at 19.05 -22.86 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "TPS560430YF_0_1"
-        (rectangle (start -6.35 -2.54) (end -6.35 -2.54)
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (rectangle (start -6.35 7.62) (end 7.62 -7.62)
-          (stroke (width 0) (type default))
-          (fill (type background))
-        )
-      )
-      (symbol "TPS560430YF_1_1"
-        (pin bidirectional line (at 10.16 5.08 180) (length 2.54)
-          (name "CB" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin power_in line (at 1.27 -10.16 90) (length 2.54)
-          (name "GND" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-        (pin input line (at 10.16 -3.81 180) (length 2.54)
-          (name "FB" (effects (font (size 1.27 1.27))))
-          (number "3" (effects (font (size 1.27 1.27))))
-        )
-        (pin input line (at -8.89 -2.54 0) (length 2.54)
-          (name "EN" (effects (font (size 1.27 1.27))))
-          (number "4" (effects (font (size 1.27 1.27))))
-        )
-        (pin power_in line (at -8.89 3.81 0) (length 2.54)
-          (name "VIN" (effects (font (size 1.27 1.27))))
-          (number "5" (effects (font (size 1.27 1.27))))
-        )
-        (pin output line (at 10.16 1.27 180) (length 2.54)
-          (name "SW" (effects (font (size 1.27 1.27))))
-          (number "6" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "power:GND" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "#PWR" (at 0 -6.35 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "GND" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "power-flag" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Power symbol creates a global label with name \"GND\" , ground" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "GND_0_1"
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 -1.27)
-            (xy 1.27 -1.27)
-            (xy 0 -2.54)
-            (xy -1.27 -1.27)
-            (xy 0 -1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "GND_1_1"
-        (pin power_in line (at 0 0 270) (length 0) hide
-          (name "GND" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-  )
-
-  (junction (at 149.86 113.03) (diameter 0) (color 0 0 0 0)
-    (uuid 01c3c878-62c2-4f42-b219-7dbceafa454e)
-  )
-  (junction (at 186.69 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid 053c31fb-dbdd-4791-a640-0ae225151b25)
-  )
-  (junction (at 207.01 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid 275691c7-c81a-493e-a5fd-3fbaf24eea94)
-  )
-  (junction (at 115.57 92.71) (diameter 0) (color 0 0 0 0)
-    (uuid 4383f224-5f2d-44b1-b16c-a59313775d35)
-  )
-  (junction (at 87.63 92.71) (diameter 0) (color 0 0 0 0)
-    (uuid 64a9a4ce-f8c9-4f8d-a9b6-bd2881799671)
-  )
-  (junction (at 97.79 92.71) (diameter 0) (color 0 0 0 0)
-    (uuid 687c306d-4a2e-4f9e-9dc3-1a51627ed3b7)
-  )
-  (junction (at 196.85 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid 72a702f7-f61d-4c2c-a4be-611c326a517c)
-  )
-  (junction (at 107.95 92.71) (diameter 0) (color 0 0 0 0)
-    (uuid 95a5d04f-d34c-4ede-9a9f-19bc4cd0555b)
-  )
-  (junction (at 162.56 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid c024dd5f-d73a-4d7e-946c-40ee8e8902d2)
-  )
-  (junction (at 121.92 92.71) (diameter 0) (color 0 0 0 0)
-    (uuid e183c708-310f-46b7-9190-23a540ea8620)
-  )
-  (junction (at 176.53 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid f176ee94-01e3-43a6-b246-2e8b2df2c19b)
-  )
-  (junction (at 214.63 95.25) (diameter 0) (color 0 0 0 0)
-    (uuid f26fe7cd-6d9c-4b9d-a6e9-91db218f02f0)
-  )
-
-  (wire (pts (xy 97.79 92.71) (xy 97.79 93.98))
-    (stroke (width 0) (type default))
-    (uuid 045d1913-5579-4c04-ad3c-5838f9b54585)
-  )
-  (wire (pts (xy 207.01 95.25) (xy 214.63 95.25))
-    (stroke (width 0) (type default))
-    (uuid 05ac8e52-a1f8-4ed8-8edc-6b72400a62e9)
-  )
-  (wire (pts (xy 72.39 92.71) (xy 77.47 92.71))
-    (stroke (width 0) (type default))
-    (uuid 0d084f56-3077-4cb2-90a6-cdf72a17ed37)
-  )
-  (wire (pts (xy 214.63 105.41) (xy 214.63 113.03))
-    (stroke (width 0) (type default))
-    (uuid 0d94ed87-dc70-4bf8-949f-f6bff40aebb7)
-  )
-  (wire (pts (xy 149.86 100.33) (xy 149.86 113.03))
-    (stroke (width 0) (type default))
-    (uuid 104408b9-635d-4606-b6b9-fabe63a7d3e6)
-  )
-  (wire (pts (xy 87.63 104.14) (xy 87.63 106.68))
-    (stroke (width 0) (type default))
-    (uuid 10796b28-5211-4491-b70d-d48e1869e41b)
-  )
-  (wire (pts (xy 207.01 113.03) (xy 207.01 95.25))
-    (stroke (width 0) (type default))
-    (uuid 117b35a9-a4b0-4b58-a0bf-54ad333e2ce5)
-  )
-  (wire (pts (xy 176.53 95.25) (xy 186.69 95.25))
-    (stroke (width 0) (type default))
-    (uuid 145bd342-1e02-4d3b-b210-c733c86f3653)
-  )
-  (wire (pts (xy 220.98 95.25) (xy 220.98 93.98))
-    (stroke (width 0) (type default))
-    (uuid 15aaadd2-ddf4-4607-a8f9-32d307408a7c)
-  )
-  (wire (pts (xy 214.63 95.25) (xy 220.98 95.25))
-    (stroke (width 0) (type default))
-    (uuid 1afb198e-2570-4b84-86b8-9a375f37c01e)
-  )
-  (wire (pts (xy 160.02 113.03) (xy 207.01 113.03))
-    (stroke (width 0) (type default))
-    (uuid 1f82d9ec-e075-4d58-9703-a6e2015ce682)
-  )
-  (wire (pts (xy 124.46 99.06) (xy 121.92 99.06))
-    (stroke (width 0) (type default))
-    (uuid 223cbb16-fc11-4913-984a-43a7b33eef44)
-  )
-  (wire (pts (xy 87.63 96.52) (xy 87.63 92.71))
-    (stroke (width 0) (type default))
-    (uuid 29696901-db30-4d20-a670-11513efe5684)
-  )
-  (wire (pts (xy 72.39 87.63) (xy 72.39 92.71))
-    (stroke (width 0) (type default))
-    (uuid 2ea6f4f2-2f1f-453d-9abb-975de61b3d82)
-  )
-  (wire (pts (xy 121.92 92.71) (xy 124.46 92.71))
-    (stroke (width 0) (type default))
-    (uuid 2f39b3bf-db65-4162-87f8-9b408a236446)
-  )
-  (wire (pts (xy 97.79 111.76) (xy 97.79 114.3))
-    (stroke (width 0) (type default))
-    (uuid 4c5047ff-6ac5-4360-9f4f-a8bd493f53be)
-  )
-  (wire (pts (xy 160.02 91.44) (xy 162.56 91.44))
-    (stroke (width 0) (type default))
-    (uuid 5b55b052-5f1b-48dd-9a0b-8b59a5bc3fe0)
-  )
-  (wire (pts (xy 168.91 95.25) (xy 176.53 95.25))
-    (stroke (width 0) (type default))
-    (uuid 5c8440b9-0946-477d-8ff7-2af3f22a2780)
-  )
-  (wire (pts (xy 121.92 99.06) (xy 121.92 92.71))
-    (stroke (width 0) (type default))
-    (uuid 5fbdedf6-e45f-4f16-9c68-744e16aa525a)
-  )
-  (wire (pts (xy 147.32 113.03) (xy 149.86 113.03))
-    (stroke (width 0) (type default))
-    (uuid 617d6cb0-653e-4dc0-a874-9a55ab515876)
-  )
-  (wire (pts (xy 186.69 95.25) (xy 196.85 95.25))
-    (stroke (width 0) (type default))
-    (uuid 65cba31a-597b-47fd-964c-9a58c39548aa)
-  )
-  (wire (pts (xy 97.79 101.6) (xy 97.79 104.14))
-    (stroke (width 0) (type default))
-    (uuid 66770e78-5c1e-423d-9750-d2b8eb759d76)
-  )
-  (wire (pts (xy 214.63 97.79) (xy 214.63 95.25))
-    (stroke (width 0) (type default))
-    (uuid 6e40f649-3ca2-4493-9b49-c965fae08d05)
-  )
-  (wire (pts (xy 115.57 92.71) (xy 121.92 92.71))
-    (stroke (width 0) (type default))
-    (uuid 7d07e421-03da-41b2-bb33-67518b8d7490)
-  )
-  (wire (pts (xy 162.56 95.25) (xy 163.83 95.25))
-    (stroke (width 0) (type default))
-    (uuid 81d01669-7060-4b93-8bea-a97ead314979)
-  )
-  (wire (pts (xy 107.95 92.71) (xy 115.57 92.71))
-    (stroke (width 0) (type default))
-    (uuid 990229b5-d8dc-445b-a149-c09f560941ba)
-  )
-  (wire (pts (xy 143.51 91.44) (xy 152.4 91.44))
-    (stroke (width 0) (type default))
-    (uuid b6592a5c-09ee-44e0-9f16-827172687179)
-  )
-  (wire (pts (xy 85.09 92.71) (xy 87.63 92.71))
-    (stroke (width 0) (type default))
-    (uuid bca005b6-a5c8-433d-af9d-75f4fe6b9edb)
-  )
-  (wire (pts (xy 97.79 92.71) (xy 107.95 92.71))
-    (stroke (width 0) (type default))
-    (uuid c5a3a4b2-a4a3-4909-9af9-224f3a59dbac)
-  )
-  (wire (pts (xy 143.51 100.33) (xy 149.86 100.33))
-    (stroke (width 0) (type default))
-    (uuid c947ea36-95d2-47b5-8aa0-037f3ea7fb0e)
-  )
-  (wire (pts (xy 87.63 92.71) (xy 97.79 92.71))
-    (stroke (width 0) (type default))
-    (uuid cc449d63-08ca-4dfe-8f46-01766ad4283b)
-  )
-  (wire (pts (xy 162.56 91.44) (xy 162.56 95.25))
-    (stroke (width 0) (type default))
-    (uuid d41aaf73-fe39-4241-8324-5c0d40a644cc)
-  )
-  (wire (pts (xy 220.98 86.36) (xy 220.98 83.82))
-    (stroke (width 0) (type default))
-    (uuid d5103cdb-8c96-4864-bdc8-74a51ca335f4)
-  )
-  (wire (pts (xy 149.86 113.03) (xy 152.4 113.03))
-    (stroke (width 0) (type default))
-    (uuid d8c50e1d-c2f5-4e9f-9de9-e2904684c7d9)
-  )
-  (wire (pts (xy 214.63 120.65) (xy 214.63 125.73))
-    (stroke (width 0) (type default))
-    (uuid ed6a2d5a-607f-44c1-9eab-50d756d7821c)
-  )
-  (wire (pts (xy 143.51 95.25) (xy 162.56 95.25))
-    (stroke (width 0) (type default))
-    (uuid f4e1e27b-7002-49ff-90d9-87a1cd969177)
-  )
-  (wire (pts (xy 196.85 95.25) (xy 207.01 95.25))
-    (stroke (width 0) (type default))
-    (uuid f5179c59-e988-4ed1-a95f-9bea3615a08d)
-  )
-  (wire (pts (xy 139.7 113.03) (xy 139.7 120.65))
-    (stroke (width 0) (type default))
-    (uuid f7b4e72a-f685-46ed-8b80-a0087c503af2)
-  )
-
-  (text "Bootstrap Capacitor\n" (at 146.05 87.63 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 061fc5ef-5a0c-4082-909b-f74ffffec58c)
-  )
-  (text "Output Capacitors\n" (at 179.07 88.9 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 1183dbc9-f55e-4664-8e02-33fdde3606bf)
-  )
-  (text "VCC Jumper\n" (at 223.52 91.44 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 3f429a36-840b-451a-8b1a-71449249aaa4)
-  )
-  (text "Feedback Divider\n" (at 142.24 119.38 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 496e7cbf-8bcb-448f-b915-89a33ce7383e)
-  )
-  (text "Protection\n" (at 85.09 106.68 90)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 4df14a97-5208-42d3-a9f0-8661aae541a8)
-  )
-  (text "12V Indicator" (at 95.25 115.57 90)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 5028e5aa-7e8f-43fa-be09-60387206e3e7)
-  )
-  (text "Inductor\n" (at 162.56 91.44 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 78e35878-aa20-4471-9389-80b938ceef3a)
-  )
-  (text "5V Indicator" (at 210.82 123.19 90)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid c2f8428f-9321-4712-aa38-0c0a8678173d)
-  )
-  (text "Input Capacitors\n\n" (at 104.14 90.17 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid da5672ef-7732-4775-a2d1-09294de2e8a0)
-  )
-  (text "BUCK CONVERTER\n" (at 120.65 82.55 0)
-    (effects (font (size 2.2606 2.2606)) (justify left bottom))
-    (uuid e9aed9e6-c73c-4650-ba0c-3aca04a544b9)
-  )
-
-  (hierarchical_label "+12V" (shape input) (at 72.39 87.63 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 1ce71acb-e849-4d9a-b327-089164849d2b)
-  )
-  (hierarchical_label "+5V" (shape output) (at 220.98 83.82 0) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid 29dece14-3848-425f-bb47-605f0207e8f6)
-  )
-
-  (symbol (lib_id "formula:C_0.1uF") (at 156.21 91.44 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 052da96b-3e98-4e60-bc2a-7bb8ce5306dd)
-    (property "Reference" "C603" (at 152.654 92.964 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "C_0.1uF" (at 151.13 90.424 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "footprints:C_0805_OEM" (at 160.02 90.4748 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf" (at 153.67 90.805 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 156.21 91.44 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "478-3352-1-ND" (at 156.21 91.44 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=478-3352-1-ND" (at 143.51 80.645 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 7a683c17-16b8-4fb2-8649-6b9fd5d6054b))
-    (pin "2" (uuid 7b3d2a73-cc7e-4a71-ac35-71837ed5cae4))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "C603") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:C_0.1uF") (at 107.95 96.52 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 07e37c57-b9c4-43f4-a58c-0ac379df3f1f)
-    (property "Reference" "C601" (at 109.22 100.33 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "C_0.1uF" (at 103.632 90.17 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:C_0805_OEM" (at 108.9152 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf" (at 108.585 93.98 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 107.95 96.52 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "478-3352-1-ND" (at 107.95 96.52 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=478-3352-1-ND" (at 118.745 83.82 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid f0c2f49d-3d90-4e26-8cee-09e472bc0b8d))
-    (pin "2" (uuid d8580d42-68f3-4e34-a085-df541ca015f8))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "C601") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_25K") (at 143.51 113.03 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 083025fd-bdcb-4dcd-9b69-65d646cdf636)
-    (property "Reference" "R602" (at 142.24 115.57 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_25K" (at 140.97 110.49 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 129.54 114.3 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773200-1&DocType=DS&DocLang=English" (at 133.35 113.03 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "A124124CT-ND" (at 143.51 97.79 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "Digi-key Part Number" "CPF-A-0805B25KE" (at 156.21 114.3 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/te-connectivity-passive-product/CPF-A-0805B25KE/A124124CT-ND/5970044" (at 153.67 114.3 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 77939c66-b269-44c0-945d-d2e1f956312c))
-    (pin "2" (uuid 776c1377-3d7d-4fb4-9f0f-6a74cbc50ac2))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "R602") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 139.7 120.65 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 093995ab-ad03-4736-95a4-c35216004cb2)
-    (property "Reference" "#PWR0606" (at 139.7 127 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 139.827 125.0442 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 139.7 120.65 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 139.7 120.65 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 82552fa1-ba61-4b27-b88d-3ff968956c31))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0606") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_200") (at 214.63 101.6 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 0e7fee53-5252-4529-8b05-25a0d709d12e)
-    (property "Reference" "R604" (at 216.408 100.4316 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_200" (at 216.408 102.743 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 212.852 101.6 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf" (at 216.662 101.6 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 214.63 101.6 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "RMCF0805JT200RCT-ND" (at 214.63 101.6 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND" (at 226.822 91.44 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 0307ba0b-cf64-491d-8a91-3330d506557a))
-    (pin "2" (uuid 0af9cc34-3db8-418f-88a1-b5b5bd1e8c20))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "R604") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:C_47uF") (at 196.85 99.06 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 0f0603c4-9aab-42fd-b66e-945ed94f2235)
-    (property "Reference" "COUT603" (at 194.31 92.71 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "C_47uF" (at 197.104 101.6 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:C_0805_OEM" (at 197.8152 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/22/CL21A476MQYNNNG.pdf" (at 197.485 96.52 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 196.85 99.06 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "1276-6467-1-ND" (at 196.85 99.06 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A476MQYNNNG/1276-6467-1-ND/5958095" (at 207.645 86.36 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 1805a74f-0499-4932-8791-a3bd8523149d))
-    (pin "2" (uuid 564a0544-def4-44d3-80a2-06ca967d0268))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "COUT603") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 214.63 125.73 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 15624e95-bf46-427a-8de8-a5a459ee4f8c)
-    (property "Reference" "#PWR0610" (at 214.63 132.08 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 214.757 130.1242 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 214.63 125.73 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 214.63 125.73 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid b67e6ae2-fdce-414d-b612-5b72e2dff6bd))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0610") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 134.62 106.68 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 1b36272f-dbbb-4421-885e-f1aea358190c)
-    (property "Reference" "#PWR0605" (at 134.62 113.03 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 134.747 111.0742 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 134.62 106.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 134.62 106.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid c3068c20-f686-455b-bcab-dc39235abed6))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0605") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:L_100uH") (at 166.37 95.25 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 52ccda76-fc9d-4b5c-8fe3-002ca1432fad)
-    (property "Reference" "L601" (at 166.37 92.71 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "L_100uH" (at 166.37 97.79 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "footprints:L_100uH_OEM" (at 163.83 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_decoupling_nlfv32-ef_en.pdf" (at 163.83 99.06 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "Digikey" (at 168.91 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MPN" "445-15759-1-ND" (at 166.37 88.9 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Link" "https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/445-15759-1-ND/4328055" (at 173.99 90.17 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid d99b9719-acd4-443e-b474-b71cc1526498))
-    (pin "2" (uuid ba9fddab-0920-428c-abbb-55f0d1b87d00))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "L601") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 176.53 102.87 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 5b0a6575-3e5a-4ec5-b906-9774c92ce516)
-    (property "Reference" "#PWR0607" (at 176.53 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 176.657 107.2642 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 176.53 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 176.53 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 1ab10122-48fb-4f74-84c0-59a37e379d10))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0607") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:TPS560430YF") (at 133.35 96.52 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 5e5613a0-80b4-45ce-a695-55a0ff2a545d)
-    (property "Reference" "U601" (at 133.985 84.709 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "TPS560430YF" (at 133.985 87.0204 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "footprints:SOT-23-6_OEM" (at 132.08 78.74 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.ti.com/lit/ds/symlink/tps560430.pdf" (at 133.35 82.55 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MPN" "TPS560430YFDBVR" (at 132.08 124.46 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "TPS560430YFDBVR-ND" (at 133.35 121.92 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Purchasing Link" "https://www.digikey.com/product-detail/en/texas-instruments/TPS560430XDBVR/296-50420-6-ND/9685813" (at 152.4 119.38 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid a7356ee5-835c-4150-932e-28fbc684bb3c))
-    (pin "2" (uuid 6dfa9550-7869-405e-b231-9ed09efcb207))
-    (pin "3" (uuid 24cbc9a0-ddf2-4024-8da6-2d9b6af238be))
-    (pin "4" (uuid d0ecab89-9935-46ed-a608-f44cf0fe9765))
-    (pin "5" (uuid 489e9ce8-3469-4c0b-9a43-960ef5900b8d))
-    (pin "6" (uuid 3c6a88ed-b433-47d9-85fc-19fd39acd603))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "U601") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_1K") (at 97.79 97.79 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 604cab73-84d0-42ab-8c66-f4e5257b45ba)
-    (property "Reference" "R601" (at 99.568 96.6216 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_1K" (at 99.568 98.933 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 96.012 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf" (at 99.822 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 97.79 97.79 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "RNCP0805FTD1K00CT-ND" (at 97.79 97.79 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND" (at 109.982 87.63 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 303f1a9c-98fe-4abd-8677-9d16b7423630))
-    (pin "2" (uuid 4eb8de15-881e-4cfb-b29a-d797b7a42674))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "R601") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:F_500mA_16V") (at 81.28 92.71 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 62771225-900f-4870-848e-f37da3972d28)
-    (property "Reference" "F601" (at 81.28 94.742 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "F_500mA_16V" (at 81.788 90.17 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "footprints:Fuse_1210" (at 81.28 90.932 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf" (at 81.28 94.742 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 81.28 92.71 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "507-1786-1-ND" (at 81.28 92.71 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" (at 91.44 104.902 90)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid b5d3b17a-a0ee-4582-bf1a-b61aad0cd7b5))
-    (pin "2" (uuid 569566b6-f67e-4353-b0ac-095078a68e00))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "F601") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:C_33uF") (at 186.69 99.06 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 62793ba7-b6cd-4476-bf43-b903d177f2fe)
-    (property "Reference" "COUT602" (at 184.15 92.71 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "C_33uF" (at 186.944 101.6 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:Fuse_1812" (at 187.96 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf" (at 186.69 82.55 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "C4532X7R1C336M250KC" (at 187.96 111.76 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "445-3924-1-ND" (at 186.69 90.17 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250KC/445-3924-1-ND/1923431" (at 193.04 86.36 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid c84bf80a-f2aa-45eb-85d7-446d017c895e))
-    (pin "2" (uuid 0b9ac261-c0ad-44b6-aaea-fb1a998ae883))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "COUT602") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 97.79 107.95 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 657b56ec-869a-4772-83f1-8eaa67e5aba2)
-    (property "Reference" "D602" (at 100.7618 106.9848 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 100.7618 109.2962 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM" (at 97.79 110.49 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 95.25 107.95 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 97.79 107.95 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 97.79 107.95 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 85.09 97.79 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 37c9a403-51cd-47da-b946-d1a96cccbcd2))
-    (pin "2" (uuid 0f37ab30-1c34-4875-965a-928213d58765))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "D602") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 107.95 100.33 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 73eb2cf4-8210-4f45-94a5-844880afc8e8)
-    (property "Reference" "#PWR0603" (at 107.95 106.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 108.077 104.7242 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 107.95 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 107.95 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 8f81c96c-8141-42bb-908d-c0b54289fa42))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0603") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 97.79 114.3 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 7a370def-8e51-4a50-ab18-9348aa747c80)
-    (property "Reference" "#PWR0602" (at 97.79 120.65 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 97.917 118.6942 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 97.79 114.3 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 97.79 114.3 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 76201fa7-608c-42bd-be83-98e1e7db1b8b))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0602") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:C_22uF") (at 176.53 99.06 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 7dc8d0dc-dbdf-40f6-8d43-cef9b95809c9)
-    (property "Reference" "COUT601" (at 173.736 92.71 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "C_22uF" (at 177.038 101.6 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:C_1206_OEM" (at 177.8 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf" (at 177.8 90.17 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 171.45 99.06 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "445-11693-1-ND" (at 177.8 111.76 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/C3216JB1C226M160AB/445-11693-1-ND/3953359" (at 187.325 86.36 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid c433e483-d0e2-4a68-9486-7fe34a5b02b3))
-    (pin "2" (uuid 788f7d9e-7f1a-4f93-b2d2-ab2cd23eba91))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "COUT601") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_100K") (at 156.21 113.03 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 83ccf480-98cf-4800-915c-8bdff1d2c4ee)
-    (property "Reference" "R603" (at 154.94 115.57 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_100K" (at 152.4 110.49 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 156.21 111.252 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf" (at 156.21 115.062 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 156.21 113.03 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "P100KCCT-ND" (at 156.21 113.03 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551" (at 166.37 125.222 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid fa9578d6-3b0b-4b64-84fa-170fa204b099))
-    (pin "2" (uuid 62f1c727-65b6-452c-a54c-08f0a2daf6c2))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "R603") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 196.85 102.87 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 85cd2b04-1acd-4959-8147-9e31dacc7a00)
-    (property "Reference" "#PWR0609" (at 196.85 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 196.977 107.2642 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 196.85 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 196.85 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid d9fd7d45-b7a8-4210-808a-11c25b298193))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0609") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 87.63 106.68 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 916e8eca-9ab5-4009-83f1-4148e2a88ed6)
-    (property "Reference" "#PWR0601" (at 87.63 113.03 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 87.757 111.0742 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 87.63 106.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 87.63 106.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 8e2b6eec-79f5-4779-894b-050dca893887))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0601") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 186.69 102.87 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid afbf769c-59a4-4765-b2fe-1099f9ab21d4)
-    (property "Reference" "#PWR0608" (at 186.69 109.22 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 186.817 107.2642 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 186.69 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 186.69 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 9c3fe2a7-5021-48c5-8d36-8d5b1efcca24))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0608") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 214.63 116.84 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid b67dc7e2-b7ed-4a64-a760-8e2c0364343e)
-    (property "Reference" "D603" (at 215.138 111.76 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 215.138 114.046 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM" (at 214.63 119.38 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 212.09 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 214.63 116.84 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 214.63 116.84 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 201.93 106.68 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 9f67f8e2-40aa-4fad-9582-cdfa7ccb96bd))
-    (pin "2" (uuid a4fa0937-e650-443f-b316-3d7c28d4f89b))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "D603") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:C_2.2uF") (at 115.57 97.79 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid bb048322-4cd0-46fa-9fe6-7b26d8c8d753)
-    (property "Reference" "C602" (at 116.84 101.6 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "C_2.2uF" (at 112.522 91.44 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:C_0603_1608Metric" (at 116.5352 101.6 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.yageo.com/documents/recent/UPY-GPHC_X5R_4V-to-50V_25.pdf" (at 116.205 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 115.57 97.79 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "311-1451-1-ND" (at 115.57 97.79 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/yageo/CC0603KRX5R6BB225/311-1451-1-ND/2833757" (at 126.365 85.09 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 94a6a8df-4bcf-4514-8d0b-fe60f00c9fd5))
-    (pin "2" (uuid 5217d369-9aac-455a-85fc-89232543bd78))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "C602") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_0_2512") (at 220.98 90.17 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid cf8e4282-4247-4785-820d-5c49c0aa3b54)
-    (property "Reference" "R605" (at 215.9 90.17 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "R_0_2512" (at 218.44 88.9 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "footprints:R_2512_OEM" (at 219.202 90.17 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English" (at 223.012 90.17 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 220.98 90.17 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "A121322CT-ND" (at 220.98 90.17 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=A121322CT-ND" (at 233.172 80.01 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 14ffe78c-3dde-48c9-aa49-87869002a5ab))
-    (pin "2" (uuid f7e63dd7-16a0-42e1-abeb-fc4a08bfd223))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "R605") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 115.57 100.33 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid e82529be-21b1-4871-906f-7b5c9226d2ac)
-    (property "Reference" "#PWR0604" (at 115.57 106.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 115.57 105.41 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 115.57 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 115.57 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ab676d4c-d45b-4d32-8db5-d8a8cb5bb774))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "#PWR0604") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:D_Zener_18V") (at 87.63 100.33 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid eec9097b-9d46-4648-ae86-bb18fb67d13e)
-    (property "Reference" "D601" (at 92.456 100.076 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "D_Zener_18V" (at 90.17 99.822 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "footprints:DO-214AA" (at 87.63 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf" (at 90.17 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 95.25 105.41 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "SMBJ5355B-TPMSCT-ND" (at 92.71 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND" (at 100.33 110.49 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid fff5935f-16d1-4b73-8543-bdeca440223f))
-    (pin "2" (uuid 4f41168b-2356-4237-aa39-d3434aa80695))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-          (reference "D601") (unit 1)
-        )
-      )
-    )
-  )
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "2b015bf6-fa88-4021-beab-acf9f3019c03")
+	(paper "A4")
+	(lib_symbols
+		(symbol "formula:C_0.1uF"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_0.1uF"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "footprints:C_0805_OEM"
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Capacitor, 0.1uF, 50V, 5%, 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "478-3352-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=478-3352-1-ND"
+				(at 10.795 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0.1uF_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_0.1uF_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:C_2.2uF"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_2.2uF"
+				(at 0.635 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "footprints:C_0805_OEM"
+				(at 0.9652 15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21A225KBFNNNE_Spec.pdf"
+				(at 0.635 21.59 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Capacitor, 2.2uF, 50V, 20%, 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A225KBFNNNE/5961186"
+				(at 10.795 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "1276-6702-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_2.2uF_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.508) (xy 2.032 0.508)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 2.032) (xy 2.032 2.032)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_2.2uF_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:C_22uF"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_22uF"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "footprints:C_1206_OEM"
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Capacitor, 22uF, 16V, 20%, 1206"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "445-11693-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/C3216JB1C226M160AB/445-11693-1-ND/3953359"
+				(at 10.795 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_22uF_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_22uF_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:C_33uF"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_33uF"
+				(at 2.54 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "footprints:Fuse_1812"
+				(at 1.27 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf"
+				(at 0 16.51 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 1.27 -12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "445-3924-1-ND"
+				(at 0 8.89 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250KC/445-3924-1-ND/1923431"
+				(at 6.35 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_33uF_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_33uF_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:C_47uF"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_47uF"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "footprints:C_0805_OEM"
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/22/CL21A476MQYNNNG.pdf"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Capacitor, 47uF, 6.3V, 20%, 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "1276-6467-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A476MQYNNNG/1276-6467-1-ND/5958095"
+				(at 10.795 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C? C_????_* C_???? SMD*_c Capacitor*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_47uF_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_47uF_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:D_Zener_18V"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D_Zener_18V"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:DO-214AA"
+				(at -2.54 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Diode, Zener, 18V, 5W, 5%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 5.08 7.62 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "SMBJ5355B-TPMSCT-ND"
+				(at 2.54 5.08 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND"
+				(at 10.16 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *SingleDiode *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_Zener_18V_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -2.54 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Zener_18V_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:F_500mA_16V"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "F_500mA_16V"
+				(at -1.905 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:Fuse_1210"
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Fuse, PTC, 500mA, 16V, 1210"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "507-1786-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209"
+				(at 12.192 10.16 90)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*Fuse*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "F_500mA_16V_0_1"
+				(rectangle
+					(start -0.762 -2.54)
+					(end 0.762 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "F_500mA_16V_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:LED_0805"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_0805"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:LED_0805_OEM"
+				(at -2.54 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "LED, Green, 2.2V, 20mA, 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "475-1410-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+				(at 10.16 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0805_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_0805_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:L_100uH"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "L"
+				(at 0 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "L_100uH"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:L_100uH_OEM"
+				(at -2.54 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_decoupling_nlfv32-ef_en.pdf"
+				(at -2.54 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 2.54 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "445-15759-1-ND"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/445-15759-1-ND/4328055"
+				(at 7.62 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "L_100uH_1_1"
+				(arc
+					(start -1.016 0)
+					(mid -1.524 0.5058)
+					(end -2.032 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid -0.508 0.5058)
+					(end -1.016 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.016 0)
+					(mid 0.508 0.5058)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.032 0)
+					(mid 1.524 0.5058)
+					(end 1.016 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -2.54 0 0)
+					(length 0.508)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 0.508)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:R_0_2512"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R_0_2512"
+				(at -2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:R_2512_OEM"
+				(at -1.778 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor, 0 ohm jumper, 3W, 2512"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "A121322CT-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=A121322CT-ND"
+				(at 12.192 10.16 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_* Resistor_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_0_2512_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_0_2512_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:R_100K"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R_100K"
+				(at -2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:R_0805_OEM"
+				(at -1.778 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor, 100K, 0.125W, 1%, 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "P100KCCT-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551"
+				(at 12.192 10.16 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_* Resistor_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_100K_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_100K_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:R_1K"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R_1K"
+				(at -2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:R_0805_OEM"
+				(at -1.778 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor, 1K, 0.25W, 1%, 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "RNCP0805FTD1K00CT-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND"
+				(at 12.192 10.16 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_* Resistor_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_1K_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1K_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:R_200"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R_200"
+				(at -2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:R_0805_OEM"
+				(at -1.778 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf"
+				(at 2.032 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "RMCF0805JT200RCT-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND"
+				(at 12.192 10.16 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_* Resistor_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_200_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_200_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:R_25K"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 6.35 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R_25K"
+				(at 5.08 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:R_0805_OEM"
+				(at 1.27 -13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at -15.24 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "A124124CT-ND"
+				(at 1.27 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/te-connectivity-passive-product/CPF-A-0805B25KE/A124124CT-ND/5970044"
+				(at 1.27 10.16 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_* Resistor_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_25K_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_25K_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:TPS560430YF"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -5.08 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TPS560430YF"
+				(at 0 10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:SOT-23-6_OEM"
+				(at -1.27 17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "TPS560430YFDBVR-ND"
+				(at -1.27 -27.94 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 -25.4 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/texas-instruments/TPS560430XDBVR/296-50420-6-ND/9685813"
+				(at 19.05 -22.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TPS560430YF_0_1"
+				(rectangle
+					(start -6.35 -2.54)
+					(end -6.35 -2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -6.35 7.62)
+					(end 7.62 -7.62)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "TPS560430YF_1_1"
+				(pin bidirectional line
+					(at 10.16 5.08 180)
+					(length 2.54)
+					(name "CB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 1.27 -10.16 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 -3.81 180)
+					(length 2.54)
+					(name "FB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -8.89 -2.54 0)
+					(length 2.54)
+					(name "EN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -8.89 3.81 0)
+					(length 2.54)
+					(name "VIN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 10.16 1.27 180)
+					(length 2.54)
+					(name "SW"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:GND"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0) hide
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 149.86 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "01c3c878-62c2-4f42-b219-7dbceafa454e")
+	)
+	(junction
+		(at 186.69 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "053c31fb-dbdd-4791-a640-0ae225151b25")
+	)
+	(junction
+		(at 207.01 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "275691c7-c81a-493e-a5fd-3fbaf24eea94")
+	)
+	(junction
+		(at 115.57 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4383f224-5f2d-44b1-b16c-a59313775d35")
+	)
+	(junction
+		(at 87.63 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "64a9a4ce-f8c9-4f8d-a9b6-bd2881799671")
+	)
+	(junction
+		(at 97.79 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "687c306d-4a2e-4f9e-9dc3-1a51627ed3b7")
+	)
+	(junction
+		(at 196.85 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "72a702f7-f61d-4c2c-a4be-611c326a517c")
+	)
+	(junction
+		(at 107.95 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "95a5d04f-d34c-4ede-9a9f-19bc4cd0555b")
+	)
+	(junction
+		(at 162.56 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c024dd5f-d73a-4d7e-946c-40ee8e8902d2")
+	)
+	(junction
+		(at 121.92 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e183c708-310f-46b7-9190-23a540ea8620")
+	)
+	(junction
+		(at 176.53 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f176ee94-01e3-43a6-b246-2e8b2df2c19b")
+	)
+	(junction
+		(at 214.63 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f26fe7cd-6d9c-4b9d-a6e9-91db218f02f0")
+	)
+	(wire
+		(pts
+			(xy 97.79 92.71) (xy 97.79 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "045d1913-5579-4c04-ad3c-5838f9b54585")
+	)
+	(wire
+		(pts
+			(xy 207.01 95.25) (xy 214.63 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05ac8e52-a1f8-4ed8-8edc-6b72400a62e9")
+	)
+	(wire
+		(pts
+			(xy 72.39 92.71) (xy 77.47 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d084f56-3077-4cb2-90a6-cdf72a17ed37")
+	)
+	(wire
+		(pts
+			(xy 214.63 105.41) (xy 214.63 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d94ed87-dc70-4bf8-949f-f6bff40aebb7")
+	)
+	(wire
+		(pts
+			(xy 149.86 100.33) (xy 149.86 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "104408b9-635d-4606-b6b9-fabe63a7d3e6")
+	)
+	(wire
+		(pts
+			(xy 87.63 104.14) (xy 87.63 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10796b28-5211-4491-b70d-d48e1869e41b")
+	)
+	(wire
+		(pts
+			(xy 207.01 113.03) (xy 207.01 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "117b35a9-a4b0-4b58-a0bf-54ad333e2ce5")
+	)
+	(wire
+		(pts
+			(xy 176.53 95.25) (xy 186.69 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "145bd342-1e02-4d3b-b210-c733c86f3653")
+	)
+	(wire
+		(pts
+			(xy 220.98 95.25) (xy 220.98 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15aaadd2-ddf4-4607-a8f9-32d307408a7c")
+	)
+	(wire
+		(pts
+			(xy 214.63 95.25) (xy 220.98 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1afb198e-2570-4b84-86b8-9a375f37c01e")
+	)
+	(wire
+		(pts
+			(xy 160.02 113.03) (xy 207.01 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f82d9ec-e075-4d58-9703-a6e2015ce682")
+	)
+	(wire
+		(pts
+			(xy 124.46 99.06) (xy 121.92 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "223cbb16-fc11-4913-984a-43a7b33eef44")
+	)
+	(wire
+		(pts
+			(xy 87.63 96.52) (xy 87.63 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29696901-db30-4d20-a670-11513efe5684")
+	)
+	(wire
+		(pts
+			(xy 72.39 87.63) (xy 72.39 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ea6f4f2-2f1f-453d-9abb-975de61b3d82")
+	)
+	(wire
+		(pts
+			(xy 121.92 92.71) (xy 124.46 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f39b3bf-db65-4162-87f8-9b408a236446")
+	)
+	(wire
+		(pts
+			(xy 97.79 111.76) (xy 97.79 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c5047ff-6ac5-4360-9f4f-a8bd493f53be")
+	)
+	(wire
+		(pts
+			(xy 160.02 91.44) (xy 162.56 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b55b052-5f1b-48dd-9a0b-8b59a5bc3fe0")
+	)
+	(wire
+		(pts
+			(xy 168.91 95.25) (xy 176.53 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c8440b9-0946-477d-8ff7-2af3f22a2780")
+	)
+	(wire
+		(pts
+			(xy 121.92 99.06) (xy 121.92 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fbdedf6-e45f-4f16-9c68-744e16aa525a")
+	)
+	(wire
+		(pts
+			(xy 147.32 113.03) (xy 149.86 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "617d6cb0-653e-4dc0-a874-9a55ab515876")
+	)
+	(wire
+		(pts
+			(xy 186.69 95.25) (xy 196.85 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65cba31a-597b-47fd-964c-9a58c39548aa")
+	)
+	(wire
+		(pts
+			(xy 97.79 101.6) (xy 97.79 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "66770e78-5c1e-423d-9750-d2b8eb759d76")
+	)
+	(wire
+		(pts
+			(xy 214.63 97.79) (xy 214.63 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e40f649-3ca2-4493-9b49-c965fae08d05")
+	)
+	(wire
+		(pts
+			(xy 115.57 92.71) (xy 121.92 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d07e421-03da-41b2-bb33-67518b8d7490")
+	)
+	(wire
+		(pts
+			(xy 162.56 95.25) (xy 163.83 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81d01669-7060-4b93-8bea-a97ead314979")
+	)
+	(wire
+		(pts
+			(xy 107.95 92.71) (xy 115.57 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "990229b5-d8dc-445b-a149-c09f560941ba")
+	)
+	(wire
+		(pts
+			(xy 143.51 91.44) (xy 152.4 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6592a5c-09ee-44e0-9f16-827172687179")
+	)
+	(wire
+		(pts
+			(xy 85.09 92.71) (xy 87.63 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bca005b6-a5c8-433d-af9d-75f4fe6b9edb")
+	)
+	(wire
+		(pts
+			(xy 97.79 92.71) (xy 107.95 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5a3a4b2-a4a3-4909-9af9-224f3a59dbac")
+	)
+	(wire
+		(pts
+			(xy 143.51 100.33) (xy 149.86 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c947ea36-95d2-47b5-8aa0-037f3ea7fb0e")
+	)
+	(wire
+		(pts
+			(xy 87.63 92.71) (xy 97.79 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc449d63-08ca-4dfe-8f46-01766ad4283b")
+	)
+	(wire
+		(pts
+			(xy 162.56 91.44) (xy 162.56 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d41aaf73-fe39-4241-8324-5c0d40a644cc")
+	)
+	(wire
+		(pts
+			(xy 220.98 86.36) (xy 220.98 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5103cdb-8c96-4864-bdc8-74a51ca335f4")
+	)
+	(wire
+		(pts
+			(xy 149.86 113.03) (xy 152.4 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8c50e1d-c2f5-4e9f-9de9-e2904684c7d9")
+	)
+	(wire
+		(pts
+			(xy 214.63 120.65) (xy 214.63 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed6a2d5a-607f-44c1-9eab-50d756d7821c")
+	)
+	(wire
+		(pts
+			(xy 143.51 95.25) (xy 162.56 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4e1e27b-7002-49ff-90d9-87a1cd969177")
+	)
+	(wire
+		(pts
+			(xy 196.85 95.25) (xy 207.01 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5179c59-e988-4ed1-a95f-9bea3615a08d")
+	)
+	(wire
+		(pts
+			(xy 139.7 113.03) (xy 139.7 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7b4e72a-f685-46ed-8b80-a0087c503af2")
+	)
+	(text "Bootstrap Capacitor\n"
+		(exclude_from_sim no)
+		(at 146.05 87.63 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "061fc5ef-5a0c-4082-909b-f74ffffec58c")
+	)
+	(text "Output Capacitors\n"
+		(exclude_from_sim no)
+		(at 179.07 88.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1183dbc9-f55e-4664-8e02-33fdde3606bf")
+	)
+	(text "VCC Jumper\n"
+		(exclude_from_sim no)
+		(at 223.52 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3f429a36-840b-451a-8b1a-71449249aaa4")
+	)
+	(text "Feedback Divider\n"
+		(exclude_from_sim no)
+		(at 142.24 119.38 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "496e7cbf-8bcb-448f-b915-89a33ce7383e")
+	)
+	(text "Protection\n"
+		(exclude_from_sim no)
+		(at 85.09 106.68 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4df14a97-5208-42d3-a9f0-8661aae541a8")
+	)
+	(text "12V Indicator"
+		(exclude_from_sim no)
+		(at 95.25 115.57 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5028e5aa-7e8f-43fa-be09-60387206e3e7")
+	)
+	(text "Inductor\n"
+		(exclude_from_sim no)
+		(at 162.56 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "78e35878-aa20-4471-9389-80b938ceef3a")
+	)
+	(text "5V Indicator"
+		(exclude_from_sim no)
+		(at 210.82 123.19 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c2f8428f-9321-4712-aa38-0c0a8678173d")
+	)
+	(text "Input Capacitors\n\n"
+		(exclude_from_sim no)
+		(at 104.14 90.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "da5672ef-7732-4775-a2d1-09294de2e8a0")
+	)
+	(text "BUCK CONVERTER\n"
+		(exclude_from_sim no)
+		(at 120.65 82.55 0)
+		(effects
+			(font
+				(size 2.2606 2.2606)
+			)
+			(justify left bottom)
+		)
+		(uuid "e9aed9e6-c73c-4650-ba0c-3aca04a544b9")
+	)
+	(hierarchical_label "+12V"
+		(shape input)
+		(at 72.39 87.63 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1ce71acb-e849-4d9a-b327-089164849d2b")
+	)
+	(hierarchical_label "+5V"
+		(shape output)
+		(at 220.98 83.82 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "29dece14-3848-425f-bb47-605f0207e8f6")
+	)
+	(symbol
+		(lib_id "formula:C_0.1uF")
+		(at 156.21 91.44 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "052da96b-3e98-4e60-bc2a-7bb8ce5306dd")
+		(property "Reference" "C603"
+			(at 152.654 92.964 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "C_0.1uF"
+			(at 151.13 90.424 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:C_0805_OEM"
+			(at 160.02 90.4748 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf"
+			(at 153.67 90.805 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 156.21 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 156.21 91.44 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "478-3352-1-ND"
+			(at 156.21 91.44 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=478-3352-1-ND"
+			(at 143.51 80.645 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a683c17-16b8-4fb2-8649-6b9fd5d6054b")
+		)
+		(pin "2"
+			(uuid "7b3d2a73-cc7e-4a71-ac35-71837ed5cae4")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "C603")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:C_0.1uF")
+		(at 107.95 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "07e37c57-b9c4-43f4-a58c-0ac379df3f1f")
+		(property "Reference" "C601"
+			(at 109.22 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_0.1uF"
+			(at 103.632 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:C_0805_OEM"
+			(at 108.9152 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://datasheets.avx.com/X7RDielectric.pdf"
+			(at 108.585 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 107.95 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 107.95 96.52 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "478-3352-1-ND"
+			(at 107.95 96.52 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=478-3352-1-ND"
+			(at 118.745 83.82 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f0c2f49d-3d90-4e26-8cee-09e472bc0b8d")
+		)
+		(pin "2"
+			(uuid "d8580d42-68f3-4e34-a085-df541ca015f8")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "C601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_25K")
+		(at 143.51 113.03 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "083025fd-bdcb-4dcd-9b69-65d646cdf636")
+		(property "Reference" "R602"
+			(at 142.24 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_25K"
+			(at 140.97 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 129.54 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773200-1&DocType=DS&DocLang=English"
+			(at 133.35 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "A124124CT-ND"
+			(at 143.51 97.79 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digi-key Part Number" "CPF-A-0805B25KE"
+			(at 156.21 114.3 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/te-connectivity-passive-product/CPF-A-0805B25KE/A124124CT-ND/5970044"
+			(at 153.67 114.3 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77939c66-b269-44c0-945d-d2e1f956312c")
+		)
+		(pin "2"
+			(uuid "776c1377-3d7d-4fb4-9f0f-6a74cbc50ac2")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "R602")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 139.7 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "093995ab-ad03-4736-95a4-c35216004cb2")
+		(property "Reference" "#PWR0606"
+			(at 139.7 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 139.827 125.0442 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 139.7 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 139.7 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 139.7 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "82552fa1-ba61-4b27-b88d-3ff968956c31")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0606")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_200")
+		(at 214.63 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0e7fee53-5252-4529-8b05-25a0d709d12e")
+		(property "Reference" "R604"
+			(at 216.408 100.4316 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_200"
+			(at 216.408 102.743 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 212.852 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.seielect.com/Catalog/SEI-RMCF_RMCP.pdf"
+			(at 216.662 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 214.63 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 214.63 101.6 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0805JT200RCT-ND"
+			(at 214.63 101.6 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RMCF0805JT200RCT-ND"
+			(at 226.822 91.44 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0307ba0b-cf64-491d-8a91-3330d506557a")
+		)
+		(pin "2"
+			(uuid "0af9cc34-3db8-418f-88a1-b5b5bd1e8c20")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "R604")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:C_47uF")
+		(at 196.85 99.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0f0603c4-9aab-42fd-b66e-945ed94f2235")
+		(property "Reference" "COUT603"
+			(at 194.31 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_47uF"
+			(at 197.104 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:C_0805_OEM"
+			(at 197.8152 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.samsungsem.com/kr/support/product-search/mlcc/__icsFiles/afieldfile/2018/06/22/CL21A476MQYNNNG.pdf"
+			(at 197.485 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 196.85 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 196.85 99.06 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1276-6467-1-ND"
+			(at 196.85 99.06 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21A476MQYNNNG/1276-6467-1-ND/5958095"
+			(at 207.645 86.36 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1805a74f-0499-4932-8791-a3bd8523149d")
+		)
+		(pin "2"
+			(uuid "564a0544-def4-44d3-80a2-06ca967d0268")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "COUT603")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 214.63 125.73 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "15624e95-bf46-427a-8de8-a5a459ee4f8c")
+		(property "Reference" "#PWR0610"
+			(at 214.63 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 214.757 130.1242 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 214.63 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 214.63 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b67e6ae2-fdce-414d-b612-5b72e2dff6bd")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0610")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 134.62 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1b36272f-dbbb-4421-885e-f1aea358190c")
+		(property "Reference" "#PWR0605"
+			(at 134.62 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 134.747 111.0742 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c3068c20-f686-455b-bcab-dc39235abed6")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0605")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:L_100uH")
+		(at 166.37 95.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "52ccda76-fc9d-4b5c-8fe3-002ca1432fad")
+		(property "Reference" "L601"
+			(at 166.37 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "L_100uH"
+			(at 166.37 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:L_100uH_OEM"
+			(at 163.83 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/inductor_commercial_decoupling_nlfv32-ef_en.pdf"
+			(at 163.83 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 166.37 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Digikey"
+			(at 168.91 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "445-15759-1-ND"
+			(at 166.37 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://www.digikey.com/product-detail/en/tdk-corporation/NLFV32T-101K-EF/445-15759-1-ND/4328055"
+			(at 173.99 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d99b9719-acd4-443e-b474-b71cc1526498")
+		)
+		(pin "2"
+			(uuid "ba9fddab-0920-428c-abbb-55f0d1b87d00")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "L601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 176.53 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5b0a6575-3e5a-4ec5-b906-9774c92ce516")
+		(property "Reference" "#PWR0607"
+			(at 176.53 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 176.657 107.2642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 176.53 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 176.53 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 176.53 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1ab10122-48fb-4f74-84c0-59a37e379d10")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0607")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:TPS560430YF")
+		(at 133.35 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5e5613a0-80b4-45ce-a695-55a0ff2a545d")
+		(property "Reference" "U601"
+			(at 133.985 84.709 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TPS560430YF"
+			(at 133.985 87.0204 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:SOT-23-6_OEM"
+			(at 132.08 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tps560430.pdf"
+			(at 133.35 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 133.35 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TPS560430YFDBVR"
+			(at 132.08 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "TPS560430YFDBVR-ND"
+			(at 133.35 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchasing Link" "https://www.digikey.com/product-detail/en/texas-instruments/TPS560430XDBVR/296-50420-6-ND/9685813"
+			(at 152.4 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a7356ee5-835c-4150-932e-28fbc684bb3c")
+		)
+		(pin "2"
+			(uuid "6dfa9550-7869-405e-b231-9ed09efcb207")
+		)
+		(pin "3"
+			(uuid "24cbc9a0-ddf2-4024-8da6-2d9b6af238be")
+		)
+		(pin "4"
+			(uuid "d0ecab89-9935-46ed-a608-f44cf0fe9765")
+		)
+		(pin "5"
+			(uuid "489e9ce8-3469-4c0b-9a43-960ef5900b8d")
+		)
+		(pin "6"
+			(uuid "3c6a88ed-b433-47d9-85fc-19fd39acd603")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "U601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_1K")
+		(at 97.79 97.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "604cab73-84d0-42ab-8c66-f4e5257b45ba")
+		(property "Reference" "R601"
+			(at 99.568 96.6216 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_1K"
+			(at 99.568 98.933 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 96.012 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf"
+			(at 99.822 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 97.79 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 97.79 97.79 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RNCP0805FTD1K00CT-ND"
+			(at 97.79 97.79 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND"
+			(at 109.982 87.63 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "303f1a9c-98fe-4abd-8677-9d16b7423630")
+		)
+		(pin "2"
+			(uuid "4eb8de15-881e-4cfb-b29a-d797b7a42674")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "R601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:F_500mA_16V")
+		(at 81.28 92.71 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "62771225-900f-4870-848e-f37da3972d28")
+		(property "Reference" "F601"
+			(at 81.28 94.742 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "F_500mA_16V"
+			(at 81.788 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1210"
+			(at 81.28 90.932 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://belfuse.com/resources/CircuitProtection/datasheets/0ZCH%20Nov2016.pdf"
+			(at 81.28 94.742 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 81.28 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 81.28 92.71 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "507-1786-1-ND"
+			(at 81.28 92.71 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209"
+			(at 91.44 104.902 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b5d3b17a-a0ee-4582-bf1a-b61aad0cd7b5")
+		)
+		(pin "2"
+			(uuid "569566b6-f67e-4353-b0ac-095078a68e00")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "F601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:C_33uF")
+		(at 186.69 99.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "62793ba7-b6cd-4476-bf43-b903d177f2fe")
+		(property "Reference" "COUT602"
+			(at 184.15 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_33uF"
+			(at 186.944 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:Fuse_1812"
+			(at 187.96 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf"
+			(at 186.69 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 186.69 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "C4532X7R1C336M250KC"
+			(at 187.96 111.76 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "445-3924-1-ND"
+			(at 186.69 90.17 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/C4532X7R1C336M250KC/445-3924-1-ND/1923431"
+			(at 193.04 86.36 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c84bf80a-f2aa-45eb-85d7-446d017c895e")
+		)
+		(pin "2"
+			(uuid "0b9ac261-c0ad-44b6-aaea-fb1a998ae883")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "COUT602")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 97.79 107.95 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "657b56ec-869a-4772-83f1-8eaa67e5aba2")
+		(property "Reference" "D602"
+			(at 100.7618 106.9848 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 100.7618 109.2962 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM"
+			(at 97.79 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 95.25 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 97.79 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 97.79 107.95 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 97.79 107.95 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 85.09 97.79 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "37c9a403-51cd-47da-b946-d1a96cccbcd2")
+		)
+		(pin "2"
+			(uuid "0f37ab30-1c34-4875-965a-928213d58765")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "D602")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 107.95 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "73eb2cf4-8210-4f45-94a5-844880afc8e8")
+		(property "Reference" "#PWR0603"
+			(at 107.95 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 108.077 104.7242 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.95 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.95 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 107.95 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8f81c96c-8141-42bb-908d-c0b54289fa42")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0603")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 97.79 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7a370def-8e51-4a50-ab18-9348aa747c80")
+		(property "Reference" "#PWR0602"
+			(at 97.79 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 97.917 118.6942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 97.79 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 97.79 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 97.79 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "76201fa7-608c-42bd-be83-98e1e7db1b8b")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0602")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:C_22uF")
+		(at 176.53 99.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7dc8d0dc-dbdf-40f6-8d43-cef9b95809c9")
+		(property "Reference" "COUT601"
+			(at 173.736 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_22uF"
+			(at 177.038 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:C_1206_OEM"
+			(at 177.8 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_general_en.pdf"
+			(at 177.8 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 176.53 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 171.45 99.06 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "445-11693-1-ND"
+			(at 177.8 111.76 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/tdk-corporation/C3216JB1C226M160AB/445-11693-1-ND/3953359"
+			(at 187.325 86.36 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c433e483-d0e2-4a68-9486-7fe34a5b02b3")
+		)
+		(pin "2"
+			(uuid "788f7d9e-7f1a-4f93-b2d2-ab2cd23eba91")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "COUT601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_100K")
+		(at 156.21 113.03 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "83ccf480-98cf-4800-915c-8bdff1d2c4ee")
+		(property "Reference" "R603"
+			(at 154.94 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_100K"
+			(at 152.4 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 156.21 111.252 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf"
+			(at 156.21 115.062 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 156.21 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 156.21 113.03 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "P100KCCT-ND"
+			(at 156.21 113.03 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-6ENF1003V/P100KCCT-ND/119551"
+			(at 166.37 125.222 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fa9578d6-3b0b-4b64-84fa-170fa204b099")
+		)
+		(pin "2"
+			(uuid "62f1c727-65b6-452c-a54c-08f0a2daf6c2")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "R603")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 196.85 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "85cd2b04-1acd-4959-8147-9e31dacc7a00")
+		(property "Reference" "#PWR0609"
+			(at 196.85 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 196.977 107.2642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 196.85 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 196.85 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 196.85 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d9fd7d45-b7a8-4210-808a-11c25b298193")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0609")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 87.63 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "916e8eca-9ab5-4009-83f1-4148e2a88ed6")
+		(property "Reference" "#PWR0601"
+			(at 87.63 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 87.757 111.0742 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 87.63 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 87.63 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 87.63 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8e2b6eec-79f5-4779-894b-050dca893887")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0601")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 186.69 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "afbf769c-59a4-4765-b2fe-1099f9ab21d4")
+		(property "Reference" "#PWR0608"
+			(at 186.69 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 186.817 107.2642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 186.69 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 186.69 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 186.69 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9c3fe2a7-5021-48c5-8d36-8d5b1efcca24")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0608")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 214.63 116.84 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b67dc7e2-b7ed-4a64-a760-8e2c0364343e")
+		(property "Reference" "D603"
+			(at 215.138 111.76 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 215.138 114.046 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM"
+			(at 214.63 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 212.09 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 214.63 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 214.63 116.84 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 214.63 116.84 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 201.93 106.68 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9f67f8e2-40aa-4fad-9582-cdfa7ccb96bd")
+		)
+		(pin "2"
+			(uuid "a4fa0937-e650-443f-b316-3d7c28d4f89b")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "D603")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:C_2.2uF")
+		(at 115.57 97.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bb048322-4cd0-46fa-9fe6-7b26d8c8d753")
+		(property "Reference" "C602"
+			(at 116.84 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_2.2uF"
+			(at 112.522 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:C_0603_1608Metric"
+			(at 116.5352 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.yageo.com/documents/recent/UPY-GPHC_X5R_4V-to-50V_25.pdf"
+			(at 116.205 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 115.57 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 115.57 97.79 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "311-1451-1-ND"
+			(at 115.57 97.79 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/yageo/CC0603KRX5R6BB225/311-1451-1-ND/2833757"
+			(at 126.365 85.09 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "94a6a8df-4bcf-4514-8d0b-fe60f00c9fd5")
+		)
+		(pin "2"
+			(uuid "5217d369-9aac-455a-85fc-89232543bd78")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "C602")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_0_2512")
+		(at 220.98 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cf8e4282-4247-4785-820d-5c49c0aa3b54")
+		(property "Reference" "R605"
+			(at 215.9 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R_0_2512"
+			(at 218.44 88.9 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:R_2512_OEM"
+			(at 219.202 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=9-1773463-7&DocType=DS&DocLang=English"
+			(at 223.012 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 220.98 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 220.98 90.17 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "A121322CT-ND"
+			(at 220.98 90.17 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=A121322CT-ND"
+			(at 233.172 80.01 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "14ffe78c-3dde-48c9-aa49-87869002a5ab")
+		)
+		(pin "2"
+			(uuid "f7e63dd7-16a0-42e1-abeb-fc4a08bfd223")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "R605")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 115.57 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e82529be-21b1-4871-906f-7b5c9226d2ac")
+		(property "Reference" "#PWR0604"
+			(at 115.57 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 115.57 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 115.57 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ab676d4c-d45b-4d32-8db5-d8a8cb5bb774")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "#PWR0604")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:D_Zener_18V")
+		(at 87.63 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "eec9097b-9d46-4648-ae86-bb18fb67d13e")
+		(property "Reference" "D601"
+			(at 92.456 100.076 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_Zener_18V"
+			(at 90.17 99.822 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:DO-214AA"
+			(at 87.63 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.mccsemi.com/up_pdf/SMBJ5338B-SMBJ5388B(SMB).pdf"
+			(at 90.17 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 87.63 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 95.25 105.41 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SMBJ5355B-TPMSCT-ND"
+			(at 92.71 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=SMBJ5355B-TPMSCT-ND"
+			(at 100.33 110.49 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fff5935f-16d1-4b73-8543-bdeca440223f")
+		)
+		(pin "2"
+			(uuid "4f41168b-2356-4237-aa39-d3434aa80695")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
+					(reference "D601")
+					(unit 1)
+				)
+			)
+		)
+	)
 )

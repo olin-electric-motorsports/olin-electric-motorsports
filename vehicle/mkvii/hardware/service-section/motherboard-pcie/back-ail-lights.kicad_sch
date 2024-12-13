@@ -1,822 +1,2214 @@
-(kicad_sch (version 20230121) (generator eeschema)
-
-  (uuid 3a457f9a-f6b3-4c86-b31d-1a9ea7bc3914)
-
-  (paper "A4")
-
-  (lib_symbols
-    (symbol "formula:LED_0805" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "D" (at 0 -2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "LED_0805" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:LED_0805_OEM" (at -2.54 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 0 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "475-1410-1-ND" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 10.16 12.7 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "ki_description" "LED, Green, 2.2V, 20mA, 0805" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "LED*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "LED_0805_0_1"
-        (polyline
-          (pts
-            (xy -1.27 -1.27)
-            (xy -1.27 1.27)
-          )
-          (stroke (width 0.2032) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.27 0)
-            (xy 1.27 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 -1.27)
-            (xy 1.27 1.27)
-            (xy -1.27 0)
-            (xy 1.27 -1.27)
-          )
-          (stroke (width 0.2032) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -3.048 -0.762)
-            (xy -4.572 -2.286)
-            (xy -3.81 -2.286)
-            (xy -4.572 -2.286)
-            (xy -4.572 -1.524)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -1.778 -0.762)
-            (xy -3.302 -2.286)
-            (xy -2.54 -2.286)
-            (xy -3.302 -2.286)
-            (xy -3.302 -1.524)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "LED_0805_1_1"
-        (pin passive line (at -3.81 0 0) (length 2.54)
-          (name "K" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 3.81 0 180) (length 2.54)
-          (name "A" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:MicroFit_V_2" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-      (property "Reference" "J" (at -2.54 1.27 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "MicroFit_V_2" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:MicroFit_V_2" (at -1.27 5.08 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "https://www.molex.com/pdm_docs/sd/430450225_sd.pdf" (at -1.27 5.08 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "DK" "MFN" (at 2.54 6.35 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "MPN" "WM10660-ND" (at 5.08 8.89 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180" (at 0 3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "MicroFit_V_2_1_1"
-        (rectangle (start 3.81 -2.54) (end -3.81 2.54)
-          (stroke (width 0) (type default))
-          (fill (type background))
-        )
-        (pin bidirectional line (at 6.35 1.27 180) (length 2.54)
-          (name "1" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin bidirectional line (at 6.35 -1.27 180) (length 2.54)
-          (name "2" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "formula:R_120" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "R" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "R_120" (at -2.54 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "footprints:R_0805_OEM" (at -30.48 3.81 0)
-        (effects (font (size 1.27 1.27)) (justify left) hide)
-      )
-      (property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" (at -30.48 11.43 0)
-        (effects (font (size 1.27 1.27)) (justify left) hide)
-      )
-      (property "MFN" "DK" (at 0 0 0)
-        (effects (font (size 1.524 1.524)) hide)
-      )
-      (property "MPN" "667-ERJ-6ENF1200V" (at -30.48 6.35 0)
-        (effects (font (size 1.524 1.524)) (justify left) hide)
-      )
-      (property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" (at -30.48 8.89 0)
-        (effects (font (size 1.524 1.524)) (justify left) hide)
-      )
-      (property "ki_description" "Resistor, 120, 0.125W, 1%, 0805" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "R_* Resistor_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "R_120_0_1"
-        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "R_120_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-  )
-
-  (junction (at 162.56 83.82) (diameter 0) (color 0 0 0 0)
-    (uuid 079c2e94-873c-4632-9271-4495aab56e36)
-  )
-  (junction (at 113.03 83.82) (diameter 0) (color 0 0 0 0)
-    (uuid 17ff161d-9e90-4adf-9ed3-477230226a77)
-  )
-  (junction (at 129.54 83.82) (diameter 0) (color 0 0 0 0)
-    (uuid 1b8042c2-84bd-43a8-9ad3-8fa6ba5df2f6)
-  )
-  (junction (at 129.54 106.68) (diameter 0) (color 0 0 0 0)
-    (uuid 2b2af982-7c2f-4509-a5e4-e0649a7a4aca)
-  )
-  (junction (at 162.56 106.68) (diameter 0) (color 0 0 0 0)
-    (uuid a29967ec-a840-4739-a957-099e9492fe46)
-  )
-  (junction (at 146.05 106.68) (diameter 0) (color 0 0 0 0)
-    (uuid ca508491-43c4-4196-9c76-847d8c564829)
-  )
-  (junction (at 113.03 106.68) (diameter 0) (color 0 0 0 0)
-    (uuid fa212c0a-5bdc-406b-9b8f-4a76721a9e70)
-  )
-  (junction (at 146.05 83.82) (diameter 0) (color 0 0 0 0)
-    (uuid fe860b10-9b90-4491-8a41-25dea8164ae9)
-  )
-
-  (wire (pts (xy 129.54 106.68) (xy 146.05 106.68))
-    (stroke (width 0) (type default))
-    (uuid 0f2bb30d-cfd9-4726-9f8f-cb3705b67c02)
-  )
-  (wire (pts (xy 104.14 83.82) (xy 113.03 83.82))
-    (stroke (width 0) (type default))
-    (uuid 1c87cdaf-fec5-4940-b191-abd5b6dc2ffb)
-  )
-  (wire (pts (xy 104.14 88.9) (xy 99.06 88.9))
-    (stroke (width 0) (type default))
-    (uuid 3e80b71a-c2d5-424f-b03e-223abdf40dcd)
-  )
-  (wire (pts (xy 113.03 106.68) (xy 129.54 106.68))
-    (stroke (width 0) (type default))
-    (uuid 65f91354-379c-4881-9451-26d21fba548a)
-  )
-  (wire (pts (xy 146.05 83.82) (xy 162.56 83.82))
-    (stroke (width 0) (type default))
-    (uuid 7ebdc99d-e208-4b52-b5d5-63a8bbb27191)
-  )
-  (wire (pts (xy 129.54 83.82) (xy 146.05 83.82))
-    (stroke (width 0) (type default))
-    (uuid 85949999-822f-494c-9b3e-d07bd1712b6d)
-  )
-  (wire (pts (xy 113.03 83.82) (xy 129.54 83.82))
-    (stroke (width 0) (type default))
-    (uuid 8d9f07a0-4a1b-4553-b356-47dff7570c0d)
-  )
-  (wire (pts (xy 99.06 86.36) (xy 104.14 86.36))
-    (stroke (width 0) (type default))
-    (uuid 8eab990d-0fa0-486f-85d6-f35ce97219d1)
-  )
-  (wire (pts (xy 104.14 86.36) (xy 104.14 83.82))
-    (stroke (width 0) (type default))
-    (uuid a202414b-bf55-4b6c-9986-847481c5416e)
-  )
-  (wire (pts (xy 162.56 83.82) (xy 179.07 83.82))
-    (stroke (width 0) (type default))
-    (uuid a71d3869-776e-4e4b-99a5-a4e96601d628)
-  )
-  (wire (pts (xy 162.56 106.68) (xy 179.07 106.68))
-    (stroke (width 0) (type default))
-    (uuid a92d36c2-cd86-4279-8ac3-5376ed88cc37)
-  )
-  (wire (pts (xy 146.05 106.68) (xy 162.56 106.68))
-    (stroke (width 0) (type default))
-    (uuid cf1df8cb-2359-49f1-bb44-3e50689bc535)
-  )
-  (wire (pts (xy 104.14 106.68) (xy 104.14 88.9))
-    (stroke (width 0) (type default))
-    (uuid d42c9723-79fb-4405-bc3e-60ca6e5c9869)
-  )
-  (wire (pts (xy 113.03 106.68) (xy 104.14 106.68))
-    (stroke (width 0) (type default))
-    (uuid ff7fd8b8-40c9-4939-8c40-b17a0dddbf9d)
-  )
-
-  (symbol (lib_id "formula:R_120") (at 113.03 87.63 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 039c7c52-d329-4dbc-9817-9503c58282e8)
-    (property "Reference" "R711" (at 114.935 86.36 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_120" (at 114.935 88.9 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 82.55 83.82 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" (at 82.55 76.2 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "MFN" "DK" (at 113.03 87.63 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "667-ERJ-6ENF1200V" (at 82.55 81.28 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" (at 82.55 78.74 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (pin "1" (uuid f94ebf8e-9814-4239-b656-a02fcea66c69))
-    (pin "2" (uuid 2584f5ce-2c1a-42d4-8661-2f4ff9050a49))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "R711") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 179.07 102.87 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 0b513aa9-18fb-4c5a-956a-59f2e9b0364f)
-    (property "Reference" "D710" (at 182.0418 101.9048 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 182.0418 104.2162 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 179.07 105.41 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 176.53 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 179.07 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 179.07 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 166.37 92.71 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 68de0f04-2bdb-4bda-a517-1f166505e2ce))
-    (pin "2" (uuid 12064fe4-a85a-4a67-beee-c6ce422f4199))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D710") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 113.03 102.87 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 0fc4754c-e774-4101-8a1f-57a4bf01829c)
-    (property "Reference" "D702" (at 116.0018 101.9048 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 116.0018 104.2162 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 113.03 105.41 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 110.49 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 113.03 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 113.03 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 100.33 92.71 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid b779136a-dd64-4145-aa9c-e322ec4278b9))
-    (pin "2" (uuid a9a80553-06f8-436c-a88e-6f314bbb33d0))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D702") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 146.05 95.25 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 2d2194d7-435c-41b3-a7d6-38de82ac0b3a)
-    (property "Reference" "D705" (at 149.0218 94.2848 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 149.0218 96.5962 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 146.05 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 143.51 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 146.05 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 146.05 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 133.35 85.09 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 31c36b2c-bdf4-4a62-ad2b-8d63ce63047f))
-    (pin "2" (uuid 10d28002-c72e-4f59-82e1-c417e9d4d1ed))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D705") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 129.54 102.87 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 3309ea61-1195-4047-96ad-5512d690ba64)
-    (property "Reference" "D704" (at 132.5118 101.9048 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 132.5118 104.2162 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 129.54 105.41 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 127 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 129.54 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 129.54 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 116.84 92.71 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 5935a967-be66-4bd5-a4cd-f54af5995ca2))
-    (pin "2" (uuid ea331cb6-921b-43fe-a010-bd3f8f53c3c1))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D704") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_120") (at 146.05 87.63 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 475440ea-696b-48e9-afa4-8264827f396c)
-    (property "Reference" "R702" (at 147.955 86.36 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_120" (at 147.955 88.9 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 115.57 83.82 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" (at 115.57 76.2 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "MFN" "DK" (at 146.05 87.63 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "667-ERJ-6ENF1200V" (at 115.57 81.28 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" (at 115.57 78.74 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (pin "1" (uuid 34fbce07-bb4f-4940-96ff-8d291a9b97e8))
-    (pin "2" (uuid acd6ca11-d78c-4c2d-ac0a-67abd8b2eec9))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "R702") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 146.05 102.87 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 657aadb4-999c-48a2-9e57-8b908ab1fa99)
-    (property "Reference" "D706" (at 149.0218 101.9048 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 149.0218 104.2162 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 146.05 105.41 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 143.51 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 146.05 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 146.05 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 133.35 92.71 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 672dfbf6-fcde-4ff0-8755-9bec95585a53))
-    (pin "2" (uuid 08a96e64-6856-4441-8905-9e7b1ff0ba3a))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D706") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 162.56 95.25 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 85a67b4a-76d0-4a01-86f3-73a114740744)
-    (property "Reference" "D707" (at 165.5318 94.2848 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 165.5318 96.5962 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 162.56 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 160.02 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 162.56 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 162.56 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 149.86 85.09 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 9b2a1649-2c89-4be5-89e4-6d190f688a7c))
-    (pin "2" (uuid a7939f14-f711-4f97-a939-f44bb3ed9a24))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D707") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:MicroFit_V_2") (at 92.71 87.63 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 89a07eb6-8c06-4228-9b50-ed517380090b)
-    (property "Reference" "J701" (at 92.71 80.01 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "AIL" (at 92.71 82.55 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "footprints:MicroFit_V_2" (at 91.44 82.55 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "https://www.molex.com/pdm_docs/sd/430450225_sd.pdf" (at 91.44 82.55 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "DK" "MFN" (at 95.25 81.28 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MPN" "WM10660-ND" (at 97.79 78.74 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180" (at 92.71 83.82 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 832e80cf-959c-445d-9e0c-1c848dac3c6a))
-    (pin "2" (uuid 8fb9233e-074d-4939-ad91-3bc5c11140cd))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "J701") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 179.07 95.25 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 8fb87eae-3e7c-436c-8db6-2a9768a8e8b4)
-    (property "Reference" "D709" (at 182.0418 94.2848 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 182.0418 96.5962 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 179.07 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 176.53 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 179.07 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 179.07 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 166.37 85.09 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid a887ef94-96c4-486b-9301-298428cb8481))
-    (pin "2" (uuid 254a2d09-4ad9-4c6b-a19e-58d8d8d05e62))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D709") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_120") (at 179.07 87.63 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 9794fe79-3a0a-48cb-9d8c-af0258517513)
-    (property "Reference" "R704" (at 180.975 86.36 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_120" (at 180.975 88.9 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 148.59 83.82 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" (at 148.59 76.2 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "MFN" "DK" (at 179.07 87.63 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "667-ERJ-6ENF1200V" (at 148.59 81.28 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" (at 148.59 78.74 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (pin "1" (uuid 3a6aede3-3847-4cad-95a1-ef13728dd048))
-    (pin "2" (uuid 4db068b6-29bb-48b7-834d-dae9cd604c6a))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "R704") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 162.56 102.87 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 9c77db84-9c1e-4858-a602-b3a1f24a10d5)
-    (property "Reference" "D708" (at 165.5318 101.9048 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 165.5318 104.2162 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 162.56 105.41 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 160.02 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 162.56 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 162.56 102.87 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 149.86 92.71 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 239d3fbf-dc9f-4c83-aea9-c02d43ab0921))
-    (pin "2" (uuid 5ee8a315-d96a-4d7e-a1ee-6cd416c28091))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D708") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 129.54 95.25 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid be4ed94e-b70a-48c2-842c-a9c4bd5198de)
-    (property "Reference" "D703" (at 132.5118 94.2848 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 132.5118 96.5962 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 129.54 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 127 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 129.54 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 129.54 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 116.84 85.09 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 3922a9c3-a8e6-4603-846d-a88c4492e446))
-    (pin "2" (uuid 64e6f2c0-e3a6-457c-b258-a7abc9bd76b6))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D703") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:LED_0805") (at 113.03 95.25 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid c0341598-47f1-476d-830b-6496b0331496)
-    (property "Reference" "D701" (at 116.0018 94.2848 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "LED_0805" (at 116.0018 96.5962 90)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "footprints:LED_0805_OEM_no_border" (at 113.03 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf" (at 110.49 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "MFN" "DK" (at 113.03 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "475-1410-1-ND" (at 113.03 95.25 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND" (at 100.33 85.09 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (pin "1" (uuid 26b89201-5b08-47a3-9699-37b28e4ab97f))
-    (pin "2" (uuid 9709101f-602d-4045-8676-fbb149dbebdb))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "D701") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_120") (at 162.56 87.63 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid e5329e94-9bd5-4377-be08-b11d7438440d)
-    (property "Reference" "R703" (at 164.465 86.36 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_120" (at 164.465 88.9 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 132.08 83.82 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" (at 132.08 76.2 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "MFN" "DK" (at 162.56 87.63 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "667-ERJ-6ENF1200V" (at 132.08 81.28 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" (at 132.08 78.74 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (pin "1" (uuid 007a363e-92d6-464f-baff-1fcc1ea438db))
-    (pin "2" (uuid 66ba6602-78f4-4f9c-a020-249b0fea0122))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "R703") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "formula:R_120") (at 129.54 87.63 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid fca2b461-5d89-46ec-a297-a09df2f4c1b2)
-    (property "Reference" "R701" (at 131.445 86.36 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "R_120" (at 131.445 88.9 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "footprints:R_0805_OEM" (at 99.06 83.82 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf" (at 99.06 76.2 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (property "MFN" "DK" (at 129.54 87.63 0)
-      (effects (font (size 1.524 1.524)) hide)
-    )
-    (property "MPN" "667-ERJ-6ENF1200V" (at 99.06 81.28 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d" (at 99.06 78.74 0)
-      (effects (font (size 1.524 1.524)) (justify left) hide)
-    )
-    (pin "1" (uuid 9a5a6881-d632-4f5e-b63f-207802c6aff1))
-    (pin "2" (uuid b996e848-6523-4684-8bfe-098dec3ba1f2))
-    (instances
-      (project "motherboard-pcie"
-        (path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
-          (reference "R701") (unit 1)
-        )
-      )
-    )
-  )
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "3a457f9a-f6b3-4c86-b31d-1a9ea7bc3914")
+	(paper "A4")
+	(lib_symbols
+		(symbol "formula:LED_0805"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_0805"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:LED_0805_OEM"
+				(at -2.54 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "LED, Green, 2.2V, 20mA, 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "475-1410-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+				(at 10.16 12.7 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0805_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_0805_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:MicroFit_V_2"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -2.54 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MicroFit_V_2"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:MicroFit_V_2"
+				(at -1.27 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/pdm_docs/sd/430450225_sd.pdf"
+				(at -1.27 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DK" "MFN"
+				(at 2.54 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "WM10660-ND"
+				(at 5.08 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MicroFit_V_2_1_1"
+				(rectangle
+					(start 3.81 -2.54)
+					(end -3.81 2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin bidirectional line
+					(at 6.35 1.27 180)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 6.35 -1.27 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "formula:R_120"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R_120"
+				(at -2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "footprints:R_0805_OEM"
+				(at -30.48 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf"
+				(at -30.48 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor, 120, 0.125W, 1%, 0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "DK"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "667-ERJ-6ENF1200V"
+				(at -30.48 6.35 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d"
+				(at -30.48 8.89 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_* Resistor_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_120_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_120_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 162.56 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "079c2e94-873c-4632-9271-4495aab56e36")
+	)
+	(junction
+		(at 113.03 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "17ff161d-9e90-4adf-9ed3-477230226a77")
+	)
+	(junction
+		(at 129.54 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1b8042c2-84bd-43a8-9ad3-8fa6ba5df2f6")
+	)
+	(junction
+		(at 129.54 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2b2af982-7c2f-4509-a5e4-e0649a7a4aca")
+	)
+	(junction
+		(at 162.56 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a29967ec-a840-4739-a957-099e9492fe46")
+	)
+	(junction
+		(at 146.05 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ca508491-43c4-4196-9c76-847d8c564829")
+	)
+	(junction
+		(at 113.03 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fa212c0a-5bdc-406b-9b8f-4a76721a9e70")
+	)
+	(junction
+		(at 146.05 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fe860b10-9b90-4491-8a41-25dea8164ae9")
+	)
+	(wire
+		(pts
+			(xy 129.54 106.68) (xy 146.05 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f2bb30d-cfd9-4726-9f8f-cb3705b67c02")
+	)
+	(wire
+		(pts
+			(xy 104.14 83.82) (xy 113.03 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c87cdaf-fec5-4940-b191-abd5b6dc2ffb")
+	)
+	(wire
+		(pts
+			(xy 104.14 88.9) (xy 99.06 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e80b71a-c2d5-424f-b03e-223abdf40dcd")
+	)
+	(wire
+		(pts
+			(xy 113.03 106.68) (xy 129.54 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65f91354-379c-4881-9451-26d21fba548a")
+	)
+	(wire
+		(pts
+			(xy 146.05 83.82) (xy 162.56 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ebdc99d-e208-4b52-b5d5-63a8bbb27191")
+	)
+	(wire
+		(pts
+			(xy 129.54 83.82) (xy 146.05 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85949999-822f-494c-9b3e-d07bd1712b6d")
+	)
+	(wire
+		(pts
+			(xy 113.03 83.82) (xy 129.54 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d9f07a0-4a1b-4553-b356-47dff7570c0d")
+	)
+	(wire
+		(pts
+			(xy 99.06 86.36) (xy 104.14 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8eab990d-0fa0-486f-85d6-f35ce97219d1")
+	)
+	(wire
+		(pts
+			(xy 104.14 86.36) (xy 104.14 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a202414b-bf55-4b6c-9986-847481c5416e")
+	)
+	(wire
+		(pts
+			(xy 162.56 83.82) (xy 179.07 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a71d3869-776e-4e4b-99a5-a4e96601d628")
+	)
+	(wire
+		(pts
+			(xy 162.56 106.68) (xy 179.07 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a92d36c2-cd86-4279-8ac3-5376ed88cc37")
+	)
+	(wire
+		(pts
+			(xy 146.05 106.68) (xy 162.56 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf1df8cb-2359-49f1-bb44-3e50689bc535")
+	)
+	(wire
+		(pts
+			(xy 104.14 106.68) (xy 104.14 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d42c9723-79fb-4405-bc3e-60ca6e5c9869")
+	)
+	(wire
+		(pts
+			(xy 113.03 106.68) (xy 104.14 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff7fd8b8-40c9-4939-8c40-b17a0dddbf9d")
+	)
+	(symbol
+		(lib_id "formula:R_120")
+		(at 113.03 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "039c7c52-d329-4dbc-9817-9503c58282e8")
+		(property "Reference" "R711"
+			(at 114.935 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_120"
+			(at 114.935 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 82.55 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf"
+			(at 82.55 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 113.03 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 113.03 87.63 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "667-ERJ-6ENF1200V"
+			(at 82.55 81.28 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d"
+			(at 82.55 78.74 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f94ebf8e-9814-4239-b656-a02fcea66c69")
+		)
+		(pin "2"
+			(uuid "2584f5ce-2c1a-42d4-8661-2f4ff9050a49")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "R711")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 179.07 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0b513aa9-18fb-4c5a-956a-59f2e9b0364f")
+		(property "Reference" "D710"
+			(at 182.0418 101.9048 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 182.0418 104.2162 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 179.07 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 176.53 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 179.07 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 179.07 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 166.37 92.71 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "68de0f04-2bdb-4bda-a517-1f166505e2ce")
+		)
+		(pin "2"
+			(uuid "12064fe4-a85a-4a67-beee-c6ce422f4199")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D710")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 113.03 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0fc4754c-e774-4101-8a1f-57a4bf01829c")
+		(property "Reference" "D702"
+			(at 116.0018 101.9048 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 116.0018 104.2162 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 113.03 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 110.49 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 113.03 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 113.03 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 113.03 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 100.33 92.71 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b779136a-dd64-4145-aa9c-e322ec4278b9")
+		)
+		(pin "2"
+			(uuid "a9a80553-06f8-436c-a88e-6f314bbb33d0")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D702")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 146.05 95.25 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2d2194d7-435c-41b3-a7d6-38de82ac0b3a")
+		(property "Reference" "D705"
+			(at 149.0218 94.2848 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 149.0218 96.5962 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 146.05 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 143.51 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 146.05 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 146.05 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 133.35 85.09 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "31c36b2c-bdf4-4a62-ad2b-8d63ce63047f")
+		)
+		(pin "2"
+			(uuid "10d28002-c72e-4f59-82e1-c417e9d4d1ed")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D705")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 129.54 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3309ea61-1195-4047-96ad-5512d690ba64")
+		(property "Reference" "D704"
+			(at 132.5118 101.9048 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 132.5118 104.2162 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 129.54 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 127 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 129.54 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 129.54 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 129.54 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 116.84 92.71 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5935a967-be66-4bd5-a4cd-f54af5995ca2")
+		)
+		(pin "2"
+			(uuid "ea331cb6-921b-43fe-a010-bd3f8f53c3c1")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D704")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_120")
+		(at 146.05 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "475440ea-696b-48e9-afa4-8264827f396c")
+		(property "Reference" "R702"
+			(at 147.955 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_120"
+			(at 147.955 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 115.57 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf"
+			(at 115.57 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 146.05 87.63 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "667-ERJ-6ENF1200V"
+			(at 115.57 81.28 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d"
+			(at 115.57 78.74 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "34fbce07-bb4f-4940-96ff-8d291a9b97e8")
+		)
+		(pin "2"
+			(uuid "acd6ca11-d78c-4c2d-ac0a-67abd8b2eec9")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "R702")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 146.05 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "657aadb4-999c-48a2-9e57-8b908ab1fa99")
+		(property "Reference" "D706"
+			(at 149.0218 101.9048 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 149.0218 104.2162 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 146.05 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 143.51 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 146.05 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 146.05 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 133.35 92.71 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "672dfbf6-fcde-4ff0-8755-9bec95585a53")
+		)
+		(pin "2"
+			(uuid "08a96e64-6856-4441-8905-9e7b1ff0ba3a")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D706")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 162.56 95.25 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "85a67b4a-76d0-4a01-86f3-73a114740744")
+		(property "Reference" "D707"
+			(at 165.5318 94.2848 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 165.5318 96.5962 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 162.56 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 160.02 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 162.56 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 162.56 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 149.86 85.09 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9b2a1649-2c89-4be5-89e4-6d190f688a7c")
+		)
+		(pin "2"
+			(uuid "a7939f14-f711-4f97-a939-f44bb3ed9a24")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D707")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:MicroFit_V_2")
+		(at 92.71 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "89a07eb6-8c06-4228-9b50-ed517380090b")
+		(property "Reference" "J701"
+			(at 92.71 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AIL"
+			(at 92.71 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "footprints:MicroFit_V_2"
+			(at 91.44 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/pdm_docs/sd/430450225_sd.pdf"
+			(at 91.44 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 92.71 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DK" "MFN"
+			(at 95.25 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "WM10660-ND"
+			(at 97.79 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180"
+			(at 92.71 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "832e80cf-959c-445d-9e0c-1c848dac3c6a")
+		)
+		(pin "2"
+			(uuid "8fb9233e-074d-4939-ad91-3bc5c11140cd")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "J701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 179.07 95.25 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8fb87eae-3e7c-436c-8db6-2a9768a8e8b4")
+		(property "Reference" "D709"
+			(at 182.0418 94.2848 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 182.0418 96.5962 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 179.07 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 176.53 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 179.07 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 179.07 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 166.37 85.09 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a887ef94-96c4-486b-9301-298428cb8481")
+		)
+		(pin "2"
+			(uuid "254a2d09-4ad9-4c6b-a19e-58d8d8d05e62")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D709")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_120")
+		(at 179.07 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9794fe79-3a0a-48cb-9d8c-af0258517513")
+		(property "Reference" "R704"
+			(at 180.975 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_120"
+			(at 180.975 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 148.59 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf"
+			(at 148.59 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "667-ERJ-6ENF1200V"
+			(at 148.59 81.28 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d"
+			(at 148.59 78.74 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3a6aede3-3847-4cad-95a1-ef13728dd048")
+		)
+		(pin "2"
+			(uuid "4db068b6-29bb-48b7-834d-dae9cd604c6a")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "R704")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 162.56 102.87 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9c77db84-9c1e-4858-a602-b3a1f24a10d5")
+		(property "Reference" "D708"
+			(at 165.5318 101.9048 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 165.5318 104.2162 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 162.56 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 160.02 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 162.56 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 162.56 102.87 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 149.86 92.71 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "239d3fbf-dc9f-4c83-aea9-c02d43ab0921")
+		)
+		(pin "2"
+			(uuid "5ee8a315-d96a-4d7e-a1ee-6cd416c28091")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D708")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 129.54 95.25 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "be4ed94e-b70a-48c2-842c-a9c4bd5198de")
+		(property "Reference" "D703"
+			(at 132.5118 94.2848 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 132.5118 96.5962 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 129.54 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 127 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 129.54 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 129.54 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 129.54 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 116.84 85.09 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3922a9c3-a8e6-4603-846d-a88c4492e446")
+		)
+		(pin "2"
+			(uuid "64e6f2c0-e3a6-457c-b258-a7abc9bd76b6")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D703")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:LED_0805")
+		(at 113.03 95.25 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c0341598-47f1-476d-830b-6496b0331496")
+		(property "Reference" "D701"
+			(at 116.0018 94.2848 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_0805"
+			(at 116.0018 96.5962 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "footprints:LED_0805_OEM_no_border"
+			(at 113.03 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
+			(at 110.49 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 113.03 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 113.03 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "475-1410-1-ND"
+			(at 113.03 95.25 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
+			(at 100.33 85.09 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "26b89201-5b08-47a3-9699-37b28e4ab97f")
+		)
+		(pin "2"
+			(uuid "9709101f-602d-4045-8676-fbb149dbebdb")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "D701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_120")
+		(at 162.56 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e5329e94-9bd5-4377-be08-b11d7438440d")
+		(property "Reference" "R703"
+			(at 164.465 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_120"
+			(at 164.465 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 132.08 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf"
+			(at 132.08 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 162.56 87.63 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "667-ERJ-6ENF1200V"
+			(at 132.08 81.28 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d"
+			(at 132.08 78.74 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "007a363e-92d6-464f-baff-1fcc1ea438db")
+		)
+		(pin "2"
+			(uuid "66ba6602-78f4-4f9c-a020-249b0fea0122")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "R703")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "formula:R_120")
+		(at 129.54 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fca2b461-5d89-46ec-a297-a09df2f4c1b2")
+		(property "Reference" "R701"
+			(at 131.445 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_120"
+			(at 131.445 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:R_0805_OEM"
+			(at 99.06 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/315/AOA0000C304-1149620.pdf"
+			(at 99.06 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 129.54 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "DK"
+			(at 129.54 87.63 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "667-ERJ-6ENF1200V"
+			(at 99.06 81.28 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "PurchasingLink" "https://www.mouser.com/ProductDetail/Panasonic-Industrial-Devices/ERJ-6ENF1200V?qs=sGAEpiMZZMvdGkrng054t8AJgcdMkx7x%252bFQnctTMUmU%3d"
+			(at 99.06 78.74 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9a5a6881-d632-4f5e-b63f-207802c6aff1")
+		)
+		(pin "2"
+			(uuid "b996e848-6523-4684-8bfe-098dec3ba1f2")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/2ef9a81a-9428-4614-a2b6-ceb776bdc7b8"
+					(reference "R701")
+					(unit 1)
+				)
+			)
+		)
+	)
 )
