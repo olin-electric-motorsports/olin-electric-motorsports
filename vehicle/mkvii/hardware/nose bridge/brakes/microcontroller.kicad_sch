@@ -4988,6 +4988,10 @@
 		(uuid "97e57cf5-f550-4d99-a5df-661cb220eba0")
 	)
 	(no_connect
+		(at 123.19 109.22)
+		(uuid "a6898699-a7d4-4820-8002-43507991ff5f")
+	)
+	(no_connect
 		(at 99.06 91.44)
 		(uuid "ae54f784-045d-4329-8c73-5863fcaa7fe1")
 	)
@@ -5215,7 +5219,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 119.38) (xy 118.11 124.46)
+			(xy 116.84 119.38) (xy 116.84 124.46)
 		)
 		(stroke
 			(width 0)
@@ -5325,7 +5329,7 @@
 	)
 	(wire
 		(pts
-			(xy 118.11 109.22) (xy 125.73 109.22)
+			(xy 116.84 109.22) (xy 125.73 109.22)
 		)
 		(stroke
 			(width 0)
@@ -5395,7 +5399,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 114.3) (xy 123.19 114.3)
+			(xy 120.65 114.3) (xy 123.19 114.3)
 		)
 		(stroke
 			(width 0)
@@ -5505,7 +5509,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 114.3) (xy 114.3 114.3)
+			(xy 110.49 114.3) (xy 113.03 114.3)
 		)
 		(stroke
 			(width 0)
@@ -9540,7 +9544,7 @@
 	)
 	(symbol
 		(lib_id "OEM:X_Crystal_16MHz_18pF")
-		(at 118.11 114.3 0)
+		(at 116.84 114.3 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9548,7 +9552,7 @@
 		(dnp no)
 		(uuid "a222986a-562c-4ad9-a62d-914ea8d5ef9c")
 		(property "Reference" "Y1"
-			(at 99.314 108.712 0)
+			(at 98.044 108.712 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9556,7 +9560,7 @@
 			)
 		)
 		(property "Value" "X_Crystal_16MHz_18pF"
-			(at 99.314 111.252 0)
+			(at 98.044 111.252 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9564,7 +9568,7 @@
 			)
 		)
 		(property "Footprint" "OEM:Crystal_TXC7M"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9573,7 +9577,7 @@
 			)
 		)
 		(property "Datasheet" "http://txccrystal.com/images/pdf/7m.pdf"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9582,7 +9586,7 @@
 			)
 		)
 		(property "Description" "16MHz 18pF crystal"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9591,7 +9595,7 @@
 			)
 		)
 		(property "MPN" "7M-16.000MAAJ-T"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9600,7 +9604,7 @@
 			)
 		)
 		(property "MFN" "TXC"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9609,7 +9613,7 @@
 			)
 		)
 		(property "DKPN" "887-1125-1-ND"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9618,7 +9622,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9627,7 +9631,7 @@
 			)
 		)
 		(property "Stocked" "Tape"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9636,7 +9640,7 @@
 			)
 		)
 		(property "Package" "Custom"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9645,7 +9649,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 118.11 114.3 0)
+			(at 116.84 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9876,7 +9880,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 118.11 124.46 0)
+		(at 116.84 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9885,7 +9889,7 @@
 		(fields_autoplaced yes)
 		(uuid "ae3ec7d9-13d5-4192-b59e-b54b0d167a92")
 		(property "Reference" "#PWR?"
-			(at 118.11 130.81 0)
+			(at 116.84 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9894,7 +9898,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 118.11 129.54 0)
+			(at 116.84 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9902,7 +9906,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 118.11 124.46 0)
+			(at 116.84 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9911,7 +9915,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 118.11 124.46 0)
+			(at 116.84 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9920,7 +9924,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 118.11 124.46 0)
+			(at 116.84 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
