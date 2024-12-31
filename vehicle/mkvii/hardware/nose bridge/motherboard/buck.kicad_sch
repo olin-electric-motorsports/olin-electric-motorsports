@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "12V -> 5V Buck Converter")
-		(date "2024-12-21")
-		(rev "3")
+		(date "2024-12-31")
+		(rev "3.2")
 		(company "Olin Electric Motorsports")
 		(comment 1 "By Henry Tejada Deras and Ashley Yang")
 	)
@@ -3630,11 +3630,11 @@
 		(uuid "f6af4170-3bd2-4246-8cab-fe7bb6cfa4eb")
 	)
 	(rectangle
-		(start 12.7 12.7)
-		(end 40.64 27.94)
+		(start 52.07 43.18)
+		(end 80.01 58.42)
 		(stroke
 			(width 0)
-			(type default)
+			(type dash)
 		)
 		(fill
 			(type none)
@@ -3643,7 +3643,7 @@
 	)
 	(text "Ground Test Point"
 		(exclude_from_sim no)
-		(at 30.988 23.876 0)
+		(at 70.358 54.356 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4630,7 +4630,7 @@
 	)
 	(symbol
 		(lib_id "OEM:TP_SMD")
-		(at 15.24 19.05 0)
+		(at 54.61 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4639,7 +4639,7 @@
 		(fields_autoplaced yes)
 		(uuid "5867d678-10c7-418a-b9a3-372260b6e672")
 		(property "Reference" "TP5"
-			(at 17.78 15.2399 0)
+			(at 57.15 45.7199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4648,7 +4648,7 @@
 			)
 		)
 		(property "Value" "TP_SMD"
-			(at 17.78 17.7799 0)
+			(at 57.15 48.2599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4657,7 +4657,7 @@
 			)
 		)
 		(property "Footprint" "OEM:Test_Point_SMD"
-			(at 15.24 22.86 0)
+			(at 54.61 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4666,7 +4666,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4675,7 +4675,7 @@
 			)
 		)
 		(property "Description" "test point SMD hook"
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4684,7 +4684,7 @@
 			)
 		)
 		(property "MPN" "5019"
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4693,7 +4693,7 @@
 			)
 		)
 		(property "MFN" "Keystone"
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4702,7 +4702,7 @@
 			)
 		)
 		(property "DKPN" "36-5019TR-ND"
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4711,7 +4711,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4720,7 +4720,7 @@
 			)
 		)
 		(property "Stocked" "Reel"
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4729,7 +4729,7 @@
 			)
 		)
 		(property "Package" "Custom"
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4738,7 +4738,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 15.24 19.05 0)
+			(at 54.61 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5949,7 +5949,7 @@
 	(symbol
 		(lib_name "GND_2")
 		(lib_id "power:GND")
-		(at 15.24 20.32 0)
+		(at 54.61 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5958,7 +5958,7 @@
 		(fields_autoplaced yes)
 		(uuid "bd25eeb1-cc98-417d-897a-1df7d2a2c385")
 		(property "Reference" "#PWR?"
-			(at 15.24 26.67 0)
+			(at 54.61 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5967,7 +5967,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 15.24 25.4 0)
+			(at 54.61 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5975,7 +5975,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 15.24 20.32 0)
+			(at 54.61 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5984,7 +5984,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 15.24 20.32 0)
+			(at 54.61 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5993,7 +5993,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 15.24 20.32 0)
+			(at 54.61 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
