@@ -2,9 +2,208 @@
 	(version 20231120)
 	(generator "eeschema")
 	(generator_version "8.0")
-	(uuid "48cc73c6-df0c-4a19-a48a-9e095265b234")
+	(uuid "94f3c3fe-b595-47a7-bd37-029fee5b30fb")
 	(paper "A4")
 	(lib_symbols
+		(symbol "OEM:0u1F"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "0u1F"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "OEM:C_0603"
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets/samsung_CL10B104KB8NNWC.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor 0.1uF 50V X7R 0603"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "CL10B104KB8NNWC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "Samsung Electro-Mechanics"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" "1276-1935-2-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "0603"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Reel"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "YES"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor 100nF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "0u1F_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "0u1F_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "OEM:100KR"
 			(pin_numbers hide)
 			(pin_names
@@ -189,7 +388,7 @@
 				)
 			)
 		)
-		(symbol "OEM:10KR"
+		(symbol "OEM:100R"
 			(pin_numbers hide)
 			(pin_names
 				(offset 0)
@@ -205,7 +404,7 @@
 					)
 				)
 			)
-			(property "Value" "10KR"
+			(property "Value" "100R"
 				(at 0 0 90)
 				(effects
 					(font
@@ -231,7 +430,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Resistor 10K ohm 0603 1/10W 1%"
+			(property "Description" "Resistor 100 ohms 0603 1/10W 1%"
 				(at 0 0 0)
 				(effects
 					(font
@@ -240,7 +439,7 @@
 					(hide yes)
 				)
 			)
-			(property "MPN" "RMCF0603FT10K0"
+			(property "MPN" "RMCF0603FT100R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -258,16 +457,7 @@
 					(hide yes)
 				)
 			)
-			(property "DKPN" "RMCF0603FT10K0TR-ND"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Package" "0603"
+			(property "DKPN" "RMCF0603FT100RTR-ND"
 				(at 0 0 0)
 				(effects
 					(font
@@ -294,181 +484,6 @@
 					(hide yes)
 				)
 			)
-			(property "Style" "SMD"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "R res resistor "
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "R_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "10KR_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "10KR_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "OEM:3KR"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "R"
-				(at 2.032 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "3KR"
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "OEM:R_0603"
-				(at -1.778 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-YC_TC_group_51_RoHS_L_9.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Resistor 3K ohm 0603 1/10W 1%"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MPN" "RC0603FR-103KL"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "DKPN" "13-RC0603FR-103KLDKR-ND"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MFN" "Yageo"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "NewDesigns" "YES"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Stocked" "Digi-Reel"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
 			(property "Package" "0603"
 				(at 0 0 0)
 				(effects
@@ -505,7 +520,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "3KR_0_1"
+			(symbol "100R_0_1"
 				(rectangle
 					(start -1.016 -2.54)
 					(end 1.016 2.54)
@@ -518,7 +533,7 @@
 					)
 				)
 			)
-			(symbol "3KR_1_1"
+			(symbol "100R_1_1"
 				(pin passive line
 					(at 0 3.81 270)
 					(length 1.27)
@@ -557,246 +572,16 @@
 				)
 			)
 		)
-		(symbol "OEM:LED_BLUE"
+		(symbol "OEM:10nF"
 			(pin_numbers hide)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 0.254)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LED_BLUE"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "OEM:CHIPLED_0805"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "${OEM_DIR}/parts/datasheets/lite-on_LTST-C171TBKT.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Light emitting diode blue 0805"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MPN" "LTST-C171TBKT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MFN" "Lite-On"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "DKPN" "160-1645-6-ND"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Package" "0805"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "NewDesigns" "Yes"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Stocked" "Digi-Reel"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Style" "SMD"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "LED diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "LED_BLUE_0_1"
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "LED_BLUE_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "OEM:SSM3K333R"
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.27 0)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -804,8 +589,8 @@
 					(justify left)
 				)
 			)
-			(property "Value" "SSM3K333R"
-				(at 5.08 -1.27 0)
+			(property "Value" "10nF"
+				(at 0.635 -2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -813,8 +598,8 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "OEM:SOT-23F"
-				(at 5.08 2.54 0)
+			(property "Footprint" "OEM:C_0603"
+				(at 0.9652 -3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -822,7 +607,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "${OEM_DIR}/parts/datasheets/toshiba_SSM3K333R.pdf"
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets/samsung_CL10B103KB8NNNC.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -831,7 +616,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "N-MOSFET transistor 30V 6A 5V drive"
+			(property "Description" "Unpolarized capacitor 10nF 50V X7R 0603 10000pF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -840,7 +625,7 @@
 					(hide yes)
 				)
 			)
-			(property "MPN" "SSM3K333R,LF"
+			(property "MPN" "CL10B103KB8NNNC"
 				(at 0 0 0)
 				(effects
 					(font
@@ -849,7 +634,7 @@
 					(hide yes)
 				)
 			)
-			(property "MFN" "Toshiba"
+			(property "MFN" "Samsung Electro-Mechanics"
 				(at 0 0 0)
 				(effects
 					(font
@@ -858,7 +643,7 @@
 					(hide yes)
 				)
 			)
-			(property "DKPN" "SSM3K333RLFDKR-ND"
+			(property "DKPN" "1276-1009-2-ND"
 				(at 0 0 0)
 				(effects
 					(font
@@ -867,7 +652,16 @@
 					(hide yes)
 				)
 			)
-			(property "Package" "SOT-23"
+			(property "Package" "0603"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Reel"
 				(at 0 0 0)
 				(effects
 					(font
@@ -885,7 +679,196 @@
 					(hide yes)
 				)
 			)
-			(property "Stocked" "Digi-Reel"
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor 10000pF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "10nF_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "10nF_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "OEM:MCP6001"
+			(pin_names
+				(offset 0.127)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "MCP6001"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-353_SC-70-5"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets/microchip_MCP600XX.pdf"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Single Rail-to-Rail Operational Amplifier 1.8V-6V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "MCP6001T-I/OT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "Microchip"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" "MCP6001T-I/OTCT-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "SC-70-5"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "YES"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Tape"
 				(at 0 0 0)
 				(effects
 					(font
@@ -903,7 +886,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "transistor NMOS N-MOS N-MOSFET"
+			(property "ki_keywords" "single opamp"
 				(at 0 0 0)
 				(effects
 					(font
@@ -912,196 +895,32 @@
 					(hide yes)
 				)
 			)
-			(symbol "SSM3K333R_0_1"
-				(polyline
-					(pts
-						(xy 0.254 0) (xy -2.54 0)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 1.905) (xy 0.254 -1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.27) (xy 0.762 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 0.508) (xy 0.762 -0.508)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
+					(hide yes)
 				)
 			)
-			(symbol "SSM3K333R_1_1"
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
+			(symbol "MCP6001_0_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
 					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
 					)
 				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "S"
+				(pin power_in line
+					(at -2.54 -7.62 90)
+					(length 3.81)
+					(name "V-"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1116,10 +935,48 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 2.54 5.08 270)
+				(pin power_in line
+					(at -2.54 7.62 270)
+					(length 3.81)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6001_1_1"
+				(pin output line
+					(at 7.62 0 180)
 					(length 2.54)
-					(name "D"
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1134,41 +991,52 @@
 						)
 					)
 				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 			)
 		)
-		(symbol "OEM:TP_SMD"
+		(symbol "OEM:Thermistor"
+			(pin_numbers hide)
 			(pin_names
-				(offset 1.016)
+				(offset 0)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "TP"
-				(at 0 7.62 0)
+			(property "Reference" "TH"
+				(at 2.54 1.27 90)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "TP_SMD"
-				(at 1.27 5.08 0)
+			(property "Value" "Thermistor"
+				(at -2.54 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify bottom)
 				)
 			)
-			(property "Footprint" "footprints:Test_Point_SMD"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
+			(property "Footprint" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1177,7 +1045,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "test point SMD hook"
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets/"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1186,7 +1054,7 @@
 					(hide yes)
 				)
 			)
-			(property "MPN" "5019"
+			(property "Description" "Temperature dependent resistor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1195,7 +1063,7 @@
 					(hide yes)
 				)
 			)
-			(property "MFN" "Keystone"
+			(property "MPN" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1204,7 +1072,7 @@
 					(hide yes)
 				)
 			)
-			(property "DKPN" "36-5019TR-ND"
+			(property "MFN" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1213,7 +1081,7 @@
 					(hide yes)
 				)
 			)
-			(property "NewDesigns" "YES"
+			(property "DKPN" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1222,7 +1090,7 @@
 					(hide yes)
 				)
 			)
-			(property "Stocked" "Reel"
+			(property "Package" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1231,7 +1099,7 @@
 					(hide yes)
 				)
 			)
-			(property "Package" "Custom"
+			(property "NewDesigns" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1240,7 +1108,7 @@
 					(hide yes)
 				)
 			)
-			(property "Style" "SMD"
+			(property "Stocked" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1249,20 +1117,61 @@
 					(hide yes)
 				)
 			)
-			(symbol "TP_SMD_1_1"
-				(circle
-					(center 0 2.54)
-					(radius 1.27)
+			(property "Style" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res thermistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Thermistor_0_1"
+				(rectangle
+					(start -1.016 2.54)
+					(end 1.016 -2.54)
 					(stroke
-						(width 0)
+						(width 0.2032)
 						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-				(pin input line
-					(at 0 -1.27 90)
+				(polyline
+					(pts
+						(xy -1.905 3.175) (xy -1.905 1.905) (xy 1.905 -1.905) (xy 1.905 -3.175) (xy 1.905 -3.175)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Thermistor_1_1"
+				(pin passive line
+					(at 0 5.08 270)
 					(length 2.54)
 					(name "~"
 						(effects
@@ -1272,6 +1181,24 @@
 						)
 					)
 					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1499,208 +1426,212 @@
 		)
 	)
 	(junction
-		(at 142.24 102.87)
+		(at 86.36 49.53)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "0592cbfe-7199-48ec-ac70-15c307014e81")
+		(uuid "79e571d3-8f69-41ab-b4de-d4f08a060dce")
 	)
 	(junction
-		(at 162.56 114.3)
+		(at 76.2 49.53)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "182e4a5f-6431-4eb1-9870-9375e72d8df4")
+		(uuid "b26af605-d3ca-46ab-98a7-877c25ad30cb")
 	)
 	(junction
-		(at 152.4 102.87)
+		(at 44.45 46.99)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2dbbf7a1-863a-441c-8e53-1ca6c1f335cd")
+		(uuid "b9cdcfb7-90c6-4b96-a4a1-30edba85c8ee")
 	)
 	(junction
-		(at 162.56 90.17)
+		(at 63.5 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "580fe9cd-33ce-496f-baa5-770b4feb3dc5")
-	)
-	(junction
-		(at 162.56 95.25)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ad6f1973-8fbb-442c-a460-f9832ac6cf40")
+		(uuid "c139a64b-66ce-4bbd-bb24-1fd985fb552d")
 	)
 	(wire
 		(pts
-			(xy 162.56 80.01) (xy 162.56 81.28)
+			(xy 44.45 45.72) (xy 44.45 46.99)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "028b395b-1b39-4ebd-941d-437b9b410e97")
+		(uuid "0db05b92-79a6-4794-a5cb-63f2d651436d")
 	)
 	(wire
 		(pts
-			(xy 152.4 114.3) (xy 162.56 114.3)
+			(xy 63.5 57.15) (xy 63.5 58.42)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0f45b290-3a37-4eb7-925d-729addf52cf4")
+		(uuid "1eebb7dd-daec-49a8-8858-abefe701f54e")
 	)
 	(wire
 		(pts
-			(xy 162.56 114.3) (xy 162.56 119.38)
+			(xy 76.2 64.77) (xy 76.2 49.53)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1e28879a-05ea-46f4-a40b-91e35da55336")
+		(uuid "212bf891-6ff1-4fd0-b397-cac570c6576c")
 	)
 	(wire
 		(pts
-			(xy 162.56 90.17) (xy 162.56 95.25)
+			(xy 63.5 36.83) (xy 63.5 39.37)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "253b2c68-e351-4202-8f9a-ef2933aab58e")
+		(uuid "3a259ed9-a607-457b-b998-a9e065d19142")
 	)
 	(wire
 		(pts
-			(xy 152.4 113.03) (xy 152.4 114.3)
+			(xy 44.45 36.83) (xy 44.45 38.1)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "28e57a3a-cf40-4198-968b-e2cd1c09e754")
+		(uuid "56bec3c0-f3ad-42bc-8f77-3460ef8d5472")
 	)
 	(wire
 		(pts
-			(xy 162.56 107.95) (xy 162.56 114.3)
+			(xy 58.42 52.07) (xy 55.88 52.07)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2ae9b0ec-06aa-4874-8135-95401cbedf75")
+		(uuid "5b0ba779-84db-4a2c-9a98-b4dd77625b7a")
 	)
 	(wire
 		(pts
-			(xy 138.43 102.87) (xy 142.24 102.87)
+			(xy 44.45 46.99) (xy 58.42 46.99)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4389ced2-24ed-40f1-9f9d-4e510edd3bda")
+		(uuid "5daeb79c-4d1a-463f-aa20-469e86339095")
 	)
 	(wire
 		(pts
-			(xy 162.56 90.17) (xy 166.37 90.17)
+			(xy 86.36 49.53) (xy 86.36 50.8)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7bb6d081-f13d-4b23-840d-cf21cd9dc4d4")
+		(uuid "5f9c388e-d201-46e0-b19d-6546776278c6")
 	)
 	(wire
 		(pts
-			(xy 142.24 123.19) (xy 142.24 125.73)
+			(xy 55.88 52.07) (xy 55.88 64.77)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "85d4b2cd-87f2-460b-b013-cfc162655a7d")
+		(uuid "7f9d9f2a-f5af-4a1a-b183-c8788e0329fe")
 	)
 	(wire
 		(pts
-			(xy 142.24 113.03) (xy 142.24 115.57)
+			(xy 85.09 49.53) (xy 86.36 49.53)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8a258d15-cefc-460f-b05f-f0d47d5d5235")
+		(uuid "8f3624ea-aef1-4d19-8e8e-a2475bebbc20")
 	)
 	(wire
 		(pts
-			(xy 152.4 102.87) (xy 154.94 102.87)
+			(xy 88.9 49.53) (xy 86.36 49.53)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9286447c-47bb-40da-ad80-a108590d2630")
+		(uuid "a32f5eb4-2b32-4683-a154-c799820b738d")
 	)
 	(wire
 		(pts
-			(xy 142.24 102.87) (xy 152.4 102.87)
+			(xy 55.88 64.77) (xy 76.2 64.77)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "adf57270-4d77-4bc4-b4fa-92ce8dfbd20e")
+		(uuid "b2dca6a2-58e8-4bbb-95fa-a4420e910107")
 	)
 	(wire
 		(pts
-			(xy 142.24 102.87) (xy 142.24 105.41)
+			(xy 76.2 49.53) (xy 73.66 49.53)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c1b71fbe-cd6b-45f3-86fc-2c69d791e7d0")
+		(uuid "bbec542b-7c8a-4148-a394-ff3267c8052a")
 	)
 	(wire
 		(pts
-			(xy 162.56 95.25) (xy 162.56 97.79)
+			(xy 66.04 39.37) (xy 63.5 39.37)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ed17217d-f4a1-4327-ba7b-22d6b74d67b0")
+		(uuid "c261f14b-601f-4acb-adbe-4ac204867871")
 	)
 	(wire
 		(pts
-			(xy 152.4 102.87) (xy 152.4 105.41)
+			(xy 44.45 46.99) (xy 44.45 53.34)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f26f9e2d-624f-4277-94d7-b1dc597c3c05")
+		(uuid "ccc385fb-08b4-4137-8840-c1c2e3288737")
 	)
 	(wire
 		(pts
-			(xy 162.56 95.25) (xy 172.72 95.25)
+			(xy 63.5 39.37) (xy 63.5 41.91)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f9801384-52d2-44ec-9d4b-6b476ddd73aa")
+		(uuid "e6800cec-ff78-4262-a77d-9fe039ada04e")
 	)
 	(wire
 		(pts
-			(xy 162.56 88.9) (xy 162.56 90.17)
+			(xy 86.36 58.42) (xy 86.36 60.96)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "fb1c30ff-5a87-4c9b-987f-a3627b36bc63")
+		(uuid "e6af24ef-3c89-4d97-8f2a-b0dc1273bbf4")
 	)
-	(hierarchical_label "BSPD_SHUTDOWN_SENSE"
+	(wire
+		(pts
+			(xy 76.2 49.53) (xy 77.47 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa2c6935-c756-4276-a7fe-2e551a32e595")
+	)
+	(hierarchical_label "TEMP_SENSE"
 		(shape output)
-		(at 166.37 90.17 0)
+		(at 88.9 49.53 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1708,31 +1639,19 @@
 			)
 			(justify left)
 		)
-		(uuid "2cdd2d41-4603-4892-870d-2b96d06da796")
-	)
-	(hierarchical_label "BSPD_LL"
-		(shape input)
-		(at 138.43 102.87 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "94b21c1b-9fcf-4c65-8842-a281ebeef383")
+		(uuid "db1a22c5-8a48-4d38-ba6b-47915c49586f")
 	)
 	(symbol
-		(lib_id "OEM:SSM3K333R")
-		(at 160.02 102.87 0)
+		(lib_id "OEM:MCP6001")
+		(at 66.04 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "116f895c-c199-4732-b834-cc59f69e6d2d")
-		(property "Reference" "Q4"
-			(at 165.2524 101.7016 0)
+		(uuid "1d731957-08e8-4a84-bf4b-f84aa0692269")
+		(property "Reference" "U3"
+			(at 66.04 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1740,8 +1659,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SSM3K333R"
-			(at 165.2524 104.013 0)
+		(property "Value" "MCP6001"
+			(at 66.04 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1749,29 +1668,26 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "OEM:SOT-23F"
-			(at 165.1 104.775 0)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-353_SC-70-5"
+			(at 66.04 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-					(italic yes)
 				)
-				(justify left)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/toshiba_SSM3K333R.pdf"
-			(at 165.1 100.965 0)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/microchip_MCP600XX.pdf"
+			(at 66.04 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 				(hide yes)
 			)
 		)
 		(property "Description" ""
-			(at 160.02 102.87 0)
+			(at 66.04 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1779,26 +1695,8 @@
 				(hide yes)
 			)
 		)
-		(property "MFN" "Toshiba"
-			(at 172.72 93.345 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SSM3K333R,LF"
-			(at 170.18 95.885 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "SSM3K333RLFDKR-ND"
-			(at 160.02 102.87 0)
+		(property "MPN" "MCP6001T-I/OT"
+			(at 66.04 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1806,8 +1704,26 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "SOT-23"
-			(at 160.02 102.87 0)
+		(property "MFN" "Microchip"
+			(at 66.04 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "MCP6001T-I/OTCT-ND"
+			(at 66.04 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "SC-70-5"
+			(at 66.04 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1816,7 +1732,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 160.02 102.87 0)
+			(at 66.04 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1824,8 +1740,8 @@
 				(hide yes)
 			)
 		)
-		(property "Stocked" "Digi-Reel"
-			(at 160.02 102.87 0)
+		(property "Stocked" "Tape"
+			(at 66.04 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1834,7 +1750,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 160.02 102.87 0)
+			(at 66.04 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1842,19 +1758,33 @@
 				(hide yes)
 			)
 		)
-		(pin "1"
-			(uuid "6f210859-7ec0-47ac-8af0-a97cca140ebc")
-		)
 		(pin "2"
-			(uuid "f8cfa007-4b1b-4d8a-8374-5bcd62e7d444")
+			(uuid "3a99b66d-3dfb-4cc7-9bf9-9e7273a22994")
+		)
+		(pin "5"
+			(uuid "359fb546-30bf-49c9-8997-f5a162e063d4")
+		)
+		(pin "1"
+			(uuid "42e763f2-7379-44cb-b2cc-8405f323b214")
 		)
 		(pin "3"
-			(uuid "78b48ffa-7b28-45b0-b163-b80c1944e86a")
+			(uuid "048a4999-d125-4527-adad-5a476aaeec2a")
+		)
+		(pin "4"
+			(uuid "f643e3bb-9261-4950-b692-5afd679689c0")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "Q4")
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "U1")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "U2")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -1862,15 +1792,16 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 162.56 119.38 0)
+		(at 63.5 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "4ee73fec-d7de-4673-8bb7-1e6fb7b388fe")
+		(fields_autoplaced yes)
+		(uuid "3b9fedc3-8004-49ad-a3fe-28afa1ea394b")
 		(property "Reference" "#PWR?"
-			(at 162.56 125.73 0)
+			(at 63.5 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1879,7 +1810,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 162.687 123.7742 0)
+			(at 63.5 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1887,7 +1818,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 162.56 119.38 0)
+			(at 63.5 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1896,7 +1827,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 162.56 119.38 0)
+			(at 63.5 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1905,7 +1836,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 162.56 119.38 0)
+			(at 63.5 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1914,11 +1845,19 @@
 			)
 		)
 		(pin "1"
-			(uuid "d09c0b77-dd5f-4e1e-a3c4-28bb144b872f")
+			(uuid "4e55d813-28bd-48e2-be00-ff58a9020eaa")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
 					(reference "#PWR?")
 					(unit 1)
 				)
@@ -1926,409 +1865,17 @@
 		)
 	)
 	(symbol
-		(lib_id "OEM:3KR")
-		(at 142.24 109.22 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5f720883-0f55-4b3c-8a5e-86c622818442")
-		(property "Reference" "R30"
-			(at 139.7 110.49 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "3KR"
-			(at 144.78 111.76 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:R_0603"
-			(at 140.462 109.22 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-YC_TC_group_51_RoHS_L_9.pdf"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Yageo"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RC0603FR-103KL"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "13-RC0603FR-103KLDKR-ND"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0603"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "87b75638-3681-45a2-9034-cde880068557")
-		)
-		(pin "2"
-			(uuid "aaceee63-0905-490e-a058-c43b132ccc38")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "R30")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:TP_SMD")
-		(at 173.99 95.25 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "778dbce9-bb4e-4761-858d-4e86de55c4c6")
-		(property "Reference" "TP7"
-			(at 173.99 92.71 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SHDN"
-			(at 171.45 97.79 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "footprints:Test_Point_SMD"
-			(at 170.18 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5019"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Keystone"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "36-5019TR-ND"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Reel"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "Custom"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4d5f4da7-2f78-4df2-b6c3-1dbb4342a554")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "TP7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:100KR")
-		(at 152.4 109.22 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cdde3d88-2c7e-47ea-83c5-e43d34814a64")
-		(property "Reference" "R31"
-			(at 149.86 110.49 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100KR"
-			(at 154.94 113.03 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:R_0603"
-			(at 150.622 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
-			(at 154.432 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Stackpole Electronics"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RMCF0603FT100K"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "RMCF0603FT100KTR-ND"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Reel"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0603"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "dd9ddeff-ad27-42a5-9409-fb37ed926fcf")
-		)
-		(pin "2"
-			(uuid "10f8aa35-93e6-45a1-ab66-4f710677964a")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "R31")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
-		(at 142.24 125.73 0)
+		(at 73.66 39.37 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ddfcd0c4-ef30-450f-8cfe-2af2ab528b41")
+		(fields_autoplaced yes)
+		(uuid "5a65885d-845b-472a-94b1-b05801f62da0")
 		(property "Reference" "#PWR?"
-			(at 142.24 132.08 0)
+			(at 73.66 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2337,7 +1884,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 142.367 130.1242 0)
+			(at 73.66 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2345,7 +1892,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 142.24 125.73 0)
+			(at 73.66 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2354,7 +1901,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 142.24 125.73 0)
+			(at 73.66 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2363,7 +1910,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 142.24 125.73 0)
+			(at 73.66 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2372,11 +1919,19 @@
 			)
 		)
 		(pin "1"
-			(uuid "c6bbfde2-255f-41cc-859d-c40385433af6")
+			(uuid "a2ce137a-e0b5-4383-aad4-ecb953074763")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
 					(reference "#PWR?")
 					(unit 1)
 				)
@@ -2384,34 +1939,35 @@
 		)
 	)
 	(symbol
-		(lib_id "OEM:LED_BLUE")
-		(at 142.24 119.38 90)
+		(lib_id "OEM:10nF")
+		(at 86.36 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e265bd06-621e-4917-916a-bd2f635489e1")
-		(property "Reference" "D10"
-			(at 139.7 119.38 0)
+		(fields_autoplaced yes)
+		(uuid "6dc3a5a5-6ba7-45ee-890e-2b247ac5cbfa")
+		(property "Reference" "C3"
+			(at 90.17 53.3399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
-		(property "Value" "Shutdown_LED"
-			(at 146.05 114.3 0)
+		(property "Value" "C_10nF"
+			(at 90.17 55.8799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
-		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 142.24 119.38 0)
+		(property "Footprint" "OEM:C_0603"
+			(at 81.28 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2419,8 +1975,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/lite-on_LTST-C171TBKT.pdf"
-			(at 142.24 119.38 0)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/samsung_CL10B103KB8NNNC.pdf"
+			(at 83.82 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2429,7 +1985,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 142.24 119.38 0)
+			(at 86.36 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2437,8 +1993,8 @@
 				(hide yes)
 			)
 		)
-		(property "MFN" "Lite-On"
-			(at 142.24 119.38 0)
+		(property "MFN" "Samsung Electro-Mechanics"
+			(at 86.36 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2446,8 +2002,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "LTST-C171TBKT"
-			(at 142.24 119.38 0)
+		(property "MPN" "CL10B103KB8NNNC"
+			(at 88.9 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2455,140 +2011,8 @@
 				(hide yes)
 			)
 		)
-		(property "DKPN" "160-1645-6-ND"
-			(at 142.24 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 142.24 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "Yes"
-			(at 142.24 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 142.24 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 142.24 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bc900e25-fa36-4238-9b42-91ad0e675bd2")
-		)
-		(pin "2"
-			(uuid "0356606d-38f5-48b2-a859-861e8f96e906")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "D10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:10KR")
-		(at 162.56 85.09 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e5b7e396-d177-4506-93d0-b759c7c1a993")
-		(property "Reference" "R32"
-			(at 160.02 86.36 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "R_10K"
-			(at 165.1 87.63 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:R_0603"
-			(at 160.782 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
-			(at 164.592 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 162.56 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Stackpole Electronics"
-			(at 162.56 85.09 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RMCF0603FT10K0"
-			(at 162.56 85.09 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "RMCF0603FT10K0TR-ND"
-			(at 162.56 85.09 0)
+		(property "DKPN" "1276-1009-2-ND"
+			(at 86.36 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2597,16 +2021,7 @@
 			)
 		)
 		(property "Package" "0603"
-			(at 162.56 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 162.56 85.09 0)
+			(at 86.36 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2615,7 +2030,16 @@
 			)
 		)
 		(property "Stocked" "Reel"
-			(at 162.56 85.09 0)
+			(at 86.36 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 86.36 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2624,7 +2048,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 162.56 85.09 0)
+			(at 86.36 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2633,15 +2057,23 @@
 			)
 		)
 		(pin "1"
-			(uuid "f3a0f094-ad7d-419b-a267-ebbe4a45c9a0")
+			(uuid "a4f4e2e1-218d-4e40-bafa-dfb7c62fb422")
 		)
 		(pin "2"
-			(uuid "59a8cf4a-d534-4042-9ffd-d48c0c2d4a83")
+			(uuid "9fad0d4a-9e09-4e14-93b4-af37d3f4ac7d")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "R32")
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "C1")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "C2")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -2649,15 +2081,16 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 162.56 80.01 0)
+		(at 44.45 36.83 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f6c0be28-7120-4a11-99f7-faf47e8a32eb")
+		(fields_autoplaced yes)
+		(uuid "80d772a7-c654-45d6-8d16-7b789d3c1039")
 		(property "Reference" "#PWR?"
-			(at 162.56 83.82 0)
+			(at 44.45 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2666,7 +2099,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 162.941 75.6158 0)
+			(at 44.45 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2674,7 +2107,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 162.56 80.01 0)
+			(at 44.45 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2683,7 +2116,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 162.56 80.01 0)
+			(at 44.45 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2692,7 +2125,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 162.56 80.01 0)
+			(at 44.45 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2701,12 +2134,801 @@
 			)
 		)
 		(pin "1"
-			(uuid "15fac940-2c3b-413a-a2bb-d8b80690b5b5")
+			(uuid "e0d239ee-b4fb-47e6-9218-21e6417a4188")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
 					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:100KR")
+		(at 44.45 41.91 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "81585bd4-2b9e-4e87-b8b0-0a2e1df7a9b5")
+		(property "Reference" "R11"
+			(at 46.99 40.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100KR"
+			(at 46.99 43.1799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:R_0603"
+			(at 42.672 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
+			(at 46.482 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 44.45 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Stackpole Electronics"
+			(at 44.45 41.91 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0603FT100K"
+			(at 44.45 41.91 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "RMCF0603FT100KTR-ND"
+			(at 44.45 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 44.45 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 44.45 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 44.45 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 44.45 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d9f7e1f2-ec13-41f5-b09a-2668826ebd2e")
+		)
+		(pin "2"
+			(uuid "123f3794-efa0-4abc-b320-223a6d9d07d7")
+		)
+		(instances
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "R7")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "R9")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:100R")
+		(at 81.28 49.53 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "955bf8f2-0bed-448e-9264-b593c0d9e38c")
+		(property "Reference" "R12"
+			(at 81.28 44.2722 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100R"
+			(at 81.28 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:R_0603"
+			(at 81.28 47.752 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0603FT100R"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Stackpole Electronics"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "RMCF0603FT100RTR-ND"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "53c6737d-ad6c-412b-836f-27879d5dd5ef")
+		)
+		(pin "2"
+			(uuid "36bcdf7c-6fa0-4c57-bc1e-506c721888f0")
+		)
+		(instances
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "R8")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "R10")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 63.5 36.83 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a178f5c8-b4bb-4143-aeb6-2cae7a246fa0")
+		(property "Reference" "#PWR?"
+			(at 63.5 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 63.5 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 63.5 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 63.5 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 63.5 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4b64c110-3303-4a54-ac8b-a85ec8aa8dcf")
+		)
+		(instances
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 44.45 63.5 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a2a80cf1-64e7-4004-9710-deb7f131cb2a")
+		(property "Reference" "#PWR?"
+			(at 44.45 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 44.45 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 44.45 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 44.45 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 44.45 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "17c52fca-6d99-4511-a655-cd7eb72433c3")
+		)
+		(instances
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 86.36 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ab021d4c-2de5-4da2-b018-19ab9a4b838b")
+		(property "Reference" "#PWR?"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 86.36 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 86.36 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 86.36 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0819664e-0644-4174-aa34-77503a3ef07f")
+		)
+		(instances
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:Thermistor")
+		(at 44.45 58.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ca7852e4-64fa-4c30-bad9-fbe9a1ffbb05")
+		(property "Reference" "TH3"
+			(at 48.26 57.1499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Thermistor"
+			(at 48.26 59.6899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "footprints:Thermistor"
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/"
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" ""
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" ""
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" ""
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" ""
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" ""
+			(at 44.45 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3a35ec08-925d-450f-82bf-30f8206489f3")
+		)
+		(pin "2"
+			(uuid "c4b1a0de-505e-43f4-9cfb-060bc2dbd3b1")
+		)
+		(instances
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "TH1")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "TH2")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "TH3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:0u1F")
+		(at 69.85 39.37 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d191322b-d9aa-4cd1-bee1-50ff1ca6fc1a")
+		(property "Reference" "C6"
+			(at 69.85 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0u1F"
+			(at 69.85 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:C_0603"
+			(at 73.66 38.4048 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/samsung_CL10B104KB8NNWC.pdf"
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL10B104KB8NNWC"
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Samsung Electro-Mechanics"
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "1276-1935-2-ND"
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 69.85 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "37f21066-845d-4182-988e-0d336913474c")
+		)
+		(pin "2"
+			(uuid "cd5baefa-30ed-4c33-b842-1dfed167b932")
+		)
+		(instances
+			(project "precharge_discharge"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/1d3603a0-934c-404e-9b38-4b65044f588c"
+					(reference "C4")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/aae00dc5-0627-4ce2-bb50-5359aef1b906"
+					(reference "C5")
+					(unit 1)
+				)
+				(path "/96f56455-bf31-456c-8371-5b3706690d23/f42ceb10-3a39-4caa-a323-2ed850359949"
+					(reference "C6")
 					(unit 1)
 				)
 			)

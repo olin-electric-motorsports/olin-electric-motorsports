@@ -2,7 +2,7 @@
 	(version 20231120)
 	(generator "eeschema")
 	(generator_version "8.0")
-	(uuid "48cc73c6-df0c-4a19-a48a-9e095265b234")
+	(uuid "8c4d8ae0-bddd-4ef4-8f60-2e2bd9734716")
 	(paper "A4")
 	(lib_symbols
 		(symbol "OEM:100KR"
@@ -1136,151 +1136,6 @@
 				)
 			)
 		)
-		(symbol "OEM:TP_SMD"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "TP"
-				(at 0 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TP_SMD"
-				(at 1.27 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "footprints:Test_Point_SMD"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "test point SMD hook"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MPN" "5019"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MFN" "Keystone"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "DKPN" "36-5019TR-ND"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "NewDesigns" "YES"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Stocked" "Reel"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Package" "Custom"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Style" "SMD"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "TP_SMD_1_1"
-				(circle
-					(center 0 2.54)
-					(radius 1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin input line
-					(at 0 -1.27 90)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "power:+5V"
 			(power)
 			(pin_names
@@ -1499,220 +1354,188 @@
 		)
 	)
 	(junction
-		(at 142.24 102.87)
+		(at 142.24 90.17)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "0592cbfe-7199-48ec-ac70-15c307014e81")
+		(uuid "28e816f2-e42d-4988-b8cd-071bba712338")
 	)
 	(junction
-		(at 162.56 114.3)
+		(at 147.32 90.17)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "182e4a5f-6431-4eb1-9870-9375e72d8df4")
+		(uuid "61739308-c703-4673-873d-7c1e4e46c05d")
 	)
 	(junction
-		(at 152.4 102.87)
+		(at 158.75 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "2dbbf7a1-863a-441c-8e53-1ca6c1f335cd")
+		(uuid "c718a9a4-0e44-4075-836d-c58d5c62608f")
 	)
 	(junction
-		(at 162.56 90.17)
+		(at 158.75 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "580fe9cd-33ce-496f-baa5-770b4feb3dc5")
+		(uuid "cd5d6b9d-4efe-474e-833a-add75e74e0f0")
 	)
 	(junction
-		(at 162.56 95.25)
+		(at 158.75 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ad6f1973-8fbb-442c-a460-f9832ac6cf40")
+		(uuid "d7a86e5a-5f60-4830-a926-1ae4dd9f3189")
 	)
 	(wire
 		(pts
-			(xy 162.56 80.01) (xy 162.56 81.28)
+			(xy 158.75 83.82) (xy 158.75 85.09)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "028b395b-1b39-4ebd-941d-437b9b410e97")
+		(uuid "001e7ef0-b4fa-4185-8f63-54ac7642cf0c")
 	)
 	(wire
 		(pts
-			(xy 152.4 114.3) (xy 162.56 114.3)
+			(xy 158.75 83.82) (xy 166.37 83.82)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0f45b290-3a37-4eb7-925d-729addf52cf4")
+		(uuid "24014273-3aa0-4a1b-a2a0-108fc3856f2d")
 	)
 	(wire
 		(pts
-			(xy 162.56 114.3) (xy 162.56 119.38)
+			(xy 158.75 104.14) (xy 158.75 109.22)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1e28879a-05ea-46f4-a40b-91e35da55336")
+		(uuid "30837c8f-84b6-46d0-b358-32baa0d08153")
 	)
 	(wire
 		(pts
-			(xy 162.56 90.17) (xy 162.56 95.25)
+			(xy 147.32 104.14) (xy 158.75 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "253b2c68-e351-4202-8f9a-ef2933aab58e")
+		(uuid "3ffb726b-307d-44f8-a606-dfc963898b5a")
 	)
 	(wire
 		(pts
-			(xy 152.4 113.03) (xy 152.4 114.3)
+			(xy 147.32 92.71) (xy 147.32 90.17)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "28e57a3a-cf40-4198-968b-e2cd1c09e754")
+		(uuid "666f3deb-2fc4-4905-b868-7ba94a80e167")
 	)
 	(wire
 		(pts
-			(xy 162.56 107.95) (xy 162.56 114.3)
+			(xy 142.24 107.95) (xy 142.24 109.22)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2ae9b0ec-06aa-4874-8135-95401cbedf75")
+		(uuid "6c1d4c5b-79b6-4231-ace3-19028a521cdd")
 	)
 	(wire
 		(pts
-			(xy 138.43 102.87) (xy 142.24 102.87)
+			(xy 147.32 100.33) (xy 147.32 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4389ced2-24ed-40f1-9f9d-4e510edd3bda")
+		(uuid "6d9b744d-52c1-427e-8087-53f470ccfef4")
 	)
 	(wire
 		(pts
-			(xy 162.56 90.17) (xy 166.37 90.17)
+			(xy 147.32 90.17) (xy 151.13 90.17)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7bb6d081-f13d-4b23-840d-cf21cd9dc4d4")
+		(uuid "7497dbd8-6ca2-4a5e-ac64-dbe9a0737218")
 	)
 	(wire
 		(pts
-			(xy 142.24 123.19) (xy 142.24 125.73)
+			(xy 158.75 111.76) (xy 158.75 109.22)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "85d4b2cd-87f2-460b-b013-cfc162655a7d")
+		(uuid "8cdc7aac-f06a-4782-9d8a-e712001b19eb")
 	)
 	(wire
 		(pts
-			(xy 142.24 113.03) (xy 142.24 115.57)
+			(xy 158.75 95.25) (xy 158.75 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8a258d15-cefc-460f-b05f-f0d47d5d5235")
+		(uuid "97f4bf1c-5644-4eb2-9778-d52c744bea7b")
 	)
 	(wire
 		(pts
-			(xy 152.4 102.87) (xy 154.94 102.87)
+			(xy 142.24 109.22) (xy 158.75 109.22)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9286447c-47bb-40da-ad80-a108590d2630")
+		(uuid "a9cf82b9-2a55-42f8-bcbf-b18b60f6bd4a")
 	)
 	(wire
 		(pts
-			(xy 142.24 102.87) (xy 152.4 102.87)
+			(xy 142.24 90.17) (xy 147.32 90.17)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "adf57270-4d77-4bc4-b4fa-92ce8dfbd20e")
+		(uuid "af5615a2-378b-430f-81f3-e15eaded48af")
 	)
 	(wire
 		(pts
-			(xy 142.24 102.87) (xy 142.24 105.41)
+			(xy 158.75 81.28) (xy 158.75 83.82)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c1b71fbe-cd6b-45f3-86fc-2c69d791e7d0")
+		(uuid "b4246ea4-a00e-49af-bf41-386d3ff8371f")
 	)
 	(wire
 		(pts
-			(xy 162.56 95.25) (xy 162.56 97.79)
+			(xy 142.24 92.71) (xy 142.24 90.17)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ed17217d-f4a1-4327-ba7b-22d6b74d67b0")
+		(uuid "cede1fae-aa1d-4f80-ba2b-a21954510762")
 	)
 	(wire
 		(pts
-			(xy 152.4 102.87) (xy 152.4 105.41)
+			(xy 132.08 90.17) (xy 142.24 90.17)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f26f9e2d-624f-4277-94d7-b1dc597c3c05")
+		(uuid "ebe1503a-d07c-40a9-984d-99ed875bc366")
 	)
-	(wire
-		(pts
-			(xy 162.56 95.25) (xy 172.72 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f9801384-52d2-44ec-9d4b-6b476ddd73aa")
-	)
-	(wire
-		(pts
-			(xy 162.56 88.9) (xy 162.56 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb1c30ff-5a87-4c9b-987f-a3627b36bc63")
-	)
-	(hierarchical_label "BSPD_SHUTDOWN_SENSE"
-		(shape output)
-		(at 166.37 90.17 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "2cdd2d41-4603-4892-870d-2b96d06da796")
-	)
-	(hierarchical_label "BSPD_LL"
+	(hierarchical_label "SS_INERTIA_SWITCH"
 		(shape input)
-		(at 138.43 102.87 180)
+		(at 132.08 90.17 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1720,19 +1543,231 @@
 			)
 			(justify right)
 		)
-		(uuid "94b21c1b-9fcf-4c65-8842-a281ebeef383")
+		(uuid "04f5a3ce-4807-4e0d-a38f-310075c1ffed")
+	)
+	(hierarchical_label "SS_INERTIA_OUTPUT"
+		(shape output)
+		(at 166.37 83.82 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7267c296-afa6-4226-ba36-6ffcfd3c54b2")
 	)
 	(symbol
-		(lib_id "OEM:SSM3K333R")
-		(at 160.02 102.87 0)
+		(lib_id "power:+5V")
+		(at 158.75 73.66 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "116f895c-c199-4732-b834-cc59f69e6d2d")
-		(property "Reference" "Q4"
-			(at 165.2524 101.7016 0)
+		(uuid "2b494ba1-4e25-4781-89e6-24dad0128c19")
+		(property "Reference" "#PWR?"
+			(at 158.75 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 159.131 69.2658 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 158.75 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 158.75 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 158.75 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "649a6c19-7d96-4596-9051-5c5b16f7f758")
+		)
+		(instances
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/c949b430-f717-4232-8ab8-87a20d1265a7"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:3KR")
+		(at 142.24 96.52 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "754b5793-0014-425a-a4ed-33ad6d905ef2")
+		(property "Reference" "R7"
+			(at 139.7 95.2499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "3KR"
+			(at 139.7 97.7899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "OEM:R_0603"
+			(at 140.462 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-YC_TC_group_51_RoHS_L_9.pdf"
+			(at 144.272 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 142.24 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Yageo"
+			(at 142.24 96.52 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103KL"
+			(at 142.24 96.52 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "13-RC0603FR-103KLDKR-ND"
+			(at 142.24 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 142.24 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Digi-Reel"
+			(at 142.24 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 142.24 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 142.24 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f9706afc-cc84-4973-956b-33fb402e440c")
+		)
+		(pin "2"
+			(uuid "516af995-224a-4ca5-b9c7-0dc6454b85d8")
+		)
+		(instances
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/c949b430-f717-4232-8ab8-87a20d1265a7"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:SSM3K333R")
+		(at 156.21 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "77831e4e-4288-4afa-8faf-93fedbf09df4")
+		(property "Reference" "Q1"
+			(at 162.56 88.8999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1741,7 +1776,7 @@
 			)
 		)
 		(property "Value" "SSM3K333R"
-			(at 165.2524 104.013 0)
+			(at 162.56 91.4399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1750,7 +1785,7 @@
 			)
 		)
 		(property "Footprint" "OEM:SOT-23F"
-			(at 165.1 104.775 0)
+			(at 161.29 92.075 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1761,7 +1796,7 @@
 			)
 		)
 		(property "Datasheet" "${OEM_DIR}/parts/datasheets/toshiba_SSM3K333R.pdf"
-			(at 165.1 100.965 0)
+			(at 161.29 88.265 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1771,7 +1806,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 160.02 102.87 0)
+			(at 156.21 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1780,7 +1815,7 @@
 			)
 		)
 		(property "MFN" "Toshiba"
-			(at 172.72 93.345 0)
+			(at 168.91 80.645 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -1789,7 +1824,7 @@
 			)
 		)
 		(property "MPN" "SSM3K333R,LF"
-			(at 170.18 95.885 0)
+			(at 166.37 83.185 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -1798,7 +1833,7 @@
 			)
 		)
 		(property "DKPN" "SSM3K333RLFDKR-ND"
-			(at 160.02 102.87 0)
+			(at 156.21 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1807,7 +1842,7 @@
 			)
 		)
 		(property "Package" "SOT-23"
-			(at 160.02 102.87 0)
+			(at 156.21 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1816,7 +1851,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 160.02 102.87 0)
+			(at 156.21 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1825,7 +1860,7 @@
 			)
 		)
 		(property "Stocked" "Digi-Reel"
-			(at 160.02 102.87 0)
+			(at 156.21 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1834,7 +1869,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 160.02 102.87 0)
+			(at 156.21 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1843,541 +1878,18 @@
 			)
 		)
 		(pin "1"
-			(uuid "6f210859-7ec0-47ac-8af0-a97cca140ebc")
+			(uuid "90d8ac32-3aac-455a-9d5c-4a3ca955f4c7")
 		)
 		(pin "2"
-			(uuid "f8cfa007-4b1b-4d8a-8374-5bcd62e7d444")
+			(uuid "2172b56f-2ca7-49a5-8589-3e926d61c0f0")
 		)
 		(pin "3"
-			(uuid "78b48ffa-7b28-45b0-b163-b80c1944e86a")
+			(uuid "f4159047-4278-4c64-8e94-8ca9f8ca90f6")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "Q4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 162.56 119.38 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4ee73fec-d7de-4673-8bb7-1e6fb7b388fe")
-		(property "Reference" "#PWR?"
-			(at 162.56 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 162.687 123.7742 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 162.56 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 162.56 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 162.56 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d09c0b77-dd5f-4e1e-a3c4-28bb144b872f")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:3KR")
-		(at 142.24 109.22 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5f720883-0f55-4b3c-8a5e-86c622818442")
-		(property "Reference" "R30"
-			(at 139.7 110.49 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "3KR"
-			(at 144.78 111.76 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:R_0603"
-			(at 140.462 109.22 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-YC_TC_group_51_RoHS_L_9.pdf"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Yageo"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RC0603FR-103KL"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "13-RC0603FR-103KLDKR-ND"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0603"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 142.24 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "87b75638-3681-45a2-9034-cde880068557")
-		)
-		(pin "2"
-			(uuid "aaceee63-0905-490e-a058-c43b132ccc38")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "R30")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:TP_SMD")
-		(at 173.99 95.25 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "778dbce9-bb4e-4761-858d-4e86de55c4c6")
-		(property "Reference" "TP7"
-			(at 173.99 92.71 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SHDN"
-			(at 171.45 97.79 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "footprints:Test_Point_SMD"
-			(at 170.18 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "5019"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Keystone"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "36-5019TR-ND"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Reel"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "Custom"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 173.99 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4d5f4da7-2f78-4df2-b6c3-1dbb4342a554")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "TP7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "OEM:100KR")
-		(at 152.4 109.22 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cdde3d88-2c7e-47ea-83c5-e43d34814a64")
-		(property "Reference" "R31"
-			(at 149.86 110.49 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100KR"
-			(at 154.94 113.03 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:R_0603"
-			(at 150.622 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
-			(at 154.432 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Stackpole Electronics"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RMCF0603FT100K"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "RMCF0603FT100KTR-ND"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Reel"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0603"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "dd9ddeff-ad27-42a5-9409-fb37ed926fcf")
-		)
-		(pin "2"
-			(uuid "10f8aa35-93e6-45a1-ab66-4f710677964a")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "R31")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 142.24 125.73 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ddfcd0c4-ef30-450f-8cfe-2af2ab528b41")
-		(property "Reference" "#PWR?"
-			(at 142.24 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 142.367 130.1242 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 142.24 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 142.24 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 142.24 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c6bbfde2-255f-41cc-859d-c40385433af6")
-		)
-		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "#PWR?")
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/c949b430-f717-4232-8ab8-87a20d1265a7"
+					(reference "Q1")
 					(unit 1)
 				)
 			)
@@ -2385,15 +1897,15 @@
 	)
 	(symbol
 		(lib_id "OEM:LED_BLUE")
-		(at 142.24 119.38 90)
+		(at 142.24 104.14 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e265bd06-621e-4917-916a-bd2f635489e1")
-		(property "Reference" "D10"
-			(at 139.7 119.38 0)
+		(uuid "a0452b01-b975-4d75-aaef-f7dda939a690")
+		(property "Reference" "D1"
+			(at 137.16 104.14 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2401,8 +1913,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Shutdown_LED"
-			(at 146.05 114.3 0)
+		(property "Value" "LED_BLUE"
+			(at 130.81 106.68 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2411,7 +1923,7 @@
 			)
 		)
 		(property "Footprint" "OEM:CHIPLED_0805"
-			(at 142.24 119.38 0)
+			(at 142.24 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2420,7 +1932,7 @@
 			)
 		)
 		(property "Datasheet" "${OEM_DIR}/parts/datasheets/lite-on_LTST-C171TBKT.pdf"
-			(at 142.24 119.38 0)
+			(at 139.7 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2429,7 +1941,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 142.24 119.38 0)
+			(at 142.24 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2438,25 +1950,25 @@
 			)
 		)
 		(property "MFN" "Lite-On"
-			(at 142.24 119.38 0)
+			(at 142.24 104.14 0)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1.524 1.524)
 				)
 				(hide yes)
 			)
 		)
 		(property "MPN" "LTST-C171TBKT"
-			(at 142.24 119.38 0)
+			(at 142.24 104.14 0)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1.524 1.524)
 				)
 				(hide yes)
 			)
 		)
 		(property "DKPN" "160-1645-6-ND"
-			(at 142.24 119.38 0)
+			(at 142.24 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2465,7 +1977,7 @@
 			)
 		)
 		(property "Package" "0805"
-			(at 142.24 119.38 0)
+			(at 142.24 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2474,7 +1986,7 @@
 			)
 		)
 		(property "NewDesigns" "Yes"
-			(at 142.24 119.38 0)
+			(at 142.24 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2483,7 +1995,7 @@
 			)
 		)
 		(property "Stocked" "Digi-Reel"
-			(at 142.24 119.38 0)
+			(at 142.24 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2492,7 +2004,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 142.24 119.38 0)
+			(at 142.24 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2501,31 +2013,32 @@
 			)
 		)
 		(pin "1"
-			(uuid "bc900e25-fa36-4238-9b42-91ad0e675bd2")
+			(uuid "f82d7be1-7c92-44a4-8d93-6921dd43e9aa")
 		)
 		(pin "2"
-			(uuid "0356606d-38f5-48b2-a859-861e8f96e906")
+			(uuid "26b1c110-01ef-440b-9a60-37052e1c34b9")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "D10")
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/c949b430-f717-4232-8ab8-87a20d1265a7"
+					(reference "D1")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "OEM:10KR")
-		(at 162.56 85.09 0)
+		(lib_id "OEM:100KR")
+		(at 147.32 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e5b7e396-d177-4506-93d0-b759c7c1a993")
-		(property "Reference" "R32"
-			(at 160.02 86.36 90)
+		(fields_autoplaced yes)
+		(uuid "cce5802b-9e02-447e-8e7e-0b6aaff501d1")
+		(property "Reference" "R8"
+			(at 149.86 95.2499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2533,8 +2046,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_10K"
-			(at 165.1 87.63 90)
+		(property "Value" "R_100K"
+			(at 149.86 97.7899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2543,7 +2056,7 @@
 			)
 		)
 		(property "Footprint" "OEM:R_0603"
-			(at 160.782 85.09 0)
+			(at 145.542 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2552,7 +2065,7 @@
 			)
 		)
 		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
-			(at 164.592 85.09 0)
+			(at 149.352 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2561,7 +2074,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 162.56 85.09 0)
+			(at 147.32 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2570,7 +2083,7 @@
 			)
 		)
 		(property "MFN" "Stackpole Electronics"
-			(at 162.56 85.09 0)
+			(at 147.32 96.52 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -2578,8 +2091,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "RMCF0603FT10K0"
-			(at 162.56 85.09 0)
+		(property "MPN" "RMCF0603FT100K"
+			(at 147.32 96.52 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -2587,17 +2100,8 @@
 				(hide yes)
 			)
 		)
-		(property "DKPN" "RMCF0603FT10K0TR-ND"
-			(at 162.56 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0603"
-			(at 162.56 85.09 0)
+		(property "DKPN" "RMCF0603FT100KTR-ND"
+			(at 147.32 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2606,7 +2110,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 162.56 85.09 0)
+			(at 147.32 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2615,7 +2119,16 @@
 			)
 		)
 		(property "Stocked" "Reel"
-			(at 162.56 85.09 0)
+			(at 147.32 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 147.32 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2624,7 +2137,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 162.56 85.09 0)
+			(at 147.32 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2633,31 +2146,50 @@
 			)
 		)
 		(pin "1"
-			(uuid "f3a0f094-ad7d-419b-a267-ebbe4a45c9a0")
+			(uuid "e75fcda6-9da1-475b-8913-c7dff46d5781")
 		)
 		(pin "2"
-			(uuid "59a8cf4a-d534-4042-9ffd-d48c0c2d4a83")
+			(uuid "afaa63bb-4495-4ee7-9579-6911ad519c8a")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
-					(reference "R32")
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/c949b430-f717-4232-8ab8-87a20d1265a7"
+					(reference "R8")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 162.56 80.01 0)
+		(lib_id "OEM:10KR")
+		(at 158.75 77.47 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f6c0be28-7120-4a11-99f7-faf47e8a32eb")
-		(property "Reference" "#PWR?"
-			(at 162.56 83.82 0)
+		(fields_autoplaced yes)
+		(uuid "dc78a360-53bc-40a0-b0d1-d5fd7364982e")
+		(property "Reference" "R9"
+			(at 161.29 76.1999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R_10K"
+			(at 161.29 78.7399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:R_0603"
+			(at 156.972 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2665,25 +2197,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V"
-			(at 162.941 75.6158 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 162.56 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 162.56 80.01 0)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
+			(at 160.782 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2692,7 +2207,70 @@
 			)
 		)
 		(property "Description" ""
-			(at 162.56 80.01 0)
+			(at 158.75 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Stackpole Electronics"
+			(at 158.75 77.47 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0603FT10K0"
+			(at 158.75 77.47 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "RMCF0603FT10K0TR-ND"
+			(at 158.75 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 158.75 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 158.75 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 158.75 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 158.75 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2701,11 +2279,80 @@
 			)
 		)
 		(pin "1"
-			(uuid "15fac940-2c3b-413a-a2bb-d8b80690b5b5")
+			(uuid "7c1568d4-5c5d-4e5a-9488-89c655d4dccf")
+		)
+		(pin "2"
+			(uuid "5cc19b12-e7a9-4da1-a75d-b86f16d6aabd")
 		)
 		(instances
-			(project "brakes"
-				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/69578ef1-8102-4794-908a-f711a97b447d"
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/c949b430-f717-4232-8ab8-87a20d1265a7"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 158.75 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ef2b948c-ce9d-4199-9d89-f08fc95bbe37")
+		(property "Reference" "#PWR?"
+			(at 158.75 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 158.75 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 158.75 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 158.75 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 158.75 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3da76451-b059-40d6-896a-01f1cb31a8e7")
+		)
+		(instances
+			(project ""
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/c949b430-f717-4232-8ab8-87a20d1265a7"
 					(reference "#PWR?")
 					(unit 1)
 				)

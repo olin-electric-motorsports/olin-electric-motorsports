@@ -2382,6 +2382,108 @@
 				)
 			)
 		)
+		(symbol "OEM:CONN_MountingHole"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_MountingHole"
+				(at 0 4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:PCIe_Mount"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole with connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*Pad*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CONN_MountingHole_0_1"
+				(circle
+					(center 0 1.27)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_MountingHole_1_1"
+				(pin input line
+					(at 0 -2.54 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "OEM:Crystal_16MHz_18pF"
 			(pin_names
 				(offset 1.016) hide)
@@ -5790,6 +5892,10 @@
 		(uuid "2d889bc9-f50e-4171-aa3d-13025806edcc")
 	)
 	(no_connect
+		(at 196.85 151.13)
+		(uuid "54d4bcc3-dacf-4bfc-bd35-15038a0f66f4")
+	)
+	(no_connect
 		(at 41.91 53.34)
 		(uuid "660c43b1-112c-4aa1-b1dc-8f71909aa490")
 	)
@@ -9047,7 +9153,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "5019"
+		(property "MPN" "5010"
 			(at 209.55 158.75 0)
 			(effects
 				(font
@@ -10827,6 +10933,73 @@
 			(project "bms_core"
 				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
 					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:CONN_MountingHole")
+		(at 196.85 148.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5e72a1cd-529a-486b-8d2d-619c54aa4904")
+		(property "Reference" "H2"
+			(at 199.39 146.0499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_MountingHole"
+			(at 199.39 148.5899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:PCIe_Mount"
+			(at 196.85 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 196.85 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 196.85 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c4fc7219-3f39-4f26-a9b4-8c677cc4c8fb")
+		)
+		(instances
+			(project ""
+				(path "/19b2a9f9-0be6-4bde-80c5-cbc5126d55d5"
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -13972,7 +14145,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "5019"
+		(property "MPN" "5010"
 			(at 209.55 153.67 0)
 			(effects
 				(font
