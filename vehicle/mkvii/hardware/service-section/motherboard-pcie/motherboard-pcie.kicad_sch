@@ -2689,8 +2689,16 @@
 		(uuid "cd30cd8b-99f5-484c-8c93-889dd9a90b07")
 	)
 	(no_connect
+		(at 109.22 152.4)
+		(uuid "01f87225-e1f0-4bab-b7c2-c24ffbb6e17e")
+	)
+	(no_connect
 		(at 68.58 78.74)
 		(uuid "02039986-2b16-4eda-9ddc-77c5b03b6104")
+	)
+	(no_connect
+		(at 68.58 152.4)
+		(uuid "0341333d-09dc-4173-ad27-75dab04600af")
 	)
 	(no_connect
 		(at 66.04 99.06)
@@ -2701,12 +2709,12 @@
 		(uuid "4c3d20a0-bb99-4bf0-9c88-db10d6e21f2b")
 	)
 	(no_connect
-		(at 139.7 78.74)
-		(uuid "88e6ae57-9ba2-4ea0-85b4-2d0c08a57d22")
+		(at 121.92 157.48)
+		(uuid "7f6533c0-4c3b-4929-95fc-be773f0533ac")
 	)
 	(no_connect
-		(at 68.58 142.24)
-		(uuid "9400a650-d90c-4b94-a86a-7cb7fa95ed23")
+		(at 139.7 78.74)
+		(uuid "88e6ae57-9ba2-4ea0-85b4-2d0c08a57d22")
 	)
 	(no_connect
 		(at 68.58 73.66)
@@ -2741,6 +2749,16 @@
 			(color 142 55 255 1)
 		)
 		(uuid "05ec7f5c-744c-44ba-a66e-a7e023ab8766")
+	)
+	(wire
+		(pts
+			(xy 121.92 152.4) (xy 124.46 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06bff753-18e1-4f72-aabc-fbfbfa8d87e3")
 	)
 	(wire
 		(pts
@@ -2839,7 +2857,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 129.54) (xy 132.08 144.78)
+			(xy 128.27 134.62) (xy 128.27 144.78)
 		)
 		(stroke
 			(width 0.2)
@@ -2903,7 +2921,7 @@
 	)
 	(wire
 		(pts
-			(xy 106.68 144.78) (xy 111.76 144.78)
+			(xy 102.87 129.54) (xy 115.57 129.54)
 		)
 		(stroke
 			(width 0.2)
@@ -2911,17 +2929,6 @@
 			(color 142 55 255 1)
 		)
 		(uuid "63418859-ff80-43b1-8ca8-5e470ed4435a")
-	)
-	(wire
-		(pts
-			(xy 111.76 124.46) (xy 119.38 124.46)
-		)
-		(stroke
-			(width 0.2)
-			(type default)
-			(color 142 55 255 1)
-		)
-		(uuid "6660a58e-644a-453b-a416-14be7bf1ccb6")
 	)
 	(wire
 		(pts
@@ -2943,17 +2950,6 @@
 			(color 142 55 255 1)
 		)
 		(uuid "6988bfb4-fbf9-45c4-9bdd-dae419815808")
-	)
-	(wire
-		(pts
-			(xy 111.76 144.78) (xy 111.76 124.46)
-		)
-		(stroke
-			(width 0.2)
-			(type default)
-			(color 142 55 255 1)
-		)
-		(uuid "760b304a-33a8-43d3-ba06-0f07ee2773f5")
 	)
 	(wire
 		(pts
@@ -3000,7 +2996,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 144.78) (xy 104.14 144.78)
+			(xy 68.58 129.54) (xy 100.33 129.54)
 		)
 		(stroke
 			(width 0.2)
@@ -3064,7 +3060,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 124.46) (xy 134.62 124.46)
+			(xy 128.27 129.54) (xy 130.81 129.54)
 		)
 		(stroke
 			(width 0)
@@ -3221,7 +3217,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 144.78) (xy 137.16 144.78)
+			(xy 128.27 144.78) (xy 137.16 144.78)
 		)
 		(stroke
 			(width 0.2)
@@ -3413,7 +3409,7 @@
 		(uuid "d744a04c-f155-4449-ae28-09ba7dcbfced")
 	)
 	(label "SHDN_SENSE_HVD"
-		(at 110.49 144.78 270)
+		(at 107.95 129.54 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3516,7 +3512,7 @@
 		(uuid "1e196a5b-ccf9-459f-b732-3dd78f2f7f8e")
 	)
 	(label "FAN_PWM"
-		(at 68.58 124.46 0)
+		(at 68.58 119.38 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3676,7 +3672,7 @@
 		(uuid "5f66ed9d-3d0b-4c72-80ad-929130919592")
 	)
 	(label "CAN+"
-		(at 132.08 127 0)
+		(at 128.27 132.08 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3687,7 +3683,7 @@
 		(uuid "60cd0150-d2ba-47a8-8391-e50d0c016a31")
 	)
 	(label "HV_BAT_+"
-		(at 353.06 106.68 180)
+		(at 353.06 107.95 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3732,8 +3728,19 @@
 		)
 		(uuid "6c7b2522-b030-4f91-ad82-bad370759014")
 	)
+	(label "GND"
+		(at 109.22 154.94 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "70b776b2-3be2-4c55-a721-4ca600b180cf")
+	)
 	(label "GLV+"
-		(at 68.58 119.38 0)
+		(at 68.58 132.08 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3801,7 +3808,7 @@
 		(uuid "7c720303-cd32-4220-8316-6c37a5f2ec77")
 	)
 	(label "GND"
-		(at 68.58 127 0)
+		(at 68.58 144.78 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3836,7 +3843,29 @@
 		(uuid "7ebd8db0-8c79-4e2d-83da-398acfdafbcd")
 	)
 	(label "CAN-"
-		(at 68.58 132.08 0)
+		(at 109.22 157.48 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "81f0ce92-36eb-4073-91c2-e5ebe3a1a40f")
+	)
+	(label "CAN+"
+		(at 121.92 154.94 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "86a88c73-5221-4fc9-8e75-8e9a0a9f31f9")
+	)
+	(label "CAN-"
+		(at 68.58 124.46 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3882,7 +3911,7 @@
 		(uuid "92cad372-31a4-41f4-ab06-d25b2ef8c943")
 	)
 	(label "SHDN_IN"
-		(at 68.58 144.78 0)
+		(at 68.58 129.54 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3894,7 +3923,7 @@
 		(uuid "98a7eeb1-9d4f-4ce9-9ab8-25bc441c7ec2")
 	)
 	(label "HV_BAT_+"
-		(at 68.58 66.04 0)
+		(at 68.58 81.28 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3929,7 +3958,7 @@
 		(uuid "9f5415c2-59ce-4322-8203-275ec999dcf4")
 	)
 	(label "GND"
-		(at 119.38 127 180)
+		(at 115.57 132.08 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4181,7 +4210,7 @@
 		(uuid "ef13e2bb-8b29-438e-bafd-356220c7ff8d")
 	)
 	(label "TSAL_RED-"
-		(at 68.58 152.4 0)
+		(at 68.58 142.24 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4203,7 +4232,7 @@
 		(uuid "f530a1e3-6898-42e3-9c5f-4f6bb3d5859e")
 	)
 	(label "HV_AIL_-"
-		(at 68.58 81.28 0)
+		(at 68.58 66.04 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4226,7 +4255,7 @@
 		(uuid "fd471cbd-90b4-4323-9e61-980450aad464")
 	)
 	(label "CAN+"
-		(at 68.58 129.54 0)
+		(at 68.58 127 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4237,7 +4266,7 @@
 		(uuid "ff60ac1d-8379-4c60-89a9-824310ce7f30")
 	)
 	(label "CAN-"
-		(at 119.38 129.54 180)
+		(at 115.57 134.62 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4921,6 +4950,72 @@
 			(project "motherboard-pcie"
 				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
 					(reference "TP106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 124.46 152.4 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "444946b0-5f69-4722-aec7-3daf8c6aff40")
+		(property "Reference" "#PWR0118"
+			(at 124.46 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 124.46 147.955 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 124.46 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77926c52-1a46-4ccf-8f31-4328485ee1cd")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
+					(reference "#PWR0118")
 					(unit 1)
 				)
 			)
@@ -6427,7 +6522,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 134.62 124.46 0)
+		(at 130.81 129.54 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6436,7 +6531,7 @@
 		(dnp no)
 		(uuid "8b647f80-ac46-4883-97ef-f2f3f5f7ede2")
 		(property "Reference" "#PWR0105"
-			(at 134.62 128.27 0)
+			(at 130.81 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6445,7 +6540,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 134.62 120.015 0)
+			(at 130.81 125.095 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6453,7 +6548,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 134.62 124.46 0)
+			(at 130.81 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6462,7 +6557,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 124.46 0)
+			(at 130.81 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6471,7 +6566,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 134.62 124.46 0)
+			(at 130.81 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7031,6 +7126,86 @@
 			(project "motherboard-pcie"
 				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
 					(reference "TP111")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
+		(at 116.84 154.94 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9ff374cb-8e4e-4d8a-a7e0-8950665a026e")
+		(property "Reference" "J113"
+			(at 115.824 163.576 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GMETER Connector"
+			(at 115.824 161.036 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43045-0612_2x03_P3.00mm_Vertical"
+			(at 116.84 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 116.84 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 116.84 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "cfbd70c5-32ab-43ee-8281-ad37a34e4a01")
+		)
+		(pin "6"
+			(uuid "644b60a2-0fee-494d-8eab-c84185675532")
+		)
+		(pin "5"
+			(uuid "44655fc3-d24e-4ee9-9035-b39153547b8b")
+		)
+		(pin "3"
+			(uuid "2b0b4d59-5d07-4300-9978-2597da0f9cba")
+		)
+		(pin "2"
+			(uuid "776a2a9f-05b9-4d63-89d3-d14a5c297f37")
+		)
+		(pin "1"
+			(uuid "9bc5bd9f-70d1-4c96-99cd-8da863b6a550")
+		)
+		(instances
+			(project "motherboard-pcie"
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
+					(reference "J113")
 					(unit 1)
 				)
 			)
@@ -7775,7 +7950,7 @@
 	)
 	(symbol
 		(lib_id "formula:MicroFit_V_2")
-		(at 105.41 138.43 270)
+		(at 101.6 123.19 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7783,7 +7958,7 @@
 		(dnp no)
 		(uuid "c3a3a200-9dcf-484e-a790-e24f2c9804a2")
 		(property "Reference" "J105"
-			(at 105.41 131.445 90)
+			(at 101.6 116.205 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7791,7 +7966,7 @@
 			)
 		)
 		(property "Value" "SS HVD"
-			(at 108.585 133.35 90)
+			(at 104.775 118.11 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7800,7 +7975,7 @@
 			)
 		)
 		(property "Footprint" "footprints:MicroFit_V_2"
-			(at 110.49 137.16 0)
+			(at 106.68 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7809,7 +7984,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.molex.com/pdm_docs/sd/430450225_sd.pdf"
-			(at 110.49 137.16 0)
+			(at 106.68 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7818,7 +7993,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 138.43 0)
+			(at 101.6 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7827,7 +8002,7 @@
 			)
 		)
 		(property "DK" "MFN"
-			(at 111.76 140.97 0)
+			(at 107.95 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7836,7 +8011,7 @@
 			)
 		)
 		(property "MPN" "WM10660-ND"
-			(at 114.3 143.51 0)
+			(at 110.49 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7845,7 +8020,7 @@
 			)
 		)
 		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180"
-			(at 109.22 138.43 0)
+			(at 105.41 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8384,7 +8559,7 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
-		(at 127 127 0)
+		(at 123.19 132.08 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8393,7 +8568,7 @@
 		(dnp no)
 		(uuid "ec3d3086-d33a-498c-b52f-020d4260db21")
 		(property "Reference" "J107"
-			(at 125.73 119.38 0)
+			(at 121.92 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8401,7 +8576,7 @@
 			)
 		)
 		(property "Value" "EMETER Connector"
-			(at 125.73 116.84 0)
+			(at 121.92 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8409,7 +8584,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43045-0612_2x03_P3.00mm_Vertical"
-			(at 127 127 0)
+			(at 123.19 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8418,7 +8593,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 127 127 0)
+			(at 123.19 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8427,7 +8602,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 127 127 0)
+			(at 123.19 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
