@@ -2697,16 +2697,16 @@
 		(uuid "02039986-2b16-4eda-9ddc-77c5b03b6104")
 	)
 	(no_connect
-		(at 68.58 137.16)
-		(uuid "0341333d-09dc-4173-ad27-75dab04600af")
-	)
-	(no_connect
 		(at 66.04 99.06)
 		(uuid "29b51b8a-e0fe-49b2-b6b7-8978d694729d")
 	)
 	(no_connect
 		(at 66.04 177.8)
 		(uuid "4c3d20a0-bb99-4bf0-9c88-db10d6e21f2b")
+	)
+	(no_connect
+		(at 68.58 144.78)
+		(uuid "78ae632c-975e-41e2-a9bf-250058def717")
 	)
 	(no_connect
 		(at 110.49 125.73)
@@ -2738,17 +2738,6 @@
 			(color 255 95 0 1)
 		)
 		(uuid "01b2d584-e130-4b35-adfd-81f0b45aa638")
-	)
-	(wire
-		(pts
-			(xy 101.6 119.38) (xy 101.6 149.86)
-		)
-		(stroke
-			(width 0.2)
-			(type default)
-			(color 142 55 255 1)
-		)
-		(uuid "05e99bcd-3183-462c-92f3-bbddf26426e7")
 	)
 	(wire
 		(pts
@@ -2942,6 +2931,17 @@
 	)
 	(wire
 		(pts
+			(xy 100.33 115.57) (xy 100.33 149.86)
+		)
+		(stroke
+			(width 0.2)
+			(type default)
+			(color 142 55 255 1)
+		)
+		(uuid "78143254-e4c4-4656-868a-addfd13703cb")
+	)
+	(wire
+		(pts
 			(xy 283.21 208.28) (xy 283.21 203.2)
 		)
 		(stroke
@@ -3080,7 +3080,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 149.86) (xy 110.49 149.86)
+			(xy 100.33 149.86) (xy 110.49 149.86)
 		)
 		(stroke
 			(width 0.2)
@@ -3088,6 +3088,17 @@
 			(color 142 55 255 1)
 		)
 		(uuid "bd53e3d5-6618-4ce0-bc27-ae92d49be5ea")
+	)
+	(wire
+		(pts
+			(xy 97.79 115.57) (xy 97.79 127)
+		)
+		(stroke
+			(width 0.2)
+			(type default)
+			(color 142 55 255 1)
+		)
+		(uuid "c06a2c22-5c7d-460c-8a57-59ba81829b6b")
 	)
 	(wire
 		(pts
@@ -3217,14 +3228,14 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 119.38) (xy 99.06 119.38)
+			(xy 97.79 127) (xy 68.58 127)
 		)
 		(stroke
 			(width 0.2)
 			(type default)
 			(color 142 55 255 1)
 		)
-		(uuid "efc193af-82c3-4aac-8ddf-5475bb8877b4")
+		(uuid "edcb13a7-ca9b-427c-a7df-93b5811a61f1")
 	)
 	(wire
 		(pts
@@ -3298,7 +3309,7 @@
 	)
 	(text "Shutdown Out"
 		(exclude_from_sim no)
-		(at 83.82 144.78 0)
+		(at 83.82 132.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3320,7 +3331,7 @@
 	)
 	(text "Shutdown In"
 		(exclude_from_sim no)
-		(at 83.82 149.86 0)
+		(at 82.042 129.54 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3409,14 +3420,14 @@
 		(uuid "d744a04c-f155-4449-ae28-09ba7dcbfced")
 	)
 	(label "SHDN_SENSE_HVD"
-		(at 101.6 127 180)
+		(at 100.33 149.86 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(color 142 55 255 1)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "03941cc5-ad6a-4003-884e-aeca1f80b27f")
 	)
@@ -3454,7 +3465,7 @@
 		(uuid "176b3843-9a92-4167-9a57-1a9a76213dd0")
 	)
 	(label "BSPD_CURRENT_THRESH"
-		(at 68.58 152.4 0)
+		(at 68.58 134.62 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3512,7 +3523,7 @@
 		(uuid "1e196a5b-ccf9-459f-b732-3dd78f2f7f8e")
 	)
 	(label "FAN_PWM"
-		(at 68.58 129.54 0)
+		(at 68.58 119.38 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3603,7 +3614,7 @@
 		(uuid "36672f66-ccfe-4a2b-a955-3475017ae534")
 	)
 	(label "GND"
-		(at 68.58 134.62 0)
+		(at 68.58 152.4 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3740,7 +3751,7 @@
 		(uuid "70b776b2-3be2-4c55-a721-4ca600b180cf")
 	)
 	(label "GLV+"
-		(at 68.58 132.08 0)
+		(at 68.58 139.7 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3831,7 +3842,7 @@
 		(uuid "7e9d97a7-e6d0-45f5-bdde-c38e58029406")
 	)
 	(label "SHDN_TO_TSMS"
-		(at 68.58 144.78 0)
+		(at 68.58 132.08 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3911,7 +3922,7 @@
 		(uuid "92cad372-31a4-41f4-ab06-d25b2ef8c943")
 	)
 	(label "SHDN_IN"
-		(at 68.58 119.38 0)
+		(at 68.58 127 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3923,7 +3934,7 @@
 		(uuid "98a7eeb1-9d4f-4ce9-9ab8-25bc441c7ec2")
 	)
 	(label "HV_BAT_+"
-		(at 68.58 81.28 0)
+		(at 68.58 66.04 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3969,7 +3980,7 @@
 		(uuid "acc3d59b-2321-45b8-b750-1730d29cb8d3")
 	)
 	(label "GND"
-		(at 68.58 139.7 0)
+		(at 68.58 149.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4094,7 +4105,7 @@
 		(uuid "cc81370e-4a6f-49f3-8a28-5473f2d302dc")
 	)
 	(label "FINAL_SHDN"
-		(at 68.58 149.86 0)
+		(at 68.58 129.54 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4141,7 +4152,7 @@
 		(uuid "d51bf8c0-f43d-4ca8-8626-23e487e574c2")
 	)
 	(label "GND"
-		(at 68.58 121.92 0)
+		(at 68.58 137.16 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4232,7 +4243,7 @@
 		(uuid "f530a1e3-6898-42e3-9c5f-4f6bb3d5859e")
 	)
 	(label "HV_AIL_-"
-		(at 68.58 66.04 0)
+		(at 68.58 81.28 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4255,7 +4266,7 @@
 		(uuid "fd471cbd-90b4-4323-9e61-980450aad464")
 	)
 	(label "CAN+"
-		(at 68.58 127 0)
+		(at 68.58 121.92 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7949,7 +7960,7 @@
 	)
 	(symbol
 		(lib_id "formula:MicroFit_V_2")
-		(at 100.33 113.03 270)
+		(at 99.06 109.22 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7957,7 +7968,7 @@
 		(dnp no)
 		(uuid "c3a3a200-9dcf-484e-a790-e24f2c9804a2")
 		(property "Reference" "J105"
-			(at 100.33 106.045 90)
+			(at 99.06 102.235 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7965,7 +7976,7 @@
 			)
 		)
 		(property "Value" "SS HVD"
-			(at 103.505 107.95 90)
+			(at 102.235 104.14 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7974,7 +7985,7 @@
 			)
 		)
 		(property "Footprint" "footprints:MicroFit_V_2"
-			(at 105.41 111.76 0)
+			(at 104.14 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7983,7 +7994,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.molex.com/pdm_docs/sd/430450225_sd.pdf"
-			(at 105.41 111.76 0)
+			(at 104.14 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7992,7 +8003,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 100.33 113.03 0)
+			(at 99.06 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8001,7 +8012,7 @@
 			)
 		)
 		(property "DK" "MFN"
-			(at 106.68 115.57 0)
+			(at 105.41 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8010,7 +8021,7 @@
 			)
 		)
 		(property "MPN" "WM10660-ND"
-			(at 109.22 118.11 0)
+			(at 107.95 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8019,7 +8030,7 @@
 			)
 		)
 		(property "PurchasingLink" "https://www.digikey.com/product-detail/en/molex/0430450225/WM10660-ND/3310180"
-			(at 104.14 113.03 0)
+			(at 102.87 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)

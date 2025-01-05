@@ -300,205 +300,6 @@
 				)
 			)
 		)
-		(symbol "OEM:470pF"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "470pF"
-				(at 0.635 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "OEM:C_0603"
-				(at 0.9652 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://www.passivecomponent.com/wp-content/uploads/datasheet/WTC_MLCC_General_Purpose.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Unpolarized capacitor 470pF 10% 50V X7R 0603"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MPN" "0603B471K500CT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MFN" "Walsin Technology"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "DKPN" "1292-1438-6-ND"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "NewDesigns" "YES"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Stocked" "Digi-Reel"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Package" "0603"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Style" "SMD"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "470pF_0_1"
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "470pF_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "OEM:C_10nF"
 			(pin_numbers hide)
 			(pin_names
@@ -2637,6 +2438,12 @@
 		)
 	)
 	(junction
+		(at 168.91 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "11064a3e-7ad8-41a7-9a0b-2aaed27ac005")
+	)
+	(junction
 		(at 219.71 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2671,12 +2478,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a2766fb7-aed5-4968-af7c-6646ea577210")
-	)
-	(junction
-		(at 168.91 90.17)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a74736b9-b14e-48a0-a70b-cf9bc669034c")
 	)
 	(junction
 		(at 168.91 105.41)
@@ -2808,6 +2609,16 @@
 	)
 	(wire
 		(pts
+			(xy 185.42 101.6) (xy 185.42 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19a33285-775b-44d0-9348-a61e97571b89")
+	)
+	(wire
+		(pts
 			(xy 147.32 90.17) (xy 147.32 86.36)
 		)
 		(stroke
@@ -2868,16 +2679,6 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 86.36) (xy 168.91 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2cdde766-8473-40c1-b4ca-eb65d259aafe")
-	)
-	(wire
-		(pts
 			(xy 223.52 99.06) (xy 223.52 101.6)
 		)
 		(stroke
@@ -2908,16 +2709,6 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 93.98) (xy 168.91 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4e2f9716-87c6-4f00-a6fb-b18a398e64b1")
-	)
-	(wire
-		(pts
 			(xy 157.48 110.49) (xy 168.91 110.49)
 		)
 		(stroke
@@ -2935,6 +2726,16 @@
 			(type default)
 		)
 		(uuid "577ad22a-8c22-4fa8-9ed5-5a0e993c3c13")
+	)
+	(wire
+		(pts
+			(xy 185.42 91.44) (xy 185.42 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59955929-f34f-4cd1-bf6b-0dd0649d60c8")
 	)
 	(wire
 		(pts
@@ -2988,6 +2789,16 @@
 	)
 	(wire
 		(pts
+			(xy 168.91 91.44) (xy 168.91 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73bf5204-a42d-421b-9ee6-66ca7ff45efa")
+	)
+	(wire
+		(pts
 			(xy 223.52 91.44) (xy 223.52 88.9)
 		)
 		(stroke
@@ -2995,6 +2806,16 @@
 			(type default)
 		)
 		(uuid "77364007-159b-41e9-85f1-b6b5f404a7e5")
+	)
+	(wire
+		(pts
+			(xy 168.91 86.36) (xy 168.91 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a061205-5f62-41d8-a737-63844e0a292d")
 	)
 	(wire
 		(pts
@@ -3098,7 +2919,7 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 90.17) (xy 185.42 90.17)
+			(xy 168.91 91.44) (xy 185.42 91.44)
 		)
 		(stroke
 			(width 0)
@@ -3306,7 +3127,7 @@
 		)
 		(uuid "fc7039cf-023d-462e-a27d-f9c125accd17")
 	)
-	(text "C_FF = 82.456pF"
+	(text "Populating with an 82pF"
 		(exclude_from_sim no)
 		(at 190.754 107.95 0)
 		(effects
@@ -4159,139 +3980,6 @@
 		)
 	)
 	(symbol
-		(lib_id "OEM:470pF")
-		(at 185.42 101.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "56cd333b-7f0b-4051-be0c-4dd12bc0dcc7")
-		(property "Reference" "C605"
-			(at 189.23 100.3299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "470pF"
-			(at 189.23 102.8699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:C_0603"
-			(at 186.3852 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.passivecomponent.com/wp-content/uploads/datasheet/WTC_MLCC_General_Purpose.pdf"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor 470pF 10% 50V X7R 0603"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "0603B471K500CT"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "Walsin Technology"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DKPN" "1292-1438-6-ND"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "NewDesigns" "YES"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stocked" "Digi-Reel"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0603"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Style" "SMD"
-			(at 185.42 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d2455366-f8e6-4912-b9ee-0378d3e2247c")
-		)
-		(pin "2"
-			(uuid "b2c4fb4c-3081-4f28-8555-9996c94f0b1e")
-		)
-		(instances
-			(project ""
-				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb/49f65041-3556-467e-8e61-372347630a95"
-					(reference "C605")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "OEM:L_15uH")
 		(at 162.56 86.36 90)
 		(unit 1)
@@ -4490,7 +4178,7 @@
 	)
 	(symbol
 		(lib_id "OEM:100pF")
-		(at 185.42 93.98 0)
+		(at 185.42 97.79 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4499,7 +4187,7 @@
 		(fields_autoplaced yes)
 		(uuid "83108aeb-4aa7-4cfb-9792-91fd69cc838d")
 		(property "Reference" "C604"
-			(at 189.23 92.7099 0)
+			(at 189.23 96.5199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4507,8 +4195,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100pF"
-			(at 189.23 95.2499 0)
+		(property "Value" "82pF"
+			(at 189.23 99.0599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4517,7 +4205,7 @@
 			)
 		)
 		(property "Footprint" "OEM:C_0603"
-			(at 186.3852 97.79 0)
+			(at 186.3852 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4526,7 +4214,7 @@
 			)
 		)
 		(property "Datasheet" "${OEM_DIR}/parts/datasheets"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4535,7 +4223,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor 100pf 1% 100V  0603 C0G/NP0"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4544,7 +4232,7 @@
 			)
 		)
 		(property "MPN" "0603N101F101CT"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4553,7 +4241,7 @@
 			)
 		)
 		(property "MFN" "Walsin Technology"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4562,7 +4250,7 @@
 			)
 		)
 		(property "DKPN" "1292-1472-6-ND"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4571,7 +4259,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4580,7 +4268,7 @@
 			)
 		)
 		(property "Stocked" "Digi-Reel"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4589,7 +4277,7 @@
 			)
 		)
 		(property "Package" "0603"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4598,7 +4286,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 185.42 93.98 0)
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
