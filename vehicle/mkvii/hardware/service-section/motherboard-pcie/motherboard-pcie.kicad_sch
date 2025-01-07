@@ -267,6 +267,190 @@
 				)
 			)
 		)
+		(symbol "OEM:1KR"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1KR"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OEM:R_0603"
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor 1K ohm 0603 1/10W 1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "RMCF0603FT1K00"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "DKPN" "RMCF0603FT1K00TR-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MFN" "Stackpole Electronics"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "NewDesigns" "YES"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Stocked" "Reel"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Package" "0603"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Style" "SMD"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor "
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1KR_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "1KR_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "OEM:330R"
 			(pin_numbers hide)
 			(pin_names
@@ -1249,145 +1433,6 @@
 					(at 6.35 -1.27 180)
 					(length 2.54)
 					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "formula:R_1K"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "R"
-				(at 2.032 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "R_1K"
-				(at -2.54 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "footprints:R_0805_OEM"
-				(at -1.778 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf"
-				(at 2.032 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Resistor, 1K, 0.25W, 1%, 0805"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MFN" "DK"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "MPN" "RNCP0805FTD1K00CT-ND"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND"
-				(at 12.192 10.16 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "R_* Resistor_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "R_1K_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "R_1K_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2705,7 +2750,7 @@
 		(uuid "4c3d20a0-bb99-4bf0-9c88-db10d6e21f2b")
 	)
 	(no_connect
-		(at 68.58 144.78)
+		(at 68.58 139.7)
 		(uuid "78ae632c-975e-41e2-a9bf-250058def717")
 	)
 	(no_connect
@@ -3751,7 +3796,7 @@
 		(uuid "70b776b2-3be2-4c55-a721-4ca600b180cf")
 	)
 	(label "GLV+"
-		(at 68.58 139.7 0)
+		(at 68.58 144.78 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6306,7 +6351,7 @@
 	)
 	(symbol
 		(lib_id "OEM:330R")
-		(at 163.83 210.82 90)
+		(at 151.13 210.82 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6314,7 +6359,7 @@
 		(dnp no)
 		(uuid "7f35c3fa-fc61-4e68-9948-646493190946")
 		(property "Reference" "R102"
-			(at 166.37 207.645 90)
+			(at 153.67 207.645 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6323,7 +6368,7 @@
 			)
 		)
 		(property "Value" "330R"
-			(at 166.37 205.105 90)
+			(at 153.67 205.105 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6332,7 +6377,7 @@
 			)
 		)
 		(property "Footprint" "OEM:R_0603"
-			(at 163.83 212.598 90)
+			(at 151.13 212.598 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6341,7 +6386,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.passivecomponent.com/wp-content/uploads/chipR/ASC_WR.pdf"
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6350,7 +6395,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6359,7 +6404,7 @@
 			)
 		)
 		(property "MPN" "WR06X3300FTL"
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6368,7 +6413,7 @@
 			)
 		)
 		(property "DKPN" "1292-WR06X3300FTLDKR-ND"
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6377,7 +6422,7 @@
 			)
 		)
 		(property "MFN" "Walsin"
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6386,7 +6431,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6395,7 +6440,7 @@
 			)
 		)
 		(property "Stocked" "Digi-Reel"
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6404,7 +6449,7 @@
 			)
 		)
 		(property "Package" "0603"
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6413,7 +6458,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 163.83 210.82 0)
+			(at 151.13 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6921,7 +6966,7 @@
 	)
 	(symbol
 		(lib_id "formula:LED_0805")
-		(at 110.49 210.82 180)
+		(at 123.19 210.82 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6929,7 +6974,7 @@
 		(dnp no)
 		(uuid "9d2089a7-e01b-4901-bc56-bc84163f98b4")
 		(property "Reference" "D101"
-			(at 106.68 207.645 0)
+			(at 119.38 207.645 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6938,7 +6983,7 @@
 			)
 		)
 		(property "Value" "LED_0805"
-			(at 106.68 205.105 0)
+			(at 119.38 205.105 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6947,7 +6992,7 @@
 			)
 		)
 		(property "Footprint" "footprints:LED_0805_OEM"
-			(at 113.03 210.82 0)
+			(at 125.73 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6956,7 +7001,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
-			(at 110.49 213.36 0)
+			(at 123.19 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6965,7 +7010,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 110.49 210.82 0)
+			(at 123.19 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6974,7 +7019,7 @@
 			)
 		)
 		(property "MFN" "DK"
-			(at 110.49 210.82 0)
+			(at 123.19 210.82 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -6983,7 +7028,7 @@
 			)
 		)
 		(property "MPN" "475-1410-1-ND"
-			(at 110.49 210.82 0)
+			(at 123.19 210.82 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -6992,7 +7037,7 @@
 			)
 		)
 		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
-			(at 100.33 223.52 0)
+			(at 113.03 223.52 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -7222,104 +7267,8 @@
 		)
 	)
 	(symbol
-		(lib_id "formula:R_1K")
-		(at 123.19 210.82 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a3d8c764-511e-4f86-a2e0-db3e7cf7a15e")
-		(property "Reference" "R101"
-			(at 125.73 207.645 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "R_1K"
-			(at 125.73 205.105 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "footprints:R_0805_OEM"
-			(at 123.19 212.598 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.seielect.com/Catalog/SEI-rncp.pdf"
-			(at 123.19 208.788 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 123.19 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MFN" "DK"
-			(at 123.19 210.82 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RNCP0805FTD1K00CT-ND"
-			(at 123.19 210.82 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=RNCP0805FTD1K00CT-ND"
-			(at 113.03 198.628 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "dbd2e35a-8b68-457c-9589-1fa33d8c74fb")
-		)
-		(pin "1"
-			(uuid "d6ed9bc9-adad-465e-9f3d-fd909c2146d5")
-		)
-		(instances
-			(project "motherboard-pcie"
-				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
-					(reference "R101")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "formula:LED_0805")
-		(at 151.13 210.82 180)
+		(at 163.83 210.82 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7327,7 +7276,7 @@
 		(dnp no)
 		(uuid "a6840738-7ed6-4b6c-9e6a-a656e9a7c928")
 		(property "Reference" "D102"
-			(at 147.32 207.645 0)
+			(at 160.02 207.645 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7336,7 +7285,7 @@
 			)
 		)
 		(property "Value" "LED_0805"
-			(at 147.32 205.105 0)
+			(at 160.02 205.105 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7345,7 +7294,7 @@
 			)
 		)
 		(property "Footprint" "footprints:LED_0805_OEM"
-			(at 153.67 210.82 0)
+			(at 166.37 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7354,7 +7303,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic9/00078860_0.pdf"
-			(at 151.13 213.36 0)
+			(at 163.83 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7363,7 +7312,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 151.13 210.82 0)
+			(at 163.83 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7372,7 +7321,7 @@
 			)
 		)
 		(property "MFN" "DK"
-			(at 151.13 210.82 0)
+			(at 163.83 210.82 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -7381,7 +7330,7 @@
 			)
 		)
 		(property "MPN" "475-1410-1-ND"
-			(at 151.13 210.82 0)
+			(at 163.83 210.82 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -7390,7 +7339,7 @@
 			)
 		)
 		(property "PurchasingLink" "https://www.digikey.com/products/en?keywords=475-1410-1-ND"
-			(at 140.97 223.52 0)
+			(at 153.67 223.52 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -7408,6 +7357,137 @@
 			(project "motherboard-pcie"
 				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
 					(reference "D102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:1KR")
+		(at 110.49 210.82 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a948cdeb-eab7-44bf-84d5-abe5b4295c87")
+		(property "Reference" "R101"
+			(at 110.49 204.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1KR"
+			(at 110.49 207.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:R_0603"
+			(at 110.49 212.598 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor 1K ohm 0603 1/10W 1%"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0603FT1K00"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "RMCF0603FT1K00TR-ND"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Stackpole Electronics"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 110.49 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "34ca0b58-0a89-4ded-a3f6-481f18ccb0e4")
+		)
+		(pin "2"
+			(uuid "3b3db046-1803-4663-a6a9-5b47597fc4c8")
+		)
+		(instances
+			(project ""
+				(path "/8f26d479-2c33-489f-a4df-6bb31c904ceb"
+					(reference "R101")
 					(unit 1)
 				)
 			)
