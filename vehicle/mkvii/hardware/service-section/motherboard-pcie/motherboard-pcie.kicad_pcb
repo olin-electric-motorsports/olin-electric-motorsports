@@ -3083,7 +3083,7 @@
 	(footprint "kibuzzard-640B8668"
 		(layer "F.Cu")
 		(uuid "149d9723-c345-496e-bded-27f31d141a4f")
-		(at 240.7666 217.4606)
+		(at 239.4712 216.9922)
 		(descr "Generated with KiBuzzard")
 		(tags "kb_params=eyJBbGlnbm1lbnRDaG9pY2UiOiAiQ2VudGVyIiwgIkNhcExlZnRDaG9pY2UiOiAiKCIsICJDYXBSaWdodENob2ljZSI6ICIpIiwgIkZvbnRDb21ib0JveCI6ICJTcGFjZUdyb3Rlc2stQm9sZCIsICJIZWlnaHRDdHJsIjogIjUiLCAiTGF5ZXJDb21ib0JveCI6ICJGLlNpbGtTIiwgIk11bHRpTGluZVRleHQiOiAiSU1EIExBVENIXG4iLCAiUGFkZGluZ0JvdHRvbUN0cmwiOiAiNSIsICJQYWRkaW5nTGVmdEN0cmwiOiAiIiwgIlBhZGRpbmdSaWdodEN0cmwiOiAiIiwgIlBhZGRpbmdUb3BDdHJsIjogIjUiLCAiV2lkdGhDdHJsIjogIiJ9")
 		(property "Reference" "kibuzzard-640B8668"
@@ -5043,80 +5043,6 @@
 			(rotate
 				(xyz 0 0 0)
 			)
-		)
-	)
-	(footprint ""
-		(layer "F.Cu")
-		(uuid "30886627-a85c-4e50-95a0-4c9e6723a553")
-		(at 315.0108 152.3492)
-		(property "Reference" ""
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(uuid "c9fccc0b-7d46-4ff3-bb2f-1fffdff81570")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(uuid "db8d2235-cd2e-4735-a49f-83216d6f5255")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "863bc459-bc4d-42d6-8f2b-309237656561")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "47b96ab0-05a0-4bf1-8b8d-91f0aaf4ae6d")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "072658d2-c5a4-43ea-ba05-4137754bba72")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(pad "" thru_hole circle
-			(at 0 0)
-			(size 5.499999 5.499999)
-			(drill 3.500001)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(pinfunction "1")
-			(pintype "input")
-			(solder_mask_margin 0.1016)
-			(uuid "ce9a4592-d14c-458b-8ef4-9064f96e776b")
 		)
 	)
 	(footprint "kibuzzard-677E26B0"
@@ -8341,6 +8267,78 @@
 			(solder_mask_margin 0.1016)
 			(zone_connect 2)
 			(uuid "6d8a8579-cefc-411e-94a7-8f4c05d814d1")
+		)
+	)
+	(footprint ""
+		(layer "F.Cu")
+		(uuid "6aeeb064-1595-4994-afa4-90651902e050")
+		(at 315.1124 152.273)
+		(property "Reference" ""
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "082be968-a1ee-4dd3-94d3-16931c8fd417")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "b7099f63-3881-4870-9441-13aa69e2a7e9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "01525482-0271-4742-86c3-7f067eb9f6b1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c6fb655b-ea7d-4d75-b779-608180fa3921")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ee9c840c-4981-46bd-804b-90cae23889d3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" smd circle
+			(at 0 0 270)
+			(size 7.249998 7.249998)
+			(layers "F.Cu" "F.Mask")
+			(pinfunction "1")
+			(pintype "input")
+			(solder_mask_margin 0.1016)
+			(uuid "6cddcb16-4ab8-45b4-b961-28d5545530b5")
 		)
 	)
 	(footprint "footprints:MicroFit_VT_7"
