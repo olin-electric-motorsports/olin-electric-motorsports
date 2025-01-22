@@ -1,4 +1,3 @@
-load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 load("//projects/btldr:ecus.bzl", "ECUS")
@@ -347,16 +346,16 @@ def cc_firmware(name, **kwargs):
     )
 
     # Generates tarball file with all
-    pkg_tar(
-        name = "{}.tgz".format(name),
-        extension = "tgz",
-        srcs = [
-            ":{}.elf".format(name),
-            ":{}.hex".format(name),
-            ":{}.bin".format(name),
-            ":{}.eep".format(name),
-        ],
-    )
+    # pkg_tar(
+    #     name = "{}.tgz".format(name),
+    #     extension = "tgz",
+    #     srcs = [
+    #         ":{}.elf".format(name),
+    #         ":{}.hex".format(name),
+    #         ":{}.bin".format(name),
+    #         ":{}.eep".format(name),
+    #     ],
+    # )
 
     # Generates flash script
     # Invoke with `bazel run --config=16m1 //path/to:target -- -c usbasp`
@@ -534,20 +533,20 @@ def kicad_hardware(
     if not pcb_file:
         pcb_file = ":{}.kicad_pcb".format(name)
 
-    pkg_tar(
-        name = "{}".format(name),
-        srcs = [
-            ":{}_a_top_pcb.svg".format(name),
-            ":{}_b_bottom_pcb.svg".format(name),
-            ":{}_sch.svg".format(name),
-            ":{}.pdf".format(name),
-            ":{}.csv".format(name),
-            # ":{}.step".format(name),
-        ],
-        extension = "tgz",
-        mode = "0755",
-        tags = ["kicad"],
-    )
+    # pkg_tar(
+    #     name = "{}".format(name),
+    #     srcs = [
+    #         ":{}_a_top_pcb.svg".format(name),
+    #         ":{}_b_bottom_pcb.svg".format(name),
+    #         ":{}_sch.svg".format(name),
+    #         ":{}.pdf".format(name),
+    #         ":{}.csv".format(name),
+    #         # ":{}.step".format(name),
+    #     ],
+    #     extension = "tgz",
+    #     mode = "0755",
+    #     tags = ["kicad"],
+    # )
 
     kibot(
         name = "{}_a_top_pcb.svg".format(name),

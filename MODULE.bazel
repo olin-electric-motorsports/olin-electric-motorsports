@@ -1,0 +1,84 @@
+module(name = "formula")
+
+# External dependencies setup
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# Declare dependencies on Bazel rules and external dependencies
+bazel_dep(name = "rules_python", version = "1.1.0")
+bazel_dep(name = "rules_go", version = "0.52.0")
+bazel_dep(name = "rules_cc", version = "0.1.0")
+bazel_dep(name = "gazelle", version = "0.41.0")
+bazel_dep(name = "protobuf", version = "29.3")
+bazel_dep(name = "buildifier_prebuilt", version = "8.0.0")
+bazel_dep(name = "platforms", version = "0.0.11")
+
+# CMocka (third-party C testing library)
+http_archive(
+    name = "cmocka",
+    build_file = "@//third_party/cmocka:BUILD",
+    sha256 = "f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6",
+    strip_prefix = "cmocka-1.1.5",
+    urls = ["https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz"],
+)
+
+# Cantools (for CAN bus protocols)
+http_archive(
+    name = "cantools_",
+    build_file = "@//third_party/cantools:BUILD",
+    sha256 = "0f240c9e07d08104637d591a2d67a2bad123ce4cf2bc92e48cb2c68595994853",
+    strip_prefix = "cantools-37.0.1-bazel",
+    urls = [
+        "https://github.com/jack-greenberg/cantools/archive/refs/tags/37.0.1-bazel.tar.gz",
+    ],
+)
+
+# Hedron Compile Commands (for Bazel compile command extraction)
+http_archive(
+    name = "hedron_compile_commands",
+    sha256 = "ce5714be202e942ba5f404d1c373a2fbb4b88c66737a924491fbd49afa91d48b",
+    strip_prefix = "bazel-compile-commands-extractor-140666077ab4ca7f10041080e8b55cf641c07d30",
+    url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/140666077ab4ca7f10041080e8b55cf641c07d30.tar.gz",
+)
+
+# Log library (for logging)
+http_archive(
+    name = "log",
+    build_file = "@//third_party/log:BUILD",
+    strip_prefix = "log.c-master",
+    url = "https://github.com/rxi/log.c/archive/refs/heads/master.zip",
+)
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+
+pip.parse(
+    hub_name = "cantools_deps",
+    requirements_lock = "//cantools_//:requirements.txt",
+)
+
+pip.parse(
+    hub_name = "pytest_deps",
+    requirements_lock = "//tools/pytest:requirements.txt",
+)
+
+pip.parse(
+    hub_name = "pydeps",
+    requirements_lock = "//third_party:requirements.txt",
+)
+
+pip.parse(
+    hub_name = "symbol_library_converter_deps",
+    requirements_lock = "//tools/symbols:requirements.txt",
+)
+
+pip.parse(
+    hub_name = "bom_join_deps",
+    requirements_lock = "//tools/symbols:requirements.txt",
+)
+
+# Toolchains for AVR (use appropriate platform and CPU)
+register_toolchains("//bazel/toolchain:atmega16m1_toolchain")
+register_toolchains("//bazel/toolchain:atmega64m1_toolchain")
+register_toolchains("//bazel/toolchain:atmega328p_toolchain")
+
+# Register execution platforms (if needed)
+register_execution_platforms("@local_config_platform//:host", "//bazel/platforms:all")

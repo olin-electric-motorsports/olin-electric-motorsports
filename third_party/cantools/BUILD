@@ -1,4 +1,3 @@
-load("@cantools_deps//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_binary", "py_library")
 
 package(
@@ -12,10 +11,10 @@ py_library(
     ),
     tags = ["manual"],  # must be built as @cmocka//:cmocka
     deps = [
-        requirement("bitstruct"),
-        requirement("python-can"),
-        requirement("textparser"),
-        requirement("diskcache"),
+        # "@cantools_deps//:bitstruct",
+        # "@cantools_deps//:diskcache",
+        # "@cantools_deps//:python-can",
+        # "@cantools_deps//:textparser",
     ],
 )
 
@@ -26,6 +25,6 @@ py_binary(
     python_version = "PY3",
     tags = ["manual"],  # must be built as @cmocka//:cmocka
     deps = [
-        ":cantools_lib",
+        # ":cantools_lib",
     ],
 )

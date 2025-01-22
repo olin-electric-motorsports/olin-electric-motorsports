@@ -56,3 +56,8 @@ constraint_value(
     name = "mkvi",
     constraint_setting = ":environment",
 )
+
+constraint_value(
+    name = "mkvii",
+    constraint_setting = ":environment",
+)

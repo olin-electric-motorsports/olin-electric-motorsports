@@ -1,5 +1,71 @@
-load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
+# CMocka
+
+load("@buildifier_prebuilt//:rules.bzl", "buildifier")
 load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
+# load("@rules_python//python:pip.bzl", "pip_install")
+
+# http_archive(
+#     name = "cmocka",
+#     build_file = "@//third_party/cmocka:BUILD",
+#     sha256 = "810570eb0b8d64804331f82b29ff47c790ce9cd6b163e98d47a4807047ecad82",
+#     strip_prefix = "cmocka-1.1.7",
+#     urls = ["https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz"],
+# )
+
+# # CAN tools
+
+# http_archive(
+#     name = "cantools_",
+#     build_file = "@//third_party/cantools:BUILD",
+#     sha256 = "0f240c9e07d08104637d591a2d67a2bad123ce4cf2bc92e48cb2c68595994853",
+#     strip_prefix = "cantools-37.0.1-bazel",
+#     urls = [
+#         "https://github.com/jack-greenberg/cantools/archive/refs/tags/37.0.1-bazel.tar.gz",
+#     ],
+# )
+
+# # Log (C logging library)
+
+# http_archive(
+#     name = "log",
+#     build_file = "@//third_party/log:BUILD",
+#     strip_prefix = "log.c-master",
+#     url = "https://github.com/rxi/log.c/archive/refs/heads/master.zip",
+# )
+
+# http_archive(
+#     name = "hedron_compile_commands",
+#     sha256 = "ce5714be202e942ba5f404d1c373a2fbb4b88c66737a924491fbd49afa91d48b",
+#     strip_prefix = "bazel-compile-commands-extractor-140666077ab4ca7f10041080e8b55cf641c07d30",
+#     url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/140666077ab4ca7f10041080e8b55cf641c07d30.tar.gz",
+# )
+
+# hedron_compile_commands_setup()
+
+# pip_install(
+#     name = "cantools_deps",
+#     requirements = "@cantools_//:requirements.txt",
+# )
+
+# pip_install(
+#     name = "pytest_deps",
+#     requirements = "//tools/pytest:requirements.txt",
+# )
+
+# pip_install(
+#     name = "pydeps",
+#     requirements = "//third_party:requirements.txt",
+# )
+
+# pip_install(
+#     name = "symbol_library_converter_deps",
+#     requirements = "//tools/symbols:requirements.txt",
+# )
+
+# pip_install(
+#     name = "bom_join_deps",
+#     requirements = "//tools/symbols:requirements.txt",
+# )
 
 exports_files([
     ".avrduderc",

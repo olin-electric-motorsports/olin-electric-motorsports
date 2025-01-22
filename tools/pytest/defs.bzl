@@ -1,4 +1,3 @@
-load("@pytest_deps//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_test")
 
 def pytest_test(name, srcs, deps = [], args = [], **kwargs):
@@ -17,7 +16,7 @@ def pytest_test(name, srcs, deps = [], args = [], **kwargs):
         python_version = "PY3",
         srcs_version = "PY3",
         deps = deps + [
-            requirement("pytest"),
+            "@pytest_deps//:pytest",
         ],
         **kwargs
     )
