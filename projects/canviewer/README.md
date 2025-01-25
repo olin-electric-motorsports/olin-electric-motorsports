@@ -17,9 +17,9 @@ It also is fully configurable via YAML.
     - `-d` - the DBC file to be used to decode the CAN messages. This is specified as a file path starting from the root of the monorepo.
         - This has a default value of `vehicle/mkvi/mkvi.dbc` - in other words, if you want to decode messages from MKVI or a MKVI board, you do not need to specify this argument. If you're reading this in future years, feel free to update the default value in a new PR - just be sure to add your DBC as a dependency in the BUILD file for this project.
         - You can check `//vehicle/mkvi/BUILD` to see which DBC/YAML files are included in the master DBC
-    - These arguments would be passed like so for a bustype of seeedstudio and a USB device at /dev/tty/USB0 when plugged into MKVI:
+    - These arguments would be passed like so for a bustype of seeedstudio and a USB device at /dev/ttyUSB0 when plugged into MKVI:
         ```
-        bazel run //projects/canviewer -- -b seeedstudio -c /dev/tty/USB0
+        bazel run //projects/canviewer -- -b seeedstudio -c /dev/ttyUSB0
         ```
         The two dashes signal the end of the arguments to bazel and any remaining ones will be passed to the CAN viewer.
     
