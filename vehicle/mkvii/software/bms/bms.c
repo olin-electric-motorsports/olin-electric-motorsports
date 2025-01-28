@@ -67,8 +67,7 @@ void hw_init() {
 
     pcint0_callback();
 
-    can_receive_charging_fbk();
-
+    // can_receive_charging_fbk();
   
     wakeup_sleep(NUM_ICS);
 
