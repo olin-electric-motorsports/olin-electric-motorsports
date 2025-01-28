@@ -21,11 +21,15 @@ class Window(QWidget):
         self.setProperty("cssClass", "app")
         self.main_layout = QVBoxLayout()
 
+        self.hidden_sections = []  # To track hidden sections
+
         self.tables = self._createTables()
         self.titles = self._createTitles()
+        self.hidden_section_widget = self._createHiddenSectionWidget()
 
         self.main_layout.addLayout(self.titles)
         self.main_layout.addLayout(self.tables)
+        self.main_layout.addWidget(self.hidden_section_widget)
         self.main_layout.addWidget(createLogo())
         self.setLayout(self.main_layout)
 
@@ -35,9 +39,24 @@ class Window(QWidget):
     def _createTitles(self):
         """Create main title as table titles"""
         titles = QHBoxLayout()
-        titles.addWidget(createLabel("Shutdown Nodes", "subtitle"))
-        titles.addWidget(createLabel("Vehicle Values", "subtitle"))
-        titles.addWidget(createLabel("Vehicle States", "subtitle"))
+
+        self.shutdown_title = createLabel("Shutdown Nodes", "subtitle")
+        self.vehicle_values_title = createLabel("Vehicle Values", "subtitle")
+        self.vehicle_states_title = createLabel("Vehicle States", "subtitle")
+
+        # Enable mouse click events
+        self.shutdown_title.setCursor(QtCore.Qt.PointingHandCursor)
+        self.vehicle_values_title.setCursor(QtCore.Qt.PointingHandCursor)
+        self.vehicle_states_title.setCursor(QtCore.Qt.PointingHandCursor)
+
+        # Connect the clicked signal to toggle table visibility
+        self.shutdown_title.mousePressEvent = lambda event: self._toggleVisibility("Shutdown Nodes", self.shutdown_title, self.shdn)
+        self.vehicle_values_title.mousePressEvent = lambda event: self._toggleVisibility("Vehicle Values", self.vehicle_values_title, self.values)
+        self.vehicle_states_title.mousePressEvent = lambda event: self._toggleVisibility("Vehicle States", self.vehicle_states_title, self.states)
+
+        titles.addWidget(self.shutdown_title)
+        titles.addWidget(self.vehicle_values_title)
+        titles.addWidget(self.vehicle_states_title)
 
         self.main_layout.addWidget(
             createLabel("Olin Electric Motorsports CAN Dashboard", "title")
@@ -68,12 +87,71 @@ class Window(QWidget):
     def _createStatesTable(self):
         return StatesTable(["Name", "State", "Fault"], INIT_VEHICLE_STATES)
 
+    def _createHiddenSectionWidget(self):
+        """Create a widget to display hidden sections in the top-right corner"""
+        hidden_widget = QWidget()
+        hidden_layout = QVBoxLayout()
+        hidden_layout.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignRight)
+        self.hidden_section_label = QLabel("Hidden Sections:")
+        self.hidden_section_label.setProperty("cssClass", "hiddenTitle")
+        self.hidden_section_list = QVBoxLayout()
+
+        hidden_layout.addWidget(self.hidden_section_label)
+        hidden_layout.addLayout(self.hidden_section_list)
+        hidden_widget.setLayout(hidden_layout)
+        hidden_widget.setVisible(False)  # Initially hidden
+
+        return hidden_widget
+
+    def _updateHiddenSectionWidget(self):
+        """Update the hidden section widget to reflect the current hidden sections"""
+        # Clear the list
+        for i in reversed(range(self.hidden_section_list.count())):
+            self.hidden_section_list.itemAt(i).widget().setParent(None)
+
+        # Add the hidden sections
+        for section in self.hidden_sections:
+            button = QPushButton(section)
+            button.setCursor(QtCore.Qt.PointingHandCursor)
+            button.clicked.connect(lambda checked, s=section: self._restoreSection(s))
+            self.hidden_section_list.addWidget(button)
+
+        # Show or hide the widget based on whether there are hidden sections
+        self.hidden_section_widget.setVisible(len(self.hidden_sections) > 0)
+
+    def _toggleVisibility(self, section_name, title, table):
+        """Toggle the visibility of a title and table, and update hidden sections"""
+        if table.isVisible():
+            table.setVisible(False)
+            title.setVisible(False)
+            self.hidden_sections.append(section_name)
+        else:
+            table.setVisible(True)
+            title.setVisible(True)
+            self.hidden_sections.remove(section_name)
+
+        self._updateHiddenSectionWidget()
+
+    def _restoreSection(self, section_name):
+        """Restore a hidden section when its button is clicked"""
+        if section_name == "Shutdown Nodes":
+            self.shdn.setVisible(True)
+            self.shutdown_title.setVisible(True)
+        elif section_name == "Vehicle Values":
+            self.values.setVisible(True)
+            self.vehicle_values_title.setVisible(True)
+        elif section_name == "Vehicle States":
+            self.states.setVisible(True)
+            self.vehicle_states_title.setVisible(True)
+
+        self.hidden_sections.remove(section_name)
+        self._updateHiddenSectionWidget()
+
     def setData(self, shdnData, valuesData, statesData):
         """Update the three tables' data"""
         self.shdn.setData(shdnData)
         self.values.setData(valuesData)
         self.states.setData(statesData)
-
 
 def run():
     app = QApplication(sys.argv)
