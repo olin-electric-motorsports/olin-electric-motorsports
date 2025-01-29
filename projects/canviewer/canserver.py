@@ -7,10 +7,11 @@ import threading
 
 import serial
 import pickle
+import time
 
 # Initiate serial connection
 try:
-    ser = serial.Serial('/dev/ttyUSB0', timeout=10)
+    ser = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1)
 except Exception as e:
     print(e)
 
@@ -18,13 +19,22 @@ db = None
 
 
 def listener_fn(can_bus, callback, kill_flag):
+    msg = None
     while not kill_flag.is_set():
         if ser:
             try:
-                msg_bytes = ser.read_until()
-                msg = pickle.load(msg_bytes)
+                msg = ser.read_until(b'END')
+                print(msg)
+                msg = msg.replace(b'END', b'')
+                try:
+                    print(pickle.loads(msg))
+                except:
+                    print("failed to deserialize")
+                time.sleep(0.1)
             except Exception as e:
+                print("Serial recieve error:")
                 print(e)
+            
 
         #msg = can_bus.recv(1)  # 1 second receive timeout
         if msg:
