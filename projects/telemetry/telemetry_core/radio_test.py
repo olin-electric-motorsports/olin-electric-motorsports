@@ -2,10 +2,16 @@
 
 import serial
 import time
-ser = serial.Serial('/dev/ttyUSB0', timeout=10)
+import pickle
+ser = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=10)
 while True:
-    print(ser.read_until(b'END'))
-    time.sleep(0.1)
-
+    msg = ser.read_until(b'END')
+    #print(msg)
+    msg = msg.replace(b'END', b'')
+    try:
+        print(pickle.loads(msg))
+    except:
+        print("failed to deserialize")
+    time.sleep(0.01)
     
 
