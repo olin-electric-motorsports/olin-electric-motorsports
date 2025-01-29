@@ -12,10 +12,12 @@ import serial
 import pickle
 
 # Initiate serial connection
+ser = None
 try:
     ser = serial.Serial('/dev/ttyUSB0', timeout=10)
 except Exception as e:
-    print(e)
+    print("Serial failed to start", e)
+
 
 BUSTYPE = "socketcan"
 CHANNEL = "can0"
@@ -94,10 +96,12 @@ def dashboard_listener(can_bus, callback, kill_flag):
             # Transmit message over serial for telemetry
             if ser:
                 try:
-                    msg_bytes = pickle.dumps(msg+'\n')
+                    msg_bytes = pickle.dumps(msg)
                     ser.write(msg_bytes)
+                    ser.write(b'END')
+                    print("Message sent")
                 except Exception as e:
-                    print(e)
+                    print("Message failed to send over serial", e)
 
     can_bus.shutdown()
     print("Exited gracefully")
