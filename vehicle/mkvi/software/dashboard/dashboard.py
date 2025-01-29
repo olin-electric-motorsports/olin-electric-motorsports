@@ -8,6 +8,15 @@ import cantools
 import can
 import RPi.GPIO as GPIO
 
+import serial
+import pickle
+
+# Initiate serial connection
+try:
+    ser = serial.Serial('/dev/ttyUSB0', timeout=10)
+except Exception as e:
+    print(e)
+
 BUSTYPE = "socketcan"
 CHANNEL = "can0"
 BITRATE = 500000
@@ -81,6 +90,14 @@ def dashboard_listener(can_bus, callback, kill_flag):
         msg = can_bus.recv(1)  # 1 second receive timeout
         if msg:
             callback(msg, db)
+
+            # Transmit message over serial for telemetry
+            if ser:
+                try:
+                    msg_bytes = pickle.dumps(msg+'\n')
+                    ser.write(msg_bytes)
+                except Exception as e:
+                    print(e)
 
     can_bus.shutdown()
     print("Exited gracefully")

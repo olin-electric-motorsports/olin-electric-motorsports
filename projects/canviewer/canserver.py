@@ -5,18 +5,28 @@ import cantools
 import can
 import threading
 
+import serial
+import pickle
+
+# Initiate serial connection
+try:
+    ser = serial.Serial('/dev/ttyUSB0', timeout=10)
+except Exception as e:
+    print(e)
+
 db = None
 
 
 def listener_fn(can_bus, callback, kill_flag):
-    """Thread that runs all the time to listen to CAN messages
-
-    References:
-      - https://python-can.readthedocs.io/en/master/interfaces/socketcan.html
-      - https://python-can.readthedocs.io/en/master/
-    """
     while not kill_flag.is_set():
-        msg = can_bus.recv(1)  # 1 second receive timeout
+        if ser:
+            try:
+                msg_bytes = ser.read_until()
+                msg = pickle.load(msg_bytes)
+            except Exception as e:
+                print(e)
+
+        #msg = can_bus.recv(1)  # 1 second receive timeout
         if msg:
             callback(msg, db)
 
