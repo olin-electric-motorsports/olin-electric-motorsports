@@ -72,8 +72,8 @@ class VoltageReading:
           cell_number = f"0{cell_number}"
         return f"{self.ic}:{cell_number}"
 
-debug_temp: bool = False
-debug_voltage: bool = True
+debug_temp: bool = True
+debug_voltage: bool = False
 temp_readings: Dict[ThermistorReading, float] = {}
 voltage_readings: Dict[VoltageReading, float] = {}
 import numpy as np
@@ -262,7 +262,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-d",
         "--dbc",
-        default="vehicle/mkvi/mkvi.dbc",
+        default="vehicle/mkvii/mkvii.dbc",
         help="Path to the DBC file to use for decoding CAN messages; default is the MKVI DBC",
     )
 

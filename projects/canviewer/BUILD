@@ -1,5 +1,4 @@
 load("@rules_python//python:defs.bzl", "py_binary", "py_library")
-load("//tools/pytest:defs.bzl", "pytest_test")
 
 py_binary(
     name = "canviewer",
@@ -11,6 +10,7 @@ py_binary(
         ":config.yml",
         "//vehicle/mkv:mkv.dbc",
         "//vehicle/mkvi:mkvi.dbc",
+        "//vehicle/mkvii:mkvii.dbc",
     ],
     main = "canviewer.py",
     visibility = ["//visibility:public"],

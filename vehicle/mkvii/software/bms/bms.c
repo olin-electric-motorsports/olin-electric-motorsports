@@ -18,17 +18,17 @@
 #include "vehicle/mkvii/software/bms/utils/fault.h"
 #include "vehicle/mkvii/software/bms/utils/i2c_helpers.h"
 
-#include "projects/btldr/btldr_lib.h"
-#include "projects/btldr/git_sha.h"
-#include "projects/btldr/libs/image/api.h"
+// #include "projects/btldr/btldr_lib.h"
+// #include "projects/btldr/git_sha.h"
+// #include "projects/btldr/libs/image/api.h"
 
 /*
  * Required for btldr
  */
-image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
-    .image_magic = IMAGE_MAGIC,
-    .git_sha = STABLE_GIT_COMMIT,
-};
+// image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+//     .image_magic = IMAGE_MAGIC,
+//     .git_sha = STABLE_GIT_COMMIT,
+// };
 
 /*
  * INTERRUPTS
@@ -74,7 +74,7 @@ void hw_init() {
     cell_balancing_init();
 
 
-    updater_init(BTLDR_ID, 5);
+    // updater_init(BTLDR_ID, 5);
     gpio_set_pin(DEBUG_LED_1);
     
 }
@@ -196,7 +196,7 @@ int main(void) {
             if (loop_counter == 1000) {
                 loop_counter = 0;
             }
-            updater_loop();
+            // updater_loop();
 
             run_10ms = false;
         }

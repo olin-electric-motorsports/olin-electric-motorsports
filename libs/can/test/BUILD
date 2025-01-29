@@ -1,4 +1,3 @@
-load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//bazel:defs.bzl", "cc_firmware")
 load("//bazel/tools:defs.bzl", "can_api_files")
 
@@ -8,7 +7,7 @@ exports_files([
 
 can_api_files(
     name = "test_can_api",
-    dbc = "//vehicle/mkv:mkv.dbc",
+    dbc = "//vehicle/mkvii:mkvii.dbc",
     yaml = ":test.yml",
 )
 
