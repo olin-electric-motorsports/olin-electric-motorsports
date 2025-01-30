@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Nose Bridge (TM) Motherboard")
-		(date "2024-12-31")
-		(rev "3.2")
+		(date "2025-01-07")
+		(rev "3.4")
 		(company "Olin Electric Motorsports")
 		(comment 1 "By Henry Tejada Deras and Ashley Yang")
 	)
@@ -356,6 +356,102 @@
 					(at 0 0 90)
 					(length 0) hide
 					(name "+BATT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "GND_1"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_1_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1903,10 +1999,6 @@
 		(uuid "ad1da907-6a20-4392-b7c6-96c5b0be64cb")
 	)
 	(no_connect
-		(at 35.56 118.11)
-		(uuid "ad201806-eb9f-42bf-be0c-dbd0d548e9fa")
-	)
-	(no_connect
 		(at 119.38 182.88)
 		(uuid "bd6008ee-76cb-49f6-b417-7b4e3710e10a")
 	)
@@ -2031,6 +2123,16 @@
 			(type default)
 		)
 		(uuid "36c281b7-3c55-4b38-b96e-8e45bce5701d")
+	)
+	(wire
+		(pts
+			(xy 46.99 114.3) (xy 46.99 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "388fe733-b06c-4162-87d1-66a33faf6fc3")
 	)
 	(polyline
 		(pts
@@ -2434,6 +2536,16 @@
 	)
 	(wire
 		(pts
+			(xy 50.8 114.3) (xy 46.99 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97cf058e-bb50-4e22-b7d8-8cdf3d1c5ee6")
+	)
+	(wire
+		(pts
 			(xy 35.56 120.65) (xy 58.42 120.65)
 		)
 		(stroke
@@ -2604,16 +2716,6 @@
 	)
 	(polyline
 		(pts
-			(xy 35.56 115.57) (xy 95.25 115.57)
-		)
-		(stroke
-			(width 0)
-			(type dash)
-		)
-		(uuid "cc5d81a8-f490-4229-a816-594146f93231")
-	)
-	(polyline
-		(pts
 			(xy 12.7 12.7) (xy 53.34 12.7)
 		)
 		(stroke
@@ -2781,6 +2883,16 @@
 			(type default)
 		)
 		(uuid "f29419de-2136-4e5b-9fbb-f1140fbe8ce3")
+	)
+	(wire
+		(pts
+			(xy 46.99 118.11) (xy 35.56 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f393c5c5-e468-4d80-aa8e-85d9ee9c19ef")
 	)
 	(wire
 		(pts
@@ -3433,7 +3545,7 @@
 	)
 	(text "Ready to Drive LED Connection"
 		(exclude_from_sim no)
-		(at 77.47 114.554 0)
+		(at 77.47 115.57 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3874,6 +3986,17 @@
 			(justify left bottom)
 		)
 		(uuid "46820eca-3c79-4483-880c-8b20519c81d0")
+	)
+	(label "RTD_LED-"
+		(at 35.56 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4773bb5a-0eee-44cc-a6f8-5accd9d70e26")
 	)
 	(label "INPUT_THROTTLE_2"
 		(at 119.38 180.34 0)
@@ -5506,6 +5629,72 @@
 		)
 		(pin "1"
 			(uuid "0fbb2018-56e4-472a-9e7a-7a1ea983d6ad")
+		)
+		(instances
+			(project ""
+				(path "/fbde94a6-55e7-422c-97e3-713d8a34739b"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "GND_1")
+		(lib_id "power:GND")
+		(at 50.8 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6d290ea0-f8f8-4a02-a1a8-94f464bfdcb9")
+		(property "Reference" "#PWR?"
+			(at 50.8 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 54.864 116.078 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 50.8 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aaacc42b-19a0-4888-9c0e-0b66bf9d73d0")
 		)
 		(instances
 			(project ""
