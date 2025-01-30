@@ -1,0 +1,64 @@
+name: bspd
+publish:
+  - name: bspd
+    id: 0xb
+    freq_hz: 100
+    signals:
+
+      # Shutdown Sense/BSPD Status
+      - name: ss_bspd
+        slice: 16 + 0
+        unit:
+          type: bool
+          values:
+            t: CLOSED/NRM. CND.
+            f: OPEN/FAULT
+
+      # Heartbeat Status
+      - name: heartbeat
+        slice: 16 + 1
+        unit:
+          type: bool
+          values:
+            t: Working Status 1 (has to be flipping between status 1 and 2 to be working)
+            f: Working Status 2 (has to be flipping between status 1 and 2 to be working)
+
+      # Brake Light Status
+      - name: brake_gate
+        slice: 17 + 1
+        unit:
+          type: bool
+          values:
+            t: Brake Light ON
+            f: Brake Light OFF
+
+      # Original Brake Pressure Data
+      # not sure what the scale is here yet, so going to leave this as - is
+      # Will be worked on; will look at datasheet
+      - name: brake_pressure
+        slice: 18 + 1
+        unit:
+          type: uint16_t
+          name: PSI
+          offset: -1.25
+          scale: 25 * (5 / 4096)
+
+      # Filtered Brake Pressure Data
+      # not sure what the scale is here yet, so going to leave this as - is
+      # Will be worked on; will look at datasheet
+      - name: brake_pressure_filtered
+        slice: 19 + 1
+        unit:
+          type: uint16_t
+          name: PSI
+          offset: -1.25
+          scale: 25 * (5 / 4096)
+
+      # Motor Current Status
+      - name: bspd_5kw
+        slice: 20 + 1
+        unit:
+          type: bool
+          values:
+            t: BSPD Power Over 5kW
+            f: BSPD Power Under 5kW
