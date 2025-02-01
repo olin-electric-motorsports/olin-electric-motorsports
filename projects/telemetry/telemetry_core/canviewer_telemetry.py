@@ -36,47 +36,6 @@ for signal, value in VEHICLE_VALUES.items():
             PROCESSING_FUNCTIONS[signal] = func
             VEHICLE_VALUES[signal] = None
 
-
-# from dataclasses import dataclass
-# from enum import Enum
-# from typing import Dict
-
-# @dataclass
-# class ThermistorReading:
-#     ic: int
-#     da_board: int
-#     channel: int
-
-#     def __str__(self):
-#         return f"{self.ic}:{self.da_board}:{self.channel}"
-
-# # 1 indexing because of how _rdcv_reg is written
-
-# class VoltageRegister(Enum):
-#     REG_A = 0
-#     REG_B = 1
-#     REG_C = 2
-#     REG_D = 3
-#     REG_E = 4
-#     REG_F = 5
-
-# @dataclass
-# class VoltageReading:
-#     ic: int
-#     cell: VoltageRegister
-#     adc: int
-
-#     def __str__(self):
-#         cell_number = str((int(self.cell) * 3 + self.adc))
-#         if len(cell_number) == 1:
-#           cell_number = f"0{cell_number}"
-#         return f"{self.ic}:{cell_number}"
-
-# debug_temp: bool = False
-# debug_voltage: bool = True
-# temp_readings: Dict[ThermistorReading, float] = {}
-# voltage_readings: Dict[VoltageReading, float] = {}
-
 def rx_callback(msg):
     """
     Callback when a CAN message is received, updates appropriate vehicle dictionaries
