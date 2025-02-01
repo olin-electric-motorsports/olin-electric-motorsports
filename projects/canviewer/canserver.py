@@ -5,38 +5,16 @@ import cantools
 import can
 import threading
 
-import serial
-import pickle
-import time
-
-# Initiate serial connection
-try:
-    ser = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1)
-except Exception as e:
-    print(e)
-
 db = None
 
-
 def listener_fn(can_bus, callback, kill_flag):
-    msg = None
+    """Thread that runs all the time to listen to CAN messages
+    References:
+        - https://python-can.readthedocs.io/en/master/interfaces/socketcan.html
+        - https://python-can.readthedocs.io/en/master/
+    """
     while not kill_flag.is_set():
-        if ser:
-            try:
-                msg = ser.read_until(b'END')
-                print(msg)
-                msg = msg.replace(b'END', b'')
-                try:
-                    print(pickle.loads(msg))
-                except:
-                    print("failed to deserialize")
-                time.sleep(0.1)
-            except Exception as e:
-                print("Serial recieve error:")
-                print(e)
-            
-
-        #msg = can_bus.recv(1)  # 1 second receive timeout
+        msg = can_bus.recv(1)  # 1 second receive timeout
         if msg:
             callback(msg, db)
 
