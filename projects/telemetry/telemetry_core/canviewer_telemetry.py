@@ -77,74 +77,18 @@ for signal, value in VEHICLE_VALUES.items():
 # temp_readings: Dict[ThermistorReading, float] = {}
 # voltage_readings: Dict[VoltageReading, float] = {}
 
-def rx_callback(msg, db):
+def rx_callback(msg):
     """
     Callback when a CAN message is received, updates appropriate vehicle dictionaries
 
     Args:
         msg (can.Message): CAN message that was received
-        db (cantools.database): Database generated from our DBC
     """
     try:
         message = db.decode_message(msg.arbitration_id, msg.data)
     except Exception as e:
-        return
-
-    # if debug_voltage:
-    #     if "cell" in message.keys():
-    #       cell_number = VoltageRegister[str(message["cell"])].value
-
-    #       reading1 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 0)
-    #       reading2 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 1)
-    #       reading3 = VoltageReading(ic = message["ic"], cell = cell_number, adc = 2)
-
-    #       voltage_readings[str(reading1)] = message["voltage_1"]
-    #       voltage_readings[str(reading2)] = message["voltage_2"]
-    #       if (int(reading3.cell) * 3 + reading3.adc) != 17:
-    #         voltage_readings[str(reading3)] = message["voltage_3"]
-
-    #       txt = "\n___________________________________________________Start___________________________________________________\n"
-    #       cells = list(voltage_readings.keys())
-    #       voltages = list(voltage_readings.values())
-    #       highest_voltage = max(voltages)
-    #       lowest_voltage = min(voltages)
-    #       zipped_readings = list(zip(cells, voltages))
-    #       zipped_readings.sort(key = lambda a: a[0])
-    #       i = 0
-    #       seg = 0
-    #       cellHeader = 0
-    #       cellsPerSeg = 17
-    #       txt += "\nSeg |"
-    #       while(cellHeader < cellsPerSeg):
-    #         txt += str(cellHeader).rjust(6, " ")
-    #         cellHeader += 1
-
-    #       txt += "\n"
-
-    #       while i < len(cells):
-    #           txt += "  " + str(seg) + " |  "
-    #           txt += (
-    #               " ".join(
-    #                   [
-    #                       str(str(round(b[1], 2)).ljust(4, "0") + " ")
-    #                       for b in zipped_readings[i : i + 17]
-    #                       # str(b[0] + "\t" + str(round(b[1], 2)))
-    #                       # for b in zipped_readings[i : i + 4]
-    #                   ]
-    #               )
-    #               + "\n"
-    #           )
-    #           i += cellsPerSeg
-    #           seg += 1
-    #       txt += "Min: \t" + str(round(lowest_voltage,3)) + "\n"
-    #       txt += "Max: \t" + str(round(highest_voltage,3)) + "\n"
-    #       txt += "____________________________________________________End____________________________________________________\n\n"
-    #       print(txt)
-
-    #       # adc = message[""]
-    #       # print(str(message["cell"]))
-
-          
+        print(e)
+        return       
 
     for signal_name in message:
         if signal_name in SHUTDOWN_NODES:

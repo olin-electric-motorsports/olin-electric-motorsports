@@ -15,7 +15,7 @@ def listener_fn(ser, callback, kill_flag):
 
         # Try to deserialize the recieved message
         try:
-            print(pickle.loads(msg))
+            msg = pickle.loads(msg)
         except Exception as e:
             print("Failed to deserialize:", e)
 
