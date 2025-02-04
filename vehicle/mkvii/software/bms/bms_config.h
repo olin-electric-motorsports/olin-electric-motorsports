@@ -10,7 +10,7 @@
 /*
  * Macros
  */
-#define NUM_ICS          6
+#define NUM_ICS          1
 
 #define MAX_EXTRANEOUS_TEMPERATURES 3 // causing isssssueeeess... maybe set to higher value - ian W 9/14/2024
 #define MAX_PEC_ERROR_COUNT \

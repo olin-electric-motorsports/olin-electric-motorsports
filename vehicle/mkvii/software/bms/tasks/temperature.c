@@ -54,7 +54,7 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
         *ut = 0;
     }
 
-    bms_temperature.channel = mux * NUM_MUX_CHANNELS + channel;
+    bms_temperature.channel = channel;
 
     wakeup_sleep(NUM_ICS);
     configure_mux_until_ack(NUM_ICS, MUXES[mux], MUX_ENABLE, channel, 10);

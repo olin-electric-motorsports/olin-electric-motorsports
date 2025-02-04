@@ -24,7 +24,7 @@ cc_library(
 
 can_api_files(
     name = "can_api",
-    dbc = "//vehicle/mkvi:mkvi.dbc",
+    dbc = "//vehicle/mkvii:mkvii.dbc",
     yaml = ":can_print.yml",
 )
 

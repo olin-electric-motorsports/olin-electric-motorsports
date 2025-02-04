@@ -14,5 +14,6 @@ dbc_gen(
         # "//vehicle/mkvii/software/charging:charger.yml",
         # "//vehicle/mkvii/software/dashboard:dashboard.yml",
         # "//vehicle/mkvii/software/throttle:throttle.yml",
+        "//projects/can_print:can_print.yml",
     ],
 )
