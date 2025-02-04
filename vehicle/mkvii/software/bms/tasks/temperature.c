@@ -57,7 +57,10 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     bms_temperature.channel = channel;
 
     wakeup_sleep(NUM_ICS);
-    configure_mux_until_ack(NUM_ICS, MUXES[mux], MUX_ENABLE, channel, 10);
+    configure_mux_until_ack(NUM_ICS, MUXES[0], MUX_ENABLE, channel, 10);
+    configure_mux_until_ack(NUM_ICS, MUXES[1], MUX_ENABLE, channel, 10);
+    configure_mux_until_ack(NUM_ICS, MUXES[2], MUX_ENABLE, channel, 10);
+    configure_mux_until_ack(NUM_ICS, MUXES[3], MUX_ENABLE, channel, 10);
     // For debugging to know which mux is being commanded
     bms_mux.num_mux = mux;
 
@@ -190,8 +193,8 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
     channel += 1;
     // Move on to next mux if we are at the last channel
     if (channel == NUM_MUX_CHANNELS) {
-        configure_mux_until_ack(NUM_ICS, MUXES[mux], MUX_DISABLE, channel, 10);
-        mux = (mux + 1) % NUM_MUXES;
+        // configure_mux_until_ack(NUM_ICS, MUXES[mux], MUX_DISABLE, channel, 10);
+        // mux = (mux + 1) % NUM_MUXES;
         channel = 0;
     }
 

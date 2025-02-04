@@ -148,8 +148,8 @@ def rx_callback(msg, db):
                 txt += (
                     " ".join(
                         [
-                            # str(round(float(convertVtoT(z[1])), 1)).rjust(5, " ")
-                            z[0]
+                            str(round(float(convertVtoT(z[1])), 1)).rjust(5, " ")
+                            # z[0]
                             for z in zipped[i : i + cellInRow]
                         ]
                     )
