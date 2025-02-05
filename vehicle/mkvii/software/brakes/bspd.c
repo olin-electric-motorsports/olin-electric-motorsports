@@ -37,7 +37,7 @@ void pcint0_callback(void) {
 // Check whether an LED needs updating, and if so, change its state
 void update_LEDs(void) {
     // Update Brake Light LED on the PCB
-    if (bspd.brake_gate == true) {
+    if (bspd.brake_gate) {
         gpio_set_pin(BRAKE_LL_LED);
     } else {
         gpio_clear_pin(BRAKE_LL_LED);
@@ -57,12 +57,18 @@ void update_LEDs(void) {
         gpio_clear_pin(BSPD_TRIP_LED);
     }
 
-    // Update Heartbeat LED on the PCB; Actions chosen to make LED blink every cycle (showing heartbeat)
-    if (bspd.heartbeat == true) {
-        gpio_clear_pin(HEARTBEAT_LED);
-    } else {
-        gpio_set_pin(HEARTBEAT_LED);
-    }
+    // Triggers Heartbeat LED 10 times per second
+    if (send_can) { // A convenient signal that triggers times per second
+        heartbeat_counter += 1;
+        // Update Heartbeat LED on the PCB
+        if (heartbeat_counter == 10) {
+            gpio_set_pin(HEARTBEAT_LED);
+            heartbeat_counter = 0;
+        } else {
+            gpio_clear_pin(HEARTBEAT_LED);
+        }
+        }
+    
 }
 
 int main(void) {
@@ -101,19 +107,21 @@ int main(void) {
     gpio_enable_interrupt(MOTOR_CURRENT_SENSE);
     gpio_enable_interrupt(BSPD_LL);
 
+    // Gets initial analog inputs
+    pcint0_callback();
+
     ////////////////////////////// BSPD LOOP /////////////////////////////
     for (;;) {
         // BLTDR loop poll function
         updater_loop();
 
-        // Get updated digital inputs
-        pcint0_callback();
+        // Get updated analog inputs
+        bspd.brake_pressure = adc_read(BRAKE_PRESSURE_SENSE);
+        bspd.brake_pressure_filtered = adc_read(BRAKE_PRESSURE_SENSE_FILTERED);
+        bspd.opamp_timer_rc_circuit_status = adc_read(RC_TIMER_STATUS);
 
+        // Triggers Send Can Function 100 times per second
         if (send_can) {
-            // Get updated analog inputs
-            bspd.brake_pressure = adc_read(BRAKE_PRESSURE_SENSE);
-            bspd.brake_pressure_filtered = adc_read(BRAKE_PRESSURE_SENSE_FILTERED);
-            bspd.opamp_timer_rc_circuit_status = adc_read(RC_TIMER_STATUS);
             can_send_bspd();
             send_can = false;
         }
