@@ -144,7 +144,7 @@ def rx_callback(msg, db):
                     cellInRow = 2
                 else:
                     cellInRow = 8
-                txt += "  " + str(int(muxCount / 5)) + " :  " + str(muxCount % 5) + " | " 
+                txt += "  " + str(int(muxCount / 5)) + " :   " + str(muxCount % 5) + " | " 
                 txt += (
                     " ".join(
                         [
