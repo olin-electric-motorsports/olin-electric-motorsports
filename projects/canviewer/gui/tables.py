@@ -7,10 +7,52 @@ GREEN = QColor("#18c63d")
 
 # Purely aesthetic, changes titles from raw message names to nicelt capitalized ones
 DISPLAY_NAMES = {
+    "throttle_l_pos": "Throttle Left Position",
+    "throttle_r_pos": "Throttle Right Position",
+    "throttle_r_out_of_range": "Throttle Right Out of Range",
+    "throttle_deviation": "Throttle Deviation",
+    "throttle_brake_implaus": "Throttle Brake Implausibility",
+    "brake_gate": "Brake Gate",
+    "brake_pressure": "Brake Pressure",
+    "ready_to_drive": "Ready to Drive",
+    "start_button_state": "Start Button State",
+    "air_p_status": "AIR Positive Status",
+    "air_n_status": "AIR Negative Status",
+    "imd_status": "IMD Status",
+    "pack_voltage": "Pack Voltage",
+    "D3_Motor_Temperature": "D3 Motor Temperature",
+    "max_temperature": "Max Temperature",
+    "min_temperature": "Min Temperature",
+    "D1_DC_Bus_Voltage": "D1 DC Bus Voltage",
+    "Torque_Command": "Torque Command",
+    "bms_fault_code": "BMS Fault Code",
+    "csc_mia": "CSC Missing in Action",
+    "internal_die_temp": "Internal Die Temperature",
+    "IVT_Result_U1": "IVT Result U1",
+    "IVT_Result_I": "IVT Result I",
+    "IVT_Result_As": "IVT Result As",
+    "IVT_Result_W": "IVT Result W",
+    "IVT_Result_Wh": "IVT Result Wh",
+    "lpms_gyro_x": "LPMS Gyro X",
+    "lpms_gyro_z": "LPMS Gyro Z",
+    "lpms_accel_y": "LPMS Acceleration Y",
+    "lpms_accel_x": "LPMS Acceleration X",
+    "lpms_accel_z": "LPMS Acceleration Z",
+    "lpms_mag_y": "LPMS Magnetic Y",
+    "lpms_mag_x": "LPMS Magnetic X",
+    "lpms_mag_z": "LPMS Magnetic Z",
+    "lpms_roll": "LPMS Roll",
+    "lpms_pitch": "LPMS Pitch",
+    "lpms_yaw": "LPMS Yaw",
+    "lpms_q0": "LPMS Q0",
+    "lpms_q1": "LPMS Q1",
+    "lpms_q2": "LPMS Q2",
+    "lpms_q3": "LPMS Q3",
     "air_control_critical": "AIR Control",
     "bms_core": "BMS Core",
-    "throttle": "Throttle",
+    "throttle": "Throttle"
 }
+
 
 
 class VehicleTable(QTableWidget):
@@ -29,7 +71,7 @@ class VehicleTable(QTableWidget):
 
     def setData(self, data):
         for i, (signal, val) in enumerate(data.items()):
-            self.setItem(i, 0, createTableItem(signal))
+            self.setItem(i, 0, createTableItem(DISPLAY_NAMES.get(signal, signal)))
             self.setItem(i, 1, createTableItem(val))
 
 
