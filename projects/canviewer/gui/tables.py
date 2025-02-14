@@ -1,104 +1,165 @@
-from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QHeaderView
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QFont, QPixmap, QColor
 from PyQt5 import QtCore
-from PyQt5.QtGui import QColor
+import sys
+import yaml
+from gui.tables import VehicleTable, StatesTable
+from gui.utils import createLabel, createLogo
 
-RED = QColor("#ef233c")
-GREEN = QColor("#18c63d")
+with open("projects/canviewer/config.yml", "r") as config_file:
+    yaml_data = list(yaml.safe_load_all(config_file))
+    while len(yaml_data) < 8:
+        yaml_data.append([])  # Ensure all lists exist
+    (
+        INIT_SHUTDOWN_NODES,
+        INIT_VEHICLE_VALUES,
+        INIT_VEHICLE_STATES,
+        INIT_LPMS,
+        INIT_BMS,
+        INIT_LV,
+        INIT_HV,
+        INIT_SENSING,
+    ) = yaml_data
 
-# Purely aesthetic, changes titles from raw message names to nicelt capitalized ones
-DISPLAY_NAMES = {
-    "throttle_l_pos": "Throttle Left Position",
-    "throttle_r_pos": "Throttle Right Position",
-    "throttle_r_out_of_range": "Throttle Right Out of Range",
-    "throttle_deviation": "Throttle Deviation",
-    "throttle_brake_implaus": "Throttle Brake Implausibility",
-    "brake_gate": "Brake Gate",
-    "brake_pressure": "Brake Pressure",
-    "ready_to_drive": "Ready to Drive",
-    "start_button_state": "Start Button State",
-    "air_p_status": "AIR Positive Status",
-    "air_n_status": "AIR Negative Status",
-    "imd_status": "IMD Status",
-    "pack_voltage": "Pack Voltage",
-    "D3_Motor_Temperature": "D3 Motor Temperature",
-    "max_temperature": "Max Temperature",
-    "min_temperature": "Min Temperature",
-    "D1_DC_Bus_Voltage": "D1 DC Bus Voltage",
-    "Torque_Command": "Torque Command",
-    "bms_fault_code": "BMS Fault Code",
-    "csc_mia": "CSC Missing in Action",
-    "internal_die_temp": "Internal Die Temperature",
-    "IVT_Result_U1": "IVT Result U1",
-    "IVT_Result_I": "IVT Result I",
-    "IVT_Result_As": "IVT Result As",
-    "IVT_Result_W": "IVT Result W",
-    "IVT_Result_Wh": "IVT Result Wh",
-    "lpms_gyro_x": "LPMS Gyro X",
-    "lpms_gyro_z": "LPMS Gyro Z",
-    "lpms_accel_y": "LPMS Acceleration Y",
-    "lpms_accel_x": "LPMS Acceleration X",
-    "lpms_accel_z": "LPMS Acceleration Z",
-    "lpms_mag_y": "LPMS Magnetic Y",
-    "lpms_mag_x": "LPMS Magnetic X",
-    "lpms_mag_z": "LPMS Magnetic Z",
-    "lpms_roll": "LPMS Roll",
-    "lpms_pitch": "LPMS Pitch",
-    "lpms_yaw": "LPMS Yaw",
-    "lpms_q0": "LPMS Q0",
-    "lpms_q1": "LPMS Q1",
-    "lpms_q2": "LPMS Q2",
-    "lpms_q3": "LPMS Q3",
-    "air_control_critical": "AIR Control",
-    "bms_core": "BMS Core",
-    "throttle": "Throttle"
+EXTRA_INFO = {
+    "Battery Voltage": "Indicates the voltage level of the battery.",
+    "Motor Temperature": "Shows the current temperature of the motor.",
+    "Brake Pressure": "Displays the pressure in the braking system.",
+    "Shutdown Node 1": "Monitors the status of shutdown system 1.",
+    "State Error": "Reports if there is an error in the vehicle state.",
 }
 
+class Window(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Olin Electric Motorsports CAN Viewer")
+        self.setProperty("cssClass", "app")
+        self.main_layout = QVBoxLayout()
 
+        self.hidden_sections = ["LPMS", "BMS", "LV", "HV", "Sensing"]  # Hidden by default
 
-class VehicleTable(QTableWidget):
-    def __init__(self, headers, initial_data, col_num=2):
-        super().__init__(len(initial_data), col_num)
-        self.headers = headers
+        self.tables = self._createTables()
+        self.titles = self._createTitles()
+        self.hidden_section_widget = self._createHiddenSectionWidget()
 
-        # Headers (labels and evenly spacing them)
-        self.setHorizontalHeaderLabels(self.headers)
-        self.horizontalHeader().setStretchLastSection(True)
-        self.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.main_layout.addLayout(self.titles)
+        self.main_layout.addLayout(self.tables)
+        self.main_layout.addWidget(self.hidden_section_widget)
+        self.main_layout.addWidget(createLogo())
+        self.setLayout(self.main_layout)
 
-        # Hide the left index labels and the table grid
-        self.verticalHeader().setVisible(False)
-        self.setShowGrid(False)
+        with open("projects/canviewer/gui/style.qss", "r") as stylesheet:
+            self.setStyleSheet(stylesheet.read())
 
-    def setData(self, data):
-        for i, (signal, val) in enumerate(data.items()):
-            self.setItem(i, 0, createTableItem(DISPLAY_NAMES.get(signal, signal)))
-            self.setItem(i, 1, createTableItem(val))
+    def _createTitles(self):
+        titles = QHBoxLayout()
 
+        self.section_titles = {
+            "Shutdown Nodes": createLabel("Shutdown Nodes", "subtitle"),
+            "Vehicle Values": createLabel("Vehicle Values", "subtitle"),
+            "Vehicle States": createLabel("Vehicle States", "subtitle"),
+            "LPMS": createLabel("LPMS", "subtitle"),
+            "BMS": createLabel("BMS", "subtitle"),
+            "LV": createLabel("LV", "subtitle"),
+            "HV": createLabel("HV", "subtitle"),
+            "Sensing": createLabel("Sensing", "subtitle"),
+        }
 
-class StatesTable(VehicleTable):
-    def __init__(self, headers, initial_data):
-        super().__init__(headers, initial_data, 3)
+        for name, title in self.section_titles.items():
+            title.setCursor(QtCore.Qt.PointingHandCursor)
+            title.mousePressEvent = lambda event, n=name: self._toggleVisibility(n)
+            titles.addWidget(title)
 
-    def setData(self, data):
-        for i, (message_name, message_data) in enumerate(data.items()):
-            # This code will NOT WORK on Python <3.7 due to dictionaries being unordered
-            values = list(message_data.values())
-            # Pad with nones if we can't fill all three columns
-            values += [None] * (max(2 - len(values), 0))
+        self.main_layout.addWidget(createLabel("Olin Electric Motorsports CAN Dashboard", "title"))
+        return titles
 
-            self.setItem(
-                i, 0, createTableItem(DISPLAY_NAMES.get(message_name, message_name))
-            )
-            self.setItem(i, 1, createTableItem(values[0]))
-            self.setItem(i, 2, createTableItem(values[1]))
+    def _createTables(self):
+        self.tables_dict = {
+            "Shutdown Nodes": self._createShutdownTable(),
+            "Vehicle Values": self._createValuesTable(),
+            "Vehicle States": self._createStatesTable(),
+            "LPMS": self._createLPMSTable(),
+            "BMS": self._createBMSTable(),
+            "LV": self._createLVTable(),
+            "HV": self._createHVTable(),
+            "Sensing": self._createSensingTable(),
+        }
 
+        tables = QHBoxLayout()
+        tables.setProperty("cssClass", "tables")
+        for name, table in self.tables_dict.items():
+            table.setVisible(name not in self.hidden_sections)
+            tables.addWidget(table)
 
-def createTableItem(contents):
-    cell = QTableWidgetItem(contents)
-    cell.setFlags(QtCore.Qt.ItemIsEnabled)  # disables item editing
-    cell.setTextAlignment(QtCore.Qt.AlignCenter)
-    if contents == "OPEN":
-        cell.setBackground(RED)
-    elif contents == "CLOSED":
-        cell.setBackground(GREEN)
-    return cell
+        return tables
+
+    def _toggleVisibility(self, section_name):
+        if section_name in self.hidden_sections:
+            self.hidden_sections.remove(section_name)
+            self.tables_dict[section_name].setVisible(True)
+            self.section_titles[section_name].setVisible(True)
+        else:
+            self.hidden_sections.append(section_name)
+            self.tables_dict[section_name].setVisible(False)
+            self.section_titles[section_name].setVisible(False)
+        self._updateHiddenSectionWidget()
+
+    def _createShutdownTable(self):
+        table = VehicleTable(["Shutdown Node", "Status"], INIT_SHUTDOWN_NODES)
+        table.cellClicked.connect(self._showTooltipWindow)
+        return table
+
+    def _createValuesTable(self):
+        table = VehicleTable(["Name", "Value"], INIT_VEHICLE_VALUES)
+        table.cellClicked.connect(self._showTooltipWindow)
+        return table
+
+    def _createStatesTable(self):
+        table = StatesTable(["Name", "State", "Fault"], INIT_VEHICLE_STATES)
+        table.cellClicked.connect(self._showTooltipWindow)
+        return table
+
+    def _createLPMSTable(self):
+        return VehicleTable(["LPMS Data", "Value"], INIT_LPMS)
+
+    def _createBMSTable(self):
+        return VehicleTable(["BMS Data", "Value"], INIT_BMS)
+
+    def _createLVTable(self):
+        return VehicleTable(["LV Data", "Value"], INIT_LV)
+
+    def _createHVTable(self):
+        return VehicleTable(["HV Data", "Value"], INIT_HV)
+
+    def _createSensingTable(self):
+        return VehicleTable(["Sensor", "Value"], INIT_SENSING)
+
+    def _showTooltipWindow(self, row, column):
+        item = self.sender().item(row, column)
+        if item:
+            variable_name = item.text()
+            extra_info = EXTRA_INFO.get(variable_name, "No additional information available.")
+            message = f"{variable_name}:\n{extra_info}"
+            msg_box = QMessageBox()
+            msg_box.setWindowTitle("Information")
+            msg_box.setText(message)
+            msg_box.exec_()
+
+    def setData(self, shdnData, valuesData, statesData, lpmsData, bmsData, lvData, hvData, sensingData):
+        self.shdn.setData(shdnData)
+        self.values.setData(valuesData)
+        self.states.setData(statesData)
+        self.lpms.setData(lpmsData)
+        self.bms.setData(bmsData)
+        self.lv.setData(lvData)
+        self.hv.setData(hvData)
+        self.sensing.setData(sensingData)
+
+def run():
+    app = QApplication(sys.argv)
+    window = Window()
+    window.show()
+    sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    run()
