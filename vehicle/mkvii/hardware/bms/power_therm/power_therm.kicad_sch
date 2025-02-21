@@ -1,0 +1,343 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "67c8cf95-3231-44c6-9308-67d4f0119afc")
+	(paper "A4")
+	(lib_symbols)
+	(bus
+		(pts
+			(xy 210.82 90.17) (xy 227.33 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37ff99b3-cc96-4819-bbc7-71d37d158602")
+	)
+	(bus
+		(pts
+			(xy 210.82 73.66) (xy 227.33 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a353cff-bc0e-4eac-a2fe-16cfdadd287b")
+	)
+	(bus
+		(pts
+			(xy 210.82 58.42) (xy 227.33 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ffb7653-3bc4-4600-a05b-dbac4a164123")
+	)
+	(hierarchical_label "Therm[1..17]"
+		(shape passive)
+		(at 210.82 58.42 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "45a6fa30-17a6-414a-9b07-fdbbc823008d")
+	)
+	(hierarchical_label "CELL[1..17]"
+		(shape input)
+		(at 227.33 90.17 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "59af7921-002a-4275-914a-1dfa18054ebc")
+	)
+	(hierarchical_label "Therm[1..17]"
+		(shape input)
+		(at 227.33 58.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6267df9d-1a73-415c-a5d2-5e68a869fb65")
+	)
+	(hierarchical_label "CELL[1..17]"
+		(shape passive)
+		(at 210.82 90.17 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "816d359f-1525-4194-8279-5c75f0fde5af")
+	)
+	(hierarchical_label "Therm[18..34]"
+		(shape input)
+		(at 227.33 73.66 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8cca9951-8b0b-42be-9c3f-66b2a54626be")
+	)
+	(hierarchical_label "Therm[18..34]"
+		(shape passive)
+		(at 210.82 73.66 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fba1aab0-7340-4a6e-9ffc-d1658a4f538a")
+	)
+	(sheet
+		(at 227.33 54.61)
+		(size 27.94 8.89)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "005719e4-8328-4997-acea-02f79c73c67a")
+		(property "Sheetname" "Connector(1)"
+			(at 227.33 53.8984 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Connector(1).kicad_sch"
+			(at 227.33 64.0846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 227.33 86.36)
+		(size 27.94 8.89)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "7762b922-7426-453d-a45b-fe61adb981b5")
+		(property "Sheetname" "Connector(3)"
+			(at 227.33 85.6484 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Connector(3).kicad_sch"
+			(at 227.33 95.8346 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 191.77 54.61)
+		(size 19.05 8.89)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "adad35d1-ce40-4c39-aba6-d2c501cb3dc9")
+		(property "Sheetname" "Thermistors(1)"
+			(at 191.77 53.8984 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Thermistors(1).kicad_sch"
+			(at 191.77 64.0846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 191.77 69.85)
+		(size 19.05 8.89)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "b94b9b5f-2363-47cb-a96c-a7e2bf2fd1d0")
+		(property "Sheetname" "Thermistors(2)"
+			(at 191.77 69.1384 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Thermistors(2).kicad_sch"
+			(at 191.77 79.3246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 227.33 69.85)
+		(size 27.94 8.89)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "e5c9d372-c5ea-406d-9223-ef5a559fd858")
+		(property "Sheetname" "Connector(2)"
+			(at 227.33 69.1384 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Connector(2).kicad_sch"
+			(at 227.33 79.3246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 191.77 86.36)
+		(size 19.05 8.89)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "f3090018-c2ca-49da-b6ce-efc594670d93")
+		(property "Sheetname" "Cells"
+			(at 191.77 85.6484 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "cells.kicad_sch"
+			(at 191.77 95.8346 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "power_therm"
+				(path "/67c8cf95-3231-44c6-9308-67d4f0119afc"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)
