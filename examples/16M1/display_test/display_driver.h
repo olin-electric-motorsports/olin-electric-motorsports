@@ -2,8 +2,8 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
 
-#define LENGTH_ADDRESS_SPI 4
-#define LENGTH_DATA_SPI 8
+#define LENGTH_ADDRESS_SPI 1
+#define LENGTH_DATA_SPI 1
 
 #define DECODE_4_DIGITS 0x0F
 #define SCAN_4_DIGITS 0x03
@@ -28,6 +28,6 @@ spi_cfg_s spi_cfg = {
     .mode = MAIN,
     .polarity = FALLING_RISING,
     .phase = SETUP_SAMPLE,
-    .clock_rate = F_OSC_DIV_4,
+    .clock_rate = F_OSC_DIV_16,
     .cs_pin = &MAX7221_CS,
 };

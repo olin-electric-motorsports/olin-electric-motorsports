@@ -18,6 +18,9 @@ void max7221_init() {
     gpio_set_mode(MAX7221_CS, OUTPUT);
     gpio_set_pin(MAX7221_CS);
 
+    // Leave shutdown
+    max7221_write(SHUTDOWN, SHUTDOWN_OFF);
+    
     // Enable decoding on digits 3-0
     max7221_write(DECODE, DECODE_4_DIGITS);
 
@@ -27,14 +30,22 @@ void max7221_init() {
     // Set intensity to max brightness
     max7221_write(INTENSITY, SET_MAX_BRIGHTNESS);
 
-    // Leave shutdown
-    max7221_write(SHUTDOWN, SHUTDOWN_OFF);
+    
 
     // Illuminate all segments
     max7221_write(DISPLAY_TEST, DISPLAY_TEST_ON);
 }
 
+void max7221_test(){
+    max7221_write(0x01, 0x00);
+}
+
 int main(void) {
     spi_bus_init();
-    max7221_init();
+    max7221_init();  
+
+
+    // while(1){
+    //     max7221_test();
+    // }
 }
