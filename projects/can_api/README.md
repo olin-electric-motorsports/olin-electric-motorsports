@@ -29,19 +29,20 @@ tested.
 
 ### Goals
 
-* A DBC file can be generated from the individual YAML files
-* All message collisions are detected at compile-time
-* A `.c` and `.h` file are generated for each YAML file that include send and
+- A DBC file can be generated from the individual YAML files
+- All message collisions are detected at compile-time
+- A `.c` and `.h` file are generated for each YAML file that include send and
   receive functions for each of the messages sent and received by the ECU as
   specified by the YAML file
 
 ### Non-goals
 
-* _Getters_ and _setters_: Functions of these types are used to set the values
-  of signals in a CAN message (like `set_bspd_brakelight_voltage(uint16_t
-  voltage)`). These could be useful, but for now, we opt to use global variables
-  because they have a simpler implementation.
-* Message ID assignment: This could be a future goal, see __Future Work__ below
+- _Getters_ and _setters_: Functions of these types are used to set the values
+  of signals in a CAN message (like
+  `set_bspd_brakelight_voltage(uint16_t voltage)`). These could be useful, but
+  for now, we opt to use global variables because they have a simpler
+  implementation.
+- Message ID assignment: This could be a future goal, see **Future Work** below
 
 ## Usage
 
@@ -51,7 +52,7 @@ We begin with the name of the node/ECU, _bms_:
 
 ```yaml
 # vehicle/mkv/software/bms/bms.yml
-name: bms  # Name of the ECU
+name: bms # Name of the ECU
 ```
 
 Next we specify the messages received by the ECU. For example, the BMS should
@@ -68,16 +69,16 @@ This says that the BMS should listen for the `air_control_critical` message
 (this name is specified as the `name` of a message in a different YAML file),
 and that it should use message object (MOb) 1.
 
-__Note that this code _only_ allows for receiving a specific CAN message per
+**Note that this code _only_ allows for receiving a specific CAN message per
 MOb, not multiple. If you need to listen to a range of messages, don't use the
-API.__
+API.**
 
 Now we specify the messages _sent_ by the ECU. Let's take the following row from
 the MKV CAN Address Space as an example:
 
-Name | ID | Length | Frequency (Hz) | Byte0 | Byte1 | Byte2 | Byte3 | Byte4 | Byte5 | Byte6 | Byte7
------|----|--------|----------------|-------|-------|-------|-------|-------|-------|-------|------
-BMS Core|0x10|8|16|Fault Code|Relay Status|Temperature|Pack Voltage|SOC Estimate|BMS OK|Current-limiting enabled|Cell-balancing status
+| Name     | ID   | Length | Frequency (Hz) | Byte0      | Byte1        | Byte2       | Byte3        | Byte4        | Byte5  | Byte6                    | Byte7                 |
+| -------- | ---- | ------ | -------------- | ---------- | ------------ | ----------- | ------------ | ------------ | ------ | ------------------------ | --------------------- |
+| BMS Core | 0x10 | 8      | 16             | Fault Code | Relay Status | Temperature | Pack Voltage | SOC Estimate | BMS OK | Current-limiting enabled | Cell-balancing status |
 
 The MKV CAN Address space specified that the minimum size of any signal is 1
 byte. However, with our system, we can have signals that are smaller (like a
@@ -172,7 +173,7 @@ exports_files([
 # Defines the CAN API library
 can_api_files(
     name = "can_api",
-    dbc = "//vehicle/mkv:mkv.dbc",
+    dbc = "//vehicle/mkvii:mkvii.dbc",
     yaml = ":bspd.yml",
 )
 ```
@@ -232,15 +233,15 @@ struct can_tools_bms_core_t {
 };
 ```
 
-__Note that even though the length of, for example, `relay_state` should be 1
+**Note that even though the length of, for example, `relay_state` should be 1
 according to the YAML, the struct will store it as a byte. This is because
 before the message is sent using the `can_send` function, there is another,
 private function that "packs" the message according to the correct lengths. So
 the value of the `uint8_t relay_state` will be packed into a single bit when the
-message is sent__.
+message is sent**.
 
-The CAN API also defines a single variable of this type as `struct
-can_tools_bms_core_t bms_core`. That way, you can access it like so:
+The CAN API also defines a single variable of this type as
+`struct can_tools_bms_core_t bms_core`. That way, you can access it like so:
 
 ```c
 // Set the pack_voltage
@@ -274,11 +275,11 @@ This receives a specific CAN message. In order to receive the _BMS Core_
 message, we call `can_receive_bms_core();`. This function will return
 immediately. The following table gives the return codes:
 
-Return Code | Meaning
-------------|--------
-`0`|Data is ready
-`1`|Fatal error occured
-`-1`|Message not received
+| Return Code | Meaning              |
+| ----------- | -------------------- |
+| `0`         | Data is ready        |
+| `1`         | Fatal error occured  |
+| `-1`        | Message not received |
 
 If a `0` is returned, we can access the data in the message struct (i.e.
 `bms_core`).
@@ -299,7 +300,7 @@ Wireshark, BusMaster, or any other software that uses a DBC.
 
 ## Concurrency
 
-__⚠️ Important Usage Note. ⚠️__
+**⚠️ Important Usage Note. ⚠️**
 
 The `can_send_{{ message }}` function must _not_ be called from an interrupt
 context. If it is, there can be unpredictable behavior. In general, special care
