@@ -188,21 +188,45 @@
  */
 void init_magnetometer(void);
 
-/**
- * Read a register in the magnetometer.
- *
- * @param register_ (uint8_t) The register to read.
- * @param rx_data (uint8_t*) A pointer to store the read data.
- */
-void read_magnetometer(uint8_t register_, uint8_t* rx_data);
+// /**
+//  * Read a register in the magnetometer.
+//  *
+//  * @param register_ (uint8_t) The register to read.
+//  * @param rx_data (uint8_t*) A pointer to store the read data.
+//  */
+// void read_magnetometer(uint8_t register_, uint8_t* rx_data);
+
+// /**
+//  * Write a register in the magnetometer.
+//  *
+//  * @param register_ (uint8_t) The register to write.
+//  * @param tx_data (uint8_t) The data to write.
+//  */
+// void write_magnetometer(uint8_t _register, uint8_t tx_data);
 
 /**
- * Write a register in the magnetometer.
+ * Write data to a magnetometer register using I2C communication via the ICM.
  *
- * @param register_ (uint8_t) The register to write.
- * @param tx_data (uint8_t) The data to write.
+ * This function uses the SLV1 registers to write to the magnetometer.
+ *
+ * @param addr (unsigned char) The I2C address of the magnetometer.
+ * @param reg (unsigned char) The register address on the magnetometer to write to.
+ * @param data (unsigned char) The data to write to the specified register.
  */
-void write_magnetometer(uint8_t _register, uint8_t tx_data);
+void write_mag(unsigned char addr, unsigned char reg, unsigned char data);
+
+/**
+ * Read data from a magnetometer register using I2C communication via the ICM.
+ *
+ * This function uses the SLV0 registers to read from the magnetometer.
+ *
+ * @param addr (unsigned char) The I2C address of the magnetometer.
+ * @param reg (unsigned char) The register address on the magnetometer to read from.
+ * @param len (unsigned char) The number of bytes to read from the specified register.
+ * @param data (unsigned char*) A pointer to a buffer where the read data will be stored.
+ */
+void read_mag(unsigned char addr, unsigned char reg, unsigned char len, unsigned char *data);
+
 
 /**
  * Read data from an ICM register.
