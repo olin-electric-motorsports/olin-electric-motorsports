@@ -26,20 +26,30 @@ publish:
           name: PSI
           offset: -1.25
           scale: 25 * (5 / 4096)
+
+      # OpAmp Timer RC Circuit Status
+      - name: opamp_timer_rc_circuit_status
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: Capacitor Saturation % in 0.5 s
+          offset: 0
+          scale: 20 * (5 / 1024) * 1.58
+          # Percentage of Capacitor Saturation in RC Circuit that occurs in 0.5 s
     
       # Shutdown Sense/BSPD Status
       - name: ss_bspd
-        slice: 32 + 1
+        slice: 48 + 1
         unit:
           type: bool
           values:
-            t: CLOSED/NRM. CND.
-            f: OPEN/FAULT
+            t: CLOSED
+            f: OPEN
 
       # Heartbeat Status
       # "lub-DUB" chosen because that is how an actual heartbeat sounds like. Link: https://www.nhlbi.nih.gov/health/heart/heart-beats
       - name: heartbeat
-        slice: 33 + 1
+        slice: 49 + 1
         unit:
           type: bool
           values:
@@ -48,7 +58,7 @@ publish:
 
       # Brake Light Status
       - name: brake_gate
-        slice: 34 + 1
+        slice: 50 + 1
         unit:
           type: bool
           values:
@@ -57,7 +67,7 @@ publish:
 
       # Motor Current Status
       - name: bspd_5kw
-        slice: 35 + 1
+        slice: 51 + 1
         unit:
           type: bool
           values:

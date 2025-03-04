@@ -4,6 +4,9 @@
 #include "libs/timer/api.h"
 
 //////////////////////// VARIABLE DECLARATIONS /////////////////
+uint8_t heartbeat_counter = 0;
+bool skip = false;
+
 //////////////////////// GPIO - DIGITAL ////////////////////////
 // These are digital outputs for avr-controlled LED outputs
 gpio_t BRAKE_LL_LED = PB1;

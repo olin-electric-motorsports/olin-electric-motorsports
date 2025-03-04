@@ -3,7 +3,7 @@
 #include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
-#include "vehicle/mkvi/software/brakes/can_api.h"
+#include "vehicle/mkvii/software/bspd/can_api.h"
 
 #include <avr/interrupt.h>
 
@@ -34,6 +34,17 @@ void pcint0_callback(void) {
     bspd.ss_bspd = !gpio_get_pin(BSPD_LL);
 }
 
+// // Used to update the ss_bspd can signal to OPEN (but not back to CLOSED) when BSPD faults
+// void update_ss_bspd_can(void) {
+//     if (BSPD_SHUTDOWN_SENSE == 1 && skip == false) {
+//         bspd.ss_bspd = true;
+//     }
+//     if (BSPD_SHUTDOWN_SENSE == 0 || skip == true) {
+//         skip = true;
+//         bspd.ss_bspd = false;
+//     }
+// }
+
 // Check whether an LED needs updating, and if so, change its state
 void update_LEDs(void) {
     // Update Brake Light LED on the PCB
@@ -50,26 +61,24 @@ void update_LEDs(void) {
         gpio_clear_pin(MOTOR_5KW_LED);
     }
 
-    // Update BSPD Status LED/BSPD Trip LED on the PCB
-    if (bspd.ss_bspd) {
+    // Update BSPD Status LED/BSPD Trip LED on the PCB (can only turn on)
+    // Inverted to ensure appropriate behavior. If BSPD_LL is low (Relay is Opened) -> Trip LED Turn On
+    if (!gpio_get_pin(BSPD_LL)) {
         gpio_set_pin(BSPD_TRIP_LED);
-    } else {
-        gpio_clear_pin(BSPD_TRIP_LED);
     }
 
-    // Triggers Heartbeat LED 10 times per second
-    if (send_can) { // A convenient signal that triggers times per second
+}
+
+// Triggers Heartbeat LED every 0.5 s (based on 100 Hz CAN Signal)
+void update_heartbeat_LED(void) {
         heartbeat_counter += 1;
         // Update Heartbeat LED on the PCB
-        if (heartbeat_counter == 10) {
-            gpio_set_pin(HEARTBEAT_LED);
-            heartbeat_counter = 0;
-        } else {
-            gpio_clear_pin(HEARTBEAT_LED);
+        if (heartbeat_counter == 50) {
+            gpio_toggle_pin(HEARTBEAT_LED); // Change LED state
+            bspd.heartbeat = !bspd.heartbeat; // Change CAN Signal
+            heartbeat_counter = 0; // Reset Counter
         }
-        }
-    
-}
+}  
 
 int main(void) {
     /////////////////////////////// BSPD STARTUP ///////////////////////////////
@@ -98,6 +107,7 @@ int main(void) {
     // Enable digital inputs
     gpio_set_mode(MOTOR_CURRENT_SENSE, INPUT);
     gpio_set_mode(BSPD_LL, INPUT);
+    gpio_set_mode(BSPD_SHUTDOWN_SENSE, INPUT);
     gpio_set_mode(BRAKELIGHT_LL, INPUT);
 
     // Attach Pins to interrupt handler (assuming on rising/falling edge)
@@ -105,10 +115,13 @@ int main(void) {
     // function
     gpio_enable_interrupt(BRAKELIGHT_LL);
     gpio_enable_interrupt(MOTOR_CURRENT_SENSE);
-    gpio_enable_interrupt(BSPD_LL);
+    gpio_enable_interrupt(BSPD_SHUTDOWN_SENSE);
 
     // Gets initial analog inputs
     pcint0_callback();
+    
+    // Initial Predefined Heartbeat CAN Signal
+    bspd.heartbeat = false;
 
     ////////////////////////////// BSPD LOOP /////////////////////////////
     for (;;) {
@@ -120,13 +133,18 @@ int main(void) {
         bspd.brake_pressure_filtered = adc_read(BRAKE_PRESSURE_SENSE_FILTERED);
         bspd.opamp_timer_rc_circuit_status = adc_read(RC_TIMER_STATUS);
 
+        // // Correct ss_bspd can signal
+        // update_ss_bspd_can();
+
         // Triggers Send Can Function 100 times per second
         if (send_can) {
             can_send_bspd();
+            update_heartbeat_LED(); // This is here so it can be using the same "clock" as the CAN Signal
             send_can = false;
         }
 
         // Check whether an LED needs updating, and if so, change its state
         update_LEDs();
+
     }
 }
