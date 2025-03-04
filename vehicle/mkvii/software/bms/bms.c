@@ -134,6 +134,8 @@ static void monitor_cells(void) {
         // clear_fault(BMS_FAULT_OVERCURRENT);
     }
 
+    openwire_task();
+
     // Check for PEC errors
     if (pec_errors != 0) {
         bms_metrics.voltage_pec_error_count += pec_errors;
