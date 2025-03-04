@@ -31,19 +31,21 @@ void pcint0_callback(void) {
     // Update CAN struct with new board logic values
     bspd.brake_gate = !!gpio_get_pin(BRAKELIGHT_LL);
     bspd.bspd_5kw = !!gpio_get_pin(MOTOR_CURRENT_SENSE);
-    bspd.ss_bspd = !gpio_get_pin(BSPD_LL);
+    bspd.ss_bspd = !gpio_get_pin(BSPD_SHUTDOWN_SENSE);
 }
 
 // // Used to update the ss_bspd can signal to OPEN (but not back to CLOSED) when BSPD faults
-// void update_ss_bspd_can(void) {
-//     if (BSPD_SHUTDOWN_SENSE == 1 && skip == false) {
-//         bspd.ss_bspd = true;
-//     }
-//     if (BSPD_SHUTDOWN_SENSE == 0 || skip == true) {
-//         skip = true;
-//         bspd.ss_bspd = false;
-//     }
-// }
+void update_ss_bspd_can(void) {
+    if (skip == false) {
+        if (gpio_get_pin(BSPD_SHUTDOWN_SENSE)) {
+            bspd.ss_bspd = true;
+        }
+        else if (gpio_get_pin(BSPD_SHUTDOWN_SENSE) == 0) {
+            skip = true;
+            bspd.ss_bspd = false;
+        }
+    }
+}
 
 // Check whether an LED needs updating, and if so, change its state
 void update_LEDs(void) {
