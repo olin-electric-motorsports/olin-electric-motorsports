@@ -22,9 +22,9 @@ Install `git` on your computer if it's not already.
 sudo apt install git -y
 ```
 
-Also install python3
+Also install python3.10
 ```shell
-sudo apt update && sudo apt install python3
+sudo apt update && sudo apt install python3.10
 ```
 
 One last Python library...
