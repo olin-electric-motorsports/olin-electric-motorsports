@@ -72,6 +72,8 @@ void openwire_task(void) {
             if (cell > 0) {
                 if (differences[ic][cell] < -400) {
                     set_fault(BMS_FAULT_OPEN_WIRE);
+                } else {
+                    clear_fault(BMS_FAULT_OPEN_WIRE);
                 }
             }
         }
