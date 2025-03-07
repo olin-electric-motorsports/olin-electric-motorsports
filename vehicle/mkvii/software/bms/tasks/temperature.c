@@ -36,6 +36,15 @@ static void update_min_max_temps(uint16_t* min_temp, uint16_t* max_temp,
     }
 }
 
+static void initiate_muxes(void) {
+    for (uint8_t i = 0; i < NUM_MUXES; i++) {
+    wakeup_sleep(NUM_ICS);
+    configure_mux_until_ack(NUM_ICS, MUXES[i], MUX_ENABLE, channel, 10);
+    // For debugging to know which mux is being commanded
+    bms_mux.num_mux = mux;
+    }
+}
+
 void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
                      uint16_t* max_temp, uint16_t* pec_errors) {
     static uint8_t mux = 0;
@@ -56,15 +65,7 @@ void temperature_task(uint32_t* ot, uint32_t* ut, uint16_t* min_temp,
 
     bms_temperature.channel = channel;
 
-static void initiate_muxes(void) {
-    for (uint8_t i = 0; i < NUM_MUXES; i++) {
-    wakeup_sleep(NUM_ICS);
-    configure_mux_until_ack(NUM_ICS, MUXES[i], MUX_ENABLE, channel, 10);
-    // For debugging to know which mux is being commanded
-    bms_mux.num_mux = mux;
-    }
-}
-
+    initiate_muxes();
 
     LTC681x_adax(MD_7KHZ_3KHZ, AUX_CH_ALL);
     (void)LTC681x_pollAdc();

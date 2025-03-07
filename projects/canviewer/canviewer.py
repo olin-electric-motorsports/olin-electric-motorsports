@@ -44,11 +44,11 @@ from typing import Dict
 @dataclass
 class ThermistorReading:
     ic: int
-    da_board: int
+    mux_chip: int
     channel: int
 
     def __str__(self):
-        return f"{self.ic}:{self.da_board}:{self.channel}"
+        return f"{self.ic}:{self.mux_chip}:{self.channel}"
 
 # 1 indexing because of how _rdcv_reg is written
 
@@ -72,8 +72,8 @@ class VoltageReading:
           cell_number = f"0{cell_number}"
         return f"{self.ic}:{cell_number}"
 
-debug_temp: bool = False
-debug_voltage: bool = True
+debug_temp: bool = True
+debug_voltage: bool = False
 temp_readings: Dict[ThermistorReading, float] = {}
 voltage_readings: Dict[VoltageReading, float] = {}
 import numpy as np
@@ -93,82 +93,77 @@ def rx_callback(msg, db):
         return
 
     if debug_temp:
-      if "da_boards" in message.keys():
-          channel = str(message["channel"])
-          if len(channel) == 1:
-              channel = f"0{channel}"
-          if message["da_boards"] == "DA_BOARDS_34":
-              reading1 = ThermistorReading(ic=message["ic"], da_board=3, channel=channel)
-              temp_readings[str(reading1)] = message["temperature_1"]
-              if message["channel"] >= 4:
-                  reading2 = ThermistorReading(
-                      ic=message["ic"], da_board=4, channel=channel
-                  )
-                  temp_readings[str(reading2)] = message["temperature_2"]
-          else:
-              if message["channel"] >= 7:
-                  reading1 = ThermistorReading(
-                      ic=message["ic"], da_board=1, channel=channel
-                  )
-                  temp_readings[str(reading1)] = message["temperature_1"]
-              reading2 = ThermistorReading(ic=message["ic"], da_board=2, channel=channel)
-              temp_readings[str(reading2)] = message["temperature_2"]
-          txt = "_____________start______________\n"
-          channels = list(temp_readings.keys())
-          vals = list(temp_readings.values())
-          try:
-            num_high = sum(np.array([float(convertVtoT(x)) for x in vals]) > 60)
-          except:
-            num_high = -1
-          zipped = list(zip(channels, vals))
-          zipped.sort(key=lambda a: a[0])
-          i = 0
-          cellHeader = 0;
-          daChCount = 0;
-          seg = 0;
-          chPerDa = 24;
-          daCount = 0;
-          cellInRow = chPerDa;
+        if "mux_chips" in message.keys():
+            channel = str(message["channel"])
+            if len(channel) == 1:
+                channel = f"0{channel}"
+            if message["mux_chips"] == "MUX_CHIPS_34":
+                reading1 = ThermistorReading(ic=message["ic"], mux_chip=3, channel=channel)
+                temp_readings[str(reading1)] = message["temperature_1"]
+                reading2 = ThermistorReading(
+                    ic=message["ic"], mux_chip=4, channel=channel
+                )
+                temp_readings[str(reading2)] = message["temperature_2"]
+            elif message["mux_chips"] == "NO_MUX":
+                reading1 = ThermistorReading(ic=message["ic"], mux_chip=5, channel=1)
+                temp_readings[str(reading1)] = message["temperature_1"]
+                reading2 = ThermistorReading(ic=message["ic"], mux_chip=5, channel=2)
+                temp_readings[str(reading2)] = message["temperature_2"]
+            else:
+                reading1 = ThermistorReading(
+                    ic=message["ic"], mux_chip=1, channel=channel
+                )
+                temp_readings[str(reading1)] = message["temperature_1"]
+                reading2 = ThermistorReading(ic=message["ic"], mux_chip=2, channel=channel)
+                temp_readings[str(reading2)] = message["temperature_2"]
+            txt = "_____________start______________\n"
+            channels = list(temp_readings.keys())
+            vals = list(temp_readings.values())
+            try: 
+                num_high = sum(np.array([float(convertVtoT(x)) for x in vals]) > 60)
+            except:
+                num_high = -1
+            zipped = list(zip(channels, vals))
+            zipped.sort(key=lambda a: a[0])
+            # print(zipped)
+            i = 0
+            cellHeader = 0
+            seg = 0
+            chPerMux = 8
+            muxCount = 0
+            cellInRow = chPerMux
 
-          txt += "\nSeg : DA |"
-          while(cellHeader < chPerDa):
-            txt += str(cellHeader).rjust(6, " ")
-            cellHeader += 1
+            txt += "\nSeg : MUX |"
+            while(cellHeader < chPerMux):
+                txt += str(cellHeader).rjust(6, " ")
+                cellHeader += 1
 
-          txt += "\n"
-          print
-          while i < len(channels):
-                
-              txt += "  " + str(int(daCount / 4)) + " :  " + str(daCount % 4) + " | " 
-              if(daCount % 4 == 0):
-              	cellInRow = 17
-              	txt += "      " * 7
-              elif(daCount % 4 == 3):
-              	cellInRow = 20
-              else:
-                cellInRow = chPerDa
-                
-              # if(daCount % 4 == 3):
-              #   txt += "\n"
-              txt += (
-                  " ".join(
-                      [
-                          str(str(round(float(convertVtoT(z[1])), 1))).rjust(5, " ")
-                          for z in zipped[i : i + cellInRow]
-                      ]
-                  )
-                  + "\n"
-              )
-              if(daCount % 4 == 3):
-                txt += "\n"
-              i += cellInRow #DAs per segment
-              daCount += 1;
-          txt += "min:\t" + str(convertVtoT(max(temp_readings.values()))) + "\n"
-          txt += "max:\t" + str(convertVtoT(min(temp_readings.values()))) + "\n"
-          txt += "high:\t" + str(num_high) + "\n"
-          txt += "______________end_______________"
-          print(txt)
-
+            txt += "\n"
+            while i < len(channels):
+                if muxCount % 5 == 4:
+                    cellInRow = 2
+                else:
+                    cellInRow = 8
+                txt += "  " + str(int(muxCount / 5)) + " :   " + str(muxCount % 5) + " | " 
+                txt += (
+                    " ".join(
+                        [
+                            str(round(float(convertVtoT(z[1])), 1)).rjust(5, " ")
+                            # z[0]
+                            for z in zipped[i : i + cellInRow]
+                        ]
+                    )
+                    + "\n"
+                )
+                if(muxCount % 5 == 4):
+                    txt += "\n"
+                i += cellInRow #MUXs per segment
+                muxCount += 1
+            txt += "min:\t" + str(convertVtoT(max(temp_readings.values()))) + "\n"
+            txt += "max:\t" + str(convertVtoT(min(temp_readings.values()))) + "\n"
+            txt += "high:\t" + str(num_high) + "\n"
+            txt += "______________end_______________"
+            print(txt)
     if debug_voltage:
         if "cell" in message.keys():
           cell_number = VoltageRegister[str(message["cell"])].value
@@ -257,8 +252,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-d",
         "--dbc",
-        default="vehicle/mkvi/mkvi.dbc",
-        help="Path to the DBC file to use for decoding CAN messages; default is the MKVI DBC",
+        default="vehicle/mkvii/mkvii.dbc",
+        help="Path to the DBC file to use for decoding CAN messages; default is the MKVII DBC",
     )
 
     args = parser.parse_args()
