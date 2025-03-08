@@ -30,8 +30,6 @@ void max7221_init() {
     // Set intensity to max brightness
     max7221_write(INTENSITY, SET_MAX_BRIGHTNESS);
 
-    
-
     // Illuminate all segments
     max7221_write(DISPLAY_TEST, DISPLAY_TEST_ON);
 }
@@ -43,9 +41,4 @@ void max7221_test(){
 int main(void) {
     spi_bus_init();
     max7221_init();  
-
-
-    // while(1){
-    //     max7221_test();
-    // }
 }
