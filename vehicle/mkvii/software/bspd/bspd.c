@@ -14,6 +14,10 @@
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 
+//////////////////////// VARIABLE DECLARATIONS /////////////////
+uint8_t heartbeat_counter = 0;
+
+//////////////////////// FUNCTIONS /////////////////////////////
 // Required for btldr
 image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .image_magic = IMAGE_MAGIC,
@@ -34,19 +38,6 @@ void pcint0_callback(void) {
     bspd.ss_bspd = !gpio_get_pin(BSPD_SHUTDOWN_SENSE);
 }
 
-// // Used to update the ss_bspd can signal to OPEN (but not back to CLOSED) when BSPD faults
-void update_ss_bspd_can(void) {
-    if (skip == false) {
-        if (gpio_get_pin(BSPD_SHUTDOWN_SENSE)) {
-            bspd.ss_bspd = true;
-        }
-        else if (gpio_get_pin(BSPD_SHUTDOWN_SENSE) == 0) {
-            skip = true;
-            bspd.ss_bspd = false;
-        }
-    }
-}
-
 // Check whether an LED needs updating, and if so, change its state
 void update_LEDs(void) {
     // Update Brake Light LED on the PCB
@@ -63,15 +54,17 @@ void update_LEDs(void) {
         gpio_clear_pin(MOTOR_5KW_LED);
     }
 
-    // Update BSPD Status LED/BSPD Trip LED on the PCB (can only turn on)
-    // Inverted to ensure appropriate behavior. If BSPD_LL is low (Relay is Opened) -> Trip LED Turn On
+    // Update BSPD Status LED/BSPD Trip LED on the PCB
     if (!gpio_get_pin(BSPD_LL)) {
         gpio_set_pin(BSPD_TRIP_LED);
+    }
+    else: {
+        gpio_clear_pin(BSPD_TRIP_LED)
     }
 
 }
 
-// Triggers Heartbeat LED every 0.5 s (based on 100 Hz CAN Signal)
+// Triggers Heartbeat LED every 0.5 s (timing based on 100 Hz CAN Signal)
 void update_heartbeat_LED(void) {
         heartbeat_counter += 1;
         // Update Heartbeat LED on the PCB
@@ -82,6 +75,7 @@ void update_heartbeat_LED(void) {
         }
 }  
 
+//////////////////////// MAIN CODE /////////////////////////////
 int main(void) {
     /////////////////////////////// BSPD STARTUP ///////////////////////////////
     // Interrupt Enable
@@ -134,9 +128,6 @@ int main(void) {
         bspd.brake_pressure = adc_read(BRAKE_PRESSURE_SENSE);
         bspd.brake_pressure_filtered = adc_read(BRAKE_PRESSURE_SENSE_FILTERED);
         bspd.opamp_timer_rc_circuit_status = adc_read(RC_TIMER_STATUS);
-
-        // // Correct ss_bspd can signal
-        // update_ss_bspd_can();
 
         // Triggers Send Can Function 100 times per second
         if (send_can) {

@@ -3,9 +3,6 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
 
-//////////////////////// VARIABLE DECLARATIONS /////////////////
-uint8_t heartbeat_counter = 0;
-bool skip = false;
 
 //////////////////////// GPIO - DIGITAL ////////////////////////
 // These are digital outputs for avr-controlled LED outputs
