@@ -3,21 +3,21 @@
 #include "vehicle/common/ltc6811/ltc681x.h"
 #include "vehicle/mkvii/software/bms/bms_config.h"
 #include "vehicle/mkvii/software/bms/utils/fault.h"
+#include "vehicle/mkvii/software/bms/can_api.h"
 
 #define NUM_CELL_REG     (6)
 #define NUM_CELLS_IN_REG (3)
 #define NUM_BYTES_IN_REG (6)
-#define NUM_CELLS_PER_IC (17)
+#define NUM_CELLS_PER_IC  (18) // Actually 17 but the way open-wire works
 
 #define ITERATIONS (2) 
 
 void openwire_task(void) {
 
     wakeup_sleep(NUM_ICS);
-
-    uint16_t raw_pull_up_data[NUM_ICS][NUM_CELLS_PER_IC]; 
-    uint16_t raw_pull_down_data[NUM_ICS][NUM_CELLS_PER_IC]; 
-    int16_t differences[NUM_ICS][NUM_CELLS_PER_IC];
+    uint16_t raw_pull_up_data[NUM_ICS][NUM_CELLS_PER_IC] = { 0 }; 
+    uint16_t raw_pull_down_data[NUM_ICS][NUM_CELLS_PER_IC] = { 0 }; 
+    int16_t differences[NUM_ICS][NUM_CELLS_PER_IC - 1] = { 0 };
 
     uint8_t raw_row_data[NUM_RX_BYT * NUM_ICS] = { 0 };
 
@@ -33,13 +33,15 @@ void openwire_task(void) {
 
         LTC681x_rdcv_reg(reg + 1, NUM_ICS, raw_row_data);
 
-        for (uint8_t ic; ic < NUM_ICS; ic++) {
+        uint8_t column_index = reg * NUM_CELLS_IN_REG;
+
+        for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
 
             uint8_t data_index = ic * NUM_RX_BYT; 
 
-            raw_pull_up_data[ic][data_index + 0] = raw_row_data[data_index + 0] + (raw_row_data[data_index + 1] << 8);
-            raw_pull_up_data[ic][data_index + 1] = raw_row_data[data_index + 2] + (raw_row_data[data_index + 3] << 8);
-            raw_pull_up_data[ic][data_index + 2] = raw_row_data[data_index + 4] + (raw_row_data[data_index + 5] << 8);
+            raw_pull_up_data[ic][column_index + 0] = raw_row_data[data_index + 0] + (raw_row_data[data_index + 1] << 8);
+            raw_pull_up_data[ic][column_index + 1] = raw_row_data[data_index + 2] + (raw_row_data[data_index + 3] << 8);
+            raw_pull_up_data[ic][column_index + 2] = raw_row_data[data_index + 4] + (raw_row_data[data_index + 5] << 8);
         }
     }
   
@@ -55,27 +57,52 @@ void openwire_task(void) {
 
         LTC681x_rdcv_reg(reg + 1, NUM_ICS, raw_row_data);
 
-        for (uint8_t ic; ic < NUM_ICS; ic++) {
+        uint8_t column_index = reg * NUM_CELLS_IN_REG;
+
+        for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
 
             uint8_t data_index = ic * NUM_RX_BYT;
 
-            raw_pull_down_data[ic][data_index + 0] = raw_row_data[data_index + 0] + (raw_row_data[data_index + 1] << 8);
-            raw_pull_down_data[ic][data_index + 1] = raw_row_data[data_index + 2] + (raw_row_data[data_index + 3] << 8);
-            raw_pull_down_data[ic][data_index + 2] = raw_row_data[data_index + 4] + (raw_row_data[data_index + 5] << 8);
+            raw_pull_down_data[ic][column_index + 0] = raw_row_data[data_index + 0] + (raw_row_data[data_index + 1] << 8);
+            raw_pull_down_data[ic][column_index + 1] = raw_row_data[data_index + 2] + (raw_row_data[data_index + 3] << 8);
+            raw_pull_down_data[ic][column_index + 2] = raw_row_data[data_index + 4] + (raw_row_data[data_index + 5] << 8);
         }
     }
 
-    for (uint8_t cell = 0; cell < NUM_CELLS_PER_IC; cell++) {
-        for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
-            differences[ic][cell] = raw_pull_up_data[ic][cell] - raw_pull_down_data[ic][cell];
+    for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+        
+        if (raw_pull_up_data[ic][0] == 0) {
+            bms_metrics.open_wire_pin = 1;
+            bms_metrics.open_wire_ic = ic+1;
+            can_send_bms_metrics();
 
-            if (cell > 0) {
-                if (differences[ic][cell] < -400) {
-                    set_fault(BMS_FAULT_OPEN_WIRE);
-                } else {
-                    clear_fault(BMS_FAULT_OPEN_WIRE);
-                }
-            }
+            bms_debug.open_wire_pull_up = raw_pull_up_data[ic][0]; 
+            can_send_bms_debug();
+        }
+        
+        if (raw_pull_down_data[ic][NUM_CELLS_PER_IC - 1] == 0) {
+            bms_metrics.open_wire_pin = 19;
+            bms_metrics.open_wire_ic = ic+1;
+            can_send_bms_metrics();
+
+            bms_debug.open_wire_pull_down = raw_pull_down_data[ic][NUM_CELLS_PER_IC - 1]; 
+            can_send_bms_debug();
+        }
+        for (uint8_t cell = 0; cell < NUM_CELLS_PER_IC - 1; cell++) {
+            // uint8_t cell = 16;
+            differences[ic][cell] = raw_pull_up_data[ic][cell+1] - raw_pull_down_data[ic][cell+1];
+            if (differences[ic][cell] < -400) {
+                bms_metrics.open_wire_pin = cell+2;
+                bms_metrics.open_wire_ic = ic+1;
+                can_send_bms_metrics();
+
+                bms_metrics.open_wire_difference = differences[ic][cell]; 
+                bms_debug.open_wire_pull_up = raw_pull_up_data[ic][cell+1]; 
+                bms_debug.open_wire_pull_down = raw_pull_down_data[ic][cell+1]; 
+                can_send_bms_debug();
+
+                set_fault(BMS_FAULT_OPEN_WIRE);
+            } 
         }
     }
 }

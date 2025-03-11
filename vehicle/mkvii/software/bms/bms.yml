@@ -159,43 +159,41 @@ publish:
     id: 0x510
     freq_hz: 100
     signals:
+      - name: metric_1
+        slice: 0 + 2
+        unit:
+          type: uint8_t
+          name: ""
+          scale: 1
+          offset: 0
+      - name: open_wire_difference
+        slice: 2 + 16
+        unit:
+          type: int16_t
+          name: "errors"
+          scale: 1
+          offset: 0
       - name: csc_mia
-        slice: 0 + 6
-        unit:
-          type: uint8_t
-          name: ""
-          scale: 1
-          offset: 0
-      - name: da_status_1
-        slice: 6 + 16
-        unit:
-          type: uint16_t
-          name: ""
-          scale: 1
-          offset: 0
-      - name: da_status_2
-        slice: 22 + 8
-        unit:
-          type: uint8_t
-          name: ""
-          scale: 1
-          offset: 0
-      - name: i2c_error_count
-        slice: 30 + 8
+        slice: 18 + 6
         unit:
           type: uint8_t
           name: "errors"
           scale: 1
           offset: 0
-      - name: i2c_channel
-        slice: 38 + 2
+      - name: open_wire_pin
+        slice: 24 + 8
         unit:
-          type: enum
-          values:
-            - CHANNEL_0
-            - CHANNEL_1
-            - CHANNEL_2
-            - CHANNEL_3
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
+      - name: open_wire_ic
+        slice: 32 + 8
+        unit:
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
       - name: voltage_pec_error_count
         slice: 40 + 8
         unit:
@@ -222,18 +220,18 @@ publish:
           name: ""
           scale: 1
           offset: 0
-      - name: dbg_2
+      - name: open_wire_pull_up
         slice: 16 + 16
         unit:
           type: uint16_t
-          name: ""
+          name: "errors"
           scale: 1
           offset: 0
-      - name: dbg_3
+      - name: open_wire_pull_down
         slice: 32 + 16
         unit:
           type: uint16_t
-          name: ""
+          name: "errors"
           scale: 1
           offset: 0
       - name: dbg_4
