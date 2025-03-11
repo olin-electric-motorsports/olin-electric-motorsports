@@ -7,6 +7,8 @@
 #include "libs/timer/api.h"
 #include "vehicle/common/icm20948/icm20948.h"
 
+#define LOW 0
+#define HIGH 1
 #define MIN_SUS_STRAIN_POS 0 // In mV/V
 #define MAX_SUS_STRAIN_POS_FRONT 6.5 // In mV/V, where excitation is 5V and RO is 1.3 mV/V
 #define MAX_SUS_STRAIN_POS_REAR 10 // In mV/V, where excitation is 5V and RO is 2 mV/V
@@ -62,7 +64,7 @@ typedef struct {
     int gpio_pin;
     gpio_t clk_pin;
     gpio_t dat_pin;
-    int16_t data;
+    uint32_t data;
 } SusStrain;
 
 SusStrain SUS_STRAIN_l = {
@@ -100,4 +102,4 @@ gpio_t SUS_STRAIN_int = PC6;
 
 // Function prototypes
 void init_peripherals(void);
-int16_t get_sus_strain(SusStrain *sus_strain, bool is_left_sus_strain);
+void get_sus_strain(SusStrain *sus_strain);
