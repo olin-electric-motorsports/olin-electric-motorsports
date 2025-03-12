@@ -96,6 +96,21 @@ void spi_transceive_cs(uint8_t* txdata, uint8_t* rxdata, uint8_t len) {
     spi_cs_high();
 }
 
+// Custom function for using SPI with multiple peripherals
+void spi_transceive_custom_cs(gpio_t cs, uint8_t* txdata, uint8_t* rxdata,
+    uint8_t len) {
+gpio_clear_pin(cs);
+for (uint8_t i = 0; i < len; i++) {
+spi_transceive_private(txdata[i], &rxdata[i]);
+}
+gpio_set_pin(cs);
+
+// gpio_t ADC_CS = PC1;
+// gpio_set_mode(ADC_CS, OUTPUT);
+// ...
+// spi_transceive_custom_cs(ADC_CS, tx_data, rx_data, len);
+}
+
 void spi_transmit(uint8_t* txdata, uint8_t len) {
     uint8_t rxdata = 0x00;
     for (uint8_t i = 0; i < len; i++) {
