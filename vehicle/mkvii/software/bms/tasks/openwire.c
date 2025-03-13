@@ -4,6 +4,7 @@
 #include "vehicle/mkvii/software/bms/bms_config.h"
 #include "vehicle/mkvii/software/bms/utils/fault.h"
 #include "vehicle/mkvii/software/bms/can_api.h"
+#include "projects/can_print/can_print.h"
 
 #define NUM_CELL_REG     (6)
 #define NUM_CELLS_IN_REG (3)
@@ -17,7 +18,7 @@ void openwire_task(void) {
     wakeup_sleep(NUM_ICS);
     uint16_t raw_pull_up_data[NUM_ICS][NUM_CELLS_PER_IC] = { 0 }; 
     uint16_t raw_pull_down_data[NUM_ICS][NUM_CELLS_PER_IC] = { 0 }; 
-    int16_t differences[NUM_ICS][NUM_CELLS_PER_IC - 1] = { 0 };
+    uint16_t differences[NUM_ICS][NUM_CELLS_PER_IC - 1] = { 0 };
 
     uint8_t raw_row_data[NUM_RX_BYT * NUM_ICS] = { 0 };
 
@@ -89,9 +90,13 @@ void openwire_task(void) {
             can_send_bms_debug();
         }
         for (uint8_t cell = 0; cell < NUM_CELLS_PER_IC - 1; cell++) {
-            // uint8_t cell = 16;
-            differences[ic][cell] = raw_pull_up_data[ic][cell+1] - raw_pull_down_data[ic][cell+1];
-            if (differences[ic][cell] < -400) {
+            // uint8_t cell = 10;
+            if (raw_pull_up_data[ic][cell+1] > raw_pull_down_data[ic][cell+1]) {
+                continue;
+            }
+            differences[ic][cell] = raw_pull_down_data[ic][cell+1] - raw_pull_up_data[ic][cell+1];
+            // if (differences[ic][cell] > 400) {
+            // if (raw_pull_up_data[ic][cell+1] < 1000) {
                 bms_metrics.open_wire_pin = cell+2;
                 bms_metrics.open_wire_ic = ic+1;
                 can_send_bms_metrics();
@@ -102,7 +107,8 @@ void openwire_task(void) {
                 can_send_bms_debug();
 
                 set_fault(BMS_FAULT_OPEN_WIRE);
-            } 
+            // } 
+            can_print("Delta", differences[ic][cell]);
         }
     }
 }

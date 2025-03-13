@@ -13,6 +13,7 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
     deps = [
+        "//projects/can_print",
         "//vehicle/common/ltc6811:ltc681x",
         "//vehicle/mkvii/software/bms:bms_config",
         "//vehicle/mkvii/software/bms:can_api",
