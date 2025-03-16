@@ -58,8 +58,8 @@ void update_LEDs(void) {
     if (!gpio_get_pin(BSPD_LL)) {
         gpio_set_pin(BSPD_TRIP_LED);
     }
-    else: {
-        gpio_clear_pin(BSPD_TRIP_LED)
+    else {
+        gpio_clear_pin(BSPD_TRIP_LED);
     }
 
 }

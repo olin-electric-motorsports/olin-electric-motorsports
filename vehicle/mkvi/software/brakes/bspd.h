@@ -1,3 +1,5 @@
+// TODO: Add new pins and update pin locations
+
 #include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
