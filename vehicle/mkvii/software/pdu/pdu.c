@@ -4,7 +4,7 @@
 void hw_init() {
     // Initialize SPI bus
     spi_init(&spi_cfg);
-    // Set chip select pins as OUTPUT and set to high (disabled)
+    // Configure chip select pins as OUTPUT and set to high (disabled)
     gpio_set_mode(MCP23S17_CS, OUTPUT);
     gpio_set_pin(MCP23S17_CS);
     gpio_set_mode(ADC1283_CS, OUTPUT);
@@ -12,14 +12,16 @@ void hw_init() {
     gpio_set_mode(MAX7221_CS, OUTPUT);
     gpio_set_pin(MAX7221_CS);
 
+    // Initialize IO expander
     mcp23S17_init();
 
+    // Initialize display driver
     max7221_init();
 }
 
 // Initialize IO expander
 void mcp23S17_init() {
-    // Set GPIO pins' direction to output
+    // Set all GPIO pins' direction to output
     spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_DIRECTION_A, ALL_OUTPUT}, (uint8_t[]){0, 0}, 2);
     spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_DIRECTION_B, ALL_OUTPUT}, (uint8_t[]){0, 0}, 2);
 }
@@ -36,11 +38,13 @@ void max7221_init() {
     spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){INTENSITY, SET_MAX_BRIGHTNESS}, (uint8_t[]){0, 0}, 2);
 }
 
+// Test firmware
 void hw_test(){
-    //// Test firmware
     // Illuminate display
     spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){DISPLAY_TEST, DISPLAY_TEST_ON}, (uint8_t[]){0, 0}, 2);
+
     // Light up all shutdown LEDs
+
     // Send CAN message with current readings
 }
 
@@ -48,7 +52,7 @@ int main(void) {
     hw_init();
     hw_test();
 
-    // Main Loop: 
+    //// Main Loop: 
     //  - Update shutdown node LEDs
     //  - Display HV voltage/current on display
     //  - Send CAN messages with current readings
