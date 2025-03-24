@@ -4,4 +4,5 @@ package(
 
 exports_files([
     "motor_controller.dbc",
+    "cm200dx.dbc",
 ])

@@ -1,0 +1,20 @@
+name: pdu
+subscribe:
+  # Transmit MOb is 0
+  - name: dashboard
+    mob: 1
+  - name: throttle
+    mob: 2
+  - name: bspd
+    mob: 3
+  - name: air_control_critical
+    mob: 4
+  - name: bms_core 
+    mob: 5
+publish:
+  - name: pdu_status
+  # TODO
+  - name: section_currents
+  # TODO
+  - name: cooling
+  # TODO

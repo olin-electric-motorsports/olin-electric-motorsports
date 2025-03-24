@@ -1,0 +1,20 @@
+name: wheel_speed
+publish:
+  - name: wheel_speed
+    id: 0x470
+    freq_hz: 100
+    signals:
+      - name: wheel_speed_l
+        slice: 0 + 16
+        unit:
+          type: int16_t
+          name: ''
+          offset: 0
+          scale: 1
+      - name: wheel_speed_r
+        slice: 16 + 16
+        unit:
+          type: int16_t
+          name: ''
+          offset: 0
+          scale: 1
