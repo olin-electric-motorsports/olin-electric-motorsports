@@ -38,12 +38,24 @@ void max7221_init() {
     spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){INTENSITY, SET_MAX_BRIGHTNESS}, (uint8_t[]){0, 0}, 2);
 }
 
+// ADC Read
+void adc_read(adc1283_command input_pin){
+    uint8_t tx_data = {input_pin, 0x00, input_pin, 0x00};
+    uint8_t rx_data = {0x00, 0x00, 0x0f, 0xff};
+    spi_transceive_custom_cs(ADC1283_CS, tx_data, rx_data, 2);
+    // figure out where readings go
+    // send readings over CAN
+
+}
+
 // Test firmware
 void hw_test(){
     // Illuminate display
     spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){DISPLAY_TEST, DISPLAY_TEST_ON}, (uint8_t[]){0, 0}, 2);
 
     // Light up all shutdown LEDs
+    spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_GPIO_A, 0xff}, (uint8_t[]){0, 0}, 2);
+    spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_GPIO_B, 0xff}, (uint8_t[]){0, 0}, 2);
 
     // Send CAN message with current readings
 }

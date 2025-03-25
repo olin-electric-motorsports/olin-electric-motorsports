@@ -3,23 +3,20 @@
 #include "libs/spi/api.h"
 
 // Addresses for mcp23s17 (Assumes IOCON.BANK = 0)
-enum mcp23s17_address {
+typedef enum {
     IO_DIRECTION_A = 0x00,
     IO_DIRECTION_B = 0x01,
-};
+    IO_GPIO_A = 0x12,
+    IO_GPIO_B = 0x13, 
+} mcp23s17_address;
 
 // Commands for mcp23s17
-enum mcp23s17_command {
+typedef enum {
     ALL_OUTPUT = 0x00,
-};
-
-// Addresses for adc1283
-enum adc1283_address {
-    ADC_CONTROL = 0x00, // Could not find address in datasheet, assuming it is 0x00
-};
+} mcp23s17_command;
 
 // Commands for adc1283
-enum adc1283_command {
+typedef enum {
     INPUT_0 = 0x00,
     INPUT_1 = 0x08,
     INPUT_2 = 0x10,
@@ -28,25 +25,25 @@ enum adc1283_command {
     INPUT_5 = 0x28,
     INPUT_6 = 0x30,
     INPUT_7 = 0x38,
-};
+} adc1283_command;
 
 // Addresses for max7211
-enum max7221_address {
+typedef enum {
     DECODE = 0x09,
     INTENSITY = 0x0A,
     SCAN_LIMIT = 0x0B,
     SHUTDOWN = 0x0C,
     DISPLAY_TEST = 0x0F,
-};
+} max7221_address;
 
 // Commands for max7221
-enum max7221_command{
+typedef enum {
     DECODE_4_DIGITS = 0x0F,
     SCAN_4_DIGITS = 0x03,
     SET_MAX_BRIGHTNESS = 0x0F,
     SHUTDOWN_OFF = 0x01,
     DISPLAY_TEST_ON = 0x01,
-};
+} max7221_command;
 
 // Chip Select Pins
 gpio_t MCP23S17_CS = PB3; 
