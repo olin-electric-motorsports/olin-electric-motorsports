@@ -48,7 +48,7 @@ int dashboard_counter = 0;
 
 // Start Button interrupt & final ReadyToDrive check
 void pcint1_callback(void) {
-    START_BUTTON_STATE = !gpio_get_pin(START_BTN);
+    START_BUTTON_STATE = !!gpio_get_pin(START_BTN);
     dashboard.start_button_state = START_BUTTON_STATE;
 }
 
@@ -195,13 +195,14 @@ int main(void) {
         }
         }
 
-        dashboard.driver_estop_ss = !!gpio_get_pin(ESTOP_SS);
-        dashboard.bots_ss= !!gpio_get_pin(BOTS_SS);
+        //Get input from shutdown nodes
+        dashboard.driver_estop_ss = !gpio_get_pin(ESTOP_SS);
+        dashboard.bots_ss= !gpio_get_pin(BOTS_SS);
     }
 
 
 
-        //PRETTY SURE THIS IS WRONG - yap later
-            updater_loop();
+    //PRETTY SURE THIS IS WRONG - yap later
+    updater_loop();
 
 }
