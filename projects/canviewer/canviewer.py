@@ -257,8 +257,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-d",
         "--dbc",
-        default="vehicle/mkvi/mkvi.dbc",
-        help="Path to the DBC file to use for decoding CAN messages; default is the MKVI DBC",
+        default="vehicle/mkvii/mkvii.dbc",
+        help="Path to the DBC file to use for decoding CAN messages; default is the MKVII DBC",
     )
 
     args = parser.parse_args()
