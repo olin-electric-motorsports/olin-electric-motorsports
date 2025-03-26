@@ -17,7 +17,7 @@
 #include "libs/adc/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
-#include "vehicle/mkv/software/dashboard/can_api.h"
+#include "vehicle/mkvii/software/lv/dashboard/can_api.h"
 #include <util/delay.h>
 
 
@@ -97,7 +97,7 @@ int main(void) {
     gpio_set_pin(HEARTBEAT_LED);
 
     // Receive CAN Messages
-    can_receive_brakelight();
+    can_receive_bspd();
     can_receive_bms_core();
     can_receive_air_control_critical();
     can_receive_throttle();
@@ -105,14 +105,14 @@ int main(void) {
     for (;;) {
     
         //var BRAKE_PRESSED = ?
-        if (can_poll_receive_brakelight() == 0) {
-            if (brakelight.brake_gate) {
+        if (can_poll_receive_bspd() == 0) {
+            if (bspd.brake_gate) {
                 BRAKE_PRESSED = true;
             } else {
                 BRAKE_PRESSED = false;
             }
 
-            can_receive_brakelight();
+            can_receive_bspd();
         }
 
         //var THROTTLE_PRESSED = ?
@@ -127,12 +127,12 @@ int main(void) {
             can_receive_throttle();
         }
 
-        //var bms_core.bms_fault = ?
+        //var bms_core.bms_fault_code = ?
         if (can_poll_receive_bms_core() == 0) {
             // BMS Core message for BMS Status LED
             can_receive_bms_core();
 
-            if (bms_core.bms_fault != BMS_FAULT_NONE) { // check BMS status
+            if (bms_core.bms_fault_code != BMS_FAULT_NONE) { // check BMS status
                 gpio_set_pin(BMS_LED); // BMS ON means ERROR, we have LED
             } else {
                 gpio_clear_pin(BMS_LED); // BMS OFF means OK
