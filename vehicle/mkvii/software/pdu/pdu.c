@@ -22,29 +22,31 @@ void hw_init() {
 // Initialize IO expander
 void mcp23S17_init() {
     // Set all GPIO pins' direction to output
-    spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_DIRECTION_A, ALL_OUTPUT}, (uint8_t[]){0, 0}, 2);
-    spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_DIRECTION_B, ALL_OUTPUT}, (uint8_t[]){0, 0}, 2);
+    spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_DIRECTION_A, ALL_OUTPUT}, NULL, 2);
+    spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_DIRECTION_B, ALL_OUTPUT}, NULL, 2);
 }
 
 // Initialize display driver
 void max7221_init() {
     // Leave shutdown mode
-    spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){SHUTDOWN, SHUTDOWN_OFF}, (uint8_t[]){0, 0}, 2);
+    spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){SHUTDOWN, SHUTDOWN_OFF}, NULL, 2);
     // Enable decoding on digits 3-0
-    spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){DECODE, DECODE_4_DIGITS}, (uint8_t[]){0, 0}, 2);
+    spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){DECODE, DECODE_4_DIGITS}, NULL, 2);
     // Set scan limit to display digits 3-0
-    spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){SCAN_LIMIT, SCAN_4_DIGITS}, (uint8_t[]){0, 0}, 2);
+    spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){SCAN_LIMIT, SCAN_4_DIGITS}, NULL, 2);
     // Set intensity to max brightness
-    spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){INTENSITY, SET_MAX_BRIGHTNESS}, (uint8_t[]){0, 0}, 2);
+    spi_transceive_custom_cs(MAX7221_CS, (uint8_t[]){INTENSITY, SET_MAX_BRIGHTNESS}, NULL, 2);
 }
 
 // ADC Read
-void adc_read(adc1283_command input_pin){
-    uint8_t tx_data = {input_pin, 0x00, input_pin, 0x00};
-    uint8_t rx_data = {0x00, 0x00, 0x0f, 0xff};
-    spi_transceive_custom_cs(ADC1283_CS, tx_data, rx_data, 2);
-    // figure out where readings go
-    // send readings over CAN
+uint16_t adc_read(adc1283_command input_pin){
+    // 32 clock cycles (4 bytes) are needed to read current on specified channel
+    uint8_t tx_data[] = {input_pin, 0x00, input_pin, 0x00};
+    // Receive 4 bytes of data, but we only care about the last 12 bits
+    uint8_t rx_data[4];
+    spi_transceive_custom_cs(ADC1283_CS, tx_data, rx_data, 4);
+    uint16_t reading = (rx_data[2] << 8) | rx_data[3];
+    return reading
 
 }
 
