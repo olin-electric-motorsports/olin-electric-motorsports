@@ -45,9 +45,9 @@ uint16_t adc_read(adc1283_command input_pin){
     // Receive 4 bytes of data, but we only care about the last 12 bits
     uint8_t rx_data[4];
     spi_transceive_custom_cs(ADC1283_CS, tx_data, rx_data, 4);
+    // Return the last 16 bits (first 4 bits are zero, so returning last 12 bits in effect)
     uint16_t reading = (rx_data[2] << 8) | rx_data[3];
     return reading
-
 }
 
 // Test firmware
@@ -59,7 +59,10 @@ void hw_test(){
     spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_GPIO_A, 0xff}, (uint8_t[]){0, 0}, 2);
     spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_GPIO_B, 0xff}, (uint8_t[]){0, 0}, 2);
 
-    // Send CAN message with current readings
+    // Perform current reading of ADC input 1 (service section)
+    reading = adc_read(INPUT_1);
+
+    // Send CAN message
 }
 
 int main(void) {
