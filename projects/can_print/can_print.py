@@ -159,10 +159,10 @@ class CanPrintMessage:
           The value associated with a can print message.
         """
         raw_value = (self.raw_data >> CanPrintOffset.VALUE_SHIFT) & 0xFFFF
-        if raw_value > 0x7FFF:
-            return -((~(raw_value) & 0x7FFF) + 1)
-        else:
-            return raw_value
+        # if raw_value > 0x7FFF:
+        #     return -((~(raw_value) & 0x7FFF) + 1)
+        # else:
+        return raw_value
 
     @property
     def multiplier(self) -> int:
