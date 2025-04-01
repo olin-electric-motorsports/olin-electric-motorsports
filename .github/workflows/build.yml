@@ -31,6 +31,12 @@ jobs:
       - name: Install gcc-avr
         run: sudo apt install gcc-avr avr-libc binutils-avr
 
+      - name: Install gcc-avr 5.4.0
+        run: |
+          sudo add-apt-repository ppa:pmassi/gcc-avr
+          sudo apt update
+          sudo apt install gcc-avr=5.4.0-1
+
       - name: Change Python Version
         uses: actions/setup-python@v2
         with:
