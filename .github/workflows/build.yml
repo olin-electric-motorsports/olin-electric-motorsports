@@ -30,14 +30,9 @@ jobs:
 
       - name: Install gcc-avr 5.4.0
         run: |
+          sudo add-apt-repository ppa:pmassi/gcc-avr
           sudo apt update
-          sudo apt remove gcc-avr avr-libc binutils-avr -y  # Remove any existing versions
-          sudo apt install -y gcc-5 g++-5
-          wget http://ftp.debian.org/debian/pool/main/g/gcc-5/gcc-5_5.4.0-6_amd64.deb
-          wget http://ftp.debian.org/debian/pool/main/b/binutils/binutils-avr_2.35.2-2_amd64.deb
-          wget http://ftp.debian.org/debian/pool/main/a/avr-libc/avr-libc_2.0.0+Atmel3.6.1-2_all.deb
-          sudo dpkg -i gcc-5_5.4.0-6_amd64.deb binutils-avr_2.35.2-2_amd64.deb avr-libc_2.0.0+Atmel3.6.1-2_all.deb
-          sudo ln -sf /usr/bin/gcc-5 /usr/bin/avr-gcc  # Set avr-gcc to use GCC 5.4.0
+          sudo apt install gcc-avr=5.4.0-1
 
       - name: Change Python Version
         uses: actions/setup-python@v4
