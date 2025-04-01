@@ -13,9 +13,9 @@ jobs:
         platform: [linux-x86_64, 16m1, 328p, 64m1]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Cache bazel
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         env:
           cache-name: cache-bazel
         with:
@@ -28,11 +28,19 @@ jobs:
       - name: Disable man-db update
         run: sudo rm -f /var/lib/man-db/auto-update
 
-      - name: Install gcc-avr
-        run: sudo apt install gcc-avr avr-libc binutils-avr
+      - name: Install gcc-avr 5.4.0
+        run: |
+          sudo apt update
+          sudo apt remove gcc-avr avr-libc binutils-avr -y  # Remove any existing versions
+          sudo apt install -y gcc-5 g++-5
+          wget http://ftp.debian.org/debian/pool/main/g/gcc-5/gcc-5_5.4.0-6_amd64.deb
+          wget http://ftp.debian.org/debian/pool/main/b/binutils/binutils-avr_2.35.2-2_amd64.deb
+          wget http://ftp.debian.org/debian/pool/main/a/avr-libc/avr-libc_2.0.0+Atmel3.6.1-2_all.deb
+          sudo dpkg -i gcc-5_5.4.0-6_amd64.deb binutils-avr_2.35.2-2_amd64.deb avr-libc_2.0.0+Atmel3.6.1-2_all.deb
+          sudo ln -sf /usr/bin/gcc-5 /usr/bin/avr-gcc  # Set avr-gcc to use GCC 5.4.0
 
       - name: Change Python Version
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: "3.9"
 
@@ -46,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # Speed things up a bit
       - name: Disable initramfs update
