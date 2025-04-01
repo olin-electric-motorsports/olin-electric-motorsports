@@ -1,6 +1,10 @@
 load("//bazel:defs.bzl", "cc_firmware")
 load("//bazel/tools:defs.bzl", "can_api_files")
 
+exports_files([
+    "throttle.yml",
+])
+
 cc_firmware(
     name = "throttle",
     srcs = [
@@ -21,10 +25,6 @@ cc_firmware(
         "//projects/btldr:btldr_lib",
     ],
 )
-
-exports_files([
-    "throttle.yml",
-])
 
 can_api_files(
     name = "can_api",

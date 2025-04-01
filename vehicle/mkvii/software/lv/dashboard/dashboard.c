@@ -47,7 +47,7 @@ volatile int buzzer_counter = 0;
 int dashboard_counter = 0;
 
 // Start Button interrupt & final ReadyToDrive check
-void pcint1_callback(void) {
+void pcint2_callback(void) {
     START_BUTTON_STATE = !!gpio_get_pin(START_BTN);
     dashboard.start_button_state = START_BUTTON_STATE;
 }
@@ -76,6 +76,7 @@ int main(void) {
     gpio_set_mode(IMD_LED, OUTPUT);
     gpio_set_mode(BMS_LED, OUTPUT);
     gpio_set_mode(HV_LED, OUTPUT);
+    gpio_set_mode(RTD_BUTTON_LED, OUTPUT);
 
     gpio_set_mode(HEARTBEAT_LED, OUTPUT);
 
@@ -87,7 +88,7 @@ int main(void) {
     gpio_set_mode(BOTS_SS, INPUT);
     gpio_set_mode(ESTOP_SS, INPUT);
 
-    pcint1_callback(); // Set initial condition of hardware
+    pcint2_callback(); // Set initial condition of hardware
 
     // Enable interrupts
     sei();
@@ -161,13 +162,24 @@ int main(void) {
             }
             can_receive_air_control_critical();
         }
-        
 
-        //Final check, BUZZER, and start the car
-        if (START_BUTTON_STATE && HV_STATE && BRAKE_PRESSED
-            && !THROTTLE_PRESSED) {
-            dashboard.ready_to_drive = true;
-            gpio_set_pin(RTD_BUZZER_LSD); // turn on RTD Buzzer
+        if (!dashboard.ready_to_drive) { // Does not allow this to run after car is driving
+            // Checks to see if driver can press RTD Button
+            if (HV_STATE && BRAKE_PRESSED && !THROTTLE_PRESSED) {
+                
+                //Final check, BUZZER, and start the car
+                if (START_BUTTON_STATE) {
+                    gpio_clear_pin(RTD_BUTTON_LED); //  Turn off led since driver pressed button already
+                    dashboard.ready_to_drive = true;
+                    gpio_set_pin(RTD_BUZZER_LSD); // turn on RTD Buzzer
+                    }
+                else {
+                    gpio_set_pin(RTD_BUTTON_LED); // Turn on LED so driver knows
+                }
+            }
+            else {
+                gpio_clear_pin(RTD_BUTTON_LED);
+            }   
         }
 
 
