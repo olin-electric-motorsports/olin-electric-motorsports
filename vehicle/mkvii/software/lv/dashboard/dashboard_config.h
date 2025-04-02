@@ -13,7 +13,7 @@ gpio_t IMD_LED = PC7;
 gpio_t BMS_LED = PC6;
 gpio_t HV_LED = PD5;
 
-gpio_t START_BTN = PC6; 
+gpio_t START_BTN = PD1; 
 
 gpio_t RTD_BUZZER_LSD = PC4;
 gpio_t RTD_BUTTON_LED= PC5;

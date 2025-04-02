@@ -50,12 +50,19 @@ Last calibrated 11-30-2023 for MKVI
 
 // Pin definitions
 gpio_t SS_IS = PB6;
+gpio_t ERROR_LED = PD5;
+gpio_t HEARTBEAT_LED = PD6; // This is for the heartbeat light 
+
+
+
 
 typedef struct {
     // represents a throttle poteniometer
     adc_pin_e adc_pin;
     int16_t throttle_min; // Minimum position (0%) in raw ADC
     int16_t throttle_max; // Maximum position (100%) in raw ADC
+    // enum Location {
+        //throttle_l}
 } throttle_potentiometer_s;
 
 const throttle_potentiometer_s throttle_l = {

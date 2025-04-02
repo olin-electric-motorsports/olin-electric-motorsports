@@ -156,6 +156,7 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
         true if implausibility, false if not
 */
 
+
 static bool check_brake(int16_t pos_min) {
     static bool brake_implausibility_occurred = false;
 
@@ -297,6 +298,7 @@ int main(void) {
             
             if (check_brake(pos_min)) {
                 SET_TORQUE_REQUEST(0);
+                throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
                 throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
                 continue;
             }
