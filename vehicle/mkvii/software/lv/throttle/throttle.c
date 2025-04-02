@@ -299,7 +299,6 @@ int main(void) {
             if (check_brake(pos_min)) {
                 SET_TORQUE_REQUEST(0);
                 throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
-                throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
                 continue;
             }
 
