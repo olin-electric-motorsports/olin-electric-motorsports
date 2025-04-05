@@ -178,7 +178,7 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
 
 
 static bool check_brake(int16_t pos_min) {
-    static bool brake_implausibility_occurred = false;
+    bool brake_implausibility_occurred = false;
 
     if (throttle_state.brake_pressed) {
         // if brakes are pressed
@@ -243,6 +243,8 @@ int main(void) {
 
     updater_init(BTLDR_ID, 5);
     gpio_set_mode(SS_IS, INPUT);
+    gpio_set_mode(HEARTBEAT_LED, OUTPUT);
+    gpio_set_mode(ERROR_LED, OUTPUT);
     gpio_enable_interrupt(SS_IS);
 
     throttle.throttle_status = THROTTLE_IDLE;
