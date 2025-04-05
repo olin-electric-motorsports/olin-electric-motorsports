@@ -35,6 +35,10 @@ void pcint0_callback(void) {
     // Update CAN struct with new board logic values
     bspd.brake_gate = !!gpio_get_pin(BRAKELIGHT_LL);
     bspd.bspd_5kw = !!gpio_get_pin(MOTOR_CURRENT_SENSE);
+}
+
+void pcint1_callback(void) {
+    // Update CAN struct with new board logic values
     bspd.ss_bspd = !gpio_get_pin(BSPD_SHUTDOWN_SENSE);
 }
 
@@ -108,13 +112,15 @@ int main(void) {
 
     // Attach Pins to interrupt handler (assuming on rising/falling edge)
     // These are all PB registers which are mapped to the pcint0_callback
-    // function
+    // function; BSPD_SHUTDOWN is in the PC register and is mapped to the
+    // pcint1_callback function.
     gpio_enable_interrupt(BRAKELIGHT_LL);
     gpio_enable_interrupt(MOTOR_CURRENT_SENSE);
     gpio_enable_interrupt(BSPD_SHUTDOWN_SENSE);
 
     // Gets initial analog inputs
     pcint0_callback();
+    pcint1_callback();
     
     // Initial Predefined Heartbeat CAN Signal
     bspd.heartbeat = false;

@@ -62,7 +62,7 @@ void timer1_isr(void) {
     run_1ms = true;
 }
 
-static void pcint0_callback(void) {
+void pcint0_callback(void) {
     throttle.ss_is = !gpio_get_pin(SS_IS);
 }
 
