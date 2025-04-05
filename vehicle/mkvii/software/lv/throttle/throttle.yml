@@ -43,6 +43,13 @@ publish:
           values:
             t: CLOSED
             f: OPEN
+      - name: heartbeat
+        slice: 42 + 1
+        unit:
+          type: bool
+          values:
+            t: lub
+            f: DUB
   - name: throttle_debug
     id: 0x6C0
     freq_hz: 100

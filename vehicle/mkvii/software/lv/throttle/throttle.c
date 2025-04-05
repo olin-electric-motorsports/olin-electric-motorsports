@@ -19,6 +19,8 @@
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 
+uint8_t heartbeat_counter = 0;
+
 /*
  * Required for btldr
  */
@@ -64,6 +66,24 @@ void timer1_isr(void) {
 
 void pcint0_callback(void) {
     throttle.ss_is = !gpio_get_pin(SS_IS);
+}
+
+void update_Error_LED(void) {
+    if (throttle_debug.throttle_l_out_of_range || throttle_debug.throttle_r_out_of_range
+    || throttle_debug.throttle_deviation || throttle_debug.throttle_brake_implaus) {
+        gpio_set_pin(ERROR_LED);
+    } else {
+        gpio_clear_pin(ERROR_LED);
+    }
+}
+
+void update_Heartbeat_LED(void) {
+    heartbeat_counter += 1;
+    if (heartbeat_counter == 50) {
+        gpio_toggle_pin(HEARTBEAT_LED);
+        throttle.heartbeat = !throttle.heartbeat;
+        heartbeat_counter = 0;
+    }
 }
 
 /*
@@ -295,10 +315,13 @@ int main(void) {
             } else {
             	deviation_implausibility = false;
             }
+
+            update_Error_LED();
             
             if (check_brake(pos_min)) {
                 SET_TORQUE_REQUEST(0);
                 throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
+                update_Error_LED();
                 continue;
             }
 
@@ -317,6 +340,7 @@ int main(void) {
             } else {
                 throttle.throttle_status = THROTTLE_RUN;
                 throttle_state.implausibility_fault_counter = 0;
+                update_Error_LED();
 
                 // NOTE: If we decide to do a non-linear map, that would go here
                 int16_t torque_request = pos_min * TORQUE_REQUEST_SCALE;
@@ -343,6 +367,7 @@ int main(void) {
             can_send_throttle();
             can_send_throttle_debug();
             can_send_m192_command_message();
+            update_Heartbeat_LED();
             throttle_state.send_can = false;
         }
     }
