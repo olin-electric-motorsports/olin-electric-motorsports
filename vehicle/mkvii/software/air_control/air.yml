@@ -3,10 +3,8 @@ subscribe:
   # Transmit MOb is 0
   - name: bms_core
     mob: 1
-  - name: M167_Voltage_Info
+  - name: g_meter
     mob: 2
-  - name: charging_fbk
-    mob: 3
 publish:
   - name: air_control_critical
     id: 0xd
@@ -99,9 +97,15 @@ publish:
           values:
             t: CLOSED
             f: OPEN
-
-      - name: imd_status
+      - name: ss_emeter
         slice: 24 + 1
+        unit:
+          type: bool
+          values:
+            t: ClOSED
+            f: OPEN
+      - name: imd_status
+        slice: 25 + 1
         unit:
           type: bool
           values:
