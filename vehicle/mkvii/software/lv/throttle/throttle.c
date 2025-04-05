@@ -98,18 +98,14 @@ static int16_t get_throttle_travel(const throttle_potentiometer_s* throttle,
 */
 static bool check_out_of_range(int16_t* pos_l, int16_t* pos_r) {
     bool implausibility = false; 
-    // is this just a general implausibility or 
-    // should i rename it for the out of range one
 
     // Check 1st pot
     if (*pos_l > MAX_THROTTLE_POS) {
         *pos_l = MAX_THROTTLE_POS;
-        // throttle.throttle_status = THROTTLE_L_OUT_OF_RANGE;
         throttle_debug.throttle_l_out_of_range = true;
         implausibility = true;
     } else if (*pos_l < MIN_THROTTLE_POS) {
         *pos_l = MIN_THROTTLE_POS;
-        // throttle.throttle_status = THROTTLE_L_OUT_OF_RANGE;
         throttle_debug.throttle_l_out_of_range = true;
         implausibility = true;
     } else {
@@ -119,17 +115,14 @@ static bool check_out_of_range(int16_t* pos_l, int16_t* pos_r) {
     // Check 2nd pot
     if (*pos_r > MAX_THROTTLE_POS) {
         *pos_r = MAX_THROTTLE_POS;
-        // throttle.throttle_status = THROTTLE_R_OUT_OF_RANGE;
         throttle_debug.throttle_r_out_of_range = true;
         implausibility = true;
     } else if (*pos_r < MIN_THROTTLE_POS) {
         *pos_r = MIN_THROTTLE_POS;
-        // throttle.throttle_status = THROTTLE_R_OUT_OF_RANGE;
         throttle_debug.throttle_r_out_of_range = true;
         implausibility = true;
     } else {
         // Will be reset if Ready to Drive is not on
-        // throttle.throttle_status = THROTTLE_RUN;
         throttle_debug.throttle_r_out_of_range = false;
     }
     return implausibility;
@@ -146,11 +139,9 @@ static bool check_out_of_range(int16_t* pos_l, int16_t* pos_r) {
 */
 static bool check_deviation(int16_t pos_max, int16_t pos_min) {
     if (pos_max - pos_min > APPS_IMPLAUSIBILITY_DEVIATION_THRESHOLD) {
-        // throttle.throttle_status = THROTTLE_POSITION_IMPLAUSIBILITY;
         throttle_debug.throttle_deviation = true;
         return true;
     } else {
-        // throttle.throttle_status = THROTTLE_RUN;
         throttle_debug.throttle_deviation = false;
         return false;
     }
@@ -165,6 +156,7 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
         true if implausibility, false if not
 */
 
+
 static bool check_brake(int16_t pos_min) {
     static bool brake_implausibility_occurred = false;
 
@@ -173,7 +165,6 @@ static bool check_brake(int16_t pos_min) {
         if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
             // brake is pressed, pedal travel >= 25%
             brake_implausibility_occurred = true;
-            // throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
             throttle_debug.throttle_brake_implaus = true;
             return true;
         } else {
@@ -187,18 +178,15 @@ static bool check_brake(int16_t pos_min) {
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 // and pedal travel <= 5%
                 brake_implausibility_occurred = false;
-                // throttle.throttle_status = THROTTLE_RUN;
                 throttle_debug.throttle_brake_implaus = false;
                 return false;
             } else {
                 // implausibility prev occured, pedal travel > 5%
                 throttle_debug.throttle_brake_implaus = true;
-                // throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
                 return true;
             }
         } else {
             // no implausibility prev occurred then still no implausibility
-            // throttle.throttle_status = THROTTLE_RUN;
             throttle_debug.throttle_brake_implaus = false;
             return false;
         }
@@ -210,17 +198,14 @@ static bool check_brake(int16_t pos_min) {
                 // however pedal is <= 5% travel, no implausibility
                 brake_implausibility_occurred = false;
                 throttle_debug.throttle_brake_implaus = false;
-                // throttle.throttle_status = THROTTLE_RUN;
                 return false;
             } else {
                 // else pedal travel still >5%
-                // throttle.throttle_status = THROTTLE_BRAKE_PRESSED;
                 throttle_debug.throttle_brake_implaus = true;
                 return true;
             }
         } else {
             // brake not pressed, no prev implausibility
-            // throttle.throttle_status = THROTTLE_RUN;
             throttle_debug.throttle_brake_implaus = false;
             return false;
         }
@@ -287,7 +272,6 @@ int main(void) {
             
             bool oor_implausibility;
 
-
             if (check_out_of_range(&pos_l, &pos_r)) { // if out of range value is true,
                 oor_implausibility = true;
                 // first check if left_throttle debug has been triggered 
@@ -299,11 +283,10 @@ int main(void) {
                     throttle.throttle_status = THROTTLE_R_OUT_OF_RANGE;
                    }
             } else {
-		    oor_implausibility = false;
+                // if nothing is triggered, oor_implaus is not triggered
+		        oor_implausibility = false;
             }
 
-
-            // bool oor_implausibility = check_out_of_range(&pos_l, &pos_r);
             bool deviation_implausibility;
 
             if (check_deviation(pos_max, pos_min)) {
@@ -312,9 +295,6 @@ int main(void) {
             } else {
             	deviation_implausibility = false;
             }
-
-            // bool deviation_implausibility = check_deviation(pos_max, pos_min);
- 
             
             if (check_brake(pos_min)) {
                 SET_TORQUE_REQUEST(0);
