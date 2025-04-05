@@ -14,13 +14,13 @@ gpio_t SS_IMD_LATCH = PB4;
 gpio_t SS_MPC = PB5;
 gpio_t SS_TSMP = PB6;
 gpio_t SS_EMETER = PB7;
-gpio_t SS_HVD = PD0;
-gpio_t SS_BMS = PC7;
 
 gpio_t AIR_N_WELD_DETECT = PC4;
 gpio_t AIR_P_WELD_DETECT = PC5;
 gpio_t AIR_N_LSD = PC6;
+gpio_t SS_BMS = PC7;
 
+gpio_t SS_HVD = PD0;
 gpio_t IMD_SENSE = PD1;
 gpio_t ERROR_LED = PD5;
 gpio_t HEARTBEAT_LED = PD6;
