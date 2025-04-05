@@ -1,20 +1,31 @@
 name: pdu
-subscribe:
+# subscribe:
   # Transmit MOb is 0
-  - name: dashboard
-    mob: 1
-  - name: throttle
-    mob: 2
-  - name: bspd
-    mob: 3
-  - name: air_control_critical
-    mob: 4
-  - name: bms_core 
-    mob: 5
+  # - name: dashboard
+  #   mob: 1
+  # - name: throttle
+  #   mob: 2
+  # - name: bspd
+  #   mob: 3
+  # - name: air_control_critical
+  #   mob: 4
+  # - name: bms_core 
+  #   mob: 5
 publish:
-  - name: pdu_status
-  # TODO
-  - name: section_currents
-  # TODO
-  - name: cooling
-  # TODO
+  # - name: pdu_status
+  # # TODO
+  # - name: section_currents
+  # # TODO
+  # - name: cooling
+  # # TODO
+  - name: pdu_test
+    id: 0x540
+    freq_hz: 1
+    signals:
+      - name: input1_current
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: Reading
+          offset: 0
+          scale: 1

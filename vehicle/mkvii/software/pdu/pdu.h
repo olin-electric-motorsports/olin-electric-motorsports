@@ -1,6 +1,7 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
+#include "vehicle/mkvii/software/pdu/can_api.h"
 
 // Addresses for mcp23s17 (Assumes IOCON.BANK = 0)
 typedef enum {
@@ -50,6 +51,7 @@ gpio_t MCP23S17_CS = PB3;
 gpio_t ADC1283_CS = PB2; 
 gpio_t MAX7221_CS = PC5; 
 
+// SPI config struct
 spi_cfg_s spi_cfg = {
     .interrupt_enable = false,
     .data_order = MSB,
@@ -57,7 +59,7 @@ spi_cfg_s spi_cfg = {
     .polarity = FALLING_RISING,
     .phase = SETUP_SAMPLE,
     .clock_rate = F_OSC_DIV_16,
-    .cs_pin = PB3, 
+    .cs_pin = &MAX7221_CS, 
     // Ignore the chip select pin since we are using custom transcieve
     // function to interface with multiple periphreal devices
 };

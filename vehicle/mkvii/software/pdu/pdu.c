@@ -1,24 +1,5 @@
 #include "vehicle/mkvii/software/pdu/pdu.h"
 
-// Initialize hardware
-void hw_init() {
-    // Initialize SPI bus
-    spi_init(&spi_cfg);
-    // Configure chip select pins as OUTPUT and set to high (disabled)
-    gpio_set_mode(MCP23S17_CS, OUTPUT);
-    gpio_set_pin(MCP23S17_CS);
-    gpio_set_mode(ADC1283_CS, OUTPUT);
-    gpio_set_pin(ADC1283_CS);
-    gpio_set_mode(MAX7221_CS, OUTPUT);
-    gpio_set_pin(MAX7221_CS);
-
-    // Initialize IO expander
-    mcp23S17_init();
-
-    // Initialize display driver
-    max7221_init();
-}
-
 // Initialize IO expander
 void mcp23S17_init() {
     // Set all GPIO pins' direction to output
@@ -47,8 +28,31 @@ uint16_t adc_read(adc1283_command input_pin){
     spi_transceive_custom_cs(ADC1283_CS, tx_data, rx_data, 4);
     // Return the last 16 bits (first 4 bits are zero, so returning last 12 bits in effect)
     uint16_t reading = (rx_data[2] << 8) | rx_data[3];
-    return reading
+    return reading;
 }
+
+// Initialize hardware
+void hw_init() {
+    // Initialize SPI bus
+    spi_init(&spi_cfg);
+    // Configure chip select pins as OUTPUT and set to high (disabled)
+    gpio_set_mode(MCP23S17_CS, OUTPUT);
+    gpio_set_pin(MCP23S17_CS);
+    gpio_set_mode(ADC1283_CS, OUTPUT);
+    gpio_set_pin(ADC1283_CS);
+    gpio_set_mode(MAX7221_CS, OUTPUT);
+    gpio_set_pin(MAX7221_CS);
+
+    // Initialize IO expander
+    mcp23S17_init();
+
+    // Initialize display driver
+    max7221_init();
+
+    // Initialize CAN
+    can_init_pdu();
+}
+
 
 // Test firmware
 void hw_test(){
@@ -60,9 +64,11 @@ void hw_test(){
     spi_transceive_custom_cs(MCP23S17_CS, (uint8_t[]){IO_GPIO_B, 0xff}, (uint8_t[]){0, 0}, 2);
 
     // Perform current reading of ADC input 1 (service section)
-    reading = adc_read(INPUT_1);
+    uint16_t reading = adc_read(INPUT_1);
+    pdu_test.input1_current = reading;
 
     // Send CAN message
+    can_send_pdu_test();
 }
 
 int main(void) {
