@@ -1,47 +1,27 @@
 #include "utils.h"
 #include "timer.h"
-#include "vehicle/mkvi/software/air_control/can_api.h"
+#include "vehicle/mkvii/software/air_control/can_api.h"
 
 // int get_tractive_voltage(int16_t* voltage) {
-int get_tractive_voltage(int16_t* voltage, bool sys, uint32_t timeout) {
+int get_tractive_voltage(int16_t* voltage, uint32_t timeout) {
     int rc;
 
     uint32_t start_time = get_time();
 
-    if(sys == MOTOR_CONTROLLER) {
-        (void)can_receive_m167_voltage_info();
+    (void)can_receive_ivt_msg_result_u1();
 
-        do {
-            rc = can_poll_receive_m167_voltage_info();
+    do {
+        rc = can_poll_receive_ivt_msg_result_u1();
 
-            if (rc == 1) {
-                goto bail;
-            } else if (get_time() - start_time > timeout) {
-                rc = 2;
-                goto bail;
-            }
-        } while (rc != 0);
+        if (rc == 1) {
+            return rc;
+        } else if (get_time() - start_time > timeout) {
+            rc = 2;
+            return rc;
+        }
+    } while (rc != 0);
 
-        *voltage = m167_voltage_info.d1_dc_bus_voltage;
-    }
-    if(sys == CHARGER) {
-        (void)can_receive_charging_fbk();
-
-        do {
-            rc = can_poll_receive_charging_fbk();
-
-            if (rc == 1) {
-                goto bail;
-            } else if (get_time() - start_time > timeout) {
-                rc = 2;
-                goto bail;
-            }
-        } while (rc != 0);
-
-        *voltage = charging_fbk.charging_voltage;
-    }
-
-bail:
+    *voltage = (int16_t)((int64_t)(ivt_msg_result_u1.ivt_result_u1) / 1000);
     return rc;
 }
 
@@ -63,7 +43,8 @@ int get_bms_voltage(int16_t* voltage) {
         }
     } while (rc != 0);
 
-    *voltage = bms_core.pack_voltage;
+    //BMS Conversion
+    *voltage = (int16_t)(((int64_t)(bms_core.pack_voltage) << 8) / 1000); // (x << 8 == x * 256)
 
 bail:
     return rc;

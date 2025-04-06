@@ -18,6 +18,6 @@ cc_library(
     }),
     deps = [
         "//libs/timer",
-        "//vehicle/mkvi/software/air_control:can_api",
+        "//vehicle/mkvii/software/air_control:can_api",
     ],
 )

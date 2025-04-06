@@ -26,12 +26,13 @@ cc_firmware(
         "//libs/gpio",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
-        "//vehicle/mkvi/software/air_control/utils",
+        "//vehicle/mkvii/software/air_control/utils",
+        "//projects/can_print"
     ],
 )
 
 can_api_files(
     name = "can_api",
-    dbc = "//vehicle/mkvi:mkvi.dbc",
+    dbc = "//vehicle/mkvii:mkvii.dbc",
     yaml = ":air.yml",
 )

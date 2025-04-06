@@ -24,7 +24,6 @@ cc_firmware(
         "//libs/gpio",
         "//libs/timer",
         "//projects/btldr:btldr_lib",
-        "//vehicle/common/icm20948:icm20948",
     ],
 )
 
