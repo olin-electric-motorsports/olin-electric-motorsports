@@ -7,16 +7,28 @@
 
 // #include "projects/can_print/can_print.h"
 
-void icm_read_register(uint8_t register_, uint8_t* rx_data) {
-    uint8_t tx_data[2] = { register_ | (1 << 7), 0x0 };
+void icm_read_register(uint8_t _register, uint8_t* rx_data) {
+    uint8_t tx_data[2] = { _register | (1 << 7), 0x0 };
     uint8_t _rx_data[2];
     spi_transceive_cs(tx_data, _rx_data, 2);
     *rx_data = _rx_data[1];
 }
 
+void icm_multi_read(uint8_t _register, uint8_t len, uint8_t* data) {
+    for (uint8_t i = 0; i < len; i++) {
+        icm_read_register(_register + i, &data[i]);
+    }
+}
+
 void icm_write_register(uint8_t _register, uint8_t tx_data) {
     uint8_t _tx_data[2] = { _register, tx_data };
     spi_transceive_cs(_tx_data, NULL, 2);
+}
+
+void icm_multi_write(uint8_t _register, uint8_t len, const uint8_t *data) {
+    for (uint8_t i = 0; i < len; i++) {
+        icm_write_register(_register + i, data[i]);
+    }
 }
 
 // TODO: FIFO use more efficient burst SPI reads
@@ -39,7 +51,8 @@ void init_magnetometer()
     //Set the ODR of devices on the secondary I2C bus to 68.75Hz (1.1 kHz/(2^(0x04))) in the REG_I2C_MST_ODR_CONFIG (0x00) register
     regChar = 0x04;
     icm_write_register(I2C_MST_ODR_CONFIG, regChar);
-    write_mag(MAGNETOMETER_ADDR, CNTL2, 0x04);
+    write_mag(MAGNETOMETER_ADDR, CNTL2, 0x06);
+    _delay_ms(10);
 }
 
 void write_mag(unsigned char addr, unsigned char reg, unsigned char data)
@@ -117,4 +130,118 @@ void read_mag(unsigned char addr, unsigned char reg, unsigned char len, unsigned
     regChar = 0x00;
     icm_write_register(0x05, regChar);
     switch_register_bank(BANK_0);
+}
+
+void getChipAccelGyroCalibration()
+{
+	unsigned char sampleBank[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
+	unsigned char accelRegOTP[8] = {0,0,0,0,0,0,0,0};
+	long AxisStorage[6] = {0,0,0,0,0,0};
+	short hardwareScale[6] = {0,0,0,0,0,0};
+	int i = 0;
+	unsigned char regChar[8] = {0};
+	switch_register_bank(0);
+	//out of sleep
+	regChar[0] = 0x01;
+    icm_write_register(0x06, regChar[0]);
+	//Allow the MEMS hardware to warm up
+	_delay_ms(100);
+    switch_register_bank(2);
+
+	//Set sensor ODR to 1kHz
+	regChar[0] = 0x00;
+    icm_write_register(0x00, regChar[0]);
+
+	//Set rate (±250 dps), DLPF status (on), DLPF 3dB to (119.5 Hz)
+	// regChar[0] = 0x11;
+    // icm_write_register(0x01, regChar[0]);
+
+	//Set Accel ODR to 1kHz
+	regChar[0] = 0x00;
+	regChar[1] = 0x00;
+    icm_write_register(0x10, regChar[0]);
+    icm_write_register(0x11, regChar[1]);
+
+	//Set Accel Scale to ±2g
+	regChar[0] = 0x11;
+    icm_write_register(0x14, regChar[0]);
+
+	//START DATA COLLECTION
+    switch_register_bank(0);
+	//Aquire 20 samples from each register
+	for(i = 0; i < 20; i++)
+	{
+        icm_multi_read(0x2D, 12, &sampleBank[0]);    
+		//Accel Axis (x, y, z)
+		AxisStorage[0] += (short) ((sampleBank[0] << 8) | sampleBank[1]);
+		AxisStorage[1] += (short) ((sampleBank[2] << 8) | sampleBank[3]);
+		AxisStorage[2] += (short) ((sampleBank[4] << 8) | sampleBank[5]);
+		//Gyro Axis (x, y, z)
+		AxisStorage[3] += (short) ((sampleBank[6] << 8) | sampleBank[7]);
+		AxisStorage[4] += (short) ((sampleBank[8] << 8) | sampleBank[9]);
+		AxisStorage[5] += (short) ((sampleBank[10] << 8) | sampleBank[11]);
+		_delay_ms(5);
+	}
+
+	//Get the simple average from each axis, and remove gravity if appliciable
+	for(i = 0; i < 6; i++)
+	{
+		AxisStorage[i] /= 20;
+		if(i < 3)
+		{
+			if(i == 2)
+			{
+				if(AxisStorage[2] > 0)
+				{
+					//Remove 1g (16384x LSB) from offset
+					AxisStorage[i] -= 0x4000;
+				}
+				else
+				{
+					//If the chip is upside down, remove 1g (16384x LSB)
+					AxisStorage[i] += 0x4000;
+				}
+			}
+		}
+		else
+		{
+			//Get bias scale (div by 0.031)
+			AxisStorage[i] *= 32;
+			//Convert to DPS from LSB
+            // SHOULD THIS BE 2000??
+			AxisStorage[i] /= 131;
+			//Negate for a correct bias
+			AxisStorage[i] = -AxisStorage[i];
+		}
+		//Remove leading zeroes and convert to two bytes for IMU
+		hardwareScale[i] = (short)(AxisStorage[i] & 0xFFFF);
+	}
+	//Now, read Accel bias values in OTP memory
+	//Set to bank one
+    switch_register_bank(1);
+
+	//Perform read
+    icm_multi_read(0x14, 8, &accelRegOTP[0]);
+	//Create hardware accel bias by scaling ±2g average to ±16g range (1g = 2048x LSB)
+	hardwareScale[0] = (((short)accelRegOTP[0] << 8) + (short)accelRegOTP[1]) - (hardwareScale[0] >> 3);
+	hardwareScale[1] = (((short)accelRegOTP[3] << 8) + (short)accelRegOTP[4]) - (hardwareScale[1] >> 3);
+	hardwareScale[2] = (((short)accelRegOTP[6] << 8) + (short)accelRegOTP[7]) - (hardwareScale[2] >> 3);
+	//Write hardware accel values to bias registers
+    regChar[0] = (unsigned char)(hardwareScale[0] >> 8 & 0xFF);
+    regChar[1] = (unsigned char)((hardwareScale[0] & 0xFE) | (accelRegOTP[1] & 0x01));
+    regChar[3] = (unsigned char)(hardwareScale[1] >> 8 & 0xFF);
+    regChar[4] = (unsigned char)((hardwareScale[1] & 0xFE) | (accelRegOTP[4] & 0x01));
+    regChar[6] = (unsigned char)(hardwareScale[2] >> 8 & 0xFF);
+    regChar[7] = (unsigned char)((hardwareScale[2] & 0xFE) | (accelRegOTP[7] & 0x01));
+    // icm_multi_write(0x14, 6, regChar);
+    switch_register_bank(2);
+	//Write hardware gyro values to bias registers
+	regChar[0] = (unsigned char)(hardwareScale[3] >> 8 & 0xFF);
+	regChar[1] = (unsigned char)(hardwareScale[3] & 0xFE);
+	regChar[2] = (unsigned char)(hardwareScale[4] >> 8 & 0xFF);
+	regChar[3] = (unsigned char)(hardwareScale[4] & 0xFE);
+	regChar[4] = (unsigned char)(hardwareScale[5] >> 8 & 0xFF);
+	regChar[5] = (unsigned char)(hardwareScale[5] & 0xFE);
+    icm_multi_write(0x03, 6, regChar);
+    switch_register_bank(0);
 }

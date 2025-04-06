@@ -75,3 +75,28 @@ publish:
           name: ""
           scale: 1
           offset: 0
+  - name: imu_euler
+    id: 0x434
+    freq_hz: 100
+    signals:
+      - name: yaw
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 0.01
+          offset: 0
+      - name: pitch
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 0.01
+          offset: 0
+      - name: roll
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: ""
+          scale: 0.01
+          offset: 0

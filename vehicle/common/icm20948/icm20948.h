@@ -205,6 +205,12 @@ void init_magnetometer(void);
 // void write_magnetometer(uint8_t _register, uint8_t tx_data);
 
 /**
+ * Write accel and gyro biases to registers.
+ */
+void getChipAccelGyroCalibration();
+
+
+/**
  * Write data to a magnetometer register using I2C communication via the ICM.
  *
  * This function uses the SLV1 registers to write to the magnetometer.
@@ -237,12 +243,30 @@ void read_mag(unsigned char addr, unsigned char reg, unsigned char len, unsigned
 void icm_read_register(uint8_t _register, uint8_t* rx_data);
 
 /**
+ * Read data from consecutive ICM registers
+ *
+ * @param _register The starting register address.
+ * @param len       The number of consecutive registers to read.
+ * @param data      Pointer to a buffer where the read data will be stored.
+ */
+void icm_multi_read(uint8_t _register, uint8_t len, uint8_t* data);
+
+/**
  * Write data to an ICM register.
  *
  * @param _register (uint8_t) The register to write.
  * @param tx_data (uint8_t) The data to write.
  */
 void icm_write_register(uint8_t _register, uint8_t tx_data);
+
+/**
+ * Write data to consecutive ICM registers
+ *
+ * @param _register The starting register address.
+ * @param len       The number of consecutive registers to write.
+ * @param data      Pointer to a buffer containing the data to write.
+ */
+void icm_multi_write(uint8_t _register, uint8_t len, const uint8_t *data);
 
 /**
  * ICM register banks.

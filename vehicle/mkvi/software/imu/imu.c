@@ -64,6 +64,11 @@ void update_can_arb_id(void) {
         += (0x10
             * (!gpio_get_pin(bin_id_0) + (!gpio_get_pin(bin_id_1) << 1)
                + (!gpio_get_pin(bin_id_2) << 2)));
+    imu_euler_msg.id
+        += (0x10
+            * (!gpio_get_pin(bin_id_0) + (!gpio_get_pin(bin_id_1) << 1)
+                + (!gpio_get_pin(bin_id_2) << 2)));
+       
 }
 
 /**
@@ -95,8 +100,8 @@ void init_imu(void) {
 
     switch_register_bank(BANK_2);
 
-    // Set accelerometer full scale range
-    icm_write_register(ACCEL_CONFIG, 0x1 | (accel_fsr << 1));
+    // // Set accelerometer full scale range
+    // icm_write_register(ACCEL_CONFIG, 0x1 | (accel_fsr << 1));
 
     // Set gyroscope full scale range
     icm_write_register(GYRO_CONFIG_1, 0x01 | (gyro_fsr << 1));
@@ -112,14 +117,14 @@ void init_imu(void) {
  */
 void read_accel_data(void) {
     uint8_t accel_data[2] = { 0x0, 0x0 };
-    icm_read_register(ACCEL_XOUT_H, &accel_data[0]);
-    icm_read_register(ACCEL_XOUT_L, &accel_data[1]);
+    icm_read_register(ACCEL_XOUT_H, &accel_data[1]);
+    icm_read_register(ACCEL_XOUT_L, &accel_data[0]);
     imu_accel.accel_x = accel_data[0] | (accel_data[1] << 8);
-    icm_read_register(ACCEL_YOUT_H, &accel_data[0]);
-    icm_read_register(ACCEL_YOUT_L, &accel_data[1]);
+    icm_read_register(ACCEL_YOUT_H, &accel_data[1]);
+    icm_read_register(ACCEL_YOUT_L, &accel_data[0]);
     imu_accel.accel_y = accel_data[0] | (accel_data[1] << 8);
-    icm_read_register(ACCEL_ZOUT_H, &accel_data[0]);
-    icm_read_register(ACCEL_ZOUT_L, &accel_data[1]);
+    icm_read_register(ACCEL_ZOUT_H, &accel_data[1]);
+    icm_read_register(ACCEL_ZOUT_L, &accel_data[0]);
     imu_accel.accel_z = accel_data[0] | (accel_data[1] << 8);
 }
 
@@ -128,14 +133,14 @@ void read_accel_data(void) {
  */
 void read_gyro_data(void) {
     uint8_t gyro_data[2] = { 0x0, 0x0 };
-    icm_read_register(GYRO_XOUT_H, &gyro_data[0]);
-    icm_read_register(GYRO_XOUT_L, &gyro_data[1]);
+    icm_read_register(GYRO_XOUT_H, &gyro_data[1]);
+    icm_read_register(GYRO_XOUT_L, &gyro_data[0]);
     imu_gyro.gyro_x = gyro_data[0] | (gyro_data[1] << 8);
-    icm_read_register(GYRO_YOUT_H, &gyro_data[0]);
-    icm_read_register(GYRO_YOUT_L, &gyro_data[1]);
+    icm_read_register(GYRO_YOUT_H, &gyro_data[1]);
+    icm_read_register(GYRO_YOUT_L, &gyro_data[0]);
     imu_gyro.gyro_y = gyro_data[0] | (gyro_data[1] << 8);
-    icm_read_register(GYRO_ZOUT_H, &gyro_data[0]);
-    icm_read_register(GYRO_ZOUT_L, &gyro_data[1]);
+    icm_read_register(GYRO_ZOUT_H, &gyro_data[1]);
+    icm_read_register(GYRO_ZOUT_L, &gyro_data[0]);
     imu_gyro.gyro_z = gyro_data[0] | (gyro_data[1] << 8);
 }
 
@@ -150,16 +155,25 @@ void read_magnetometer_data(void) {
     read_mag(MAGNETOMETER_ADDR, HZH, 1, &mag_data[0]);
     read_mag(MAGNETOMETER_ADDR, HZL, 1, &mag_data[1]);
     imu_magnet.magnet_z = mag_data[0] | (mag_data[1] << 8);
+    uint8_t st2;
+    read_mag(MAGNETOMETER_ADDR, ST2, 1, &st2);
 }
 
-void burst_read_magnet(void) {
+/**
+ * Burst read magnet data and place in CAN structs
+ */
+
+ void burst_read_magnet(void) {
     uint8_t mag_data[6] = { 0 }; 
     read_mag(MAGNETOMETER_ADDR, HXL, 6, mag_data);
     // didn't reverse low and high bytes???
     imu_magnet.magnet_x = mag_data[0] << 8 | mag_data[1];
     imu_magnet.magnet_y = mag_data[2] << 8 | mag_data[3];
     imu_magnet.magnet_z = mag_data[4] << 8 | mag_data[5];
+    uint8_t st2;
+    read_mag(MAGNETOMETER_ADDR, ST2, 1, &st2);
 }
+
 
 void MadgwickQuaternionUpdate(float q[4], float deltat, float beta, float ax, float ay, float az, float gx, float gy, float gz, float mx, float my, float mz)
 {
@@ -253,34 +267,109 @@ void MadgwickQuaternionUpdate(float q[4], float deltat, float beta, float ax, fl
 
 }
 
+void quaternion_to_euler(float q[4], float *yaw, float *pitch, float *roll) {
+    float qw = q[0];
+    float qx = q[1];
+    float qy = q[2];
+    float qz = q[3];
+
+    float a12, a22;
+    // float a31, a32, a33;  // rotation matrix coefficients for Euler angles and gravity components
+    a12 = 2.0f * (qx * qy + qw * qz);
+    a22 = qw * qw + qx * qx - qy * qy - qz * qz;
+    // a31 = 2.0f * (qw * qx + qy * qz);
+    // a32 = 2.0f * (qx * qz - qw * qy);
+    // a33 = qw * qw - qx * qx - qy * qy + qz * qz;
+    *yaw = atan2f(a12, a22);
+    *yaw *= RAD_TO_DEG;
+    if (*yaw >= +180.f){
+        *yaw -= 360.f;
+    }
+    else if (*yaw < -180.f){
+        *yaw += 360.f;
+    }
+}
+
+void read_euler_angles(void) {
+    float yaw, pitch, roll;
+    quaternion_to_euler(q, &yaw, &pitch, &roll);
+    
+    // convert from radians to degrees, scale by 100 for CAN decimal
+    imu_euler.yaw   = (int16_t)(yaw * 100);
+    // imu_euler.pitch = (int16_t)(pitch * (180.0f / M_PI) * 100);
+    // imu_euler.roll  = (int16_t)(roll * (180.0f / M_PI) * 100);
+}
+
+void compute_euler_angles(void) {
+
+    float ax = (float)(int16_t)imu_accel.accel_x;
+    float ay = (float)(int16_t)imu_accel.accel_y;
+    float az = (float)(int16_t)imu_accel.accel_z;
+    float mag = sqrt(ax * ax + ay * ay + az * az);
+    float norm_ax = ax / mag;
+    float norm_ay = ay / mag;
+    float norm_az = az / mag;
+    imu_accel.accel_x = (uint16_t)(norm_ax * 100);
+    imu_accel.accel_y = (uint16_t)(norm_ay * 100);
+    imu_accel.accel_z = (uint16_t)(norm_az * 100);
+    float pitch_rad = asinf(norm_ax);
+    float roll_rad = atan2f(norm_ay,norm_az);
+    float pitch_deg = pitch_rad * RAD_TO_DEG;
+    float roll_deg  = roll_rad  * RAD_TO_DEG;
+    imu_euler.pitch = (uint16_t)(pitch_deg * 100);
+    imu_euler.roll  = (uint16_t)(roll_deg  * 100);
+}
+
 
 int main(void) {
     init_peripherals();
-    // // _can_print(imu_accel_msg.id);
-    // // _can_print(imu_gyro_msg.id);
-    // // _can_print(imu_magnet_msg.id);
-    // // _can_print(!gpio_get_pin(bin_id_0));
-    // // _can_print(!gpio_get_pin(bin_id_1));
-    // _can_print(!gpio_get_pin(bin_id_2));
-
     init_imu();
-
+    uint8_t status;
+    read_mag(MAGNETOMETER_ADDR, WIA2, 1, &status);
+    if ((status != 0x09)) {
+        return 0;
+    }
+    uint8_t cntl2_check;
+    read_mag(MAGNETOMETER_ADDR, CNTL2, 1, &cntl2_check);
+    if (cntl2_check != 0x06) {
+        return 1;
+    }
     switch_register_bank(BANK_0);
+    read_accel_data();
+    read_gyro_data();
+    // getChipAccelGyroCalibration();
+
     for (;;) {
         if (led_heartbeat) {
             gpio_toggle_pin(debug_led);
             led_heartbeat = false;
-        };
+        }
         if (can_send_imu_data) {
             read_accel_data();
-            can_send_imu_accel();
-
             read_gyro_data();
-            can_send_imu_gyro();
-
-            // read_magnetometer_data();
             burst_read_magnet();
-            can_send_imu_magnet();
+            // read_magnetometer_data();
+            compute_euler_angles();
+            float ax = imu_accel.accel_x;
+            float ay = imu_accel.accel_y;
+            float az = imu_accel.accel_z;
+            float gx = (imu_gyro.gyro_x * GYRO_SCALE);
+            float gy = (imu_gyro.gyro_y * GYRO_SCALE);
+            float gz = (imu_gyro.gyro_z * GYRO_SCALE);
+            float mx = imu_magnet.magnet_x * MAG_SCALE;
+            float my = imu_magnet.magnet_y * MAG_SCALE;
+            float mz = imu_magnet.magnet_z * MAG_SCALE;
+            float deltat = 1.0f / SAMPLE_RATE_HZ;
+            
+            MadgwickQuaternionUpdate(q, deltat, BETA, ax, ay, az, gx, gy, gz, mx, my, mz);
+            read_euler_angles();
+
+            // can_send_imu_accel();
+            can_send_imu_gyro();
+            // can_send_imu_magnet();
+            // read_euler_angles(); 
+            can_send_imu_euler();
+            
             can_send_imu_data = false;
         }
     }

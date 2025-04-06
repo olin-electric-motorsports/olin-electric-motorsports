@@ -4,6 +4,19 @@
 #include "libs/spi/api.h"
 #include "libs/timer/api.h"
 #include "vehicle/common/icm20948/icm20948.h"
+#include <math.h>
+
+float q[4] = {1.0f, 0.0f, 0.0f, 0.0f};
+#define SAMPLE_RATE_HZ 100.0f
+#define BETA 0.0001f
+#define GYRO_SCALE (2000.0f / 32768.0f)  // rad/s per LSB for ±2000°/s
+#define MAG_SCALE (0.15f)  // µT per LSB
+
+#define MAG_X_BIAS  10;
+#define MAG_Y_BIAS  0;
+#define MAG_Z_BIAS  0;
+#define RAD_TO_DEG (180.0f / M_PI)
+
 
 // IMU data read timer config
 void timer_0_isr(void);
