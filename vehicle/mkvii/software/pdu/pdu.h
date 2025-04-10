@@ -3,6 +3,12 @@
 #include "libs/spi/api.h"
 #include "vehicle/mkvii/software/pdu/can_api.h"
 
+// Opcode for mcp23s17
+typedef enum {
+    OP_WRITE = 0x40,
+    OP_READ = 0x41,
+} mcp23s17_opcode;
+
 // Addresses for mcp23s17 (Assumes IOCON.BANK = 0)
 typedef enum {
     IO_DIRECTION_A = 0x00,

@@ -3,14 +3,15 @@
 // Initialize IO expander
 void mcp23S17_init() {
     // Set all GPIO pins' direction to output
-    uint8_t txdata[2] = {IO_DIRECTION_A, ALL_OUTPUT};
-    uint8_t rxdata = 0;
-    spi_transceive_custom_cs(MCP23S17_CS, txdata, &rxdata, 2);
+    uint8_t tx_io[3] = {OP_WRITE, IO_DIRECTION_A, ALL_OUTPUT};
+    uint8_t rx_io = 0;
+    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 2);
 
-    txdata[0] = IO_DIRECTION_B;
-    txdata[1] = ALL_OUTPUT;
-    rxdata = 0;
-    spi_transceive_custom_cs(MCP23S17_CS, txdata, &rxdata, 2);
+    tx_io[0] = OP_WRITE;
+    tx_io[1] = IO_DIRECTION_B;
+    tx_io[2] = ALL_OUTPUT;
+    rx_io = 0;
+    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 2);
 }
 
 // Initialize display driver
@@ -38,12 +39,6 @@ void max7221_init() {
     rxdata = 0;
     spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
 
-    // Display test
-    txdata[0] = DISPLAY_TEST;
-    txdata[1] = DISPLAY_TEST_ON;
-    rxdata = 0;
-    spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
-
 }
 
 // ADC Read
@@ -62,22 +57,23 @@ uint16_t adc_read(adc1283_command input_pin){
 void hw_init() {
     // Initialize SPI bus
     spi_init(&spi_cfg);
+
     // Configure chip select pins as OUTPUT and set to high (disabled)
-    // gpio_set_mode(MCP23S17_CS, OUTPUT);
-    // gpio_set_pin(MCP23S17_CS);
-    // gpio_set_mode(ADC1283_CS, OUTPUT);
-    // gpio_set_pin(ADC1283_CS);
+    gpio_set_mode(MCP23S17_CS, OUTPUT);
+    gpio_set_pin(MCP23S17_CS);
+    gpio_set_mode(ADC1283_CS, OUTPUT);
+    gpio_set_pin(ADC1283_CS);
     gpio_set_mode(MAX7221_CS, OUTPUT);
     gpio_set_pin(MAX7221_CS);
 
     // Initialize IO expander
-    // mcp23S17_init();
+    mcp23S17_init();
 
     // Initialize display driver
     max7221_init();
 
     // Initialize CAN
-    // can_init_pdu();
+    can_init_pdu();
 }
 
 // Test firmware
@@ -88,14 +84,14 @@ void hw_test(){
     spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
 
     // Light up all shutdown LEDs
-    txdata[0] = IO_GPIO_A;
-    txdata[1] = 0xff;
-    rxdata = 0;
-    spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
-    txdata[0] = IO_GPIO_B;
-    txdata[1] = 0xff;
-    rxdata = 0;
-    spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
+    uint8_t tx_io[3] = {OP_WRITE, IO_GPIO_A, 0xff};
+    uint8_t rx_io = 0;
+    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 2);
+    tx_io[0] = OP_WRITE;
+    tx_io[1] = IO_GPIO_B;
+    tx_io[2] = 0xff;
+    rx_io = 0;
+    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 2);
 
     // Perform current reading of ADC input 1 (service section)
     uint16_t reading = adc_read(INPUT_1);
@@ -107,7 +103,7 @@ void hw_test(){
 
 int main(void) {
     hw_init();
-    //hw_test();
+    hw_test();
 
     //// Main Loop: 
     //  - Update shutdown node LEDs
