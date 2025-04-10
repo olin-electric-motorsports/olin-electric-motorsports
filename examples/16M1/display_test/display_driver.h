@@ -21,6 +21,7 @@ enum max7221_address {
 
 // GPIO pin of atmega connected to chip select on display driver
 gpio_t MAX7221_CS = PB6; 
+gpio_t BB = PB1; 
 
 spi_cfg_s spi_cfg = {
     .interrupt_enable = false,
