@@ -4,10 +4,9 @@
 #include "libs/timer/api.h"
 #include "vehicle/common/icm20948/icm20948.h"
 #include "vehicle/mkvi/software/imu/can_api.h"
-
+#include <stdio.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
-#include <stdint.h>
 #include <util/delay.h>
 
 // #include "projects/btldr/btldr_lib.h"
@@ -119,13 +118,13 @@ void read_accel_data(void) {
     uint8_t accel_data[2] = { 0x0, 0x0 };
     icm_read_register(ACCEL_XOUT_H, &accel_data[1]);
     icm_read_register(ACCEL_XOUT_L, &accel_data[0]);
-    imu_accel.accel_x = accel_data[0] | (accel_data[1] << 8);
+    imu_accel.accel_x = (int16_t)(accel_data[0] | (accel_data[1] << 8));
     icm_read_register(ACCEL_YOUT_H, &accel_data[1]);
     icm_read_register(ACCEL_YOUT_L, &accel_data[0]);
-    imu_accel.accel_y = accel_data[0] | (accel_data[1] << 8);
+    imu_accel.accel_y = (int16_t)(accel_data[0] | (accel_data[1] << 8));
     icm_read_register(ACCEL_ZOUT_H, &accel_data[1]);
     icm_read_register(ACCEL_ZOUT_L, &accel_data[0]);
-    imu_accel.accel_z = accel_data[0] | (accel_data[1] << 8);
+    imu_accel.accel_z = (int16_t)(accel_data[0] | (accel_data[1] << 8));
 }
 
 /**
@@ -135,29 +134,32 @@ void read_gyro_data(void) {
     uint8_t gyro_data[2] = { 0x0, 0x0 };
     icm_read_register(GYRO_XOUT_H, &gyro_data[1]);
     icm_read_register(GYRO_XOUT_L, &gyro_data[0]);
-    imu_gyro.gyro_x = gyro_data[0] | (gyro_data[1] << 8);
+    int16_t raw_x = (int16_t)(gyro_data[0] | (gyro_data[1] << 8));
     icm_read_register(GYRO_YOUT_H, &gyro_data[1]);
     icm_read_register(GYRO_YOUT_L, &gyro_data[0]);
-    imu_gyro.gyro_y = gyro_data[0] | (gyro_data[1] << 8);
+    int16_t raw_y = (int16_t)(gyro_data[0] | (gyro_data[1] << 8));
     icm_read_register(GYRO_ZOUT_H, &gyro_data[1]);
     icm_read_register(GYRO_ZOUT_L, &gyro_data[0]);
-    imu_gyro.gyro_z = gyro_data[0] | (gyro_data[1] << 8);
+    int16_t raw_z = (int16_t)(gyro_data[0] | (gyro_data[1] << 8));
+    imu_gyro.gyro_x = (int16_t)(raw_x * GYRO_SCALE * 100);
+    imu_gyro.gyro_y = (int16_t)(raw_y * GYRO_SCALE * 100);
+    imu_gyro.gyro_z = (int16_t)(raw_z * GYRO_SCALE * 100);
 }
 
-void read_magnetometer_data(void) {
-    uint8_t mag_data[2] = { 0x0, 0x0 };
-    read_mag(MAGNETOMETER_ADDR, HXH, 1, &mag_data[0]);
-    read_mag(MAGNETOMETER_ADDR, HXL, 1, &mag_data[1]);
-    imu_magnet.magnet_x = mag_data[0] | (mag_data[1] << 8);
-    read_mag(MAGNETOMETER_ADDR, HYH, 1, &mag_data[0]);
-    read_mag(MAGNETOMETER_ADDR, HYL, 1, &mag_data[1]);
-    imu_magnet.magnet_y = mag_data[0] | (mag_data[1] << 8);
-    read_mag(MAGNETOMETER_ADDR, HZH, 1, &mag_data[0]);
-    read_mag(MAGNETOMETER_ADDR, HZL, 1, &mag_data[1]);
-    imu_magnet.magnet_z = mag_data[0] | (mag_data[1] << 8);
-    uint8_t st2;
-    read_mag(MAGNETOMETER_ADDR, ST2, 1, &st2);
-}
+// void read_magnetometer_data(void) {
+//     uint8_t mag_data[2] = { 0x0, 0x0 };
+//     read_mag(MAGNETOMETER_ADDR, HXH, 1, &mag_data[0]);
+//     read_mag(MAGNETOMETER_ADDR, HXL, 1, &mag_data[1]);
+//     imu_magnet.magnet_x = mag_data[0] | (mag_data[1] << 8);
+//     read_mag(MAGNETOMETER_ADDR, HYH, 1, &mag_data[0]);
+//     read_mag(MAGNETOMETER_ADDR, HYL, 1, &mag_data[1]);
+//     imu_magnet.magnet_y = mag_data[0] | (mag_data[1] << 8);
+//     read_mag(MAGNETOMETER_ADDR, HZH, 1, &mag_data[0]);
+//     read_mag(MAGNETOMETER_ADDR, HZL, 1, &mag_data[1]);
+//     imu_magnet.magnet_z = mag_data[0] | (mag_data[1] << 8);
+//     uint8_t st2;
+//     read_mag(MAGNETOMETER_ADDR, ST2, 1, &st2);
+// }
 
 /**
  * Burst read magnet data and place in CAN structs
@@ -167,9 +169,12 @@ void read_magnetometer_data(void) {
     uint8_t mag_data[6] = { 0 }; 
     read_mag(MAGNETOMETER_ADDR, HXL, 6, mag_data);
     // didn't reverse low and high bytes???
-    imu_magnet.magnet_x = mag_data[0] << 8 | mag_data[1];
-    imu_magnet.magnet_y = mag_data[2] << 8 | mag_data[3];
-    imu_magnet.magnet_z = mag_data[4] << 8 | mag_data[5];
+    int16_t raw_x = (int16_t)(mag_data[0] << 8 | mag_data[1]);
+    int16_t raw_y = (int16_t)(mag_data[2] << 8 | mag_data[3]);
+    int16_t raw_z = (int16_t)(mag_data[4] << 8 | mag_data[5]);
+    imu_magnet.magnet_x = (int16_t)(raw_x * MAG_SCALE * 100);
+    imu_magnet.magnet_y = (int16_t)(raw_y * MAG_SCALE * 100);
+    imu_magnet.magnet_z = (int16_t)(raw_z * MAG_SCALE * 100);
     uint8_t st2;
     read_mag(MAGNETOMETER_ADDR, ST2, 1, &st2);
 }
@@ -267,57 +272,44 @@ void MadgwickQuaternionUpdate(float q[4], float deltat, float beta, float ax, fl
 
 }
 
-void quaternion_to_euler(float q[4], float *yaw, float *pitch, float *roll) {
+void compute_yaw(void) {
     float qw = q[0];
     float qx = q[1];
     float qy = q[2];
     float qz = q[3];
+    float a12 = 2.0f * (qx * qy + qw * qz);
+    float a22 = qw * qw + qx * qx - qy * qy - qz * qz;
 
-    float a12, a22;
-    // float a31, a32, a33;  // rotation matrix coefficients for Euler angles and gravity components
-    a12 = 2.0f * (qx * qy + qw * qz);
-    a22 = qw * qw + qx * qx - qy * qy - qz * qz;
-    // a31 = 2.0f * (qw * qx + qy * qz);
-    // a32 = 2.0f * (qx * qz - qw * qy);
-    // a33 = qw * qw - qx * qx - qy * qy + qz * qz;
-    *yaw = atan2f(a12, a22);
-    *yaw *= RAD_TO_DEG;
-    if (*yaw >= +180.f){
-        *yaw -= 360.f;
+    float yaw = atan2f(a12, a22) * RAD_TO_DEG;
+    if (yaw >= 180.0f) {
+        yaw -= 360.0f;
+    } else if (yaw < -180.0f) {
+        yaw += 360.0f;
     }
-    else if (*yaw < -180.f){
-        *yaw += 360.f;
-    }
+
+    imu_euler.yaw = (int16_t)(yaw * 100);
 }
 
-void read_euler_angles(void) {
-    float yaw, pitch, roll;
-    quaternion_to_euler(q, &yaw, &pitch, &roll);
-    
-    // convert from radians to degrees, scale by 100 for CAN decimal
-    imu_euler.yaw   = (int16_t)(yaw * 100);
-    // imu_euler.pitch = (int16_t)(pitch * (180.0f / M_PI) * 100);
-    // imu_euler.roll  = (int16_t)(roll * (180.0f / M_PI) * 100);
-}
-
-void compute_euler_angles(void) {
-
+void compute_pitch_roll(void) {
     float ax = (float)(int16_t)imu_accel.accel_x;
     float ay = (float)(int16_t)imu_accel.accel_y;
     float az = (float)(int16_t)imu_accel.accel_z;
     float mag = sqrt(ax * ax + ay * ay + az * az);
+    if (mag == 0.0f) {
+        mag = 1.0f;
+    }
     float norm_ax = ax / mag;
     float norm_ay = ay / mag;
     float norm_az = az / mag;
-    imu_accel.accel_x = (uint16_t)(norm_ax * 100);
-    imu_accel.accel_y = (uint16_t)(norm_ay * 100);
-    imu_accel.accel_z = (uint16_t)(norm_az * 100);
+    imu_accel.accel_x = (int16_t)(norm_ax * 100);
+    imu_accel.accel_y = (int16_t)(norm_ay * 100);
+    imu_accel.accel_z = (int16_t)(norm_az * 100);
     float pitch_rad = asinf(norm_ax);
-    float roll_rad = atan2f(norm_ay,norm_az);
+    float roll_rad = atan2f(norm_ay, norm_az);
     float pitch_deg = pitch_rad * RAD_TO_DEG;
     float roll_deg  = roll_rad  * RAD_TO_DEG;
-    imu_euler.pitch = (uint16_t)(pitch_deg * 100);
-    imu_euler.roll  = (uint16_t)(roll_deg  * 100);
+    imu_euler.pitch = (int16_t)(pitch_deg * 100);
+    imu_euler.roll  = (int16_t)(roll_deg  * 100);
 }
 
 
@@ -348,26 +340,22 @@ int main(void) {
             read_accel_data();
             read_gyro_data();
             burst_read_magnet();
-            // read_magnetometer_data();
-            compute_euler_angles();
-            float ax = imu_accel.accel_x;
-            float ay = imu_accel.accel_y;
-            float az = imu_accel.accel_z;
-            float gx = (imu_gyro.gyro_x * GYRO_SCALE);
-            float gy = (imu_gyro.gyro_y * GYRO_SCALE);
-            float gz = (imu_gyro.gyro_z * GYRO_SCALE);
-            float mx = imu_magnet.magnet_x * MAG_SCALE;
-            float my = imu_magnet.magnet_y * MAG_SCALE;
-            float mz = imu_magnet.magnet_z * MAG_SCALE;
+            compute_pitch_roll();
+            float ax = ((float)(int16_t)imu_accel.accel_x) / 100.0f;
+            float ay = ((float)(int16_t)imu_accel.accel_y) / 100.0f;
+            float az = ((float)(int16_t)imu_accel.accel_z) / 100.0f;
+            float gx = ((float)(int16_t)imu_gyro.gyro_x) / 100.0f;
+            float gy = ((float)(int16_t)imu_gyro.gyro_y) / 100.0f;
+            float gz = ((float)(int16_t)imu_gyro.gyro_z) / 100.0f;
+            float mx = ((float)(int16_t)imu_magnet.magnet_x) / 100.0f;
+            float my = ((float)(int16_t)imu_magnet.magnet_y) / 100.0f;
+            float mz = ((float)(int16_t)imu_magnet.magnet_z) / 100.0f;
             float deltat = 1.0f / SAMPLE_RATE_HZ;
-            
             MadgwickQuaternionUpdate(q, deltat, BETA, ax, ay, az, gx, gy, gz, mx, my, mz);
-            read_euler_angles();
-
-            // can_send_imu_accel();
+            compute_yaw();
+            can_send_imu_accel();
             can_send_imu_gyro();
-            // can_send_imu_magnet();
-            // read_euler_angles(); 
+            can_send_imu_magnet();
             can_send_imu_euler();
             
             can_send_imu_data = false;

@@ -8,9 +8,9 @@
 
 float q[4] = {1.0f, 0.0f, 0.0f, 0.0f};
 #define SAMPLE_RATE_HZ 100.0f
-#define BETA 0.0001f
+#define BETA 0.01f
 #define GYRO_SCALE (2000.0f / 32768.0f)  // rad/s per LSB for ±2000°/s
-#define MAG_SCALE (0.15f)  // µT per LSB
+#define MAG_SCALE 0.15f  // µT per LSB
 
 #define MAG_X_BIAS  10;
 #define MAG_Y_BIAS  0;
@@ -47,6 +47,14 @@ timer_cfg_s timer_1_cfg = {
         .interrupt_callback = timer_1_isr,
     },
 };
+
+// Helpful struct for returning values
+typedef struct {
+    float x;
+    float y;
+    float z;
+} Vec3;
+
 
 // ICM20948 pins
 gpio_t cs = PC4;
