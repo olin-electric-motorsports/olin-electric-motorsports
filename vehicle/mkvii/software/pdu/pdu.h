@@ -1,9 +1,19 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
+#include "libs/timer/api.h"
 #include "vehicle/mkvii/software/pdu/can_api.h"
 
-// Opcode for mcp23s17
+// Pin definitions
+gpio_t MCP23S17_CS = PB3; // mcp23s17 - Chip select
+gpio_t MCP23S17_RST = PB4; // mcp23s17 - Reset
+gpio_t ADC1283_CS = PB2; // adc1283 - Chip select
+gpio_t MAX7221_CS = PC5; // max7221 - Chip select
+
+gpio_t TS_STATUS_G = PB5; // Tractive system status green LED
+gpio_t TS_STATUS_R = PB6; // Tractive system status red LED
+
+// Opcodes for mcp23s17
 typedef enum {
     OP_WRITE = 0x40,
     OP_READ = 0x41,
@@ -52,10 +62,20 @@ typedef enum {
     DISPLAY_TEST_ON = 0x01,
 } max7221_command;
 
-// Chip Select Pins
-gpio_t MCP23S17_CS = PB3; 
-gpio_t ADC1283_CS = PB2; 
-gpio_t MAX7221_CS = PC5; 
+// Heartbeat timer config
+void timer_0_isr(void);
+timer_cfg_s timer_0_cfg = {
+    .timer = TIMER0,
+    .timer0_mode = TIMER0_MODE_CTC,
+    .prescalar = CLKIO_DIV_1024,
+    .channel_a = {
+        .channel = CHANNEL_A,
+        .output_compare_match = 0x7A1, // 2 Hz
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer_0_isr,
+    },
+};
 
 // SPI config struct
 spi_cfg_s spi_cfg = {

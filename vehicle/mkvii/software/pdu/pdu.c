@@ -1,7 +1,19 @@
 #include "vehicle/mkvii/software/pdu/pdu.h"
 
+// Timer setup
+volatile bool run_1ms = false; // Set as volatile to avoid compiler optimization breaking code
+
+void timer0_isr(void) {
+    // The following code runs every 1ms
+    run_1ms = true;
+}
+
 // Initialize IO expander
 void mcp23S17_init() {
+    // Clear reset pin
+    gpio_set_mode(MCP23S17_RST, OUTPUT);
+    gpio_clear_pin(MCP23S17_RST);
+
     // Set all GPIO pins' direction to output
     uint8_t tx_io[3] = {OP_WRITE, IO_DIRECTION_A, ALL_OUTPUT};
     uint8_t rx_io = 0;
@@ -55,9 +67,6 @@ uint16_t adc_read(adc1283_command input_pin){
 
 // Initialize hardware
 void hw_init() {
-    // Initialize SPI bus
-    spi_init(&spi_cfg);
-
     // Configure chip select pins as OUTPUT and set to high (disabled)
     gpio_set_mode(MCP23S17_CS, OUTPUT);
     gpio_set_pin(MCP23S17_CS);
@@ -65,6 +74,23 @@ void hw_init() {
     gpio_set_pin(ADC1283_CS);
     gpio_set_mode(MAX7221_CS, OUTPUT);
     gpio_set_pin(MAX7221_CS);
+
+    // Configure other GPIO pins to OUTPUT and set to low
+    gpio_set_mode(TS_STATUS_G, OUTPUT);
+    gpio_clear_pin(TS_STATUS_G);
+    gpio_set_mode(TS_STATUS_R, OUTPUT);
+    gpio_clear_pin(TS_STATUS_R);
+
+    // Initialize SPI bus
+    spi_init(&spi_cfg);
+
+    // Initialize CAN
+    can_init_pdu();
+    can_recieve_dashboard();
+    can_recieve_throttle();
+    can_recieve_bspd();
+    can_recieve_air_control_critical();
+    can_recieve_bspd();
 
     // Initialize IO expander
     mcp23S17_init();
@@ -76,7 +102,7 @@ void hw_init() {
     can_init_pdu();
 }
 
-// Test firmware
+// Function to test firmware
 void hw_test(){
     // Illuminate display
     uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
@@ -101,10 +127,40 @@ void hw_test(){
     can_send_pdu_test();
 }
 
+// Update tractive system status LEDs
+void update_ts_status(){
+    // Check CAN messages for BMS or AIR control faults
+    if (can_poll_receive_bms_core() == 0) {
+        // Check BMS for faults
+        can_receive_bms_core();
+    }
+    if (can_poll_receive_air_control_critical() == 0) {
+        // Check AIR control for faults
+        can_receive_air_control_critical();
+    }
+
+    if (bms_core.bms_state == BMS_STATE_FAULT || air_control_critical.air_state == AIR_STATE_FAULT) {
+        // Set TS status light to red if there is fault from either BMS or AIR control
+        gpio_clear_pin(TS_STATUS_G); // Turn off green light
+        gpio_set_pin(TS_STATUS_R); // Turn on red light
+    } else {
+        // Otherwise, set TS status light to green
+        gpio_clear_pin(TS_STATUS_R); // Turn off red light
+        gpio_set_pin(TS_STATUS_G); // Turn on green light
+    }
+}
+
 int main(void) {
     hw_init();
     hw_test();
 
+    // Main loop
+    while (true) {
+        if (run_1ms) { // Run every 1ms
+            run_1ms = false;
+            update_ts_status();
+        }
+    }
     //// Main Loop: 
     //  - Update shutdown node LEDs
     //  - Display HV voltage/current on display
