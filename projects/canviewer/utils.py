@@ -62,6 +62,16 @@ def decode_bms_fault_msg(fault_msg):
           decoded_msg += ", "
     return decoded_msg[0:-2]
 
+def decode_open_wire_pins(open_wire_message):
+    "Decode the open wire pins message"
+    msg = "{0:b}".format(int(open_wire_message))
+    pins_list = []
+    for i in range(len(msg)):
+        if msg[i] == "1":
+            pins_list.append(i)
+
+    return ", ".join(pins_list)
+
 def decode_csc_status(csc_mia):
     """Decode the csc mia message"""
     msg = "{0:b}".format(int(csc_mia))[::-1]
