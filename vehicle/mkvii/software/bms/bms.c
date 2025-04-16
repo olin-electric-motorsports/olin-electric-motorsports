@@ -104,13 +104,13 @@ static void monitor_cells(void) {
     if (ut > MAX_EXTRANEOUS_TEMPERATURES) {
         set_fault(BMS_FAULT_UNDERTEMPERATURE);
     } else {
-        // clear_fault(BMS_FAULT_UNDERTEMPERATURE);
+        clear_fault(BMS_FAULT_UNDERTEMPERATURE);
     }
 
     if (ot > MAX_EXTRANEOUS_TEMPERATURES) {
-        // set_fault(BMS_FAULT_OVERTEMPERATURE);
+        set_fault(BMS_FAULT_OVERTEMPERATURE);
     } else {
-        // clear_fault(BMS_FAULT_OVERTEMPERATURE);
+        clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
     // read all voltages
     uint32_t ov = 0;
@@ -123,7 +123,7 @@ static void monitor_cells(void) {
 
     // read current
     int16_t current = 0;
-    //current_task(&current);
+    current_task(&current);
     current = (adc_read(CURRENT_SENSE_VOUT) - 568) * 24;
     bms_core.pack_current = current;
 
@@ -131,7 +131,7 @@ static void monitor_cells(void) {
     if (current > CURRENT_THRESH) {
         set_fault(BMS_FAULT_OVERCURRENT);
     } else {
-        // clear_fault(BMS_FAULT_OVERCURRENT);
+        clear_fault(BMS_FAULT_OVERCURRENT);
     }
 
     // Check for PEC errors
@@ -143,20 +143,20 @@ static void monitor_cells(void) {
         }
     } else {
         bms_metrics.voltage_pec_error_count = 0;
-        // clear_fault(BMS_FAULT_PEC);
+        clear_fault(BMS_FAULT_PEC);
     }
 
     // Check for undervoltage and overvoltage faults
     if (ov > 0) {
         set_fault(BMS_FAULT_OVERVOLTAGE);
     } else if (ov == 0) {
-        // clear_fault(BMS_FAULT_OVERVOLTAGE);
+        clear_fault(BMS_FAULT_OVERVOLTAGE);
     }
 
     if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
     } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
-        // clear_fault(BMS_FAULT_UNDERVOLTAGE);
+        clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
 
