@@ -42,6 +42,23 @@ void pcint0_callback() {
     bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_THRESH);
 }
 
+#define MAX_TEMPATURE_FAN (50)
+#define MIN_TEMPERATURE_FAN (20)
+
+void cooling_fan_control(uint16_t* max_temp) {
+    uint16_t duty_cycle;
+    uint16_t range = MAX_TEMPATURE_FAN - MIN_TEMPERATURE_FAN;
+    if (*max_temp >= MAX_EXTRANEOUS_TEMPERATURES) {
+        duty_cycle = 1023;
+    } else if (*max_temp < MIN_TEMPERATURE_FAN) {
+        duty_cycle = 0;
+    } else {
+        duty_cycle = (*max_temp - MIN_TEMPERATURE_FAN) * 1023 / range; 
+    }
+
+    OCR1B = duty_cycle;
+}
+
 void hw_init() {
     sei();
 
@@ -51,6 +68,7 @@ void hw_init() {
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
+    gpio_set_mode(COOLING_PUMP_PWM, OUTPUT);
 
     gpio_set_pin(COOLING_PUMP_LSD);
     
@@ -112,6 +130,9 @@ static void monitor_cells(void) {
     } else {
         clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
+
+    cooling_fan_control(&max_temp);
+
     // read all voltages
     uint32_t ov = 0;
     uint32_t uv = 0;
