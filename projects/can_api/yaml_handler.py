@@ -93,6 +93,7 @@ class YamlParser:
             elif (
                 sig_type == "uint8_t"
                 or sig_type == "uint16_t"
+                or sig_type == "uint32_t"
                 or sig_type == "uint64_t"
             ):
                 unit = sig["unit"]["name"]
