@@ -166,43 +166,36 @@ publish:
           name: ""
           scale: 1
           offset: 0
-      - name: open_wire_difference
-        slice: 2 + 16
+      - name: open_wire_pins
+        slice: 2 + 32
         unit:
-          type: uint16_t
-          name: "errors"
-          scale: 1
-          offset: 0
-      - name: csc_mia
-        slice: 18 + 6
-        unit:
-          type: uint8_t
-          name: "errors"
-          scale: 1
-          offset: 0
-      - name: open_wire_pin
-        slice: 24 + 8
-        unit:
-          type: uint8_t
+          type: uint32_t
           name: "errors"
           scale: 1
           offset: 0
       - name: open_wire_ic
-        slice: 32 + 8
+        slice: 34 + 8
+        unit:
+          type: uint8_t
+          name: "errors"
+          scale: 1
+          offset: 0
+      - name: csc_mia
+        slice: 42 + 6
         unit:
           type: uint8_t
           name: "errors"
           scale: 1
           offset: 0
       - name: voltage_pec_error_count
-        slice: 40 + 8
+        slice: 48 + 8
         unit:
           type: uint8_t
           name: "errors"
           scale: 1
           offset: 0
       - name: temperature_pec_error_count
-        slice: 48 + 8
+        slice: 56 + 8
         unit:
           type: uint8_t
           name: "errors"
@@ -220,18 +213,18 @@ publish:
           name: ""
           scale: 1
           offset: 0
-      - name: open_wire_pull_up
+      - name: dbg_2
         slice: 16 + 16
         unit:
           type: uint16_t
-          name: "errors"
+          name: ""
           scale: 1
           offset: 0
-      - name: open_wire_pull_down
+      - name: dbg_3
         slice: 32 + 16
         unit:
           type: uint16_t
-          name: "errors"
+          name: ""
           scale: 1
           offset: 0
       - name: dbg_4

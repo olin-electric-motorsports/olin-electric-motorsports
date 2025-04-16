@@ -71,44 +71,40 @@ void openwire_task(void) {
     }
 
     for (uint8_t ic = 0; ic < NUM_ICS; ic++) {
+        uint32_t open_wire_pins = 0;
         
         if (raw_pull_up_data[ic][0] == 0) {
-            bms_metrics.open_wire_pin = 1;
-            bms_metrics.open_wire_ic = ic+1;
-            can_send_bms_metrics();
-
-            bms_debug.open_wire_pull_up = raw_pull_up_data[ic][0]; 
-            can_send_bms_debug();
+            open_wire_pins |= 1U;
         }
         
-        if (raw_pull_down_data[ic][NUM_CELLS_PER_IC - 1] == 0) {
-            bms_metrics.open_wire_pin = 19;
-            bms_metrics.open_wire_ic = ic+1;
-            can_send_bms_metrics();
-
-            bms_debug.open_wire_pull_down = raw_pull_down_data[ic][NUM_CELLS_PER_IC - 1]; 
-            can_send_bms_debug();
+        if ((raw_pull_down_data[ic][NUM_CELLS_PER_IC - 1] == 0) && NUM_CELLS_PER_IC < 32    ) {
+            open_wire_pins |= ((uint32_t)1U << NUM_CELLS_PER_IC);
         }
+
         for (uint8_t cell = 0; cell < NUM_CELLS_PER_IC - 1; cell++) {
-            // uint8_t cell = 10;
+            // uint8_t cell = 16;
             if (raw_pull_up_data[ic][cell+1] > raw_pull_down_data[ic][cell+1]) {
                 continue;
             }
+
             differences[ic][cell] = raw_pull_down_data[ic][cell+1] - raw_pull_up_data[ic][cell+1];
-            // if (differences[ic][cell] > 400) {
-            // if (raw_pull_up_data[ic][cell+1] < 1000) {
-                bms_metrics.open_wire_pin = cell+2;
-                bms_metrics.open_wire_ic = ic+1;
-                can_send_bms_metrics();
+            if ((differences[ic][cell] > 2000) && ((cell + 1) == 16)) {
+                open_wire_pins |= (1U << (cell + 1));
+                can_print("Cell", cell+1);
+                can_print("Delta", differences[ic][cell]);
+            } else if ((differences[ic][cell] > 400) && ((cell + 1) != 16)) {
+                open_wire_pins |= (1U << (cell + 1));
+                can_print("Cell", cell+1);
+                can_print("Delta", differences[ic][cell]);
+            } 
 
-                bms_metrics.open_wire_difference = differences[ic][cell]; 
-                bms_debug.open_wire_pull_up = raw_pull_up_data[ic][cell+1]; 
-                bms_debug.open_wire_pull_down = raw_pull_down_data[ic][cell+1]; 
-                can_send_bms_debug();
+            bms_metrics.open_wire_pins = open_wire_pins;
+            bms_metrics.open_wire_ic = ic;
+            can_send_bms_metrics();
 
+            if (open_wire_pins > 0) {
                 set_fault(BMS_FAULT_OPEN_WIRE);
-            // } 
-            can_print("Delta", differences[ic][cell]);
+            }
         }
     }
 }
