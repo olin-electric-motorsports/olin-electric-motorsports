@@ -7,14 +7,10 @@
 #include <math.h>
 
 float q[4] = {1.0f, 0.0f, 0.0f, 0.0f};
-#define SAMPLE_RATE_HZ 100.0f
-#define BETA 0.01f
+#define SAMPLE_RATE_HZ 64.0f
+#define BETA .040f
 #define GYRO_SCALE (2000.0f / 32768.0f)  // rad/s per LSB for ±2000°/s
 #define MAG_SCALE 0.15f  // µT per LSB
-
-#define MAG_X_BIAS  10;
-#define MAG_Y_BIAS  0;
-#define MAG_Z_BIAS  0;
 #define RAD_TO_DEG (180.0f / M_PI)
 
 
@@ -26,7 +22,7 @@ timer_cfg_s timer_0_cfg = {
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
-        .output_compare_match = 0x12, // 217Hz
+        .output_compare_match = 0x7A1, // 2 Hz
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer_0_isr,
@@ -41,7 +37,7 @@ timer_cfg_s timer_1_cfg = {
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
-        .output_compare_match = 0x7A1, // 2 Hz
+        .output_compare_match = 61, // 64 Hz
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer_1_isr,

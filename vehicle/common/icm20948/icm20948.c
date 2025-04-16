@@ -14,6 +14,20 @@ void icm_read_register(uint8_t _register, uint8_t* rx_data) {
     *rx_data = _rx_data[1];
 }
 
+void icm_burst_read(uint8_t start_reg, uint8_t len, uint8_t* data) {
+    uint8_t tx_buf[len + 1];
+    uint8_t rx_buf[len + 1];
+    tx_buf[0] = start_reg | 0x80;  
+    for (uint8_t i = 1; i < len + 1; i++) {
+        tx_buf[i] = 0x00;
+    }
+    spi_transceive_cs(tx_buf, rx_buf, len + 1);
+    for (uint8_t i = 0; i < len; i++) {
+        data[i] = rx_buf[i + 1];
+    }
+}
+
+
 void icm_multi_read(uint8_t _register, uint8_t len, uint8_t* data) {
     for (uint8_t i = 0; i < len; i++) {
         icm_read_register(_register + i, &data[i]);
@@ -81,15 +95,15 @@ void write_mag(unsigned char addr, unsigned char reg, unsigned char data)
     icm_write_register(0x03, regChar);
     //wait a bit so the mag can output to the bank 0 regiters can read 
     _delay_ms(70);
-    //disable the I2C master again so we don't have any conflicts
-    icm_read_register(0x03, &regChar);
-    regChar &= 0xDF;
-    icm_write_register(0x03, regChar);
-    //set the bank to 3 again so we can turn off the mag
-    switch_register_bank(BANK_3);
-    //disable the mag communcation again in I2C_SLV1_CTRL
-    regChar = 0x00;
-    icm_write_register(0x09, regChar);
+    // //disable the I2C master again so we don't have any conflicts
+    // icm_read_register(0x03, &regChar);
+    // regChar &= 0xDF;
+    // icm_write_register(0x03, regChar);
+    // //set the bank to 3 again so we can turn off the mag
+    // switch_register_bank(BANK_3);
+    // //disable the mag communcation again in I2C_SLV1_CTRL
+    // regChar = 0x00;
+    // icm_write_register(0x09, regChar);
     switch_register_bank(BANK_0);
 }
 
@@ -121,9 +135,10 @@ void read_mag(unsigned char addr, unsigned char reg, unsigned char len, unsigned
     regChar &= 0xDF;
     icm_write_register(0x03, regChar);
     //read the output of the mag, starting on REG_EXT_SLV_SENS_DATA_00 and moving forward (len) bytes
-    for (unsigned char i = 0; i < len; i++) {
-        icm_read_register(0x3B + i, &data[i]);
-    }
+    // for (unsigned char i = 0; i < len; i++) {
+    //     icm_read_register(0x3B + i, &data[i]);
+    // }
+    icm_burst_read(0x3B, len, data);
     //set the bank to 3 again so we can turn off the mag
     switch_register_bank(BANK_3);
     //disable the mag communcation again in I2C_SLV0_CTRL

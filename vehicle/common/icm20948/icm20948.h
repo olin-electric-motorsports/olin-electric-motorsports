@@ -233,6 +233,7 @@ void write_mag(unsigned char addr, unsigned char reg, unsigned char data);
  */
 void read_mag(unsigned char addr, unsigned char reg, unsigned char len, unsigned char *data);
 
+void icm_burst_read(uint8_t start_reg, uint8_t len, uint8_t* data);
 
 /**
  * Read data from an ICM register.

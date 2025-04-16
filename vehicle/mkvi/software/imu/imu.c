@@ -4,7 +4,6 @@
 #include "libs/timer/api.h"
 #include "vehicle/common/icm20948/icm20948.h"
 #include "vehicle/mkvi/software/imu/can_api.h"
-#include <stdio.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <util/delay.h>
@@ -25,7 +24,7 @@
 /**
  * Timer 0 for sending IMU data over CAN
  */
-volatile bool can_send_imu_data = true;
+volatile bool can_send_imu_data = false;
 void timer_0_isr(void) {
     can_send_imu_data = true;
 }
@@ -115,32 +114,22 @@ void init_imu(void) {
  * Read accel data and place in CAN structs
  */
 void read_accel_data(void) {
-    uint8_t accel_data[2] = { 0x0, 0x0 };
-    icm_read_register(ACCEL_XOUT_H, &accel_data[1]);
-    icm_read_register(ACCEL_XOUT_L, &accel_data[0]);
-    imu_accel.accel_x = (int16_t)(accel_data[0] | (accel_data[1] << 8));
-    icm_read_register(ACCEL_YOUT_H, &accel_data[1]);
-    icm_read_register(ACCEL_YOUT_L, &accel_data[0]);
-    imu_accel.accel_y = (int16_t)(accel_data[0] | (accel_data[1] << 8));
-    icm_read_register(ACCEL_ZOUT_H, &accel_data[1]);
-    icm_read_register(ACCEL_ZOUT_L, &accel_data[0]);
-    imu_accel.accel_z = (int16_t)(accel_data[0] | (accel_data[1] << 8));
+    uint8_t accel_data[6] = { 0 };
+    icm_burst_read(ACCEL_XOUT_H, 6, accel_data);
+    imu_accel.accel_x = (int16_t)(accel_data[1] | (accel_data[0] << 8));
+    imu_accel.accel_y = (int16_t)(accel_data[3] | (accel_data[2] << 8));
+    imu_accel.accel_z = (int16_t)(accel_data[5] | (accel_data[4] << 8));
 }
 
 /**
  * Read gyro data and place in CAN structs
  */
 void read_gyro_data(void) {
-    uint8_t gyro_data[2] = { 0x0, 0x0 };
-    icm_read_register(GYRO_XOUT_H, &gyro_data[1]);
-    icm_read_register(GYRO_XOUT_L, &gyro_data[0]);
-    int16_t raw_x = (int16_t)(gyro_data[0] | (gyro_data[1] << 8));
-    icm_read_register(GYRO_YOUT_H, &gyro_data[1]);
-    icm_read_register(GYRO_YOUT_L, &gyro_data[0]);
-    int16_t raw_y = (int16_t)(gyro_data[0] | (gyro_data[1] << 8));
-    icm_read_register(GYRO_ZOUT_H, &gyro_data[1]);
-    icm_read_register(GYRO_ZOUT_L, &gyro_data[0]);
-    int16_t raw_z = (int16_t)(gyro_data[0] | (gyro_data[1] << 8));
+    uint8_t gyro_data[6] = { 0 };
+    icm_burst_read(GYRO_XOUT_H, 6, gyro_data);
+    int16_t raw_x = (int16_t)((gyro_data[0] << 8) | gyro_data[1]);
+    int16_t raw_y = (int16_t)((gyro_data[2] << 8) | gyro_data[3]);
+    int16_t raw_z = (int16_t)((gyro_data[4] << 8) | gyro_data[5]);
     imu_gyro.gyro_x = (int16_t)(raw_x * GYRO_SCALE * 100);
     imu_gyro.gyro_y = (int16_t)(raw_y * GYRO_SCALE * 100);
     imu_gyro.gyro_z = (int16_t)(raw_z * GYRO_SCALE * 100);
@@ -165,10 +154,9 @@ void read_gyro_data(void) {
  * Burst read magnet data and place in CAN structs
  */
 
- void burst_read_magnet(void) {
+ void read_magnetometer_data(void) {
     uint8_t mag_data[6] = { 0 }; 
     read_mag(MAGNETOMETER_ADDR, HXL, 6, mag_data);
-    // didn't reverse low and high bytes???
     int16_t raw_x = (int16_t)(mag_data[0] << 8 | mag_data[1]);
     int16_t raw_y = (int16_t)(mag_data[2] << 8 | mag_data[3]);
     int16_t raw_z = (int16_t)(mag_data[4] << 8 | mag_data[5]);
@@ -281,11 +269,11 @@ void compute_yaw(void) {
     float a22 = qw * qw + qx * qx - qy * qy - qz * qz;
 
     float yaw = atan2f(a12, a22) * RAD_TO_DEG;
-    if (yaw >= 180.0f) {
-        yaw -= 360.0f;
-    } else if (yaw < -180.0f) {
-        yaw += 360.0f;
-    }
+    // if (yaw >= 180.0f) {
+    //     yaw -= 360.0f;
+    // } else if (yaw < -180.0f) {
+    //     yaw += 360.0f;
+    // }
 
     imu_euler.yaw = (int16_t)(yaw * 100);
 }
@@ -332,14 +320,14 @@ int main(void) {
     // getChipAccelGyroCalibration();
 
     for (;;) {
+        // if (led_heartbeat) {
+        //     gpio_toggle_pin(debug_led);
+        //     led_heartbeat = false;
+        // }
         if (led_heartbeat) {
-            gpio_toggle_pin(debug_led);
-            led_heartbeat = false;
-        }
-        if (can_send_imu_data) {
             read_accel_data();
             read_gyro_data();
-            burst_read_magnet();
+            read_magnetometer_data();
             compute_pitch_roll();
             float ax = ((float)(int16_t)imu_accel.accel_x) / 100.0f;
             float ay = ((float)(int16_t)imu_accel.accel_y) / 100.0f;
@@ -358,7 +346,7 @@ int main(void) {
             can_send_imu_magnet();
             can_send_imu_euler();
             
-            can_send_imu_data = false;
+            led_heartbeat = false;
         }
     }
 }
