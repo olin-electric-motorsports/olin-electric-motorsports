@@ -182,14 +182,10 @@ int main(void) {
                 can_send_bms_metrics();
             }
 
-            if (bms_core.bms_state == BMS_STATE_CHARGING) {
-                if (loop_counter % 5 == 0) {
-                    charging_cmd.target_voltage = 403;
-                    charging_cmd.target_current = 5;
-                    charging_cmd.enable_charging = false;
-                    can_send_charging_cmd();
-                }
-            }
+            charging_cmd.target_voltage = 403;
+            charging_cmd.target_current = 5;
+            charging_cmd.enable_charging = false;
+            can_send_charging_cmd();
 
             loop_counter++;
 
