@@ -1,4 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//bazel:defs.bzl", "cc_firmware")
 load("//projects/btldr:ecus.bzl", "ECUS")
 
