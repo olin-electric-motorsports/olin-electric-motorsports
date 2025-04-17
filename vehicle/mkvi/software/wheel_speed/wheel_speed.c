@@ -2,7 +2,6 @@
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/timer/api.h"
-#include "vehicle/common/icm20948/icm20948.h"
 #include "vehicle/mkvi/software/wheel_speed/can_api.h"
 
 #include <avr/interrupt.h>
@@ -12,46 +11,35 @@
 
 
 
-struct WheelSpeedState {
-    volatile bool send_can;
-} wheel_speed_state = { 0 };
-
+volatile bool send_can = true;
 volatile uint16_t timer_ticks = 0;
 void timer_0_isr(void){
     timer_ticks++;
-    wheel_speed_state.send_can = true;
+    send_can = true;
 }
 
 // Timer 1 for Heartbeat LED
-volatile bool led_heartbeat = true;
+volatile bool toggle_heartbeat = true;
+
 void timer_1_isr(void){
-    led_heartbeat = true;
-};
+    toggle_heartbeat = true;
+}
 
 /**
  * Initialize 16m1 hardware peripherals
  */
 void init_peripherals(void) {
     gpio_set_mode(debug_led, OUTPUT); // Debug LED
-    gpio_set_mode(heartbeat, OUTPUT); // Heartbeat LED
-    gpio_set_mode(WHEEL_SPEED_l.clk_pin, OUTPUT); // CLK pin 1
-    gpio_set_mode(WHEEL_SPEED_l.dat_pin, INPUT); // DAT pin 1
-    gpio_set_mode(WHEEL_SPEED_r.clk_pin, OUTPUT); // CLK pin 2
-    gpio_set_mode(WHEEL_SPEED_r.dat_pin, INPUT); // DAT pin 2
-
-    gpio_clear_pin(WHEEL_SPEED_l.clk_pin);
-    gpio_clear_pin(WHEEL_SPEED_r.clk_pin);
-
+    gpio_set_mode(heartbeat_led, OUTPUT); // Heartbeat LED
+   
     can_init_wheel_speed(); // CAN
     sei(); // Interrupts
     timer_init(&timer_0_cfg); // Timer 0
     timer_init(&timer_1_cfg); // Timer 1
     adc_init(); // ADC
-    can_send_wheel_speed(); // Send initial CAN message
 }
 
-static int wheel_speed_count_l = 0
-static int wheel_speed_count_r = 0
+int elapsed_ticks = 0;
 
 uint16_t get_wheel_speed(WheelSpeed* wheel_speed) {
     uint16_t adc_value = adc_read(wheel_speed->adc_pin);
@@ -69,28 +57,30 @@ uint16_t get_wheel_speed(WheelSpeed* wheel_speed) {
     }
     return wheel_speed->current_speed;
 
-};
+}
 
 
 
 int main(void){
+
     init_peripherals();
-    sei();
-    can_init_wheel_speed();
-    adc_init();
 
-    while(1){
-        uint16_t speed_l = get_wheel_speed(&WHEEL_SPEED_l);
-        uint16_t speed_r = get_wheel_speed(&WHEEL_SPEED_r);
-        wheel_speed.wheel_speed_l = speed_l;
-        wheel_speed.wheel_speed_r = speed_r;
-    
+    while(true){
 
-        if(wheel_speed_state.send_can){
+        if (toggle_heartbeat){
+            gpio_toggle_pin(heartbeat_led);
+            gpio_toggle_pin(debug_led);
+            toggle_heartbeat = false;
+        }
+
+        if(send_can){
+            //uint16_t speed_l = get_wheel_speed(&WHEEL_SPEED_l);
+            //uint16_t speed_r = get_wheel_speed(&WHEEL_SPEED_r);
+            wheel_speed.wheel_speed_l++; //speed_l;
+            wheel_speed.wheel_speed_r++; // speed_r;
             can_send_wheel_speed();
-            wheel_speed_state.send_can = false;
-
+            send_can = false;
         }
     }
-    return 0;
+
 }
