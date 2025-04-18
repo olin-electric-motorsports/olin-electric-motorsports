@@ -27,11 +27,6 @@ MEMORY
 SECTIONS
 {
   /* Read-only sections, merged into text segment: */
-  .image_hdr :
-  {
-    __image_hdr = .;
-    KEEP(*(.image_hdr))
-  } > text
   .hash          : { *(.hash)		}
   .dynsym        : { *(.dynsym)		}
   .dynstr        : { *(.dynstr)		}
@@ -93,6 +88,9 @@ SECTIONS
   {
     *(.vectors)
     KEEP(*(.vectors))
+
+    PROVIDE(__image_hdr = .);
+    KEEP(*(.image_hdr))
     /* For data that needs to reside in the lower 64k of progmem.  */
      *(.progmem.gcc*)
     /* PR 13812: Placing the trampolines here gives a better chance

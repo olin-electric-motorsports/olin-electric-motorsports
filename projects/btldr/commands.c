@@ -27,7 +27,7 @@ static struct session_data session = {
 uint8_t handle_query(uint16_t btldr_id, uint8_t* data, uint8_t length) {
     uint8_t version = shmem_get_version();
 
-    uint8_t chip = CHIP_AVR_ATMEGA16M1;
+    uint8_t chip = CHIP_AVR_ATMEGA64M1;
 
     uint64_t timestamp = *(uint64_t*)data;
     uint64_t flash_timestamp = image_get_timestamp();

@@ -40,7 +40,7 @@ static void do_reset(uint8_t* data, uint8_t dlc) {
 static void do_query(uint8_t* data, uint8_t dlc) {
     // Return bootloader version from EEPROM
     uint8_t version = shmem_get_version();
-    uint8_t chip = CHIP_AVR_ATMEGA16M1;
+    uint8_t chip = CHIP_AVR_ATMEGA64M1;
 
     // Current timestamp from data
     uint64_t timestamp = *(uint64_t*)data;
