@@ -35,6 +35,7 @@ D1_DC_Bus_Voltage:
 Torque_Command:
 bms_fault_code:
   processing_function: decode_bms_fault_msg
+open_wire_ic:
 open_wire_pins:
   processing_function: decode_open_wire_pins
 csc_mia:
@@ -47,7 +48,7 @@ IVT_Result_I:
 IVT_Result_As:
     processing_function: padding
 IVT_Result_W:
-    processing_function: padding
+    processing_function: padding  
 IVT_Result_Wh:
     processing_function: padding
 lpms_gyro_x:

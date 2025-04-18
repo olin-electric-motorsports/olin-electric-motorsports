@@ -68,7 +68,7 @@ def decode_open_wire_pins(open_wire_message):
     pins_list = []
     for i in range(len(msg)):
         if msg[i] == "1":
-            pins_list.append(i)
+            pins_list.append(str(i))
 
     return ", ".join(pins_list)
 

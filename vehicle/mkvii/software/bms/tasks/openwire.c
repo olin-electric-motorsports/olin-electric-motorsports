@@ -98,13 +98,14 @@ void openwire_task(void) {
                 can_print("Delta", differences[ic][cell]);
             } 
 
-            bms_metrics.open_wire_pins = open_wire_pins;
-            bms_metrics.open_wire_ic = ic;
-            can_send_bms_metrics();
-
-            if (open_wire_pins > 0) {
-                set_fault(BMS_FAULT_OPEN_WIRE);
-            }
         }
+
+        if (open_wire_pins > 0) {
+            set_fault(BMS_FAULT_OPEN_WIRE);
+        }
+
+        bms_metrics.open_wire_pins = open_wire_pins;
+        bms_metrics.open_wire_ic = ic;
+        can_send_bms_metrics();
     }
 }
