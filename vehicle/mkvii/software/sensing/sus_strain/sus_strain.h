@@ -87,7 +87,7 @@ spi_cfg_s SUS_STRAIN_spi_cfg = {
     .mode = MAIN,
     .polarity = RISING_FALLING,
     .phase = SAMPLE_SETUP,
-    .clock_rate = F_OSC_DIV_4, // ICM20948 max: 7MHz
+    .clock_rate = F_OSC_DIV_16, // ICM20948 max: 7MHz
     // .cs_pin = &cs, // Uncomment and define cs_pin if needed
     .spi_channel = ALT_BUS
 };

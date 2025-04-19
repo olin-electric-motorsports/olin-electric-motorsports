@@ -1,8 +1,14 @@
-#include "vehicle/mkvi/software/charging/charger.h"
+#include "vehicle/mkvii/software/integration/charging/charger.h"
 
-#define TARGET_PACK_VOLTAGE  (360) // in volts
+#define TARGET_PACK_VOLTAGE  (428) // in volts
 #define CHARGING_MAX_VOLTAGE (3201) // 3201 = 320.1V
 #define CHARGING_MAX_CURRENT (582) // 582 = 58.2A
+
+// Current going through --> IN PROGRESS
+// Target voltage --> DONE
+// percent charged --> DONE
+// current pack charged --> 
+// minutes til charged --> MAYBE (IF TIME ALLOWS)
 
 uint8_t rx_msg[5] = { 0 };
 uint8_t count = 0;
@@ -31,6 +37,46 @@ volatile bool send_can = false;
 void timer0_isr(void) {
     send_can = true;
 }
+// Global flag to toggle display
+volatile int flag = 0;
+volatile bool display_target_voltage = true;
+volatile bool display_target_current = false;
+volatile bool display_text_debug = false;
+volatile bool display_text = true;
+
+void timer2_isr(void) {
+    // Toggle the display state every 2 seconds
+    flag = 1;
+    if (display_target_voltage) {
+        if (display_text) { //display key for value
+            display_text = false;
+            TIMSK0 &= ~(1 << TOIE0); 
+        } else {
+            display_text = true;
+            display_target_voltage = false;
+            display_target_current = true; //switch to display current
+            TIMSK0 &= ~(1 << TOIE0); 
+        }
+    } if (display_target_current) {
+        if (display_text) {
+            if (display_text_debug) { //run display_text twice through loop, no clue why this works
+                display_text = false;
+            }
+            display_text_debug = true;
+            TIMSK0 &= ~(1 << TOIE0); 
+
+        } else {
+            display_text_debug = false;
+            display_text = true;
+            display_target_current = false;
+            display_target_voltage = true; //switch back to voltage
+            TIMSK0 &= ~(1 << TOIE0); 
+        }
+
+    }
+}
+
+
 
 void charger_can_init() {
     //Initialize the SPI bus
@@ -55,6 +101,72 @@ void spi_send_charger() {
     mcp25625_send_message(0x1806E5F4, 8, bytes, true);
 }
 
+// Initialize SPI communication with display driver
+void spi_bus_init(){
+    spi_init(&MAX7221_spi_cfg);
+}
+
+// Write to display driver register
+void max7221_write(uint8_t address, uint8_t data){
+    gpio_clear_pin(MAX7221_CS);  // Activate chip select
+    spi_transmit(&address, LENGTH_ADDRESS_SPI);
+    spi_transmit(&data, LENGTH_DATA_SPI);
+    gpio_set_pin(MAX7221_CS);   // Deactivate chip select
+}
+
+// Initialize display driver
+void max7221_init() {
+    gpio_set_mode(MAX7221_CS, OUTPUT);
+    gpio_set_pin(MAX7221_CS);
+    _delay_ms(20);
+    gpio_clear_pin(MAX7221_CS);
+    _delay_ms(20);
+    gpio_set_pin(MAX7221_CS);
+    _delay_ms(20);
+
+    // // Leave shutdown
+    // max7221_write(SHUTDOWN, SHUTDOWN_OFF);
+    
+    // // Enable decoding on digits 3-0
+    // max7221_write(DECODE, DECODE_4_DIGITS);
+
+    // // Set scan limit to display digits 3-0
+    // max7221_write(SCAN_LIMIT, SCAN_4_DIGITS);
+
+    // Set intensity to max brightness
+    max7221_write(0x0F, 0x01);
+    max7221_write(0x0F, 0x01);
+    _delay_ms(2000);
+    
+}
+
+void display_voltage_on_seven_segment(float voltage) {
+    uint16_t voltage_int = (uint16_t)(voltage);  // Multiply by 10 before casting to shift the decimal place
+    uint8_t ones = voltage_int % 10;  // Get ones place (first digit)
+    uint8_t tens = (voltage_int / 10) % 10;  // Get tens place (second digit)
+    uint8_t hundreds = (voltage_int/ 100) % 10;  // Get hundreds place (third digit)
+    uint8_t thousands = (voltage_int/ 1000) % 10;
+    // Update display with hundreds, tens, and ones digits
+    max7221_write(0x01, thousands);  // Write thousands place
+    max7221_write(0x02, hundreds);  // Write hundreds place
+    max7221_write(0x03, tens);      // Write tens place
+    max7221_write(0x04, ones);      // Write ones place
+}
+
+void display_pack_on_seven_segment() {
+    max7221_write(0x01, 15);  // Blank
+    max7221_write(0x02, 15);  // Blank
+    max7221_write(0x03, 14);  // Write P
+    max7221_write(0x04, 10);  // Write -
+}
+
+void display_volt_on_seven_segment() {
+    max7221_write(0x01, 15);  // Blank
+    max7221_write(0x02, 15);  // Blank
+    max7221_write(0x03, 13);  // Write L
+    max7221_write(0x04, 10);  // Write -
+}
+
 // // receiving SPI from charger
 // // parse data from charger
 // void spi_receive_charger() {
@@ -73,24 +185,29 @@ void spi_send_charger() {
 // }
 
 uint8_t ten_ms_counter = 0;
-uint8_t charger_timeout = 0;
+uint8_t charger_timeout = 0; // Percentage we want to use? 
 
 // loop
 int main(void) {
 
-    //Enable interrupts
+    spi_bus_init();
+    max7221_init();  
+    _delay_ms(100000);
+
+    // Enable interrupts
     sei();
 
-    //Enable 100Hz update rate
+    // Enable 100Hz update rate
     timer_init(&timer0_cfg);
+    timer_init(&timer2_cfg);
 
     gpio_set_mode(LED1, OUTPUT);
     gpio_set_mode(LED2, OUTPUT);
 
-    //Init SPI/CAN tranciever
+    // Init SPI/CAN tranciever
     charger_can_init();
 
-    //Init 16M1 CAN tranciever
+    // Init 16M1 CAN tranciever
     can_init_charger();
 
         _delay_ms(20);
@@ -99,8 +216,26 @@ int main(void) {
     can_receive_bms_core();
     // can_poll_receive_bms_core();
     // can_poll_receive_charging_cmd();
+    
 
     while (1) {
+
+        if (display_target_voltage) {
+            if (display_text) {
+                display_pack_on_seven_segment(); // bms_core.pack_current swap out to test current
+            } 
+            else {
+                display_voltage_on_seven_segment(bms_core.pack_current/TARGET_PACK_VOLTAGE); //battery percent
+            }
+        } if (display_target_current) {
+            if (display_text) {
+                display_volt_on_seven_segment(); //placeholder key name for pack voltage
+            } 
+            else {
+                display_voltage_on_seven_segment(TARGET_PACK_VOLTAGE);
+            }
+        }
+    
         // check status of BMS
         if (send_can) {
             if (can_poll_receive_bms_core() == 0) {
