@@ -1,3 +1,4 @@
+#include <avr/interrupt.h>
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
@@ -6,12 +7,20 @@
 
 // Pin definitions
 gpio_t MCP23S17_CS = PB3; // mcp23s17 - Chip select
-gpio_t MCP23S17_RST = PB4; // mcp23s17 - Reset
 gpio_t ADC1283_CS = PB2; // adc1283 - Chip select
 gpio_t MAX7221_CS = PC5; // max7221 - Chip select
+gpio_t MCP23S17_RST = PB4; // mcp23s17 - Reset
+gpio_t TS_STATUS_G = PB5; // Output for tractive system status green LED
+gpio_t TS_STATUS_R = PB6; // Output for tractive system status red LED
+gpio_t FAN_PWM = PD0; // Output for PWM signal to fan
+gpio_t PUMP_PWM = PD1; // Output for PWM signal to pump
+gpio_t COOL_EN = PD5; // Output to enable cooling system
+gpio_t HB_LED = PD7; // Output for heartbeat LED
+gpio_t SS_ESTOP_L = PC0; // Input for service section left estop
+gpio_t SS_ESTOP_R = PC6; // Input for service section right estop
+gpio_t SS_MC = PC1; // Input for motor controller high voltage interlock
+gpio_t SS_GLVMS = PC7; // Input for main fuse 
 
-gpio_t TS_STATUS_G = PB5; // Tractive system status green LED
-gpio_t TS_STATUS_R = PB6; // Tractive system status red LED
 
 // Opcodes for mcp23s17
 typedef enum {
@@ -62,7 +71,7 @@ typedef enum {
     DISPLAY_TEST_ON = 0x01,
 } max7221_command;
 
-// Heartbeat timer config
+// Main loop timer config
 void timer_0_isr(void);
 timer_cfg_s timer_0_cfg = {
     .timer = TIMER0,
@@ -70,12 +79,28 @@ timer_cfg_s timer_0_cfg = {
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
-        .output_compare_match = 0x7A1, // 2 Hz
+        .output_compare_match = 0x12, // 217Hz
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer_0_isr,
     },
 };
+
+// Heartbeat timer config
+void timer_1_isr(void);
+timer_cfg_s timer_1_cfg = {
+    .timer = TIMER1,
+    .timer1_mode = TIMER1_MODE_CTC,
+    .prescalar = CLKIO_DIV_1024,
+    .channel_a = {
+        .channel = CHANNEL_A,
+        .output_compare_match = 0x7A1, // 2 Hz
+        .pin_behavior = DISCONNECTED,
+        .interrupt_enable = true,
+        .interrupt_callback = timer_1_isr,
+    },
+};
+
 
 // SPI config struct
 spi_cfg_s spi_cfg = {

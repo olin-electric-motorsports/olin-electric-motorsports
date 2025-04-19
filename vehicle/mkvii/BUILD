@@ -9,5 +9,13 @@ dbc_gen(
         "//vehicle/common/lpms-cu2:lpms-cu2.dbc",
         "//vehicle/common/motor_controller:motor_controller.dbc",
         "//vehicle/mkvii/software/pdu:pdu.yml",
+        # Mkvi yml, should update to mkvii files when merged
+        "//vehicle/mkvi/software/dashboard:dashboard.yml",
+        "//vehicle/mkvi/software/throttle:throttle.yml",
+        "//vehicle/mkvi/software/air_control:air.yml",
+        "//vehicle/mkvi/software/bms:bms.yml",
+        "//vehicle/mkvi/software/brakes:bspd.yml",
+
+
     ],
 )

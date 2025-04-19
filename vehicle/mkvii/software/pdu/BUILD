@@ -18,7 +18,8 @@ cc_firmware(
     deps = [
         ":can_api",
         "//libs/gpio",
-        "//libs/spi"
+        "//libs/spi",
+        "//libs/timer",
     ],
 )
 
