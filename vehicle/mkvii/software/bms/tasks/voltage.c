@@ -55,6 +55,13 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             uint16_t cell_3
                 = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
 
+            // Artificially increasing cell voltages by 0.04 to get rid of the weird voltage diff
+            if (cell_reg == 0) {
+                cell_1 += 400;
+            } else if (cell_reg == NUM_CELL_REG - 1) {
+                cell_2 += 400;
+            }
+
             // Core receives all 1s when the CSC is MIA
             if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)
                 && (cell_3 == UINT16_MAX)) {
