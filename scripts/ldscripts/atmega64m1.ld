@@ -86,6 +86,7 @@ SECTIONS
   /* Internal text space or external memory.  */
   .text   :
   {
+    __vectors = .;
     *(.vectors)
     KEEP(*(.vectors))
 
