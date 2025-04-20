@@ -23,7 +23,7 @@ void openwire_task(void) {
     uint8_t raw_row_data[NUM_RX_BYT * NUM_ICS] = { 0 };
 
     for (uint8_t i = 0; i < ITERATIONS; i++) {
-        LTC681x_adow(MD_7KHZ_3KHZ, 1, AUX_CH_ALL, DCP_ENABLED);
+        LTC681x_adow(MD_7KHZ_3KHZ, 1, AUX_CH_ALL, DCP_DISABLED);
         LTC681x_pollAdc();
 
         wakeup_idle(NUM_ICS);
@@ -47,7 +47,7 @@ void openwire_task(void) {
     }
   
     for (uint8_t i = 0; i < ITERATIONS; i++) {
-        LTC681x_adow(MD_7KHZ_3KHZ, 0, AUX_CH_ALL, DCP_ENABLED);
+        LTC681x_adow(MD_7KHZ_3KHZ, 0, AUX_CH_ALL, DCP_DISABLED);
         LTC681x_pollAdc();
 
         wakeup_idle(NUM_ICS);
