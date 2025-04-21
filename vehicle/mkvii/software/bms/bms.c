@@ -11,6 +11,9 @@
 #include <stdint.h>
 #include <util/delay.h>
 
+
+#include "projects/can_print/can_print.h"
+
 #include "vehicle/mkvii/software/bms/bms_config.h"
 #include "vehicle/mkvii/software/bms/can_api.h"
 #include "vehicle/mkvii/software/bms/tasks/tasks.h"
@@ -134,7 +137,18 @@ static void monitor_cells(void) {
         clear_fault(BMS_FAULT_OVERCURRENT);
     }
 
-    openwire_task();
+    uint32_t number_open_pins = 0;
+
+    openwire_task(&number_open_pins);
+
+    can_print("no. pins", number_open_pins);
+
+    // Check for open wire fault
+    if (number_open_pins > 0) {
+        set_fault(BMS_FAULT_OPEN_WIRE);
+    } else {
+        clear_fault(BMS_FAULT_OPEN_WIRE);
+    }
 
     // Check for PEC errors
     if (pec_errors != 0) {

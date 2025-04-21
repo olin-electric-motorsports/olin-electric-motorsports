@@ -13,7 +13,7 @@
 
 #define ITERATIONS (2) 
 
-void openwire_task(void) {
+void openwire_task(uint32_t* number_open_pins) {
 
     wakeup_sleep(NUM_ICS);
     uint16_t raw_pull_up_data[NUM_ICS][NUM_CELLS_PER_IC] = { 0 }; 
@@ -75,14 +75,20 @@ void openwire_task(void) {
         
         if (raw_pull_up_data[ic][0] == 0) {
             open_wire_pins |= 1U;
+            *number_open_pins += 1;                
+            can_print("Cell", 0);
+            can_print("Delta", raw_pull_up_data[ic][0]);
         }
         
-        if ((raw_pull_down_data[ic][NUM_CELLS_PER_IC - 1] == 0) && NUM_CELLS_PER_IC < 32    ) {
-            open_wire_pins |= ((uint32_t)1U << NUM_CELLS_PER_IC);
-        }
+        // if ((raw_pull_down_data[ic][NUM_CELLS_PER_IC - 1] == 0) && NUM_CELLS_PER_IC < 32) {
+        //     open_wire_pins |= ((uint32_t)1U << (NUM_CELLS_PER_IC+1));
+        //     *number_open_pins += 1;                
+        //     can_print("Pin", 18);
+        //     can_print("Delta", raw_pull_down_data[ic][NUM_CELLS_PER_IC - 1]);
+        // }
 
         for (uint8_t cell = 0; cell < NUM_CELLS_PER_IC - 1; cell++) {
-            // uint8_t cell = 16;
+            // uint8_t cell = 15;
             if (raw_pull_up_data[ic][cell+1] > raw_pull_down_data[ic][cell+1]) {
                 continue;
             }
@@ -90,22 +96,20 @@ void openwire_task(void) {
             differences[ic][cell] = raw_pull_down_data[ic][cell+1] - raw_pull_up_data[ic][cell+1];
             if ((differences[ic][cell] > 2000) && ((cell + 1) == 16)) {
                 open_wire_pins |= (1U << (cell + 1));
-                can_print("Cell", cell+1);
-                can_print("Delta", differences[ic][cell]);
-            } else if ((differences[ic][cell] > 400) && ((cell + 1) != 16)) {
+                can_print("cell", cell+1);
+                can_print("delta", differences[ic][cell]);
+                *number_open_pins += 1;                
+            } else if ((differences[ic][cell] > 400 && ((cell + 1) != 16))) {
                 open_wire_pins |= (1U << (cell + 1));
                 can_print("Cell", cell+1);
                 can_print("Delta", differences[ic][cell]);
+                *number_open_pins += 1;                
             } 
 
         }
 
-        if (open_wire_pins > 0) {
-            set_fault(BMS_FAULT_OPEN_WIRE);
-        }
-
         bms_metrics.open_wire_pins = open_wire_pins;
-        bms_metrics.open_wire_ic = ic;
+        bms_metrics.open_wire_ic = ic + 1;
         can_send_bms_metrics();
     }
 }

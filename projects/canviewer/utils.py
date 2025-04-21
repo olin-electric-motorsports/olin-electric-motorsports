@@ -64,13 +64,14 @@ def decode_bms_fault_msg(fault_msg):
 
 def decode_open_wire_pins(open_wire_message):
     "Decode the open wire pins message"
-    msg = "{0:b}".format(int(open_wire_message))
+    msg = "{0:019b}".format(int(open_wire_message))  # Force 32-bit zero-padded string
+    msg = msg[::-1]  # Reverse it so LSB is at index 0
+
     pins_list = []
     for i in range(len(msg)):
         if msg[i] == "1":
-            pins_list.append(str(i))
-
-    return ", ".join(pins_list)
+            pins_list.append(i)
+    return pins_list
 
 def decode_csc_status(csc_mia):
     """Decode the csc mia message"""
