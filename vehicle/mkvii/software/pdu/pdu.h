@@ -32,8 +32,8 @@ typedef enum {
 typedef enum {
     IO_DIRECTION_A = 0x00,
     IO_DIRECTION_B = 0x01,
-    IO_GPIO_A = 0x12,
-    IO_GPIO_B = 0x13, 
+    IO_LATCH_A = 0x14,
+    IO_LATCH_B = 0x15, 
 } mcp23s17_address;
 
 // Commands for mcp23s17

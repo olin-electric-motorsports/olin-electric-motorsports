@@ -18,17 +18,17 @@ void timer_1_isr(void) {
 void mcp23S17_init() {
     // Clear reset pin
     gpio_set_mode(MCP23S17_RST, OUTPUT);
-    gpio_clear_pin(MCP23S17_RST);
+    gpio_set_pin(MCP23S17_RST);
 
     // Set all GPIO pins' direction to output
     uint8_t tx_io[3] = {OP_WRITE, IO_DIRECTION_A, ALL_OUTPUT};
     uint8_t rx_io = 0;
-    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 2);
+    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 3);
     tx_io[0] = OP_WRITE;
     tx_io[1] = IO_DIRECTION_B;
     tx_io[2] = ALL_OUTPUT;
     rx_io = 0;
-    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 2);
+    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 3);
 }
 
 // Initialize display driver
@@ -56,18 +56,6 @@ void max7221_init() {
     rxdata = 0;
     spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
 
-}
-
-// ADC Read
-uint16_t adc_read(adc1283_command input_pin){
-    // 32 clock cycles (4 bytes) are needed to read current on specified channel
-    uint8_t tx_data[] = {input_pin, 0x00, input_pin, 0x00};
-    // Receive 4 bytes of data, but we only care about the last 12 bits
-    uint8_t rx_data[4];
-    spi_transceive_custom_cs(ADC1283_CS, tx_data, rx_data, 4);
-    // Return the last 16 bits (first 4 bits are zero, so returning last 12 bits in effect)
-    uint16_t reading = (rx_data[2] << 8) | rx_data[3];
-    return reading;
 }
 
 // Initialize hardware
@@ -133,21 +121,21 @@ void hw_test(){
     // spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
 
     // Light up all shutdown LEDs
-    uint8_t tx_io[3] = {OP_WRITE, IO_GPIO_A, 0xff};
+    uint8_t tx_io[3] = {OP_WRITE, IO_LATCH_A, 0xff};
     uint8_t rx_io = 0;
-    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 2);
+    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 3);
     tx_io[0] = OP_WRITE;
-    tx_io[1] = IO_GPIO_B;
+    tx_io[1] = IO_LATCH_B;
     tx_io[2] = 0xff;
     rx_io = 0;
-    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 2);
+    spi_transceive_custom_cs(MCP23S17_CS, tx_io, &rx_io, 3);
 
     // Perform current reading of ADC input 1 (service section)
-    uint16_t reading = adc_read(INPUT_1);
-    pdu_test.input1_current = reading;
+    // uint16_t reading = adc_read(INPUT_1);
+    // pdu_test.input1_current = reading;
 
-    // Send CAN message
-    can_send_pdu_test();
+    // // Send CAN message
+    // can_send_pdu_test();
 }
 
 // Update tractive system status LEDs
@@ -173,9 +161,21 @@ void update_ts_status(){
     }
 }
 
+// ADC Read
+uint16_t adc_read(adc1283_command input_pin){
+    // 32 clock cycles (4 bytes) are needed to read current on specified channel
+    uint8_t tx_data[] = {input_pin, 0x00, input_pin, 0x00};
+    // Receive 4 bytes of data, but we only care about the last 12 bits
+    uint8_t rx_data[4];
+    spi_transceive_custom_cs(ADC1283_CS, tx_data, rx_data, 4);
+    // Return the last 16 bits (first 4 bits are zero, so returning last 12 bits in effect)
+    uint16_t reading = (rx_data[2] << 8) | rx_data[3];
+    return reading;
+}
+
 int main(void) {
     hw_init();
-    //hw_test();
+    hw_test();
 
     // Main loop
     while (true) {
