@@ -150,7 +150,7 @@ void update_ts_status(){
         can_receive_air_control_critical();
     }
 
-    if (bms_core.bms_state == 2 || air_control_critical.air_state == AIR_STATE_FAULT) {
+    if (bms_core.bms_state == BMS_STATE_FAULT || air_control_critical.air_state == AIR_STATE_FAULT) {
         // Set TS status light to red if there is fault from either BMS or AIR control
         gpio_clear_pin(TS_STATUS_G); // Turn off green light
         gpio_set_pin(TS_STATUS_R); // Turn on red light
