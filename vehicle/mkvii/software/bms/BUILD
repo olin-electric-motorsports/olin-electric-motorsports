@@ -9,10 +9,11 @@ cc_library(
     hdrs = [
         "bms_config.h",
     ],
-    target_compatible_with = [
-        # "//bazel/constraints:atmega16m1",
-        "//bazel/constraints:atmega64m1",
-    ],
+    target_compatible_with = select({
+        "//bazel/constraints:atmega16m1": [],
+        "//bazel/constraints:atmega64m1": [],
+        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+    }),
     visibility = ["//visibility:public"],
     deps = [
         "//libs/adc",
@@ -29,11 +30,12 @@ cc_firmware(
     srcs = [
         "bms.c",
     ],
-    btldr = "//projects/btldr:bms_btldr",
-    target_compatible_with = [
-        # "//bazel/constraints:atmega16m1",
-        "//bazel/constraints:atmega64m1",
-    ],
+    # btldr = "//projects/btldr:bms_btldr",
+    target_compatible_with = select({
+        "//bazel/constraints:atmega16m1": [],
+        "//bazel/constraints:atmega64m1": [],
+        "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
+    }),
     deps = [
         ":bms_config",
         ":can_api",
@@ -41,10 +43,10 @@ cc_firmware(
         "//libs/gpio",
         "//libs/spi",
         "//libs/timer",
-        "//projects/btldr:btldr_lib",
+        # "//projects/btldr:btldr_lib",
         "//vehicle/common/ltc6811:ltc681x",
-        "//vehicle/mkvi/software/bms/tasks:bms_tasks",
-        "//vehicle/mkvi/software/bms/utils:bms_utils",
+        "//vehicle/mkvii/software/bms/tasks:bms_tasks",
+        "//vehicle/mkvii/software/bms/utils:bms_utils",
     ],
 )
 
@@ -56,6 +58,6 @@ exports_files([
 # Defines the CAN API library
 can_api_files(
     name = "can_api",
-    dbc = "//vehicle/mkvi:mkvi.dbc",
+    dbc = "//vehicle/mkvii:mkvii.dbc",
     yaml = ":bms.yml",
 )
