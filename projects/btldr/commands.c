@@ -27,7 +27,12 @@ static struct session_data session = {
 uint8_t handle_query(uint16_t btldr_id, uint8_t* data, uint8_t length) {
     uint8_t version = shmem_get_version();
 
-    uint8_t chip = CHIP_AVR_ATMEGA64M1;
+    uint8_t chip = 0x00;
+    #if defined(__AVR_ATmega64M1__)
+        chip = CHIP_AVR_ATMEGA64M1;
+    #elif defined(__AVR_ATmega16M1__)
+        chip = CHIP_AVR_ATMEGA16M1;
+    #endif
 
     uint64_t timestamp = *(uint64_t*)data;
     uint64_t flash_timestamp = image_get_timestamp();
@@ -64,7 +69,12 @@ uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
     // If update is requested, set the flag and reset
     if (data[0] == RESET_REQUEST_UPDATE) {
         bootflag_set(UPDATE_REQUESTED);
-        asm("jmp 0x3000");
+        // Check if BMS since it has 64m1, and then jump to memory accordingly
+        if (btldr_id == (uint16_t)0x708) {
+            asm("jmp 0xF000");
+        } else {
+            asm("jmp 0x3000");
+        }
     }
 
     // Validate image
@@ -86,7 +96,11 @@ uint8_t handle_reset(uint16_t btldr_id, uint8_t* data, uint8_t length) {
         st = can_send(&response);
 
         // Back to bootloader
-        asm("jmp 0x3000");
+        if (btldr_id == (uint16_t)0x708) {
+            asm("jmp 0xF000");
+        } else {
+            asm("jmp 0x3000");
+        }
     } else {
         bootflag_clear(IMAGE_IS_VALID);
 

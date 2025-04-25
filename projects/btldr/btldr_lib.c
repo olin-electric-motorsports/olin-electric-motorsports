@@ -34,13 +34,22 @@ static void do_reset(uint8_t* data, uint8_t dlc) {
         bootflag_set(UPDATE_REQUESTED);
     }
 
-    asm volatile("jmp 0x3000");
+    if (data[1] == CHIP_AVR_ATMEGA16M1) {
+        asm volatile("jmp 0x3000");
+    } else if (data[1] == CHIP_AVR_ATMEGA64M1) {
+        asm volatile("jmp 0xF000");
+    } 
 }
 
 static void do_query(uint8_t* data, uint8_t dlc) {
     // Return bootloader version from EEPROM
     uint8_t version = shmem_get_version();
-    uint8_t chip = CHIP_AVR_ATMEGA64M1;
+    uint8_t chip = 0x00;
+    #if defined(__AVR_ATmega64M1__)
+        chip = CHIP_AVR_ATMEGA64M1;
+    #elif defined(__AVR_ATmega16M1__)
+        chip = CHIP_AVR_ATMEGA16M1;
+    #endif
 
     // Current timestamp from data
     uint64_t timestamp = *(uint64_t*)data;
