@@ -197,7 +197,7 @@ part
 
         read            = "0 0 1 1  1 0 0 0   0 0 0 x  x x x x",
                           "0 0 0 0  0 0 a1 a0 o o o o  o o o o";
-        ;
+      ;
   ;
 
 
@@ -210,10 +210,49 @@ part parent "m16"
     desc             = "ATmega16M1";
     signature        = 0x1e 0x94 0x84;
     memory "efuse"
-    read            = "0 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0",
-                      "x x x x x x x x o o o o o o o o";
-    write           = "1 0 1 0 1 1 0 0 1 0 1 0 0 1 0 0",
-                      "x x x x x x x x x x i i i i i i";
+      read            = "0 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0",
+                        "x x x x x x x x o o o o o o o o";
+      write           = "1 0 1 0 1 1 0 0 1 0 1 0 0 1 0 0",
+                        "x x x x x x x x x x i i i i i i";
+      ;
+    memory "flash"
+        paged           = yes;
+        size            = 16384;
+        page_size       = 128;
+        num_pages       = 128;
+        min_write_delay = 4500;
+        max_write_delay = 4500;
+        readback_p1     = 0xff;
+        readback_p2     = 0xff;
+        read_lo         = "  0   0   1   0      0   0   0   0",
+                          "  0   0 a13 a12    a11 a10  a9  a8",
+                          " a7  a6  a5  a4     a3  a2  a1  a0",
+                          "  o   o   o   o      o   o   o   o";
+
+        read_hi         = "  0   0   1   0      1   0   0   0",
+                          "  0   0 a13 a12    a11 a10  a9  a8",
+                          " a7  a6  a5  a4     a3  a2  a1  a0",
+                          "  o   o   o   o      o   o   o   o";
+
+        loadpage_lo     = "  0   1   0   0      0   0   0   0",
+                          "  0   0   x   x      x   x   x   x",
+                          "  x   x  a5  a4     a3  a2  a1  a0",
+                          "  i   i   i   i      i   i   i   i";
+
+        loadpage_hi     = "  0   1   0   0      1   0   0   0",
+                          "  0   0   x   x      x   x   x   x",
+                          "  x   x  a5  a4     a3  a2  a1  a0",
+                          "  i   i   i   i      i   i   i   i";
+
+        writepage       = "  0   1   0   0      1   1   0   0",
+                          "  0   0 a13 a12    a11 a10  a9  a8",
+                          " a7  a6   x   x      x   x   x   x",
+                          "  x   x   x   x      x   x   x   x";
+
+    mode        = 0x21;
+    delay       = 6;
+    blocksize   = 128;
+    readsize    = 256;
     ;;
 
 #------------------------------------------------------------
@@ -240,8 +279,48 @@ part parent "m16"
     desc             = "ATmega64M1";
     signature        = 0x1e 0x96 0x84;
     memory "efuse"
-    read            = "0 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0",
-                      "x x x x x x x x o o o o o o o o";
-    write           = "1 0 1 0 1 1 0 0 1 0 1 0 0 1 0 0",
-                      "x x x x x x x x x x i i i i i i";
+      read            = "0 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0",
+                        "x x x x x x x x o o o o o o o o";
+      write           = "1 0 1 0 1 1 0 0 1 0 1 0 0 1 0 0",
+                        "x x x x x x x x x x i i i i i i";
+      ;
+    
+    memory "flash"
+        paged           = yes;
+        size            = 65536;
+        page_size       = 128;
+        num_pages       = 512;
+        min_write_delay = 4500;
+        max_write_delay = 4500;
+        readback_p1     = 0xff;
+        readback_p2     = 0xff;
+        read_lo         = "  0   0   1   0      0   0   0   0",
+                          "  0   0 a13 a12    a11 a10  a9  a8",
+                          " a7  a6  a5  a4     a3  a2  a1  a0",
+                          "  o   o   o   o      o   o   o   o";
+
+        read_hi         = "  0   0   1   0      1   0   0   0",
+                          "  0   0 a13 a12    a11 a10  a9  a8",
+                          " a7  a6  a5  a4     a3  a2  a1  a0",
+                          "  o   o   o   o      o   o   o   o";
+
+        loadpage_lo     = "  0   1   0   0      0   0   0   0",
+                          "  0   0   x   x      x   x   x   x",
+                          "  x   x  a5  a4     a3  a2  a1  a0",
+                          "  i   i   i   i      i   i   i   i";
+
+        loadpage_hi     = "  0   1   0   0      1   0   0   0",
+                          "  0   0   x   x      x   x   x   x",
+                          "  x   x  a5  a4     a3  a2  a1  a0",
+                          "  i   i   i   i      i   i   i   i";
+
+        writepage       = "  0   1   0   0      1   1   0   0",
+                          "  0   0 a13 a12    a11 a10  a9  a8",
+                          " a7  a6   x   x      x   x   x   x",
+                          "  x   x   x   x      x   x   x   x";
+
+    mode        = 0x21;
+    delay       = 6;
+    blocksize   = 128;
+    readsize    = 256;
     ;;
