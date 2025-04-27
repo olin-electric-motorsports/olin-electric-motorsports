@@ -62,10 +62,10 @@ void init_magnetometer()
     icm_write_register(0x09, regChar);
     icm_write_register(0x0D, regChar);
     icm_write_register(0x11, regChar);
-    //Set the ODR of devices on the secondary I2C bus to 68.75Hz (1.1 kHz/(2^(0x04))) in the REG_I2C_MST_ODR_CONFIG (0x00) register
-    regChar = 0x04;
+    //Set the ODR of devices on the secondary I2C bus to 137.5Hz (1.1 kHz/(2^(0x04))) in the REG_I2C_MST_ODR_CONFIG (0x00) register
+    regChar = 0x03;
     icm_write_register(I2C_MST_ODR_CONFIG, regChar);
-    write_mag(MAGNETOMETER_ADDR, CNTL2, 0x06);
+    write_mag(MAGNETOMETER_ADDR, CNTL2, 0x06); // continuous mode 3 -> 50 Hz
     _delay_ms(10);
 }
 
@@ -95,15 +95,15 @@ void write_mag(unsigned char addr, unsigned char reg, unsigned char data)
     icm_write_register(0x03, regChar);
     //wait a bit so the mag can output to the bank 0 regiters can read 
     _delay_ms(70);
-    // //disable the I2C master again so we don't have any conflicts
-    // icm_read_register(0x03, &regChar);
-    // regChar &= 0xDF;
-    // icm_write_register(0x03, regChar);
-    // //set the bank to 3 again so we can turn off the mag
-    // switch_register_bank(BANK_3);
-    // //disable the mag communcation again in I2C_SLV1_CTRL
-    // regChar = 0x00;
-    // icm_write_register(0x09, regChar);
+    //disable the I2C master again so we don't have any conflicts
+    icm_read_register(0x03, &regChar);
+    regChar &= 0xDF;
+    icm_write_register(0x03, regChar);
+    //set the bank to 3 again so we can turn off the mag
+    switch_register_bank(BANK_3);
+    //disable the mag communcation again in I2C_SLV1_CTRL
+    regChar = 0x00;
+    icm_write_register(0x09, regChar);
     switch_register_bank(BANK_0);
 }
 
@@ -186,7 +186,7 @@ void getChipAccelGyroCalibration()
 	//Aquire 20 samples from each register
 	for(i = 0; i < 20; i++)
 	{
-        icm_multi_read(0x2D, 12, &sampleBank[0]);    
+        icm_burst_read(0x2D, 12, &sampleBank[0]);
 		//Accel Axis (x, y, z)
 		AxisStorage[0] += (short) ((sampleBank[0] << 8) | sampleBank[1]);
 		AxisStorage[1] += (short) ((sampleBank[2] << 8) | sampleBank[3]);
@@ -236,7 +236,7 @@ void getChipAccelGyroCalibration()
     switch_register_bank(1);
 
 	//Perform read
-    icm_multi_read(0x14, 8, &accelRegOTP[0]);
+    icm_burst_read(0x14, 8, &accelRegOTP[0]);
 	//Create hardware accel bias by scaling ±2g average to ±16g range (1g = 2048x LSB)
 	hardwareScale[0] = (((short)accelRegOTP[0] << 8) + (short)accelRegOTP[1]) - (hardwareScale[0] >> 3);
 	hardwareScale[1] = (((short)accelRegOTP[3] << 8) + (short)accelRegOTP[4]) - (hardwareScale[1] >> 3);

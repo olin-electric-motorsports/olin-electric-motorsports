@@ -114,6 +114,7 @@ void init_imu(void) {
  * Read accel data and place in CAN structs
  */
 void read_accel_data(void) {
+    switch_register_bank(0);
     uint8_t accel_data[6] = { 0 };
     icm_burst_read(ACCEL_XOUT_H, 6, accel_data);
     imu_accel.accel_x = (int16_t)(accel_data[1] | (accel_data[0] << 8));
@@ -125,6 +126,7 @@ void read_accel_data(void) {
  * Read gyro data and place in CAN structs
  */
 void read_gyro_data(void) {
+    switch_register_bank(0);
     uint8_t gyro_data[6] = { 0 };
     icm_burst_read(GYRO_XOUT_H, 6, gyro_data);
     int16_t raw_x = (int16_t)((gyro_data[0] << 8) | gyro_data[1]);
@@ -151,20 +153,38 @@ void read_gyro_data(void) {
 // }
 
 /**
- * Burst read magnet data and place in CAN structs
+ * Read magnet data and place in CAN structs
  */
 
  void read_magnetometer_data(void) {
     uint8_t mag_data[6] = { 0 }; 
     read_mag(MAGNETOMETER_ADDR, HXL, 6, mag_data);
+    uint8_t st2;
+    read_mag(MAGNETOMETER_ADDR, ST2, 1, &st2);
+    // imu_magnet.magnet_x = mag_data[0] << 8 | mag_data[1];
+    // imu_magnet.magnet_y = mag_data[2] << 8 | mag_data[3];
+    // imu_magnet.magnet_z = mag_data[4] << 8 | mag_data[5];
     int16_t raw_x = (int16_t)(mag_data[0] << 8 | mag_data[1]);
     int16_t raw_y = (int16_t)(mag_data[2] << 8 | mag_data[3]);
     int16_t raw_z = (int16_t)(mag_data[4] << 8 | mag_data[5]);
     imu_magnet.magnet_x = (int16_t)(raw_x * MAG_SCALE * 100);
     imu_magnet.magnet_y = (int16_t)(raw_y * MAG_SCALE * 100);
     imu_magnet.magnet_z = (int16_t)(raw_z * MAG_SCALE * 100);
-    uint8_t st2;
-    read_mag(MAGNETOMETER_ADDR, ST2, 1, &st2);
+    // uint8_t st1;
+    // read_mag(MAGNETOMETER_ADDR, ST1, 1, &st1);
+    // if (st1 & 0x01) { 
+    //     uint8_t mag_data[6];
+    //     read_mag(MAGNETOMETER_ADDR, HXL, 6, mag_data);
+    //     int16_t raw_x = (int16_t)(mag_data[0] << 8 | mag_data[1]);
+    //     int16_t raw_y = (int16_t)(mag_data[2] << 8 | mag_data[3]);
+    //     int16_t raw_z = (int16_t)(mag_data[4] << 8 | mag_data[5]);
+    //     imu_magnet.magnet_x = (int16_t)(raw_x * MAG_SCALE * 100);
+    //     imu_magnet.magnet_y = (int16_t)(raw_y * MAG_SCALE * 100);
+    //     imu_magnet.magnet_z = (int16_t)(raw_z * MAG_SCALE * 100);
+    //     uint8_t st2;
+    //     read_mag(MAGNETOMETER_ADDR, ST2, 1, &st2);
+    // }
+
 }
 
 
@@ -259,45 +279,30 @@ void MadgwickQuaternionUpdate(float q[4], float deltat, float beta, float ax, fl
     q[3] = q4 * norm;
 
 }
-
 void compute_yaw(void) {
-    float qw = q[0];
-    float qx = q[1];
-    float qy = q[2];
-    float qz = q[3];
-    float a12 = 2.0f * (qx * qy + qw * qz);
-    float a22 = qw * qw + qx * qx - qy * qy - qz * qz;
-
-    float yaw = atan2f(a12, a22) * RAD_TO_DEG;
+    float num = 2.0f * (q[1]*q[2] + q[0]*q[3]);
+    float den = q[0]*q[0] + q[1]*q[1] - q[2]*q[2] - q[3]*q[3];
     // if (yaw >= 180.0f) {
     //     yaw -= 360.0f;
     // } else if (yaw < -180.0f) {
     //     yaw += 360.0f;
     // }
-
-    imu_euler.yaw = (int16_t)(yaw * 100);
+    imu_euler.yaw = (int16_t)(atan2f(num, den) * RAD_TO_DEG * 100.0f);
 }
 
 void compute_pitch_roll(void) {
-    float ax = (float)(int16_t)imu_accel.accel_x;
-    float ay = (float)(int16_t)imu_accel.accel_y;
-    float az = (float)(int16_t)imu_accel.accel_z;
-    float mag = sqrt(ax * ax + ay * ay + az * az);
-    if (mag == 0.0f) {
-        mag = 1.0f;
-    }
-    float norm_ax = ax / mag;
-    float norm_ay = ay / mag;
-    float norm_az = az / mag;
-    imu_accel.accel_x = (int16_t)(norm_ax * 100);
-    imu_accel.accel_y = (int16_t)(norm_ay * 100);
-    imu_accel.accel_z = (int16_t)(norm_az * 100);
-    float pitch_rad = asinf(norm_ax);
-    float roll_rad = atan2f(norm_ay, norm_az);
-    float pitch_deg = pitch_rad * RAD_TO_DEG;
-    float roll_deg  = roll_rad  * RAD_TO_DEG;
-    imu_euler.pitch = (int16_t)(pitch_deg * 100);
-    imu_euler.roll  = (int16_t)(roll_deg  * 100);
+    float ax = (int16_t)imu_accel.accel_x;
+    float ay = (int16_t)imu_accel.accel_y;
+    float az = (int16_t)imu_accel.accel_z;
+    float inv_mag = 1.0f / sqrtf(ax*ax + ay*ay + az*az + 1e-6f);
+    ax *= inv_mag;
+    ay *= inv_mag;
+    az *= inv_mag;
+    imu_accel.accel_x = (int16_t)(ax * 100.0f);
+    imu_accel.accel_y = (int16_t)(ay * 100.0f);
+    imu_accel.accel_z = (int16_t)(az * 100.0f);
+    imu_euler.pitch = (int16_t)(asinf(ax) * RAD_TO_DEG * 100.0f);
+    imu_euler.roll  = (int16_t)(atan2f(ay,az) * RAD_TO_DEG * 100.0f);
 }
 
 
@@ -314,10 +319,10 @@ int main(void) {
     if (cntl2_check != 0x06) {
         return 1;
     }
-    switch_register_bank(BANK_0);
     read_accel_data();
     read_gyro_data();
-    // getChipAccelGyroCalibration();
+    getChipAccelGyroCalibration();
+
 
     for (;;) {
         // if (led_heartbeat) {
@@ -328,23 +333,25 @@ int main(void) {
             read_accel_data();
             read_gyro_data();
             read_magnetometer_data();
+            // imu_magnet.magnet_x -= 5;
+            // imu_magnet.magnet_z += 15;
             compute_pitch_roll();
-            float ax = ((float)(int16_t)imu_accel.accel_x) / 100.0f;
-            float ay = ((float)(int16_t)imu_accel.accel_y) / 100.0f;
-            float az = ((float)(int16_t)imu_accel.accel_z) / 100.0f;
-            float gx = ((float)(int16_t)imu_gyro.gyro_x) / 100.0f;
-            float gy = ((float)(int16_t)imu_gyro.gyro_y) / 100.0f;
-            float gz = ((float)(int16_t)imu_gyro.gyro_z) / 100.0f;
-            float mx = ((float)(int16_t)imu_magnet.magnet_x) / 100.0f;
-            float my = ((float)(int16_t)imu_magnet.magnet_y) / 100.0f;
-            float mz = ((float)(int16_t)imu_magnet.magnet_z) / 100.0f;
-            float deltat = 1.0f / SAMPLE_RATE_HZ;
-            MadgwickQuaternionUpdate(q, deltat, BETA, ax, ay, az, gx, gy, gz, mx, my, mz);
-            compute_yaw();
-            can_send_imu_accel();
-            can_send_imu_gyro();
+            // float ax = ((float)(int16_t)imu_accel.accel_x) / 100.0f;
+            // float ay = ((float)(int16_t)imu_accel.accel_y) / 100.0f;
+            // float az = ((float)(int16_t)imu_accel.accel_z) / 100.0f;
+            // float gx = ((float)(int16_t)imu_gyro.gyro_x) / 100.0f;
+            // float gy = ((float)(int16_t)imu_gyro.gyro_y) / 100.0f;
+            // float gz = ((float)(int16_t)imu_gyro.gyro_z) / 100.0f;
+            // float mx = ((float)(int16_t)imu_magnet.magnet_x) / 100.0f;
+            // float my = ((float)(int16_t)imu_magnet.magnet_y) / 100.0f;
+            // float mz = ((float)(int16_t)imu_magnet.magnet_z) / 100.0f;
+            // float deltat = 1.0f / SAMPLE_RATE_HZ;
+            // MadgwickQuaternionUpdate(q, deltat, BETA, ax, ay, az, gx, gy, gz, mx, my, mz);
+            // compute_yaw();
+            // can_send_imu_accel();
+            // can_send_imu_gyro();
             can_send_imu_magnet();
-            can_send_imu_euler();
+            // can_send_imu_euler();
             
             led_heartbeat = false;
         }
