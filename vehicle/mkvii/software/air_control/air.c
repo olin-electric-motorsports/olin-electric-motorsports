@@ -127,12 +127,12 @@ static bool initial_checks(void) {
     */
 
     bool fault = false;
-    // 1) BMS check
-    // Will poll for 1 second, if the CAN msg not received, will fault
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// 1) BMS check /////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     int16_t bms_voltage = 0;
     int rc = 0;
-    // TODO: look into function and return values of this function
+    // Will poll for 1 second, if the CAN msg not received, will fault
     rc = get_bms_voltage(&bms_voltage);
 
     if (rc == 1) {
@@ -144,16 +144,18 @@ static bool initial_checks(void) {
         can_send_air_control_critical();
         return fault;
     }
-    can_print("bms_a", bms_voltage);
+
     if (bms_voltage * 4 < BMS_VOLTAGE_THRESHOLD_LOW) {
         fault = set_fault(AIR_FAULT_BMS_VOLTAGE);
         can_send_air_control_critical();
         return fault;
     }
 
-    can_send_air_control_critical(); // if no error continue on
+    can_send_air_control_critical();
 
-    // 2) TSMS check
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////// 2) TSMP check /////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     if (!gpio_get_pin(SS_TSMS)) {
         // SS_TSMS should start high
         air_control_critical.ss_tsms = true;
@@ -163,11 +165,11 @@ static bool initial_checks(void) {
     }
     can_send_air_control_critical();
 
-    // 3) gmeter check
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////// 3) GMETER check ///////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     int16_t gmeter_voltage = 0;
     rc = get_tractive_voltage(&gmeter_voltage, 1000);
-
-    gpio_set_pin(HEARTBEAT_LED);
 
     if (rc == 1) {
         fault = set_fault(AIR_FAULT_CAN_ERROR);
@@ -187,7 +189,9 @@ static bool initial_checks(void) {
     can_send_air_control_critical();
 
 
-    // 4) AIR Weld check
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////// 4) AIR Weld Check //////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
     air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 
@@ -204,17 +208,19 @@ static bool initial_checks(void) {
     }
     can_send_air_control_critical();
 
-    // 5) IMD latch check
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////// 5) IMD latch check /////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     // Wait for IMD to stabilize
     _delay_ms(IMD_STABILITY_CHECK_DELAY_MS);
 
-    if (!air_control_critical.ss_imd) {
+    if (air_control_critical.imd_status) {
         fault = set_fault(AIR_FAULT_IMD_STATUS);
         can_send_air_control_critical();
         return fault;
     }
 
-    // might as well send here at end for redundancy? eh minor
     can_send_air_control_critical();
     return fault;
 }
@@ -439,7 +445,7 @@ int main(void) {
     can_init_air_control();
     timer_init(&timer0_cfg);
     timer_init(&timer1_cfg);
-    // updater_init(BTLDR_ID, 5); add back maybe
+    updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
     gpio_set_mode(AIR_P_LSD, OUTPUT);
@@ -464,6 +470,8 @@ int main(void) {
     gpio_enable_interrupt(SS_HVD);
     gpio_enable_interrupt(SS_EMETER);
 
+    gpio_enable_interrupt(IMD_SENSE);
+
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
@@ -483,8 +491,6 @@ int main(void) {
 
     gpio_set_pin(INIT_LED);
 
-    // IMD takes a while to warm up, so just set it to work
-    air_control_critical.imd_status = true;
     if (initial_checks()) {
         // copied this fault sequence
         gpio_set_pin(ERROR_LED);
@@ -500,9 +506,6 @@ int main(void) {
             }
         };
     }
-
-    // Now enable the IMD -- TODO: check this hm
-    gpio_enable_interrupt(IMD_SENSE);
 
     // Clear init LED to indicate that initialization has completed
     gpio_clear_pin(INIT_LED);
