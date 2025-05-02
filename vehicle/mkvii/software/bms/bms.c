@@ -49,11 +49,11 @@ void cooling_fan_control(uint16_t* max_temp) {
     uint16_t duty_cycle;
     uint16_t range = MAX_TEMPATURE_FAN - MIN_TEMPERATURE_FAN;
     if (*max_temp >= MAX_EXTRANEOUS_TEMPERATURES) {
-        duty_cycle = 1023;
-    } else if (*max_temp < MIN_TEMPERATURE_FAN) {
         duty_cycle = 0;
+    } else if (*max_temp < MIN_TEMPERATURE_FAN) {
+        duty_cycle = 1023;
     } else {
-        duty_cycle = (*max_temp - MIN_TEMPERATURE_FAN) * 1023 / range; 
+        duty_cycle = 1023 - ((*max_temp - MIN_TEMPERATURE_FAN) * 1023 / range); 
     }
 
     OCR1B = duty_cycle;
