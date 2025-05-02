@@ -1,6 +1,6 @@
 #include "client.h"
 
-char* chip_id_to_name[4] = {
+char* chip_id_to_name[5] = {
     [CHIP_NONE] = "unknown",
     [CHIP_AVR_ATMEGA16M1] = "atmega16m1",
     [CHIP_AVR_ATMEGA328P] = "atmega328p",
