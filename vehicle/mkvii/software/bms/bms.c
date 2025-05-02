@@ -18,30 +18,17 @@
 #include "vehicle/mkvii/software/bms/utils/fault.h"
 #include "vehicle/mkvii/software/bms/utils/i2c_helpers.h"
 
-<<<<<<< HEAD
-// #include "projects/btldr/btldr_lib.h"
-// #include "projects/btldr/git_sha.h"
-// #include "projects/btldr/libs/image/api.h"
-=======
 #include "projects/btldr/btldr_lib.h"
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
->>>>>>> rishit/final-bms
 
 /*
  * Required for btldr
  */
-<<<<<<< HEAD
-// image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
-//     .image_magic = IMAGE_MAGIC,
-//     .git_sha = STABLE_GIT_COMMIT,
-// };
-=======
 image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
     .image_magic = IMAGE_MAGIC,
     .git_sha = STABLE_GIT_COMMIT,
 };
->>>>>>> rishit/final-bms
 
 /*
  * INTERRUPTS
@@ -55,8 +42,6 @@ void pcint0_callback() {
     bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_THRESH);
 }
 
-<<<<<<< HEAD
-=======
 #define MAX_TEMPATURE_FAN (50)
 #define MIN_TEMPERATURE_FAN (20)
 
@@ -74,7 +59,6 @@ void cooling_fan_control(uint16_t* max_temp) {
     OCR1B = duty_cycle;
 }
 
->>>>>>> rishit/final-bms
 void hw_init() {
     sei();
 
@@ -84,10 +68,7 @@ void hw_init() {
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
-<<<<<<< HEAD
-=======
     gpio_set_mode(COOLING_PUMP_PWM, OUTPUT);
->>>>>>> rishit/final-bms
 
     gpio_set_pin(COOLING_PUMP_LSD);
     
@@ -111,11 +92,7 @@ void hw_init() {
     cell_balancing_init();
 
 
-<<<<<<< HEAD
-    // updater_init(BTLDR_ID, 5);
-=======
     updater_init(BTLDR_ID, 5);
->>>>>>> rishit/final-bms
     gpio_set_pin(DEBUG_LED_1);
     
 }
@@ -153,16 +130,6 @@ static void monitor_cells(void) {
     } else {
         clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
-<<<<<<< HEAD
-    // read all voltages
-    uint32_t ov = 0;
-    uint32_t uv = 0;
-    uint16_t loop_count = 0;
-
-    uint16_t pack_voltage = 0;
-    pec_errors = 0;
-    voltage_task(&pack_voltage, &ov, &uv, &pec_errors, &loop_count);
-=======
 
     cooling_fan_control(&max_temp);
 
@@ -173,24 +140,14 @@ static void monitor_cells(void) {
     uint16_t pack_voltage = 0;
     pec_errors = 0;
     voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
->>>>>>> rishit/final-bms
     bms_core.pack_voltage = pack_voltage;
 
     // read current
     int16_t current = 0;
-<<<<<<< HEAD
-    //current_task(&current);
-    current = (adc_read(CURRENT_SENSE_VOUT) - 568) * 24;
-    bms_core.pack_current = current;
-
-    // openwire_task();
-
-=======
     current_task(&current);
     current = (adc_read(CURRENT_SENSE_VOUT) - 568) * 24;
     bms_core.pack_current = current;
 
->>>>>>> rishit/final-bms
     // Check for overcurrent fault
     if (current > CURRENT_THRESH) {
         set_fault(BMS_FAULT_OVERCURRENT);
@@ -217,15 +174,9 @@ static void monitor_cells(void) {
         clear_fault(BMS_FAULT_OVERVOLTAGE);
     }
 
-<<<<<<< HEAD
-    if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS && loop_count > UNDERVOLTAGE_LOOP_THRESHOLD) {
-        set_fault(BMS_FAULT_UNDERVOLTAGE);
-    } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS || loop_count <= UNDERVOLTAGE_LOOP_THRESHOLD) {
-=======
     if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
     } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
->>>>>>> rishit/final-bms
         clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
@@ -252,32 +203,17 @@ int main(void) {
                 can_send_bms_metrics();
             }
 
-<<<<<<< HEAD
-            if (bms_core.bms_state == BMS_STATE_CHARGING) {
-                if (loop_counter % 5 == 0) {
-                    charging_cmd.target_voltage = 403;
-                    charging_cmd.target_current = 5;
-                    charging_cmd.enable_charging = false;
-                    can_send_charging_cmd();
-                }
-            }
-=======
             charging_cmd.target_voltage = 403;
             charging_cmd.target_current = 5;
             charging_cmd.enable_charging = false;
             can_send_charging_cmd();
->>>>>>> rishit/final-bms
 
             loop_counter++;
 
             if (loop_counter == 1000) {
                 loop_counter = 0;
             }
-<<<<<<< HEAD
-            // updater_loop();
-=======
             updater_loop();
->>>>>>> rishit/final-bms
 
             run_10ms = false;
         }

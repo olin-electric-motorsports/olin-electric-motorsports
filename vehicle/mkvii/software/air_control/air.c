@@ -144,8 +144,9 @@ static bool initial_checks(void) {
         can_send_air_control_critical();
         return fault;
     }
+    can_print("bms", bms_voltage);
 
-    if (bms_voltage * 4 < BMS_VOLTAGE_THRESHOLD_LOW) {
+    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
         fault = set_fault(AIR_FAULT_BMS_VOLTAGE);
         can_send_air_control_critical();
         return fault;
@@ -214,8 +215,9 @@ static bool initial_checks(void) {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // Wait for IMD to stabilize
     _delay_ms(IMD_STABILITY_CHECK_DELAY_MS);
+    air_control_critical.imd_status = !!gpio_get_pin(IMD_SENSE);
 
-    if (air_control_critical.imd_status) {
+    if (!air_control_critical.imd_status) {
         fault = set_fault(AIR_FAULT_IMD_STATUS);
         can_send_air_control_critical();
         return fault;
@@ -282,8 +284,6 @@ static void state_machine_run(void) {
                 set_fault(AIR_FAULT_CAN_BMS_TIMEOUT);
                 return;
             }
-            can_print("bms", pack_voltage);
-            can_print("gmeter", tractive_voltage);
             
             /*
              * This pattern ensures that we only call get_time() once because we

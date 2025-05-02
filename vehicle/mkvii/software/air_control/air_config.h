@@ -37,7 +37,7 @@ gpio_t INIT_LED = PD7;
 
 // Milliseconds to wait while the IMD output stabilizes before reading the
 // output
-#define IMD_STABILITY_CHECK_DELAY_MS (6000)
+#define IMD_STABILITY_CHECK_DELAY_MS (4000)
 
 #define PRECHARGE_DELAY_MS (5000) // TS voltage reaches in 5s
 #define DISCHARGE_TIMEOUT  (10000)

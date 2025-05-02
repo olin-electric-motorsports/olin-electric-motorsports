@@ -30,11 +30,7 @@ cc_firmware(
     srcs = [
         "bms.c",
     ],
-<<<<<<< HEAD
     # btldr = "//projects/btldr:bms_btldr",
-=======
-    btldr = "//projects/btldr:bms_btldr",
->>>>>>> rishit/final-bms
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
         "//bazel/constraints:atmega64m1": [],
@@ -47,11 +43,7 @@ cc_firmware(
         "//libs/gpio",
         "//libs/spi",
         "//libs/timer",
-<<<<<<< HEAD
-        # "//projects/btldr:btldr_lib",
-=======
         "//projects/btldr:btldr_lib",
->>>>>>> rishit/final-bms
         "//vehicle/common/ltc6811:ltc681x",
         "//vehicle/mkvii/software/bms/tasks:bms_tasks",
         "//vehicle/mkvii/software/bms/utils:bms_utils",
