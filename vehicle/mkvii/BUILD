@@ -9,6 +9,7 @@ dbc_gen(
         "//vehicle/common/emeter:emeter.dbc",
         "//vehicle/common/gmeter:gmeter.dbc",
         "//vehicle/common/lpms-cu2:lpms-cu2.dbc",
+
         "//vehicle/common/gps:gps.dbc",
         "//vehicle/common/motor_controller:cm200dx.dbc",
         
