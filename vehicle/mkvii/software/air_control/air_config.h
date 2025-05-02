@@ -28,7 +28,7 @@ gpio_t INIT_LED = PD7;
 
 // This is the raw value we compare. This is the real voltage divided by 256 and
 // multiplied by 10000.
-#define BMS_VOLTAGE_THRESHOLD_LOW (350) //(200V)
+#define BMS_VOLTAGE_THRESHOLD_LOW (200) //(200V)
 #define TRACTIVE_THRESHOLD_LOW_dV (5) // 5000 mV (5 volts)
 #define PRECHARGE_THRESHOLD       (0.95) // 95% of pack voltage
 

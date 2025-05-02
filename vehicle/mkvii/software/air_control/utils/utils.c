@@ -21,7 +21,7 @@ int get_tractive_voltage(int16_t* voltage, uint32_t timeout) {
         }
     } while (rc != 0);
 
-    *voltage = (int16_t)((int64_t)(ivt_msg_result_u1.ivt_result_u1) / 1000);
+    *voltage = (int16_t)((int64_t)(ivt_msg_result_u1.ivt_result_u1) / 10000);
     return rc;
 }
 

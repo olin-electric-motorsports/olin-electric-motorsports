@@ -30,7 +30,7 @@ cc_firmware(
     srcs = [
         "bms.c",
     ],
-    # btldr = "//projects/btldr:bms_btldr",
+    btldr = "//projects/btldr:bms_btldr",
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
         "//bazel/constraints:atmega64m1": [],

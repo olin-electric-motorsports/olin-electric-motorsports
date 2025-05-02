@@ -146,7 +146,7 @@ static bool initial_checks(void) {
     }
     can_print("bms", bms_voltage);
 
-    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
+    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW || bms_core.bms_fault_code != 0) {
         fault = set_fault(AIR_FAULT_BMS_VOLTAGE);
         can_send_air_control_critical();
         return fault;
