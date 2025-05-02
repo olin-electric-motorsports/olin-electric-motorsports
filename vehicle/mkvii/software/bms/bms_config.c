@@ -54,11 +54,7 @@ timer_cfg_s timer1_cfg = {
     },
     .channel_b = {
         .channel = CHANNEL_B,
-<<<<<<< HEAD
-        .pin_behavior = SET,
-=======
         .pin_behavior = CLEAR,
->>>>>>> rishit/final-bms
         .interrupt_enable = false,
     },
 };

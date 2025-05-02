@@ -23,23 +23,12 @@
 #define SOFT_OVERTEMPERATURE_THRESHOLD_LOW ((int16_t)11708) // 35 degC
 #define UNDERTEMPERATURE_THRESHOLD         ((int16_t)27605) // -20 degC
 
-<<<<<<< HEAD
-#define OVERVOLTAGE_THRESHOLD          (42000) // 4.2V (max pack voltage (428.4V = 17 series * 6 segments))
-#define UNDERVOLTAGE_THRESHOLD         (25000) // 2.5V (Li-ion chemistry minimum)
-#define SEGMENT_OVERVOLTAGE_THRESHOLD  (714000) // 71.4V (4.2v * 17 cells)
-#define SEGMENT_UNDERVOLTAGE_THRESHOLD (425000) // 42.5V (2.5 * 17 cells)
-
-#define CURRENT_THRESH (20000) // 200A (peak current) * 100cA/A = 20,000 centiAmps
-
-#define UNDERVOLTAGE_LOOP_THRESHOLD (1000) // 1000 Loops
-=======
 #define OVERVOLTAGE_THRESHOLD          (42000) // 3.95V (max pack voltage (402.9V / [17 * 6] cells))
 #define UNDERVOLTAGE_THRESHOLD         (25000) // 2.5V (Li-ion chemistry minimum)
 #define SEGMENT_OVERVOLTAGE_THRESHOLD  (714000) // 71.4V (4.2v * 17 cells)
 #define SEGMENT_UNDERVOLTAGE_THRESHOLD (442000) // 44.2V (4.6 * 17 cells)
 
 #define CURRENT_THRESH (12000) // 120A (peak current) * 100cA/A = 12,000 centiAmps
->>>>>>> rishit/final-bms
 
 // Cell balancing config
 // Insert here
