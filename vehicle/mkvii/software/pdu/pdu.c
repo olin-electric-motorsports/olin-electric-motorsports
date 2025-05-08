@@ -149,7 +149,7 @@ void update_ts_status(){
         can_receive_air_control_critical();
     }
 
-    if (bms_core.bms_state == BMS_STATE_FAULT || air_control_critical.air_state == AIR_STATE_FAULT) {
+    if (bms_core.bms_state == BMS_STATE_FAULT || air_control_critical.air_fault == AIR_FAULT_IMD_STATUS) {
         // Set TS status light to red if there is fault from either BMS or AIR control
         gpio_clear_pin(TS_STATUS_G); // Turn off green light
         gpio_set_pin(TS_STATUS_R); // Turn on red light
@@ -205,6 +205,11 @@ void transmit_currents() {
 int main(void) {
     hw_init();
     // hw_test();
+
+    // Illuminate entire display
+    uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
+    uint8_t rxdata = 0;
+    spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
 
     // Main loop
     while (true) {
