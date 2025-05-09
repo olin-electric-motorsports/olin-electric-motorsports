@@ -19,7 +19,7 @@
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
 
-uint8_t heartbeat_counter = 0;
+// uint8_t heartbeat_counter = 0;
 
 /*
  * Required for btldr
@@ -77,14 +77,14 @@ void update_Error_LED(void) {
     }
 }
 
-void update_Heartbeat_LED(void) {
-    heartbeat_counter += 1;
-    if (heartbeat_counter == 50) {
-        gpio_toggle_pin(HEARTBEAT_LED);
-        throttle.heartbeat = !throttle.heartbeat;
-        heartbeat_counter = 0;
-    }
-}
+// void update_Heartbeat_LED(void) {
+//     heartbeat_counter += 1;
+//     if (heartbeat_counter == 50) {
+//         gpio_toggle_pin(HEARTBEAT_LED);
+//         throttle.heartbeat = !throttle.heartbeat;
+//         heartbeat_counter = 0;
+//     }
+// }
 
 /*
     Read value from throttle potentiometer, maps it to value between 0 and
@@ -243,7 +243,7 @@ int main(void) {
 
     updater_init(BTLDR_ID, 5);
     gpio_set_mode(SS_IS, INPUT);
-    gpio_set_mode(HEARTBEAT_LED, OUTPUT);
+    // gpio_set_mode(HEARTBEAT_LED, OUTPUT);
     gpio_set_mode(ERROR_LED, OUTPUT);
     gpio_enable_interrupt(SS_IS);
 
@@ -369,7 +369,7 @@ int main(void) {
             can_send_throttle();
             can_send_throttle_debug();
             can_send_m192_command_message();
-            update_Heartbeat_LED();
+            // update_Heartbeat_LED();
             throttle_state.send_can = false;
         }
     }
