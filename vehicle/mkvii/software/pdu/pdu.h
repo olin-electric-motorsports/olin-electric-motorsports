@@ -100,14 +100,21 @@ timer_cfg_s timer_0_cfg = {
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
-        .output_compare_match = 0x27,
+        .output_compare_match = 0x27, // 100 Hz
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer_0_isr,
     },
 };
 
-// Heartbeat timer config
+/* 
+Water pump PWM config: 100 Hz 50% duty cycle
+
+On MKVII, the pump PWM signal pin is not connected to the pins controlled by 
+Timer 1 (PDU design error), which means that we cannot use the hardware PWM to
+control the pump. Instead we implement a software PWM by using a compare match
+timer with an interrupt.
+*/
 void timer_1_isr(void);
 timer_cfg_s timer_1_cfg = {
     .timer = TIMER1,
@@ -115,7 +122,7 @@ timer_cfg_s timer_1_cfg = {
     .prescalar = CLKIO_DIV_1024,
     .channel_a = {
         .channel = CHANNEL_A,
-        .output_compare_match = 0x7A1, // 2 Hz
+        .output_compare_match = 0x4E, // 100 Hz
         .pin_behavior = DISCONNECTED,
         .interrupt_enable = true,
         .interrupt_callback = timer_1_isr,

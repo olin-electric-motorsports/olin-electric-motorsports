@@ -8,11 +8,12 @@ void timer_0_isr(void) {
     run_10ms = true;
 }
 
-// Timer 1 setup for LED heartbeat
-volatile bool led_heartbeat = true;
+// Timer 1 setup for software PWM
 void timer_1_isr(void) {
-    led_heartbeat = true;
+    // Toggle pin to simulate 50% duty cycle
+    gpio_toggle_pin(PUMP_PWM);
 }
+
 
 // Initialize IO expander
 void mcp23S17_init() {
@@ -109,7 +110,7 @@ void hw_init() {
     // Initialize timers
     sei();
     timer_init(&timer_0_cfg); // Initialize main loop timer
-    timer_init(&timer_1_cfg); // Initialize heartbeat timer
+    timer_init(&timer_1_cfg); // Initialize water pump PWM timer
 }
 
 // Function to test firmware
@@ -206,18 +207,17 @@ int main(void) {
     hw_init();
     // hw_test();
 
-    // Illuminate entire display
+    gpio_clear_pin(COOL_EN);
+
+    uint8_t heartbeat_counter = 0;
+
+    // Temp: Illuminate entire display
     uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
     uint8_t rxdata = 0;
     spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
 
     // Main loop
     while (true) {
-        if (led_heartbeat){
-            // Heartbeat LED
-            gpio_toggle_pin(HB_LED);
-            led_heartbeat = false;
-        }
         if (run_10ms) { // Run every 10ms
             // Update tractive system status LED
             update_ts_status();
@@ -234,6 +234,13 @@ int main(void) {
             // Cooling logic
 
             run_10ms = false; // Set run flag to false
+
+            heartbeat_counter++;
+            if (heartbeat_counter == 50) { // Run every 500ms (2Hz)
+                heartbeat_counter = 0;
+                // Heartbeat LED
+                gpio_toggle_pin(HB_LED);
+            }
         }
     }
 }
