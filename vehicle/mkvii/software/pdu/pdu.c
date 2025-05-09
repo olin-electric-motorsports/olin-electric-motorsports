@@ -11,7 +11,9 @@ void timer_0_isr(void) {
 // Timer 1 setup for software PWM
 void timer_1_isr(void) {
     // Toggle pin to simulate 50% duty cycle
-    gpio_toggle_pin(PUMP_PWM);
+    
+    // Commented to disable pump. Only uncomment once fluid is in cooling loop.
+    //gpio_toggle_pin(PUMP_PWM);
 }
 
 
@@ -207,7 +209,8 @@ int main(void) {
     hw_init();
     // hw_test();
 
-    gpio_clear_pin(COOL_EN);
+    // Turn on pump and enable fans
+    gpio_set_pin(COOL_EN);
 
     uint8_t heartbeat_counter = 0;
 
