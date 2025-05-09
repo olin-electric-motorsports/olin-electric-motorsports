@@ -11,6 +11,7 @@ py_binary(
         ":config.yml",
         "//vehicle/mkv:mkv.dbc",
         "//vehicle/mkvi:mkvi.dbc",
+        "//vehicle/mkvii:mkvii.dbc",
     ],
     main = "canviewer.py",
     visibility = ["//visibility:public"],

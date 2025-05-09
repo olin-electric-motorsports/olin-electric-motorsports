@@ -115,7 +115,7 @@ void hw_init() {
     timer_init(&timer_1_cfg); // Initialize water pump PWM timer
 }
 
-// Function to test firmware
+// Function to test firmware - used for debugging.
 void hw_test(){
     // // Illuminate display
     // uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
@@ -207,14 +207,13 @@ void transmit_currents() {
 
 int main(void) {
     hw_init();
-    // hw_test();
 
     // Turn on pump and enable fans
     gpio_set_pin(COOL_EN);
 
     uint8_t heartbeat_counter = 0;
 
-    // Temp: Illuminate entire display
+    // Temp: Illuminate entire display so it doesn't flicker.
     uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
     uint8_t rxdata = 0;
     spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
@@ -226,16 +225,22 @@ int main(void) {
             update_ts_status();
 
             // Update shutdown node LEDs
+            // TODO: Read CAN messages and GPIO inputs to update the shutdown
+            // nodes. Control LEDs through SPI IO Expander. LED on = node
+            // closed, LED off = node open.
 
             // Get current readings from ADC (+ publish to CAN)
-            // transmit_currents();
-            pdu_test.pdu_adc_raw = adc_read(INPUT_7);
-            can_send_pdu_test();
+            transmit_currents();
 
             // Update display
+            // TODO: display pack voltage (from V_sense ADC input), other things??
 
             // Cooling logic
+            // TODO: route motor controller temp through a shutdown node, read
+            // value, then if temp above set fan control pin to high, 
+            // otherwise set fan control pin to low. Fan is not PWM.
 
+            // Heartbeat LED
             run_10ms = false; // Set run flag to false
 
             heartbeat_counter++;
