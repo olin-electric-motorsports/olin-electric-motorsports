@@ -3,17 +3,68 @@
 #include <stdlib.h>
 #include <util/delay.h>
 
+// #include "libs/adc/api.h"
+#include "libs/can/api.h"
 #include "libs/gpio/api.h"
 #include "libs/timer/api.h"
 
 #include "air_config.h"
 #include "utils/timer.h"
 #include "utils/utils.h"
-#include "vehicle/mkvi/software/air_control/can_api.h"
+#include "vehicle/mkvii/software/air_control/can_api.h"
 
+// question: wtf does the bootloader do?
 #include "projects/btldr/btldr_lib.h"
 #include "projects/btldr/git_sha.h"
 #include "projects/btldr/libs/image/api.h"
+
+#include "projects/can_print/can_print.h"
+
+/*
+main updates:
+- update gpio pins
+- condense prev 2 precharge states into 1
+- listen to g meter
+- change order of initial checks
+
+
+Tasks
+* Hear CAN from G-meter
+* Hear CAN from BMS
+* Read shutdown node status
+* Actuate AIR+
+* monitor welding
+* monitor IMD status
+* Precharge control
+
+State Machine
+* Idle - nothing
+* Precherge start
+  * air closed within 200ms
+  * Close precharge realy
+  * make sure we hit votlage and time target
+* TS active
+  * read for shutdown node fault
+* Discharge
+  * open AIR+ lsd
+  * monitor TS voltage
+* Error
+  * clear all LSDs
+  * merge precharge; 200ms, make sure relay is actually closed; after 5 seconds
+  * precharge: reaches 90% voltage or times out (then error state)
+
+Keep track these events:
+* BMS CAN
+* G-meter CAN
+* precharge start time
+* discharge start time
+- also: timer
+*/
+
+/*
+running list of changes from mkvi airs firmware:
+- got rid of set_charger_connected
+*/
 
 /*
  * Required for btldr
@@ -25,185 +76,167 @@ image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
 
 volatile bool send_can = false;
 
-// A global variable that is used to tell if we are connected to the vehicle
-// (MOTOR_CONTROLLER) or the charger (CHARGER)
-
-static bool tractive_sys = MOTOR_CONTROLLER;
-
-void timer0_isr(void) {
-    send_can = true;
-}
-
-static void set_fault(enum air_fault_e the_fault) {
-    gpio_set_pin(FAULT_LED);
+static bool set_fault(enum air_fault_e the_fault) {
+    // dual purpose: update CAN fault + return true for fault
+    gpio_set_pin(ERROR_LED);
 
     if (air_control_critical.air_fault == AIR_FAULT_NONE) {
         // Only update fault state for the first fault to occur
         air_control_critical.air_fault = the_fault;
     }
+    return true; // returning true for fault state checking
 }
 
-static int set_charger_connected() {
-    uint32_t start_time = get_time();
-
-    (void)can_receive_charging_fbk();
-
-    uint8_t rc = 1;
-
-    do {
-        rc = can_poll_receive_charging_fbk();
-
-        if (rc == 0) {
-            tractive_sys = CHARGER;
-            return 0;
-        } else if (rc == 1) {
-            // CAN error--fault
-            return 1;
-        } else if (get_time() - start_time > 1500) {
-            // Timeout, so use default
-            return 0;
-        }
-    } while (rc != 0);
-
-    // Catch-all, shouldn't happen
-    return 1;
+void timer0_isr(void) {
+    send_can = true;
 }
 
+// interrupts for various gpio pins (for ss nodes and errors)
 void pcint0_callback(void) {
     air_control_critical.ss_tsms = !gpio_get_pin(SS_TSMS);
     air_control_critical.ss_imd = !gpio_get_pin(SS_IMD_LATCH);
     air_control_critical.ss_mpc = !gpio_get_pin(SS_MPC);
-    air_control_critical.ss_hvd_conn = !gpio_get_pin(SS_TSMP);
-    air_control_critical.ss_hvd = !gpio_get_pin(SS_HVD);
+    air_control_critical.ss_tsmp = !gpio_get_pin(SS_TSMP);
+    air_control_critical.ss_emeter = !gpio_get_pin(SS_EMETER);
 }
 
 void pcint1_callback(void) {
-    air_control_critical.ss_bms = !gpio_get_pin(SS_BMS);
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
     air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
+    air_control_critical.ss_bms = !gpio_get_pin(SS_BMS);
 }
 
 void pcint2_callback(void) {
+    air_control_critical.ss_hvd = !gpio_get_pin(SS_HVD);
     air_control_critical.imd_status = !!gpio_get_pin(IMD_SENSE);
     if (!air_control_critical.imd_status) {
         set_fault(AIR_FAULT_IMD_STATUS);
     }
 }
 
-/*
- * Run through initial checks to ensure safe operation. Checks are:
- *  - BMS voltage is above minimum
- *  - Motor controller voltage is close to 0
- *  - Both AIRs are open
- *  - Shutdown circuit is open (SS_TSMS is open)
- *  - IMD is OK
- */
-static int initial_checks(void) {
-    int rc = 0;
 
+
+static bool initial_checks(void) {
     /*
-     * Get MC and BMS voltages
-     *
-     * Will poll for 1 second and if the CAN message isn't received, will fault
-     */
+     * INitial Checks -- make sure all nodes are fine
+      1) BMS can talk to + battery voltage
+      2) TSMS check
+      3) G-meter readings
+      4) AIR weld check (check if AIR+ or AIR- can't open)
+      5) IMD latch check
+    */
+
+    bool fault = false;
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// 1) BMS check /////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     int16_t bms_voltage = 0;
+    int rc = 0;
+    // Will poll for 1 second, if the CAN msg not received, will fault
     rc = get_bms_voltage(&bms_voltage);
 
     if (rc == 1) {
-        set_fault(AIR_FAULT_CAN_ERROR);
-        goto bail;
+        fault = set_fault(AIR_FAULT_CAN_ERROR);
+        can_send_air_control_critical();
+        return fault;
     } else if (rc == 2) {
-        set_fault(AIR_FAULT_CAN_BMS_TIMEOUT);
-        rc = 1;
-        goto bail;
+        fault = set_fault(AIR_FAULT_CAN_BMS_TIMEOUT);
+        can_send_air_control_critical();
+        return fault;
     }
-    if(tractive_sys == MOTOR_CONTROLLER) {
-        if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW) {
-            set_fault(AIR_FAULT_BMS_VOLTAGE);
-            rc = 1;
-            goto bail;
-        }
+    can_print("bms", bms_voltage);
+
+    if (bms_voltage < BMS_VOLTAGE_THRESHOLD_LOW || bms_core.bms_fault_code != 0) {
+        fault = set_fault(AIR_FAULT_BMS_VOLTAGE);
+        can_send_air_control_critical();
+        return fault;
     }
 
     can_send_air_control_critical();
 
-    int16_t mc_voltage = 0;
-    rc = get_tractive_voltage(&mc_voltage, tractive_sys, 1000);
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////// 2) TSMP check /////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    if (!gpio_get_pin(SS_TSMS)) {
+        // SS_TSMS should start high
+        air_control_critical.ss_tsms = true;
+        fault = set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
+        can_send_air_control_critical();
+        return fault;
+    }
+    can_send_air_control_critical();
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////// 3) GMETER check ///////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    int16_t gmeter_voltage = 0;
+    rc = get_tractive_voltage(&gmeter_voltage, 1000);
 
     if (rc == 1) {
-        set_fault(AIR_FAULT_CAN_ERROR);
-        goto bail;
+        fault = set_fault(AIR_FAULT_CAN_ERROR);
+        return fault;
     } else if (rc == 2) {
-        set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
-        rc = 1;
-        goto bail;
+        fault = set_fault(AIR_FAULT_CAN_GMETER_TIMEOUT);
+        fault = true;
+        return fault;
     }
 
-    if(tractive_sys == MOTOR_CONTROLLER) {
-        if (mc_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
-            set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
-            rc = 1;
-            goto bail;
-        }
+    if (gmeter_voltage > TRACTIVE_THRESHOLD_LOW_dV) {
+        fault = set_fault(AIR_FAULT_TRACTIVE_VOLTAGE);
+        fault = true;
+        return fault;
     }
 
     can_send_air_control_critical();
 
-    // The following checks ensure that the hardware is in the correct initial
-    // state.
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////// 4) AIR Weld Check //////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     air_control_critical.air_p_status = !!gpio_get_pin(AIR_P_WELD_DETECT);
     air_control_critical.air_n_status = !!gpio_get_pin(AIR_N_WELD_DETECT);
 
     if (air_control_critical.air_p_status) {
-        set_fault(AIR_FAULT_AIR_P_WELD);
-        rc = 1;
-        goto bail;
+        fault = set_fault(AIR_FAULT_AIR_P_WELD);
+        can_send_air_control_critical();
+        return fault;
     }
-
     can_send_air_control_critical();
-
     if (air_control_critical.air_n_status) {
-        set_fault(AIR_FAULT_AIR_N_WELD);
-        rc = 1;
-        goto bail;
+        fault = set_fault(AIR_FAULT_AIR_N_WELD);
+        can_send_air_control_critical();
+        return fault;
     }
-
-    can_send_air_control_critical();
-
-    if(tractive_sys == MOTOR_CONTROLLER) {
-        if (!gpio_get_pin(SS_TSMS)) {
-            // SS_TSMS should start high
-            air_control_critical.ss_tsms = true;
-            set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
-            rc = 1;
-            goto bail;
-        }
-    }
-
     can_send_air_control_critical();
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////// 5) IMD latch check /////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     // Wait for IMD to stabilize
     _delay_ms(IMD_STABILITY_CHECK_DELAY_MS);
+    air_control_critical.imd_status = !!gpio_get_pin(IMD_SENSE);
 
-    if (!air_control_critical.ss_imd) {
-        set_fault(AIR_FAULT_IMD_STATUS);
-        rc = 1;
-        goto bail;
+    if (!air_control_critical.imd_status) {
+        fault = set_fault(AIR_FAULT_IMD_STATUS);
+        can_send_air_control_critical();
+        return fault;
     }
 
     can_send_air_control_critical();
-
-bail:
-    return rc;
+    return fault;
 }
 
+// TODO: state machine to run through sequence
+// --> thinking can pull from old state_machine_run
+// --> architecture of old firmware decent
 static void state_machine_run(void) {
     if (air_control_critical.air_fault != AIR_FAULT_NONE) {
         air_control_critical.air_state = AIR_STATE_FAULT;
     }
 
     switch (air_control_critical.air_state) {
+        // 1) status idle
         case AIR_STATE_IDLE: {
             // Idle until shutdown circuit is closed
             if (air_control_critical.ss_tsms) {
@@ -211,49 +244,47 @@ static void state_machine_run(void) {
                     = AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED;
             }
         } break;
+        // 2) status circuit closed
         case AIR_STATE_SHUTDOWN_CIRCUIT_CLOSED: {
-            /*
-             * This pattern ensures that we only call get_time() once because we
-             * only want to capture the time that PRECHARGE starts
-             */
-            static bool once = true;
+            // if air negative is closed within 200 ms, proceed to precharge
+            // (otherwise fault)
 
+            // ensures that we only call get_time() once because we only want to
+            // capture the time that PRECHARGE starts
+            static bool once = true;
             if (once) {
                 start_time = get_time();
                 once = false;
             }
 
             if (get_time() - start_time < 200) {
-                if (air_control_critical.air_p_status) {
+                if (air_control_critical.air_n_status) {
                     air_control_critical.air_state = AIR_STATE_PRECHARGE;
                     once = true;
                 }
             } else {
-                // set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                air_control_critical.air_state = AIR_STATE_FAULT;
                 once = true;
-                air_control_critical.air_state = AIR_STATE_PRECHARGE; //COMP AHHHHH
             }
-            return;
         } break;
+        // 3) status precharge
         case AIR_STATE_PRECHARGE: {
             // Start precharge
             gpio_set_pin(PRECHARGE_CTL);
 
-            // Get pack voltage to compare with MC voltage
+            // Get pack voltage to compare with gmeter voltage
             int16_t pack_voltage = 0;
             int16_t tractive_voltage = 0;
             int rc;
 
+            // thinking we alr check this, but oh well
             rc = get_bms_voltage(&pack_voltage);
-
-            if (rc != 0) {
+            if (rc) { // if not 0
                 set_fault(AIR_FAULT_CAN_BMS_TIMEOUT);
                 return;
             }
-
-            // Set correct scale for pack voltage
-            pack_voltage = (pack_voltage << 8) * 0.0001; // (x << 8 == x * 256)
-
+            
             /*
              * This pattern ensures that we only call get_time() once because we
              * only want to capture the time that PRECHARGE starts
@@ -264,28 +295,30 @@ static void state_machine_run(void) {
                 once = false;
             }
 
+            // if TS voltage above threshold in 5s, TS active; otherwise fault
             if (get_time() - start_time >= PRECHARGE_DELAY_MS) {
-                rc = get_tractive_voltage(&tractive_voltage, tractive_sys,
-                                          500); // 500ms
-                                                // timeout
-                if (rc != 0) {
-                    set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
+                rc = get_tractive_voltage(&tractive_voltage, 500); // 500ms
+                                                                   // timeout
+                if (rc) {
+                    set_fault(AIR_FAULT_CAN_GMETER_TIMEOUT);
                     once = true;
                     return;
                 }
 
-                // Set correct scale for MC voltage
-                tractive_voltage = tractive_voltage * 0.1;
+                // Set correct scale for gmeter voltage
+                can_print("gmeter", tractive_voltage);
+                can_print("bms", pack_voltage);
 
-                if (tractive_voltage > (PRECHARGE_THRESHOLD * pack_voltage)) {
-                    gpio_set_pin(AIR_N_LSD); // Close AIR negative
-                    gpio_clear_pin(PRECHARGE_CTL); // Close precharge relay
+                if (tractive_voltage > (PRECHARGE_THRESHOLD * pack_voltage / 4)) {
+                    gpio_set_pin(AIR_P_LSD); // Close AIR positive
+                    gpio_clear_pin(PRECHARGE_CTL); // Open precharge relay
                     once = true;
                     air_control_critical.air_state = AIR_STATE_TS_ACTIVE;
                     return;
                 } else {
                     once = true;
                     set_fault(AIR_FAULT_PRECHARGE_FAIL);
+                    air_control_critical.air_state = AIR_STATE_FAULT;
                     return;
                 }
             } else {
@@ -293,7 +326,29 @@ static void state_machine_run(void) {
                 return;
             }
         } break;
+        // 4) status TS active
         case AIR_STATE_TS_ACTIVE: {
+            // if air positive is closed within 200 ms, stay in AIR_STATE_TS_ACTIVE
+            // (otherwise fault)
+
+            // ensures that we only call get_time() once because we only want to
+            // capture the time that PRECHARGE starts
+            static bool once = true;
+            if (once) {
+                start_time = get_time();
+                once = false;
+            }
+
+            if (get_time() - start_time < 200) {
+                if (air_control_critical.air_p_status) {
+                    once = true;
+                }
+            } else {
+                set_fault(AIR_FAULT_SHUTDOWN_IMPLAUSIBILITY);
+                air_control_critical.air_state = AIR_STATE_FAULT;
+                once = true;
+            }
+
             // If any of the shutdown nodes open, the SS_TSMS will trigger as
             // well, so we can just read that one (it is the last node in the
             // shutdown circuit.
@@ -301,15 +356,15 @@ static void state_machine_run(void) {
                 air_control_critical.air_state = AIR_STATE_DISCHARGE;
             }
         } break;
+        // 5) status discharge
         case AIR_STATE_DISCHARGE: {
-            gpio_clear_pin(AIR_N_LSD);
+            gpio_clear_pin(AIR_P_LSD);
 
             /*
              * This pattern ensures that we only call get_time() once because we
              * only want to capture the time that DISCHARGE starts
              */
             static bool once = true;
-
             if (once) {
                 start_time = get_time();
                 once = false;
@@ -345,21 +400,18 @@ static void state_machine_run(void) {
             int16_t tractive_voltage = 0;
 
             if (get_time() - start_time < DISCHARGE_TIMEOUT) {
-                int rc = get_tractive_voltage(&tractive_voltage, tractive_sys,
-                                              500);
+                int rc = get_tractive_voltage(&tractive_voltage, 500);
 
                 if (rc == 1) {
                     set_fault(AIR_FAULT_CAN_ERROR);
                     once = true;
                     return;
                 }
-
                 if (rc == 2) {
-                    set_fault(AIR_FAULT_CAN_MC_TIMEOUT);
+                    set_fault(AIR_FAULT_CAN_GMETER_TIMEOUT);
                     once = true;
                     return;
                 }
-
                 if (rc == 0) {
                     if (tractive_voltage < TRACTIVE_THRESHOLD_LOW_dV) {
                         // Tractive system voltage has fallen below 5V
@@ -376,10 +428,11 @@ static void state_machine_run(void) {
                 return;
             }
         } break;
+        // 6) status fault
         case AIR_STATE_FAULT: {
-            gpio_set_pin(FAULT_LED);
+            gpio_set_pin(ERROR_LED);
             gpio_clear_pin(PRECHARGE_CTL);
-            gpio_clear_pin(AIR_N_LSD);
+            gpio_clear_pin(AIR_P_LSD);
         } break;
         default: {
             // Shouldn't happen, but just in case
@@ -395,17 +448,19 @@ int main(void) {
     updater_init(BTLDR_ID, 5);
 
     gpio_set_mode(PRECHARGE_CTL, OUTPUT);
-    gpio_set_mode(AIR_N_LSD, OUTPUT);
-    gpio_set_mode(GENERAL_LED, OUTPUT);
-    gpio_set_mode(FAULT_LED, OUTPUT);
+    gpio_set_mode(AIR_P_LSD, OUTPUT);
+    gpio_set_mode(HEARTBEAT_LED, OUTPUT);
+    gpio_set_mode(ERROR_LED, OUTPUT);
+    gpio_set_mode(INIT_LED, OUTPUT);
 
     gpio_set_mode(IMD_SENSE, INPUT);
     gpio_set_mode(SS_TSMS, INPUT);
     gpio_set_mode(SS_IMD_LATCH, INPUT);
-    gpio_set_mode(SS_BMS, INPUT);
     gpio_set_mode(SS_MPC, INPUT);
+    gpio_set_mode(SS_BMS, INPUT);
     gpio_set_mode(SS_TSMP, INPUT);
     gpio_set_mode(SS_HVD, INPUT);
+    gpio_set_mode(SS_EMETER, INPUT);
 
     gpio_enable_interrupt(SS_TSMS);
     gpio_enable_interrupt(SS_IMD_LATCH);
@@ -413,7 +468,10 @@ int main(void) {
     gpio_enable_interrupt(SS_MPC);
     gpio_enable_interrupt(SS_TSMP);
     gpio_enable_interrupt(SS_HVD);
-    
+    gpio_enable_interrupt(SS_EMETER);
+
+    gpio_enable_interrupt(IMD_SENSE);
+
     gpio_enable_interrupt(AIR_N_WELD_DETECT);
     gpio_enable_interrupt(AIR_P_WELD_DETECT);
 
@@ -424,33 +482,33 @@ int main(void) {
     gpio_clear_pin(SS_MPC);
     gpio_clear_pin(SS_TSMP);
     gpio_clear_pin(SS_HVD);
+    gpio_clear_pin(SS_EMETER);
 
     sei();
     air_control_critical.air_state = AIR_STATE_INIT;
 
     can_send_air_control_critical();
 
-    set_charger_connected();
+    gpio_set_pin(INIT_LED);
 
-    can_send_air_control_critical();
+    if (initial_checks()) {
+        // copied this fault sequence
+        gpio_set_pin(ERROR_LED);
 
-    gpio_set_pin(GENERAL_LED);
+        while (1) {
+            // Allow updates in the event of a fault
+            updater_loop();
 
-    pcint0_callback();
-    pcint1_callback();
-    pcint2_callback();
-
-    //IMD takes a while to warm up, so just set it to work 
-    air_control_critical.imd_status = true;
-    if (initial_checks() != 0) {
-        goto fault;
+            // Continue senging CAN messages
+            if (send_can) {
+                can_send_air_control_critical();
+                send_can = false;
+            }
+        };
     }
 
-    //Now enable the IMD
-    gpio_enable_interrupt(IMD_SENSE);
-
-    // Clear general LED to indicate that initialization has completed
-    gpio_clear_pin(GENERAL_LED);
+    // Clear init LED to indicate that initialization has completed
+    gpio_clear_pin(INIT_LED);
 
     // Get initial states of pins
     pcint0_callback();
@@ -462,35 +520,17 @@ int main(void) {
     air_control_critical.air_state = AIR_STATE_IDLE;
 
     while (1) {
-        if (run_1ms) {
+        if (run_1ms) { // in utils.c
             state_machine_run();
             run_1ms = false;
         }
-
         // Updates can only occur when the AIR control state machine is in IDLE
         if (air_control_critical.air_state == AIR_STATE_IDLE) {
             updater_loop();
         }
-
         if (send_can) {
             can_send_air_control_critical();
             send_can = false;
         }
     }
-
-fault:
-    gpio_set_pin(FAULT_LED);
-
-    while (1) {
-        // Allow updates in the event of a fault
-        updater_loop();
-
-        /*
-         * Continue senging CAN messages
-         */
-        if (send_can) {
-            can_send_air_control_critical();
-            send_can = false;
-        }
-    };
 }

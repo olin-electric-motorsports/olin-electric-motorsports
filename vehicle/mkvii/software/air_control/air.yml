@@ -3,10 +3,8 @@ subscribe:
   # Transmit MOb is 0
   - name: bms_core
     mob: 1
-  - name: M167_Voltage_Info
+  - name: IVT_Msg_Result_U1
     mob: 2
-  - name: charging_fbk
-    mob: 3
 publish:
   - name: air_control_critical
     id: 0xd
@@ -26,7 +24,7 @@ publish:
             - PRECHARGE_FAIL_RELAY_WELDED
             - CAN_ERROR
             - CAN_BMS_TIMEOUT
-            - CAN_MC_TIMEOUT
+            - CAN_GMETER_TIMEOUT
             - SHUTDOWN_IMPLAUSIBILITY
             - TRACTIVE_VOLTAGE
             - BMS_VOLTAGE
@@ -78,7 +76,7 @@ publish:
           values:
             t: CLOSED
             f: OPEN
-      - name: ss_hvd_conn
+      - name: ss_tsmp
         slice: 21 + 1
         unit:
           type: bool
@@ -99,9 +97,15 @@ publish:
           values:
             t: CLOSED
             f: OPEN
-
-      - name: imd_status
+      - name: ss_emeter
         slice: 24 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+      - name: imd_status
+        slice: 25 + 1
         unit:
           type: bool
           values:

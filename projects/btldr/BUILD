@@ -1,4 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//bazel:defs.bzl", "cc_firmware")
 load("//projects/btldr:ecus.bzl", "ECUS")
 
@@ -20,8 +20,11 @@ package(default_visibility = ["//visibility:public"])
         linkopts = [
             "-static",
             "-nostartfiles",
-            "-Wl,--section-start=.text=0x3000",  # Start at the boot start address
-        ],
+        ] + select({
+            "//bazel/constraints:atmega16m1": ["-Wl,--section-start=.text=0x3000"],
+            "//bazel/constraints:atmega64m1": ["-Wl,--section-start=.text=0xF000"],
+            "//conditions:default": [],
+        }),
         target_compatible_with = select({
             "//bazel/constraints:atmega16m1": [],
             "//bazel/constraints:atmega64m1": [],

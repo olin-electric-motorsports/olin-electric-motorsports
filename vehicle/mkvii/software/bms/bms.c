@@ -18,17 +18,17 @@
 #include "vehicle/mkvii/software/bms/utils/fault.h"
 #include "vehicle/mkvii/software/bms/utils/i2c_helpers.h"
 
-// #include "projects/btldr/btldr_lib.h"
-// #include "projects/btldr/git_sha.h"
-// #include "projects/btldr/libs/image/api.h"
+#include "projects/btldr/btldr_lib.h"
+#include "projects/btldr/git_sha.h"
+#include "projects/btldr/libs/image/api.h"
 
 /*
  * Required for btldr
  */
-// image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
-//     .image_magic = IMAGE_MAGIC,
-//     .git_sha = STABLE_GIT_COMMIT,
-// };
+image_hdr_t image_hdr __attribute__((section(".image_hdr"))) = {
+    .image_magic = IMAGE_MAGIC,
+    .git_sha = STABLE_GIT_COMMIT,
+};
 
 /*
  * INTERRUPTS
@@ -42,6 +42,23 @@ void pcint0_callback() {
     bms_core.bspd_current_sense = !!gpio_get_pin(BSPD_CURRENT_THRESH);
 }
 
+#define MAX_TEMPATURE_FAN (50)
+#define MIN_TEMPERATURE_FAN (20)
+
+void cooling_fan_control(uint16_t* max_temp) {
+    uint16_t duty_cycle;
+    uint16_t range = MAX_TEMPATURE_FAN - MIN_TEMPERATURE_FAN;
+    if (*max_temp >= MAX_EXTRANEOUS_TEMPERATURES) {
+        duty_cycle = 0;
+    } else if (*max_temp < MIN_TEMPERATURE_FAN) {
+        duty_cycle = 1023;
+    } else {
+        duty_cycle = 1023 - ((*max_temp - MIN_TEMPERATURE_FAN) * 1023 / range); 
+    }
+
+    OCR1B = duty_cycle;
+}
+
 void hw_init() {
     sei();
 
@@ -51,6 +68,7 @@ void hw_init() {
     gpio_set_mode(DEBUG_LED_2, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_IN, OUTPUT);
     gpio_set_mode(CHARGE_ENABLE_OUT, OUTPUT);
+    gpio_set_mode(COOLING_PUMP_PWM, OUTPUT);
 
     gpio_set_pin(COOLING_PUMP_LSD);
     
@@ -74,7 +92,7 @@ void hw_init() {
     cell_balancing_init();
 
 
-    // updater_init(BTLDR_ID, 5);
+    updater_init(BTLDR_ID, 5);
     gpio_set_pin(DEBUG_LED_1);
     
 }
@@ -112,23 +130,23 @@ static void monitor_cells(void) {
     } else {
         clear_fault(BMS_FAULT_OVERTEMPERATURE);
     }
+
+    cooling_fan_control(&max_temp);
+
     // read all voltages
     uint32_t ov = 0;
     uint32_t uv = 0;
-    uint16_t loop_count = 0;
 
     uint16_t pack_voltage = 0;
     pec_errors = 0;
-    voltage_task(&pack_voltage, &ov, &uv, &pec_errors, &loop_count);
+    voltage_task(&pack_voltage, &ov, &uv, &pec_errors);
     bms_core.pack_voltage = pack_voltage;
 
     // read current
     int16_t current = 0;
-    //current_task(&current);
+    current_task(&current);
     current = (adc_read(CURRENT_SENSE_VOUT) - 568) * 24;
     bms_core.pack_current = current;
-
-    // openwire_task();
 
     // Check for overcurrent fault
     if (current > CURRENT_THRESH) {
@@ -156,9 +174,9 @@ static void monitor_cells(void) {
         clear_fault(BMS_FAULT_OVERVOLTAGE);
     }
 
-    if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS && loop_count > UNDERVOLTAGE_LOOP_THRESHOLD) {
+    if (uv > NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
         set_fault(BMS_FAULT_UNDERVOLTAGE);
-    } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS || loop_count <= UNDERVOLTAGE_LOOP_THRESHOLD) {
+    } else if (uv == NUM_UNUSED_VOLTAGE_CHANNELS * NUM_ICS) {
         clear_fault(BMS_FAULT_UNDERVOLTAGE);
     }
 }
@@ -185,21 +203,17 @@ int main(void) {
                 can_send_bms_metrics();
             }
 
-            if (bms_core.bms_state == BMS_STATE_CHARGING) {
-                if (loop_counter % 5 == 0) {
-                    charging_cmd.target_voltage = 403;
-                    charging_cmd.target_current = 5;
-                    charging_cmd.enable_charging = false;
-                    can_send_charging_cmd();
-                }
-            }
+            charging_cmd.target_voltage = 403;
+            charging_cmd.target_current = 5;
+            charging_cmd.enable_charging = false;
+            can_send_charging_cmd();
 
             loop_counter++;
 
             if (loop_counter == 1000) {
                 loop_counter = 0;
             }
-            // updater_loop();
+            updater_loop();
 
             run_10ms = false;
         }

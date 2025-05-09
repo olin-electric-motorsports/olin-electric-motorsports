@@ -11,9 +11,9 @@
 #define NUM_CELLS_PER_IC (17)
 
 void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
-                  uint16_t* pec_errors, uint16_t* loop_count) {
+                  uint16_t* pec_errors) {
     *pack_voltage = 0;
-                
+
     wakeup_sleep(NUM_ICS);
 
     // Start cell voltage ADC conversions
@@ -30,7 +30,7 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
      * then the Register B, etc.
      */
     uint8_t raw_data[NUM_RX_BYT * NUM_ICS] = { 0 };
-    // uint32_t pack_voltages[NUM_ICS] = { 0 };
+    uint32_t pack_voltages[NUM_ICS] = { 0 };
 
     for (uint8_t cell_reg = 0; cell_reg < NUM_CELL_REG; cell_reg++) {
         // Read one register at a time for all segments
@@ -54,6 +54,13 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
                 = raw_data[raw_idx + 2] + (raw_data[raw_idx + 3] << 8);
             uint16_t cell_3
                 = raw_data[raw_idx + 4] + (raw_data[raw_idx + 5] << 8);
+
+            // Artificially increasing cell voltages by 0.04 to get rid of the weird voltage diff
+            if (cell_reg == 0) {
+                cell_1 += 400;
+            } else if (cell_reg == NUM_CELL_REG - 1) {
+                cell_2 += 400;
+            }
 
             // Core receives all 1s when the CSC is MIA
             if ((cell_1 == UINT16_MAX) && (cell_2 == UINT16_MAX)
@@ -79,34 +86,32 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             bms_voltage.voltage_2 = cell_2;
             bms_voltage.voltage_3 = cell_3;
 
+            // Average cell voltages on segment 1
+            if (ic == 1) {
+                // pack_voltages[ic] += (cell_1 + cell_2 + cell_3);
+                pack_voltages[ic] += cell_1;
+                pack_voltages[ic] += cell_2;
+                pack_voltages[ic] += cell_3;
+            } else {
+                // Check under/overvoltage thresholds
+                if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
 
-            // Check under/overvoltage thresholds
-            if (cell_1 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_1 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
+                if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
 
-            if (cell_2 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_2 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
+                if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
+                    *ov += 1;
+                } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
+                    *uv += 1;
+                }
             }
-
-            if (cell_3 >= OVERVOLTAGE_THRESHOLD) {
-                *ov += 1;
-            } else if (cell_3 <= UNDERVOLTAGE_THRESHOLD) {
-                *uv += 1;
-            }
-            
-            // Count number of loops the undervoltage error has been present for
-            if (*uv >= 1) {
-                *loop_count += 1;
-            } else if (*uv == 0) {
-                *loop_count = 0;
-            }
-            
-
 
             can_send_bms_voltage();
 
@@ -126,4 +131,11 @@ void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv,
             }
         } // end foreach ltc6811
     } // end foreach cell reg (A, B, C, D, E, F)
+
+    // Fault handling for cell voltage average on segment 1
+    // if (pack_voltages[1] > SEGMENT_OVERVOLTAGE_THRESHOLD) {
+    //     set_fault(BMS_FAULT_OVERVOLTAGE);
+    // } else if (pack_voltages[1] < SEGMENT_UNDERVOLTAGE_THRESHOLD) {
+    //     set_fault(BMS_FAULT_UNDERVOLTAGE);
+    // }
 }

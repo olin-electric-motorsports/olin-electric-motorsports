@@ -1,5 +1,4 @@
 load("@rules_python//python:defs.bzl", "py_binary", "py_library")
-load("//tools/pytest:defs.bzl", "pytest_test")
 
 py_binary(
     name = "canviewer",

@@ -13,6 +13,7 @@
 #define CHIP_AVR_ATMEGA16M1    (0x001U)
 #define CHIP_AVR_ATMEGA328P    (0x002U)
 #define CHIP_ARM_STM32F103C8T6 (0x003U)
+#define CHIP_AVR_ATMEGA64M1    (0x004U)
 
 /*
  * Struct prototype for the image header, a piece of data that gets prepended to

@@ -54,7 +54,8 @@ timer_cfg_s timer1_cfg = {
     },
     .channel_b = {
         .channel = CHANNEL_B,
-        .pin_behavior = SET,
+        .pin_behavior = CLEAR,
+        .output_compare_match = 0,
         .interrupt_enable = false,
     },
 };

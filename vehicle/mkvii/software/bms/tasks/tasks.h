@@ -19,15 +19,12 @@
  *
  * @param uv Undervoltage flagset. Each bit represents whether or not a cell is
  * under the low-voltage threshold (3.0V)
- * 
- * @param loop_count Pointer to a 16-bit number where the loop count will be 
- * stored when undervoltage is present
  *
  * @return
  *   Number of PEC errors that occurred when communicating with the ADBMS1818
  *   0 if no errors
  */
-void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* pec_errors, uint16_t* loop_count);
+void voltage_task(uint16_t* pack_voltage, uint32_t* ov, uint32_t* uv, uint16_t* pec_errors);
 
 /*
  * Task to read the temperature from the battery pack
