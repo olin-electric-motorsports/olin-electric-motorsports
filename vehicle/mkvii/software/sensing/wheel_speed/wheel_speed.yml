@@ -18,3 +18,12 @@ publish:
           name: ''
           offset: 0
           scale: 1
+      # Heartbeat Status
+      # "lub-DUB" chosen because that is how an actual heartbeat sounds like. Link: https://www.nhlbi.nih.gov/health/heart/heart-beats
+      - name: heartbeat
+        slice: 32 + 1
+        unit:
+          type: bool
+          values:
+            t: lub
+            f: DUB

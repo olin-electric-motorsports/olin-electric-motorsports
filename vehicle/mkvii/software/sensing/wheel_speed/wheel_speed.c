@@ -1,3 +1,4 @@
+// TODO: Add Debug LED Functionality - Henry Tejada Deras 05-12-2025
 #include "wheel_speed.h"
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
@@ -9,78 +10,80 @@
 #include <stdint.h>
 #include <util/delay.h>
 
+// INITIALIZATION/VARIABLE/FUNCTION DECLARATIONS
+// Variable Declarations
+int left_wheel_clicks_counter = 0;
+int right_wheel_clicks_counter = 0;
 
-// all possible strain states
-struct SusStrainState {
-    volatile bool send_can;
-    uint16_t implausibility_fault_counter;
-} sus_strain_state = { 0 };
-
-/**
- * Timer 0 for sending Load_Cell data over CAN
- */
-void timer_0_isr(void) {
-    sus_strain_state.send_can = true;
-}
-
-volatile bool run_1ms = true; 
-
-/**
- * Timer 1 for the LED heartbeat
- */
-volatile bool led_heartbeat = true;
-void timer_1_isr(void) {
-    led_heartbeat = true;
-}
-
-/**
- * Initialize 16m1 hardware peripherals
+/*
+ * Initialize Atmega 16M1 Hardware Peripherals
  */
 void init_peripherals(void) {
-    gpio_set_mode(debug_led, OUTPUT); // Debug LED
-    gpio_set_mode(heartbeat, OUTPUT); // Heartbeat LED
-    can_init_sus_strain(); // CAN
+    gpio_set_mode(DEBUG_LED, OUTPUT); // Debug LED
+    gpio_set_mode(HEARTBEAT, OUTPUT); // Heartbeat LED
+    can_init_wheel_speed(); // CAN
     sei(); // Interrupts
-    timer_init(&timer_0_cfg); // Timer 0
-    timer_init(&timer_1_cfg); // Timer 1
+    timer0_callback(); // Timer
     adc_init(); // ADC
-    can_send_sus_strain(); // Send initial CAN message
+    can_send_wheel_speed(); // Send initial CAN message
+
+    gpio_enable_interrupt(WHEEL_SPEED_SENSE_LEFT);
+    gpio_enable_interrupt(WHEEL_SPEED_SENSE_RIGHT);
 }
 
-int16_t get_sus_strain(SusStrain *sus_strain, bool is_left_sus_strain) {
-    int16_t sus_strain_raw = adc_read(sus_strain->gpio_pin); // Access the gpio_pin correctly
-    if (is_left_sus_strain) {
-        sus_strain->data = sus_strain_raw;
-    } else {
-        sus_strain->data = sus_strain_raw;
-    }
-    return sus_strain_raw;
+// CAN Interrupt + Callback Function
+volatile bool send_can = false;
+void timer0_callback(void) {
+    send_can = true;
 }
 
+// Update Debug LED
+void update_leds(void) {
+    // Update Heartbeat LED State
+    gpio_toggle_pin(HEARTBEAT);
+
+    // Update Debug LED State
+    // TODO
+}
+
+// Clicks Counters
+void pcint0_callback(void) {
+    left_wheel_clicks_counter += 1; // Add 1 to Counter
+}
+
+void pcint1_callback(void) {
+    right_wheel_clicks_counter += 1; // Add 1 to Counter
+}
+
+// Wheel Speed Calculations
+void calc_wheel_speed(void) {
+    // Calculate Wheel Speed
+    wheel_speed.wheel_speed_l = (left_wheel_clicks_counter / CLICKS_PER_REV) * TIMER_TIME_ELAPSED;
+    wheel_speed.wheel_speed_r = (right_wheel_clicks_counter / CLICKS_PER_REV) * TIMER_TIME_ELAPSED;
+
+    // Reset Counters
+    left_wheel_clicks_counter = 0;
+    right_wheel_clicks_counter = 0;
+}
+
+// WHEEL SPEED LOOP
 int main(void) {
     init_peripherals();
     sei();
 
+    // Get Initial Digital Inputs
+    pcint0_callback();
+    pcint1_callback();
+
+    // Initial Predefined Heartbeat CAN Signal
+    wheel_speed.heartbeat = false;
+
     for (;;) {
-        if (run_1ms) {
-            run_1ms = false;
-
-            if (led_heartbeat) {
-                gpio_toggle_pin(heartbeat);
-                led_heartbeat = false;
-            }
-
-            int16_t sus_l = get_sus_strain(&SUS_STRAIN_l, true);
-            int16_t sus_r = get_sus_strain(&SUS_STRAIN_r, false);
-
-            sus_strain.sus_strain_l = sus_l;
-            sus_strain.sus_strain_r = sus_r;
-
-
-            if (sus_strain_state.send_can) {
-                can_send_sus_strain();
-                sus_strain_state.send_can = false;
-            }
+        // Triggers Send Can Function 2 times per second
+        if (send_can) {
+            calc_wheel_speed();
+            can_send_wheel_speed();
+            send_can = false;
         }
     }
 }
