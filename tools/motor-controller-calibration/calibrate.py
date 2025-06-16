@@ -13,6 +13,8 @@ INV_PARAMETER_CAN_ID = 0xA5  # relevant calibration parameters, broadcast messag
 
 INV_GAMMA_ADJ_CAN_ID = 0x0C # gamma adjust
 
+TORQUE_COMMAND = 4.0
+
 def calibrate():
     """
     Run high speed motor calibration.
@@ -76,7 +78,7 @@ def calibrate():
       while True:
         control_data = control_msg_dbc.encode(
             {
-                "Torque_Command": 4.0,
+                "Torque_Command": TORQUE_COMMAND,
                 "Speed_Command": 0,
                 "Direction_Command": 0,  # optional, e.g. 0 = forward
                 "Inverter_Enable": 1,
