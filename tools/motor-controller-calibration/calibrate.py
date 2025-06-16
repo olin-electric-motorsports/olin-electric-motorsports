@@ -1,5 +1,17 @@
 """
 High Speed Motor Calibration Script
+
+Instructions:
+1. connect a can dongle to the car and run calibrate.py
+2. the motor will start spinning. The rpm will print out in the terminal
+3. according to the docs, the motor should be spinning at around 1k rpm
+4. in the terminal, hit ctrl+c to stop the motor, then ctrl+c again to stop the output in the terminal
+5. read the value for Delta Resolver Filtered, it should be as close to -90 degrees as possible
+
+The timing of the second SIGINT (ctrl+c) to be fairly close to the first such that you can scroll up in your terminal and read the values for when the motor was spinning at a high speed but was not energized.
+
+docs (section 4.1.3: Resolve Angle Offset Adjustment (Gamma Adjust)):
+https://app.box.com/s/vf9259qlaadhzxqiqrt5cco8xpsn84hk/file/1687150117689
 """
 
 import can
