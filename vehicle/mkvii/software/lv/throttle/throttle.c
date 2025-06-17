@@ -247,7 +247,7 @@ int main(void) {
      */
     can_send_m192_command_message();
 
-    m192_command_message.direction_command = MOTOR_CLOCKWISE;
+    m192_command_message.direction_command = MOTOR_ANTICLOCKWISE;
 
     can_receive_bspd();
     can_receive_dashboard();

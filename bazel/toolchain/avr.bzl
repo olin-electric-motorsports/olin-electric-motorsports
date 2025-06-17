@@ -74,8 +74,8 @@ def _impl(ctx):
         tool_paths = tool_paths,
         cxx_builtin_include_directories = [
             "/usr/lib/avr/include",
-            "/usr/lib/gcc/avr/5.4.0/include",
-            "/usr/lib/gcc/avr/5.4.0/include-fixed",
+            "/usr/lib/gcc/avr/7.3.0/include",
+            "/usr/lib/gcc/avr/7.3.0/include-fixed",
         ],
         features = [
             ft.all_warnings,
