@@ -6,7 +6,7 @@
 // implausibility constants according to rule T.4.2
 #define IMPLAUSIBILITY_TIME_LIMIT 100
 
-#define TORQUE_REQUEST_SCALE (9)
+#define TORQUE_REQUEST_SCALE (1)
 
 //BASED ON DIRECTION COMMANDS from the PM100DX DATASHEET...DON'T CHANGE!!
 #define MOTOR_CLOCKWISE     (1)
@@ -43,10 +43,10 @@ in potentiometer happen and we aren't pressing pedal
 Minimum and maximum ADC counts representing 0% and 100% pedal travel
 Last calibrated 04-24-2025 for MKVII
 */
-#define THROTTLE_R_MIN_COUNTS (int16_t)((135 + THROTTLE_BUFFER) >> 2)
-#define THROTTLE_R_MAX_COUNTS (int16_t)((1023 - THROTTLE_BUFFER) >> 2)
-#define THROTTLE_L_MIN_COUNTS (int16_t)((13 + THROTTLE_BUFFER) >> 2)
-#define THROTTLE_L_MAX_COUNTS (int16_t)((169 - THROTTLE_BUFFER) >> 2)
+#define THROTTLE_R_MIN_COUNTS (int16_t)((20 + THROTTLE_BUFFER) >> 2)
+#define THROTTLE_R_MAX_COUNTS (int16_t)((667 - THROTTLE_BUFFER) >> 2)
+#define THROTTLE_L_MIN_COUNTS (int16_t)((30 + THROTTLE_BUFFER) >> 2)
+#define THROTTLE_L_MAX_COUNTS (int16_t)((1023 - THROTTLE_BUFFER) >> 2)
 
 // Pin definitions
 gpio_t SS_IS = PB6;
@@ -57,7 +57,7 @@ gpio_t HEARTBEAT_LED = PD6; // This is for the heartbeat light
 
 
 typedef struct {
-    // represents a throttle poteniometer
+    // represents a throttle potentiometer
     adc_pin_e adc_pin;
     int16_t throttle_min; // Minimum position (0%) in raw ADC
     int16_t throttle_max; // Maximum position (100%) in raw ADC

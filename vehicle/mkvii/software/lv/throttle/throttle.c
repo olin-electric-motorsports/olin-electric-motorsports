@@ -178,45 +178,32 @@ static bool check_deviation(int16_t pos_max, int16_t pos_min) {
 
 
 static bool check_brake(int16_t pos_min) {
-    bool brake_implausibility_occurred = false;
+    // bool brake_implausibility_occurred = false;
 
     if (throttle_state.brake_pressed) {
         // if brakes are pressed
         if (pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD) {
             // brake is pressed, pedal travel >= 25%
-            brake_implausibility_occurred = true;
+            // brake_implausibility_occurred = true;
             throttle_debug.throttle_brake_implaus = true;
             return true;
+        } else if (throttle_debug.throttle_brake_implaus && pos_min >= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW){
+            // if there has 
+            return true;
         } else {
-            // brake is pressed, pedal travel < 25%
-            // no implausibility
-            throttle_debug.throttle_brake_implaus = false;
-        }
-
-        if (brake_implausibility_occurred) {
-            // if brake is pressed & implausibility prev occurred
-            if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
-                // and pedal travel <= 5%
-                brake_implausibility_occurred = false;
-                throttle_debug.throttle_brake_implaus = false;
-                return false;
-            } else {
-                // implausibility prev occured, pedal travel > 5%
-                throttle_debug.throttle_brake_implaus = true;
-                return true;
-            }
-        } else {
-            // no implausibility prev occurred then still no implausibility
+            // if brake is pressed and no implausibility
+            // brake_implausibility_occurred = false;
             throttle_debug.throttle_brake_implaus = false;
             return false;
         }
+
     } else {
         // brakes are not pressed
-        if (brake_implausibility_occurred) {
+        if (throttle_debug.throttle_brake_implaus) {
             // but implausibility prev occurred
             if (pos_min <= APPS_BRAKE_IMPLAUSIBILITY_THRESHOLD_LOW) {
                 // however pedal is <= 5% travel, no implausibility
-                brake_implausibility_occurred = false;
+                // brake_implausibility_occurred = false;
                 throttle_debug.throttle_brake_implaus = false;
                 return false;
             } else {
