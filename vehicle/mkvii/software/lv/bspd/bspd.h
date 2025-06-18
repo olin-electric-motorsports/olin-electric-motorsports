@@ -26,7 +26,7 @@ gpio_t BSPD_SHUTDOWN_SENSE = PC0;
 adc_pin_e BRAKE_PRESSURE_SENSE = ADC7;
 adc_pin_e BRAKE_PRESSURE_SENSE_FILTERED = ADC4;
 
-//Monitor Pin for RC Circuit, used to see how close RC circuit is to causing a fault, potentially
+// Monitor Pin for RC Circuit, used to see how close RC circuit is to causing a fault, potentially
 adc_pin_e RC_TIMER_STATUS = ADC8;
 
 // Timer config (CAN update every 100Hz)

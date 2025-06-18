@@ -6,11 +6,11 @@
 	(paper "A4")
 	(title_block
 		(title "BSPD (Brake System Plausability Device)")
-		(date "2024-10-23")
-		(rev "2")
+		(date "2025-05-13")
+		(rev "2.3")
 		(company "Olin Electric Motorsports")
 		(comment 1 "Rev. by Henry Tejada Deras")
-		(comment 2 "By Ian Walsh")
+		(comment 2 "Ian Walsh")
 	)
 	(lib_symbols
 		(symbol "+5V_1"
@@ -4702,6 +4702,12 @@
 		(uuid "0672125e-d51e-4456-9b25-273ec5bfddbc")
 	)
 	(junction
+		(at 74.93 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "094f3fa2-2d63-4c23-8234-d5b57ea1aca9")
+	)
+	(junction
 		(at 242.57 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4768,16 +4774,16 @@
 		(uuid "7487faaa-65e4-4a5b-bb59-525a94473555")
 	)
 	(junction
-		(at 74.93 116.84)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8378cfb8-35d8-40cd-83a5-e89b4c326ab4")
-	)
-	(junction
 		(at 232.41 128.27)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8946209d-0599-467f-bedb-90a9c7bd02dd")
+	)
+	(junction
+		(at 74.93 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "94d30174-e6ff-4491-b0ed-1555af8f9c3d")
 	)
 	(junction
 		(at 232.41 144.78)
@@ -4820,12 +4826,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ea4a5613-44d7-4e5c-8b62-4e62ef1570e2")
-	)
-	(junction
-		(at 74.93 110.49)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f0099752-5881-4936-8eda-91532308ffb3")
 	)
 	(junction
 		(at 128.27 99.06)
@@ -4989,13 +4989,13 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 110.49) (xy 74.93 110.49)
+			(xy 48.26 111.76) (xy 74.93 111.76)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1d1d92ae-7321-4194-b0a0-754b7d66b862")
+		(uuid "1c004742-f03d-4220-924f-a896e0b0775f")
 	)
 	(polyline
 		(pts
@@ -5079,7 +5079,7 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 116.84) (xy 74.93 116.84)
+			(xy 49.53 119.38) (xy 74.93 119.38)
 		)
 		(stroke
 			(width 0)
@@ -5407,6 +5407,16 @@
 		)
 		(uuid "571ec643-cc39-4db9-a1a5-d3d6852145b9")
 	)
+	(wire
+		(pts
+			(xy 36.83 111.76) (xy 40.64 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58da713d-cb51-4220-9bf6-87b75a54b7c2")
+	)
 	(polyline
 		(pts
 			(xy 127 101.6) (xy 137.16 101.6)
@@ -5649,7 +5659,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 102.87) (xy 58.42 102.87)
+			(xy 36.83 102.87) (xy 58.42 102.87)
 		)
 		(stroke
 			(width 0)
@@ -5699,13 +5709,13 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 116.84) (xy 74.93 119.38)
+			(xy 74.93 111.76) (xy 74.93 119.38)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8dd21972-c5f5-48d5-bf25-fe5300d961a5")
+		(uuid "8df5c1fe-fdcf-4381-a5ea-31c79ce8aa4c")
 	)
 	(polyline
 		(pts
@@ -5786,6 +5796,16 @@
 			(type default)
 		)
 		(uuid "9e0df9a4-b35f-44c0-be49-244cbe2d5409")
+	)
+	(wire
+		(pts
+			(xy 33.02 119.38) (xy 39.37 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f388ae5-afe7-40e7-90e0-166f46166fa1")
 	)
 	(polyline
 		(pts
@@ -5959,7 +5979,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 110.49) (xy 74.93 116.84)
+			(xy 74.93 107.95) (xy 74.93 111.76)
 		)
 		(stroke
 			(width 0)
@@ -6229,16 +6249,6 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 116.84) (xy 39.37 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f97808ee-b555-4fb6-8e6a-af046c14ed72")
-	)
-	(wire
-		(pts
 			(xy 195.58 118.11) (xy 254 118.11)
 		)
 		(stroke
@@ -6246,16 +6256,6 @@
 			(type default)
 		)
 		(uuid "f9900da6-be6d-4957-92d4-c7b6c825d5f7")
-	)
-	(wire
-		(pts
-			(xy 74.93 110.49) (xy 74.93 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fda26702-c150-4030-bdfa-ee08d47c02fc")
 	)
 	(wire
 		(pts
@@ -6310,6 +6310,17 @@
 			(justify left bottom)
 		)
 		(uuid "3d6aa12d-1b93-4688-81ba-23805a4b1eaf")
+	)
+	(text "Used to prevent 5V from\ngoing to the Brake Light\nCircuity ->"
+		(exclude_from_sim no)
+		(at 41.148 107.442 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "57eae398-4bab-4d64-9d4e-8cfbdcb2d401")
 	)
 	(text "DIGITAL OUTS AND BSPD LSD"
 		(exclude_from_sim no)
@@ -6391,7 +6402,6 @@
 	(hierarchical_label "BSPD_LL"
 		(shape input)
 		(at 266.7 40.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6403,7 +6413,6 @@
 	(hierarchical_label "RC_TIMER_STATUS"
 		(shape output)
 		(at 128.27 87.63 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6414,8 +6423,7 @@
 	)
 	(hierarchical_label "MOTOR_CURRENT_SENSE"
 		(shape input)
-		(at 39.37 102.87 180)
-		(fields_autoplaced yes)
+		(at 36.83 102.87 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6427,7 +6435,6 @@
 	(hierarchical_label "BSPD_RELAY_OUT"
 		(shape input)
 		(at 243.84 27.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6438,8 +6445,7 @@
 	)
 	(hierarchical_label "BRAKELIGHT_LL"
 		(shape input)
-		(at 57.15 110.49 180)
-		(fields_autoplaced yes)
+		(at 36.83 111.76 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6451,7 +6457,6 @@
 	(hierarchical_label "BSPD_RELAY_IN"
 		(shape input)
 		(at 243.84 25.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7863,7 +7868,7 @@
 	(symbol
 		(lib_name "+5V_1")
 		(lib_id "power:+5V")
-		(at 33.02 116.84 0)
+		(at 33.02 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7872,7 +7877,7 @@
 		(fields_autoplaced yes)
 		(uuid "37e335ed-c26a-435c-b95b-294db678b68e")
 		(property "Reference" "#PWR?"
-			(at 33.02 120.65 0)
+			(at 33.02 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7881,7 +7886,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 33.02 111.76 0)
+			(at 33.02 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7889,7 +7894,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 33.02 116.84 0)
+			(at 33.02 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7898,7 +7903,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 33.02 116.84 0)
+			(at 33.02 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7907,7 +7912,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 33.02 116.84 0)
+			(at 33.02 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11127,7 +11132,7 @@
 	)
 	(symbol
 		(lib_id "OEM:SW_Push_SPST_NO")
-		(at 44.45 116.84 0)
+		(at 44.45 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11135,14 +11140,6 @@
 		(dnp no)
 		(uuid "b1de97e7-5111-42b3-9dbf-cd8d51327801")
 		(property "Reference" "SW2"
-			(at 44.45 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SW_Push_SPST_NO"
 			(at 44.45 121.92 0)
 			(effects
 				(font
@@ -11150,8 +11147,16 @@
 				)
 			)
 		)
+		(property "Value" "SW_Push_SPST_NO"
+			(at 44.45 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Footprint" "OEM:SW_B3U-1000P_4.2x1.7mm"
-			(at 44.45 115.57 0)
+			(at 44.45 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11160,7 +11165,7 @@
 			)
 		)
 		(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3u.pdf"
-			(at 44.45 115.57 0)
+			(at 44.45 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11169,7 +11174,7 @@
 			)
 		)
 		(property "Description" "push button SMD"
-			(at 44.45 116.84 0)
+			(at 44.45 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11178,7 +11183,7 @@
 			)
 		)
 		(property "MPN" "B3U-1000P"
-			(at 49.53 110.49 0)
+			(at 49.53 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11187,7 +11192,7 @@
 			)
 		)
 		(property "MFN" "Omron"
-			(at 44.45 116.84 0)
+			(at 44.45 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11196,7 +11201,7 @@
 			)
 		)
 		(property "DKPN" "SW1020CT-ND"
-			(at 44.45 116.84 0)
+			(at 44.45 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11205,7 +11210,7 @@
 			)
 		)
 		(property "NewDesigns" "YES"
-			(at 44.45 116.84 0)
+			(at 44.45 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11214,7 +11219,7 @@
 			)
 		)
 		(property "Stocked" "Tape"
-			(at 44.45 116.84 0)
+			(at 44.45 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11223,7 +11228,7 @@
 			)
 		)
 		(property "Package" "Custom"
-			(at 44.45 116.84 0)
+			(at 44.45 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11232,7 +11237,7 @@
 			)
 		)
 		(property "Style" "SMD"
-			(at 44.45 116.84 0)
+			(at 44.45 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11916,6 +11921,137 @@
 			(project ""
 				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/e279e344-9058-4851-bdde-ca605e652c75"
 					(reference "R25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:R_100K")
+		(at 44.45 111.76 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cf15c9af-319d-4550-8b3f-d24a2773e412")
+		(property "Reference" "R28"
+			(at 44.45 105.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R_1K"
+			(at 44.45 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:R_0603"
+			(at 44.45 109.982 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor 100K ohms 0603 1/10W 1%"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0603FT100K"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Stackpole Electronics"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "RMCF0603FT100KTR-ND"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 44.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f402d669-836b-4a46-943b-6b47025bcfb5")
+		)
+		(pin "2"
+			(uuid "a2ef617a-b090-40cd-bc3c-6a5b2285f27b")
+		)
+		(instances
+			(project "brakes"
+				(path "/10f522c8-3a01-4239-b7df-a730ca32b367/e279e344-9058-4851-bdde-ca605e652c75"
+					(reference "R28")
 					(unit 1)
 				)
 			)

@@ -118,7 +118,7 @@ int main(void) {
     gpio_enable_interrupt(MOTOR_CURRENT_SENSE);
     gpio_enable_interrupt(BSPD_SHUTDOWN_SENSE);
 
-    // Gets initial analog inputs
+    // Gets initial digital inputs
     pcint0_callback();
     pcint1_callback();
     

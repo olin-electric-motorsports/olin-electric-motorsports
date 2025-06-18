@@ -6,10 +6,10 @@
 	(paper "A4")
 	(title_block
 		(title "PCIe x1 Connector")
-		(date "2024-10-23")
-		(rev "1")
+		(date "2025-05-13")
+		(rev "2.3")
 		(company "Olin Electric Motorsports")
-		(comment 1 "By Henry Tejada Deras")
+		(comment 1 "Henry Tejada Deras")
 	)
 	(lib_symbols
 		(symbol "OEM:CONN_MountingHole"
@@ -2942,18 +2942,6 @@
 		)
 		(uuid "c4d5c096-8f60-42af-b26a-99dbe91a95a9")
 	)
-	(text "Communication Standards:\nCAN - Controller Area Network\n	Lines Used:\n	CAN Hi (CAN_+ in MKVII)		CAN High Signal\n	CAN Lo (CAN_- in MKVII)		CAN Low Signal\nI2C - Inter-Integrated Circuit\n	Lines Used:\n	SCL		Serial Clock Line	\n	SDA		Serial Data Line\nSPI - Serial Peripheral Interface\n	Lines Used:\n	CS		Chip Select\n	MISO		Data: Main In - Subnode Out\n	MOSI		Data: Main Out - Subnode In\n	SCLK/SPI CLK		Serial Clock\nUART - Universal Asynchronous Receiver/Transmitter\n	Lines Used:\n	Rx		Receiver Data Line\n	Tx		Transmitter Data Line\n\nCAN - https://en.wikipedia.org/wiki/CAN_bus\nCAN - https://forum.digikey.com/t/overview-of-the-can-bus-protocol/21170\nCAN - https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial\nCAN - https://www.wevolver.com/article/understanding-can-bus-a-comprehensive-guide\nCAN/I2C - https://www.vectornav.com/resources/inertial-navigation-primer/hardware/commhw\nI2C - https://en.wikipedia.org/wiki/I%C2%B2C\nSPI - https://en.wikipedia.org/wiki/Serial_Peripheral_Interface\nSPI - https://www.analog.com/en/resources/analog-dialogue/articles/introduction-to-spi-interface.html\nSPI - https://www.vectornav.com/resources/inertial-navigation-primer/hardware/synccomm\nUART - https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter\nUART - https://www.analog.com/en/resources/analog-dialogue/articles/uart-a-hardware-communication-protocol.html"
-		(exclude_from_sim no)
-		(at 13.716 165.862 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.1588)
-			)
-			(justify left)
-		)
-		(uuid "cc441df5-0438-45b3-9bf1-b7e73dac6db0")
-	)
 	(text "12 V Lines"
 		(exclude_from_sim no)
 		(at 115.062 73.66 0)
@@ -2967,7 +2955,6 @@
 	(hierarchical_label "BRAKELIGHT_CONN"
 		(shape input)
 		(at 220.98 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2979,7 +2966,6 @@
 	(hierarchical_label "CAN_+"
 		(shape bidirectional)
 		(at 121.92 106.68 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2991,7 +2977,6 @@
 	(hierarchical_label "CAN_-"
 		(shape bidirectional)
 		(at 121.92 109.22 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3003,7 +2988,6 @@
 	(hierarchical_label "SHDN_IN"
 		(shape output)
 		(at 121.92 119.38 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3015,7 +2999,6 @@
 	(hierarchical_label "MOTOR_CURRENT_SENSE"
 		(shape output)
 		(at 220.98 76.2 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3027,7 +3010,6 @@
 	(hierarchical_label "BRAKE_PRESS_SENSE"
 		(shape output)
 		(at 220.98 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3039,7 +3021,6 @@
 	(hierarchical_label "SHDN_OUT"
 		(shape input)
 		(at 121.92 124.46 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)

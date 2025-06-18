@@ -6,11 +6,11 @@
 	(paper "A4")
 	(title_block
 		(title "BSPD - Top Level View")
-		(date "2024-10-23")
-		(rev "2")
+		(date "2025-05-13")
+		(rev "2.3")
 		(company "Olin Electric Motorsports")
 		(comment 1 "Rev. by Henry Tejada Deras")
-		(comment 2 "By Ian Walsh")
+		(comment 2 "Ian Walsh")
 	)
 	(lib_symbols)
 	(junction
@@ -691,9 +691,9 @@
 		)
 		(uuid "fe1c84e1-0e4d-413b-9415-35fa26d71420")
 	)
-	(text "Communication:\nCAN_+: CAN High Signal\nCAN_-: CAN Low Signal\nSCL: Serial Clock Line	\nRx: Receiver Data Line\nTx: Transmitter Data Line\n\nSensors:\nBRAKE_PRESS_SENSE: Brake Pressure Sensor Line\nBRAKE_PRESS_SENSE_FILTERED: Filtered Brake Pressure Sensor Line\nMOTOR_CURRENT_SENSE: Motor Current Sensor Line (High/1 for above 5 kW; Low/0 for below 5 kW)\nSHUTDOWN_SENSE: Shutdown Circuit Sensor Line (Detects shutdown circuit status (opened or closed))\n\nOther:\nBRAKELIGHT_CONN: ?\nBRAKELIGHT_LL: Brakelight Logic Level Line (gives data on status of brakes, pressed or not)\nBSPD_LL: BSPD Logic Level Line (?)"
+	(text "Communication:\nCAN_+: CAN High Signal\nCAN_-: CAN Low Signal\nSCL: Serial Clock Line	\nRx: Receiver Data Line\nTx: Transmitter Data Line\n\nSensors:\nBRAKE_PRESS_SENSE: Brake Pressure Sensor Line\nBRAKE_PRESS_SENSE_FILTERED: Filtered Brake Pressure Sensor Line\nMOTOR_CURRENT_SENSE: Motor Current Sensor Line (High/1 for above 5 kW; Low/0 for below 5 kW)\nSHUTDOWN_SENSE: Shutdown Circuit Sensor Line (Detects shutdown circuit status (opened or closed))\n\nOther:\nBRAKELIGHT_CONN: Connection to Brake Light Circuit, part of Brake Light Circuit.\nBRAKELIGHT_LL: Brakelight Logic Level Line (gives data on status of brakes, pressed or not)\nBSPD_LL: BSPD Logic Level Line (gives status of BSPD, fault or normal status)"
 		(exclude_from_sim no)
-		(at 13.462 180.594 0)
+		(at 12.7 180.086 0)
 		(effects
 			(font
 				(size 1.27 1.27)
