@@ -11,18 +11,15 @@ cc_firmware(
         "pdu.c",
         "pdu.h",
     ],
-    btldr = "//projects/btldr:pdu_btldr",
     target_compatible_with = [
         "//bazel/constraints:atmega16m1",
     ],
     visibility = ["//visibility:public"],
     deps = [
         ":can_api",
-        "//libs/adc",
-        "//libs/can",
         "//libs/gpio",
+        "//libs/spi",
         "//libs/timer",
-        "//projects/btldr:btldr_lib",
     ],
 )
 
