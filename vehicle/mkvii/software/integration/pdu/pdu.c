@@ -11,7 +11,9 @@ void timer_0_isr(void) {
 // Timer 1 setup for software PWM
 void timer_1_isr(void) {
     // Toggle pin to simulate 50% duty cycle
-    gpio_toggle_pin(PUMP_PWM);
+        
+    // Commented to disable pump. Only uncomment once fluid is in cooling loop.
+    //gpio_toggle_pin(PUMP_PWM);
 }
 
 
@@ -113,7 +115,7 @@ void hw_init() {
     timer_init(&timer_1_cfg); // Initialize water pump PWM timer
 }
 
-// Function to test firmware - used for debugging.
+// Function to test firmware
 void hw_test(){
     // // Illuminate display
     // uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
@@ -205,14 +207,14 @@ void transmit_currents() {
 
 int main(void) {
     hw_init();
+    // hw_test();
 
     // Turn on pump and enable fans
     gpio_set_pin(COOL_EN);
-    gpio_set_pin(FAN_PWM);
 
     uint8_t heartbeat_counter = 0;
 
-    // Temp: Illuminate entire display so it doesn't flicker.
+    // Temp: Illuminate entire display
     uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
     uint8_t rxdata = 0;
     spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
@@ -224,22 +226,16 @@ int main(void) {
             update_ts_status();
 
             // Update shutdown node LEDs
-            // TODO: Read CAN messages and GPIO inputs to update the shutdown
-            // nodes. Control LEDs through SPI IO Expander. LED on = node
-            // closed, LED off = node open.
 
             // Get current readings from ADC (+ publish to CAN)
-            transmit_currents();
+            // transmit_currents();
+            pdu_test.pdu_adc_raw = adc_read(INPUT_7);
+            can_send_pdu_test();
 
             // Update display
-            // TODO: display pack voltage (from V_sense ADC input), other things??
 
             // Cooling logic
-            // TODO: route motor controller temp through a shutdown node, read
-            // value, then if temp above set fan control pin to high, 
-            // otherwise set fan control pin to low. Fan is not PWM.
 
-            // Heartbeat LED
             run_10ms = false; // Set run flag to false
 
             heartbeat_counter++;
