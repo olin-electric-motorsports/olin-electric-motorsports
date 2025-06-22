@@ -3,7 +3,7 @@
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
 #include "libs/timer/api.h"
-#include "vehicle/mkvii/software/pdu/can_api.h"
+#include "vehicle/mkvii/software/integration/pdu/can_api.h"
 
 // Macro that returns the minimum between two values
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))

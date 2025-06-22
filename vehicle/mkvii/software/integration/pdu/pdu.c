@@ -1,4 +1,4 @@
-#include "vehicle/mkvii/software/pdu/pdu.h"
+#include "vehicle/mkvii/software/integration/pdu/pdu.h"
 #include <util/delay.h>
 
 // Timer 0 setup for main loop
@@ -11,9 +11,7 @@ void timer_0_isr(void) {
 // Timer 1 setup for software PWM
 void timer_1_isr(void) {
     // Toggle pin to simulate 50% duty cycle
-    
-    // Commented to disable pump. Only uncomment once fluid is in cooling loop.
-    //gpio_toggle_pin(PUMP_PWM);
+    gpio_toggle_pin(PUMP_PWM);
 }
 
 
@@ -210,6 +208,7 @@ int main(void) {
 
     // Turn on pump and enable fans
     gpio_set_pin(COOL_EN);
+    gpio_set_pin(FAN_PWM);
 
     uint8_t heartbeat_counter = 0;
 
