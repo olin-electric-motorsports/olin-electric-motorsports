@@ -1,0 +1,136 @@
+Configuration	oem stm32g441kb standard configuration (signals based)
+STM32CubeMX 	6.15.0
+Date	07/22/2025
+MCU	STM32G441KBTx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+ADC1	IN1 Single-ended	ADC1_IN1	PA0
+ADC1	IN3 Single-ended	ADC1_IN3	PA2
+ADC1	IN15 Single-ended	ADC1_IN15	PB0
+ADC2	IN3 Single-ended	ADC2_IN3	PA6
+ADC2	IN13 Single-ended	ADC2_IN13	PA5
+CORDIC	Activated	CORDIC_VS_CORDIC	VP_CORDIC_VS_CORDIC
+DAC1	Connected to external pin only	DAC1_OUT1	PA4
+FDCAN1	Activated	FDCAN1_RX	PA11
+FDCAN1	Activated	FDCAN1_TX	PA12
+FMAC	Activated	FMAC_VS_FMAC	VP_FMAC_VS_FMAC
+I2C1	I2C	I2C1_SCL	PA15
+I2C1	I2C	I2C1_SDA	PB7
+RCC	Crystal/Ceramic Resonator	RCC_OSC_IN	PF0-OSC_IN
+RCC	Crystal/Ceramic Resonator	RCC_OSC_OUT	PF1-OSC_OUT
+SYS	Serial Wire	SYS_JTCK-SWCLK	PA14
+SYS	Serial Wire	SYS_JTMS-SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+SYS	Dead Battery Signals disabled	SYS_VS_DBSignals	VP_SYS_VS_DBSignals
+USART1	Asynchronous	USART1_RX	PA10
+USART1	Asynchronous	USART1_TX	PA9
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+2	PF0-OSC_IN	RCC_OSC_IN	
+3	PF1-OSC_OUT	RCC_OSC_OUT	
+4	PG10-NRST	GPIO_Input	
+5	PA0	ADC1_IN1	
+6	PA1	GPIO_Input	
+7	PA2	ADC1_IN3	
+8	PA3	GPIO_Input	
+9	PA4	DAC1_OUT1	
+10	PA5	ADC2_IN13	
+11	PA6	ADC2_IN3	
+12	PA7	GPIO_Input	
+13	PB0	ADC1_IN15	
+18	PA8	GPIO_Input	
+19	PA9	USART1_TX	
+20	PA10	USART1_RX	
+21	PA11	FDCAN1_RX	
+22	PA12	FDCAN1_TX	
+23	PA13	SYS_JTMS-SWDIO	
+24	PA14	SYS_JTCK-SWCLK	
+25	PA15	I2C1_SCL	
+26	PB3	GPIO_Output	
+27	PB4	GPIO_Output	
+28	PB5	GPIO_Output	
+29	PB6	GPIO_Output	
+30	PB7	I2C1_SDA	
+31	PB8-BOOT0	GPIO_Output	
+PERIPHERALS	MODES	FUNCTIONS	PINS
+ADC1	IN1 Single-ended	ADC1_IN1	PA0
+ADC1	IN3 Single-ended	ADC1_IN3	PA2
+ADC1	IN15 Single-ended	ADC1_IN15	PB0
+ADC2	IN3 Single-ended	ADC2_IN3	PA6
+ADC2	IN13 Single-ended	ADC2_IN13	PA5
+CORDIC	Activated	CORDIC_VS_CORDIC	VP_CORDIC_VS_CORDIC
+DAC1	Connected to external pin only	DAC1_OUT1	PA4
+FDCAN1	Activated	FDCAN1_RX	PA11
+FDCAN1	Activated	FDCAN1_TX	PA12
+FMAC	Activated	FMAC_VS_FMAC	VP_FMAC_VS_FMAC
+I2C1	I2C	I2C1_SCL	PA15
+I2C1	I2C	I2C1_SDA	PB7
+RCC	Crystal/Ceramic Resonator	RCC_OSC_IN	PF0-OSC_IN
+RCC	Crystal/Ceramic Resonator	RCC_OSC_OUT	PF1-OSC_OUT
+SYS	Serial Wire	SYS_JTCK-SWCLK	PA14
+SYS	Serial Wire	SYS_JTMS-SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+SYS	Dead Battery Signals disabled	SYS_VS_DBSignals	VP_SYS_VS_DBSignals
+USART1	Asynchronous	USART1_RX	PA10
+USART1	Asynchronous	USART1_TX	PA9
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+2	PF0-OSC_IN	RCC_OSC_IN	
+3	PF1-OSC_OUT	RCC_OSC_OUT	
+4	PG10-NRST	GPIO_Input	
+5	PA0	ADC1_IN1	
+6	PA1	GPIO_Input	
+7	PA2	ADC1_IN3	
+8	PA3	GPIO_Input	
+9	PA4	DAC1_OUT1	
+10	PA5	ADC2_IN13	
+11	PA6	ADC2_IN3	
+12	PA7	GPIO_Input	
+13	PB0	ADC1_IN15	
+18	PA8	GPIO_Input	
+19	PA9	USART1_TX	
+20	PA10	USART1_RX	
+21	PA11	FDCAN1_RX	
+22	PA12	FDCAN1_TX	
+23	PA13	SYS_JTMS-SWDIO	
+24	PA14	SYS_JTCK-SWCLK	
+25	PA15	I2C1_SCL	
+26	PB3	GPIO_Output	
+27	PB4	GPIO_Output	
+28	PB5	GPIO_Output	
+29	PB6	GPIO_Output	
+30	PB7	I2C1_SDA	
+31	PB8-BOOT0	GPIO_Output	
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : oem stm32g441kb standard configuration (signals based)
+Project Folder : /home/henry/GitHub/olin-electric-motorsports/vehicle/mkviii/hardware/stm32/oem stm32g441kb standard configuration (signals based)
+Toolchain / IDE : EWARM V8.50
+Firmware Package Name and Version : STM32Cube FW_G4 V1.6.1
+
+
+Code Generation Settings : 
+STM32Cube MCU packages and embedded software packs : Copy all used libraries into the project folder
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : No
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : 
+
+
+
+
+
