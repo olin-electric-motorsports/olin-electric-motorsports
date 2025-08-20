@@ -349,7 +349,6 @@ def cc_firmware(name, **kwargs):
     # Generates tarball file with all
     pkg_tar(
         name = "{}.tgz".format(name),
-        extension = "tgz",
         srcs = [
             ":{}.elf".format(name),
             ":{}.hex".format(name),
@@ -487,6 +486,11 @@ kibot = rule(
             allow_single_file = True,
             mandatory = True,
         ),
+        "_kibot_tool": attr.label(
+            default = "//scripts/kibot",
+            executable = True,
+            cfg = "exec",
+        ),
     },
 )
 
@@ -535,7 +539,7 @@ def kicad_hardware(
         pcb_file = ":{}.kicad_pcb".format(name)
 
     pkg_tar(
-        name = "{}".format(name),
+        name = "{}.tgz".format(name),
         srcs = [
             ":{}_a_top_pcb.svg".format(name),
             ":{}_b_bottom_pcb.svg".format(name),
@@ -544,8 +548,6 @@ def kicad_hardware(
             ":{}.csv".format(name),
             # ":{}.step".format(name),
         ],
-        extension = "tgz",
-        mode = "0755",
         tags = ["kicad"],
     )
 

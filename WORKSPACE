@@ -19,6 +19,16 @@ http_archive(
 
 load("@rules_python//python:pip.bzl", "pip_install")
 
+http_archive(
+    name = "platforms",
+    sha256 = "c93fe6b9014f156f185f5dbca59b7230c97cb99ad5dec2355db92c55c05f722a",
+    strip_prefix = "platforms-0.0.8", 
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/platforms/archive/0.0.8.zip",
+        "https://github.com/bazelbuild/platforms/archive/0.0.8.zip",
+    ],
+)
+
 # Buildifier formatter for Bazel
 
 http_archive(

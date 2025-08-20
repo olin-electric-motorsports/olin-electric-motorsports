@@ -1,0 +1,122 @@
+###############################################################################
+# Bazel now uses Bzlmod by default to manage external dependencies.
+# Please consider migrating your external dependencies from WORKSPACE to MODULE.bazel.
+#
+# For more details, please check https://github.com/bazelbuild/bazel/issues/18958
+###############################################################################
+
+bazel_dep(name = "bazel_skylib", version = "1.5.0")
+bazel_dep(name = "platforms", version = "0.0.8")
+bazel_dep(name = "rules_cc", version = "0.2.0")
+bazel_dep(name = "rules_python", version = "1.5.3")
+bazel_dep(name = "gazelle", version = "0.45.0", repo_name = "bazel_gazelle")
+# -- bazel_dep definitions -- #
+
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+# -- use_repo_rule statements -- #
+
+
+http_archive(
+  name = "hedron_compile_commands",
+  url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/140666077ab4ca7f10041080e8b55cf641c07d30.tar.gz",
+  sha256 = "ce5714be202e942ba5f404d1c373a2fbb4b88c66737a924491fbd49afa91d48b",
+  strip_prefix = "bazel-compile-commands-extractor-140666077ab4ca7f10041080e8b55cf641c07d30",
+)
+
+http_archive(
+  name = "com_github_bazelbuild_buildtools",
+  strip_prefix = "buildtools-main",
+  urls = ["https://github.com/bazelbuild/buildtools/archive/master.zip"],
+)
+# 
+# http_archive( # not ready yet, when I get time I might finish it -Jacob Likins (2025)
+#     name = "cantools_",
+#     build_file = "@//third_party/cantools:BUILD",
+#     sha256 = "94f8138eecf9ab9cdf411451d4e6e76b8741def22f115ab4dfeb752739bda319",
+#     strip_prefix = "cantools-bazel_cantools", #whoops bad name but I'm too lazy to change it
+#     urls = [
+#         "https://github.com/jalikins/cantools/archive/refs/tags/bazel_cantools.tar.gz",
+#     ],
+# )
+# 
+
+http_archive(
+    name = "cantools_",
+    build_file = "@//third_party/cantools:BUILD",
+    sha256 = "0f240c9e07d08104637d591a2d67a2bad123ce4cf2bc92e48cb2c68595994853",
+    strip_prefix = "cantools-37.0.1-bazel",
+    urls = [
+        "https://github.com/jack-greenberg/cantools/archive/refs/tags/37.0.1-bazel.tar.gz",
+    ],
+)
+
+http_archive(
+    name = "log",
+    build_file = "@//third_party/log:BUILD",
+    strip_prefix = "log.c-master",
+    url = "https://github.com/rxi/log.c/archive/refs/heads/master.zip",
+)
+
+http_archive(
+    name = "cmocka",
+    build_file = "@//third_party/cmocka:BUILD",
+    sha256 = "f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6",
+    strip_prefix = "cmocka-1.1.5",
+    urls = ["https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz"],
+)
+# -- repo definitions -- #
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+
+pip.parse(
+    hub_name = "cantools_deps",
+    python_version ="3.9",
+    requirements_lock = "//third_party/cantools:requirements.txt",   #@cantools_//:requirements.txt",
+)
+
+use_repo(pip, "cantools_deps")
+
+pip.parse(
+    hub_name = "pytest_deps",
+    python_version ="3.9",
+    requirements_lock = "//tools/pytest:requirements.txt",
+)
+
+use_repo(pip, "pytest_deps")
+
+pip.parse(
+    hub_name = "pydeps",
+    python_version ="3.9",
+    requirements_lock = "//third_party:requirements.txt",
+)
+
+use_repo(pip, "pydeps")
+
+pip.parse(
+    hub_name = "symbol_library_converter_deps",
+    python_version ="3.9",
+    requirements_lock = "//tools/symbols:requirements.txt",
+)
+
+use_repo(pip,"symbol_library_converter_deps")
+
+pip.parse(
+    hub_name = "bom_join_deps",
+    python_version ="3.9",
+    requirements_lock = "//tools/symbols:requirements.txt",
+)
+use_repo(pip, "bom_join_deps")
+
+pip.parse(
+    hub_name = "kibot_deps",
+    python_version = "3.9",
+    requirements_lock = "//scripts/kibot:requirements.txt",
+)
+use_repo(pip, "kibot_deps")
+
+# End of extension `extension_for_pip_repository`
+
+# delete cause bazel now has better go checker
+#extension_for_go_repository = use_extension("//:extension_for_go_repository.bzl", "extension_for_go_repository")
+#use_repo(extension_for_go_repository, "com_github_bazelbuild_buildtools")
+# End of extension `extension_for_go_repository`

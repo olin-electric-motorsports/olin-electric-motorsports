@@ -1,21 +1,35 @@
-load("@cantools_deps//:requirements.bzl", "requirement")
+#load("@cantools_deps//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_binary", "py_library")
 
 package(
     default_visibility = ["//visibility:public"],
 )
 
+# py_library(
+#     name = "cantools_lib",
+#     srcs = glob(
+#         include = ["cantools/**/*.py"],
+#     ),
+#     tags = ["manual"],  # must be built as @cmocka//:cmocka
+#     deps = [
+#         requirement("bitstruct"),
+#         requirement("python-can"),
+#         requirement("textparser"),
+#         requirement("diskcache"),
+#     ],
+# )
+
 py_library(
     name = "cantools_lib",
     srcs = glob(
         include = ["cantools/**/*.py"],
     ),
-    tags = ["manual"],  # must be built as @cmocka//:cmocka
+    # The 'deps' now point directly to the pip-parsed libraries.
     deps = [
-        requirement("bitstruct"),
-        requirement("python-can"),
-        requirement("textparser"),
-        requirement("diskcache"),
+        "@cantools_deps//:bitstruct",
+        "@cantools_deps//:python_can",
+        "@cantools_deps//:textparser",
+        "@cantools_deps//:diskcache",
     ],
 )
 
