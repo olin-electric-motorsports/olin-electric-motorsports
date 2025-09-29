@@ -1,0 +1,85 @@
+(footprint "H_MountingHole"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "U$2"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "a181fb03-930e-45ee-a02b-3397c7b446ea")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "M.2_Mount"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "d5a40925-e26d-4e4d-b388-75bf3cb77893")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5fb87079-9a50-4825-98bb-86381d773cec")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "20c573b4-c983-47cd-b774-c431fff5eaea")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(zone_connect 2)
+	(attr through_hole exclude_from_bom)
+	(fp_line
+		(start 10.499999 0.016)
+		(end -10.499999 0.016)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "0e6b8a2b-da63-4e92-b1f0-c630d06d00da")
+	)
+	(pad "1" thru_hole circle
+		(at 0 0.016)
+		(size 5.499999 5.499999)
+		(drill 3.500001)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.1016)
+		(zone_connect 2)
+		(uuid "688e521f-9e1d-4d7d-958a-2a7585cbeccb")
+	)
+	(pad "1" smd circle
+		(at 0 1.016)
+		(size 7.249998 7.249998)
+		(layers "B.Cu" "B.Mask")
+		(solder_mask_margin 0.1016)
+		(zone_connect 2)
+		(uuid "1de6627e-481f-4d84-8b7f-1c0781a8c361")
+	)
+	(embedded_fonts no)
+)

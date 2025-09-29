@@ -1,0 +1,117 @@
+(footprint "CAPPRD500W60D1025H2200 (C_10uF_450V_Radial - 450BXC10MEFC10X20)"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "10x20")
+	(tags "Capacitor Polarised")
+	(property "Reference" "C**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "8bf063e2-d327-4bc0-97d6-75f7d53c8f5e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "CAPPRD500W60D1025H2200"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "8c5e2fbd-b33e-4425-aac0-6bb7a397dff0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fbbbb84e-3a49-4fd5-81d4-dfcbb8a50d07")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "497f8981-b5bc-4d70-8c17-c68f73ac1d30")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_circle
+		(center 2.5 0)
+		(end 2.5 5.125)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "75d9a312-e105-4655-9094-125b33655457")
+	)
+	(fp_circle
+		(center 2.5 0)
+		(end 2.5 5.125)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "a39df5a1-8623-4cb6-8555-317cc8dd7e23")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "e1d847dd-2157-4bd4-b505-4625bf8c4a07")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.2 1.2)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "161eb006-27e3-4d57-9f49-92e3a05296f9")
+	)
+	(pad "2" thru_hole circle
+		(at 5 0)
+		(size 1.2 1.2)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "18f67c34-cd35-4a31-94ea-80a6364884eb")
+	)
+	(embedded_fonts no)
+	(model "${OEM_3D_MODELS}/C_10uF_450V_Radial - 450BXC10MEFC10X20.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

@@ -1,0 +1,117 @@
+(footprint "CAPPRD350W60D800H1250 (C_100uF_50V_Radial - ESK107M050AG3EA)"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Kemet Size G3")
+	(tags "Capacitor Polarised")
+	(property "Reference" "C**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "89a0c712-ee23-4910-8af3-e398243e2de7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "CAPPRD350W60D800H1250"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "3a1ba4b2-8111-4b3a-a453-bc8233fda4cc")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aada90a5-bed2-421a-8ebe-12cd125ca894")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c12a81e0-5dc9-4e9d-a456-a7614e0d7bf0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_circle
+		(center 1.75 0)
+		(end 1.75 4)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "ef035f45-757f-4a99-a026-2913dd49bdc8")
+	)
+	(fp_circle
+		(center 1.75 0)
+		(end 1.75 4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "18471a4e-e941-43d4-b744-0b0b7bfc0fa4")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "5770d8be-2858-4007-81c6-f2325221062a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.2 1.2)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "bcf5b93b-ce73-4ee4-b780-9cb3fa6b8496")
+	)
+	(pad "2" thru_hole circle
+		(at 3.5 0)
+		(size 1.2 1.2)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a9e39a2f-9962-470f-adc8-33559b9f6317")
+	)
+	(embedded_fonts no)
+	(model "${OEM_3D_MODELS}/C_100uF_50V_Radial - ESK107M050AG3EA.stp"
+		(offset
+			(xyz 1.749999974 0 12.49999981)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 -90 -90)
+		)
+	)
+)

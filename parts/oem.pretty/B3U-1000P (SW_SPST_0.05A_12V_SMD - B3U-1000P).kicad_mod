@@ -1,0 +1,162 @@
+(footprint "B3U-1000P (SW_SPST_0.05A_12V_SMD - B3U-1000P)"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "B3U-1000P(M)")
+	(tags "Switch")
+	(property "Reference" "S**"
+		(at -0.461 0.206 0)
+		(layer "F.SilkS")
+		(uuid "2b3167a8-7e4a-4dbf-acb8-3133114a6ef0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "B3U-1000P"
+		(at -0.461 0.206 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "d78a4cba-8adc-4338-8c3d-21e7f5bcc1f0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c0d191b0-ea31-49e2-a0be-64157840ae55")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c06f0f62-9636-4d47-9c71-009d2fed3b2c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.5 -1.25)
+		(end 1.5 -1.25)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b4324bf9-6b6e-41c0-969f-18ce97bbbbb9")
+	)
+	(fp_line
+		(start -1.5 1.25)
+		(end 1.5 1.25)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7d65bc91-6b09-4f4c-908b-686ed1b760a6")
+	)
+	(fp_circle
+		(center 2.395 -0.971)
+		(end 2.395 -0.871)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "50f3424d-0460-477a-b98d-ad8c3fe17036")
+	)
+	(fp_line
+		(start -1.5 -1.25)
+		(end 1.5 -1.25)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "07053838-ca2c-48cc-ab98-966eb927f94e")
+	)
+	(fp_line
+		(start -1.5 1.25)
+		(end -1.5 -1.25)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "3bd68e5b-ad3f-4c9b-9736-ad5e68deb67d")
+	)
+	(fp_line
+		(start 1.5 -1.25)
+		(end 1.5 1.25)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "05a5a1aa-ec7b-4ad1-8446-6d17faa65558")
+	)
+	(fp_line
+		(start 1.5 1.25)
+		(end -1.5 1.25)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "6f687714-9224-4969-a0d8-ed6f1f2094bb")
+	)
+	(fp_text user "${REFERENCE}"
+		(at -0.461 0.206 0)
+		(layer "F.Fab")
+		(uuid "7fd610da-8acb-4d2c-8ce9-47e7ec6b3ee7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 1.7 0)
+		(size 0.8 1.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "54ad9dce-13fc-44e6-9ced-ef3ca8ede237")
+	)
+	(pad "2" smd rect
+		(at -1.7 0)
+		(size 0.8 1.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "3fe0a4b0-4f43-4c2b-8631-a2ca2f429289")
+	)
+	(embedded_fonts no)
+	(model "${OEM_3D_MODELS}/SW_SPST_0.05A_12V_SMD - B3U-1000P.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

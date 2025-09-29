@@ -1,0 +1,212 @@
+(footprint "D_0805_2012Metric"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Diode SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
+	(tags "diode")
+	(property "Reference" "REF**"
+		(at 0 -1.65 0)
+		(layer "F.SilkS")
+		(uuid "90a2cd10-afef-4710-9f0b-d9dde0c8c529")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "D_0805_2012Metric"
+		(at 0 1.65 0)
+		(layer "F.Fab")
+		(uuid "8a9053f9-7037-41ec-8f93-8937056e1cab")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "25f53a12-4349-4dde-a42e-b0ca4bd5f35c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bfdd11da-63db-47df-824b-7195584e4ded")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.685 -0.96)
+		(end -1.685 0.96)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9b48a0cd-7707-4e10-8e26-00a555c9c6ad")
+	)
+	(fp_line
+		(start -1.685 0.96)
+		(end 1 0.96)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0db00d4e-edf8-4a62-ac52-c8b9842b4bf2")
+	)
+	(fp_line
+		(start 1 -0.96)
+		(end -1.685 -0.96)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4881ded1-bdf7-45ce-9713-7b6783f45848")
+	)
+	(fp_line
+		(start -1.68 -0.95)
+		(end 1.68 -0.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "614aafa3-5a79-4730-bda2-d87c51f79331")
+	)
+	(fp_line
+		(start -1.68 0.95)
+		(end -1.68 -0.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "56c2a0a7-9c47-4173-863d-ac4f1725adf2")
+	)
+	(fp_line
+		(start 1.68 -0.95)
+		(end 1.68 0.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "44a8ba2f-2a2e-4987-8f47-391d72e14927")
+	)
+	(fp_line
+		(start 1.68 0.95)
+		(end -1.68 0.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "567939a7-2c28-41fc-a35d-5fb9ab493bce")
+	)
+	(fp_line
+		(start -1 -0.3)
+		(end -1 0.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "423f502b-cf4c-4a29-b8a1-1378f4a73d10")
+	)
+	(fp_line
+		(start -1 0.6)
+		(end 1 0.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f6dfff92-f667-437f-808b-7ee5831a4863")
+	)
+	(fp_line
+		(start -0.7 -0.6)
+		(end -1 -0.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f1a4d924-51e4-416d-aa5f-3012973c092f")
+	)
+	(fp_line
+		(start 1 -0.6)
+		(end -0.7 -0.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e92e867b-efe4-44e8-8bba-020b35c2df53")
+	)
+	(fp_line
+		(start 1 0.6)
+		(end 1 -0.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e1515c8c-6d65-4eba-ae59-880236c314ec")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "686f15df-d9cb-49eb-b171-cfdc93dcfcd0")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -0.9375 0)
+		(size 0.975 1.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "ccc7e3fd-c61b-4d29-bbf6-d0516fabbd9b")
+	)
+	(pad "2" smd roundrect
+		(at 0.9375 0)
+		(size 0.975 1.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "8f514e1a-ea4d-4312-b903-634f26555892")
+	)
+	(embedded_fonts no)
+	(model "${KICAD9_3DMODEL_DIR}/Diode_SMD.3dshapes/D_0805_2012Metric.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

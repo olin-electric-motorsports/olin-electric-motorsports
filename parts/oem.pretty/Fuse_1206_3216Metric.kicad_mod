@@ -1,0 +1,192 @@
+(footprint "Fuse_1206_3216Metric"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Fuse SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
+	(tags "fuse")
+	(property "Reference" "REF**"
+		(at 0 -1.83 0)
+		(layer "F.SilkS")
+		(uuid "84452003-6c10-4d70-b8f3-0b3d1b954afe")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Fuse_1206_3216Metric"
+		(at 0 1.83 0)
+		(layer "F.Fab")
+		(uuid "d2917b87-cb25-4332-b3e2-d9527f6f43ff")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "eb57b45c-3ba4-41f4-8a39-af153b9f659a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "26c2d479-a8bc-4024-aa6b-de7b5562a97c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -0.602064 -0.91)
+		(end 0.602064 -0.91)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "df42bc06-3c5f-4301-bb38-544bd86f64fc")
+	)
+	(fp_line
+		(start -0.602064 0.91)
+		(end 0.602064 0.91)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8e32ed06-bc5c-42a8-abba-186f836f45d0")
+	)
+	(fp_line
+		(start -2.28 -1.13)
+		(end 2.28 -1.13)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6f869b9e-c01c-4e24-8676-5a8c14bc2442")
+	)
+	(fp_line
+		(start -2.28 1.13)
+		(end -2.28 -1.13)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "873889c2-b23a-4ef3-bf2a-c4843dc27046")
+	)
+	(fp_line
+		(start 2.28 -1.13)
+		(end 2.28 1.13)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "2a2e7e4b-d4d6-4871-a9bb-8e4a7c9060d0")
+	)
+	(fp_line
+		(start 2.28 1.13)
+		(end -2.28 1.13)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "d149aecd-a8b0-4f07-a978-e809f819db49")
+	)
+	(fp_line
+		(start -1.6 -0.8)
+		(end 1.6 -0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "dec4d0f9-1990-481a-a26f-e5ba7293e9ab")
+	)
+	(fp_line
+		(start -1.6 0.8)
+		(end -1.6 -0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "be16606f-b4ba-42cc-8c85-fb7e70fcc104")
+	)
+	(fp_line
+		(start 1.6 -0.8)
+		(end 1.6 0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "daf26812-ab2b-4814-9eef-658d8740777c")
+	)
+	(fp_line
+		(start 1.6 0.8)
+		(end -1.6 0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9e4412ae-8888-4413-9aae-5767ea8a664e")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "467259f2-35df-4d67-87cb-5e92249761ba")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -1.4 0)
+		(size 1.25 1.75)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "534db582-0fde-45b9-8e0a-869ba228ccfe")
+	)
+	(pad "2" smd roundrect
+		(at 1.4 0)
+		(size 1.25 1.75)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.2)
+		(uuid "ca7c1f09-5fd5-488e-beab-a409ac71ecb0")
+	)
+	(embedded_fonts no)
+	(model "${KICAD9_3DMODEL_DIR}/Fuse.3dshapes/Fuse_1206_3216Metric.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
