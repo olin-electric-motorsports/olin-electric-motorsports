@@ -1,32 +1,201 @@
-(module "SODFL3718X102N" (layer F.Cu)
-  (descr "SOD-123W **")
-  (tags "Schottky Diode")
-  (attr smd)
-  (fp_text reference D** (at 0 0) (layer F.SilkS)
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_text user %R (at 0 0) (layer F.Fab)
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_text value "SODFL3718X102N" (at 0 0) (layer F.SilkS) hide
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_line (start -2.27 -1.1) (end 2.27 -1.1) (layer F.CrtYd) (width 0.05))
-  (fp_line (start 2.27 -1.1) (end 2.27 1.1) (layer F.CrtYd) (width 0.05))
-  (fp_line (start 2.27 1.1) (end -2.27 1.1) (layer F.CrtYd) (width 0.05))
-  (fp_line (start -2.27 1.1) (end -2.27 -1.1) (layer F.CrtYd) (width 0.05))
-  (fp_line (start -1.375 -0.9) (end 1.375 -0.9) (layer F.Fab) (width 0.1))
-  (fp_line (start 1.375 -0.9) (end 1.375 0.9) (layer F.Fab) (width 0.1))
-  (fp_line (start 1.375 0.9) (end -1.375 0.9) (layer F.Fab) (width 0.1))
-  (fp_line (start -1.375 0.9) (end -1.375 -0.9) (layer F.Fab) (width 0.1))
-  (fp_line (start -1.375 -0.355) (end -0.83 -0.9) (layer F.Fab) (width 0.1))
-  (fp_line (start -2.12 -0.9) (end 1.375 -0.9) (layer F.SilkS) (width 0.2))
-  (fp_line (start -1.375 0.9) (end 1.375 0.9) (layer F.SilkS) (width 0.2))
-  (pad 1 smd rect (at -1.575 0 0) (size 1.09 1.11) (layers F.Cu F.Paste F.Mask))
-  (pad 2 smd rect (at 1.575 0 0) (size 1.09 1.11) (layers F.Cu F.Paste F.Mask))
-  (model SS110LW.stp
-    (at (xyz 0 0 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
+(footprint "SODFL3718X102N (D_Schottky_100V_1A_SOD123W - SS110LW)"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "SOD-123W **")
+	(tags "Schottky Diode")
+	(property "Reference" "D**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "824c71d9-d2b3-4112-8929-e070f7489667")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "SODFL3718X102N"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "b630fabe-9f7b-4a19-bc83-e702e34b7f10")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fbbba857-2f49-4de3-bd5e-ab89b73d1376")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c538e5bf-cd9a-4a8c-93cf-55d44aa8cb72")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.12 -0.9)
+		(end 1.375 -0.9)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f0b3dab7-ad7d-4692-bfb5-6341def220a0")
+	)
+	(fp_line
+		(start -1.375 0.9)
+		(end 1.375 0.9)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5697b3b2-59da-4026-8e96-2d279425e332")
+	)
+	(fp_line
+		(start -2.27 -1.1)
+		(end 2.27 -1.1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "af8cee45-8841-48a4-99ef-cd56942dd2e7")
+	)
+	(fp_line
+		(start -2.27 1.1)
+		(end -2.27 -1.1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b5d00876-8139-49d4-9d3c-7cd58c80267a")
+	)
+	(fp_line
+		(start 2.27 -1.1)
+		(end 2.27 1.1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "73876b32-68d3-4dfd-b7b0-ce1e6937c93a")
+	)
+	(fp_line
+		(start 2.27 1.1)
+		(end -2.27 1.1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6875c7b3-742b-493a-89b0-df4af09efa46")
+	)
+	(fp_line
+		(start -1.375 -0.9)
+		(end 1.375 -0.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "2e832325-e7ec-4ddc-852e-448dc777cca8")
+	)
+	(fp_line
+		(start -1.375 -0.355)
+		(end -0.83 -0.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "8a1d6bc1-4e50-40cb-bea5-dced3a937012")
+	)
+	(fp_line
+		(start -1.375 0.9)
+		(end -1.375 -0.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "51eced1d-0285-4744-a8a6-db78fdaef16a")
+	)
+	(fp_line
+		(start 1.375 -0.9)
+		(end 1.375 0.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5877f294-f260-4cc3-8c4d-a3ed3cfbe3a5")
+	)
+	(fp_line
+		(start 1.375 0.9)
+		(end -1.375 0.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "68c06954-887b-48e1-b4fc-393474267888")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "e640d98d-9353-4051-98b3-6ab61a4694f0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1.575 0)
+		(size 1.09 1.11)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "6c1ce45b-95a5-436c-a922-6c00b0196e59")
+	)
+	(pad "2" smd rect
+		(at 1.575 0)
+		(size 1.09 1.11)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e320e9ad-7358-4ee3-80e7-23ad0b377097")
+	)
+	(embedded_fonts no)
+	(model "${OEM_DIR}/parts/3d models/D_Schottky_100V_1A_SOD123W - SS110LW.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )
