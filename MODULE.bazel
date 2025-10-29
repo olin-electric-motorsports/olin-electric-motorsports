@@ -40,15 +40,19 @@ http_archive(
 # )
 # 
 
-http_archive(
-    name = "cantools_",
-    build_file = "@//third_party/cantools:BUILD",
-    sha256 = "0f240c9e07d08104637d591a2d67a2bad123ce4cf2bc92e48cb2c68595994853",
-    strip_prefix = "cantools-37.0.1-bazel",
-    urls = [
-        "https://github.com/jack-greenberg/cantools/archive/refs/tags/37.0.1-bazel.tar.gz",
-    ],
-)
+# cantools_ext = use_extension(
+#     "//third_party/cantools:deps.bzl",
+#     "cantools_extension",
+#     # The mapping is passed directly as an argument HERE
+#     pip_dependencies = {
+#         "@cantools_deps_bitstruct": "@cantools_deps_bitstruct",
+#         "@cantools_deps_python_can": "@cantools_deps_python_can",
+#         "@cantools_deps_textparser": "@cantools_deps_textparser",
+#         "@cantools_deps_diskcache": "@cantools_deps_diskcache",
+#     },
+# )
+
+#use_repo(cantools_ext, "cantools_")
 
 http_archive(
     name = "log",
@@ -64,6 +68,7 @@ http_archive(
     strip_prefix = "cmocka-1.1.5",
     urls = ["https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz"],
 )
+
 # -- repo definitions -- #
 
 pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
@@ -71,7 +76,7 @@ pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
 pip.parse(
     hub_name = "cantools_deps",
     python_version ="3.9",
-    requirements_lock = "//third_party/cantools:requirements.txt",   #@cantools_//:requirements.txt",
+    requirements_lock = "//third_party/cantools:requirements.txt",
 )
 
 use_repo(pip, "cantools_deps")
@@ -113,6 +118,8 @@ pip.parse(
     requirements_lock = "//scripts/kibot:requirements.txt",
 )
 use_repo(pip, "kibot_deps")
+
+
 
 # End of extension `extension_for_pip_repository`
 
