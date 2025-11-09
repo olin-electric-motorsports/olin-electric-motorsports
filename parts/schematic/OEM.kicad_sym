@@ -3791,7 +3791,7 @@
 			(pin bidirectional line
 				(at -17.78 24.13 0)
 				(length 5)
-				(name "12V/3V(DA_ONLY)"
+				(name "12V"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3809,14 +3809,14 @@
 			(pin bidirectional line
 				(at -17.78 21.59 0)
 				(length 5)
-				(name "12V/3V(DA_ONLY)"
+				(name "5V"
 					(effects
 						(font
 							(size 1.27 1.27)
 						)
 					)
 				)
-				(number "A2"
+				(number "B5"
 					(effects
 						(font
 							(size 1 1)
@@ -3827,14 +3827,14 @@
 			(pin bidirectional line
 				(at -17.78 19.05 0)
 				(length 5)
-				(name "5V"
+				(name "3.3V"
 					(effects
 						(font
 							(size 1.27 1.27)
 						)
 					)
 				)
-				(number "B5"
+				(number "A2"
 					(effects
 						(font
 							(size 1 1)
@@ -12483,7 +12483,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g441kb.pdf"
-			(at 1.27 0 0)
+			(at 1.27 7.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12492,7 +12492,7 @@
 			)
 		)
 		(property "Description" "OEM STM32G441KBT6 Standard Configuration - v1.0 (07-25-2025)"
-			(at 1.27 0 0)
+			(at 1.27 7.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12730,42 +12730,6 @@
 			(pin bidirectional line
 				(at 36.83 24.13 180)
 				(length 2.54)
-				(name "(EVENTOUT/TIM1_CH3N/SPI2_NSS/I2C2_WS/I2C2_SDA)PF0-OSC_IN"
-					(effects
-						(font
-							(size 0.508 0.508)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin bidirectional line
-				(at 36.83 21.59 180)
-				(length 2.54)
-				(name "(EVENTOUT/SPI2_SCK)PF1-OSC_OUT"
-					(effects
-						(font
-							(size 0.508 0.508)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin bidirectional line
-				(at 36.83 16.51 180)
-				(length 2.54)
 				(name "(EVENTOUT/TIM2_ETR/TIM8_ETR/TIM8_BKIN/COMP1_OUT/USART2_NSS/USART2_CTS/TIM2_CH1/GPIO_EXTI0/ADC2_IN1/ADC1_IN1)PA0*"
 					(effects
 						(font
@@ -12782,7 +12746,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 13.97 180)
+				(at 36.83 21.59 180)
 				(length 2.54)
 				(name "(EVENTOUT/TIM15_CH1N/USART2_RTS/USART2_DE/TIM2_CH2/RTC_REFIN/GPIO_EXTI1/ADC2_IN2/ADC1_IN2)PA1*"
 					(effects
@@ -12800,7 +12764,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 11.43 180)
+				(at 36.83 19.05 180)
 				(length 2.54)
 				(name "(EVENTOUT/UCPD1_FRSTX2/UCPD1_FRSTX1/LPUART1_TX/TIM15_CH1/COMP2_OUT/USART2_TX/TIM2_CH3/GPIO_EXTI2/ADC1_IN3)PA2*"
 					(effects
@@ -12818,7 +12782,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 8.89 180)
+				(at 36.83 16.51 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_MCLK_A/LPUART1_RX/TIM15_CH2/USART2_RX/SAI1_CK1/TIM2_CH4/GPIO_EXTI3/ADC1_IN4)PA3*"
 					(effects
@@ -12836,7 +12800,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 6.35 180)
+				(at 36.83 13.97 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_FS_B/USART2_CK/SPI3_NSS/I2S3_WS/SPI1_NSS/TIM3_CH2/GPIO_EXTI4/ADC2_IN17)PA4*"
 					(effects
@@ -12854,7 +12818,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 3.81 180)
+				(at 36.83 11.43 180)
 				(length 2.54)
 				(name "(EVENTOUT/UCPD1_FRSTX2/UCPD1_FRSTX1/SPI1_SCK/TIM2_ETR/TIM2_CH1/GPIO_EXTI5/ADC2_IN13)PA5*"
 					(effects
@@ -12872,7 +12836,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 1.27 180)
+				(at 36.83 8.89 180)
 				(length 2.54)
 				(name "(EVENTOUT/LPUART1_CTS/COMP1_OUT/TIM1_BKIN/SPI1_MISO/TIM8_BKIN/TIM3_CH1/TIM16_CH1/GPIO_EXTI6/ADC2_IN3)PA6*"
 					(effects
@@ -12890,7 +12854,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -1.27 180)
+				(at 36.83 6.35 180)
 				(length 2.54)
 				(name "(EVENTOUT/UCPD1_FRSTX2/UCPD1_FRSTX1/COMP2_OUT/TIM1_CH1N/SPI_MOSI/TIM8_CH1N/TIM3_CH2/TIM17_CH1/GPIO_EXTI7/ADC2_IN4)PA7*"
 					(effects
@@ -12908,7 +12872,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -3.81 180)
+				(at 36.83 3.81 180)
 				(length 2.54)
 				(name "(EVENTOUT/UCPD1_FRSTX2/UCPD_FRSTX1/TIM1_CH2N/TIM8_CH2N/TIM3_CH3/GPIO_EXTI0/ADC1_IN15)PB0*"
 					(effects
@@ -12926,7 +12890,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -8.89 180)
+				(at 36.83 -1.27 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_SCK_A/SAI1_CK2/TIM4_ETR/USART1_CK/TIM1_CH1/I2S2_MCK/I2C2_SDA/I2C3_SCL/RCC_MCO/GPIO_EXTI8)PA8"
 					(effects
@@ -12944,7 +12908,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -11.43 180)
+				(at 36.83 -3.81 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_FS_A/TIM2_CH3/TIM15_BKIN/USART1_TX/TIM1_CH2/I2S3_MCK/I2C2_SCL/I2C3_SMBA/GPIO_EXTI9)PA9"
 					(effects
@@ -12962,7 +12926,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -13.97 180)
+				(at 36.83 -6.35 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_SD_A/SAI1_D1/TIM8_BKIN/TIM2_CH4/USART1_RX/TIM1_CH3/SPI2_MISO/I2C2_SMBA/CRS_SYNC/TIM17_BKIN/GPIO_EXTI10)PA10"
 					(effects
@@ -12980,7 +12944,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -16.51 180)
+				(at 36.83 -8.89 180)
 				(length 2.54)
 				(name "(EVENTOUT/TIM2_ETR/TIM1_BKIN/USART2_RX/SPI3_NSS/I2S3_WS/SPI1_NSS/I2C1_SCL/TIM8_CH1/TIM2_CH1/SYS_JTDI/GPIO_EXTI15)PA15"
 					(effects
@@ -12998,7 +12962,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -19.05 180)
+				(at 36.83 -11.43 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_SCK_B/TIM3_ETR/USART2_TX/SPI3_SCK/I2S3_CK/SPI1_SCK/TIM8_CH1N/CRS_SYNC/TIM4_ETR/TIM2_CH2/SYS_JTDO-SWO/GPIO_EXTI3)PB3"
 					(effects
@@ -13016,7 +12980,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -21.59 180)
+				(at 36.83 -13.97 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_MCLK_B/TIM17_BKIN/USART2_RX/SPI3_MISO/SPI1_MISO/TIM8_CH2N/TIM3_CH1/TIM16_CH1/SYS_JTRST/GPIO_EXTI4)PB4"
 					(effects
@@ -13034,7 +12998,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -24.13 180)
+				(at 36.83 -16.51 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_SD_B/LPTIM1_IN1/TIM17_CH1/I2C3_SDA/USART2_CK/SPI3_MOSI/I2S3_SD/SPI1_MOSI/I2C1_SMBA/TIM8_CH3N/TIM3_CH2/TIM16_BKIN/GPIO_EXTI5)PB5"
 					(effects
@@ -13052,7 +13016,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -26.67 180)
+				(at 36.83 -19.05 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_FS_B/LPTIM1_ETR/TIM8_BKIN2/COMP4_OUT/USART1_TX/TIM8_ETR/TIM8_CH1/TIM4_CH1/TIM16_CH1N/GPIO_EXTI6)PB6"
 					(effects
@@ -13070,7 +13034,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -29.21 180)
+				(at 36.83 -21.59 180)
 				(length 2.54)
 				(name "(EVENTOUT/LPTIM1_IN2/TIM3_CH4/COMP3_OUT/USART1_RX/TIM8_BKIN/I2C1_SDA/TIM4_CH2/TIM17_CH1N/GPIO_EXTI7)PB7"
 					(effects
@@ -13088,7 +13052,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 36.83 -31.75 180)
+				(at 36.83 -24.13 180)
 				(length 2.54)
 				(name "(EVENTOUT/SAI1_MCLK_A/TIM1_BKIN/TIM8_CH2/FDCAN1_RX/COMP1_OUT/I2C1_SCL/SAI1_CK1/TIM4_CH3/TIM16_CH1/GPIO_EXTI8)PB8-BOOT0"
 					(effects
@@ -13098,6 +13062,42 @@
 					)
 				)
 				(number "31"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 36.83 -29.21 180)
+				(length 2.54)
+				(name "(EVENTOUT/TIM1_CH3N/SPI2_NSS/I2C2_WS/I2C2_SDA)PF0-OSC_IN"
+					(effects
+						(font
+							(size 0.508 0.508)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 36.83 -31.75 180)
+				(length 2.54)
+				(name "(EVENTOUT/SPI2_SCK)PF1-OSC_OUT"
+					(effects
+						(font
+							(size 0.508 0.508)
+						)
+					)
+				)
+				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -13129,7 +13129,7 @@
 			)
 		)
 		(property "Footprint" "OEM:LQFP-32_7x7mm_P0.8mm"
-			(at 0 0 0)
+			(at 0 7.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13138,7 +13138,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g441kb.pdf"
-			(at 1.524 0.254 0)
+			(at 1.524 7.874 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13147,7 +13147,7 @@
 			)
 		)
 		(property "Description" "OEM STM32G441KBT6 Standard Configuration - v1.0 (07-25-2025)"
-			(at 0 0 0)
+			(at 0 7.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13385,42 +13385,6 @@
 			(pin bidirectional line
 				(at 35.56 22.86 180)
 				(length 2.54)
-				(name "PF0-OSC_IN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin bidirectional line
-				(at 35.56 20.32 180)
-				(length 2.54)
-				(name "PF1-OSC_OUT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin bidirectional line
-				(at 35.56 15.24 180)
-				(length 2.54)
 				(name "(TIM2_ETR/TIM2_CH1/GPIO_EXTI0/ADC2_IN1/ADC1_IN1)PA0*"
 					(effects
 						(font
@@ -13437,7 +13401,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 12.7 180)
+				(at 35.56 20.32 180)
 				(length 2.54)
 				(name "(TIM15_CH1N/TIM2_CH2/GPIO_EXTI1/ADC2_IN2/ADC1_IN2)PA1*"
 					(effects
@@ -13455,7 +13419,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 10.16 180)
+				(at 35.56 17.78 180)
 				(length 2.54)
 				(name "(TIM15_CH1/USART2_TX/TIM2_CH3/GPIO_EXTI2/ADC1_IN3)PA2*"
 					(effects
@@ -13473,7 +13437,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 7.62 180)
+				(at 35.56 15.24 180)
 				(length 2.54)
 				(name "(TIM15_CH2/USART2_RX/TIM2_CH4/GPIO_EXTI3/ADC1_IN4)PA3*"
 					(effects
@@ -13491,7 +13455,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 5.08 180)
+				(at 35.56 12.7 180)
 				(length 2.54)
 				(name "(USART2_CK/TIM3_CH2/GPIO_EXTI4/ADC2_IN17)PA4*"
 					(effects
@@ -13509,7 +13473,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 2.54 180)
+				(at 35.56 10.16 180)
 				(length 2.54)
 				(name "(TIM2_ETR/TIM2_CH1/GPIO_EXTI5/ADC2_IN13)PA5*"
 					(effects
@@ -13527,7 +13491,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 0 180)
+				(at 35.56 7.62 180)
 				(length 2.54)
 				(name "(TIM3_CH1/TIM16_CH1/GPIO_EXTI6/ADC2_IN3)PA6*"
 					(effects
@@ -13545,7 +13509,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -2.54 180)
+				(at 35.56 5.08 180)
 				(length 2.54)
 				(name "(TIM3_CH2/TIM17_CH1/GPIO_EXTI7/ADC2_IN4)PA7*"
 					(effects
@@ -13563,7 +13527,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -5.08 180)
+				(at 35.56 2.54 180)
 				(length 2.54)
 				(name "(TIM3_CH3/GPIO_EXTI0/ADC1_IN15)PB0*"
 					(effects
@@ -13581,7 +13545,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -10.16 180)
+				(at 35.56 -2.54 180)
 				(length 2.54)
 				(name "(TIM4_ETR/USART1_CK/GPIO_EXTI8)PA8"
 					(effects
@@ -13599,7 +13563,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -12.7 180)
+				(at 35.56 -5.08 180)
 				(length 2.54)
 				(name "(TIM2_CH3/TIM15_BKIN/USART1_TX/GPIO_EXTI9)PA9"
 					(effects
@@ -13617,7 +13581,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -15.24 180)
+				(at 35.56 -7.62 180)
 				(length 2.54)
 				(name "(TIM2_CH4/USART1_RX/TIM17_BKIN/GPIO_EXTI10)PA10"
 					(effects
@@ -13635,7 +13599,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -17.78 180)
+				(at 35.56 -10.16 180)
 				(length 2.54)
 				(name "(TIM2_ETR/TIM2_CH1/GPIO_EXTI15)PA15"
 					(effects
@@ -13653,7 +13617,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -20.32 180)
+				(at 35.56 -12.7 180)
 				(length 2.54)
 				(name "(TIM3_ETR/SPI1_SCK/TIM4_ETR/TIM2_CH2/GPIO_EXTI3)PB3"
 					(effects
@@ -13671,7 +13635,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -22.86 180)
+				(at 35.56 -15.24 180)
 				(length 2.54)
 				(name "(TIM17_BKIN/SPI1_MISO/TIM3_CH1/TIM16_CH1/GPIO_EXTI4)PB4"
 					(effects
@@ -13689,7 +13653,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -25.4 180)
+				(at 35.56 -17.78 180)
 				(length 2.54)
 				(name "(TIM17_CH1/SPI1_MOSI/TIM3_CH2/TIM16_BKIN/GPIO_EXTI5)PB5"
 					(effects
@@ -13707,7 +13671,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -27.94 180)
+				(at 35.56 -20.32 180)
 				(length 2.54)
 				(name "(TIM4_CH1/TIM16_CH1N/GPIO_EXTI6)PB6"
 					(effects
@@ -13725,7 +13689,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -30.48 180)
+				(at 35.56 -22.86 180)
 				(length 2.54)
 				(name "(TIM3_CH4/TIM4_CH2/TIM17_CH1N/GPIO_EXTI7)PB7"
 					(effects
@@ -13743,7 +13707,7 @@
 				)
 			)
 			(pin bidirectional line
-				(at 35.56 -33.02 180)
+				(at 35.56 -25.4 180)
 				(length 2.54)
 				(name "(TIM4_CH3/TIM16_CH1/GPIO_EXTI8)PB8-BOOT0"
 					(effects
@@ -13753,6 +13717,42 @@
 					)
 				)
 				(number "31"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 35.56 -30.48 180)
+				(length 2.54)
+				(name "PF0-OSC_IN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 35.56 -33.02 180)
+				(length 2.54)
+				(name "PF1-OSC_OUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)
