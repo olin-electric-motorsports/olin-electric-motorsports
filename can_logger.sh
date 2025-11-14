@@ -47,5 +47,6 @@ candump can0 | while read -r can_message; do
         else
             echo "Fail"
         fi
-    fi
+python3 telemetry_send.py "$can_message"
+ fi
 done
