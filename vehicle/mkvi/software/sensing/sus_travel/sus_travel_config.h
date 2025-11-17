@@ -7,22 +7,17 @@
 #include "vehicle/common/icm20948/icm20948.h"
 
 #define MIN_SUS_TRAVEL_POS 0
-#define MAX_SUS_TRAVEL_POS 255
-
-/*
-buffer here to make sure we don't request torque when small deviations
-in potentiometer happen and we aren't pressing pedal
-*/
-#define SUS_TRAVEL_BUFFER (5)
+#define MAX_SUS_TRAVEL_POS 75
 
 /*
 Minimum and maximum ADC counts representing 0% and 100% pedal travel
 Last calibrated 11-30-2023 for MKVI
 */
-#define SUS_TRAVEL_MIN_COUNTS_L (int16_t)((0 + SUS_TRAVEL_BUFFER) >> 2)
-#define SUS_TRAVEL_MAX_COUNTS_L (int16_t)((940 - SUS_TRAVEL_BUFFER) >> 2)
-#define SUS_TRAVEL_MIN_COUNTS_R (int16_t)((0 + SUS_TRAVEL_BUFFER) >> 2)
-#define SUS_TRAVEL_MAX_COUNTS_R (int16_t)((940 - SUS_TRAVEL_BUFFER) >> 2)
+
+#define SUS_TRAVEL_MIN_COUNTS_L (int16_t)((0) >> 2)
+#define SUS_TRAVEL_MAX_COUNTS_L (int16_t)((1023) >> 2)
+#define SUS_TRAVEL_MIN_COUNTS_R (int16_t)((0) >> 2)
+#define SUS_TRAVEL_MAX_COUNTS_R (int16_t)((1023) >> 2)
 
 // Travel data read timer config
 void timer_0_isr(void);
