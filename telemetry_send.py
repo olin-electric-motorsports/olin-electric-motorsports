@@ -27,4 +27,5 @@ def dashboard_listener(can_message):
         except Exception as e:
             print("Message failed to send over serial", e)
 
-dashboard_listener(can_message)
+while True:
+    dashboard_listener(can_message)
