@@ -3446,6 +3446,114 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "J_Battery_Cell_Spot_Weld"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.762)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 6.858 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Battery Cell Spot Weld"
+			(at 0 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:J_Bond_Pad_4p"
+			(at 5.08 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 5.08 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Battery Cell Spot Weld"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "Battery Cell Spot Weld"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Pin* Test*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "J_Battery_Cell_Spot_Weld_0_1"
+			(polyline
+				(pts
+					(xy 0 2.54) (xy -0.762 3.302) (xy 0 4.064) (xy 0.762 3.302) (xy 0 2.54)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "J_Battery_Cell_Spot_Weld_1_1"
+			(pin passive line
+				(at 0 0 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "J_DSub-9"
 		(pin_names
 			(offset 1.016)
@@ -3709,7 +3817,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OEM:te_pcie_x1_connector"
+		(property "Footprint" "OEM:J_PCIe_x1"
 			(at 0 35.56 0)
 			(effects
 				(font
@@ -3727,7 +3835,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Interface used to connect daugterboards to Mk.VII's motherboards"
+		(property "Description" "Interface used to connect daugterboards to motherboards"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3754,7 +3862,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "OEM:pcie_x1 OEM_PCIexpress_x1"
+		(property "ki_fp_filters" "OEM:J_PCIe_x1 OEM:J_PCIe_x1_Key"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4461,7 +4569,7 @@
 				)
 			)
 		)
-		(property "Footprint" "OEM:te_pcie_x4_connector"
+		(property "Footprint" "OEM:J_PCIe_x4"
 			(at -1.27 54.61 0)
 			(effects
 				(font
@@ -4506,7 +4614,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "OEM:pcie_x4"
+		(property "ki_fp_filters" "OEM_J_PCIe_x4 OEM_:J_PCIe_x4_Key"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5706,7 +5814,7 @@
 				)
 			)
 		)
-		(property "Footprint" "stm32g441kbt6:Programming_Pin_Header_Keyed"
+		(property "Footprint" "OEM:J_Programming_Pin_Header_Keyed"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5911,6 +6019,130 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "J_Wurth_Redcube"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "J_Redcube"
+			(at 0 -2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:Wurth-7461115"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/7461115.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "TERM REDCUBE 25PIN PCB RA"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "7461115"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "J_Wurth_Redcube_1_1"
+			(polyline
+				(pts
+					(xy -1.27 0) (xy -0.508 0)
+				)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 0 -0.508)
+				(mid -0.5058 0)
+				(end 0 0.508)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "K_Relay_DPST_NO_10A_12V_TH"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5923,7 +6155,7 @@
 				)
 			)
 		)
-		(property "Value" "K_Relay_DPST_NO_10A_12V_TH"
+		(property "Value" "K_10A_12V_TH"
 			(at 0 0 0)
 			(effects
 				(font
@@ -6604,6 +6836,323 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "K_Relay_SPST-NC_3A_12V_TH"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "K"
+			(at 11.43 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "K_3A_12V"
+			(at 11.43 1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:K_Relay_SPST-NC_3A_12V_TH (3350-4275-126)"
+			(at 11.43 -1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://comus-intl.com/wp-content/uploads/2017/01/High-Voltage-Reed-Relays.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RELAY REED HV SPST-NC 200W 3A 12"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "3350-4275-126"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "1P1T 1-Form-B single pole throw NC"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Relay?SPST*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "K_Relay_SPST-NC_3A_12V_TH_0_1"
+			(rectangle
+				(start -8.255 1.905)
+				(end -1.905 -1.905)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -7.62 -1.905) (xy -2.54 1.905)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 5.08) (xy -5.08 1.905)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 -5.08) (xy -5.08 -1.905)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.905 0) (xy -1.27 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.635 0) (xy 0 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.635 0) (xy 1.27 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.905 0) (xy 2.54 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 5.08) (xy 2.54 2.54) (xy 3.175 3.175) (xy 2.54 3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.175 0) (xy 3.81 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 5.08 -2.54) (xy 3.175 3.81)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 5.08 -2.54) (xy 5.08 -5.08)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "K_Relay_SPST-NC_3A_12V_TH_1_1"
+			(rectangle
+				(start -10.16 5.08)
+				(end 10.16 -5.08)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(text "+"
+				(at -3.556 -3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 7.62 270)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -7.62 90)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 2.54 7.62 270)
+				(length 2.54)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 -7.62 90)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "K_Relay_SPST-NO"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6896,6 +7445,628 @@
 					)
 				)
 				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "K_SPST-NO_10A_12V_TH"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "K"
+			(at 11.43 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "K_10A_12V"
+			(at 11.43 1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:G5Q1A4DC24 (K_SPST-NO_10A_12V_TH - G5Q-1A4-DC12)"
+			(at 11.43 -1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/39/1/J155-E1.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RELAY GEN PURPOSE SPST 10A 12V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "G5Q-1A4 DC12"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "1P1T 1-Form-A single pole throw NO"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Relay?SPST*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "K_SPST-NO_10A_12V_TH_0_0"
+			(polyline
+				(pts
+					(xy 7.62 5.08) (xy 7.62 2.54) (xy 6.985 3.175) (xy 7.62 3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "K_SPST-NO_10A_12V_TH_0_1"
+			(rectangle
+				(start -10.16 5.08)
+				(end 10.16 -5.08)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -8.255 1.905)
+				(end -1.905 -1.905)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -7.62 -1.905) (xy -2.54 1.905)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 5.08) (xy -5.08 1.905)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 -5.08) (xy -5.08 -1.905)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.905 0) (xy -1.27 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.635 0) (xy 0 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.635 0) (xy 1.27 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.905 0) (xy 2.54 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.175 0) (xy 3.81 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 5.08 -2.54) (xy 3.175 3.81)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 5.08 -2.54) (xy 5.08 -5.08)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "K_SPST-NO_10A_12V_TH_1_1"
+			(pin passive line
+				(at -5.08 7.62 270)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -7.62 90)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 -7.62 90)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 7.62 7.62 270)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "K_SPST-NO_10A_5V_TH"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "K"
+			(at 11.43 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "K_10A_5V"
+			(at 11.43 1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:G5Q1A4DC5 (K_SPST-NO_10A_5V_TH - G5Q-1A4-DC5)"
+			(at 11.43 -1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/39/1/J155-E1.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RELAY GEN PURPOSE SPST 10A 5V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "G5Q-1A4 DC5"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "1P1T 1-Form-A single pole throw NO"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Relay?SPST*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "K_SPST-NO_10A_5V_TH_0_0"
+			(polyline
+				(pts
+					(xy 7.62 5.08) (xy 7.62 2.54) (xy 6.985 3.175) (xy 7.62 3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "K_SPST-NO_10A_5V_TH_0_1"
+			(rectangle
+				(start -10.16 5.08)
+				(end 10.16 -5.08)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -8.255 1.905)
+				(end -1.905 -1.905)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -7.62 -1.905) (xy -2.54 1.905)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 5.08) (xy -5.08 1.905)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -5.08 -5.08) (xy -5.08 -1.905)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.905 0) (xy -1.27 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -0.635 0) (xy 0 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.635 0) (xy 1.27 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.905 0) (xy 2.54 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.175 0) (xy 3.81 0)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 5.08 -2.54) (xy 3.175 3.81)
+				)
+				(stroke
+					(width 0.508)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 5.08 -2.54) (xy 5.08 -5.08)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "K_SPST-NO_10A_5V_TH_1_1"
+			(pin passive line
+				(at -5.08 7.62 270)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -7.62 90)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 -7.62 90)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 7.62 7.62 270)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -9658,7 +10829,7 @@
 				(justify top)
 			)
 		)
-		(property "Value" "R_Pot_50k_0.05W"
+		(property "Value" "R_Pot_50k"
 			(at 0 11.43 0)
 			(effects
 				(font
@@ -10359,6 +11530,107 @@
 					)
 				)
 				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "TP_Hook_SMD"
+		(pin_names
+			(offset 1.016)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "TP"
+			(at 0 7.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP_SMD"
+			(at 1.27 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:TP_Hook_SMD"
+			(at 0 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5019.PDF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test Point SMD Hook"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5019"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "Test Point SMD Hook"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "TP_Hook_SMD_1_1"
+			(circle
+				(center 0 2.54)
+				(radius 1.27)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin input line
+				(at 0 -1.27 90)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -11533,8 +12805,8 @@
 				)
 			)
 			(pin passive line
-				(at -13.97 3.81 0)
-				(length 5.08)
+				(at -11.43 3.81 0)
+				(length 2.54)
 				(name "TXD"
 					(effects
 						(font
@@ -11551,8 +12823,8 @@
 				)
 			)
 			(pin passive line
-				(at -13.97 1.27 0)
-				(length 5.08)
+				(at -11.43 1.27 0)
+				(length 2.54)
 				(name "VSS"
 					(effects
 						(font
@@ -11569,8 +12841,8 @@
 				)
 			)
 			(pin passive line
-				(at -13.97 -1.27 0)
-				(length 5.08)
+				(at -11.43 -1.27 0)
+				(length 2.54)
 				(name "VDD"
 					(effects
 						(font
@@ -11587,8 +12859,8 @@
 				)
 			)
 			(pin passive line
-				(at -13.97 -3.81 0)
-				(length 5.08)
+				(at -11.43 -3.81 0)
+				(length 2.54)
 				(name "RXD"
 					(effects
 						(font
@@ -11605,8 +12877,8 @@
 				)
 			)
 			(pin passive line
-				(at 13.97 3.81 180)
-				(length 5.08)
+				(at 11.43 3.81 180)
+				(length 2.54)
 				(name "STBY"
 					(effects
 						(font
@@ -11623,8 +12895,8 @@
 				)
 			)
 			(pin passive line
-				(at 13.97 1.27 180)
-				(length 5.08)
+				(at 11.43 1.27 180)
+				(length 2.54)
 				(name "CANH"
 					(effects
 						(font
@@ -11641,8 +12913,8 @@
 				)
 			)
 			(pin passive line
-				(at 13.97 -1.27 180)
-				(length 5.08)
+				(at 11.43 -1.27 180)
+				(length 2.54)
 				(name "CANL"
 					(effects
 						(font
@@ -11659,8 +12931,8 @@
 				)
 			)
 			(pin passive line
-				(at 13.97 -3.81 180)
-				(length 5.08)
+				(at 11.43 -3.81 180)
+				(length 2.54)
 				(name "SPLIT"
 					(effects
 						(font
@@ -19670,234 +20942,6 @@
 			)
 		)
 	)
-	(symbol "K_Relay_SPST-NC_3A_12V_TH"
-		(extends "K_Relay_SPST-NC")
-		(property "Reference" "K"
-			(at 11.43 3.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "K_3A_12V"
-			(at 11.43 1.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:K_Relay_SPST-NC_3A_12V_TH (3350-4275-126)"
-			(at 11.43 -1.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://comus-intl.com/wp-content/uploads/2017/01/High-Voltage-Reed-Relays.pdf"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RELAY REED HV SPST-NC 200W 3A 12"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "3350-4275-126"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "TS Discharge Relay"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "Relay?SPST*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(symbol "K_SPST-NO_10A_12V_TH"
-		(extends "K_Relay_SPST-NO")
-		(property "Reference" "K"
-			(at 11.43 3.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "K_10A_12V"
-			(at 11.43 1.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:G5Q1A4DC24 (K_SPST-NO_10A_12V_TH - G5Q-1A4-DC12)"
-			(at 11.43 -1.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.com/datasheet/3/39/1/J155-E1.pdf"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RELAY GEN PURPOSE SPST 10A 12V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "G5Q-1A4 DC12"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "1P1T 1-Form-A single pole throw NO"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "Relay?SPST*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(symbol "K_SPST-NO_10A_5V_TH"
-		(extends "K_Relay_SPST-NO")
-		(property "Reference" "K"
-			(at 11.43 3.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "K_10A_5V"
-			(at 11.43 1.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "OEM:G5Q1A4DC5 (K_SPST-NO_10A_5V_TH - G5Q-1A4-DC5)"
-			(at 11.43 -1.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.com/datasheet/3/39/1/J155-E1.pdf"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RELAY GEN PURPOSE SPST 10A 5V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "G5Q-1A4 DC5"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "1P1T 1-Form-A single pole throw NO"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "Relay?SPST*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(symbol "L_15uH_3.2A_45.5m_SMD"
 		(extends "L")
 		(property "Reference" "L"
@@ -20330,7 +21374,7 @@
 				)
 			)
 		)
-		(property "Value" "R_0_0.1W"
+		(property "Value" "R_0"
 			(at 0 0 90)
 			(effects
 				(font
@@ -20403,7 +21447,7 @@
 				)
 			)
 		)
-		(property "Value" "R_0_1W"
+		(property "Value" "R_0"
 			(at 0 0 90)
 			(effects
 				(font
@@ -20476,7 +21520,7 @@
 				)
 			)
 		)
-		(property "Value" "R_1.43k_0.1W"
+		(property "Value" "R_1.43k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -20549,7 +21593,7 @@
 				)
 			)
 		)
-		(property "Value" "R_1.82M_0.1W"
+		(property "Value" "R_1.82M"
 			(at 0 0 90)
 			(effects
 				(font
@@ -20622,7 +21666,7 @@
 				)
 			)
 		)
-		(property "Value" "R_1.91k_0.1W"
+		(property "Value" "R_1.91k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -20695,7 +21739,7 @@
 				)
 			)
 		)
-		(property "Value" "R_100_0.1W"
+		(property "Value" "R_100"
 			(at 0 0 90)
 			(effects
 				(font
@@ -20768,7 +21812,7 @@
 				)
 			)
 		)
-		(property "Value" "R_100k_0.1W"
+		(property "Value" "R_100k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -20841,7 +21885,7 @@
 				)
 			)
 		)
-		(property "Value" "R_10_0.25W"
+		(property "Value" "R_10"
 			(at 0 0 90)
 			(effects
 				(font
@@ -20904,152 +21948,6 @@
 			)
 		)
 	)
-	(symbol "R_10_0.33W_0603"
-		(extends "R")
-		(property "Reference" "R"
-			(at 2.032 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "R_10_0.33W"
-			(at 0 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:R_0603_1608Metric"
-			(at -1.778 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.com/catalog/specsheets/KOA_Speer_SG73P_91124.pdf"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES 10 OHM 5% 1/3W 0603"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SG73P1JTTD100J"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "R res resistor"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "R_*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(symbol "R_10k_0.125W_0603"
-		(extends "R")
-		(property "Reference" "R"
-			(at 2.032 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "R_10k_0.125W"
-			(at 0 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:R_0603_1608Metric"
-			(at -1.778 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.seielect.com/catalog/sei-rncp.pdf"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES 10K OHM 1% 1/8W 0603"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RNCP0603FTD10K0"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "R res resistor"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "R_*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(symbol "R_10k_0.1W_0603"
 		(extends "R")
 		(property "Reference" "R"
@@ -21060,7 +21958,7 @@
 				)
 			)
 		)
-		(property "Value" "R_10k_0.1W"
+		(property "Value" "R_10k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21133,7 +22031,7 @@
 				)
 			)
 		)
-		(property "Value" "R_11.5k_0.1W"
+		(property "Value" "R_11.5k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21206,7 +22104,7 @@
 				)
 			)
 		)
-		(property "Value" "R_120_0.1W"
+		(property "Value" "R_120"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21269,6 +22167,79 @@
 			)
 		)
 	)
+	(symbol "R_120_100W_TO247"
+		(extends "R")
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R_120_100W"
+			(at 0 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:R_TO247-Heatsink"
+			(at -1.778 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7182/273_acl-ap101.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RES 120 OHM 5% 100W TO247"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AP101 120R J"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(symbol "R_120k_0.1W_0603"
 		(extends "R")
 		(property "Reference" "R"
@@ -21279,7 +22250,7 @@
 				)
 			)
 		)
-		(property "Value" "R_120k_0.1W"
+		(property "Value" "R_120k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21352,7 +22323,7 @@
 				)
 			)
 		)
-		(property "Value" "R_12_0.1W"
+		(property "Value" "R_12"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21425,7 +22396,7 @@
 				)
 			)
 		)
-		(property "Value" "R_12k_0.1W"
+		(property "Value" "R_12k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21498,7 +22469,7 @@
 				)
 			)
 		)
-		(property "Value" "R_158k_0.1W"
+		(property "Value" "R_158k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21571,7 +22542,7 @@
 				)
 			)
 		)
-		(property "Value" "R_15k_0.1W"
+		(property "Value" "R_15k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21644,7 +22615,7 @@
 				)
 			)
 		)
-		(property "Value" "R_1M_0.1W"
+		(property "Value" "R_1M"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21707,152 +22678,6 @@
 			)
 		)
 	)
-	(symbol "R_1M_0.25W_0603"
-		(extends "R")
-		(property "Reference" "R"
-			(at 2.032 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "R_1M_0.25W"
-			(at 0 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:R_0603_1608Metric"
-			(at -1.778 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.com/catalog/specsheets/Bourns_CMP_Datasheet_05.28.20.pdf"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RESHIGHPOWER 0603 1M 1% 1/4W TC1"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CMP0603-FX-1004ELF"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "R res resistor"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "R_*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(symbol "R_1k_0.125W_0805"
-		(extends "R")
-		(property "Reference" "R"
-			(at 2.032 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "R_1k_0.125W"
-			(at 0 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "OEM:R_0805_2012Metric"
-			(at -1.778 0 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.com/datasheet/3/1099/1/SEI-RMCF_RMCP.pdf"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES 1K OHM 1% 1/8W 0805"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RMCF0805FT1K00"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "R res resistor"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "R_*"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(symbol "R_1k_0.1W_0603"
 		(extends "R")
 		(property "Reference" "R"
@@ -21863,7 +22688,7 @@
 				)
 			)
 		)
-		(property "Value" "R_1k_0.1W"
+		(property "Value" "R_1k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -21936,7 +22761,7 @@
 				)
 			)
 		)
-		(property "Value" "R_2.2k_0.1W"
+		(property "Value" "R_2.2k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22009,7 +22834,7 @@
 				)
 			)
 		)
-		(property "Value" "R_200_0.1W"
+		(property "Value" "R_200"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22082,7 +22907,7 @@
 				)
 			)
 		)
-		(property "Value" "R_20k_2W"
+		(property "Value" "R_20k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22145,7 +22970,7 @@
 			)
 		)
 	)
-	(symbol "R_23.7K_0.1W_0603"
+	(symbol "R_23.7k_0.1W_0603"
 		(extends "R")
 		(property "Reference" "R"
 			(at 2.032 0 90)
@@ -22155,7 +22980,7 @@
 				)
 			)
 		)
-		(property "Value" "R_23.7K_0.1W"
+		(property "Value" "R_23.7k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22228,7 +23053,7 @@
 				)
 			)
 		)
-		(property "Value" "R_270k_0.1W"
+		(property "Value" "R_270k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22301,7 +23126,7 @@
 				)
 			)
 		)
-		(property "Value" "R_301_0.1W"
+		(property "Value" "R_301"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22374,7 +23199,7 @@
 				)
 			)
 		)
-		(property "Value" "R_31.6k_0.1W"
+		(property "Value" "R_31.6k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22447,7 +23272,7 @@
 				)
 			)
 		)
-		(property "Value" "R_33.2k_0.1W"
+		(property "Value" "R_33.2k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22520,7 +23345,7 @@
 				)
 			)
 		)
-		(property "Value" "R_330_0.1W"
+		(property "Value" "R_330"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22593,7 +23418,7 @@
 				)
 			)
 		)
-		(property "Value" "R_39k_0.1W"
+		(property "Value" "R_39k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22666,7 +23491,7 @@
 				)
 			)
 		)
-		(property "Value" "R_3k_0.1W"
+		(property "Value" "R_3k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22729,6 +23554,79 @@
 			)
 		)
 	)
+	(symbol "R_3k_100W_TO247"
+		(extends "R")
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R_3k_100W"
+			(at 0 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:R_TO247-Heatsink"
+			(at -1.778 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/catalog/specsheets/Bourns_07-17-2025_pf2472_Datasheet.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RES 3K OHM 1% 100W TO247"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "PF2472-3KF1"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(symbol "R_4.7k_0.1W_0603"
 		(extends "R")
 		(property "Reference" "R"
@@ -22739,7 +23637,7 @@
 				)
 			)
 		)
-		(property "Value" "R_4.7k_0.1W"
+		(property "Value" "R_4.7k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22812,7 +23710,7 @@
 				)
 			)
 		)
-		(property "Value" "R_4.99k_0.1W"
+		(property "Value" "R_4.99k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22885,7 +23783,7 @@
 				)
 			)
 		)
-		(property "Value" "R_40.2k_0.1W"
+		(property "Value" "R_40.2k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -22958,7 +23856,7 @@
 				)
 			)
 		)
-		(property "Value" "R_49.9k_0.1W"
+		(property "Value" "R_49.9k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23031,7 +23929,7 @@
 				)
 			)
 		)
-		(property "Value" "R_499_0.1W"
+		(property "Value" "R_499"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23104,7 +24002,7 @@
 				)
 			)
 		)
-		(property "Value" "R_5.1k_0.1W"
+		(property "Value" "R_5.1k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23167,6 +24065,79 @@
 			)
 		)
 	)
+	(symbol "R_560_100W_TO247"
+		(extends "R")
+		(property "Reference" "R"
+			(at 2.032 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "R_560_100W"
+			(at 0 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "OEM:R_TO247-Heatsink"
+			(at -1.778 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773180&DocType=DS&DocLang=English"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RES 560 OHM 1% 100W TO247"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MPT100C560RF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "R res resistor"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(symbol "R_576_0.1W_0603"
 		(extends "R")
 		(property "Reference" "R"
@@ -23177,7 +24148,7 @@
 				)
 			)
 		)
-		(property "Value" "R_576_0.1W"
+		(property "Value" "R_576"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23250,7 +24221,7 @@
 				)
 			)
 		)
-		(property "Value" "R_6.04k_0.125W"
+		(property "Value" "R_6.04k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23323,7 +24294,7 @@
 				)
 			)
 		)
-		(property "Value" "R_60.4_0.1W"
+		(property "Value" "R_60.4"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23396,7 +24367,7 @@
 				)
 			)
 		)
-		(property "Value" "R_604k_0.1W"
+		(property "Value" "R_604k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23469,7 +24440,7 @@
 				)
 			)
 		)
-		(property "Value" "R_71.5k_0.1W"
+		(property "Value" "R_71.5k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23542,7 +24513,7 @@
 				)
 			)
 		)
-		(property "Value" "R_75k_0.1W"
+		(property "Value" "R_75k"
 			(at 0 0 90)
 			(effects
 				(font
@@ -23615,7 +24586,7 @@
 				)
 			)
 		)
-		(property "Value" "R_8.06k_0.1W"
+		(property "Value" "R_8.06k"
 			(at 0 0 90)
 			(effects
 				(font
