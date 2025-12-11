@@ -4221,7 +4221,7 @@
 	)
 	(text "Precharge Relay\n"
 		(exclude_from_sim no)
-		(at 112.268 66.04 0)
+		(at 86.36 44.45 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4303,6 +4303,10 @@
 		(uuid "08f35fa3-0cb7-4082-9f81-f140e3ee939e")
 	)
 	(no_connect
+		(at 256.54 59.69)
+		(uuid "0c905296-7b9f-45ae-bf33-acea31c8600d")
+	)
+	(no_connect
 		(at 256.54 77.47)
 		(uuid "0f303490-65a9-4bda-a391-1c487af737e8")
 	)
@@ -4339,10 +4343,6 @@
 		(uuid "39e32405-2519-469b-8665-0413701965b8")
 	)
 	(no_connect
-		(at 256.54 34.29)
-		(uuid "3a13b262-0ece-4d22-995f-cad853371dd8")
-	)
-	(no_connect
 		(at 220.98 57.15)
 		(uuid "5bf1ca96-a83d-40f8-bec4-ec609b032413")
 	)
@@ -4363,10 +4363,6 @@
 		(uuid "89a10994-f7e5-4733-b26a-22fc1fac32c1")
 	)
 	(no_connect
-		(at 256.54 59.69)
-		(uuid "89dbb904-90cd-4dc0-80c9-9fe90eaa4869")
-	)
-	(no_connect
 		(at 256.54 74.93)
 		(uuid "90379abf-63fc-48c7-b1cc-7e4c07bff45f")
 	)
@@ -4383,6 +4379,10 @@
 		(uuid "99c91810-2afe-4dc7-a2bb-d77e3f3471a0")
 	)
 	(no_connect
+		(at 256.54 57.15)
+		(uuid "a88e986d-0b52-4a10-b4d5-6678b5ca7375")
+	)
+	(no_connect
 		(at 256.54 67.31)
 		(uuid "af0787ed-3b45-40e1-9828-612be2c857e4")
 	)
@@ -4393,10 +4393,6 @@
 	(no_connect
 		(at 256.54 31.75)
 		(uuid "bf74434c-d04b-424f-a142-ffa6956e566a")
-	)
-	(no_connect
-		(at 256.54 57.15)
-		(uuid "c10fda4f-0331-422f-a393-6dab4504a79f")
 	)
 	(no_connect
 		(at 256.54 72.39)
@@ -4410,23 +4406,15 @@
 		(at 256.54 82.55)
 		(uuid "fcc87ea5-c0fe-4599-9e67-dfd06588fcef")
 	)
-	(bus_entry
-		(at 83.82 162.56)
-		(size 2.54 2.54)
+	(wire
+		(pts
+			(xy 48.26 50.8) (xy 48.26 53.34)
+		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "cbda7665-b784-4efe-be08-30cfa0b7c923")
-	)
-	(bus_entry
-		(at 85.09 139.7)
-		(size 2.54 2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eedd4002-5555-4930-b930-1e0a3ea6b4b7")
+		(uuid "05c53c30-ab4a-4530-847f-9bb650bde57b")
 	)
 	(wire
 		(pts
@@ -4730,7 +4718,7 @@
 	)
 	(polyline
 		(pts
-			(xy 21.59 125.73) (xy 215.9 125.73)
+			(xy 13.97 125.73) (xy 208.28 125.73)
 		)
 		(stroke
 			(width 0)
@@ -4890,7 +4878,7 @@
 	)
 	(polyline
 		(pts
-			(xy 215.9 125.73) (xy 215.9 57.15)
+			(xy 208.28 125.73) (xy 208.28 34.29)
 		)
 		(stroke
 			(width 0)
@@ -5030,7 +5018,7 @@
 	)
 	(polyline
 		(pts
-			(xy 21.59 57.15) (xy 215.9 57.15)
+			(xy 13.97 34.29) (xy 208.28 34.29)
 		)
 		(stroke
 			(width 0)
@@ -5130,7 +5118,7 @@
 	)
 	(polyline
 		(pts
-			(xy 21.59 57.15) (xy 21.59 125.73)
+			(xy 13.97 34.29) (xy 13.97 125.73)
 		)
 		(stroke
 			(width 0)
@@ -5358,15 +5346,35 @@
 		)
 		(uuid "fe640a3e-7ff9-4c8b-89d9-0dc39fc914ad")
 	)
-	(label "PRECHARGE_LSD"
-		(at 91.44 107.95 180)
+	(label "PRECHARGE1_LSD"
+		(at 256.54 34.29 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "06ce214a-fece-47d4-814c-66ed092cb3d4")
+	)
+	(label "FINAL_SHUTDOWN"
+		(at 40.64 45.72 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "3106b7f7-6ec7-4631-bfa2-6ebb51687a6e")
+		(uuid "0abf93e8-307c-4656-8a08-0d985db2b70f")
+	)
+	(label "MAS_MOS"
+		(at 189.23 114.3 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0c20373f-ddaa-4838-b958-ddb155f23c87")
 	)
 	(label "FINAL_SHUTDOWN"
 		(at 130.81 87.63 180)
@@ -5418,15 +5426,15 @@
 		)
 		(uuid "5a7a2500-8f30-4901-ac77-4a15ca281318")
 	)
-	(label "PRECHARGE_LSD"
-		(at 181.61 106.68 180)
+	(label "MAS_MOS"
+		(at 99.06 115.57 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "5c38b6fe-4291-40ce-809a-73153eb56467")
+		(uuid "5d963042-0176-4fd5-a34e-d2ea98bbdc54")
 	)
 	(label "HV_BAT+"
 		(at 135.89 187.96 180)
@@ -5458,7 +5466,17 @@
 		)
 		(uuid "7b8cb47b-e932-48f0-b146-b6eed236ce1e")
 	)
-	(label "PRECHARGE_LSD"
+	(label "PRECHARGE1_LSD"
+		(at 91.44 107.95 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "822cb435-a53f-4173-97bc-2d3d7910b09d")
+	)
+	(label "PRECHARGE2_LSD"
 		(at 256.54 49.53 0)
 		(effects
 			(font
@@ -5558,6 +5576,16 @@
 		)
 		(uuid "cc5b2b0e-0a1e-4203-a3f7-19eeabb68b4d")
 	)
+	(label "MAS_MOS"
+		(at 48.26 40.64 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "cc77d32f-d91c-4d6a-bca4-3c6e70576b15")
+	)
 	(label "GND"
 		(at 256.54 52.07 0)
 		(effects
@@ -5567,6 +5595,16 @@
 			(justify left bottom)
 		)
 		(uuid "d38e9a9d-c539-4067-9129-4947987508b9")
+	)
+	(label "PRECHARGE2_LSD"
+		(at 181.61 106.68 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ef50273b-f5f4-454b-b763-8f5dd97df824")
 	)
 	(label "HV_TS+"
 		(at 40.64 157.48 180)
@@ -7018,72 +7056,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 99.06 115.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "39fb457f-45e0-4faa-b286-55e2425f34ba")
-		(property "Reference" "#PWR0106"
-			(at 99.06 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 99.06 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 99.06 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 99.06 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 99.06 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4546e5a8-54dd-4220-bc23-be0ac76456c6")
-		)
-		(instances
-			(project "precharge_discharge"
-				(path "/96f56455-bf31-456c-8371-5b3706690d23"
-					(reference "#PWR0106")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "OEM:LED_WHITE")
 		(at 58.42 105.41 180)
 		(unit 1)
@@ -7208,72 +7180,6 @@
 			(project "precharge_discharge"
 				(path "/96f56455-bf31-456c-8371-5b3706690d23"
 					(reference "D4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 189.23 114.3 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "51006611-9e50-461e-ac6e-14fa7de4434a")
-		(property "Reference" "#PWR02"
-			(at 189.23 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 189.23 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 189.23 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 189.23 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 189.23 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a2e7665b-1f7f-4939-b3a1-049404760972")
-		)
-		(instances
-			(project "prechargedischarge_mkviii"
-				(path "/96f56455-bf31-456c-8371-5b3706690d23"
-					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -7889,6 +7795,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 40.64 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "71d6e48a-739a-455f-a2a2-a5c133c69427")
+		(property "Reference" "#PWR03"
+			(at 40.64 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 40.64 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 40.64 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8c660af7-1e37-4877-8837-507f8cf81041")
+		)
+		(instances
+			(project "prechargedischarge_mkviii"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OEM:SSM3K333R")
 		(at 96.52 107.95 0)
 		(unit 1)
@@ -8486,6 +8458,139 @@
 		)
 	)
 	(symbol
+		(lib_id "OEM:10KR")
+		(at 40.64 49.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a69fb57f-0a72-48d7-9591-cb9486364d4d")
+		(property "Reference" "R13"
+			(at 43.18 48.2599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10KR"
+			(at 43.18 50.7999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:R_0603"
+			(at 38.862 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/stackpole_RMCF_RMCP.pdf"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0603FT10K0"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Stackpole Electronics"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "RMCF0603FT10K0TR-ND"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Reel"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 40.64 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e27f8950-d25a-46e1-abcc-eb16044d07fd")
+		)
+		(pin "2"
+			(uuid "a6c063f3-53b4-4d28-8357-1d90ee2f4861")
+		)
+		(instances
+			(project "prechargedischarge_mkviii"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23"
+					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OEM:1KR")
 		(at 158.75 104.14 90)
 		(unit 1)
@@ -9055,6 +9160,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 48.26 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c2f2143e-cddf-4426-a8a3-7a99b895b00d")
+		(property "Reference" "#PWR04"
+			(at 48.26 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 48.26 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 48.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 48.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 48.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b4928b07-afd9-4c02-9d84-6786ac1e26e8")
+		)
+		(instances
+			(project "prechargedischarge_mkviii"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "OEM:10KR")
 		(at 180.34 110.49 0)
 		(unit 1)
@@ -9247,6 +9418,142 @@
 			(project "precharge_discharge"
 				(path "/96f56455-bf31-456c-8371-5b3706690d23"
 					(reference "#PWR0103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OEM:SSM3K333R")
+		(at 45.72 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "de501316-0451-44ae-ae78-ce4f9db94a34")
+		(property "Reference" "Q3"
+			(at 52.07 44.4499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SSM3K333R"
+			(at 52.07 46.9899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OEM:SOT-23F"
+			(at 50.8 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "${OEM_DIR}/parts/datasheets/toshiba_SSM3K333R.pdf"
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SSM3K333R,LF"
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFN" "Toshiba"
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DKPN" "SSM3K333RLFDKR-ND"
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "SOT-23"
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "NewDesigns" "YES"
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stocked" "Digi-Reel"
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Style" "SMD"
+			(at 45.72 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3b0f7952-fe3e-417c-8f1e-f1c7edf1f960")
+		)
+		(pin "2"
+			(uuid "ab3566fb-64fb-454e-a2b1-de0818a6afed")
+		)
+		(pin "3"
+			(uuid "463f7833-9280-4e51-8675-8d1185b8a391")
+		)
+		(instances
+			(project "prechargedischarge_mkviii"
+				(path "/96f56455-bf31-456c-8371-5b3706690d23"
+					(reference "Q3")
 					(unit 1)
 				)
 			)
