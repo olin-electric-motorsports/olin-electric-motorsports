@@ -1,0 +1,201 @@
+(footprint "D_Zener_18V_5W_DO214AA - DIOM5336X262N"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "SMB (DO-214AA)")
+	(tags "Zener Diode")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "e493d2d7-e2b5-489c-9400-8b8044ff0590")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "DIOM5336X262N"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "31829ad2-dc49-41bb-beb4-c87e0741812c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2c719984-5506-440f-a5fe-e90b8b9e8bd9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2397d673-42fa-44c9-99dd-188245297952")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.668 1.81)
+		(end 2.668 1.81)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "e0cdd05b-7552-4261-a586-e740307a628a")
+	)
+	(fp_line
+		(start 2.668 -1.81)
+		(end -3.275 -1.81)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2304d4a0-ec6a-4bef-b778-c1c67b48b746")
+	)
+	(fp_line
+		(start -3.575 -2.22)
+		(end 3.575 -2.22)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "e50fc127-6a9d-4f2f-837d-01a8e06a79f9")
+	)
+	(fp_line
+		(start -3.575 2.22)
+		(end -3.575 -2.22)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "e0c73406-d67c-40a3-b81d-531f4b7ad7fe")
+	)
+	(fp_line
+		(start 3.575 -2.22)
+		(end 3.575 2.22)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "5e0508de-17e7-4659-be51-1e5a705502c6")
+	)
+	(fp_line
+		(start 3.575 2.22)
+		(end -3.575 2.22)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b2612622-39fd-4e02-bbd4-0636037fb34c")
+	)
+	(fp_line
+		(start -2.668 -1.81)
+		(end 2.668 -1.81)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f8542217-ad32-4eda-a97c-1537b1601dad")
+	)
+	(fp_line
+		(start -2.668 -0.735)
+		(end -1.592 -1.81)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "099a7133-e915-4366-a6e5-6366ae5ff89f")
+	)
+	(fp_line
+		(start -2.668 1.81)
+		(end -2.668 -1.81)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5bca9b4f-9657-490e-8379-826a3fb12798")
+	)
+	(fp_line
+		(start 2.668 -1.81)
+		(end 2.668 1.81)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9b27017b-9f3a-4a21-9706-88bc2d29ace3")
+	)
+	(fp_line
+		(start 2.668 1.81)
+		(end -2.668 1.81)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "36668434-e658-4f92-aa47-f736ea7461ce")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "4faff7a2-f896-4b45-a299-fef3a8d43f3d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -2.2 0 90)
+		(size 2.15 2.25)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9ee330c0-ae4e-4791-8d4b-43d4cbb67578")
+	)
+	(pad "2" smd rect
+		(at 2.2 0 90)
+		(size 2.15 2.25)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d86c9e6e-a99d-41ea-a181-d73da0698791")
+	)
+	(embedded_fonts no)
+	(model "${OEM_DIR}/parts/3d models/D_Zener_18V_5W_DO214AA - SMBJ5355B-TP.stp"
+		(offset
+			(xyz 6.73999967 -4.579999855 1.320000033)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 90 0 0)
+		)
+	)
+)
