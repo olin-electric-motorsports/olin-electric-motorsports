@@ -8985,7 +8985,7 @@
 	(footprint "OEM:K_Relay_SPST-NC_3A_12V_TH (3350-4275-126)"
 		(layer "F.Cu")
 		(uuid "c803a3ee-abe9-4c88-bd9d-dbe2d18210f2")
-		(at 188.49 83.477 180)
+		(at 188.4 83.677 180)
 		(property "Reference" "K2"
 			(at 0 0.5 180)
 			(layer "F.SilkS")
@@ -11198,7 +11198,7 @@
 			(at 0 4.206643 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "44fdcd67-be3c-431c-aa50-704c2644665c")
+			(uuid "0fe39c71-4005-479d-8c3b-74893b6457fe")
 			(effects
 				(font
 					(size 0.001 0.001)
@@ -11211,7 +11211,7 @@
 			(at 0 -4.206643 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "ad5f6758-e216-4491-8228-877c1e966656")
+			(uuid "9f71485d-83f7-4a75-b2fe-cb308abb897d")
 			(effects
 				(font
 					(size 0.001 0.001)
@@ -11224,7 +11224,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "1890b9c3-145c-4946-8de7-d064412d93cb")
+			(uuid "7308a32e-6dbc-4a33-a564-4ee7a27e1a74")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11237,7 +11237,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "f62c8114-eb99-4386-ab28-e10b8df77801")
+			(uuid "eec4fb68-228e-47c2-801b-72eb11f20345")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13393,6 +13393,16 @@
 		(uuid "157b90b6-ee13-43d0-bc25-38f3a4f5c5b4")
 	)
 	(gr_line
+		(start 192.7 135.38)
+		(end 225.42 135.38)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "Edge.Cuts")
+		(uuid "18d669ad-7bb1-4cea-ba1d-b8bcaf32d850")
+	)
+	(gr_line
 		(start 162.7 134.88)
 		(end 163.2 135.38)
 		(stroke
@@ -13403,6 +13413,16 @@
 		(uuid "2c8edc58-fe32-4200-8c9c-ebd5dd03dfa0")
 	)
 	(gr_line
+		(start 191.7 120.65)
+		(end 192.2 121.15)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "3ffdb472-0f76-49a4-a018-b8d9f708206e")
+	)
+	(gr_line
 		(start 150.1 135.38)
 		(end 160.3 135.38)
 		(stroke
@@ -13411,6 +13431,16 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "41df3979-cdfe-4894-a661-c4b7a45061e7")
+	)
+	(gr_line
+		(start 192.2 121.15)
+		(end 192.2 134.8)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "Edge.Cuts")
+		(uuid "4596bdc7-5f36-49f7-b117-a565b9b664d7")
 	)
 	(gr_line
 		(start 169.91 121.92)
@@ -13432,6 +13462,16 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "4b8becfe-f933-4143-a117-9e59a65f13fd")
+	)
+	(gr_line
+		(start 192.7 135.38)
+		(end 192.2 134.8)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "52489604-bc49-4e55-85ff-db2522ebed75")
 	)
 	(gr_line
 		(start 160.3 135.38)
@@ -13508,7 +13548,7 @@
 	)
 	(gr_line
 		(start 171.18 120.65)
-		(end 222.073949 120.65)
+		(end 191.7 120.65)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -13537,17 +13577,6 @@
 		(layer "Edge.Cuts")
 		(uuid "829a3ef5-cc07-4a01-b491-b7d75075e133")
 	)
-	(gr_arc
-		(start 225.92 116.803949)
-		(mid 224.793503 119.523503)
-		(end 222.073949 120.65)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(layer "Edge.Cuts")
-		(uuid "8bc56726-7cc9-42ee-b20e-ca0cfb810a3b")
-	)
 	(gr_line
 		(start 174.5 31.3)
 		(end 222.073949 31.3)
@@ -13560,7 +13589,7 @@
 	)
 	(gr_line
 		(start 225.92 35.146051)
-		(end 225.92 116.803949)
+		(end 225.92 134.88)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -13628,6 +13657,16 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "f17d7b5d-ddb4-4bf3-b232-ac4084432747")
+	)
+	(gr_line
+		(start 225.42 135.38)
+		(end 225.92 134.88)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "f5ac4494-7c94-4d20-93b0-0f460dfebb1d")
 	)
 	(gr_line
 		(start 67.945 53.975)
@@ -13775,6 +13814,42 @@
 			(at 134.25 116.55 0)
 			(layer "F.SilkS")
 			(uuid "b2797055-ada3-4918-af97-976abc189f55")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+	)
+	(dimension
+		(type aligned)
+		(layer "F.SilkS")
+		(uuid "c18abaf8-68ec-4bf8-8f00-a93b4f9fc24e")
+		(pts
+			(xy 257.13 94.11) (xy 256.930001 81.41)
+		)
+		(height -0.104333)
+		(format
+			(prefix "")
+			(suffix "")
+			(units 3)
+			(units_format 1)
+			(precision 1)
+		)
+		(style
+			(thickness 0.12)
+			(arrow_length 1.27)
+			(text_position_mode 0)
+			(arrow_direction outward)
+			(extension_height 0.58642)
+			(extension_offset 0.5)
+			(keep_text_aligned yes)
+		)
+		(gr_text "12.7 mm"
+			(at 258.075537 87.743535 -89.09777884)
+			(layer "F.SilkS")
+			(uuid "c18abaf8-68ec-4bf8-8f00-a93b4f9fc24e")
 			(effects
 				(font
 					(size 1 1)
