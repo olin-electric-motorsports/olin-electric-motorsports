@@ -1,6 +1,10 @@
 #include "vehicle/mkvii/software/integration/pdu/pdu.h"
 #include <util/delay.h>
 
+//timing and display flags adapted from charger.c logic
+volatile bool display_hv_voltage = true;
+uint16_t display_timer = 0;
+
 // Timer 0 setup for main loop
 volatile bool run_10ms = false; // Set as volatile to avoid compiler optimization breaking code
 void timer_0_isr(void) {
@@ -13,16 +17,89 @@ void timer_1_isr(void) {
     // Toggle pin to simulate 50% duty cycle
         
     // Commented to disable pump. Only uncomment once fluid is in cooling loop.
-    //gpio_toggle_pin(PUMP_PWM);
+    //gpio_toggle_pin(PUMP_PWM); //uncomment for cooling
 }
 
+// 7 Segment display functions adapted from charger.c
+
+/*charger.c uses a dedicated SPI transmit
+created max7221_write wrapper because the PDU requires 
+spi_transceive_custom_cs to handle multiple devices 
+ADC, IO Expander, Display
+sharing the same bus.
+spi_transceive_custom_cs is a low level tool
+w/o wrapper you must manually manage several parameters 
+every single time you want to talk to the display
+*/
+void max7221_write(uint8_t address, uint8_t data) {
+    uint8_t txdata[2] = {address, data};
+    uint8_t rxdata = 0;
+    spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
+}
+
+/* added display_number_on_7_seg because the display needs
+numbers to be broken into individual digits -- math from charger.c */
+void display_number_on_7_seg(float value) {
+    uint16_t val_int = (uint16_t)(value); 
+    
+    uint8_t ones = val_int % 10;
+    uint8_t tens = (val_int / 10) % 10;
+    uint8_t hundreds = (val_int / 100) % 10;
+    uint8_t thousands = (val_int / 1000) % 10;
+
+    max7221_write(0x01, thousands); // Digit 1 address
+    max7221_write(0x02, hundreds);  // Digit 2 address
+    max7221_write(0x03, tens);      // Digit 3 address
+    max7221_write(0x04, ones);      // Digit 4 address
+}
+
+// labels help the driver know what they are looking at (P=Pack, L=Load)
+// from charger.c 
+void display_hv_label() {
+    max7221_write(0x01, 15);  // 15 = Blank
+    max7221_write(0x02, 15);  
+    max7221_write(0x03, 14);  // 14 = 'P'
+    max7221_write(0x04, 10);  // 10 = '-' 
+}
+
+// Initialization functions
 
 // Initialize IO expander
+
+// TODO!!!
+// read data sheet for MCP23S17_RST
+// figure out how to turn on pins
+// turn on specific pins on MCP23S17_RST
+
+/* Added mcp23s17_write wrapper 02/22/25
+ * handles the 3-byte SPI sequence required by the datasheet:
+ * [Control Byte (Opcode)] -> [Register Address] -> [Data Byte].
+ */
+void mcp23s17_write(uint8_t address, uint8_t data) {
+    uint8_t txdata[3] = {OP_WRITE, address, data};
+    uint8_t rxdata = 0;
+    spi_transceive_custom_cs(MCP23S17_CS, txdata, &rxdata, 3);
+}
+
 void mcp23S17_init() {
     // Set reset pin
-    gpio_set_pin(MCP23S17_RST);
+    /* * RESET PIN 02/22/25
+     * Per datasheet Table 1-1, driving RESET HIGH enables the device.
+     * datasheet specifies that the Reset pin is active-low. 
+     * If it stays low, the chip is frozen.
+     */
+    gpio_set_pin(MCP23S17_RST); // drives it to 5V, which wakes up the chip and allows it to accept SPI commands
 
     // Set all GPIO pins' direction to output
+    /* DIRECTION CONTROL 02/22/25
+     * every pin can be an input or an output
+     * setting pin to 0 makes it an output
+     * goal is to drive LEDs 
+     * so set all bits to 0 (ALL_OUTPUT) during initialization 
+     * to ensure the chip can provide power to those lights
+     * IODIR bit 0 = Output, bit 1 = Input.
+     * ALL_OUTPUT (0x00) makes all pins on Port A and Port B outputs.
+     */
     uint8_t txdata[3] = {OP_WRITE, IO_DIRECTION_A, ALL_OUTPUT};
     uint8_t rxdata = 0;
     spi_transceive_custom_cs(MCP23S17_CS, txdata, &rxdata, 3);
@@ -35,6 +112,7 @@ void mcp23S17_init() {
 
 // Initialize display driver
 void max7221_init() {
+    /*
     // Leave shutdown mode
     uint8_t txdata[2] = {SHUTDOWN, SHUTDOWN_OFF};
     uint8_t rxdata = 0;
@@ -57,6 +135,16 @@ void max7221_init() {
     txdata[1] = SET_MAX_BRIGHTNESS;
     rxdata = 0;
     spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
+    */
+
+    /* replace manual spi_transceive calls with max7221_write like in
+    charger.c - easier to read 
+    NOT SURE IF THIS IS RIGHT
+    */
+    max7221_write(SHUTDOWN, SHUTDOWN_OFF);
+    max7221_write(DECODE, DECODE_4_DIGITS);
+    max7221_write(SCAN_LIMIT, SCAN_4_DIGITS);
+    max7221_write(INTENSITY, SET_MAX_BRIGHTNESS);
 
 }
 
@@ -123,6 +211,11 @@ void hw_test(){
     // spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
 
     // Light up all shutdown LEDs
+    /* TURNING ON PINS 02/22/25
+     * Write a '1' to the OLAT (Output Latch) register bit to drive a pin HIGH.
+     * acts as a buffer that holds the state (On/Off) of the LEDs until the next update cycle
+     * instead of directly writing to the GPIO register which changes the physical state immediately
+     */
     uint8_t txdata[3] = {OP_WRITE, IO_LATCH_A, 0xff};
     uint8_t rxdata = 0;
     spi_transceive_custom_cs(MCP23S17_CS, txdata, &rxdata, 3);
@@ -214,10 +307,10 @@ int main(void) {
 
     uint8_t heartbeat_counter = 0;
 
-    // Temp: Illuminate entire display
-    uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
-    uint8_t rxdata = 0;
-    spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
+    // Temp: Illuminate entire display (hardcoded test pattern)
+    //uint8_t txdata[2] = {DISPLAY_TEST, DISPLAY_TEST_ON};
+    //uint8_t rxdata = 0;
+    //spi_transceive_custom_cs(MAX7221_CS, txdata, &rxdata, 2);
 
     // Main loop
     while (true) {
@@ -225,16 +318,89 @@ int main(void) {
             // Update tractive system status LED
             update_ts_status();
 
-            // Update shutdown node LEDs
+            // MAPPING SHUTDOWN NODES TO LEDs (02/22/25)
+            /* * MAPPING EXPLANATION:
+             * This maps the physical input pins on the ATmega to specific bits 
+             * on the IO Expander[cite: 147, 149].
+             * We use Bitwise OR (|=) to combine these into one byte.
+             */
+            uint8_t shdn_led_byte = 0; 
 
+            // 1. Read Left E-Stop (Input PC0) -> Map to Bit 0
+            if (gpio_get_pin(SS_ESTOP_L)) { shdn_led_byte |= (1 << BIT_ESTOP_L); }
+
+            // 2. Read Right E-Stop (Input PC6) -> Map to Bit 1
+            if (gpio_get_pin(SS_ESTOP_R)) { shdn_led_byte |= (1 << BIT_ESTOP_R); }
+
+            // 3. Read MC HV Interlock (Input PC1) -> Map to Bit 2
+            if (gpio_get_pin(SS_MC)) { shdn_led_byte |= (1 << BIT_MC_INTLK); }
+
+            // 4. Read Main Fuse / GLVMS (Input PC7) -> Map to Bit 3
+            if (gpio_get_pin(SS_GLVMS)) { shdn_led_byte |= (1 << BIT_GLVMS); }
+
+            // Write the mapped states to the IO Expander Port A Output Latch
+            /* * TURNING ON PINS: 
+             * We write to OLATA (IO_LATCH_A) because it represents the 
+             * output register.
+             */
+            mcp23s17_write(IO_LATCH_A, shdn_led_byte);
+
+            // Read sensors
+            uint16_t raw_current = adc_read(INPUT_7); // PDU Fuse 
+            float hv_voltage = bms_core.pack_voltage; // From CAN
+
+            /* implemented Multiplexed Display Logic.
+             * allows viewing both Voltage and Current on a 4-digit screen.
+             * toggles every 1 second (100 ticks of 10ms).
+             */
+            display_timer++;
+            if (display_timer < 100) { // Show Label
+                if (display_hv_voltage) display_hv_label();
+                else max7221_write(0x03, 13); // Label 'L-' for Current/Load
+            } 
+            else if (display_timer < 200) { // Show numeric value
+                if (display_hv_voltage) display_number_on_7_seg(hv_voltage);
+                else display_number_on_7_seg(raw_current);
+            } 
+            else {
+                display_timer = 0;
+                display_hv_voltage = !display_hv_voltage; // Swap mode
+            }
+            
+            
             // Get current readings from ADC (+ publish to CAN)
             // transmit_currents();
-            pdu_test.pdu_adc_raw = adc_read(INPUT_7);
+            pdu_test.pdu_adc_raw = raw_current;
             can_send_pdu_test();
 
             // Update display
 
-            // Cooling logic
+            // COOLING SYSTEM LOGIC 03/19/26
+            /* * uses Hysteresis, a gap between on and off, to prevent the fan 
+             * from flickering rapidly if the temperature sits exactly at one value.
+             */
+
+            // Check if we have received a fresh throttle message containing MC temperature
+            if (can_poll_receive_throttle() == 0) {
+                can_receive_throttle();
+            }
+
+            // High-temperature trigger: Turn fans ON
+            if (throttle.mc_temp >= FAN_ON_THRESHOLD) {
+                gpio_set_pin(FAN_PWM);
+            } 
+            // Low-temperature trigger: Turn fans OFF
+            else if (throttle.mc_temp <= FAN_OFF_THRESHOLD) {
+                gpio_clear_pin(FAN_PWM);
+            }
+
+            // TRANSMIT CURRENT READINGS
+            /* * Installing proper CAN messages
+             * It converts the 6 fuse ADC readings into scaled values and 
+             * sends them over the CAN bus (ID 0x540).
+             */
+            transmit_currents();
+
 
             run_10ms = false; // Set run flag to false
 

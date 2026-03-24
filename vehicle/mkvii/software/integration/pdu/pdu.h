@@ -1,9 +1,15 @@
 #include <avr/interrupt.h>
+
 #include "libs/gpio/api.h"
 #include "libs/gpio/pin_defs.h"
 #include "libs/spi/api.h"
 #include "libs/timer/api.h"
 #include "vehicle/mkvii/software/integration/pdu/can_api.h"
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdio.h>
 
 // Macro that returns the minimum between two values
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
@@ -26,6 +32,10 @@ For ACS37010 sensitivity = 0.0667V/A:
 #define QVO_COUNTS 2047 // V_qvo in ADC counts
 #define ACS_SENS_COUNTS 55 // ACS sensitivity in (ADC counts) / A
 
+// Cooling thresholds
+#define FAN_ON_THRESHOLD  80 // Turn fan on if MC temp >= 80C
+#define FAN_OFF_THRESHOLD 40 // Turn fan off if MC temp <= 40C
+
 // Pin definitions
 gpio_t MCP23S17_CS = PB3; // mcp23s17 - Chip select
 gpio_t ADC1283_CS = PB2; // adc1283 - Chip select
@@ -42,6 +52,12 @@ gpio_t SS_ESTOP_R = PC6; // Input for service section right estop
 gpio_t SS_MC = PC1; // Input for motor controller high voltage interlock
 gpio_t SS_GLVMS = PC7; // Input for main fuse 
 
+
+// Bitmask definitions for LED Mapping (02/22/25)
+#define BIT_ESTOP_L    0  // Map PC0 to Expander Bit 0
+#define BIT_MC_INTLK   1  // Map PC1 to Expander Bit 1
+#define BIT_ESTOP_R    2  // Map PC6 to Expander Bit 2
+#define BIT_GLVMS      3  // Map PC7 to Expander Bit 3
 
 // Opcodes for mcp23s17
 typedef enum {

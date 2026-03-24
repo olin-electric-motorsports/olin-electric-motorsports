@@ -35,3 +35,7 @@ build:docker-kicad --experimental_docker_image=setsoft/kicad_auto:ki7
 
 # Because I can never remember the order...
 build:kicad-docker --config=docker-kicad
+
+build --features=-parse-headers
+build --spawn_strategy=local
+build --nolegacy_external_runfiles
