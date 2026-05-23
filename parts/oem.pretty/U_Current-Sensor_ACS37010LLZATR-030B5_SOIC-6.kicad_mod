@@ -1,0 +1,227 @@
+(footprint "U_Current-Sensor_ACS37010LLZATR-030B5_SOIC-6"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "LZ")
+	(tags "Integrated Circuit")
+	(property "Reference" "IC**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "e1f82154-64c7-47f9-aff9-6e3c8727f310")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "ACS37010LLZATR050B5"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "84f5c16f-23ef-49b4-ac74-cedab8579c9d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a782fdf1-1c5d-4f53-a640-d11cc718ca0f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fc934d64-cbc2-479d-b1b9-0631343a11ac")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.445 -1.8)
+		(end -2.445 1.8)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0927a50b-0484-4e4e-a60d-d0c9176c70ec")
+	)
+	(fp_line
+		(start 2.445 -1.8)
+		(end 2.445 1.8)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "379a2dea-6ef7-4026-99a1-eddfb2c65400")
+	)
+	(fp_poly
+		(pts
+			(xy 2.48 -3.14) (xy 2.81 -3.38) (xy 2.81 -2.9)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "4522374c-5e7d-4a97-8292-4e08cd77e557")
+	)
+	(fp_line
+		(start -3.445 -4.68)
+		(end 3.445 -4.68)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "8a5b606a-a64d-4d08-b82d-f776f006b31e")
+	)
+	(fp_line
+		(start -3.445 4.68)
+		(end -3.445 -4.68)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6bfc1d2d-16f6-468f-980e-67a72c709ef8")
+	)
+	(fp_line
+		(start 3.445 -4.68)
+		(end 3.445 4.68)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "3e3ef990-9c77-477c-83e0-b161dc5f5173")
+	)
+	(fp_line
+		(start 3.445 4.68)
+		(end -3.445 4.68)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b9d22d5c-5b23-48e1-9d23-c7edd56e9c77")
+	)
+	(fp_line
+		(start -2.445 -1.95)
+		(end 2.445 -1.95)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "802fa229-e048-4a61-9f73-6806ba8d8047")
+	)
+	(fp_line
+		(start -2.445 1.95)
+		(end -2.445 -1.95)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9ba8e615-8dda-4794-9987-12a2a81c077e")
+	)
+	(fp_line
+		(start 2.445 -1.95)
+		(end 2.445 1.95)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c621647a-5166-4d26-b784-ab9f5d842ec6")
+	)
+	(fp_line
+		(start 2.445 1.95)
+		(end -2.445 1.95)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "cbca1d56-0a2b-49fa-84b5-e8843a19c820")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "4940b0b6-b98a-4f3e-abff-d6cf79d9e730")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 1.27 -2.89 90)
+		(size 1.58 1.92)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "6b744fb7-d37e-45ca-8944-abefa08b244c")
+	)
+	(pad "4" smd rect
+		(at -1.27 -2.89 90)
+		(size 1.58 1.92)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "0d93138d-8a9d-4f25-8a9a-f2f80b8f2fe1")
+	)
+	(pad "5" smd rect
+		(at -1.905 2.89)
+		(size 0.65 1.58)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "feed095d-433d-47db-a61e-f3fcef3db9df")
+	)
+	(pad "6" smd rect
+		(at -0.635 2.89)
+		(size 0.65 1.58)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "72cf86a6-059f-4ef7-9c71-fa1be8acb8ca")
+	)
+	(pad "7" smd rect
+		(at 0.635 2.89)
+		(size 0.65 1.58)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "b7a99adb-18b7-4cd4-bec0-c45a1283064c")
+	)
+	(pad "8" smd rect
+		(at 1.905 2.89)
+		(size 0.65 1.58)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "2751d80c-019b-4a1c-9e37-972a2be5a096")
+	)
+	(embedded_fonts no)
+	(model "${OEM_DIR}/parts/3d models/U_Current-Sensor_ACS37010LLZATR-030B5_SOIC-6.stp"
+		(offset
+			(xyz 0 0 0.8899999723)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -180 -180)
+		)
+	)
+)

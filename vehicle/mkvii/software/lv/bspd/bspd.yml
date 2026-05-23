@@ -1,0 +1,75 @@
+name: bspd
+publish:
+  - name: bspd
+    id: 0xb
+    freq_hz: 100
+    signals:
+
+      # Original Brake Pressure Data
+      # not sure what the scale is here yet, so going to leave this as - is
+      # Will be worked on; will look at datasheet
+      - name: brake_pressure
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: PSI
+          offset: -1.25
+          scale: 25 * (5 / 4096)
+
+      # Filtered Brake Pressure Data
+      # not sure what the scale is here yet, so going to leave this as - is
+      # Will be worked on; will look at datasheet
+      - name: brake_pressure_filtered
+        slice: 16 + 16
+        unit:
+          type: uint16_t
+          name: PSI
+          offset: -1.25
+          scale: 25 * (5 / 4096)
+
+      # OpAmp Timer RC Circuit Status
+      - name: opamp_timer_rc_circuit_status
+        slice: 32 + 16
+        unit:
+          type: uint16_t
+          name: Capacitor Saturation % in 0.5 s
+          offset: 0
+          scale: 20 * (5 / 1024) * 1.58
+          # Percentage of Capacitor Saturation in RC Circuit that occurs in 0.5 s
+    
+      # Shutdown Sense/BSPD Status
+      - name: ss_bspd
+        slice: 48 + 1
+        unit:
+          type: bool
+          values:
+            t: CLOSED
+            f: OPEN
+
+      # Heartbeat Status
+      # "lub-DUB" chosen because that is how an actual heartbeat sounds like. Link: https://www.nhlbi.nih.gov/health/heart/heart-beats
+      - name: heartbeat
+        slice: 49 + 1
+        unit:
+          type: bool
+          values:
+            t: lub
+            f: DUB
+
+      # Brake Light Status
+      - name: brake_gate
+        slice: 50 + 1
+        unit:
+          type: bool
+          values:
+            t: Brake Light ON
+            f: Brake Light OFF
+
+      # Motor Current Status
+      - name: bspd_5kw
+        slice: 51 + 1
+        unit:
+          type: bool
+          values:
+            t: BSPD Power Over 5kW
+            f: BSPD Power Under 5kW

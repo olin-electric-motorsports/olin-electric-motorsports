@@ -1,10 +1,11 @@
 #include "client.h"
 
-char* chip_id_to_name[4] = {
+char* chip_id_to_name[5] = {
     [CHIP_NONE] = "unknown",
     [CHIP_AVR_ATMEGA16M1] = "atmega16m1",
     [CHIP_AVR_ATMEGA328P] = "atmega328p",
     [CHIP_ARM_STM32F103C8T6] = "stm32f103c8t6",
+    [CHIP_AVR_ATMEGA64M1] = "atmega64m1",
 };
 
 static struct ping_response

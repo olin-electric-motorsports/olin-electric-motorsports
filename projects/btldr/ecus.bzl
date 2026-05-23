@@ -16,10 +16,22 @@ ECUS = {
     "bspd": {
         "btldr_id": "0x718",
     },
-    "lvbms": {
+    "pdu": {
         "btldr_id": "0x720",
     },
     "throttle": {
         "btldr_id": "0x728",
+    },
+    "wheel_speed": {
+        "btldr_id": "0x730",
+    },
+    "sus_strain": {
+        "btldr_id": "0x740",
+    },
+    "sus_travel": {
+        "btldr_id": "0x750",
+    },
+    "imu": {
+        "btldr_id": "0x760",
     },
 }

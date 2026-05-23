@@ -15,6 +15,7 @@ cc_library(
     hdrs = ["can_print.h"],
     target_compatible_with = select({
         "//bazel/constraints:atmega16m1": [],
+        "//bazel/constraints:atmega64m1": [],
         "//conditions:default": ["//bazel/constraints:incompatible_mcu"],
     }),
     visibility = ["//visibility:public"],
@@ -23,7 +24,7 @@ cc_library(
 
 can_api_files(
     name = "can_api",
-    dbc = "//vehicle/mkvi:mkvi.dbc",
+    dbc = "//vehicle/mkvii:mkvii.dbc",
     yaml = ":can_print.yml",
 )
 

@@ -68,7 +68,9 @@ void spi_init(spi_cfg_s* cfg);
  */
 void spi_transceive(uint8_t* txdata, uint8_t* rxdata, uint8_t len);
 void spi_transceive_cs(uint8_t* txdata, uint8_t* rxdata, uint8_t len);
-
+void spi_transceive_custom_cs(gpio_t cs, uint8_t* txdata, uint8_t* rxdata,
+    uint8_t len); 
+    
 void spi_transmit(uint8_t* txdata, uint8_t len);
 void spi_receive(uint8_t* rxdata, uint8_t len);
 

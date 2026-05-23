@@ -1,0 +1,72 @@
+name: pdu
+subscribe:
+# Transmit MOb is 0
+  - name: dashboard
+    mob: 1
+  - name: throttle
+    mob: 2
+  - name: bspd
+    mob: 3
+  - name: air_control_critical
+    mob: 4
+  - name: bms_core 
+    mob: 5
+publish:
+  - name: pdu_currents
+    id: 0x540
+    freq_hz: 100
+    signals:
+      - name: cooling_x10
+        slice: 0 + 8
+        unit:
+          type: uint8_t
+          name: "Reading"
+          offset: 0
+          scale: 1
+      - name: service_section_x10
+        slice: 8 + 8
+        unit:
+          type: uint8_t
+          name: "Reading"
+          offset: 0
+          scale: 1
+      - name: motor_controller_x10
+        slice: 16 + 8
+        unit:
+          type: uint8_t
+          name: "Reading"
+          offset: 0
+          scale: 1
+      - name: lv_mobo_x10
+        slice: 24 + 8
+        unit:
+          type: uint8_t
+          name: "Reading"
+          offset: 0
+          scale: 1
+      - name: shutdown_x10
+        slice: 32 + 8
+        unit:
+          type: uint8_t
+          name: "Reading"
+          offset: 0
+          scale: 1
+      - name: pdu_x10
+        slice: 40 + 8
+        unit:
+          type: uint8_t
+          name: "Reading"
+          offset: 0
+          scale: 1
+  - name: pdu_test
+    id: 0x545
+    freq_hz: 100
+    signals:
+      - name: pdu_adc_raw
+        slice: 0 + 16
+        unit:
+          type: uint16_t
+          name: "Reading"
+          offset: 0
+          scale: 1
+

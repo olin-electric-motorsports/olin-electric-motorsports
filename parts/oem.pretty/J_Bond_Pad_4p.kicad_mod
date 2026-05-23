@@ -1,0 +1,66 @@
+(footprint "J_Bond_Pad_4p"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "c1d0326c-ad9e-4838-8190-56dfbd923ed4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Bond Pad (4p)"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "89de2e42-f574-452e-8537-1a329094e7d0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0168dbba-444b-4f24-b001-c21abf2da1e6")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2999f4ad-4d31-44bd-bee2-964908d7f0e1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd exclude_from_pos_files exclude_from_bom)
+	(pad "1" smd roundrect
+		(at 0 0)
+		(size 8.5 122)
+		(layers "F.Cu" "F.Mask")
+		(roundrect_rratio 0.5)
+		(chamfer_ratio 0.2)
+		(chamfer)
+		(uuid "d3efb348-eebf-40e0-aab6-d63714de21d3")
+	)
+	(embedded_fonts no)
+)

@@ -55,6 +55,7 @@ class BtldrDatabase(DBC):
                 1: "ATMEGA16M1",
                 2: "ATMEGA328P",
                 3: "STM32F103C8T6",
+                4: "ATMEGA64M1",
             },
         )
 

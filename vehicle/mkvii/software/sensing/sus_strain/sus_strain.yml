@@ -1,0 +1,24 @@
+name: sus_strain
+publish:
+  - name: sus_strain_l
+    id: 0x490
+    freq_hz: 100
+    signals:
+      - name: sus_strain
+        slice: 0 + 64
+        unit:
+          type: uint64_t
+          name: ''
+          offset: 0
+          scale: 1
+  - name: sus_strain_r
+    id: 0x491
+    freq_hz: 100
+    signals:
+      - name: sus_strain
+        slice: 0 + 64
+        unit:
+          type: uint64_t
+          name: ''
+          offset: 0
+          scale: 1
